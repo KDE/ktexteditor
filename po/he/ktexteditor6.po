@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-09 00:37+0000\n"
+"POT-Creation-Date: 2024-08-25 00:37+0000\n"
 "PO-Revision-Date: 2024-08-09 08:30+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -3072,17 +3072,15 @@ msgstr "מעבר לפסקה הקודמת"
 #: script/data/commands/utils.js:9
 #, kde-format
 msgctxt "Script command name"
-msgid "Sort Selected Text Alphabetically"
-msgstr "מיון הטקסט הנבחר לפי האלפבית"
+msgid "Remove Trailing Spaces"
+msgstr "הסרת רווחים מהסוף"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
-#: script/data/commands/utils.js:26 script/data/commands/utils.js:30
-#: script/data/commands/utils.js:34 script/data/commands/utils.js:39
+#: script/data/commands/utils.js:27 script/data/commands/utils.js:32
+#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
-#: script/data/commands/utils.js:60 script/data/commands/utils.js:64
-#: script/data/commands/utils.js:68
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
@@ -3091,108 +3089,90 @@ msgstr "עריכה"
 #: script/data/commands/utils.js:13
 #, kde-format
 msgctxt "Script command name"
-msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "הסרת כפילויות ומיון הטקסט הנבחר לפי האלפבית"
-
-#: script/data/commands/utils.js:17
-#, kde-format
-msgctxt "Script command name"
-msgid "Remove Duplicate Lines"
-msgstr "הסרת שורות כפולות"
-
-#: script/data/commands/utils.js:21
-#, kde-format
-msgctxt "Script command name"
-msgid "Remove Trailing Spaces"
-msgstr "הסרת רווחים מהסוף"
-
-#: script/data/commands/utils.js:25
-#, kde-format
-msgctxt "Script command name"
 msgid "Remove Leading Spaces"
 msgstr "הסרת רווחים מההתחלה"
 
-#: script/data/commands/utils.js:29
+#: script/data/commands/utils.js:17
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
 msgstr "הסרת רווחים עוקבים ומובילים"
 
-#: script/data/commands/utils.js:33
+#: script/data/commands/utils.js:21
 #, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "צירוף שורות"
 
-#: script/data/commands/utils.js:37
+#: script/data/commands/utils.js:25
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "הורדת שורות למטה"
 
-#: script/data/commands/utils.js:42
+#: script/data/commands/utils.js:30
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "העלאת שורות למטה"
 
-#: script/data/commands/utils.js:47
+#: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "שכפול השורות הנבחרות למטה"
 
-#: script/data/commands/utils.js:51
+#: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "שכפול השורות הנבחרות למעלה"
 
-#: script/data/commands/utils.js:55
+#: script/data/commands/utils.js:43
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
 msgstr "שכפול הטקסט הנבחר"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:47
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "קידוד הטקסט הנבחר לכתובות מלאות (URI)"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:51
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "פענוח הטקסט הנבחר מכתובות מלאות (URI)"
 
-#: script/data/commands/utils.js:67
+#: script/data/commands/utils.js:55
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "הסרת שורות ריקות"
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:410
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "מיון הטקסט הנבחר או את כל המסמך."
 
-#: script/data/commands/utils.js:464
+#: script/data/commands/utils.js:412
 #, kde-format
 msgid "Move selected lines down."
 msgstr "הורדת השורות הנבחרות מטה."
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:414
 #, kde-format
 msgid "Move selected lines up."
 msgstr "העלאת השורות הנבחרות מעלה."
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:416
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "הסרת שורות כפולות מהטקסט הנבחר או מכל המסמך."
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:418
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3203,22 +3183,22 @@ msgstr ""
 "מול השיטה הרגילה:<br>sort(a10,a1,a2) => a1,a10,a2<br>natsort(a10, a1, a2) => "
 "a1, a2, a10"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:420
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "הסרת רווחים מסוף הבחירה או מכל המסמך."
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:422
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "הסרת רווחים מתחילת הבחירה או מכל המסמך."
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:424
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr "הסרת רווחים מסוף ומתחילת השורות של הטקסט הנבחר או מכל המסמך."
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:426
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3228,12 +3208,12 @@ msgstr ""
 "צירוף השורות הנבחרות או המסמך כולו. אפשר להעביר מפריד כרשות בין השורות: "
 "<br><code>join ', '</code> למשל, יצרף שורות ויפריד ביניהן בפסיקים."
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:428
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "הסרת שורות ריקות מהבחירה או מהמסמך כולו."
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:430
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3254,7 +3234,7 @@ msgstr ""
 "<br>‚‎<code>alignon :\\s+(.)</code>‎’ יוסיף רווחים לפני התו הראשון שאינו ריק "
 "שמופיע מיד אחרי נקודתיים כדי ליישר את כולם לאותה העמודה."
 
-#: script/data/commands/utils.js:486
+#: script/data/commands/utils.js:434
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3268,7 +3248,7 @@ msgstr ""
 "<br><code>‎each 'function(lines){return lines.join(\", \");}‎'</code><br>כדי "
 "לחסוך הקלדה אפשר גם לכתוב ככה:<br><code>‎each 'lines.join(\", \")'‎</code>"
 
-#: script/data/commands/utils.js:488
+#: script/data/commands/utils.js:436
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3283,7 +3263,7 @@ msgstr ""
 "> 0;}'‎</code><br>כדי לחסוך הקלדה אפשר גם לכתוב ככה:<br><code>‎filter 'line."
 "length > 0'‎</code>"
 
-#: script/data/commands/utils.js:490
+#: script/data/commands/utils.js:438
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3299,17 +3279,17 @@ msgstr ""
 "replace(/^\\s+/, \"\");}'</code><br>כדי לחסוך הקלדה אפשר גם לכתוב ככה:"
 "<br><code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:492
+#: script/data/commands/utils.js:440
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "שכפול השורות הנבחרות מעלה."
 
-#: script/data/commands/utils.js:494
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "שכפול השורות הנבחרות מטה."
 
-#: script/data/commands/utils.js:498
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3318,12 +3298,12 @@ msgstr ""
 "קידוד תווים מיוחדים בבחירה של שורה בודדת כך שאפשר יהיה להשתמש בטקסט שיתקבל "
 "ככתובת מלאה."
 
-#: script/data/commands/utils.js:500
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "היפוך פעולת קידוד כתובות מלאות."
 
-#: script/data/commands/utils.js:502
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
@@ -3332,7 +3312,7 @@ msgstr ""
 "בחירת טקסט החל ממקום הסמן הנוכחי עד המופע הראשון של הארגומנט שסופק לאחריו "
 "(או עד סוף השורה הנוכחית כברירת מחדל)."
 
-#: script/data/commands/utils.js:504
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -3448,7 +3428,7 @@ msgid "Bad quoting in call: %1. Please escape single quotes with a backslash."
 msgstr ""
 "ציטוט שגוי בקריאה: %1. נא למלט סימני ציטוט כפולים בלוכסן הפוך (\" -> ‎\\‎\"‎)."
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -5031,17 +5011,17 @@ msgstr "ה&באה: %1 - „%2”"
 msgid "&Previous: %1 - \"%2\""
 msgstr "ה&קודמת: %1 - „%2”"
 
-#: utils/katecmds.cpp:52
+#: utils/katecmds.cpp:53
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>indent</p><p>מזיח את השורות הנבחרות או את השורה הנוכחית</p>"
 
-#: utils/katecmds.cpp:57
+#: utils/katecmds.cpp:58
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr "<p>unindent</p><p>הקטנת ההזחה בשורות הנבחרות או בשורה הנוכחית.</p>"
 
-#: utils/katecmds.cpp:62
+#: utils/katecmds.cpp:63
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5050,7 +5030,7 @@ msgstr ""
 "<p>cleanindent</p><p>הסרת ההזחה בשורות הנבחרות או בשורה הנוכחית לפי הגדרות "
 "ההזחה של המסמך.</p>"
 
-#: utils/katecmds.cpp:67
+#: utils/katecmds.cpp:68
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5060,7 +5040,7 @@ msgstr ""
 "<p>comment</p><p>הוספת סמני הערות כדי להפוך את הבחירה או את השורות הנבחרות "
 "להערה לפי תצורת הטקסט שמוגדרת בהגדרות הדגשת התחביר למסמך.</p>"
 
-#: utils/katecmds.cpp:73
+#: utils/katecmds.cpp:74
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5070,7 +5050,7 @@ msgstr ""
 "<p>uncomment</p><p>הסרת סמני הערות מהבחירה או השורות הנבחרות או השורה "
 "הנוכחית בהתאם לעיצוב הטקסט שפי שמוגדר על ידי הגדרת הדגשת התחביר למסמך.</p>"
 
-#: utils/katecmds.cpp:79
+#: utils/katecmds.cpp:80
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
@@ -5078,7 +5058,7 @@ msgid ""
 msgstr ""
 "<p>goto <b>מספר שורה</b></p><p>הפקודה הזאת מנווטת למספר שורה מסוים.</p>"
 
-#: utils/katecmds.cpp:84
+#: utils/katecmds.cpp:85
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5090,12 +5070,12 @@ msgstr ""
 "מלוח הגזירים מוזח לפי המזיח הנוכחי.</p><p>ערכי חיוב אפשריים: 1 on true<br/"
 ">ערכי שלילה אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:90
+#: utils/katecmds.cpp:91
 #, kde-format
 msgid "Deletes the current line."
 msgstr "מחיקת השורה הנוכחית."
 
-#: utils/katecmds.cpp:94
+#: utils/katecmds.cpp:95
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5103,7 +5083,7 @@ msgid ""
 msgstr ""
 "<p>set-tab-width <b>רוחב</b></p><p>הגדרת רוחב הטאב למספר <b>רוחב</b></p>"
 
-#: utils/katecmds.cpp:99
+#: utils/katecmds.cpp:100
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5114,7 +5094,7 @@ msgstr ""
 "ברווחים בזמן ההקלדה.</p><p>ערכים חיוביים אפשריים: 1 on true<br/>ערכים "
 "שליליים אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:106
+#: utils/katecmds.cpp:107
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5125,7 +5105,7 @@ msgstr ""
 "על ידי נקודה קטנה.</p><p>ערכים חיוביים אפשריים: 1 on true<br/>ערכים שליליים "
 "אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:113
+#: utils/katecmds.cpp:114
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5139,7 +5119,7 @@ msgstr ""
 "פותחים.</li><li><b>modified</b>: להסיר רווחים פותחים רק בשורות שהשתנו.</"
 "li><li><b>all</b>: להסיר רווחים פותחים במסמך כולו.</li></ul></p>"
 
-#: utils/katecmds.cpp:124
+#: utils/katecmds.cpp:125
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5148,7 +5128,7 @@ msgstr ""
 "<p>set-indent-width <b>רוחב</b></p>‏<p>הגדרת רוחב ההזחה למספר <b>רוחב</b>. "
 "ייעשה בזה שימוש רק בעת הזחה עם רווחים.</p>"
 
-#: utils/katecmds.cpp:129
+#: utils/katecmds.cpp:130
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5157,7 +5137,7 @@ msgstr ""
 "<p>set-indent-mode <b>מצב</b>‎</p><p>משתנה המצב הוא ערך כפי שמופיעבתפריט כלים "
 "- הזחה</p>"
 
-#: utils/katecmds.cpp:134
+#: utils/katecmds.cpp:135
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5167,7 +5147,7 @@ msgstr ""
 "<p>set-auto-indent <b>enable</b></p><p>הפעלת או השבתת הזחה אוטומטית.</"
 "p><p>ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:141
+#: utils/katecmds.cpp:142
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5177,7 +5157,7 @@ msgstr ""
 "<p>set-line-numbers <b>enable</b></p><p>הגדרת חשיפת לוח מספרי השורות.</p><p> "
 "ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:148
+#: utils/katecmds.cpp:149
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5187,7 +5167,7 @@ msgstr ""
 "<p>set-folding-markers <b>enable</b></p><p>הגדרת חשיפת לוח סמני הקיפול.</"
 "p><p>ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:155
+#: utils/katecmds.cpp:156
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5197,7 +5177,7 @@ msgstr ""
 "<p>set-icon-border <b>enable</b></p><p>הגדרת חשיפת מסגרות הסמלים.</p><p> "
 "ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:162
+#: utils/katecmds.cpp:163
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5208,7 +5188,7 @@ msgstr ""
 "<b>enable</b></p><p> ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 "
 "off false</p>"
 
-#: utils/katecmds.cpp:169
+#: utils/katecmds.cpp:170
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5218,7 +5198,7 @@ msgstr ""
 "<p>set-word-wrap-column <b>עובי</b>‎</p><p>הגדרת עובי הקו לגלישהקשיחה לכדי "
 "<b>עובי</b>. שימושי אם הטקסט שלך גולש אוטומטית.</p>"
 
-#: utils/katecmds.cpp:174
+#: utils/katecmds.cpp:175
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5229,7 +5209,7 @@ msgstr ""
 "תוחלפנה ברווחים עם כל שמירה של המסמך.</p><p> ערכים חיובייםאפשריים: 1 on "
 "true<br/>ערכים שליליים אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:181
+#: utils/katecmds.cpp:182
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5241,13 +5221,13 @@ msgstr ""
 "הארגומנט חייב להיות שם הדגשה תקף, כפי שמופיע בתפריט כלים ← הדגשה. הפקודה "
 "הזאת מספקת רשימת השלמה אוטומטית לארגומנט שלה.</p>"
 
-#: utils/katecmds.cpp:187
+#: utils/katecmds.cpp:188
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
 "<p>set-mode <b>mode</b></p><p>מגדיר את המצב כפי שמופיע תחת כלים - מצב</p>"
 
-#: utils/katecmds.cpp:192
+#: utils/katecmds.cpp:193
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5258,52 +5238,52 @@ msgstr ""
 "מקווקוו.</p><p> ערכים חיוביים אפשריים: 1 on true<br/>ערכים שליליים אפשריים: "
 "0 off false</p>"
 
-#: utils/katecmds.cpp:198
+#: utils/katecmds.cpp:199
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr "<p>פתיחת חלונית ההדפסה כדי להדפיס את המסמך הנוכחי.</p>"
 
-#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
+#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "חסר ארגומנט. שימוש: ‎%1 <ערך>"
 
-#: utils/katecmds.cpp:326
+#: utils/katecmds.cpp:327
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "אין הדגשת תחביר כזו ‚%1’"
 
-#: utils/katecmds.cpp:332
+#: utils/katecmds.cpp:333
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "אין מצב כזה ‚%1’"
 
-#: utils/katecmds.cpp:345
+#: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "המרת הארגומנט ‚%1’ למספר שלם נכשלה."
 
-#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
+#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "הרוחב חייב להיות לפחות 1."
 
-#: utils/katecmds.cpp:359
+#: utils/katecmds.cpp:360
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "העמודה חייבת להיות לפחות 1."
 
-#: utils/katecmds.cpp:389
+#: utils/katecmds.cpp:390
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "שימוש: ‎%1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:416
+#: utils/katecmds.cpp:417
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "ארגומנט שגוי: ‚%1’. שימוש: ‎%2 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:420
+#: utils/katecmds.cpp:421
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
@@ -5311,12 +5291,12 @@ msgstr ""
 "אופן שימוש: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|"
 "all"
 
-#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "הפקודה ‚%1’ לא מוכרת"
 
-#: utils/katecmds.cpp:492
+#: utils/katecmds.cpp:493
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5328,7 +5308,7 @@ msgstr ""
 "המספרי שלהם בצורה העשרונית, האוקטלית או ההקסדצימלית. </p><p>למשל:"
 "<ul><li>char <b>234</b></li><li>char <b>0x1234</b></li></ul></p>"
 
-#: utils/katecmds.cpp:559
+#: utils/katecmds.cpp:560
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5377,6 +5357,73 @@ msgstr ""
 "tr><tr><td>AP</td><td>להשתמש בתצוגת AM/PM.‏ AP יוחלף ב־„AM” או ב־„PM”.</td></"
 "tr><tr><td>ap</td><td>להשתמש בתצוגת am/pm.‏ ap יוחלף ב־„am” או ב־„pm”.</td></"
 "tr></table></p>"
+
+#: utils/katecmds.cpp:621
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Remove Duplicate Lines"
+msgid "Remove Duplicate Lines"
+msgstr "הסרת שורות כפולות"
+
+#: utils/katecmds.cpp:622
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+msgid "Remove Duplicates and Sort Text Alphabetically"
+msgstr "הסרת כפילויות ומיון הטקסט הנבחר לפי האלפבית"
+
+#: utils/katecmds.cpp:623
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Text Naturally"
+msgstr "מיון הטקסט הנבחר לפי האלפבית"
+
+#: utils/katecmds.cpp:624
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Selected Text Alphabetically"
+msgstr "מיון הטקסט הנבחר לפי האלפבית"
+
+#: utils/katecmds.cpp:693
+#, fuzzy, kde-format
+#| msgid "Sort the selected text or whole document."
+msgid ""
+"<p>sort</p><p>Sort the selected text or whole document if there is no "
+"selection</p>"
+msgstr "מיון הטקסט הנבחר או את כל המסמך."
+
+#: utils/katecmds.cpp:697
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgid ""
+"<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
+"document if there is no selection.</p>"
+msgstr "הסרת שורות כפולות מהטקסט הנבחר או מכל המסמך."
+
+#: utils/katecmds.cpp:701
+#, kde-format
+msgid ""
+"<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
+"all duplicate lines.</p>"
+msgstr ""
+
+#: utils/katecmds.cpp:705
+#, fuzzy, kde-format
+#| msgid ""
+#| "Sort the selected text or whole document in natural order.<br>Here is an "
+#| "example to show the difference to the normal sort method:<br>sort(a10, "
+#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+msgid ""
+"<p>natsort</p><p>Sort the selected text or whole document in natural order."
+"<br>Here is an example to show the difference to the normal sort method:"
+"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
+"p>"
+msgstr ""
+"סידור הטקסט הנבחר או את כל המסמך בצורה טבעית.<br>להלן דוגמה שמציגה את ההבדל "
+"מול השיטה הרגילה:<br>sort(a10,a1,a2) => a1,a10,a2<br>natsort(a10, a1, a2) => "
+"a1, a2, a10"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -5761,7 +5808,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "elcuco@kde.org,kde-l10n-he@kde.org"
 
-#: utils/kateglobal.cpp:260
+#: utils/kateglobal.cpp:261
 #, kde-format
 msgid "Configure"
 msgstr "הגדרה"
@@ -7724,22 +7771,22 @@ msgstr ""
 "code><br />כדי לקבל עזרה לגבי פקודה מסויימת, נא להקליד <code><b>help &lt;"
 "command&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "אין פקודה כזאת: „%1”"
 
-#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "שגיאה: אסור טווח לפקודה „%1”."
 
-#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "הצלחה: "
 
-#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "הפקודה „%1” נכשלה."

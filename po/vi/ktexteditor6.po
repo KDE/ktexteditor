@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-09 00:37+0000\n"
+"POT-Creation-Date: 2024-08-25 00:37+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -3128,91 +3128,69 @@ msgid "Go to Previous Paragraph"
 msgstr "Đi đến điểm sửa trước"
 
 #: script/data/commands/utils.js:9
-#, kde-format
-msgctxt "Script command name"
-msgid "Sort Selected Text Alphabetically"
-msgstr "Sắp xếp văn bản bôi đen theo bảng chữ cái"
-
-#: script/data/commands/utils.js:10 script/data/commands/utils.js:14
-#: script/data/commands/utils.js:18 script/data/commands/utils.js:22
-#: script/data/commands/utils.js:26 script/data/commands/utils.js:30
-#: script/data/commands/utils.js:34 script/data/commands/utils.js:39
-#: script/data/commands/utils.js:44 script/data/commands/utils.js:48
-#: script/data/commands/utils.js:52 script/data/commands/utils.js:56
-#: script/data/commands/utils.js:60 script/data/commands/utils.js:64
-#: script/data/commands/utils.js:68
-#, kde-format
-msgctxt "Script command category"
-msgid "Editing"
-msgstr "Chỉnh sửa"
-
-#: script/data/commands/utils.js:13
-#, kde-format
-msgctxt "Script command name"
-msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Xoá các dòng lặp lại và sắp xếp văn bản bôi đen theo bảng chữ cái"
-
-#: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
-msgctxt "Script command name"
-msgid "Remove Duplicate Lines"
-msgstr "Nhân đôi các dòng bôi đen lên"
-
-#: script/data/commands/utils.js:21
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
 msgstr "&Xoá các dấu cách ở cuối:"
 
-#: script/data/commands/utils.js:25
+#: script/data/commands/utils.js:10 script/data/commands/utils.js:14
+#: script/data/commands/utils.js:18 script/data/commands/utils.js:22
+#: script/data/commands/utils.js:27 script/data/commands/utils.js:32
+#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
+#: script/data/commands/utils.js:44 script/data/commands/utils.js:48
+#: script/data/commands/utils.js:52 script/data/commands/utils.js:56
+#, kde-format
+msgctxt "Script command category"
+msgid "Editing"
+msgstr "Chỉnh sửa"
+
+#: script/data/commands/utils.js:13
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
 msgstr "&Xoá các dấu cách ở cuối:"
 
-#: script/data/commands/utils.js:29
+#: script/data/commands/utils.js:17
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
 msgstr "&Xoá các dấu cách ở cuối:"
 
-#: script/data/commands/utils.js:33
+#: script/data/commands/utils.js:21
 #, fuzzy, kde-format
 #| msgid "Join Lines"
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Nối dòng"
 
-#: script/data/commands/utils.js:37
+#: script/data/commands/utils.js:25
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "Di chuyển các dòng xuống"
 
-#: script/data/commands/utils.js:42
+#: script/data/commands/utils.js:30
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "Di chuyển các dòng lên"
 
-#: script/data/commands/utils.js:47
+#: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "Nhân đôi các dòng bôi đen xuống"
 
-#: script/data/commands/utils.js:51
+#: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "Nhân đôi các dòng bôi đen lên"
 
-#: script/data/commands/utils.js:55
+#: script/data/commands/utils.js:43
 #, fuzzy, kde-format
 #| msgctxt "Script command name"
 #| msgid "Duplicate Selected Lines Up"
@@ -3220,46 +3198,46 @@ msgctxt "Script command name"
 msgid "Duplicate selected text"
 msgstr "Nhân đôi các dòng bôi đen lên"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:47
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "Mã hoá URI văn bản bôi đen"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:51
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "Giải mã hoá URI văn bản bôi đen"
 
-#: script/data/commands/utils.js:67
+#: script/data/commands/utils.js:55
 #, fuzzy, kde-format
 #| msgid "Remove Cursors from Empty Lines"
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "Bỏ con trỏ khỏi các dòng trống"
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:410
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "Sắp xếp văn bản bôi đen hoặc toàn bộ tài liệu."
 
-#: script/data/commands/utils.js:464
+#: script/data/commands/utils.js:412
 #, kde-format
 msgid "Move selected lines down."
 msgstr "Di chuyển các dòng bôi đen xuống."
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:414
 #, kde-format
 msgid "Move selected lines up."
 msgstr "Di chuyển các dòng bôi đen lên."
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:416
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "Xoá các dòng lặp lại khỏi văn bản bôi đen hoặc toàn bộ tài liệu."
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:418
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3270,23 +3248,23 @@ msgstr ""
 "là một ví dụ cho thấy sự khác biệt so với phương pháp sắp xếp thông thường:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:420
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "Cắt bỏ khoảng trắng ở cuối trong phần bôi đen hoặc toàn bộ tài liệu."
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:422
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "Cắt bỏ khoảng trắng ở đầu trong phần bôi đen hoặc toàn bộ tài liệu."
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:424
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
 "Cắt bỏ khoảng trắng ở đầu và cuối trong phần bôi đen hoặc toàn bộ tài liệu."
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:426
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3297,12 +3275,12 @@ msgstr ""
 "phân cách để đặt giữa các dòng:<br>Vd. <code>join ', '</code> sẽ nối các "
 "dòng và phân cách chúng bằng một dấu phẩy."
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:428
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "Xoá bỏ các dòng trống khỏi phần bôi đen hoặc toàn bộ tài liệu."
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:430
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3325,7 +3303,7 @@ msgstr ""
 "các dấu cách vào trước kí tự khác trống đầu tiên xuất hiện sau một dấu hai "
 "chấm để căn lề tất cả chúng ở cùng một cột."
 
-#: script/data/commands/utils.js:486
+#: script/data/commands/utils.js:434
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3340,7 +3318,7 @@ msgstr ""
 "code><br>Để gõ ít hơn một chút, bạn cũng có thể làm như sau:<br><code>each "
 "'lines.join(\", \")'</code>"
 
-#: script/data/commands/utils.js:488
+#: script/data/commands/utils.js:436
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3355,7 +3333,7 @@ msgstr ""
 "code><br>Để gõ ít hơn một chút, bạn cũng có thể làm như sau:<br><code>filter "
 "'line.length > 0'</code>"
 
-#: script/data/commands/utils.js:490
+#: script/data/commands/utils.js:438
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3371,17 +3349,17 @@ msgstr ""
 "\\s+/, \"\");}'</code><br>Để gõ ít hơn một chút, bạn cũng có thể làm như sau:"
 "<br><code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:492
+#: script/data/commands/utils.js:440
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "Nhân đôi các dòng bôi đen lên."
 
-#: script/data/commands/utils.js:494
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "Nhân đôi các dòng bôi đen xuống."
 
-#: script/data/commands/utils.js:498
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3390,12 +3368,12 @@ msgstr ""
 "Mã hoá các kí tự đặc biệt trong phần bôi đen một dòng, sao cho văn bản kết "
 "quả có thể dùng làm URI."
 
-#: script/data/commands/utils.js:500
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "Đảo ngược hành động mã hoá URI."
 
-#: script/data/commands/utils.js:502
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
@@ -3404,7 +3382,7 @@ msgstr ""
 "Bôi đen phần văn bản từ vị trí con trỏ hiện tại tiến đến lần xuất hiện đầu "
 "tiên của đối số đã cho (hoặc mặc định là đến cuối dòng hiện tại)."
 
-#: script/data/commands/utils.js:504
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -3521,7 +3499,7 @@ msgstr ""
 "Dùng dấu nháy sai trong lời gọi: %1. Vui lòng chuyển dịch các dấu nháy đơn "
 "bằng một dấu gạch chéo ngược."
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -5126,17 +5104,17 @@ msgstr "&Sau: %1 - \"%2\""
 msgid "&Previous: %1 - \"%2\""
 msgstr "&Trước: %1 - \"%2\""
 
-#: utils/katecmds.cpp:52
+#: utils/katecmds.cpp:53
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>indent</p><p>Thụt lề các dòng bôi đen hoặc dòng hiện tại</p>"
 
-#: utils/katecmds.cpp:57
+#: utils/katecmds.cpp:58
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr "<p>unindent</p><p>Bỏ thụt lề các dòng bôi đen hoặc dòng hiện tại.</p>"
 
-#: utils/katecmds.cpp:62
+#: utils/katecmds.cpp:63
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5145,7 +5123,7 @@ msgstr ""
 "<p>cleanindent</p><p>Xoá hết thụt lề của các dòng bôi đen hoặc dòng hiện tại "
 "tuỳ theo thiết lập thụt lề của tài liệu. </p>"
 
-#: utils/katecmds.cpp:67
+#: utils/katecmds.cpp:68
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5156,7 +5134,7 @@ msgstr ""
 "được bôi đen hoặc dòng hiện tại thành một chú thích, dựa theo định dạng văn "
 "bản như được định nghĩa trong định nghĩa tô sáng cú pháp cho tài liệu.</p>"
 
-#: utils/katecmds.cpp:73
+#: utils/katecmds.cpp:74
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5167,7 +5145,7 @@ msgstr ""
 "được bôi đen hoặc dòng hiện tại, dựa theo định dạng văn bản như được định "
 "nghĩa trong định nghĩa tô sáng cú pháp cho tài liệu.</p>"
 
-#: utils/katecmds.cpp:79
+#: utils/katecmds.cpp:80
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
@@ -5176,7 +5154,7 @@ msgstr ""
 "<p>goto <b>số thứ tự dòng</b></p><p>Lệnh này đi đến dòng với số thứ tự được "
 "chỉ định.</p>"
 
-#: utils/katecmds.cpp:84
+#: utils/katecmds.cpp:85
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5189,12 +5167,12 @@ msgstr ""
 "trị 'đúng' có thể: 1 on true dung<br/>các giá trị 'sai' có thể: 0 off false "
 "sai</p>"
 
-#: utils/katecmds.cpp:90
+#: utils/katecmds.cpp:91
 #, kde-format
 msgid "Deletes the current line."
 msgstr "Xoá dòng hiện tại."
 
-#: utils/katecmds.cpp:94
+#: utils/katecmds.cpp:95
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5203,7 +5181,7 @@ msgstr ""
 "<p>set-tab-width <b>độ rộng</b></p><p>Đặt độ rộng lập bảng là <b>độ rộng</"
 "b></p>"
 
-#: utils/katecmds.cpp:99
+#: utils/katecmds.cpp:100
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5214,7 +5192,7 @@ msgstr ""
 "thế bằng các dấu cách khi bạn gõ.</p><p>Các giá trị 'đúng' có thể: 1 on true "
 "dung<br/>các giá trị 'sai' có thể: 0 off false sai</p>"
 
-#: utils/katecmds.cpp:106
+#: utils/katecmds.cpp:107
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5226,7 +5204,7 @@ msgstr ""
 "trị 'đúng' có thể: 1 on true dung<br/>các giá trị 'sai' có thể: 0 off false "
 "sai</p>"
 
-#: utils/katecmds.cpp:113
+#: utils/katecmds.cpp:114
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5241,7 +5219,7 @@ msgstr ""
 "các dấu cách ở cuối chỉ ở những dòng bị chỉnh sửa.</li><li><b>tat</b>: xoá "
 "các dấu cách ở cuối trong toàn bộ tài liệu.</li></ul></p>"
 
-#: utils/katecmds.cpp:124
+#: utils/katecmds.cpp:125
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5250,7 +5228,7 @@ msgstr ""
 "<p>set-indent-width <b>độ rộng</b></p><p>Đặt độ rộng thụt lề là <b>độ rộng</"
 "b>. Chỉ dùng khi bạn thụt lề bằng dấu cách.</p>"
 
-#: utils/katecmds.cpp:129
+#: utils/katecmds.cpp:130
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5259,7 +5237,7 @@ msgstr ""
 "<p>set-indent-mode <b>chế độ</b></p><p>Tham số <b>chế độ</b> là một giá trị "
 "bạn có thể thấy trong trình đơn Công cụ - Thụt lề</p>"
 
-#: utils/katecmds.cpp:134
+#: utils/katecmds.cpp:135
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5270,7 +5248,7 @@ msgstr ""
 "giá trị 'đúng' có thể: 1 on true dung<br/>các giá trị 'sai' có thể: 0 off "
 "false sai</p>"
 
-#: utils/katecmds.cpp:141
+#: utils/katecmds.cpp:142
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5281,7 +5259,7 @@ msgstr ""
 "</p><p>Các giá trị 'đúng' có thể: 1 on true dung<br/>các giá trị 'sai' có "
 "thể: 0 off false sai</p>"
 
-#: utils/katecmds.cpp:148
+#: utils/katecmds.cpp:149
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5292,7 +5270,7 @@ msgstr ""
 "</p><p>Các giá trị 'đúng' có thể: 1 on true dung<br/>các giá trị 'sai' có "
 "thể: 0 off false sai</p>"
 
-#: utils/katecmds.cpp:155
+#: utils/katecmds.cpp:156
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5303,7 +5281,7 @@ msgstr ""
 "p><p>Các giá trị 'đúng' có thể: 1 on true dung<br/>các giá trị 'sai' có thể: "
 "0 off false sai</p>"
 
-#: utils/katecmds.cpp:162
+#: utils/katecmds.cpp:163
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5314,7 +5292,7 @@ msgstr ""
 "</b></p><p>Các giá trị 'đúng' có thể: 1 on true dung<br/>các giá trị 'sai' "
 "có thể: 0 off false sai</p>"
 
-#: utils/katecmds.cpp:169
+#: utils/katecmds.cpp:170
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5325,7 +5303,7 @@ msgstr ""
 "<b>độ rộng</b>. Giá trị này được dùng khi bạn để văn bản được bọc tự động.</"
 "p>"
 
-#: utils/katecmds.cpp:174
+#: utils/katecmds.cpp:175
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5337,7 +5315,7 @@ msgstr ""
 "'đúng' có thể: 1 on true dung<br/>các giá trị 'sai' có thể: 0 off false sai</"
 "p>"
 
-#: utils/katecmds.cpp:181
+#: utils/katecmds.cpp:182
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5350,14 +5328,14 @@ msgstr ""
 "trình đơn Công cụ → Tô sáng. Lệnh này cung cấp một danh sách hoàn tất tự "
 "động cho đối số của nó.</p>"
 
-#: utils/katecmds.cpp:187
+#: utils/katecmds.cpp:188
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
 "<p>set-mode <b>chế độ</b></p><p>Đặt chế độ như bạn có thể thấy trong Công cụ "
 "- Chế độ</p>"
 
-#: utils/katecmds.cpp:192
+#: utils/katecmds.cpp:193
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5368,53 +5346,53 @@ msgstr ""
 "bằng một đường chấm dọc.</p><p>Các giá trị 'đúng' có thể: 1 on true dung<br/"
 ">các giá trị 'sai' có thể: 0 off false sai</p>"
 
-#: utils/katecmds.cpp:198
+#: utils/katecmds.cpp:199
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr "<p>Mở hộp thoại In để in tài liệu hiện tại.</p>"
 
-#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
+#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "Thiếu đối số. Cách dùng: %1 <giá_trị>"
 
 # msgid "No such highlight '%1'"
-#: utils/katecmds.cpp:326
+#: utils/katecmds.cpp:327
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "Không có kiểu tô sáng '%1'"
 
-#: utils/katecmds.cpp:332
+#: utils/katecmds.cpp:333
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "Không có chế độ '%1'"
 
-#: utils/katecmds.cpp:345
+#: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "Chuyển đổi đối số '%1' sang số nguyên thất bại."
 
-#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
+#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "Độ rộng ít nhất phải là 1."
 
-#: utils/katecmds.cpp:359
+#: utils/katecmds.cpp:360
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "Cột ít nhất phải là 1."
 
-#: utils/katecmds.cpp:389
+#: utils/katecmds.cpp:390
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "Cách dùng: %1 on|off|1|0|true|false|dung|sai"
 
-#: utils/katecmds.cpp:416
+#: utils/katecmds.cpp:417
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "Đối số sai '%1'. Cách dùng: %2 on|off|1|0|true|false|dung|sai"
 
-#: utils/katecmds.cpp:420
+#: utils/katecmds.cpp:421
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
@@ -5422,12 +5400,12 @@ msgstr ""
 "Cách dùng: set-remove-trailing-spaces 0|-|none|ko hoặc 1|+|mod|modified|sua "
 "hoặc 2|*|all|tat"
 
-#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "Lệnh không rõ '%1'"
 
-#: utils/katecmds.cpp:492
+#: utils/katecmds.cpp:493
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5440,7 +5418,7 @@ msgstr ""
 "thập lục phân.</p><p>Ví dụ:<ul><li>char <b>234</b></li><li>char <b>0x1234</"
 "b></li></ul></p>"
 
-#: utils/katecmds.cpp:559
+#: utils/katecmds.cpp:560
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5491,6 +5469,73 @@ msgstr ""
 "td><td>Dùng AM/PM. AP sẽ được thay thế bằng \"AM\" hoặc \"PM\".</td></"
 "tr><tr><td>ap</td><td>Dùng am/pm. ap sẽ được thay thế bằng \"am\" hoặc \"pm"
 "\".</td></tr></table></p>"
+
+#: utils/katecmds.cpp:621
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Duplicate Selected Lines Up"
+msgid "Remove Duplicate Lines"
+msgstr "Nhân đôi các dòng bôi đen lên"
+
+#: utils/katecmds.cpp:622
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+msgid "Remove Duplicates and Sort Text Alphabetically"
+msgstr "Xoá các dòng lặp lại và sắp xếp văn bản bôi đen theo bảng chữ cái"
+
+#: utils/katecmds.cpp:623
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Text Naturally"
+msgstr "Sắp xếp văn bản bôi đen theo bảng chữ cái"
+
+#: utils/katecmds.cpp:624
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Selected Text Alphabetically"
+msgstr "Sắp xếp văn bản bôi đen theo bảng chữ cái"
+
+#: utils/katecmds.cpp:693
+#, fuzzy, kde-format
+#| msgid "Sort the selected text or whole document."
+msgid ""
+"<p>sort</p><p>Sort the selected text or whole document if there is no "
+"selection</p>"
+msgstr "Sắp xếp văn bản bôi đen hoặc toàn bộ tài liệu."
+
+#: utils/katecmds.cpp:697
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgid ""
+"<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
+"document if there is no selection.</p>"
+msgstr "Xoá các dòng lặp lại khỏi văn bản bôi đen hoặc toàn bộ tài liệu."
+
+#: utils/katecmds.cpp:701
+#, kde-format
+msgid ""
+"<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
+"all duplicate lines.</p>"
+msgstr ""
+
+#: utils/katecmds.cpp:705
+#, fuzzy, kde-format
+#| msgid ""
+#| "Sort the selected text or whole document in natural order.<br>Here is an "
+#| "example to show the difference to the normal sort method:<br>sort(a10, "
+#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+msgid ""
+"<p>natsort</p><p>Sort the selected text or whole document in natural order."
+"<br>Here is an example to show the difference to the normal sort method:"
+"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
+"p>"
+msgstr ""
+"Sắp xếp văn bản bôi đen hoặc toàn bộ tài liệu theo thứ tự tự nhiên.<br>Đây "
+"là một ví dụ cho thấy sự khác biệt so với phương pháp sắp xếp thông thường:"
+"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -5877,7 +5922,7 @@ msgstr ""
 "phu.nguyen@kdemail.net,herophuong93@gmail.com,hieu.d.hoang@gmail.com,"
 "clytie@riverland.net.au"
 
-#: utils/kateglobal.cpp:260
+#: utils/kateglobal.cpp:261
 #, kde-format
 msgid "Configure"
 msgstr "Cấu hình"
@@ -7893,22 +7938,22 @@ msgstr ""
 "<code><b>help list</b></code><br />Để xem trợ giúp cho từng lệnh, hãy nhập "
 "<code><b>help &lt;lệnh&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Không có lệnh: \"%1\""
 
-#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Lỗi: Lệnh \"%1\" không cho phép khoảng nào."
 
-#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Thành công: "
 
-#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Lệnh \"%1\" thất bại."

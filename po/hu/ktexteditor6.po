@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-09 00:37+0000\n"
+"POT-Creation-Date: 2024-08-25 00:37+0000\n"
 "PO-Revision-Date: 2024-07-20 15:34+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -3144,17 +3144,15 @@ msgstr "Ugrás az előző bekezdésre"
 #: script/data/commands/utils.js:9
 #, kde-format
 msgctxt "Script command name"
-msgid "Sort Selected Text Alphabetically"
-msgstr "Kijelölt szöveg rendezése betűrendben"
+msgid "Remove Trailing Spaces"
+msgstr "Sorvégi szóközök levágása"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
-#: script/data/commands/utils.js:26 script/data/commands/utils.js:30
-#: script/data/commands/utils.js:34 script/data/commands/utils.js:39
+#: script/data/commands/utils.js:27 script/data/commands/utils.js:32
+#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
-#: script/data/commands/utils.js:60 script/data/commands/utils.js:64
-#: script/data/commands/utils.js:68
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
@@ -3163,110 +3161,92 @@ msgstr "Szerkesztés"
 #: script/data/commands/utils.js:13
 #, kde-format
 msgctxt "Script command name"
-msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Duplikátumok eltávolítása és a kijelölt szöveg rendezése betűrendben"
-
-#: script/data/commands/utils.js:17
-#, kde-format
-msgctxt "Script command name"
-msgid "Remove Duplicate Lines"
-msgstr "Duplikált sorok eltávolítása"
-
-#: script/data/commands/utils.js:21
-#, kde-format
-msgctxt "Script command name"
-msgid "Remove Trailing Spaces"
-msgstr "Sorvégi szóközök levágása"
-
-#: script/data/commands/utils.js:25
-#, kde-format
-msgctxt "Script command name"
 msgid "Remove Leading Spaces"
 msgstr "Vezető szóközök levágása"
 
-#: script/data/commands/utils.js:29
+#: script/data/commands/utils.js:17
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
 msgstr "Vezető és sorvégi szóközök levágása"
 
-#: script/data/commands/utils.js:33
+#: script/data/commands/utils.js:21
 #, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Sorok összevonása"
 
-#: script/data/commands/utils.js:37
+#: script/data/commands/utils.js:25
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "Sorok mozgatása lefelé"
 
-#: script/data/commands/utils.js:42
+#: script/data/commands/utils.js:30
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "Sorok mozgatása felfelé"
 
-#: script/data/commands/utils.js:47
+#: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "Kijelölt sorok kettőzése lefelé"
 
-#: script/data/commands/utils.js:51
+#: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "Kijelölt sorok kettőzése felfelé"
 
-#: script/data/commands/utils.js:55
+#: script/data/commands/utils.js:43
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
 msgstr "Kijelölt sorok kettőzése"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:47
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "A kijelölt szöveg URI-kódolása"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:51
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "A kijelölt szöveg URI-dekódolása"
 
-#: script/data/commands/utils.js:67
+#: script/data/commands/utils.js:55
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "Üres sorok eltávolítása"
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:410
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "A kijelölt szöveg vagy a teljes dokumentum rendezése."
 
-#: script/data/commands/utils.js:464
+#: script/data/commands/utils.js:412
 #, kde-format
 msgid "Move selected lines down."
 msgstr "A kijelölt sorokat lejjebb mozgatja."
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:414
 #, kde-format
 msgid "Move selected lines up."
 msgstr "A kijelölt sorokat feljebb mozgatja."
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:416
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr ""
 "A duplikált, azonos sorok eltávolítása a kijelölt szövegből vagy a teéjes "
 "dokumentumból."
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:418
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3277,28 +3257,28 @@ msgstr ""
 "<br>Egy példa a normál rendezési módtól való eltérés bemutatására:"
 "<br>sort(a10, a1, a2) → a1, a10, a2<br>natsort(a10, a1, a2) → a1, a2, a10"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:420
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr ""
 "Eltávolítja a záró üres karaktereket a kijelölésből vagy a teljes "
 "dokumentumból."
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:422
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr ""
 "Eltávolítja a bevezető üres karaktereket a kijelölésből vagy a teljes "
 "dokumentumból."
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:424
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
 "Eltávolítja a bevezető és záró üres karaktereket a kijelölésből vagy a "
 "teljes dokumentumból."
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:426
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3309,13 +3289,13 @@ msgstr ""
 "egy elválasztót is beszúr a sorok köz:<br><code>join ','</code> például "
 "összekapcsolja a sorokat vesszővel elválasztva."
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:428
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr ""
 "Eltávolítja az üres sorokat a kijelölésből vagy a teljes dokumentumból."
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:430
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3337,7 +3317,7 @@ msgstr ""
 "<br>az '<code>alignon :\\s+(.)</code>' az összes, pont után következő nem "
 "üres karakter elé szúr be szóközöket, hogy egy oszlopba kerüljenek."
 
-#: script/data/commands/utils.js:486
+#: script/data/commands/utils.js:434
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3352,7 +3332,7 @@ msgstr ""
 "lines.join(\",\");}'</code><br>Hogy kevesebbet kelljen gépelnie, írhatja a "
 "következőt is:<br><code>each 'lines.join(\",\")'</code>"
 
-#: script/data/commands/utils.js:488
+#: script/data/commands/utils.js:436
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3367,7 +3347,7 @@ msgstr ""
 "{return l.length > 0;}'</code><br>Hogy kevesebbet kelljen gépelnie, írhatja "
 "a következőt is:<br><code>filter 'line.length > 0'</code>"
 
-#: script/data/commands/utils.js:490
+#: script/data/commands/utils.js:438
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3383,17 +3363,17 @@ msgstr ""
 "replace(/^\\s+/, \"\");}'</code><br>Hogy kevesebbet kelljen gépelnie, "
 "írhatja a következőt is:<br><code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:492
+#: script/data/commands/utils.js:440
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "A kijelölt sorokat megkettőzi felfelé."
 
-#: script/data/commands/utils.js:494
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "A kijelölt sorokat megkettőzi lefelé."
 
-#: script/data/commands/utils.js:498
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3402,12 +3382,12 @@ msgstr ""
 "Speciális karakterek kódolása egy egyedüli sor kijelölésben, így az eredmény "
 "szöveg használható URI-ként."
 
-#: script/data/commands/utils.js:500
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "Az URI kódolás fordított művelete."
 
-#: script/data/commands/utils.js:502
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
@@ -3416,7 +3396,7 @@ msgstr ""
 "Szöveg kijelölése a jelenlegi kurzorpozíciótól az utána megadott argumentum "
 "első előfordulásáig (vagy a jelenlegi sor végéig alapértelmezés szerint)."
 
-#: script/data/commands/utils.js:504
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -3534,7 +3514,7 @@ msgstr ""
 "Hibás idézőjelek a hívásban: %1. Escape-eljen szimpla idézőjeleket fordított "
 "törtvonallal."
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -5135,18 +5115,18 @@ msgstr "&Következő: %1 - \"%2\""
 msgid "&Previous: %1 - \"%2\""
 msgstr "&Előző: %1 - \"%2\""
 
-#: utils/katecmds.cpp:52
+#: utils/katecmds.cpp:53
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>indent</p><p>Behúzza a kijelölt sorokat vagy a jelenlegi sort</p>"
 
-#: utils/katecmds.cpp:57
+#: utils/katecmds.cpp:58
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr ""
 "<p>unindent</p><p>Visszahúzza a kijelölt sorokat vagy a jelenlegi sort..</p>"
 
-#: utils/katecmds.cpp:62
+#: utils/katecmds.cpp:63
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5155,7 +5135,7 @@ msgstr ""
 "<p>cleanindent</p><p>Törli a kijelölt sorok vagy a jelenlegi sor behúzását a "
 "dokumentum behúzási beállításai szerint.</p>"
 
-#: utils/katecmds.cpp:67
+#: utils/katecmds.cpp:68
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5167,7 +5147,7 @@ msgstr ""
 "szintaxiskiemelésének meghatározása szerint meghatározott szövegformátum "
 "alapján.</p>"
 
-#: utils/katecmds.cpp:73
+#: utils/katecmds.cpp:74
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5178,7 +5158,7 @@ msgstr ""
 "kijelölt sorokból vagy a jelenlegi sorból a dokumentum szintaxiskiemelésének "
 "meghatározása szerint meghatározott szövegformátum alapján.</p>"
 
-#: utils/katecmds.cpp:79
+#: utils/katecmds.cpp:80
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
@@ -5187,7 +5167,7 @@ msgstr ""
 "<p>goto <b>sorszám</b></p><p>Ezzel a paranccsal a megadott sorszámra ugrik.</"
 "p>"
 
-#: utils/katecmds.cpp:84
+#: utils/katecmds.cpp:85
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5200,12 +5180,12 @@ msgstr ""
 "lesz igazítva.</p><p>Lehetséges igaz értékek: 1 on true<br/>lehetséges hamis "
 "értékek: 0 off false</p>"
 
-#: utils/katecmds.cpp:90
+#: utils/katecmds.cpp:91
 #, kde-format
 msgid "Deletes the current line."
 msgstr "Törli a jelenlegi sort."
 
-#: utils/katecmds.cpp:94
+#: utils/katecmds.cpp:95
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5214,7 +5194,7 @@ msgstr ""
 "<p>set-tab-width <b>szélesség</b></p><p>Beállítja a tabulátor szélességét a "
 "<b>szélesség</b> szerinti számra.</p>"
 
-#: utils/katecmds.cpp:99
+#: utils/katecmds.cpp:100
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5225,7 +5205,7 @@ msgstr ""
 "tabulátorok szóközökre lesznek cserélve gépelés közben.</p><p>Lehetséges "
 "igaz értékek: 1 on true<br/>lehetséges hamis értékek: 0 off false</p>"
 
-#: utils/katecmds.cpp:106
+#: utils/katecmds.cpp:107
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5237,7 +5217,7 @@ msgstr ""
 "</p><p>Lehetséges igaz értékek: 1 on true<br/>lehetséges hamis értékek: 0 "
 "off false</p>"
 
-#: utils/katecmds.cpp:113
+#: utils/katecmds.cpp:114
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5253,7 +5233,7 @@ msgstr ""
 "szóközöket.</li><li><b>all</b>: eltávolítja a záró szóközöket az egész "
 "dokumentumból.</li></ul></p>"
 
-#: utils/katecmds.cpp:124
+#: utils/katecmds.cpp:125
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5263,7 +5243,7 @@ msgstr ""
 "<b>szélesség</b> szerinti számra. Csak akkor használja, ha szóközökkel húz "
 "be.</p>"
 
-#: utils/katecmds.cpp:129
+#: utils/katecmds.cpp:130
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5272,7 +5252,7 @@ msgstr ""
 "<p>set-indent-mode <b>mód</b></p><p>A mód paraméter egy érték az Eszközök - "
 "Behúzás menüben látottak szerint</p>"
 
-#: utils/katecmds.cpp:134
+#: utils/katecmds.cpp:135
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5283,7 +5263,7 @@ msgstr ""
 "engedélyezése vagy letiltása.</p><p>Lehetséges igaz értékek: 1 on true<br/"
 ">lehetséges hamis értékek: 0 off false</p>"
 
-#: utils/katecmds.cpp:141
+#: utils/katecmds.cpp:142
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5294,7 +5274,7 @@ msgstr ""
 "ablaktábla láthatóságát.</p><p>Lehetséges igaz értékek: 1 on true<br/"
 ">lehetséges hamis értékek: 0 off false</p>"
 
-#: utils/katecmds.cpp:148
+#: utils/katecmds.cpp:149
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5305,7 +5285,7 @@ msgstr ""
 "jelölők ablaktábla láthatóságát.</p><p>Lehetséges igaz értékek: 1 on true<br/"
 ">lehetséges hamis értékek: 0 off false</p>"
 
-#: utils/katecmds.cpp:155
+#: utils/katecmds.cpp:156
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5316,7 +5296,7 @@ msgstr ""
 "láthatóságát.</p><p>Lehetséges igaz értékek: 1 on true<br/>lehetséges hamis "
 "értékek: 0 off false</p>"
 
-#: utils/katecmds.cpp:162
+#: utils/katecmds.cpp:163
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5327,7 +5307,7 @@ msgstr ""
 "szövegtördelést az <b>engedélyezés</b> szerint.</p><p>Lehetséges igaz "
 "értékek: 1 on true<br/>lehetséges hamis értékek: 0 off false</p>"
 
-#: utils/katecmds.cpp:169
+#: utils/katecmds.cpp:170
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5338,7 +5318,7 @@ msgstr ""
 "kemény tördeléshez a <b>szélesség</b> értékre. Akkor használható, ha "
 "automatikusan tördeli a szöveget.</p>"
 
-#: utils/katecmds.cpp:174
+#: utils/katecmds.cpp:175
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5350,7 +5330,7 @@ msgstr ""
 "p><p>Lehetséges igaz értékek: 1 on true<br/>lehetséges hamis értékek: 0 off "
 "false</p>"
 
-#: utils/katecmds.cpp:181
+#: utils/katecmds.cpp:182
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5363,14 +5343,14 @@ msgstr ""
 "lennie, amint az Eszközök → Kiemelés menüben látható. Ez a parancs egy "
 "automatikus kiegészítés listát szolgáltat a paraméteréhez.</p>"
 
-#: utils/katecmds.cpp:187
+#: utils/katecmds.cpp:188
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
 "<p>set-mode <b>mód</b></p><p>Beállítja a módot az Eszközök - Módban látottak "
 "szerint</p>"
 
-#: utils/katecmds.cpp:192
+#: utils/katecmds.cpp:193
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5381,54 +5361,54 @@ msgstr ""
 "egy függőleges pontozott vonallal lesz láthatóvá téve.</p><p>Lehetséges igaz "
 "értékek: 1 on true<br/>lehetséges hamis értékek: 0 off false</p>"
 
-#: utils/katecmds.cpp:198
+#: utils/katecmds.cpp:199
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr ""
 "<p>A nyomtatási párbeszédablak megnyitása az aktuális dokumentum "
 "kinyomtatásához</p>"
 
-#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
+#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "Legalább egy argumentum hiányzik. A használati mód: %1 <érték>"
 
-#: utils/katecmds.cpp:326
+#: utils/katecmds.cpp:327
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "Nincs ilyen kiemelés: „%1”"
 
-#: utils/katecmds.cpp:332
+#: utils/katecmds.cpp:333
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "Nincs ilyen mód: „%1”"
 
-#: utils/katecmds.cpp:345
+#: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "A(z) „%1” argumentumot nem sikerült egész számra konvertálni."
 
-#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
+#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "A szélességnek legalább 1-nek kell lennie."
 
-#: utils/katecmds.cpp:359
+#: utils/katecmds.cpp:360
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "Az oszlop száma nem lehet kisebb 1-nél."
 
-#: utils/katecmds.cpp:389
+#: utils/katecmds.cpp:390
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "Használati mód: %1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:416
+#: utils/katecmds.cpp:417
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "Hibás argumentum: „%1”. A használati mód: %2 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:420
+#: utils/katecmds.cpp:421
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
@@ -5436,12 +5416,12 @@ msgstr ""
 "Használat: set-remove-trailing-spaces 0|-|none vagy 1|+|mod|modified vagy 2|"
 "*|all"
 
-#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "Ismeretlen parancs: „%1”"
 
-#: utils/katecmds.cpp:492
+#: utils/katecmds.cpp:493
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5454,7 +5434,7 @@ msgstr ""
 "tizenhatos számrendszerben.</p><p>Példák:<ul><li>char <b>234</b></"
 "li><li>char <b>0x1234</b></li></ul></p>"
 
-#: utils/katecmds.cpp:559
+#: utils/katecmds.cpp:560
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5506,6 +5486,75 @@ msgstr ""
 "td><td>AM/PM megjelenítés használata. Az AP lesz helyettesítve „AM” vagy "
 "„PM” értékkel.</td></tr><tr><td>ap</td><td>am/pm megjelenítés használata. Az "
 "ap lesz helyettesítve „am” vagy „pm” értékkel.</td></tr></table></p>"
+
+#: utils/katecmds.cpp:621
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Remove Duplicate Lines"
+msgid "Remove Duplicate Lines"
+msgstr "Duplikált sorok eltávolítása"
+
+#: utils/katecmds.cpp:622
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+msgid "Remove Duplicates and Sort Text Alphabetically"
+msgstr "Duplikátumok eltávolítása és a kijelölt szöveg rendezése betűrendben"
+
+#: utils/katecmds.cpp:623
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Text Naturally"
+msgstr "Kijelölt szöveg rendezése betűrendben"
+
+#: utils/katecmds.cpp:624
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Selected Text Alphabetically"
+msgstr "Kijelölt szöveg rendezése betűrendben"
+
+#: utils/katecmds.cpp:693
+#, fuzzy, kde-format
+#| msgid "Sort the selected text or whole document."
+msgid ""
+"<p>sort</p><p>Sort the selected text or whole document if there is no "
+"selection</p>"
+msgstr "A kijelölt szöveg vagy a teljes dokumentum rendezése."
+
+#: utils/katecmds.cpp:697
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgid ""
+"<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
+"document if there is no selection.</p>"
+msgstr ""
+"A duplikált, azonos sorok eltávolítása a kijelölt szövegből vagy a teéjes "
+"dokumentumból."
+
+#: utils/katecmds.cpp:701
+#, kde-format
+msgid ""
+"<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
+"all duplicate lines.</p>"
+msgstr ""
+
+#: utils/katecmds.cpp:705
+#, fuzzy, kde-format
+#| msgid ""
+#| "Sort the selected text or whole document in natural order.<br>Here is an "
+#| "example to show the difference to the normal sort method:<br>sort(a10, "
+#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+msgid ""
+"<p>natsort</p><p>Sort the selected text or whole document in natural order."
+"<br>Here is an example to show the difference to the normal sort method:"
+"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
+"p>"
+msgstr ""
+"A kijelölt szöveg vagy a teljes dokumentum rendezése természetes sorrendben."
+"<br>Egy példa a normál rendezési módtól való eltérés bemutatására:"
+"<br>sort(a10, a1, a2) → a1, a10, a2<br>natsort(a10, a1, a2) → a1, a2, a10"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -5890,7 +5939,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ulysses@fsf.hu"
 
-#: utils/kateglobal.cpp:260
+#: utils/kateglobal.cpp:261
 #, kde-format
 msgid "Configure"
 msgstr "Beállítások"
@@ -7889,22 +7938,22 @@ msgstr ""
 "parancsokról a <code><b>help &lt;parancs&gt;</b></code> utasítással kérhető "
 "leírás.</p>"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Nincs ilyen parancs: \"%1\""
 
-#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Hiba: Nem adható meg tartomány ennél a parancsnál: \"%1\"."
 
-#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Siker: "
 
-#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "A(z) \"%1\" parancs nem sikerült."

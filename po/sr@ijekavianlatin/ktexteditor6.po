@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-09 00:37+0000\n"
+"POT-Creation-Date: 2024-08-25 00:37+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -3288,20 +3288,17 @@ msgstr "Idi na prethodnu tačku uređivanja"
 
 #: script/data/commands/utils.js:9
 #, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
-msgid "Sort Selected Text Alphabetically"
-msgstr "Sortiraj izabrani tekst"
+msgid "Remove Trailing Spaces"
+msgstr "Ukloni &prateće razmake:"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
-#: script/data/commands/utils.js:26 script/data/commands/utils.js:30
-#: script/data/commands/utils.js:34 script/data/commands/utils.js:39
+#: script/data/commands/utils.js:27 script/data/commands/utils.js:32
+#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
-#: script/data/commands/utils.js:60 script/data/commands/utils.js:64
-#: script/data/commands/utils.js:68
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
@@ -3309,72 +3306,50 @@ msgstr "Uređivanje"
 
 #: script/data/commands/utils.js:13
 #, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
-msgctxt "Script command name"
-msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Uklanja duplirane redove iz izabranog teksta ili cijelog dokumenta."
-
-#: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
-msgctxt "Script command name"
-msgid "Remove Duplicate Lines"
-msgstr "Udvostruči izabrane redove gore"
-
-#: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
-msgctxt "Script command name"
-msgid "Remove Trailing Spaces"
-msgstr "Ukloni &prateće razmake:"
-
-#: script/data/commands/utils.js:25
-#, fuzzy, kde-format
 #| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
 msgstr "Ukloni &prateće razmake:"
 
-#: script/data/commands/utils.js:29
+#: script/data/commands/utils.js:17
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
 msgstr "Ukloni &prateće razmake:"
 
-#: script/data/commands/utils.js:33
+#: script/data/commands/utils.js:21
 #, fuzzy, kde-format
 #| msgid "Join Lines"
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Spoji redove"
 
-#: script/data/commands/utils.js:37
+#: script/data/commands/utils.js:25
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "Pomjeri redove nadolje"
 
-#: script/data/commands/utils.js:42
+#: script/data/commands/utils.js:30
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "Pomjeri redove nagore"
 
-#: script/data/commands/utils.js:47
+#: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "Udvostruči izabrane redove dolje"
 
-#: script/data/commands/utils.js:51
+#: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "Udvostruči izabrane redove gore"
 
-#: script/data/commands/utils.js:55
+#: script/data/commands/utils.js:43
 #, fuzzy, kde-format
 #| msgctxt "Script command name"
 #| msgid "Duplicate Selected Lines Up"
@@ -3382,46 +3357,46 @@ msgctxt "Script command name"
 msgid "Duplicate selected text"
 msgstr "Udvostruči izabrane redove gore"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:47
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "URI-kodiraj izabrani tekst"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:51
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "URI-dekodiraj izabrani tekst"
 
-#: script/data/commands/utils.js:67
+#: script/data/commands/utils.js:55
 #, fuzzy, kde-format
 #| msgid "Remove Entry"
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "Ukloni stavku"
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:410
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "Sortira izabrani tekst ili cio dokument."
 
-#: script/data/commands/utils.js:464
+#: script/data/commands/utils.js:412
 #, kde-format
 msgid "Move selected lines down."
 msgstr "Pomijera izabrane redove nadolje."
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:414
 #, kde-format
 msgid "Move selected lines up."
 msgstr "Pomijera izabrane redove nagore."
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:416
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "Uklanja duplirane redove iz izabranog teksta ili cijelog dokumenta."
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:418
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3433,22 +3408,22 @@ msgstr ""
 "><code>sort(a10, a1, a2) → a1, a10, a2</code><br /><code>natsort(a10, a1, "
 "a2) → a1, a2, a10</code>"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:420
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "Uklanja prateće praznine iz izbora ili cijelog dokumenta."
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:422
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "Uklanja vodeće praznine iz izbora ili cijelog dokumenta."
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:424
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr "Uklanja vodeće i prateće praznine iz izbora ili cijelog dokumenta."
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:426
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3459,12 +3434,12 @@ msgstr ""
 "će biti umetnut između svaka dva reda:<br />npr. <code>join ', '</code> će "
 "spojiti redove zapetama."
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:428
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "Uklanja prazne redove iz izbora ili cijelog dokumenta."
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:430
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3480,7 +3455,7 @@ msgstr ""
 
 # skip-rule: t-save
 # rewrite-msgid: /callback/function/
-#: script/data/commands/utils.js:486
+#: script/data/commands/utils.js:434
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3497,7 +3472,7 @@ msgstr ""
 
 # skip-rule: t-save
 # rewrite-msgid: /callback/function/
-#: script/data/commands/utils.js:488
+#: script/data/commands/utils.js:436
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3514,7 +3489,7 @@ msgstr ""
 
 # skip-rule: t-save
 # rewrite-msgid: /callback/function/
-#: script/data/commands/utils.js:490
+#: script/data/commands/utils.js:438
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3530,17 +3505,17 @@ msgstr ""
 "replace(/^\\s+/, \"\");}'</code><br />Da biste uštedili nešto kucanja, isto "
 "možete postići i ovako:<br /><code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:492
+#: script/data/commands/utils.js:440
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "Udvostručava izabrane redove gore."
 
-#: script/data/commands/utils.js:494
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "Udvostručava izabrane redove dolje."
 
-#: script/data/commands/utils.js:498
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3549,19 +3524,19 @@ msgstr ""
 "Kodira ne-ASCII znake u jednorednom izboru, tako da se rezultat može "
 "upotrebiti kao URI."
 
-#: script/data/commands/utils.js:500
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "Izvrće radnju URI-kodiranja."
 
-#: script/data/commands/utils.js:502
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
 
-#: script/data/commands/utils.js:504
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -3675,7 +3650,7 @@ msgid "Bad quoting in call: %1. Please escape single quotes with a backslash."
 msgstr ""
 "Loše navođenje u pozivu: %1. Izbjegnite jednostruke navodnike kontrakrozom."
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -5342,17 +5317,17 @@ msgstr "&Sljedeći: %1 — „%2“"
 msgid "&Previous: %1 - \"%2\""
 msgstr "&Prethodni: %1 - „%2“"
 
-#: utils/katecmds.cpp:52
+#: utils/katecmds.cpp:53
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p><tt>indent</tt></p><p>Uvlači izabrane redove ili tekući red.</p>"
 
-#: utils/katecmds.cpp:57
+#: utils/katecmds.cpp:58
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr "<p><tt>unindent</tt></p><p>Izvlači izabrane redove ili tekući red.</p>"
 
-#: utils/katecmds.cpp:62
+#: utils/katecmds.cpp:63
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5361,7 +5336,7 @@ msgstr ""
 "<p><tt>cleanindent</tt></p><p>Uklanja uvlačenje izabranih redova ili tekućeg "
 "reda, prema postavkama uvlačenja u dokumentu.</p>"
 
-#: utils/katecmds.cpp:67
+#: utils/katecmds.cpp:68
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5372,7 +5347,7 @@ msgstr ""
 "izabrani redovi ili tekući red učinili komentarom, prema formatu teksta "
 "definisanom isticanjem sintakse u dokumentu.</p>"
 
-#: utils/katecmds.cpp:73
+#: utils/katecmds.cpp:74
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5383,7 +5358,7 @@ msgstr ""
 "izabranih redova ili tekućeg reda, prema formatu teksta definisanom "
 "isticanjem sintakse u dokumentu.</p>"
 
-#: utils/katecmds.cpp:79
+#: utils/katecmds.cpp:80
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
@@ -5392,7 +5367,7 @@ msgstr ""
 "<p><tt>goto <b>broj‑reda</b></tt></p><p>Ova naredba prelazi na zadati broj "
 "reda.</p>"
 
-#: utils/katecmds.cpp:84
+#: utils/katecmds.cpp:85
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5405,12 +5380,12 @@ msgstr ""
 "p><p>Moguće vrednosti tačnog: <tt>1, on, true</tt>;<br/>moguće vrednosti "
 "netačnog: <tt>0, off, false</tt>.</p>"
 
-#: utils/katecmds.cpp:90
+#: utils/katecmds.cpp:91
 #, kde-format
 msgid "Deletes the current line."
 msgstr "Briše tekući red."
 
-#: utils/katecmds.cpp:94
+#: utils/katecmds.cpp:95
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5419,7 +5394,7 @@ msgstr ""
 "<p><tt>set-tab-width <b>širina</b></tt></p><p>Postavlja širinu tabulatora na "
 "zadati broj.</p>"
 
-#: utils/katecmds.cpp:99
+#: utils/katecmds.cpp:100
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5432,7 +5407,7 @@ msgstr ""
 "</p>"
 
 # rewrite-msgid: /trailing whitespace/trailing spaces/
-#: utils/katecmds.cpp:106
+#: utils/katecmds.cpp:107
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5444,7 +5419,7 @@ msgstr ""
 "vrednosti tačnog: <tt>1, on, true</tt>;<br/>moguće vrednosti netačnog: "
 "<tt>0, off, false</tt>.</p>"
 
-#: utils/katecmds.cpp:113
+#: utils/katecmds.cpp:114
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5460,7 +5435,7 @@ msgstr ""
 "redova.</li><li><tt>all</tt>: uklanjanje pratećih razmaka iz celog dokumenta."
 "</li></ul>"
 
-#: utils/katecmds.cpp:124
+#: utils/katecmds.cpp:125
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5470,7 +5445,7 @@ msgstr ""
 "na zadati broj. Važi samo za uvlačenje razmacima.</p>"
 
 # rewrite-msgid: /parameter/argument/
-#: utils/katecmds.cpp:129
+#: utils/katecmds.cpp:130
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5479,7 +5454,7 @@ msgstr ""
 "<p><tt>set-indent-mode <b>režim</b></tt></p><p>Argument režima je jedna od "
 "vrednosti iz menija <i>Alatke→Uvlačenje</i>.</p>"
 
-#: utils/katecmds.cpp:134
+#: utils/katecmds.cpp:135
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5490,7 +5465,7 @@ msgstr ""
 "automatsko uvlačenje.</p><p>Moguće vrednosti tačnog: <tt>1, on, true</tt>;"
 "<br/>moguće vrednosti netačnog: <tt>0, off, false</tt>.</p>"
 
-#: utils/katecmds.cpp:141
+#: utils/katecmds.cpp:142
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5501,7 +5476,7 @@ msgstr ""
 "okna sa brojevima redova.</p><p>Moguće vrednosti tačnog: <tt>1, on, true</"
 "tt>;<br/>moguće vrednosti netačnog: <tt>0, off, false</tt>.</p>"
 
-#: utils/katecmds.cpp:148
+#: utils/katecmds.cpp:149
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5513,7 +5488,7 @@ msgstr ""
 "tt>;<br/>moguće vrednosti netačnog: <tt>0, off, false</tt>.</p>"
 
 # literal-segment: set-icon-border
-#: utils/katecmds.cpp:155
+#: utils/katecmds.cpp:156
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5524,7 +5499,7 @@ msgstr ""
 "pojasa ikonica.</p><p>Moguće vrednosti tačnog: <tt>1, on, true</tt>;<br/"
 ">moguće vrednosti netačnog: <tt>0, off, false</tt>.</p>"
 
-#: utils/katecmds.cpp:162
+#: utils/katecmds.cpp:163
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5536,7 +5511,7 @@ msgstr ""
 "<br/>moguće vrednosti netačnog: <tt>0, off, false</tt>.</p>"
 
 # literal-segment: set-word-wrap-column
-#: utils/katecmds.cpp:169
+#: utils/katecmds.cpp:170
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5548,7 +5523,7 @@ msgstr ""
 "teksta.</p>"
 
 # rewrite-msgid: /with whitespace/with spaces/
-#: utils/katecmds.cpp:174
+#: utils/katecmds.cpp:175
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5560,7 +5535,7 @@ msgstr ""
 "p><p>Moguće vrednosti tačnog: <tt>1, on, true</tt>;<br/>moguće vrednosti "
 "netačnog: <tt>0, off, false</tt>.</p>"
 
-#: utils/katecmds.cpp:181
+#: utils/katecmds.cpp:182
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5573,7 +5548,7 @@ msgstr ""
 "datih u meniju <i>Alatke→Isticanje</i>. Ova naredba pruža listu samodopune "
 "za argument.</p>"
 
-#: utils/katecmds.cpp:187
+#: utils/katecmds.cpp:188
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
@@ -5581,7 +5556,7 @@ msgstr ""
 "<i>Alatke→Režim</i>.</p>"
 
 # skip-rule: t-line
-#: utils/katecmds.cpp:192
+#: utils/katecmds.cpp:193
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5593,53 +5568,53 @@ msgstr ""
 "vrednosti tačnog: <tt>1, on, true</tt>;<br/>moguće vrednosti netačnog: "
 "<tt>0, off, false</tt>.</p>"
 
-#: utils/katecmds.cpp:198
+#: utils/katecmds.cpp:199
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr "<p>Otvara dijalog za štampanje tekućeg dokumenta.</p>"
 
-#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
+#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "Nedostaje argument. Upotreba: %1 <vrednost>"
 
-#: utils/katecmds.cpp:326
+#: utils/katecmds.cpp:327
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "Isticanje „%1“ ne postoji"
 
-#: utils/katecmds.cpp:332
+#: utils/katecmds.cpp:333
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "Režim „%1“ ne postoji"
 
-#: utils/katecmds.cpp:345
+#: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "Ne mogu da pretvorim argument %1 u cjelobrojni."
 
-#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
+#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "Širina mora biti bar 1."
 
-#: utils/katecmds.cpp:359
+#: utils/katecmds.cpp:360
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "Kolona mora biti bar 1."
 
-#: utils/katecmds.cpp:389
+#: utils/katecmds.cpp:390
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "Upotreba: %1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:416
+#: utils/katecmds.cpp:417
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "Loš argument „%1“. Upotreba: %2 on|off|1|0|true|false"
 
 # literal-segment: set-remove-trailing-spaces
-#: utils/katecmds.cpp:420
+#: utils/katecmds.cpp:421
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
@@ -5647,12 +5622,12 @@ msgstr ""
 "Upotreba: „set-remove-trailing-spaces 0|-|none“ ili „1|+|mod|modified“ ili "
 "„2|*|all“"
 
-#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "Nepoznata naredba „%1“"
 
-#: utils/katecmds.cpp:492
+#: utils/katecmds.cpp:493
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5665,7 +5640,7 @@ msgstr ""
 "heksadekadnom obliku.</p><p>Primeri:</p><ul><li><tt>char 234</tt></"
 "li><li><tt>char 0x1234</tt></li></ul>"
 
-#: utils/katecmds.cpp:559
+#: utils/katecmds.cpp:560
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5718,6 +5693,73 @@ msgstr ""
 "biti zamenjeno ili sa AM ili sa PM.</td></tr><tr><td><tt>ap</tt></"
 "td><td>Dvanaestočasovni prikaz. <tt>AP</tt> će biti zamenjeno ili sa am ili "
 "sa pm.</td></tr></table></p>"
+
+#: utils/katecmds.cpp:621
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Duplicate Selected Lines Up"
+msgid "Remove Duplicate Lines"
+msgstr "Udvostruči izabrane redove gore"
+
+#: utils/katecmds.cpp:622
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgid "Remove Duplicates and Sort Text Alphabetically"
+msgstr "Uklanja duplirane redove iz izabranog teksta ili cijelog dokumenta."
+
+#: utils/katecmds.cpp:623
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text"
+msgid "Sort Text Naturally"
+msgstr "Sortiraj izabrani tekst"
+
+#: utils/katecmds.cpp:624
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text"
+msgid "Sort Selected Text Alphabetically"
+msgstr "Sortiraj izabrani tekst"
+
+#: utils/katecmds.cpp:693
+#, fuzzy, kde-format
+#| msgid "Sort the selected text or whole document."
+msgid ""
+"<p>sort</p><p>Sort the selected text or whole document if there is no "
+"selection</p>"
+msgstr "Sortira izabrani tekst ili cio dokument."
+
+#: utils/katecmds.cpp:697
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgid ""
+"<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
+"document if there is no selection.</p>"
+msgstr "Uklanja duplirane redove iz izabranog teksta ili cijelog dokumenta."
+
+#: utils/katecmds.cpp:701
+#, kde-format
+msgid ""
+"<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
+"all duplicate lines.</p>"
+msgstr ""
+
+#: utils/katecmds.cpp:705
+#, fuzzy, kde-format
+#| msgid ""
+#| "Sort the selected text or whole document in natural order.<br>Here is an "
+#| "example to show the difference to the normal sort method:<br>sort(a10, "
+#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+msgid ""
+"<p>natsort</p><p>Sort the selected text or whole document in natural order."
+"<br>Here is an example to show the difference to the normal sort method:"
+"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
+"p>"
+msgstr ""
+"Ređa izabrani tekst ili cio dokument prirodnim redoslijedom.<br />Evo "
+"primjera koji pokazuje razliku u odnosu na uobičajeni metod:<br /"
+"><code>sort(a10, a1, a2) → a1, a10, a2</code><br /><code>natsort(a10, a1, "
+"a2) → a1, a2, a10</code>"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -6103,7 +6145,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "toptan@kde.org.yu,caslav.ilic@gmx.net"
 
-#: utils/kateglobal.cpp:260
+#: utils/kateglobal.cpp:261
 #, kde-format
 msgid "Configure"
 msgstr "Podesi"
@@ -8217,22 +8259,22 @@ msgstr ""
 "<tt>help list</tt><br />Za pomoć za pojedinačne naredbe, unesite <tt>help "
 "&lt;naredba&gt;</tt></p></qt>"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Naredba %1 ne postoji."
 
-#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Greška: Opseg nije dozvoljen za naredbu „%1“."
 
-#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Uspjeh: "
 
-#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Naredba %1 nije uspjela."

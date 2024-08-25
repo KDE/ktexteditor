@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-09 00:37+0000\n"
+"POT-Creation-Date: 2024-08-25 00:37+0000\n"
 "PO-Revision-Date: 2024-02-08 10:45+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -3155,17 +3155,15 @@ msgstr "Siirry edelliseen kappaleeseen"
 #: script/data/commands/utils.js:9
 #, kde-format
 msgctxt "Script command name"
-msgid "Sort Selected Text Alphabetically"
-msgstr "Aakkosta valittu teksti"
+msgid "Remove Trailing Spaces"
+msgstr "Poista rivinloppuiset välilyönnit:"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
-#: script/data/commands/utils.js:26 script/data/commands/utils.js:30
-#: script/data/commands/utils.js:34 script/data/commands/utils.js:39
+#: script/data/commands/utils.js:27 script/data/commands/utils.js:32
+#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
-#: script/data/commands/utils.js:60 script/data/commands/utils.js:64
-#: script/data/commands/utils.js:68
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
@@ -3174,108 +3172,90 @@ msgstr "Muokkaus"
 #: script/data/commands/utils.js:13
 #, kde-format
 msgctxt "Script command name"
-msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Poista toistuvat rivit ja aakkosta valittu teksti"
-
-#: script/data/commands/utils.js:17
-#, kde-format
-msgctxt "Script command name"
-msgid "Remove Duplicate Lines"
-msgstr "Poista toistuvat rivit"
-
-#: script/data/commands/utils.js:21
-#, kde-format
-msgctxt "Script command name"
-msgid "Remove Trailing Spaces"
-msgstr "Poista rivinloppuiset välilyönnit:"
-
-#: script/data/commands/utils.js:25
-#, kde-format
-msgctxt "Script command name"
 msgid "Remove Leading Spaces"
 msgstr "Poista rivinalkuiset välilyönnit"
 
-#: script/data/commands/utils.js:29
+#: script/data/commands/utils.js:17
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
 msgstr "Poista rivinalkuiset ja -loppuiset välilyönnit"
 
-#: script/data/commands/utils.js:33
+#: script/data/commands/utils.js:21
 #, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Yhdistä rivit"
 
-#: script/data/commands/utils.js:37
+#: script/data/commands/utils.js:25
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "Vieritä rivejä alemmas"
 
-#: script/data/commands/utils.js:42
+#: script/data/commands/utils.js:30
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "Vieritä rivejä ylemmäs"
 
-#: script/data/commands/utils.js:47
+#: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "Monista valitut rivit alle"
 
-#: script/data/commands/utils.js:51
+#: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "Monista valitut rivit ylle"
 
-#: script/data/commands/utils.js:55
+#: script/data/commands/utils.js:43
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
 msgstr "Monista valittu teksti"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:47
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "URI-koodaa valittu teksti"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:51
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "URI-dekoodaa valittu teksti"
 
-#: script/data/commands/utils.js:67
+#: script/data/commands/utils.js:55
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "Poista tyhjät rivit"
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:410
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "Lajittele valittu teksti tai koko tiedosto."
 
-#: script/data/commands/utils.js:464
+#: script/data/commands/utils.js:412
 #, kde-format
 msgid "Move selected lines down."
 msgstr "Siirrä valitut rivit alemmas."
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:414
 #, kde-format
 msgid "Move selected lines up."
 msgstr "Siirrä valitut rivit ylemmäs."
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:416
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "Poista toistuvat rivit valitusta tekstistä tai koko tiedostosta."
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:418
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3286,23 +3266,23 @@ msgstr ""
 ">Seuraava esimerkki valottaa eroa tavalliseen lajittelujärjestykseen:<br /"
 ">sort(a10, a1, a2) => a1, a10, a2<br />natsort(a10, a1, a2) => a1, a2, a10"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:420
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "Karsii rivinloppuiset tyhjemerkit valinnasta tai koko tiedostosta."
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:422
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "Karsii rivinetiset tyhjemerkit valinnasta tai koko tiedostosta."
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:424
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
 "Karsii rivinetiset ja -loppuiset tyhjemerkit valinnasta tai koko tiedostosta."
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:426
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3313,12 +3293,12 @@ msgstr ""
 "väliin erottimen:<br /><code>join ', '</code> yhdistää rivit ja erottaa ne "
 "pilkuin."
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:428
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "Poistaa tyhjät rivit valinnasta tai koko tiedostosta."
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:430
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3341,7 +3321,7 @@ msgstr ""
 "kaksoispisteen jälkeistä ei-tyhjää merkkiä näiden rivien tasaamiseksi samaan "
 "sarakkeeseen."
 
-#: script/data/commands/utils.js:486
+#: script/data/commands/utils.js:434
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3356,7 +3336,7 @@ msgstr ""
 "code><br />Vähemmällä vaivalla saman voi tehdä myös näin:<br /><code>each "
 "'lines.join(\", \")'</code>"
 
-#: script/data/commands/utils.js:488
+#: script/data/commands/utils.js:436
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3371,7 +3351,7 @@ msgstr ""
 "{return l.length > 0}'</code><br />Vähemmällä vaivalla saman voi tehdä myös "
 "näin:<br /><code>filter 'line.length > 0'</code>"
 
-#: script/data/commands/utils.js:490
+#: script/data/commands/utils.js:438
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3387,17 +3367,17 @@ msgstr ""
 "{return line.replace(/^s+/, \"\");}'</code><br>Vähemmällä vaivalla saman voi "
 "tehdä myös näin:<br><code>map 'line.replace(/^s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:492
+#: script/data/commands/utils.js:440
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "Monistaa valitut rivit ylle."
 
-#: script/data/commands/utils.js:494
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "Monistaa valitut rivit alle."
 
-#: script/data/commands/utils.js:498
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3406,12 +3386,12 @@ msgstr ""
 "Koodaa yksirivisen valinnan erikoismerkit niin, että lopputulosta voi "
 "käyttää URI:nä."
 
-#: script/data/commands/utils.js:500
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "URI:n koodaamisen käänteistoiminto."
 
-#: script/data/commands/utils.js:502
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
@@ -3421,7 +3401,7 @@ msgstr ""
 "seuraavan parametrin ensimmäiseen esiintymään (tai oletusarvoisesti nykyisen "
 "rivin loppuun)."
 
-#: script/data/commands/utils.js:504
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -3539,7 +3519,7 @@ msgstr ""
 "Väärä lainaus kutsussa: %1. Lisää puolilainausmerkkien (’) edelle "
 "takakenoviiva (\\)."
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -5144,19 +5124,19 @@ msgstr "&Seuraava: %1 – ”%2”"
 msgid "&Previous: %1 - \"%2\""
 msgstr "&Edellinen: %1 – ”%2”"
 
-#: utils/katecmds.cpp:52
+#: utils/katecmds.cpp:53
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>indent</p><p>Sisentää valitut rivit tai nykyisen rivin</p>"
 
-#: utils/katecmds.cpp:57
+#: utils/katecmds.cpp:58
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr ""
 "<p>unindent</p><p>Poistaa valittujen rivien tai nykyisen rivin sisennyksen.</"
 "p>"
 
-#: utils/katecmds.cpp:62
+#: utils/katecmds.cpp:63
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5165,7 +5145,7 @@ msgstr ""
 "<p>cleanindent</p><p>Puhdistaa valittujen rivien tai nykyisen rivin "
 "sisennyksen tiedoston sisennysasetusten mukaiseksi.</p>"
 
-#: utils/katecmds.cpp:67
+#: utils/katecmds.cpp:68
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5175,7 +5155,7 @@ msgstr ""
 "<p>comment</p><p>Lisää tiedoston syntaksikorostuksen mukaisen "
 "kommenttimerkinnän valittuun alueeseen tai nykyiselle riville.</p>"
 
-#: utils/katecmds.cpp:73
+#: utils/katecmds.cpp:74
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5185,14 +5165,14 @@ msgstr ""
 "<p>uncomment</p><p>Poistaa tiedoston syntaksikorostuksen mukaisen "
 "kommenttimerkinnän valitulta alueelta tai nykyiseltä riviltä.</p>"
 
-#: utils/katecmds.cpp:79
+#: utils/katecmds.cpp:80
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
 "line number.</p>"
 msgstr "<p>goto <b>rivino</b></p><p>Siirtää kohdistimen annetulle riville.</p>"
 
-#: utils/katecmds.cpp:84
+#: utils/katecmds.cpp:85
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5205,12 +5185,12 @@ msgstr ""
 "sisennystapaa.</p><p>Mahdolliset tosi-arvot: 1 on true<br />mahdolliset "
 "epätosi-arvot: 0 off false</p>"
 
-#: utils/katecmds.cpp:90
+#: utils/katecmds.cpp:91
 #, kde-format
 msgid "Deletes the current line."
 msgstr "Poistaa nykyisen rivin."
 
-#: utils/katecmds.cpp:94
+#: utils/katecmds.cpp:95
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5219,7 +5199,7 @@ msgstr ""
 "<p>set-tab-width <b>leveys</b></p><p>Asettaa sarkainleveydeksi <b>leveys</"
 "b></p>"
 
-#: utils/katecmds.cpp:99
+#: utils/katecmds.cpp:100
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5230,7 +5210,7 @@ msgstr ""
 "kirjoitettaessa välilyönnein.</p><p>Mahdolliset tosi-arvot: 1 on true<br /"
 ">mahdolliset epätosi-arvot: 0 off false</p>"
 
-#: utils/katecmds.cpp:106
+#: utils/katecmds.cpp:107
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5242,7 +5222,7 @@ msgstr ""
 "p><p>Mahdolliset tosi-arvot: 1 on true<br />mahdolliset epätosi-arvot: 0 off "
 "false</p>"
 
-#: utils/katecmds.cpp:113
+#: utils/katecmds.cpp:114
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5258,7 +5238,7 @@ msgstr ""
 "riveiltä</li><li><b>all</b>: poista rivinloppuiset välilyönnit koko "
 "tiedostosta.</li></ul></p>"
 
-#: utils/katecmds.cpp:124
+#: utils/katecmds.cpp:125
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5267,7 +5247,7 @@ msgstr ""
 "<p>set-indent-width <b>leveys</b></p><p>Asettaa sisennysleveydeksi "
 "<b>leveys</b>. Käytössä vain, jos sisennetään välilyönnein.</p>"
 
-#: utils/katecmds.cpp:129
+#: utils/katecmds.cpp:130
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5276,7 +5256,7 @@ msgstr ""
 "<p>set-indent-mode <b>tila</b></p><p>tila-parametrin mahdolliset arvot "
 "näkyvät valikossa Työkalut – Sisennys.</p>"
 
-#: utils/katecmds.cpp:134
+#: utils/katecmds.cpp:135
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5287,7 +5267,7 @@ msgstr ""
 "käytöstä automaattisisennyksen.</p><p>mahdolliset tosi-arvot: 1 on true<br /"
 ">mahdolliset epätosi-arvot: 0 off false</p>"
 
-#: utils/katecmds.cpp:141
+#: utils/katecmds.cpp:142
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5298,7 +5278,7 @@ msgstr ""
 "rivinumerot.</p><p>mahdolliset tosi-arvot: 1 on true<br />mahdolliset "
 "epätosi-arvot: 0 off false</p>"
 
-#: utils/katecmds.cpp:148
+#: utils/katecmds.cpp:149
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5309,7 +5289,7 @@ msgstr ""
 "laskostusmerkit.</p><p> mahdolliset tosi-arvot: 1 on true<br />mahdolliset "
 "epätosi-arvot: 0 off false</p>"
 
-#: utils/katecmds.cpp:155
+#: utils/katecmds.cpp:156
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5320,7 +5300,7 @@ msgstr ""
 "kuvakereunuksen.</p><p> mahdolliset tosi-arvot: 1 on true<br />mahdolliset "
 "epätosi-arvot: 0 off false</p>"
 
-#: utils/katecmds.cpp:162
+#: utils/katecmds.cpp:163
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5331,7 +5311,7 @@ msgstr ""
 "dynaamisen rivityksen.</p><p> mahdolliset tosi-arvot: 1 on true<br /> "
 "mahdolliset epätosi-arvot: 0 off false</p>"
 
-#: utils/katecmds.cpp:169
+#: utils/katecmds.cpp:170
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5342,7 +5322,7 @@ msgstr ""
 "rivinpituudeksi <b>pituus</b>. Tätä käytetään, jos annat rivittää tekstin "
 "automaattisesti.</p>"
 
-#: utils/katecmds.cpp:174
+#: utils/katecmds.cpp:175
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5353,7 +5333,7 @@ msgstr ""
 "korvataan välilyönnein aina tiedostoa tallennettaessa.</p><p> mahdolliset "
 "tosi-arvot: 1 on true<br />mahdolliset epätosi-arvot: 0 off false</p>"
 
-#: utils/katecmds.cpp:181
+#: utils/katecmds.cpp:182
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5366,14 +5346,14 @@ msgstr ""
 "valikossa Työkalut – Korostus. Komento tuottaa parametrilleen myös "
 "automaattitäydennysluettelon.</p>"
 
-#: utils/katecmds.cpp:187
+#: utils/katecmds.cpp:188
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
 "<p>set-mode <b>tila</b></p><p>Asettaa tilan kuten kohdassa Työkalut – Tila</"
 "p>"
 
-#: utils/katecmds.cpp:192
+#: utils/katecmds.cpp:193
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5384,64 +5364,64 @@ msgstr ""
 "havainnollistetaan pystykatkoviivalla.</p><p>mahdolliset tosi-arvot: 1 on "
 "true<br />mahdolliset epätosi-arvot: 0 off false</p>"
 
-#: utils/katecmds.cpp:198
+#: utils/katecmds.cpp:199
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr "<p>Avaa tulostusikkuna tulostaaksesi nykyisen tiedoston.</p>"
 
-#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
+#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "Puuttuva argumentti. Käyttö: %1 <value>"
 
-#: utils/katecmds.cpp:326
+#: utils/katecmds.cpp:327
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "Korostusta ”%1” ei ole"
 
-#: utils/katecmds.cpp:332
+#: utils/katecmds.cpp:333
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "Tilaa ”%1” ei ole"
 
-#: utils/katecmds.cpp:345
+#: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "Parametrin ”%1” muunnos kokonaisluvuksi epäonnistui."
 
-#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
+#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "Leveyden on oltava vähintään 1."
 
-#: utils/katecmds.cpp:359
+#: utils/katecmds.cpp:360
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "Sarakkeen on oltava vähintään 1."
 
-#: utils/katecmds.cpp:389
+#: utils/katecmds.cpp:390
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "Käyttö: %1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:416
+#: utils/katecmds.cpp:417
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "Virheellinen parametri ”%1”. Käyttö: %2 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:420
+#: utils/katecmds.cpp:421
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
 msgstr ""
 "Käyttö: set-remove-trailing-spaces 0|-|none tai 1|+|mod|modified tai 2|*|all"
 
-#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "Tuntematon komento ”%1”"
 
-#: utils/katecmds.cpp:492
+#: utils/katecmds.cpp:493
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5454,7 +5434,7 @@ msgstr ""
 "oktaalisena tai heksadesimaalisena.</p><p>Examples:<ul><li>char <b>234</b></"
 "li><li>char <b>0x1234</b></li></ul></p>"
 
-#: utils/katecmds.cpp:559
+#: utils/katecmds.cpp:560
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5504,6 +5484,73 @@ msgstr ""
 "tr><tr><td>zzz</td><td>Millisekunnit numeroin alkunollalla (000..999).</td></"
 "tr><tr><td>AP</td><td>Käytä AP./IP.-merkintää.</td></tr><tr><td>ap</"
 "td><td>Käytä ap./ip.-merkintää.</td></tr></table></p>"
+
+#: utils/katecmds.cpp:621
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Remove Duplicate Lines"
+msgid "Remove Duplicate Lines"
+msgstr "Poista toistuvat rivit"
+
+#: utils/katecmds.cpp:622
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+msgid "Remove Duplicates and Sort Text Alphabetically"
+msgstr "Poista toistuvat rivit ja aakkosta valittu teksti"
+
+#: utils/katecmds.cpp:623
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Text Naturally"
+msgstr "Aakkosta valittu teksti"
+
+#: utils/katecmds.cpp:624
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Selected Text Alphabetically"
+msgstr "Aakkosta valittu teksti"
+
+#: utils/katecmds.cpp:693
+#, fuzzy, kde-format
+#| msgid "Sort the selected text or whole document."
+msgid ""
+"<p>sort</p><p>Sort the selected text or whole document if there is no "
+"selection</p>"
+msgstr "Lajittele valittu teksti tai koko tiedosto."
+
+#: utils/katecmds.cpp:697
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgid ""
+"<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
+"document if there is no selection.</p>"
+msgstr "Poista toistuvat rivit valitusta tekstistä tai koko tiedostosta."
+
+#: utils/katecmds.cpp:701
+#, kde-format
+msgid ""
+"<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
+"all duplicate lines.</p>"
+msgstr ""
+
+#: utils/katecmds.cpp:705
+#, fuzzy, kde-format
+#| msgid ""
+#| "Sort the selected text or whole document in natural order.<br>Here is an "
+#| "example to show the difference to the normal sort method:<br>sort(a10, "
+#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+msgid ""
+"<p>natsort</p><p>Sort the selected text or whole document in natural order."
+"<br>Here is an example to show the difference to the normal sort method:"
+"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
+"p>"
+msgstr ""
+"Lajittele valittu teksti tai koko tiedosto luonnolliseen järjestykseen.<br /"
+">Seuraava esimerkki valottaa eroa tavalliseen lajittelujärjestykseen:<br /"
+">sort(a10, a1, a2) => a1, a10, a2<br />natsort(a10, a1, a2) => a1, a2, a10"
 
 # pmap: =/elat=Kate-osasta/
 #: utils/kateglobal.cpp:59
@@ -5895,7 +5942,7 @@ msgstr ""
 "piippo@helsinki.fi,teemu.rytilahti@d5k.net,translator@legisign.org,karvonen."
 "jorma@gmail.com,lasse.liehu@gmail.com"
 
-#: utils/kateglobal.cpp:260
+#: utils/kateglobal.cpp:261
 #, kde-format
 msgid "Configure"
 msgstr "Asetukset"
@@ -7897,22 +7944,22 @@ msgstr ""
 "<code><b>help list</b></code><br />Saat lisätietoja yksittäisistä "
 "komennoista komennolla <code><b>help &lt;command&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Ei komentoa: ”%1”"
 
-#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Virhe: Komennolle ”%1” ei sallita lukualuetta."
 
-#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Onnistui: "
 
-#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Komento ”%1” epäonnistui."

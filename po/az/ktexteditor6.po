@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-09 00:37+0000\n"
+"POT-Creation-Date: 2024-08-25 00:37+0000\n"
 "PO-Revision-Date: 2023-02-18 21:30+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -3143,91 +3143,69 @@ msgid "Go to Previous Paragraph"
 msgstr "Əvvəlki düzəliş nöqtəsinə keçin"
 
 #: script/data/commands/utils.js:9
-#, kde-format
-msgctxt "Script command name"
-msgid "Sort Selected Text Alphabetically"
-msgstr "Seçilmiş mətni əlifba sırası ilə sıralayın"
-
-#: script/data/commands/utils.js:10 script/data/commands/utils.js:14
-#: script/data/commands/utils.js:18 script/data/commands/utils.js:22
-#: script/data/commands/utils.js:26 script/data/commands/utils.js:30
-#: script/data/commands/utils.js:34 script/data/commands/utils.js:39
-#: script/data/commands/utils.js:44 script/data/commands/utils.js:48
-#: script/data/commands/utils.js:52 script/data/commands/utils.js:56
-#: script/data/commands/utils.js:60 script/data/commands/utils.js:64
-#: script/data/commands/utils.js:68
-#, kde-format
-msgctxt "Script command category"
-msgid "Editing"
-msgstr "Düzəliş etmək"
-
-#: script/data/commands/utils.js:13
-#, kde-format
-msgctxt "Script command name"
-msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Təkrarları silin və seçilən mətni əlifba sırası ilə sıralayın"
-
-#: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
-msgctxt "Script command name"
-msgid "Remove Duplicate Lines"
-msgstr "Seçilmiş sətirləri yuxarı kopyalayın"
-
-#: script/data/commands/utils.js:21
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
 msgstr "Lazı&msız boşluqları sil:"
 
-#: script/data/commands/utils.js:25
+#: script/data/commands/utils.js:10 script/data/commands/utils.js:14
+#: script/data/commands/utils.js:18 script/data/commands/utils.js:22
+#: script/data/commands/utils.js:27 script/data/commands/utils.js:32
+#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
+#: script/data/commands/utils.js:44 script/data/commands/utils.js:48
+#: script/data/commands/utils.js:52 script/data/commands/utils.js:56
+#, kde-format
+msgctxt "Script command category"
+msgid "Editing"
+msgstr "Düzəliş etmək"
+
+#: script/data/commands/utils.js:13
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
 msgstr "Lazı&msız boşluqları sil:"
 
-#: script/data/commands/utils.js:29
+#: script/data/commands/utils.js:17
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
 msgstr "Lazı&msız boşluqları sil:"
 
-#: script/data/commands/utils.js:33
+#: script/data/commands/utils.js:21
 #, fuzzy, kde-format
 #| msgid "Join Lines"
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Join Lines"
 
-#: script/data/commands/utils.js:37
+#: script/data/commands/utils.js:25
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "Sətirləri aşağı yerləşdirin"
 
-#: script/data/commands/utils.js:42
+#: script/data/commands/utils.js:30
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "Sətirləri yuxarı yerləşdirin"
 
-#: script/data/commands/utils.js:47
+#: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "Seçilmiş sətirləri aşağı kopyalayın"
 
-#: script/data/commands/utils.js:51
+#: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "Seçilmiş sətirləri yuxarı kopyalayın"
 
-#: script/data/commands/utils.js:55
+#: script/data/commands/utils.js:43
 #, fuzzy, kde-format
 #| msgctxt "Script command name"
 #| msgid "Duplicate Selected Lines Up"
@@ -3235,46 +3213,46 @@ msgctxt "Script command name"
 msgid "Duplicate selected text"
 msgstr "Seçilmiş sətirləri yuxarı kopyalayın"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:47
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "Seçilmiş mətni URİ formatında kodlaşdırmaq"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:51
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "Seçilmiş mətni URİ formatda deşifrə etmək"
 
-#: script/data/commands/utils.js:67
+#: script/data/commands/utils.js:55
 #, fuzzy, kde-format
 #| msgid "Remove Cursors from Empty Lines"
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "Kursorları boş sətirlərdən silin"
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:410
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "Seçilmiş mətni və ya bütün sənədi çeşidləmək"
 
-#: script/data/commands/utils.js:464
+#: script/data/commands/utils.js:412
 #, kde-format
 msgid "Move selected lines down."
 msgstr "Seçilmiş sətirləri aşağı yerləşdirin."
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:414
 #, kde-format
 msgid "Move selected lines up."
 msgstr "Seçilmiş sətirləri yuxarı yerləşdirin."
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:416
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "Seçilmiş mətndən və ya bütün sənəddən təkrarlanan sıtirləri silin."
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:418
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3285,26 +3263,26 @@ msgstr ""
 "çeşidlənmədən fərqlənməni göstərən nümunə:<br>çeşidləmə(a10, a1, a2) => a1, "
 "a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:420
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "Ara boşluğu simvollarını seçilmiş mətndən və ya bütün sənəddən silmək."
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:422
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr ""
 "Seçilmiş mətndən və ya bütün sənəddən ilk sətirlərdəki boşluq simvollarını "
 "silmək."
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:424
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
 "Seçilmiş mətndən və ya bütün sənəddən ilk və son sətirlərdəki boşluq "
 "simvollarını silmək."
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:426
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3315,12 +3293,12 @@ msgstr ""
 "hər sətir arasında ayırıcı qoymaq olar.: <br><code>join ', '</code> "
 "sətirləri birləşdirmək, onları vergüllə ayırmaq."
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:428
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "Boş sətirləri seçilmiş və ya bütün sənəddən silir."
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:430
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3343,7 +3321,7 @@ msgstr ""
 "qoşa nöqtədən sonra gələn ilk boş olmayan simvolun önünə qoyur ki, onlar "
 "hamısı bir sütunda düzülsün."
 
-#: script/data/commands/utils.js:486
+#: script/data/commands/utils.js:434
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3357,7 +3335,7 @@ msgstr ""
 "<br><code>each 'function(lines){return lines.join(\", \");}'</code><br> "
 "Həmin şeyi daha rahat etmək olar:<br><code>each 'lines.join(\", \")'</code>"
 
-#: script/data/commands/utils.js:488
+#: script/data/commands/utils.js:436
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3371,7 +3349,7 @@ msgstr ""
 "{return l.length > 0;}'</code><br>Həmin şeyi daha rahat etmək olar:"
 "<br><code>filter 'line.length > 0'</code>"
 
-#: script/data/commands/utils.js:490
+#: script/data/commands/utils.js:438
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3386,17 +3364,17 @@ msgstr ""
 "'function(line){return line.replace(/^\\s+/, \"\");}'</code><br>Həmin şeyi "
 "daha rahat etmək olar:<br><code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:492
+#: script/data/commands/utils.js:440
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "Seçilmiş sətirləri yuxarı kopyalamaq."
 
-#: script/data/commands/utils.js:494
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "Seçilmiş sətirləri aşağı kopyalamaq."
 
-#: script/data/commands/utils.js:498
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3405,12 +3383,12 @@ msgstr ""
 "Xüsusi simvolları elə kodlaşdırmaq ki, nəticəni URİ kimi istifadə etmək "
 "mümkün olsun."
 
-#: script/data/commands/utils.js:500
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "URİ kodlaşmasında əks əməliyyat."
 
-#: script/data/commands/utils.js:502
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
@@ -3419,7 +3397,7 @@ msgstr ""
 "Mətni, kursorun cari mövqeyindən irəli, verilmiş arqument başlayan yerə "
 "(vəya standart olaraq cari sətrin sonuna) qədər seç."
 
-#: script/data/commands/utils.js:504
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -3536,7 +3514,7 @@ msgstr ""
 "Çağırışda sol tək dırnaq işarəsinin səhv istifadəsi: %1 Tək dırnaq "
 "işarəsinin önünə tərs kəsir (\\) əlavə edin."
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -5140,17 +5118,17 @@ msgstr "&NövbətiI %1 - \"%2\""
 msgid "&Previous: %1 - \"%2\""
 msgstr "Ə&vvəlkilər: %1 - \"%2\""
 
-#: utils/katecmds.cpp:52
+#: utils/katecmds.cpp:53
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>indent</p><p>Cari və seçilmiş sətirlərin abzasını artırın</p>"
 
-#: utils/katecmds.cpp:57
+#: utils/katecmds.cpp:58
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr "<p>indent</p><p>Cari və seçilmiş sətirlərin abzasını azaldın</p>"
 
-#: utils/katecmds.cpp:62
+#: utils/katecmds.cpp:63
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5159,7 +5137,7 @@ msgstr ""
 "<p>cleanindent</p><p>Seçilən sətirlərin və ya cərgənin girintisini sənəddəki "
 "boşluq parametrlərinə uyğun olaraq təmizləyir. </p>"
 
-#: utils/katecmds.cpp:67
+#: utils/katecmds.cpp:68
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5169,7 +5147,7 @@ msgstr ""
 "<p>comment</p><p>Seçilən mətn və ya cari sətri vurğulanmış sintaksis üçün "
 "göstərilmiş sənədin formatına uyğun şərhlərə daxil etmək.</p>"
 
-#: utils/katecmds.cpp:73
+#: utils/katecmds.cpp:74
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5179,7 +5157,7 @@ msgstr ""
 "<p>uncomment</p><p>Seçilən mətn və ya cari sətri vurğulanmış sintaksis üçün "
 "göstərilmiş sənədin formatına uyğun şərhlərdən silmək.</p>"
 
-#: utils/katecmds.cpp:79
+#: utils/katecmds.cpp:80
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
@@ -5188,7 +5166,7 @@ msgstr ""
 "<p>goto <b>sətririn nömrəsi</b></p><p>Bu əmr kursoru göstərilən sətirə "
 "keçirir.</p>"
 
-#: utils/katecmds.cpp:84
+#: utils/katecmds.cpp:85
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5200,12 +5178,12 @@ msgstr ""
 "mətnin abzası cari abzasdan istifadə edərək süzəldilir istifadə edərək "
 "düzəldilir.</p><p>Aktiv etmək üç: 1<br/>Passiv etmək üç.: 0</p>"
 
-#: utils/katecmds.cpp:90
+#: utils/katecmds.cpp:91
 #, kde-format
 msgid "Deletes the current line."
 msgstr "Cari sətiri silir"
 
-#: utils/katecmds.cpp:94
+#: utils/katecmds.cpp:95
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5214,7 +5192,7 @@ msgstr ""
 "<p>set-tab-width <b>width</b></p><p>Göstərilən Tab-ın ölçüsünü  təyin edir."
 "<b>width</b></p>"
 
-#: utils/katecmds.cpp:99
+#: utils/katecmds.cpp:100
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5225,7 +5203,7 @@ msgstr ""
 "Əgər aktiv olunubsa yazdığınız müddətdə tab işarələri boşluqlarla əvəz "
 "olunacaq. </p><p>Aktiv etmək üç.:1 true<br/>Passiv etmək üç.: 0 false</p>"
 
-#: utils/katecmds.cpp:106
+#: utils/katecmds.cpp:107
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5236,7 +5214,7 @@ msgstr ""
 "simvollarını nöqtə şəklində görünəcək. </p><p>Aktiv etmək üç.: 1 true<br/"
 ">Passiv etmək üş.: 0 false</p>"
 
-#: utils/katecmds.cpp:113
+#: utils/katecmds.cpp:114
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5251,7 +5229,7 @@ msgstr ""
 "boşluq yalnız dəyişiklik olunan sətirlərdən silinsin.</li><li><b>all</b>: "
 "son boşluq bütün sənəddən silinsin.</li></ul></p>"
 
-#: utils/katecmds.cpp:124
+#: utils/katecmds.cpp:125
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5261,7 +5239,7 @@ msgstr ""
 "<b>width</b> göstəricisinə görə təyin edir. Bu ancaq abzas boşluqdan ibarət "
 "olduqda baş verir.</p>"
 
-#: utils/katecmds.cpp:129
+#: utils/katecmds.cpp:130
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5270,7 +5248,7 @@ msgstr ""
 "<p>set-indent-mode <b>rejim</b></p><p>Bu rejim parametrlərinin göstəricisi "
 "Alətlər - Abzasların düzülməsi menyusunda olduğu kimidir.</p>"
 
-#: utils/katecmds.cpp:134
+#: utils/katecmds.cpp:135
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5281,7 +5259,7 @@ msgstr ""
 "edir. p><p>aktiv etmək üç.: 1 on və ya true<br/>passiv etmək üç. 0 off və ya "
 "false</p>"
 
-#: utils/katecmds.cpp:141
+#: utils/katecmds.cpp:142
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5292,7 +5270,7 @@ msgstr ""
 "görünməsini təyin edir.</p><p>aktiv etmək üç.: 1 on və ya true<br/>passiv "
 "etmək üç. 0 off və ya false</p>"
 
-#: utils/katecmds.cpp:148
+#: utils/katecmds.cpp:149
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5303,7 +5281,7 @@ msgstr ""
 "görünməsini təyin edir.</p><p>aktiv etmək üç.: 1 on və ya true<br/>passiv "
 "etmək üç. 0 off və ya false</p>"
 
-#: utils/katecmds.cpp:155
+#: utils/katecmds.cpp:156
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5314,7 +5292,7 @@ msgstr ""
 "p><p>aktiv etmək üç.: 1 on və ya true<br/>passiv etmək üç. 0 off və ya "
 "false</p>"
 
-#: utils/katecmds.cpp:162
+#: utils/katecmds.cpp:163
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5325,7 +5303,7 @@ msgstr ""
 "b>göstəricisinə görə aktiv edir.</p><p>aktiv etmək üç.: 1 on və ya true<br/"
 ">passiv etmək üç. 0 off və ya false</p>"
 
-#: utils/katecmds.cpp:169
+#: utils/katecmds.cpp:170
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5336,7 +5314,7 @@ msgstr ""
 "göstəricisini sətirə məcburi keçid üçün təyin edir.</p><p>aktiv etmək üç.: 1 "
 "on və ya true<br/>passiv etmək üç. 0 off və ya false</p>"
 
-#: utils/katecmds.cpp:174
+#: utils/katecmds.cpp:175
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5347,7 +5325,7 @@ msgstr ""
 "sənədi saxladıqda Tab-lar boşluqlarla əvəz olunacaq.</p><p>aktiv etmək üç.: "
 "1 on və ya true<br/>passiv etmək üç. 0 off və ya false</p>"
 
-#: utils/katecmds.cpp:181
+#: utils/katecmds.cpp:182
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5360,14 +5338,14 @@ msgstr ""
 "ola bilər. Bu əmr öz arqumenti üçün avtomatik doldurma siyahısını təqdim "
 "edir.</p>"
 
-#: utils/katecmds.cpp:187
+#: utils/katecmds.cpp:188
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
 "<p>set-mode <b>rejim</b></p><p>Rejimi Alətlər - Rejim menyusunda olduğu kimi "
 "təyin edir.</p>"
 
-#: utils/katecmds.cpp:192
+#: utils/katecmds.cpp:193
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5378,52 +5356,52 @@ msgstr ""
 "nöqtəli xəttlərlə göstərəcək.</p><p>aktiv etmək üç.: 1 on və ya true<br/"
 ">passiv etmək üç. 0 off və ya false</p>"
 
-#: utils/katecmds.cpp:198
+#: utils/katecmds.cpp:199
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr "<p>Cari sənədi çap etmək üçün Çap et dialoqunu aşın.</p>"
 
-#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
+#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "Arqument mövcud deyil. İstifadə et: %1 <value>"
 
-#: utils/katecmds.cpp:326
+#: utils/katecmds.cpp:327
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "İşıqlanma sxemi yoxdur '%1'"
 
-#: utils/katecmds.cpp:332
+#: utils/katecmds.cpp:333
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "Belə rejim yoxdur '%1'"
 
-#: utils/katecmds.cpp:345
+#: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "'%1' arqumentini tam saya çevirmək mümkün olmadı."
 
-#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
+#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "Genişlik ən azı 1 olmalıdır."
 
-#: utils/katecmds.cpp:359
+#: utils/katecmds.cpp:360
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "Sütun nömrəsi ən azı 1 olmalıdır."
 
-#: utils/katecmds.cpp:389
+#: utils/katecmds.cpp:390
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "İstifadə edilən: %1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:416
+#: utils/katecmds.cpp:417
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "Yalnış arqument '%1'. İstifadə edilən: %2 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:420
+#: utils/katecmds.cpp:421
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
@@ -5431,12 +5409,12 @@ msgstr ""
 "İstifadə edilən: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or2|"
 "*|all"
 
-#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "Naməlum əmr '%1'"
 
-#: utils/katecmds.cpp:492
+#: utils/katecmds.cpp:493
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5448,7 +5426,7 @@ msgstr ""
 "onaltılıq rəqəmsal kodlarla daxil etməyə imkan verir.</p><p>Misal üç.:"
 "<ul><li>char <b>234</b></li><li>char <b>0x1234</b></li></ul></p>"
 
-#: utils/katecmds.cpp:559
+#: utils/katecmds.cpp:560
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5498,6 +5476,73 @@ msgstr ""
 "PM -lə göstər. AP \"AM\" və ya \"PM\" lə əvəzlənəcək.</td></tr><tr><td>ap</"
 "td><td>am/pm -lə göstər. ap \"am\" və ya \"pm\" -lə əvəzlənəcək.</td></tr></"
 "table></p>"
+
+#: utils/katecmds.cpp:621
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Duplicate Selected Lines Up"
+msgid "Remove Duplicate Lines"
+msgstr "Seçilmiş sətirləri yuxarı kopyalayın"
+
+#: utils/katecmds.cpp:622
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+msgid "Remove Duplicates and Sort Text Alphabetically"
+msgstr "Təkrarları silin və seçilən mətni əlifba sırası ilə sıralayın"
+
+#: utils/katecmds.cpp:623
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Text Naturally"
+msgstr "Seçilmiş mətni əlifba sırası ilə sıralayın"
+
+#: utils/katecmds.cpp:624
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Selected Text Alphabetically"
+msgstr "Seçilmiş mətni əlifba sırası ilə sıralayın"
+
+#: utils/katecmds.cpp:693
+#, fuzzy, kde-format
+#| msgid "Sort the selected text or whole document."
+msgid ""
+"<p>sort</p><p>Sort the selected text or whole document if there is no "
+"selection</p>"
+msgstr "Seçilmiş mətni və ya bütün sənədi çeşidləmək"
+
+#: utils/katecmds.cpp:697
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgid ""
+"<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
+"document if there is no selection.</p>"
+msgstr "Seçilmiş mətndən və ya bütün sənəddən təkrarlanan sıtirləri silin."
+
+#: utils/katecmds.cpp:701
+#, kde-format
+msgid ""
+"<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
+"all duplicate lines.</p>"
+msgstr ""
+
+#: utils/katecmds.cpp:705
+#, fuzzy, kde-format
+#| msgid ""
+#| "Sort the selected text or whole document in natural order.<br>Here is an "
+#| "example to show the difference to the normal sort method:<br>sort(a10, "
+#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+msgid ""
+"<p>natsort</p><p>Sort the selected text or whole document in natural order."
+"<br>Here is an example to show the difference to the normal sort method:"
+"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
+"p>"
+msgstr ""
+"Seçilmiş mətni və ya bütöv sənədi təbii qaydada sıralayın.<br>Adi "
+"çeşidlənmədən fərqlənməni göstərən nümunə:<br>çeşidləmə(a10, a1, a2) => a1, "
+"a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -5882,7 +5927,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xxmn77@gmail.com"
 
-#: utils/kateglobal.cpp:260
+#: utils/kateglobal.cpp:261
 #, kde-format
 msgid "Configure"
 msgstr "Ayarlar"
@@ -7908,22 +7953,22 @@ msgstr ""
 "list</b></code><br />Kömək üçün fərdi əmrlər: <code><b>help &lt;əmr&gt;</b></"
 "code></p>"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "\"%1\" əmri yoxdur"
 
-#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Xəta: \"%1\" əmri üçün icazə verilməyən məsafə."
 
-#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Müvəffəqiyyətlə: "
 
-#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "\"%1\" əmri icra olunmadı."

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-09 00:37+0000\n"
+"POT-Creation-Date: 2024-08-25 00:37+0000\n"
 "PO-Revision-Date: 2024-08-15 06:09+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -3006,17 +3006,15 @@ msgstr "前往上一個段落"
 #: script/data/commands/utils.js:9
 #, kde-format
 msgctxt "Script command name"
-msgid "Sort Selected Text Alphabetically"
-msgstr "依字母排序選取的文字"
+msgid "Remove Trailing Spaces"
+msgstr "移除結尾的空白"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
-#: script/data/commands/utils.js:26 script/data/commands/utils.js:30
-#: script/data/commands/utils.js:34 script/data/commands/utils.js:39
+#: script/data/commands/utils.js:27 script/data/commands/utils.js:32
+#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
-#: script/data/commands/utils.js:60 script/data/commands/utils.js:64
-#: script/data/commands/utils.js:68
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
@@ -3025,108 +3023,90 @@ msgstr "編輯"
 #: script/data/commands/utils.js:13
 #, kde-format
 msgctxt "Script command name"
-msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "從選取的文字中移除重複行並依字母排序"
-
-#: script/data/commands/utils.js:17
-#, kde-format
-msgctxt "Script command name"
-msgid "Remove Duplicate Lines"
-msgstr "移除重複行"
-
-#: script/data/commands/utils.js:21
-#, kde-format
-msgctxt "Script command name"
-msgid "Remove Trailing Spaces"
-msgstr "移除結尾的空白"
-
-#: script/data/commands/utils.js:25
-#, kde-format
-msgctxt "Script command name"
 msgid "Remove Leading Spaces"
 msgstr "移除開頭的空白"
 
-#: script/data/commands/utils.js:29
+#: script/data/commands/utils.js:17
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
 msgstr "移除開頭與結尾的空白"
 
-#: script/data/commands/utils.js:33
+#: script/data/commands/utils.js:21
 #, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "合併行"
 
-#: script/data/commands/utils.js:37
+#: script/data/commands/utils.js:25
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "將行下移"
 
-#: script/data/commands/utils.js:42
+#: script/data/commands/utils.js:30
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "將行上移"
 
-#: script/data/commands/utils.js:47
+#: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "將選取的行在下方複製一份"
 
-#: script/data/commands/utils.js:51
+#: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "將選取的行在上方複製一份"
 
-#: script/data/commands/utils.js:55
+#: script/data/commands/utils.js:43
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
 msgstr "建立選取文字複本"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:47
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "將選取的文字做 URI 編碼"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:51
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "將選取的文字做 URI 解碼"
 
-#: script/data/commands/utils.js:67
+#: script/data/commands/utils.js:55
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "移除空白行"
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:410
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "排序選取的文字或整份文件。"
 
-#: script/data/commands/utils.js:464
+#: script/data/commands/utils.js:412
 #, kde-format
 msgid "Move selected lines down."
 msgstr "將選取的行下移。"
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:414
 #, kde-format
 msgid "Move selected lines up."
 msgstr "將選取的行上移。"
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:416
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "從選取的文字或整份文件中移除重複行。"
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:418
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3137,22 +3117,22 @@ msgstr ""
 "一般排序的不同：<br/>sort(a10, a1, a2) => a1, a10, a2<br/>natsort(a10, a1, "
 "a2) => a1, a2, a10"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:420
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "去除選取區文字或整份文件尾端的空白。"
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:422
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "去除選取區文字或整份文件開頭的空白。"
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:424
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr "去除選取區文字或整份文件開頭與尾端的空白。"
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:426
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3162,12 +3142,12 @@ msgstr ""
 "將選取的行或整份文件合在一起。可以選擇傳入一個分隔符，放在每一行之間：<br/"
 "><code>join ','</code> 會將兩行合併，中間放個逗號 ','。"
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:428
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "從選取區或整份文件去除空白行。"
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:430
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3187,7 +3167,7 @@ msgstr ""
 "齊在同一個欄位上。<br>'<code>alignon :\\s+(.)</code>' 會在第一個位於冒號後方"
 "的非空白字元之前插入空格來讓它們對齊在同一個欄位上。"
 
-#: script/data/commands/utils.js:486
+#: script/data/commands/utils.js:434
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3201,7 +3181,7 @@ msgstr ""
 "join(\", \");}'</code><br/> 相同的功能，簡單一點的寫法是：<br/> <code>each "
 "'lines.join(\", \")'</code>"
 
-#: script/data/commands/utils.js:488
+#: script/data/commands/utils.js:436
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3215,7 +3195,7 @@ msgstr ""
 "'function(l) {return l.length > 0;}'</code><br/> 相同的功能，簡單一點的寫法"
 "是：<br/> <code>filter 'line.length > 0'</code>"
 
-#: script/data/commands/utils.js:490
+#: script/data/commands/utils.js:438
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3230,29 +3210,29 @@ msgstr ""
 "line.replace(/^\\s+/, \"\");}'</code><br/> 相同的功能，簡單一點的寫法是：<br/"
 "> <code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:492
+#: script/data/commands/utils.js:440
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "將選取的行在上方複製一份。"
 
-#: script/data/commands/utils.js:494
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "將選取的行在下方複製一份。"
 
-#: script/data/commands/utils.js:498
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
 "used as URI."
 msgstr "將選取的特殊字元編碼成網址。"
 
-#: script/data/commands/utils.js:500
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "將網址解碼。"
 
-#: script/data/commands/utils.js:502
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
@@ -3261,7 +3241,7 @@ msgstr ""
 "從目前游標位置往下方選取文字，直到指定引數第一次出現（或是未指定引數時到目前"
 "行數的結尾）。"
 
-#: script/data/commands/utils.js:504
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -3376,7 +3356,7 @@ msgstr "呼叫 %1 時發生錯誤"
 msgid "Bad quoting in call: %1. Please escape single quotes with a backslash."
 msgstr "呼叫 %1 時括號不對稱。請用反斜線來脫逸單括號。"
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -4939,17 +4919,17 @@ msgstr "下一個(&N)：%1 - 「%2」"
 msgid "&Previous: %1 - \"%2\""
 msgstr "上一個(&P)：%1 - 「%2」"
 
-#: utils/katecmds.cpp:52
+#: utils/katecmds.cpp:53
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>indent</p><p>將選取的行或目前的行做縮排</p>"
 
-#: utils/katecmds.cpp:57
+#: utils/katecmds.cpp:58
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr "<p>unindent</p><p>取消選取的行或目前的行的縮排。</p>"
 
-#: utils/katecmds.cpp:62
+#: utils/katecmds.cpp:63
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -4958,7 +4938,7 @@ msgstr ""
 "<p>cleanindent</p><p>根據目前文件中的縮排設定，清除選取的行或目前的行的縮排。"
 "</p>"
 
-#: utils/katecmds.cpp:67
+#: utils/katecmds.cpp:68
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -4968,7 +4948,7 @@ msgstr ""
 "<p>comment</p><p>根據文件的語法突顯定義設定的文字格式，插入註解標記來將選取"
 "區，選擇的行或目前的行變成註解。</p>"
 
-#: utils/katecmds.cpp:73
+#: utils/katecmds.cpp:74
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -4978,14 +4958,14 @@ msgstr ""
 "<p>uncomment</p><p>根據文件的語法突顯定義設定的文字格式，將選取區，選擇的行或"
 "目前的行的註解標記移除掉。</p>"
 
-#: utils/katecmds.cpp:79
+#: utils/katecmds.cpp:80
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
 "line number.</p>"
 msgstr "<p>goto <b>行號</b></p><p>此指令會跳到指定的行號。</p>"
 
-#: utils/katecmds.cpp:84
+#: utils/katecmds.cpp:85
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -4997,19 +4977,19 @@ msgstr ""
 "的文字會使用目前的縮排器進行縮排。</p><p>1，on，true 表示開啟，<br/>0，off，"
 "false 表示關閉</p>"
 
-#: utils/katecmds.cpp:90
+#: utils/katecmds.cpp:91
 #, kde-format
 msgid "Deletes the current line."
 msgstr "刪除目前行。"
 
-#: utils/katecmds.cpp:94
+#: utils/katecmds.cpp:95
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
 "<b>width</b></p>"
 msgstr "<p>set-tab-width <b>寬度</b></p><p>設定定位點 (tab) 的寬度。</p>"
 
-#: utils/katecmds.cpp:99
+#: utils/katecmds.cpp:100
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5020,7 +5000,7 @@ msgstr ""
 "白。</p><p>要開啟選項，可以用：1 或 on 或 true<br/>若要關閉選項，則可以用：0 "
 "或 off 或 false</p>"
 
-#: utils/katecmds.cpp:106
+#: utils/katecmds.cpp:107
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5031,7 +5011,7 @@ msgstr ""
 "以小點來呈現。</p><p>要開啟選項，可以用：1 或 on 或 true<br/>若要關閉選項，則"
 "可以用：0 或 off 或 false</p>"
 
-#: utils/katecmds.cpp:113
+#: utils/katecmds.cpp:114
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5045,7 +5025,7 @@ msgstr ""
 "尾端的空白。</li><li><b>modified</b>：只針對已變更行移除尾端的空白。</"
 "li><li><b>all</b>：移除整份文件中的尾端的空白。</li></ul></p>"
 
-#: utils/katecmds.cpp:124
+#: utils/katecmds.cpp:125
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5054,7 +5034,7 @@ msgstr ""
 "<p>set-indent-width <b>寬度</b></p><p>設定縮排的寬度。只在您設定使用空白字元"
 "做縮排時有用。</p>"
 
-#: utils/katecmds.cpp:129
+#: utils/katecmds.cpp:130
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5063,7 +5043,7 @@ msgstr ""
 "<p>set-indent-mode <b>模式</b></p><p>「模式」的參數值可以參考「工具」─「縮"
 "排」選單中的值。</p>"
 
-#: utils/katecmds.cpp:134
+#: utils/katecmds.cpp:135
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5074,7 +5054,7 @@ msgstr ""
 "選項，可以用：1 或 on 或 true<br/>若要關閉選項，則可以用：0 或 off 或 false</"
 "p>"
 
-#: utils/katecmds.cpp:141
+#: utils/katecmds.cpp:142
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5084,7 +5064,7 @@ msgstr ""
 "<p>set-line-numbers <b>enable</b></p><p>設定是否讓行號可見。</p><p>要開啟選"
 "項，可以用：1 或 on 或 true<br/>若要關閉選項，則可以用：0 或 off 或 false</p>"
 
-#: utils/katecmds.cpp:148
+#: utils/katecmds.cpp:149
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5095,7 +5075,7 @@ msgstr ""
 "開啟選項，可以用：1 或 on 或 true<br/>若要關閉選項，則可以用：0 或 off 或 "
 "false</p>"
 
-#: utils/katecmds.cpp:155
+#: utils/katecmds.cpp:156
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5106,7 +5086,7 @@ msgstr ""
 "選項，可以用：1 或 on 或 true<br/>若要關閉選項，則可以用：0 或 off 或 false</"
 "p>"
 
-#: utils/katecmds.cpp:162
+#: utils/katecmds.cpp:163
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5117,7 +5097,7 @@ msgstr ""
 "啟選項，可以用：1 或 on 或 true<br/>若要關閉選項，則可以用：0 或 off 或 "
 "false</p>"
 
-#: utils/katecmds.cpp:169
+#: utils/katecmds.cpp:170
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5127,7 +5107,7 @@ msgstr ""
 "<p>set-word-wrap-column <b>寬度</b></p><p>設定強制折行的寬度。這個設定在您設"
 "定成自動文字折行時使用。</p>"
 
-#: utils/katecmds.cpp:174
+#: utils/katecmds.cpp:175
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5138,7 +5118,7 @@ msgstr ""
 "點字元取代為空白字元。</p><p>要開啟選項，可以用：1 或 on 或 true<br/>若要關閉"
 "選項，則可以用：0 或 off 或 false</p>"
 
-#: utils/katecmds.cpp:181
+#: utils/katecmds.cpp:182
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5149,12 +5129,12 @@ msgstr ""
 "<p>set-highlight <b>突顯</b></p><p>設定文件的語法突顯系統。參數必須是一個合法"
 "的突顯名稱，在「工具」─「突顯」選單中。此指令提供參數的自動補完功能。</p>"
 
-#: utils/katecmds.cpp:187
+#: utils/katecmds.cpp:188
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr "<p>set-mode <b>模式</b></p><p>設定「工具」─「模式」中的模式。</p>"
 
-#: utils/katecmds.cpp:192
+#: utils/katecmds.cpp:193
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5165,64 +5145,64 @@ msgstr ""
 "現。</p><p>要開啟選項，可以用：1 或 on 或 true<br/>若要關閉選項，則可以用：0 "
 "或 off 或 false</p>"
 
-#: utils/katecmds.cpp:198
+#: utils/katecmds.cpp:199
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr "<p>開啟列印對話框來列印目前的文件。</p>"
 
-#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
+#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "漏掉引數。用法：%1 <value>"
 
-#: utils/katecmds.cpp:326
+#: utils/katecmds.cpp:327
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "突顯「%1」不存在"
 
-#: utils/katecmds.cpp:332
+#: utils/katecmds.cpp:333
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "模式「%1」不存在"
 
-#: utils/katecmds.cpp:345
+#: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "轉換引數「%1」為整數失敗。"
 
-#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
+#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "寬度必須最少為 1。"
 
-#: utils/katecmds.cpp:359
+#: utils/katecmds.cpp:360
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "欄必須最少為 1。"
 
-#: utils/katecmds.cpp:389
+#: utils/katecmds.cpp:390
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "用法：%1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:416
+#: utils/katecmds.cpp:417
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "錯誤的引數「%1」。用法：%2 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:420
+#: utils/katecmds.cpp:421
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
 msgstr ""
 "用法：set-remove-trailing-spaces 0|-|none 或 1|+|mod|modified 或 2|*|all"
 
-#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "未知的指令「%1」"
 
-#: utils/katecmds.cpp:492
+#: utils/katecmds.cpp:493
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5234,7 +5214,7 @@ msgstr ""
 "以是十進位、八進位或十六進位格式。</p><p>例如：<ul><li>char <b>234</b></"
 "li><li>char <b>0x1234</b></li></ul></p>"
 
-#: utils/katecmds.cpp:559
+#: utils/katecmds.cpp:560
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5280,6 +5260,73 @@ msgstr ""
 "(000-999)。</td></tr><tr><td>AP</td><td>12 時制，AP 會被取代為 AM 或是 PM。</"
 "td></tr><tr><td>ap</td><td>12 時制，AP 會被取代為 am 或是 pm。</td></tr></"
 "table></p>"
+
+#: utils/katecmds.cpp:621
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Remove Duplicate Lines"
+msgid "Remove Duplicate Lines"
+msgstr "移除重複行"
+
+#: utils/katecmds.cpp:622
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+msgid "Remove Duplicates and Sort Text Alphabetically"
+msgstr "從選取的文字中移除重複行並依字母排序"
+
+#: utils/katecmds.cpp:623
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Text Naturally"
+msgstr "依字母排序選取的文字"
+
+#: utils/katecmds.cpp:624
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Selected Text Alphabetically"
+msgstr "依字母排序選取的文字"
+
+#: utils/katecmds.cpp:693
+#, fuzzy, kde-format
+#| msgid "Sort the selected text or whole document."
+msgid ""
+"<p>sort</p><p>Sort the selected text or whole document if there is no "
+"selection</p>"
+msgstr "排序選取的文字或整份文件。"
+
+#: utils/katecmds.cpp:697
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgid ""
+"<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
+"document if there is no selection.</p>"
+msgstr "從選取的文字或整份文件中移除重複行。"
+
+#: utils/katecmds.cpp:701
+#, kde-format
+msgid ""
+"<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
+"all duplicate lines.</p>"
+msgstr ""
+
+#: utils/katecmds.cpp:705
+#, fuzzy, kde-format
+#| msgid ""
+#| "Sort the selected text or whole document in natural order.<br>Here is an "
+#| "example to show the difference to the normal sort method:<br>sort(a10, "
+#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+msgid ""
+"<p>natsort</p><p>Sort the selected text or whole document in natural order."
+"<br>Here is an example to show the difference to the normal sort method:"
+"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
+"p>"
+msgstr ""
+"將選取的文字或整份文件以自然排序法排列。<br/>這裡有一個例子，顯示自然排序法與"
+"一般排序的不同：<br/>sort(a10, a1, a2) => a1, a10, a2<br/>natsort(a10, a1, "
+"a2) => a1, a2, a10"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -5665,7 +5712,7 @@ msgid "Your emails"
 msgstr ""
 "acelan@kde.linux.org.tw,kenduest@i18n.linux.org.tw,pesder.liao@msa.hinet.net"
 
-#: utils/kateglobal.cpp:260
+#: utils/kateglobal.cpp:261
 #, kde-format
 msgid "Configure"
 msgstr "設定"
@@ -7583,22 +7630,22 @@ msgstr ""
 "b></code><br />需要可以用指令的清單，輸入 <code><b>help list</b></code><br />"
 "需要個別制定的說明，輸入 <code><b>help &lt;command&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "沒有這樣的指令：「%1」"
 
-#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "錯誤：命令 %1 不允許有範圍。"
 
-#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "成功："
 
-#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "指令「%1」失敗。"

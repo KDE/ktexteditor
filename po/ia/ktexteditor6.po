@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-09 00:37+0000\n"
+"POT-Creation-Date: 2024-08-25 00:37+0000\n"
 "PO-Revision-Date: 2024-08-02 09:25+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
@@ -3175,17 +3175,15 @@ msgstr "Vade a previe paragrapho"
 #: script/data/commands/utils.js:9
 #, kde-format
 msgctxt "Script command name"
-msgid "Sort Selected Text Alphabetically"
-msgstr "Ordina alphabeticamente texto selectionate:"
+msgid "Remove Trailing Spaces"
+msgstr "Remove spatios de tracia (avante)"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
-#: script/data/commands/utils.js:26 script/data/commands/utils.js:30
-#: script/data/commands/utils.js:34 script/data/commands/utils.js:39
+#: script/data/commands/utils.js:27 script/data/commands/utils.js:32
+#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
-#: script/data/commands/utils.js:60 script/data/commands/utils.js:64
-#: script/data/commands/utils.js:68
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
@@ -3194,109 +3192,91 @@ msgstr "Editar"
 #: script/data/commands/utils.js:13
 #, kde-format
 msgctxt "Script command name"
-msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Remove duplicates e ordina texto seligite alphabeticamente"
-
-#: script/data/commands/utils.js:17
-#, kde-format
-msgctxt "Script command name"
-msgid "Remove Duplicate Lines"
-msgstr "Remove lineas duplicate"
-
-#: script/data/commands/utils.js:21
-#, kde-format
-msgctxt "Script command name"
-msgid "Remove Trailing Spaces"
-msgstr "Remove spatios de tracia (avante)"
-
-#: script/data/commands/utils.js:25
-#, kde-format
-msgctxt "Script command name"
 msgid "Remove Leading Spaces"
 msgstr "Remove spatios ducente"
 
-#: script/data/commands/utils.js:29
+#: script/data/commands/utils.js:17
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
 msgstr "Re&move spatios de tracia e ducente"
 
-#: script/data/commands/utils.js:33
+#: script/data/commands/utils.js:21
 #, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Junge lineas"
 
-#: script/data/commands/utils.js:37
+#: script/data/commands/utils.js:25
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "Move linea a basso"
 
-#: script/data/commands/utils.js:42
+#: script/data/commands/utils.js:30
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "Move linea in alto"
 
-#: script/data/commands/utils.js:47
+#: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "Duplica lineas seligite a basso"
 
-#: script/data/commands/utils.js:51
+#: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "Duplica lineas seligite in alto"
 
-#: script/data/commands/utils.js:55
+#: script/data/commands/utils.js:43
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
 msgstr "Duplica texto selectionate"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:47
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "Codifica texto selectionate con URI"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:51
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "Decodifica  texto selectionate con URI"
 
-#: script/data/commands/utils.js:67
+#: script/data/commands/utils.js:55
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "Remove lineas vacue"
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:410
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "Ordina le texto seligite o le integre documento."
 
-#: script/data/commands/utils.js:464
+#: script/data/commands/utils.js:412
 #, kde-format
 msgid "Move selected lines down."
 msgstr "Remove lineas seligite a basso."
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:414
 #, kde-format
 msgid "Move selected lines up."
 msgstr "Remove lineas seligite in alto."
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:416
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr ""
 "Remove lineas duplicate ex le texto seligite o ex le integre documento."
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:418
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3307,22 +3287,22 @@ msgstr ""
 "es un exemplo pro monstrar le differentia con le methodo normal de ordinar:"
 "<br>sort(a10,a1, a2) => a1,a10,a2<br> natsort(a10,a1,a2)=> a1,a2,a10"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:420
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "Il puta spatios blanco ducente ex selection o documento integre."
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:422
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "Il puta spatios blanco ducente ex selection o documento integre."
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:424
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr "Il puta spatios blanco ducente ex selection o documento integre."
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:426
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3333,12 +3313,12 @@ msgstr ""
 "de poner se inter cata linea:<br><code>join ','</code>p.ex. unira lineas e "
 "separara lor per un virgula."
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:428
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "Remove lineas vacue ex seligite texto o ex documento integre."
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:430
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3361,7 +3341,7 @@ msgstr ""
 "le prime character non blanc que occurre post un duo punctos per alinear los "
 "sur le mesme columna."
 
-#: script/data/commands/utils.js:486
+#: script/data/commands/utils.js:434
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3377,7 +3357,7 @@ msgstr ""
 "anque facer isto pro attinger le mesme:<br><code>cata 'lines.join(\", \")'</"
 "code>"
 
-#: script/data/commands/utils.js:488
+#: script/data/commands/utils.js:436
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3393,7 +3373,7 @@ msgstr ""
 "pote anque facer isto pro attinger le mesme:<br><code>filter 'line.length > "
 "0'</code>"
 
-#: script/data/commands/utils.js:490
+#: script/data/commands/utils.js:438
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3410,17 +3390,17 @@ msgstr ""
 "tu anque pote facer isto pro attinger le mesme:<br><code>map 'line.replace(/^"
 "\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:492
+#: script/data/commands/utils.js:440
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "Il duplica le lineas seligite in alto."
 
-#: script/data/commands/utils.js:494
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "Il duplica le lineas seligite a basso."
 
-#: script/data/commands/utils.js:498
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3429,12 +3409,12 @@ msgstr ""
 "Codifica character special in un singule selection de  linea, assi que le "
 "texto de exito pote eser usate como URI."
 
-#: script/data/commands/utils.js:500
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "Action invertite de codifica URI."
 
-#: script/data/commands/utils.js:502
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
@@ -3443,7 +3423,7 @@ msgstr ""
 "Selige texto in avante ex le position de cursor currente al prime occurentia "
 "del argumento date post illo (o le fin del rango currente per definition)."
 
-#: script/data/commands/utils.js:504
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -3560,7 +3540,7 @@ msgstr ""
 "Mal citation in appello: %1. Pro favor tu escappa citationes singule con un "
 "retrobarra (backlash)"
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -5174,19 +5154,19 @@ msgstr "Seque&nte: %1 - \"%2\""
 msgid "&Previous: %1 - \"%2\""
 msgstr "&Precedente: %1 - \"%2\""
 
-#: utils/katecmds.cpp:52
+#: utils/katecmds.cpp:53
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>indent</p><p>Indenta le rangos seligite o le rango currente</p>"
 
-#: utils/katecmds.cpp:57
+#: utils/katecmds.cpp:58
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr ""
 "<p>unindent</p><p>leva indentationes ab le rangos seligite o ab le rango "
 "currente.</p>"
 
-#: utils/katecmds.cpp:62
+#: utils/katecmds.cpp:63
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5195,7 +5175,7 @@ msgstr ""
 "<p>cleanindent</p><p>Netta le indentation del rangos seligite o del rango "
 "currente secundo le preferentias de indentation in le documento. </p>"
 
-#: utils/katecmds.cpp:67
+#: utils/katecmds.cpp:68
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5207,7 +5187,7 @@ msgstr ""
 "texto como definite per le definition de evidentia de syntaxe per le "
 "documento.</p>"
 
-#: utils/katecmds.cpp:73
+#: utils/katecmds.cpp:74
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5218,7 +5198,7 @@ msgstr ""
 "rangos seligite o le rango currente secundo le formato de texto como "
 "definite per le definition de evidentia de syntaxe per le documento.</p>"
 
-#: utils/katecmds.cpp:79
+#: utils/katecmds.cpp:80
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
@@ -5227,7 +5207,7 @@ msgstr ""
 "<p>goto <b> numero de linea</b></p><p>Iste commando vade al specificate "
 "numero de linea o rango.</p>"
 
-#: utils/katecmds.cpp:84
+#: utils/katecmds.cpp:85
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5240,12 +5220,12 @@ msgstr ""
 "currente.</p><p> Possibile valores de ver: 1 on true<br/>possibile valores "
 "de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:90
+#: utils/katecmds.cpp:91
 #, kde-format
 msgid "Deletes the current line."
 msgstr "Dele le rango currente."
 
-#: utils/katecmds.cpp:94
+#: utils/katecmds.cpp:95
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5254,7 +5234,7 @@ msgstr ""
 "<p>set-tab-width <b>largessa</b></p><p>Fixa le largessa de tabulation al "
 "numero indicate con <b>largessa</b></p>"
 
-#: utils/katecmds.cpp:99
+#: utils/katecmds.cpp:100
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5265,7 +5245,7 @@ msgstr ""
 "reimplaciate con spatios quando tu typa.</p><p>Possibile valore de ver: 1 on "
 "truer<br /> possibile valores de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:106
+#: utils/katecmds.cpp:107
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5276,7 +5256,7 @@ msgstr ""
 "spatios avante essera visualizate per un parve puncto.</p><p>Possibile "
 "valores de ver: 1 on true<br/>possibile  valores de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:113
+#: utils/katecmds.cpp:114
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5291,7 +5271,7 @@ msgstr ""
 "remove spatios avante solmente per lineas modificate.</li><li><b>all</b>: "
 "remove spatios avante in le integre documento.</li></ul></p> "
 
-#: utils/katecmds.cpp:124
+#: utils/katecmds.cpp:125
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5300,7 +5280,7 @@ msgstr ""
 "<p>set-indent-width <b>width</b></p><p>Fixa le extension de indentation al "
 "numero <b>width</b>. Usate solmente si tu es indentante con spatios.</p>"
 
-#: utils/katecmds.cpp:129
+#: utils/katecmds.cpp:130
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5309,7 +5289,7 @@ msgstr ""
 "<p>set-indent-mode <b>mode</b></p><p>Le parametro mode parameter es un valor "
 "como vidite in le menu Instrumentos - Indentation</p>"
 
-#: utils/katecmds.cpp:134
+#: utils/katecmds.cpp:135
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5320,7 +5300,7 @@ msgstr ""
 "autoindentation.</p><p>possibile valores de ver: 1 on true<br/>possibile "
 "valores de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:141
+#: utils/katecmds.cpp:142
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5331,7 +5311,7 @@ msgstr ""
 "numbers pane.</p><p> possible true values: 1 on true<br/>possible false "
 "values: 0 off false</p>"
 
-#: utils/katecmds.cpp:148
+#: utils/katecmds.cpp:149
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5342,7 +5322,7 @@ msgstr ""
 "vitro(pane) de marcatores plicabile.</p><p>possibile valores de ver: 1 on "
 "true<br/>possibile valores de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:155
+#: utils/katecmds.cpp:156
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5353,7 +5333,7 @@ msgstr ""
 "icone.</p><p>possibile valores de ver: 1 on true <br/>possibile valores de "
 "false: 0 off false</p>"
 
-#: utils/katecmds.cpp:162
+#: utils/katecmds.cpp:163
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5364,7 +5344,7 @@ msgstr ""
 "secundo <b>enable</b></p><p>possibile valores de ver: 1 on true <br/"
 ">possibile valores de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:169
+#: utils/katecmds.cpp:170
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5375,7 +5355,7 @@ msgstr ""
 "dur excision a <b>width</b>. Isto es usate si tu ha tu texto excidite de "
 "modo automatic.</p>"
 
-#: utils/katecmds.cpp:174
+#: utils/katecmds.cpp:175
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5387,7 +5367,7 @@ msgstr ""
 "p><p>possibile valores de ver: 1 on true <br/>possibile valores de false: 0 "
 "off false</p>"
 
-#: utils/katecmds.cpp:181
+#: utils/katecmds.cpp:182
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5400,14 +5380,14 @@ msgstr ""
 "evidentiar, como il es vidite in le menu Instrumentos → Evidentiar menu. "
 "Iste commando furni un lista deautocompletion pro su argumentos.</p>"
 
-#: utils/katecmds.cpp:187
+#: utils/katecmds.cpp:188
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
 "<p>set-mode <b>mode</b></p><p>Fixa le modo como vidite in Instrumentos - "
 "Modo</p>"
 
-#: utils/katecmds.cpp:192
+#: utils/katecmds.cpp:193
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5418,65 +5398,65 @@ msgstr ""
 "visualisate per un linea punctuate vertical.</p><p> possibile valores de "
 "ver: 1 on true<br/>possibile valores de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:198
+#: utils/katecmds.cpp:199
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr ""
 "<p>Aperi le dialogo de imprimer pro pro imprimer le documento currente.</p>"
 
-#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
+#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "Argumento mancante. Uso: %1 <value>"
 
-#: utils/katecmds.cpp:326
+#: utils/katecmds.cpp:327
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "Necun tal evidentia '%1' "
 
-#: utils/katecmds.cpp:332
+#: utils/katecmds.cpp:333
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "Necun tal modo '%1'"
 
-#: utils/katecmds.cpp:345
+#: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "Il falleva in converter argumento '%1' a integre."
 
-#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
+#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "Largessa debe esser al minus 1."
 
-#: utils/katecmds.cpp:359
+#: utils/katecmds.cpp:360
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "Columna debe esser al minus 1."
 
-#: utils/katecmds.cpp:389
+#: utils/katecmds.cpp:390
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "Uso: %1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:416
+#: utils/katecmds.cpp:417
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "Mal argumento '%1'. Uso:%2 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:420
+#: utils/katecmds.cpp:421
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
 msgstr ""
 "Usage: set-remove-trailing-spaces 0|-|none o 1|+|mod|modified o 2|*|all"
 
-#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "Commando incognite '%1'"
 
-#: utils/katecmds.cpp:492
+#: utils/katecmds.cpp:493
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5489,7 +5469,7 @@ msgstr ""
 "octal o hexadecimal.</p><p>Examples:<ul><li>char <b>234</b></li><li>char "
 "<b>0x1234</b></li></ul></p>"
 
-#: utils/katecmds.cpp:559
+#: utils/katecmds.cpp:560
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5542,6 +5522,75 @@ msgstr ""
 "essera reimplaciate o con \"AM\" o \"PM\".</td></tr><tr><td>ap</td><td>Usa "
 "monstrar am/pm. ap essera reimplaciate o con \"am\" o \"pm\".</td></tr></"
 "table></p>"
+
+#: utils/katecmds.cpp:621
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Remove Duplicate Lines"
+msgid "Remove Duplicate Lines"
+msgstr "Remove lineas duplicate"
+
+#: utils/katecmds.cpp:622
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+msgid "Remove Duplicates and Sort Text Alphabetically"
+msgstr "Remove duplicates e ordina texto seligite alphabeticamente"
+
+#: utils/katecmds.cpp:623
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Text Naturally"
+msgstr "Ordina alphabeticamente texto selectionate:"
+
+#: utils/katecmds.cpp:624
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text Alphabetically"
+msgid "Sort Selected Text Alphabetically"
+msgstr "Ordina alphabeticamente texto selectionate:"
+
+#: utils/katecmds.cpp:693
+#, fuzzy, kde-format
+#| msgid "Sort the selected text or whole document in natural order.<br>"
+msgid ""
+"<p>sort</p><p>Sort the selected text or whole document if there is no "
+"selection</p>"
+msgstr "Ordina le texto seligite o le integre documento in ordine natural.<br>"
+
+#: utils/katecmds.cpp:697
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgid ""
+"<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
+"document if there is no selection.</p>"
+msgstr ""
+"Remove lineas duplicate ex le texto seligite o ex le integre documento."
+
+#: utils/katecmds.cpp:701
+#, fuzzy, kde-format
+#| msgid "Sort the selected text or whole document in natural order.<br>"
+msgid ""
+"<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
+"all duplicate lines.</p>"
+msgstr "Ordina le texto seligite o le integre documento in ordine natural.<br>"
+
+#: utils/katecmds.cpp:705
+#, fuzzy, kde-format
+#| msgid ""
+#| "Sort the selected text or whole document in natural order.<br>Here is an "
+#| "example to show the difference to the normal sort method:<br>sort(a10, "
+#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+msgid ""
+"<p>natsort</p><p>Sort the selected text or whole document in natural order."
+"<br>Here is an example to show the difference to the normal sort method:"
+"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
+"p>"
+msgstr ""
+"Ordine le texto seligite o le integre documento in ordine natural.<br>Ci il "
+"es un exemplo pro monstrar le differentia con le methodo normal de ordinar:"
+"<br>sort(a10,a1, a2) => a1,a10,a2<br> natsort(a10,a1,a2)=> a1,a2,a10"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -5926,7 +5975,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "g.sora@tiscali.it"
 
-#: utils/kateglobal.cpp:260
+#: utils/kateglobal.cpp:261
 #, kde-format
 msgid "Configure"
 msgstr "Configura"
@@ -7945,22 +7994,22 @@ msgstr ""
 "disponibile, tu inserta <code><b>help list</b></code><br /> Pro adjuta super "
 "commandos individual, inserta <code><b>help &lt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Necun tal commando: \"%1\""
 
-#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Error: necun extension permittite pro commando \"%1\"."
 
-#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Successo:"
 
-#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Commando \"%1\" falleva."
@@ -11120,10 +11169,6 @@ msgstr "Marca non fixate: %1"
 #~| msgid "Collapse Toplevel"
 #~ msgid "&Collapse"
 #~ msgstr "Plica le nivello culmine"
-
-#~ msgid "Sort the selected text or whole document in natural order.<br>"
-#~ msgstr ""
-#~ "Ordina le texto seligite o le integre documento in ordine natural.<br>"
 
 #~ msgid ""
 #~ "Given a JavaScript function as argument, call that for the list of "

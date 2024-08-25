@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-09 00:37+0000\n"
+"POT-Creation-Date: 2024-08-25 00:37+0000\n"
 "PO-Revision-Date: 2022-08-19 20:36+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -3256,20 +3256,17 @@ msgstr "Menuju ke titik edit sebelumnya"
 
 #: script/data/commands/utils.js:9
 #, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
-msgid "Sort Selected Text Alphabetically"
-msgstr "Urutkan Teks Terpilih"
+msgid "Remove Trailing Spaces"
+msgstr "Ha&pus spasi terbelakang:"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
-#: script/data/commands/utils.js:26 script/data/commands/utils.js:30
-#: script/data/commands/utils.js:34 script/data/commands/utils.js:39
+#: script/data/commands/utils.js:27 script/data/commands/utils.js:32
+#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
-#: script/data/commands/utils.js:60 script/data/commands/utils.js:64
-#: script/data/commands/utils.js:68
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
@@ -3277,72 +3274,50 @@ msgstr "Pengeditan"
 
 #: script/data/commands/utils.js:13
 #, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
-msgctxt "Script command name"
-msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Buang duplikat baris dari teks terpilih atau seluruh dokumen."
-
-#: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
-msgctxt "Script command name"
-msgid "Remove Duplicate Lines"
-msgstr "Duplikatkan Naik Baris Terpilih"
-
-#: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
-msgctxt "Script command name"
-msgid "Remove Trailing Spaces"
-msgstr "Ha&pus spasi terbelakang:"
-
-#: script/data/commands/utils.js:25
-#, fuzzy, kde-format
 #| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
 msgstr "Ha&pus spasi terbelakang:"
 
-#: script/data/commands/utils.js:29
+#: script/data/commands/utils.js:17
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
 msgstr "Ha&pus spasi terbelakang:"
 
-#: script/data/commands/utils.js:33
+#: script/data/commands/utils.js:21
 #, fuzzy, kde-format
 #| msgid "Join Lines"
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Baris Sambung"
 
-#: script/data/commands/utils.js:37
+#: script/data/commands/utils.js:25
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "Pindah Turun Baris"
 
-#: script/data/commands/utils.js:42
+#: script/data/commands/utils.js:30
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "Pindah Naik Baris"
 
-#: script/data/commands/utils.js:47
+#: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "Duplikatkan Turun Baris Terpilih"
 
-#: script/data/commands/utils.js:51
+#: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "Duplikatkan Naik Baris Terpilih"
 
-#: script/data/commands/utils.js:55
+#: script/data/commands/utils.js:43
 #, fuzzy, kde-format
 #| msgctxt "Script command name"
 #| msgid "Duplicate Selected Lines Up"
@@ -3350,46 +3325,46 @@ msgctxt "Script command name"
 msgid "Duplicate selected text"
 msgstr "Duplikatkan Naik Baris Terpilih"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:47
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "URI-encode Teks Terpilih"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:51
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "URI-decode Teks Terpilih"
 
-#: script/data/commands/utils.js:67
+#: script/data/commands/utils.js:55
 #, fuzzy, kde-format
 #| msgid "Move cursor to next matching indent"
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "Pindah kursor ke lekuk yang cocok selanjutnya"
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:410
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "Urutkan teks terpilih atau seluruh dokumen."
 
-#: script/data/commands/utils.js:464
+#: script/data/commands/utils.js:412
 #, kde-format
 msgid "Move selected lines down."
 msgstr "Pindahkan turun baris terpilih."
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:414
 #, kde-format
 msgid "Move selected lines up."
 msgstr "Pindahkan naik baris terpilih."
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:416
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "Buang duplikat baris dari teks terpilih atau seluruh dokumen."
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:418
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3401,24 +3376,24 @@ msgstr ""
 "normal:<br>urut(a10, a1, a2) => a1, a10, a2<br>urutnat(a10, a1, a2) => a1, "
 "a2, a10"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:420
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "Gunting spasiputih terbelakang dari pemilihan atau seluruh dokumen."
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:422
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "Gunting spasiputih terdepan dari pemilihan atau seluruh dokumen."
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:424
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
 "Gunting spasiputih terdepan dan terbelakang dari pemilihan atau seluruh "
 "dokumen."
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:426
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3429,12 +3404,12 @@ msgstr ""
 "sebuah pemisah untuk meletakkan di antara setiap baris:<br><code>join ', '</"
 "code> misalnya akan menyambung baris dan memisahkannya dengan koma."
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:428
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "Hapus baris yang kosong dari pemilihan atau seluruh dokumen."
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:430
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3448,7 +3423,7 @@ msgid ""
 "same column."
 msgstr ""
 
-#: script/data/commands/utils.js:486
+#: script/data/commands/utils.js:434
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3462,7 +3437,7 @@ msgstr ""
 "nilai pemanggilan itu.<br>Contohnya (sambungkan baris yang terpilih):"
 "<br><code>each 'function(lines){return lines.join(\", \");}'</code><br>"
 
-#: script/data/commands/utils.js:488
+#: script/data/commands/utils.js:436
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3478,7 +3453,7 @@ msgstr ""
 "kamu juga bisa melakukan ini untuk mencapai hal yang sama: <code>filter "
 "'line.length > 0'</code>"
 
-#: script/data/commands/utils.js:490
+#: script/data/commands/utils.js:438
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3495,17 +3470,17 @@ msgstr ""
 "menghemat pengetikanmu, kamu juga bisa melakukan ini untuk mencapai hal yang "
 "sama:<br>\"<code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:492
+#: script/data/commands/utils.js:440
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "Menduplikatkan baris atas yang dipilih."
 
-#: script/data/commands/utils.js:494
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "Menduplikatkan baris bawah yang dipilih."
 
-#: script/data/commands/utils.js:498
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3514,19 +3489,19 @@ msgstr ""
 "Enkode karakter spesial dalam pemilihan baris tunggal, sehingga hasil teks "
 "bisa digunakan sebagai URI."
 
-#: script/data/commands/utils.js:500
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "Aksi berbalik pada enkode URL."
 
-#: script/data/commands/utils.js:502
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
 
-#: script/data/commands/utils.js:504
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -3641,7 +3616,7 @@ msgstr ""
 "Pengutipan buruk dalam panggilan: %1. Silakan escape kutipan tunggal dengan "
 "garis-miring-terbalik."
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -5284,18 +5259,18 @@ msgstr "&Selanjutnya: %1 - \"%2\""
 msgid "&Previous: %1 - \"%2\""
 msgstr "&Sebelumnya: %1 - \"%2\""
 
-#: utils/katecmds.cpp:52
+#: utils/katecmds.cpp:53
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>indent</p> <p>Lekukkan baris yang dipilih atau baris saat ini</p>"
 
-#: utils/katecmds.cpp:57
+#: utils/katecmds.cpp:58
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr ""
 "<p>unindent</p><p>Taklekukkan baris yang dipilih atau baris saat ini.</p>"
 
-#: utils/katecmds.cpp:62
+#: utils/katecmds.cpp:63
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5304,7 +5279,7 @@ msgstr ""
 "<p>cleanindent</p> <p>Bersihkan lekukan pada baris yang dipilih atau menurut "
 "baris saat ini ke pengaturan lekukan di dalam dokumen. </p>"
 
-#: utils/katecmds.cpp:67
+#: utils/katecmds.cpp:68
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5315,7 +5290,7 @@ msgstr ""
 "atau baris saat ini atau pemilihan untuk sebuah komentar tertentu ke format "
 "teks sebagai yang ditentukan oleh definisi sorotan sintaks untuk dokumen.</p>"
 
-#: utils/katecmds.cpp:73
+#: utils/katecmds.cpp:74
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5326,7 +5301,7 @@ msgstr ""
 "dipilih atau baris saat ini tertentu ke format teks sebagai yang ditentukan "
 "oleh sorotan sintaks tertentu untuk dokumen.</p>"
 
-#: utils/katecmds.cpp:79
+#: utils/katecmds.cpp:80
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
@@ -5335,7 +5310,7 @@ msgstr ""
 "<p>goto <b>line number</b></p><p>Perintah ini menavigasikan ke nomor baris "
 "yang ditentukan.</p>"
 
-#: utils/katecmds.cpp:84
+#: utils/katecmds.cpp:85
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5348,12 +5323,12 @@ msgstr ""
 "saat ini.</p><p>Nilai true yang memungkinkan: 1 on true<br/>nilai false yang "
 "memungkinkan: 0 off false</p>"
 
-#: utils/katecmds.cpp:90
+#: utils/katecmds.cpp:91
 #, kde-format
 msgid "Deletes the current line."
 msgstr "Menghapus baris saat ini."
 
-#: utils/katecmds.cpp:94
+#: utils/katecmds.cpp:95
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5361,7 +5336,7 @@ msgid ""
 msgstr ""
 "<p>set-tab-width <b>width</b></p><p>Set lebar tab ke jumlah <b>lebar</b></p>"
 
-#: utils/katecmds.cpp:99
+#: utils/katecmds.cpp:100
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5372,7 +5347,7 @@ msgstr ""
 "dengan spasi saat kamu ketik.</p><p>Nilai true yang memungkinkan: 1 on "
 "true<br/>nilai false yang memungkinkan: 0 off false</p>"
 
-#: utils/katecmds.cpp:106
+#: utils/katecmds.cpp:107
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5384,7 +5359,7 @@ msgstr ""
 "p><p>Nilai true yang memungkinkan: 1 on true<br/>nilai false yang "
 "memungkinkan: 0 off false</p>"
 
-#: utils/katecmds.cpp:113
+#: utils/katecmds.cpp:114
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5400,7 +5375,7 @@ msgstr ""
 "dimodifikasi.</li><li><b>all</b>: menghapus spasi terbelakang di seluruh "
 "dokumen.</li></ul></p>"
 
-#: utils/katecmds.cpp:124
+#: utils/katecmds.cpp:125
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5409,7 +5384,7 @@ msgstr ""
 "<p>set-indent-width <b>width</b></p><p>Menyiapkan lebar lekukan ke jumlah "
 "<b>lebar</b>. Hanya digunakan jika kamu melekukkan dengan spasi.</p>"
 
-#: utils/katecmds.cpp:129
+#: utils/katecmds.cpp:130
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5418,7 +5393,7 @@ msgstr ""
 "<p>set-indent-mode <b>mode</b></p><p>Parameter mode adalah sebuah nilai "
 "sebagaimana yang terlihat dalam Peralatan - Menu lekukan</p>"
 
-#: utils/katecmds.cpp:134
+#: utils/katecmds.cpp:135
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5429,7 +5404,7 @@ msgstr ""
 "autolekukan (autoindentation).</p><p>Nilai true yang memungkinkan: 1 on "
 "true<br/>nilai false yang memungkinkan: 0 off false</p>"
 
-#: utils/katecmds.cpp:141
+#: utils/katecmds.cpp:142
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5440,7 +5415,7 @@ msgstr ""
 "p><p>Nilai true yang memungkinkan: 1 on true<br/>nilai false yang "
 "memungkinkan: 0 off false</p>"
 
-#: utils/katecmds.cpp:148
+#: utils/katecmds.cpp:149
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5451,7 +5426,7 @@ msgstr ""
 "pelipatan.</p><p>Nilai true yang memungkinkan: 1 on true<br/>nilai false "
 "yang memungkinkan: 0 off false</p>"
 
-#: utils/katecmds.cpp:155
+#: utils/katecmds.cpp:156
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5462,7 +5437,7 @@ msgstr ""
 "p><p>Nilai true yang memungkinkan: 1 on true<br/>nilai false yang "
 "memungkinkan: 0 off false</p>"
 
-#: utils/katecmds.cpp:162
+#: utils/katecmds.cpp:163
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5473,7 +5448,7 @@ msgstr ""
 "dengan <b>enable</b></p><p> nilai true yang memungkinkan: 1 on true<br/"
 ">nilai false yang memungkinkan: 0 off false</p>"
 
-#: utils/katecmds.cpp:169
+#: utils/katecmds.cpp:170
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5484,7 +5459,7 @@ msgstr ""
 "pengemasan yang sulit untuk <b>width</b>. Ini digunakan jika kamu mempunyai "
 "teks yang dikemas secara otomatis.</p>"
 
-#: utils/katecmds.cpp:174
+#: utils/katecmds.cpp:175
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5496,7 +5471,7 @@ msgstr ""
 "yang memungkinkan: 1 on true<br/>nilai false yang memungkinkan: 0 off false</"
 "p>"
 
-#: utils/katecmds.cpp:181
+#: utils/katecmds.cpp:182
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5509,14 +5484,14 @@ msgstr ""
 "yang tampak di dalam menu Peralatan → Penyorotan. Perintah ini menyediakan "
 "sebuah daftar auto-penyelesaian untuk argumennya.</p>"
 
-#: utils/katecmds.cpp:187
+#: utils/katecmds.cpp:188
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
 "<p>set-mode <b>mode</b></p><p>Menyiapkan mode sebagaimana yang tampak dalam "
 "Peralatan - Mode</p>"
 
-#: utils/katecmds.cpp:192
+#: utils/katecmds.cpp:193
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5527,52 +5502,52 @@ msgstr ""
 "divisualkan dengan baris bertitik menegak.</p><p>Nilai true yang "
 "memungkinkan: 1 on true<br/>nilai false yang memungkinkan: 0 off false</p>"
 
-#: utils/katecmds.cpp:198
+#: utils/katecmds.cpp:199
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr "<p>Buka dialog Print untuk mencetak dokumen saat ini.</p>"
 
-#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
+#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "Argumen hilang. Penggunaan: %1 <nilai>"
 
-#: utils/katecmds.cpp:326
+#: utils/katecmds.cpp:327
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "Tidak ada penyorotan seperti '%1'"
 
-#: utils/katecmds.cpp:332
+#: utils/katecmds.cpp:333
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "Tidak ada mode seperti '%1'"
 
-#: utils/katecmds.cpp:345
+#: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "Gagal mengkonversi argumen '%1' untuk integer."
 
-#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
+#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "Lebar minimal harus 1."
 
-#: utils/katecmds.cpp:359
+#: utils/katecmds.cpp:360
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "Kolom minimal harus 1."
 
-#: utils/katecmds.cpp:389
+#: utils/katecmds.cpp:390
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "Penggunaan: %1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:416
+#: utils/katecmds.cpp:417
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "Argumen buruk '%1'. Penggunaan: %2 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:420
+#: utils/katecmds.cpp:421
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
@@ -5580,12 +5555,12 @@ msgstr ""
 "Penggunaan: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|"
 "all"
 
-#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "'%1' perintah yang takdiketahui"
 
-#: utils/katecmds.cpp:492
+#: utils/katecmds.cpp:493
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5598,7 +5573,7 @@ msgstr ""
 "desimal, oktal atau formulir heksadesimal.</p><p>Contohnya:<ul><li>char "
 "<b>234</b></li><li>char <b>0x1234</b></li></ul></p>"
 
-#: utils/katecmds.cpp:559
+#: utils/katecmds.cpp:560
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5653,6 +5628,73 @@ msgstr ""
 "tr><tr><td>AP</td><td>Gunakan displai AM/PM. AP akan diganti oleh antara \"AM"
 "\" atau \"PM\".</td></tr><tr><td>ap</td><td>Gunakan displai am/pm. ap akan "
 "diganti oleh antara \"am\" atau \"pm\".</td></tr></table></p>"
+
+#: utils/katecmds.cpp:621
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Duplicate Selected Lines Up"
+msgid "Remove Duplicate Lines"
+msgstr "Duplikatkan Naik Baris Terpilih"
+
+#: utils/katecmds.cpp:622
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgid "Remove Duplicates and Sort Text Alphabetically"
+msgstr "Buang duplikat baris dari teks terpilih atau seluruh dokumen."
+
+#: utils/katecmds.cpp:623
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text"
+msgid "Sort Text Naturally"
+msgstr "Urutkan Teks Terpilih"
+
+#: utils/katecmds.cpp:624
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text"
+msgid "Sort Selected Text Alphabetically"
+msgstr "Urutkan Teks Terpilih"
+
+#: utils/katecmds.cpp:693
+#, fuzzy, kde-format
+#| msgid "Sort the selected text or whole document."
+msgid ""
+"<p>sort</p><p>Sort the selected text or whole document if there is no "
+"selection</p>"
+msgstr "Urutkan teks terpilih atau seluruh dokumen."
+
+#: utils/katecmds.cpp:697
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgid ""
+"<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
+"document if there is no selection.</p>"
+msgstr "Buang duplikat baris dari teks terpilih atau seluruh dokumen."
+
+#: utils/katecmds.cpp:701
+#, kde-format
+msgid ""
+"<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
+"all duplicate lines.</p>"
+msgstr ""
+
+#: utils/katecmds.cpp:705
+#, fuzzy, kde-format
+#| msgid ""
+#| "Sort the selected text or whole document in natural order.<br>Here is an "
+#| "example to show the difference to the normal sort method:<br>sort(a10, "
+#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+msgid ""
+"<p>natsort</p><p>Sort the selected text or whole document in natural order."
+"<br>Here is an example to show the difference to the normal sort method:"
+"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
+"p>"
+msgstr ""
+"Urutkan teks terpilih atau seluruh dokumen dalam urutan natural.<br>Di sini "
+"adalah sebuah contoh untuk menunjukkan perbedaan terhadap metode urutan "
+"normal:<br>urut(a10, a1, a2) => a1, a10, a2<br>urutnat(a10, a1, a2) => a1, "
+"a2, a10"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -6039,7 +6081,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wantoyek@gmail.com"
 
-#: utils/kateglobal.cpp:260
+#: utils/kateglobal.cpp:261
 #, kde-format
 msgid "Configure"
 msgstr "Konfigurasikan"
@@ -8086,22 +8128,22 @@ msgstr ""
 "<code><b>help list</b></code><br />Untuk bantuan buat perintah individual, "
 "masukkan <code><b>help &lt;command&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Tidak ada perintah seperti: \"%1\""
 
-#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Error: Tidak ada rentang yang dimungkinkan untuk perintah \"%1\"."
 
-#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Berhasil: "
 
-#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Perintah \"%1\" gagal."
