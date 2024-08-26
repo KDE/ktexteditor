@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-25 00:37+0000\n"
-"PO-Revision-Date: 2024-08-09 07:00+0200\n"
+"PO-Revision-Date: 2024-08-25 08:02+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -5464,49 +5464,42 @@ msgstr ""
 "»dop.« ali »pop.«</td></tr></table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
+#, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "Odstrani podvojene vrstice"
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr "Odstrani podvojene vrstice in razvrsti izbrano besedilo po abecedi"
+msgstr "Odstrani podvojene in razvrsti besedilo po abecedi"
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "Razvrsti izbrano besedilo po abecedi"
+msgstr "Naravno razvrsti besedilo"
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "Razvrsti izbrano besedilo po abecedi"
 
 #: utils/katecmds.cpp:693
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "Razvrsti izbrano besedilo ali celoten dokument."
+msgstr ""
+"<p>sort</p><p>Razvrsti izbrano besedilo ali celotni dokument, če ni izbire</"
+"p>"
 
 #: utils/katecmds.cpp:697
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
 msgstr ""
-"Odstrani podvojene vrstice iz izbranega besedila ali celotnega dokumenta."
+"<p>uniq</p><p>Odstrani podvojene vrstice iz izbranega besedila ali celotnega "
+"dokumenta, če ni izbire</p>"
 
 #: utils/katecmds.cpp:701
 #, kde-format
@@ -5514,22 +5507,21 @@ msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
+"<p>sortuniq</p><p>Razvrsti izbrano besedilo ali celotni dokument in potem "
+"odstrani podvojene vrstice.</p>"
 
 #: utils/katecmds.cpp:705
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"Razvrsti izbrano besedilo ali celoten dokument v naraven vrstni red.<br>To "
-"je primer, ki prikazuje razliko med običajnim in naravnim razvrščanjem:"
-"<br>sort(a10, a1, a2) ⇒ a1, a10, a2<br>natsort(a10, a1, a2) ⇒ a1, a2, a10"
+"<p>natsort</p><p>Razvrsti izbrano besedilo ali celotni dokument v naraven "
+"vrstni red.<br>Tu je primer, ki prikazuje razliko med običajnim in naravnim "
+"razvrščanjem:<br>sort(a10, a1, a2) ⇒ a1, a10, a2<br>natsort(a10, a1, a2) ⇒ "
+"a1, a2, a10</p>"
 
 #: utils/kateglobal.cpp:59
 #, kde-format

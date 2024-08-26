@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-25 00:37+0000\n"
-"PO-Revision-Date: 2024-08-10 06:13+0200\n"
+"PO-Revision-Date: 2024-08-25 05:07+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -5450,49 +5450,42 @@ msgstr ""
 "ან \"pm\"-ით.</td></tr></table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
+#, kde-format
 msgid "Remove Duplicate Lines"
-msgstr "დუბლირებული ხაზების წაშლა"
+msgstr "გამეორებადი ხაზების წაშლა"
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr ""
-"დუბლირებული ჩანაწერების წაშლა და მონიშნული ტექსტის ანბანის მიხედვით დალაგება"
+msgstr "გამეორებადი ჩანაწერების წაშლა და ტექსტის ანბანის მიხედვით დალაგება"
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "მონიშნული ტექსტის ანბანის მიხედვით დალაგება"
+msgstr "მონიშნული ტექსტის ბუნებრივი დალაგება"
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "მონიშნული ტექსტის ანბანის მიხედვით დალაგება"
 
 #: utils/katecmds.cpp:693
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "მონიშნული ტექსტის ან მთლიანი დოკუმენტის დალაგება."
+msgstr ""
+"<p>sort</p><p>მონიშნული ტექსტის ან მთლიანი დოკუმენტის დალაგება, თუ მონიშნული "
+"არაფერია</p>"
 
 #: utils/katecmds.cpp:697
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
-msgstr "დუბლირებული ხაზების წაშლა მონიშნული ტექსტიდან ან მთლიანი დოკუმენტიდან."
+msgstr ""
+"<p>uniq</p><p>დუბლირებული ხაზების წაშლა მონიშნული ტექსტიდან ან მთლიანი "
+"დოკუმენტიდან, თუ მონიშნული არაფერია.</p>"
 
 #: utils/katecmds.cpp:701
 #, kde-format
@@ -5500,22 +5493,20 @@ msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
+"<p>sortuniq</p><p>მოცემული ტექსტის ან სრული დოკუმენტის დალაგება და "
+"გამეორებადი ხაზების წაშლა..</p>"
 
 #: utils/katecmds.cpp:705
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"მონიშნული ტექსტის ან მთელი დოკუმენტის ბუნებრივად დალაგება.<br>მაგალითი, "
-"როგორია დალაგება ნორმალურთან შედარებით:<br>sort(a10, a1, a2) => a1, a10, "
-"a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+"<p>natsort</p><p>მონიშნული ტექსტის ან მთელი დოკუმენტის ბუნებრივად დალაგება."
+"<br>მაგალითი, როგორია დალაგება ნორმალურთან შედარებით:<br>sort(a10, a1, a2) "
+"=> a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</p>"
 
 #: utils/kateglobal.cpp:59
 #, kde-format

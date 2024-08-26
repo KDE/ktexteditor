@@ -454,7 +454,6 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
 #, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
 msgid "Use Enter key to insert selected completion"
 msgstr "Rykk det merkte området tilbake."
 
@@ -1298,7 +1297,6 @@ msgstr "Lukkar fila og forkastar innhaldet."
 
 #: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
-#| msgid "&Save As..."
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "Lagra &som …"
@@ -1875,7 +1873,6 @@ msgstr "Skriveskrift:"
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
 #, fuzzy, kde-format
-#| msgid "Line length limit:"
 msgid "&Line Height Multiplier:"
 msgstr "Maksgrense for linjelengd:"
 
@@ -1908,7 +1905,6 @@ msgstr "Alltid"
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
 #, fuzzy, kde-format
-#| msgid "Show tab indicators:"
 msgid "Whitespace indicator si&ze:"
 msgstr "Vis tabulatorsymbol:"
 
@@ -1921,7 +1917,6 @@ msgstr "Storleik på den synlege fargeleggingsmarkøren."
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
 #, fuzzy, kde-format
-#| msgid "Show tab indicators:"
 msgid "Show &tab indicators:"
 msgstr "Vis tabulatorsymbol:"
 
@@ -2033,7 +2028,6 @@ msgstr "Vis linjeteljing"
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
 #, fuzzy, kde-format
-#| msgid "Fold first line"
 msgid "Fold first line:"
 msgstr "Fald saman første linje"
 
@@ -2090,7 +2084,6 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
 #, fuzzy, kde-format
-#| msgid "&Indentation width:"
 msgid "&Don't indent lines wider than:"
 msgstr "&Innrykksbreidd:"
 
@@ -2122,7 +2115,6 @@ msgstr "% av tekstruta"
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
 #, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
 msgid "Show i&ndentation lines:"
 msgstr "Vis &innrykkslinjer"
 
@@ -2518,8 +2510,6 @@ msgstr "Modus og filtypar"
 
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Søk …"
@@ -3177,8 +3167,6 @@ msgstr "Lag kopi av merkte linjer oppover"
 
 #: script/data/commands/utils.js:43
 #, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
 msgctxt "Script command name"
 msgid "Duplicate selected text"
 msgstr "Lag kopi av merkte linjer oppover"
@@ -3894,8 +3882,6 @@ msgstr "Stavekontroll stoppa."
 
 #: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
 msgstr "Stavekontroll vert utført …"
@@ -4112,7 +4098,6 @@ msgstr "I&gnorer alle"
 
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
 msgstr "Stavekontroll (frå skrivemerket) …"
@@ -4236,28 +4221,24 @@ msgstr "&Overstreking"
 
 #: syntax/katestyletreewidget.cpp:260
 #, fuzzy, kde-format
-#| msgid "Normal &Color..."
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
 msgstr "Farge &vanleg …"
 
 #: syntax/katestyletreewidget.cpp:263
 #, fuzzy, kde-format
-#| msgid "&Selected Color..."
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
 msgstr "Farge &merkt …"
 
 #: syntax/katestyletreewidget.cpp:266
 #, fuzzy, kde-format
-#| msgid "&Background Color..."
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
 msgstr "&Bakgrunnsfarge …"
 
 #: syntax/katestyletreewidget.cpp:269
 #, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
 msgstr "Ba&kgrunnsfarge merkt …"
@@ -4885,14 +4866,12 @@ msgstr "&Kopier …"
 
 #: syntax/katethemeconfig.cpp:1127
 #, fuzzy, kde-format
-#| msgid "Export..."
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "Eksporter …"
 
 #: syntax/katethemeconfig.cpp:1131
 #, fuzzy, kde-format
-#| msgid "Import..."
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "Importer …"
@@ -5424,35 +5403,26 @@ msgstr ""
 
 #: utils/katecmds.cpp:621
 #, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
 msgid "Remove Duplicate Lines"
 msgstr "Fjern duplikatlinjer"
 
 #: utils/katecmds.cpp:622
 #, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
 msgid "Remove Duplicates and Sort Text Alphabetically"
 msgstr "Sorter merkt tekst alfabetisk"
 
 #: utils/katecmds.cpp:623
 #, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
 msgid "Sort Text Naturally"
 msgstr "Sorter merkt tekst alfabetisk"
 
 #: utils/katecmds.cpp:624
 #, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Sorter merkt tekst alfabetisk"
 
 #: utils/katecmds.cpp:693
 #, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
@@ -5460,7 +5430,6 @@ msgstr "Sorter merkt tekst eller heile dokumentet."
 
 #: utils/katecmds.cpp:697
 #, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
@@ -5475,10 +5444,6 @@ msgstr ""
 
 #: utils/katecmds.cpp:705
 #, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
@@ -6511,8 +6476,6 @@ msgstr "Inntrykk/tabulator: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Others"
 msgctxt "@item:inmenu"
 msgid "Other…"
 msgstr "Anna"
@@ -6664,13 +6627,11 @@ msgstr ""
 
 #: view/kateview.cpp:524
 #, fuzzy, kde-format
-#| msgid "Indentation Properties"
 msgid "Convert Indentation to Spaces"
 msgstr "Innrykksreglar"
 
 #: view/kateview.cpp:531
 #, fuzzy, kde-format
-#| msgid "&Format Indentation"
 msgid "Convert Indentation to Tabs"
 msgstr "Formater med &innrykk"
 
@@ -6688,7 +6649,6 @@ msgstr ""
 
 #: view/kateview.cpp:551
 #, fuzzy, kde-format
-#| msgid "&Align On..."
 msgctxt "@action"
 msgid "&Align On…"
 msgstr "&Juster på …"
@@ -6913,7 +6873,6 @@ msgstr "Gå nedover til den sist endra linja."
 
 #: view/kateview.cpp:709
 #, fuzzy, kde-format
-#| msgid "&Configure Editor..."
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "&Set opp skriveprogram …"
@@ -7030,16 +6989,11 @@ msgstr ""
 
 #: view/kateview.cpp:787
 #, fuzzy, kde-format
-#| msgid "Non-whitespace"
 msgid "Show Whitespace"
 msgstr "Ikkje-blankteikn"
 
 #: view/kateview.cpp:790
 #, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
@@ -7055,10 +7009,6 @@ msgstr "&Dynamisk tekstbryting"
 
 #: view/kateview.cpp:798
 #, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
@@ -7319,7 +7269,6 @@ msgstr "Finn og merk alle søkjetreffa"
 
 #: view/kateview.cpp:941
 #, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr "Finn neste førekomst av merkt tekst."
 
@@ -7404,7 +7353,6 @@ msgstr "Slå på/av automatisk stavekontroll"
 
 #: view/kateview.cpp:991
 #, fuzzy, kde-format
-#| msgid "Change dictionary"
 msgctxt "@action"
 msgid "Change Dictionary…"
 msgstr "Byt ordliste"
@@ -7439,7 +7387,6 @@ msgstr "Kopier den merkte teksten som HTML til utklippstavla."
 
 #: view/kateview.cpp:1009
 #, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "Eksporter som &HTML …"
@@ -7483,7 +7430,6 @@ msgstr "Merk eitt ord til høgre"
 
 #: view/kateview.cpp:1086
 #, fuzzy, kde-format
-#| msgid "Paste Selection"
 msgid "Start the Marked Selection"
 msgstr "Lim inn utval"
 
@@ -7759,25 +7705,21 @@ msgstr "Fald ut/inn undernodar"
 
 #: view/kateview.cpp:1383
 #, fuzzy, kde-format
-#| msgid "Text selection of the current document."
 msgid "Say current selection or document"
 msgstr "Merkt tekst i det gjeldande dokumentet."
 
 #: view/kateview.cpp:1393
 #, fuzzy, kde-format
-#| msgid "Save the current document"
 msgid "Stop current output"
 msgstr "Lagra dokumentet"
 
 #: view/kateview.cpp:1399
 #, fuzzy, kde-format
-#| msgid "Save the current document"
 msgid "Pause current output"
 msgstr "Lagra dokumentet"
 
 #: view/kateview.cpp:1405
 #, fuzzy, kde-format
-#| msgid "Save the current document"
 msgid "Resume current output"
 msgstr "Lagra dokumentet"
 

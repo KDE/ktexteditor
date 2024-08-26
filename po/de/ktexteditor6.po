@@ -1,3 +1,4 @@
+# SPDX-FileCopyrightText: 2010, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # Thomas Diehl <thd@kde.org>, 2002, 2003, 2004.
 # Stefan Winter <swinter@kde.org>, 2002.
 # Stephan Johach <hunsum@gmx.de>, 2004, 2005, 2006, 2007.
@@ -5,7 +6,6 @@
 # Thomas Reitelbach <tr@erdfunkstelle.de>, 2005, 2006, 2007, 2008, 2009, 2010.
 # Burkhard Lück <lueck@hube-lueck.de>, 2006, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
 # Frederik Schwarzer <schwarzer@kde.org>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2022, 2023.
-# Johannes Obermayr <johannesobermayr@gmx.de>, 2010.
 # Panagiotis Papadopoulos <pano_90@gmx.net>, 2010.
 # Torbjörn Klatt <torbjoern.k@googlemail.com>, 2011.
 # Frank Steinmetzger <dev-kde@felsenfleischer.de>, 2022.
@@ -14,15 +14,15 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-25 00:37+0000\n"
-"PO-Revision-Date: 2023-08-14 21:56+0200\n"
-"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
+"PO-Revision-Date: 2024-08-21 22:37+0200\n"
+"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -146,10 +146,9 @@ msgstr "Rechtschreibung"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:152
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Suchtext"
+msgstr "Sprachausgabe"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:160
@@ -278,10 +277,9 @@ msgstr "Geänderte und ungespeicherte Zeilen hervorheben"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "Bildlaufleisten"
+msgstr "Bildlaufleisten:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -462,12 +460,10 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
 msgstr ""
-"Mit dieser Funktion entfernen Sie eine Einrückungsebene eines markierten "
-"Textblocks."
+"Die Eingabetaste zum Einfügen der ausgewählten Vervollständigung verwenden"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -692,7 +688,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "Zugangshilfen:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -1341,11 +1337,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Schließt die Datei und verwirfst den Inhalt."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&Speichern unter ..."
+msgstr "&Speichern unter …"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -1928,10 +1923,9 @@ msgstr "Editor-Schrift:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Line Height Multiplier:"
+#, kde-format
 msgid "&Line Height Multiplier:"
-msgstr "Zeilenhöhenmultiplikator:"
+msgstr "Zei&lenhöhenmultiplikator:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:58
@@ -1963,10 +1957,9 @@ msgstr "Immer"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, fuzzy, kde-format
-#| msgid "Whitespace indicator size:"
+#, kde-format
 msgid "Whitespace indicator si&ze:"
-msgstr "Größe der Leerraum-Hervorhebung:"
+msgstr "&Größe der Leerraum-Hervorhebung:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1976,8 +1969,7 @@ msgstr "Legt die Größe der Markierungen für die Hervorhebung fest."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Show tab indicators:"
+#, kde-format
 msgid "Show &tab indicators:"
 msgstr "Hervorhebung für Tabulatoren anzeigen:"
 
@@ -2093,10 +2085,9 @@ msgstr "Zeilenanzahl anzeigen"
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
-#, fuzzy, kde-format
-#| msgid "Fold first line"
+#, kde-format
 msgid "Fold first line:"
-msgstr "Erste Zeile ausblenden"
+msgstr "Erste Zeile ausblenden:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2147,17 +2138,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:391
-#, fuzzy, kde-format
-#| msgid "Indent wrapped lines:"
+#, kde-format
 msgid "I&ndent wrapped lines:"
-msgstr "Umbrochene Zeilen einrücken:"
+msgstr "Umbrochene Zeilen &einrücken:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
-#, fuzzy, kde-format
-#| msgid "Don't indent lines wider than:"
+#, kde-format
 msgid "&Don't indent lines wider than:"
-msgstr "Zeilen nicht einrücken, wenn länger als:"
+msgstr "Zeilen &nicht einrücken, wenn länger als:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:424
@@ -2188,10 +2177,9 @@ msgstr " % der Ansichtsbreite"
 
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show i&ndentation lines:"
-msgstr "E&inrückungslinien anzeigen"
+msgstr "E&inrückungslinien anzeigen:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:453
@@ -2583,12 +2571,10 @@ msgid "Modes && Filetypes"
 msgstr "Modi && Dateitypen"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "Suchen ..."
+msgstr "Suchen …"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3185,9 +3171,7 @@ msgid "Go to Next Paragraph"
 msgstr ""
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to Previous Edit Point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
 msgstr "Zum vorherigen Bearbeitungspunkt gehen"
@@ -3252,12 +3236,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Markierte Zeilen nach oben duplizieren"
 
 #: script/data/commands/utils.js:43
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Markierte Zeilen nach oben duplizieren"
+msgstr "Ausgewählten Text duplizieren"
 
 #: script/data/commands/utils.js:47
 #, kde-format
@@ -3994,12 +3976,10 @@ msgid "Spell check canceled."
 msgstr "Rechtschreibprüfung abgebrochen."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Rechtschreibprüfung wird durchgeführt ..."
+msgstr "Rechtschreibprüfung wird ausgeführt …"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4235,11 +4215,10 @@ msgid "I&gnore All"
 msgstr "A&lle ignorieren"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Rechtschreibprüfung (ab Cursor) ..."
+msgstr "Rechtschreibprüfung (ab Cursor) …"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4361,32 +4340,28 @@ msgid "S&trikeout"
 msgstr "Durch&gestrichen"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "Standard&farbe ..."
+msgstr "Standard&farbe …"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "&Auswahl-Farbe ..."
+msgstr "&Ausgewählte Farbe …"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "&Hintergrundfarbe ..."
+msgstr "&Hintergrundfarbe …"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "&Auswahl-Hintergrundfarbe ..."
+msgstr "&Ausgewählte Hintergrundfarbe …"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -5018,25 +4993,22 @@ msgid "&Theme:"
 msgstr "&Schema:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Kopieren"
+msgstr "&Kopieren …"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Exportieren ..."
+msgstr "Exportieren …"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Importieren ..."
+msgstr "Importieren …"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -6685,11 +6657,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Einrückung/Tabulator: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Sonstige"
+msgstr "Weitere …"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6771,7 +6742,7 @@ msgstr "Swap-Dateieinstellungen"
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Den aktuellen Dateinamen und die Zeilennummer kopieren"
 
 #: view/kateview.cpp:487
 #, kde-format
@@ -7613,11 +7584,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Automatische Rechtschreibprüfung aktivieren/deaktivieren"
 
 #: view/kateview.cpp:991
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Wörterbuch auswählen"
+msgstr "Wörterbuch auswählen …"
 
 #: view/kateview.cpp:992
 #, kde-format
@@ -7653,11 +7623,10 @@ msgstr ""
 "Zwischenablage kopiert."
 
 #: view/kateview.cpp:1009
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "Als &HTML exportieren ..."
+msgstr "Als &HTML exportieren …"
 
 #: view/kateview.cpp:1011
 #, kde-format
@@ -8132,11 +8101,10 @@ msgid "Copy"
 msgstr "Kopieren"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Hintergrundfarbe ..."
+msgstr "Hintergrundfarbe …"
 
 #: view/screenshotdialog.cpp:182
 #, kde-format
@@ -8174,12 +8142,12 @@ msgstr "Tatsächliche Zeilennummern anzeigen"
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "Speichern des Bildschirmfotos fehlgeschlagen"
 
 #: view/screenshotdialog.cpp:423
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "Das Speichern des Bildschirmfotos ist fehlgeschlagen: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format

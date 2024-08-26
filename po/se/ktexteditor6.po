@@ -142,7 +142,6 @@ msgstr "Čállindárkkisteapmi"
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:152
 #, fuzzy, kde-format
-#| msgid "Text to search for"
 msgid "Text to Speech"
 msgstr "Teaksta maid ohcat"
 
@@ -267,7 +266,6 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
 #, fuzzy, kde-format
-#| msgid "Show Scroll&bar Marks"
 msgid "Scrollbars:"
 msgstr "Čájet rullengiedde&mearkkaid"
 
@@ -442,7 +440,6 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
 #, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
 msgid "Use Enter key to insert selected completion"
 msgstr ""
 "Geavat dán doaimma váldit eret siskkildeami merkejuvvon teakstabihttás."
@@ -1953,7 +1950,6 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
 #, fuzzy, kde-format
-#| msgid "E&nd of line:"
 msgid "Fold first line:"
 msgstr "&Linnjámolsun:"
 
@@ -2006,7 +2002,6 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
 #, fuzzy, kde-format
-#| msgid "&Indentation width:"
 msgid "&Don't indent lines wider than:"
 msgstr "Siskkideami govdodat:"
 
@@ -2032,7 +2027,6 @@ msgstr "% čájeheami govdodagas"
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
 #, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
 msgid "Show i&ndentation lines:"
 msgstr "Čájet &siskkildanlinnjáid"
 
@@ -2394,7 +2388,6 @@ msgstr "Modusat ja fiilašlájat"
 
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
-#| msgid "Search mode"
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Ohcanmodus"
@@ -2968,7 +2961,6 @@ msgstr ""
 
 #: script/data/commands/navigation.js:13
 #, fuzzy, kde-format
-#| msgid "Move to Previous Line"
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
 msgstr "Mana ovddit linnjái"
@@ -3721,8 +3713,6 @@ msgstr "Čállindárkkisteapmi gaskkalduhttui."
 
 #: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
 msgstr "Čállindárkkisteapmi lea jođus …"
@@ -4065,28 +4055,24 @@ msgstr ""
 
 #: syntax/katestyletreewidget.cpp:260
 #, fuzzy, kde-format
-#| msgid "Normal &Color..."
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
 msgstr "Dábálaš &ivdni …"
 
 #: syntax/katestyletreewidget.cpp:263
 #, fuzzy, kde-format
-#| msgid "&Selected Color..."
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
 msgstr "&Merkejuvvon ivdni …"
 
 #: syntax/katestyletreewidget.cpp:266
 #, fuzzy, kde-format
-#| msgid "&Background Color..."
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
 msgstr "D&uogášivdni …"
 
 #: syntax/katestyletreewidget.cpp:269
 #, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
 msgstr "&Merkejuvvon duogášivdni …"
@@ -4699,14 +4685,12 @@ msgstr ""
 
 #: syntax/katethemeconfig.cpp:1127
 #, fuzzy, kde-format
-#| msgid "Export..."
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "Olggosfievrrit …"
 
 #: syntax/katethemeconfig.cpp:1131
 #, fuzzy, kde-format
-#| msgid "Import..."
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "Sisafievrrit …"
@@ -6204,8 +6188,6 @@ msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Others"
 msgctxt "@item:inmenu"
 msgid "Other…"
 msgstr "Earát"
@@ -6354,13 +6336,11 @@ msgstr ""
 
 #: view/kateview.cpp:524
 #, fuzzy, kde-format
-#| msgid "Indentation Properties"
 msgid "Convert Indentation to Spaces"
 msgstr "Siskkildaniešvuođat"
 
 #: view/kateview.cpp:531
 #, fuzzy, kde-format
-#| msgid "Indentation Actions"
 msgid "Convert Indentation to Tabs"
 msgstr "Siskkildandoaimmat"
 
@@ -6601,7 +6581,6 @@ msgstr ""
 
 #: view/kateview.cpp:709
 #, fuzzy, kde-format
-#| msgid "&Configure Editor..."
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "&Heivet čállinprográmma …"
@@ -6987,7 +6966,6 @@ msgstr ""
 
 #: view/kateview.cpp:941
 #, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr "Gávnna boahtte báikki gos merkejuvvon teaksta lea."
 
@@ -7071,7 +7049,6 @@ msgstr "Geavat dahje ale geavat automáhtalaš čállindárkkisteami"
 
 #: view/kateview.cpp:991
 #, fuzzy, kde-format
-#| msgid "Change Dictionary..."
 msgctxt "@action"
 msgid "Change Dictionary…"
 msgstr "Molsso sátnelisttu …"
@@ -7427,25 +7404,21 @@ msgstr ""
 
 #: view/kateview.cpp:1383
 #, fuzzy, kde-format
-#| msgid "Save the current document"
 msgid "Say current selection or document"
 msgstr "Vurke dokumeantta"
 
 #: view/kateview.cpp:1393
 #, fuzzy, kde-format
-#| msgid "Save the current document"
 msgid "Stop current output"
 msgstr "Vurke dokumeantta"
 
 #: view/kateview.cpp:1399
 #, fuzzy, kde-format
-#| msgid "Save the current document"
 msgid "Pause current output"
 msgstr "Vurke dokumeantta"
 
 #: view/kateview.cpp:1405
 #, fuzzy, kde-format
-#| msgid "Save the current document"
 msgid "Resume current output"
 msgstr "Vurke dokumeantta"
 
