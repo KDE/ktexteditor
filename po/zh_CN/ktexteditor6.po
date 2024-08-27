@@ -5255,35 +5255,26 @@ msgstr ""
 
 #: utils/katecmds.cpp:621
 #, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
 msgid "Remove Duplicate Lines"
 msgstr "删除重复行"
 
 #: utils/katecmds.cpp:622
 #, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgid "Remove Duplicates and Sort Text Alphabetically"
 msgstr "移除重复项并按字母顺序排序选定的文本"
 
 #: utils/katecmds.cpp:623
 #, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
 msgid "Sort Text Naturally"
 msgstr "按字母顺序排序选定的文本"
 
 #: utils/katecmds.cpp:624
 #, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
 msgid "Sort Selected Text Alphabetically"
 msgstr "按字母顺序排序选定的文本"
 
 #: utils/katecmds.cpp:693
 #, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
@@ -5291,7 +5282,6 @@ msgstr "排序选中的文本或整个文档。"
 
 #: utils/katecmds.cpp:697
 #, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
@@ -5306,10 +5296,6 @@ msgstr ""
 
 #: utils/katecmds.cpp:705
 #, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
