@@ -680,13 +680,13 @@ void KTextEditor::ViewPrivate::setupActions()
     a = ac->addAction(KStandardActions::SaveAs, m_doc, &KTextEditor::DocumentPrivate::documentSaveAs);
     a->setWhatsThis(i18n("Save the current document to disk, with a name of your choice."));
 
-    a = new KateViewEncodingAction(m_doc, this, i18nc("@action", "Save As with Encoding…"), this, true /* special mode for save as */);
+    a = new KateViewEncodingAction(m_doc, this, i18nc("@action", "Save As with Encodin&g…"), this, true /* special mode for save as */);
     a->setIcon(QIcon::fromTheme(QStringLiteral("document-save-as")));
     ac->addAction(QStringLiteral("file_save_as_with_encoding"), a);
 
     a = ac->addAction(QStringLiteral("file_save_copy_as"));
     a->setIcon(QIcon::fromTheme(QStringLiteral("document-save-as")));
-    a->setText(i18nc("@action", "Save &Copy As…"));
+    a->setText(i18nc("@action", "Save Cop&y As…"));
     a->setWhatsThis(i18n("Save a copy of the current document to disk."));
     connect(a, &QAction::triggered, m_doc, &KTextEditor::DocumentPrivate::documentSaveCopyAs);
 
