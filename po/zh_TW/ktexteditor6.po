@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:37+0000\n"
+"POT-Creation-Date: 2024-08-28 00:37+0000\n"
 "PO-Revision-Date: 2024-08-15 06:09+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -70,8 +70,9 @@ msgstr "檔案(&F)"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, kde-format
-msgid "Print/Export"
+#, fuzzy, kde-format
+#| msgid "Print/Export"
+msgid "&Print/Export"
 msgstr "列印/匯出"
 
 #. i18n: ectx: Menu (edit)
@@ -6682,15 +6683,19 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "儲存目前檔案到磁碟內，請指定檔案名稱。"
 
 #: view/kateview.cpp:683
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Save As with Encoding…"
 msgctxt "@action"
-msgid "Save As with Encoding…"
+msgid "Save As with Encodin&g…"
 msgstr "以編碼另存新檔…"
 
 #: view/kateview.cpp:689
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Save &Copy As…"
 msgctxt "@action"
-msgid "Save &Copy As…"
+msgid "Save Cop&y As…"
 msgstr "儲存副本為(&C)…"
 
 #: view/kateview.cpp:690

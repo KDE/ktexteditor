@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:37+0000\n"
+"POT-Creation-Date: 2024-08-28 00:37+0000\n"
 "PO-Revision-Date: 2015-05-31 21:21+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -73,7 +73,7 @@ msgstr "&Fil"
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
 #, kde-format
-msgid "Print/Export"
+msgid "&Print/Export"
 msgstr ""
 
 #. i18n: ectx: Menu (edit)
@@ -6762,13 +6762,13 @@ msgstr "Lagre gjeldende dokument på disk, med et navn du velger."
 #: view/kateview.cpp:683
 #, kde-format
 msgctxt "@action"
-msgid "Save As with Encoding…"
+msgid "Save As with Encodin&g…"
 msgstr ""
 
 #: view/kateview.cpp:689
 #, fuzzy, kde-format
 msgctxt "@action"
-msgid "Save &Copy As…"
+msgid "Save Cop&y As…"
 msgstr "Lagre &kopien som …"
 
 #: view/kateview.cpp:690

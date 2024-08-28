@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:37+0000\n"
+"POT-Creation-Date: 2024-08-28 00:37+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -60,8 +60,9 @@ msgstr "文件(&F)"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, kde-format
-msgid "Print/Export"
+#, fuzzy, kde-format
+#| msgid "Print/Export"
+msgid "&Print/Export"
 msgstr "打印/导出"
 
 #. i18n: ectx: Menu (edit)
@@ -5254,38 +5255,38 @@ msgstr ""
 "示时间。ap 将会被替换为“am” 或 “pm”。</td></tr></table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remove Duplicate Lines"
-msgstr "删除重复行"
+msgstr ""
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr "移除重复项并按字母顺序排序选定的文本"
+msgstr ""
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "按字母顺序排序选定的文本"
+msgstr ""
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
-msgstr "按字母顺序排序选定的文本"
+msgstr ""
 
 #: utils/katecmds.cpp:693
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "排序选中的文本或整个文档。"
+msgstr ""
 
 #: utils/katecmds.cpp:697
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
-msgstr "删除选中的文本或整个文档的重复行。"
+msgstr ""
 
 #: utils/katecmds.cpp:701
 #, kde-format
@@ -5295,15 +5296,13 @@ msgid ""
 msgstr ""
 
 #: utils/katecmds.cpp:705
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"对选中文本或整个文档按自然序排序。<br>这有一个例子展示它和普通排序的不同："
-"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -6662,15 +6661,19 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "用您指定的名字将当前文档保存到磁盘。"
 
 #: view/kateview.cpp:683
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Save As with Encoding…"
 msgctxt "@action"
-msgid "Save As with Encoding…"
+msgid "Save As with Encodin&g…"
 msgstr "另存为 (指定编码)…"
 
 #: view/kateview.cpp:689
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Save &Copy As…"
 msgctxt "@action"
-msgid "Save &Copy As…"
+msgid "Save Cop&y As…"
 msgstr "另存为副本(&C)…"
 
 #: view/kateview.cpp:690

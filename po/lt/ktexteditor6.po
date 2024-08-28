@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:37+0000\n"
+"POT-Creation-Date: 2024-08-28 00:37+0000\n"
 "PO-Revision-Date: 2017-07-30 15:55+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -66,7 +66,7 @@ msgstr "&Failas"
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
 #, kde-format
-msgid "Print/Export"
+msgid "&Print/Export"
 msgstr ""
 
 #. i18n: ectx: Menu (edit)
@@ -7071,14 +7071,14 @@ msgstr "Įrašyti esamą dokumentą diske, leidžiant pasirinkti vardą."
 #: view/kateview.cpp:683
 #, kde-format
 msgctxt "@action"
-msgid "Save As with Encoding…"
+msgid "Save As with Encodin&g…"
 msgstr ""
 
 #: view/kateview.cpp:689
 #, fuzzy, kde-format
 #| msgid "Save &Copy As..."
 msgctxt "@action"
-msgid "Save &Copy As…"
+msgid "Save Cop&y As…"
 msgstr "Išsaugoti &kopiją kaip..."
 
 #: view/kateview.cpp:690

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:37+0000\n"
+"POT-Creation-Date: 2024-08-28 00:37+0000\n"
 "PO-Revision-Date: 2005-01-04 11:33-0600\n"
 "Last-Translator: Deepayan Sarkar <deepayan@bengalinux.org>\n"
 "Language-Team: Bengali <kde-translation@bengalinux.org>\n"
@@ -59,7 +59,7 @@ msgstr "ফাই&ল টাইপ:"
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
 #, kde-format
-msgid "Print/Export"
+msgid "&Print/Export"
 msgstr ""
 
 #. i18n: ectx: Menu (edit)
@@ -6582,13 +6582,13 @@ msgstr "বর্তমান নথীটি ডিস্ক-এ পছন্�
 #: view/kateview.cpp:683
 #, kde-format
 msgctxt "@action"
-msgid "Save As with Encoding…"
+msgid "Save As with Encodin&g…"
 msgstr ""
 
 #: view/kateview.cpp:689
 #, fuzzy, kde-format
 msgctxt "@action"
-msgid "Save &Copy As…"
+msgid "Save Cop&y As…"
 msgstr "ফাইল সংরক্ষণ করো "
 
 #: view/kateview.cpp:690

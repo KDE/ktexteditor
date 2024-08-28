@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:37+0000\n"
+"POT-Creation-Date: 2024-08-28 00:37+0000\n"
 "PO-Revision-Date: 2022-05-03 13:57-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -72,7 +72,7 @@ msgstr "&Arquivo"
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
 #, kde-format
-msgid "Print/Export"
+msgid "&Print/Export"
 msgstr ""
 
 #. i18n: ectx: Menu (edit)
@@ -7088,14 +7088,14 @@ msgstr "Salvar o documento atual para o disco, com um nome da sua escolha."
 #, fuzzy, kde-format
 #| msgid "Save As with Encoding..."
 msgctxt "@action"
-msgid "Save As with Encoding…"
+msgid "Save As with Encodin&g…"
 msgstr "Salvar como com codificação..."
 
 #: view/kateview.cpp:689
 #, fuzzy, kde-format
 #| msgid "Save &Copy As..."
 msgctxt "@action"
-msgid "Save &Copy As…"
+msgid "Save Cop&y As…"
 msgstr "Salvar &cópia como..."
 
 #: view/kateview.cpp:690

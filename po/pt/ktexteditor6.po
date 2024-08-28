@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:37+0000\n"
+"POT-Creation-Date: 2024-08-28 00:37+0000\n"
 "PO-Revision-Date: 2023-01-13 01:21+0000\n"
 "Last-Translator: José Nuno Pires <zepires@gmail.com>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
@@ -120,7 +120,7 @@ msgstr "&Ficheiro"
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
 #, kde-format
-msgid "Print/Export"
+msgid "&Print/Export"
 msgstr ""
 
 #. i18n: ectx: Menu (edit)
@@ -7083,14 +7083,14 @@ msgstr "Grava o documento actual para o disco, com um nome à sua escolha."
 #, fuzzy, kde-format
 #| msgid "Save As with Encoding..."
 msgctxt "@action"
-msgid "Save As with Encoding…"
+msgid "Save As with Encodin&g…"
 msgstr "Gravar com Codificação..."
 
 #: view/kateview.cpp:689
 #, fuzzy, kde-format
 #| msgid "Save &Copy As..."
 msgctxt "@action"
-msgid "Save &Copy As…"
+msgid "Save Cop&y As…"
 msgstr "Gravar a &Cópia Como..."
 
 #: view/kateview.cpp:690

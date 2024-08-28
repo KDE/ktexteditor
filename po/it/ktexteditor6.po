@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:37+0000\n"
-"PO-Revision-Date: 2024-08-10 03:15+0200\n"
+"POT-Creation-Date: 2024-08-28 00:37+0000\n"
+"PO-Revision-Date: 2024-08-26 00:18+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -66,8 +66,9 @@ msgstr "&File"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, kde-format
-msgid "Print/Export"
+#, fuzzy, kde-format
+#| msgid "Print/Export"
+msgid "&Print/Export"
 msgstr "Stampa/Esporta"
 
 #. i18n: ectx: Menu (edit)
@@ -5522,49 +5523,42 @@ msgstr ""
 "tr></table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
+#, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "Rimuovi le righe duplicate"
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr ""
-"Rimuovi i duplicati e ordina il testo selezionato in ordine alfabetico."
+msgstr "Rimuovi i duplicati e ordina il testo in ordine alfabetico."
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "Ordina il testo selezionato in ordine alfabetico"
+msgstr "Ordina il testo in ordine naturale"
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "Ordina il testo selezionato in ordine alfabetico"
 
 #: utils/katecmds.cpp:693
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "Ordina il testo selezionato o tutto il documento."
+msgstr ""
+"<p>sort</p><p>Ordina il testo selezionato o l'intero documento se non c'è "
+"alcuna selezione</p>"
 
 #: utils/katecmds.cpp:697
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
-msgstr "Rimuovi le righe duplicate dal testo selezionato o tutto il documento."
+msgstr ""
+"<p>uniq</p><p>Rimuove le righe duplicate dal testo selezionato o dall'intero "
+"documento se non c'è alcuna selezione.</p>"
 
 #: utils/katecmds.cpp:701
 #, kde-format
@@ -5572,23 +5566,21 @@ msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
+"<p>sortuniq</p><p>Ordina il testo selezionato o l'intero documento e quindi "
+"rimuovi tutte le righe duplicate.</p>"
 
 #: utils/katecmds.cpp:705
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"Ordina il testo selezionato o tutto il documento nell'ordine naturale."
-"<br>Ecco un esempio per mostrare la differenza dal metodo di ordinamento "
-"normale:<br>ordina(a10, a1, a2) => a1, a10, a2<br>ordina_naturale(a10, a1, "
-"a2) => a1, a2, a10"
+"<p>natsort</p><p>Ordina il testo selezionato o l'intero documento in ordine "
+"naturale.<br>Ecco un esempio per mostrare la differenza rispetto al normale "
+"metodo di ordinamento:<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, "
+"a1, a2) => a1, a2, a10</p>"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -6994,15 +6986,19 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Salva su disco il documento attuale, con un nome a tua scelta."
 
 #: view/kateview.cpp:683
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Save As with Encoding…"
 msgctxt "@action"
-msgid "Save As with Encoding…"
+msgid "Save As with Encodin&g…"
 msgstr "Salva come con codifica..."
 
 #: view/kateview.cpp:689
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Save &Copy As…"
 msgctxt "@action"
-msgid "Save &Copy As…"
+msgid "Save Cop&y As…"
 msgstr "Salva &copia come…"
 
 #: view/kateview.cpp:690

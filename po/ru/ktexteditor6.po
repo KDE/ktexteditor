@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:37+0000\n"
+"POT-Creation-Date: 2024-08-28 00:37+0000\n"
 "PO-Revision-Date: 2024-06-26 09:51+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -77,8 +77,9 @@ msgstr "&Файл"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, kde-format
-msgid "Print/Export"
+#, fuzzy, kde-format
+#| msgid "Print/Export"
+msgid "&Print/Export"
 msgstr "Печать и экспорт"
 
 #. i18n: ectx: Menu (edit)
@@ -6957,15 +6958,19 @@ msgstr ""
 
 # BUGME: remove ellipsis because it this opens a submenu? --aspotashev
 #: view/kateview.cpp:683
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Save As with Encoding…"
 msgctxt "@action"
-msgid "Save As with Encoding…"
+msgid "Save As with Encodin&g…"
 msgstr "Сохранить в другой кодировке…"
 
 #: view/kateview.cpp:689
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Save &Copy As…"
 msgctxt "@action"
-msgid "Save &Copy As…"
+msgid "Save Cop&y As…"
 msgstr "Сохранить ко&пию как…"
 
 #: view/kateview.cpp:690

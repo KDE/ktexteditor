@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:37+0000\n"
+"POT-Creation-Date: 2024-08-28 00:37+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -61,7 +61,7 @@ msgstr "ھۆججەت(&F)"
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
 #, kde-format
-msgid "Print/Export"
+msgid "&Print/Export"
 msgstr ""
 
 #. i18n: ectx: Menu (edit)
@@ -6942,14 +6942,14 @@ msgstr "سىز تاللىغان ئاتتا نۆۋەتتىكى پۈتۈكنى د�
 #: view/kateview.cpp:683
 #, kde-format
 msgctxt "@action"
-msgid "Save As with Encoding…"
+msgid "Save As with Encodin&g…"
 msgstr ""
 
 #: view/kateview.cpp:689
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgctxt "@action"
-msgid "Save &Copy As…"
+msgid "Save Cop&y As…"
 msgstr "ھۆججەتنى باشقا ئاتتا ساقلا(&S)…"
 
 #: view/kateview.cpp:690

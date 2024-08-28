@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:37+0000\n"
+"POT-Creation-Date: 2024-08-28 00:37+0000\n"
 "PO-Revision-Date: 2024-08-25 07:49+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -75,8 +75,9 @@ msgstr "&קובץ"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, kde-format
-msgid "Print/Export"
+#, fuzzy, kde-format
+#| msgid "Print/Export"
+msgid "&Print/Export"
 msgstr "הדפסה/ייצוא"
 
 #. i18n: ectx: Menu (edit)
@@ -6793,15 +6794,19 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "שמירת המסמך הנוכחי לכונן, בשם הנבחר."
 
 #: view/kateview.cpp:683
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Save As with Encoding…"
 msgctxt "@action"
-msgid "Save As with Encoding…"
+msgid "Save As with Encodin&g…"
 msgstr "שמירה בשם עם קידוד…"
 
 #: view/kateview.cpp:689
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Save &Copy As…"
 msgctxt "@action"
-msgid "Save &Copy As…"
+msgid "Save Cop&y As…"
 msgstr "שמירת עותק &בשם…"
 
 #: view/kateview.cpp:690

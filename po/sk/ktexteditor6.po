@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:37+0000\n"
+"POT-Creation-Date: 2024-08-28 00:37+0000\n"
 "PO-Revision-Date: 2023-12-12 19:23+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -60,8 +60,9 @@ msgstr "&Súbor"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, kde-format
-msgid "Print/Export"
+#, fuzzy, kde-format
+#| msgid "Print/Export"
+msgid "&Print/Export"
 msgstr "Tlačiť/Exportovať"
 
 #. i18n: ectx: Menu (edit)
@@ -6913,14 +6914,14 @@ msgstr "Uložiť aktuálny dokument na disk, s menom podľa vášho výberu."
 #, fuzzy, kde-format
 #| msgid "Save As with Encoding..."
 msgctxt "@action"
-msgid "Save As with Encoding…"
+msgid "Save As with Encodin&g…"
 msgstr "Uložiť ako s kódovaním..."
 
 #: view/kateview.cpp:689
 #, fuzzy, kde-format
 #| msgid "Save &Copy As..."
 msgctxt "@action"
-msgid "Save &Copy As…"
+msgid "Save Cop&y As…"
 msgstr "Uložiť &kópiu ako..."
 
 #: view/kateview.cpp:690

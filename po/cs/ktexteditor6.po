@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:37+0000\n"
-"PO-Revision-Date: 2024-08-14 09:07+0200\n"
+"POT-Creation-Date: 2024-08-28 00:37+0000\n"
+"PO-Revision-Date: 2024-08-27 13:56+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -63,8 +63,9 @@ msgstr "&Soubor"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, kde-format
-msgid "Print/Export"
+#, fuzzy, kde-format
+#| msgid "Print/Export"
+msgid "&Print/Export"
 msgstr "Tisknout/Exportovat"
 
 #. i18n: ectx: Menu (edit)
@@ -5277,16 +5278,14 @@ msgid ""
 msgstr ""
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
+#, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "Odstranit duplicitní řádky"
 
 #: utils/katecmds.cpp:622
 #, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr ""
+msgstr "Odstranit duplikáty a seřadit podle abecedy"
 
 #: utils/katecmds.cpp:623
 #, kde-format
@@ -5299,20 +5298,18 @@ msgid "Sort Selected Text Alphabetically"
 msgstr ""
 
 #: utils/katecmds.cpp:693
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "Setřídit vybraný text nebo celý dokument."
+msgstr ""
 
 #: utils/katecmds.cpp:697
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
-msgstr "Odstranit duplicitní řádky z vybraného textu nebo celého dokumentu."
+msgstr ""
 
 #: utils/katecmds.cpp:701
 #, kde-format
@@ -5322,20 +5319,13 @@ msgid ""
 msgstr ""
 
 #: utils/katecmds.cpp:705
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"Seřadit vybraný text nebo celý dokument dle přirozené posloupnosti."
-"<br>Následující příklad ukazuje rozdíl oproti normální metodě řazení:"
-"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -6702,15 +6692,19 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Uložit současný dokument na disk a pojmenovat dle volby uživatele."
 
 #: view/kateview.cpp:683
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Save As with Encoding…"
 msgctxt "@action"
-msgid "Save As with Encoding…"
+msgid "Save As with Encodin&g…"
 msgstr "Uložit jako (s kódováním)…"
 
 #: view/kateview.cpp:689
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action"
+#| msgid "Save &Copy As…"
 msgctxt "@action"
-msgid "Save &Copy As…"
+msgid "Save Cop&y As…"
 msgstr "Uložit kop&ii jako…"
 
 #: view/kateview.cpp:690
