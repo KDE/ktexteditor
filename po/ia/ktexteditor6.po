@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-28 00:37+0000\n"
-"PO-Revision-Date: 2024-08-02 09:25+0200\n"
+"PO-Revision-Date: 2024-08-28 16:43+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -2172,10 +2172,9 @@ msgstr "% de largessa de vista"
 
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show i&ndentation lines:"
-msgstr "Monstra lineas de i&ndentation"
+msgstr "Monstra lineas de i&ndentation:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:453
@@ -7009,7 +7008,7 @@ msgstr "Salveguarda como con codifica..."
 #| msgid "Save &Copy As…"
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "Salveguarda &Copia como…"
+msgstr "Salveguarda copia como..."
 
 #: view/kateview.cpp:690
 #, kde-format

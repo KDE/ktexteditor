@@ -63,10 +63,9 @@ msgstr "&Soubor"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "Tisknout/Exportovat"
+msgstr ""
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -6692,20 +6691,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Uložit současný dokument na disk a pojmenovat dle volby uživatele."
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save As with Encoding…"
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "Uložit jako (s kódováním)…"
+msgstr ""
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save &Copy As…"
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "Uložit kop&ii jako…"
+msgstr ""
 
 #: view/kateview.cpp:690
 #, kde-format

@@ -60,10 +60,9 @@ msgstr "文件(&F)"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "打印/导出"
+msgstr ""
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -5257,22 +5256,22 @@ msgstr ""
 #: utils/katecmds.cpp:621
 #, kde-format
 msgid "Remove Duplicate Lines"
-msgstr ""
+msgstr "移除重复行"
 
 #: utils/katecmds.cpp:622
 #, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr ""
+msgstr "移除重复行并按字母顺序排序选定的文本"
 
 #: utils/katecmds.cpp:623
 #, kde-format
 msgid "Sort Text Naturally"
-msgstr ""
+msgstr "按语言习惯排序文本"
 
 #: utils/katecmds.cpp:624
 #, kde-format
 msgid "Sort Selected Text Alphabetically"
-msgstr ""
+msgstr "按字母顺序排序选定的文本"
 
 #: utils/katecmds.cpp:693
 #, kde-format
@@ -5280,6 +5279,8 @@ msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
 msgstr ""
+"<p>sort</p><p>对选中文本进行排序。如果没有选中内容，则对整个文档进行排序。</"
+"p>"
 
 #: utils/katecmds.cpp:697
 #, kde-format
@@ -5287,6 +5288,8 @@ msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
 msgstr ""
+"<p>uniq</p><p>移除选中文本的重复行，如果没有选中内容，则移除整个文档的重复"
+"行。</p>"
 
 #: utils/katecmds.cpp:701
 #, kde-format
@@ -5294,6 +5297,8 @@ msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
+"<p>sortuniq</p><p>先对选中文本进行排序。如果没有选中内容，则对整个文档进行排"
+"序。然后再移除重复行。</p>"
 
 #: utils/katecmds.cpp:705
 #, kde-format
@@ -5303,6 +5308,9 @@ msgid ""
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
+"<p>natsort</p><p>对选中的文本或者整个文档按照语言习惯进行排序。<br>此方式与一"
+"般方式的差别如下所示：<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, "
+"a1, a2) => a1, a2, a10</p>"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -6661,20 +6669,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "用您指定的名字将当前文档保存到磁盘。"
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save As with Encoding…"
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "另存为 (指定编码)…"
+msgstr ""
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save &Copy As…"
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "另存为副本(&C)…"
+msgstr ""
 
 #: view/kateview.cpp:690
 #, kde-format

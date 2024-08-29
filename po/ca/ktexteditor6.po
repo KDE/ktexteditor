@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-28 00:37+0000\n"
-"PO-Revision-Date: 2024-08-25 14:37+0200\n"
+"PO-Revision-Date: 2024-08-28 16:10+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -68,10 +68,9 @@ msgstr "&Fitxer"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "Impressió/Exportació"
+msgstr "Im&pressió/Exportació"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -6991,20 +6990,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Desa el document actual al disc, amb un nom de la vostra elecció."
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save As with Encoding…"
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "Desa amb la codificació…"
+msgstr "Desa com amb la codi&ficació…"
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save &Copy As…"
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "Desa una &còpia com a…"
+msgstr "Desa una còp&ia com a…"
 
 #: view/kateview.cpp:690
 #, kde-format

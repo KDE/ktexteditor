@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-28 00:37+0000\n"
-"PO-Revision-Date: 2024-08-25 05:07+0200\n"
+"PO-Revision-Date: 2024-08-28 04:04+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -61,10 +61,9 @@ msgstr "&ფაილი"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "დაბეჭდვა/გატანა"
+msgstr "და&ბეჭდვა/გატანა"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -6896,17 +6895,13 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "მიმდინარე დოკუმენტის დისკზე შენახვა, სახელის არჩევით."
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save As with Encoding…"
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "შენახვა როგორც, კოდირებით…"
+msgstr "შენახვა რო&გორც, კოდირებით…"
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save &Copy As…"
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
 msgstr "&ასლის შენახვა, როგორც…"
