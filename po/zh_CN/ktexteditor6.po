@@ -62,7 +62,7 @@ msgstr "文件(&F)"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "&Print/Export"
-msgstr ""
+msgstr "打印/导出(&P)"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -6672,13 +6672,13 @@ msgstr "用您指定的名字将当前文档保存到磁盘。"
 #, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr ""
+msgstr "另存为(指定编码)(&G)…"
 
 #: view/kateview.cpp:689
 #, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr ""
+msgstr "另存副本为(&Y)…"
 
 #: view/kateview.cpp:690
 #, kde-format
