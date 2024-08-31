@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-28 00:37+0000\n"
-"PO-Revision-Date: 2024-08-27 13:56+0200\n"
+"PO-Revision-Date: 2024-08-29 13:36+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -65,7 +65,7 @@ msgstr "&Soubor"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "&Print/Export"
-msgstr ""
+msgstr "&Tisknout/Exportovat"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -6694,13 +6694,13 @@ msgstr "Uložit současný dokument na disk a pojmenovat dle volby uživatele."
 #, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr ""
+msgstr "Uložit jako s &kódováním…"
 
 #: view/kateview.cpp:689
 #, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr ""
+msgstr "Uložit kop&ii jako…"
 
 #: view/kateview.cpp:690
 #, kde-format

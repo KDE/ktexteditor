@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-28 00:37+0000\n"
-"PO-Revision-Date: 2024-08-28 16:43+0200\n"
+"PO-Revision-Date: 2024-08-30 17:31+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -61,10 +61,9 @@ msgstr "&File"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "Imprime/Exporta"
+msgstr "Im&prime/Exporta"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -1908,10 +1907,9 @@ msgstr "Font de Editor:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Line Height Multiplier:"
+#, kde-format
 msgid "&Line Height Multiplier:"
-msgstr "Multiplicator de altessa  de linea:"
+msgstr "Multiplicator de altessa  de &Linea:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:58
@@ -1943,10 +1941,9 @@ msgstr "Sempre"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, fuzzy, kde-format
-#| msgid "Whitespace indicator size:"
+#, kde-format
 msgid "Whitespace indicator si&ze:"
-msgstr "Grandor de indicator de spatio blanc:"
+msgstr "G&randor de indicator de spatio blanc:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1956,10 +1953,9 @@ msgstr "Grandor del marcator evidentiate visibile"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Show tab indicators:"
+#, kde-format
 msgid "Show &tab indicators:"
-msgstr "Monstra indicatores de tab:"
+msgstr "Monstra indicatores de &tab:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:176
@@ -2076,10 +2072,9 @@ msgstr "Monstra computo de rango"
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
-#, fuzzy, kde-format
-#| msgid "Fold first line"
+#, kde-format
 msgid "Fold first line:"
-msgstr "Plica prime rango"
+msgstr "Plica prime rango:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2130,17 +2125,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:391
-#, fuzzy, kde-format
-#| msgid "Indent wrapped lines:"
+#, kde-format
 msgid "I&ndent wrapped lines:"
-msgstr "Indentation de lineas excisite:"
+msgstr "I&ndentation de lineas excisite:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
-#, fuzzy, kde-format
-#| msgid "Don't indent lines wider than:"
+#, kde-format
 msgid "&Don't indent lines wider than:"
-msgstr "Non indenta lineas plus large que:"
+msgstr "Non in&denta lineas plus large que:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:424
@@ -5524,73 +5517,64 @@ msgstr ""
 "table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
+#, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "Remove lineas duplicate"
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr "Remove duplicates e ordina texto seligite alphabeticamente"
+msgstr "Remove duplicates e ordina texto alphabeticamente"
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "Ordina alphabeticamente texto selectionate:"
+msgstr "Ordina  texto naturalmente"
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "Ordina alphabeticamente texto selectionate:"
 
 #: utils/katecmds.cpp:693
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document in natural order.<br>"
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "Ordina le texto seligite o le integre documento in ordine natural.<br>"
+msgstr ""
+"<p>sort</p><p>Ordina le texto seligite o le integre documento si il non ha "
+"selection</p>"
 
 #: utils/katecmds.cpp:697
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
 msgstr ""
-"Remove lineas duplicate ex le texto seligite o ex le integre documento."
+"<p>uniq</p><p>Remove lineas duplicate ex le texto seligite o ex le integre "
+"documento si il non ha selection.</p>"
 
 #: utils/katecmds.cpp:701
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document in natural order.<br>"
+#, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
-msgstr "Ordina le texto seligite o le integre documento in ordine natural.<br>"
+msgstr ""
+"<p>sortuniq</p><p>Ordina le texto seligite o le integre documento e post "
+"remove omne rangos duplicate.</p>"
 
 #: utils/katecmds.cpp:705
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"Ordine le texto seligite o le integre documento in ordine natural.<br>Ci il "
-"es un exemplo pro monstrar le differentia con le methodo normal de ordinar:"
-"<br>sort(a10,a1, a2) => a1,a10,a2<br> natsort(a10,a1,a2)=> a1,a2,a10"
+"<p>natsort</p><p>Ordina le texto seligite o le integre documento in ordine "
+"natural.<br>Ci il es un exemplo pro monstrar le differentia con le methodo "
+"normal de ordinar:<br>sort(a10,a1, a2) => a1,a10,a2<br> natsort(a10,a1,a2)=> "
+"a1,a2,a10</p>"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -6995,20 +6979,16 @@ msgstr ""
 "Salveguarda le documento currente al disco, con un nomine que tu selige."
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save As with Encoding…"
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "Salveguarda como con codifica..."
+msgstr "Salve&guarda como con codifica..."
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save &Copy As…"
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "Salveguarda copia como..."
+msgstr "Salveg&uarda copia como..."
 
 #: view/kateview.cpp:690
 #, kde-format
