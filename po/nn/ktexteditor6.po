@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-28 00:37+0000\n"
-"PO-Revision-Date: 2024-08-17 16:11+0200\n"
+"PO-Revision-Date: 2024-08-31 18:56+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -66,10 +66,9 @@ msgstr "&Fil"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "Skriv ut / eksporter"
+msgstr "Sk&riv ut / eksporter"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -4860,13 +4859,13 @@ msgid "&Theme:"
 msgstr "&Tema:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
 msgstr "&Kopier …"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "Eksporter …"
@@ -6827,17 +6826,13 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Lagra dokumentet på disken, med eit namn du vel."
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save As with Encoding…"
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
 msgstr "Lagra som (ny &teiknkoding) …"
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save &Copy As…"
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
 msgstr "Lagra &kopi som …"
@@ -7391,7 +7386,7 @@ msgid ""
 msgstr "Kopier den merkte teksten som HTML til utklippstavla."
 
 #: view/kateview.cpp:1009
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "Eksporter som &HTML …"

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-28 00:37+0000\n"
-"PO-Revision-Date: 2024-08-26 00:18+0200\n"
+"PO-Revision-Date: 2024-08-28 18:49+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -66,10 +66,9 @@ msgstr "&File"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "Stampa/Esporta"
+msgstr "Stam&pa/Esporta"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -6986,20 +6985,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Salva su disco il documento attuale, con un nome a tua scelta."
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save As with Encoding…"
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "Salva come con codifica..."
+msgstr "Salva come con co&difica..."
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save &Copy As…"
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "Salva &copia come…"
+msgstr "Sal&va copia come…"
 
 #: view/kateview.cpp:690
 #, kde-format
