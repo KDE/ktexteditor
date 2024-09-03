@@ -1493,7 +1493,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     FinishTest("foo");
 
     const int commandResponseMessageTimeOutMSOverride = QString::fromLatin1(qgetenv("KATE_VIMODE_TEST_COMMANDRESPONSEMESSAGETIMEOUTMS")).toInt();
-    const long commandResponseMessageTimeOutMS = (commandResponseMessageTimeOutMSOverride > 0) ? commandResponseMessageTimeOutMSOverride : 2000;
+    const long commandResponseMessageTimeOutMS = (commandResponseMessageTimeOutMSOverride > 0) ? commandResponseMessageTimeOutMSOverride : 10;
     {
         // If there is any output from the command, show it in a label for a short amount of time
         // (make sure the bar type indicator is hidden, here, as it looks messy).
