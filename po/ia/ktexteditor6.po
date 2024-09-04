@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-28 00:37+0000\n"
-"PO-Revision-Date: 2024-08-30 17:31+0200\n"
+"PO-Revision-Date: 2024-09-03 14:34+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -5371,7 +5371,7 @@ msgstr ""
 "<p>set-highlight <b>highlight</b></p><p>Fixa lesystema de evidentiation de "
 "synthaxepro le documento. The argumento debe esser un valide nomine de "
 "evidentiar, como il es vidite in le menu Instrumentos → Evidentiar menu. "
-"Iste commando furni un lista deautocompletion pro su argumentos.</p>"
+"Iste commando forni un lista de autocompletion pro su argumentos.</p>"
 
 #: utils/katecmds.cpp:188
 #, kde-format
