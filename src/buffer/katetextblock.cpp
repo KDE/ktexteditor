@@ -37,7 +37,7 @@ int TextBlock::startLine() const
 TextLine TextBlock::line(int line) const
 {
     // right input
-    Q_ASSERT(line < m_lines.size());
+    Q_ASSERT(size_t(line) < m_lines.size());
     // get text line, at will bail out on out-of-range
     return m_lines.at(line);
 }
@@ -45,7 +45,7 @@ TextLine TextBlock::line(int line) const
 void TextBlock::setLineMetaData(int line, const TextLine &textLine)
 {
     // right input
-    Q_ASSERT(line < m_lines.size());
+    Q_ASSERT(size_t(line) < m_lines.size());
 
     // set stuff, at will bail out on out-of-range
     const QString originalText = m_lines.at(line).text();
