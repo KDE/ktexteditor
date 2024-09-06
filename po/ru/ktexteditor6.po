@@ -14,19 +14,20 @@
 # Julia Dronova <juliette.tux@gmail.com>, 2013.
 # Мария Шикунова <translation-team@basealt.ru>, 2022, 2023.
 # Alexander Yavorsky <kekcuha@gmail.com>, 2023, 2024.
+# SPDX-FileCopyrightText: 2024 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-28 00:37+0000\n"
-"PO-Revision-Date: 2024-06-26 09:51+0300\n"
-"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
-"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"PO-Revision-Date: 2024-09-05 17:31+0300\n"
+"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
+"Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.08.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -77,10 +78,9 @@ msgstr "&Файл"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "Печать и экспорт"
+msgstr "&Печать и экспорт"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -184,7 +184,7 @@ msgstr "Сворачивание блоков кода:"
 #, kde-format
 msgid ""
 "If this option is checked, every new view will display marks for folding."
-msgstr "Этот флажок включает полосу сворачивания блоков для всех новых окон."
+msgstr "Для всех новых окон будет показана полоса сворачивания блоков."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:35
@@ -240,7 +240,7 @@ msgid ""
 "the left hand side.</p><p>The icon border shows bookmark signs, for instance."
 "</p>"
 msgstr ""
-"<p>Этот флажок включает полосу отметок для всех новых окон.</p><p>В этой "
+"<p>Для всех новых окон слева будет показана полоса отметок.</p><p>В этой "
 "полосе показываются закладки.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIconBorder)
@@ -257,7 +257,7 @@ msgstr "Показывать метки"
 msgid ""
 "If this option is checked, every new view will display line numbers on the "
 "left hand side."
-msgstr "Этот флажок включает отображение номеров строк для всех новых окон."
+msgstr "Для всех новых окон слева будут показаны номера строк."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:112
@@ -272,8 +272,7 @@ msgid ""
 "If this option is checked, a small indicator for modified and saved lines is "
 "shown on the left hand side."
 msgstr ""
-"Если отмечен этот пункт, слева от изменённых и сохранённых строк "
-"показываются метки изменений."
+"Слева от изменённых и сохранённых строк будут показаны метки изменений."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
 #: dialogs/bordersappearanceconfigwidget.ui:122
@@ -294,8 +293,8 @@ msgid ""
 "<p>If this option is checked, every new view will show marks on the vertical "
 "scrollbar.</p><p>These marks will show bookmarks, for instance.</p>"
 msgstr ""
-"<p>При включении этого флажка на вертикальной полосе прокрутки будут "
-"показаны различные отметки.</p><p>Например, это могут быть закладки.</p>"
+"<p>На вертикальной полосе прокрутки будут показаны различные отметки.</"
+"p><p>Например, это могут быть закладки.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:162
@@ -304,8 +303,8 @@ msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
 msgstr ""
-"При наведении указателя мыши на вертикальную полосу прокрутки\n"
-"во всплывающем окне будет показан соответствующий участок текста."
+"<p>При наведении указателя мыши на вертикальную полосу прокруткиво "
+"всплывающем окне будет показан соответствующий участок текста.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:165
@@ -352,8 +351,8 @@ msgid ""
 "If this option is checked, every new view will show a mini map on the "
 "vertical scrollbar."
 msgstr ""
-"Этот флажок включает мини-карту в вертикальной полосе прокрутки для всех "
-"новых окон."
+"Для всех новых окон в вертикальной полосе прокрутки будет показана мини-"
+"карта."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:227
@@ -374,8 +373,8 @@ msgid ""
 "If this option is checked, every new view will show a mini map of the whole "
 "document on the vertical scrollbar."
 msgstr ""
-"Этот флажок включает мини-карту всего документа в вертикальной полосе "
-"прокрутки для всех новых окон."
+"Для всех новых окон в вертикальной полосе прокрутки будет показана мини-"
+"карта всего документа."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:266
@@ -576,8 +575,8 @@ msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"<p>В колонке переноса строк будет показываться вертикальная линия, согласно "
-"параметру в разделе <strong>Редактирование</strong>.</p>"
+"<p>В колонке переноса строк будет показана вертикальная линия (согласно "
+"параметру в разделе <strong>Редактирование</strong>).</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
@@ -6966,9 +6965,7 @@ msgid "Save As with Encodin&g…"
 msgstr "Сохранить в другой кодировке…"
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save &Copy As…"
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
 msgstr "Сохранить ко&пию как…"
@@ -7126,18 +7123,13 @@ msgid "Show Whitespace"
 msgstr "Пробельные символы"
 
 #: view/kateview.cpp:790
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"При включении этого параметра строки будут переносится по размеру окна. <br /"
-"><br />Данный параметр изменяет только способ отображения документа, а не "
-"изменяет его содержимое."
+"Показ пробелов в документе.<br /><br />Данный параметр изменяет только "
+"способ отображения документа, но не его содержимое."
 
 #: view/kateview.cpp:794
 #, kde-format
@@ -7145,19 +7137,14 @@ msgid "&Dynamic Word Wrap"
 msgstr "&Динамический перенос строк"
 
 #: view/kateview.cpp:798
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
 "will not be changed."
 msgstr ""
-"При включении этого параметра строки будут переносится по размеру окна. <br /"
-"><br />Данный параметр изменяет только способ отображения документа, а не "
-"изменяет его содержимое."
+"Перенос строк по размеру окна. <br /><br />Данный параметр изменяет только "
+"способ отображения документа, но не его содержимое."
 
 #: view/kateview.cpp:802
 #, kde-format
@@ -7194,9 +7181,7 @@ msgstr "Статический перенос строк"
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
 "defined in the editing properties."
-msgstr ""
-"При включении этого параметра строки будут переносится по достижению длины, "
-"заданной в параметрах."
+msgstr "Перенос строк по достижению длины, заданной в параметрах."
 
 #: view/kateview.cpp:819
 #, kde-format
