@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-28 00:37+0000\n"
-"PO-Revision-Date: 2024-08-29 08:35+0200\n"
+"PO-Revision-Date: 2024-09-06 20:29+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -6184,7 +6184,7 @@ msgstr "Roland Pabel"
 #: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Highlighting for Scheme"
-msgstr "Coloration syntaxique pour Scheme"
+msgstr "Coloration syntaxique pour thème"
 
 #: utils/kateglobal.cpp:133
 #, kde-format
@@ -8317,7 +8317,7 @@ msgid ""
 "<code><b>help list</b></code><br />For help for individual commands, enter "
 "<code><b>help &lt;command&gt;</b></code></p>"
 msgstr ""
-"<p>Il s'agit de la <b>ligne de commandes</b> Katepart.<br />Syntaxe : "
+"<p>Il s'agit de la <b>ligne de commandes</b> KatePart.<br />Syntaxe : "
 "<code><b>commande [ arguments ]</b></code><br />Pour afficher une liste des "
 "commandes disponibles, veuillez saisir <code><b>help list</b></code><br /"
 ">Pour obtenir de l'aide sur les commandes individuellement, veuillez saisir "
