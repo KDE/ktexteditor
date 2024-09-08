@@ -1,6 +1,7 @@
 # KDE Config File
 [General]
 Name=C++ Plugin (KF6)
+Name[ar]=ملحقة سي++ (KF6)
 Name[bg]=C++ приставка (KF6)
 Name[ca]=Connector C++ (KF6)
 Name[ca@valencia]=Connector C++ (KF6)
