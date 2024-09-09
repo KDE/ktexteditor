@@ -330,13 +330,14 @@ KateDocumentConfig::KateDocumentConfig()
     addConfigEntry(ConfigEntry(SmartHome, "Smart Home", QString(), true));
     addConfigEntry(ConfigEntry(ShowTabs, "Show Tabs", QString(), true));
     addConfigEntry(ConfigEntry(IndentOnTab, "Indent On Tab", QString(), true));
-    addConfigEntry(ConfigEntry(KeepExtraSpaces, "Keep Extra Spaces", QString(), false));
+    addConfigEntry(ConfigEntry(KeepExtraSpaces, "Keep Extra Spaces", QStringLiteral("keep-extra-spaces"), false));
     addConfigEntry(ConfigEntry(BackspaceIndents, "Indent On Backspace", QString(), true));
     addConfigEntry(ConfigEntry(ShowSpacesMode, "Show Spaces", QString(), KateDocumentConfig::None));
     addConfigEntry(ConfigEntry(TrailingMarkerSize, "Trailing Marker Size", QString(), 1));
-    addConfigEntry(ConfigEntry(RemoveSpacesMode, "Remove Spaces", QString(), 1 /* on modified lines per default */, [](const QVariant &value) {
-        return inBounds(0, value, 2);
-    }));
+    addConfigEntry(
+        ConfigEntry(RemoveSpacesMode, "Remove Spaces", QStringLiteral("remove-spaces"), 1 /* on modified lines per default */, [](const QVariant &value) {
+            return inBounds(0, value, 2);
+        }));
     addConfigEntry(ConfigEntry(NewlineAtEOF, "Newline at End of File", QString(), true));
     addConfigEntry(ConfigEntry(OverwriteMode, "Overwrite Mode", QString(), false));
     addConfigEntry(
