@@ -2710,18 +2710,29 @@ void KateViewInternal::mergeSelections()
             auto curRange = it->range ? it->range->toRange() : Range::invalid();
             if (curRange.isValid() && primarySel.overlaps(curRange)) {
                 primarySel.expandToRange(curRange);
-                bool isLeft = it->cursor() < it->anchor;
+                const bool isLeftSel = it->cursor() < it->anchor;
+                const bool isPrimaryLeftSel = primCursor < m_selectAnchor;
+                const bool sameDirection = isLeftSel == isPrimaryLeftSel;
 
-                if (isLeft) {
-                    if (it->cursor() < primCursor) {
-                        updateCursor(it->cursor());
+                if (sameDirection) {
+                    if (isLeftSel) {
+                        if (it->cursor() < primCursor) {
+                            updateCursor(it->cursor());
+                        }
+                        m_selectAnchor = qMax(m_selectAnchor, it->anchor);
+                    } else {
+                        if (it->cursor() > primCursor) {
+                            updateCursor(it->cursor());
+                        }
+                        m_selectAnchor = qMin(m_selectAnchor, it->anchor);
                     }
-                    m_selectAnchor = qMax(m_selectAnchor, it->anchor);
                 } else {
-                    if (it->cursor() > primCursor) {
-                        updateCursor(it->cursor());
+                    updateCursor(it->anchor);
+                    if (isPrimaryLeftSel) {
+                        m_selectAnchor = qMax(m_selectAnchor, it->anchor);
+                    } else {
+                        m_selectAnchor = qMin(m_selectAnchor, it->anchor);
                     }
-                    m_selectAnchor = qMin(m_selectAnchor, it->anchor);
                 }
 
                 setSelection(primarySel);
