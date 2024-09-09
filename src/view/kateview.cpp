@@ -3212,8 +3212,7 @@ void KTextEditor::ViewPrivate::setSecondaryCursors(const QList<KTextEditor::Curs
 void KTextEditor::ViewPrivate::clearSecondarySelections()
 {
     for (auto &c : m_secondaryCursors) {
-        c.range.reset();
-        c.anchor = KTextEditor::Cursor::invalid();
+        c.clearSelection();
     }
 }
 
@@ -3339,10 +3338,11 @@ void KTextEditor::ViewPrivate::ensureUniqueCursors(bool matchLine)
                                  m_secondaryCursors.end());
     } else {
         const auto cp = cursorPosition();
+        const auto sel = selectionRange();
         m_secondaryCursors.erase(std::remove_if(m_secondaryCursors.begin(),
                                                 m_secondaryCursors.end(),
-                                                [cp](const SecondaryCursor &c) {
-                                                    return c.cursor() == cp;
+                                                [cp, sel](const SecondaryCursor &c) {
+                                                    return c.cursor() == cp && c.selectionRange() == sel;
                                                 }),
                                  m_secondaryCursors.end());
     }

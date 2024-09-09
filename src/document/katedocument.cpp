@@ -3220,20 +3220,39 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
         // should only respond to main cursor text changes
         view->completionWidget()->setIgnoreBufferSignals(true);
         const auto &sc = view->secondaryCursors();
+        KTextEditor::Cursor lastInsertionCursor = KTextEditor::Cursor::invalid();
         const bool hasClosingBracket = !closingBracket.isNull();
         const QString closingChar = closingBracket;
-        for (const auto &c : sc) {
-            insertText(c.cursor(), chars);
-            const auto pos = c.cursor();
+
+        std::vector<std::pair<Kate::TextCursor *, KTextEditor::Cursor>> freezedCursors;
+        for (auto it = sc.begin(); it != sc.end(); ++it) {
+            auto pos = it->cursor();
+            if (it != sc.begin() && pos == std::prev(it)->cursor()) {
+                freezedCursors.push_back({std::prev(it)->pos.get(), std::prev(it)->cursor()});
+            }
+
+            lastInsertionCursor = pos;
+            insertText(pos, chars);
+            pos = it->cursor();
+
+            if (it->cursor() == view->cursorPosition()) {
+                freezedCursors.push_back({it->pos.get(), it->cursor()});
+            }
+
             const auto nextChar = view->document()->text({pos, pos + Cursor{0, 1}}).trimmed();
             if (hasClosingBracket && !skipAutoBrace(closingBracket, pos) && (nextChar.isEmpty() || !nextChar.at(0).isLetterOrNumber())) {
-                insertText(c.cursor(), closingChar);
-                c.pos->setPosition(pos);
+                insertText(it->cursor(), closingChar);
+                it->pos->setPosition(pos);
             }
         }
+
         view->completionWidget()->setIgnoreBufferSignals(false);
         // then our normal cursor
         insertText(view->cursorPosition(), chars);
+
+        for (auto &freezed : freezedCursors) {
+            freezed.first->setPosition(freezed.second);
+        }
     }
 
     // auto bracket handling for newly inserted text

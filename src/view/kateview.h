@@ -228,7 +228,12 @@ public:
 
         friend bool operator==(const SecondaryCursor &l, const SecondaryCursor &r)
         {
-            return l.cursor() == r.cursor();
+            return l.cursor() == r.cursor() && l.selectionRange() == r.selectionRange();
+        }
+
+        KTextEditor::Range selectionRange() const
+        {
+            return range ? range->toRange() : KTextEditor::Range::invalid();
         }
 
         void clearSelection()

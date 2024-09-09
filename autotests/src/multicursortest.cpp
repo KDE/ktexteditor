@@ -333,6 +333,35 @@ void MulticursorTest::insertAutoBrackets()
     QCOMPARE(doc->text(), QStringLiteral("(hello\n(hello"));
 }
 
+void MulticursorTest::testInsertionWithCursorsAtSamePosition()
+{
+    auto [doc, view] = createDocAndView(QStringLiteral("one two thr fou"), 0, 0);
+    view->addSecondaryCursorsWithSelection({
+        // two cursors, same position different selections
+        KTextEditor::ViewPrivate::PlainSecondaryCursor{.pos = {0, 3}, .range = {0, 0, 0, 3}},
+        KTextEditor::ViewPrivate::PlainSecondaryCursor{.pos = {0, 3}, .range = {0, 3, 0, 6}},
+        // this one is at the same position as primary cursor
+        KTextEditor::ViewPrivate::PlainSecondaryCursor{.pos = {0, 11}, .range = {0, 8, 0, 11}},
+    });
+
+    view->setCursorPosition({0, 11});
+    view->setSelection({0, 11, 0, 13});
+    // uniquify
+    view->ensureUniqueCursors();
+    view->show();
+
+    // ensure nothing got removed, because all cursors have unique selections
+    QCOMPARE(view->secondaryCursors().size(), 3);
+    QCOMPARE(view->cursorPosition(), Cursor(0, 11));
+    QCOMPARE(view->selectionRange(), Range(0, 11, 0, 13));
+    doc->typeChars(view, QStringLiteral("a"));
+
+    QVERIFY(view->selectionRanges().empty());
+    const auto expectedCursors = QVector<KTextEditor::Cursor>{{0, 6}, {0, 1}, {0, 2}, {0, 5}};
+    QCOMPARE(view->cursorPosition(), Cursor(0, 6));
+    QCOMPARE(view->cursorPositions(), expectedCursors);
+}
+
 void MulticursorTest::testCreateMultiCursor()
 {
     auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\n"), 0, 0);

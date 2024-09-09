@@ -947,9 +947,17 @@ void KateRenderer::paintTextLine(QPainter &paint,
             auto mIt = std::lower_bound(secCursors.begin(), secCursors.end(), range->line(), [](const KTextEditor::ViewPrivate::SecondaryCursor &l, int line) {
                 return l.pos->line() < line;
             });
+            bool skipPrimary = false;
             if (mIt != secCursors.end() && mIt->cursor().line() == range->line()) {
+                KTextEditor::Cursor last = KTextEditor::Cursor::invalid();
+                auto primaryCursor = *cursor;
                 for (; mIt != secCursors.end(); ++mIt) {
                     auto cursor = mIt->cursor();
+                    skipPrimary = skipPrimary || cursor == primaryCursor;
+                    if (cursor == last) {
+                        continue;
+                    }
+                    last = cursor;
                     if (cursor.line() == range->line()) {
                         paintCaret(cursor, range, paint, xStart, xEnd);
                     } else {
@@ -957,7 +965,9 @@ void KateRenderer::paintTextLine(QPainter &paint,
                     }
                 }
             }
-            paintCaret(*cursor, range, paint, xStart, xEnd);
+            if (!skipPrimary) {
+                paintCaret(*cursor, range, paint, xStart, xEnd);
+            }
         }
     }
 
