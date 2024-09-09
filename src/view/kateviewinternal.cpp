@@ -2727,6 +2727,9 @@ void KateViewInternal::mergeSelections()
                 setSelection(primarySel);
                 it->pos.reset();
                 it->range.reset();
+            } else if (it->pos && !curRange.isValid() && primarySel.boundaryAtCursor(it->cursor())) {
+                // the cursor doesn't have selection and it is on the boundary of primary selection
+                it->pos.reset();
             } else if (it->pos) {
                 // This only needs to be done for primary selection
                 // because remember, mouse selection is always with
