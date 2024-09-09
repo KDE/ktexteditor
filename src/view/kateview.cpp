@@ -3240,9 +3240,9 @@ QList<KTextEditor::ViewPrivate::PlainSecondaryCursor> KTextEditor::ViewPrivate::
     cursors.reserve(m_secondaryCursors.size());
     std::transform(m_secondaryCursors.begin(), m_secondaryCursors.end(), std::back_inserter(cursors), [](const SecondaryCursor &c) {
         if (c.range) {
-            return PlainSecondaryCursor{.pos=c.cursor(), .range=c.range->toRange()};
+            return PlainSecondaryCursor{.pos = c.cursor(), .range = c.range->toRange()};
         }
-        return PlainSecondaryCursor{.pos=c.cursor(), .range=KTextEditor::Range::invalid()};
+        return PlainSecondaryCursor{.pos = c.cursor(), .range = KTextEditor::Range::invalid()};
     });
     return cursors;
 }

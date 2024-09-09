@@ -82,7 +82,7 @@ public:
                 icon = QIcon::fromTheme(QStringLiteral("text-plain"));
             }
 
-            temp.append({.text=entry.text, .fileName=entry.fileName, .icon=icon, .dateSort=i});
+            temp.append({.text = entry.text, .fileName = entry.fileName, .icon = icon, .dateSort = i});
         }
 
         beginResetModel();
