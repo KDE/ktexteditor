@@ -154,6 +154,20 @@ void KateViewTest::testLowerCaseBlockSelection()
     QCOMPARE(doc.text(), QStringLiteral("ny\nnyy\n"));
 }
 
+void KateViewTest::testIndentBlockSelection()
+{
+    KTextEditor::DocumentPrivate doc;
+    doc.setText(QStringLiteral("nY\nnYY\n"));
+
+    KTextEditor::ViewPrivate *view1 = new KTextEditor::ViewPrivate(&doc, nullptr);
+    view1->setSelection(Range(0, 0, 2, 0));
+    view1->setBlockSelection(true);
+    view1->indent();
+    QCOMPARE(doc.text(), QStringLiteral("    nY\n    nYY\n    "));
+    view1->unIndent();
+    QCOMPARE(doc.text(), QStringLiteral("nY\nnYY\n"));
+}
+
 namespace
 {
 QWidget *findViewInternal(KTextEditor::View *view)

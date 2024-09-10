@@ -35,6 +35,7 @@ private Q_SLOTS:
     void testGotoMatchingBracket();
     void testFindSelected();
     void testTransposeWord();
+    void testIndentBlockSelection();
 
     void testFindMatchingFoldingMarker();
     void testUpdateFoldingMarkersHighlighting();
