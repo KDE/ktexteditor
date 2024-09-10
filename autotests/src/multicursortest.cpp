@@ -994,6 +994,20 @@ void MulticursorTest::testSetGetSelections()
     }
 }
 
+void MulticursorTest::testIndent()
+{
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\nfoo"), 0, 0);
+    view->addSecondaryCursor({1, 0});
+    // set one cursor with selection
+    KTextEditor::ViewPrivate::PlainSecondaryCursor c;
+    c.pos = {2, 0};
+    c.range = {{2, 0}, {2, 2}};
+    view->addSecondaryCursorsWithSelection({c});
+    view->indent();
+    auto [expectedDoc, expectedView] = createDocAndView(QStringLiteral("    foo\n    bar\n    foo\nfoo"), 0, 0);
+    QCOMPARE(doc->text(), expectedDoc->text());
+}
+
 #include "moc_multicursortest.cpp"
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

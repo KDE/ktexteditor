@@ -37,6 +37,7 @@ private Q_SLOTS:
     static void wrapSelectionWithCharsTest();
     static void insertAutoBrackets();
     static void testInsertionWithCursorsAtSamePosition();
+    static void testIndent();
 
     // Movement
     static void moveCharTest();
