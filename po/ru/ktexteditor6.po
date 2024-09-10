@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-28 00:37+0000\n"
-"PO-Revision-Date: 2024-09-05 17:31+0300\n"
+"PO-Revision-Date: 2024-09-09 08:55+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -461,14 +461,15 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"При нажатии клавиши «Ввод» в редактор будет вставлен текст выбранного "
+"варианта дополнения. Если отключено, дополнение можно выполнить по нажатию "
+"клавиши Tab или по двойному щелчку."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr ""
-"Сдвигает строки выделенного фрагмента текста влево на один шаг отступа."
+msgstr "Использовать клавишу «Ввод» для вставки выбранного варианта дополнения"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -535,7 +536,7 @@ msgid ""
 "shown by pressing Alt key."
 msgstr ""
 "Показать документацию рядом с полем автодополнения. Если отключено, "
-"документацию возможно отобразить нажатием клвиши Alt."
+"документацию возможно отобразить нажатием клавиши Alt."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
@@ -686,7 +687,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "Включить уведомления о специальных возможностях"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
@@ -1433,7 +1434,7 @@ msgstr ""
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
 msgid "Enable camel case cursor movement"
-msgstr "Включать перемещение курсора по горбатому регистру"
+msgstr "Включить перемещение курсора по горбатому регистру"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -1911,10 +1912,9 @@ msgstr "Шрифт редактора:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Line Height Multiplier:"
+#, kde-format
 msgid "&Line Height Multiplier:"
-msgstr "Коэффициент высотры строки:"
+msgstr "&Коэффициент высоты строки:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:58
@@ -1946,10 +1946,9 @@ msgstr "Всегда"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, fuzzy, kde-format
-#| msgid "Whitespace indicator size:"
+#, kde-format
 msgid "Whitespace indicator si&ze:"
-msgstr "Размер индикатора пробелов:"
+msgstr "Размер &индикатора пробелов:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1959,10 +1958,9 @@ msgstr "Параметр задаёт размер символа выделен
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Show tab indicators:"
+#, kde-format
 msgid "Show &tab indicators:"
-msgstr "Показывать индикаторы вкладок:"
+msgstr "Показывать индикаторы &вкладок:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:176
@@ -2079,10 +2077,9 @@ msgstr "Показать счётчик строк"
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
-#, fuzzy, kde-format
-#| msgid "Fold first line"
+#, kde-format
 msgid "Fold first line:"
-msgstr "Сворачивать блок, начинающийся в первой строке"
+msgstr "Сворачивать блок, начинающийся в первой строке:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2130,17 +2127,15 @@ msgstr "Местоположение маркеров динамически п�
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:391
-#, fuzzy, kde-format
-#| msgid "Indent wrapped lines:"
+#, kde-format
 msgid "I&ndent wrapped lines:"
-msgstr "Делать отступы для перенесённых строк:"
+msgstr "&Делать отступы для перенесённых строк:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
-#, fuzzy, kde-format
-#| msgid "Don't indent lines wider than:"
+#, kde-format
 msgid "&Don't indent lines wider than:"
-msgstr "Не делать отступы в строках шире, чем:"
+msgstr "&Не делать отступы в строках шире, чем:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:424
@@ -2170,10 +2165,9 @@ msgstr "% ширины всей области"
 
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show i&ndentation lines:"
-msgstr "Показать линии &отступов"
+msgstr "Показывать линии &отступов:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:453
@@ -5491,49 +5485,42 @@ msgstr ""
 "tr></table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
+#, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "Удалить повторяющиеся строки"
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr "Удалить дубликаты и упорядочить выделенный текст в алфавитном порядке"
+msgstr "Удалить дубликаты и упорядочить текст в алфавитном порядке"
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "Упорядочить выделенный текст в алфавитном порядке"
+msgstr "Упорядочить текст в естественном порядке"
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "Упорядочить выделенный текст в алфавитном порядке"
 
 #: utils/katecmds.cpp:693
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "Отсортировать выделенный текст или весь текст текущего документа."
+msgstr ""
+"<p>sort</p><p>Отсортировать выделенный текст или весь текст текущего "
+"документа, если ничего не выделено.</p>"
 
 #: utils/katecmds.cpp:697
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
 msgstr ""
-"Удалить повторяющиеся строки из выделенного текста или из всего документа."
+"<p>uniq</p><p>Удалить повторяющиеся строки из выделенного текста или из "
+"всего документа, если ничего не выделено.</p>"
 
 #: utils/katecmds.cpp:701
 #, kde-format
@@ -5541,23 +5528,21 @@ msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
+"<p>sortuniq</p><p>Отсортировать выделенный текст или документ целиком и "
+"затем удалить все повторяющиеся строки.</p>"
 
 #: utils/katecmds.cpp:705
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"Отсортировать выделенный текст или текст всего документа с соблюдением "
-"правильного порядка номеров.<br>Пример, показывающий отличие от обычной "
-"сортировки: <br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => "
-"a1, a2, a10"
+"<p>natsort</p><p>Отсортировать выделенный текст или текст всего документа с "
+"соблюдением правильного порядка номеров.<br>Пример, показывающий отличие от "
+"обычной сортировки: <br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, "
+"a2) => a1, a2, a10</p>"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -6240,7 +6225,7 @@ msgstr "Блочное выделение."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the byte order mark (BOM) when saving Unicode files."
-msgstr "Использовать отметку о порядке байтов Unicode."
+msgstr "Отметка о порядке байтов Unicode."
 
 #: variableeditor/variablelineedit.cpp:148
 #, kde-format
@@ -6258,7 +6243,7 @@ msgstr "Цвет фона текущей строки."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
-msgstr "Выбрать словарь, используемый для проверки орфографии."
+msgstr "Словарь для проверки орфографии."
 
 #: variableeditor/variablelineedit.cpp:164
 #, kde-format
@@ -6277,7 +6262,7 @@ msgstr "Тип конца строки."
 msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
-msgstr ""
+msgstr "Вставка выбранного варианта автодополнения по нажатию клавиши «Ввод»."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
@@ -6672,7 +6657,7 @@ msgstr "Копировать путь к файлу"
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Копировать имя файла и номер строки"
 
 #: view/kateview.cpp:487
 #, kde-format
@@ -6743,16 +6728,14 @@ msgstr ""
 "уровня отступа и использование символов табуляции/пробелов можно настроить."
 
 #: view/kateview.cpp:524
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "Правила расстановки отступов"
+msgstr "Преобразовать отступы в пробелы"
 
 #: view/kateview.cpp:531
-#, fuzzy, kde-format
-#| msgid "&Format Indentation"
+#, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "&Форматированный отступ"
+msgstr "Преобразовать отступы во вкладки"
 
 #: view/kateview.cpp:546
 #, kde-format
@@ -6957,12 +6940,10 @@ msgstr ""
 
 # BUGME: remove ellipsis because it this opens a submenu? --aspotashev
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save As with Encoding…"
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "Сохранить в другой кодировке…"
+msgstr "Сохранить в другой &кодировке…"
 
 #: view/kateview.cpp:689
 #, kde-format
@@ -7117,10 +7098,9 @@ msgid ""
 msgstr "Переключает режимы вставки текста или его перезаписи при вводе текста."
 
 #: view/kateview.cpp:787
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Пробельные символы"
+msgstr "Показывать пробелы"
 
 #: view/kateview.cpp:790
 #, kde-format
@@ -7568,10 +7548,9 @@ msgid "Select Word Right"
 msgstr "Выделить слово справа"
 
 #: view/kateview.cpp:1086
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "Вставить выделенное"
+msgstr "Начать отмеченное выделение"
 
 #: view/kateview.cpp:1087
 #, kde-format
@@ -7579,6 +7558,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Эмулировать режим выделения в стиле Emacs (начало отмечается, затем "
+"выделение постоянно обновляется)."
 
 #: view/kateview.cpp:1092
 #, kde-format
@@ -8002,10 +7983,9 @@ msgid "Background Color…"
 msgstr "Цвет фона…"
 
 #: view/screenshotdialog.cpp:182
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Обрамление текста"
+msgstr "Показывать дополнительные варианты оформления"
 
 #: view/screenshotdialog.cpp:183
 #, kde-format

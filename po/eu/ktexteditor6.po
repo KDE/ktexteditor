@@ -5518,7 +5518,7 @@ msgid ""
 "selection</p>"
 msgstr ""
 "<p>sort</p><p>Sailkatu hautatutako testua edo dokumentu osoa hautapenik ez "
-"badago.<br>"
+"badago.</p>"
 
 #: utils/katecmds.cpp:697
 #, kde-format
