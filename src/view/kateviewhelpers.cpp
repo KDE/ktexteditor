@@ -893,7 +893,6 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
         while (it.hasNext()) {
             it.next();
             int y = (it.key() - grooveRect.top()) * docHeight / grooveRect.height() + docRect.top();
-            ;
             painter.drawLine(6, y, width() - 6, y);
         }
 
@@ -1027,6 +1026,8 @@ void KateScrollBar::recomputeMarksPositions()
         visibleLines -= m_view->config()->autoCenterLines();
     }
 
+    const QColor searchMatchColor = m_view->defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color();
+
     // now repopulate the scrollbar lines list
     m_lines.clear();
     const QHash<int, KTextEditor::Mark *> &marks = m_doc->marks();
@@ -1034,7 +1035,10 @@ void KateScrollBar::recomputeMarksPositions()
         KTextEditor::Mark *mark = i.value();
         const int line = m_view->textFolding().lineToVisibleLine(mark->line);
         const double ratio = static_cast<double>(line) / visibleLines;
-        m_lines.insert(top + (int)(h * ratio), KateRendererConfig::global()->lineMarkerColor((KTextEditor::Document::MarkTypes)mark->type));
+        const QColor markColor = mark->type == KTextEditor::Document::SearchMatch
+            ? searchMatchColor
+            : m_view->rendererConfig()->lineMarkerColor((KTextEditor::Document::MarkTypes)mark->type);
+        m_lines.insert(top + (int)(h * ratio), markColor);
     }
 }
 
