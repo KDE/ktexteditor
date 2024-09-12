@@ -1509,6 +1509,12 @@ void KateCompletionModel::addCompletionModel(KTextEditor::CodeCompletionModel *m
     connect(model, &KTextEditor::CodeCompletionModel::rowsInserted, this, &KateCompletionModel::slotRowsInserted);
     connect(model, &KTextEditor::CodeCompletionModel::rowsRemoved, this, &KateCompletionModel::slotRowsRemoved);
     connect(model, &KTextEditor::CodeCompletionModel::modelReset, this, &KateCompletionModel::slotModelReset);
+    connect(model,
+            &KTextEditor::CodeCompletionModel::dataChanged,
+            this,
+            [this](const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles) {
+                Q_EMIT dataChanged(mapFromSource(topLeft), mapFromSource(bottomRight), roles);
+            });
 
     // This performs the reset
     createGroups();
@@ -1533,6 +1539,12 @@ void KateCompletionModel::setCompletionModels(const QList<KTextEditor::CodeCompl
         connect(model, &KTextEditor::CodeCompletionModel::rowsInserted, this, &KateCompletionModel::slotRowsInserted);
         connect(model, &KTextEditor::CodeCompletionModel::rowsRemoved, this, &KateCompletionModel::slotRowsRemoved);
         connect(model, &KTextEditor::CodeCompletionModel::modelReset, this, &KateCompletionModel::slotModelReset);
+        connect(model,
+                &KTextEditor::CodeCompletionModel::dataChanged,
+                this,
+                [this](const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles) {
+                    Q_EMIT dataChanged(mapFromSource(topLeft), mapFromSource(bottomRight), roles);
+                });
     }
 
     // This performs the reset

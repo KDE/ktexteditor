@@ -196,6 +196,9 @@ private:
     KTEXTEDITOR_NO_EXPORT
     void deleteCompletionRanges();
 
+    KTEXTEDITOR_NO_EXPORT
+    void onDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles = QList<int>());
+
 private:
     QList<KTextEditor::CodeCompletionModel *> m_sourceModels;
     KateCompletionModel *m_presentationModel;

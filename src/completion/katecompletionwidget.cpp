@@ -137,6 +137,7 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     connect(m_presentationModel, &KateCompletionModel::modelReset, this, &KateCompletionWidget::modelReset);
     connect(m_presentationModel, &KateCompletionModel::rowsInserted, this, &KateCompletionWidget::rowsInserted);
     connect(m_argumentHintModel, &KateArgumentHintModel::contentStateChanged, this, &KateCompletionWidget::argumentHintsChanged);
+    connect(m_presentationModel, &KateCompletionModel::dataChanged, this, &KateCompletionWidget::onDataChanged);
 
     // No smart lock, no queued connects
     connect(view(), &KTextEditor::ViewPrivate::cursorPositionChanged, this, &KateCompletionWidget::cursorPositionChanged);
@@ -1424,6 +1425,14 @@ void KateCompletionWidget::tabCompletion(Direction direction)
         if (!res) {
             m_entryList->bottom();
         }
+    }
+}
+
+void KateCompletionWidget::onDataChanged(const QModelIndex &topLeft, const QModelIndex &, const QList<int> &roles)
+{
+    // We only support updating documentation for 1 index at a time
+    if ((roles.empty() || roles.contains(KTextEditor::CodeCompletionModel::ExpandingWidget)) && topLeft == m_entryList->currentIndex()) {
+        showDocTip(topLeft);
     }
 }
 
