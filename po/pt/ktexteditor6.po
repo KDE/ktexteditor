@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-28 00:37+0000\n"
+"POT-Creation-Date: 2024-09-12 00:37+0000\n"
 "PO-Revision-Date: 2023-01-13 01:21+0000\n"
 "Last-Translator: José Nuno Pires <zepires@gmail.com>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
@@ -4893,7 +4893,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Cores dos Marcadores"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1482
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1486
 #, kde-format
 msgid "Bookmark"
 msgstr "Favorito"
@@ -8055,18 +8055,18 @@ msgid "Export File as HTML"
 msgstr "Exportar o Ficheiro como HTML"
 
 #: view/kateviewhelpers.cpp:287 view/kateviewhelpers.cpp:332
-#: view/kateviewhelpers.cpp:989
+#: view/kateviewhelpers.cpp:988
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1158
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid "Available Commands"
 msgstr "Comandos Disponíveis"
 
-#: view/kateviewhelpers.cpp:1159
+#: view/kateviewhelpers.cpp:1163
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -8075,17 +8075,17 @@ msgstr ""
 "<p>Para uma ajuda sobre os comandos individuais, escreva <code>'help &lt;"
 "comando&gt;'</code></p>"
 
-#: view/kateviewhelpers.cpp:1166
+#: view/kateviewhelpers.cpp:1170
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Sem ajuda para o '%1'"
 
-#: view/kateviewhelpers.cpp:1169
+#: view/kateviewhelpers.cpp:1173
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Não existe o comando <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1175
+#: view/kateviewhelpers.cpp:1179
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -8098,37 +8098,37 @@ msgstr ""
 "disponíveis, escreva <code><b>help list</b></code><br/>Para obter ajuda nos "
 "comandos individuais, escreva <code><b>help &lt;comando&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Não existe o comando: \"%1\""
 
-#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1270 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Erro: Não é permitido um intervalo para o comando \"%1\"."
 
-#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1280 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Sucesso: "
 
-#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1294 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "O comando \"%1\" falhou."
 
-#: view/kateviewhelpers.cpp:2578 view/kateviewhelpers.cpp:2579
+#: view/kateviewhelpers.cpp:2582 view/kateviewhelpers.cpp:2583
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Tipo de Marcação %1"
 
-#: view/kateviewhelpers.cpp:2602
+#: view/kateviewhelpers.cpp:2606
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Usar o Tipo de Marcador por Omissão"
 
-#: view/kateviewhelpers.cpp:2743
+#: view/kateviewhelpers.cpp:2747
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Desactivar a Barra de Anotações"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-28 00:37+0000\n"
+"POT-Creation-Date: 2024-09-12 00:37+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -4950,7 +4950,7 @@ msgstr "boje markera"
 
 # >> @item color scheme item name
 # >> @item:inlistbox
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1482
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1486
 #, kde-format
 msgid "Bookmark"
 msgstr "obilježivač"
@@ -8216,18 +8216,18 @@ msgid "Export File as HTML"
 msgstr "Izvoz fajla u vidu HTML‑a"
 
 #: view/kateviewhelpers.cpp:287 view/kateviewhelpers.cpp:332
-#: view/kateviewhelpers.cpp:989
+#: view/kateviewhelpers.cpp:988
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>–<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1158
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid "Available Commands"
 msgstr "Naredbe na raspolaganju"
 
-#: view/kateviewhelpers.cpp:1159
+#: view/kateviewhelpers.cpp:1163
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -8236,17 +8236,17 @@ msgstr ""
 "<qt><p>Za pomoć za pojedinačnu naredbu, kucajte <tt>help &lt;naredba&gt;</"
 "tt></p></qt>"
 
-#: view/kateviewhelpers.cpp:1166
+#: view/kateviewhelpers.cpp:1170
 #, kde-format
 msgid "No help for '%1'"
 msgstr "<qt>Nema pomoći za <tt>%1</tt></qt>"
 
-#: view/kateviewhelpers.cpp:1169
+#: view/kateviewhelpers.cpp:1173
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "<qt>Naredba <tt>%1</tt> ne postoji</qt>"
 
-#: view/kateviewhelpers.cpp:1175
+#: view/kateviewhelpers.cpp:1179
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -8259,37 +8259,37 @@ msgstr ""
 "<tt>help list</tt><br />Za pomoć za pojedinačne naredbe, unesite <tt>help "
 "&lt;naredba&gt;</tt></p></qt>"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Naredba %1 ne postoji."
 
-#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1270 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Greška: Opseg nije dozvoljen za naredbu „%1“."
 
-#: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1280 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Uspjeh: "
 
-#: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1294 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Naredba %1 nije uspjela."
 
-#: view/kateviewhelpers.cpp:2578 view/kateviewhelpers.cpp:2579
+#: view/kateviewhelpers.cpp:2582 view/kateviewhelpers.cpp:2583
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Obilježje tipa %1"
 
-#: view/kateviewhelpers.cpp:2602
+#: view/kateviewhelpers.cpp:2606
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Postavi podrazumijevani tip obilježja"
 
-#: view/kateviewhelpers.cpp:2743
+#: view/kateviewhelpers.cpp:2747
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Isključi traku tumačenja"
