@@ -4933,6 +4933,15 @@ void KTextEditor::ViewPrivate::clearHighlights()
 void KTextEditor::ViewPrivate::selectionChangedForHighlights()
 {
     QString text;
+    // If there are multiple selections it is pointless to create highlights
+    if (!m_secondaryCursors.empty()) {
+        for (const auto &cursor : m_secondaryCursors) {
+            if (cursor.range) {
+                return;
+            }
+        }
+    }
+
     // if text of selection is still the same, abort
     if (selection() && selectionRange().onSingleLine()) {
         text = selectionText();
