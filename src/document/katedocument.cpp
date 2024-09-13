@@ -5596,7 +5596,7 @@ QString KTextEditor::DocumentPrivate::reasonedMOHString() const
         return i18n("The file '%1' was created on disk.", str);
         break;
     case OnDiskDeleted:
-        return i18n("The file '%1' was deleted on disk.", str);
+        return i18n("The file '%1' was deleted or moved on disk.", str);
         break;
     default:
         return QString();

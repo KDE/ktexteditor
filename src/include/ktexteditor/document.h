@@ -1424,7 +1424,7 @@ public:
         OnDiskUnmodified = 0, ///< Not modified
         OnDiskModified = 1, ///< The file was modified on disk
         OnDiskCreated = 2, ///< The file was created on disk
-        OnDiskDeleted = 3 ///< The file was deleted on disk
+        OnDiskDeleted = 3 ///< The file was deleted or moved on disk
     };
 
     /**
