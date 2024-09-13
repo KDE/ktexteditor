@@ -80,7 +80,7 @@ PrintPainter::PrintPainter(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewP
     , m_headerFormat()
     , m_footerFormat()
 {
-    m_renderer = new KateRenderer(m_doc, view->renderer()->folding(), view);
+    m_renderer = new KateRenderer(doc, view->renderer()->folding(), view);
     m_renderer->setPrinterFriendly(true);
 
     updateCache();

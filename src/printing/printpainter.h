@@ -128,8 +128,8 @@ private:
     void updateCache();
 
 private:
-    KTextEditor::ViewPrivate *m_view;
-    KTextEditor::DocumentPrivate *m_doc;
+    const KTextEditor::ViewPrivate *const m_view;
+    const KTextEditor::DocumentPrivate *const m_doc;
 
     bool m_printGuide;
     bool m_printLineNumbers;
