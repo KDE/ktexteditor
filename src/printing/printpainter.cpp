@@ -80,7 +80,7 @@ PrintPainter::PrintPainter(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewP
     , m_headerFormat()
     , m_footerFormat()
 {
-    m_renderer = new KateRenderer(m_doc, m_view->renderer()->folding(), m_view);
+    m_renderer = new KateRenderer(m_doc, view->renderer()->folding(), view);
     m_renderer->setPrinterFriendly(true);
 
     updateCache();
@@ -93,7 +93,7 @@ PrintPainter::~PrintPainter()
 
 void PrintPainter::setTextFont(const QFont &font)
 {
-    m_view->rendererConfig()->setFont(font);
+    m_renderer->config()->setFont(font);
 }
 
 void PrintPainter::setUseBox(const bool on)
@@ -151,7 +151,7 @@ void PrintPainter::setFooterForeground(const QColor &color)
 void PrintPainter::setColorScheme(const QString &scheme)
 {
     // directly set that for the renderer
-    m_view->rendererConfig()->setSchema(scheme);
+    m_renderer->config()->setSchema(scheme);
 
     // changed renderer requires cache updates
     updateCache();
@@ -181,7 +181,7 @@ void PrintPainter::paint(QPrinter *printer) const
     bool pageStarted = true;
     uint remainder = 0;
 
-    auto &f = m_view->renderer()->folding();
+    auto &f = m_renderer->folding();
 
     // On to draw something :-)
     while (lineCount <= pl.lastline) {
@@ -495,7 +495,7 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
     QString _hlName = m_doc->highlight()->name();
 
     // list of highlight attributes for the legend
-    const auto _attributes = m_doc->highlight()->attributesForDefinition(m_view->rendererConfig()->schema());
+    const auto _attributes = m_doc->highlight()->attributesForDefinition(m_renderer->config()->schema());
     const QColor _defaultPen = _attributes.at(0)->foreground().color();
 
     painter.save();
@@ -629,7 +629,7 @@ void PrintPainter::paintBackground(QPainter &painter, const uint y, const PageLa
             _h += pl.innerMargin;
         }
     }
-    painter.fillRect(0, _y, pl.pageWidth, _h, m_view->rendererConfig()->backgroundColor());
+    painter.fillRect(0, _y, pl.pageWidth, _h, m_renderer->config()->backgroundColor());
 }
 
 void PrintPainter::paintLine(QPainter &painter, const uint line, uint &y, uint &remainder, const PageLayout &pl) const
@@ -718,7 +718,7 @@ void PrintPainter::paintLineNumber(QPainter &painter, const uint number, const P
 
     painter.save();
     painter.setFont(m_renderer->currentFont());
-    painter.setPen(m_view->rendererConfig()->lineNumberColor());
+    painter.setPen(m_renderer->config()->lineNumberColor());
     painter.drawText(left, 0, m_lineNumberWidth, m_fontHeight, Qt::AlignRight | Qt::AlignVCenter, QString::number(number + 1));
     painter.restore();
 }
