@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-12 00:37+0000\n"
-"PO-Revision-Date: 2024-09-06 20:29+0200\n"
+"PO-Revision-Date: 2024-09-10 15:36+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -918,9 +918,9 @@ msgid ""
 "semicolon-separated list of mimetypes, for example <code>text/plain; text/"
 "english</code>."
 msgstr ""
-"Le masque de types MIME permet de sélectionner les fichiers par type MIME. "
-"La chaîne est une liste de types, séparés par des points-virgules, par "
-"exemple <code>text / plain ; text / english</code>."
+"Le masque de types « MIME » permet de sélectionner les fichiers par type "
+"« MIME ». La chaîne est une liste de types, séparés par des points-virgules, "
+"par exemple <code>text / plain ; text / english</code>."
 
 #. i18n: ectx: property (whatsThis), widget (QToolButton, btnMimeTypes)
 #: dialogs/filetypeconfigwidget.ui:188
@@ -1254,17 +1254,17 @@ msgstr "CTRL + Meta"
 #: dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Cmd"
-msgstr "Cmd"
+msgstr "Commande"
 
 #: dialogs/katedialogs.cpp:417
 #, kde-format
 msgid "Cmd + Alt"
-msgstr "Cmd + ALT"
+msgstr "Commande + ALT"
 
 #: dialogs/katedialogs.cpp:419
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr "Cmd + CTRL"
+msgstr "Commande + CTRL"
 
 #: dialogs/katedialogs.cpp:475
 #, kde-format
@@ -5467,8 +5467,8 @@ msgid ""
 msgstr ""
 "<p>set-indent-pasted-text <b>activer</b></p><p>Si cette fonction est "
 "activée, l'indentation du texte collé depuis le presse-papier est ajusté à "
-"l'aide de l'indenteur actuel.</p><p>Valeurs vraies possibles : 1, « on » "
-"« True »<br/>valeurs fausses possibles : 1, « off » « False »</p>"
+"l'aide du module d'indentation actuel.</p><p>Valeurs vraies possibles : 1, "
+"« on » « True »<br/>valeurs fausses possibles : 1, « off » « False »</p>"
 
 #: utils/katecmds.cpp:91
 #, kde-format
@@ -5698,12 +5698,12 @@ msgstr "La colonne doit être d'au moins 1."
 #: utils/katecmds.cpp:390
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
-msgstr "Utilisation : %1 on|off|1|0|true|false"
+msgstr "Utilisation : %1 on|off|1|0|True|False"
 
 #: utils/katecmds.cpp:417
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
-msgstr "Argument incorrect « %1 ». Utilisation : %2 on|off|1|0|true|false"
+msgstr "Argument incorrect « %1 ». Utilisation : %2 on|off|1|0|True|False"
 
 #: utils/katecmds.cpp:421
 #, kde-format
@@ -8459,7 +8459,7 @@ msgid ""
 "no file name is associated with the document and it should be written to "
 "disk, a file dialog will be shown.</p>"
 msgstr ""
-"<p><b>q/qa/wq/wqa &mdash; [écrire et] quitter</b></p><p>Utilisation : "
+"<p><b>q / qa / wq / wqa &mdash; [écrire et] quitter</b></p><p>Utilisation : "
 "<tt><b>[w]q[a]</b></tt></p><p>Quitte l'application. Si <tt>w</tt> est "
 "ajouté, la commande écrit également le(s) document(s) sur le disque. Il est "
 "possible d'appeler cette commande de plusieurs façons :<br /> <tt>q</tt> "
