@@ -610,6 +610,7 @@ Q_DECLARE_TYPEINFO(KTextEditor::Range, Q_RELOCATABLE_TYPE);
  */
 KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, KTextEditor::Range range);
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 8, 0)
 namespace QTest
 {
 // forward declaration of template in qtestcase.h
@@ -622,5 +623,6 @@ char *toString(const T &);
 template<>
 KTEXTEDITOR_EXPORT char *toString(const KTextEditor::Range &range);
 }
+#endif
 
 #endif

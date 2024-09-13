@@ -147,6 +147,7 @@ QString LineRange::toString() const
     return QStringLiteral("[%1, %2]").arg(m_start).arg(m_end);
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 8, 0)
 namespace QTest
 {
 // Cursor: template specialization for QTest::toString()
@@ -178,3 +179,4 @@ char *toString(const KTextEditor::LineRange &range)
     return qstrdup(ba.data());
 }
 }
+#endif
