@@ -3905,6 +3905,9 @@ void KTextEditor::ViewPrivate::killLine()
     linesToRemove.erase(std::unique(linesToRemove.begin(), linesToRemove.end()), linesToRemove.end());
 
     doc()->editStart();
+    // clear selections after editStart so that they are saved in undo.
+    // We might have a lot of moving range selections which can make killLine very slow
+    clearSecondarySelections();
     std::for_each(linesToRemove.begin(), linesToRemove.end(), [this](int line) {
         doc()->removeLine(line);
     });
