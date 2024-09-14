@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-12 00:37+0000\n"
+"POT-Creation-Date: 2024-09-14 00:38+0000\n"
 "PO-Revision-Date: 2024-08-28 11:17+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -2214,12 +2214,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Opnieuw proberen"
 
-#: document/katedocument.cpp:2281 document/katedocument.cpp:6522
+#: document/katedocument.cpp:2281 document/katedocument.cpp:6541
 #, kde-format
 msgid "&Close"
 msgstr "&Sluiten"
 
-#: document/katedocument.cpp:2282 document/katedocument.cpp:6523
+#: document/katedocument.cpp:2282 document/katedocument.cpp:6542
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2358,29 +2358,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "Toch sluiten"
 
-#: document/katedocument.cpp:4597
+#: document/katedocument.cpp:4616
 #, kde-format
 msgid "Untitled"
 msgstr "Naamloos"
 
-#: document/katedocument.cpp:4720 document/katedocument.cpp:4946
-#: document/katedocument.cpp:4956 document/katedocument.cpp:5745
-#: document/katedocument.cpp:5932
+#: document/katedocument.cpp:4739 document/katedocument.cpp:4965
+#: document/katedocument.cpp:4975 document/katedocument.cpp:5764
+#: document/katedocument.cpp:5951
 #, kde-format
 msgid "Save File"
 msgstr "Bestand opslaan"
 
-#: document/katedocument.cpp:4723
+#: document/katedocument.cpp:4742
 #, kde-format
 msgid "Save failed"
 msgstr "Opslag mislukt"
 
-#: document/katedocument.cpp:4967
+#: document/katedocument.cpp:4986
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Kopie van bestand opslaan"
 
-#: document/katedocument.cpp:4979
+#: document/katedocument.cpp:4998
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2394,7 +2394,7 @@ msgstr ""
 "Controleer of u schrijftoegang hebt tot dit bestand of dat er voldoende "
 "schijfruimte aanwezig is."
 
-#: document/katedocument.cpp:5262
+#: document/katedocument.cpp:5281
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2407,7 +2407,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5268
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2420,22 +2420,23 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5574
+#: document/katedocument.cpp:5593
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Het bestand '%1' is op de schijf veranderd."
 
-#: document/katedocument.cpp:5577
+#: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Het bestand '%1' is aangemaakt op de schijf."
 
-#: document/katedocument.cpp:5580
-#, kde-format
-msgid "The file '%1' was deleted on disk."
+#: document/katedocument.cpp:5599
+#, fuzzy, kde-format
+#| msgid "The file '%1' was deleted on disk."
+msgid "The file '%1' was deleted or moved on disk."
 msgstr "Het bestand '%1' is verwijderd van schijf."
 
-#: document/katedocument.cpp:5917
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2444,17 +2445,17 @@ msgstr ""
 "Het document \"%1\" is gewijzigd.\n"
 "Wilt u de wijzigingen opslaan of verwerpen?"
 
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Close Document"
 msgstr "Document sluiten"
 
-#: document/katedocument.cpp:6031
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Het bestand <a href=\"%1\">%2</a> wordt nog steeds geladen."
 
-#: document/katedocument.cpp:6036
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Laden &afbreken"
@@ -7943,7 +7944,7 @@ msgstr "Uitlijnen op"
 msgid "Alignment pattern:"
 msgstr "Uitlijnpatroon:"
 
-#: view/kateview.cpp:4918
+#: view/kateview.cpp:4921
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Bestand exporteren als HTML"

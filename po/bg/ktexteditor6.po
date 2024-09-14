@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-12 00:37+0000\n"
-"PO-Revision-Date: 2024-08-10 22:20+0200\n"
+"POT-Creation-Date: 2024-09-14 00:38+0000\n"
+"PO-Revision-Date: 2024-09-13 20:37+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -62,10 +62,9 @@ msgstr "&Файл"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "Отпечатване/Експортиране"
+msgstr "&Отпечатване/Експортиране"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -2188,12 +2187,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Повторно опитване"
 
-#: document/katedocument.cpp:2281 document/katedocument.cpp:6522
+#: document/katedocument.cpp:2281 document/katedocument.cpp:6541
 #, kde-format
 msgid "&Close"
 msgstr "&Затваряне"
 
-#: document/katedocument.cpp:2282 document/katedocument.cpp:6523
+#: document/katedocument.cpp:2282 document/katedocument.cpp:6542
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2334,29 +2333,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "Затваряне"
 
-#: document/katedocument.cpp:4597
+#: document/katedocument.cpp:4616
 #, kde-format
 msgid "Untitled"
 msgstr "Неозаглавено"
 
-#: document/katedocument.cpp:4720 document/katedocument.cpp:4946
-#: document/katedocument.cpp:4956 document/katedocument.cpp:5745
-#: document/katedocument.cpp:5932
+#: document/katedocument.cpp:4739 document/katedocument.cpp:4965
+#: document/katedocument.cpp:4975 document/katedocument.cpp:5764
+#: document/katedocument.cpp:5951
 #, kde-format
 msgid "Save File"
 msgstr "Запис на файл"
 
-#: document/katedocument.cpp:4723
+#: document/katedocument.cpp:4742
 #, kde-format
 msgid "Save failed"
 msgstr "Грешка при запис"
 
-#: document/katedocument.cpp:4967
+#: document/katedocument.cpp:4986
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Запазване на копие на файл"
 
-#: document/katedocument.cpp:4979
+#: document/katedocument.cpp:4998
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2369,7 +2368,7 @@ msgstr ""
 "Моля, проверете дали имате права за запис във файла и дали има достатъчно "
 "свободно място на диска."
 
-#: document/katedocument.cpp:5262
+#: document/katedocument.cpp:5281
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2382,7 +2381,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5268
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2395,22 +2394,23 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5574
+#: document/katedocument.cpp:5593
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Файлът \"%1\" е модифициран на диска."
 
-#: document/katedocument.cpp:5577
+#: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Файлът \"%1\" е създаден на диска."
 
-#: document/katedocument.cpp:5580
-#, kde-format
-msgid "The file '%1' was deleted on disk."
+#: document/katedocument.cpp:5599
+#, fuzzy, kde-format
+#| msgid "The file '%1' was deleted on disk."
+msgid "The file '%1' was deleted or moved on disk."
 msgstr "Файлът \"%1\" беше изтрит от диска."
 
-#: document/katedocument.cpp:5917
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2421,17 +2421,17 @@ msgstr ""
 "бе променен.\n"
 "Искате ли да запазите промените си или да ги отхвърлите?"
 
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Close Document"
 msgstr "Затваряне на документа"
 
-#: document/katedocument.cpp:6031
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Файлът <a href=\"%1\"> %2 </a> все още се зарежда."
 
-#: document/katedocument.cpp:6036
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Прекъсване на зареждането"
@@ -5484,49 +5484,42 @@ msgstr ""
 "td></tr></table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
+#, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "Изтриване на  дублиращи се редове"
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
 msgstr "Премахване на дубликати и сортиране по азбучен ред на избрания текст"
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "Сортиране по азбучен ред на избрания текст"
+msgstr "Сортиране натурално на  избрания текст"
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "Сортиране по азбучен ред на избрания текст"
 
 #: utils/katecmds.cpp:693
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "Сортиране на избрания текст или целия документ."
+msgstr ""
+"<p>sort</p><p>Сортиране на избрания текст или целия документ, ако нищо не е "
+"селектирано.</p>"
 
 #: utils/katecmds.cpp:697
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
 msgstr ""
-"Премахване на дублиращите се редове от избрания текст или целия документ."
+"<p>uniq</p><p>Премахване на дублиращи се редове от избрания текст или "
+"целиядокумент, ако няма избор.</p>"
 
 #: utils/katecmds.cpp:701
 #, kde-format
@@ -5534,22 +5527,21 @@ msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
+"<p>sortuniq</p><p>Сортиране на избрания текст или целия документ и след това "
+"премахване на всички дублирани редове.</p>"
 
 #: utils/katecmds.cpp:705
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"Сортиране на избрания текст или целия документ в естествен ред. <br> "
-"Например, за показване на разликата от нормалния метод на сортиране: <br> "
-"sort (a10, a1,a2) => a1, a10, a2 <br> natsort (a10, a1, a2) => a1, a2, a10"
+"<p>natsort</p><p>Сортиране на избрания текст или целия документ в натурален "
+"ред.<br>Ето пример за показване на разликата с нормалния метод на сортиране:"
+"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
+"p>"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -6939,17 +6931,13 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Запис на текущия документ под друго име или тип."
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save As with Encoding…"
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "Запазване с кодирането като…"
+msgstr "Запазване с &кодирането като…"
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save &Copy As…"
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
 msgstr "&Запазване на копие като…"
@@ -7875,7 +7863,7 @@ msgstr "Подравняване"
 msgid "Alignment pattern:"
 msgstr "Шаблон на подравняване:"
 
-#: view/kateview.cpp:4918
+#: view/kateview.cpp:4921
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Експортиране на файл като HTML"

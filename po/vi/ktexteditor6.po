@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-12 00:37+0000\n"
+"POT-Creation-Date: 2024-09-14 00:38+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -2182,12 +2182,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Tải lại"
 
-#: document/katedocument.cpp:2281 document/katedocument.cpp:6522
+#: document/katedocument.cpp:2281 document/katedocument.cpp:6541
 #, kde-format
 msgid "&Close"
 msgstr "Đón&g"
 
-#: document/katedocument.cpp:2282 document/katedocument.cpp:6523
+#: document/katedocument.cpp:2282 document/katedocument.cpp:6542
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2323,29 +2323,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "Vẫn đóng"
 
-#: document/katedocument.cpp:4597
+#: document/katedocument.cpp:4616
 #, kde-format
 msgid "Untitled"
 msgstr "Không tên"
 
-#: document/katedocument.cpp:4720 document/katedocument.cpp:4946
-#: document/katedocument.cpp:4956 document/katedocument.cpp:5745
-#: document/katedocument.cpp:5932
+#: document/katedocument.cpp:4739 document/katedocument.cpp:4965
+#: document/katedocument.cpp:4975 document/katedocument.cpp:5764
+#: document/katedocument.cpp:5951
 #, kde-format
 msgid "Save File"
 msgstr "Lưu tệp"
 
-#: document/katedocument.cpp:4723
+#: document/katedocument.cpp:4742
 #, kde-format
 msgid "Save failed"
 msgstr "Lưu thất bại"
 
-#: document/katedocument.cpp:4967
+#: document/katedocument.cpp:4986
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Lưu bản sao của tệp"
 
-#: document/katedocument.cpp:4979
+#: document/katedocument.cpp:4998
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2358,7 +2358,7 @@ msgstr ""
 "Hãy kiểm tra rằng bạn có quyền ghi vào tệp này hoặc vẫn còn đủ chỗ trống "
 "trên đĩa."
 
-#: document/katedocument.cpp:5262
+#: document/katedocument.cpp:5281
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2371,7 +2371,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5268
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2384,22 +2384,23 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5574
+#: document/katedocument.cpp:5593
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Tệp '%1' đã bị chỉnh sửa trên đĩa."
 
-#: document/katedocument.cpp:5577
+#: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Tệp '%1' đã được tạo trên đĩa."
 
-#: document/katedocument.cpp:5580
-#, kde-format
-msgid "The file '%1' was deleted on disk."
+#: document/katedocument.cpp:5599
+#, fuzzy, kde-format
+#| msgid "The file '%1' was deleted on disk."
+msgid "The file '%1' was deleted or moved on disk."
 msgstr "Tệp '%1' đã bị xoá trên đĩa."
 
-#: document/katedocument.cpp:5917
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2408,17 +2409,17 @@ msgstr ""
 "Tài liệu \"%1\" đã bị chỉnh sửa.\n"
 "Bạn muốn lưu các thay đổi hay loại bỏ chúng?"
 
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Close Document"
 msgstr "Đóng tài liệu"
 
-#: document/katedocument.cpp:6031
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Tệp <a href=\"%1\">%2</a> vẫn đang tải."
 
-#: document/katedocument.cpp:6036
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Huỷ bỏ &việc tải"
@@ -7890,7 +7891,7 @@ msgstr "Căn lề ở"
 msgid "Alignment pattern:"
 msgstr "Dạng mẫu căn lề:"
 
-#: view/kateview.cpp:4918
+#: view/kateview.cpp:4921
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Xuất khẩu tệp thành HTML"

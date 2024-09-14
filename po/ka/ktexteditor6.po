@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-12 00:37+0000\n"
+"POT-Creation-Date: 2024-09-14 00:38+0000\n"
 "PO-Revision-Date: 2024-08-28 04:04+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -2174,12 +2174,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "კიდევ სცადეთ"
 
-#: document/katedocument.cpp:2281 document/katedocument.cpp:6522
+#: document/katedocument.cpp:2281 document/katedocument.cpp:6541
 #, kde-format
 msgid "&Close"
 msgstr "დაკე&ტვა"
 
-#: document/katedocument.cpp:2282 document/katedocument.cpp:6523
+#: document/katedocument.cpp:2282 document/katedocument.cpp:6542
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2316,29 +2316,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "მაინც დახურვა"
 
-#: document/katedocument.cpp:4597
+#: document/katedocument.cpp:4616
 #, kde-format
 msgid "Untitled"
 msgstr "უსახელო"
 
-#: document/katedocument.cpp:4720 document/katedocument.cpp:4946
-#: document/katedocument.cpp:4956 document/katedocument.cpp:5745
-#: document/katedocument.cpp:5932
+#: document/katedocument.cpp:4739 document/katedocument.cpp:4965
+#: document/katedocument.cpp:4975 document/katedocument.cpp:5764
+#: document/katedocument.cpp:5951
 #, kde-format
 msgid "Save File"
 msgstr "ფაილის შენახვა"
 
-#: document/katedocument.cpp:4723
+#: document/katedocument.cpp:4742
 #, kde-format
 msgid "Save failed"
 msgstr "შენახვის შეცდომა"
 
-#: document/katedocument.cpp:4967
+#: document/katedocument.cpp:4986
 #, kde-format
 msgid "Save Copy of File"
 msgstr "ფაილის ასელის შენახვა"
 
-#: document/katedocument.cpp:4979
+#: document/katedocument.cpp:4998
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2351,7 +2351,7 @@ msgstr ""
 "შეამოწმეთ, გაქვთ თუ არა ამ ფაილში ჩაწერის უფლება და დისკზე ადგილი საკმარისი "
 "თუა."
 
-#: document/katedocument.cpp:5262
+#: document/katedocument.cpp:5281
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2364,7 +2364,7 @@ msgstr ""
 "docs.kde.org/?application=katepart&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5268
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2377,22 +2377,23 @@ msgstr ""
 "kde.org/?application=katepart&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5574
+#: document/katedocument.cpp:5593
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "ფაილი '%1' დისკზე შეიცვალა."
 
-#: document/katedocument.cpp:5577
+#: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "ფაილი '%1' დისკზე შეიქმნა."
 
-#: document/katedocument.cpp:5580
-#, kde-format
-msgid "The file '%1' was deleted on disk."
+#: document/katedocument.cpp:5599
+#, fuzzy, kde-format
+#| msgid "The file '%1' was deleted on disk."
+msgid "The file '%1' was deleted or moved on disk."
 msgstr "ფაილი '%1' დისკიდან წაიშალა."
 
-#: document/katedocument.cpp:5917
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2401,17 +2402,17 @@ msgstr ""
 "დოკუმენტი %1 შეიცვალა\n"
 "გნებავთ ცვლილებების შენახვა თუ უბრალოდ გამოვიდე?"
 
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Close Document"
 msgstr "დოკუმენტის დახურვა"
 
-#: document/katedocument.cpp:6031
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "ფაილი <a href=\"%1\">%2</a> ჯერ კიდევ იტვირთება."
 
-#: document/katedocument.cpp:6036
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&ჩატვირთვის გაუქმება"
@@ -7840,7 +7841,7 @@ msgstr "სწორება"
 msgid "Alignment pattern:"
 msgstr "სწორების ნიმუში:"
 
-#: view/kateview.cpp:4918
+#: view/kateview.cpp:4921
 #, kde-format
 msgid "Export File as HTML"
 msgstr "ფაილის გატანა HTML ფორმატში"

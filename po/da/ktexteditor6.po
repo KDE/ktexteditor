@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-12 00:37+0000\n"
+"POT-Creation-Date: 2024-09-14 00:38+0000\n"
 "PO-Revision-Date: 2021-09-09 21:34+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -2241,12 +2241,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Prøv igen"
 
-#: document/katedocument.cpp:2281 document/katedocument.cpp:6522
+#: document/katedocument.cpp:2281 document/katedocument.cpp:6541
 #, kde-format
 msgid "&Close"
 msgstr "&Luk"
 
-#: document/katedocument.cpp:2282 document/katedocument.cpp:6523
+#: document/katedocument.cpp:2282 document/katedocument.cpp:6542
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2382,29 +2382,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "Luk alligevel"
 
-#: document/katedocument.cpp:4597
+#: document/katedocument.cpp:4616
 #, kde-format
 msgid "Untitled"
 msgstr "Unavngivet"
 
-#: document/katedocument.cpp:4720 document/katedocument.cpp:4946
-#: document/katedocument.cpp:4956 document/katedocument.cpp:5745
-#: document/katedocument.cpp:5932
+#: document/katedocument.cpp:4739 document/katedocument.cpp:4965
+#: document/katedocument.cpp:4975 document/katedocument.cpp:5764
+#: document/katedocument.cpp:5951
 #, kde-format
 msgid "Save File"
 msgstr "Gem fil"
 
-#: document/katedocument.cpp:4723
+#: document/katedocument.cpp:4742
 #, kde-format
 msgid "Save failed"
 msgstr "Kunne ikke gemme"
 
-#: document/katedocument.cpp:4967
+#: document/katedocument.cpp:4986
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Gem kopi af filen"
 
-#: document/katedocument.cpp:4979
+#: document/katedocument.cpp:4998
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2417,7 +2417,7 @@ msgstr ""
 "Kontrollér at du har skriveadgang til denne fil og at der er plads nok på "
 "disken."
 
-#: document/katedocument.cpp:5262
+#: document/katedocument.cpp:5281
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2430,7 +2430,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5268
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2443,25 +2443,25 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5574
+#: document/katedocument.cpp:5593
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Filen \"%1\" er blevet ændret af et andet program."
 
-#: document/katedocument.cpp:5577
+#: document/katedocument.cpp:5596
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Filen \"%1\" er blevet oprettet af et andet program."
 
-#: document/katedocument.cpp:5580
+#: document/katedocument.cpp:5599
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
-msgid "The file '%1' was deleted on disk."
+msgid "The file '%1' was deleted or moved on disk."
 msgstr "Filen \"%1\" blev slettet af et andet program."
 
-#: document/katedocument.cpp:5917
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2470,17 +2470,17 @@ msgstr ""
 "Dokumentet \"%1\" er blevet ændret.\n"
 "Vil du gemme dine ændringer eller kassere dem?"
 
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Close Document"
 msgstr "Luk dokument"
 
-#: document/katedocument.cpp:6031
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Filen <a href=\"%1\">%2</a> er stadig ved at blive indlæst."
 
-#: document/katedocument.cpp:6036
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Afbryd indlæsning"
@@ -8055,7 +8055,7 @@ msgstr "&Justér"
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4918
+#: view/kateview.cpp:4921
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Eksportér fil som HTML"
