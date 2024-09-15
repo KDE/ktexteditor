@@ -184,16 +184,6 @@ public:
     KTEXTEDITOR_NO_EXPORT void rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QList<TextRange *> &outRanges) const;
 
     /**
-     * Is the given range contained in this block?
-     * @param range range to check for
-     * @return contained in this blocks mapping?
-     */
-    bool containsRange(TextRange *range) const
-    {
-        return m_cachedLineForRanges.find(range) != m_cachedLineForRanges.end() || m_uncachedRanges.contains(range);
-    }
-
-    /**
      * Flag all modified text lines as saved on disk.
      */
     void markModifiedLinesAsSaved();
@@ -217,42 +207,12 @@ public:
     }
 
     /**
-     * Update a range from this block.
-     * Will move the range to right set, either cached for one-line ranges or not.
-     * @param range range to update
-     */
-    void updateRange(TextRange *range);
-
-    /**
-     * Remove a range from this block.
-     * @param range range to remove
-     */
-    void removeRange(TextRange *range);
-
-    /**
      * Returns the size of this block i.e.,
      * the count of QChars it has + number of new lines
      */
     int blockSize() const
     {
         return m_blockSize + m_lines.size();
-    }
-
-private:
-    /**
-     * Return all ranges in this block which might intersect the given line and only span one line.
-     * For them an internal fast lookup cache is hold.
-     * @param line line to check intersection
-     * @return set of ranges
-     */
-    const QVarLengthArray<TextRange *, 6> *cachedRangesForLine(int line) const
-    {
-        line -= startLine();
-        if (line >= 0 && (size_t)line < m_cachedRangesForLine.size()) {
-            return &m_cachedRangesForLine[line];
-        } else {
-            return nullptr;
-        }
     }
 
 private:
@@ -282,24 +242,7 @@ private:
      * using QSet is better than unordered_set for perf reasons
      */
     QSet<TextCursor *> m_cursors;
-
-    /**
-     * Contains for each line-offset the ranges that were cached into it.
-     * These ranges are fully contained by the line.
-     */
-    std::vector<QVarLengthArray<TextRange *, 6>> m_cachedRangesForLine;
-
-    /**
-     * Maps for each cached range the line into which the range was cached.
-     */
-    QHash<TextRange *, int> m_cachedLineForRanges;
-
-    /**
-     * This contains all the ranges that are not cached.
-     */
-    QVarLengthArray<TextRange *, 1> m_uncachedRanges;
 };
-
 }
 
 #endif

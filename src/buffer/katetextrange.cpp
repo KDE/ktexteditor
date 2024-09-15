@@ -28,16 +28,13 @@ TextRange::TextRange(TextBuffer &buffer, KTextEditor::Range range, InsertBehavio
 
     // check if range now invalid, there can happen no feedback, as m_feedback == 0
     // only place where KTextEditor::LineRange::invalid() for old range makes sense, as we were yet not registered!
-    checkValidity(KTextEditor::LineRange::invalid());
+    checkValidity();
 }
 
 TextRange::~TextRange()
 {
     // reset feedback, don't want feedback during destruction
     m_feedback = nullptr;
-
-    // remove range from m_ranges
-    fixLookup(toLineRange(), KTextEditor::LineRange::invalid());
 
     // remove this range from the buffer
     m_buffer.m_ranges.remove(this);
@@ -114,7 +111,7 @@ void TextRange::setRange(KTextEditor::Range range)
 
     // check if range now invalid, don't emit feedback here, will be handled below
     // otherwise you can't delete ranges in feedback!
-    checkValidity(oldLineRange, false);
+    checkValidity(false);
 
     // no attribute or feedback set, be done
     if (!m_attribute && !m_feedback) {
@@ -162,7 +159,7 @@ void TextRange::setRange(KTextEditor::Range range, KTextEditor::Attribute::Ptr a
     setZDepth(zDepth);
 }
 
-void TextRange::checkValidity(KTextEditor::LineRange oldLineRange, bool notifyAboutChange)
+void TextRange::checkValidity(bool notifyAboutChange)
 {
     // in any case: reset the flag, to avoid multiple runs
     m_isCheckValidityRequired = false;
@@ -178,9 +175,6 @@ void TextRange::checkValidity(KTextEditor::LineRange oldLineRange, bool notifyAb
         m_end.setPosition(m_start);
     }
 
-    // fix lookup
-    fixLookup(oldLineRange, toLineRange());
-
     // perhaps need to notify stuff!
     if (notifyAboutChange && m_feedback) {
         m_buffer.notifyAboutRangeChange(m_view, toLineRange(), false /* attribute not interesting here */);
@@ -192,54 +186,6 @@ void TextRange::checkValidity(KTextEditor::LineRange oldLineRange, bool notifyAb
             m_feedback->rangeEmpty(this);
         }
     }
-}
-
-void TextRange::fixLookup(KTextEditor::LineRange oldLineRange, KTextEditor::LineRange lineRange)
-{
-    // nothing changed?
-    if (oldLineRange == lineRange) {
-        return;
-    }
-
-    // now, not both can be invalid
-    Q_ASSERT(oldLineRange.start() >= 0 || lineRange.start() >= 0);
-    Q_ASSERT(oldLineRange.end() >= 0 || lineRange.end() >= 0);
-
-    // get full range
-    int startLineMin = oldLineRange.start();
-    if (oldLineRange.start() == -1 || (lineRange.start() != -1 && lineRange.start() < oldLineRange.start())) {
-        startLineMin = lineRange.start();
-    }
-
-    int endLineMax = oldLineRange.end();
-    if (oldLineRange.end() == -1 || lineRange.end() > oldLineRange.end()) {
-        endLineMax = lineRange.end();
-    }
-
-    // get start block
-    int blockIdx = m_buffer.blockForLine(startLineMin);
-    Q_ASSERT(blockIdx >= 0);
-
-    // remove this range from m_ranges
-    auto it = m_buffer.m_blocks.begin() + blockIdx;
-    auto end = m_buffer.m_blocks.end();
-    for (; it != end; ++it) {
-        // either insert or remove range
-        TextBlock *block = *it;
-        if ((lineRange.end() < block->startLine()) || (lineRange.start() >= (block->startLine() + block->lines()))) {
-            block->removeRange(this);
-        } else {
-            block->updateRange(this);
-        }
-
-        // ok, reached end block
-        if (endLineMax < (block->startLine() + block->lines())) {
-            return;
-        }
-    }
-
-    // we should not be here, really, then endLine is wrong
-    Q_ASSERT(false);
 }
 
 void TextRange::setView(KTextEditor::View *view)

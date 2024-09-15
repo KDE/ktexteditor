@@ -173,12 +173,8 @@ void TextBlock::wrapLine(const KTextEditor::Cursor position, int fixStartLinesSt
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
     for (TextRange *range : std::as_const(changedRanges)) {
-        // we need to do updateRange to ALWAYS ensure the line => range and back cache is updated
-        // see MovingRangeTest::testLineWrapOrUnwrapUpdateRangeForLineCache
-        updateRange(range);
-
-        // in addition: ensure that we really invalidate bad ranges!
-        range->checkValidity(range->toLineRange());
+        // ensure that we really invalidate bad ranges!
+        range->checkValidity();
     }
 }
 
@@ -192,7 +188,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
 
         // move last line of previous block to this one, might result in empty block
         const TextLine oldFirst = m_lines.at(0);
-        int lastLineOfPreviousBlock = previousBlock->lines() - 1;
+        const int lastLineOfPreviousBlock = previousBlock->lines() - 1;
         m_lines[0] = previousBlock->m_lines.back();
         previousBlock->m_lines.erase(previousBlock->m_lines.begin() + (previousBlock->lines() - 1));
 
@@ -266,12 +262,8 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
         // we might need to invalidate ranges or notify about their changes
         // checkValidity might trigger delete of the range!
         for (TextRange *range : std::as_const(changedRanges)) {
-            // update both blocks
-            updateRange(range);
-            previousBlock->updateRange(range);
-
             // afterwards check validity, might delete this range!
-            range->checkValidity(range->toLineRange());
+            range->checkValidity();
         }
 
         // be done
@@ -338,12 +330,8 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
     for (TextRange *range : std::as_const(changedRanges)) {
-        // we need to do updateRange to ALWAYS ensure the line => range and back cache is updated
-        // see MovingRangeTest::testLineWrapOrUnwrapUpdateRangeForLineCache
-        updateRange(range);
-
-        // in addition: ensure that we really invalidate bad ranges!
-        range->checkValidity(range->toLineRange());
+        // ensure that we really invalidate bad ranges!
+        range->checkValidity();
     }
 }
 
@@ -414,7 +402,7 @@ void TextBlock::insertText(const KTextEditor::Cursor position, const QString &te
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
     for (TextRange *range : std::as_const(changedRanges)) {
-        range->checkValidity(range->toLineRange());
+        range->checkValidity();
     }
 }
 
@@ -485,7 +473,7 @@ void TextBlock::removeText(KTextEditor::Range range, QString &removedText)
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
     for (TextRange *range : std::as_const(changedRanges)) {
-        range->checkValidity(range->toLineRange());
+        range->checkValidity();
     }
 }
 
@@ -532,20 +520,6 @@ void TextBlock::splitBlock(int fromLine, TextBlock *newBlock)
             ++it;
         }
     }
-
-    // fix ALL ranges!
-    // copy is necessary as update range may modify the uncached ranges
-    std::vector<TextRange *> allRanges;
-    allRanges.reserve(m_uncachedRanges.size() + m_cachedLineForRanges.size());
-    std::for_each(m_cachedLineForRanges.keyBegin(), m_cachedLineForRanges.keyEnd(), [&allRanges](TextRange *range) {
-        allRanges.push_back(range);
-    });
-    allRanges.insert(allRanges.end(), m_uncachedRanges.begin(), m_uncachedRanges.end());
-    for (TextRange *range : allRanges) {
-        // update both blocks
-        updateRange(range);
-        newBlock->updateRange(range);
-    }
 }
 
 void TextBlock::mergeBlock(TextBlock *targetBlock)
@@ -565,20 +539,6 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     }
     targetBlock->m_blockSize += m_blockSize;
     clearLines();
-
-    // fix ALL ranges!
-    // copy is necessary as update range may modify the uncached ranges
-    std::vector<TextRange *> allRanges;
-    allRanges.reserve(m_uncachedRanges.size() + m_cachedLineForRanges.size());
-    std::for_each(m_cachedLineForRanges.keyBegin(), m_cachedLineForRanges.keyEnd(), [&allRanges](TextRange *range) {
-        allRanges.push_back(range);
-    });
-    allRanges.insert(allRanges.end(), m_uncachedRanges.begin(), m_uncachedRanges.end());
-    for (TextRange *range : allRanges) {
-        // update both blocks
-        updateRange(range);
-        targetBlock->updateRange(range);
-    }
 }
 
 void TextBlock::deleteBlockContent()
@@ -631,44 +591,46 @@ void TextBlock::clearBlockContent(TextBlock *targetBlock)
 
 QList<TextRange *> TextBlock::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const
 {
-    const auto cachedRanges = cachedRangesForLine(line);
     QList<TextRange *> ranges;
-    ranges.reserve(m_uncachedRanges.size() + (cachedRanges ? cachedRanges->size() : 0));
     rangesForLine(line, view, rangesWithAttributeOnly, ranges);
     return ranges;
 }
 
-void TextBlock::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QList<TextRange *> &outRanges) const
+void TextBlock::rangesForLine(const int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QList<TextRange *> &outRanges) const
 {
-    const auto cachedRanges = cachedRangesForLine(line);
     outRanges.clear();
-
-    auto predicate = [line, view, rangesWithAttributeOnly](TextRange *range) {
+    const int lineInBlock = line - startLine(); // line number in block
+    for (auto cursor : std::as_const(m_cursors)) {
+        if (!cursor->kateRange()) {
+            continue;
+        }
+        auto range = cursor->kateRange();
         if (rangesWithAttributeOnly && !range->hasAttribute()) {
-            return false;
+            continue;
         }
 
         // we want ranges for no view, but this one's attribute is only valid for views
         if (!view && range->attributeOnlyForViews()) {
-            return false;
+            continue;
         }
 
         // the range's attribute is not valid for this view
         if (range->view() && range->view() != view) {
-            return false;
+            continue;
         }
 
+        // simple case
+        if (cursor->lineInBlock() == lineInBlock) {
+            outRanges.append(range);
+        }
         // if line is in the range, ok
-        if (range->startInternal().lineInternal() <= line && line <= range->endInternal().lineInternal()) {
-            return true;
+        else if (range->startInternal().lineInternal() <= line && line <= range->endInternal().lineInternal()) {
+            outRanges.append(range);
         }
-        return false;
-    };
-
-    if (cachedRanges) {
-        std::copy_if(cachedRanges->begin(), cachedRanges->end(), std::back_inserter(outRanges), predicate);
     }
-    std::copy_if(m_uncachedRanges.begin(), m_uncachedRanges.end(), std::back_inserter(outRanges), predicate);
+    std::sort(outRanges.begin(), outRanges.end());
+    auto it = std::unique(outRanges.begin(), outRanges.end());
+    outRanges.erase(it, outRanges.end());
 }
 
 void TextBlock::markModifiedLinesAsSaved()
@@ -680,89 +642,4 @@ void TextBlock::markModifiedLinesAsSaved()
         }
     }
 }
-
-void TextBlock::updateRange(TextRange *range)
-{
-    // get some simple facts about our nice range
-    const int startLine = range->startInternal().lineInternal();
-    const int endLine = range->endInternal().lineInternal();
-    const bool isSingleLine = startLine == endLine;
-    const int blockStartLine = this->startLine();
-
-    // perhaps remove range and be done
-    if ((endLine < blockStartLine) || (startLine >= (blockStartLine + lines()))) {
-        removeRange(range);
-        return;
-    }
-
-    // The range is still a single-line range, and is still cached to the correct line.
-    if (isSingleLine) {
-        auto it = m_cachedLineForRanges.find(range);
-        if (it != m_cachedLineForRanges.end() && it.value() == startLine - blockStartLine) {
-            return;
-        }
-    }
-
-    // The range is still a multi-line range, and is already in the correct set.
-    if (!isSingleLine && m_uncachedRanges.contains(range)) {
-        return;
-    }
-
-    // remove, if already there!
-    removeRange(range);
-
-    // simple case: multi-line range
-    if (!isSingleLine) {
-        // The range cannot be cached per line, as it spans multiple lines
-        m_uncachedRanges.append(range);
-        return;
-    }
-
-    // The range is contained by a single line, put it into the line-cache
-    const int lineOffset = startLine - blockStartLine;
-
-    // enlarge cache if needed
-    if (m_cachedRangesForLine.size() <= (size_t)lineOffset) {
-        m_cachedRangesForLine.resize(lineOffset + 1);
-    }
-
-    // insert into mapping
-    if (!m_cachedRangesForLine[lineOffset].contains(range)) {
-        m_cachedRangesForLine[lineOffset].push_back(range);
-    }
-    m_cachedLineForRanges[range] = lineOffset;
-}
-
-void TextBlock::removeRange(TextRange *range)
-{
-    // uncached range? remove it and be done
-    int pos = m_uncachedRanges.indexOf(range);
-    if (pos != -1) {
-        m_uncachedRanges.remove(pos);
-        // must be only uncached!
-        Q_ASSERT(m_cachedLineForRanges.find(range) == m_cachedLineForRanges.end());
-        return;
-    }
-
-    // cached range?
-    auto it = m_cachedLineForRanges.find(range);
-    if (it != m_cachedLineForRanges.end()) {
-        // must be only cached!
-        Q_ASSERT(!m_uncachedRanges.contains(range));
-
-        int line = it.value();
-
-        // query the range from cache, must be there
-        int idx = m_cachedRangesForLine[line].indexOf(range);
-        Q_ASSERT(idx != -1);
-
-        // remove it and be done
-        m_cachedRangesForLine[line].remove(idx);
-        m_cachedLineForRanges.erase(it);
-        return;
-    }
-
-    // else: range was not for this block, just do nothing, removeRange should be "safe" to use
-}
-
 }
