@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-14 00:38+0000\n"
-"PO-Revision-Date: 2024-08-28 09:02+0300\n"
+"PO-Revision-Date: 2024-09-14 19:54+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2420,10 +2420,9 @@ msgid "The file '%1' was created on disk."
 msgstr "Файл «%1» було створено на диску."
 
 #: document/katedocument.cpp:5599
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted on disk."
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "Файл «%1» було вилучено на диску."
+msgstr "Файл «%1» було вилучено на диску або пересунуто до іншої теки."
 
 #: document/katedocument.cpp:5936
 #, kde-format
