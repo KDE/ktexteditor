@@ -26,8 +26,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 2.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 2.0\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -128,10 +128,9 @@ msgstr "&Τύλιγμα κώδικα"
 
 #. i18n: ectx: Menu (go)
 #: data/katepart5ui.rc:108
-#, fuzzy, kde-format
-#| msgid "Go"
+#, kde-format
 msgid "&Go"
-msgstr "Μετάβαση"
+msgstr "&Μετάβαση"
 
 #. i18n: ectx: Menu (tools)
 #: data/katepart5ui.rc:123
@@ -376,10 +375,9 @@ msgstr "Εμφάνιση μινι-χάρτη γραμμής κύ&λισης"
 
 #. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
 #: dialogs/bordersappearanceconfigwidget.ui:250
-#, fuzzy, kde-format
-#| msgid "Minim&ap Width"
+#, kde-format
 msgid "Minim&ap width:"
-msgstr "Πλάτος μινι&χάρτη"
+msgstr "Πλάτος μινι&χάρτη:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:263
@@ -430,10 +428,9 @@ msgstr "Εμφάνιση αριθμών &γραμμής"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/bordersappearanceconfigwidget.ui:296
-#, fuzzy, kde-format
-#| msgid "Sort Bookmarks Menu"
+#, kde-format
 msgid "Sort bookmarks menu:"
-msgstr "Ταξινόμηση μενού σελιδοδεικτών"
+msgstr "Ταξινόμηση μενού σελιδοδεικτών:"
 
 #: dialogs/clipboardhistorydialog.cpp:261
 #, fuzzy, kde-format
@@ -495,8 +492,7 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
-#, fuzzy, kde-format
-#| msgid "A&uto Word Completion"
+#, kde-format
 msgid "A&uto word completion"
 msgstr "Α&υτόματη συμπλήρωση λέξεων"
 
@@ -565,10 +561,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
-#, fuzzy, kde-format
-#| msgid "Word Wrap"
+#, kde-format
 msgid "Word wrap:"
-msgstr "Αναδίπλωση λέξεων"
+msgstr "Αναδίπλωση λέξεων:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:29
@@ -640,10 +635,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblInputMode)
 #: dialogs/editconfigwidget.ui:91
-#, fuzzy, kde-format
-#| msgid "Default input mode"
+#, kde-format
 msgid "Default input mode:"
-msgstr "Προκαθορισμένη λειτουργία εισαγωγής"
+msgstr "Προκαθορισμένη λειτουργία εισαγωγής:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/editconfigwidget.ui:120
@@ -676,10 +670,9 @@ msgstr " χαρακτήρες"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Copy and Paste"
+#, kde-format
 msgid "Copy and paste:"
-msgstr "Αντιγραφή και Επικόλληση"
+msgstr "Αντιγραφή και Επικόλληση:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
 #: dialogs/editconfigwidget.ui:173
@@ -835,8 +828,7 @@ msgstr "&Τονισμός:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblIndenter)
 #: dialogs/filetypeconfigwidget.ui:136
-#, fuzzy, kde-format
-#| msgid "&Indentation Mode:"
+#, kde-format
 msgid "&Indentation mode:"
 msgstr "&Λειτουργία εσοχών:"
 
@@ -1363,10 +1355,9 @@ msgid "View &Difference"
 msgstr "Προβολή &διαφορών"
 
 #: dialogs/katedialogs.cpp:1457
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "Προβολή διαφορών μεταξύ των αλλαγών"
+msgstr "Προβολή διαφορών μεταξύ των αλλαγών."
 
 #: dialogs/katedialogs.cpp:1462
 #, kde-format
@@ -1394,11 +1385,10 @@ msgid "Closes the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&Αποθήκευση ως..."
+msgstr "&Αποθήκευση ως…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -1722,8 +1712,7 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncodingDetection)
 #: dialogs/opensaveconfigwidget.ui:57
-#, fuzzy, kde-format
-#| msgid "&Encoding Detection:"
+#, kde-format
 msgid "&Encoding detection:"
 msgstr "Ανί&χνευση κωδικοποίησης:"
 
@@ -1741,8 +1730,7 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncodingDetection2)
 #: dialogs/opensaveconfigwidget.ui:74
-#, fuzzy, kde-format
-#| msgid "&Fallback Encoding:"
+#, kde-format
 msgid "&Fallback encoding:"
 msgstr "&Κωδικοποίηση μετάπτωσης:"
 
@@ -1847,8 +1835,7 @@ msgstr "Ενεργοποίηση χαρακτήρων που δηλώνουν τ
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigwidget.ui:142
-#, fuzzy, kde-format
-#| msgid "Line Length Limit:"
+#, kde-format
 msgid "Line length limit:"
 msgstr "Όριο μήκους γραμμής:"
 
@@ -2145,8 +2132,7 @@ msgstr "Εμφάνιση/απόκρυψη καταμέτρησης λέξεων 
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:271 view/katestatusbar.cpp:258
-#, fuzzy, kde-format
-#| msgid "Show Word Count"
+#, kde-format
 msgid "Show word count"
 msgstr "Εμφάνιση καταμέτρησης λέξεων"
 
@@ -2166,10 +2152,9 @@ msgstr "Εμφάνιση αριθμών &γραμμής"
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
-#, fuzzy, kde-format
-#| msgid "Fold First Line"
+#, kde-format
 msgid "Fold first line:"
-msgstr "Τύλιγμα πρώτης γραμμής"
+msgstr "Τύλιγμα πρώτης γραμμής:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2187,10 +2172,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
 #: dialogs/textareaappearanceconfigwidget.ui:337
-#, fuzzy, kde-format
-#| msgid "&Dynamic Word Wrap"
+#, kde-format
 msgid "Dynamic Word Wrap:"
-msgstr "&Δυναμική αναδίπλωση λέξεων"
+msgstr "Δυναμική αναδίπλωση λέξεων:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:344
@@ -2207,10 +2191,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
 #: dialogs/textareaappearanceconfigwidget.ui:358
-#, fuzzy, kde-format
-#| msgid "Dynamic Word Wrap Indicators"
+#, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr "Δείκτες δυναμικής αναδίπλωσης λέξεων"
+msgstr "Δείκτες δυναμικής αναδίπ&λωσης λέξεων:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:368
@@ -2262,10 +2245,9 @@ msgstr "% του πλάτους προβολής"
 
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show i&ndentation lines:"
-msgstr "Εμφάνιση &γραμμών εσοχών"
+msgstr "Εμφάνιση &γραμμών εσοχών:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:453
@@ -2315,8 +2297,7 @@ msgid "&Close"
 msgstr "&Κλείσιμο"
 
 #: document/katedocument.cpp:2282 document/katedocument.cpp:6542
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Κλείσιμο μηνύματος"
@@ -2914,10 +2895,9 @@ msgid "&Color theme:"
 msgstr "Χρώματα"
 
 #: printing/printconfigwidgets.cpp:494
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "Γραμματοσειρά"
+msgstr "Γραμματοσειρά:"
 
 #: printing/printconfigwidgets.cpp:498
 #, kde-format
@@ -3032,17 +3012,13 @@ msgid "Emmet"
 msgstr "Emmet"
 
 #: script/data/commands/emmet.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Wrap with tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
 msgstr "Αναδίπλωση με ετικέτα"
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
 msgstr "Μετακίνηση του δρομέα στην ετικέτα που ταιριάζει"
@@ -3064,112 +3040,85 @@ msgid "Select HTML/XML Tag Contents Outwards"
 msgstr "Επιλογή περιεχομένων HTML/XML ετικέτας προς τα έξω"
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
 msgstr "Εναλλαγή σχολίου"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
 msgstr "Μετάβαση στο επόμενο σημείο επεξεργασίας"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
 msgstr "Μετακίνηση στο προηγούμενο σημείο επεξεργασίας"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
 msgstr "Επιλέξτε επόμενο σημείο επεξεργασίας"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
 msgstr "Επιλέξτε προηγούμενο σημείο επεξεργασίας"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Delete tag under cursor"
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
 msgstr "Διαγραφή ετικέτας στη θέση του δρομέα"
 
 #: script/data/commands/emmet.js:54
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Split or join a tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
 msgstr "Διαίρεση ή συνένωση ετικέτας"
 
 #: script/data/commands/emmet.js:58
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Evaluate a simple math expression"
+#, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
 msgstr "Υπολογισμός απλής μαθηματικής έκφρασης"
 
 #: script/data/commands/emmet.js:62
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
 msgstr "Μείωση αριθμού κατά 1"
 
 #: script/data/commands/emmet.js:66
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
 msgstr "Μείωση αριθμού κατά 10"
 
 #: script/data/commands/emmet.js:70
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
 msgstr "Μείωση αριθμού κατά 0.1"
 
 #: script/data/commands/emmet.js:74
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
 msgstr "Αύξηση αριθμού κατά 1"
 
 #: script/data/commands/emmet.js:78
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
 msgstr "Αύξηση αριθμού κατά 10"
 
 #: script/data/commands/emmet.js:82
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
 msgstr "Αύξηση αριθμού κατά 0.1"
@@ -3285,9 +3234,7 @@ msgid "Increment number under cursor by 0.1"
 msgstr "Αύξηση αριθμού στη θέση του δρομέα κατά 0.1"
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
 msgstr "Μετακίνηση του δρομέα στην προηγούμενη εσοχή που ταιριάζει"
@@ -3301,9 +3248,7 @@ msgid "Navigation"
 msgstr "Πλοήγηση"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "Μετακίνηση του δρομέα στην επόμενη εσοχή που ταιριάζει"
@@ -3333,11 +3278,10 @@ msgid "Go to Previous Paragraph"
 msgstr "Μετακίνηση στο προηγούμενο σημείο επεξεργασίας"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "&Αφαίρεση κενών στο τέλος:"
+msgstr "Αφαίρεση κενών στο τέλος"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
@@ -3365,8 +3309,7 @@ msgid "Remove Trailing and Leading Spaces"
 msgstr "&Αφαίρεση κενών στο τέλος:"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Ένωση γραμμών"
@@ -3532,14 +3475,7 @@ msgstr ""
 "<br><code>filter 'line.length > 0'</code>"
 
 #: script/data/commands/utils.js:438
-#, fuzzy, kde-format
-#| msgid ""
-#| "Given a JavaScript function as argument, call that for the list of "
-#| "(selected) lines and replace the line with the return value of the "
-#| "callback.<br>Example (see also <code>ltrim</code>):<br><code>map "
-#| "'function(line){return line.replace(/^\\s+/, \"\");}'</code><br>To save "
-#| "you some typing, you can also do this to achieve the same:<br><code>map "
-#| "'line.replace(/^\\s+/, \"\")'</code>"
+#, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
 "(selected) lines and replace the line with the return value of the callback."
@@ -3625,9 +3561,7 @@ msgid "Haskell"
 msgstr "Haskell"
 
 #: script/data/indentation/julia.js:2
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Julia"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "Julia"
 msgstr "Julia"
@@ -4128,12 +4062,10 @@ msgid "Spell check canceled."
 msgstr "Ο ορθογραφικός έλεγχος ακυρώθηκε."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Ορθογραφικός έλεγχος σε εξέλιξη..."
+msgstr "Ορθογραφικός έλεγχος σε εξέλιξη…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4370,11 +4302,10 @@ msgid "I&gnore All"
 msgstr "&Παράβλεψη όλων"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Ορθογραφία (από το δρομέα)..."
+msgstr "Ορθογραφία (από το δρομέα)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4441,9 +4372,7 @@ msgid "Use default color from the color theme"
 msgstr "Χρήση προκαθορισμένου χρώματος από το χρωματικό σχήμα του KDE"
 
 #: syntax/katehighlightmenu.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "Autoindent mode"
-#| msgid "None"
+#, kde-format
 msgid "None"
 msgstr "Κανένα"
 
@@ -4503,32 +4432,28 @@ msgid "S&trikeout"
 msgstr "&Μεσογράμμιση"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "Κανονικό &χρώμα..."
+msgstr "Κανονικό &χρώμα…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "&Επιλεγμένο χρώμα..."
+msgstr "&Επιλεγμένο χρώμα…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "Χρώμα &φόντου..."
+msgstr "Χρώμα &φόντου…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "&Επιλεγμένο χρώμα φόντου..."
+msgstr "&Επιλεγμένο χρώμα φόντου…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -5179,18 +5104,16 @@ msgid "&Copy…"
 msgstr "Αποθήκευση αντι&γράφου ως..."
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Εξαγωγή..."
+msgstr "Εξαγωγή…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Εισαγωγή..."
+msgstr "Εισαγωγή…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -6455,9 +6378,7 @@ msgid "modified"
 msgstr "modified"
 
 #: variableeditor/variableeditor.cpp:349
-#, fuzzy, kde-format
-#| msgctxt "value for variale remove-trailing-spaces"
-#| msgid "all"
+#, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
 msgstr "all"
@@ -6738,10 +6659,9 @@ msgid "Insert mode and VI input mode indicator. Click to change the mode."
 msgstr "Ένδειξη λειτουργίας εισαγωγής και λειτουργίας εισαγωγής VI"
 
 #: view/katestatusbar.cpp:135
-#, fuzzy, kde-format
-#| msgid "Change Dictionary..."
+#, kde-format
 msgid "Change dictionary"
-msgstr "Αλλαγή λεξικού..."
+msgstr "Αλλαγή λεξικού"
 
 #: view/katestatusbar.cpp:161 view/katestatusbar.cpp:489
 #, kde-format
@@ -6785,10 +6705,9 @@ msgid "End of line type"
 msgstr "Τέλος της γραμμής"
 
 #: view/katestatusbar.cpp:207
-#, fuzzy, kde-format
-#| msgid "&Mode"
+#, kde-format
 msgid "Mode"
-msgstr "&Λειτουργία"
+msgstr "Λειτουργία"
 
 #: view/katestatusbar.cpp:209 view/kateview.cpp:717
 #, kde-format
@@ -6858,12 +6777,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Εσοχή/Στηλοθέτης: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Άλλο"
+msgstr "Άλλο…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6883,8 +6800,7 @@ msgid "Please specify the wanted indentation width:"
 msgstr "Παρακαλώ προσδιορίστε το επιθυμητό πλάτος της εσοχής:"
 
 #: view/katestatusbar.cpp:568
-#, fuzzy, kde-format
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
 "chars count."
@@ -7204,10 +7120,9 @@ msgstr ""
 "γι' αυτήν την ενέργεια."
 
 #: view/kateview.cpp:650
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgid "Remove Trailing Spaces"
-msgstr "&Αφαίρεση κενών στο τέλος:"
+msgstr "Αφαίρεση κενών στο τέλος"
 
 #: view/kateview.cpp:668
 #, kde-format
@@ -7236,18 +7151,16 @@ msgstr ""
 "Αποθήκευση του τρέχοντος εγγράφου στον δίσκο με ένα όνομα της επιλογής σας."
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "Αποθήκευση ως με κωδικοποίηση..."
+msgstr "Απο&θήκευση ως με κωδικοποίηση…"
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "Αποθήκευση αντι&γράφου ως..."
+msgstr "Αποθήκευση αντι&γράφου ως…"
 
 #: view/kateview.cpp:690
 #, kde-format
@@ -7286,11 +7199,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Μετακίνηση προς τα κάτω στην επόμενη τροποποιημένη γραμμή."
 
 #: view/kateview.cpp:709
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "Διαμόρφωσ&η επεξεργαστή..."
+msgstr "Διαμόρφωσ&η επεξεργαστή…"
 
 #: view/kateview.cpp:711
 #, kde-format
@@ -7383,8 +7295,7 @@ msgstr ""
 "(γραμμής) και επιλογής τμημάτων."
 
 #: view/kateview.cpp:775
-#, fuzzy, kde-format
-#| msgid "Switch to Next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Εναλλαγή στην επόμενη λειτουργία εισαγωγής"
 
@@ -7800,11 +7711,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Ενεργοποίηση/απενεργοποίηση αυτόματου ορθογραφικού ελέγχου"
 
 #: view/kateview.cpp:991
-#, fuzzy, kde-format
-#| msgid "Change Dictionary..."
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Αλλαγή λεξικού..."
+msgstr "Αλλαγή λεξικού…"
 
 #: view/kateview.cpp:992
 #, kde-format
@@ -7839,11 +7749,10 @@ msgstr ""
 "κείμενο σαν HTML στο πρόχειρο συστήματος."
 
 #: view/kateview.cpp:1009
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "Εξα&γωγή ως HTML..."
+msgstr "Εξα&γωγή ως HTML…"
 
 #: view/kateview.cpp:1011
 #, kde-format
@@ -8321,11 +8230,10 @@ msgid "Copy"
 msgstr "Αποθήκευση αντι&γράφου ως..."
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Χρώμα &φόντου..."
+msgstr "Χρώμα φόντου…"
 
 #: view/screenshotdialog.cpp:182
 #, fuzzy, kde-format

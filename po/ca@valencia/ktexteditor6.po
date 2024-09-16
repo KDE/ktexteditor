@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-14 00:38+0000\n"
-"PO-Revision-Date: 2024-08-28 16:10+0200\n"
+"PO-Revision-Date: 2024-09-14 13:12+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -2436,10 +2436,9 @@ msgid "The file '%1' was created on disk."
 msgstr "El fitxer «%1» s'ha creat en el disc."
 
 #: document/katedocument.cpp:5599
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted on disk."
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "El fitxer «%1» s'ha suprimit en el disc."
+msgstr "El fitxer «%1» s'ha suprimit o mogut en el disc."
 
 #: document/katedocument.cpp:5936
 #, kde-format

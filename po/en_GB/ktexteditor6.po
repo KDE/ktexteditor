@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-14 00:38+0000\n"
-"PO-Revision-Date: 2024-09-07 12:19+0100\n"
+"PO-Revision-Date: 2024-09-15 10:44+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -2388,10 +2388,9 @@ msgid "The file '%1' was created on disk."
 msgstr "The file '%1' was created on disk."
 
 #: document/katedocument.cpp:5599
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted on disk."
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "The file '%1' was deleted on disk."
+msgstr "The file '%1' was deleted or moved on disk."
 
 #: document/katedocument.cpp:5936
 #, kde-format
