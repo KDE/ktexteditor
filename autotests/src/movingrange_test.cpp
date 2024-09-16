@@ -512,3 +512,66 @@ void MovingRangeTest::testMultiline()
     QVERIFY(doc.buffer().rangesForLine(1, nullptr, false).contains(range));
     QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).contains(range));
 }
+
+void MovingRangeTest::testMultiblock()
+{
+    KTextEditor::DocumentPrivate doc;
+    // add enough text so that we have at least 3 blocks
+    QStringList text(200, QStringLiteral("asdf"));
+    doc.setText(text);
+
+    auto range = doc.newMovingRange({1, 0, 170, 3},
+                                    KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
+                                    KTextEditor::MovingRange::InvalidateIfEmpty);
+
+    QVERIFY(doc.buffer().hasMultlineRange(range));
+    // check that the range is returned for each line it contains
+    for (int i = range->toLineRange().start(); i <= range->toLineRange().end(); ++i) {
+        QVERIFY(doc.buffer().rangesForLine(i, nullptr, false).contains(range));
+    }
+
+    // invalidate and check
+    range->setRange(KTextEditor::Range::invalid());
+    QVERIFY(!doc.buffer().hasMultlineRange(range));
+    for (auto i : {10, 50, 100, 150}) {
+        QVERIFY(!doc.buffer().rangesForLine(i, nullptr, false).contains(range));
+    }
+
+    // check that the range is returned for each line it contains after setRange
+    range->setRange({1, 0, 170, 3});
+    QVERIFY(doc.buffer().hasMultlineRange(range));
+    for (int i = range->toLineRange().start(); i <= range->toLineRange().end(); ++i) {
+        QVERIFY(doc.buffer().rangesForLine(i, nullptr, false).contains(range));
+    }
+
+    // delete the range and check
+    delete range;
+    QVERIFY(!doc.buffer().hasMultlineRange(range));
+    for (auto i : {10, 50, 100, 150}) {
+        QVERIFY(!doc.buffer().rangesForLine(i, nullptr, false).contains(range));
+    }
+
+    // check that range becomes multi block on split block
+    range = doc.newMovingRange({197, 0, 199, 3},
+                               KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
+                               KTextEditor::MovingRange::InvalidateIfEmpty);
+
+    // add enough lines to trigger a splitBlock
+    doc.editStart();
+    doc.insertLines(198, QStringList(128, QStringLiteral("asdfg")));
+    doc.editEnd();
+
+    QVERIFY(doc.buffer().hasMultlineRange(range));
+    QCOMPARE(range->toRange(), KTextEditor::Range(197, 0, 327, 3));
+    for (int i = range->toLineRange().start(); i <= range->toLineRange().end(); ++i) {
+        QVERIFY(doc.buffer().rangesForLine(i, nullptr, false).contains(range));
+    }
+
+    doc.editStart();
+    doc.removeText({200, 0, 299, 5});
+    doc.editEnd();
+    QVERIFY(doc.buffer().rangesForLine(198, nullptr, false).contains(range));
+    QVERIFY(!doc.buffer().hasMultlineRange(range));
+
+    delete range;
+}

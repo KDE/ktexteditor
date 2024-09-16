@@ -491,16 +491,12 @@ public:
     QList<TextRange *> rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const
     {
         // get block, this will assert on invalid line
-        const int blockIndex = blockForLine(line);
-        return m_blocks.at(blockIndex)->rangesForLine(line, view, rangesWithAttributeOnly);
+        QList<TextRange *> outRanges;
+        rangesForLine(line, view, rangesWithAttributeOnly, outRanges);
+        return outRanges;
     }
 
-    void rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QList<TextRange *> &outRanges) const
-    {
-        // get block, this will assert on invalid line
-        const int blockIndex = blockForLine(line);
-        return m_blocks.at(blockIndex)->rangesForLine(line, view, rangesWithAttributeOnly, outRanges);
-    }
+    void rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QList<TextRange *> &outRanges) const;
 
     /**
      * Check if the given range pointer is still valid.
@@ -515,6 +511,13 @@ public:
      * Invalidate all ranges in this buffer.
      */
     void invalidateRanges();
+
+    /**
+     * Add/Remove a multiline range that spans multiple blocks
+     */
+    KTEXTEDITOR_NO_EXPORT void addMultilineRange(TextRange *range);
+    KTEXTEDITOR_NO_EXPORT void removeMultilineRange(TextRange *range);
+    bool hasMultlineRange(KTextEditor::MovingRange *range) const;
 
     //
     // checksum handling
@@ -603,6 +606,11 @@ private:
      * Set of ranges of this whole buffer.
      */
     QSet<TextRange *> m_ranges;
+
+    /**
+     * Multiline ranges that span multiple blocks
+     */
+    std::vector<TextRange *> m_multilineRanges;
 
     /**
      * Encoding prober type to use

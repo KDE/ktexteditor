@@ -317,6 +317,11 @@ public:
      */
     void setZDepth(qreal zDepth) override;
 
+    bool spansMultipleBlocks() const
+    {
+        return m_start.m_block && m_end.m_block && m_start.m_block != m_end.m_block;
+    }
+
 private:
     /**
      * Check if range is valid, used by constructor and setRange.

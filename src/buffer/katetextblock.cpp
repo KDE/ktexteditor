@@ -506,6 +506,7 @@ void TextBlock::splitBlock(int fromLine, TextBlock *newBlock)
     m_lines.resize(fromLine);
 
     // move cursors
+    QSet<Kate::TextRange *> ranges;
     for (auto it = m_cursors.begin(); it != m_cursors.end();) {
         auto cursor = *it;
         if (cursor->lineInBlock() >= fromLine) {
@@ -515,9 +516,18 @@ void TextBlock::splitBlock(int fromLine, TextBlock *newBlock)
             // add to new, remove from current
             newBlock->m_cursors.insert(cursor);
             it = m_cursors.erase(it);
+            if (cursor->kateRange()) {
+                ranges.insert(cursor->kateRange());
+            }
         } else {
             // keep in current
             ++it;
+        }
+    }
+
+    for (auto range : std::as_const(ranges)) {
+        if (range->spansMultipleBlocks()) {
+            m_buffer->addMultilineRange(range);
         }
     }
 }
@@ -525,12 +535,22 @@ void TextBlock::splitBlock(int fromLine, TextBlock *newBlock)
 void TextBlock::mergeBlock(TextBlock *targetBlock)
 {
     // move cursors, do this first, now still lines() count is correct for target
+    QSet<Kate::TextRange *> ranges;
     for (TextCursor *cursor : m_cursors) {
         cursor->m_line = cursor->lineInBlock() + targetBlock->lines();
         cursor->m_block = targetBlock;
         targetBlock->m_cursors.insert(cursor);
+        if (cursor->kateRange()) {
+            ranges.insert(cursor->kateRange());
+        }
     }
     m_cursors.clear();
+
+    for (auto range : std::as_const(ranges)) {
+        if (!range->spansMultipleBlocks()) {
+            m_buffer->removeMultilineRange(range);
+        }
+    }
 
     // move lines
     targetBlock->m_lines.reserve(targetBlock->lines() + lines());

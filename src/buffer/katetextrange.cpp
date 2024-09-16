@@ -29,12 +29,23 @@ TextRange::TextRange(TextBuffer &buffer, KTextEditor::Range range, InsertBehavio
     // check if range now invalid, there can happen no feedback, as m_feedback == 0
     // only place where KTextEditor::LineRange::invalid() for old range makes sense, as we were yet not registered!
     checkValidity();
+
+    // Add the range if it is multiline
+    if (spansMultipleBlocks()) {
+        m_buffer.addMultilineRange(this);
+    }
 }
 
 TextRange::~TextRange()
 {
     // reset feedback, don't want feedback during destruction
     m_feedback = nullptr;
+
+    // remove range from cached multiline ranges
+    const auto lineRange = toLineRange();
+    if (lineRange.isValid() && spansMultipleBlocks()) {
+        m_buffer.removeMultilineRange(this);
+    }
 
     // remove this range from the buffer
     m_buffer.m_ranges.remove(this);
@@ -43,7 +54,7 @@ TextRange::~TextRange()
     // notify right view
     // here we can ignore feedback, even with feedback, we want none if the range is deleted!
     if (m_attribute) {
-        m_buffer.notifyAboutRangeChange(m_view, toLineRange(), true /* we have a attribute */);
+        m_buffer.notifyAboutRangeChange(m_view, lineRange, true /* we have a attribute */);
     }
 }
 
@@ -104,10 +115,20 @@ void TextRange::setRange(KTextEditor::Range range)
 
     // remember old line range
     const auto oldLineRange = toLineRange();
+    const bool oldSpannedMultipleBlocks = spansMultipleBlocks();
 
     // change start and end cursor
     m_start.setPosition(range.start());
     m_end.setPosition(range.end());
+
+    const bool newSpansMultipleBlocks = spansMultipleBlocks();
+    if (oldSpannedMultipleBlocks != newSpansMultipleBlocks) {
+        if (oldSpannedMultipleBlocks) {
+            m_buffer.removeMultilineRange(this);
+        } else {
+            m_buffer.addMultilineRange(this);
+        }
+    }
 
     // check if range now invalid, don't emit feedback here, will be handled below
     // otherwise you can't delete ranges in feedback!
@@ -174,6 +195,9 @@ void TextRange::checkValidity(bool notifyAboutChange)
     if (!m_invalidateIfEmpty && m_end < m_start) {
         m_end.setPosition(m_start);
     }
+
+    // fix lookup
+    // fixLookup(oldLineRange, toLineRange());
 
     // perhaps need to notify stuff!
     if (notifyAboutChange && m_feedback) {

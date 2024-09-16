@@ -962,6 +962,53 @@ void TextBuffer::markModifiedLinesAsSaved()
         block->markModifiedLinesAsSaved();
     }
 }
+
+void TextBuffer::addMultilineRange(TextRange *range)
+{
+    auto it = std::find(m_multilineRanges.begin(), m_multilineRanges.end(), range);
+    if (it == m_multilineRanges.end()) {
+        m_multilineRanges.push_back(range);
+        return;
+    }
+}
+
+void TextBuffer::removeMultilineRange(TextRange *range)
+{
+    m_multilineRanges.erase(std::remove(m_multilineRanges.begin(), m_multilineRanges.end(), range), m_multilineRanges.end());
+}
+
+bool TextBuffer::hasMultlineRange(KTextEditor::MovingRange *range) const
+{
+    return std::find(m_multilineRanges.begin(), m_multilineRanges.end(), range) != m_multilineRanges.end();
+}
+
+void TextBuffer::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QList<TextRange *> &outRanges) const
+{
+    // get block, this will assert on invalid line
+    const int blockIndex = blockForLine(line);
+    m_blocks.at(blockIndex)->rangesForLine(line, view, rangesWithAttributeOnly, outRanges);
+    // printf("Requested range for line %d, available %d\n", (int)line, (int)m_multilineRanges.size());
+    for (auto range : m_multilineRanges) {
+        if (rangesWithAttributeOnly && !range->hasAttribute()) {
+            continue;
+        }
+
+        // we want ranges for no view, but this one's attribute is only valid for views
+        if (!view && range->attributeOnlyForViews()) {
+            continue;
+        }
+
+        // the range's attribute is not valid for this view
+        if (range->view() && range->view() != view) {
+            continue;
+        }
+
+        // if line is in the range, ok
+        else if (range->startInternal().lineInternal() <= line && line <= range->endInternal().lineInternal()) {
+            outRanges.append(range);
+        }
+    }
+}
 }
 
 #include "moc_katetextbuffer.cpp"

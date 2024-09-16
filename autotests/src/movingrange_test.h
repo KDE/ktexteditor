@@ -26,6 +26,7 @@ private Q_SLOTS:
     void testLineRemoved();
     void testLineWrapOrUnwrapUpdateRangeForLineCache();
     void testMultiline();
+    void testMultiblock();
 };
 
 #endif // KATE_MOVINGRANGE_TEST_H
