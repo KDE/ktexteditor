@@ -1586,9 +1586,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
         // Wait ample time for the timeout to fire.  Do not use waitForEmulatedCommandBarToHide for this -
         // the bar never actually hides in this instance, and I think it would take some deep changes in
         // Kate to make it do so (the KateCommandLineBar as the same issue).
-        QTest::qWait(commandResponseMessageTimeOutMS * 2);
-        QVERIFY(dummyToFocus->hasFocus());
-        QVERIFY(emulatedCommandBar->isVisible());
+        QTRY_VERIFY_WITH_TIMEOUT(dummyToFocus->hasFocus() && emulatedCommandBar->isVisible(), commandResponseMessageTimeOutMS * 4);
         mainWindowLayout->removeWidget(dummyToFocus);
         // Restore focus to the kate_view.
         kate_view->setFocus();
