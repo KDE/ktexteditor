@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-14 00:38+0000\n"
-"PO-Revision-Date: 2024-09-03 14:34+0200\n"
+"PO-Revision-Date: 2024-09-16 11:52+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -2432,10 +2432,9 @@ msgid "The file '%1' was created on disk."
 msgstr "Le file '%1' esseva create sur disco."
 
 #: document/katedocument.cpp:5599
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted on disk."
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "Le file '%1' esseva cancellate sur disco."
+msgstr "Le file '%1' esseva cancellate o movite sur disco ."
 
 #: document/katedocument.cpp:5936
 #, kde-format
