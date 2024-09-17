@@ -423,7 +423,7 @@ void KTextEditor::ViewPrivate::setupLayout()
 
 void KTextEditor::ViewPrivate::setupConnections()
 {
-    connect(m_doc, &KTextEditor::DocumentPrivate::undoChanged, this, &KTextEditor::ViewPrivate::slotUpdateUndo);
+    connect(m_doc->undoManager(), &KateUndoManager::undoChanged, this, &KTextEditor::ViewPrivate::slotUpdateUndo);
     connect(m_doc, &KTextEditor::DocumentPrivate::highlightingModeChanged, this, &KTextEditor::ViewPrivate::slotHlChanged);
     connect(m_doc, &KTextEditor::DocumentPrivate::canceled, this, &KTextEditor::ViewPrivate::slotSaveCanceled);
     connect(m_viewInternal, &KateViewInternal::dropEventPass, this, &KTextEditor::ViewPrivate::dropEventPass);

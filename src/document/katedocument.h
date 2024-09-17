@@ -378,9 +378,6 @@ public:
 protected:
     KateUndoManager *const m_undoManager;
 
-Q_SIGNALS:
-    void undoChanged();
-
 public:
     QList<KTextEditor::Range> searchText(KTextEditor::Range range, const QString &pattern, const KTextEditor::SearchOptions options) const;
 

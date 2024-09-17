@@ -249,12 +249,6 @@ KTextEditor::DocumentPrivate::DocumentPrivate(const KPluginMetaData &data, bool 
         setWidget(view);
     }
 
-    connect(m_undoManager, &KateUndoManager::undoChanged, this, &KTextEditor::DocumentPrivate::undoChanged);
-    connect(m_undoManager, &KateUndoManager::undoStart, this, &KTextEditor::DocumentPrivate::editingStarted);
-    connect(m_undoManager, &KateUndoManager::undoEnd, this, &KTextEditor::DocumentPrivate::editingFinished);
-    connect(m_undoManager, &KateUndoManager::redoStart, this, &KTextEditor::DocumentPrivate::editingStarted);
-    connect(m_undoManager, &KateUndoManager::redoEnd, this, &KTextEditor::DocumentPrivate::editingFinished);
-
     connect(this, &KTextEditor::DocumentPrivate::sigQueryClose, this, &KTextEditor::DocumentPrivate::slotQueryClose_save);
 
     connect(this, &KTextEditor::DocumentPrivate::aboutToInvalidateMovingInterfaceContent, this, &KTextEditor::DocumentPrivate::clearEditingPosStack);
