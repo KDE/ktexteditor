@@ -1808,12 +1808,7 @@ msgstr "Α&υτόματη ανίχνευση τέλους γραμμής"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkEnableBOM)
 #: dialogs/opensaveconfigwidget.ui:132
-#, fuzzy, kde-format
-#| msgid ""
-#| "The byte order mark is a special sequence at the beginning of unicode "
-#| "encoded documents. It helps editors to open text documents with the "
-#| "correct unicode encoding. The byte order mark is not visible in the "
-#| "displayed document."
+#, kde-format
 msgid ""
 "The byte order mark is a special sequence at the beginning of Unicode "
 "encoded documents. It helps editors to open text documents with the correct "
@@ -1821,7 +1816,7 @@ msgid ""
 "document."
 msgstr ""
 "Ο χαρακτήρας που δηλώνει τη σειρά των ψηφιολέξεων (BOM) είναι μια ειδική "
-"ακολουθία στην αρχή κάθε κωδικοποιημένου εγγράφου unicode. Βοηθάει του "
+"ακολουθία στην αρχή κάθε κωδικοποιημένου εγγράφου Unicode. Βοηθάει του "
 "επεξεργαστές να ανοίγουν έγγραφα κειμένου με την σωστή κωδικοποίηση unicode. "
 "Ο χαρακτήρας που δηλώνει τη σειρά των ψηφιολέξεων (BOM) δεν είναι ορατός "
 "όταν προβάλλεται το έγγραφο."
@@ -2378,15 +2373,12 @@ msgid "Possible Data Loss"
 msgstr "Πιθανή απώλεια δεδομένων"
 
 #: document/katedocument.cpp:2496
-#, fuzzy, kde-format
-#| msgid ""
-#| "The selected encoding cannot encode every unicode character in this "
-#| "document. Do you really want to save it? There could be some data lost."
+#, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
 "document. Do you really want to save it? There could be some data lost."
 msgstr ""
-"Η επιλεγμένη κωδικοποίηση δεν μπορεί να μετατρέψει όλους τους unicode "
+"Η επιλεγμένη κωδικοποίηση δεν μπορεί να μετατρέψει όλους τους Unicode "
 "χαρακτήρες του εγγράφου. Θέλετε πραγματικά να το αποθηκεύσετε; Κάποια "
 "δεδομένα μπορεί να χαθούν."
 
@@ -3024,17 +3016,13 @@ msgid "Move Cursor to Matching Tag"
 msgstr "Μετακίνηση του δρομέα στην ετικέτα που ταιριάζει"
 
 #: script/data/commands/emmet.js:22
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents inwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
 msgstr "Επιλογή περιεχομένων HTML/XML ετικέτας προς τα μέσα"
 
 #: script/data/commands/emmet.js:26
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents outwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
 msgstr "Επιλογή περιεχομένων HTML/XML ετικέτας προς τα έξω"
