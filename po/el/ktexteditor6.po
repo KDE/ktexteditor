@@ -12,22 +12,22 @@
 # Petros Vidalis <p_vidalis@hotmail.com>, 2010.
 # Stelios <sstavra@gmail.com>, 2012, 2013.
 # Dimitrios Glentadakis <dglent@gmail.com>, 2012, 2013, 2014.
-# Antonis Geralis <capoiosct@gmail.com>, 2014.
+# SPDX-FileCopyrightText: 2014, 2024 Antonis Geralis <capoiosct@gmail.com>
 # Dimitris Kardarakos <dimkard@gmail.com>, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-19 00:37+0000\n"
-"PO-Revision-Date: 2016-11-04 17:36+0200\n"
-"Last-Translator: Dimitris Kardarakos <dimkard@gmail.com>\n"
+"PO-Revision-Date: 2024-09-19 17:47+0300\n"
+"Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -305,7 +305,7 @@ msgid ""
 "scrollbar.</p><p>These marks will show bookmarks, for instance.</p>"
 msgstr ""
 "<p>Αν ενεργοποιηθεί αυτή η επιλογή, κάθε νέα προβολή θα εμφανίζει δείκτες "
-"στην κατακόρυφη κύλισή της.</p><p>Οι δείκτες αυτοί για παράδειγμα θα "
+"στην κατακόρυφη κύλιση της.</p><p>Οι δείκτες αυτοί για παράδειγμα θα "
 "σημειώνουν τους σελιδοδείκτες.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
@@ -351,10 +351,9 @@ msgstr "Πάντα ανενεργό"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:217
-#, fuzzy, kde-format
-#| msgid "Minim&ap Width"
+#, kde-format
 msgid "Minimap:"
-msgstr "Πλάτος μινι&χάρτη"
+msgstr "Μινι-χάρτης"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:224
@@ -364,14 +363,13 @@ msgid ""
 "vertical scrollbar."
 msgstr ""
 "Αν αυτή η επιλογή ενεργοποιηθεί, κάθε νέα προβολή θα εμφανίζει έναν μίνι "
-"χάρτη στην κατακόρυφη γραμμή κύλησης."
+"χάρτη στην κατακόρυφη γραμμή κύλισης."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:227
-#, fuzzy, kde-format
-#| msgid "Show scrollbar mini-map"
+#, kde-format
 msgid "Show minimap"
-msgstr "Εμφάνιση μινι-χάρτη γραμμής κύ&λισης"
+msgstr "Εμφάνιση μίνι-χάρτη"
 
 #. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
 #: dialogs/bordersappearanceconfigwidget.ui:250
@@ -387,7 +385,7 @@ msgid ""
 "document on the vertical scrollbar."
 msgstr ""
 "Αν αυτή η επιλογή ενεργοποιηθεί, κάθε νέα προβολή θα εμφανίζει έναν μίνι "
-"χάρτη όλου του εγγράφου στην κατακόρυφη γραμμή κύλησης."
+"χάρτη όλου του εγγράφου στην κατακόρυφη γραμμή κύλισης."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:266
@@ -5622,7 +5620,7 @@ msgid ""
 "\"AM\" or \"PM\".</td></tr><tr><td>ap</td><td>Use am/pm display. ap will be "
 "replaced by either \"am\" or \"pm\".</td></tr></table></p>"
 msgstr ""
-"<p>ημερομηνία ή <b>μορφή</b> ημερομηνίας</p><p>Εισαει μια συμβολοσειρά "
+"<p>ημερομηνία ή <b>μορφή</b> ημερομηνίας</p><p>Εισάγει μια συμβολοσειρά "
 "ημερομηνία/ώρα όπως ορίζεται από τη δοσμένη μορφή ή τη μορφή yyyy-MM-dd hh:"
 "mm:ss αν δεν ορίζεται καμία.</p><p>Πιθανά διακριτικά μορφής είναι:"
 "<table><tr><td>d</td><td>Η ημέρα ως αριθμός χωρίς μηδενικό αρχής (1-31).</"
