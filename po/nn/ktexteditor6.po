@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-19 00:37+0000\n"
-"PO-Revision-Date: 2024-08-31 18:56+0200\n"
+"PO-Revision-Date: 2024-09-22 16:37+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -1296,7 +1296,7 @@ msgid "Closes the file, discarding its content."
 msgstr "Lukkar fila og forkastar innhaldet."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "Lagra &som …"
@@ -6551,7 +6551,7 @@ msgstr "Lim inn innhald i førre museutval"
 #: view/kateview.cpp:483
 #, kde-format
 msgid "Copy File Location"
-msgstr ""
+msgstr "Kopierer filadressa"
 
 #: view/kateview.cpp:484
 #, kde-format
@@ -7839,20 +7839,20 @@ msgid "Disable Annotation Bar"
 msgstr "Fjern merknadslinja"
 
 #: view/screenshotdialog.cpp:178
-#, fuzzy, kde-format
+#, kde-format
 msgid "Save"
-msgstr "Opna/lagra"
+msgstr "Lagra"
 
 #: view/screenshotdialog.cpp:179
-#, fuzzy, kde-format
+#, kde-format
 msgid "Copy"
-msgstr "&Kopier …"
+msgstr "Kopier"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "&Bakgrunnsfarge …"
+msgstr "Bakgrunnsfarge …"
 
 #: view/screenshotdialog.cpp:182
 #, fuzzy, kde-format

@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-19 00:37+0000\n"
-"PO-Revision-Date: 2024-09-19 17:47+0300\n"
+"PO-Revision-Date: 2024-09-22 18:40+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
@@ -3253,15 +3253,13 @@ msgstr "Μετακίνηση του δρομέα στην επόμενη εσο�
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Μετάβαση στην επόμενη παράγραφο"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Μετακίνηση στο προηγούμενο σημείο επεξεργασίας"
+msgstr "Μετάβαση στην προηγούμενη παράγραφο"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3281,18 +3279,16 @@ msgid "Editing"
 msgstr "Επεξεργασία"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "&Αφαίρεση κενών στο τέλος:"
+msgstr "Αφαίρεση κενών στην αρχή"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "&Αφαίρεση κενών στο τέλος:"
+msgstr "Αφαίρεση κενών στο τέλος και στην αρχή"
 
 #: script/data/commands/utils.js:21
 #, kde-format
@@ -3325,12 +3321,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Αντίγραφο επιλεγμένων σειρών πάνω"
 
 #: script/data/commands/utils.js:43
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Αντίγραφο επιλεγμένων σειρών πάνω"
+msgstr "Αντίγραφο επιλεγμένου κειμένου"
 
 #: script/data/commands/utils.js:47
 #, kde-format
@@ -3345,11 +3339,10 @@ msgid "URI-decode Selected Text"
 msgstr "Επιλεγμένο κείμενο με URI αποκωδικοποίηση"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Μετακίνηση του δρομέα στην επόμενη εσοχή που ταιριάζει"
+msgstr "Αφαίρεση κενών γραμμών"
 
 #: script/data/commands/utils.js:410
 #, kde-format
@@ -3586,7 +3579,7 @@ msgstr "Python"
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #: script/data/indentation/replicode.js:2
 #, kde-format
@@ -6713,29 +6706,27 @@ msgstr "Συντακτική επισήμανση"
 #: view/katestatusbar.cpp:261
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "Συμπαγής λειτουργία γραμμής/στήλης"
 
 #: view/katestatusbar.cpp:307
-#, fuzzy, kde-format
-#| msgid " BLOCK "
+#, kde-format
 msgid "[BLOCK] %1"
-msgstr " ΤΜΗΜΑ "
+msgstr "[ΤΜΗΜΑ] %1"
 
 #: view/katestatusbar.cpp:323
 #, kde-format
 msgid "%1/%2:%3"
-msgstr ""
+msgstr "%1/%2:%3"
 
 #: view/katestatusbar.cpp:325
 #, kde-format
 msgid "%1:%2"
-msgstr ""
+msgstr "%1:%2"
 
 #: view/katestatusbar.cpp:329
-#, fuzzy, kde-format
-#| msgid "Line %1, Column %2"
+#, kde-format
 msgid "Line %1 of %2, Column %3"
-msgstr "Γραμμή: %1, Στήλη: %2"
+msgstr "Γραμμή: %1 από %2, Στήλη: %3"
 
 #: view/katestatusbar.cpp:331
 #, kde-format
@@ -6745,12 +6736,12 @@ msgstr "Γραμμή: %1, Στήλη: %2"
 #: view/katestatusbar.cpp:406
 #, kde-format
 msgid "Soft Tabs: %1"
-msgstr "Απαλές καρτέλες: %1"
+msgstr "Ευέλικτες εσοχές: %1"
 
 #: view/katestatusbar.cpp:407
 #, kde-format
 msgid "Soft Tabs: %1 (%2)"
-msgstr "Απαλές καρτέλες: %1 (%2)"
+msgstr "Ευέλικτες εσοχές: %1 (%2)"
 
 #: view/katestatusbar.cpp:408
 #, kde-format
