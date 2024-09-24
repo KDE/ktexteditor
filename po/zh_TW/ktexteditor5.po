@@ -17,14 +17,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 01:34+0000\n"
-"PO-Revision-Date: 2024-07-18 17:16+0900\n"
+"PO-Revision-Date: 2024-09-23 21:32+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 24.08.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: completion/katecompletionmodel.cpp:133
@@ -3552,7 +3552,7 @@ msgstr "群組，不擷取"
 #: search/katesearchbar.cpp:1219
 #, kde-format
 msgid "Positive Lookahead"
-msgstr ""
+msgstr "正面 Lookahead"
 
 #: search/katesearchbar.cpp:1220
 #, kde-format
@@ -3562,12 +3562,12 @@ msgstr "Negative lookahead"
 #: search/katesearchbar.cpp:1224
 #, kde-format
 msgid "Fixed-length positive lookbehind"
-msgstr ""
+msgstr "固定長度正面 lookbehind"
 
 #: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Fixed-length negative lookbehind"
-msgstr ""
+msgstr "固定長度負面 lookbehind"
 
 #: search/katesearchbar.cpp:1230
 #, kde-format
