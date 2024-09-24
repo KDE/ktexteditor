@@ -17,14 +17,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-19 00:37+0000\n"
-"PO-Revision-Date: 2024-08-15 06:09+0900\n"
+"PO-Revision-Date: 2024-09-23 21:15+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 24.08.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -70,10 +70,9 @@ msgstr "檔案(&F)"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "列印/匯出"
+msgstr "列印/匯出(&P)"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -2288,10 +2287,9 @@ msgid "The file '%1' was created on disk."
 msgstr "檔案「%1」已在磁碟上被建立。"
 
 #: document/katedocument.cpp:5593
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted on disk."
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "檔案「%1」已在磁碟上被刪除。"
+msgstr "檔案「%1」已在磁碟上被刪除或移動。"
 
 #: document/katedocument.cpp:5930
 #, kde-format
@@ -3581,7 +3579,7 @@ msgstr "群組，不擷取"
 #: search/katesearchbar.cpp:1219
 #, kde-format
 msgid "Positive Lookahead"
-msgstr ""
+msgstr "正面 Lookahead"
 
 #: search/katesearchbar.cpp:1220
 #, kde-format
@@ -3591,12 +3589,12 @@ msgstr "Negative lookahead"
 #: search/katesearchbar.cpp:1224
 #, kde-format
 msgid "Fixed-length positive lookbehind"
-msgstr ""
+msgstr "固定長度正面 lookbehind"
 
 #: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Fixed-length negative lookbehind"
-msgstr ""
+msgstr "固定長度負面 lookbehind"
 
 #: search/katesearchbar.cpp:1230
 #, kde-format
@@ -5264,71 +5262,59 @@ msgstr ""
 "table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
+#, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "移除重複行"
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr "從選取的文字中移除重複行並依字母排序"
+msgstr "移除重複行數並依字母排序文字"
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "依字母排序選取的文字"
+msgstr "自然排序文字"
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "依字母排序選取的文字"
 
 #: utils/katecmds.cpp:693
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "排序選取的文字或整份文件。"
+msgstr "<p>sort</p><p>排序選取的文字，沒有選取文字時則排序整份文件</p>"
 
 #: utils/katecmds.cpp:697
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
-msgstr "從選取的文字或整份文件中移除重複行。"
+msgstr ""
+"<p>uniq</p><p>從選取文字中移除重複的行，沒有選取文字時則移除整份文件重複的"
+"行。</p>"
 
 #: utils/katecmds.cpp:701
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
-msgstr ""
+msgstr "<p>sortuniq</p><p>排序選取文字或整份文件，然後再移除所有重複的行。</p>"
 
 #: utils/katecmds.cpp:705
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"將選取的文字或整份文件以自然排序法排列。<br/>這裡有一個例子，顯示自然排序法與"
-"一般排序的不同：<br/>sort(a10, a1, a2) => a1, a10, a2<br/>natsort(a10, a1, "
-"a2) => a1, a2, a10"
+"<p>natsort</p><p>將選取的文字或整份文件以自然排序法排列。<br>舉例來說，自然排"
+"序法與一般排序差異如此：<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, "
+"a1, a2) => a1, a2, a10</p>"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -6684,20 +6670,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "儲存目前檔案到磁碟內，請指定檔案名稱。"
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save As with Encoding…"
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "以編碼另存新檔…"
+msgstr "以另一編碼另存新檔(&G)…"
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save &Copy As…"
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "儲存副本為(&C)…"
+msgstr "儲存副本為(&Y)…"
 
 #: view/kateview.cpp:690
 #, kde-format
