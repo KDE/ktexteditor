@@ -438,7 +438,8 @@ KateRegExpSearch::search(const QString &pattern, KTextEditor::Range inputRange, 
             QRegularExpressionMatch match;
 
             if (backwards) {
-                QRegularExpressionMatchIterator iter = repairedRegex.globalMatch(textLine, offset);
+                // we can use globalMatchView as textLine is a const local above
+                QRegularExpressionMatchIterator iter = repairedRegex.globalMatchView(textLine, offset);
                 while (iter.hasNext()) {
                     QRegularExpressionMatch curMatch = iter.next();
                     if (curMatch.capturedEnd() <= endLineMaxOffset) {
@@ -447,7 +448,8 @@ KateRegExpSearch::search(const QString &pattern, KTextEditor::Range inputRange, 
                     }
                 }
             } else {
-                match = repairedRegex.match(textLine, offset);
+                // we can use matchView as textLine is a const local above
+                match = repairedRegex.matchView(textLine, offset);
                 if (match.hasMatch() && match.capturedEnd() <= endLineMaxOffset) {
                     found = true;
                 }
