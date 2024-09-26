@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-19 00:37+0000\n"
-"PO-Revision-Date: 2024-09-07 07:58+0200\n"
+"PO-Revision-Date: 2024-09-25 21:59+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -2409,10 +2409,9 @@ msgid "The file '%1' was created on disk."
 msgstr "'%1' fitxategia diskoan sortu da."
 
 #: document/katedocument.cpp:5593
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted on disk."
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "'%1' fitxategia diskotik ezabatu da."
+msgstr "'%1' fitxategia diskotik ezabatu da edo mugitu egin da."
 
 #: document/katedocument.cpp:5930
 #, kde-format
