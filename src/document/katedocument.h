@@ -21,6 +21,8 @@
 #include "katetextline.h"
 #include <ktexteditor_export.h>
 
+#include <span>
+
 class KJob;
 class KateTemplateHandler;
 namespace KTextEditor
@@ -1169,29 +1171,37 @@ private:
 private:
     /**
      * read dir config file
+     *
+     * if @p view is set, then variables will
+     * only be applied to the given view and nothing else.
      */
     KTEXTEDITOR_NO_EXPORT
-    void readDirConfig();
+    void readDirConfig(KTextEditor::ViewPrivate *v = nullptr);
 
     /**
       Reads all the variables in the document.
       Called when opening/saving a document
       Returns true if variables were read
+      if @p view is set, then variables will
+      only be applied to the given view and nothing else.
     */
-    bool readVariables(bool onlyViewAndRenderer = false);
+    bool readVariables(KTextEditor::ViewPrivate *view = nullptr);
     // exported for katedocument_test
 
     /**
       Reads and applies the variables in a single line
       TODO registered variables gets saved in a [map]
+
+      if @p view is set, then variables will
+      only be applied to the given view and nothing else.
     */
-    void readVariableLine(const QString &t, bool onlyViewAndRenderer = false);
+    void readVariableLine(const QString &t, KTextEditor::ViewPrivate *view = nullptr);
     // exported for katedocument_test
     /**
       Sets a view variable in all the views.
     */
     KTEXTEDITOR_NO_EXPORT
-    void setViewVariable(const QString &var, const QString &val);
+    void setViewVariable(const QString &var, const QString &val, std::span<KTextEditor::View *> views);
     /**
       @return weather a string value could be converted
       to a bool value as supported.

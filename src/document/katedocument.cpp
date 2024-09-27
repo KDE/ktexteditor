@@ -2693,7 +2693,7 @@ bool KTextEditor::DocumentPrivate::createBackupFile()
     return true;
 }
 
-void KTextEditor::DocumentPrivate::readDirConfig()
+void KTextEditor::DocumentPrivate::readDirConfig(KTextEditor::ViewPrivate *v)
 {
     if (!url().isLocalFile() || KNetworkMounts::self()->isOptionEnabledForPath(url().toLocalFile(), KNetworkMounts::MediumSideEffectsOptimizations)) {
         return;
@@ -2715,7 +2715,7 @@ void KTextEditor::DocumentPrivate::readDirConfig()
             uint linesRead = 0;
             QString line = stream.readLine();
             while ((linesRead < 32) && !line.isNull()) {
-                readVariableLine(line);
+                readVariableLine(line, v);
 
                 line = stream.readLine();
 
@@ -2732,11 +2732,14 @@ void KTextEditor::DocumentPrivate::readDirConfig()
     }
 
 #if EDITORCONFIG_FOUND
-    // if there wasn’t any .kateconfig file and KTextEditor was compiled with
-    // EditorConfig support, try to load document config from a .editorconfig
-    // file, if such is provided
-    EditorConfig editorConfig(this);
-    editorConfig.parse();
+    // if v is set, we are only loading config for the view variables
+    if (!v) {
+        // if there wasn’t any .kateconfig file and KTextEditor was compiled with
+        // EditorConfig support, try to load document config from a .editorconfig
+        // file, if such is provided
+        EditorConfig editorConfig(this);
+        editorConfig.parse();
+    }
 #endif
 }
 
@@ -2972,14 +2975,17 @@ void KTextEditor::DocumentPrivate::addView(KTextEditor::View *view)
 {
     Q_ASSERT(!m_views.contains(view));
     m_views.append(view);
+    auto *v = static_cast<KTextEditor::ViewPrivate *>(view);
 
     // apply the view & renderer vars from the file type
     if (!m_fileType.isEmpty()) {
-        readVariableLine(KTextEditor::EditorPrivate::self()->modeManager()->fileType(m_fileType).varLine, true);
+        readVariableLine(KTextEditor::EditorPrivate::self()->modeManager()->fileType(m_fileType).varLine, v);
     }
 
+    readDirConfig(v);
+
     // apply the view & renderer vars from the file
-    readVariables(true);
+    readVariables(v);
 
     setActiveView(view);
 }
@@ -5095,7 +5101,7 @@ void KTextEditor::DocumentPrivate::updateConfig()
       add interface for plugins/apps to set/get variables
       add view stuff
 */
-bool KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
+bool KTextEditor::DocumentPrivate::readVariables(KTextEditor::ViewPrivate *view)
 {
     const bool hasVariableline = [this] {
         const QLatin1String s("kate");
@@ -5117,39 +5123,45 @@ bool KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
         return false;
     }
 
-    if (!onlyViewAndRenderer) {
+    if (!view) {
         m_config->configStart();
+        for (auto view : std::as_const(m_views)) {
+            auto v = static_cast<ViewPrivate *>(view);
+            v->config()->configStart();
+            v->rendererConfig()->configStart();
+        }
+    } else {
+        view->config()->configStart();
+        view->rendererConfig()->configStart();
     }
 
     // views!
-    for (auto view : std::as_const(m_views)) {
-        auto v = static_cast<ViewPrivate *>(view);
-        v->config()->configStart();
-        v->rendererConfig()->configStart();
-    }
     // read a number of lines in the top/bottom of the document
     for (int i = 0; i < qMin(9, lines()); ++i) {
-        readVariableLine(line(i), onlyViewAndRenderer);
+        readVariableLine(line(i), view);
     }
     if (lines() > 10) {
         for (int i = qMax(10, lines() - 10); i < lines(); i++) {
-            readVariableLine(line(i), onlyViewAndRenderer);
+            readVariableLine(line(i), view);
         }
     }
 
-    if (!onlyViewAndRenderer) {
+    if (!view) {
         m_config->configEnd();
+        for (auto view : std::as_const(m_views)) {
+            auto v = static_cast<ViewPrivate *>(view);
+            v->config()->configEnd();
+            v->rendererConfig()->configEnd();
+        }
+    } else {
+        view->config()->configEnd();
+        view->rendererConfig()->configEnd();
     }
 
-    for (auto view : std::as_const(m_views)) {
-        auto v = static_cast<ViewPrivate *>(view);
-        v->config()->configEnd();
-        v->rendererConfig()->configEnd();
-    }
     return true;
 }
 
-void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyViewAndRenderer)
+void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, KTextEditor::ViewPrivate *view)
 {
     static const QRegularExpression kvLine(QStringLiteral("kate:(.*)"));
     static const QRegularExpression kvLineWildcard(QStringLiteral("kate-wildcard\\((.*)\\):(.*)"));
@@ -5252,9 +5264,10 @@ void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyV
         int n; // store ints here
 
         // only apply view & renderer config stuff
-        if (onlyViewAndRenderer) {
+        if (view) {
             if (contains(vvl, var)) { // FIXME define above
-                setViewVariable(var, val);
+                KTextEditor::View *v = static_cast<KTextEditor::View *>(view);
+                setViewVariable(var, val, {&v, 1});
             }
         } else {
             // BOOL  SETTINGS
@@ -5348,7 +5361,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyV
 
             // VIEW SETTINGS
             else if (contains(vvl, var)) {
-                setViewVariable(var, val);
+                setViewVariable(var, val, m_views);
             } else {
                 m_storedVariables[var] = val;
             }
@@ -5367,12 +5380,12 @@ void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyV
     }
 }
 
-void KTextEditor::DocumentPrivate::setViewVariable(const QString &var, const QString &val)
+void KTextEditor::DocumentPrivate::setViewVariable(const QString &var, const QString &val, std::span<KTextEditor::View *> views)
 {
     bool state = false;
     int n = 0;
     QColor c;
-    for (auto view : std::as_const(m_views)) {
+    for (auto view : views) {
         auto v = static_cast<ViewPrivate *>(view);
         // First, try the new config interface
         QVariant help(val); // Special treatment to catch "on"/"off"
