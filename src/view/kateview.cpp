@@ -3802,11 +3802,17 @@ void KTextEditor::ViewPrivate::indent()
         }
     } else {
         KTextEditor::Cursor c(cursorPosition().line(), 0);
+        QSet<int> indentedLines = {c.line()};
         KTextEditor::Range r = selection() ? selectionRange() : KTextEditor::Range(c, c);
         doc()->indent(r, 1);
         // indent secondary cursors
         for (const auto &cursor : secondaryCursors()) {
-            KTextEditor::Cursor c(cursor.cursor().line(), 0);
+            int line = cursor.cursor().line();
+            if (indentedLines.contains(line)) {
+                continue;
+            }
+            indentedLines.insert(line);
+            KTextEditor::Cursor c(line, 0);
             KTextEditor::Range r = cursor.range ? cursor.range->toRange() : KTextEditor::Range(c, c);
             doc()->indent(r, 1);
         }
@@ -3823,11 +3829,17 @@ void KTextEditor::ViewPrivate::unIndent()
         }
     } else {
         KTextEditor::Cursor c(cursorPosition().line(), 0);
+        QSet<int> indentedLines = {c.line()};
         KTextEditor::Range r = selection() ? selectionRange() : KTextEditor::Range(c, c);
         doc()->indent(r, -1);
         // indent secondary cursors
         for (const auto &cursor : secondaryCursors()) {
-            KTextEditor::Cursor c(cursor.cursor().line(), 0);
+            int line = cursor.cursor().line();
+            if (indentedLines.contains(line)) {
+                continue;
+            }
+            indentedLines.insert(line);
+            KTextEditor::Cursor c(line, 0);
             KTextEditor::Range r = cursor.range ? cursor.range->toRange() : KTextEditor::Range(c, c);
             doc()->indent(r, -1);
         }
