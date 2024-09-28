@@ -735,10 +735,10 @@ function tryMatchedAnchor(line, alignOnly)
                 // otherwise don't add a new line, just align on closing anchor
                 indentation = document.toVirtualColumn(closingAnchor) + 1;
             }
-            dbg("tryMatchedAnchor: success in line " + closingAnchor.line);
+            dbg("tryMatchedAnchor(1): success in line " + closingAnchor.line);
             return indentation;
         } else if ( lastChar == ',') {
-            dbg("tryMatchedAnchor: success in line " + closingAnchor.line);
+            dbg("tryMatchedAnchor(2): success in line " + closingAnchor.line);
             return document.toVirtualColumn(closingAnchor) + 1;
         }
     }
@@ -746,11 +746,19 @@ function tryMatchedAnchor(line, alignOnly)
     // otherwise we i.e. pressed enter between (), [] or when we enter before curly brace
     // increase indentation and place closing anchor on the next line
     indentation = document.firstVirtualColumn(closingAnchor.line);
-    document.insertText(line, document.firstColumn(line), "\n");
-    view.setCursorPosition(line, indentation);
+    var firstColumnInPrevLine = document.firstVirtualColumn(line - 1);
+    if (line - 1 == closingAnchor.line || firstColumnInPrevLine >= 0) {
+        // the opening / close bracket were on same line or there was some text before the curly
+        document.insertText(line, document.firstColumn(line), "\n");
+        view.setCursorPosition(line, indentation);
+    } else {
+        // The curly was the only thing on the line, just retain the indent
+        dbg("tryMatchedAnchor(3): success retain indent");
+        return indentation;
+    }
     // indent closing brace
     document.indent(new Range(line + 1, 0, line + 1, 1), indentation / gIndentWidth);
-    dbg("tryMatchedAnchor: success in line " + closingAnchor.line);
+    dbg("tryMatchedAnchor(4): success in line " + closingAnchor.line);
     return indentation + gIndentWidth;
 }
 
