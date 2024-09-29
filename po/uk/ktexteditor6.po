@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 00:37+0000\n"
+"POT-Creation-Date: 2024-09-29 00:37+0000\n"
 "PO-Revision-Date: 2024-09-14 19:54+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -7914,17 +7914,17 @@ msgstr "Увімкнено перестрибування до великих л
 msgid "Search wrapped"
 msgstr "Циклічний пошук"
 
-#: view/kateview.cpp:3844
+#: view/kateview.cpp:3884
 #, kde-format
 msgid "Align On"
 msgstr "Вирівняти до"
 
-#: view/kateview.cpp:3844
+#: view/kateview.cpp:3884
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Взірець вирівнювання:"
 
-#: view/kateview.cpp:4921
+#: view/kateview.cpp:4961
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Експортувати файл як HTML"

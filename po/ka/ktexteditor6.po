@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 00:37+0000\n"
+"POT-Creation-Date: 2024-09-29 00:37+0000\n"
 "PO-Revision-Date: 2024-09-14 05:09+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -7830,17 +7830,17 @@ msgstr "Camelcase-ით გადაადგილება ჩართულ
 msgid "Search wrapped"
 msgstr "გადატანილში ძებნა"
 
-#: view/kateview.cpp:3844
+#: view/kateview.cpp:3884
 #, kde-format
 msgid "Align On"
 msgstr "სწორება"
 
-#: view/kateview.cpp:3844
+#: view/kateview.cpp:3884
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "სწორების ნიმუში:"
 
-#: view/kateview.cpp:4921
+#: view/kateview.cpp:4961
 #, kde-format
 msgid "Export File as HTML"
 msgstr "ფაილის გატანა HTML ფორმატში"
