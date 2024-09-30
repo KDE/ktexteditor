@@ -623,20 +623,22 @@ function tryStatement(line)
                 }
             }
         } else if (result[2] == ',' && !currentString.match(/\(/)) {
-            // assume a function call: check for '(' brace
-            // - if not found, use previous indentation
+            // assume a function call: check for '(' and '{'
+            // - if '{' found and its nearer OR if '(' not found, use previous indentation
             // - if found, compare the indentation depth of current line and open brace line
             //   - if current indentation depth is smaller, use that
             //   - otherwise, use the '(' indentation + following white spaces
             var currentIndentation = document.firstVirtualColumn(currentLine);
-            var braceCursor = document.anchor(currentLine, result[1].length, '(');
+            var braceCursor = document.anchor(currentLine, result[1].length, '{');
+            var parenCursor = document.anchor(currentLine, result[1].length, '(');
 
-            if (!braceCursor.isValid() || currentIndentation < braceCursor.column)
+            if ((braceCursor.isValid() && braceCursor > parenCursor) || currentIndentation < parenCursor.column) {
                 indentation = currentIndentation;
-            else {
-                indentation = braceCursor.column + 1;
-                while (document.isSpace(braceCursor.line, indentation))
+            } else {
+                indentation = parenCursor.column + 1;
+                while (document.isSpace(parenCursor.line, indentation)) {
                     ++indentation;
+                }
             }
         } else if (gMode == "Dart" && result[2] == ',' && currentString.contains("(") && currentString.contains(")")) {
             // Dart has a lot of stuff and function calls inside ctors
