@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-29 00:37+0000\n"
+"POT-Creation-Date: 2024-09-30 00:37+0000\n"
 "PO-Revision-Date: 2022-08-19 20:36+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -2244,12 +2244,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Coba Lagi"
 
-#: document/katedocument.cpp:2275 document/katedocument.cpp:6535
+#: document/katedocument.cpp:2275 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr "&Tutup"
 
-#: document/katedocument.cpp:2276 document/katedocument.cpp:6536
+#: document/katedocument.cpp:2276 document/katedocument.cpp:6549
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2322,7 +2322,7 @@ msgstr ""
 "file pada disk diubah. Mungkin ada beberapa data yang hilang."
 
 #: document/katedocument.cpp:2476 document/katedocument.cpp:2492
-#: document/katedocument.cpp:2809 syntax/katethemeconfig.cpp:1207
+#: document/katedocument.cpp:2812 syntax/katethemeconfig.cpp:1207
 #: syntax/katethemeconfig.cpp:1363
 #, kde-format
 msgid "Possible Data Loss"
@@ -2376,41 +2376,41 @@ msgstr "Gagal menciptakan salinan cadangan."
 msgid "Try to Save Nevertheless"
 msgstr "Coba untuk Simpan Meski Demikian"
 
-#: document/katedocument.cpp:2808
+#: document/katedocument.cpp:2811
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Apakah kamu sungguh ingin meneruskan untuk menutup file ini? Kehilangan data "
 "mungkin terjadi."
 
-#: document/katedocument.cpp:2810
+#: document/katedocument.cpp:2813
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Tutup Meski Demikian"
 
-#: document/katedocument.cpp:4610
+#: document/katedocument.cpp:4616
 #, kde-format
 msgid "Untitled"
 msgstr "Takberjudul"
 
-#: document/katedocument.cpp:4733 document/katedocument.cpp:4959
-#: document/katedocument.cpp:4969 document/katedocument.cpp:5758
-#: document/katedocument.cpp:5945
+#: document/katedocument.cpp:4739 document/katedocument.cpp:4965
+#: document/katedocument.cpp:4975 document/katedocument.cpp:5771
+#: document/katedocument.cpp:5958
 #, kde-format
 msgid "Save File"
 msgstr "Simpan File"
 
-#: document/katedocument.cpp:4736
+#: document/katedocument.cpp:4742
 #, kde-format
 msgid "Save failed"
 msgstr "Gagal menyimpan"
 
-#: document/katedocument.cpp:4980
+#: document/katedocument.cpp:4986
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Simpan Salinan File"
 
-#: document/katedocument.cpp:4992
+#: document/katedocument.cpp:4998
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2423,7 +2423,7 @@ msgstr ""
 "Periksalah bahwa kamu mempunyai akses tulis untuk file ini atau cukupnya "
 "spasi disk yang tersedia."
 
-#: document/katedocument.cpp:5275
+#: document/katedocument.cpp:5288
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2441,7 +2441,7 @@ msgstr ""
 "docs.kde.org/stable5/en/applications/katepart/config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5281
+#: document/katedocument.cpp:5294
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2459,25 +2459,25 @@ msgstr ""
 "kde.org/stable5/en/applications/katepart/config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5587
+#: document/katedocument.cpp:5600
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "File '%1' telah dimodifikasi oleh program lainnya."
 
-#: document/katedocument.cpp:5590
+#: document/katedocument.cpp:5603
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "File '%1' telah diciptakan oleh program lainnya."
 
-#: document/katedocument.cpp:5593
+#: document/katedocument.cpp:5606
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "File '%1' telah dihapus oleh program lainnya."
 
-#: document/katedocument.cpp:5930
+#: document/katedocument.cpp:5943
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2486,17 +2486,17 @@ msgstr ""
 "Dokumen \"%1\" telah dimodifikasi.\n"
 "Apakah kamu ingin menyimpan perubahanmu atau membuangnya?"
 
-#: document/katedocument.cpp:5933
+#: document/katedocument.cpp:5946
 #, kde-format
 msgid "Close Document"
 msgstr "Tutup Dokumen"
 
-#: document/katedocument.cpp:6044
+#: document/katedocument.cpp:6057
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "File <a href=\"%1\">%2</a> masih dalam pemuatan."
 
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:6062
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Gugurkan Pemuatan"
