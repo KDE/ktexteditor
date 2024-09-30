@@ -540,7 +540,12 @@ public:
         /**
          * Should we auto-reload if the old state is in version control?
          */
-        AutoReloadIfStateIsInVersionControl
+        AutoReloadIfStateIsInVersionControl,
+
+        /**
+         * Should we use editorconfig
+         */
+        UseEditorConfig
     };
 
 public:

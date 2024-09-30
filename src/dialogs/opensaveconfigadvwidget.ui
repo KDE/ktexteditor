@@ -241,6 +241,13 @@
        </property>
       </spacer>
      </item>
+     <item row="12" column="1">
+      <widget class="QCheckBox" name="chkEditorConfig">
+       <property name="text">
+        <string>Honor settings in .editorconfig file</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>

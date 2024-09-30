@@ -2733,7 +2733,7 @@ void KTextEditor::DocumentPrivate::readDirConfig(KTextEditor::ViewPrivate *v)
 
 #if EDITORCONFIG_FOUND
     // if v is set, we are only loading config for the view variables
-    if (!v) {
+    if (!v && config()->value(KateDocumentConfig::UseEditorConfig).toBool()) {
         // if there wasn’t any .kateconfig file and KTextEditor was compiled with
         // EditorConfig support, try to load document config from a .editorconfig
         // file, if such is provided

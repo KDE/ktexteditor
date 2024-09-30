@@ -361,6 +361,8 @@ KateDocumentConfig::KateDocumentConfig()
 
     // Shall we do auto reloading for stuff e.g. in Git?
     addConfigEntry(ConfigEntry(AutoReloadIfStateIsInVersionControl, "Auto Reload If State Is In Version Control", QString(), true));
+    // .editorconfig
+    addConfigEntry(ConfigEntry(UseEditorConfig, "Use Editor Config", QString(), true));
 
     // finalize the entries, e.g. hashs them
     finalizeConfigEntries();

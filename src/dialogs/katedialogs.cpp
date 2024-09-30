@@ -1009,6 +1009,7 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     observeChanges(uiadv->edtBackupSuffix);
     observeChanges(uiadv->kurlSwapDirectory);
     observeChanges(uiadv->spbSwapFileSync);
+    observeChanges(uiadv->chkEditorConfig);
 
     internalLayout->addWidget(newWidget);
     internalLayout2->addWidget(newWidget2);
@@ -1114,6 +1115,7 @@ void KateSaveConfigTab::apply()
     KateDocumentConfig::global()->setValue(KateDocumentConfig::AutoSaveInteral, ui->spbAutoSaveInterval->value());
 
     KateDocumentConfig::global()->setValue(KateDocumentConfig::AutoReloadIfStateIsInVersionControl, uiadv->chkAutoReloadVersionControl->isChecked());
+    KateDocumentConfig::global()->setValue(KateDocumentConfig::UseEditorConfig, uiadv->chkEditorConfig->isChecked());
 
     KateDocumentConfig::global()->configEnd();
     KateGlobalConfig::global()->configEnd();
@@ -1183,6 +1185,7 @@ void KateSaveConfigTab::reload()
     ui->spbAutoSaveInterval->setValue(KateDocumentConfig::global()->autoSaveInterval());
 
     uiadv->chkAutoReloadVersionControl->setChecked(KateDocumentConfig::global()->value(KateDocumentConfig::AutoReloadIfStateIsInVersionControl).toBool());
+    uiadv->chkEditorConfig->setChecked(KateDocumentConfig::global()->value(KateDocumentConfig::UseEditorConfig).toBool());
 }
 
 void KateSaveConfigTab::reset()
