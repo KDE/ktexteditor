@@ -91,11 +91,6 @@ TextBuffer::~TextBuffer()
     // else asserts in destructor of blocks will fail!
     qDeleteAll(m_blocks);
     m_blocks.clear();
-
-    // kill all invalid cursors, do this after block deletion, to uncover if they might be still linked in blocks
-    QSet<TextCursor *> copyCursors = m_invalidCursors;
-    qDeleteAll(copyCursors);
-    Q_ASSERT(m_invalidCursors.empty());
 }
 
 void TextBuffer::invalidateRanges()

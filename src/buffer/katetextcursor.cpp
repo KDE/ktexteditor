@@ -38,11 +38,6 @@ TextCursor::~TextCursor()
     if (m_block) {
         m_block->removeCursor(this);
     }
-
-    // only cursors without range are here!
-    else if (!m_range) {
-        m_buffer.m_invalidCursors.remove(this);
-    }
 }
 
 void TextCursor::setPosition(const TextCursor &position)
@@ -80,9 +75,6 @@ void TextCursor::setPosition(KTextEditor::Cursor position, bool init)
 
     // first: validate the line and column, else invalid
     if (!position.isValid() || position.line() >= m_buffer.lines()) {
-        if (!m_range) {
-            m_buffer.m_invalidCursors.insert(this);
-        }
         if (m_block) {
             m_block->removeCursor(this);
         }
@@ -102,12 +94,6 @@ void TextCursor::setPosition(KTextEditor::Cursor position, bool init)
         Q_ASSERT(m_block);
         m_block->insertCursor(this);
         startLine = m_block->startLine();
-    }
-
-    // if cursor was invalid before, remove it from invalid cursor list
-    if (!m_range && !oldBlock && !init) {
-        Q_ASSERT(m_buffer.m_invalidCursors.contains(this));
-        m_buffer.m_invalidCursors.remove(this);
     }
 
     // else: valid cursor

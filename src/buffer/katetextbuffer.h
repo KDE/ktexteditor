@@ -611,12 +611,6 @@ private:
     int m_editingMaximalLineChanged;
 
     /**
-     * Set of invalid cursors for this whole buffer.
-     * Valid cursors are inside the block the belong to.
-     */
-    QSet<TextCursor *> m_invalidCursors;
-
-    /**
      * Set of ranges of this whole buffer.
      */
     QSet<TextRange *> m_ranges;
