@@ -32,6 +32,7 @@ class TextCursor final : public KTextEditor::MovingCursor
 
     // this is a friend, because this is needed to efficiently transfer cursors from on to an other block
     friend class TextBlock;
+    friend class TextBuffer;
 
     Q_DISABLE_COPY(TextCursor)
 
@@ -43,7 +44,7 @@ private:
      * @param position wanted cursor position, if not valid for given buffer, will lead to invalid cursor
      * @param insertBehavior behavior of this cursor on insert of text at its position
      */
-    TextCursor(TextBuffer &buffer, TextRange *range, const KTextEditor::Cursor position, InsertBehavior insertBehavior);
+    TextCursor(TextBuffer *buffer, TextRange *range, const KTextEditor::Cursor position, InsertBehavior insertBehavior);
 
 public:
     /**
@@ -52,7 +53,7 @@ public:
      * @param position wanted cursor position, if not valid for given buffer, will lead to invalid cursor
      * @param insertBehavior behavior of this cursor on insert of text at its position
      */
-    TextCursor(TextBuffer &buffer, const KTextEditor::Cursor position, InsertBehavior insertBehavior);
+    TextCursor(TextBuffer *buffer, const KTextEditor::Cursor position, InsertBehavior insertBehavior);
 
     /**
      * Destruct the text cursor
@@ -190,7 +191,7 @@ private:
      * parent text buffer
      * is a reference, and no pointer, as this must always exist and can't change
      */
-    TextBuffer &m_buffer;
+    TextBuffer *m_buffer;
 
     /**
      * range this cursor belongs to
