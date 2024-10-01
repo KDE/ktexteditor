@@ -40,18 +40,11 @@ class MovingRangeFeedback;
  *
  * Create a new MovingRange like this:
  * \code
- * // Retrieve the MovingInterface
- * KTextEditor::MovingInterface* moving =
- *     qobject_cast<KTextEditor::MovingInterface*>( yourDocument );
- *
- * if ( moving ) {
- *     KTextEditor::MovingRange* range = moving->newMovingRange();
- * }
+ *     KTextEditor::MovingRange* range = yourDocument->newMovingRange();
  * \endcode
  *
- * When finished with a MovingRange, simply delete it.
- * If the document the cursor belong to is deleted, it will get deleted
- * automatically.
+ * The ownership of the range is passed to the user. When finished with a MovingRange,
+ * simply delete it.
  *
  * \section movingrange_behavior Editing Behavior
  *
@@ -117,13 +110,8 @@ class MovingRangeFeedback;
  * KTextEditor::View * view = ...;
  * KTextEditor::Document * doc = view->document();
  *
- * auto iface = qobject_cast<KTextEditor::MovingInterface*>(doc);
- * if (!iface) {
- *     return;
- * }
- *
  * // range is of type KTextEditor::MovingRange*
- * auto range = iface->newMovingRange(KTextEditor::Range(3, 5, 3, 14));
+ * auto range = doc->newMovingRange(KTextEditor::Range(3, 5, 3, 14));
  *
  * KTextEditor::Attribute::Ptr attrib = new KTextEditor::Attribute();
  * attrib->setBackground(Qt::yellow);
@@ -131,8 +119,8 @@ class MovingRangeFeedback;
  * range->setAttribute(attrib);
  * \endcode
  *
- * MovingRange%s are deleted automatically when a document is cleared or closed.
- * Therefore, to avoid dangling pointers, make sure to read the API documentation
+ * MovingRange%s are invalidated automatically when a document is cleared or closed.
+ * Therefore, to avoid invalid ranges, make sure to read the API documentation
  * about MovingInterface::aboutToDeleteMovingInterfaceContent().
  *
  * \sa Cursor, MovingCursor, Range, MovingInterface, MovingRangeFeedback

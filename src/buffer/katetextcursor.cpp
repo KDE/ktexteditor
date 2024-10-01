@@ -15,7 +15,7 @@
 
 namespace Kate
 {
-TextCursor::TextCursor(TextBuffer &buffer, const KTextEditor::Cursor position, InsertBehavior insertBehavior)
+TextCursor::TextCursor(TextBuffer *buffer, const KTextEditor::Cursor position, InsertBehavior insertBehavior)
     : m_buffer(buffer)
     , m_moveOnInsert(insertBehavior == MoveOnInsert)
 {
@@ -23,7 +23,7 @@ TextCursor::TextCursor(TextBuffer &buffer, const KTextEditor::Cursor position, I
     setPosition(position, true);
 }
 
-TextCursor::TextCursor(TextBuffer &buffer, TextRange *range, KTextEditor::Cursor position, InsertBehavior insertBehavior)
+TextCursor::TextCursor(TextBuffer *buffer, TextRange *range, KTextEditor::Cursor position, InsertBehavior insertBehavior)
     : m_buffer(buffer)
     , m_range(range)
     , m_moveOnInsert(insertBehavior == MoveOnInsert)
@@ -74,7 +74,7 @@ void TextCursor::setPosition(KTextEditor::Cursor position, bool init)
     }
 
     // first: validate the line and column, else invalid
-    if (!position.isValid() || position.line() >= m_buffer.lines()) {
+    if (!position.isValid() || position.line() >= m_buffer->lines()) {
         if (m_block) {
             m_block->removeCursor(this);
         }
@@ -90,7 +90,7 @@ void TextCursor::setPosition(KTextEditor::Cursor position, bool init)
         if (oldBlock) {
             oldBlock->removeCursor(this);
         }
-        m_block = m_buffer.m_blocks[m_buffer.blockForLine(position.line())];
+        m_block = m_buffer->m_blocks[m_buffer->blockForLine(position.line())];
         Q_ASSERT(m_block);
         m_block->insertCursor(this);
         startLine = m_block->startLine();
@@ -103,7 +103,7 @@ void TextCursor::setPosition(KTextEditor::Cursor position, bool init)
 
 KTextEditor::Document *Kate::TextCursor::document() const
 {
-    return m_buffer.document();
+    return m_buffer->document();
 }
 
 KTextEditor::MovingRange *Kate::TextCursor::range() const

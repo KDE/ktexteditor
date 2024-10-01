@@ -36,6 +36,7 @@ class TextRange final : public KTextEditor::MovingRange
 {
     // this is a friend, block changes might invalidate ranges...
     friend class TextBlock;
+    friend class TextBuffer;
 
 public:
     /**
@@ -47,7 +48,7 @@ public:
      * @param insertBehavior Define whether the range should expand when text is inserted adjacent to the range.
      * @param emptyBehavior Define whether the range should invalidate itself on becoming empty.
      */
-    TextRange(TextBuffer &buffer, KTextEditor::Range range, InsertBehaviors insertBehavior, EmptyBehavior emptyBehavior = AllowEmpty);
+    TextRange(TextBuffer *buffer, KTextEditor::Range range, InsertBehaviors insertBehavior, EmptyBehavior emptyBehavior = AllowEmpty);
 
     /**
      * No copy constructor, don't allow this to be copied.
@@ -357,7 +358,7 @@ private:
      * parent text buffer
      * is a reference, and no pointer, as this must always exist and can't change
      */
-    TextBuffer &m_buffer;
+    TextBuffer *m_buffer;
 
     /**
      * Start cursor for this range, is a clever cursor

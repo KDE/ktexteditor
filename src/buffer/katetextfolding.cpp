@@ -14,8 +14,8 @@
 namespace Kate
 {
 TextFolding::FoldingRange::FoldingRange(TextBuffer &buffer, KTextEditor::Range range, FoldingRangeFlags _flags)
-    : start(new TextCursor(buffer, range.start(), KTextEditor::MovingCursor::MoveOnInsert))
-    , end(new TextCursor(buffer, range.end(), KTextEditor::MovingCursor::MoveOnInsert))
+    : start(new TextCursor(&buffer, range.start(), KTextEditor::MovingCursor::MoveOnInsert))
+    , end(new TextCursor(&buffer, range.end(), KTextEditor::MovingCursor::MoveOnInsert))
     , parent(nullptr)
     , flags(_flags)
     , id(-1)

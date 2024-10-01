@@ -122,7 +122,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_bottomSpacer(new QSpacerItem(0, 0))
     , m_startingUp(true)
     , m_updatingDocumentConfig(false)
-    , m_selection(m_doc->buffer(), KTextEditor::Range::invalid(), Kate::TextRange::ExpandLeft, Kate::TextRange::AllowEmpty)
+    , m_selection(&m_doc->buffer(), KTextEditor::Range::invalid(), Kate::TextRange::ExpandLeft, Kate::TextRange::AllowEmpty)
     , blockSelect(false)
     , m_bottomViewBar(nullptr)
     , m_gotoBar(nullptr)
@@ -3374,7 +3374,7 @@ void KTextEditor::ViewPrivate::addSecondaryCursorsWithSelection(const QList<Plai
 Kate::TextRange *KTextEditor::ViewPrivate::newSecondarySelectionRange(KTextEditor::Range selRange)
 {
     constexpr auto expandBehaviour = KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight;
-    auto range = new Kate::TextRange(doc()->buffer(), selRange, expandBehaviour);
+    auto range = new Kate::TextRange(&doc()->buffer(), selRange, expandBehaviour);
     static KTextEditor::Attribute::Ptr selAttr;
     if (!selAttr) {
         selAttr = new KTextEditor::Attribute;

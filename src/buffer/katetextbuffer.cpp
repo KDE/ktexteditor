@@ -77,14 +77,28 @@ TextBuffer::~TextBuffer()
     // not allowed during editing
     Q_ASSERT(m_editingTransactions == 0);
 
-    // kill all ranges, work on copy, they will remove themself from the hash
-    QSet<TextRange *> copyRanges = m_ranges;
-    qDeleteAll(copyRanges);
-    Q_ASSERT(m_ranges.empty());
+    // invalidate all moving stuff
+    for (auto b : m_blocks) {
+        for (auto it = b->m_cursors.begin(); it != b->m_cursors.end(); ++it) {
+            auto cursor = *it;
+            // update the block
+            cursor->m_block = nullptr;
+            cursor->m_column = -1;
+            cursor->m_line = -1;
+            cursor->m_buffer = nullptr;
+            if (auto r = cursor->kateRange()) {
+                r->m_buffer = nullptr;
+                if (r->feedback()) {
+                    r->feedback()->rangeInvalid(r);
+                }
+            }
+        }
+        b->m_cursors.clear();
+    }
 
     // clean out all cursors and lines, only cursors belonging to range will survive
-    for (TextBlock *block : std::as_const(m_blocks)) {
-        block->deleteBlockContent();
+    for (TextBlock *block : m_blocks) {
+        block->clearBlockContent(nullptr);
     }
 
     // delete all blocks, now that all cursors are really deleted
@@ -98,7 +112,7 @@ void TextBuffer::invalidateRanges()
     // invalidate all ranges, work on copy, they might delete themself...
     const QSet<TextRange *> copyRanges = m_ranges;
     for (TextRange *range : copyRanges) {
-        range->setRange(KTextEditor::Cursor::invalid(), KTextEditor::Cursor::invalid());
+        range->setRange({KTextEditor::Cursor::invalid(), KTextEditor::Cursor::invalid()});
     }
 }
 

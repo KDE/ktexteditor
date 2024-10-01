@@ -3348,7 +3348,7 @@ void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v, KTextEdi
     const auto &secondaryCursors = v->secondaryCursors();
     if (!secondaryCursors.empty()) {
         // Save the original position of our primary cursor
-        Kate::TextCursor savedPrimary(buffer(), v->cursorPosition(), Kate::TextCursor::MoveOnInsert);
+        Kate::TextCursor savedPrimary(m_buffer, v->cursorPosition(), Kate::TextCursor::MoveOnInsert);
         for (const auto &c : secondaryCursors) {
             const auto [newPos, moveCursorToTop] = adjustCusorPos(c.cursor());
             c.pos->setPosition(newPos);
@@ -5845,14 +5845,14 @@ void KTextEditor::DocumentPrivate::setUndoMergeAllEdits(bool merge)
 // BEGIN KTextEditor::MovingInterface
 KTextEditor::MovingCursor *KTextEditor::DocumentPrivate::newMovingCursor(KTextEditor::Cursor position, KTextEditor::MovingCursor::InsertBehavior insertBehavior)
 {
-    return new Kate::TextCursor(buffer(), position, insertBehavior);
+    return new Kate::TextCursor(m_buffer, position, insertBehavior);
 }
 
 KTextEditor::MovingRange *KTextEditor::DocumentPrivate::newMovingRange(KTextEditor::Range range,
                                                                        KTextEditor::MovingRange::InsertBehaviors insertBehaviors,
                                                                        KTextEditor::MovingRange::EmptyBehavior emptyBehavior)
 {
-    return new Kate::TextRange(buffer(), range, insertBehaviors, emptyBehavior);
+    return new Kate::TextRange(m_buffer, range, insertBehaviors, emptyBehavior);
 }
 
 qint64 KTextEditor::DocumentPrivate::revision() const
