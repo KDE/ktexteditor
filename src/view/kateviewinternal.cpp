@@ -111,7 +111,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , editSessionNumber(0)
     , editIsRunning(false)
     , m_view(view)
-    , m_cursor(doc()->buffer(), KTextEditor::Cursor(0, 0), Kate::TextCursor::MoveOnInsert)
+    , m_cursor(&doc()->buffer(), KTextEditor::Cursor(0, 0), Kate::TextCursor::MoveOnInsert)
     , m_mouse()
     , m_possibleTripleClick(false)
     , m_bm(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
@@ -126,7 +126,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_dummy(nullptr)
 
     // stay on cursor will avoid that the view scroll around on press return at beginning
-    , m_startPos(doc()->buffer(), KTextEditor::Cursor(0, 0), Kate::TextCursor::StayOnInsert)
+    , m_startPos(&doc()->buffer(), KTextEditor::Cursor(0, 0), Kate::TextCursor::StayOnInsert)
 
     , m_visibleLineCount(0)
     , m_madeVisible(false)

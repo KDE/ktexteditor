@@ -389,7 +389,6 @@ private:
 
     void updateYankHighlightAttrib();
     void clearYankHighlight();
-    void aboutToDeleteMovingInterfaceContent();
 };
 }
 

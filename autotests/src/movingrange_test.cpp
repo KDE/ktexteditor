@@ -193,6 +193,7 @@ void MovingRangeTest::testFeedbackEmptyRange()
     QVERIFY(!rf.mouseExitedRangeCalled());
     QVERIFY(!rf.caretEnteredRangeCalled());
     QVERIFY(!rf.caretExitedRangeCalled());
+    delete range;
 }
 
 // tests:
@@ -262,6 +263,7 @@ void MovingRangeTest::testFeedbackInvalidRange()
     QVERIFY(!rf.mouseExitedRangeCalled());
     QVERIFY(!rf.caretEnteredRangeCalled());
     QVERIFY(!rf.caretExitedRangeCalled());
+    delete range;
 }
 
 // tests:
@@ -432,6 +434,7 @@ void MovingRangeTest::testFeedbackMouse()
     QTest::qWait(200); // process mouse events. do not move mouse manually
     QVERIFY(!rf.mouseEnteredRangeCalled());
     QVERIFY(rf.mouseExitedRangeCalled());
+    delete range;
 }
 
 void MovingRangeTest::testLineRemoved()
@@ -699,4 +702,29 @@ void MovingRangeTest::testMultiblockRangeWithLineUnwrapping()
 
     delete range;
     doc.buffer().rangesForLine(0, nullptr, false);
+}
+
+void MovingRangeTest::testRangeSurvivesDocument()
+{
+    KTextEditor::MovingRange *range;
+    {
+        KTextEditor::DocumentPrivate doc;
+        doc.setText(QStringLiteral("abc"));
+        range = doc.newMovingRange({0, 0, 0, 2});
+        QVERIFY(range);
+    }
+    // ensure range is invalid
+    QCOMPARE(range->toRange(), KTextEditor::Range::invalid());
+    QVERIFY(!range->toLineRange().isValid());
+    QVERIFY(!range->document());
+    // try to modify this range, shouldn't crash
+    range->setRange({1, 2, 3, 4});
+    range->setAttribute(KTextEditor::Attribute::Ptr(new KTextEditor::Attribute));
+    RangeFeedback rf;
+    range->setFeedback(&rf);
+    range->setZDepth(1);
+    // range remains invalid as there is no document its bound to
+    QCOMPARE(range->toRange(), KTextEditor::Range(-1, -1, -1, -1));
+    QVERIFY(!range->attribute());
+    QVERIFY(!range->feedback());
 }
