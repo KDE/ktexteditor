@@ -76,14 +76,13 @@ TextBuffer::~TextBuffer()
     // not allowed during editing
     Q_ASSERT(m_editingTransactions == 0);
 
-    // kill all ranges, work on copy, they will remove themself from the hash
-    QSet<TextRange *> copyRanges = m_ranges;
-    qDeleteAll(copyRanges);
-    Q_ASSERT(m_ranges.empty());
+    // invalidate all ranges
+    invalidateRanges();
+    m_ranges.clear();
 
     // clean out all cursors and lines, only cursors belonging to range will survive
-    for (TextBlock *block : std::as_const(m_blocks)) {
-        block->deleteBlockContent();
+    for (TextBlock *block : m_blocks) {
+        block->clearBlockContent(nullptr);
     }
 
     // delete all blocks, now that all cursors are really deleted

@@ -75,7 +75,7 @@ NormalViMode::NormalViMode(InputModeManager *viInputModeManager, KTextEditor::Vi
     updateYankHighlightAttrib();
     connect(view, &KTextEditor::View::configChanged, this, &NormalViMode::updateYankHighlightAttrib);
     connect(doc(), &KTextEditor::DocumentPrivate::aboutToInvalidateMovingInterfaceContent, this, &NormalViMode::clearYankHighlight);
-    connect(doc(), &KTextEditor::DocumentPrivate::aboutToDeleteMovingInterfaceContent, this, &NormalViMode::aboutToDeleteMovingInterfaceContent);
+    connect(doc(), &KTextEditor::DocumentPrivate::aboutToDeleteMovingInterfaceContent, this, &NormalViMode::clearYankHighlight);
 }
 
 NormalViMode::~NormalViMode()
@@ -3817,13 +3817,6 @@ void NormalViMode::clearYankHighlight()
 {
     QSet<KTextEditor::MovingRange *> &pHighlightedYanks = highlightedYankForDocument();
     qDeleteAll(pHighlightedYanks);
-    pHighlightedYanks.clear();
-}
-
-void NormalViMode::aboutToDeleteMovingInterfaceContent()
-{
-    QSet<KTextEditor::MovingRange *> &pHighlightedYanks = highlightedYankForDocument();
-    // Prevent double-deletion in case this NormalMode is deleted.
     pHighlightedYanks.clear();
 }
 

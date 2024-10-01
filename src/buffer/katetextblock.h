@@ -159,13 +159,6 @@ public:
     void mergeBlock(TextBlock *targetBlock);
 
     /**
-     * Delete the block content, delete all lines and delete all cursors not bound to ranges.
-     * This is used in destructor of TextBuffer, for fast cleanup. Only stuff remaining afterwards are cursors which are
-     * part of a range, TextBuffer will delete them itself...
-     */
-    void deleteBlockContent();
-
-    /**
      * Clear the block content, delete all lines, move all cursors not bound to range to given block at 0,0.
      * This is used by clear() of TextBuffer.
      * @param targetBlock empty target block for cursors

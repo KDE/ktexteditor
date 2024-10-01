@@ -561,30 +561,6 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     clearLines();
 }
 
-void TextBlock::deleteBlockContent()
-{
-    // kill cursors, if not belonging to a range
-    // we can do in-place editing of the current set of cursors as
-    // we remove them before deleting
-    for (auto it = m_cursors.begin(); it != m_cursors.end();) {
-        auto cursor = *it;
-        if (!cursor->kateRange()) {
-            // remove it and advance to next element
-            it = m_cursors.erase(it);
-
-            // delete after cursor is gone from the set
-            // else the destructor will modify it!
-            delete cursor;
-        } else {
-            // keep this cursor
-            ++it;
-        }
-    }
-
-    // kill lines
-    clearLines();
-}
-
 void TextBlock::clearBlockContent(TextBlock *targetBlock)
 {
     // move cursors, if not belonging to a range
@@ -592,11 +568,15 @@ void TextBlock::clearBlockContent(TextBlock *targetBlock)
     for (auto it = m_cursors.begin(); it != m_cursors.end();) {
         auto cursor = *it;
         if (!cursor->kateRange()) {
-            cursor->m_column = 0;
-            cursor->m_line = 0;
             cursor->m_block = targetBlock;
-            targetBlock->m_cursors.insert(cursor);
-
+            if (targetBlock) {
+                cursor->m_column = 0;
+                cursor->m_line = 0;
+                targetBlock->m_cursors.insert(cursor);
+            } else {
+                cursor->m_column = -1;
+                cursor->m_line = -1;
+            }
             // remove it and advance to next element
             it = m_cursors.erase(it);
         } else {

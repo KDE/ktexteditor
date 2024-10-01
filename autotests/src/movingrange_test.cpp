@@ -193,6 +193,7 @@ void MovingRangeTest::testFeedbackEmptyRange()
     QVERIFY(!rf.mouseExitedRangeCalled());
     QVERIFY(!rf.caretEnteredRangeCalled());
     QVERIFY(!rf.caretExitedRangeCalled());
+    delete range;
 }
 
 // tests:
@@ -262,6 +263,7 @@ void MovingRangeTest::testFeedbackInvalidRange()
     QVERIFY(!rf.mouseExitedRangeCalled());
     QVERIFY(!rf.caretEnteredRangeCalled());
     QVERIFY(!rf.caretExitedRangeCalled());
+    delete range;
 }
 
 // tests:
@@ -432,6 +434,7 @@ void MovingRangeTest::testFeedbackMouse()
     QTest::qWait(200); // process mouse events. do not move mouse manually
     QVERIFY(!rf.mouseEnteredRangeCalled());
     QVERIFY(rf.mouseExitedRangeCalled());
+    delete range;
 }
 
 void MovingRangeTest::testLineRemoved()
