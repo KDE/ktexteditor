@@ -290,8 +290,7 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
     d->isCompleting = false;
     d->dcRange = KTextEditor::Range::invalid();
 
-    d->liRange =
-        static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand);
+    d->liRange = m_view->document()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand);
 
     KTextEditor::Attribute::Ptr a = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
     a->setBackground(static_cast<KTextEditor::ViewPrivate *>(view)->rendererConfig()->selectionColor());
@@ -319,6 +318,7 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
 
 KateWordCompletionView::~KateWordCompletionView()
 {
+    delete d->liRange;
     delete d;
 }
 
