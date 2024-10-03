@@ -52,6 +52,7 @@
 #include <KColorCombo>
 #include <KEncodingProber>
 #include <KFontRequester>
+#include <KLocalization>
 #include <KMessageBox>
 #include <KProcess>
 #include <KSeparator>
@@ -180,9 +181,9 @@ void KateIndentConfigTab::reload()
     ui->chkKeepExtraSpaces->setChecked(KateDocumentConfig::global()->keepExtraSpaces());
 
     ui->chkAutoDetectIndent->setChecked(KateDocumentConfig::global()->autoDetectIndent());
-    ui->sbIndentWidth->setSuffix(ki18np(" character", " characters"));
+    KLocalization::setupSpinBoxFormatString(ui->sbIndentWidth, ki18np("%v character", "%v characters"));
     ui->sbIndentWidth->setValue(KateDocumentConfig::global()->indentationWidth());
-    ui->sbTabWidth->setSuffix(ki18np(" character", " characters"));
+    KLocalization::setupSpinBoxFormatString(ui->sbTabWidth, ki18np("%v character", "%v characters"));
     ui->sbTabWidth->setValue(KateDocumentConfig::global()->tabWidth());
 
     ui->rbTabAdvances->setChecked(KateDocumentConfig::global()->tabHandling() == KateDocumentConfig::tabInsertsTab);
@@ -574,7 +575,7 @@ void KateEditGeneralConfigTab::reload()
     ui->chkStaticWordWrap->setChecked(KateDocumentConfig::global()->wordWrap());
     ui->sbClipboardHistoryEntries->setValue(KateViewConfig::global()->clipboardHistoryEntries());
 
-    ui->sbWordWrap->setSuffix(ki18ncp("Wrap words at (value is at 20 or larger)", " character", " characters"));
+    KLocalization::setupSpinBoxFormatString(ui->sbWordWrap, ki18ncp("Wrap words at (value is at 20 or larger)", "%v character", "%v characters"));
     ui->sbWordWrap->setValue(KateDocumentConfig::global()->wordWrapAt());
 
     ui->cmbEncloseSelection->clear();
