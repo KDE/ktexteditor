@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-30 00:37+0000\n"
+"POT-Creation-Date: 2024-10-04 00:37+0000\n"
 "PO-Revision-Date: 2013-11-17 02:59+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -108,7 +108,7 @@ msgid "Word Wrap"
 msgstr "Статикалық тасымалдау"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:83 dialogs/katedialogs.cpp:740
+#: data/katepart5ui.rc:83 dialogs/katedialogs.cpp:741
 #, kde-format
 msgid "Borders"
 msgstr "Шектері"
@@ -332,7 +332,7 @@ msgid "Scro&llbars visibility:"
 msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:748
+#: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:749
 #, kde-format
 msgid "Always On"
 msgstr "Әрқашанда қосылған"
@@ -446,8 +446,8 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:604
-#: dialogs/katedialogs.cpp:736 dialogs/katedialogs.cpp:1016
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:605
+#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1017
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -612,7 +612,7 @@ msgstr "Жолды қай бағаннан асырмай тасымалдау �
 msgid "Wra&p words at:"
 msgstr "&Тасымалдайтын деңгейі:"
 
-#. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbWordWrap)
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, sbWordWrap)
 #: dialogs/editconfigwidget.ui:59
 #, kde-format
 msgid ""
@@ -692,7 +692,7 @@ msgstr ""
 msgid "Max Clipboard History Entries:"
 msgstr "Алмасу буферінің &журналы"
 
-#. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:204
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
@@ -902,7 +902,7 @@ msgstr ""
 msgid "Indent using"
 msgstr "Шегіністі пайдалану"
 
-#. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbIndentWidth)
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, sbIndentWidth)
 #: dialogs/indentationconfigwidget.ui:81
 #, kde-format
 msgid ""
@@ -1111,153 +1111,153 @@ msgstr ""
 msgid "Increase indentation level if in l&eading blank space"
 msgstr "А&лдыңғы бос орында тұрса - шегініс деңгейін үлкейту"
 
-#: dialogs/katedialogs.cpp:183 dialogs/katedialogs.cpp:185
+#: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
 #, fuzzy, kde-format
 #| msgctxt "Wrap words at"
 #| msgid " character"
 #| msgid_plural " characters"
-msgid " character"
-msgid_plural " characters"
+msgid "%v character"
+msgid_plural "%v characters"
 msgstr[0] " таңба"
 
-#: dialogs/katedialogs.cpp:209
+#: dialogs/katedialogs.cpp:210
 #, kde-format
 msgid "Indentation"
 msgstr "Шегіністер"
 
-#: dialogs/katedialogs.cpp:293
+#: dialogs/katedialogs.cpp:294
 #, kde-format
 msgid "Auto Completion"
 msgstr "Автотолықтыру"
 
-#: dialogs/katedialogs.cpp:360
+#: dialogs/katedialogs.cpp:361
 #, kde-format
 msgid "Spellcheck"
 msgstr "Емлені тексеру..."
 
-#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:414
+#: dialogs/katedialogs.cpp:408 dialogs/katedialogs.cpp:415
 #, fuzzy, kde-format
 #| msgctxt "@item:intable Text context"
 #| msgid "Alert"
 msgid "Alt"
 msgstr "Дабыл"
 
-#: dialogs/katedialogs.cpp:408 dialogs/katedialogs.cpp:416
+#: dialogs/katedialogs.cpp:409 dialogs/katedialogs.cpp:417
 #, kde-format
 msgid "Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:409
+#: dialogs/katedialogs.cpp:410
 #, kde-format
 msgid "Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:418
+#: dialogs/katedialogs.cpp:411 dialogs/katedialogs.cpp:419
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Meta + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:415
+#: dialogs/katedialogs.cpp:416
 #, fuzzy, kde-format
 #| msgid "Command"
 msgid "Cmd"
 msgstr "Команда"
 
-#: dialogs/katedialogs.cpp:417
+#: dialogs/katedialogs.cpp:418
 #, kde-format
 msgid "Cmd + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:419
+#: dialogs/katedialogs.cpp:420
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:475
+#: dialogs/katedialogs.cpp:476
 #, kde-format
 msgid "Text Navigation"
 msgstr "Мәтінді шарлау"
 
-#: dialogs/katedialogs.cpp:577
+#: dialogs/katedialogs.cpp:578
 #, fuzzy, kde-format
 #| msgctxt "Wrap words at"
 #| msgid " character"
 #| msgid_plural " characters"
 msgctxt "Wrap words at (value is at 20 or larger)"
-msgid " character"
-msgid_plural " characters"
+msgid "%v character"
+msgid_plural "%v characters"
 msgstr[0] " таңба"
 
-#: dialogs/katedialogs.cpp:582
+#: dialogs/katedialogs.cpp:583
 #, kde-format
 msgid "Feature is not active"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:584
+#: dialogs/katedialogs.cpp:585
 #, fuzzy, kde-format
 #| msgid "Disabled Breakpoint"
 msgid "Disable Feature"
 msgstr "Бұғатталған тоқтау нүктесі"
 
-#: dialogs/katedialogs.cpp:586
+#: dialogs/katedialogs.cpp:587
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:588
+#: dialogs/katedialogs.cpp:589
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:590
+#: dialogs/katedialogs.cpp:591
 #, fuzzy, kde-format
 #| msgid "Non-word character"
 msgid "Non letter character"
 msgstr "Сөз-таңба емес"
 
-#: dialogs/katedialogs.cpp:706
+#: dialogs/katedialogs.cpp:707
 #, kde-format
 msgid "Editing"
 msgstr "Өңдеу"
 
-#: dialogs/katedialogs.cpp:711
+#: dialogs/katedialogs.cpp:712
 #, kde-format
 msgid "Editing Options"
 msgstr "Өңдеу параметрлері"
 
-#: dialogs/katedialogs.cpp:744
+#: dialogs/katedialogs.cpp:745
 #, fuzzy, kde-format
 #| msgctxt "Language"
 #| msgid "Stata"
 msgid "Statusbar"
 msgstr "Stata"
 
-#: dialogs/katedialogs.cpp:746
+#: dialogs/katedialogs.cpp:747
 #, kde-format
 msgid "Off"
 msgstr "Жоқ"
 
-#: dialogs/katedialogs.cpp:747
+#: dialogs/katedialogs.cpp:748
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "Жол нөмірлерінен кейін"
 
-#: dialogs/katedialogs.cpp:938 dialogs/katedialogs.cpp:943
+#: dialogs/katedialogs.cpp:939 dialogs/katedialogs.cpp:944
 #, kde-format
 msgid "Appearance"
 msgstr "Көрінісі"
 
-#: dialogs/katedialogs.cpp:978
+#: dialogs/katedialogs.cpp:979
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1265,12 +1265,12 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1017
+#: dialogs/katedialogs.cpp:1018
 #, kde-format
 msgid "Advanced"
 msgstr "Қосымша"
 
-#: dialogs/katedialogs.cpp:1082
+#: dialogs/katedialogs.cpp:1083
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1278,120 +1278,120 @@ msgstr ""
 "Сіз сақтық көшірме файл атауының жұрнағын немесе префиксін келтірмедіңіз. "
 "Әдетті '~' жұрнағы қолданылады"
 
-#: dialogs/katedialogs.cpp:1082
+#: dialogs/katedialogs.cpp:1083
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Сақтық көшірме жұрнағы я префиксі жоқ"
 
-#: dialogs/katedialogs.cpp:1211
+#: dialogs/katedialogs.cpp:1212
 #, kde-format
 msgid "Open/Save"
 msgstr "Ашу/Сақтау"
 
-#: dialogs/katedialogs.cpp:1216
+#: dialogs/katedialogs.cpp:1217
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Файлдарды ашу мен сақтау"
 
-#: dialogs/katedialogs.cpp:1239
+#: dialogs/katedialogs.cpp:1240
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1240
+#: dialogs/katedialogs.cpp:1241
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1251
+#: dialogs/katedialogs.cpp:1252
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1331
+#: dialogs/katedialogs.cpp:1332
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1395
+#: dialogs/katedialogs.cpp:1396
 #, kde-format
 msgid "Dictionary:"
 msgstr "Сөздік:"
 
-#: dialogs/katedialogs.cpp:1447
+#: dialogs/katedialogs.cpp:1448
 #, fuzzy, kde-format
 #| msgid "Enable &auto completion"
 msgid "Enable Auto Reload"
 msgstr "&Автотолықтыру болсын"
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1451
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1455
+#: dialogs/katedialogs.cpp:1456
 #, fuzzy, kde-format
 #| msgid "&View Difference"
 msgid "View &Difference"
 msgstr "Айырмашылығын &көру"
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1458
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1463
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "Қай&та жүктеу"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1465
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Файлды қайта жүктеу. Сақталмаған өзгертулер жоғалады."
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1469
 #, fuzzy, kde-format
 #| msgid "&Close"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Жабу"
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1475
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "Файлды былай &сақтау..."
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Файлды басқа орынға немесе басқа атаумен сақтау."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1481 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1482 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Елемеу"
 
-#: dialogs/katedialogs.cpp:1482
+#: dialogs/katedialogs.cpp:1483
 #, fuzzy, kde-format
 #| msgid "Ignore the changes. You will not be prompted again."
 msgid "Ignores the changes on disk without any action."
 msgstr "Өзгерістерді елемеу. Енді ескерту болмайды."
 
-#: dialogs/katedialogs.cpp:1548 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1400,18 +1400,18 @@ msgstr ""
 "diff командасы орындалмады. diff(1) бағдарламасы орнатылған және PATH "
 "көрсететін жолдарда бар екенін тексеріңіз."
 
-#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Diff орындалғанда қате пайда болды"
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Файлдар бірдей."
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff шығысы"
@@ -8640,6 +8640,15 @@ msgstr "'%1' %2,  Оналт %3,  Сегізд %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Белгі орнатылмаған: %1"
+
+#, fuzzy
+#~| msgctxt "Wrap words at"
+#~| msgid " character"
+#~| msgid_plural " characters"
+#~ msgctxt "Wrap words at (value is at 20 or larger)"
+#~ msgid " character"
+#~ msgid_plural " characters"
+#~ msgstr[0] " таңба"
 
 #, fuzzy
 #~| msgid "&Save File As..."

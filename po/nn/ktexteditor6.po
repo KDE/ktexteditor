@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-30 00:37+0000\n"
+"POT-Creation-Date: 2024-10-04 00:37+0000\n"
 "PO-Revision-Date: 2024-09-22 16:37+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -107,7 +107,7 @@ msgid "Word Wrap"
 msgstr "Tekstbryting"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:83 dialogs/katedialogs.cpp:740
+#: data/katepart5ui.rc:83 dialogs/katedialogs.cpp:741
 #, kde-format
 msgid "Borders"
 msgstr "Kantlinjer"
@@ -310,7 +310,7 @@ msgid "Scro&llbars visibility:"
 msgstr "Vising av &rullefelt:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:748
+#: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:749
 #, kde-format
 msgid "Always On"
 msgstr "Vis alltid"
@@ -417,8 +417,8 @@ msgstr "Ingen oppføringar i utklippstavlehistorikken"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:604
-#: dialogs/katedialogs.cpp:736 dialogs/katedialogs.cpp:1016
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:605
+#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1017
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -571,7 +571,7 @@ msgstr ""
 msgid "Wra&p words at:"
 msgstr "B&ryt ord etter:"
 
-#. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbWordWrap)
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, sbWordWrap)
 #: dialogs/editconfigwidget.ui:59
 #, kde-format
 msgid ""
@@ -645,7 +645,7 @@ msgstr ""
 msgid "Max Clipboard History Entries:"
 msgstr ""
 
-#. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:204
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
@@ -854,7 +854,7 @@ msgstr ""
 msgid "Indent using"
 msgstr "Innrykk ved bruk av"
 
-#. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbIndentWidth)
+#. i18n: ectx: property (whatsThis), widget (QSpinBox, sbIndentWidth)
 #: dialogs/indentationconfigwidget.ui:81
 #, kde-format
 msgid ""
@@ -1055,143 +1055,147 @@ msgstr ""
 msgid "Increase indentation level if in l&eading blank space"
 msgstr "Auk innrykksnivå viss skrivemerket er i blankteikn &først på linja"
 
-#: dialogs/katedialogs.cpp:183 dialogs/katedialogs.cpp:185
-#, kde-format
-msgid " character"
-msgid_plural " characters"
+#: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
+#, fuzzy, kde-format
+#| msgid " character"
+#| msgid_plural " characters"
+msgid "%v character"
+msgid_plural "%v characters"
 msgstr[0] " teikn"
 msgstr[1] " teikn"
 
-#: dialogs/katedialogs.cpp:209
+#: dialogs/katedialogs.cpp:210
 #, kde-format
 msgid "Indentation"
 msgstr "Innrykk"
 
-#: dialogs/katedialogs.cpp:293
+#: dialogs/katedialogs.cpp:294
 #, kde-format
 msgid "Auto Completion"
 msgstr "Autofullføring"
 
-#: dialogs/katedialogs.cpp:360
+#: dialogs/katedialogs.cpp:361
 #, kde-format
 msgid "Spellcheck"
 msgstr "Stavekontroll"
 
-#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:414
+#: dialogs/katedialogs.cpp:408 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Alt"
 msgstr "Alt"
 
-#: dialogs/katedialogs.cpp:408 dialogs/katedialogs.cpp:416
+#: dialogs/katedialogs.cpp:409 dialogs/katedialogs.cpp:417
 #, kde-format
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: dialogs/katedialogs.cpp:409
+#: dialogs/katedialogs.cpp:410
 #, kde-format
 msgid "Meta"
 msgstr "Meta"
 
-#: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:418
+#: dialogs/katedialogs.cpp:411 dialogs/katedialogs.cpp:419
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr "Ctrl + Alt"
 
-#: dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Meta + Alt"
 msgstr "Meta + Alt"
 
-#: dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr "Ctrl + Meta"
 
-#: dialogs/katedialogs.cpp:415
+#: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd"
 msgstr "Cmd"
 
-#: dialogs/katedialogs.cpp:417
+#: dialogs/katedialogs.cpp:418
 #, kde-format
 msgid "Cmd + Alt"
 msgstr "Cmd + Alt"
 
-#: dialogs/katedialogs.cpp:419
+#: dialogs/katedialogs.cpp:420
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr "Cmd + Ctrl"
 
-#: dialogs/katedialogs.cpp:475
+#: dialogs/katedialogs.cpp:476
 #, kde-format
 msgid "Text Navigation"
 msgstr "Tekstnavigering"
 
-#: dialogs/katedialogs.cpp:577
-#, kde-format
+#: dialogs/katedialogs.cpp:578
+#, fuzzy, kde-format
+#| msgid " character"
+#| msgid_plural " characters"
 msgctxt "Wrap words at (value is at 20 or larger)"
-msgid " character"
-msgid_plural " characters"
+msgid "%v character"
+msgid_plural "%v characters"
 msgstr[0] " teikn"
 msgstr[1] " teikn"
 
-#: dialogs/katedialogs.cpp:582
+#: dialogs/katedialogs.cpp:583
 #, kde-format
 msgid "Feature is not active"
 msgstr "Funksjonen er ikkje slått på"
 
-#: dialogs/katedialogs.cpp:584
+#: dialogs/katedialogs.cpp:585
 #, kde-format
 msgid "Disable Feature"
 msgstr "Slå av funksjon"
 
-#: dialogs/katedialogs.cpp:586
+#: dialogs/katedialogs.cpp:587
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr "Kan vera nyttig ved Markdown"
 
-#: dialogs/katedialogs.cpp:588
+#: dialogs/katedialogs.cpp:589
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 "Spegelteikn (liknar på automatisk parentesar, men er ikkje heilt det same)"
 
-#: dialogs/katedialogs.cpp:590
+#: dialogs/katedialogs.cpp:591
 #, kde-format
 msgid "Non letter character"
 msgstr "Tein som ikkje er bokstav"
 
-#: dialogs/katedialogs.cpp:706
+#: dialogs/katedialogs.cpp:707
 #, kde-format
 msgid "Editing"
 msgstr "Redigering"
 
-#: dialogs/katedialogs.cpp:711
+#: dialogs/katedialogs.cpp:712
 #, kde-format
 msgid "Editing Options"
 msgstr "Redigeringsval"
 
-#: dialogs/katedialogs.cpp:744
+#: dialogs/katedialogs.cpp:745
 #, kde-format
 msgid "Statusbar"
 msgstr "Statuslinje"
 
-#: dialogs/katedialogs.cpp:746
+#: dialogs/katedialogs.cpp:747
 #, kde-format
 msgid "Off"
 msgstr "Av"
 
-#: dialogs/katedialogs.cpp:747
+#: dialogs/katedialogs.cpp:748
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "Følg linjenummer"
 
-#: dialogs/katedialogs.cpp:938 dialogs/katedialogs.cpp:943
+#: dialogs/katedialogs.cpp:939 dialogs/katedialogs.cpp:944
 #, kde-format
 msgid "Appearance"
 msgstr "Utsjånad"
 
-#: dialogs/katedialogs.cpp:978
+#: dialogs/katedialogs.cpp:979
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1199,125 +1203,125 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1017
+#: dialogs/katedialogs.cpp:1018
 #, kde-format
 msgid "Advanced"
 msgstr "Avansert"
 
-#: dialogs/katedialogs.cpp:1082
+#: dialogs/katedialogs.cpp:1083
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
 "Du har ikkje valt eit prefiks eller suffiks. Brukar standardsuffikset «~»."
 
-#: dialogs/katedialogs.cpp:1082
+#: dialogs/katedialogs.cpp:1083
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Manglar prefiks eller suffiks"
 
-#: dialogs/katedialogs.cpp:1211
+#: dialogs/katedialogs.cpp:1212
 #, kde-format
 msgid "Open/Save"
 msgstr "Opna/lagra"
 
-#: dialogs/katedialogs.cpp:1216
+#: dialogs/katedialogs.cpp:1217
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Opning og lagring"
 
-#: dialogs/katedialogs.cpp:1239
+#: dialogs/katedialogs.cpp:1240
 #, kde-format
 msgid "&Line:"
 msgstr "&Linje:"
 
-#: dialogs/katedialogs.cpp:1240
+#: dialogs/katedialogs.cpp:1241
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Gå til linjenummeret på utklippstavla"
 
-#: dialogs/katedialogs.cpp:1251
+#: dialogs/katedialogs.cpp:1252
 #, kde-format
 msgid "Go to"
 msgstr "Gå til"
 
-#: dialogs/katedialogs.cpp:1331
+#: dialogs/katedialogs.cpp:1332
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "Fann ikkje noko gyldig linjenummer på utklippstavla"
 
-#: dialogs/katedialogs.cpp:1395
+#: dialogs/katedialogs.cpp:1396
 #, kde-format
 msgid "Dictionary:"
 msgstr "Ordliste:"
 
-#: dialogs/katedialogs.cpp:1447
+#: dialogs/katedialogs.cpp:1448
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Slå på automatisk filoppfrisking"
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1451
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1455
+#: dialogs/katedialogs.cpp:1456
 #, kde-format
 msgid "View &Difference"
 msgstr "Vis &forskjellar"
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1458
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Viser ei diff-vising av alle forskjellane."
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1463
 #, kde-format
 msgid "&Reload"
 msgstr "&Last om att"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Lastar fila på nytt frå disken. Viss du har ulagra endringar, går dei tapt."
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Lukk fil"
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Lukkar fila og forkastar innhaldet."
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1475
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "Lagra &som …"
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Lèt deg velja ei plassering og lagra fila på nytt."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1481 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1482 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Ignorer"
 
-#: dialogs/katedialogs.cpp:1482
+#: dialogs/katedialogs.cpp:1483
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignorer endringane på disken og ikkje gjer noko meir."
 
-#: dialogs/katedialogs.cpp:1548 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1326,18 +1330,18 @@ msgstr ""
 "Det oppstod ein feil ved diff-kommandoen. Sjå etter at diff(1) er installert "
 "og er i søkjestien din («PATH»)."
 
-#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Feil ved laging av forskjellsoversikt"
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Filene er like."
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Resultat av diff-køyring"
@@ -8279,3 +8283,9 @@ msgstr "«%1» %2, heks %3, oktal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Merke ikkje definert: %1"
+
+#~ msgctxt "Wrap words at (value is at 20 or larger)"
+#~ msgid " character"
+#~ msgid_plural " characters"
+#~ msgstr[0] " teikn"
+#~ msgstr[1] " teikn"
