@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:37+0000\n"
+"POT-Creation-Date: 2024-10-05 00:37+0000\n"
 "PO-Revision-Date: 2024-09-23 21:15+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -408,7 +408,7 @@ msgstr "剪貼簿歷史紀錄中沒有項目"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:605
-#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1017
+#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1018
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1166,141 +1166,141 @@ msgstr ""
 "%1 會備份未儲存的檔案到「置換檔」裡。置換檔讓 %1 能在系統發生崩潰後復原您的工"
 "作。停用置換檔可能會在系統若發生崩潰時造成資料遺失。"
 
-#: dialogs/katedialogs.cpp:1018
+#: dialogs/katedialogs.cpp:1019
 #, kde-format
 msgid "Advanced"
 msgstr "進階"
 
-#: dialogs/katedialogs.cpp:1083
+#: dialogs/katedialogs.cpp:1084
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr "你沒有提供備份的後綴或前綴。使用預設後綴：'~'"
 
-#: dialogs/katedialogs.cpp:1083
+#: dialogs/katedialogs.cpp:1084
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "沒有備份後綴和前綴"
 
-#: dialogs/katedialogs.cpp:1212
+#: dialogs/katedialogs.cpp:1215
 #, kde-format
 msgid "Open/Save"
 msgstr "開啟/儲存"
 
-#: dialogs/katedialogs.cpp:1217
+#: dialogs/katedialogs.cpp:1220
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "檔案的開啟與儲存"
 
-#: dialogs/katedialogs.cpp:1240
+#: dialogs/katedialogs.cpp:1243
 #, kde-format
 msgid "&Line:"
 msgstr "行號(&L)："
 
-#: dialogs/katedialogs.cpp:1241
+#: dialogs/katedialogs.cpp:1244
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "前往剪貼簿所複製的行號"
 
-#: dialogs/katedialogs.cpp:1252
+#: dialogs/katedialogs.cpp:1255
 #, kde-format
 msgid "Go to"
 msgstr "前往"
 
-#: dialogs/katedialogs.cpp:1332
+#: dialogs/katedialogs.cpp:1335
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "未在剪貼簿找到有效行號"
 
-#: dialogs/katedialogs.cpp:1396
+#: dialogs/katedialogs.cpp:1399
 #, kde-format
 msgid "Dictionary:"
 msgstr "字典："
 
-#: dialogs/katedialogs.cpp:1448
+#: dialogs/katedialogs.cpp:1451
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "開啟自動重新載入"
 
-#: dialogs/katedialogs.cpp:1451
+#: dialogs/katedialogs.cpp:1454
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr "重新載入，並且直到分頁或視窗關閉都不會再提出關於磁碟變更的警告。"
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid "View &Difference"
 msgstr "檢視差異(&D)"
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1461
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "顯示變更間的差異。"
 
-#: dialogs/katedialogs.cpp:1463
+#: dialogs/katedialogs.cpp:1466
 #, kde-format
 msgid "&Reload"
 msgstr "重新載入(&R)"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1468
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "自磁碟重新載入檔案。未儲存的變更將會遺失。"
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1472
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "關閉檔案(&C)"
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "關閉檔案，放棄檔案內容。"
 
-#: dialogs/katedialogs.cpp:1475
+#: dialogs/katedialogs.cpp:1478
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "另存新檔(&S)…"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "讓您選擇一個位置並再次儲存檔案。"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1482 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1485 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "忽略(&I)"
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1486
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "沒有動作，忽略在磁碟上的變更。"
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
 "your PATH."
 msgstr "diff 指令失敗。請確定 diff(1) 已安裝於您的 PATH。"
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1554 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "建立 Diff 發生錯誤"
 
-#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "檔案完全相同。"
 
-#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff 輸出"
@@ -1547,6 +1547,12 @@ msgstr "秒"
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr "這個字串位於 katedialogs.cpp，在 KateSaveConfigTab 的建構函式裡。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
+#: dialogs/opensaveconfigadvwidget.ui:247
+#, kde-format
+msgid "Honor settings in .editorconfig file"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29

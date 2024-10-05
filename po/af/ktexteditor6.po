@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 stable\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:37+0000\n"
+"POT-Creation-Date: 2024-10-05 00:37+0000\n"
 "PO-Revision-Date: 2005-11-25 11:24+0200\n"
 "Last-Translator: Juanita Franz <juanita.franz@vr-web.de>\n"
 "Language-Team: AFRIKAANS <translate-discuss-af@lists.sourceforge.net>\n"
@@ -458,7 +458,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:605
-#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1017
+#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1018
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1275,12 +1275,12 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1018
+#: dialogs/katedialogs.cpp:1019
 #, kde-format
 msgid "Advanced"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1083
+#: dialogs/katedialogs.cpp:1084
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1288,78 +1288,78 @@ msgstr ""
 "Jy het nie 'n terugvalkopie voorvoegsel of agtervoegsel gegee nie. Gebruik "
 "verstek agtervoegsel: '~'"
 
-#: dialogs/katedialogs.cpp:1083
+#: dialogs/katedialogs.cpp:1084
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Geen terugvalkopie Voorvoegstel of agtervoegsel"
 
-#: dialogs/katedialogs.cpp:1212
+#: dialogs/katedialogs.cpp:1215
 #, kde-format
 msgid "Open/Save"
 msgstr "Open/Stoor"
 
-#: dialogs/katedialogs.cpp:1217
+#: dialogs/katedialogs.cpp:1220
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Lêer oopmaak en Stoor"
 
-#: dialogs/katedialogs.cpp:1240
+#: dialogs/katedialogs.cpp:1243
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1241
+#: dialogs/katedialogs.cpp:1244
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1252
+#: dialogs/katedialogs.cpp:1255
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1332
+#: dialogs/katedialogs.cpp:1335
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1396
+#: dialogs/katedialogs.cpp:1399
 #, fuzzy, kde-format
 #| msgid "&Section:"
 msgid "Dictionary:"
 msgstr "Seksie:"
 
-#: dialogs/katedialogs.cpp:1448
+#: dialogs/katedialogs.cpp:1451
 #, fuzzy, kde-format
 #| msgid "Word Completion Plugin"
 msgid "Enable Auto Reload"
 msgstr "Woord Klaarmaak Inprop"
 
-#: dialogs/katedialogs.cpp:1451
+#: dialogs/katedialogs.cpp:1454
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1459
 #, fuzzy, kde-format
 #| msgid "&View Difference"
 msgid "View &Difference"
 msgstr "Vertoon Verskil"
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1461
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1463
+#: dialogs/katedialogs.cpp:1466
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "Herlaai"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1468
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
@@ -1368,43 +1368,43 @@ msgstr ""
 "Herlaai die lêer van skyf. As jy nie die veranderinge gestoor het nie, sal "
 "hulle weg wees."
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1472
 #, fuzzy, kde-format
 #| msgid "&Reload File"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "Herlaai Lêer"
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1475
+#: dialogs/katedialogs.cpp:1478
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "Stoor Lêer as..."
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Laat you kies 'n area en stoor die lêer weer."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1482 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1485 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "Ignoreer"
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1486
 #, fuzzy, kde-format
 #| msgid "Ignore the changes. You will not be prompted again."
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignoreer die veranderings. Jy sal nie weer gepor word nie."
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1413,18 +1413,18 @@ msgstr ""
 "Die verskil opdrag het gevaal. Maak asseblief seker dat verskil(1) is "
 "installeer en in jou PATH."
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1554 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Fout by maak van Verskil"
 
-#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr ""
@@ -1694,6 +1694,13 @@ msgstr "Bash"
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
+#: dialogs/opensaveconfigadvwidget.ui:247
+#, fuzzy, kde-format
+#| msgid "Do not use config file"
+msgid "Honor settings in .editorconfig file"
+msgstr "Gebruik nie konfigureerde Lêer"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -10071,9 +10078,6 @@ msgstr "Merk Tipe %1"
 #~ msgstr ""
 #~ "Die redigeerder sal soek die gegewe aantal van kabinet vlakke opgaande "
 #~ "vir .kateconfig lêer en laai die instellings lyn daarvan."
-
-#~ msgid "Do not use config file"
-#~ msgstr "Gebruik nie konfigureerde Lêer"
 
 #, fuzzy
 #~ msgid "Text Area Background"

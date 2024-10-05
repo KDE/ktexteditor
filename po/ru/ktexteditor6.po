@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:37+0000\n"
+"POT-Creation-Date: 2024-10-05 00:37+0000\n"
 "PO-Revision-Date: 2024-09-20 07:36+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -429,7 +429,7 @@ msgstr "В журнале буфера обмена нет записей"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:605
-#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1017
+#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1018
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1237,12 +1237,12 @@ msgstr ""
 "подкачки позволяют %1 восстановить работу в случае сбоя системы. Отключение "
 "файлов подкачки может привести к потере данных в случае сбоя системы."
 
-#: dialogs/katedialogs.cpp:1018
+#: dialogs/katedialogs.cpp:1019
 #, kde-format
 msgid "Advanced"
 msgstr "Дополнительно"
 
-#: dialogs/katedialogs.cpp:1083
+#: dialogs/katedialogs.cpp:1084
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1250,52 +1250,52 @@ msgstr ""
 "Не задан суффикс или префикс файлов резервных копий. Используется суффикс по "
 "умолчанию: «~»"
 
-#: dialogs/katedialogs.cpp:1083
+#: dialogs/katedialogs.cpp:1084
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Резервные копии без суффикса или префикса"
 
-#: dialogs/katedialogs.cpp:1212
+#: dialogs/katedialogs.cpp:1215
 #, kde-format
 msgid "Open/Save"
 msgstr "Открытие и сохранение"
 
-#: dialogs/katedialogs.cpp:1217
+#: dialogs/katedialogs.cpp:1220
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Открытие и сохранение файлов"
 
-#: dialogs/katedialogs.cpp:1240
+#: dialogs/katedialogs.cpp:1243
 #, kde-format
 msgid "&Line:"
 msgstr "С&трока:"
 
-#: dialogs/katedialogs.cpp:1241
+#: dialogs/katedialogs.cpp:1244
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Перейти к строке с номером из буфера обмена"
 
-#: dialogs/katedialogs.cpp:1252
+#: dialogs/katedialogs.cpp:1255
 #, kde-format
 msgid "Go to"
 msgstr "Перейти"
 
-#: dialogs/katedialogs.cpp:1332
+#: dialogs/katedialogs.cpp:1335
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "Буфер обмена не содержит действительного номера строки"
 
-#: dialogs/katedialogs.cpp:1396
+#: dialogs/katedialogs.cpp:1399
 #, kde-format
 msgid "Dictionary:"
 msgstr "Словарь:"
 
-#: dialogs/katedialogs.cpp:1448
+#: dialogs/katedialogs.cpp:1451
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Загружать документ при его изменении"
 
-#: dialogs/katedialogs.cpp:1451
+#: dialogs/katedialogs.cpp:1454
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1305,63 +1305,63 @@ msgstr ""
 "запроса дополнительного подтверждения. Такое поведение будет действовать до "
 "закрытия вкладки."
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid "View &Difference"
 msgstr "Просмотреть &различия"
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1461
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Показать список изменений"
 
-#: dialogs/katedialogs.cpp:1463
+#: dialogs/katedialogs.cpp:1466
 #, kde-format
 msgid "&Reload"
 msgstr "&Перезагрузить файл"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1468
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Открыть файл с диска. Если у вас есть несохранённые изменения, они будут "
 "потеряны."
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1472
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Закрыть файл"
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Закрыть текущий файл без сохранения изменений."
 
-#: dialogs/katedialogs.cpp:1475
+#: dialogs/katedialogs.cpp:1478
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "Сохранить &как…"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Сохранить файл в другом месте и/или под другим именем."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1482 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1485 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Игнорировать"
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1486
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr ""
 "Игнорировать изменения на диске, то есть не выполнять никаких действий."
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1370,18 +1370,18 @@ msgstr ""
 "Ошибка вызова команды «diff». Проверьте, установлена ли программа diff (1) и "
 "доступна ли она в пути, определённом переменной PATH."
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1554 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Ошибка поиска различий"
 
-#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Файлы идентичны."
 
-#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Результат сравнения"
@@ -1640,6 +1640,13 @@ msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr ""
 "Строка содержится в файле katedialogs.cpp в конструкторе KateSaveConfigTab."
+
+#. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
+#: dialogs/opensaveconfigadvwidget.ui:247
+#, fuzzy, kde-format
+#| msgid "Do not use config file"
+msgid "Honor settings in .editorconfig file"
+msgstr "Не использовать файл конфигурации"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -10404,9 +10411,6 @@ msgstr "Отметка не установлена: %1"
 #~ msgstr ""
 #~ "Редактор производит поиск файла .kateconfig в текущей папке "
 #~ "редактируемого файла и, возможно, в её родительских папках."
-
-#~ msgid "Do not use config file"
-#~ msgstr "Не использовать файл конфигурации"
 
 #~ msgid "Text Area Background"
 #~ msgstr "Фон области текста"

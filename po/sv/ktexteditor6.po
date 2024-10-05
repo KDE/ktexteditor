@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:37+0000\n"
+"POT-Creation-Date: 2024-10-05 00:37+0000\n"
 "PO-Revision-Date: 2024-09-14 07:33+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -419,7 +419,7 @@ msgstr "Inga poster i klippbordshistoriken"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:605
-#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1017
+#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1018
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1221,12 +1221,12 @@ msgstr ""
 "%1 återställa ditt arbete i händelse av en systemkrasch. Att inaktivera "
 "växlingsfiler kan orsaka dataförlust i händelse av en systemkrasch."
 
-#: dialogs/katedialogs.cpp:1018
+#: dialogs/katedialogs.cpp:1019
 #, kde-format
 msgid "Advanced"
 msgstr "Avancerat"
 
-#: dialogs/katedialogs.cpp:1083
+#: dialogs/katedialogs.cpp:1084
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1234,52 +1234,52 @@ msgstr ""
 "Du angav inget prefix eller suffix för säkerhetskopiering. Använder "
 "standardsuffix: \"~\"."
 
-#: dialogs/katedialogs.cpp:1083
+#: dialogs/katedialogs.cpp:1084
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Inget prefix eller suffix för säkerhetskopiering"
 
-#: dialogs/katedialogs.cpp:1212
+#: dialogs/katedialogs.cpp:1215
 #, kde-format
 msgid "Open/Save"
 msgstr "Öppna/spara"
 
-#: dialogs/katedialogs.cpp:1217
+#: dialogs/katedialogs.cpp:1220
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Öppna och spara filer"
 
-#: dialogs/katedialogs.cpp:1240
+#: dialogs/katedialogs.cpp:1243
 #, kde-format
 msgid "&Line:"
 msgstr "&Rad:"
 
-#: dialogs/katedialogs.cpp:1241
+#: dialogs/katedialogs.cpp:1244
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Gå till radnummer från klippbordet"
 
-#: dialogs/katedialogs.cpp:1252
+#: dialogs/katedialogs.cpp:1255
 #, kde-format
 msgid "Go to"
 msgstr "Gå till"
 
-#: dialogs/katedialogs.cpp:1332
+#: dialogs/katedialogs.cpp:1335
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "Inget giltigt radnummer hittades på klippbordet"
 
-#: dialogs/katedialogs.cpp:1396
+#: dialogs/katedialogs.cpp:1399
 #, kde-format
 msgid "Dictionary:"
 msgstr "Ordlista:"
 
-#: dialogs/katedialogs.cpp:1448
+#: dialogs/katedialogs.cpp:1451
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Aktivera automatisk återinläsning"
 
-#: dialogs/katedialogs.cpp:1451
+#: dialogs/katedialogs.cpp:1454
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1288,60 +1288,60 @@ msgstr ""
 "Läser in igen och läser automatiskt in igen utan förvarning om diskändringar "
 "från och med nu tills antingen fliken eller fönstret stängs antingen."
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid "View &Difference"
 msgstr "Visa skillna&d"
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1461
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Visar en jämförelse av ändringarna."
 
-#: dialogs/katedialogs.cpp:1463
+#: dialogs/katedialogs.cpp:1466
 #, kde-format
 msgid "&Reload"
 msgstr "Åte&rställ"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1468
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Läser in filen igen från disk. Osparade ändringar går förlorade."
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1472
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "Stän&g fil"
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Stänger filen, och kastar dess innehåll."
 
-#: dialogs/katedialogs.cpp:1475
+#: dialogs/katedialogs.cpp:1478
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "&Spara som…"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Låter dig välja en plats och spara filen igen."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1482 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1485 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Ignorera"
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1486
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignorera ändringarna på disk utan någon åtgärd."
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1350,18 +1350,18 @@ msgstr ""
 "Jämförelsekommandot misslyckades. Försäkra dig om att diff(1) är installerat "
 "och i din sökväg."
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1554 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Fel när jämförelse skulle skapas"
 
-#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Filerna är identiska."
 
-#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Jämförelseutmatning"
@@ -1621,6 +1621,13 @@ msgstr "s"
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr "Strängen finns i katedialogs.cpp i konstruktorn KateSaveConfigTab."
+
+#. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
+#: dialogs/opensaveconfigadvwidget.ui:247
+#, fuzzy, kde-format
+#| msgid "Do not use config file"
+msgid "Honor settings in .editorconfig file"
+msgstr "Använd inte inställningsfil"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -10360,9 +10367,6 @@ msgstr "Markering inte gjord: %1"
 #~ msgstr ""
 #~ "Editorn söker givet antal katalognivåer uppåt efter filen .kateconfig och "
 #~ "laddar inställningarna från den."
-
-#~ msgid "Do not use config file"
-#~ msgstr "Använd inte inställningsfil"
 
 #~ msgid "Text Area Background"
 #~ msgstr "Textområdets bakgrund"
