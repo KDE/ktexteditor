@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-05 00:37+0000\n"
-"PO-Revision-Date: 2024-09-16 01:14+0200\n"
+"PO-Revision-Date: 2024-10-06 01:36+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1094,13 +1094,11 @@ msgstr ""
 "Incr&ementar el nivel de sangrado si se está en un espacio en blanco inicial"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " carácter"
-msgstr[1] " caracteres"
+msgstr[0] "%v carácter"
+msgstr[1] "%v caracteres"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1168,14 +1166,12 @@ msgid "Text Navigation"
 msgstr "Navegación de texto"
 
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " carácter"
-msgstr[1] " caracteres"
+msgstr[0] "%v carácter"
+msgstr[1] "%v caracteres"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1654,10 +1650,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
 #: dialogs/opensaveconfigadvwidget.ui:247
-#, fuzzy, kde-format
-#| msgid "Do not use config file"
+#, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr "No usar el archivo de configuración"
+msgstr "Respetar las preferencias del archivo .editorconfig"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29

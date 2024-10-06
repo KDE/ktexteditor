@@ -8289,9 +8289,3 @@ msgstr "«%1» %2, heks %3, oktal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Merke ikkje definert: %1"
-
-#~ msgctxt "Wrap words at (value is at 20 or larger)"
-#~ msgid " character"
-#~ msgid_plural " characters"
-#~ msgstr[0] " teikn"
-#~ msgstr[1] " teikn"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-05 00:37+0000\n"
-"PO-Revision-Date: 2024-09-19 18:59+0200\n"
+"PO-Revision-Date: 2024-10-05 13:11+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -1068,13 +1068,11 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "Увеличаване нивото на отстъпа при водещо празно пространство"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " символ"
-msgstr[1] " символи"
+msgstr[0] "%v символ"
+msgstr[1] "%v символи"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1142,14 +1140,12 @@ msgid "Text Navigation"
 msgstr "Навигация на текст"
 
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " символ"
-msgstr[1] " символи"
+msgstr[0] "%v символ"
+msgstr[1] "%v символи"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1626,7 +1622,7 @@ msgstr "Низът е локализиран в katedialogs.cpp в констр�
 #: dialogs/opensaveconfigadvwidget.ui:247
 #, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr ""
+msgstr "Настройки на зачитане във файл  .editorconfig"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
