@@ -22,7 +22,6 @@ TextBlock::TextBlock(TextBuffer *buffer, int index)
 TextBlock::~TextBlock()
 {
     // blocks should be empty before they are deleted!
-    Q_ASSERT(m_blockSize == 0);
     Q_ASSERT(m_lines.empty());
     Q_ASSERT(m_cursors.empty());
 
@@ -56,13 +55,11 @@ void TextBlock::setLineMetaData(int line, const TextLine &textLine)
 void TextBlock::appendLine(const QString &textOfLine)
 {
     m_lines.emplace_back(textOfLine);
-    m_blockSize += textOfLine.size();
 }
 
 void TextBlock::clearLines()
 {
     m_lines.clear();
-    m_blockSize = 0;
 }
 
 void TextBlock::text(QString &text) const
@@ -192,6 +189,9 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
         m_lines[0] = previousBlock->m_lines.back();
         previousBlock->m_lines.erase(previousBlock->m_lines.begin() + (previousBlock->lines() - 1));
 
+        m_buffer->m_blockSizes[m_blockIndex - 1] -= m_lines[0].length() + 1;
+        m_buffer->m_blockSizes[m_blockIndex] += m_lines[0].length();
+
         const int oldSizeOfPreviousLine = m_lines[0].text().size();
         if (oldFirst.length() > 0) {
             // append text
@@ -269,6 +269,8 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
         // be done
         return;
     }
+
+    m_buffer->m_blockSizes[m_blockIndex] -= 1;
 
     // easy: just move text to previous line and remove current one
     const int oldSizeOfPreviousLine = m_lines.at(line - 1).length();
@@ -355,8 +357,6 @@ void TextBlock::insertText(const KTextEditor::Cursor position, const QString &te
     // notify the text history
     m_buffer->history().insertText(position, text.size(), oldLength);
 
-    m_blockSize += text.size();
-
     // cursor and range handling below
 
     // no cursors in this block, no work to do..
@@ -431,8 +431,6 @@ void TextBlock::removeText(KTextEditor::Range range, QString &removedText)
     // notify the text history
     m_buffer->history().removeText(range, oldLength);
 
-    m_blockSize -= removedText.size();
-
     // cursor and range handling below
 
     // no cursors in this block, no work to do..
@@ -498,8 +496,9 @@ void TextBlock::splitBlock(int fromLine, TextBlock *newBlock)
     newBlock->m_lines.reserve(linesOfNewBlock);
     for (size_t i = fromLine; i < m_lines.size(); ++i) {
         auto line = std::move(m_lines[i]);
-        m_blockSize -= line.length();
-        newBlock->m_blockSize += line.length();
+        const int lineLength = line.length();
+        m_buffer->m_blockSizes[m_blockIndex] -= lineLength + 1;
+        m_buffer->m_blockSizes[newBlock->m_blockIndex] += lineLength + 1;
         newBlock->m_lines.push_back(std::move(line));
     }
 
@@ -560,7 +559,6 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     for (size_t i = 0; i < m_lines.size(); ++i) {
         targetBlock->m_lines.push_back(m_lines.at(i));
     }
-    targetBlock->m_blockSize += m_blockSize;
     clearLines();
 }
 

@@ -562,6 +562,11 @@ private:
     std::vector<TextBlock *> m_blocks;
 
     /**
+     * List of blocksizes of each block in m_blocks
+     */
+    std::vector<int> m_blockSizes;
+
+    /**
      * Number of lines in buffer
      */
     int m_lines;

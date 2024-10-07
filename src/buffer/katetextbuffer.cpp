@@ -27,6 +27,7 @@
 #include <QCryptographicHash>
 #include <QFile>
 #include <QFileInfo>
+#include <QScopeGuard>
 #include <QStandardPaths>
 #include <QStringEncoder>
 #include <QTemporaryFile>
@@ -125,12 +126,10 @@ void TextBuffer::clear()
 
     // kill all buffer blocks
     qDeleteAll(m_blocks);
-    m_blocks.clear();
-    m_startLines.clear();
-
     // insert one block with one empty line
-    m_blocks.push_back(newBlock);
-    m_startLines.push_back(0);
+    m_blocks = {newBlock};
+    m_startLines = {0};
+    m_blockSizes = {1};
 
     // reset lines and last used block
     m_lines = 1;
@@ -177,8 +176,8 @@ int TextBuffer::cursorToOffset(KTextEditor::Cursor c) const
 
     int off = 0;
     const int blockIndex = blockForLine(c.line());
-    for (auto it = m_blocks.begin(), end = m_blocks.begin() + blockIndex; it != end; ++it) {
-        off += (*it)->blockSize();
+    for (auto it = m_blockSizes.begin(), end = m_blockSizes.begin() + blockIndex; it != end; ++it) {
+        off += *it;
     }
 
     auto block = m_blocks[blockIndex];
@@ -200,10 +199,12 @@ KTextEditor::Cursor TextBuffer::offsetToCursor(int offset) const
 {
     if (offset >= 0) {
         int off = 0;
-        for (auto block : m_blocks) {
-            if (off + block->blockSize() < offset) {
-                off += block->blockSize();
+        int blockIdx = 0;
+        for (int blockSize : m_blockSizes) {
+            if (off + blockSize < offset) {
+                off += blockSize;
             } else {
+                auto block = m_blocks[blockIdx];
                 const int lines = block->lines();
                 int start = block->startLine();
                 int end = start + lines;
@@ -215,6 +216,7 @@ KTextEditor::Cursor TextBuffer::offsetToCursor(int offset) const
                     off += len + 1;
                 }
             }
+            blockIdx++;
         }
     }
     return KTextEditor::Cursor::invalid();
@@ -224,8 +226,8 @@ QString TextBuffer::text() const
 {
     QString text;
     qsizetype size = 0;
-    for (auto b : m_blocks) {
-        size += b->blockSize();
+    for (int blockSize : m_blockSizes) {
+        size += blockSize;
     }
     text.reserve(size);
     size -= 1; // remove -1, last newline
@@ -306,6 +308,7 @@ void TextBuffer::wrapLine(const KTextEditor::Cursor position)
     // this call will trigger fixStartLines
     ++m_lines; // first alter the line counter, as functions called will need the valid one
     m_blocks.at(blockIndex)->wrapLine(position, blockIndex);
+    m_blockSizes[blockIndex] += 1;
 
     // remember changes
     ++m_revision;
@@ -399,6 +402,7 @@ void TextBuffer::insertText(const KTextEditor::Cursor position, const QString &t
 
     // let the block handle the insertText
     m_blocks.at(blockIndex)->insertText(position, text);
+    m_blockSizes[blockIndex] += text.size();
 
     // remember changes
     ++m_revision;
@@ -442,6 +446,7 @@ void TextBuffer::removeText(KTextEditor::Range range)
     // let the block handle the removeText, retrieve removed text
     QString text;
     m_blocks.at(blockIndex)->removeText(range, text);
+    m_blockSizes[blockIndex] -= text.size();
 
     // remember changes
     ++m_revision;
@@ -509,6 +514,12 @@ void TextBuffer::fixStartLines(int startBlock, int value)
 
 void TextBuffer::balanceBlock(int index)
 {
+    auto check = qScopeGuard([this] {
+        if (!(m_blocks.size() == m_startLines.size() && m_blocks.size() == m_blockSizes.size())) {
+            qFatal("blocks/startlines/blocksizes are not equal in size!");
+        }
+    });
+
     // two cases, too big or too small block
     TextBlock *blockToBalance = m_blocks.at(index);
 
@@ -522,6 +533,7 @@ void TextBuffer::balanceBlock(int index)
         TextBlock *newBlock = new TextBlock(this, index + 1);
         m_blocks.insert(m_blocks.begin() + index + 1, newBlock);
         m_startLines.insert(m_startLines.begin() + index + 1, newBlockStartLine);
+        m_blockSizes.insert(m_blockSizes.begin() + index + 1, 0);
 
         // adjust block indexes
         for (auto it = m_blocks.begin() + index, end = m_blocks.end(); it != end; ++it) {
@@ -543,6 +555,7 @@ void TextBuffer::balanceBlock(int index)
         if (blockToBalance->lines() == 0) {
             m_blocks.erase(m_blocks.begin());
             m_startLines.erase(m_startLines.begin());
+            m_blockSizes.erase(m_blockSizes.begin());
             Q_ASSERT(m_startLines[0] == 0);
             for (auto it = m_blocks.begin(), end = m_blocks.end(); it != end; ++it) {
                 (*it)->setBlockIndex(index++);
@@ -561,18 +574,19 @@ void TextBuffer::balanceBlock(int index)
 
     // merge block
     blockToBalance->mergeBlock(targetBlock);
+    m_blockSizes[index - 1] += m_blockSizes[index];
 
     // delete old block
     delete blockToBalance;
     m_blocks.erase(m_blocks.begin() + index);
     m_startLines.erase(m_startLines.begin() + index);
+    m_blockSizes.erase(m_blockSizes.begin() + index);
 
     for (auto it = m_blocks.begin() + index, end = m_blocks.end(); it != end; ++it) {
         (*it)->setBlockIndex(index++);
     }
 
     Q_ASSERT(index == (int)m_blocks.size());
-    Q_ASSERT(m_blocks.size() == m_startLines.size());
 }
 
 void TextBuffer::debugPrint(const QString &title) const
@@ -614,10 +628,12 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
         }
         m_blocks.resize(1);
         m_startLines.resize(1);
+        m_blockSizes.resize(1);
 
         // remove lines in first block
         m_blocks.back()->clearLines();
         m_startLines.back() = 0;
+        m_blockSizes.back() = 0;
         m_lines = 0;
 
         // reset error flags
@@ -639,6 +655,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
             // create one dummy textline, in any case
             m_blocks.back()->appendLine(QString());
             m_lines++;
+            m_blockSizes[0] = 1;
             return false;
         }
 
@@ -663,10 +680,12 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
                 int startLine = m_blocks.back()->startLine() + m_blocks.back()->lines();
                 m_blocks.push_back(new TextBlock(this, index));
                 m_startLines.push_back(startLine);
+                m_blockSizes.push_back(0);
             }
 
             // append line to last block
             m_blocks.back()->appendLine(QString(file.unicode() + offset, length));
+            m_blockSizes.back() += length + 1;
             ++m_lines;
         }
 

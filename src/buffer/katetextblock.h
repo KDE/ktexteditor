@@ -212,15 +212,6 @@ public:
         }
     }
 
-    /**
-     * Returns the size of this block i.e.,
-     * the count of QChars it has + number of new lines
-     */
-    int blockSize() const
-    {
-        return m_blockSize + m_lines.size();
-    }
-
 private:
     /**
      * parent text buffer
@@ -237,11 +228,6 @@ private:
      * We need no sharing, use STL.
      */
     std::vector<Kate::TextLine> m_lines;
-
-    /**
-     * size of block i.e., number of QChars
-     */
-    int m_blockSize = 0;
 
     /**
      * Set of cursors for this block.
