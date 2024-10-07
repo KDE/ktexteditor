@@ -185,6 +185,7 @@ ktexteditor_unit_test_offscreen(katefoldingtest)
 ktexteditor_unit_test_offscreen(bug286887)
 ktexteditor_unit_test_offscreen(bug313769)
 ktexteditor_unit_test_offscreen(messagetest)
+ktexteditor_unit_test_offscreen(swapfiletest)
 
 add_subdirectory(src/vimode)
 
