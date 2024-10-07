@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-05 00:37+0000\n"
-"PO-Revision-Date: 2024-09-14 12:45+0200\n"
+"PO-Revision-Date: 2024-10-05 12:48+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1086,13 +1086,11 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "Aumenta il livello di rientro se in uno spazio vuoto ini&ziale"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " carattere"
-msgstr[1] " caratteri"
+msgstr[0] "%v carattere"
+msgstr[1] "%v caratteri"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1160,14 +1158,12 @@ msgid "Text Navigation"
 msgstr "Navigazione del testo"
 
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " carattere"
-msgstr[1] " caratteri"
+msgstr[0] "%v carattere"
+msgstr[1] "%v caratteri"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1644,10 +1640,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
 #: dialogs/opensaveconfigadvwidget.ui:247
-#, fuzzy, kde-format
-#| msgid "Do not use config file"
+#, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr "Non usarlo"
+msgstr "Rispetta le impostazioni nel file .editorconfig"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
