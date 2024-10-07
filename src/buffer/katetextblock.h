@@ -10,8 +10,6 @@
 #include "katetextline.h"
 
 #include <QList>
-#include <QSet>
-#include <QVarLengthArray>
 
 #include <ktexteditor/cursor.h>
 #include <ktexteditor_export.h>
@@ -34,6 +32,8 @@ class TextRange;
  */
 class TextBlock
 {
+    friend class TextBuffer;
+
 public:
     /**
      * Construct an empty text block.
@@ -194,7 +194,10 @@ public:
      */
     void insertCursor(Kate::TextCursor *cursor)
     {
-        m_cursors.insert(cursor);
+        auto it = std::lower_bound(m_cursors.begin(), m_cursors.end(), cursor);
+        if (it == m_cursors.end() || cursor != *it) {
+            m_cursors.insert(it, cursor);
+        }
     }
 
     /**
@@ -203,7 +206,10 @@ public:
      */
     void removeCursor(Kate::TextCursor *cursor)
     {
-        m_cursors.remove(cursor);
+        auto it = std::lower_bound(m_cursors.begin(), m_cursors.end(), cursor);
+        if (it != m_cursors.end() && cursor == *it) {
+            m_cursors.erase(it);
+        }
     }
 
     /**
@@ -239,9 +245,8 @@ private:
 
     /**
      * Set of cursors for this block.
-     * using QSet is better than unordered_set for perf reasons
      */
-    QSet<TextCursor *> m_cursors;
+    std::vector<TextCursor *> m_cursors;
 };
 }
 

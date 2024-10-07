@@ -121,6 +121,7 @@ void TextBuffer::clear()
     for (TextBlock *block : std::as_const(m_blocks)) {
         block->clearBlockContent(newBlock);
     }
+    std::sort(newBlock->m_cursors.begin(), newBlock->m_cursors.end());
 
     // kill all buffer blocks
     qDeleteAll(m_blocks);

@@ -241,7 +241,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
             if (cursor->lineInBlock() == lastLineOfPreviousBlock) {
                 cursor->m_line = 0;
                 cursor->m_block = this;
-                m_cursors.insert(cursor);
+                insertCursor(cursor);
 
                 // remember range, if any, avoid double insert
                 auto range = cursor->kateRange();
@@ -514,7 +514,7 @@ void TextBlock::splitBlock(int fromLine, TextBlock *newBlock)
             cursor->m_block = newBlock;
 
             // add to new, remove from current
-            newBlock->m_cursors.insert(cursor);
+            newBlock->m_cursors.push_back(cursor);
             it = m_cursors.erase(it);
             if (cursor->kateRange()) {
                 ranges.insert(cursor->kateRange());
@@ -524,6 +524,8 @@ void TextBlock::splitBlock(int fromLine, TextBlock *newBlock)
             ++it;
         }
     }
+    // sort the cursors
+    std::sort(newBlock->m_cursors.begin(), newBlock->m_cursors.end());
 
     for (auto range : std::as_const(ranges)) {
         if (range->spansMultipleBlocks()) {
@@ -539,12 +541,13 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     for (TextCursor *cursor : m_cursors) {
         cursor->m_line = cursor->lineInBlock() + targetBlock->lines();
         cursor->m_block = targetBlock;
-        targetBlock->m_cursors.insert(cursor);
+        targetBlock->m_cursors.push_back(cursor);
         if (cursor->kateRange()) {
             ranges.insert(cursor->kateRange());
         }
     }
     m_cursors.clear();
+    std::sort(targetBlock->m_cursors.begin(), targetBlock->m_cursors.end());
 
     for (auto range : std::as_const(ranges)) {
         if (!range->spansMultipleBlocks()) {
@@ -595,7 +598,7 @@ void TextBlock::clearBlockContent(TextBlock *targetBlock)
             cursor->m_column = 0;
             cursor->m_line = 0;
             cursor->m_block = targetBlock;
-            targetBlock->m_cursors.insert(cursor);
+            targetBlock->m_cursors.push_back(cursor);
 
             // remove it and advance to next element
             it = m_cursors.erase(it);
