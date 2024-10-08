@@ -185,19 +185,19 @@ void TextRange::checkValidity(bool notifyAboutChange)
     // in any case: reset the flag, to avoid multiple runs
     m_isCheckValidityRequired = false;
 
+    KTextEditor::Cursor end(m_end.lineInternal(), m_end.columnInternal());
+    KTextEditor::Cursor start(m_start.lineInternal(), m_start.columnInternal());
     // check if any cursor is invalid or the range is zero size and it should be invalidated then
-    if (!m_start.isValid() || !m_end.isValid() || (m_invalidateIfEmpty && m_end <= m_start)) {
+    if (!start.isValid() || !end.isValid() || (m_invalidateIfEmpty && end <= start)) {
         m_start.setPosition(-1, -1);
         m_end.setPosition(-1, -1);
+        start = end = KTextEditor::Cursor::invalid();
     }
 
     // for ranges which are allowed to become empty, normalize them, if the end has moved to the front of the start
-    if (!m_invalidateIfEmpty && m_end < m_start) {
+    if (!m_invalidateIfEmpty && end < start) {
         m_end.setPosition(m_start);
     }
-
-    // fix lookup
-    // fixLookup(oldLineRange, toLineRange());
 
     // perhaps need to notify stuff!
     if (notifyAboutChange && m_feedback) {
