@@ -575,3 +575,81 @@ void MovingRangeTest::testMultiblock()
 
     delete range;
 }
+
+void MovingRangeTest::benchCursorsInsertionRemoval()
+{
+    constexpr int NUM_LINES = 10000;
+
+    KTextEditor::DocumentPrivate doc;
+    const QStringList lines(NUM_LINES, QStringLiteral("This is a very long line with some random text"));
+    doc.setText(lines);
+    QCOMPARE(doc.lines(), NUM_LINES);
+
+    QBENCHMARK {
+        std::vector<KTextEditor::MovingRange *> ranges;
+
+        for (int i = 0; i < NUM_LINES; ++i) {
+            auto r = doc.newMovingRange({i, 2, i, 2 + 4});
+            auto r1 = doc.newMovingRange({i, 2 + 5, i, 2 + 5 + 4});
+            ranges.push_back(r);
+            ranges.push_back(r1);
+        }
+
+        // remove them
+        qDeleteAll(ranges);
+    }
+}
+
+void MovingRangeTest::benchCheckValidity()
+{
+    constexpr int NUM_LINES = 100;
+
+    KTextEditor::DocumentPrivate doc;
+    const QStringList lines(NUM_LINES, QStringLiteral("This is a very long line with some random text"));
+    doc.setText(lines);
+    QCOMPARE(doc.lines(), NUM_LINES);
+
+    // create NUM_LINES * 2 ranges (and NUM_LINES * 4 cursors)
+    std::vector<KTextEditor::MovingRange *> ranges;
+    for (int i = 0; i < NUM_LINES; ++i) {
+        auto r = doc.newMovingRange({i, 2, i, 2 + 4});
+        auto r1 = doc.newMovingRange({i, 2 + 5, i, 2 + 5 + 4});
+        ranges.push_back(r);
+        ranges.push_back(r1);
+    }
+
+    // trigger text removal, we will be iterating the cursors of every block for each line
+    QBENCHMARK {
+        doc.removeText(doc.documentRange());
+    }
+
+    // remove them
+    qDeleteAll(ranges);
+}
+
+void MovingRangeTest::benchRangeForLine()
+{
+    constexpr int NUM_LINES = 100;
+
+    KTextEditor::DocumentPrivate doc;
+    const QStringList lines(NUM_LINES, QStringLiteral("This is a very long line with some random text"));
+    doc.setText(lines);
+    QCOMPARE(doc.lines(), NUM_LINES);
+
+    // create NUM_LINES * 2 ranges (and NUM_LINES * 4 cursors)
+    std::vector<KTextEditor::MovingRange *> ranges;
+    for (int i = 0; i < NUM_LINES; ++i) {
+        auto r = doc.newMovingRange({i, 2, i, 2 + 4});
+        auto r1 = doc.newMovingRange({i, 2 + 5, i, 2 + 5 + 4});
+        ranges.push_back(r);
+        ranges.push_back(r1);
+    }
+
+    QBENCHMARK {
+        for (int i = 0; i < NUM_LINES; ++i) {
+            doc.buffer().rangesForLine(i, nullptr, false);
+        }
+    }
+
+    qDeleteAll(ranges);
+}
