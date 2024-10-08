@@ -10,7 +10,6 @@
 #include <kateundomanager.h>
 #include <kateview.h>
 
-#include <QDir>
 #include <QFileInfo>
 #include <QProcess>
 
@@ -18,7 +17,7 @@ QTEST_MAIN(SwapFileTest)
 
 QString SwapFileTest::createFile(const QByteArray &content)
 {
-    const QString path = QDir(m_testDirPath).absoluteFilePath(QStringLiteral("file"));
+    const QString path = QDir(m_testDir->path()).absoluteFilePath(QStringLiteral("file"));
     QFile file(path);
     if (file.open(QFile::WriteOnly)) {
         file.write(content.data(), content.size());
@@ -29,19 +28,15 @@ QString SwapFileTest::createFile(const QByteArray &content)
     return QString();
 }
 
-bool SwapFileTest::deleteFile()
-{
-    const QString path = QDir(m_testDirPath).absoluteFilePath(QStringLiteral("file"));
-    return QFile::remove(path);
-}
-
 void SwapFileTest::initTestCase()
 {
-    m_testDirPath = QCoreApplication::applicationDirPath();
+    // fresh clean dir per test
+    m_testDir.reset(new QTemporaryDir());
 }
 
 void SwapFileTest::testSwapFileIsCreatedAndDestroyed()
 {
+    QVERIFY(m_testDir->isValid());
     QString file = createFile("This is a test file");
     auto doc = new KTextEditor::DocumentPrivate();
     doc->openUrl(QUrl::fromLocalFile(file));
@@ -57,5 +52,4 @@ void SwapFileTest::testSwapFileIsCreatedAndDestroyed()
     doc->undo();
     delete doc;
     QTRY_VERIFY(!fi.absoluteDir().exists(swapFileName));
-    QVERIFY(deleteFile());
 }

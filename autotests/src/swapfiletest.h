@@ -8,7 +8,10 @@
 #ifndef SWAP_FILE_TEST_H
 #define SWAP_FILE_TEST_H
 
+#include <memory>
+
 #include <QObject>
+#include <QTemporaryDir>
 
 class SwapFileTest : public QObject
 {
@@ -22,11 +25,9 @@ private Q_SLOTS:
 
 private:
     QString createFile(const QByteArray &content);
-    bool deleteFile();
 
 private:
-    QString m_examplePath;
-    QString m_testDirPath;
+    std::unique_ptr<QTemporaryDir> m_testDir;
 };
 
 #endif
