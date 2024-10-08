@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-05 00:37+0000\n"
-"PO-Revision-Date: 2024-09-15 10:08+0200\n"
+"PO-Revision-Date: 2024-10-06 10:10+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -1198,13 +1198,11 @@ msgstr ""
 
 # | msgid "Character"
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " caractère"
-msgstr[1] " caractères"
+msgstr[0] "Caractère %v"
+msgstr[1] "%v caractères"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1275,14 +1273,12 @@ msgstr "Navigation dans le texte"
 
 # | msgid "Character"
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " caractère"
-msgstr[1] " caractères"
+msgstr[0] "Caractère %v"
+msgstr[1] "%v caractères"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1778,10 +1774,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
 #: dialogs/opensaveconfigadvwidget.ui:247
-#, fuzzy, kde-format
-#| msgid "Do not use config file"
+#, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr "Ne pas utiliser de fichier de configuration"
+msgstr "Mettre en valeur la configuration dans le fichier « .editorconfig »"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29

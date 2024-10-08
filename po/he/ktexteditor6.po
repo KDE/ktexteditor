@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-05 00:37+0000\n"
-"PO-Revision-Date: 2024-09-14 09:14+0300\n"
+"PO-Revision-Date: 2024-10-07 06:57+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1052,15 +1052,13 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "הגדלת כניסת ההזחה אם השורה מתחילה ב&רווח"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " תו"
-msgstr[1] " תווים"
-msgstr[2] " תווים"
-msgstr[3] " תווים"
+msgstr[0] "תו"
+msgstr[1] "שני תווים"
+msgstr[2] "v% תווים"
+msgstr[3] "%v תווים"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1128,16 +1126,14 @@ msgid "Text Navigation"
 msgstr "ניווט טקסט"
 
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " תו"
-msgstr[1] " תווים"
-msgstr[2] " תווים"
-msgstr[3] " תווים"
+msgstr[0] "תו"
+msgstr[1] "שני תווים"
+msgstr[2] "%v תווים"
+msgstr[3] "%v תווים"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1598,7 +1594,7 @@ msgstr "המחרוזת הזאת נמצאת ב־katedialogs.cpp בבנאי של K
 #: dialogs/opensaveconfigadvwidget.ui:247
 #, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr ""
+msgstr "לכבד את ההגדרות בקובץ ‎.editorconfig"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29

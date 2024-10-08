@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-05 00:37+0000\n"
-"PO-Revision-Date: 2024-10-04 17:58+0200\n"
+"PO-Revision-Date: 2024-10-07 11:54+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1628,10 +1628,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
 #: dialogs/opensaveconfigadvwidget.ui:247
-#, fuzzy, kde-format
-#| msgid "Do not use config file"
+#, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr "Non usa file de config"
+msgstr "Preferentias de honor in file .editorconfig"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
