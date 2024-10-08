@@ -28,6 +28,7 @@ private Q_SLOTS:
     void testMultiline();
     void testMultiblock();
     void benchCursorsInsertionRemoval();
+    void benchCheckValidity_data();
     void benchCheckValidity();
     void benchRangeForLine();
 };

@@ -600,8 +600,32 @@ void MovingRangeTest::benchCursorsInsertionRemoval()
     }
 }
 
+void MovingRangeTest::benchCheckValidity_data()
+{
+    QTest::addColumn<MovingRange::EmptyBehavior>("emptyBehaviour");
+
+    QTest::addRow("AllowEmpty") << MovingRange::AllowEmpty;
+    QTest::addRow("InvalidateIfEmpty") << MovingRange::InvalidateIfEmpty;
+}
+
 void MovingRangeTest::benchCheckValidity()
 {
+    /** NOTE:
+     * Atm this test runs very slow because of the way ranges are handled
+     * when removing text. When removing text, we move the ranges up into the previous
+     * line if needed. And since we are removing the text the ranges become empty. So far
+     * that is okay. The problem is the ranges start accumulating into the previous textblock
+     * and if we remove a lot of text, we accumulate a lot of ranges meaning we do a lot of
+     * checkValidity on TextRanges that were emptied long ago! This can probably be optimized by
+     * skipping checkValidity on ranges that were already empty.
+     *
+     * Also, note that this issue disappears if EmptyBehaviour is InvalidateIfEmpty
+     *
+     * See TextBlock::unwrapLine
+     */
+    QFETCH(MovingRange::EmptyBehavior, emptyBehaviour);
+
+    // use a larger number to see the differenc between the two empty behaviours
     constexpr int NUM_LINES = 100;
 
     KTextEditor::DocumentPrivate doc;
@@ -612,8 +636,8 @@ void MovingRangeTest::benchCheckValidity()
     // create NUM_LINES * 2 ranges (and NUM_LINES * 4 cursors)
     std::vector<KTextEditor::MovingRange *> ranges;
     for (int i = 0; i < NUM_LINES; ++i) {
-        auto r = doc.newMovingRange({i, 2, i, 2 + 4});
-        auto r1 = doc.newMovingRange({i, 2 + 5, i, 2 + 5 + 4});
+        auto r = doc.newMovingRange({i, 2, i, 2 + 4}, MovingRange::DoNotExpand, emptyBehaviour);
+        auto r1 = doc.newMovingRange({i, 2 + 5, i, 2 + 5 + 4}, MovingRange::DoNotExpand, emptyBehaviour);
         ranges.push_back(r);
         ranges.push_back(r1);
     }
