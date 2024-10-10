@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-05 00:37+0000\n"
-"PO-Revision-Date: 2024-06-20 21:38+0530\n"
+"PO-Revision-Date: 2024-10-09 21:20+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.1\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -67,10 +67,9 @@ msgstr "&கோப்பு"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "ஏற்றுமதி/அச்சிடு"
+msgstr "&ஏற்றுமதி/அச்சிடு"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -1050,13 +1049,11 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "முதல் &காலியிடத்தில் இருந்தால் முன்னிடைவெளியை அதிகப்படுத்து"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " எழுத்து"
-msgstr[1] " எழுத்துகள்"
+msgstr[0] "%v எழுத்து"
+msgstr[1] "%v எழுத்துகள்"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1124,14 +1121,12 @@ msgid "Text Navigation"
 msgstr "உரை உலாவல்"
 
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " எழுத்து"
-msgstr[1] " எழுத்துகள்"
+msgstr[0] "%v எழுத்து"
+msgstr[1] "%v எழுத்துகள்"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1600,10 +1595,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
 #: dialogs/opensaveconfigadvwidget.ui:247
-#, fuzzy, kde-format
-#| msgid "Do not use config file"
+#, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr "வடிவமைப்பு கோப்பை பயன்படுத்தவேண்டாம்"
+msgstr ".editorconfig கோப்பிலுள்ள அமைப்புகளை பயன்படுத்து"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -1865,10 +1859,9 @@ msgstr "உரைத்திருத்திக்கான எழுத்�
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Line Height Multiplier:"
+#, kde-format
 msgid "&Line Height Multiplier:"
-msgstr "வரி உயரத்தின் பன்மடி:"
+msgstr "&வரி உயரத்தின் பன்மடி:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:58
@@ -1900,10 +1893,9 @@ msgstr "எப்போதும்"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, fuzzy, kde-format
-#| msgid "Whitespace indicator size:"
+#, kde-format
 msgid "Whitespace indicator si&ze:"
-msgstr "இடைவெளி காட்டியின் அளவு:"
+msgstr "&இடைவெளி காட்டியின் அளவு:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1913,10 +1905,9 @@ msgstr "இடைவெளிகளை முன்னிலைப்படு�
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Show tab indicators:"
+#, kde-format
 msgid "Show &tab indicators:"
-msgstr "தத்தல்களைக் குறி:"
+msgstr "&தத்தல்களைக் குறி:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:176
@@ -2023,10 +2014,9 @@ msgstr "வரி எண்ணிக்கையை காட்டு"
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
-#, fuzzy, kde-format
-#| msgid "Fold first line"
+#, kde-format
 msgid "Fold first line:"
-msgstr "முதல் வரியை மடி"
+msgstr "முதல் வரியை மடி:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2060,7 +2050,7 @@ msgstr "மாறுநிலை வரிமடிப்புக்கு ச�
 #: dialogs/textareaappearanceconfigwidget.ui:358
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr "மாறுநிலை வரிமடிப்பு காட்டிகள்:"
+msgstr "&மாறுநிலை வரிமடிப்பு காட்டிகள்:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:368
@@ -2070,17 +2060,15 @@ msgstr "மாறுநில் வரிமடிப்புக்குற�
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:391
-#, fuzzy, kde-format
-#| msgid "Indent wrapped lines:"
+#, kde-format
 msgid "I&ndent wrapped lines:"
-msgstr "மடிக்கப்பட்டுள்ள வரிகளுக்கு முன்னிடைவெளியிடு:"
+msgstr "ம&டிக்கப்பட்டுள்ள வரிகளுக்கு முன்னிடைவெளியிடு:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
-#, fuzzy, kde-format
-#| msgid "Don't indent lines wider than:"
+#, kde-format
 msgid "&Don't indent lines wider than:"
-msgstr "இவ்வகலத்துக்கு மேலான வரிகளுக்கு முன்னிடைவெளியிடாதே:"
+msgstr "&இவ்வகலத்துக்கு மேலான வரிகளுக்கு முன்னிடைவெளியிடாதே:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:424
@@ -2103,10 +2091,9 @@ msgstr "%, காட்சிப்பகுதியின் அகலத்�
 
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show i&ndentation lines:"
-msgstr "&முன்னிடைவெளிக்கான கோடுகளை காட்டு"
+msgstr "மு&ன்னிடைவெளிக்கான கோடுகளை காட்டு:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:453
@@ -2353,10 +2340,9 @@ msgid "The file '%1' was created on disk."
 msgstr "'%1' எனும் கோப்பு வட்டில் உருவாக்கப்பட்டுள்ளது."
 
 #: document/katedocument.cpp:5606
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted on disk."
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "'%1' எனும் கோப்பு வட்டிலிருந்து நீக்கப்பட்டுள்ளது."
+msgstr "'%1' எனும் கோப்பு வட்டிலிருந்து நீக்கப்பட்டுள்ளது அல்லது நகர்த்தப்பட்டது."
 
 #: document/katedocument.cpp:5943
 #, kde-format
@@ -2864,39 +2850,34 @@ msgid "Toggle Comment"
 msgstr "குறிப்புரை நிலைமாற்று"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgid "Select to Next Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
-msgstr "அடுத்த வரிக்கு தேர்ந்தெடு"
+msgstr "அடுத்த திருத்த இடத்திற்கு செல்"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgid "Move to Previous Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
-msgstr "முந்தைய வரிக்கு நகரவும்"
+msgstr "முந்தைய திருத்த இடத்திற்கு செல்"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgid "Select to Next Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
-msgstr "அடுத்த வரிக்கு தேர்ந்தெடு"
+msgstr "அடுத்த திருத்த இடத்தைத் தேரந்தெடு"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgid "Select to Previous Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
-msgstr "முந்தைய வரிக்கு தேர்ந்தெடு"
+msgstr "முந்தைய திருத்த இடத்தைத் தேரந்தெடு"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgid "Delete the current file type."
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
-msgstr "தற்போதைய கோப்பு வகையை அகற்றுக.சேமி "
+msgstr "இடஞ்சுட்டிக்கு அடியிலுள்ள குறிச்சொல்லை நீக்கு"
 
 #: script/data/commands/emmet.js:54
 #, kde-format
@@ -2905,10 +2886,10 @@ msgid "Split or Join a Tag"
 msgstr ""
 
 #: script/data/commands/emmet.js:58
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
-msgstr ""
+msgstr "எளிய கணித சமன்பாடை"
 
 #: script/data/commands/emmet.js:62
 #, kde-format
@@ -3231,7 +3212,7 @@ msgstr ""
 #: script/data/commands/utils.js:428
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
-msgstr ""
+msgstr "தேர்விலிருந்தோ முழு ஆவணத்திலிருந்தோ காலியான வரிகளை நீக்கும்"
 
 #: script/data/commands/utils.js:430
 #, kde-format
@@ -3281,12 +3262,12 @@ msgstr ""
 #: script/data/commands/utils.js:440
 #, kde-format
 msgid "Duplicates the selected lines up."
-msgstr ""
+msgstr "தேரந்தெடுத்துள்ள வரிகளை நகலெடுத்து மேலே இடும்"
 
 #: script/data/commands/utils.js:442
 #, kde-format
 msgid "Duplicates the selected lines down."
-msgstr ""
+msgstr "தேரந்தெடுத்துள்ள வரிகளை நகலெடுத்து கீழே இடும்"
 
 #: script/data/commands/utils.js:446
 #, kde-format
@@ -4935,16 +4916,14 @@ msgid "Exporting color theme: %1"
 msgstr "எழுத்துரு & நிறதிட்டமுறை."
 
 #: syntax/katethemeconfig.cpp:1171 syntax/katethemeconfig.cpp:1192
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Color theme"
-msgstr "நிறங்கள்"
+msgstr "நிறத்திட்டம்"
 
 #: syntax/katethemeconfig.cpp:1192
-#, fuzzy, kde-format
-#| msgid "Font & Color Schemas"
+#, kde-format
 msgid "Importing Color Theme"
-msgstr "எழுத்துரு & நிறதிட்டமுறை."
+msgstr "நிறத்திட்டத்தை இறக்குமதி செய்வது"
 
 #: syntax/katethemeconfig.cpp:1206
 #, kde-format
@@ -4952,38 +4931,38 @@ msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
+"இறக்குமதி செய்வது, ஏற்கனவேயுள்ள \"%1\" எனும் கோப்பை மேலெழுதும். இச்செயலை திரும்பப்பெற "
+"முடியாது."
 
 #: syntax/katethemeconfig.cpp:1208
-#, fuzzy, kde-format
+#, kde-format
 msgid "Import Nevertheless"
-msgstr "இருநிலைக் கோப்பை சேமிக்க முயற்சிக்கிறது"
+msgstr "இருப்பினும் இறக்குமதி செய்"
 
 #: syntax/katethemeconfig.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Font & Color Schemas"
+#, kde-format
 msgid "Follow System Color Scheme"
-msgstr "எழுத்துரு & நிறதிட்டமுறை."
+msgstr "கணினியின் பொதுவான நிறத்திட்டத்தைப் பயன்படுத்து"
 
 #: syntax/katethemeconfig.cpp:1362
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
-msgstr ""
+msgstr "\"%1\" எனும் நிறத்திட்டதை நீக்க வேண்டுமா? இச்செயலை திரும்பப்பெற முடியாது."
 
 #: syntax/katethemeconfig.cpp:1364
-#, fuzzy, kde-format
+#, kde-format
 msgid "Delete Nevertheless"
-msgstr "இருநிலைக் கோப்பை சேமிக்க முயற்சிக்கிறது"
+msgstr "இருப்பினும் நீக்கு"
 
 #: syntax/katethemeconfig.cpp:1406
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Copy theme"
-msgstr "நிறங்கள்"
+msgstr "நிறத்திட்டத்தை நகலெடு"
 
 #: syntax/katethemeconfig.cpp:1407
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
-msgstr ""
+msgstr "\"%1\" எனும் நிறத்திட்டத்தின் நகலுக்கான பெயர்:"
 
 #: syntax/katethemeconfig.cpp:1419
 #, kde-format
@@ -4991,6 +4970,7 @@ msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr ""
+"<p>\"%1\" என்ற நிறத்திட்டம் ஏற்கனவே உள்ளது.</p><p>வேறு பெயரைத் தேர்ந்தெடுக்கவும்.</p>"
 
 #: syntax/katethemeconfig.cpp:1420
 #, kde-format
