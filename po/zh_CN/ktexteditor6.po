@@ -1019,12 +1019,10 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "如果在开始空白空格处，增加缩进等级(&E)"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " 个字符"
+msgstr[0] "%v 个字符"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1092,13 +1090,11 @@ msgid "Text Navigation"
 msgstr "文本导航"
 
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " 个字符"
+msgstr[0] "%v 个字符"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1554,7 +1550,7 @@ msgstr "此字符串在位于 Katedialogs.cpp 的 KateSaveConfigTb 的构筑程�
 #: dialogs/opensaveconfigadvwidget.ui:247
 #, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr ""
+msgstr "遵循 .editorconfig 配置文件中的设置"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -2298,10 +2294,9 @@ msgid "The file '%1' was created on disk."
 msgstr "文件“%1”已在存储设备中创建。"
 
 #: document/katedocument.cpp:5606
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted on disk."
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "文件“%1”已从存储设备中删除。"
+msgstr "文件“%1”已在存储设备中移动或者删除。"
 
 #: document/katedocument.cpp:5943
 #, kde-format
@@ -8096,8 +8091,3 @@ msgstr "“%1” %2，十六进制 %3，八进制 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "标记未设置：%1"
-
-#~ msgctxt "Wrap words at (value is at 20 or larger)"
-#~ msgid " character"
-#~ msgid_plural " characters"
-#~ msgstr[0] " 个字符"
