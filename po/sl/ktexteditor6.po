@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-05 00:37+0000\n"
-"PO-Revision-Date: 2024-09-14 08:33+0200\n"
+"PO-Revision-Date: 2024-10-11 20:05+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1072,15 +1072,13 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "Povečaj zamik, če je kazalka v praznini na začetku"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " znakov"
-msgstr[1] " znak"
-msgstr[2] " znaka"
-msgstr[3] " znaki"
+msgstr[0] "%v znakov"
+msgstr[1] "%v znak"
+msgstr[2] "%v znaka"
+msgstr[3] "%v znaki"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1148,16 +1146,14 @@ msgid "Text Navigation"
 msgstr "Krmarjenje po besedilu"
 
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " znakov"
-msgstr[1] " znak"
-msgstr[2] " znaka"
-msgstr[3] " znaki"
+msgstr[0] "%v znakov"
+msgstr[1] "%v znak"
+msgstr[2] "%v znaka"
+msgstr[3] "%v znaki"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1632,7 +1628,7 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:247
 #, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr ""
+msgstr "Nastavitve spoštovanja v datoteki .editorconfig"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
