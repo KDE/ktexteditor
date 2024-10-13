@@ -6011,6 +6011,7 @@ void KTextEditor::DocumentPrivate::slotCompleted()
     if (m_documentState == DocumentLoading) {
         setReadWrite(m_readWriteStateBeforeLoading);
         delete m_loadingMessage;
+        m_reloading = false;
     }
 
     // Emit signal that we saved  the document, if needed
@@ -6020,7 +6021,6 @@ void KTextEditor::DocumentPrivate::slotCompleted()
 
     // back to idle mode
     m_documentState = DocumentIdle;
-    m_reloading = false;
 }
 
 void KTextEditor::DocumentPrivate::slotCanceled()
@@ -6030,6 +6030,7 @@ void KTextEditor::DocumentPrivate::slotCanceled()
     if (m_documentState == DocumentLoading) {
         setReadWrite(m_readWriteStateBeforeLoading);
         delete m_loadingMessage;
+        m_reloading = false;
 
         if (!m_openingError) {
             showAndSetOpeningErrorAccess();
@@ -6040,7 +6041,6 @@ void KTextEditor::DocumentPrivate::slotCanceled()
 
     // back to idle mode
     m_documentState = DocumentIdle;
-    m_reloading = false;
 }
 
 void KTextEditor::DocumentPrivate::slotTriggerLoadingMessage()
