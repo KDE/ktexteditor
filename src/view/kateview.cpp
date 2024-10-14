@@ -4769,12 +4769,17 @@ KateSpellingMenu *KTextEditor::ViewPrivate::spellingMenu()
     return m_spellingMenu;
 }
 
-void KTextEditor::ViewPrivate::notifyAboutRangeChange(KTextEditor::LineRange lineRange, bool needsRepaint)
+void KTextEditor::ViewPrivate::notifyAboutRangeChange(KTextEditor::LineRange lineRange, bool needsRepaint, Kate::TextRange *deleteRange)
 {
 #ifdef VIEW_RANGE_DEBUG
     // output args
     qCDebug(LOG_KTE) << "trigger attribute changed in line range " << lineRange << "needsRepaint" << needsRepaint;
 #endif
+
+    if (deleteRange) {
+        m_rangesCaretIn.remove(deleteRange);
+        m_rangesMouseIn.remove(deleteRange);
+    }
 
     // if we need repaint, we will need to collect the line ranges we will update
     if (needsRepaint && lineRange.isValid()) {
@@ -4824,12 +4829,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
         (activationType == KTextEditor::Attribute::ActivateMouseIn) ? m_viewInternal->mousePosition() : m_viewInternal->cursorPosition();
 
     // first: validate the remembered ranges
-    QSet<Kate::TextRange *> validRanges;
-    for (Kate::TextRange *range : std::as_const(oldSet)) {
-        if (doc()->buffer().rangePointerValid(range)) {
-            validRanges.insert(range);
-        }
-    }
+    QSet<Kate::TextRange *> validRanges = oldSet;
 
     // cursor valid? else no new ranges can be found
     if (currentCursor.isValid() && currentCursor.line() < doc()->buffer().lines()) {
@@ -4868,7 +4868,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
             newRangesIn.insert(range);
 
             if (attribute && attribute->dynamicAttribute(activationType)) {
-                notifyAboutRangeChange(range->toLineRange(), true);
+                notifyAboutRangeChange(range->toLineRange(), true, nullptr);
             }
 
             // feedback
@@ -4892,7 +4892,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
     for (Kate::TextRange *range : std::as_const(validRanges)) {
         // range valid + right dynamic attribute, trigger update
         if (range->toRange().isValid() && range->attribute() && range->attribute()->dynamicAttribute(activationType)) {
-            notifyAboutRangeChange(range->toLineRange(), true);
+            notifyAboutRangeChange(range->toLineRange(), true, nullptr);
         }
 
         // feedback

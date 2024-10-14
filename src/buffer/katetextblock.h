@@ -159,13 +159,6 @@ public:
     void mergeBlock(TextBlock *targetBlock);
 
     /**
-     * Clear the block content, delete all lines, move all cursors not bound to range to given block at 0,0.
-     * This is used by clear() of TextBuffer.
-     * @param targetBlock empty target block for cursors
-     */
-    void clearBlockContent(TextBlock *targetBlock);
-
-    /**
      * Return all ranges in this block which might intersect the given line.
      * @param line                          line to check intersection
      * @param view                          only return ranges associated with given view

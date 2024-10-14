@@ -23,9 +23,6 @@ TextRange::TextRange(TextBuffer *buffer, KTextEditor::Range range, InsertBehavio
     , m_attributeOnlyForViews(false)
     , m_invalidateIfEmpty(emptyBehavior == InvalidateIfEmpty)
 {
-    // remember this range in buffer
-    m_buffer->m_ranges.insert(this);
-
     // check if range now invalid, there can happen no feedback, as m_feedback == 0
     // only place where KTextEditor::LineRange::invalid() for old range makes sense, as we were yet not registered!
     checkValidity();
@@ -38,7 +35,11 @@ TextRange::TextRange(TextBuffer *buffer, KTextEditor::Range range, InsertBehavio
 
 TextRange::~TextRange()
 {
+    if (!m_buffer) {
+        return;
+    }
     // reset feedback, don't want feedback during destruction
+    const bool hadFeedBack = m_feedback != nullptr;
     m_feedback = nullptr;
 
     // remove range from cached multiline ranges
@@ -47,22 +48,18 @@ TextRange::~TextRange()
         m_buffer->removeMultilineRange(this);
     }
 
-    // remove this range from the buffer
-    if (m_buffer)
-        m_buffer->m_ranges.remove(this);
-
     // trigger update, if we have attribute
     // notify right view
     // here we can ignore feedback, even with feedback, we want none if the range is deleted!
-    if (m_attribute && m_buffer) {
-        m_buffer->notifyAboutRangeChange(m_view, lineRange, true /* we have a attribute */);
+    if (m_attribute || hadFeedBack) {
+        m_buffer->notifyAboutRangeChange(m_view, lineRange, /*needsRepaint=*/m_attribute != nullptr, /*deletedRange=*/hadFeedBack ? this : nullptr);
     }
 }
 
 void TextRange::setInsertBehaviors(InsertBehaviors _insertBehaviors)
 {
     // nothing to do?
-    if (_insertBehaviors == insertBehaviors()) {
+    if (_insertBehaviors == insertBehaviors() || !m_buffer) {
         return;
     }
 
@@ -72,8 +69,7 @@ void TextRange::setInsertBehaviors(InsertBehaviors _insertBehaviors)
 
     // notify world
     if (m_attribute || m_feedback) {
-        if (m_buffer)
-            m_buffer->notifyAboutRangeChange(m_view, toLineRange(), true /* we have a attribute */);
+        m_buffer->notifyAboutRangeChange(m_view, toLineRange(), true /* we have a attribute */);
     }
 }
 

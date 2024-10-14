@@ -441,9 +441,10 @@ private:
      * @param view which view is affected? nullptr for all views
      * @param lineRange line range that the change spans
      * @param needsRepaint do we need to trigger repaints? e.g. if ranges with attributes change
+     * @param deletedRange if set, points to the range that is deleted
      */
     KTEXTEDITOR_NO_EXPORT
-    void notifyAboutRangeChange(KTextEditor::View *view, KTextEditor::LineRange lineRange, bool needsRepaint);
+    void notifyAboutRangeChange(KTextEditor::View *view, KTextEditor::LineRange lineRange, bool needsRepaint, TextRange *deletedRange = nullptr);
 
     /**
      * Mark all modified lines as lines saved on disk (modified line system).
@@ -506,15 +507,6 @@ public:
     }
 
     void rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QList<TextRange *> &outRanges) const;
-
-    /**
-     * Check if the given range pointer is still valid.
-     * @return range pointer still belongs to range for this buffer
-     */
-    bool rangePointerValid(TextRange *range) const
-    {
-        return m_ranges.contains(range);
-    }
 
     /**
      * Invalidate all ranges in this buffer.
@@ -609,11 +601,6 @@ private:
      * maximal line number changed by last editing transaction
      */
     int m_editingMaximalLineChanged;
-
-    /**
-     * Set of ranges of this whole buffer.
-     */
-    QSet<TextRange *> m_ranges;
 
     /**
      * Multiline ranges that span multiple blocks
