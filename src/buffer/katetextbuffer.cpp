@@ -78,27 +78,34 @@ TextBuffer::~TextBuffer()
     Q_ASSERT(m_editingTransactions == 0);
 
     // invalidate all moving stuff
+    std::vector<Kate::TextRange *> rangesWithFeedback;
     for (auto b : m_blocks) {
-        for (auto it = b->m_cursors.begin(); it != b->m_cursors.end(); ++it) {
+        auto cursors = std::move(b->m_cursors);
+        for (auto it = cursors.begin(); it != cursors.end(); ++it) {
             auto cursor = *it;
             // update the block
             cursor->m_block = nullptr;
-            cursor->m_column = -1;
-            cursor->m_line = -1;
+            cursor->m_line = cursor->m_column = -1;
             cursor->m_buffer = nullptr;
             if (auto r = cursor->kateRange()) {
                 r->m_buffer = nullptr;
                 if (r->feedback()) {
-                    r->feedback()->rangeInvalid(r);
+                    rangesWithFeedback.push_back(r);
                 }
             }
         }
-        b->m_cursors.clear();
     }
+
+    // uniquify ranges
+    std::sort(rangesWithFeedback.begin(), rangesWithFeedback.end());
+    auto it = std::unique(rangesWithFeedback.begin(), rangesWithFeedback.end());
+    std::for_each(rangesWithFeedback.begin(), it, [](Kate::TextRange *range) {
+        range->feedback()->rangeInvalid(range);
+    });
 
     // clean out all cursors and lines, only cursors belonging to range will survive
     for (TextBlock *block : m_blocks) {
-        block->clearBlockContent(nullptr);
+        block->clearLines();
     }
 
     // delete all blocks, now that all cursors are really deleted
@@ -109,11 +116,21 @@ TextBuffer::~TextBuffer()
 
 void TextBuffer::invalidateRanges()
 {
-    // invalidate all ranges, work on copy, they might delete themself...
-    const QSet<TextRange *> copyRanges = m_ranges;
-    for (TextRange *range : copyRanges) {
-        range->setRange({KTextEditor::Cursor::invalid(), KTextEditor::Cursor::invalid()});
+    std::vector<Kate::TextRange *> ranges;
+    ranges.reserve(m_blocks.size());
+    for (TextBlock *block : m_blocks) {
+        for (auto cursor : block->m_cursors) {
+            if (cursor->kateRange()) {
+                ranges.push_back(cursor->kateRange());
+            }
+        }
     }
+    // uniquify ranges
+    std::sort(ranges.begin(), ranges.end());
+    auto it = std::unique(ranges.begin(), ranges.end());
+    std::for_each(ranges.begin(), it, [](Kate::TextRange *range) {
+        range->setRange({KTextEditor::Cursor::invalid(), KTextEditor::Cursor::invalid()});
+    });
 }
 
 void TextBuffer::clear()
@@ -121,15 +138,29 @@ void TextBuffer::clear()
     // not allowed during editing
     Q_ASSERT(m_editingTransactions == 0);
 
+    m_multilineRanges.clear();
     invalidateRanges();
 
     // new block for empty buffer
     TextBlock *newBlock = new TextBlock(this, 0);
     newBlock->appendLine(QString());
 
-    // clean out all cursors and lines, either move them to newBlock or invalidate them, if belonging to a range
+    // clean out all cursors and lines, move them to newBlock if not belonging to a range
     for (TextBlock *block : std::as_const(m_blocks)) {
-        block->clearBlockContent(newBlock);
+        auto cursors = std::move(block->m_cursors);
+        for (auto it = cursors.begin(); it != cursors.end(); ++it) {
+            auto cursor = *it;
+            if (!cursor->kateRange()) {
+                // update the block
+                cursor->m_block = newBlock;
+                // move the cursor into the target block
+                cursor->m_line = cursor->m_column = 0;
+                newBlock->m_cursors.push_back(cursor);
+                // remove it and advance to next element
+            }
+            // skip cursors with ranges, we need to invalidate the ranges later
+        }
+        block->clearLines();
     }
     std::sort(newBlock->m_cursors.begin(), newBlock->m_cursors.end());
 
@@ -964,7 +995,7 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
 #endif
 }
 
-void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, KTextEditor::LineRange lineRange, bool needsRepaint)
+void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, KTextEditor::LineRange lineRange, bool needsRepaint, TextRange *deleteRange)
 {
     // ignore calls if no document is around
     if (!m_document) {
@@ -976,12 +1007,12 @@ void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, KTextEditor::Li
     const QList<KTextEditor::View *> views = m_document->views();
     for (KTextEditor::View *curView : views) {
         // filter wrong views
-        if (view && view != curView) {
+        if (view && view != curView && !deleteRange) {
             continue;
         }
 
         // notify view, it is really a kate view
-        static_cast<KTextEditor::ViewPrivate *>(curView)->notifyAboutRangeChange(lineRange, needsRepaint);
+        static_cast<KTextEditor::ViewPrivate *>(curView)->notifyAboutRangeChange(lineRange, needsRepaint, deleteRange);
     }
 }
 

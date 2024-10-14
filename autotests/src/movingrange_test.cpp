@@ -24,8 +24,9 @@ QTEST_MAIN(MovingRangeTest)
 class RangeFeedback : public MovingRangeFeedback
 {
 public:
-    RangeFeedback()
+    RangeFeedback(bool deleteOnInvalid = false)
         : MovingRangeFeedback()
+        , m_deleteOnInvalidation(deleteOnInvalid)
     {
         reset();
     }
@@ -35,8 +36,11 @@ public:
         m_rangeEmptyCalled = true;
     }
 
-    void rangeInvalid(MovingRange * /*range*/) override
+    void rangeInvalid(MovingRange *range) override
     {
+        if (m_deleteOnInvalidation) {
+            delete range;
+        }
         m_rangeInvalidCalled = true;
     }
 
@@ -110,6 +114,7 @@ public:
     }
 
 private:
+    const bool m_deleteOnInvalidation;
     bool m_rangeEmptyCalled;
     bool m_rangeInvalidCalled;
     bool m_mouseEnteredRangeCalled;
@@ -143,7 +148,8 @@ void MovingRangeTest::testFeedbackEmptyRange()
     RangeFeedback rf;
 
     // allow empty
-    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::AllowEmpty);
+    std::unique_ptr<MovingRange> range(
+        doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::AllowEmpty));
     range->setFeedback(&rf);
     rf.verifyReset();
 
@@ -193,7 +199,6 @@ void MovingRangeTest::testFeedbackEmptyRange()
     QVERIFY(!rf.mouseExitedRangeCalled());
     QVERIFY(!rf.caretEnteredRangeCalled());
     QVERIFY(!rf.caretExitedRangeCalled());
-    delete range;
 }
 
 // tests:
@@ -727,4 +732,5 @@ void MovingRangeTest::testRangeSurvivesDocument()
     QCOMPARE(range->toRange(), KTextEditor::Range(-1, -1, -1, -1));
     QVERIFY(!range->attribute());
     QVERIFY(!range->feedback());
+    delete range;
 }

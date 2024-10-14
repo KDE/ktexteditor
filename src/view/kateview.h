@@ -1049,7 +1049,7 @@ public:
      * @param lineRange line range that the change spans
      * @param needsRepaint do we need to trigger repaints? e.g. if ranges with attributes change
      */
-    void notifyAboutRangeChange(KTextEditor::LineRange lineRange, bool needsRepaint);
+    void notifyAboutRangeChange(KTextEditor::LineRange lineRange, bool needsRepaint, Kate::TextRange *deleteRange);
 
 private Q_SLOTS:
     /**
