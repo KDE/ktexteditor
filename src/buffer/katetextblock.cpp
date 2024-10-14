@@ -569,31 +569,6 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     clearLines();
 }
 
-void TextBlock::clearBlockContent(TextBlock *targetBlock)
-{
-    // move cursors, if not belonging to a range
-    // we can do in-place editing of the current set of cursors
-    for (auto it = m_cursors.begin(); it != m_cursors.end();) {
-        auto cursor = *it;
-        if (!cursor->kateRange()) {
-            // update the block
-            cursor->m_block = targetBlock;
-            // move the cursor into the target block
-            cursor->m_column = 0;
-            cursor->m_line = 0;
-            targetBlock->m_cursors.push_back(cursor);
-            // remove it and advance to next element
-            it = m_cursors.erase(it);
-        } else {
-            // keep this cursor
-            ++it;
-        }
-    }
-
-    // kill lines
-    clearLines();
-}
-
 QList<TextRange *> TextBlock::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const
 {
     QList<TextRange *> ranges;

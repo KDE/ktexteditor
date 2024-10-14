@@ -609,6 +609,7 @@ void KateDocumentTest::testRemoveComposedCharacters()
 
 void KateDocumentTest::testAutoReload()
 {
+    // QSKIP("OOM");
     // ATM fails on Windows, mark as such to be able to enforce test success in CI
 #ifdef Q_OS_WIN
     QSKIP("Fails ATM, please fix");
