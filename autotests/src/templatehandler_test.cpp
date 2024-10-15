@@ -381,4 +381,64 @@ void TemplateHandlerTest::testDefaults()
     delete doc;
 }
 
+void TemplateHandlerTest::testLinesRemoved()
+{
+    auto doc = new KTextEditor::DocumentPrivate();
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+
+    view->insertTemplate({0, 0}, QStringLiteral("${foo}\n${bar}\n${bax}\n${baz}"));
+    QCOMPARE(doc->text(), QStringLiteral("foo\nbar\nbax\nbaz"));
+    QCOMPARE(view->selectionText(), QStringLiteral("foo"));
+
+    view->killLine();
+    view->killLine();
+    QVERIFY(view->selectionRange().isEmpty());
+
+    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QCOMPARE(view->selectionText(), QStringLiteral("baz"));
+
+    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QCOMPARE(view->selectionText(), QStringLiteral("bax"));
+}
+
+void TemplateHandlerTest::testLinesRemoved2()
+{
+    // BUG: 434093
+    auto doc = new KTextEditor::DocumentPrivate();
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+
+    view->insertTemplate({0, 0}, QStringLiteral(R"(@book{${bibkey},
+  author    = {${author}},
+  editor    = {${editor}},
+  title     = {${title}},
+  series    = {${series}},
+  number    = {${number}},
+  publisher = {${publisher}},
+  year      = {${year}},
+  pagetotal = {${pagetotal}},
+  file      = {:${file}:PDF},
+  url       = {${url}},
+  edition   = {${edition}},
+  abstract  = {${abstract}},
+  groups    = {${groups}},
+}
+
+${cursor}
+)"));
+    QCOMPARE(view->selectionText(), QStringLiteral("bibkey"));
+
+    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QCOMPARE(view->selectionText(), QStringLiteral("author"));
+
+    view->killLine();
+    view->killLine();
+    QVERIFY(view->selectionRange().isEmpty());
+
+    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QCOMPARE(view->selectionText(), QStringLiteral("title"));
+
+    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QCOMPARE(view->selectionText(), QStringLiteral("series"));
+}
+
 #include "moc_templatehandler_test.cpp"

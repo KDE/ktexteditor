@@ -81,8 +81,12 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
         jump(1, true);
 
         connect(doc(), &KTextEditor::Document::viewCreated, this, &KateTemplateHandler::slotViewCreated);
-        connect(doc(), &KTextEditor::DocumentPrivate::textInsertedRange, this, &KateTemplateHandler::updateDependentFields);
-        connect(doc(), &KTextEditor::DocumentPrivate::textRemoved, this, &KateTemplateHandler::updateDependentFields);
+        connect(doc(), &KTextEditor::DocumentPrivate::textInsertedRange, this, [this](KTextEditor::Document *doc, KTextEditor::Range range) {
+            updateDependentFields(doc, range, false);
+        });
+        connect(doc(), &KTextEditor::DocumentPrivate::textRemoved, this, [this](KTextEditor::Document *doc, KTextEditor::Range range, const QString &) {
+            updateDependentFields(doc, range, true);
+        });
         connect(doc(), &KTextEditor::Document::aboutToReload, this, &KateTemplateHandler::deleteLater);
 
     } else {
@@ -132,7 +136,20 @@ void KateTemplateHandler::jump(int by, bool initial)
     auto cursor = view()->cursorPosition();
     // if initial is not set, should start from the beginning (field -1)
     if (!initial) {
-        pos = m_fields.indexOf(fieldForRange(KTextEditor::Range(cursor, cursor)));
+        const auto range = KTextEditor::Range(cursor, cursor);
+        auto fd = fieldForRange(range);
+        // if nothing was found try to use the next closest range in text
+        if (fd.kind == TemplateField::Invalid) {
+            int i = 0;
+            for (const auto &field : m_fields) {
+                if (!field.removed && field.range->toRange() > range) {
+                    pos = i;
+                    break;
+                }
+            }
+        } else {
+            pos = m_fields.indexOf(fd);
+        }
     }
 
     // modulo field count and make positive
@@ -146,8 +163,9 @@ void KateTemplateHandler::jump(int by, bool initial)
     auto choose_next_field = [this, by, wrap](unsigned int from_field_index) {
         for (int i = from_field_index + by;; i += by) {
             auto wrapped_i = wrap(i);
-            auto kind = m_fields.at(wrapped_i).kind;
-            if (kind == TemplateField::Editable || kind == TemplateField::FinalCursorPosition) {
+            const auto &field = m_fields.at(wrapped_i);
+            const auto kind = field.kind;
+            if ((!field.removed && kind == TemplateField::Editable) || kind == TemplateField::FinalCursorPosition) {
                 // found an editable field by walking into the desired direction
                 return wrapped_i;
             }
@@ -160,7 +178,8 @@ void KateTemplateHandler::jump(int by, bool initial)
     };
 
     // jump
-    auto jump_to_field = m_fields.at(choose_next_field(pos));
+    const auto next = choose_next_field(pos);
+    const auto jump_to_field = m_fields.at(next);
     view()->setCursorPosition(jump_to_field.range->toRange().start());
     if (!jump_to_field.touched) {
         // field was never edited by the user, so select its contents
@@ -378,7 +397,7 @@ void KateTemplateHandler::initializeTemplate()
 const KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(KTextEditor::Range range) const
 {
     for (const auto &field : m_fields) {
-        if (field.range->contains(range.start()) || field.range->end() == range.start()) {
+        if (!field.removed && (field.range->contains(range.start()) || field.range->end() == range.start())) {
             return field;
         }
         if (field.kind == TemplateField::FinalCursorPosition && range.end() == field.range->end().toCursor()) {
@@ -388,7 +407,7 @@ const KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(KTex
     return {};
 }
 
-void KateTemplateHandler::updateDependentFields(Document *document, Range range)
+void KateTemplateHandler::updateDependentFields(Document *document, Range range, bool textRemoved)
 {
     Q_ASSERT(document == doc());
     Q_UNUSED(document);
@@ -429,6 +448,15 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range)
         // is for initial setup and we have to continue below
         ifDebug(qCDebug(LOG_KTE) << "final cursor changed:" << range;) deleteLater();
         return;
+    }
+
+    if (textRemoved && !range.onSingleLine()) {
+        for (auto &f : m_fields) {
+            if ((f.kind == TemplateField::Editable || f.kind == TemplateField::Mirror) && !f.removed
+                && (range.contains(f.range->toRange()) && f.range->isEmpty())) {
+                f.removed = true;
+            }
+        }
     }
 
     // turn off expanding left/right for all ranges except @p current;

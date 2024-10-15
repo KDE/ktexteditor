@@ -181,7 +181,7 @@ private Q_SLOTS:
     /**
      * Update content of all dependent fields, i.e. mirror or script fields.
      */
-    void updateDependentFields(KTextEditor::Document *document, KTextEditor::Range oldRange);
+    void updateDependentFields(KTextEditor::Document *document, KTextEditor::Range oldRange, bool textRemoved = false);
 
 public:
     KTextEditor::ViewPrivate *view() const;
@@ -211,6 +211,8 @@ private:
         Kind kind = Invalid;
         // true if this field was edited by the user before
         bool touched = false;
+        // true if this field was removed e.g., because the line that contained it was removed
+        bool removed = false;
         bool operator==(const TemplateField &other) const
         {
             return range == other.range;
