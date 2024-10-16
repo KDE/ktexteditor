@@ -678,7 +678,7 @@ void MovingRangeTest::benchRangeForLine()
     qDeleteAll(ranges);
 }
 
-void MovingRangeTest::test123()
+void MovingRangeTest::testMultiblockRangeWithLineUnwrapping()
 {
     KTextEditor::DocumentPrivate doc;
     const QStringList lines(130, QStringLiteral("text"));
