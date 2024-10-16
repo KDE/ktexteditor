@@ -219,7 +219,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
 
         // move all cursors because of the unwrapped line
         // remember all ranges modified, optimize for the standard case of a few ranges
-        QVarLengthArray<TextRange *, 32> changedRanges;
+        QVarLengthArray<QPair<TextRange *, bool>, 32> changedRanges;
         for (TextCursor *cursor : m_cursors) {
             // this is the unwrapped line
             if (cursor->lineInBlock() == 0) {
@@ -230,7 +230,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
                 auto range = cursor->kateRange();
                 if (range && !range->isValidityCheckRequired()) {
                     range->setValidityCheckRequired();
-                    changedRanges.push_back(range);
+                    changedRanges.push_back({range, false});
                 }
             }
         }
@@ -239,15 +239,18 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
         for (auto it = previousBlock->m_cursors.begin(); it != previousBlock->m_cursors.end();) {
             auto cursor = *it;
             if (cursor->lineInBlock() == lastLineOfPreviousBlock) {
+                Kate::TextRange *range = cursor->kateRange();
+                // get the value before changing the block
+                const bool spansMultipleBlocks = range && range->spansMultipleBlocks();
                 cursor->m_line = 0;
                 cursor->m_block = this;
                 insertCursor(cursor);
 
                 // remember range, if any, avoid double insert
-                auto range = cursor->kateRange();
                 if (range && !range->isValidityCheckRequired()) {
                     range->setValidityCheckRequired();
-                    changedRanges.push_back(range);
+                    // the range might not span multiple blocks anymore
+                    changedRanges.push_back({range, spansMultipleBlocks});
                 }
 
                 // remove from previous block
@@ -261,7 +264,11 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
         // fixup the ranges that might be effected, because they moved from last line to this block
         // we might need to invalidate ranges or notify about their changes
         // checkValidity might trigger delete of the range!
-        for (TextRange *range : std::as_const(changedRanges)) {
+        for (auto [range, wasMultiblock] : changedRanges) {
+            // if the range doesn't span multiple blocks anymore remove it from buffer multiline range cache
+            if (!range->spansMultipleBlocks() && wasMultiblock) {
+                m_buffer->removeMultilineRange(range);
+            }
             // afterwards check validity, might delete this range!
             range->checkValidity();
         }

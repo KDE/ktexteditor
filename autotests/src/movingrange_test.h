@@ -31,6 +31,7 @@ private Q_SLOTS:
     void benchCheckValidity_data();
     void benchCheckValidity();
     void benchRangeForLine();
+    void test123();
 };
 
 #endif // KATE_MOVINGRANGE_TEST_H

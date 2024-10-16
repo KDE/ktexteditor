@@ -677,3 +677,26 @@ void MovingRangeTest::benchRangeForLine()
 
     qDeleteAll(ranges);
 }
+
+void MovingRangeTest::test123()
+{
+    KTextEditor::DocumentPrivate doc;
+    const QStringList lines(130, QStringLiteral("text"));
+    doc.setText(lines);
+    QCOMPARE(doc.lines(), 130);
+
+    auto range = doc.newMovingRange(doc.documentRange());
+    while (true) {
+        auto rs = doc.searchText(range->toRange(), QStringLiteral("\n"), KTextEditor::SearchOption::EscapeSequences);
+        if (rs.empty() || !rs.first().isValid()) {
+            break;
+        }
+        doc.replaceText(rs.first(), QString());
+        auto x = range->toRange();
+        x.setStart(rs.first().start());
+        range->setRange(x);
+    }
+
+    delete range;
+    doc.buffer().rangesForLine(0, nullptr, false);
+}
