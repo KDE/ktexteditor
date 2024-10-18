@@ -249,7 +249,7 @@ void Searcher::connectSignals()
 {
     disconnectSignals();
 
-    m_displayRangeChangedConnection = QObject::connect(m_view, &KTextEditor::ViewPrivate::displayRangeChanged, [this]() {
+    m_displayRangeChangedConnection = QObject::connect(m_view, &KTextEditor::View::displayRangeChanged, [this]() {
         if (m_hlMode == HighlightMode::Enable)
             highlightVisibleResults(m_lastHlSearchConfig);
     });

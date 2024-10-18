@@ -17,6 +17,7 @@
 #include <ktexteditor/movingcursor.h>
 
 #include <QScrollBar>
+#include <QSignalSpy>
 #include <QStandardPaths>
 #include <QTemporaryFile>
 #include <QtTestWidgets>
@@ -756,6 +757,17 @@ void KateViewTest::testUpdateFoldingMarkersHighlighting()
     viewInternal->updateFoldingMarkersHighlighting();
     QCOMPARE(foldingMarkerStart->toRange(), firstDo);
     QCOMPARE(foldingMarkerEnd->toRange(), firstDoMatching);
+}
+
+void KateViewTest::testDdisplayRangeChangedEmitted()
+{
+    KTextEditor::DocumentPrivate doc(false, false);
+    doc.setText(QStringList(250, QStringLiteral("Hello world")));
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    view->resize(300, 300);
+    QSignalSpy spy(view, &KTextEditor::View::displayRangeChanged);
+    view->setCursorPosition({180, 0});
+    QVERIFY(spy.count() == 1);
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

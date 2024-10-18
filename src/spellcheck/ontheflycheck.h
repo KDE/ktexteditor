@@ -53,7 +53,7 @@ public:
     void updateConfig();
     void refreshSpellCheck(KTextEditor::Range range = KTextEditor::Range::invalid());
 
-    void updateInstalledMovingRanges(KTextEditor::ViewPrivate *view);
+    void updateInstalledMovingRanges(KTextEditor::View *view);
 
 protected:
     KTextEditor::DocumentPrivate *const m_document;
@@ -80,7 +80,7 @@ protected:
     void addToSpellCheckQueue(KTextEditor::MovingRange *range, const QString &dictionary);
 
     QTimer *m_viewRefreshTimer;
-    QPointer<KTextEditor::ViewPrivate> m_refreshView;
+    QPointer<KTextEditor::View> m_refreshView;
 
     virtual void removeRangeFromEverything(KTextEditor::MovingRange *range);
     bool removeRangeFromCurrentSpellCheck(KTextEditor::MovingRange *range);
@@ -108,7 +108,7 @@ protected:
     void addView(KTextEditor::Document *document, KTextEditor::View *view);
     void removeView(KTextEditor::View *view);
 
-    void restartViewRefreshTimer(KTextEditor::ViewPrivate *view);
+    void restartViewRefreshTimer(KTextEditor::View *view);
     void viewRefreshTimeout();
 
     void handleModifiedRanges();

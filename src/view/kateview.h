@@ -985,9 +985,6 @@ public:
 public:
     KTextEditor::Range visibleRange();
 
-Q_SIGNALS:
-    void displayRangeChanged(KTextEditor::ViewPrivate *view);
-
 protected:
     bool event(QEvent *e) override;
 

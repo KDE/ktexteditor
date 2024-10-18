@@ -882,6 +882,16 @@ public:
      */
     virtual QScrollBar *horizontalScrollBar() const = 0;
 
+Q_SIGNALS:
+    /**
+     * This signal is emitted whenever the displayed range changes
+     *
+     * \see firstDisplayedLine()
+     * \see lastDisplayedLine()
+     * \since 6.8
+     */
+    void displayRangeChanged(KTextEditor::View *view);
+
 public:
     /**
      * Print the document. This should result in showing the print dialog.
