@@ -218,7 +218,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     for (auto messageWidget : m_messageWidgets) {
         if (messageWidget) {
             // user interaction (scrolling) starts notification auto-hide timer
-            connect(this, &KTextEditor::ViewPrivate::displayRangeChanged, messageWidget, &KateMessageWidget::startAutoHideTimer);
+            connect(this, &KTextEditor::View::displayRangeChanged, messageWidget, &KateMessageWidget::startAutoHideTimer);
 
             // user interaction (cursor navigation) starts notification auto-hide timer
             connect(this, &KTextEditor::ViewPrivate::cursorPositionChanged, messageWidget, &KateMessageWidget::startAutoHideTimer);
@@ -233,7 +233,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     connect(m_doc, &KTextEditor::DocumentPrivate::aboutToReload, this, &KTextEditor::ViewPrivate::slotDocumentAboutToReload);
 
     // update highlights on scrolling and co
-    connect(this, &KTextEditor::ViewPrivate::displayRangeChanged, this, &KTextEditor::ViewPrivate::createHighlights);
+    connect(this, &KTextEditor::View::displayRangeChanged, this, &KTextEditor::ViewPrivate::createHighlights);
 
     // clear highlights on reload
     connect(m_doc, &KTextEditor::DocumentPrivate::aboutToReload, this, &KTextEditor::ViewPrivate::clearHighlights);
@@ -4919,7 +4919,7 @@ void KTextEditor::ViewPrivate::postMessage(KTextEditor::Message *message, QList<
         messageWidget = new KateMessageWidget(m_viewInternal, true);
         m_messageWidgets[message->position()] = messageWidget;
         m_notificationLayout->addWidget(messageWidget, message->position());
-        connect(this, &KTextEditor::ViewPrivate::displayRangeChanged, messageWidget, &KateMessageWidget::startAutoHideTimer);
+        connect(this, &KTextEditor::View::displayRangeChanged, messageWidget, &KateMessageWidget::startAutoHideTimer);
         connect(this, &KTextEditor::ViewPrivate::cursorPositionChanged, messageWidget, &KateMessageWidget::startAutoHideTimer);
     }
     messageWidget->postMessage(message, std::move(actions));

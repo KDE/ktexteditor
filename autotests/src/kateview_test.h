@@ -36,9 +36,9 @@ private Q_SLOTS:
     void testFindSelected();
     void testTransposeWord();
     void testIndentBlockSelection();
-
     void testFindMatchingFoldingMarker();
     void testUpdateFoldingMarkersHighlighting();
+    void testDdisplayRangeChangedEmitted();
 };
 
 #endif // KATE_VIEW_TEST_H

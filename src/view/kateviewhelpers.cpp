@@ -1495,7 +1495,7 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     connect(&m_antiFlickerTimer, &QTimer::timeout, this, &KateIconBorder::highlightFolding);
 
     // user interaction (scrolling) hides e.g. preview
-    connect(m_view, &KTextEditor::ViewPrivate::displayRangeChanged, this, &KateIconBorder::displayRangeChanged);
+    connect(m_view, &KTextEditor::View::displayRangeChanged, this, &KateIconBorder::displayRangeChanged);
 }
 
 KateIconBorder::~KateIconBorder()

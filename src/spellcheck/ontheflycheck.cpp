@@ -643,7 +643,7 @@ void KateOnTheFlyChecker::addView(KTextEditor::Document *document, KTextEditor::
     ON_THE_FLY_DEBUG;
     auto *viewPrivate = static_cast<KTextEditor::ViewPrivate *>(view);
     connect(viewPrivate, &KTextEditor::ViewPrivate::destroyed, this, &KateOnTheFlyChecker::viewDestroyed);
-    connect(viewPrivate, &KTextEditor::ViewPrivate::displayRangeChanged, this, &KateOnTheFlyChecker::restartViewRefreshTimer);
+    connect(viewPrivate, &KTextEditor::View::displayRangeChanged, this, &KateOnTheFlyChecker::restartViewRefreshTimer);
     updateInstalledMovingRanges(static_cast<KTextEditor::ViewPrivate *>(view));
 }
 
@@ -660,13 +660,13 @@ void KateOnTheFlyChecker::removeView(KTextEditor::View *view)
     m_displayRangeMap.erase(view);
 }
 
-void KateOnTheFlyChecker::updateInstalledMovingRanges(KTextEditor::ViewPrivate *view)
+void KateOnTheFlyChecker::updateInstalledMovingRanges(KTextEditor::View *view)
 {
     Q_ASSERT(m_document == view->document());
     ON_THE_FLY_DEBUG;
     KTextEditor::Range oldDisplayRange = m_displayRangeMap[view];
 
-    KTextEditor::Range newDisplayRange = view->visibleRange();
+    KTextEditor::Range newDisplayRange = static_cast<KTextEditor::ViewPrivate *>(view)->visibleRange();
     ON_THE_FLY_DEBUG << "new range: " << newDisplayRange;
     ON_THE_FLY_DEBUG << "old range: " << oldDisplayRange;
     QList<KTextEditor::MovingRange *> toDelete;
@@ -813,7 +813,7 @@ void KateOnTheFlyChecker::viewRefreshTimeout()
     m_refreshView = nullptr;
 }
 
-void KateOnTheFlyChecker::restartViewRefreshTimer(KTextEditor::ViewPrivate *view)
+void KateOnTheFlyChecker::restartViewRefreshTimer(KTextEditor::View *view)
 {
     if (m_refreshView && view != m_refreshView) { // a new view should be refreshed
         updateInstalledMovingRanges(m_refreshView); // so refresh the old one first
