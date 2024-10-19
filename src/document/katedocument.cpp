@@ -1916,15 +1916,9 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
         completed(); // perhaps this should be emitted at the end of this function
     }
 
-    if (!flags.contains(QStringLiteral("SkipMode"))) {
-        // restore the filetype
-        // NOTE: if the session config file contains an invalid Mode
-        // (for example, one that was deleted or renamed), do not apply it
-        if (kconfig.hasKey("Mode Set By User")) {
-            // restore if set by user, too!
-            m_fileTypeSetByUser = true;
-            updateFileType(kconfig.readEntry("Mode"));
-        }
+    // restore if set by user, too!
+    if (!flags.contains(QStringLiteral("SkipMode")) && kconfig.hasKey("Mode Set By User")) {
+        updateFileType(kconfig.readEntry("Mode"), true /* set by user */);
     }
 
     if (!flags.contains(QStringLiteral("SkipHighlighting"))) {
@@ -1975,11 +1969,10 @@ void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, con
         kconfig.writeEntry("Encoding", encoding());
     }
 
+    // save if set by user, too!
     if (m_fileTypeSetByUser && !flags.contains(QStringLiteral("SkipMode"))) {
-        // save file type
+        kconfig.writeEntry("Mode Set By User", true);
         kconfig.writeEntry("Mode", m_fileType);
-        // save if set by user, too!
-        kconfig.writeEntry("Mode Set By User", m_fileTypeSetByUser);
     }
 
     if (m_hlSetByUser && !flags.contains(QStringLiteral("SkipHighlighting"))) {
