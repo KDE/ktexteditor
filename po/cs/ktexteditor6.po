@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-05 00:37+0000\n"
-"PO-Revision-Date: 2024-09-17 15:34+0200\n"
+"PO-Revision-Date: 2024-10-08 14:47+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -1054,14 +1054,12 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "Zvýšit úroveň odsazení v ú&vodních mezerách"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " znak"
-msgstr[1] " znaky"
-msgstr[2] " znaků"
+msgstr[0] "%v znak"
+msgstr[1] "%v znaky"
+msgstr[2] "%v znaků"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1129,15 +1127,13 @@ msgid "Text Navigation"
 msgstr "Pohyb v textu"
 
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " znak"
-msgstr[1] " znaky"
-msgstr[2] " znaků"
+msgstr[0] "%v znak"
+msgstr[1] "%v znaky"
+msgstr[2] "%v znaků"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1594,7 +1590,7 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:247
 #, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr ""
+msgstr "Dodržet nastavení v souboru .editorconfig"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -8133,10 +8129,3 @@ msgstr "'%1' %2,  šestnáctkově %3,  osmičkově %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Značka nenastavena: %1"
-
-#~ msgctxt "Wrap words at (value is at 20 or larger)"
-#~ msgid " character"
-#~ msgid_plural " characters"
-#~ msgstr[0] " znak"
-#~ msgstr[1] " znaky"
-#~ msgstr[2] " znaků"

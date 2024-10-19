@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-05 00:37+0000\n"
-"PO-Revision-Date: 2024-09-15 10:44+0100\n"
+"PO-Revision-Date: 2024-10-18 17:12+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1067,13 +1067,11 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "Increase indentation level if in l&eading blank space"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " character"
-msgstr[1] " characters"
+msgstr[0] "%v character"
+msgstr[1] "%v characters"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1141,14 +1139,12 @@ msgid "Text Navigation"
 msgstr "Text Navigation"
 
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " character"
-msgstr[1] " characters"
+msgstr[0] "%v character"
+msgstr[1] "%v characters"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1616,10 +1612,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
 #: dialogs/opensaveconfigadvwidget.ui:247
-#, fuzzy, kde-format
-#| msgid "Do not use config file"
+#, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr "Do not use config file"
+msgstr "Honour settings in .editorconfig file"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
