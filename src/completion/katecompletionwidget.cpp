@@ -854,6 +854,11 @@ bool KateCompletionWidget::execute()
         return false;
     }
 
+    // dont auto complete before 250ms to avoid unwanted completions with auto invocation
+    if (m_lastInvocationType == KTextEditor::CodeCompletionModel::AutomaticInvocation && m_timeSinceShowing.elapsed() < minRequiredMsToAcceptCompletion()) {
+        return false;
+    }
+
     QModelIndex index = selectedIndex();
 
     if (!index.isValid()) {
@@ -985,6 +990,7 @@ void KateCompletionWidget::moveEvent(QMoveEvent *event)
 void KateCompletionWidget::showEvent(QShowEvent *event)
 {
     m_isSuspended = false;
+    m_timeSinceShowing.start();
 
     QFrame::showEvent(event);
 

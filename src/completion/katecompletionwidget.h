@@ -9,6 +9,7 @@
 #ifndef KATECOMPLETIONWIDGET_H
 #define KATECOMPLETIONWIDGET_H
 
+#include <QElapsedTimer>
 #include <QFrame>
 #include <QObject>
 #include <QPointer>
@@ -140,6 +141,16 @@ public:
 
     bool handleShortcutOverride(QKeyEvent *e);
 
+    int elapsedMSSinceShowing()
+    {
+        return m_timeSinceShowing.elapsed();
+    }
+
+    static constexpr int minRequiredMsToAcceptCompletion()
+    {
+        return 250;
+    }
+
 public Q_SLOTS:
     void waitForModelReset();
 
@@ -240,6 +251,8 @@ private:
     int m_expandedAddedHeightBase;
 
     KTextEditor::CodeCompletionModel::InvocationType m_lastInvocationType;
+
+    QElapsedTimer m_timeSinceShowing;
 };
 
 #endif

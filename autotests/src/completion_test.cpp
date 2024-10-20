@@ -407,6 +407,7 @@ void CompletionTest::testTabCompletion()
     m_doc->insertText({0, 0}, QStringLiteral("a"));
     m_view->completionWidget()->automaticInvocation();
     verifyCompletionStarted(m_view);
+    QTRY_VERIFY(m_view->completionWidget()->elapsedMSSinceShowing() > m_view->completionWidget()->minRequiredMsToAcceptCompletion());
     m_view->completionWidget()->execute();
     QVERIFY(!m_view->completionWidget()->isCompletionActive());
     QCOMPARE(m_doc->text(), QStringLiteral("aaa0"));
@@ -417,6 +418,7 @@ void CompletionTest::testTabCompletion()
     m_view->completionWidget()->automaticInvocation();
     verifyCompletionStarted(m_view);
     m_view->completionWidget()->tabCompletion(KateCompletionWidget::Down);
+    QTRY_VERIFY(m_view->completionWidget()->elapsedMSSinceShowing() > m_view->completionWidget()->minRequiredMsToAcceptCompletion());
     m_view->completionWidget()->execute();
     QVERIFY(!m_view->completionWidget()->isCompletionActive());
     QCOMPARE(m_doc->text(), QStringLiteral("aad3"));
@@ -430,6 +432,7 @@ void CompletionTest::testTabCompletion()
     verifyCompletionStarted(m_view);
     // ... Tab will select the first entry
     m_view->completionWidget()->tabCompletion(KateCompletionWidget::Down);
+    QTRY_VERIFY(m_view->completionWidget()->elapsedMSSinceShowing() > m_view->completionWidget()->minRequiredMsToAcceptCompletion());
     m_view->completionWidget()->execute();
     QVERIFY(!m_view->completionWidget()->isCompletionActive());
     QCOMPARE(m_doc->text(), QStringLiteral("aaa0"));
@@ -441,6 +444,7 @@ void CompletionTest::testTabCompletion()
     verifyCompletionStarted(m_view);
     m_view->completionWidget()->cursorDown(); // Select first entry
     m_view->completionWidget()->tabCompletion(KateCompletionWidget::Up);
+    QTRY_VERIFY(m_view->completionWidget()->elapsedMSSinceShowing() > m_view->completionWidget()->minRequiredMsToAcceptCompletion());
     m_view->completionWidget()->execute();
     QVERIFY(!m_view->completionWidget()->isCompletionActive());
     QCOMPARE(m_doc->text(), QStringLiteral("ac\u008738"));
@@ -454,6 +458,7 @@ void CompletionTest::testTabCompletion()
     m_view->completionWidget()->tabCompletion(KateCompletionWidget::Up); // Go to bottom
     // While at the bottom, Tab goes to the top of the list
     m_view->completionWidget()->tabCompletion(KateCompletionWidget::Down);
+    QTRY_VERIFY(m_view->completionWidget()->elapsedMSSinceShowing() > m_view->completionWidget()->minRequiredMsToAcceptCompletion());
     m_view->completionWidget()->execute();
     QVERIFY(!m_view->completionWidget()->isCompletionActive());
     QCOMPARE(m_doc->text(), QStringLiteral("aaa0"));
