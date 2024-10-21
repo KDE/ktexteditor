@@ -143,12 +143,12 @@ void BaseTest::TestPressKey(const QString &str)
                 int endOfSpecialKeyAfterModifier = -1;
                 const Qt::Key parsedCodedSpecialKeyAfterModifier = parseCodedSpecialKey(str, i, &endOfSpecialKeyAfterModifier);
                 if (parsedCodedSpecialKeyAfterModifier != Qt::Key_unknown) {
-                    key = parsedCodedSpecialKeyAfterModifier <= 0xffff ? QString(QChar(parsedCodedSpecialKeyAfterModifier)) : QString();
+                    key = parsedCodedSpecialKeyAfterModifier <= 0xffff ? QString(char16_t(parsedCodedSpecialKeyAfterModifier)) : QString();
                     keyCode = parsedCodedSpecialKeyAfterModifier;
                     i = endOfSpecialKeyAfterModifier;
                 }
             } else if (parsedSpecialKey != Qt::Key_unknown) {
-                key = parsedSpecialKey <= 0xffff ? QString(QChar(parsedSpecialKey)) : QString();
+                key = parsedSpecialKey <= 0xffff ? QString(char16_t(parsedSpecialKey)) : QString();
                 keyCode = parsedSpecialKey;
                 i = endOfSpecialKey;
             } else if (str.mid(i, 2) == QStringLiteral("\\:")) {
