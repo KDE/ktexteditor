@@ -13,14 +13,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-20 00:38+0000\n"
-"PO-Revision-Date: 2024-03-09 19:29+0200\n"
+"PO-Revision-Date: 2024-10-20 11:18+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.08.2\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
@@ -67,10 +67,9 @@ msgstr "&Datne"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "Drukāt/eksportēt"
+msgstr "&Drukāt/eksportēt"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -191,14 +190,14 @@ msgid ""
 "If checked, hovering over a folded region shows a preview of the folded text "
 "in a popup."
 msgstr ""
-"Ja šī opcija ir atzīmēta, peles pārlikšana pāri reģionam uzlecošā lodziņā "
+"Ja ir atzīmēta šī opcija, peles pārlikšana pāri reģionam uzlecošā lodziņā "
 "parādīts sakļautā teksta priekšskatījumu."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
 #, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr "Pārliekot peli rādīt sakļautā teksta priekšskatījumu"
+msgstr "Pārliekot peli, rādīt sakļautā teksta priekšskatījumu"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:52
@@ -210,7 +209,7 @@ msgstr "Sakļaušanas bultu redzamība:"
 #: dialogs/bordersappearanceconfigwidget.ui:63
 #, kde-format
 msgid "Show on Hover"
-msgstr "Rādīt, uzliekot peli"
+msgstr "Rādīt, pārliekot pāri peli"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:68
@@ -277,10 +276,9 @@ msgstr "Izcelt mainītās un nesaglabātās rindas"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "Ritjoslas"
+msgstr "&Ritjoslas:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -1069,14 +1067,12 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "Pali&elināt atkāpi, ja sākotnējā tukšajā vietā"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " rakstzīme"
-msgstr[1] " rakstzīmes"
-msgstr[2] " rakstzīmju"
+msgstr[0] "%v rakstzīme"
+msgstr[1] "%v rakstzīmes"
+msgstr[2] "%v rakstzīmju"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1144,15 +1140,13 @@ msgid "Text Navigation"
 msgstr "Teksta navigācija"
 
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " rakstzīme"
-msgstr[1] " rakstzīmes"
-msgstr[2] " rakstzīmju"
+msgstr[0] "%v rakstzīme"
+msgstr[1] "%v rakstzīmes"
+msgstr[2] "%v rakstzīmju"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1319,11 +1313,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Aizver datni, izmet veiktās izmaiņas."
 
 #: dialogs/katedialogs.cpp:1478
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&Saglabāt kā..."
+msgstr "&Saglabāt kā…"
 
 #: dialogs/katedialogs.cpp:1480
 #, kde-format
@@ -1625,10 +1618,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
 #: dialogs/opensaveconfigadvwidget.ui:247
-#, fuzzy, kde-format
-#| msgid "Do not use config file"
+#, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr "Nelietot konfigurācijas datni"
+msgstr "Ievērot iestatījumus „.editorconfig“ datnē"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -1902,10 +1894,9 @@ msgstr "Redaktora fonts:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Line Height Multiplier:"
+#, kde-format
 msgid "&Line Height Multiplier:"
-msgstr "Rindu augstuma reizinātājs:"
+msgstr "&Rindu augstuma reizinātājs:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:58
@@ -1914,8 +1905,8 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
-"Šī vērtība tiks reizināta ar fonta noklusējuma rindas augstumu. Vērtība 1,0 "
-"nozīmē, ka programma izmantos noklusējuma augstumu."
+"Šo vērtību programma reizinās ar fonta noklusējuma rindas augstumu. Vērtība "
+"1,0 nozīmē, ka programma izmantos noklusējuma augstumu."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:93
@@ -1937,10 +1928,9 @@ msgstr "Vienmēr"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, fuzzy, kde-format
-#| msgid "Whitespace indicator size:"
+#, kde-format
 msgid "Whitespace indicator si&ze:"
-msgstr "Atstarpju indikatora izmērs:"
+msgstr "Atstarpju indikatora i&zmērs:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1950,10 +1940,9 @@ msgstr "Redzamā izcelšanas marķiera izmērs."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Show tab indicators:"
+#, kde-format
 msgid "Show &tab indicators:"
-msgstr "Rādīt ciļņu indikatorus:"
+msgstr "Rādīt &tabulācijas indikatorus:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:176
@@ -2063,10 +2052,9 @@ msgstr "Rādīt rindu skaitu"
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
-#, fuzzy, kde-format
-#| msgid "Fold first line"
+#, kde-format
 msgid "Fold first line:"
-msgstr "Sakļaut pirmo rindu"
+msgstr "Sakļaut pirmo rindu:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2080,7 +2068,7 @@ msgstr ""
 "Ieslēdzot šo iestatījumu, redaktora skats automātiski sakļaus\n"
 "komentāru bloku, kas sākas dokumenta pirmajā rindā. Tas ir\n"
 "noderīgi, lai paslēpu licences galvenes, kas paraksti atrodas\n"
-"datnes sākumā."
+"datņu sākumā."
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
 #: dialogs/textareaappearanceconfigwidget.ui:337
@@ -2114,17 +2102,15 @@ msgstr "Izvēlieties, kad rādīt dinamiskās teksta aplaušanas indikatorus."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:391
-#, fuzzy, kde-format
-#| msgid "Indent wrapped lines:"
+#, kde-format
 msgid "I&ndent wrapped lines:"
-msgstr "Atkāpes aplauztajām rindām:"
+msgstr "&Pievienot atkāpes aplauztajām rindām:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
-#, fuzzy, kde-format
-#| msgid "Don't indent lines wider than:"
+#, kde-format
 msgid "&Don't indent lines wider than:"
-msgstr "Neveidot atkāpes rindām, kas ir garākas par:"
+msgstr "&Nepievienot atkāpes rindām, kas ir garākas par:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:424
@@ -2138,12 +2124,12 @@ msgid ""
 "indentation levels are deeper than 50% of the width of the screen will not "
 "have vertical alignment applied to subsequent wrapped lines.</p>"
 msgstr ""
-"<p>Izlīdzina dinamiski aplauztās rindas ar pirmās rindas atkāpi. Tas padara "
-"kodu un iezīmējumu lasāmāku.</p><p>Turklāt tas ļauj jums norādīt maksimālo "
-"attālumu kā procentuālo daļu no ekrāna platuma, pēc kura aplauztās rindas "
-"vairs netiek izlīdzinātas. Piemēram, pie 50%, rindām, kuru atkāpe ir lielāka "
-"par 50% no ekrāna platuma, aplauztās daļas neizmantos sākotnējās rindas "
-"atkāpi.</p>"
+"<p>Liek dinamiski aplauztām rindām būt izlīdzinātām vertikāli attiecībā pret "
+"pirmās rindas izlīdzinājumu. Tas padara kodu un marķējumu lasāmāku.</"
+"p><p>Turklāt tas ļauj norādīt maksimālo attālumu kā procentuālo daļu no "
+"ekrāna platuma, pēc kura aplauztās rindas vairs neizlīdzināt. Piemēram, pie "
+"50 %, rindām, kuru atkāpe ir lielāka par 50 % no ekrāna platuma, aplauztās "
+"daļas neizmantos sākotnējās rindas atkāpi.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:427
@@ -2153,10 +2139,9 @@ msgstr "% no skata platuma"
 
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show i&ndentation lines:"
-msgstr "Rādīt &atkāpju līnijas"
+msgstr "Rādīt &atkāpju līnijas:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:453
@@ -2412,10 +2397,9 @@ msgid "The file '%1' was created on disk."
 msgstr "Datni „%1“ izveidoja cita programma."
 
 #: document/katedocument.cpp:5599
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted on disk."
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "Datni „%1“ izdzēsa cita programma."
+msgstr "Datni „%1“ diskā izdzēsa vai pārvietoja cita programma."
 
 #: document/katedocument.cpp:5936
 #, kde-format
@@ -2543,12 +2527,10 @@ msgid "Modes && Filetypes"
 msgstr "Režīmi un datņu tipi"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "Meklēt..."
+msgstr "Meklēt…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3934,12 +3916,10 @@ msgid "Spell check canceled."
 msgstr "Pareizrakstības pārbaude atcelta."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Notiek pareizrakstības pārbaude..."
+msgstr "Notiek pareizrakstības pārbaude…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4170,11 +4150,10 @@ msgid "I&gnore All"
 msgstr "I&gnorēt visus"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Pareizrakstība (no kursora)..."
+msgstr "Pareizrakstība (no kursora)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4296,32 +4275,28 @@ msgid "S&trikeout"
 msgstr "&Nosvītrots"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "Parasta &krāsa..."
+msgstr "Parasta &krāsa…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "Izvēlētā krā&sa..."
+msgstr "Izvēlētā krā&sa…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "&Fona krāsa..."
+msgstr "&Fona krāsa…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "&Izvēlēta fona krāsa..."
+msgstr "&Izvēlēta fona krāsa…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4938,25 +4913,22 @@ msgid "&Theme:"
 msgstr "&Motīvs:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Kopēt"
+msgstr "&Kopēt…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Eksportēt..."
+msgstr "Eksportēt…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Importēt..."
+msgstr "Importēt…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -5483,48 +5455,42 @@ msgstr ""
 "vai „pm“.</td></tr></table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
+#, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "Noņemt dublējošās rindas"
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
 msgstr "Noņemt dublējošās rindas un kārtot atlasīto tekstu alfabētiski"
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "Atlasīto tekstu kārtot alfabētiski"
+msgstr "Atlasīto tekstu kārtot dabīgi"
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "Atlasīto tekstu kārtot alfabētiski"
 
 #: utils/katecmds.cpp:693
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "Kārtot atlasīto tekstu vai visu dokumentu."
+msgstr ""
+"<p>sort</p><p>Kārtot atlasīto tekstu vai, ja nekad nav atlasīts, visu "
+"dokumentu</p>"
 
 #: utils/katecmds.cpp:697
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
-msgstr "Izņemt dublējošās rindas no atlasītā teksta vai visa dokumenta."
+msgstr ""
+"<p>uniq</p><p>Noņem dublējošās rindas atlasītajā tekstā vai, ja nekas nav "
+"atlasīts, visā dokumentā.</p>"
 
 #: utils/katecmds.cpp:701
 #, kde-format
@@ -5532,27 +5498,26 @@ msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
+"<p>sortuniq</p><p>Kārto atlasīto tekstu vai visu datumu, bet pēc tam noņem "
+"visas dublējošās rindas.</p>"
 
 #: utils/katecmds.cpp:705
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"Kārtot izvēlēto tekstu vai visu dokumentu dabiskā kārtībā.<br>Piemērs, kurā "
-"parādās atšķirība no parastās kārtošanas metodes:<br>sort(a10, a1,a2) => a1, "
-"a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+"<p>natsort</p><p>Kārto izvēlēto tekstu vai visu dokumentu dabīgā kārtībā."
+"<br>Piemērs, kurā parādās atšķirība no parastās kārtošanas metodes:"
+"<br>sort(a10, a1,a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
+"p>"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
 msgid "Kate Part"
-msgstr "Kate Part"
+msgstr "„Kate“ daļa"
 
 #: utils/kateglobal.cpp:61
 #, kde-format
@@ -6576,12 +6541,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Atkāpe/tabulācija: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Cits"
+msgstr "Cits…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6653,15 +6616,14 @@ msgid "Paste previously mouse selection contents"
 msgstr "Ielīmēt iepriekš ar peli atlasīto saturu"
 
 #: view/kateview.cpp:483
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "Apmaiņas datnes opcijas"
+msgstr "Kopēt datnes atrašanās vietu"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Kopēt datnes nosaukumu un rindas numuru"
 
 #: view/kateview.cpp:487
 #, kde-format
@@ -6732,16 +6694,14 @@ msgstr ""
 "iestatīt, vai lietot tabulatorus vai aizstāt tos ar atstarpēm."
 
 #: view/kateview.cpp:524
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "Atkāpes īpašības"
+msgstr "Atkāpes pārveidot par atstarpēm"
 
 #: view/kateview.cpp:531
-#, fuzzy, kde-format
-#| msgid "&Format Indentation"
+#, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "&Formatēt atkāpes"
+msgstr "Atkāpes pārveidot par tabulatoriem"
 
 #: view/kateview.cpp:546
 #, kde-format
@@ -6758,11 +6718,10 @@ msgstr ""
 "pret tam atbilstošo atkāpi."
 
 #: view/kateview.cpp:551
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Līdzināt pie"
+msgstr "&Līdzināt pie…"
 
 #: view/kateview.cpp:553
 #, kde-format
@@ -6946,18 +6905,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Saglabāt diskā aktīvo dokumentu, izvēloties nosaukumu."
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "Saglabāt kā ar kodējumu..."
+msgstr "Saglabāt kā ar kodē&jumu..."
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "Saglabāt &kopiju kā..."
+msgstr "Saglabāt &kopiju kā…"
 
 #: view/kateview.cpp:690
 #, kde-format
@@ -6993,11 +6950,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Pārvietots lejup uz nākamo mainīto rindu."
 
 #: view/kateview.cpp:709
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "&Konfigurēt redaktoru..."
+msgstr "&Konfigurēt redaktoru…"
 
 #: view/kateview.cpp:711
 #, kde-format
@@ -7111,23 +7067,18 @@ msgstr ""
 "vai to pārraksta."
 
 #: view/kateview.cpp:787
-#, fuzzy, kde-format
-#| msgid "Spaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Atstarpes"
+msgstr "Rādīt atstarpju simbolus"
 
 #: view/kateview.cpp:790
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"Ja ieslēgts, teksta rindas tiks aplauztas pie skata loga robežas.<br /><br /"
-">Šī ir tikai skata opcija, kas nozīmē, ka pats dokuments netiks mainīts."
+"Ja ieslēgts, šajā dokumentā būs redzami atstarpju simboli.<br /><br />Šī ir "
+"tikai skata opcija, kas nozīmē, ka pats dokuments netiks mainīts."
 
 #: view/kateview.cpp:794
 #, kde-format
@@ -7135,18 +7086,14 @@ msgid "&Dynamic Word Wrap"
 msgstr "&Dinamiskā teksta aplaušana"
 
 #: view/kateview.cpp:798
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
 "will not be changed."
 msgstr ""
-"Ja ieslēgts, teksta rindas tiks aplauztas pie skata loga robežas.<br /><br /"
-">Šī ir tikai skata opcija, kas nozīmē, ka pats dokuments netiks mainīts."
+"Ja ieslēgts, teksta rindas aplauzīs pie ekrāna skata robežas.<br /><br />Šī "
+"ir tikai skata opcija, kas nozīmē, ka pats dokuments netiks mainīts."
 
 #: view/kateview.cpp:802
 #, kde-format
@@ -7492,11 +7439,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Ieslēgt/izslēgt automātisku pareizrakstības pārbaudi"
 
 #: view/kateview.cpp:991
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Mainīt vārdnīcu"
+msgstr "Mainīt vārdnīcu…"
 
 #: view/kateview.cpp:992
 #, kde-format
@@ -7531,11 +7477,10 @@ msgstr ""
 "starpliktuvē."
 
 #: view/kateview.cpp:1009
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "E&ksportēt kā HTML..."
+msgstr "E&ksportēt kā HTML…"
 
 #: view/kateview.cpp:1011
 #, kde-format
@@ -7999,11 +7944,10 @@ msgid "Copy"
 msgstr "Kopēt"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Fona krāsa..."
+msgstr "Fona krāsa…"
 
 #: view/screenshotdialog.cpp:182
 #, kde-format
@@ -8016,8 +7960,7 @@ msgid "Show Window Decorations"
 msgstr "Rādīt logu noformējumu"
 
 #: view/screenshotdialog.cpp:188
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Uzņemt atlases ekrānattēlu"

@@ -670,7 +670,7 @@ msgstr " χαρακτήρες"
 #: dialogs/editconfigwidget.ui:166
 #, kde-format
 msgid "Copy and paste:"
-msgstr "Αντιγραφή και Επικόλληση:"
+msgstr "Αντιγραφή και επικόλληση:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
 #: dialogs/editconfigwidget.ui:173
