@@ -2842,10 +2842,7 @@ bool KTextEditor::DocumentPrivate::closeUrl()
     // remove file from dirwatch
     deactivateDirWatch();
 
-    //
-    // empty url + fileName
-    //
-    setUrl(QUrl());
+    // clear the local file path
     setLocalFilePath(QString());
 
     // we are not modified
@@ -6076,12 +6073,6 @@ void KTextEditor::DocumentPrivate::slotAbortLoading()
 
 void KTextEditor::DocumentPrivate::slotUrlChanged(const QUrl &url)
 {
-    if (m_reloading) {
-        // the URL is temporarily unset and then reset to the previous URL during reload
-        // we do not want to notify the outside about this
-        return;
-    }
-
     Q_UNUSED(url);
     updateDocName();
     Q_EMIT documentUrlChanged(this);
