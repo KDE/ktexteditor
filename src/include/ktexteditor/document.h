@@ -1302,7 +1302,7 @@ public:
     virtual MovingCursor *newMovingCursor(KTextEditor::Cursor position, MovingCursor::InsertBehavior insertBehavior = MovingCursor::MoveOnInsert) = 0;
 
     /**
-     * Create a new moving range for this document.
+     * Create a new moving range for this document. Ownership of the range that is returned belongs to the caller
      * @param range range of the moving range to create
      * @param insertBehaviors insertion behaviors
      * @param emptyBehavior behavior on becoming empty
@@ -1373,12 +1373,18 @@ public:
                                 qint64 toRevision = -1) = 0;
 
 Q_SIGNALS:
+
+#if KTEXTEDITOR_ENABLE_DEPRECATED_SINCE(6, 9)
     /**
      * This signal is emitted before the cursors/ranges/revisions of a document
      * are destroyed as the document is deleted.
      * @param document the document which the interface belongs to which is in the process of being deleted
+     *
+     * @deprecated since 6.9
      */
+    KTEXTEDITOR_DEPRECATED_VERSION(6, 9, "Not emitted any more. Ownership of the moving interface belongs to the user")
     void aboutToDeleteMovingInterfaceContent(KTextEditor::Document *document);
+#endif
 
     /**
      * This signal is emitted before the ranges of a document are invalidated
