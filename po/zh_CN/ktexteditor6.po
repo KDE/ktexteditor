@@ -1215,7 +1215,7 @@ msgstr "词典："
 #: dialogs/katedialogs.cpp:1451
 #, kde-format
 msgid "Enable Auto Reload"
-msgstr "启用自动重载"
+msgstr "启用自动重新加载"
 
 #: dialogs/katedialogs.cpp:1454
 #, kde-format
