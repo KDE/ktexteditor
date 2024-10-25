@@ -148,7 +148,7 @@ public:
 
     static constexpr int minRequiredMsToAcceptCompletion()
     {
-        return 250;
+        return 200;
     }
 
 public Q_SLOTS:

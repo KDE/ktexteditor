@@ -855,7 +855,11 @@ bool KateCompletionWidget::execute()
     }
 
     // dont auto complete before 250ms to avoid unwanted completions with auto invocation
-    if (m_lastInvocationType == KTextEditor::CodeCompletionModel::AutomaticInvocation && m_timeSinceShowing.elapsed() < minRequiredMsToAcceptCompletion()) {
+    const auto cursorPosition = view()->cursorPosition();
+    const int len = view()->doc()->lineLength(cursorPosition.line());
+    const bool atEndOfLine = cursorPosition.column() >= len;
+    if (atEndOfLine && m_lastInvocationType == KTextEditor::CodeCompletionModel::AutomaticInvocation
+        && m_timeSinceShowing.elapsed() < minRequiredMsToAcceptCompletion()) {
         return false;
     }
 
