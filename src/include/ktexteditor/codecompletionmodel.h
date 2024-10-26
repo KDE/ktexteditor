@@ -130,7 +130,11 @@ public:
     Q_DECLARE_FLAGS(CompletionProperties, CompletionProperty)
 
     /// @see HighlightMethods
-    enum HighlightMethod { NoHighlighting = 0x0, InternalHighlighting = 0x1, CustomHighlighting = 0x2 };
+    enum HighlightMethod {
+        NoHighlighting = 0x0,
+        InternalHighlighting = 0x1,
+        CustomHighlighting = 0x2
+    };
     /// Stores a combination of #HighlightMethod values.
     Q_DECLARE_FLAGS(HighlightMethods, HighlightMethod)
 
@@ -357,7 +361,11 @@ public:
 
     void setRowCount(int rowCount);
 
-    enum InvocationType { AutomaticInvocation, UserInvocation, ManualInvocation };
+    enum InvocationType {
+        AutomaticInvocation,
+        UserInvocation,
+        ManualInvocation
+    };
 
     /**
      * This function is responsible to generating / updating the list of current

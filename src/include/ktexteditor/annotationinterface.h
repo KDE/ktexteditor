@@ -44,7 +44,9 @@ class KTEXTEDITOR_EXPORT AnnotationModel : public QObject
 public:
     ~AnnotationModel() override;
 
-    enum { GroupIdentifierRole = Qt::UserRole };
+    enum {
+        GroupIdentifierRole = Qt::UserRole
+    };
     // KF6: add AnnotationModelUserRole = Qt::UserRole + 0x100
 
     /**

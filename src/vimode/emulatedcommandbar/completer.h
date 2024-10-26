@@ -44,7 +44,11 @@ struct CompletionStartParams {
         completionStartParams.completionType = None;
         return completionStartParams;
     }
-    enum CompletionType { None, ModeSpecific, WordFromDocument };
+    enum CompletionType {
+        None,
+        ModeSpecific,
+        WordFromDocument
+    };
     CompletionType completionType = None;
     int wordStartPos = -1;
     QStringList completions;
@@ -54,7 +58,10 @@ struct CompletionStartParams {
 class Completer
 {
 public:
-    enum class CompletionInvocation { ExtraContext, NormalContext };
+    enum class CompletionInvocation {
+        ExtraContext,
+        NormalContext
+    };
     Completer(EmulatedCommandBar *emulatedCommandBar, KTextEditor::ViewPrivate *view, QLineEdit *edit);
     void startCompletion(const CompletionStartParams &completionStartParams);
     void deactivateCompletion();

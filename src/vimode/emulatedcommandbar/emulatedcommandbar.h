@@ -37,7 +37,12 @@ class Completer;
 class EmulatedCommandBar : public KateViewBarWidget
 {
 public:
-    enum Mode { NoMode, SearchForward, SearchBackward, Command };
+    enum Mode {
+        NoMode,
+        SearchForward,
+        SearchBackward,
+        Command
+    };
     explicit EmulatedCommandBar(KateViInputMode *viInputMode, InputModeManager *viInputModeManager, QWidget *parent = nullptr);
     ~EmulatedCommandBar() override;
     void init(Mode mode, const QString &initialText = QString());

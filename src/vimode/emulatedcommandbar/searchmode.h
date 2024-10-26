@@ -36,7 +36,10 @@ public:
     ~SearchMode() override
     {
     }
-    enum class SearchDirection { Forward, Backward };
+    enum class SearchDirection {
+        Forward,
+        Backward
+    };
     void init(SearchDirection);
     bool handleKeyPress(const QKeyEvent *keyEvent) override;
     void editTextChanged(const QString &newText) override;
@@ -54,7 +57,11 @@ private:
     KTextEditor::Cursor m_startingCursorPos;
     KateVi::Searcher::SearchParams m_currentSearchParams;
     CompletionStartParams activateSearchHistoryCompletion();
-    enum BarBackgroundStatus { Normal, MatchFound, NoMatchFound };
+    enum BarBackgroundStatus {
+        Normal,
+        MatchFound,
+        NoMatchFound
+    };
     void setBarBackground(BarBackgroundStatus status);
     bool m_isSendingSyntheticSearchCompletedKeypress = false;
 };

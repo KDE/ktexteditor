@@ -50,9 +50,19 @@ public:
         MODE_REGEX = 3
     };
 
-    enum MatchResult { MatchFound, MatchWrappedForward, MatchWrappedBackward, MatchMismatch, MatchNothing, MatchNeutral };
+    enum MatchResult {
+        MatchFound,
+        MatchWrappedForward,
+        MatchWrappedBackward,
+        MatchMismatch,
+        MatchNothing,
+        MatchNeutral
+    };
 
-    enum SearchDirection { SearchForward, SearchBackward };
+    enum SearchDirection {
+        SearchForward,
+        SearchBackward
+    };
 
 public:
     explicit KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, KateViewConfig *config);

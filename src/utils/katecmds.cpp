@@ -607,11 +607,11 @@ KateCommands::EditingCommands *KateCommands::EditingCommands::s_instance = nullp
 
 KateCommands::EditingCommands::EditingCommands()
     : KTextEditor::Command({
-        QStringLiteral("uniq"),
-        QStringLiteral("sortuniq"),
-        QStringLiteral("natsort"),
-        QStringLiteral("sort"),
-    })
+          QStringLiteral("uniq"),
+          QStringLiteral("sortuniq"),
+          QStringLiteral("natsort"),
+          QStringLiteral("sort"),
+      })
 {
 }
 

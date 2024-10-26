@@ -332,7 +332,10 @@ public:
 
     void setUndoMergeAllEdits(bool merge);
 
-    enum EditingPositionKind { Previous, Next };
+    enum EditingPositionKind {
+        Previous,
+        Next
+    };
 
     /**
      *Returns the next or previous position cursor in this document from the stack depending on the argument passed.
@@ -789,8 +792,15 @@ public:
     int fromVirtualColumn(int line, int column) const;
     int fromVirtualColumn(const KTextEditor::Cursor) const;
 
-    enum NewLineIndent { Indent, NoIndent };
-    enum NewLinePos { Normal, Above, Below };
+    enum NewLineIndent {
+        Indent,
+        NoIndent
+    };
+    enum NewLinePos {
+        Normal,
+        Above,
+        Below
+    };
 
     void newLine(KTextEditor::ViewPrivate *view, NewLineIndent indent = NewLineIndent::Indent, NewLinePos newLinePos = Normal); // Changes input
     void backspace(KTextEditor::ViewPrivate *view);
@@ -823,7 +833,11 @@ public:
     void alignOn(KTextEditor::Range range, const QString &pattern, bool blockwise);
     void insertTab(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor);
 
-    enum TextTransform { Uppercase, Lowercase, Capitalize };
+    enum TextTransform {
+        Uppercase,
+        Lowercase,
+        Capitalize
+    };
 
     /**
       Handling uppercase, lowercase and capitalize for the view.

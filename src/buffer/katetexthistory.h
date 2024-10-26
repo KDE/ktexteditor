@@ -104,7 +104,13 @@ private:
         /**
          * Types of entries, matching editing primitives of buffer and placeholder
          */
-        enum Type { NoChange, WrapLine, UnwrapLine, InsertText, RemoveText };
+        enum Type {
+            NoChange,
+            WrapLine,
+            UnwrapLine,
+            InsertText,
+            RemoveText
+        };
 
         /**
          * Default Constructor, invalidates all fields

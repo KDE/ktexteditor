@@ -49,7 +49,12 @@ public:
     /**
      * End of line mode
      */
-    enum EndOfLineMode { eolUnknown = -1, eolUnix = 0, eolDos = 1, eolMac = 2 };
+    enum EndOfLineMode {
+        eolUnknown = -1,
+        eolUnix = 0,
+        eolDos = 1,
+        eolMac = 2
+    };
 
     /**
      * Construct an empty text buffer.
@@ -403,7 +408,11 @@ private:
      * Save result which indicates an abstract reason why the operation has
      * failed
      */
-    enum class SaveResult { Failed = 0, MissingPermissions, Success };
+    enum class SaveResult {
+        Failed = 0,
+        MissingPermissions,
+        Success
+    };
 
     /**
      * Find block containing given line.

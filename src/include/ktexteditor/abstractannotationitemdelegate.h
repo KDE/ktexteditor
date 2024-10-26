@@ -30,8 +30,12 @@ class KTEXTEDITOR_EXPORT StyleOptionAnnotationItem : public QStyleOption
 {
 public:
     // TODO: not sure what SO_Default implies, but no clue how to maintain a user type registry?
-    enum StyleOptionType { Type = SO_Default };
-    enum StyleOptionVersion { Version = 1 };
+    enum StyleOptionType {
+        Type = SO_Default
+    };
+    enum StyleOptionVersion {
+        Version = 1
+    };
 
     /**
      * Index of the displayed line in the wrapped lines for the given real line

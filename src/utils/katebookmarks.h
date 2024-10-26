@@ -23,7 +23,10 @@ class QAction;
 class KateBookmarks : public QObject
 {
 public:
-    enum Sorting { Position, Creation };
+    enum Sorting {
+        Position,
+        Creation
+    };
     explicit KateBookmarks(KTextEditor::ViewPrivate *parent, Sorting sort = Position);
     ~KateBookmarks() override;
 

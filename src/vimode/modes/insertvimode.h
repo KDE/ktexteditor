@@ -26,7 +26,12 @@ class Motion;
 /**
  * Commands for the vi insert mode
  */
-enum BlockInsert { None, Prepend, Append, AppendEOL };
+enum BlockInsert {
+    None,
+    Prepend,
+    Append,
+    AppendEOL
+};
 
 class InsertViMode : public ModeBase
 {

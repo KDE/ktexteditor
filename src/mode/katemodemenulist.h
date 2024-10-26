@@ -65,14 +65,22 @@ public:
      * "AlignLeft" and "AlignRight" forces the alignment, regardless of the layout direction.
      * @see setButton(), QWidget::layoutDirection(), Qt::LayoutDirection
      */
-    enum AlignmentHButton { AlignHDefault, AlignHInverse, AlignLeft, AlignRight };
+    enum AlignmentHButton {
+        AlignHDefault,
+        AlignHInverse,
+        AlignLeft,
+        AlignRight
+    };
     /**
      * Vertical Alignment with respect to the trigger button.
      * "AlignVDefault" uses normal alignment (below the button) and "AlignTop"
      * forces the alignment above the trigger button.
      * @see setButton(), KateStatusBarOpenUpMenu::setVisible()
      */
-    enum AlignmentVButton { AlignVDefault, AlignTop };
+    enum AlignmentVButton {
+        AlignVDefault,
+        AlignTop
+    };
     /**
      * Define if the trigger button label must be updated when selecting an item.
      * @see setButton()
@@ -81,12 +89,18 @@ public:
     /**
      * Search bar position, above or below the list.
      */
-    enum SearchBarPosition { Top, Bottom };
+    enum SearchBarPosition {
+        Top,
+        Bottom
+    };
     /**
      * Defines where the list will scroll after clearing the search or changing the view.
      * @see setAutoScroll(), autoScroll()
      */
-    enum AutoScroll { ScrollToSelectedItem, ScrollToTop };
+    enum AutoScroll {
+        ScrollToSelectedItem,
+        ScrollToTop
+    };
 
     KateModeMenuList(const QString &title, QWidget *parent)
         : QMenu(title, parent)
@@ -489,7 +503,7 @@ class Factory
 {
 private:
     friend KateModeMenuList;
-    Factory(){};
+    Factory() { };
     static ListView *createListView(KateModeMenuList *parentMenu)
     {
         return new ListView(parentMenu);

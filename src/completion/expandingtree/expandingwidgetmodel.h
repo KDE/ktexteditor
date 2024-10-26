@@ -23,7 +23,11 @@ public:
     explicit ExpandingWidgetModel(QWidget *parent);
     ~ExpandingWidgetModel() override;
 
-    enum ExpandingType { NotExpandable = 0, Expandable, Expanded };
+    enum ExpandingType {
+        NotExpandable = 0,
+        Expandable,
+        Expanded
+    };
 
     virtual QTreeView *treeView() const = 0;
 

@@ -31,7 +31,14 @@ namespace KateVi
 {
 class InputModeManager;
 
-enum Direction { Up, Down, Left, Right, Next, Prev };
+enum Direction {
+    Up,
+    Down,
+    Left,
+    Right,
+    Next,
+    Prev
+};
 
 class ModeBase : public QObject
 {

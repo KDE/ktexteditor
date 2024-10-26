@@ -89,7 +89,12 @@ public:
     /// Maps from an index in a source-model to the index of the item in this display-model
     virtual QModelIndex mapFromSource(const QModelIndex &sourceIndex) const;
 
-    enum gm { ScopeType = 0x1, Scope = 0x2, AccessType = 0x4, ItemType = 0x8 };
+    enum gm {
+        ScopeType = 0x1,
+        Scope = 0x2,
+        AccessType = 0x4,
+        ItemType = 0x8
+    };
 
     enum { // An own property that will be used to mark the best-matches group internally
         BestMatchesProperty = 2 * KTextEditor::CodeCompletionModel::LastProperty
@@ -145,7 +150,13 @@ private:
         // Returns true if the item is not filtered and matches the current completion string
         bool isVisible() const;
 
-        enum MatchType { NoMatch = 0, PerfectMatch, StartsWithMatch, AbbreviationMatch, ContainsMatch };
+        enum MatchType {
+            NoMatch = 0,
+            PerfectMatch,
+            StartsWithMatch,
+            AbbreviationMatch,
+            ContainsMatch
+        };
         MatchType match(KateCompletionModel *model);
 
         const ModelRow &sourceRow() const;
@@ -250,7 +261,11 @@ private:
     QModelIndex indexForRow(Group *g, int row) const;
     QModelIndex indexForGroup(Group *g) const;
 
-    enum changeTypes { Broaden, Narrow, Change };
+    enum changeTypes {
+        Broaden,
+        Narrow,
+        Change
+    };
 
     // Returns whether the model needs to be reset
     void changeCompletions(Group *g);

@@ -18,7 +18,10 @@ class Range;
 
 namespace KateVi
 {
-enum MotionType { ExclusiveMotion = 0, InclusiveMotion };
+enum MotionType {
+    ExclusiveMotion = 0,
+    InclusiveMotion
+};
 
 class Range
 {

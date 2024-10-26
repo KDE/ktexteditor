@@ -18,9 +18,17 @@ namespace KateVi
 class Mappings
 {
 public:
-    enum MappingRecursion { Recursive, NonRecursive };
+    enum MappingRecursion {
+        Recursive,
+        NonRecursive
+    };
 
-    enum MappingMode { NormalModeMapping = 0, VisualModeMapping, InsertModeMapping, CommandModeMapping };
+    enum MappingMode {
+        NormalModeMapping = 0,
+        VisualModeMapping,
+        InsertModeMapping,
+        CommandModeMapping
+    };
 
 public:
     void writeConfig(KConfigGroup &config) const;

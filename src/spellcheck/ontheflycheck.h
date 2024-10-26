@@ -26,7 +26,10 @@ class BackgroundChecker;
 
 class KateOnTheFlyChecker : public QObject, private KTextEditor::MovingRangeFeedback
 {
-    enum ModificationType { TEXT_INSERTED = 0, TEXT_REMOVED };
+    enum ModificationType {
+        TEXT_INSERTED = 0,
+        TEXT_REMOVED
+    };
 
     typedef QPair<KTextEditor::MovingRange *, QString> SpellCheckItem;
     typedef QList<KTextEditor::MovingRange *> MovingRangeList;

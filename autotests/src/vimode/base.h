@@ -38,7 +38,10 @@ class InputModeManager;
 class DocChange
 {
 public:
-    enum ChangeType { TextRemoved, TextInserted };
+    enum ChangeType {
+        TextRemoved,
+        TextInserted
+    };
 
     DocChange(ChangeType changeType, KTextEditor::Range changeRange, QString newText = QString())
         : m_changeType(changeType)
@@ -82,7 +85,10 @@ public:
 protected:
     // Begin/Do/Finish test.
 
-    enum Expectation { ShouldPass, ShouldFail };
+    enum Expectation {
+        ShouldPass,
+        ShouldFail
+    };
 
     void TestPressKey(const QString &str);
     void BeginTest(const QString &original);

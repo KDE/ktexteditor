@@ -77,7 +77,11 @@ class KateViewInternal final : public QWidget
     friend class KateViewTest;
 
 public:
-    enum Bias { left = -1, none = 0, right = 1 };
+    enum Bias {
+        left = -1,
+        none = 0,
+        right = 1
+    };
 
 public:
     explicit KateViewInternal(KTextEditor::ViewPrivate *view);
@@ -351,7 +355,11 @@ private:
     // Folding mark
     std::unique_ptr<KTextEditor::MovingRange> m_fmStart, m_fmEnd;
 
-    enum DragState { diNone, diPending, diDragging };
+    enum DragState {
+        diNone,
+        diPending,
+        diDragging
+    };
 
     struct _dragInfo {
         DragState state;
@@ -394,7 +402,12 @@ private:
     bool m_selChangedByUser;
     KTextEditor::Cursor m_selectAnchor;
 
-    enum SelectionMode { Default = 0, Mouse, Word, Line }; ///< for drag selection.
+    enum SelectionMode {
+        Default = 0,
+        Mouse,
+        Word,
+        Line
+    }; ///< for drag selection.
     uint m_selectionMode;
     // when drag selecting after double/triple click, keep the initial selected
     // word/line independent of direction.

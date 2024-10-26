@@ -106,7 +106,10 @@ private:
 class KateScript
 {
 public:
-    enum InputType { InputURL, InputSCRIPT };
+    enum InputType {
+        InputURL,
+        InputSCRIPT
+    };
 
     typedef QMap<QString, QJSValue> FieldMap;
 

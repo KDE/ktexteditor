@@ -29,7 +29,10 @@
 class ClipboardHistoryModel : public QAbstractTableModel
 {
 public:
-    enum Role { HighlightingRole = Qt::UserRole + 1, OriginalSorting };
+    enum Role {
+        HighlightingRole = Qt::UserRole + 1,
+        OriginalSorting
+    };
 
     explicit ClipboardHistoryModel(QObject *parent)
         : QAbstractTableModel(parent)

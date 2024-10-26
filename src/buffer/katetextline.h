@@ -59,7 +59,13 @@ public:
     /**
      * Flags of TextLine
      */
-    enum Flags { flagAutoWrapped = 1, flagFoldingStartAttribute = 2, flagFoldingEndAttribute = 4, flagLineModified = 8, flagLineSavedOnDisk = 16 };
+    enum Flags {
+        flagAutoWrapped = 1,
+        flagFoldingStartAttribute = 2,
+        flagFoldingEndAttribute = 4,
+        flagLineModified = 8,
+        flagLineSavedOnDisk = 16
+    };
 
     /**
      * Construct an empty text line.

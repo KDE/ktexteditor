@@ -293,7 +293,14 @@ public:
 
     void updateForCursorLineChange();
 
-    enum BorderArea { None, LineNumbers, IconBorder, FoldingMarkers, AnnotationBorder, ModificationBorder };
+    enum BorderArea {
+        None,
+        LineNumbers,
+        IconBorder,
+        FoldingMarkers,
+        AnnotationBorder,
+        ModificationBorder
+    };
     BorderArea positionToArea(const QPoint &) const;
 
     KTextEditor::AbstractAnnotationItemDelegate *annotationItemDelegate() const;

@@ -15,7 +15,11 @@ namespace KateVi
 class Completion
 {
 public:
-    enum CompletionType { PlainText, FunctionWithoutArgs, FunctionWithArgs };
+    enum CompletionType {
+        PlainText,
+        FunctionWithoutArgs,
+        FunctionWithArgs
+    };
 
     explicit Completion(const QString &completedText, bool removeTail, CompletionType completionType);
     QString completedText() const;

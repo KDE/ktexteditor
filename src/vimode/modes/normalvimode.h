@@ -335,7 +335,10 @@ protected:
 protected:
     // The 'current position' is the current cursor position for non-linewise pastes, and the current
     // line for linewise.
-    enum PasteLocation { AtCurrentPosition, AfterCurrentPosition };
+    enum PasteLocation {
+        AtCurrentPosition,
+        AfterCurrentPosition
+    };
     bool paste(NormalViMode::PasteLocation pasteLocation, bool isgPaste, bool isIndentedPaste);
     static KTextEditor::Cursor cursorPosAtEndOfPaste(const KTextEditor::Cursor pasteLocation, const QString &pastedText);
 

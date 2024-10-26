@@ -533,7 +533,12 @@ void initCommandLineParser(QCoreApplication &app, QCommandLineParser &parser)
 }
 
 struct CommandLineParseResult {
-    enum class Status { Ok, Error, VersionRequested, HelpRequested };
+    enum class Status {
+        Ok,
+        Error,
+        VersionRequested,
+        HelpRequested
+    };
     Status statusCode = Status::Ok;
     QString errorString = {};
 };

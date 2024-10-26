@@ -27,7 +27,16 @@ class DocumentPrivate;
 class UndoItem
 {
 public:
-    enum UndoType { editInsertText, editRemoveText, editWrapLine, editUnWrapLine, editInsertLine, editRemoveLine, editMarkLineAutoWrapped, editInvalid };
+    enum UndoType {
+        editInsertText,
+        editRemoveText,
+        editWrapLine,
+        editUnWrapLine,
+        editInsertLine,
+        editRemoveLine,
+        editMarkLineAutoWrapped,
+        editInvalid
+    };
 
     enum ModificationFlag {
         UndoLine1Modified = 1,

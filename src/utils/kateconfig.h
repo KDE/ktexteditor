@@ -669,7 +669,11 @@ public:
         tabSmart = 2 //!< indents in leading space, otherwise inserts tab
     };
 
-    enum WhitespaceRendering { None, Trailing, All };
+    enum WhitespaceRendering {
+        None,
+        Trailing,
+        All
+    };
 
     int tabHandling() const
     {
@@ -827,7 +831,11 @@ public:
         return setValue(Encoding, encoding);
     }
 
-    enum Eol { eolUnix = 0, eolDos = 1, eolMac = 2 };
+    enum Eol {
+        eolUnix = 0,
+        eolDos = 1,
+        eolMac = 2
+    };
 
     int eol() const
     {
@@ -876,7 +884,11 @@ public:
         setValue(SwapFileDirectory, directory);
     }
 
-    enum SwapFileMode { DisableSwapFile = 0, EnableSwapFile, SwapFilePresetDirectory };
+    enum SwapFileMode {
+        DisableSwapFile = 0,
+        EnableSwapFile,
+        SwapFilePresetDirectory
+    };
 
     SwapFileMode swapFileMode() const
     {
@@ -1117,7 +1129,11 @@ public:
     }
 
     /* Whether to show scrollbars */
-    enum ScrollbarMode { AlwaysOn = 0, ShowWhenNeeded, AlwaysOff };
+    enum ScrollbarMode {
+        AlwaysOn = 0,
+        ShowWhenNeeded,
+        AlwaysOff
+    };
 
     int showScrollbars() const
     {
@@ -1229,7 +1245,13 @@ public:
     }
 
     // Do we still need the enum and related functions below?
-    enum TextToSearch { Nowhere = 0, SelectionOnly = 1, SelectionWord = 2, WordOnly = 3, WordSelection = 4 };
+    enum TextToSearch {
+        Nowhere = 0,
+        SelectionOnly = 1,
+        SelectionWord = 2,
+        WordOnly = 3,
+        WordSelection = 4
+    };
 
     bool automaticCompletionInvocation() const
     {

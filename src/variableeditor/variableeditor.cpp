@@ -26,7 +26,10 @@
 class KateHelpButton : public QToolButton
 {
 public:
-    enum IconState { IconColored = 0, IconHidden };
+    enum IconState {
+        IconColored = 0,
+        IconHidden
+    };
 
 public:
     explicit KateHelpButton(QWidget *parent)
