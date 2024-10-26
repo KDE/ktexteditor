@@ -26,3 +26,4 @@ CMakeLists.txt.user*
 /.cache
 cmake-build-debug*
 .idea
+.kateproject.build
