@@ -657,7 +657,6 @@ private:
     int m_errorCounter = 0;
     int m_breakOnErrorCounter = 0;
     int m_dualModeAbortedCounter = 0;
-    qsizetype m_startTime = 0;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ScriptTester::DebugOptions)
