@@ -773,13 +773,21 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
         ui->cmbDynamicWordWrapIndicator->setEnabled(cbx->isChecked());
         ui->sbDynamicWordWrapDepth->setEnabled(cbx->isChecked());
     };
+#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0)
     connect(textareaUi->cbxWordWrap, &QCheckBox::stateChanged, this, a);
+#else
+    connect(textareaUi->cbxWordWrap, &QCheckBox::checkStateChanged, this, a);
+#endif
     a();
     auto b = [cbx = textareaUi->cbxIndentWrappedLines, sb = textareaUi->sbDynamicWordWrapDepth]() {
         sb->setEnabled(cbx->isChecked());
     };
     b();
+#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0)
     connect(textareaUi->cbxIndentWrappedLines, &QCheckBox::stateChanged, this, b);
+#else
+    connect(textareaUi->cbxIndentWrappedLines, &QCheckBox::checkStateChanged, this, b);
+#endif
     observeChanges(textareaUi->cbxIndentWrappedLines);
     observeChanges(textareaUi->sbDynamicWordWrapDepth);
     observeChanges(textareaUi->sliSetMarkerSize);
