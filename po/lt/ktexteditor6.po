@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-20 00:38+0000\n"
+"POT-Creation-Date: 2024-10-27 00:37+0000\n"
 "PO-Revision-Date: 2017-07-30 15:55+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -431,14 +431,14 @@ msgstr "Rodyti ei&lučių numerius"
 msgid "Sort bookmarks menu:"
 msgstr "Rūšiuoti žymelių meniu"
 
-#: dialogs/clipboardhistorydialog.cpp:261
+#: dialogs/clipboardhistorydialog.cpp:264
 #, fuzzy, kde-format
 #| msgctxt "Script command name"
 #| msgid "Select next edit point"
 msgid "Select text to paste."
 msgstr "Pažymėti iki kitos eilutės"
 
-#: dialogs/clipboardhistorydialog.cpp:293
+#: dialogs/clipboardhistorydialog.cpp:296
 #, kde-format
 msgid "No entries in clipboard history"
 msgstr ""
@@ -446,7 +446,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:605
-#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1018
+#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1026
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1261,12 +1261,12 @@ msgstr "Išjungta"
 msgid "Follow Line Numbers"
 msgstr "Sekti eilučių numerius"
 
-#: dialogs/katedialogs.cpp:939 dialogs/katedialogs.cpp:944
+#: dialogs/katedialogs.cpp:947 dialogs/katedialogs.cpp:952
 #, kde-format
 msgid "Appearance"
 msgstr "Išvaizda"
 
-#: dialogs/katedialogs.cpp:979
+#: dialogs/katedialogs.cpp:987
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1276,12 +1276,12 @@ msgstr ""
 
 # #-#-#-#-#  konsole.po (konsole)  #-#-#-#-#
 # (pofilter) compendiumconflicts: checks for Gettext compendium conflicts (#-#-#-#-#)
-#: dialogs/katedialogs.cpp:1019
+#: dialogs/katedialogs.cpp:1027
 #, kde-format
 msgid "Advanced"
 msgstr "Sudėtingesni"
 
-#: dialogs/katedialogs.cpp:1084
+#: dialogs/katedialogs.cpp:1092
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1289,75 +1289,75 @@ msgstr ""
 "Jūs nepateikėte atsarginių failų kopijų plėtinio.  Bus naudojamas "
 "numatytasis plėtinys „~“"
 
-#: dialogs/katedialogs.cpp:1084
+#: dialogs/katedialogs.cpp:1092
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Nėra atsarginių kopijų vardų plėtinio"
 
-#: dialogs/katedialogs.cpp:1215
+#: dialogs/katedialogs.cpp:1223
 #, kde-format
 msgid "Open/Save"
 msgstr "Atverti-įrašyti"
 
-#: dialogs/katedialogs.cpp:1220
+#: dialogs/katedialogs.cpp:1228
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Failų atvėrimas ir įrašymas"
 
-#: dialogs/katedialogs.cpp:1243
+#: dialogs/katedialogs.cpp:1251
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1244
+#: dialogs/katedialogs.cpp:1252
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1255
+#: dialogs/katedialogs.cpp:1263
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1335
+#: dialogs/katedialogs.cpp:1343
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1399
+#: dialogs/katedialogs.cpp:1407
 #, kde-format
 msgid "Dictionary:"
 msgstr "Žodynas:"
 
-#: dialogs/katedialogs.cpp:1451
+#: dialogs/katedialogs.cpp:1459
 #, fuzzy, kde-format
 #| msgid "Enable &auto completion"
 msgid "Enable Auto Reload"
 msgstr "Įjungti auto užbaigimą"
 
-#: dialogs/katedialogs.cpp:1454
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1459
+#: dialogs/katedialogs.cpp:1467
 #, kde-format
 msgid "View &Difference"
 msgstr "&Rodyti skirtumus"
 
-#: dialogs/katedialogs.cpp:1461
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1466
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "&Reload"
 msgstr "Įkelti iš &naujo"
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1476
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
@@ -1366,43 +1366,43 @@ msgstr ""
 "Įkelti failą iš disko iš naujo. Jei turite neišsaugotų pakeitimų, jie bus "
 "prarasti."
 
-#: dialogs/katedialogs.cpp:1472
+#: dialogs/katedialogs.cpp:1480
 #, fuzzy, kde-format
 #| msgid "&Close"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Užverti"
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1482
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1478
+#: dialogs/katedialogs.cpp:1486
 #, fuzzy, kde-format
 #| msgid "&Save As..."
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "Įrašyti &kaip..."
 
-#: dialogs/katedialogs.cpp:1480
+#: dialogs/katedialogs.cpp:1488
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Leidžia pasirinkti vietą ir iš naujo įrašyti failą."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1485 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1493 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Ignoruoti"
 
-#: dialogs/katedialogs.cpp:1486
+#: dialogs/katedialogs.cpp:1494
 #, fuzzy, kde-format
 #| msgid "Ignore the changes. You will not be prompted again."
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignoruoti pakeitimus. Daugiau dėl jų nebebūsite perspėti."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1411,18 +1411,18 @@ msgstr ""
 "Diff komandos įvykdyti nepavyko. Prašome patikrinti, ar diff(1) yra įdiegta "
 "ir yra jūsų kelyje (PATH)."
 
-#: dialogs/katedialogs.cpp:1554 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1562 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Klaida kuriant diff"
 
-#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Failai yra identiški."
 
-#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff rezultatas (skirtumai)"
@@ -2280,12 +2280,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Mėginti vėl"
 
-#: document/katedocument.cpp:2268 document/katedocument.cpp:6541
+#: document/katedocument.cpp:2268 document/katedocument.cpp:6532
 #, kde-format
 msgid "&Close"
 msgstr "&Užverti"
 
-#: document/katedocument.cpp:2269 document/katedocument.cpp:6542
+#: document/katedocument.cpp:2269 document/katedocument.cpp:6533
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2428,29 +2428,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "Vis tiek užverti"
 
-#: document/katedocument.cpp:4609
+#: document/katedocument.cpp:4606
 #, kde-format
 msgid "Untitled"
 msgstr "Be pavadinimo"
 
-#: document/katedocument.cpp:4732 document/katedocument.cpp:4958
-#: document/katedocument.cpp:4968 document/katedocument.cpp:5764
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:4729 document/katedocument.cpp:4955
+#: document/katedocument.cpp:4965 document/katedocument.cpp:5761
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid "Save File"
 msgstr "Įrašyti failą"
 
-#: document/katedocument.cpp:4735
+#: document/katedocument.cpp:4732
 #, kde-format
 msgid "Save failed"
 msgstr "Įrašymas nepavyko"
 
-#: document/katedocument.cpp:4979
+#: document/katedocument.cpp:4976
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Išsaugoti kopiją failo"
 
-#: document/katedocument.cpp:4991
+#: document/katedocument.cpp:4988
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2463,7 +2463,7 @@ msgstr ""
 "Patikrinkite, ar turite rašymo leidimą šiam failui ir ar yra užtektinai "
 "tuščios vietos diske."
 
-#: document/katedocument.cpp:5281
+#: document/katedocument.cpp:5278
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2472,7 +2472,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5287
+#: document/katedocument.cpp:5284
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2481,25 +2481,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5593
+#: document/katedocument.cpp:5590
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Failą „%1“ pakeitė kita programa."
 
-#: document/katedocument.cpp:5596
+#: document/katedocument.cpp:5593
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Failą „%1“ sukūrė kita programa."
 
-#: document/katedocument.cpp:5599
+#: document/katedocument.cpp:5596
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Failą „%1“ ištrynė kita programa."
 
-#: document/katedocument.cpp:5936
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2508,17 +2508,17 @@ msgstr ""
 "Dokumentas „%1“ buvo pakeistas.\n"
 "Ar norite jį įrašyti, ar atmesti pakeitimus?"
 
-#: document/katedocument.cpp:5939
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid "Close Document"
 msgstr "Užverti dokumentą"
 
-#: document/katedocument.cpp:6050
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Failas <a href=\"%1\">%2</a> vis dar įkeliamas."
 
-#: document/katedocument.cpp:6055
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Nutraukti įkėlimą"
@@ -6269,34 +6269,34 @@ msgstr ""
 msgid "Generate a new UUID."
 msgstr ""
 
-#: variableeditor/variableeditor.cpp:37
+#: variableeditor/variableeditor.cpp:40
 #, kde-format
 msgid "Kate Handbook."
 msgstr "Kate vadovas."
 
-#: variableeditor/variableeditor.cpp:210
+#: variableeditor/variableeditor.cpp:213
 #, kde-format
 msgid "true"
 msgstr "tiesa"
 
-#: variableeditor/variableeditor.cpp:211
+#: variableeditor/variableeditor.cpp:214
 #, kde-format
 msgid "false"
 msgstr "netiesa"
 
-#: variableeditor/variableeditor.cpp:347
+#: variableeditor/variableeditor.cpp:350
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr "joks"
 
-#: variableeditor/variableeditor.cpp:348
+#: variableeditor/variableeditor.cpp:351
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "pakeista"
 
-#: variableeditor/variableeditor.cpp:349
+#: variableeditor/variableeditor.cpp:352
 #, fuzzy, kde-format
 #| msgctxt "value for variale remove-trailing-spaces"
 #| msgid "all"

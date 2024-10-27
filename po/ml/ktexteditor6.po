@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-20 00:38+0000\n"
+"POT-Creation-Date: 2024-10-27 00:37+0000\n"
 "PO-Revision-Date: 2019-12-12 21:03+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc-"
@@ -386,12 +386,12 @@ msgstr "&വരിയുടെ അക്കം കാണിക്കുക"
 msgid "Sort bookmarks menu:"
 msgstr "&ഓര്‍മ്മക്കുറിപ്പു് സജ്ജമാക്കുക"
 
-#: dialogs/clipboardhistorydialog.cpp:261
+#: dialogs/clipboardhistorydialog.cpp:264
 #, kde-format
 msgid "Select text to paste."
 msgstr ""
 
-#: dialogs/clipboardhistorydialog.cpp:293
+#: dialogs/clipboardhistorydialog.cpp:296
 #, kde-format
 msgid "No entries in clipboard history"
 msgstr ""
@@ -399,7 +399,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:605
-#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1018
+#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1026
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1105,12 +1105,12 @@ msgstr "ഓഫ്"
 msgid "Follow Line Numbers"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:939 dialogs/katedialogs.cpp:944
+#: dialogs/katedialogs.cpp:947 dialogs/katedialogs.cpp:952
 #, kde-format
 msgid "Appearance"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:979
+#: dialogs/katedialogs.cpp:987
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1118,124 +1118,124 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1019
+#: dialogs/katedialogs.cpp:1027
 #, kde-format
 msgid "Advanced"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1084
+#: dialogs/katedialogs.cpp:1092
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1084
+#: dialogs/katedialogs.cpp:1092
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1215
+#: dialogs/katedialogs.cpp:1223
 #, kde-format
 msgid "Open/Save"
 msgstr "തുറക്കുക/സൂക്ഷിക്കുക"
 
-#: dialogs/katedialogs.cpp:1220
+#: dialogs/katedialogs.cpp:1228
 #, kde-format
 msgid "File Opening & Saving"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1243
+#: dialogs/katedialogs.cpp:1251
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1244
+#: dialogs/katedialogs.cpp:1252
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1255
+#: dialogs/katedialogs.cpp:1263
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1335
+#: dialogs/katedialogs.cpp:1343
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1399
+#: dialogs/katedialogs.cpp:1407
 #, fuzzy, kde-format
 msgid "Dictionary:"
 msgstr "&ഭാഗം:"
 
-#: dialogs/katedialogs.cpp:1451
+#: dialogs/katedialogs.cpp:1459
 #, fuzzy, kde-format
 msgid "Enable Auto Reload"
 msgstr "%1 തുറക്കുവാന്‍ സാധ്യമല്ല"
 
-#: dialogs/katedialogs.cpp:1454
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1459
+#: dialogs/katedialogs.cpp:1467
 #, kde-format
 msgid "View &Difference"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1461
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1466
+#: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
 msgid "&Reload"
 msgstr "വീണ്ടും &ലഭ്യമാക്കുക"
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1476
 #, fuzzy, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "ഡിസ്കില്‍ നിന്നും ഫയല്‍ വീണ്ടും ലഭ്യമാക്കുക. സൂക്ഷിക്കാത്ത മാറ്റങ്ങള്‍ നിങ്ങള്‍ക്കു് നഷ്ടമാകുന്നതാണു്."
 
-#: dialogs/katedialogs.cpp:1472
+#: dialogs/katedialogs.cpp:1480
 #, fuzzy, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "ഫയല്‍ &വീണ്ടും ലഭ്യമാക്കുക"
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1482
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1478
+#: dialogs/katedialogs.cpp:1486
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "ഫയലിന്റെ പേരു് മാറ്റി &സൂക്ഷിക്കുക..."
 
-#: dialogs/katedialogs.cpp:1480
+#: dialogs/katedialogs.cpp:1488
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "ഒരു സ്ഥലം തിരഞ്ഞെടുത്തു് അവിടെ ഫയല്‍ സൂക്ഷിക്കുവാന്‍ ഇതു് സഹായിക്കുന്നു."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1485 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1493 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&വേണ്ടെന്നു് വയ്ക്കുക"
 
-#: dialogs/katedialogs.cpp:1486
+#: dialogs/katedialogs.cpp:1494
 #, fuzzy, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "മാറ്റങ്ങള്‍ വേണ്ടെന്നു് വയ്ക്കുക. പിന്നീടു് നിങ്ങളോടു് ചോദിക്കുന്നതല്ല."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1244,18 +1244,18 @@ msgstr ""
 "diff കമാന്‍ഡ് പരാജയപ്പെട്ടു. diff(1) നിങ്ങളുടെ സിസ്റ്റമില്‍ ശരിയായ പാഥില്‍ ഇന്‍സ്റ്റോള്‍ "
 "ചെയ്തിരിക്കുന്നു എന്നു് ഉറപ്പാക്കുക."
 
-#: dialogs/katedialogs.cpp:1554 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1562 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Diff ഉണ്ടാക്കുന്നതില്‍ പിശകു്"
 
-#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff ഔട്ട്പുട്ടു്"
@@ -2026,12 +2026,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2268 document/katedocument.cpp:6541
+#: document/katedocument.cpp:2268 document/katedocument.cpp:6532
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2269 document/katedocument.cpp:6542
+#: document/katedocument.cpp:2269 document/katedocument.cpp:6533
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2143,29 +2143,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr ""
 
-#: document/katedocument.cpp:4609
+#: document/katedocument.cpp:4606
 #, kde-format
 msgid "Untitled"
 msgstr "തലക്കെട്ടില്ലാത്ത"
 
-#: document/katedocument.cpp:4732 document/katedocument.cpp:4958
-#: document/katedocument.cpp:4968 document/katedocument.cpp:5764
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:4729 document/katedocument.cpp:4955
+#: document/katedocument.cpp:4965 document/katedocument.cpp:5761
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid "Save File"
 msgstr "ഫയല്‍ സൂക്ഷിക്കുക"
 
-#: document/katedocument.cpp:4735
+#: document/katedocument.cpp:4732
 #, kde-format
 msgid "Save failed"
 msgstr "സൂക്ഷിക്കുവാന്‍ സാധ്യമായില്ല"
 
-#: document/katedocument.cpp:4979
+#: document/katedocument.cpp:4976
 #, fuzzy, kde-format
 msgid "Save Copy of File"
 msgstr "ഫയല്‍ സൂക്ഷിക്കുക"
 
-#: document/katedocument.cpp:4991
+#: document/katedocument.cpp:4988
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2174,7 +2174,7 @@ msgid ""
 "available."
 msgstr ""
 
-#: document/katedocument.cpp:5281
+#: document/katedocument.cpp:5278
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2183,7 +2183,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5287
+#: document/katedocument.cpp:5284
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2192,25 +2192,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5593
+#: document/katedocument.cpp:5590
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "ഫയല്‍ '%1' മറ്റൊരു പ്രോഗ്രാം ഉപയോഗിച്ചു് മാറ്റം വരുത്തിയിരിക്കുന്നു."
 
-#: document/katedocument.cpp:5596
+#: document/katedocument.cpp:5593
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "ഫയല്‍ '%1' മറ്റൊരു പ്രോഗ്രാം ഉപയോഗിച്ചു് ഉണ്ടാക്കിയിരിക്കുന്നു."
 
-#: document/katedocument.cpp:5599
+#: document/katedocument.cpp:5596
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "ഫയല്‍ '%1' മറ്റൊരു പ്രോഗ്രാം ഉപയോഗിച്ചു് വെട്ടിമാറ്റിയിരിക്കുന്നു."
 
-#: document/katedocument.cpp:5936
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2219,17 +2219,17 @@ msgstr ""
 "രേഖ \"%1\"-ല്‍ മാറ്റം വരുത്തയിരിക്കുന്നു.\n"
 "നിങ്ങള്‍ക്കു് ഈ മാറ്റങ്ങള്‍ സൂക്ഷിക്കണമോ?"
 
-#: document/katedocument.cpp:5939
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid "Close Document"
 msgstr "രേഖ അടയ്ക്കുക"
 
-#: document/katedocument.cpp:6050
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6055
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -5680,34 +5680,34 @@ msgstr ""
 msgid "Generate a new UUID."
 msgstr ""
 
-#: variableeditor/variableeditor.cpp:37
+#: variableeditor/variableeditor.cpp:40
 #, kde-format
 msgid "Kate Handbook."
 msgstr ""
 
-#: variableeditor/variableeditor.cpp:210
+#: variableeditor/variableeditor.cpp:213
 #, fuzzy, kde-format
 msgid "true"
 msgstr "സ്ട്രക്ട്"
 
-#: variableeditor/variableeditor.cpp:211
+#: variableeditor/variableeditor.cpp:214
 #, kde-format
 msgid "false"
 msgstr ""
 
-#: variableeditor/variableeditor.cpp:347
+#: variableeditor/variableeditor.cpp:350
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr ""
 
-#: variableeditor/variableeditor.cpp:348
+#: variableeditor/variableeditor.cpp:351
 #, fuzzy, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "അടുത്ത വരിയിലേക്കു് നീങ്ങുക"
 
-#: variableeditor/variableeditor.cpp:349
+#: variableeditor/variableeditor.cpp:352
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-20 00:38+0000\n"
+"POT-Creation-Date: 2024-10-27 00:37+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -386,12 +386,12 @@ msgstr "按行号"
 msgid "Sort bookmarks menu:"
 msgstr "排序书签菜单："
 
-#: dialogs/clipboardhistorydialog.cpp:261
+#: dialogs/clipboardhistorydialog.cpp:264
 #, kde-format
 msgid "Select text to paste."
 msgstr "选择要粘贴的文本。"
 
-#: dialogs/clipboardhistorydialog.cpp:293
+#: dialogs/clipboardhistorydialog.cpp:296
 #, kde-format
 msgid "No entries in clipboard history"
 msgstr "剪贴板历史中没有条目"
@@ -399,7 +399,7 @@ msgstr "剪贴板历史中没有条目"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:605
-#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1018
+#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1026
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1146,12 +1146,12 @@ msgstr "关闭"
 msgid "Follow Line Numbers"
 msgstr "按照行号"
 
-#: dialogs/katedialogs.cpp:939 dialogs/katedialogs.cpp:944
+#: dialogs/katedialogs.cpp:947 dialogs/katedialogs.cpp:952
 #, kde-format
 msgid "Appearance"
 msgstr "外观"
 
-#: dialogs/katedialogs.cpp:979
+#: dialogs/katedialogs.cpp:987
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1161,63 +1161,63 @@ msgstr ""
 "%1 备份未保存的文件到“交换文件”。交换文件允许 %1 在系统崩溃时恢复您的工作进"
 "度。禁用交换文件可能会导致系统崩溃时丢失数据。"
 
-#: dialogs/katedialogs.cpp:1019
+#: dialogs/katedialogs.cpp:1027
 #, kde-format
 msgid "Advanced"
 msgstr "高级"
 
-#: dialogs/katedialogs.cpp:1084
+#: dialogs/katedialogs.cpp:1092
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr "您没有指定备份文件的后缀或前缀。将使用后缀“~”"
 
-#: dialogs/katedialogs.cpp:1084
+#: dialogs/katedialogs.cpp:1092
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "无备份文件的后缀或前缀"
 
-#: dialogs/katedialogs.cpp:1215
+#: dialogs/katedialogs.cpp:1223
 #, kde-format
 msgid "Open/Save"
 msgstr "打开/保存"
 
-#: dialogs/katedialogs.cpp:1220
+#: dialogs/katedialogs.cpp:1228
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "文件打开和保存"
 
-#: dialogs/katedialogs.cpp:1243
+#: dialogs/katedialogs.cpp:1251
 #, kde-format
 msgid "&Line:"
 msgstr "行(&L)："
 
-#: dialogs/katedialogs.cpp:1244
+#: dialogs/katedialogs.cpp:1252
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "转到剪贴板中的行号"
 
-#: dialogs/katedialogs.cpp:1255
+#: dialogs/katedialogs.cpp:1263
 #, kde-format
 msgid "Go to"
 msgstr "转到"
 
-#: dialogs/katedialogs.cpp:1335
+#: dialogs/katedialogs.cpp:1343
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "剪贴板中找不到有效的行号"
 
-#: dialogs/katedialogs.cpp:1399
+#: dialogs/katedialogs.cpp:1407
 #, kde-format
 msgid "Dictionary:"
 msgstr "词典："
 
-#: dialogs/katedialogs.cpp:1451
+#: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "启用自动重新加载"
 
-#: dialogs/katedialogs.cpp:1454
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1226,78 +1226,78 @@ msgstr ""
 "从现在开始直到您关闭标签页或者窗口，文档将在不提示磁盘更改的情况下自动进行重"
 "新加载。"
 
-#: dialogs/katedialogs.cpp:1459
+#: dialogs/katedialogs.cpp:1467
 #, kde-format
 msgid "View &Difference"
 msgstr "查看差异(&D)"
 
-#: dialogs/katedialogs.cpp:1461
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "显示更改的差异。"
 
-#: dialogs/katedialogs.cpp:1466
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "&Reload"
 msgstr "重新加载(&R)"
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1476
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "重新从磁盘加载文件。未保存的更改将丢失。"
 
-#: dialogs/katedialogs.cpp:1472
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "关闭文件(&C)"
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1482
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "关闭文件，丢弃内容。"
 
-#: dialogs/katedialogs.cpp:1478
+#: dialogs/katedialogs.cpp:1486
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "另存为(&S)…"
 
-#: dialogs/katedialogs.cpp:1480
+#: dialogs/katedialogs.cpp:1488
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "让您选择一个位置以再次保存文件。"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1485 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1493 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "忽略(&I)"
 
-#: dialogs/katedialogs.cpp:1486
+#: dialogs/katedialogs.cpp:1494
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "不进行任何操作忽略磁盘更改。"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
 "your PATH."
 msgstr "diff 命令失败。请确定安装了 diff(1)，并且该命令在您的路径中。"
 
-#: dialogs/katedialogs.cpp:1554 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1562 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "创建 diff 失败"
 
-#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "文件是相同的。"
 
-#: dialogs/katedialogs.cpp:1561 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "diff 输出"
@@ -2091,12 +2091,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "重试"
 
-#: document/katedocument.cpp:2268 document/katedocument.cpp:6541
+#: document/katedocument.cpp:2268 document/katedocument.cpp:6532
 #, kde-format
 msgid "&Close"
 msgstr "关闭(&C)"
 
-#: document/katedocument.cpp:2269 document/katedocument.cpp:6542
+#: document/katedocument.cpp:2269 document/katedocument.cpp:6533
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2223,29 +2223,29 @@ msgstr "您真的想要继续关闭此文件吗？数据可能丢失。"
 msgid "Close Nevertheless"
 msgstr "仍然关闭"
 
-#: document/katedocument.cpp:4609
+#: document/katedocument.cpp:4606
 #, kde-format
 msgid "Untitled"
 msgstr "无标题"
 
-#: document/katedocument.cpp:4732 document/katedocument.cpp:4958
-#: document/katedocument.cpp:4968 document/katedocument.cpp:5764
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:4729 document/katedocument.cpp:4955
+#: document/katedocument.cpp:4965 document/katedocument.cpp:5761
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid "Save File"
 msgstr "保存文件"
 
-#: document/katedocument.cpp:4735
+#: document/katedocument.cpp:4732
 #, kde-format
 msgid "Save failed"
 msgstr "保存失败"
 
-#: document/katedocument.cpp:4979
+#: document/katedocument.cpp:4976
 #, kde-format
 msgid "Save Copy of File"
 msgstr "保存文件副本"
 
-#: document/katedocument.cpp:4991
+#: document/katedocument.cpp:4988
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2257,7 +2257,7 @@ msgstr ""
 "\n"
 "请检查您是否有此文件的写权限，或者磁盘空间是否充足。"
 
-#: document/katedocument.cpp:5281
+#: document/katedocument.cpp:5278
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2270,7 +2270,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5287
+#: document/katedocument.cpp:5284
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2283,22 +2283,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5593
+#: document/katedocument.cpp:5590
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "文件“%1”已在存储设备中修改。"
 
-#: document/katedocument.cpp:5596
+#: document/katedocument.cpp:5593
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "文件“%1”已在存储设备中创建。"
 
-#: document/katedocument.cpp:5599
+#: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "文件“%1”已在存储设备中移动或者删除。"
 
-#: document/katedocument.cpp:5936
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2307,17 +2307,17 @@ msgstr ""
 "文档“%1”已被修改。\n"
 "您想要保存还是忽略更改？"
 
-#: document/katedocument.cpp:5939
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid "Close Document"
 msgstr "关闭文档"
 
-#: document/katedocument.cpp:6050
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "文件 <a href=\"%1\">%2</a> 仍在加载。"
 
-#: document/katedocument.cpp:6055
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "&Abort Loading"
 msgstr "中止加载(&A)"
@@ -5914,34 +5914,34 @@ msgstr "将文本编码为 URL 兼容格式."
 msgid "Generate a new UUID."
 msgstr "生成新的 UUID。"
 
-#: variableeditor/variableeditor.cpp:37
+#: variableeditor/variableeditor.cpp:40
 #, kde-format
 msgid "Kate Handbook."
 msgstr "Kate 手册。"
 
-#: variableeditor/variableeditor.cpp:210
+#: variableeditor/variableeditor.cpp:213
 #, kde-format
 msgid "true"
 msgstr "真"
 
-#: variableeditor/variableeditor.cpp:211
+#: variableeditor/variableeditor.cpp:214
 #, kde-format
 msgid "false"
 msgstr "假"
 
-#: variableeditor/variableeditor.cpp:347
+#: variableeditor/variableeditor.cpp:350
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr "无"
 
-#: variableeditor/variableeditor.cpp:348
+#: variableeditor/variableeditor.cpp:351
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "已修改"
 
-#: variableeditor/variableeditor.cpp:349
+#: variableeditor/variableeditor.cpp:352
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
