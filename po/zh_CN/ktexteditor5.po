@@ -1180,7 +1180,7 @@ msgstr "词典："
 #: dialogs/katedialogs.cpp:1443
 #, kde-format
 msgid "Enable Auto Reload"
-msgstr "启用自动重载"
+msgstr "启用自动重新加载"
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -2197,9 +2197,9 @@ msgid ""
 "that the media you write to is full or the directory of the file is read-"
 "only for you."
 msgstr ""
-"对于文件 %1，在保存之前不会为它创建备份拷贝。如果在保存的时候发生错误，您也许"
-"会丢失这个文件的数据。一个可能的原因是，您要写入的介质已经满了，或者这个文件"
-"所在的目录对于您是只读的。"
+"对于文件 %1，在保存之前不会为它创建备份副本。如果在保存的时候发生错误，您可能"
+"会丢失此文件的数据。一个可能的原因是您要写入的介质已满，或者此文件所在的目录"
+"对于您是只读的。"
 
 #: document/katedocument.cpp:2723
 #, kde-format
