@@ -348,7 +348,14 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams,
                 // We found some unfiltered matches, but none were suitable. In case matchesUnfiltered wasn't
                 // all matching elements, search again, starting from before the earliest matching range.
                 if (filteredMatches.isEmpty()) {
+                    auto oldSearchBegin = newSearchBegin;
                     newSearchBegin = matchesUnfiltered.first().start();
+                    // Searching again with the same parameters leads nowhere, so better
+                    // stop with no match
+                    if (oldSearchBegin == newSearchBegin) {
+                        bestMatch = KTextEditor::Range::invalid();
+                        break;
+                    }
                 }
             }
 
