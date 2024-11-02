@@ -168,8 +168,7 @@ void KateConfigInterfaceTest::testView()
     view->setConfigValue(QStringLiteral("scrollbar-preview"), false);
     QCOMPARE(view->configValue(QLatin1String("scrollbar-preview")).toBool(), false);
 
-    QFont f(QStringLiteral("Times"), 10, QFont::Bold);
-    f.setHintingPreference(QFont::PreferFullHinting);
+    const QFont f(QStringLiteral("Times"), 10, QFont::Bold);
     view->setConfigValue(QStringLiteral("font"), f);
     QCOMPARE(view->configValue(QLatin1String("font")).value<QFont>(), f);
 
