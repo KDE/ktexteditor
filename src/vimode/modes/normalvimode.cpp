@@ -122,13 +122,13 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
 
     m_keysVerbatim.append(KeyParser::self()->decodeKeySequence(key));
 
+    // allow shifted numbers for Dvorak and Co., bug 388138
     if ((keyCode >= Qt::Key_0 && keyCode <= Qt::Key_9 && lastChar != QLatin1Char('"')) // key 0-9
         && (m_countTemp != 0 || keyCode != Qt::Key_0) // first digit can't be 0
         && (!waitingForRegisterOrCharToSearch) // Not in the middle of "find char" motions or replacing char.
-        && e->modifiers() == Qt::NoModifier) {
+        && (e->modifiers() | Qt::ShiftModifier) == Qt::ShiftModifier) {
         m_countTemp *= 10;
         m_countTemp += keyCode - Qt::Key_0;
-
         return true;
     } else if (m_countTemp != 0) {
         m_count = getCount() * m_countTemp;
