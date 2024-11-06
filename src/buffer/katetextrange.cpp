@@ -40,6 +40,9 @@ TextRange::~TextRange()
     }
     // reset feedback, don't want feedback during destruction
     const bool hadFeedBack = m_feedback != nullptr;
+    const bool hadDynamicAttr = m_attribute
+        && (m_attribute->dynamicAttribute(KTextEditor::Attribute::ActivateCaretIn) || m_attribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn));
+    const bool notifyDeletion = hadFeedBack || hadDynamicAttr;
     m_feedback = nullptr;
 
     // remove range from cached multiline ranges
@@ -51,8 +54,8 @@ TextRange::~TextRange()
     // trigger update, if we have attribute
     // notify right view
     // here we can ignore feedback, even with feedback, we want none if the range is deleted!
-    if (m_attribute || hadFeedBack) {
-        m_buffer->notifyAboutRangeChange(m_view, lineRange, /*needsRepaint=*/m_attribute != nullptr, /*deletedRange=*/hadFeedBack ? this : nullptr);
+    if (m_attribute || notifyDeletion) {
+        m_buffer->notifyAboutRangeChange(m_view, lineRange, /*needsRepaint=*/m_attribute != nullptr, /*deletedRange=*/notifyDeletion ? this : nullptr);
     }
 }
 

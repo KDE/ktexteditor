@@ -734,3 +734,24 @@ void MovingRangeTest::testRangeSurvivesDocument()
     QVERIFY(!range->feedback());
     delete range;
 }
+
+void MovingRangeTest::testRangeWithDynAttrNoCrash()
+{
+    KTextEditor::DocumentPrivate doc;
+    doc.setText(QStringLiteral("abc\ndef\nghi"));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+    std::unique_ptr<KTextEditor::MovingRange> range(doc.newMovingRange({0, 0, 0, 2}, MovingRange::DoNotExpand));
+    auto attr = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
+    auto dattr = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
+    attr->setDynamicAttribute(KTextEditor::Attribute::ActivateCaretIn, dattr);
+    range->setAttribute(attr);
+
+    view->setCursorPosition({0, 0});
+    // cursor moves
+    view->cursorRight();
+    // range is deleted for some reason
+    range.reset();
+    // cursor moves
+    view->cursorRight();
+    // no crashes
+}

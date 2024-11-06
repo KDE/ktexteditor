@@ -33,6 +33,7 @@ private Q_SLOTS:
     void benchRangeForLine();
     void testMultiblockRangeWithLineUnwrapping();
     void testRangeSurvivesDocument();
+    void testRangeWithDynAttrNoCrash();
 };
 
 #endif // KATE_MOVINGRANGE_TEST_H
