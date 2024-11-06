@@ -32,13 +32,8 @@ void KateLineLayoutMap::clear()
 
 void KateLineLayoutMap::insert(int realLine, std::unique_ptr<KateLineLayout> lineLayoutPtr)
 {
-    auto it = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, nullptr), lessThan);
-    if (it != m_lineLayouts.end() && (*it) == LineLayoutPair(realLine, nullptr)) {
-        (*it).second = std::move(lineLayoutPtr);
-    } else {
-        it = std::upper_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, nullptr), lessThan);
-        m_lineLayouts.insert(it, LineLayoutPair(realLine, std::move(lineLayoutPtr)));
-    }
+    auto it = std::upper_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, nullptr), lessThan);
+    m_lineLayouts.insert(it, LineLayoutPair(realLine, std::move(lineLayoutPtr)));
 }
 
 void KateLineLayoutMap::relayoutLines(int startRealLine, int endRealLine)
