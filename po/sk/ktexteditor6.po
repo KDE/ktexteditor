@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:37+0000\n"
+"POT-Creation-Date: 2024-11-07 00:37+0000\n"
 "PO-Revision-Date: 2023-12-12 19:23+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -37,17 +37,17 @@ msgstr "Jazykové kľúčové slová"
 msgid "Auto Word Completion"
 msgstr "Automatické ukončovanie slov"
 
-#: completion/katewordcompletion.cpp:302
+#: completion/katewordcompletion.cpp:301
 #, kde-format
 msgid "Shell Completion"
 msgstr "Dokončovanie shellu"
 
-#: completion/katewordcompletion.cpp:307
+#: completion/katewordcompletion.cpp:306
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Použiť slovo nad"
 
-#: completion/katewordcompletion.cpp:313
+#: completion/katewordcompletion.cpp:312
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Použiť slovo pod"

@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:37+0000\n"
+"POT-Creation-Date: 2024-11-07 00:37+0000\n"
 "PO-Revision-Date: 2024-10-07 06:57+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -52,17 +52,17 @@ msgstr "מילות מפתח בשפה"
 msgid "Auto Word Completion"
 msgstr "השלמת מילים אוטומטית"
 
-#: completion/katewordcompletion.cpp:302
+#: completion/katewordcompletion.cpp:301
 #, kde-format
 msgid "Shell Completion"
 msgstr "השלמת מסוף"
 
-#: completion/katewordcompletion.cpp:307
+#: completion/katewordcompletion.cpp:306
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "שימוש חוזר במילים שלעיל"
 
-#: completion/katewordcompletion.cpp:313
+#: completion/katewordcompletion.cpp:312
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "שימוש חוזר במילים שלהלן"
