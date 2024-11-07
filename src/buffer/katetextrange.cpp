@@ -238,11 +238,23 @@ void TextRange::setAttribute(KTextEditor::Attribute::Ptr attribute)
     }
 
     // remember the new attribute
+    const bool hadDynamicAttr = m_attribute
+        && (m_attribute->dynamicAttribute(KTextEditor::Attribute::ActivateCaretIn) || m_attribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn));
+
     m_attribute = attribute;
+
+    const bool stillHasDynAttr = m_attribute
+        && (m_attribute->dynamicAttribute(KTextEditor::Attribute::ActivateCaretIn) || m_attribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn));
+    const bool notifyDeletion = hadDynamicAttr && !stillHasDynAttr;
 
     // notify buffer about attribute change, it will propagate the changes
     // notify right view
-    m_buffer->notifyAboutRangeChange(m_view, toLineRange(), true /* even for nullptr attribute, we had before one => repaint */);
+    // if dyn attr was cleared, then notify about deleted range now because if this range is deleted
+    // its deletion will not be notified because it will have no dyn attr.
+    m_buffer->notifyAboutRangeChange(m_view,
+                                     toLineRange(),
+                                     true /* even for nullptr attribute, we had before one => repaint */,
+                                     notifyDeletion ? this : nullptr);
 }
 
 void TextRange::setFeedback(KTextEditor::MovingRangeFeedback *feedback)
@@ -253,11 +265,14 @@ void TextRange::setFeedback(KTextEditor::MovingRangeFeedback *feedback)
     }
 
     // remember the new feedback object
+    const bool feedbackCleared = m_feedback && !feedback;
     m_feedback = feedback;
 
     // notify buffer about feedback change, it will propagate the changes
     // notify right view
-    m_buffer->notifyAboutRangeChange(m_view, toLineRange(), m_attribute);
+    // if feedback was set to null, then notify about deleted range now because if this range is deleted
+    // its deletion will not be notified because it has no feedback.
+    m_buffer->notifyAboutRangeChange(m_view, toLineRange(), m_attribute, feedbackCleared ? this : nullptr);
 }
 
 void TextRange::setAttributeOnlyForViews(bool onlyForViews)
