@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-07 00:37+0000\n"
-"PO-Revision-Date: 2024-10-05 16:50+0200\n"
+"PO-Revision-Date: 2024-11-09 20:09+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.07.70\n"
+"X-Generator: Lokalize 24.08.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -2369,7 +2369,7 @@ msgid ""
 "Check that you have write access to this file or that enough disk space is "
 "available."
 msgstr ""
-"Документът не беше записан. Невъзможен запис в \"%1\".\n"
+"Документът не беше записан. Невъзможен запис в „%1“.\n"
 "\n"
 "Моля, проверете дали имате права за запис във файла и дали има достатъчно "
 "свободно място на диска."
@@ -2403,17 +2403,17 @@ msgstr ""
 #: document/katedocument.cpp:5590
 #, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "Файлът \"%1\" е модифициран на диска."
+msgstr "Файлът „%1“ е модифициран на диска."
 
 #: document/katedocument.cpp:5593
 #, kde-format
 msgid "The file '%1' was created on disk."
-msgstr "Файлът \"%1\" е създаден на диска."
+msgstr "Файлът „%1“ е създаден на диска."
 
 #: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "Файлът \"%1\" е изтрит или преместен от диска."
+msgstr "Файлът „%1“ е изтрит или преместен от диска."
 
 #: document/katedocument.cpp:5933
 #, kde-format
@@ -2421,9 +2421,9 @@ msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
-"Документът \"%1 \" бе променен.\n"
-"Искате ли да запазите промените си или да ги отхвърлите?Документът \"%1 \" "
-"бе променен.\n"
+"Документът „%1“  бе променен.\n"
+"Искате ли да запазите промените си или да ги отхвърлите?Документът „%1“  бе "
+"променен.\n"
 "Искате ли да запазите промените си или да ги отхвърлите?"
 
 #: document/katedocument.cpp:5936
@@ -2434,7 +2434,7 @@ msgstr "Затваряне на документа"
 #: document/katedocument.cpp:6047
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
-msgstr "Файлът <a href=\"%1\"> %2 </a> все още се зарежда."
+msgstr "Файлът <a href=„%1“> %2 </a> все още се зарежда."
 
 #: document/katedocument.cpp:6052
 #, kde-format
@@ -3499,7 +3499,7 @@ msgstr "XML стил"
 #: script/katecommandlinescript.cpp:37
 #, kde-format
 msgid "Function '%1' not found in script: %2"
-msgstr "Функцията \"%1\" не е намерена в скрипта: %2"
+msgstr "Функцията „%1“ не е намерена в скрипта: %2"
 
 #: script/katecommandlinescript.cpp:51
 #, kde-format
@@ -4206,7 +4206,7 @@ msgstr ""
 #: swapfile/kateswapdiffcreator.cpp:98
 #, kde-format
 msgid "The diff command '%1' could not be started."
-msgstr "Командата \"%1\" на diff не може да бъде стартирана."
+msgstr "Командата „%1“ на diff не може да бъде стартирана."
 
 #: swapfile/kateswapfile.cpp:629
 #, kde-format
@@ -4999,8 +4999,8 @@ msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
-"Импортирането ще замени съществуващия файл с тема\"%1\". Това не може да "
-"бъде отменено."
+"Импортирането ще замени съществуващия файл с тема„%1“. Това не може да бъде "
+"отменено."
 
 #: syntax/katethemeconfig.cpp:1208
 #, kde-format
@@ -5016,7 +5016,7 @@ msgstr "Спазване на системната цветова схема"
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
-"Наистина ли искате да изтриете темата\"%1\"? Това не може да бъде отменено."
+"Наистина ли искате да изтриете темата„%1“? Това не може да бъде отменено."
 
 #: syntax/katethemeconfig.cpp:1364
 #, kde-format
@@ -5031,7 +5031,7 @@ msgstr "Копиране на тема"
 #: syntax/katethemeconfig.cpp:1407
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
-msgstr "Име за копие на цветна тема\"%1\":"
+msgstr "Име за копие на цветна тема„%1“:"
 
 #: syntax/katethemeconfig.cpp:1419
 #, kde-format
@@ -5039,8 +5039,7 @@ msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr ""
-"<p> Темата\"%1\"вече съществува.</p><p> Моля, изберете друго име на тема. </"
-"p>"
+"<p> Темата„%1“вече съществува.</p><p> Моля, изберете друго име на тема. </p>"
 
 #: syntax/katethemeconfig.cpp:1420
 #, kde-format
@@ -5114,12 +5113,12 @@ msgstr "&Отметки"
 #: utils/katebookmarks.cpp:192
 #, kde-format
 msgid "&Next: %1 - \"%2\""
-msgstr "Следва&ща: %1 - \"%2\""
+msgstr "Следва&ща: %1 - „%2“"
 
 #: utils/katebookmarks.cpp:198
 #, kde-format
 msgid "&Previous: %1 - \"%2\""
-msgstr "Преди&шна: %1 - \"%2\""
+msgstr "Преди&шна: %1 - „%2“"
 
 #: utils/katecmds.cpp:53
 #, kde-format
@@ -5378,17 +5377,17 @@ msgstr "Липсващ аргумент. Използване: %1 <стойно�
 #: utils/katecmds.cpp:327
 #, kde-format
 msgid "No such highlighting '%1'"
-msgstr "Няма такова открояване \"%1\""
+msgstr "Няма такова открояване „%1“"
 
 #: utils/katecmds.cpp:333
 #, kde-format
 msgid "No such mode '%1'"
-msgstr "Няма такъв режим \"%1\""
+msgstr "Няма такъв режим „%1“"
 
 #: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
-msgstr "Грешка при конвертиране на аргумента \"%1\" до целочислен тип."
+msgstr "Грешка при конвертиране на аргумента „%1“ до целочислен тип."
 
 #: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
@@ -5408,7 +5407,7 @@ msgstr "Използване: %1 on|off|1|0|true|false"
 #: utils/katecmds.cpp:417
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
-msgstr "Невалиден аргумент \"%1\". Използване: %2 on|off|1|0|true|false"
+msgstr "Невалиден аргумент „%1“. Използване: %2 on|off|1|0|true|false"
 
 #: utils/katecmds.cpp:421
 #, kde-format
@@ -5420,7 +5419,7 @@ msgstr ""
 #: utils/katecmds.cpp:435 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
-msgstr "Непозната команда \"%1\""
+msgstr "Непозната команда „%1“"
 
 #: utils/katecmds.cpp:493
 #, kde-format
@@ -7897,12 +7896,12 @@ msgstr ""
 #: view/kateviewhelpers.cpp:1170
 #, kde-format
 msgid "No help for '%1'"
-msgstr "Няма помощ за \"%1\"."
+msgstr "Няма помощ за „%1“."
 
 #: view/kateviewhelpers.cpp:1173
 #, kde-format
 msgid "No such command <b>%1</b>"
-msgstr "Няма такава команда \"%1\"."
+msgstr "Няма такава команда „%1“."
 
 #: view/kateviewhelpers.cpp:1179
 #, kde-format
@@ -7920,12 +7919,12 @@ msgstr ""
 #: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
-msgstr "Няма такава команда: \"%1\""
+msgstr "Няма такава команда: „%1“"
 
 #: view/kateviewhelpers.cpp:1270 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
-msgstr "Грешка: Не е разрешен диапазон за команда\"%1\"."
+msgstr "Грешка: Не е разрешен диапазон за команда„%1“."
 
 #: view/kateviewhelpers.cpp:1280 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
@@ -7935,7 +7934,7 @@ msgstr "Успех: "
 #: view/kateviewhelpers.cpp:1294 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
-msgstr "Неуспешна команда \"%1\"."
+msgstr "Неуспешна команда „%1“."
 
 #: view/kateviewhelpers.cpp:2582 view/kateviewhelpers.cpp:2583
 #, kde-format
@@ -8216,12 +8215,12 @@ msgstr "Липсващ аргумент. Употреба: %1 <от>"
 #: vimode/cmds.cpp:68
 #, kde-format
 msgid "No mapping found for \"%1\""
-msgstr "Не е намерена схема за\"%1\""
+msgstr "Не е намерена схема за„%1“"
 
 #: vimode/cmds.cpp:71
 #, kde-format
 msgid "\"%1\" is mapped to \"%2\""
-msgstr "\"%1\"е свързано с \"%2\""
+msgstr "„%1“е свързано с „%2“"
 
 #: vimode/cmds.cpp:77
 #, kde-format
