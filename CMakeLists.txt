@@ -35,7 +35,7 @@ add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt 
 
 option(ENABLE_PCH "Enable Precompiled Headers support" ON)
 
-if (NOT WIN32)
+if (NOT WIN32 AND NOT HAIKU)
     set(ENABLE_KAUTH_DEFAULT ON)
 else()
     set(ENABLE_KAUTH_DEFAULT OFF)
