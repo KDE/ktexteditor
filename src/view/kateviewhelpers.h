@@ -17,6 +17,7 @@
 
 #include <QColor>
 #include <QHash>
+#include <QLabel>
 #include <QLayout>
 #include <QPixmap>
 #include <QPointer>
@@ -54,6 +55,7 @@ class TextRange;
 class QTimer;
 class QVBoxLayout;
 class QStackedWidget;
+class QLabel;
 
 /**
  * Class to layout KTextEditor::Message%s in KateView. Only the floating
@@ -224,6 +226,7 @@ private:
     QRect m_sliderRect;
     QTimer m_updateTimer;
     QPoint m_toolTipPos;
+    QLabel m_tooltipLineNoInfo;
 
     // lists of lines added/removed recently to avoid scrollbar flickering
     QHash<int, int> m_linesAdded;

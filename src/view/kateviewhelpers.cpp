@@ -168,6 +168,7 @@ KateScrollBar::KateScrollBar(Qt::Orientation orientation, KateViewInternal *pare
     , m_needsUpdateOnShow(false)
     , m_miniMapWidth(40)
     , m_grooveHeight(height())
+    , m_tooltipLineNoInfo(this)
 {
     connect(this, &KateScrollBar::valueChanged, this, &KateScrollBar::sliderMaybeMoved);
     connect(m_doc, &KTextEditor::DocumentPrivate::marksChanged, this, &KateScrollBar::marksChanged);
@@ -182,6 +183,12 @@ KateScrollBar::KateScrollBar(Qt::Orientation orientation, KateViewInternal *pare
     m_delayTextPreviewTimer.setSingleShot(true);
     m_delayTextPreviewTimer.setInterval(250);
     connect(&m_delayTextPreviewTimer, &QTimer::timeout, this, &KateScrollBar::showTextPreview);
+
+    m_tooltipLineNoInfo.setTextFormat(Qt::TextFormat::RichText);
+    m_tooltipLineNoInfo.setBackgroundRole(QPalette::Window);
+    m_tooltipLineNoInfo.setContentsMargins({2, 2, 2, 2});
+    m_tooltipLineNoInfo.setAutoFillBackground(true);
+    m_tooltipLineNoInfo.setVisible(false);
 }
 
 void KateScrollBar::showEvent(QShowEvent *event)
@@ -281,10 +288,16 @@ void KateScrollBar::mousePressEvent(QMouseEvent *e)
         QScrollBar::mousePressEvent(e);
     }
 
-    m_toolTipPos = e->globalPosition().toPoint() - QPoint(e->pos().x(), 0);
+    auto toolTipPos = e->globalPosition().toPoint() - QPoint(e->pos().x(), 0);
+    toolTipPos.ry() += m_sliderRect.height();
+    m_toolTipPos = toolTipPos;
     const int fromLine = m_viewInternal->toRealCursor(m_viewInternal->startPos()).line() + 1;
     const int lastLine = m_viewInternal->toRealCursor(m_viewInternal->endPos()).line() + 1;
-    QToolTip::showText(m_toolTipPos, i18nc("from line - to line", "<center>%1<br/>&#x2014;<br/>%2</center>", fromLine, lastLine), this);
+    const QString text = i18nc("from line - to line", "<center>%1<br/>&#x2014;<br/>%2</center>", fromLine, lastLine);
+    m_tooltipLineNoInfo.setText(text);
+    m_tooltipLineNoInfo.setVisible(true);
+    m_tooltipLineNoInfo.adjustSize();
+    m_tooltipLineNoInfo.move(mapFromGlobal(toolTipPos));
 
     redrawMarks();
 }
@@ -299,9 +312,7 @@ void KateScrollBar::mouseReleaseEvent(QMouseEvent *e)
 
     redrawMarks();
 
-    if (m_leftMouseDown || m_middleMouseDown) {
-        QToolTip::hideText();
-    }
+    m_tooltipLineNoInfo.setVisible(false);
 
     if (m_showMiniMap) {
         const QPoint pos(e->pos().x(), minimapYToStdY(e->pos().y()));
@@ -326,10 +337,16 @@ void KateScrollBar::mouseMoveEvent(QMouseEvent *e)
         redrawMarks();
 
         // current line tool tip
-        m_toolTipPos = e->globalPosition().toPoint() - QPoint(e->pos().x(), 0);
+        auto toolTipPos = e->globalPosition().toPoint() - QPoint(e->pos().x(), 0);
+        toolTipPos.ry() += m_sliderRect.height();
+        m_toolTipPos = toolTipPos;
         const int fromLine = m_viewInternal->toRealCursor(m_viewInternal->startPos()).line() + 1;
         const int lastLine = m_viewInternal->toRealCursor(m_viewInternal->endPos()).line() + 1;
-        QToolTip::showText(m_toolTipPos, i18nc("from line - to line", "<center>%1<br/>&#x2014;<br/>%2</center>", fromLine, lastLine), this);
+        const QString text = i18nc("from line - to line", "<center>%1<br/>&#x2014;<br/>%2</center>", fromLine, lastLine);
+        m_tooltipLineNoInfo.setText(text);
+        m_tooltipLineNoInfo.setVisible(true);
+        m_tooltipLineNoInfo.adjustSize();
+        m_tooltipLineNoInfo.move(mapFromGlobal(toolTipPos));
     }
 
     showTextPreviewDelayed();
@@ -985,7 +1002,11 @@ void KateScrollBar::sliderChange(SliderChange change)
     if (m_leftMouseDown || m_middleMouseDown) {
         const int fromLine = m_viewInternal->toRealCursor(m_viewInternal->startPos()).line() + 1;
         const int lastLine = m_viewInternal->toRealCursor(m_viewInternal->endPos()).line() + 1;
-        QToolTip::showText(m_toolTipPos, i18nc("from line - to line", "<center>%1<br/>&#x2014;<br/>%2</center>", fromLine, lastLine), this);
+        const QString text = i18nc("from line - to line", "<center>%1<br/>&#x2014;<br/>%2</center>", fromLine, lastLine);
+        m_tooltipLineNoInfo.setText(text);
+        m_tooltipLineNoInfo.setVisible(true);
+        m_tooltipLineNoInfo.adjustSize();
+        m_tooltipLineNoInfo.move(mapFromGlobal(m_toolTipPos));
     }
 }
 
