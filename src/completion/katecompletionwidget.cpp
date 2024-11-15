@@ -517,7 +517,10 @@ void KateCompletionWidget::updatePosition(bool force)
     if (!completionRange()) {
         return;
     }
-    const QPoint localCursorCoord = view()->cursorToCoordinate(completionRange()->start());
+
+    QPoint localCursorCoord = view()->cursorToCoordinate(completionRange()->start());
+    int s = m_entryList->textColumnOffset() + (frameWidth() * 2);
+    localCursorCoord.rx() -= s;
     if (localCursorCoord == QPoint(-1, -1)) {
         // Start of completion range is now off-screen -> abort
         abortCompletion();

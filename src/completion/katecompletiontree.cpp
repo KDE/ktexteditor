@@ -72,6 +72,16 @@ void KateCompletionTree::setScrollingEnabled(bool enabled)
     m_scrollingEnabled = enabled;
 }
 
+int KateCompletionTree::textColumnOffset() const
+{
+    QStyleOptionViewItem item;
+    item.index = currentIndex();
+    initViewItemOption(&item);
+    int margins = style()->pixelMetric(QStyle::PM_FocusFrameHMargin) * 3;
+    int nameColumn = kateModel()->translateColumn(KTextEditor::CodeCompletionModel::Name);
+    return margins + item.decorationSize.width() + columnViewportPosition(nameColumn);
+}
+
 void KateCompletionTree::scrollContentsBy(int dx, int dy)
 {
     if (m_scrollingEnabled) {

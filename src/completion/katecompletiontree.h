@@ -42,6 +42,8 @@ public:
 
     void setScrollingEnabled(bool);
 
+    int textColumnOffset() const;
+
 private:
     void resizeColumnsSlot();
 
