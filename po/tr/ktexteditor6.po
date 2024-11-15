@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-07 00:37+0000\n"
+"POT-Creation-Date: 2024-11-15 00:37+0000\n"
 "PO-Revision-Date: 2024-10-05 10:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -3106,6 +3106,8 @@ msgstr "İmleci Önceki Eşleşen Girintiye Taşı"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
+#: script/data/commands/jumpMatchingIndent.js:21
+#: script/data/commands/jumpMatchingIndent.js:26
 #: script/data/commands/navigation.js:10 script/data/commands/navigation.js:14
 #, kde-format
 msgctxt "Script command category"
@@ -3118,15 +3120,43 @@ msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "İmleci Sonraki Eşleşen Girintiye Taşı"
 
-#: script/data/commands/jumpMatchingIndent.js:44
+#: script/data/commands/jumpMatchingIndent.js:19
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Move Cursor to Next Matching Indent"
+msgctxt "Script command name"
+msgid "Move Cursor to Next Blank Line"
+msgstr "İmleci Sonraki Eşleşen Girintiye Taşı"
+
+#: script/data/commands/jumpMatchingIndent.js:24
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Move Cursor to Previous Matching Indent"
+msgctxt "Script command name"
+msgid "Move Cursor to Previous Blank Line"
+msgstr "İmleci Önceki Eşleşen Girintiye Taşı"
+
+#: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
 msgid "Move cursor to previous matching indent"
 msgstr "İmleci önceki eşleşen girintiye taşı"
 
-#: script/data/commands/jumpMatchingIndent.js:47
+#: script/data/commands/jumpMatchingIndent.js:83
 #, kde-format
 msgid "Move cursor to next matching indent"
 msgstr "İmleci sonraki eşleşen girintiye taşı"
+
+#: script/data/commands/jumpMatchingIndent.js:85
+#, fuzzy, kde-format
+#| msgid "Move cursor to next matching indent"
+msgid "Move cursor to next blank line"
+msgstr "İmleci sonraki eşleşen girintiye taşı"
+
+#: script/data/commands/jumpMatchingIndent.js:87
+#, fuzzy, kde-format
+#| msgid "Move cursor to previous matching indent"
+msgid "Move cursor to previous blank line"
+msgstr "İmleci önceki eşleşen girintiye taşı"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
@@ -4776,7 +4806,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "İmleyici Renkleri"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1486
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1507
 #, kde-format
 msgid "Bookmark"
 msgstr "Yer İmi"
@@ -7867,19 +7897,19 @@ msgstr "Hizalama dizgisi:"
 msgid "Export File as HTML"
 msgstr "Dosyayı HTML Olarak Dışa Aktar"
 
-#: view/kateviewhelpers.cpp:287 view/kateviewhelpers.cpp:332
-#: view/kateviewhelpers.cpp:988
+#: view/kateviewhelpers.cpp:296 view/kateviewhelpers.cpp:345
+#: view/kateviewhelpers.cpp:1005
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1162
+#: view/kateviewhelpers.cpp:1183
 #, kde-format
 msgid "Available Commands"
 msgstr "Uygun komutlar"
 
-#: view/kateviewhelpers.cpp:1163
+#: view/kateviewhelpers.cpp:1184
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7888,17 +7918,17 @@ msgstr ""
 "<p>Kişiye özel komutlar hakkında yardım için: “<code>help &lt;command&gt;</"
 "code>”</p>"
 
-#: view/kateviewhelpers.cpp:1170
+#: view/kateviewhelpers.cpp:1191
 #, kde-format
 msgid "No help for '%1'"
 msgstr "“%1” için yardım yok"
 
-#: view/kateviewhelpers.cpp:1173
+#: view/kateviewhelpers.cpp:1194
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "<b>%1</b> adlı bir komut yok"
 
-#: view/kateviewhelpers.cpp:1179
+#: view/kateviewhelpers.cpp:1200
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7911,37 +7941,37 @@ msgstr ""
 "<code><b>help list</b>girin</code><br />Kişiye özel komutlar hakkında yardım "
 "için: <code><b>help &lt;komut&gt;</b> girin</code></p>"
 
-#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1288 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Bu adda bir komut yok: “%1”"
 
-#: view/kateviewhelpers.cpp:1270 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Hata: “%1” komutu için bir erime izin verilmiyor."
 
-#: view/kateviewhelpers.cpp:1280 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1301 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Başarılı: "
 
-#: view/kateviewhelpers.cpp:1294 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "“%1” komutu başarısız oldu"
 
-#: view/kateviewhelpers.cpp:2582 view/kateviewhelpers.cpp:2583
+#: view/kateviewhelpers.cpp:2603 view/kateviewhelpers.cpp:2604
 #, kde-format
 msgid "Mark Type %1"
 msgstr "%1 İm Türü"
 
-#: view/kateviewhelpers.cpp:2606
+#: view/kateviewhelpers.cpp:2627
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Öntanımlı İm Türünü Ayarla"
 
-#: view/kateviewhelpers.cpp:2747
+#: view/kateviewhelpers.cpp:2768
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Bilgi Notu Çubuğunu Devre Dışı Bırak"

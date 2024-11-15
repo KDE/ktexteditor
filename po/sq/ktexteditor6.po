@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde4libs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-07 00:37+0000\n"
+"POT-Creation-Date: 2024-11-15 00:37+0000\n"
 "PO-Revision-Date: 2009-04-25 21:46+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -2912,6 +2912,8 @@ msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
+#: script/data/commands/jumpMatchingIndent.js:21
+#: script/data/commands/jumpMatchingIndent.js:26
 #: script/data/commands/navigation.js:10 script/data/commands/navigation.js:14
 #, fuzzy, kde-format
 #| msgctxt "Language Section"
@@ -2926,14 +2928,38 @@ msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr ""
 
-#: script/data/commands/jumpMatchingIndent.js:44
+#: script/data/commands/jumpMatchingIndent.js:19
+#, kde-format
+msgctxt "Script command name"
+msgid "Move Cursor to Next Blank Line"
+msgstr ""
+
+#: script/data/commands/jumpMatchingIndent.js:24
+#, fuzzy, kde-format
+#| msgctxt "Language"
+#| msgid "Modelica"
+msgctxt "Script command name"
+msgid "Move Cursor to Previous Blank Line"
+msgstr "Modelica"
+
+#: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
 msgid "Move cursor to previous matching indent"
 msgstr ""
 
-#: script/data/commands/jumpMatchingIndent.js:47
+#: script/data/commands/jumpMatchingIndent.js:83
 #, kde-format
 msgid "Move cursor to next matching indent"
+msgstr ""
+
+#: script/data/commands/jumpMatchingIndent.js:85
+#, kde-format
+msgid "Move cursor to next blank line"
+msgstr ""
+
+#: script/data/commands/jumpMatchingIndent.js:87
+#, kde-format
+msgid "Move cursor to previous blank line"
 msgstr ""
 
 #: script/data/commands/navigation.js:9
@@ -4505,7 +4531,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1486
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1507
 #, kde-format
 msgid "Bookmark"
 msgstr "Mbaje Shënim"
@@ -7428,36 +7454,36 @@ msgstr ""
 msgid "Export File as HTML"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:287 view/kateviewhelpers.cpp:332
-#: view/kateviewhelpers.cpp:988
+#: view/kateviewhelpers.cpp:296 view/kateviewhelpers.cpp:345
+#: view/kateviewhelpers.cpp:1005
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1162
+#: view/kateviewhelpers.cpp:1183
 #, kde-format
 msgid "Available Commands"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1163
+#: view/kateviewhelpers.cpp:1184
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
 "p>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1170
+#: view/kateviewhelpers.cpp:1191
 #, kde-format
 msgid "No help for '%1'"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1173
+#: view/kateviewhelpers.cpp:1194
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1179
+#: view/kateviewhelpers.cpp:1200
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7466,37 +7492,37 @@ msgid ""
 "<code><b>help &lt;command&gt;</b></code></p>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1288 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1270 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1280 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1301 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1294 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:2582 view/kateviewhelpers.cpp:2583
+#: view/kateviewhelpers.cpp:2603 view/kateviewhelpers.cpp:2604
 #, kde-format
 msgid "Mark Type %1"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:2606
+#: view/kateviewhelpers.cpp:2627
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:2747
+#: view/kateviewhelpers.cpp:2768
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr ""

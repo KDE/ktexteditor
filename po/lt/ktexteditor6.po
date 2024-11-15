@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-07 00:37+0000\n"
+"POT-Creation-Date: 2024-11-15 00:37+0000\n"
 "PO-Revision-Date: 2017-07-30 15:55+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -3226,6 +3226,8 @@ msgstr "Peršokti prie uždarančio ar atidarančio skliaustelio"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
+#: script/data/commands/jumpMatchingIndent.js:21
+#: script/data/commands/jumpMatchingIndent.js:26
 #: script/data/commands/navigation.js:10 script/data/commands/navigation.js:14
 #, fuzzy, kde-format
 #| msgid "Navigation"
@@ -3241,14 +3243,42 @@ msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "Peršokti prie uždarančio ar atidarančio skliaustelio"
 
-#: script/data/commands/jumpMatchingIndent.js:44
+#: script/data/commands/jumpMatchingIndent.js:19
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Move cursor to next matching indent"
+msgctxt "Script command name"
+msgid "Move Cursor to Next Blank Line"
+msgstr "Peršokti prie uždarančio ar atidarančio skliaustelio"
+
+#: script/data/commands/jumpMatchingIndent.js:24
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Move cursor to previous matching indent"
+msgctxt "Script command name"
+msgid "Move Cursor to Previous Blank Line"
+msgstr "Peršokti prie uždarančio ar atidarančio skliaustelio"
+
+#: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
 msgid "Move cursor to previous matching indent"
 msgstr "Peršokti prie uždarančio ar atidarančio skliaustelio"
 
-#: script/data/commands/jumpMatchingIndent.js:47
+#: script/data/commands/jumpMatchingIndent.js:83
 #, kde-format
 msgid "Move cursor to next matching indent"
+msgstr "Peršokti prie uždarančio ar atidarančio skliaustelio"
+
+#: script/data/commands/jumpMatchingIndent.js:85
+#, fuzzy, kde-format
+#| msgid "Move cursor to next matching indent"
+msgid "Move cursor to next blank line"
+msgstr "Peršokti prie uždarančio ar atidarančio skliaustelio"
+
+#: script/data/commands/jumpMatchingIndent.js:87
+#, fuzzy, kde-format
+#| msgid "Move cursor to previous matching indent"
+msgid "Move cursor to previous blank line"
 msgstr "Peršokti prie uždarančio ar atidarančio skliaustelio"
 
 #: script/data/commands/navigation.js:9
@@ -4943,7 +4973,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Žymeklio spalvos"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1486
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1507
 #, kde-format
 msgid "Bookmark"
 msgstr "Žymelė"
@@ -8067,19 +8097,19 @@ msgstr ""
 msgid "Export File as HTML"
 msgstr "Eksportuoti failą kaip HTML"
 
-#: view/kateviewhelpers.cpp:287 view/kateviewhelpers.cpp:332
-#: view/kateviewhelpers.cpp:988
+#: view/kateviewhelpers.cpp:296 view/kateviewhelpers.cpp:345
+#: view/kateviewhelpers.cpp:1005
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1162
+#: view/kateviewhelpers.cpp:1183
 #, kde-format
 msgid "Available Commands"
 msgstr "Galimos komandos"
 
-#: view/kateviewhelpers.cpp:1163
+#: view/kateviewhelpers.cpp:1184
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -8088,17 +8118,17 @@ msgstr ""
 "<p>Norėdami gauti pagalbą atskiroms komandoms, rašykite <code>'help &lt;"
 "komanda&gt;'</code></p>"
 
-#: view/kateviewhelpers.cpp:1170
+#: view/kateviewhelpers.cpp:1191
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Komandai „%1“ pagalbos informacijos nėra"
 
-#: view/kateviewhelpers.cpp:1173
+#: view/kateviewhelpers.cpp:1194
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Komandos <b>%1</b> nėra"
 
-#: view/kateviewhelpers.cpp:1179
+#: view/kateviewhelpers.cpp:1200
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -8111,37 +8141,37 @@ msgstr ""
 "įrašykite <code><b>help list</b></code><br />Norėdami gauti pagalbą dėl "
 "individualių komandų, įrašykite <code><b>help &lt;komanda&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1288 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Nėra tokios komandos: „%1“"
 
-#: view/kateviewhelpers.cpp:1270 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Klaida: komandai „%1“ nenustatyta sritis."
 
-#: view/kateviewhelpers.cpp:1280 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1301 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Sėkmė: "
 
-#: view/kateviewhelpers.cpp:1294 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Komanda „%1“ nepavyko."
 
-#: view/kateviewhelpers.cpp:2582 view/kateviewhelpers.cpp:2583
+#: view/kateviewhelpers.cpp:2603 view/kateviewhelpers.cpp:2604
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Žymės tipas %1"
 
-#: view/kateviewhelpers.cpp:2606
+#: view/kateviewhelpers.cpp:2627
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Naudoti numatytą žymės tipą"
 
-#: view/kateviewhelpers.cpp:2747
+#: view/kateviewhelpers.cpp:2768
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Išjungti anotacijų juostą"

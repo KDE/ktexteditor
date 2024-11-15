@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-07 00:37+0000\n"
+"POT-Creation-Date: 2024-11-15 00:37+0000\n"
 "PO-Revision-Date: 2024-10-07 11:54+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
@@ -3137,6 +3137,8 @@ msgstr "Move cursor al previe puncto de indentation correspondente"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
+#: script/data/commands/jumpMatchingIndent.js:21
+#: script/data/commands/jumpMatchingIndent.js:26
 #: script/data/commands/navigation.js:10 script/data/commands/navigation.js:14
 #, kde-format
 msgctxt "Script command category"
@@ -3149,15 +3151,43 @@ msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "Move cursor al proxime puncto de indentation correspondente"
 
-#: script/data/commands/jumpMatchingIndent.js:44
+#: script/data/commands/jumpMatchingIndent.js:19
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Move Cursor to Next Matching Indent"
+msgctxt "Script command name"
+msgid "Move Cursor to Next Blank Line"
+msgstr "Move cursor al proxime puncto de indentation correspondente"
+
+#: script/data/commands/jumpMatchingIndent.js:24
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Move Cursor to Previous Matching Indent"
+msgctxt "Script command name"
+msgid "Move Cursor to Previous Blank Line"
+msgstr "Move cursor al previe puncto de indentation correspondente"
+
+#: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
 msgid "Move cursor to previous matching indent"
 msgstr "Move cursor al previue puncto de indentation correspondente"
 
-#: script/data/commands/jumpMatchingIndent.js:47
+#: script/data/commands/jumpMatchingIndent.js:83
 #, kde-format
 msgid "Move cursor to next matching indent"
 msgstr "Move cursor al proxime puncto de indentation correspondente"
+
+#: script/data/commands/jumpMatchingIndent.js:85
+#, fuzzy, kde-format
+#| msgid "Move cursor to next matching indent"
+msgid "Move cursor to next blank line"
+msgstr "Move cursor al proxime puncto de indentation correspondente"
+
+#: script/data/commands/jumpMatchingIndent.js:87
+#, fuzzy, kde-format
+#| msgid "Move cursor to previous matching indent"
+msgid "Move cursor to previous blank line"
+msgstr "Move cursor al previue puncto de indentation correspondente"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
@@ -4812,7 +4842,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Colores de marcator"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1486
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1507
 #, kde-format
 msgid "Bookmark"
 msgstr "Marcator de libro"
@@ -7940,19 +7970,19 @@ msgstr "Patrono de alineamento:"
 msgid "Export File as HTML"
 msgstr "Exporta file como HTML"
 
-#: view/kateviewhelpers.cpp:287 view/kateviewhelpers.cpp:332
-#: view/kateviewhelpers.cpp:988
+#: view/kateviewhelpers.cpp:296 view/kateviewhelpers.cpp:345
+#: view/kateviewhelpers.cpp:1005
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1162
+#: view/kateviewhelpers.cpp:1183
 #, kde-format
 msgid "Available Commands"
 msgstr "Commandos disponibile"
 
-#: view/kateviewhelpers.cpp:1163
+#: view/kateviewhelpers.cpp:1184
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7961,17 +7991,17 @@ msgstr ""
 "<p> Pro adjuta supra commandos individual, tu face <code>'help &lt:"
 "command&gt;'</code></p>"
 
-#: view/kateviewhelpers.cpp:1170
+#: view/kateviewhelpers.cpp:1191
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Nulle adjuta pro '%1'"
 
-#: view/kateviewhelpers.cpp:1173
+#: view/kateviewhelpers.cpp:1194
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Nulle tal commando <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1179
+#: view/kateviewhelpers.cpp:1200
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7984,37 +8014,37 @@ msgstr ""
 "disponibile, tu inserta <code><b>help list</b></code><br /> Pro adjuta super "
 "commandos individual, inserta <code><b>help &lt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1288 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Necun tal commando: \"%1\""
 
-#: view/kateviewhelpers.cpp:1270 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Error: necun extension permittite pro commando \"%1\"."
 
-#: view/kateviewhelpers.cpp:1280 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1301 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Successo:"
 
-#: view/kateviewhelpers.cpp:1294 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Commando \"%1\" falleva."
 
-#: view/kateviewhelpers.cpp:2582 view/kateviewhelpers.cpp:2583
+#: view/kateviewhelpers.cpp:2603 view/kateviewhelpers.cpp:2604
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Typo de marca %1"
 
-#: view/kateviewhelpers.cpp:2606
+#: view/kateviewhelpers.cpp:2627
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Fixa le typo de marca predefinite"
 
-#: view/kateviewhelpers.cpp:2747
+#: view/kateviewhelpers.cpp:2768
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Dishabilita le barra de annotation"

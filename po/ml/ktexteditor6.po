@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-07 00:37+0000\n"
+"POT-Creation-Date: 2024-11-15 00:37+0000\n"
 "PO-Revision-Date: 2019-12-12 21:03+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc-"
@@ -2876,6 +2876,8 @@ msgstr "വാക്കു് വലത്തേക്കു് നീക്ക�
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
+#: script/data/commands/jumpMatchingIndent.js:21
+#: script/data/commands/jumpMatchingIndent.js:26
 #: script/data/commands/navigation.js:10 script/data/commands/navigation.js:14
 #, fuzzy, kde-format
 msgctxt "Script command category"
@@ -2888,14 +2890,36 @@ msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "വാക്കു് വലത്തേക്കു് നീക്കുക"
 
-#: script/data/commands/jumpMatchingIndent.js:44
+#: script/data/commands/jumpMatchingIndent.js:19
+#, fuzzy, kde-format
+msgctxt "Script command name"
+msgid "Move Cursor to Next Blank Line"
+msgstr "വാക്കു് വലത്തേക്കു് നീക്കുക"
+
+#: script/data/commands/jumpMatchingIndent.js:24
+#, fuzzy, kde-format
+msgctxt "Script command name"
+msgid "Move Cursor to Previous Blank Line"
+msgstr "വാക്കു് വലത്തേക്കു് നീക്കുക"
+
+#: script/data/commands/jumpMatchingIndent.js:80
 #, fuzzy, kde-format
 msgid "Move cursor to previous matching indent"
 msgstr "വാക്കു് വലത്തേക്കു് നീക്കുക"
 
-#: script/data/commands/jumpMatchingIndent.js:47
+#: script/data/commands/jumpMatchingIndent.js:83
 #, fuzzy, kde-format
 msgid "Move cursor to next matching indent"
+msgstr "വാക്കു് വലത്തേക്കു് നീക്കുക"
+
+#: script/data/commands/jumpMatchingIndent.js:85
+#, fuzzy, kde-format
+msgid "Move cursor to next blank line"
+msgstr "വാക്കു് വലത്തേക്കു് നീക്കുക"
+
+#: script/data/commands/jumpMatchingIndent.js:87
+#, fuzzy, kde-format
+msgid "Move cursor to previous blank line"
 msgstr "വാക്കു് വലത്തേക്കു് നീക്കുക"
 
 #: script/data/commands/navigation.js:9
@@ -4435,7 +4459,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "നിറങ്ങള്‍"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1486
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1507
 #, kde-format
 msgid "Bookmark"
 msgstr "ഓര്‍മ്മക്കുറിപ്പു്"
@@ -7333,19 +7357,19 @@ msgstr ""
 msgid "Export File as HTML"
 msgstr "ഫയല്‍ HTML ആയി ലഭ്യമാക്കുക"
 
-#: view/kateviewhelpers.cpp:287 view/kateviewhelpers.cpp:332
-#: view/kateviewhelpers.cpp:988
+#: view/kateviewhelpers.cpp:296 view/kateviewhelpers.cpp:345
+#: view/kateviewhelpers.cpp:1005
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1162
+#: view/kateviewhelpers.cpp:1183
 #, kde-format
 msgid "Available Commands"
 msgstr "ലഭ്യമായ കമാന്‍ഡുകള്‍"
 
-#: view/kateviewhelpers.cpp:1163
+#: view/kateviewhelpers.cpp:1184
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7354,17 +7378,17 @@ msgstr ""
 "<p>ഓരോ കമാന്‍ഡുകള്‍ക്കും ആവശ്യമുള്ള സഹായത്തിനായി, <code>'help &lt;command&gt;'</code></"
 "p> ഉപയോഗിക്കുക."
 
-#: view/kateviewhelpers.cpp:1170
+#: view/kateviewhelpers.cpp:1191
 #, kde-format
 msgid "No help for '%1'"
 msgstr "'%1'-നു് സഹായം ലഭ്യമല്ല"
 
-#: view/kateviewhelpers.cpp:1173
+#: view/kateviewhelpers.cpp:1194
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "ഇങ്ങനെയൊരു കമാന്‍ഡു് ലഭ്യമല്ല <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1179
+#: view/kateviewhelpers.cpp:1200
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7373,37 +7397,37 @@ msgid ""
 "<code><b>help &lt;command&gt;</b></code></p>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1288 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "ഇങ്ങനെയൊരു കമാന്‍ഡു് ലഭ്യമല്ല: \"%1\""
 
-#: view/kateviewhelpers.cpp:1270 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1280 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1301 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "വിജയിച്ചു: "
 
-#: view/kateviewhelpers.cpp:1294 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "\"%1\" കമാന്‍ഡു് പരാജയപ്പെട്ടു."
 
-#: view/kateviewhelpers.cpp:2582 view/kateviewhelpers.cpp:2583
+#: view/kateviewhelpers.cpp:2603 view/kateviewhelpers.cpp:2604
 #, kde-format
 msgid "Mark Type %1"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:2606
+#: view/kateviewhelpers.cpp:2627
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:2747
+#: view/kateviewhelpers.cpp:2768
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr ""
