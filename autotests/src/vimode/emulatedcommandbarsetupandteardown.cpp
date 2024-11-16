@@ -52,7 +52,7 @@ EmulatedCommandBarSetUpAndTearDown::EmulatedCommandBarSetUpAndTearDown(KateViInp
 {
     m_window->show();
     m_view->show();
-    QApplication::setActiveWindow(m_window);
+    m_window->activateWindow();
     m_view->setFocus();
     QApplication::processEvents();
     KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, true);

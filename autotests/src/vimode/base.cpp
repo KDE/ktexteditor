@@ -314,7 +314,7 @@ void BaseTest::ensureKateViewVisible()
 {
     mainWindow->show();
     kate_view->show();
-    QApplication::setActiveWindow(mainWindow);
+    mainWindow->activateWindow();
     kate_view->setFocus();
     const QDateTime startTime = QDateTime::currentDateTime();
     while (startTime.msecsTo(QDateTime::currentDateTime()) < 3000 && !mainWindow->isActiveWindow()) {
