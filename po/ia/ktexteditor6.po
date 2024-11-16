@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-15 00:37+0000\n"
-"PO-Revision-Date: 2024-10-07 11:54+0200\n"
+"PO-Revision-Date: 2024-11-15 12:29+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -3152,20 +3152,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "Move cursor al proxime puncto de indentation correspondente"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Move cursor al proxime puncto de indentation correspondente"
+msgstr "Move cursor al proxime rango blanc (vacue)"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Move cursor al previe puncto de indentation correspondente"
+msgstr "Move cursor al previe rango blanc (vacue)"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3178,16 +3174,14 @@ msgid "Move cursor to next matching indent"
 msgstr "Move cursor al proxime puncto de indentation correspondente"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Move cursor al proxime puncto de indentation correspondente"
+msgstr "Move cursor al proxime rango blanc (vacue)"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Move cursor al previue puncto de indentation correspondente"
+msgstr "Move cursor al previe rango blanc (vacue)"
 
 #: script/data/commands/navigation.js:9
 #, kde-format

@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-15 00:37+0000\n"
-"PO-Revision-Date: 2024-10-06 01:36+0200\n"
+"PO-Revision-Date: 2024-11-15 20:09+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -24,7 +24,7 @@ msgstr ""
 "com>\n"
 "com>\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 24.08.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -3166,20 +3166,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "Mover el cursor al sangrado emparejado siguiente"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Mover el cursor al sangrado emparejado siguiente"
+msgstr "Mover el cursor a la siguiente línea en blanco"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Mover el cursor al sangrado emparejado anterior"
+msgstr "Mover el cursor a la anterior línea en blanco"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3192,16 +3188,14 @@ msgid "Move cursor to next matching indent"
 msgstr "Mover el cursor al sangrado emparejado siguiente"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Mover el cursor al sangrado emparejado siguiente"
+msgstr "Mover el cursor a la siguiente línea en blanco"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Mover el cursor al sangrado emparejado anterior"
+msgstr "Mover el cursor a la anterior línea en blanco"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
