@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-15 00:37+0000\n"
-"PO-Revision-Date: 2024-10-18 17:12+0100\n"
+"PO-Revision-Date: 2024-11-16 12:54+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -3103,20 +3103,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "Move Cursor to Next Matching Indent"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Move Cursor to Next Matching Indent"
+msgstr "Move Cursor to Next Blank Line"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Move Cursor to Previous Matching Indent"
+msgstr "Move Cursor to Previous Blank Line"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3129,16 +3125,14 @@ msgid "Move cursor to next matching indent"
 msgstr "Move cursor to next matching indent"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Move cursor to next matching indent"
+msgstr "Move cursor to next blank line"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Move cursor to previous matching indent"
+msgstr "Move cursor to previous blank line"
 
 #: script/data/commands/navigation.js:9
 #, kde-format

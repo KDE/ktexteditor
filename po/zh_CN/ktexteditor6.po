@@ -2994,13 +2994,13 @@ msgstr "移动光标至下一个匹配的缩进"
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr ""
+msgstr "移动光标到下一个空白行"
 
 #: script/data/commands/jumpMatchingIndent.js:24
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr ""
+msgstr "移动光标到上一个空白行"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3015,12 +3015,12 @@ msgstr "移动光标至下一个匹配的缩进"
 #: script/data/commands/jumpMatchingIndent.js:85
 #, kde-format
 msgid "Move cursor to next blank line"
-msgstr ""
+msgstr "移动光标到下一个空白行"
 
 #: script/data/commands/jumpMatchingIndent.js:87
 #, kde-format
 msgid "Move cursor to previous blank line"
-msgstr ""
+msgstr "移动光标到上一个空白行"
 
 #: script/data/commands/navigation.js:9
 #, kde-format

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-15 00:37+0000\n"
-"PO-Revision-Date: 2024-11-13 22:45+0100\n"
+"PO-Revision-Date: 2024-11-16 20:36+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -3121,20 +3121,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "Kurzor mozgatása a következő illeszkedő behúzáshoz"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Kurzor mozgatása a következő illeszkedő behúzáshoz"
+msgstr "Kurzor mozgatása a következő üres sorra"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Kurzor mozgatása az előző illeszkedő behúzáshoz"
+msgstr "Kurzor mozgatása az előző üres sorra"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3147,16 +3143,14 @@ msgid "Move cursor to next matching indent"
 msgstr "Kurzor mozgatása a következő illeszkedő behúzáshoz"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Kurzor mozgatása a következő illeszkedő behúzáshoz"
+msgstr "Kurzor mozgatása a következő üres sorra"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Kurzor mozgatása az előző illeszkedő behúzáshoz"
+msgstr "Kurzor mozgatása az előző üres sorra"
 
 #: script/data/commands/navigation.js:9
 #, kde-format

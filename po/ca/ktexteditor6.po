@@ -9,7 +9,6 @@
 # Albert Astals Cid <aacid@kde.org>, 2004, 2005.
 # Robert Millan <rmh@aybabtu.com>, 2009.
 # Empar Montoro Martín <montoro_mde@gva.es>, 2019.
-# Josep M. Ferrer <txemaq@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"

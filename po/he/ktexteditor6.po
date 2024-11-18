@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-15 00:37+0000\n"
-"PO-Revision-Date: 2024-10-07 06:57+0300\n"
+"PO-Revision-Date: 2024-11-15 03:38+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -3056,20 +3056,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "העברת הסמן להזחה התואמת הבאה"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "העברת הסמן להזחה התואמת הבאה"
+msgstr "העברת הסמן לשורה הריקה הבאה"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "העברת הסמן להזחה התואמת הקודמת"
+msgstr "העברת הסמן לשורה הריקה הקודמת"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3082,16 +3078,14 @@ msgid "Move cursor to next matching indent"
 msgstr "העברת הסמן להזחה התואמת הבאה"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "העברת הסמן להזחה התואמת הבאה"
+msgstr "העברת הסמן לשורה הריקה הבאה"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "העברת הסמן להזחה התואמת הקודמת"
+msgstr "העברת הסמן לשורה הריקה הקודמת"
 
 #: script/data/commands/navigation.js:9
 #, kde-format

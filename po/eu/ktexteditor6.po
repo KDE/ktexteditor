@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-15 00:37+0000\n"
-"PO-Revision-Date: 2024-10-05 09:01+0200\n"
+"PO-Revision-Date: 2024-11-17 23:22+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 24.08.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -3127,20 +3127,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "Eraman kurtsorea bat datorren hurrengo koskara"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Eraman kurtsorea bat datorren hurrengo koskara"
+msgstr "Eraman kurtsorea hurrengo lerro hutsera"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Eraman kurtsorea bat datorren aurreko koskara"
+msgstr "Eraman kurtsorea aurreko lerro hutsera"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3153,16 +3149,14 @@ msgid "Move cursor to next matching indent"
 msgstr "Eraman kurtsorea bat datorren hurrengo koskara"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Eraman kurtsorea bat datorren hurrengo koskara"
+msgstr "Eraman kurtsorea hurrengo lerro hutsera"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Eraman kurtsorea bat datorren aurreko koskara"
+msgstr "Eraman kurtsorea aurreko lerro hutsera"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
