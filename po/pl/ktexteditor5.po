@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 01:34+0000\n"
-"PO-Revision-Date: 2024-03-17 11:55+0100\n"
+"PO-Revision-Date: 2024-11-16 12:38+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -3710,22 +3710,22 @@ msgstr "Grupa, niezapamiętująca"
 #: search/katesearchbar.cpp:1219
 #, kde-format
 msgid "Positive Lookahead"
-msgstr "Dodatnie patrzenie wprzód"
+msgstr "Dodatnie zerkanie wprzód"
 
 #: search/katesearchbar.cpp:1220
 #, kde-format
 msgid "Negative lookahead"
-msgstr "Ujemne patrzenie wprzód"
+msgstr "Ujemne zerkanie wprzód"
 
 #: search/katesearchbar.cpp:1224
 #, kde-format
 msgid "Fixed-length positive lookbehind"
-msgstr "Dodatnie patrzenie wstecz o stałej długości"
+msgstr "Dodatnie zerkanie wstecz o stałej długości"
 
 #: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Fixed-length negative lookbehind"
-msgstr "Ujemne patrzenie wstecz o stałej długości"
+msgstr "Ujemne zerkanie wstecz o stałej długości"
 
 #: search/katesearchbar.cpp:1230
 #, kde-format
@@ -3755,19 +3755,19 @@ msgstr "Zmiana pierwszej litery na wielką"
 #: search/katesearchbar.cpp:1235
 #, kde-format
 msgid "Replacement counter (for Replace All)"
-msgstr "Licznik zastąpień (dla Zastąp wszystko)"
+msgstr "Licznik zastąpień (dla Zastąp wszystkie)"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: search/searchbarincremental.ui:50
 #, kde-format
 msgid "F&ind:"
-msgstr "&Znajdź:"
+msgstr "Pos&zukaj:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, pattern)
 #: search/searchbarincremental.ui:78 search/searchbarpower.ui:295
 #, kde-format
 msgid "Text to search for"
-msgstr "Wyszukaj tekst"
+msgstr "Tekst do wyszukania"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, findNext)
 #. i18n: ectx: property (toolTip), widget (QToolButton, next)
@@ -3835,7 +3835,7 @@ msgstr "Całe słowa"
 #: search/searchbarpower.ui:123
 #, kde-format
 msgid "Escape sequences"
-msgstr "Sekwencje sterujące"
+msgstr "Ciągi sterujące"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, searchMode)
 #: search/searchbarpower.ui:128
@@ -3872,13 +3872,13 @@ msgstr "Zastąp wszystkie pasujące wyrażenia"
 #: search/searchbarpower.ui:227
 #, kde-format
 msgid "Replace &All"
-msgstr "Z&astąp wszystko"
+msgstr "Zastąp wsz&ystkie"
 
 #. i18n: ectx: property (text), widget (QPushButton, findAll)
 #: search/searchbarpower.ui:234
 #, kde-format
 msgid "&Find All"
-msgstr "Zna&jdź wszystko"
+msgstr "Zna&jdź wszystkie"
 
 #. i18n: ectx: property (text), widget (QPushButton, cancel)
 #: search/searchbarpower.ui:257
@@ -4756,7 +4756,7 @@ msgstr "Pułapka włączona"
 #: syntax/katethemeconfig.cpp:326
 #, kde-format
 msgid "Reached Breakpoint"
-msgstr "Pułapka osiągnięta"
+msgstr "Wewnątrz pułapki"
 
 #: syntax/katethemeconfig.cpp:327
 #, kde-format
@@ -4790,7 +4790,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:344
 #, kde-format
 msgid "Text Templates & Snippets"
-msgstr "Szablony i wstawki tekstowe"
+msgstr "Wzorce i wstawki tekstowe"
 
 #: syntax/katethemeconfig.cpp:349
 #, kde-format
@@ -4904,7 +4904,7 @@ msgstr "Zes&taw:"
 #: syntax/katethemeconfig.cpp:1117
 #, kde-format
 msgid "&Copy..."
-msgstr "S&kopiuj..."
+msgstr "S&kopiuj…"
 
 #: syntax/katethemeconfig.cpp:1125
 #, kde-format
@@ -5839,7 +5839,7 @@ msgstr "Ustawienia"
 #: utils/katesedcmd.cpp:268
 #, kde-format
 msgid "replace with %1?"
-msgstr "czy zastąpić przez %1?"
+msgstr "czy zastąpić ciągiem %1?"
 
 #: utils/katesedcmd.cpp:274
 #, kde-format
