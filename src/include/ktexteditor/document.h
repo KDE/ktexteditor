@@ -195,9 +195,9 @@ public:
  * Use newMovingCursor() to create a new moving cursor and newMovingRange() to create
  * a new moving range.
  *
- * Upon destruction or reload, a document will remove all its moving ranges. You can
- * connect to aboutToDeleteMovingInterfaceContent() and aboutToInvalidateMovingInterfaceContent()
- * signals to know when that is going to happen and update the cached ranges accordingly.
+ * Upon destruction or reload, a document will invalidate all its moving ranges. You can
+ * connect to aboutToInvalidateMovingInterfaceContent() signals to know when that is going
+ * to happen and delete the cached ranges accordingly.
  *
  * \section doc_config Document Config
  * Config provides methods to access and modify the low level config information for a given

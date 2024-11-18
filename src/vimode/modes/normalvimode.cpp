@@ -75,7 +75,6 @@ NormalViMode::NormalViMode(InputModeManager *viInputModeManager, KTextEditor::Vi
     updateYankHighlightAttrib();
     connect(view, &KTextEditor::View::configChanged, this, &NormalViMode::updateYankHighlightAttrib);
     connect(doc(), &KTextEditor::DocumentPrivate::aboutToInvalidateMovingInterfaceContent, this, &NormalViMode::clearYankHighlight);
-    connect(doc(), &KTextEditor::DocumentPrivate::aboutToDeleteMovingInterfaceContent, this, &NormalViMode::clearYankHighlight);
 }
 
 NormalViMode::~NormalViMode()

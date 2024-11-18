@@ -130,13 +130,11 @@ void KateDocumentTest::testReplaceQStringList()
 void KateDocumentTest::testMovingInterfaceSignals()
 {
     KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate;
-    QSignalSpy aboutToDeleteSpy(doc, &KTextEditor::DocumentPrivate::aboutToDeleteMovingInterfaceContent);
     QSignalSpy aboutToInvalidateSpy(doc, &KTextEditor::DocumentPrivate::aboutToInvalidateMovingInterfaceContent);
 
     QCOMPARE(doc->revision(), qint64(0));
 
     QCOMPARE(aboutToInvalidateSpy.count(), 0);
-    QCOMPARE(aboutToDeleteSpy.count(), 0);
 
     QTemporaryFile f;
     f.open();
@@ -144,17 +142,14 @@ void KateDocumentTest::testMovingInterfaceSignals()
     QCOMPARE(doc->revision(), qint64(0));
     // TODO: gets emitted once in closeFile and once in openFile - is that OK?
     QCOMPARE(aboutToInvalidateSpy.count(), 2);
-    QCOMPARE(aboutToDeleteSpy.count(), 0);
 
     doc->documentReload();
     QCOMPARE(doc->revision(), qint64(0));
-    QCOMPARE(aboutToInvalidateSpy.count(), 4);
     // TODO: gets emitted once in closeFile and once in openFile - is that OK?
-    QCOMPARE(aboutToDeleteSpy.count(), 0);
+    QCOMPARE(aboutToInvalidateSpy.count(), 4);
 
     delete doc;
-    QCOMPARE(aboutToInvalidateSpy.count(), 4);
-    QCOMPARE(aboutToDeleteSpy.count(), 1);
+    QCOMPARE(aboutToInvalidateSpy.count(), 5);
 }
 
 void KateDocumentTest::testSetTextPerformance()

@@ -277,8 +277,8 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     // delete pending mod-on-hd message, if applicable
     delete m_modOnHdHandler;
 
-    // we are about to delete cursors/ranges/...
-    Q_EMIT aboutToDeleteMovingInterfaceContent(this);
+    // we are about to invalidate cursors/ranges/...
+    Q_EMIT aboutToInvalidateMovingInterfaceContent(this);
 
     // kill it early, it has ranges!
     delete m_onTheFlyChecker;

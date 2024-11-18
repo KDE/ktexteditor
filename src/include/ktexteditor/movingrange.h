@@ -120,8 +120,6 @@ class MovingRangeFeedback;
  * \endcode
  *
  * MovingRange%s are invalidated automatically when a document is cleared or closed.
- * Therefore, to avoid invalid ranges, make sure to read the API documentation
- * about MovingInterface::aboutToDeleteMovingInterfaceContent().
  *
  * \sa Cursor, MovingCursor, Range, MovingInterface, MovingRangeFeedback
  *
