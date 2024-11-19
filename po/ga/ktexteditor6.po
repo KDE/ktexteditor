@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-15 00:37+0000\n"
+"POT-Creation-Date: 2024-11-19 00:38+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -8144,17 +8144,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Téigh go dtí an chéad leabharmharc eile."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3562
+#: vimode/modes/normalvimode.cpp:3561
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Níl faic i dtabhall %1"
 
-#: vimode/modes/normalvimode.cpp:1685
+#: vimode/modes/normalvimode.cpp:1684
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Heics %3,  Ocht %4"
 
-#: vimode/modes/normalvimode.cpp:2528
+#: vimode/modes/normalvimode.cpp:2527
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marc gan socrú: %1"

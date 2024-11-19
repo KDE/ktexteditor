@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-15 00:37+0000\n"
+"POT-Creation-Date: 2024-11-19 00:38+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -8777,18 +8777,18 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Нема више знакова за сљедећи обиљеживач."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3562
+#: vimode/modes/normalvimode.cpp:3561
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Ничег у регистру %1"
 
 # well-spelled: хекс, окт
-#: vimode/modes/normalvimode.cpp:1685
+#: vimode/modes/normalvimode.cpp:1684
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  хекс %3, окт %4"
 
-#: vimode/modes/normalvimode.cpp:2528
+#: vimode/modes/normalvimode.cpp:2527
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Обиљежје није постављено: %1"

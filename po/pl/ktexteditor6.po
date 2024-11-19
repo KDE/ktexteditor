@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-15 00:37+0000\n"
+"POT-Creation-Date: 2024-11-19 00:38+0000\n"
 "PO-Revision-Date: 2024-11-16 12:38+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -8433,17 +8433,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Nie ma więcej znaków dla następnej zakładki."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3562
+#: vimode/modes/normalvimode.cpp:3561
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Nic nie ma w rejestrze %1"
 
-#: vimode/modes/normalvimode.cpp:1685
+#: vimode/modes/normalvimode.cpp:1684
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Hex %3,  Octal %4"
 
-#: vimode/modes/normalvimode.cpp:2528
+#: vimode/modes/normalvimode.cpp:2527
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Nie ustawiono znacznika: %1"
