@@ -4743,17 +4743,17 @@ void KTextEditor::DocumentPrivate::onModOnHdSaveAs()
 
 void KTextEditor::DocumentPrivate::onModOnHdClose()
 {
-    // avoid prompt in closeUrl()
-    m_fileChangedDialogsActivated = false;
-
-    // close the file without prompt confirmation
-    closeUrl();
-
-    // Useful for applications that provide the necessary interface
     // delay this, otherwise we delete ourself during e.g. event handling + deleting this is undefined!
     // see e.g. bug 433180
     QTimer::singleShot(0, this, [this]() {
-        KTextEditor::EditorPrivate::self()->application()->closeDocument(this);
+        // avoid a prompt in closeDocument()
+        m_fileChangedDialogsActivated = false;
+
+        // allow the application to delete the document with url still intact
+        if (!KTextEditor::EditorPrivate::self()->application()->closeDocument(this)) {
+            // restore correct prompt visibility state
+            m_fileChangedDialogsActivated = true;
+        }
     });
 }
 
