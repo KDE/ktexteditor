@@ -770,4 +770,23 @@ void KateViewTest::testDdisplayRangeChangedEmitted()
     QVERIFY(spy.count() == 1);
 }
 
+void KateViewTest::testCrashOnPasteInOverwriteMode()
+{
+    // create doc with a few lines
+    KTextEditor::DocumentPrivate doc(false, false);
+    const QString testText(QStringLiteral("test1\ntest2\ntest3\n"));
+    doc.setText(testText);
+
+    // create view in overwrite mode
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    view->doc()->config()->setOvr(true);
+
+    // simulate paste at end of document that did crash, bug 496612
+    view->setCursorPosition(KTextEditor::Cursor(2, 0));
+    view->paste(&testText);
+
+    // check result is ok
+    QCOMPARE(doc.text(), QStringLiteral("test1\ntest2\ntest1\ntest2\ntest3\n"));
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

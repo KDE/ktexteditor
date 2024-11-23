@@ -39,6 +39,7 @@ private Q_SLOTS:
     void testFindMatchingFoldingMarker();
     void testUpdateFoldingMarkersHighlighting();
     void testDdisplayRangeChangedEmitted();
+    void testCrashOnPasteInOverwriteMode();
 };
 
 #endif // KATE_VIEW_TEST_H

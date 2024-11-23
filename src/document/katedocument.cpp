@@ -702,7 +702,7 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor position
     int insertColumn = position.column();
 
     // pad with empty lines, if insert position is after last line
-    if (position.line() > lines()) {
+    if (position.line() >= lines()) {
         int line = lines();
         while (line <= position.line()) {
             editInsertLine(line, QString(), false);
