@@ -36,6 +36,7 @@ private Q_SLOTS:
     void testRangeWithDynAttrNoCrash();
     void testNoCrashIfFeedbackWasClearedBeforeDtor();
     void testNoCrashIfDynAttrWasClearedBeforeDtor();
+    void testNoCrashWithMultiblockRange();
 };
 
 #endif // KATE_MOVINGRANGE_TEST_H

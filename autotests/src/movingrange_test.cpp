@@ -797,3 +797,31 @@ void MovingRangeTest::testNoCrashIfDynAttrWasClearedBeforeDtor()
     view->cursorRight();
     // no crash
 }
+
+void MovingRangeTest::testNoCrashWithMultiblockRange()
+{
+    KTextEditor::DocumentPrivate doc;
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+    const QStringList lines(130, QStringLiteral("text"));
+    doc.setText(lines);
+    QCOMPARE(doc.lines(), 130);
+    // clang-format off
+    std::unique_ptr<KTextEditor::MovingRange> range(doc.newMovingRange({
+        63, 1, // in block 0 last line
+        64, 2 // in block 1 first line
+    }));
+    // expect that its multiline
+    QVERIFY(doc.buffer().hasMultlineRange(range.get()));
+    // clang-format on
+    // place the cursor on col 0 of first line block-1
+    view->setCursorPosition({64, 0});
+    // trigger a line unwrap
+    view->backspace();
+    // expect that its no longer multiline
+    QVERIFY(!doc.buffer().hasMultlineRange(range.get()));
+
+    // delete the range
+    range.reset();
+    // move the cursor, we shouldnt crash
+    view->cursorLeft();
+}
