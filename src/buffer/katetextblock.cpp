@@ -230,7 +230,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
                 auto range = cursor->kateRange();
                 if (range && !range->isValidityCheckRequired()) {
                     range->setValidityCheckRequired();
-                    changedRanges.push_back({range, false});
+                    changedRanges.push_back({range, range->spansMultipleBlocks()});
                 }
             }
         }
