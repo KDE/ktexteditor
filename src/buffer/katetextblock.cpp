@@ -569,22 +569,14 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     clearLines();
 }
 
-QList<TextRange *> TextBlock::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const
-{
-    QList<TextRange *> ranges;
-    rangesForLine(line, view, rangesWithAttributeOnly, ranges);
-    return ranges;
-}
-
 void TextBlock::rangesForLine(const int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QList<TextRange *> &outRanges) const
 {
-    outRanges.clear();
     const int lineInBlock = line - startLine(); // line number in block
-    for (auto cursor : std::as_const(m_cursors)) {
+    for (TextCursor *cursor : std::as_const(m_cursors)) {
         if (!cursor->kateRange()) {
             continue;
         }
-        auto range = cursor->kateRange();
+        TextRange *range = cursor->kateRange();
         if (rangesWithAttributeOnly && !range->hasAttribute()) {
             continue;
         }
@@ -599,18 +591,15 @@ void TextBlock::rangesForLine(const int line, KTextEditor::View *view, bool rang
             continue;
         }
 
-        // simple case
-        if (cursor->lineInBlock() == lineInBlock) {
-            outRanges.append(range);
-        }
-        // if line is in the range, ok
-        else if (range->startInternal().lineInternal() <= line && line <= range->endInternal().lineInternal()) {
+        if (
+            // simple case
+            (cursor->lineInBlock() == lineInBlock) ||
+            // if line is in the range, ok
+            (range->startInternal().lineInternal() <= line && line <= range->endInternal().lineInternal())
+        ) {
             outRanges.append(range);
         }
     }
-    std::sort(outRanges.begin(), outRanges.end());
-    auto it = std::unique(outRanges.begin(), outRanges.end());
-    outRanges.erase(it, outRanges.end());
 }
 
 void TextBlock::markModifiedLinesAsSaved()

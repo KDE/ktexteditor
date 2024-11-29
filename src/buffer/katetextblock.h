@@ -159,14 +159,12 @@ public:
     void mergeBlock(TextBlock *targetBlock);
 
     /**
-     * Return all ranges in this block which might intersect the given line.
+     * Append to outRanges addresses of all ranges in this block which might intersect the given line.
      * @param line                          line to check intersection
      * @param view                          only return ranges associated with given view
      * @param rangesWithAttributeOnly       ranges with attributes only?
-     * @return list of possible candidate ranges
+     * @param outRanges                     where to append results
      */
-    KTEXTEDITOR_EXPORT QList<TextRange *> rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const;
-
     KTEXTEDITOR_NO_EXPORT void rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QList<TextRange *> &outRanges) const;
 
     /**

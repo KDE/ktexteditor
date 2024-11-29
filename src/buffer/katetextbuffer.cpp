@@ -1044,11 +1044,12 @@ bool TextBuffer::hasMultlineRange(KTextEditor::MovingRange *range) const
 
 void TextBuffer::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QList<TextRange *> &outRanges) const
 {
+    outRanges.clear();
     // get block, this will assert on invalid line
     const int blockIndex = blockForLine(line);
     m_blocks.at(blockIndex)->rangesForLine(line, view, rangesWithAttributeOnly, outRanges);
     // printf("Requested range for line %d, available %d\n", (int)line, (int)m_multilineRanges.size());
-    for (auto range : m_multilineRanges) {
+    for (TextRange *range : std::as_const(m_multilineRanges)) {
         if (rangesWithAttributeOnly && !range->hasAttribute()) {
             continue;
         }
@@ -1064,10 +1065,12 @@ void TextBuffer::rangesForLine(int line, KTextEditor::View *view, bool rangesWit
         }
 
         // if line is in the range, ok
-        else if (range->startInternal().lineInternal() <= line && line <= range->endInternal().lineInternal()) {
+        if (range->startInternal().lineInternal() <= line && line <= range->endInternal().lineInternal()) {
             outRanges.append(range);
         }
     }
+    std::sort(outRanges.begin(), outRanges.end());
+    outRanges.erase(std::unique(outRanges.begin(), outRanges.end()), outRanges.end());
 }
 }
 
