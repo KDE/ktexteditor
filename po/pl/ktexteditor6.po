@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-19 00:38+0000\n"
-"PO-Revision-Date: 2024-11-16 12:38+0100\n"
+"PO-Revision-Date: 2024-11-30 10:00+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 24.08.2\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -3126,20 +3126,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "Przenieś kursor do następnego pasującego wcięcia"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Przenieś kursor do następnego pasującego wcięcia"
+msgstr "Przenieś kursor do następnego pustego wiersza"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Przenieś kursor do poprzedniego pasującego wcięcia"
+msgstr "Przenieś kursor do poprzedniego pustego wiersza"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3152,16 +3148,14 @@ msgid "Move cursor to next matching indent"
 msgstr "Przenieś kursor do następnego pasującego wcięcia"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Przenieś kursor do następnego pasującego wcięcia"
+msgstr "Przenieś kursor do następnego pustego wiersza"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Przenieś kursor do poprzedniego pasującego wcięcia"
+msgstr "Przenieś kursor do poprzedniego pustego wiersza"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
