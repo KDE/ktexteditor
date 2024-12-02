@@ -10,7 +10,7 @@
 # Teemu Rytilahti <tpr@d5k.net>, 2008.
 # Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2008.
 # Teemu Rytilahti <teemu.rytilahti@d5k.net>, 2008, 2012.
-# Tommi Nieminen <translator@legisign.org>, 2009, 2010, 2011, 2012, 2014, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
+# SPDX-FileCopyrightText: 2009, 2010, 2011, 2012, 2014, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Tommi Nieminen <translator@legisign.org>
 # Jorma Karvonen <karvonen.jorma@gmail.com>, 2010, 2012.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019, 2022.
 # Jiri Grönroos <jiri.gronroos+kde@iki.fi>, 2012.
@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-19 00:38+0000\n"
-"PO-Revision-Date: 2024-02-08 10:45+0200\n"
+"PO-Revision-Date: 2024-10-16 21:01+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -33,8 +33,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-POT-Import-Date: 2012-12-01 22:21:58+0000\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -79,10 +78,9 @@ msgstr "&Tiedosto"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "Tulosta/vie"
+msgstr "&Tulosta/vie"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -291,10 +289,9 @@ msgstr "Korosta muuttuneet ja tallentamattomat rivit"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "Vierityspalkit"
+msgstr "Vierityspalkit:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -1085,13 +1082,11 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "Kasvata sisennystasoa, jos kohdistin rivin tyhjässä &alussa"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " merkki"
-msgstr[1] " merkkiä"
+msgstr[0] "%v merkki"
+msgstr[1] "%v merkkiä"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1159,14 +1154,12 @@ msgid "Text Navigation"
 msgstr "Tekstin selaus"
 
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " merkki"
-msgstr[1] " merkkiä"
+msgstr[0] "%v merkki"
+msgstr[1] "%v merkkiä"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1337,8 +1330,7 @@ msgid "Closes the file, discarding its content."
 msgstr "Sulkee tiedoston hyläten sen sisällön."
 
 #: dialogs/katedialogs.cpp:1486
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "&Tallenna nimellä…"
@@ -1643,10 +1635,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
 #: dialogs/opensaveconfigadvwidget.ui:247
-#, fuzzy, kde-format
-#| msgid "Do not use config file"
+#, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr "Älä käytä asetustiedostoa"
+msgstr "Noudata .editorconfig-tiedoston asetuksia"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -1919,10 +1910,9 @@ msgstr "Muokkainfontti:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Line Height Multiplier:"
+#, kde-format
 msgid "&Line Height Multiplier:"
-msgstr "Rivinkorkeuskerroin:"
+msgstr "&Rivinkorkeuskerroin:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:58
@@ -1954,10 +1944,9 @@ msgstr "Aina "
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, fuzzy, kde-format
-#| msgid "Whitespace indicator size:"
+#, kde-format
 msgid "Whitespace indicator si&ze:"
-msgstr "Tyhjemerkki-ilmaisimen koko:"
+msgstr "Ty&hjemerkki-ilmaisimen koko:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1967,10 +1956,9 @@ msgstr "Näkyvän korostusmerkinnän koko."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Show tab indicators:"
+#, kde-format
 msgid "Show &tab indicators:"
-msgstr "Näytä sarkainilmaisimet:"
+msgstr "&Näytä sarkainilmaisimet:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:176
@@ -2079,10 +2067,9 @@ msgstr "Näytä rivimäärä"
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
-#, fuzzy, kde-format
-#| msgid "Fold first line"
+#, kde-format
 msgid "Fold first line:"
-msgstr "Supista ensirivi"
+msgstr "Supista ensirivi:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2129,17 +2116,15 @@ msgstr "Valitse, milloin dynaamisen rivityksen merkit näytetään."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:391
-#, fuzzy, kde-format
-#| msgid "Indent wrapped lines:"
+#, kde-format
 msgid "I&ndent wrapped lines:"
-msgstr "Sisennä rivitettyjä rivejä:"
+msgstr "&Sisennä rivitettyjä rivejä:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
-#, fuzzy, kde-format
-#| msgid "Don't indent lines wider than:"
+#, kde-format
 msgid "&Don't indent lines wider than:"
-msgstr "Älä sisennä tätä pidempiä rivejä:"
+msgstr "&Älä sisennä tätä pidempiä rivejä:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:424
@@ -2168,10 +2153,9 @@ msgstr "% näkymän leveydestä"
 
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show i&ndentation lines:"
-msgstr "Näytä &sisennyslinjat"
+msgstr "Näytä sisennys&linjat:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:453
@@ -2428,10 +2412,9 @@ msgid "The file '%1' was created on disk."
 msgstr "Tiedosto ”%1” on luotu levylle."
 
 #: document/katedocument.cpp:5596
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted on disk."
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "Tiedosto ”%1” on poistettu levyltä."
+msgstr "Tiedosto ”%1” on poistettu levyltä tai siirretty."
 
 #: document/katedocument.cpp:5933
 #, kde-format
@@ -2559,9 +2542,7 @@ msgid "Modes && Filetypes"
 msgstr "Tilat ja tiedostotyypit"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Etsi…"
@@ -3984,12 +3965,10 @@ msgid "Spell check canceled."
 msgstr "Oikoluku peruttiin."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Oikoluku käynnissä…"
+msgstr "Oikeinkirjoituksen tarkistus meneillään…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4219,8 +4198,7 @@ msgid "I&gnore All"
 msgstr "&Hylkää kaikki"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
 msgstr "Oikoluku (kohdistimesta)…"
@@ -4347,32 +4325,28 @@ msgid "S&trikeout"
 msgstr "&Yliviivaus"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
 msgstr "Tavallinen &väri…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "&Valittu väri…"
+msgstr "&Valinnan väri…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
 msgstr "&Taustaväri…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "&Valittu taustaväri…"
+msgstr "&Valinnan taustaväri…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4990,22 +4964,19 @@ msgid "&Theme:"
 msgstr "T&eema:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Kopioi"
+msgstr "&Kopioi…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "Vie…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "Tuo…"
@@ -5529,48 +5500,42 @@ msgstr ""
 "td><td>Käytä ap./ip.-merkintää.</td></tr></table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
+#, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "Poista toistuvat rivit"
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr "Poista toistuvat rivit ja aakkosta valittu teksti"
+msgstr "Poista toistuvat rivit ja aakkosta teksti"
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "Aakkosta valittu teksti"
+msgstr "Lajittele luonnollisesti"
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "Aakkosta valittu teksti"
 
 #: utils/katecmds.cpp:693
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "Lajittele valittu teksti tai koko tiedosto."
+msgstr ""
+"<p>sort</p><p>Lajittele valittu teksti tai koko tiedosto, ellei valintaa "
+"ole</p>"
 
 #: utils/katecmds.cpp:697
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
-msgstr "Poista toistuvat rivit valitusta tekstistä tai koko tiedostosta."
+msgstr ""
+"<p>uniq</p><p>Poista toistuvat rivit valitusta tekstistä tai koko "
+"tiedostosta, ellei valintaa ole.</p>"
 
 #: utils/katecmds.cpp:701
 #, kde-format
@@ -5578,22 +5543,21 @@ msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
+"<p>sortuniq</p><p>Lajittele valittu teksti tai koko tiedosto ja poista "
+"sitten toistuvat rivit.</p>"
 
 #: utils/katecmds.cpp:705
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"Lajittele valittu teksti tai koko tiedosto luonnolliseen järjestykseen.<br /"
-">Seuraava esimerkki valottaa eroa tavalliseen lajittelujärjestykseen:<br /"
-">sort(a10, a1, a2) => a1, a10, a2<br />natsort(a10, a1, a2) => a1, a2, a10"
+"<p>natsort</p><p>Lajittele valittu teksti tai koko tiedosto luonnolliseen "
+"järjestykseen.<br>Seuraava esimerkki valottaa eroa tavalliseen "
+"lajittelujärjestykseen:<br>sort(a10, a1, a2) ⇒ a1, a10, a2<br>natsort(a10, "
+"a1, a2) ⇒ a1, a2, a10</p>"
 
 # pmap: =/elat=Kate-osasta/
 #: utils/kateglobal.cpp:59
@@ -6619,12 +6583,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Sisennys/sarkain: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Muut"
+msgstr "Muu…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6694,15 +6656,14 @@ msgid "Paste previously mouse selection contents"
 msgstr "Liittää aiemman hiirivalinnan sisältö"
 
 #: view/kateview.cpp:483
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "Vaihtotiedoston valinnat"
+msgstr "Kopioi tiedoston sijainti"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Kopioi nykyisen tiedoston nimi ja rivinumero"
 
 #: view/kateview.cpp:487
 #, kde-format
@@ -6774,16 +6735,14 @@ msgstr ""
 "välilyönneillä."
 
 #: view/kateview.cpp:524
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "Sisennyksen ominaisuudet"
+msgstr "Muunna sisennykset välilyönneiksi"
 
 #: view/kateview.cpp:531
-#, fuzzy, kde-format
-#| msgid "&Format Indentation"
+#, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "Muotoile &sisennys"
+msgstr "Muunna sisennykset sarkaimiksi"
 
 #: view/kateview.cpp:546
 #, kde-format
@@ -6800,11 +6759,10 @@ msgstr ""
 "oikeaan kohtaan."
 
 #: view/kateview.cpp:551
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Tasaa"
+msgstr "&Tasaa…"
 
 #: view/kateview.cpp:553
 #, kde-format
@@ -6987,18 +6945,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Tallentaa nykyisen tiedoston levylle valitsemallasi nimellä."
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "Tallenna koodauksella…"
+msgstr "Tallenna &koodauksella…"
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "Tallenna ko&pio nimellä…"
+msgstr "Tallenna k&opio nimellä…"
 
 #: view/kateview.cpp:690
 #, kde-format
@@ -7034,8 +6990,7 @@ msgid "Move downwards to the next modified line."
 msgstr "Siirry alemmas seuraavalle muutetulle riville."
 
 #: view/kateview.cpp:709
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "M&uokkaimen asetukset…"
@@ -7152,23 +7107,18 @@ msgstr ""
 "olemassa olevaa tekstiä kirjoittamalla sen päälle."
 
 #: view/kateview.cpp:787
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Tyhjemerkit"
+msgstr "Näytä tyhjemerkit"
 
 #: view/kateview.cpp:790
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"Jos tämä asetus on valittu, tekstirivit rivitetään näkymän reunalla.<br /"
-"><br />Asetus koskee vain näkymää eli tiedosto ei muutu."
+"Jos tämä asetus on valittu, tiedoston tyhjemerkit ovat näkyvissä.<br /><br /"
+">Asetus koskee vain näkymää eli tiedosto ei muutu."
 
 #: view/kateview.cpp:794
 #, kde-format
@@ -7176,11 +7126,7 @@ msgid "&Dynamic Word Wrap"
 msgstr "&Dynaaminen rivinvaihto"
 
 #: view/kateview.cpp:798
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
@@ -7530,11 +7476,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Käytä automaattista oikolukua tai poista se käytöstä"
 
 #: view/kateview.cpp:991
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Vaihda sanastoa"
+msgstr "Vaihda sanastoa…"
 
 #: view/kateview.cpp:992
 #, kde-format
@@ -7567,8 +7512,7 @@ msgstr ""
 "leikepöydälle."
 
 #: view/kateview.cpp:1009
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "Vie &HTML:ksi…"
@@ -8033,8 +7977,7 @@ msgid "Copy"
 msgstr "Kopioi"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
 msgstr "Taustaväri…"
@@ -8050,8 +7993,7 @@ msgid "Show Window Decorations"
 msgstr "Näytä ikkunakoristeet"
 
 #: view/screenshotdialog.cpp:188
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Ota valinnasta ruutukaappaus"
