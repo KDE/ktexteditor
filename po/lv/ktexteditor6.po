@@ -13,14 +13,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-19 00:38+0000\n"
-"PO-Revision-Date: 2024-10-20 11:18+0300\n"
+"PO-Revision-Date: 2024-12-02 10:44+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.08.2\n"
+"X-Generator: Lokalize 24.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
@@ -3104,45 +3104,39 @@ msgstr "Navigācija"
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
-msgstr "Pārvietojiet kursoru uz nākamo atbilstošo atbilsmi"
+msgstr "Pārvietot kursoru uz nākamo atbilstošo atbilsmi"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Pārvietojiet kursoru uz nākamo atbilstošo atbilsmi"
+msgstr "Pārvietot kursoru uz nākamo tukšo rindu"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Pārvietojot kursoru uz iepriekšējo atbilstošo atkāpi"
+msgstr "Pārvietot kursoru uz iepriekšējo tukšo rindu"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
 msgid "Move cursor to previous matching indent"
-msgstr "Pārvietojiet kursoru uz iepriekšējo atbilstošo atkāpi"
+msgstr "Pārvietot kursoru uz iepriekšējo atbilstošo atkāpi"
 
 #: script/data/commands/jumpMatchingIndent.js:83
 #, kde-format
 msgid "Move cursor to next matching indent"
-msgstr "Pārvietojiet kursoru uz nākamo atbilstošo atkāpi"
+msgstr "Pārvietot kursoru uz nākamo atbilstošo atkāpi"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Pārvietojiet kursoru uz nākamo atbilstošo atkāpi"
+msgstr "Pārvietot kursoru uz nākamo tukšo rindu"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Pārvietojiet kursoru uz iepriekšējo atbilstošo atkāpi"
+msgstr "Pārvietot kursoru uz iepriekšējo tukšo rindu"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
@@ -3154,7 +3148,7 @@ msgstr "Iet uz nākamo paragrāfi"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Doties uz iepriekšējo paragrāfu"
+msgstr "Iet uz iepriekšējo paragrāfu"
 
 #: script/data/commands/utils.js:9
 #, kde-format
