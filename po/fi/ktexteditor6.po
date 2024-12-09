@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-19 00:38+0000\n"
-"PO-Revision-Date: 2024-10-16 21:01+0300\n"
+"PO-Revision-Date: 2024-12-01 14:49+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -33,7 +33,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.2\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -3127,20 +3127,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "Siirrä kohdistin seuraavaan vastaavaan sisennykseen"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Siirrä kohdistin seuraavaan vastaavaan sisennykseen"
+msgstr "Siirrä kohdistin seuraavalle tyhjälle riville"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Siirrä kohdistin edelliseen vastaavaan sisennykseen"
+msgstr "Siirrä kohdistin edelliselle tyhjälle riville"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3153,16 +3149,14 @@ msgid "Move cursor to next matching indent"
 msgstr "Siirrä kohdistin seuraavan vastaavaan sisennyksen kohdalle"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Siirrä kohdistin seuraavan vastaavaan sisennyksen kohdalle"
+msgstr "Siirrä kohdistin seuraavalle tyhjälle riville"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Siirrä kohdistin edellisen vastaavaan sisennyksen kohdalle"
+msgstr "Siirrä kohdistin edelliselle tyhjälle riville"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
