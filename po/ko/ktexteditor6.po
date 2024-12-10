@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-19 00:38+0000\n"
-"PO-Revision-Date: 2024-08-20 00:13+0200\n"
+"PO-Revision-Date: 2024-12-10 01:08+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -63,10 +63,9 @@ msgstr "파일(&F)"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "인쇄/내보내기"
+msgstr "인쇄/내보내기(&P)"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -1042,12 +1041,10 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "줄 처음의 빈 공간에 있을 때 들여쓰기 단계 증가시키기(&E)"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " 글자"
+msgstr[0] "%v자"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1115,13 +1112,11 @@ msgid "Text Navigation"
 msgstr "텍스트 탐색"
 
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " 글자"
+msgstr[0] "%v자"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1584,7 +1579,7 @@ msgstr "이 문자열은 katedialogs.cpp의 KateSaveConfigTab 생성자에 있�
 #: dialogs/opensaveconfigadvwidget.ui:247
 #, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr ""
+msgstr ".editorconfig 파일의 설정 존중"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -2349,10 +2344,9 @@ msgid "The file '%1' was created on disk."
 msgstr "파일 '%1'을(를) 디스크에 만들었습니다."
 
 #: document/katedocument.cpp:5596
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted on disk."
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "파일 '%1'이(가) 디스크에서 삭제되었습니다."
+msgstr "파일 '%1'이(가) 디스크에서 삭제나 이동되었습니다."
 
 #: document/katedocument.cpp:5933
 #, kde-format
@@ -3053,20 +3047,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "다음 일치하는 들여쓰기로 커서 이동"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "다음 일치하는 들여쓰기로 커서 이동"
+msgstr "다음 빈 줄로 커서 이동"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "이전 일치하는 들여쓰기로 커서 이동"
+msgstr "이전 빈 줄로 커서 이동"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3079,16 +3069,14 @@ msgid "Move cursor to next matching indent"
 msgstr "다음 일치하는 들여쓰기로 커서 이동"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "다음 일치하는 들여쓰기로 커서 이동"
+msgstr "다음 빈 줄로 커서 이동"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "이전 일치하는 들여쓰기로 커서 이동"
+msgstr "이전 빈 줄로 커서 이동"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
@@ -5389,48 +5377,41 @@ msgstr ""
 "후 표시 사용. AP는 \"오전\"이나 \"오후\"로 대체됩니다.</td></tr></table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
+#, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "중복된 줄 삭제"
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr "선택한 문자열의 중복된 줄을 삭제하고 가나다순으로 정렬"
+msgstr "중복된 줄을 삭제하고 가나다순으로 정렬"
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "선택한 문자열 가나다순으로 정렬"
+msgstr "자연 순서로 정렬"
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "선택한 문자열 가나다순으로 정렬"
 
 #: utils/katecmds.cpp:693
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "선택한 문자열이나 전체 문서를 정렬합니다."
+msgstr ""
+"<p>sort</p><p>선택한 문자열이나 전체 문서(선택 영역이 없을 때)를 정렬</p>"
 
 #: utils/katecmds.cpp:697
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
-msgstr "선택한 문자열이나 전체 문서의 중복된 줄을 삭제합니다."
+msgstr ""
+"<p>uniq</p><p>선택한 문자열이나 전체 문서(선택 영역이 없을 때)의 중복된 줄을 "
+"삭제합니다.</p>"
 
 #: utils/katecmds.cpp:701
 #, kde-format
@@ -5438,22 +5419,21 @@ msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
+"<p>sortuniq</p><p>선택한 문자열이나 전체 문서(선택 영역이 없을 때)를 정렬하"
+"고 모든 중복된 줄을 삭제합니다.</p>"
 
 #: utils/katecmds.cpp:705
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"선택한 문자열이나 전체 문서를 자연 언어 순으로 정렬합니다.<br />일반적인 정"
-"렬 방법과 자연 언어 순 정렬의 차이는 다음과 같습니다:<br />sort(a10, a1, a2) "
-"=> a1, a10, a2<br />natsort(a10, a1, a2) => a1, a2, a10"
+"<p>natsort</p><p>선택한 문자열이나 전체 문서를 자연 언어 순으로 정렬합니다."
+"<br />일반적인 정렬 방법과 자연 언어 순 정렬의 차이는 다음과 같습니다:<br /"
+">sort(a10, a1, a2) => a1, a10, a2<br />natsort(a10, a1, a2) => a1, a2, "
+"a10<br>"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -6823,20 +6803,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "현재 문서를 다른 이름으로 디스크에 저장합니다."
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save As with Encoding…"
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "다른 인코딩과 이름으로 저장…"
+msgstr "다른 인코딩과 이름으로 저장(&G)…"
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save &Copy As…"
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "다른 이름으로 저장(&C)…"
+msgstr "복사본을 다른 이름으로 저장(&C)…"
 
 #: view/kateview.cpp:690
 #, kde-format
