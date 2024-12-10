@@ -715,7 +715,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
         paint.drawLine(0, (lineHeight() * range->viewLineCount()) - 2, xEnd - xStart, (lineHeight() * range->viewLineCount()) - 2);
     }
 
-    if (range->layout()) {
+    if (range->layout().lineCount() > 0) {
         bool drawSelection =
             m_view && m_view->selection() && showSelections() && m_view->selectionRange().overlapsLine(range->line()) && !flags.testFlag(SkipDrawLineSelection);
         // Draw selection in block selection mode. We need 2 kinds of selections that QTextLayout::draw can't render:
@@ -749,7 +749,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
             paint.setPen(attribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color());
             // Draw the text :)
 
-            if (range->layout()->textOption().textDirection() == Qt::RightToLeft) {
+            if (range->layout().textOption().textDirection() == Qt::RightToLeft) {
                 // If the text is RTL, we draw text background ourselves
                 auto decos = decorationsForLine(range->textLine(), range->line(), false);
                 auto sr = view()->selectionRange();
@@ -772,10 +772,10 @@ void KateRenderer::paintTextLine(QPainter &paint,
                     paintTextBackground(paint, range, additionalFormats, config()->selectionColor(), xStart);
                 }
                 // DONT apply clipping, it breaks rendering when there are selections
-                range->layout()->draw(&paint, QPoint(-xStart, 0), additionalFormats);
+                range->layout().draw(&paint, QPoint(-xStart, 0), additionalFormats);
 
             } else {
-                range->layout()->draw(&paint, QPoint(-xStart, 0), QList<QTextLayout::FormatRange>{}, textClipRect);
+                range->layout().draw(&paint, QPoint(-xStart, 0), QList<QTextLayout::FormatRange>{}, textClipRect);
             }
         }
 
@@ -841,7 +841,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
                 if (spaceIndex >= trailingPos) {
                     QVarLengthArray<int, 32> spacePositions;
                     // Adjust to visible contents
-                    const auto dir = range->layout()->textOption().textDirection();
+                    const auto dir = range->layout().textOption().textDirection();
                     const bool isRTL = dir == Qt::RightToLeft && m_view->dynWordWrap();
                     int start = isRTL ? xEnd : xStart;
                     int end = isRTL ? xStart : xEnd;
@@ -874,7 +874,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
                         const int spaceIdx = *rit;
                         qreal x = line.lineLayout().cursorToX(spaceIdx) - xStart;
                         int dir = 1; // 1 == ltr, -1 == rtl
-                        if (range->layout()->textOption().alignment() == Qt::AlignRight) {
+                        if (range->layout().textOption().alignment() == Qt::AlignRight) {
                             dir = -1;
                             if (spaceIdx > 0) {
                                 QChar c = text.at(spaceIdx - 1);
@@ -989,7 +989,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
             const int viewLine = range->viewLineForColumn(column);
             // We only consider a line "rtl" if dynamic wrap is enabled. If it is disabled, our
             // text is always on the left side of the view
-            const auto dir = range->layout()->textOption().textDirection();
+            const auto dir = range->layout().textOption().textDirection();
             const bool isRTL = dir == Qt::RightToLeft && m_view->dynWordWrap();
 
             // Determine the position where to paint the note.
@@ -1053,7 +1053,7 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range,
         int caretWidth;
         int lineWidth = 2;
         QColor color;
-        QTextLine line = range->layout()->lineForTextPosition(qMin(cursor.column(), range->length()));
+        QTextLine line = range->layout().lineForTextPosition(qMin(cursor.column(), range->length()));
 
         // Determine the caret's style
         KTextEditor::caretStyles style = caretStyle();
@@ -1077,7 +1077,7 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range,
             color = m_caretOverrideColor;
         } else {
             // search for the FormatRange that includes the cursor
-            const auto formatRanges = range->layout()->formats();
+            const auto formatRanges = range->layout().formats();
             for (const QTextLayout::FormatRange &r : formatRanges) {
                 if ((r.start <= cursor.column()) && ((r.start + r.length) > cursor.column())) {
                     // check for Qt::NoBrush, as the returned color is black() and no invalid QColor
@@ -1114,7 +1114,7 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range,
 
         if (cursor.column() <= range->length()) {
             // Ensure correct cursor placement for RTL text
-            if (range->layout()->textOption().textDirection() == Qt::RightToLeft) {
+            if (range->layout().textOption().textDirection() == Qt::RightToLeft) {
                 xStart += caretWidth;
             }
             qreal width = 0;
@@ -1127,7 +1127,7 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range,
                     }
                 }
             }
-            drawCursor(*range->layout(), &paint, QPoint(-xStart - width, 0), cursor.column(), caretWidth, lineHeight());
+            drawCursor(range->layout(), &paint, QPoint(-xStart - width, 0), cursor.column(), caretWidth, lineHeight());
         } else {
             // Off the end of the line... must be block mode. Draw the caret ourselves.
             const KateTextLayout &lastLine = range->viewLine(range->viewLineCount() - 1);
@@ -1262,15 +1262,10 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
 
     Kate::TextLine textLine = lineLayout->textLine();
 
-    QTextLayout *l = lineLayout->layout();
-    if (!l) {
-        l = new QTextLayout(textLine.text(), m_font);
-    } else {
-        l->setText(textLine.text());
-        l->setFont(m_font);
-    }
-
-    l->setCacheEnabled(cacheLayout);
+    QTextLayout &l = lineLayout->modifiableLayout();
+    l.setText(textLine.text());
+    l.setFont(m_font);
+    l.setCacheEnabled(cacheLayout);
 
     // Initial setup of the QTextLayout.
 
@@ -1310,7 +1305,7 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
         opt.setTextDirection(Qt::LeftToRight);
     }
 
-    l->setTextOption(opt);
+    l.setTextOption(opt);
 
     // Syntax highlighting, inbuilt and arbitrary
     QList<QTextLayout::FormatRange> decorations = decorationsForLine(textLine, lineLayout->line());
@@ -1354,7 +1349,7 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
             // If it is outside of the text, we don't have to make space for it.
             if (column == 0) {
                 firstLineOffset = width;
-            } else if (column < l->text().length()) {
+            } else if (column < l.text().length()) {
                 QTextCharFormat text_char_format;
                 const qreal caretWidth = caretStyle() == KTextEditor::caretStyles::Line ? 2.0 : 0.0;
                 text_char_format.setFontLetterSpacing(width + caretWidth);
@@ -1363,10 +1358,10 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
             }
         }
     }
-    l->setFormats(decorations);
+    l.setFormats(decorations);
 
     // Begin layouting
-    l->beginLayout();
+    l.beginLayout();
 
     int height = 0;
     int shiftX = 0;
@@ -1374,7 +1369,7 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
     bool needShiftX = (maxwidth != -1) && m_view && (m_view->config()->dynWordWrapAlignIndent() > 0);
 
     while (true) {
-        QTextLine line = l->createLine();
+        QTextLine line = l.createLine();
         if (!line.isValid()) {
             break;
         }
@@ -1413,9 +1408,8 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
         height += lineHeight();
     }
 
-    l->endLayout();
-
-    lineLayout->setLayout(l);
+    // will end layout and trigger that we mark the layout as changed
+    lineLayout->endLayout();
 }
 
 // 1) QString::isRightToLeft() sux

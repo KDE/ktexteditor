@@ -10,6 +10,7 @@
 
 #include <QExplicitlySharedDataPointer>
 #include <QSharedData>
+#include <QTextLayout>
 
 #include <optional>
 
@@ -17,7 +18,6 @@
 
 #include <ktexteditor/cursor.h>
 
-class QTextLayout;
 namespace KTextEditor
 {
 class DocumentPrivate;
@@ -70,8 +70,18 @@ public:
 
     bool startsInvisibleBlock() const;
 
-    QTextLayout *layout() const;
-    void setLayout(QTextLayout *layout);
+    const QTextLayout &layout() const
+    {
+        return m_layout;
+    }
+
+    // just used to generate a new layout together with endLayout
+    QTextLayout &modifiableLayout()
+    {
+        return m_layout;
+    }
+
+    void endLayout();
     void invalidateLayout();
 
     bool layoutDirty = true;
@@ -95,7 +105,7 @@ private:
     int m_line;
     int m_virtualLine;
 
-    std::unique_ptr<QTextLayout> m_layout;
+    QTextLayout m_layout;
     QList<bool> m_dirtyList;
 };
 

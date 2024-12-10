@@ -543,7 +543,7 @@ public:
 
     bool isLineRTL(int line) const;
 
-    QTextLayout *textLayout(const KTextEditor::Cursor pos) const;
+    const QTextLayout *textLayout(const KTextEditor::Cursor pos) const;
 
 public Q_SLOTS:
     void indent();

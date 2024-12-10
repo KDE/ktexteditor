@@ -20,7 +20,6 @@ KateLineLayout::KateLineLayout(KateRenderer &renderer)
     : m_renderer(renderer)
     , m_line(-1)
     , m_virtualLine(-1)
-    , m_layout(nullptr)
 {
 }
 
@@ -31,7 +30,7 @@ void KateLineLayout::clear()
     m_virtualLine = -1;
     shiftX = 0;
     // not touching dirty
-    m_layout.reset();
+    m_layout.clearLayout();
     // not touching layout dirty
 }
 
@@ -87,24 +86,16 @@ bool KateLineLayout::startsInvisibleBlock() const
 
 bool KateLineLayout::isValid() const
 {
-    return line() != -1 && layout() && (textLine(), m_textLine);
+    return line() != -1 && layout().lineCount() > 0 && (textLine(), m_textLine);
 }
 
-QTextLayout *KateLineLayout::layout() const
+void KateLineLayout::endLayout()
 {
-    return m_layout.get();
-}
-
-void KateLineLayout::setLayout(QTextLayout *layout)
-{
-    if (m_layout.get() != layout) {
-        m_layout.reset(layout);
-    }
-
-    layoutDirty = !m_layout;
+    m_layout.endLayout();
+    layoutDirty = m_layout.lineCount() <= 0;
     m_dirtyList.clear();
-    if (m_layout) {
-        for (int i = 0; i < qMax(1, m_layout->lineCount()); ++i) {
+    if (m_layout.lineCount() > 0) {
+        for (int i = 0; i < qMax(1, m_layout.lineCount()); ++i) {
             m_dirtyList.append(true);
         }
     }
@@ -112,7 +103,8 @@ void KateLineLayout::setLayout(QTextLayout *layout)
 
 void KateLineLayout::invalidateLayout()
 {
-    setLayout(nullptr);
+    layoutDirty = true;
+    m_dirtyList.clear();
 }
 
 bool KateLineLayout::isDirty(int viewLine) const
@@ -140,7 +132,7 @@ int KateLineLayout::length() const
 
 int KateLineLayout::viewLineCount() const
 {
-    return m_layout->lineCount();
+    return m_layout.lineCount();
 }
 
 KateTextLayout KateLineLayout::viewLine(int viewLine)
@@ -157,8 +149,8 @@ int KateLineLayout::width() const
 {
     int width = 0;
 
-    for (int i = 0; i < m_layout->lineCount(); ++i) {
-        width = qMax((int)m_layout->lineAt(i).naturalTextWidth(), width);
+    for (int i = 0; i < m_layout.lineCount(); ++i) {
+        width = qMax((int)m_layout.lineAt(i).naturalTextWidth(), width);
     }
 
     return width;
@@ -185,8 +177,8 @@ int KateLineLayout::viewLineForColumn(int column) const
 {
     int len = 0;
     int i = 0;
-    for (; i < m_layout->lineCount() - 1; ++i) {
-        len += m_layout->lineAt(i).textLength();
+    for (; i < m_layout.lineCount() - 1; ++i) {
+        len += m_layout.lineAt(i).textLength();
         if (column < len) {
             return i;
         }
@@ -196,9 +188,5 @@ int KateLineLayout::viewLineForColumn(int column) const
 
 bool KateLineLayout::isRightToLeft() const
 {
-    if (!m_layout) {
-        return false;
-    }
-
-    return m_layout->textOption().textDirection() == Qt::RightToLeft;
+    return m_layout.textOption().textDirection() == Qt::RightToLeft;
 }

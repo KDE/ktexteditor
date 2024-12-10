@@ -15,7 +15,7 @@ KateTextLayout::KateTextLayout(KateLineLayout *line, int viewLine)
     , m_startX(m_viewLine ? -1 : 0)
 {
     if (isValid()) {
-        m_textLayout = m_lineLayout->layout()->lineAt(m_viewLine);
+        m_textLayout = m_lineLayout->layout().lineAt(m_viewLine);
     }
 }
 
@@ -189,7 +189,7 @@ int KateTextLayout::startX() const
     if (m_startX == -1) {
         // viewLine is already > 0, from the constructor
         for (int i = 0; i < viewLine(); ++i) {
-            m_startX += (int)m_lineLayout->layout()->lineAt(i).naturalTextWidth();
+            m_startX += (int)m_lineLayout->layout().lineAt(i).naturalTextWidth();
         }
     }
 

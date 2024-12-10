@@ -1069,7 +1069,7 @@ public:
                     }
 
                 } else {
-                    m_cursor.setColumn(thisLine->layout()->nextCursorPosition(column()));
+                    m_cursor.setColumn(thisLine->layout().nextCursorPosition(column()));
                 }
             }
         } else {
@@ -1079,7 +1079,7 @@ public:
                 } else if (column() == 0) {
                     break;
                 } else {
-                    m_cursor.setColumn(thisLine->layout()->previousCursorPosition(column()));
+                    m_cursor.setColumn(thisLine->layout().previousCursorPosition(column()));
                 }
             }
         }
@@ -1141,7 +1141,7 @@ public:
                     continue;
                 }
 
-                m_cursor.setColumn(thisLine->layout()->nextCursorPosition(column()));
+                m_cursor.setColumn(thisLine->layout().nextCursorPosition(column()));
             }
 
         } else {
@@ -1171,7 +1171,7 @@ public:
                 if (column() > thisLine->length()) {
                     m_cursor.setColumn(column() - 1);
                 } else {
-                    m_cursor.setColumn(thisLine->layout()->previousCursorPosition(column()));
+                    m_cursor.setColumn(thisLine->layout().previousCursorPosition(column()));
                 }
             }
         }
@@ -5011,7 +5011,7 @@ QRect KateViewInternal::inlineNoteRect(const KateInlineNoteData &noteData) const
     bool rtl = false;
     if (view()->dynWordWrap()) {
         const KateLineLayout *lineLayout = cache()->line(noteCursor.line());
-        rtl = lineLayout && lineLayout->layout()->textOption().textDirection() == Qt::RightToLeft;
+        rtl = lineLayout && lineLayout->layout().textOption().textDirection() == Qt::RightToLeft;
     }
     if (rtl) {
         noteStartPos.rx() -= note.width();
