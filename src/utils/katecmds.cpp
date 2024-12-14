@@ -629,11 +629,17 @@ QList<KateCommands::EditingCommands::EditingCommand> KateCommands::EditingComman
 bool KateCommands::EditingCommands::exec(KTextEditor::View *view, const QString &cmd, QString &, const KTextEditor::Range &)
 {
     auto getDocAndRange = [view]() -> std::pair<KTextEditor::Document *, KTextEditor::Range> {
-        KTextEditor::Range r = view->document()->documentRange();
+        KTextEditor::Document *doc = view->document();
         if (view->selection()) {
-            return {view->document(), view->selectionRange()};
+            KTextEditor::Range range = view->selectionRange();
+            auto start = range.start();
+            auto end = range.end();
+            start.setColumn(0);
+            end.setColumn(doc->lineLength(end.line()));
+            range.setRange(start, end);
+            return {doc, range};
         }
-        return {view->document(), r};
+        return {doc, doc->documentRange()};
     };
 
     auto apply = [](KTextEditor::Range range, KTextEditor::Document *doc, const QStringList &lines) {
