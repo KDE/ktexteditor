@@ -9,6 +9,7 @@
 #include "variable.h"
 
 #include <KLocalizedString>
+
 #include <KTextEditor/Application>
 #include <KTextEditor/Editor>
 #include <KTextEditor/MainWindow>
@@ -28,6 +29,7 @@
 #include <QToolButton>
 #include <QToolTip>
 #include <QVBoxLayout>
+#include <qnamespace.h>
 
 /**
  * Find closing bracket for @p str starting a position @p pos.
@@ -238,7 +240,11 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     connect(m_filterEdit, &QLineEdit::textChanged, m_filterModel, &QSortFilterProxyModel::setFilterWildcard);
 
     auto lblDescription = new QLabel(i18n("Please select a variable."), this);
+    lblDescription->setWordWrap(true);
+    lblDescription->setTextFormat(Qt::PlainText);
     auto lblCurrentValue = new QLabel(this);
+    lblCurrentValue->setWordWrap(true);
+    lblCurrentValue->setTextFormat(Qt::PlainText);
 
     vbox->addWidget(lblDescription);
     vbox->addWidget(lblCurrentValue);
@@ -254,7 +260,11 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
                         lblCurrentValue->setText(i18n("Current value: %1<value>", var.name()));
                     } else {
                         auto activeView = KTextEditor::Editor::instance()->application()->activeMainWindow()->activeView();
-                        const auto value = var.evaluate(var.name(), activeView);
+                        auto value = var.evaluate(var.name(), activeView);
+
+                        // ensure content like from document doesn't make the dialog size explode, bug 497328
+                        value = QFontMetrics(lblCurrentValue->font()).elidedText(value, Qt::ElideRight, width());
+
                         lblCurrentValue->setText(i18n("Current value: %1", value));
                     }
                 } else {
