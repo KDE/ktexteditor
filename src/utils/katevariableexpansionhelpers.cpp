@@ -29,7 +29,6 @@
 #include <QToolButton>
 #include <QToolTip>
 #include <QVBoxLayout>
-#include <qnamespace.h>
 
 /**
  * Find closing bracket for @p str starting a position @p pos.
