@@ -419,3 +419,5 @@ ecm_qt_install_logging_categories(
     FILE ktexteditor.categories
     DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
 )
+
+ecm_generate_qdoc(KF6TextEditor ktexteditor.qdocconf)

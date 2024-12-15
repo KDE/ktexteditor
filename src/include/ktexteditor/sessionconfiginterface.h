@@ -17,14 +17,17 @@ class KConfigGroup;
 
 namespace KTextEditor
 {
-/**
- * \class SessionConfigInterface sessionconfiginterface.h <KTextEditor/SessionConfigInterface>
+/*!
+ * \class KTextEditor::SessionConfigInterface
+ * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/SessionConfigInterface
  *
  * \brief Session config interface extension for the Plugin and Plugin views.
  *
  * \ingroup kte_group_plugin_extensions
  *
- * \section sessionconfig_intro Introduction
+ * \target sessionconfig_intro
+ * \section1 Introduction
  *
  * The SessionConfigInterface is an extension for Plugin%s and Plugin views
  * to add support for session-specific configuration settings.
@@ -36,12 +39,14 @@ namespace KTextEditor
  *       What is meant is rather a context, think of sessions in Kate or
  *       projects in KDevelop for example.
  *
- * \section sessionconfig_support Adding Session Support
+ * \target sessionconfig_support
+ * \section1 Adding Session Support
  *
  * To add support for sessions, your Plugin has to inherit the SessionConfigInterface
  * and reimplement readSessionConfig() and writeSessionConfig().
  *
- * \section sessionconfig_access Accessing the SessionConfigInterface
+ * \target sessionconfig_access
+ * \section1 Accessing the SessionConfigInterface
  *
  * This section is for application developers such as Kate, KDevelop, etc that
  * what to support session configuration for plugins.
@@ -61,42 +66,48 @@ namespace KTextEditor
  * }
  * \endcode
  *
- * \see KTextEditor::Plugin
- * \author Christoph Cullmann \<cullmann@kde.org\>
+ * \sa KTextEditor::Plugin
  */
 class KTEXTEDITOR_EXPORT SessionConfigInterface
 {
 public:
+    /*!
+     *
+     */
     SessionConfigInterface();
 
-    /**
+    /*!
      * Virtual destructor.
      */
     virtual ~SessionConfigInterface();
 
 public:
-    /**
-     * Read session settings from the given \p config.
+    /*!
+     * Read session settings from the given \a config.
      *
-     * That means for example
-     *  - a Document should reload the file, restore all marks etc...
-     *  - a View should scroll to the last position and restore the cursor
+     * That means for example:
+     * \list
+     *  \li a Document should reload the file, restore all marks etc...
+     *  \li a View should scroll to the last position and restore the cursor
      *    position etc...
-     *  - a Plugin should restore session specific settings
-     *  - If no file is being loaded, because an empty new document is going to be displayed,
+     *  \li a Plugin should restore session specific settings
+     *  \li If no file is being loaded, because an empty new document is going to be displayed,
      *    this function should emit ReadOnlyPart::completed
+     * \endlist
      *
-     * \param config read the session settings from this KConfigGroup
-     * \see writeSessionConfig()
+     * \a config is the KConfigGroup to read the session settings from
+     *
+     * \sa writeSessionConfig()
      */
     virtual void readSessionConfig(const KConfigGroup &config) = 0;
 
-    /**
-     * Write session settings to the \p config.
+    /*!
+     * Write session settings to the \a config.
      * See readSessionConfig() for more details.
      *
-     * \param config write the session settings to this KConfigGroup
-     * \see readSessionConfig()
+     * \a config is the KConfigGroup to write the session settings to
+     *
+     * \sa readSessionConfig()
      */
     virtual void writeSessionConfig(KConfigGroup &config) = 0;
 

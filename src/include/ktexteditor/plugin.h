@@ -17,26 +17,25 @@ namespace KTextEditor
 class ConfigPage;
 class MainWindow;
 
-/**
- * \class Plugin plugin.h <KTextEditor/Plugin>
+/*!
+ * \class KTextEditor::Plugin
+ * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/Plugin
  *
  * \brief KTextEditor Plugin interface.
  *
- * Topics:
- *  - \ref plugin_intro
- *  - \ref plugin_config_pages
- *  - \ref plugin_sessions
- *
- * \section plugin_intro Introduction
+ * \target plugin_intro
+ * \section1 Introduction
  *
  * The Plugin class provides methods to create loadable plugins for the
  * KTextEditor framework. The Plugin class itself a function createView()
  * that is called for each MainWindow. In createView(), the plugin is
  * responsible to create tool views through MainWindow::createToolView(),
  * hook itself into the menus and toolbars through KXMLGuiClient, and attach
- * itself to View%s or Document%s.
+ * itself to Views or Documents.
  *
- * \section plugin_config_pages Plugin Config Pages
+ * \target plugin_config_pages
+ * \section1 Plugin Config Pages
  *
  * If your plugin needs config pages, override the functions configPages()
  * and configPage() in your plugin as follows:
@@ -52,7 +51,8 @@ class MainWindow;
  * \endcode
  * The host application will call configPage() for each config page.
  *
- * \section plugin_sessions Session Management
+ * \target plugin_sessions
+ * \section1 Session Management
  *
  * As an extension a Plugin can implement the SessionConfigInterface. This
  * interface provides functions to read and write session related settings.
@@ -71,61 +71,68 @@ class MainWindow;
  * };
  * \endcode
  *
- * \see KTextEditor::SessionConfigInterface, KTextEditor::ConfigPage,
- *      KTextEditor::MainWindow, \ref kte_plugin_hosting
- * \author Christoph Cullmann \<cullmann@kde.org\>
+ * \sa KTextEditor::SessionConfigInterface, KTextEditor::ConfigPage,
+ *      KTextEditor::MainWindow, kte_plugin_hosting
  */
 class KTEXTEDITOR_EXPORT Plugin : public QObject
 {
     Q_OBJECT
 
 public:
-    /**
+    /*!
      * Constructor.
      *
      * Create a new application plugin.
-     * \param parent parent object
+     *
+     * \a parent is the parent object
+     *
      */
     Plugin(QObject *parent);
 
-    /**
+    /*!
      * Virtual destructor.
      */
     ~Plugin() override;
 
-    /**
+    /*!
      * Create a new View for this plugin for the given KTextEditor::MainWindow.
      * This may be called arbitrary often by the application to create as much
-     * views as MainWindow%s exist. The application will take care to delete
+     * views as MainWindows exist. The application will take care to delete
      * a view whenever a MainWindow is closed, so you do not need to handle
      * deletion of the view yourself in the plugin.
      *
      * \note Session configuration: The host application will try to cast the
-     *       returned QObject with \p qobject_cast into the SessionConfigInterface.
+     *       returned QObject with \a qobject_cast into the SessionConfigInterface.
      *       This way, not only your Plugin, but also each Plugin view can have
      *       session related settings.
      *
-     * \param mainWindow the MainWindow for which a view should be created
-     * \return the new created view or NULL
-     * @see SessionConfigInterface
+     * \a mainWindow is the MainWindow for which a view should be created
+     *
+     * Returns the new created view or NULL
+     * \sa SessionConfigInterface
      */
     virtual QObject *createView(KTextEditor::MainWindow *mainWindow) = 0;
 
-    /**
+    /*!
      * Get the number of available config pages.
+     *
      * If a number < 1 is returned, it does not support config pages.
-     * \return number of config pages, default implementation says 0
-     * \see configPage()
+     *
+     * Returns number of config pages, default implementation says 0
+     * \sa configPage()
      */
     virtual int configPages() const;
 
-    /**
-     * Get the config page with the \p number, config pages from 0 to
+    /*!
+     * Get the config page with the \a number, config pages from 0 to
      * configPages()-1 are available if configPages() > 0.
-     * \param number index of config page
-     * \param parent parent widget for config page
-     * \return created config page or NULL, if the number is out of bounds, default implementation returns NULL
-     * \see configPages()
+     *
+     * \a number is the index of config page
+     *
+     * \a parent is the parent widget for config page
+     *
+     * Returns created config page or NULL, if the number is out of bounds, default implementation returns NULL
+     * \sa configPages()
      */
     virtual ConfigPage *configPage(int number, QWidget *parent);
 
