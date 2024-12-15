@@ -2671,7 +2671,7 @@ void KateViewInternal::mergeSelections()
         }
 
         auto n = std::next(it);
-        if (/*!it->range || */ !n->range) {
+        if (/* !it->range || */ !n->range) {
             continue;
         }
 

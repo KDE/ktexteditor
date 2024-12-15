@@ -1,16 +1,16 @@
-/** \page kte_guidelines Coding Guidelines and API Conventions
+/*! \page kte_guidelines.html
 
-<p><b>
-\ref index "Overview" |
-\ref kte_design "Design" |
+\title Coding Guidelines and API Conventions
+
+\l {KTextEditor C++ Classes} {Overview} |
+\l {Overview of the Core Interface Design} {Design} |
 Coding Guidelines |
-\ref kte_port_to_5 "Porting to KDE Frameworks 5"
-</b></p>
+\l {Porting to KDE Frameworks 5}
 
 All KTextEditor interfaces have a consistent design.
 - naming follows Qt style. Avoid Java style getters like getSomeData()
   for example,
-- core interfaces (see \ref kte_design) which inherit QObject declare all
+- core interfaces (see \l {Overview of the Core Interface Design}) which inherit QObject declare all
   signals as real signals,
 - all other interfaces, which do not subclass QObject, must declare their
   signals as virtual private member functions. An implementation must

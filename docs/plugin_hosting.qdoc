@@ -1,4 +1,7 @@
-/** \page kte_plugin_hosting Hosting KTextEditor plugins
+/*! \page kte_plugin_hosting.html
+
+\target kte_plugin_hosting
+\title Hosting KTextEditor Plugins
 
 While the KTextEditor framework provides a powerful text editor in itself, 
 further features are available from plugins (KTextEditor::Plugin). At the time of this writing,
@@ -8,7 +11,8 @@ can be used in other hosting applications, as well.
 This page is about supporting KTextEditor plugins in your application. For information on
 developing the plugins themselves, refer to KTextEditor::Plugin.
 
-\section kte_basic_plugin_loading Loading simple plugins
+\target kte_basic_plugin_loading
+\section1 Loading simple plugins
 The steps needed to find and load basic KTextEditor plugins are roughly as follows:
 
 \code
@@ -41,8 +45,9 @@ The steps needed to find and load basic KTextEditor plugins are roughly as follo
 Note, however, that only a few basic plugins will actually be functional with the above, alone.
 For others, we need to implement several additional functions, as detailed, below.
 
-\section kte_full_plugin_hosting Implementing full plugin hosting
-I order to allow plugins to interact with the hosting application (e.g. creating or activating additional windows/widgets),
+\target kte_full_plugin_hosting 
+\section1 Implementing full plugin hosting
+In order to allow plugins to interact with the hosting application (e.g. creating or activating additional windows/widgets),
 you need to implement two interfacing classes:
 - KTextEditor::Application (singleton)
 - KTextEditor::MainWindow
@@ -109,12 +114,12 @@ private:
 }
 \endcode
 
-@note Due to the lose coupling via Qt slots, you may not need to implement a dispatch slots for every
+\note Due to the lose coupling via Qt slots, you may not need to implement a dispatch slots for every
 single member in KTextEditor::Application, and KTextEditor::MainWindow. Naturally, however, plugins will be
 more likely to work as expected, the more complete the hosting app implements these interfaces.
 
-@note Don't forget to integrate the plugin config pages, if desired: @see KTextEditor::Plugin::configPage(), @see KTextEditor::Plugin::configPages().
+\note Don't forget to integrate the plugin config pages, if desired: @see KTextEditor::Plugin::configPage(), @see KTextEditor::Plugin::configPages().
 
-\see KTextEditor::Plugin, KTextEditor::Application, KTextEditor::MainWindow
+\sa KTextEditor::Plugin, KTextEditor::Application, KTextEditor::MainWindow
 
 */

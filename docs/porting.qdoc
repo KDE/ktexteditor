@@ -1,0 +1,218 @@
+/*! \page kte_port_to_5.html
+
+\title Porting to KDE Frameworks 5
+
+\l {KTextEditor C++ Classes} {Overview} |
+\l {Overview of the Core Interface Design} {Design} |
+\l {Coding Guidelines and API Conventions} {Coding Guidelines} |
+Porting to KDE Frameworks 5
+
+This document describes porting applications using the KTextEditor interfaces
+from KDE 4 to KDE Frameworks 5. This page does not try to be complete; its main
+goal is to show what interfaces were removed, changed or added to give some
+impression and orientation of what you have to do to port your application to
+the KDE Frameworks 5 KTextEditor interfaces.
+
+\target kte_port_intro 
+\section1 Introduction
+The KTextEditor interfaces changes in KDE Frameworks 5 are neither binary nor
+source compatible to the KTextEditor interfaces included in KDE 4, so programs
+written/compiled for the KDE 4 KTextEditor interfaces will not compile
+(nor run) under Frameworks 5.
+
+The Frameworks 5 KTextEditor interfaces undergone a heavy cleanup, i.e. obsolete
+functions were removed, interfaces were merged and extended. All interface
+changes like for example parameter changes of a function are not mentioned in
+detail in this page, look into the particular class API documentation.
+
+\target kte_port_remove 
+\section1 Removed/Merged Interfaces and Classes
+Entirely removed interfaces and classes are:
+\list
+ \li \b KTextEditor::Factory \br
+   Just use KTextEditor::Editor::instance() to get the editor instance.
+   This pointer is \e always valid.
+ \li \b KTextEditor::EditorChooser \br
+   Instead, just use \b KTextEditor::Editor::instance();
+ \li \b SmartInterface (removed since KDE 4.5)
+ \li \b SmartCursor, \c SmartRange, \c SmartCursorNotifier, \c SmartCursorWatcher,
+   \b SmartRangeNotifier, \c SmartRangeWatcher (already unsupported since KDE 4.5)
+ \li \b LoadSaveFilterCheckPlugin was removed, since it was unused.
+ \li \b KTextEditor::VariableInterface \br
+   This interface was not used by other applications and therefore got removed.
+   If required, it can be added again.
+ \li \b KTextEditor::SearchInterface \br
+   This interface was removed. The function \b searchText() was added to
+   \b KTextEditor::Document.
+ \li \b KTextEditor::ConfigPageInterface \br
+   This interface was removed. The functions \b configPages() and \c configPage()
+   were both added to the \b KTextEditor::Editor and the \c KTextEditor::Plugin interface.
+ \li \b KTextEditor::ParameterizedSessionConfigInterface \br
+   This interface was removed. The functions are now available directly in the
+   Document and the View as follows:
+   \list
+   \li \b KTextEditor::Document::readSessionConfig() and \c KTextEditor::Document::writeSessionConfig()
+   \li \b KTextEditor::View::readSessionConfig() and \c KTextEditor::View::writeSessionConfig()
+   \endlist
+ \li \b CoordinatesToCursorInterface was merged into the \c KTextEditor::View.
+ \li \b CodeCompletionModelControllerInterface2,
+   \b CodeCompletionModelControllerInterface3 and
+   \b CodeCompletionModelControllerInterface4
+   were merged into the \b KTextEditor::CodeCompletionModelControllerInterface.
+ \li \b KTextEditor::CommandInterface \br
+   This interface was merged into the \b KTextEditor::Editor.
+ \li \b KTextEditor::Command \br
+   This class now inherits QObject. Further, a Command now automatically
+   registers and unregisters itself. Hence, \b CommandInterface::registerCommand()
+   and \b CommandInterface::unregisterCommand() were removed.
+ \li \b KTextEditor::CommandExtension \br
+   This interface was merged into \b KTextEditor::Command.
+   KTextEditor::CommandExtension::flagCompletions() was removed since it was
+   never implemented and therefore unused.
+ \li \b KTextEditor::RangeCommand \br
+   This interface was merged into \b KTextEditor::Command. The function
+   \b KTextEditor::Command::exec() now takes an optional Range as 3rd parameter.
+ \li \b KTextEditor::HighlightInterface \br
+   The default styles are now in the namespace \b KTextEditor::DefaultStyle.
+   The rest of this interface was merged into the \b KTextEditor::Document and \c KTextEditor::View, see:
+   \list
+   \li \b KTextEditor::Document::defaultStyleAt()
+   \li \b KTextEditor::View::defaultStyleAttribute()
+   \li \b KTextEditor::View::lineAttributes()
+   \endlist
+ \li \b KTextEditor::HighlightInterface::AttributeBlock moved to \c KTextEditor::AttributeBlock.
+ \li \b KTextEditor::RecoveryInterface \br
+   This interface was merged into the \b KTextEditor::Document, see
+   \list
+   \li \b KTextEditor::Document::isDataRecoveryAvailable()
+   \li \b KTextEditor::Document::recoverData()
+   \li \b KTextEditor::Document::discardDataRecovery()
+   \endlist
+\endlist
+
+\target kte_port_rename 
+\section1 Interface Changes
+The following interfaces were changed:
+\list
+ \li \b KTextEditor::Editor::setSimpleMode() was removed.
+ \li \b KTextEditor::Editor::readConfig() and \c KTextEditor::Editor::writeConfig() \br
+   Both functions were removed. The Editor configuration is automatically saved
+   to \e katepartrc now and shared among all applications that use the KTextEditor framework.
+ \li \b KTextEditor::View::setSelection(const Cursor &position, int length, bool wrap)
+   was removed in favor of the Range based KTextEditor::View::setSelection()
+ \li \b KTextEditor::Document::activeView() \br
+   The active view was removed in favor of KTextEditor::MainWindow::activeView().
+ \li \b KTextEditor::Document::checksum() returns the sha1 checksum (same as git) of the file on disk.
+ \li \b KTextEditor::Document::wordRangeAt() returns the Range of the word under the given cursor.
+ \li \b KTextEditor::Document::wordAt() returns the word under the given cursor.
+ \li \b KTextEditor::Document::character() was renamed to \c KTextEditor::Document::characterAt()
+ \li \b KTextEditor::Document::isLineModified(), \c KTextEditor::Document::isLineSaved(),
+   and \b KTextEditor::Document::isLineTouched() are new.
+ \li \b KTextEditor::Document::readWriteChanged() \br
+   This signal is emitted whenever the read-only state of the document changes.
+ \li \b KTextEditor::Document::startEditing() and \c KTextEditor::Document::endEditing()
+   were removed in favour of the RAII class \b KTextEditor::Document::EditingTransaction.
+   Further, \b KTextEditor::Document::isEditingTransactionRunning() was added.
+ \li \b KTextEditor::Document::exclusiveEditStart() was renamed to \c KTextEditor::Document::editingStarted().
+ \li \b KTextEditor::Document::exclusiveEditEnd() was renamed to \c KTextEditor::Document::editingFinished().
+ \li New \b KTextEditor::Document gained new editing signals: \br
+   \list
+   \li \b KTextEditor::Document::lineWrapped() and \c KTextEditor::Document::lineUnwrapped()
+   \li \b KTextEditor::Document::textInserted() and \c KTextEditor::Document::textRemoved()
+   \li \b KTextEditor::Document::textChanged()
+   \endlist
+   These signals are emitted only between the signals \b KTextEditor::Document::editingStarted()
+   and before \b KTextEditor::Document::editingFinished(). Note, that you should
+   \e never modify the document between these two signals.
+ \li \b KTextEditor::Document::cursorInText() was unused and removed in favor of
+   \b KTextEditor::Document::isValidTextPosition().
+ \li \b KTextEditor::View now has a status bar by default. It can be controlled
+   by \b View::setStatusBarEnabled() and \c View::isStatusBarEnabled(). Whenever the visibility
+   of the statusbar changes, the signal \b View::statusBarEnabledChanged() is emitted.
+ \li \b KTextEditor::View::informationMessage() was removed in favor of \c KTextEditor::Document::postMessage().
+ \li \b KTextEditor::View::viewModeChanged() gained an additional parameter with the current view edit mode.
+ \li New enums \b KTextEditor::View::InputMode and \c KTextEditor::View::ViewMode.
+ \li \b KTextEditor::View::viewEditModeChanged() was renamed to \c KTextEditor::View::viewInputModeChanged().
+ \li New functions \b KTextEditor::View::viewModeHuman and \c KTextEditor::View::viewInputModeHuman().
+ \li \b KTextEditor::SessionConfigInterface \br
+   This interface is an extension only for a \b KTextEditor::Plugin and the Plugin
+   view's returned by \b KTextEditor::Plugin::createView().
+ \li \b KTextEditor::CodeCompletionModel \br
+   \b KTextEditor::CodeCompletionModel::hasGroups() now returns \e false (KF5)
+   instead of \e true (KDE4).
+\endlist
+
+\target kte_port_new 
+\section1 New Interfaces
+The following interfaces are new:
+\list
+ \li \b KTextEditor::Application (since KDE 5.0) \br
+   The Application is an interface that is implemented by the host application.
+   It provides information about the documents managed by the application as well
+   as convenience functions for instance to open or close documents.
+ \li \b KTextEditor::MainWindow (since KDE 5.0) \br
+   A MainWindow usually represents a toplevel window of the application.
+   It manages the views and also provides an accessor to the MainWindow's active
+   view through MainWindow::activeView(). The provides signals that indicate that
+   the active view has changed, or that a view has been created. Other than that,
+   it for instance allows to create tool views and similar convenience functions
+   to show view bars.
+ \li \b KTextEditor::Message (since KDE 4.11) \br
+   Class providing notifications to the user in a KTextEditor::View.
+\endlist
+
+\target kte_port_enhanced_classes 
+\section1 Significantly Enhanced Classes
+The following classes have been significantly enhanced:
+\list
+ \li \b KTextEditor::Cursor \br
+   The Cursor now is a tuple of two ints, namely the line and column. It has no
+   virtual destructor so that you cannot derive from Cursor. Since a Cursor
+   uses 8 Bytes, it is even ok to pass a Cursor as copy in parameters instead
+   of a reference.
+   Further, the Cursor has been marked as Q_MOVABLE, making it behave like a
+   Plain Old Data (POD) type.
+ \li \b KTextEditor::Range \br
+   The Range now is a tuple of two Cursors, namely the Range::startCursor() and the
+   Range::endCursor(). It has no virtual destructor so that you cannot derive from Range.
+   Further, the Range has been marked as Q_MOVABLE, making it behave like a
+   Plain Old Data (POD) type.
+ \li \b KTextEditor::TextHintInterface \br
+   This interface now requires you to call registerTextHintProvider() and
+   unregisterTextHintProvider() with a corresponding object that implements
+   \b KTextEditor::TextHintProvider.
+ \li \b KTextEditor::Attribute \br
+   This class was extended by several attributes that were internal to Kate Part
+   before, including the name, spell checking, and the default style.
+\endlist
+
+\target kte_port_new_classes 
+\section1 New Classes
+The following classes are either new, or were added late in the KDE 4 release cycle:
+\list
+ \li \b KTextEditor::DocumentCursor \br
+   The DocumentCursor is a cursor associated to a KTextEditor::Document. It
+   provides convenience functions such as for text navigation. However, it does
+   not automatically maintain its position when the document's contents changes.
+ \li \b KTextEditor::MovingCursor (since KDE 4.5) \br
+   The MovingCursor was introduced in KDE 4.5 as replacement to the SmartCursor.
+   A MovingCursor is bound to a specific Document and maintains its position.
+ \li \b KTextEditor::MovingRange \br
+   The MovingRange was introduced in KDE 4.5 as replacement to the SmartRange.
+   A MovingRange is bound to a specific Document and maintains its position.
+ \li \b KTextEditor::MovingRangeFeedback (since KDE 4.5) \br
+   Class providing notifications of changes to a KTextEditor::MovingRange.
+\endlist
+
+\target kte_port_plugins 
+\section1 Plugin Architecture Changes
+The KTextEditor::Plugin system was heavily extended to support 'application
+plugins'. That is, a plugin can now create tool views in a KTextEditor::MainWindow and
+access the Application's document list. So the plugins are now shared
+between all applications using the KTextEditor interfaces (e.g. Kate, KDevelop,
+and Kile).
+
+\sa KTextEditor::Plugin
+
+\author Dominik Haumann \<dhaumann@kde.org\>
+*/

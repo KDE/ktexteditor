@@ -1,0 +1,23 @@
+/*!
+    \page ktexteditor-index.html
+    \title KTextEditor
+
+    KTextEditor is a full text editor component.
+
+    \section1 Using the Module
+
+    \include {module-use.qdocinc} {using the c++ api}
+
+    \section2 Building with CMake
+
+
+    \section1 API Reference
+
+    \list
+        \li \l{KTextEditor C++ Classes}
+    \endlist
+
+    \section1 Licenses
+
+    TODO
+*/
