@@ -20,10 +20,12 @@ namespace KTextEditor
 class MovingRange;
 class Document;
 
-/**
- * \class MovingCursor movingcursor.h <KTextEditor/MovingCursor>
+/*!
+ * \class KTextEditor::MovingCursor
+ * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/MovingCursor
  *
- * \short A Cursor which is bound to a specific Document, and maintains its position.
+ * \brief A Cursor which is bound to a specific Document, and maintains its position.
  *
  * \ingroup kte_group_moving_classes
  *
@@ -47,8 +49,6 @@ class Document;
  *
  * \sa Cursor, Range, MovingRange and MovingInterface.
  *
- * \author Christoph Cullmann \<cullmann@kde.org\>
- *
  * \since 4.5
  */
 class KTEXTEDITOR_EXPORT MovingCursor
@@ -57,71 +57,91 @@ class KTEXTEDITOR_EXPORT MovingCursor
     // sub types
     //
 public:
-    /**
-     * Insert behavior of this cursor, should it stay if text is insert at its position
-     * or should it move.
+    /*!
+       \enum KTextEditor::MovingCursor::InsertBehavior
+
+       Insert behavior of this cursor, should it stay if text is insert at its position
+       or should it move.
+
+       \value StayOnInsert
+       Stay on insert.
+       \value MoveOnInsert
+       Move on insert.
      */
     enum InsertBehavior {
-        StayOnInsert = 0x0, ///< stay on insert
-        MoveOnInsert = 0x1 ///< move on insert
+        StayOnInsert = 0x0,
+        MoveOnInsert = 0x1
     };
 
-    /**
-     * Wrap behavior for end of line treatement used in move().
+    /*!
+       \enum KTextEditor::MovingCursor::WrapBehavior
+
+       Wrap behavior for end of line treatement used in move().
+
+       \value Wrap
+       Wrap at end of line
+       \value NoWrap
+       Do not wrap at end of line
      */
     enum WrapBehavior {
-        Wrap = 0x0, ///< wrap at end of line
-        NoWrap = 0x1 ///< do not wrap at end of line
+        Wrap = 0x0,
+        NoWrap = 0x1
     };
 
     //
     // stuff that needs to be implemented by editor part cursors
     //
 public:
-    /**
+    /*!
      * Set insert behavior.
-     * @param insertBehavior new insert behavior
+     *
+     * \a insertBehavior is the new insert behavior
+     *
      */
     virtual void setInsertBehavior(InsertBehavior insertBehavior) = 0;
 
-    /**
+    /*!
      * Get current insert behavior.
-     * @return current insert behavior
+     * Returns current insert behavior
      */
     virtual InsertBehavior insertBehavior() const = 0;
 
-    /**
+    /*!
      * Gets the document to which this cursor is bound.
-     * \return a pointer to the document
+     *
+     * Returns a pointer to the document
      */
     virtual Document *document() const = 0;
 
-    /**
+    /*!
      * Get range this cursor belongs to, if any
-     * @return range this pointer is part of, else 0
+     * Returns range this pointer is part of, else 0
      */
     virtual MovingRange *range() const = 0;
 
-    /**
+    /*!
      * Set the current cursor position to \e position.
      *
-     * \param position new cursor position
+     * \a position is the new cursor position
+     *
      */
     virtual void setPosition(KTextEditor::Cursor position) = 0;
 
-    /**
+    /*!
      * Retrieve the line on which this cursor is situated.
-     * \return line number, where 0 is the first line.
+     *
+     * Returns line number, where 0 is the first line.
      */
     virtual int line() const = 0;
 
-    /**
+    /*!
      * Retrieve the column on which this cursor is situated.
-     * \return column number, where 0 is the first column.
+     *
+     * Returns column number, where 0 is the first column.
      */
     virtual int column() const = 0;
 
-    /**
+    /*!
      * Destruct the moving cursor.
      */
     virtual ~MovingCursor();
@@ -130,18 +150,18 @@ public:
     // forbidden stuff
     //
 protected:
-    /**
+    /*!
      * For inherited class only.
      */
     MovingCursor();
 
 public:
-    /**
+    /*!
      * no copy constructor, don't allow this to be copied.
      */
     MovingCursor(const MovingCursor &) = delete;
 
-    /**
+    /*!
      * no assignment operator, no copying around clever cursors.
      */
     MovingCursor &operator=(const MovingCursor &) = delete;
@@ -150,103 +170,112 @@ public:
     // convenience API
     //
 public:
-    /**
+    /*!
      * Returns whether the current position of this cursor is a valid position,
      * i.e. whether line() >= 0 and column() >= 0.
      *
-     * \return \e true , if the cursor position is valid, otherwise \e false
+     * Returns \e true , if the cursor position is valid, otherwise \e false
      */
     inline bool isValid() const
     {
         return line() >= 0 && column() >= 0;
     }
 
-    /**
+    /*!
      * Check whether this MovingCursor is located at a valid text position.
-     * A cursor position at (line, column) is valid, if
-     * - line >= 0 and line < document()->lines() holds, and
-     * - column >= 0 and column <= lineLength(column).
+     *
+     * A cursor position at (line, column) is valid, if:
+     * \list
+     * \li line >= 0 and line < document()->lines() holds, and
+     * \li column >= 0 and column <= lineLength(column).
+     * \endlist
      *
      * Further, the text position is also invalid if it is inside a Unicode
      * surrogate (utf-32 character).
      *
-     * \return \e true, if the cursor is a valid text position, otherwise \e false
+     * Returns \e true, if the cursor is a valid text position, otherwise \e false
      *
-     * \see Document::isValidTextPosition()
+     * \sa Document::isValidTextPosition()
      */
     bool isValidTextPosition() const;
 
-    /**
+    /*!
      * \overload
      *
      * Set the cursor position to \e line and \e column.
      *
-     * \param line new cursor line
-     * \param column new cursor column
+     * \a line is the new cursor line
+     *
+     * \a column is the new cursor column
+     *
      */
     void setPosition(int line, int column);
 
-    /**
+    /*!
      * Set the cursor line to \e line.
-     * \param line new cursor line
+     *
+     * \a line is the new cursor line
+     *
      */
     void setLine(int line);
 
-    /**
+    /*!
      * Set the cursor column to \e column.
-     * \param column new cursor column
+     *
+     * \a column is the new cursor column
+     *
      */
     void setColumn(int column);
 
-    /**
+    /*!
      * Determine if this cursor is located at column 0 of a valid text line.
      *
-     * \return \e true if cursor is a valid text position and column()=0, otherwise \e false.
+     * Returns \e true if cursor is a valid text position and column()=0, otherwise \e false.
      */
     bool atStartOfLine() const;
 
-    /**
+    /*!
      * Determine if this cursor is located at the end of the current line.
      *
-     * \return \e true if the cursor is situated at the end of the line, otherwise \e false.
+     * Returns \e true if the cursor is situated at the end of the line, otherwise \e false.
      */
     bool atEndOfLine() const;
 
-    /**
+    /*!
      * Determine if this cursor is located at line 0 and column 0.
      *
-     * \return \e true if the cursor is at start of the document, otherwise \e false.
+     * Returns \e true if the cursor is at start of the document, otherwise \e false.
      */
     bool atStartOfDocument() const;
 
-    /**
+    /*!
      * Determine if this cursor is located at the end of the last line in the
      * document.
      *
-     * \return \e true if the cursor is at the end of the document, otherwise \e false.
+     * Returns \e true if the cursor is at the end of the document, otherwise \e false.
      */
     bool atEndOfDocument() const;
 
-    /**
+    /*!
      * Moves the cursor to the next line and sets the column to 0. If the cursor
      * position is already in the last line of the document, the cursor position
      * remains unchanged and the return value is \e false.
      *
-     * \return \e true on success, otherwise \e false
+     * Returns \e true on success, otherwise \e false
      */
     bool gotoNextLine();
 
-    /**
+    /*!
      * Moves the cursor to the previous line and sets the column to 0. If the
      * cursor position is already in line 0, the cursor position remains
      * unchanged and the return value is \e false.
      *
-     * \return \e true on success, otherwise \e false
+     * Returns \e true on success, otherwise \e false
      */
     bool gotoPreviousLine();
 
-    /**
-     * Moves the cursor \p chars character forward or backwards. If \e wrapBehavior
+    /*!
+     * Moves the cursor \a chars character forward or backwards. If \a wrapBehavior
      * equals WrapBehavior::Wrap, the cursor is automatically wrapped to the
      * next line at the end of a line.
      *
@@ -254,24 +283,24 @@ public:
      * \note If the cursor could not be moved the amount of chars requested,
      *       the cursor is not moved at all!
      *
-     * \return \e true on success, otherwise \e false
+     * Returns \e true on success, otherwise \e false
      */
     bool move(int chars, WrapBehavior wrapBehavior = Wrap);
 
-    /**
+    /*!
      * Convert this clever cursor into a dumb one.
      * Even if this cursor belongs to a range, the created one not.
-     * @return normal cursor
+     * Returns normal cursor
      */
     const Cursor toCursor() const
     {
         return Cursor(line(), column());
     }
 
-    /**
+    /*!
      * Convert this clever cursor into a dumb one. Equal to toCursor, allowing to use implicit conversion.
      * Even if this cursor belongs to a range, the created one not.
-     * @return normal cursor
+     * Returns normal cursor
      */
     operator Cursor() const
     {
@@ -281,37 +310,45 @@ public:
     //
     // operators for: MovingCursor <-> MovingCursor
     //
-    /**
+    /*!
      * Equality operator.
      *
      * \note comparison between two invalid cursors is undefined.
      *       comparison between an invalid and a valid cursor will always be \e false.
      *
-     * \param c1 first cursor to compare
-     * \param c2 second cursor to compare
-     * \return \e true, if c1's and c2's line and column are \e equal.
+     * \a c1 is the first cursor to compare
+     *
+     * \a c2 is the second cursor to compare
+     *
+     * Returns \e true, if c1's and c2's line and column are \e equal.
      */
     inline friend bool operator==(const MovingCursor &c1, const MovingCursor &c2)
     {
         return c1.line() == c2.line() && c1.column() == c2.column();
     }
 
-    /**
+    /*!
      * Inequality operator.
-     * \param c1 first cursor to compare
-     * \param c2 second cursor to compare
-     * \return \e true, if c1's and c2's line and column are \e not equal.
+     *
+     * \a c1 is the first cursor to compare
+     *
+     * \a c2 is the second cursor to compare
+     *
+     * Returns \e true, if c1's and c2's line and column are \e not equal.
      */
     inline friend bool operator!=(const MovingCursor &c1, const MovingCursor &c2)
     {
         return !(c1 == c2);
     }
 
-    /**
+    /*!
      * Greater than operator.
-     * \param c1 first cursor to compare
-     * \param c2 second cursor to compare
-     * \return \e true, if c1's position is greater than c2's position,
+     *
+     * \a c1 is the first cursor to compare
+     *
+     * \a c2 is the second cursor to compare
+     *
+     * Returns \e true, if c1's position is greater than c2's position,
      *         otherwise \e false.
      */
     inline friend bool operator>(const MovingCursor &c1, const MovingCursor &c2)
@@ -319,11 +356,14 @@ public:
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() > c2.column());
     }
 
-    /**
+    /*!
      * Greater than or equal to operator.
-     * \param c1 first cursor to compare
-     * \param c2 second cursor to compare
-     * \return \e true, if c1's position is greater than or equal to c2's
+     *
+     * \a c1 is the first cursor to compare
+     *
+     * \a c2 is the second cursor to compare
+     *
+     * Returns \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
     inline friend bool operator>=(const MovingCursor &c1, const MovingCursor &c2)
@@ -331,11 +371,14 @@ public:
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() >= c2.column());
     }
 
-    /**
+    /*!
      * Less than operator.
-     * \param c1 first cursor to compare
-     * \param c2 second cursor to compare
-     * \return \e true, if c1's position is greater than or equal to c2's
+     *
+     * \a c1 is the first cursor to compare
+     *
+     * \a c2 is the second cursor to compare
+     *
+     * Returns \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
     inline friend bool operator<(const MovingCursor &c1, const MovingCursor &c2)
@@ -343,11 +386,14 @@ public:
         return !(c1 >= c2);
     }
 
-    /**
+    /*!
      * Less than or equal to operator.
-     * \param c1 first cursor to compare
-     * \param c2 second cursor to compare
-     * \return \e true, if c1's position is lesser than or equal to c2's
+     *
+     * \a c1 is the first cursor to compare
+     *
+     * \a c2 is the second cursor to compare
+     *
+     * Returns \e true, if c1's position is lesser than or equal to c2's
      *         position, otherwise \e false.
      */
     inline friend bool operator<=(const MovingCursor &c1, const MovingCursor &c2)
@@ -356,19 +402,29 @@ public:
     }
 };
 
-/**
+/*!
  * qDebug() stream operator. Writes this cursor to the debug output in a nicely formatted way.
- * @param s debug stream
- * @param cursor cursor to print
- * @return debug stream
+ *
+ * \a s is the debug stream
+ *
+ * \a cursor is the cursor to print
+ *
+ * Returns debug stream
+ *
+ * \relates KTextEditor::MovingCursor
  */
 KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, const MovingCursor *cursor);
 
-/**
+/*!
  * qDebug() stream operator. Writes this cursor to the debug output in a nicely formatted way.
- * @param s debug stream
- * @param cursor cursor to print
- * @return debug stream
+ *
+ * \a s is the debug stream
+ *
+ * \a cursor is the cursor to print
+ *
+ * Returns debug stream
+ *
+ * \relates KTextEditor::MovingCursor
  */
 KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, const MovingCursor &cursor);
 }

@@ -19,7 +19,11 @@ namespace KTextEditor
 class TextHintProvider;
 class View;
 
-/**
+/*!
+ * \class KTextEditor::TextHintProvider
+ * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/TextHintProvider
+ *
  * \brief Class to provide text hints for a View.
  *
  * The class TextHintProvider is used in combination with TextHintInterface.
@@ -35,34 +39,36 @@ class View;
  * Detailed information about how to use the TextHintInterface can be found
  * in the documentation about the TextHintInterface.
  *
- * \see TextHintInterface
- * \p since 5.0
+ * \sa TextHintInterface
+ * \since 5.0
  */
 class KTEXTEDITOR_EXPORT TextHintProvider
 {
 public:
-    /**
+    /*!
      * Default constructor.
      */
     TextHintProvider();
 
-    /**
+    /*!
      * Virtual destructor to allow inheritance.
      */
     virtual ~TextHintProvider();
 
-    /**
-     * This function is called whenever the users hovers over text such
+    /*!
+     * This function is called whenever the user hovers over text such
      * that the text hint delay passes. Then, textHint() is called
      * for each registered TextHintProvider.
      *
-     * Return the text hint (possibly Qt richtext) for @p view at @p position.
+     * Return the text hint (possibly Qt richtext) for \a view at \a position.
      *
      * If you do not have any contents to show, just return an empty QString().
      *
-     * \param view the view that requests the text hint
-     * \param position text cursor under the mouse position
-     * \return text tool tip to be displayed, may be Qt richtext
+     * \a view is the view that requests the text hint
+     *
+     * \a position is the text cursor under the mouse position
+     *
+     * Returns text tool tip to be displayed, may be Qt richtext
      */
     virtual QString textHint(KTextEditor::View *view, const KTextEditor::Cursor &position) = 0;
 

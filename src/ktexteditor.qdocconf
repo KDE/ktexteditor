@@ -1,0 +1,25 @@
+include($KDE_DOCS/global/qt-module-defaults.qdocconf)
+
+project = KTextEditor
+description = Full text editor component
+
+documentationinheaders = true
+
+headerdirs = include ../docs
+imagedirs = ../docs/pics
+sourcedirs = .
+
+depends = \
+    kde \
+    qtcore \
+    qtwidgets \
+    kconfigcore \
+    kxmlgui
+
+qhp.projects = KTextEditor
+
+qhp.KTextEditor.file = ktexteditor.qhp
+qhp.KTextEditor.namespace = org.kde.ktexteditor.$QT_VERSION_TAG
+qhp.KTextEditor.virtualFolder = ktexteditor
+qhp.KTextEditor.indexTitle = KTextEditor
+qhp.KTextEditor.indexRoot = 

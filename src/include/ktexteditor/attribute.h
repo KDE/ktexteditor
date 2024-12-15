@@ -20,8 +20,10 @@ class QAction;
 namespace KTextEditor
 {
 
-/**
- * \class Attribute attribute.h <KTextEditor/Attribute>
+/*!
+ * \class KTextEditor::Attribute
+ * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/Attribute
  *
  * \brief A class which provides customized text decorations.
  *
@@ -30,9 +32,11 @@ namespace KTextEditor
  * in a text document.
  *
  * In addition to its inherited properties, it provides support for:
+ * \list
  * \li several customized text formatting properties
  * \li dynamic highlighting of associated ranges of text
  * \li binding of actions with associated ranges of text (note: not currently implemented)
+ * \endlist
  *
  * Implementations are not required to support all properties.
  * In particular, several properties are not supported for dynamic
@@ -44,43 +48,40 @@ namespace KTextEditor
  * call changed() to force redrawing of affected ranges of text.
  *
  * \sa MovingInterface
- *
- * \author Hamish Rodda \<rodda@kde.org\>
  */
 class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
 {
 public:
-    /**
+    /*!
+     * \typedef KTextEditor::Attribute::Ptr
      * Shared data pointer for Attribute
      */
     typedef QExplicitlySharedDataPointer<Attribute> Ptr;
 
-    /**
+    /*!
      * Default constructor.
+     *
      * The resulting Attribute has no properties set to begin with.
      */
     Attribute();
 
-    /**
+    /*!
      * Construct attribute with given name & default style properties.
-     * @param name attribute name
-     * @param style attribute default style
+     *
+     * \a name is the attribute name
+     *
+     * \a style is the attribute default style
+     *
      */
     Attribute(const QString &name, KSyntaxHighlighting::Theme::TextStyle style);
 
-    /**
-     * Copy constructor.
-     */
     Attribute(const Attribute &a);
 
-    /**
-     * Virtual destructor.
-     */
     virtual ~Attribute();
 
     // BEGIN custom properties
 
-    /**
+    /*
      * \name Custom properties
      *
      * The following functions provide custom properties which can be set for
@@ -88,139 +89,144 @@ public:
      * \{
      */
 
-    /**
-     * Attribute name
-     *
-     * \return attribute name
+    /*!
+     * Returns the attribute name.
      */
     QString name() const;
 
-    /**
-     * Set attribute name
+    /*!
+     * Sets the attribute name
      *
-     * \param name new attribute name
+     * \a name is the new attribute name
+     *
      */
     void setName(const QString &name);
 
-    /**
+    /*!
      * Default style of this attribute
      *
-     * \return default style
+     * Returns default style
      */
     KSyntaxHighlighting::Theme::TextStyle defaultStyle() const;
 
-    /**
-     * Set default style of this attribute
+    /*!
+     * Sets the default text style of this attribute.
      *
-     * \param style new default style
+     * \a style is the new default text style
+     *
      */
     void setDefaultStyle(KSyntaxHighlighting::Theme::TextStyle style);
 
-    /**
+    /*!
      * Should spellchecking be skipped?
      *
-     * \return skip spellchecking?
+     * Returns true if spellchecking should be skipped
      */
     bool skipSpellChecking() const;
 
-    /**
+    /*!
      * Set if we should spellchecking be skipped?
      *
-     * @param skipspellchecking should spellchecking be skipped?
+     * \a skipspellchecking if true then spellchecking should be skipped
+     *
      */
     void setSkipSpellChecking(bool skipspellchecking);
 
-    /**
+    /*!
      * Find out if the font weight is set to QFont::Bold.
      *
-     * \return \c true if the font weight is exactly QFont::Bold, otherwise \c false
+     * Returns \c true if the font weight is exactly QFont::Bold, otherwise \c false
      *
-     * \see QTextCharFormat::fontWeight()
+     * \sa QTextCharFormat::fontWeight()
      */
     bool fontBold() const;
 
-    /**
-     * Set the font weight to QFont::Bold.  If \a bold is \p false, the weight will be set to 0 (normal).
+    /*!
+     * Set the font weight to QFont::Bold.  If bold is false, the weight will be set to 0 (normal).
      *
-     * \param bold whether the font weight should be bold or not.
+     * \a bold specifies whether the font weight should be bold or not.
      *
-     * \see QTextCharFormat::setFontWeight()
+     * \sa QTextCharFormat::setFontWeight()
      */
     void setFontBold(bool bold = true);
 
-    /**
+    /*!
      * Get the brush used to draw an outline around text, if any.
      *
-     * \return brush to be used to draw an outline, or Qt::NoBrush if no outline is set.
+     * Returns brush to be used to draw an outline, or Qt::NoBrush if no outline is set.
      */
     QBrush outline() const;
 
-    /**
+    /*!
      * Set a brush to be used to draw an outline around text.
      *
-     * Use \p clearProperty(Outline) to clear.
+     * Use clearProperty(Outline) to clear.
      *
-     * \param brush brush to be used to draw an outline.
+     * \a brush is the brush to be used to draw an outline.
+     *
      */
     void setOutline(const QBrush &brush);
 
-    /**
+    /*!
      * Get the brush used to draw text when it is selected, if any.
      *
-     * \return brush to be used to draw selected text, or Qt::NoBrush if not set
+     * Returns brush to be used to draw selected text, or Qt::NoBrush if not set
      */
     QBrush selectedForeground() const;
 
-    /**
+    /*!
      * Set a brush to be used to draw selected text.
      *
-     * Use \p clearProperty(SelectedForeground) to clear.
+     * \sa clearProperty()
      *
-     * \param foreground brush to be used to draw selected text.
+     * \a foreground is the brush to be used to draw selected text.
+     *
      */
     void setSelectedForeground(const QBrush &foreground);
 
-    /**
+    /*!
      * Get the brush used to draw the background of selected text, if any.
      *
-     * \return brush to be used to draw the background of selected text, or Qt::NoBrush if not set
+     * Returns brush to be used to draw the background of selected text, or Qt::NoBrush if not set
      */
     QBrush selectedBackground() const;
 
-    /**
+    /*!
      * Set a brush to be used to draw the background of selected text, if any.
      *
-     * Use \p clearProperty(SelectedBackground) to clear.
+     * Use clearProperty(SelectedBackground) to clear.
      *
-     * \param brush brush to be used to draw the background of selected text
+     * \a brush is the brush to be used to draw the background of selected text
+     *
      */
     void setSelectedBackground(const QBrush &brush);
 
-    /**
+    /*!
      * Determine whether background color is drawn over whitespace. Defaults to true if not set.
      *
-     * \return whether the background color should be drawn over whitespace
+     * Returns whether the background color should be drawn over whitespace
      */
     bool backgroundFillWhitespace() const;
 
-    /**
+    /*!
      * Set whether background color is drawn over whitespace. Defaults to true if not set.
      *
-     * Use \p clearProperty(BackgroundFillWhitespace) to clear.
+     * Use clearProperty(BackgroundFillWhitespace) to clear.
      *
-     * \param fillWhitespace whether the background should be drawn over whitespace.
+     * \a fillWhitespace specifies whether the background should be drawn over whitespace.
+     *
      */
     void setBackgroundFillWhitespace(bool fillWhitespace);
 
-    /**
+    /*!
      * Clear all set properties.
      */
     void clear();
 
-    /**
+    /*!
      * Determine if any properties are set.
      *
-     * \return \e true if any properties are set, otherwise \e false
+     * Returns \e true if any properties are set, otherwise \e false
      */
     bool hasAnyProperty() const;
 
@@ -228,42 +234,49 @@ public:
 
     // BEGIN Dynamic highlighting
 
-    /**
-     * \name Dynamic highlighting
+    /*
+     * Dynamic highlighting
      *
      * The following functions allow for text to be highlighted dynamically based on
      * several events.
      * \{
      */
 
-    /**
-     * Several automatic activation mechanisms exist for associated attributes.
-     * Using this you can conveniently have your ranges highlighted when either
-     * the mouse or cursor enter the range.
+    /*!
+       \enum KTextEditor::Attribute::ActivationType
+
+       Several automatic activation mechanisms exist for associated attributes.
+       Using this you can conveniently have your ranges highlighted when either
+       the mouse or cursor enter the range.
+
+       \value ActivateMouseIn
+       Activate attribute on mouse in
+
+       \value ActivateCaretIn
+       Activate attribute on caret in
      */
     enum ActivationType {
-        /// Activate attribute on mouse in
         ActivateMouseIn = 0,
-        /// Activate attribute on caret in
         ActivateCaretIn
     };
 
-    /**
-     * Return the attribute to use when the event referred to by \a type occurs.
+    /*!
+     * Returns the attribute to use when the event referred to by \a type occurs.
      *
-     * \param type the activation type for which to return the Attribute.
+     * \a type the activation type for which to return the Attribute.
      *
-     * \returns the attribute to be used for events specified by \a type, or null if none is set.
      */
     Attribute::Ptr dynamicAttribute(ActivationType type) const;
 
-    /**
-     * Set the attribute to use when the event referred to by \a type occurs.
+    /*!
+     * Sets the attribute to use when the event referred to by type occurs.
      *
      * \note Nested dynamic attributes are ignored.
      *
-     * \param type the activation type to set the attribute for
-     * \param attribute the attribute to assign. As attribute is refcounted, ownership is not an issue.
+     * \a type is the activation type to set the attribute for
+     *
+     * \a attribute is the attribute to assign. As attribute is refcounted, ownership is not an issue.
+     *
      */
     void setDynamicAttribute(ActivationType type, Attribute::Ptr attribute);
 
@@ -271,42 +284,44 @@ public:
 
     // END
 
-    /**
+    /*!
      * Addition assignment operator.  Use this to merge another Attribute with this Attribute.
      * Where both attributes have a particular property set, the property in \a a will
      * be used.
      *
-     * \param a attribute to merge into this attribute.
+     * \a a is the attribute to merge into this attribute.
+     *
      */
     Attribute &operator+=(const Attribute &a);
 
-    /**
+    /*!
      * Replacement assignment operator.  Use this to overwrite this Attribute with another Attribute.
      *
-     * \param a attribute to assign to this attribute.
+     * \a a is the attribute to assign to this attribute.
+     *
      */
     Attribute &operator=(const Attribute &a);
 
 private:
-    /**
+    /*
      * Private d-pointer
      */
     class AttributePrivate *const d;
 };
 
-/**
- * @brief Attribute%s of a part of a line.
+/*
+ * Attribute%s of a part of a line.
  *
  * An AttributeBlock represents an Attribute spanning the interval
  * [start, start + length) of a given line. An AttributeBlock is
  * obtained by calling KTextEditor::View::lineAttributes().
  *
- * \see KTextEditor::View::lineAttributes()
+ * See KTextEditor::View::lineAttributes()
  */
 class AttributeBlock
 {
 public:
-    /**
+    /*
      * Constructor of AttributeBlock.
      */
     AttributeBlock(int _start, int _length, const Attribute::Ptr &_attribute)
@@ -316,17 +331,17 @@ public:
     {
     }
 
-    /**
+    /*
      * The column this attribute starts at.
      */
     int start;
 
-    /**
+    /*
      * The number of columns this attribute spans.
      */
     int length;
 
-    /**
+    /*
      * The attribute for the current range.
      */
     Attribute::Ptr attribute;

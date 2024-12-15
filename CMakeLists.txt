@@ -21,17 +21,14 @@ include(KDEGitCommitHooks)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(ECMGenerateExportHeader)
+include(ECMGenerateQDoc)
 include(CMakePackageConfigHelpers)
 include(CheckFunctionExists)
 include(CheckSymbolExists)
 include(KDEPackageAppTemplates)
 include(GenerateExportHeader)
-include(ECMAddQch)
 include(ECMQtDeclareLoggingCategory)
 include(ECMDeprecationSettings)
-
-option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
-add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
 
 option(ENABLE_PCH "Enable Precompiled Headers support" ON)
 
@@ -104,16 +101,6 @@ add_subdirectory(templates)
 
 # Create a Config.cmake and a ConfigVersion.cmake file and install them
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextEditor")
-
-if (BUILD_QCH)
-    ecm_install_qch_export(
-        TARGETS KF6TextEditor_QCH
-        FILE KF6TextEditorQchTargets.cmake
-        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-        COMPONENT Devel
-    )
-    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF6TextEditorQchTargets.cmake\")")
-endif()
 
 configure_package_config_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/KF6TextEditorConfig.cmake.in"

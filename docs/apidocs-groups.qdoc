@@ -1,4 +1,8 @@
-/** \defgroup kte_group_doc_extensions Document Extension Interfaces
+/*! \page kte_group_doc_extensions.html
+
+\target kte_group_doc_extensions
+\title Document Extension Interfaces
+
 A KTextEditor implementation may implement a Document extension interface, but
 it does not \e need to. So as a KTextEditor user you have to cast the Document
 to the desired interface and then check, whether the cast returns NULL or the
@@ -18,17 +22,20 @@ Use qobject_cast to cast a Document \e doc into the
   }
 \endcode
 
-\see KTextEditor::Document
+\sa KTextEditor::Document
 
 The following classes are a list of all available Document extension interfaces.
-<!-- The classes are defined by the \ingroup doxygen command -->
+\generatelist kte_group_doc_extensions
 */
 
 
 
 
 
-/** \defgroup kte_group_moving_classes MovingCursors and MovingRanges
+/*! \page kte_group_moving_classes.html
+
+\target kte_group_moving_classes
+\title  MovingCursors and MovingRanges
 \ingroup kte_group_doc_extensions
 
 If the KTextEditor implementation supports the KTextEditor::MovingInterface,
@@ -42,14 +49,18 @@ KTextEditor::MovingRangeFeedback.
 The following is a list of all classes that are available when the document
 supports the KTextEditor::MovingInterface:
 
-<!-- The classes are defined by the \ingroup doxygen command -->
+\generatelist kte_group_moving_classes
 */
 
 
 
 
 
-/** \defgroup kte_group_view_extensions View Extension Interfaces
+/*! \page kte_group_view_extensions.html
+
+\target kte_group_view_extensions
+\title View Extension Interfaces
+
 A KTextEditor implementation may implement a View extension interface, but
 it does not \e need to. So as a KTextEditor user you have to cast the View
 to the desired interface and then check, whether the cast returns NULL or the
@@ -69,17 +80,21 @@ Use qobject_cast to cast a View \e view into the
   }
 \endcode
 
-\see KTextEditor::View
+\sa KTextEditor::View
 
 The following classes are a list of all available View extension interfaces.
-<!-- The classes are defined by the \ingroup doxygen command -->
+\generatelist kte_group_view_extensions
 */
 
 
 
 
 
-/** \defgroup kte_group_editor_extensions Editor Extension Interfaces
+/*! \page kte_group_editor_extensions.html
+
+\target kte_group_editor_extensions
+\title Editor Extension Interfaces
+
 A KTextEditor implementation may implement an Editor extension interface, but
 it does not \e need to. So as a KTextEditor user you have to cast the Editor
 to the desired interface and then check, whether the cast returns NULL or the
@@ -99,17 +114,20 @@ Use qobject_cast to cast a Editor \e editor into the
   }
 \endcode
 
-\see KTextEditor::Editor
+\sa KTextEditor::Editor
 
 The following classes are a list of all available Editor extension interfaces.
-<!-- The classes are defined by the \ingroup doxygen command -->
+\generatelist kte_group_editor_extensions
 */
 
 
 
 
 
-/** \defgroup kte_group_plugin_extensions Plugin Extension Interfaces
+/*! \page kte_group_plugin_extensions.html
+
+\target kte_group_plugin_extensions
+\title Plugin Extension Interfaces
 A KTextEditor Plugin can use extension interfaces, but it does not \e need
 to. So as a KTextEditor implementator you have to cast the Plugin to the desired
 interface and then check, whether the cast returns NULL or the valid interface.
@@ -128,14 +146,19 @@ Use qobject_cast to cast a Plugin \e plugin into the
   }
 \endcode
 
-\see KTextEditor::Plugin
+\sa KTextEditor::Plugin
+\generatelist kte_group_plugin_extensions
 */
 
 
 
 
 
-/** \defgroup kte_group_command_extensions Command Extension Interfaces
+/*! \page kte_group_command_extensions.html
+
+\target kte_group_command_extensions
+\title Command Extension Interfaces
+
 A KTextEditor command-line Command can use extension interfaces, but it does not
 \e need to. So as a KTextEditor implementator you have to cast the Command to
 the desired interface and then check, whether the cast returns NULL or the valid
@@ -155,14 +178,19 @@ Use qobject_cast to cast a Command \e cmd into the
   }
 \endcode
 
-\see KTextEditor::Command
+\sa KTextEditor::Command
+\generatelist kte_group_command_extensions
 */
 
 
 
-/** \defgroup kte_group_ccmodel_extensions CodeCompletionModel Extension Interfaces
+/*! \page kte_group_ccmodel_extensions.html
+
+\target kte_group_ccmodel_extensions
+\title CodeCompletionModel Extension Interfaces
 A CodeCompletionModel implementation may implement a CodeCompletionModel
 extension interface, but it does not \e need to.
 
-\see KTextEditor::CodeCompletionModel
+\sa KTextEditor::CodeCompletionModel
+\generatelist kte_group_ccmodel_extensions
 */
