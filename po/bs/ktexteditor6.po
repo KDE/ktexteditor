@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:38+0000\n"
+"POT-Creation-Date: 2024-12-15 00:38+0000\n"
 "PO-Revision-Date: 2014-01-31 20:37+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: bosanski <bs@li.org>\n"
@@ -6168,41 +6168,41 @@ msgstr[0] "u %1 redu"
 msgstr[1] "u %1 reda"
 msgstr[2] "u %1 redova"
 
-#: utils/katevariableexpansionhelpers.cpp:129
+#: utils/katevariableexpansionhelpers.cpp:130
 #, kde-format
 msgid "<value>"
 msgstr ""
 
-#: utils/katevariableexpansionhelpers.cpp:213
+#: utils/katevariableexpansionhelpers.cpp:214
 #, fuzzy, kde-format
 #| msgid "Insert Tab"
 msgid "Insert variable"
 msgstr "Umetni tabulator"
 
-#: utils/katevariableexpansionhelpers.cpp:217
+#: utils/katevariableexpansionhelpers.cpp:218
 #, kde-format
 msgid "Variables"
 msgstr "Promjenljive"
 
-#: utils/katevariableexpansionhelpers.cpp:221
+#: utils/katevariableexpansionhelpers.cpp:222
 #, fuzzy, kde-format
 #| msgid "Filtering"
 msgid "Filter"
 msgstr "Filtriranje"
 
-#: utils/katevariableexpansionhelpers.cpp:240
-#: utils/katevariableexpansionhelpers.cpp:261
+#: utils/katevariableexpansionhelpers.cpp:241
+#: utils/katevariableexpansionhelpers.cpp:270
 #, kde-format
 msgid "Please select a variable."
 msgstr ""
 
-#: utils/katevariableexpansionhelpers.cpp:254
+#: utils/katevariableexpansionhelpers.cpp:259
 #, fuzzy, kde-format
 #| msgid "Missing argument. Usage: %1 <value>"
 msgid "Current value: %1<value>"
 msgstr "Nedostaje argument. Upotreba: %1 &lt;vrednost&gt;"
 
-#: utils/katevariableexpansionhelpers.cpp:258
+#: utils/katevariableexpansionhelpers.cpp:267
 #, fuzzy, kde-format
 #| msgid "Current Time"
 msgid "Current value: %1"

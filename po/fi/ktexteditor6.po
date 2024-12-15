@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:38+0000\n"
+"POT-Creation-Date: 2024-12-15 00:38+0000\n"
 "PO-Revision-Date: 2024-12-01 14:49+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -5969,38 +5969,38 @@ msgid_plural "%1 lines"
 msgstr[0] "1 rivi"
 msgstr[1] "%1 riviä"
 
-#: utils/katevariableexpansionhelpers.cpp:129
+#: utils/katevariableexpansionhelpers.cpp:130
 #, kde-format
 msgid "<value>"
 msgstr "<arvo>"
 
-#: utils/katevariableexpansionhelpers.cpp:213
+#: utils/katevariableexpansionhelpers.cpp:214
 #, kde-format
 msgid "Insert variable"
 msgstr "Lisää muuttuja"
 
-#: utils/katevariableexpansionhelpers.cpp:217
+#: utils/katevariableexpansionhelpers.cpp:218
 #, kde-format
 msgid "Variables"
 msgstr "Muuttujat"
 
-#: utils/katevariableexpansionhelpers.cpp:221
+#: utils/katevariableexpansionhelpers.cpp:222
 #, kde-format
 msgid "Filter"
 msgstr "Suodata"
 
-#: utils/katevariableexpansionhelpers.cpp:240
-#: utils/katevariableexpansionhelpers.cpp:261
+#: utils/katevariableexpansionhelpers.cpp:241
+#: utils/katevariableexpansionhelpers.cpp:270
 #, kde-format
 msgid "Please select a variable."
 msgstr "Valitse muuttuja."
 
-#: utils/katevariableexpansionhelpers.cpp:254
+#: utils/katevariableexpansionhelpers.cpp:259
 #, kde-format
 msgid "Current value: %1<value>"
 msgstr "Nykyinen arvo: %1<arvo>"
 
-#: utils/katevariableexpansionhelpers.cpp:258
+#: utils/katevariableexpansionhelpers.cpp:267
 #, kde-format
 msgid "Current value: %1"
 msgstr "Nykyinen arvo: %1"

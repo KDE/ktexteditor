@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-19 00:38+0000\n"
+"POT-Creation-Date: 2024-12-15 00:38+0000\n"
 "PO-Revision-Date: 2024-11-15 17:38+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -6027,38 +6027,38 @@ msgstr[1] "%1 рядках"
 msgstr[2] "%1 рядках"
 msgstr[3] "одному рядку"
 
-#: utils/katevariableexpansionhelpers.cpp:129
+#: utils/katevariableexpansionhelpers.cpp:130
 #, kde-format
 msgid "<value>"
 msgstr "<значення>"
 
-#: utils/katevariableexpansionhelpers.cpp:213
+#: utils/katevariableexpansionhelpers.cpp:214
 #, kde-format
 msgid "Insert variable"
 msgstr "Вставити змінну"
 
-#: utils/katevariableexpansionhelpers.cpp:217
+#: utils/katevariableexpansionhelpers.cpp:218
 #, kde-format
 msgid "Variables"
 msgstr "Змінні"
 
-#: utils/katevariableexpansionhelpers.cpp:221
+#: utils/katevariableexpansionhelpers.cpp:222
 #, kde-format
 msgid "Filter"
 msgstr "Фільтр"
 
-#: utils/katevariableexpansionhelpers.cpp:240
-#: utils/katevariableexpansionhelpers.cpp:261
+#: utils/katevariableexpansionhelpers.cpp:241
+#: utils/katevariableexpansionhelpers.cpp:270
 #, kde-format
 msgid "Please select a variable."
 msgstr "Будь ласка, виберіть змінну."
 
-#: utils/katevariableexpansionhelpers.cpp:254
+#: utils/katevariableexpansionhelpers.cpp:259
 #, kde-format
 msgid "Current value: %1<value>"
 msgstr "Поточне значення: %1<значення>"
 
-#: utils/katevariableexpansionhelpers.cpp:258
+#: utils/katevariableexpansionhelpers.cpp:267
 #, kde-format
 msgid "Current value: %1"
 msgstr "Поточне значення: %1"
