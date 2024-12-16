@@ -5,19 +5,20 @@
 # Ravishankar Shrivastava <raviratlami@yahoo.com>, 2004.
 # Ravishankar Shrivastava <raviratlami@gmail.com>, 2004.
 # Raghavendra Kamath <raghu@raghukamath.com>, 2021.
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
-"PO-Revision-Date: 2021-08-21 16:25+0530\n"
-"Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
-"Language-Team: kde-hindi\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
+"PO-Revision-Date: 2024-12-15 19:31+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.08.0\n"
+"X-Generator: Lokalize 24.08.2\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -1309,7 +1310,7 @@ msgstr ""
 #| msgid "&Save File As..."
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "फ़ाइल ऐसे सहेजें... (&S)"
+msgstr "फ़ाइल ऐसे सहेजें… (&S)"
 
 #: dialogs/katedialogs.cpp:1488
 #, fuzzy, kde-format
@@ -3942,7 +3943,7 @@ msgstr "वर्तनी जाँच चयन..."
 #| msgid "Spellcheck Selection..."
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "वर्तनी जाँच चयन..."
+msgstr "वर्तनी जाँच चयन…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, fuzzy, kde-format
@@ -4139,7 +4140,7 @@ msgstr " नज़र अंदाज़ करें (&I)"
 #, fuzzy, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "संकेतक स्थिति से जाँचें... (&h)"
+msgstr "संकेतक स्थिति से जाँचें… (&h)"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, fuzzy, kde-format
@@ -4292,14 +4293,14 @@ msgstr "चुने गए रंग (&S)"
 #| msgid "&Background Color..."
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "पृष्ठभूमि रंग... (&B)"
+msgstr "पृष्ठभूमि रंग… (&B)"
 
 #: syntax/katestyletreewidget.cpp:269
 #, fuzzy, kde-format
 #| msgid "S&elected Background Color..."
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "चयनित पृष्ठभूमि का रंग... (&e)"
+msgstr "चयनित पृष्ठभूमि का रंग… (&e)"
 
 #: syntax/katestyletreewidget.cpp:275
 #, fuzzy, kde-format
@@ -4968,14 +4969,14 @@ msgstr "योजना"
 #| msgid "&Save File As..."
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "फ़ाइल ऐसे सहेजें... (&S)"
+msgstr "फ़ाइल ऐसे सहेजें… (&S)"
 
 #: syntax/katethemeconfig.cpp:1127
 #, fuzzy, kde-format
 #| msgid "E&xport as HTML..."
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "एचटीएमएल रूप में निर्यात करें... (&x)"
+msgstr "एचटीएमएल रूप में निर्यात करें… (&x)"
 
 #: syntax/katethemeconfig.cpp:1131
 #, fuzzy, kde-format
@@ -5451,7 +5452,7 @@ msgstr "चुना गया पाठ:"
 msgid "Sort Selected Text Alphabetically"
 msgstr "चुना गया पाठ:"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgid ""
@@ -5459,21 +5460,21 @@ msgid ""
 "selection</p>"
 msgstr "मौज़ूदा दस्तावेज़ का संपूर्ण पाठ चुनें"
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
 msgstr ""
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
@@ -6929,7 +6930,7 @@ msgstr ""
 #| msgid "&Save File As..."
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "फ़ाइल ऐसे सहेजें... (&S)"
+msgstr "फ़ाइल ऐसे सहेजें… (&S)"
 
 #: view/kateview.cpp:690
 #, fuzzy, kde-format
@@ -6974,7 +6975,7 @@ msgstr ""
 #| msgid "&Configure Editor..."
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "संपादक कॉन्फ़िगर करें... (&C)"
+msgstr "संपादक कॉन्फ़िगर करें… (&C)"
 
 #: view/kateview.cpp:711
 #, kde-format
@@ -7477,7 +7478,7 @@ msgstr ""
 #| msgid "Choose Editor..."
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "संपादक चुने..."
+msgstr "संपादक चुने…"
 
 #: view/kateview.cpp:992
 #, kde-format
@@ -7992,7 +7993,7 @@ msgstr "फ़ाइल ऐसे सहेजें... (&S)"
 #| msgid "&Background Color..."
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "पृष्ठभूमि रंग... (&B)"
+msgstr "पृष्ठभूमि रंग… (&B)"
 
 #: view/screenshotdialog.cpp:182
 #, fuzzy, kde-format

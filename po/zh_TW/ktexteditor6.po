@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2024-11-26 00:15+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -5311,14 +5311,14 @@ msgstr "自然排序文字"
 msgid "Sort Selected Text Alphabetically"
 msgstr "依字母排序選取的文字"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
 msgstr "<p>sort</p><p>排序選取的文字，沒有選取文字時則排序整份文件</p>"
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5327,14 +5327,14 @@ msgstr ""
 "<p>uniq</p><p>從選取文字中移除重複的行，沒有選取文字時則移除整份文件重複的"
 "行。</p>"
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr "<p>sortuniq</p><p>排序選取文字或整份文件，然後再移除所有重複的行。</p>"
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."

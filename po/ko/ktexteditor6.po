@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2024-12-10 01:08+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -5396,7 +5396,7 @@ msgstr "자연 순서로 정렬"
 msgid "Sort Selected Text Alphabetically"
 msgstr "선택한 문자열 가나다순으로 정렬"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
@@ -5404,7 +5404,7 @@ msgid ""
 msgstr ""
 "<p>sort</p><p>선택한 문자열이나 전체 문서(선택 영역이 없을 때)를 정렬</p>"
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5413,7 +5413,7 @@ msgstr ""
 "<p>uniq</p><p>선택한 문자열이나 전체 문서(선택 영역이 없을 때)의 중복된 줄을 "
 "삭제합니다.</p>"
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
@@ -5422,7 +5422,7 @@ msgstr ""
 "<p>sortuniq</p><p>선택한 문자열이나 전체 문서(선택 영역이 없을 때)를 정렬하"
 "고 모든 중복된 줄을 삭제합니다.</p>"
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."

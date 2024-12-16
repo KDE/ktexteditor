@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2008-08-05 22:27+0200\n"
 "Last-Translator: Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>\n"
 "Language-Team: Occitan (lengadocian) <ubuntu-l10n-oci@lists.ubuntu.com>\n"
@@ -5227,28 +5227,28 @@ msgstr "Seleccionat"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Seleccionat"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
 msgstr ""
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
 msgstr ""
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."

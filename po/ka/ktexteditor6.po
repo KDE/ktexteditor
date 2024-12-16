@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2024-11-15 05:52+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -5499,7 +5499,7 @@ msgstr "მონიშნული ტექსტის ბუნებრი�
 msgid "Sort Selected Text Alphabetically"
 msgstr "მონიშნული ტექსტის ანბანის მიხედვით დალაგება"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
@@ -5508,7 +5508,7 @@ msgstr ""
 "<p>sort</p><p>მონიშნული ტექსტის ან მთლიანი დოკუმენტის დალაგება, თუ მონიშნული "
 "არაფერია</p>"
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5517,7 +5517,7 @@ msgstr ""
 "<p>uniq</p><p>დუბლირებული ხაზების წაშლა მონიშნული ტექსტიდან ან მთლიანი "
 "დოკუმენტიდან, თუ მონიშნული არაფერია.</p>"
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
@@ -5526,7 +5526,7 @@ msgstr ""
 "<p>sortuniq</p><p>მოცემული ტექსტის ან სრული დოკუმენტის დალაგება და "
 "გამეორებადი ხაზების წაშლა..</p>"
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."

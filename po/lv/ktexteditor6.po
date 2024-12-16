@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2024-12-02 10:44+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -5498,7 +5498,7 @@ msgstr "Atlasīto tekstu kārtot dabīgi"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Atlasīto tekstu kārtot alfabētiski"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
@@ -5507,7 +5507,7 @@ msgstr ""
 "<p>sort</p><p>Kārtot atlasīto tekstu vai, ja nekad nav atlasīts, visu "
 "dokumentu</p>"
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5516,7 +5516,7 @@ msgstr ""
 "<p>uniq</p><p>Noņem dublējošās rindas atlasītajā tekstā vai, ja nekas nav "
 "atlasīts, visā dokumentā.</p>"
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
@@ -5525,7 +5525,7 @@ msgstr ""
 "<p>sortuniq</p><p>Kārto atlasīto tekstu vai visu datumu, bet pēc tam noņem "
 "visas dublējošās rindas.</p>"
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."

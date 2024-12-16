@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2024-12-14 01:43+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -5417,7 +5417,7 @@ msgstr "पाठं स्वाभाविकतया क्रमयन्�
 msgid "Sort Selected Text Alphabetically"
 msgstr "चयनितं पाठं वर्णमालानुसारं क्रमयन्तु"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
@@ -5425,7 +5425,7 @@ msgid ""
 msgstr ""
 "<p>प्रकारं</p><p> यदि चयनं नास्ति तर्हि चयनितं पाठं सम्पूर्णं वा दस्तावेजं क्रमयन्तु</p>"
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5434,7 +5434,7 @@ msgstr ""
 "<p>uniq</p><p> यदि चयनं नास्ति तर्हि चयनितपाठात् अथवा सम्पूर्णदस्तावेजात् "
 "द्वितीयकपङ्क्तयः निष्कासयन्तु ।</p>"
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
@@ -5443,7 +5443,7 @@ msgstr ""
 "<p>सोर्टुनिक्</p><p> चयनितं पाठं वा सम्पूर्णं दस्तावेजं क्रमेण स्थापयन्तु ततः सर्वाणि "
 "द्वितीयकपङ्क्तयः निष्कासयन्तु ।</p>"
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."

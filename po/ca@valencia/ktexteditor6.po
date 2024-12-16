@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2024-11-15 12:59+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -5580,7 +5580,7 @@ msgstr "Ordena naturalment el text"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Ordena alfabèticament el text seleccionat"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
@@ -5589,7 +5589,7 @@ msgstr ""
 "<p>sort</p><p>Ordena el text seleccionat o tot el document si no s'ha "
 "seleccionat res</p>"
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5598,7 +5598,7 @@ msgstr ""
 "<p>uniq</p><p>Elimina les línies duplicades del text seleccionat o de tot el "
 "document si no s'ha seleccionat res</p>"
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
@@ -5607,7 +5607,7 @@ msgstr ""
 "<p>sortuniq</p><p>Ordena el text seleccionat o tot el document i després "
 "elimina totes les línies duplicades</p>"
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."

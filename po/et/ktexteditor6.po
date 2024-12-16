@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -5643,7 +5643,7 @@ msgstr "Sordi valitud tekst:"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Sordi valitud tekst:"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, fuzzy, kde-format
 #| msgid "Sort the selected text or whole document in natural order.<br>"
 msgid ""
@@ -5652,7 +5652,7 @@ msgid ""
 msgstr ""
 "Valitud teksti või kogu dokumendi sortimine loomulikus järjestuses.<br>"
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, fuzzy, kde-format
 #| msgid "Remove duplicate lines from the selected text or whole document."
 msgid ""
@@ -5660,7 +5660,7 @@ msgid ""
 "document if there is no selection.</p>"
 msgstr "Topeltridade eemaldamine valitud tekstist või kogu dokumendist."
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, fuzzy, kde-format
 #| msgid "Sort the selected text or whole document in natural order.<br>"
 msgid ""
@@ -5669,7 +5669,7 @@ msgid ""
 msgstr ""
 "Valitud teksti või kogu dokumendi sortimine loomulikus järjestuses.<br>"
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, fuzzy, kde-format
 #| msgid ""
 #| "Sort the selected text or whole document in natural order.<br>Here is an "

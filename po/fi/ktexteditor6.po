@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2024-12-01 14:49+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -5513,7 +5513,7 @@ msgstr "Lajittele luonnollisesti"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Aakkosta valittu teksti"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
@@ -5522,7 +5522,7 @@ msgstr ""
 "<p>sort</p><p>Lajittele valittu teksti tai koko tiedosto, ellei valintaa "
 "ole</p>"
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5531,7 +5531,7 @@ msgstr ""
 "<p>uniq</p><p>Poista toistuvat rivit valitusta tekstistä tai koko "
 "tiedostosta, ellei valintaa ole.</p>"
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
@@ -5540,7 +5540,7 @@ msgstr ""
 "<p>sortuniq</p><p>Lajittele valittu teksti tai koko tiedosto ja poista "
 "sitten toistuvat rivit.</p>"
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."

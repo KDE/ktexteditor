@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2024-11-15 13:13+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -5571,7 +5571,7 @@ msgstr "Ordina il testo in ordine naturale"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Ordina il testo selezionato in ordine alfabetico"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
@@ -5580,7 +5580,7 @@ msgstr ""
 "<p>sort</p><p>Ordina il testo selezionato o l'intero documento se non c'è "
 "alcuna selezione</p>"
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5589,7 +5589,7 @@ msgstr ""
 "<p>uniq</p><p>Rimuove le righe duplicate dal testo selezionato o dall'intero "
 "documento se non c'è alcuna selezione.</p>"
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
@@ -5598,7 +5598,7 @@ msgstr ""
 "<p>sortuniq</p><p>Ordina il testo selezionato o l'intero documento e quindi "
 "rimuovi tutte le righe duplicate.</p>"
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."

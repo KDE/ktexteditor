@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2021-05-15 16:59+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -5703,7 +5703,7 @@ msgstr "Sortează textul selectat"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Sortează textul selectat"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, fuzzy, kde-format
 #| msgid "Sort the selected text or whole document."
 msgid ""
@@ -5711,7 +5711,7 @@ msgid ""
 "selection</p>"
 msgstr "Sortează textul selectat sau întregul document."
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, fuzzy, kde-format
 #| msgid "Remove duplicate lines from the selected text or whole document."
 msgid ""
@@ -5720,14 +5720,14 @@ msgid ""
 msgstr ""
 "Șterge liniile duplicate din textul selectat sau din întregul document."
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, fuzzy, kde-format
 #| msgid ""
 #| "Sort the selected text or whole document in natural order.<br>Here is an "

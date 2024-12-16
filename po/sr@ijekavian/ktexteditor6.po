@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -5759,7 +5759,7 @@ msgstr "Сортирај изабрани текст"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Сортирај изабрани текст"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, fuzzy, kde-format
 #| msgid "Sort the selected text or whole document."
 msgid ""
@@ -5767,7 +5767,7 @@ msgid ""
 "selection</p>"
 msgstr "Сортира изабрани текст или цио документ."
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, fuzzy, kde-format
 #| msgid "Remove duplicate lines from the selected text or whole document."
 msgid ""
@@ -5775,14 +5775,14 @@ msgid ""
 "document if there is no selection.</p>"
 msgstr "Уклања дуплиране редове из изабраног текста или цијелог документа."
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, fuzzy, kde-format
 #| msgid ""
 #| "Sort the selected text or whole document in natural order.<br>Here is an "

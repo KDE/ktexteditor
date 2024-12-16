@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2023-12-12 19:23+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -5522,7 +5522,7 @@ msgstr "Zoradiť vybraný text podľa abecedy"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Zoradiť vybraný text podľa abecedy"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, fuzzy, kde-format
 #| msgid "Sort the selected text or whole document."
 msgid ""
@@ -5530,7 +5530,7 @@ msgid ""
 "selection</p>"
 msgstr "Triediť vybraný text alebo celý dokument."
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, fuzzy, kde-format
 #| msgid "Remove duplicate lines from the selected text or whole document."
 msgid ""
@@ -5539,14 +5539,14 @@ msgid ""
 msgstr ""
 "Odstrániť duplicitné riadky z vybraného textu alebo z celého dokumentu."
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, fuzzy, kde-format
 #| msgid ""
 #| "Sort the selected text or whole document in natural order.<br>Here is an "

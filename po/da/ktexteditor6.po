@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2021-09-09 21:34+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -5669,7 +5669,7 @@ msgstr "Sortér markeret tekst"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Sortér markeret tekst"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, fuzzy, kde-format
 #| msgid "Sort the selected text or whole document in natural order.<br>"
 msgid ""
@@ -5678,7 +5678,7 @@ msgid ""
 msgstr ""
 "Sortér den markerede tekst eller hele dokumentet i naturlig rækkefølge.<br>"
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, fuzzy, kde-format
 #| msgid "Remove duplicate lines from the selected text or whole document."
 msgid ""
@@ -5687,7 +5687,7 @@ msgid ""
 msgstr ""
 "Fjern duplikerede linjer fra den markerede tekst eller hele dokumentet."
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, fuzzy, kde-format
 #| msgid "Sort the selected text or whole document in natural order.<br>"
 msgid ""
@@ -5696,7 +5696,7 @@ msgid ""
 msgstr ""
 "Sortér den markerede tekst eller hele dokumentet i naturlig rækkefølge.<br>"
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, fuzzy, kde-format
 #| msgid ""
 #| "Sort the selected text or whole document in natural order.<br>Here is an "

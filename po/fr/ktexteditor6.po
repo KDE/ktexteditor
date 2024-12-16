@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2024-11-16 09:43+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -5837,7 +5837,7 @@ msgstr "Trier le texte naturellement"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Trier le texte sélectionné par ordre alphabétique"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
@@ -5846,7 +5846,7 @@ msgstr ""
 "<p>trier</p><p> Trier le texte sélectionné ou le document entier, s'il n'y a "
 "rien de sélectionner</p>"
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5855,7 +5855,7 @@ msgstr ""
 "<p>uniq</p><p>Supprimer les lignes dupliquées du texte sélectionné ou du "
 "document entier, s'il n'y a rien de sélectionner</p>"
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
@@ -5864,7 +5864,7 @@ msgstr ""
 "<p>sortuniq</p><p>Trier le texte sélectionné ou le document entier "
 "sélectionné, puis supprimer toutes les lignes dupliquées.</p>"
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."

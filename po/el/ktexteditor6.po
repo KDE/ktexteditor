@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:38+0000\n"
+"POT-Creation-Date: 2024-12-16 00:38+0000\n"
 "PO-Revision-Date: 2024-09-22 18:40+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -5707,7 +5707,7 @@ msgstr "Ταξινόμηση επιλεγμένου κείμενου"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Ταξινόμηση επιλεγμένου κείμενου"
 
-#: utils/katecmds.cpp:693
+#: utils/katecmds.cpp:699
 #, fuzzy, kde-format
 #| msgid "Sort the selected text or whole document in natural order.<br>"
 msgid ""
@@ -5717,7 +5717,7 @@ msgstr ""
 "Ταξινόμηση επιλεγμένου κειμένου ή ολόκληρου εγγράφου σε φυσιολογική σειρά."
 "<br>"
 
-#: utils/katecmds.cpp:697
+#: utils/katecmds.cpp:703
 #, fuzzy, kde-format
 #| msgid "Remove duplicate lines from the selected text or whole document."
 msgid ""
@@ -5725,7 +5725,7 @@ msgid ""
 "document if there is no selection.</p>"
 msgstr "Αφαίρεση διπλοεγγραφών από το επιλεγμένο κείμενο ή από όλο το έγγραφο."
 
-#: utils/katecmds.cpp:701
+#: utils/katecmds.cpp:707
 #, fuzzy, kde-format
 #| msgid "Sort the selected text or whole document in natural order.<br>"
 msgid ""
@@ -5735,7 +5735,7 @@ msgstr ""
 "Ταξινόμηση επιλεγμένου κειμένου ή ολόκληρου εγγράφου σε φυσιολογική σειρά."
 "<br>"
 
-#: utils/katecmds.cpp:705
+#: utils/katecmds.cpp:711
 #, fuzzy, kde-format
 #| msgid ""
 #| "Sort the selected text or whole document in natural order.<br>Here is an "
