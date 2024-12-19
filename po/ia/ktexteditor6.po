@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-16 00:38+0000\n"
-"PO-Revision-Date: 2024-11-15 12:29+0100\n"
+"PO-Revision-Date: 2024-12-18 17:56+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -7446,12 +7446,12 @@ msgstr "Trova proxime occurrentia del texto sub cursor e adde lo al selection."
 #: view/kateview.cpp:933
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr "Marca Occurrentia currentemente selegite como saltate"
+msgstr "Marca Occurrentia currentemente seligite como saltate"
 
 #: view/kateview.cpp:935
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr "Marca parola  currentemente selegite como saltate."
+msgstr "Marca parola  currentemente seligite como saltate."
 
 #: view/kateview.cpp:939
 #, kde-format
