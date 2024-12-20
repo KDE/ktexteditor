@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-16 00:38+0000\n"
-"PO-Revision-Date: 2024-12-14 01:43+0530\n"
+"PO-Revision-Date: 2024-12-19 21:42+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -2438,7 +2438,7 @@ msgstr "VI: दृश्य रेखा"
 #: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
-msgstr "षष्ठः १. प्रत्याहृ"
+msgstr "षष्ठः प्रत्याहृ"
 
 #: inputmode/kateviinputmode.cpp:146
 #, kde-format
@@ -2802,7 +2802,7 @@ msgstr "पेटीषु उपयोक्तुं रेखावर्ण�
 #: printing/printpainter.cpp:269
 #, kde-format
 msgid "(Selection of) "
-msgstr "(चयनम्) २. "
+msgstr "(चयनम्) "
 
 #: printing/printpainter.cpp:522
 #, kde-format
