@@ -3948,9 +3948,16 @@ void KTextEditor::ViewPrivate::killLine()
     // clear selections after editStart so that they are saved in undo.
     // We might have a lot of moving range selections which can make killLine very slow
     clearSecondarySelections();
-    std::for_each(linesToRemove.begin(), linesToRemove.end(), [this](int line) {
+    int removeCount = 0;
+    for (int line : linesToRemove) {
         doc()->removeLine(line);
-    });
+        // every 1000 lines, uniquify the cursors to ensure we dont end up accumulating
+        // too many cursors in the buffer and slowing down too much
+        if (removeCount++ > 1000) {
+            ensureUniqueCursors();
+            removeCount = 0;
+        }
+    }
     doc()->editEnd();
 
     ensureUniqueCursors();
