@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-16 00:38+0000\n"
+"POT-Creation-Date: 2024-12-22 00:37+0000\n"
 "PO-Revision-Date: 2019-09-29 12:28+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -8057,7 +8057,7 @@ msgstr "&Саф кашидан"
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4961
+#: view/kateview.cpp:4968
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Содир кардани файл ҳамчун HTML"

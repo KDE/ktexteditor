@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-16 00:38+0000\n"
+"POT-Creation-Date: 2024-12-22 00:37+0000\n"
 "PO-Revision-Date: 2024-12-01 14:49+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -7876,7 +7876,7 @@ msgstr "Tasaa"
 msgid "Alignment pattern:"
 msgstr "Tasauskuvio:"
 
-#: view/kateview.cpp:4961
+#: view/kateview.cpp:4968
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Vie tiedosto HTML:ksi"

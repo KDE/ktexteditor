@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-16 00:38+0000\n"
+"POT-Creation-Date: 2024-12-22 00:37+0000\n"
 "PO-Revision-Date: 2021-05-15 16:59+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -8168,7 +8168,7 @@ msgstr "&Aliniază"
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4961
+#: view/kateview.cpp:4968
 #, kde-format
 msgid "Export File as HTML"
 msgstr ""

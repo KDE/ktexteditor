@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-16 00:38+0000\n"
+"POT-Creation-Date: 2024-12-22 00:37+0000\n"
 "PO-Revision-Date: 2024-11-16 11:54+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -7919,7 +7919,7 @@ msgstr "Aliñar en"
 msgid "Alignment pattern:"
 msgstr "Padrón de aliñamento:"
 
-#: view/kateview.cpp:4961
+#: view/kateview.cpp:4968
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportar o ficheiro como HTML"
