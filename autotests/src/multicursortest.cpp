@@ -857,6 +857,18 @@ void MulticursorTest::testMultiCopyPaste()
     }
 }
 
+void MulticursorTest::testMultiPasteFromClipboard()
+{
+    auto [doc, view] = createDocAndView(QStringLiteral("\n\n\n\n"), 0, 0);
+    const QString clipboardText = QStringLiteral("hello\nworld\n\n123\n456");
+    QApplication::clipboard()->setText(clipboardText);
+    view->setCursors({{0, 0}, {1, 0}, {2, 0}, {3, 0}, {4, 0}});
+    view->paste();
+    // expect each line to get pasted at a cursor position because the number
+    // of lines in clipboard text == number of cursors
+    QCOMPARE(doc->text(), clipboardText);
+}
+
 void MulticursorTest::testSelectionTextOrdering()
 {
     auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\nfoo"), 0, 0);
