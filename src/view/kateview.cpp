@@ -2946,8 +2946,6 @@ void KTextEditor::ViewPrivate::cut()
 void KTextEditor::ViewPrivate::copy()
 {
     QString text;
-    KTextEditor::EditorPrivate::self()->copyToMulticursorClipboard({});
-
     if (!selection()) {
         if (!m_config->smartCopyCut()) {
             return;
@@ -2956,23 +2954,6 @@ void KTextEditor::ViewPrivate::copy()
         m_viewInternal->moveEdge(KateViewInternal::left, false);
     } else {
         text = selectionText();
-
-        // Multicursor copy
-        if (!m_secondaryCursors.empty()) {
-            QVarLengthArray<KTextEditor::Range, 16> ranges;
-            for (const auto &c : m_secondaryCursors) {
-                if (c.range) {
-                    ranges.push_back(c.range->toRange());
-                }
-            }
-            ranges.push_back(m_selection.toRange());
-            std::sort(ranges.begin(), ranges.end());
-            QStringList texts;
-            for (auto range : ranges) {
-                texts.append(doc()->text(range));
-            }
-            KTextEditor::EditorPrivate::self()->copyToMulticursorClipboard(texts);
-        }
 
         if (m_markedSelection) {
             setSelection(KTextEditor::Range::invalid());
@@ -3639,12 +3620,7 @@ void KTextEditor::ViewPrivate::sendCompletionAborted()
 void KTextEditor::ViewPrivate::paste(const QString *textToPaste)
 {
     const int cursorCount = m_secondaryCursors.size() + 1; // 1 primary cursor
-    const auto multicursorClipboard = KTextEditor::EditorPrivate::self()->multicursorClipboard();
-    if (cursorCount == multicursorClipboard.size() && !textToPaste) {
-        if (doc()->multiPaste(this, multicursorClipboard)) {
-            return;
-        }
-    } else if (!textToPaste && cursorCount > 1) {
+    if (!textToPaste && cursorCount > 1) {
         // We still have multiple cursors, but the amount
         // of multicursors doesn't match the entry count in clipboard
         const QString clipboard = QApplication::clipboard()->text(QClipboard::Clipboard);
