@@ -53,6 +53,7 @@ private Q_SLOTS:
 
     // Multicopypaste
     static void testMultiCopyPaste();
+    static void testMultiPasteFromClipboard();
 
     // Misc
     static void testSelectionTextOrdering();
