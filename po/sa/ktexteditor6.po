@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-22 00:37+0000\n"
-"PO-Revision-Date: 2024-12-20 21:52+0530\n"
-"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"PO-Revision-Date: 2024-12-24 20:39+0530\n"
+"Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
 "MIME-Version: 1.0\n"
@@ -5830,13 +5830,13 @@ msgstr "ये जनाः योगदानं दत्तवन्तः �
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "भवतः नामानि"
+msgstr "श्रीकान्त् कलवार्"
 
 #: utils/kateglobal.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "भवतः ईमेलपत्राणि"
+msgstr "skkalwar999@gmail.com"
 
 #: utils/kateglobal.cpp:261
 #, kde-format
