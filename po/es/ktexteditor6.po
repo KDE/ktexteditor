@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-22 00:37+0000\n"
+"POT-Creation-Date: 2024-12-26 00:38+0000\n"
 "PO-Revision-Date: 2024-11-15 20:09+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -7976,17 +7976,17 @@ msgstr "Movimiento de cambio a mayúsculas activado"
 msgid "Search wrapped"
 msgstr "La búsqueda continúa desde el principio"
 
-#: view/kateview.cpp:3884
+#: view/kateview.cpp:3866
 #, kde-format
 msgid "Align On"
 msgstr "Alinear en"
 
-#: view/kateview.cpp:3884
+#: view/kateview.cpp:3866
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Patrón de alineamiento:"
 
-#: view/kateview.cpp:4968
+#: view/kateview.cpp:4950
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportar archivo como HTML"

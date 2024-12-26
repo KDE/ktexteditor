@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-22 00:37+0000\n"
+"POT-Creation-Date: 2024-12-26 00:38+0000\n"
 "PO-Revision-Date: 2011-07-24 15:43+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -8036,18 +8036,18 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "සෙවුම් ආකාරය"
 
-#: view/kateview.cpp:3884
+#: view/kateview.cpp:3866
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "පෙළගස්සන්න (~A)"
 
-#: view/kateview.cpp:3884
+#: view/kateview.cpp:3866
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4968
+#: view/kateview.cpp:4950
 #, kde-format
 msgid "Export File as HTML"
 msgstr ""

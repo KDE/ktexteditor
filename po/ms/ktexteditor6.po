@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-22 00:37+0000\n"
+"POT-Creation-Date: 2024-12-26 00:38+0000\n"
 "PO-Revision-Date: 2008-07-13 01:04+0800\n"
 "Last-Translator: Sharuzzaman Ahmat Raslan <sharuzzaman@myrealbox.com>\n"
 "Language-Team: Malay <kedidiemas@yahoogroups.com>\n"
@@ -8067,18 +8067,18 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "Cari"
 
-#: view/kateview.cpp:3884
+#: view/kateview.cpp:3866
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Jajar"
 
-#: view/kateview.cpp:3884
+#: view/kateview.cpp:3866
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4968
+#: view/kateview.cpp:4950
 #, fuzzy, kde-format
 msgid "Export File as HTML"
 msgstr "Fail HTML untuk dibuka"

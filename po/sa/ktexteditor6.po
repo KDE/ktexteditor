@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-22 00:37+0000\n"
+"POT-Creation-Date: 2024-12-26 00:38+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -7748,17 +7748,17 @@ msgstr "उष्ट्रप्रकरणस्य गतिः सक्ष�
 msgid "Search wrapped"
 msgstr "अन्वेषणं वेष्टितम्"
 
-#: view/kateview.cpp:3884
+#: view/kateview.cpp:3866
 #, kde-format
 msgid "Align On"
 msgstr "Align On इति"
 
-#: view/kateview.cpp:3884
+#: view/kateview.cpp:3866
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "संरेखणप्रतिमानः :"
 
-#: view/kateview.cpp:4968
+#: view/kateview.cpp:4950
 #, kde-format
 msgid "Export File as HTML"
 msgstr "सञ्चिकां HTML इति रूपेण निर्यातयन्तु"

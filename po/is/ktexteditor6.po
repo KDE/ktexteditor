@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-22 00:37+0000\n"
+"POT-Creation-Date: 2024-12-26 00:38+0000\n"
 "PO-Revision-Date: 2024-09-26 13:25+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -7865,17 +7865,17 @@ msgstr "Virkjað að bendill stoppi á hástöfum inni í orðum"
 msgid "Search wrapped"
 msgstr "Leit fer hringinn"
 
-#: view/kateview.cpp:3884
+#: view/kateview.cpp:3866
 #, kde-format
 msgid "Align On"
 msgstr "Jafna við"
 
-#: view/kateview.cpp:3884
+#: view/kateview.cpp:3866
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Jöfnunarmynstur:"
 
-#: view/kateview.cpp:4968
+#: view/kateview.cpp:4950
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Flytja út skrá sem HTML"
