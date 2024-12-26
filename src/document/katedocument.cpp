@@ -1779,29 +1779,7 @@ QWidget *KTextEditor::DocumentPrivate::dialogParent()
 
 QUrl KTextEditor::DocumentPrivate::getSaveFileUrl(const QString &dialogTitle)
 {
-    // per default we use the url of the current document
-    QUrl startUrl = url();
-    if (startUrl.isValid()) {
-        // for remote files we cut the file name to avoid confusion if it is some directory or not, see bug 454648
-        if (!startUrl.isLocalFile()) {
-            startUrl = startUrl.adjusted(QUrl::RemoveFilename);
-        }
-    }
-
-    // if that is empty, we will try to get the url of the last used view, we assume some properly ordered views() list is around
-    else if (auto mainWindow = KTextEditor::Editor::instance()->application()->activeMainWindow(); mainWindow) {
-        const auto views = mainWindow->views();
-        for (auto view : views) {
-            if (view->document()->url().isValid()) {
-                // as we here pick some perhaps unrelated file, always cut the file name
-                startUrl = view->document()->url().adjusted(QUrl::RemoveFilename);
-                break;
-            }
-        }
-    }
-
-    // spawn the dialog, dialogParent will take care of proper parent
-    return QFileDialog::getSaveFileUrl(dialogParent(), dialogTitle, startUrl);
+    return QFileDialog::getSaveFileUrl(dialogParent(), dialogTitle, startUrlForFileDialog());
 }
 
 // BEGIN KTextEditor::HighlightingInterface stuff
@@ -6120,6 +6098,31 @@ bool KTextEditor::DocumentPrivate::saveAs(const QUrl &url)
 
     // call base implementation for real work
     return KTextEditor::Document::saveAs(url);
+}
+
+QUrl KTextEditor::DocumentPrivate::startUrlForFileDialog()
+{
+    QUrl startUrl = url();
+    if (startUrl.isValid()) {
+        // for remote files we cut the file name to avoid confusion if it is some directory or not, see bug 454648
+        if (!startUrl.isLocalFile()) {
+            startUrl = startUrl.adjusted(QUrl::RemoveFilename);
+        }
+    }
+
+    // if that is empty, we will try to get the url of the last used view, we assume some properly ordered views() list is around
+    else if (auto mainWindow = KTextEditor::Editor::instance()->application()->activeMainWindow(); mainWindow) {
+        const auto views = mainWindow->views();
+        for (auto view : views) {
+            if (view->document()->url().isValid()) {
+                // as we here pick some perhaps unrelated file, always cut the file name
+                startUrl = view->document()->url().adjusted(QUrl::RemoveFilename);
+                break;
+            }
+        }
+    }
+
+    return startUrl;
 }
 
 QString KTextEditor::DocumentPrivate::defaultDictionary() const

@@ -1121,6 +1121,11 @@ public:
     //
     // REALLY internal data ;)
     //
+    //
+public:
+    // File Dialog Helper
+    QUrl startUrlForFileDialog();
+
 private:
     // text buffer
     KateBuffer *const m_buffer;

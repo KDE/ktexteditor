@@ -132,6 +132,11 @@ private Q_SLOTS:
     void pasteSelection();
 
     /**
+     * Insert contents of selected file into the currently open file
+     */
+    void pasteFromFile();
+
+    /**
      * Copy current selected stuff and paste previous content of clipboard as one operation.
      */
     void swapWithClipboard();

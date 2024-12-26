@@ -478,6 +478,9 @@ void KTextEditor::ViewPrivate::setupActions()
         a->setWhatsThis(i18n("Paste previously mouse selection contents"));
     }
 
+    a = ac->addAction(QStringLiteral("edit_paste_from_file"), this, &KTextEditor::ViewPrivate::pasteFromFile);
+    a->setText(i18n("Paste From File"));
+
     a = ac->addAction(QStringLiteral("edit_copy_file_location"), this, &KTextEditor::ViewPrivate::copyFileLocation);
     a->setIcon(QIcon::fromTheme(QStringLiteral("edit-copy")));
     a->setText(i18n("Copy File Location"));
@@ -2981,6 +2984,18 @@ void KTextEditor::ViewPrivate::pasteSelection()
     m_temporaryAutomaticInvocationDisabled = true;
     doc()->paste(this, QApplication::clipboard()->text(QClipboard::Selection));
     m_temporaryAutomaticInvocationDisabled = false;
+}
+
+void KTextEditor::ViewPrivate::pasteFromFile()
+{
+    QUrl insertFromUrl = QFileDialog::getOpenFileUrl(parentWidget(), i18n("Open File"), doc()->startUrlForFileDialog());
+
+    // Open a new KTextEditor::Document of file to be inserted
+    KTextEditor::DocumentPrivate insertDocument;
+    insertDocument.openUrl(insertFromUrl);
+
+    // Insert document()->text() at the current cursor position
+    document()->insertText(cursorPosition(), insertDocument.text());
 }
 
 void KTextEditor::ViewPrivate::swapWithClipboard()
