@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-27 00:38+0000\n"
-"PO-Revision-Date: 2024-11-15 13:09+0100\n"
+"PO-Revision-Date: 2024-12-27 11:03+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -6726,7 +6726,7 @@ msgstr "Vorige inhoud van muisselectie plakken"
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Plakken vanuit bestand"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7969,10 +7969,9 @@ msgid "Search wrapped"
 msgstr "Regelafbreking in zoektekst"
 
 #: view/kateview.cpp:2991
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "Bestand opslaan"
+msgstr "Bestand openen"
 
 #: view/kateview.cpp:3881
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-27 00:38+0000\n"
-"PO-Revision-Date: 2024-11-15 05:52+0100\n"
+"PO-Revision-Date: 2024-12-27 03:36+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -974,8 +974,8 @@ msgstr "&ღილაკი Backspace ხაზის თავში გამ�
 #: dialogs/indentationconfigwidget.ui:225
 #, kde-format
 msgid ""
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+"css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
 "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</b> "
@@ -983,8 +983,8 @@ msgid ""
 "<b>Tab</b> a shortcut to the action <b>Format Indentation</b>."
 "\"><span>More ...</span></a></p></body></html>"
 msgstr ""
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+"css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
 "<p>Tab ღილაკის ქმედება (თუ მონიშნული არაფერია) <a href=\"If you want <b>Tab</"
@@ -3357,8 +3357,8 @@ msgid ""
 "(selected) lines and replace the line with the return value of the callback."
 "<br>Example (see also <code>ltrim</code>):<br><code>map 'function(line)"
 "{return line.replace(/^\\s+/, \"\");}'</code><br>To save you some typing, "
-"you can also do this to achieve the same:<br><code>map 'line.replace(/^\\s"
-"+/, \"\")'</code>"
+"you can also do this to achieve the same:<br><code>map 'line.replace(/"
+"^\\s+/, \"\")'</code>"
 msgstr ""
 "მიუთითეთ JavaScript-ის ფუნქცია არგუმენტად, გამოიძახეთ ის (მონიშნული) ხაზების "
 "სიისთვის და ჩაანაცვლეთ უკუგამოძახების დაბრუნებული მნიშვნელობებით."
@@ -6638,7 +6638,7 @@ msgstr "თაგუნათი ადრე არჩეული შემც
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "ფაილიდან ჩასმა"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7866,10 +7866,9 @@ msgid "Search wrapped"
 msgstr "გადატანილში ძებნა"
 
 #: view/kateview.cpp:2991
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "ფაილის შენახვა"
+msgstr "ფაილის გახსნა"
 
 #: view/kateview.cpp:3881
 #, kde-format
@@ -8169,9 +8168,9 @@ msgstr ""
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
-"[N]</b></tt></p><p>Goes to <b>[N]</b>th previous document (\"<b>b</b>uffer"
-"\") in document list. </p><p> <b>[N]</b> defaults to one. </p><p>Wraps "
-"around the start of the document list.</p>"
+"[N]</b></tt></p><p>Goes to <b>[N]</b>th previous document (\"<b>b</"
+"b>uffer\") in document list. </p><p> <b>[N]</b> defaults to one. </"
+"p><p>Wraps around the start of the document list.</p>"
 msgstr ""
 "<p><b>bp,bprev &mdash; წინა ბაფერი</b></p><p>გამოყენება: <tt><b>bp[revious] "
 "[N]</b></tt></p><p>გადავა <b>[N]</b>-ე წინა დოკუმენტზე (\"<b>b</b>uffer\") "

@@ -11,20 +11,15 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-27 00:38+0000\n"
-"PO-Revision-Date: 2024-11-15 20:09+0100\n"
+"PO-Revision-Date: 2024-12-27 03:38+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"com>\n"
-"the.blue.valkyrie@gmail.com>\n"
-"com>\n"
-"com>\n"
-"com>\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -6748,7 +6743,7 @@ msgstr "Pegar el contenido de la selección del ratón anterior"
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Pegar desde archivo"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7982,10 +7977,9 @@ msgid "Search wrapped"
 msgstr "La búsqueda continúa desde el principio"
 
 #: view/kateview.cpp:2991
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "Guardar archivo"
+msgstr "Abrir archivo"
 
 #: view/kateview.cpp:3881
 #, kde-format

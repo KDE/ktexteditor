@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-27 00:38+0000\n"
-"PO-Revision-Date: 2024-11-16 11:54+0100\n"
+"PO-Revision-Date: 2024-12-27 18:37+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -6688,7 +6688,7 @@ msgstr "Pegar o contido da selección do rato"
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Pegar dun ficheiro"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7915,10 +7915,9 @@ msgid "Search wrapped"
 msgstr "Buscar ignorando saltos de liña"
 
 #: view/kateview.cpp:2991
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "Gardar o ficheiro"
+msgstr "Abrir un ficheiro"
 
 #: view/kateview.cpp:3881
 #, kde-format

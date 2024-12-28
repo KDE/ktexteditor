@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-27 00:38+0000\n"
-"PO-Revision-Date: 2024-09-15 04:00+0200\n"
+"PO-Revision-Date: 2024-12-27 17:40+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -172,7 +172,8 @@ msgstr "Kodbloka faldado:"
 msgid ""
 "If this option is checked, every new view will display marks for folding."
 msgstr ""
-"Se vi markas ĉi tiun opcion, ĉiu nova rigardo montros markojn porfaldado."
+"Se vi markas ĉi tiun elekteblon, ĉiu nova rigardo montros markojn por "
+"faldado."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:35
@@ -228,9 +229,9 @@ msgid ""
 "the left hand side.</p><p>The icon border shows bookmark signs, for instance."
 "</p>"
 msgstr ""
-"<p>Se vi elektas ĉi tiun opcion, ĉiu nova rigardo montros piktograman randon "
-"ĉe la maldekstra flanko.</p><p>La piktogramrando montras, ekz. markojn de "
-"legosignoj.</p>"
+"<p>Se ĉi tiu elekteblo estas markita, ĉiu nova rigardo montros piktograman "
+"randon ĉe la maldekstra flanko.</p><p>La piktogramrando montras, ekz. "
+"markojn de legosignoj.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIconBorder)
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMarks)
@@ -247,8 +248,8 @@ msgid ""
 "If this option is checked, every new view will display line numbers on the "
 "left hand side."
 msgstr ""
-"Se vi elektas ĉi tiun opcion, ĉiu nova rigardo montros lininombrojn ĉe la "
-"maldekstra flanko."
+"Se ĉi tiu elekteblo estas markita, ĉiu nova rigardo montros lininombrojn ĉe "
+"la maldekstra flanko."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:112
@@ -263,7 +264,7 @@ msgid ""
 "If this option is checked, a small indicator for modified and saved lines is "
 "shown on the left hand side."
 msgstr ""
-"Se vi elektas ĉi tiun opcion, ĉiu nova rigardo montros lininombrojn ĉe la "
+"Se tiu elekteblo estas markita, ĉiu nova rigardo montros lininombrojn ĉe la "
 "maldekstra flanko."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
@@ -285,7 +286,7 @@ msgid ""
 "<p>If this option is checked, every new view will show marks on the vertical "
 "scrollbar.</p><p>These marks will show bookmarks, for instance.</p>"
 msgstr ""
-"<p>Se vi elektas ĉi tiun opcion, ĉiu nova rigardo montros markojn ĉe la "
+"<p>Se ĉi tiu elekteblo estas markita, ĉiu nova rigardo montros markojn ĉe la "
 "vertikala rulumskalo.</p><p>Ĉi tiuj markoj, montros, ekzemple, legosignojn.</"
 "p>"
 
@@ -296,7 +297,7 @@ msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
 msgstr ""
-"<p>Se ĉi tiu opcio estas markita, ŝvebi super la vertikala rulumbreto "
+"<p>Se ĉi tiu elekteblo estas markita, ŝvebi super la vertikala rulumbreto "
 "montros antaŭrigardon de la teksto.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
@@ -342,7 +343,7 @@ msgid ""
 "If this option is checked, every new view will show a mini map on the "
 "vertical scrollbar."
 msgstr ""
-"Se ĉi tiu opcio estas markita, ĉiu nova vido montros minimapon sur la "
+"Se ĉi tiu elekteblo estas markita, ĉiu nova vido montros minimapon sur la "
 "vertikala rulumbreto."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
@@ -364,8 +365,8 @@ msgid ""
 "If this option is checked, every new view will show a mini map of the whole "
 "document on the vertical scrollbar."
 msgstr ""
-"Se vi elektas ĉi tiun opcion, ĉiu nova rigardo montros lininombrojn ĉe la "
-"maldekstra flanko."
+"Se ĉi tiu elekteblo estas markita, ĉiu nova rigardo montros lininombrojn ĉe "
+"la maldekstra flanko."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:266
@@ -546,11 +547,11 @@ msgid ""
 "enable <b>Dynamic Word Wrap</b> in the <b>Appearance</b> config page.</p>"
 msgstr ""
 "<p>Aŭtomate komenci novan linion de teksto kiam la nuna linio transpasas la "
-"longecon specifita de <b>Faldi liniojn ĉe:</b> opcio.</p><p>Ĉi tiu opcio ne "
-"faldas ekzistantajn liniojn de teksto - uzu la <b>Apliki statikan "
-"linifaldon</b> opcion en la <b>Iloj</b> menuo por tiu celo.</p><p>Se vi "
-"volas liniojn kiuj <i>videble faldiĝas</i>, laŭ la larĝeco de la rigardo, "
-"ebligu <b>Dinamika linifaldo</b> en la <b>Aspekto</b> agorda paĝo.</p>"
+"longecon specifita de elekteblo <b>Faldi liniojn ĉe:</b>.</p><p>Ĉi tiu "
+"elekteblo ne faldas ekzistantajn liniojn de teksto - uzu la <b>Apliki "
+"statikan linifaldon</b> opcion en la <b>Iloj</b> menuo por tiu celo.</"
+"p><p>Se vi volas liniojn kiuj <i>videble faldiĝas</i>, laŭ la larĝeco de la "
+"rigardo, ebligu <b>Dinamika linifaldo</b> en la agordpaĝo <b>Aspekto</b>.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:32
@@ -565,7 +566,7 @@ msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"<p>Se ĉi tiu opcio estas markita, vertikala linio estos desegnita ĉe la "
+"<p>Se ĉi tiu elekteblo estas markita, vertikala linio estos desegnita ĉe la "
 "vortvolva kolumno kiel difinita en la <strong>Redaktado</strong> ecoj.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
@@ -766,9 +767,9 @@ msgid ""
 "known variables, see the manual.</p>"
 msgstr ""
 "<p>Ĉi tiu ĉeno permesas agordi la agordojn de Kate por la dosieroj elektitaj "
-"de ĉi tiu mimetipo uzante Kate-variablojn. Preskaŭ ajna agorda opcio povas "
-"esti agordita, kiel reliefigo, deŝov-reĝimo, kodado, ktp.</p><p>Por kompleta "
-"listo de konataj variabloj, vidu la manlibron.</p>"
+"de ĉi tiu mimetipo uzante Kate-variablojn. Preskaŭ ajna agorda elekteblo "
+"povas esti metata, kiel reliefigo, deŝov-reĝimo, kodado, ktp.</p><p>Por "
+"kompleta listo de konataj variabloj, vidu la manlibron.</p>"
 
 #. i18n: ectx: property (text), widget (QLabel, lblHl)
 #: dialogs/filetypeconfigwidget.ui:123
@@ -875,7 +876,7 @@ msgid ""
 "the indentation is divisible by the tab width."
 msgstr ""
 "La deŝovlarĝo estas la nombro da spacoj, kiu estas uzata por deŝovi linion. "
-"Se la opcio <b>Enmeti spacojn anstataŭ tabelilojn</b> en la sekcio "
+"Se la elekteblo <b>Enmeti spacojn anstataŭ tabelilojn</b> en la sekcio "
 "<b>Redaktado</b> estas malŝaltita, signo <b>Tab</b> estas enmetita se la "
 "deŝovo estas dividebla per la tabula larĝo ."
 
@@ -928,8 +929,8 @@ msgid ""
 "If this option is disabled, changing the indentation level aligns a line to "
 "a multiple of the width specified in <b>Indentation width</b>."
 msgstr ""
-"Se ĉi tiu opcio estas malŝaltita, ŝanĝi la deŝovnivelon vicigas linion al "
-"oblo de la larĝo specifita en <b>Indentlarĝo</b>."
+"Se ĉi tiu elekteblo estas malŝaltita, ŝanĝi la deŝovnivelon vicigas linion "
+"al oblo de la larĝo specifita en <b>Indentlarĝo</b>."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkKeepExtraSpaces)
 #: dialogs/indentationconfigwidget.ui:186
@@ -1056,7 +1057,7 @@ msgstr ""
 "linio estas deŝovita per la nombro da signopozicioj specifitaj en "
 "<b>Deŝovlarĝo</b>.<p> Se la enmetpunkto troviĝas post la unua nespaca signo "
 "en la linio kaj ne estas elekto, blanka spaco estas enigita tiel ke la sekva "
-"klapopozicio estas atingita: se la opcio <b>Enmeti spacojn anstataŭ "
+"klapopozicio estas atingita: se la elekteblo <b>Enmeti spacojn anstataŭ "
 "tabeligilojn</b> en la sekcio <b>Redaktado</b> estas ebligita, spacoj estas "
 "enmetitaj ; alie, unuopa tabelilo estas enmetita."
 
@@ -1067,13 +1068,11 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "Pliigi deŝovnive&lon se en komenca malplena spaco"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " signo"
-msgstr[1] " signoj"
+msgstr[0] "%v signo"
+msgstr[1] "%v signoj"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1141,14 +1140,12 @@ msgid "Text Navigation"
 msgstr "Teksta Navigado"
 
 #: dialogs/katedialogs.cpp:578
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " signo"
-msgstr[1] " signoj"
+msgstr[0] "%v signo"
+msgstr[1] "%v signoj"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1522,8 +1519,8 @@ msgid ""
 "If this option is enabled, backups for local files will be created when "
 "saving."
 msgstr ""
-"Se ĉi tiu opcio estas ebligita, sekurkopioj por lokaj dosieroj estos kreataj "
-"dum konservado."
+"Se ĉi tiu elekteblo estas ebligita, sekurkopioj por lokaj dosieroj estos "
+"kreataj dum konservado."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:51
@@ -1538,8 +1535,8 @@ msgid ""
 "If this option is enabled, backups for remote files will be created when "
 "saving."
 msgstr ""
-"Se ĉi tiu opcio estas ebligita, sekurkopioj por foraj dosieroj estos kreataj "
-"dum konservado."
+"Se ĉi tiu elekteblo estas ebligita, sekurkopioj por foraj dosieroj estos "
+"kreataj dum konservado."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupRemoteFiles)
 #: dialogs/opensaveconfigadvwidget.ui:61
@@ -1720,8 +1717,9 @@ msgid ""
 "If this option is enabled the editor will autodetect the end of line type. "
 "The first found end of line type will be used for the whole file."
 msgstr ""
-"Se ĉi tiu opcio estas ebligita, la redaktilo aŭtomate detektos la tipon de "
-"liniofino. La unua linifinaĵa tipo trovita estos uzata por la tuta dosiero."
+"Se ĉi tiu elekteblo estas ebligita, la redaktilo aŭtomate detektos la tipon "
+"de liniofino. La unua linifinaĵa tipo trovita estos uzata por la tuta "
+"dosiero."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDetectEOL)
 #: dialogs/opensaveconfigwidget.ui:125
@@ -3110,20 +3108,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "Movi Kursoron al Sekva Kongrua Deŝovo"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Movi Kursoron al Sekva Kongrua Deŝovo"
+msgstr "Movi Kursoron al Sekva Malplena Linio"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Movi Kursoron al Antaŭa Kongrua Deŝovo"
+msgstr "Movi Kursoron al Antaŭa Malplena Linio"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3136,16 +3130,14 @@ msgid "Move cursor to next matching indent"
 msgstr "Movi kursoron al la sekva kongrua deŝovo"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Movi kursoron al la sekva kongrua deŝovo"
+msgstr "Movi kursoron al la sekva malplena linio"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Movi kursoron al antaŭa kongrua deŝovo"
+msgstr "Movi kursoron al antaŭa malplena linio"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
@@ -7170,7 +7162,7 @@ msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
 "defined in the editing properties."
 msgstr ""
-"Se ĉi tiu opcio estas markita, la tekstaj linioj estos faldataj ĉe la "
+"Se ĉi tiu elekteblo estas markita, la tekstaj linioj estos faldataj ĉe la "
 "kolumno difinita en la redaktaj propraĵoj."
 
 #: view/kateview.cpp:822
@@ -7868,10 +7860,9 @@ msgid "Search wrapped"
 msgstr "Serĉo faldiĝis"
 
 #: view/kateview.cpp:2991
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "Konservi Dosieron"
+msgstr "Malfermi Dosieron"
 
 #: view/kateview.cpp:3881
 #, kde-format
@@ -8412,9 +8403,3 @@ msgstr "'%1' %2, Hex %3, Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marko ne agordita: %1"
-
-#~ msgctxt "Wrap words at (value is at 20 or larger)"
-#~ msgid " character"
-#~ msgid_plural " characters"
-#~ msgstr[0] " signo"
-#~ msgstr[1] " signoj"

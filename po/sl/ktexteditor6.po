@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-27 00:38+0000\n"
-"PO-Revision-Date: 2024-11-17 08:08+0100\n"
+"PO-Revision-Date: 2024-12-27 07:17+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -6662,7 +6662,7 @@ msgstr "Prilepi predhodno z miško izbrano vsebino"
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Prilepi iz datoteke"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7882,10 +7882,9 @@ msgid "Search wrapped"
 msgstr "Iskanje v ciklu"
 
 #: view/kateview.cpp:2991
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "Shrani datoteko"
+msgstr "Odpri datoteko"
 
 #: view/kateview.cpp:3881
 #, kde-format

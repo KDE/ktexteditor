@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-27 00:38+0000\n"
-"PO-Revision-Date: 2024-11-15 03:38+0200\n"
+"PO-Revision-Date: 2024-12-27 08:33+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -6542,7 +6542,7 @@ msgstr "הדבקת תוכן שנבחר קודם עם העכבר"
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "הדבקה מקובץ"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7737,10 +7737,9 @@ msgid "Search wrapped"
 msgstr "החיפוש גלש"
 
 #: view/kateview.cpp:2991
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "שמירת קובץ"
+msgstr "פתיחת קובץ"
 
 #: view/kateview.cpp:3881
 #, kde-format

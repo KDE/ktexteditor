@@ -3,18 +3,18 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
 # Sebastià Pla i Sanz <sps@sastia.com>, 1999, 2000, 2001, 2004, 2005, 2006, 2007.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2002, 2003, 2004, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022.
 # Albert Astals Cid <aacid@kde.org>, 2004, 2005.
 # Robert Millan <rmh@aybabtu.com>, 2009.
 # Empar Montoro Martín <montoro_mde@gva.es>, 2019.
+# Josep M. Ferrer <txemaq@gmail.com>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-27 00:38+0000\n"
-"PO-Revision-Date: 2024-11-15 12:59+0100\n"
+"PO-Revision-Date: 2024-12-27 08:08+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -6731,7 +6731,7 @@ msgstr "Enganxa el contingut de la selecció prèvia del ratolí"
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Enganxar des d'un fitxer"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7975,10 +7975,9 @@ msgid "Search wrapped"
 msgstr "La cerca continua des del començament"
 
 #: view/kateview.cpp:2991
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "Desa el fitxer"
+msgstr "Obre un fitxer"
 
 #: view/kateview.cpp:3881
 #, kde-format

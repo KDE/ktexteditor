@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-27 00:38+0000\n"
-"PO-Revision-Date: 2024-11-15 17:38+0200\n"
+"PO-Revision-Date: 2024-12-27 21:50+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -6720,7 +6720,7 @@ msgstr "Вставити попередньо позначені за допом
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Вставлення з файла"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7950,10 +7950,9 @@ msgid "Search wrapped"
 msgstr "Циклічний пошук"
 
 #: view/kateview.cpp:2991
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "Зберегти файл"
+msgstr "Відкрити файл"
 
 #: view/kateview.cpp:3881
 #, kde-format
