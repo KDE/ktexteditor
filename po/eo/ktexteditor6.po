@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-27 00:38+0000\n"
-"PO-Revision-Date: 2024-12-27 17:40+0100\n"
+"PO-Revision-Date: 2024-12-28 17:41+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -549,7 +549,7 @@ msgstr ""
 "<p>Aŭtomate komenci novan linion de teksto kiam la nuna linio transpasas la "
 "longecon specifita de elekteblo <b>Faldi liniojn ĉe:</b>.</p><p>Ĉi tiu "
 "elekteblo ne faldas ekzistantajn liniojn de teksto - uzu la <b>Apliki "
-"statikan linifaldon</b> opcion en la <b>Iloj</b> menuo por tiu celo.</"
+"statikan linifaldon</b> elekteblon en la <b>Iloj</b> menuo por tiu celo.</"
 "p><p>Se vi volas liniojn kiuj <i>videble faldiĝas</i>, laŭ la larĝeco de la "
 "rigardo, ebligu <b>Dinamika linifaldo</b> en la agordpaĝo <b>Aspekto</b>.</p>"
 
@@ -1617,7 +1617,7 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:247
 #, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr ""
+msgstr "Respekti metojn en dosiero .editorconfig"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -6642,7 +6642,7 @@ msgstr "Alglui antaŭe musan elekton enhavon"
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Alglui El Dosiero"
 
 #: view/kateview.cpp:486
 #, kde-format

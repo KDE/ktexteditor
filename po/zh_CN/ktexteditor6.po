@@ -7602,10 +7602,9 @@ msgid "Search wrapped"
 msgstr "已从头搜索"
 
 #: view/kateview.cpp:2991
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "保存文件"
+msgstr ""
 
 #: view/kateview.cpp:3881
 #, kde-format
