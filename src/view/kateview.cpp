@@ -1063,7 +1063,11 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("select_word_left"));
     a->setText(i18n("Select Word Left"));
+#ifdef Q_OS_MACOS
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::ALT | Qt::Key_Left));
+#else
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_Left));
+#endif
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftWordLeft);
     m_editActions.push_back(a);
 
@@ -1081,7 +1085,11 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("select_word_right"));
     a->setText(i18n("Select Word Right"));
+#ifdef Q_OS_MACOS
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::ALT | Qt::Key_Right));
+#else
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_Right));
+#endif
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftWordRight);
     m_editActions.push_back(a);
 
@@ -1105,13 +1113,21 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("select_beginning_of_line"));
     a->setText(i18n("Select to Beginning of Line"));
+#ifdef Q_OS_MACOS
+    ac->setDefaultShortcuts(a, {QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_Left), QKeySequence(Qt::SHIFT | Qt::Key_Home)});
+#else
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::Key_Home));
+#endif
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftHome);
     m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_beginning_of_document"));
     a->setText(i18n("Select to Beginning of Document"));
+#ifdef Q_OS_MACOS
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_Up));
+#else
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_Home));
+#endif
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftTop);
     m_editActions.push_back(a);
 
@@ -1129,13 +1145,21 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("select_end_of_line"));
     a->setText(i18n("Select to End of Line"));
+#ifdef Q_OS_MACOS
+    ac->setDefaultShortcuts(a, {QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_Right), QKeySequence(Qt::SHIFT | Qt::Key_End)});
+#else
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::Key_End));
+#endif
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftEnd);
     m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_end_of_document"));
     a->setText(i18n("Select to End of Document"));
+#ifdef Q_OS_MACOS
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_Down));
+#else
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_End));
+#endif
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftBottom);
     m_editActions.push_back(a);
 
@@ -1147,7 +1171,10 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("scroll_line_up"));
     a->setText(i18n("Scroll Line Up"));
+#ifndef Q_OS_MACOS
+    // this shortcut is used for moving to beginning of doc on mac
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_Up));
+#endif
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::scrollUp);
     m_editActions.push_back(a);
 
@@ -1183,7 +1210,10 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("scroll_line_down"));
     a->setText(i18n("Scroll Line Down"));
+#ifndef Q_OS_MACOS
+    // this shortcut is used for moving to end of doc
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_Down));
+#endif
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::scrollDown);
     m_editActions.push_back(a);
 

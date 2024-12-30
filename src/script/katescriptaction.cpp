@@ -122,7 +122,18 @@ void KateScriptActionMenu::repopulate()
             m_view->actionCollection()->addAction(QLatin1String("tools_scripts_") + cmd, a);
             const QString shortcut = action.value(QStringLiteral("shortcut")).toString();
             if (!shortcut.isEmpty()) {
+                // Ctrl-Cmd-Up/Down
+#ifdef Q_OS_MACOS
+                if (cmd == u"moveLinesUp" && !shortcut.isEmpty()) {
+                    m_view->actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::META | Qt::Key_Up));
+                } else if (cmd == u"moveLinesDown" && !shortcut.isEmpty()) {
+                    m_view->actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::META | Qt::Key_Down));
+                } else {
+                    m_view->actionCollection()->setDefaultShortcut(a, QKeySequence(shortcut, QKeySequence::PortableText));
+                }
+#else
                 m_view->actionCollection()->setDefaultShortcut(a, QKeySequence(shortcut, QKeySequence::PortableText));
+#endif
             }
 
             m_actions.append(a);
