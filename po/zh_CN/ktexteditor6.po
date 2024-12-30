@@ -6428,7 +6428,7 @@ msgstr "粘贴先前鼠标选择内容"
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "粘贴文件内容"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7604,7 +7604,7 @@ msgstr "已从头搜索"
 #: view/kateview.cpp:2991
 #, kde-format
 msgid "Open File"
-msgstr ""
+msgstr "打开文件"
 
 #: view/kateview.cpp:3881
 #, kde-format

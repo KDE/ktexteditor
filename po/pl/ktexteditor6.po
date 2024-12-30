@@ -7909,7 +7909,8 @@ msgid "Search wrapped"
 msgstr "Wyszukiwanie zapętliło"
 
 #: view/kateview.cpp:2991
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Open File"
 msgid "Open File"
 msgstr "Otwórz plik"
 

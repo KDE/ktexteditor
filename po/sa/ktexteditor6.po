@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-27 00:38+0000\n"
-"PO-Revision-Date: 2024-12-24 20:39+0530\n"
+"PO-Revision-Date: 2024-12-29 22:54+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -6546,7 +6546,7 @@ msgstr "पूर्वं मूषकचयनसामग्रीः चि�
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "सञ्चिकातः पेस्ट् कुर्वन्तु"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7754,10 +7754,9 @@ msgid "Search wrapped"
 msgstr "अन्वेषणं वेष्टितम्"
 
 #: view/kateview.cpp:2991
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "सञ्चिकां रक्षतु"
+msgstr "सञ्चिकां उद्घाटयन्तु"
 
 #: view/kateview.cpp:3881
 #, kde-format
