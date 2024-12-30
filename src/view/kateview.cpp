@@ -3638,7 +3638,9 @@ void KTextEditor::ViewPrivate::paste(const QString *textToPaste)
     if (!textToPaste && cursorCount > 1) {
         // We still have multiple cursors, but the amount
         // of multicursors doesn't match the entry count in clipboard
-        const QString clipboard = QApplication::clipboard()->text(QClipboard::Clipboard);
+        QString clipboard = QApplication::clipboard()->text(QClipboard::Clipboard);
+        static const QRegularExpression lineEndings(QStringLiteral("\r\n?"));
+        clipboard.replace(lineEndings, QStringLiteral("\n"));
 
         // 1. Try to see if the number of lines in clipboard text == number of cursors
         QStringList texts = clipboard.split(u'\n', Qt::KeepEmptyParts);
