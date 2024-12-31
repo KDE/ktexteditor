@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-27 00:38+0000\n"
+"POT-Creation-Date: 2024-12-31 00:38+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -8051,18 +8051,18 @@ msgstr "Otsimisega mindi teisest otsast edasi"
 msgid "Open File"
 msgstr "Faili avamine"
 
-#: view/kateview.cpp:3881
+#: view/kateview.cpp:3883
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Joonda"
 
-#: view/kateview.cpp:3881
+#: view/kateview.cpp:3883
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4965
+#: view/kateview.cpp:4967
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Faili salvestamine HTML-ina"

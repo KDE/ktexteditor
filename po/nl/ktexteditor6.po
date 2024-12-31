@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-27 00:38+0000\n"
+"POT-Creation-Date: 2024-12-31 00:38+0000\n"
 "PO-Revision-Date: 2024-12-27 11:03+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -7973,17 +7973,17 @@ msgstr "Regelafbreking in zoektekst"
 msgid "Open File"
 msgstr "Bestand openen"
 
-#: view/kateview.cpp:3881
+#: view/kateview.cpp:3883
 #, kde-format
 msgid "Align On"
 msgstr "Uitlijnen op"
 
-#: view/kateview.cpp:3881
+#: view/kateview.cpp:3883
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Uitlijnpatroon:"
 
-#: view/kateview.cpp:4965
+#: view/kateview.cpp:4967
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Bestand exporteren als HTML"

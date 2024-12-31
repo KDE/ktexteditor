@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-27 00:38+0000\n"
+"POT-Creation-Date: 2024-12-31 00:38+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -7606,17 +7606,17 @@ msgstr "已从头搜索"
 msgid "Open File"
 msgstr "打开文件"
 
-#: view/kateview.cpp:3881
+#: view/kateview.cpp:3883
 #, kde-format
 msgid "Align On"
 msgstr "对齐于"
 
-#: view/kateview.cpp:3881
+#: view/kateview.cpp:3883
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "对齐模式："
 
-#: view/kateview.cpp:4965
+#: view/kateview.cpp:4967
 #, kde-format
 msgid "Export File as HTML"
 msgstr "文件导出为 HTML"

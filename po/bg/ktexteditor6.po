@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-27 00:38+0000\n"
-"PO-Revision-Date: 2024-11-16 21:07+0100\n"
+"POT-Creation-Date: 2024-12-31 00:38+0000\n"
+"PO-Revision-Date: 2024-12-30 23:00+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -6678,7 +6678,7 @@ msgstr "Поставяне на съдържанието на предишнат
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Поставяне от файл"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7887,22 +7887,21 @@ msgid "Search wrapped"
 msgstr "Търсенето завърши"
 
 #: view/kateview.cpp:2991
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "Запис на файл"
+msgstr "Отваряне на файл"
 
-#: view/kateview.cpp:3881
+#: view/kateview.cpp:3883
 #, kde-format
 msgid "Align On"
 msgstr "Подравняване"
 
-#: view/kateview.cpp:3881
+#: view/kateview.cpp:3883
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Шаблон на подравняване:"
 
-#: view/kateview.cpp:4965
+#: view/kateview.cpp:4967
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Експортиране на файл като HTML"
