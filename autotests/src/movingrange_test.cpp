@@ -825,3 +825,117 @@ void MovingRangeTest::testNoCrashWithMultiblockRange()
     // move the cursor, we shouldnt crash
     view->cursorLeft();
 }
+
+void MovingRangeTest::testNoFlippedRange()
+{
+    KTextEditor::DocumentPrivate doc;
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+    doc.setText(QStringLiteral("[x] range between square brackets"));
+    std::unique_ptr<KTextEditor::MovingRange> range(doc.newMovingRange(
+        KTextEditor::Range(0, 1, 0, 2),
+        KTextEditor::MovingRange::InsertBehavior::DoNotExpand,
+        KTextEditor::MovingRange::EmptyBehavior::AllowEmpty
+    ));
+    view->setCursorPosition(KTextEditor::Cursor(0, 2));
+    view->backspace();
+    QVERIFY(range->isEmpty());
+    view->insertTab();
+    QVERIFY(range->isEmpty());
+}
+
+void MovingRangeTest::testBlockSplitAndMerge()
+{
+    KTextEditor::DocumentPrivate doc;
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+    doc.setText(QStringLiteral("[{}] [{}] [{}] ranges between square brackets, newline spam between curly brackets"));
+    std::unique_ptr<KTextEditor::MovingRange> range1(doc.newMovingRange(
+        KTextEditor::Range(0, 1, 0, 3),
+        KTextEditor::MovingRange::InsertBehavior::DoNotExpand,
+        KTextEditor::MovingRange::EmptyBehavior::AllowEmpty
+    ));
+    std::unique_ptr<KTextEditor::MovingRange> range2(doc.newMovingRange(
+        KTextEditor::Range(0, 6, 0, 8),
+        KTextEditor::MovingRange::InsertBehavior::DoNotExpand,
+        KTextEditor::MovingRange::EmptyBehavior::AllowEmpty
+    ));
+    std::unique_ptr<KTextEditor::MovingRange> range3(doc.newMovingRange(
+        KTextEditor::Range(0, 11, 0, 13),
+        KTextEditor::MovingRange::InsertBehavior::DoNotExpand,
+        KTextEditor::MovingRange::EmptyBehavior::AllowEmpty
+    ));
+    QVERIFY(!doc.buffer().hasMultlineRange(range1.get()));
+    QVERIFY(!doc.buffer().hasMultlineRange(range2.get()));
+    QVERIFY(!doc.buffer().hasMultlineRange(range3.get()));
+    // spam enough newlines to cause block splitting
+    view->setCursorPosition(KTextEditor::Cursor(0, 7));
+    for (int i = 0; i < 127; ++i) {
+        view->keyReturn();
+    }
+    QCOMPARE(range1->toRange(), KTextEditor::Range(0, 1, 0, 3));
+    QCOMPARE(range2->toRange(), KTextEditor::Range(0, 6, 127, 1));
+    QCOMPARE(range3->toRange(), KTextEditor::Range(127, 4, 127, 6));
+    // now there are 2 blocks
+    QVERIFY(!doc.buffer().hasMultlineRange(range1.get()));
+    QVERIFY(doc.buffer().hasMultlineRange(range2.get()));
+    QVERIFY(!doc.buffer().hasMultlineRange(range3.get()));
+    // split block 0 (counting from 0)
+    view->setCursorPosition(KTextEditor::Cursor(0, 2));
+    for (int i = 0; i < 64; ++i) {
+        view->keyReturn();
+    }
+    QCOMPARE(range1->toRange(), KTextEditor::Range(0, 1, 64, 1));
+    QCOMPARE(range2->toRange(), KTextEditor::Range(64, 4, 191, 1));
+    QCOMPARE(range3->toRange(), KTextEditor::Range(191, 4, 191, 6));
+    // now there are 3 blocks
+    QVERIFY(doc.buffer().hasMultlineRange(range1.get()));
+    QVERIFY(doc.buffer().hasMultlineRange(range2.get()));
+    QVERIFY(!doc.buffer().hasMultlineRange(range3.get()));
+    // split block 2 (counting from 0)
+    view->setCursorPosition(KTextEditor::Cursor(191, 5));
+    for (int i = 0; i < 64; ++i) {
+        view->keyReturn();
+    }
+    QCOMPARE(range1->toRange(), KTextEditor::Range(0, 1, 64, 1));
+    QCOMPARE(range2->toRange(), KTextEditor::Range(64, 4, 191, 1));
+    QCOMPARE(range3->toRange(), KTextEditor::Range(191, 4, 255, 1));
+    // now there are 4 blocks
+    QVERIFY(doc.buffer().hasMultlineRange(range1.get()));
+    QVERIFY(doc.buffer().hasMultlineRange(range2.get()));
+    QVERIFY(doc.buffer().hasMultlineRange(range3.get()));
+    // merge blocks 1 and 2 (counting from 0)
+    view->setCursorPosition(KTextEditor::Cursor(191, 0));
+    for (int i = 0; i < 32; ++i) {
+        view->backspace();
+    }
+    QCOMPARE(range1->toRange(), KTextEditor::Range(0, 1, 64, 1));
+    QCOMPARE(range2->toRange(), KTextEditor::Range(64, 4, 159, 1));
+    QCOMPARE(range3->toRange(), KTextEditor::Range(159, 4, 223, 1));
+    // now there are 3 blocks
+    QVERIFY(doc.buffer().hasMultlineRange(range1.get()));
+    QVERIFY(!doc.buffer().hasMultlineRange(range2.get()));
+    QVERIFY(doc.buffer().hasMultlineRange(range3.get()));
+    // merge blocks 0 and 1 (counting from 0)
+    view->setCursorPosition(KTextEditor::Cursor(159, 0));
+    for (int i = 0; i < 64; ++i) {
+        view->backspace();
+    }
+    QCOMPARE(range1->toRange(), KTextEditor::Range(0, 1, 64, 1));
+    QCOMPARE(range2->toRange(), KTextEditor::Range(64, 4, 95, 1));
+    QCOMPARE(range3->toRange(), KTextEditor::Range(95, 4, 159, 1));
+    // now there are 2 blocks
+    QVERIFY(!doc.buffer().hasMultlineRange(range1.get()));
+    QVERIFY(!doc.buffer().hasMultlineRange(range2.get()));
+    QVERIFY(doc.buffer().hasMultlineRange(range3.get()));
+    // merge blocks 0 and 1 (counting from 0)
+    view->setCursorPosition(KTextEditor::Cursor(159, 0));
+    for (int i = 0; i < 32; ++i) {
+        view->backspace();
+    }
+    QCOMPARE(range1->toRange(), KTextEditor::Range(0, 1, 64, 1));
+    QCOMPARE(range2->toRange(), KTextEditor::Range(64, 4, 95, 1));
+    QCOMPARE(range3->toRange(), KTextEditor::Range(95, 4, 127, 1));
+    // now there is 1 block
+    QVERIFY(!doc.buffer().hasMultlineRange(range1.get()));
+    QVERIFY(!doc.buffer().hasMultlineRange(range2.get()));
+    QVERIFY(!doc.buffer().hasMultlineRange(range3.get()));
+}
