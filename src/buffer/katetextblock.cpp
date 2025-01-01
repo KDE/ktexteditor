@@ -562,11 +562,8 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     }
 
     // move lines
-    targetBlock->m_lines.reserve(targetBlock->lines() + lines());
-    for (size_t i = 0; i < m_lines.size(); ++i) {
-        targetBlock->m_lines.push_back(m_lines.at(i));
-    }
-    clearLines();
+    targetBlock->m_lines.insert(targetBlock->m_lines.cend(), std::make_move_iterator(m_lines.begin()), std::make_move_iterator(m_lines.end()));
+    m_lines.clear();
 }
 
 void TextBlock::rangesForLine(const int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QList<TextRange *> &outRanges) const
