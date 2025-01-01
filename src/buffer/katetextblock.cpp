@@ -542,25 +542,26 @@ void TextBlock::splitBlock(int fromLine, TextBlock *newBlock)
 
 void TextBlock::mergeBlock(TextBlock *targetBlock)
 {
-    // move cursors, do this first, now still lines() count is correct for target
-    QSet<Kate::TextRange *> ranges;
-    for (TextCursor *cursor : m_cursors) {
-        cursor->m_line = cursor->lineInBlock() + targetBlock->lines();
-        cursor->m_block = targetBlock;
-        targetBlock->m_cursors.push_back(cursor);
-        if (cursor->kateRange()) {
-            ranges.insert(cursor->kateRange());
-        }
-    }
-    m_cursors.clear();
-    std::sort(targetBlock->m_cursors.begin(), targetBlock->m_cursors.end());
+    // This function moves everything from *this into *targetBlock.
+    // *targetBlock exists before *this with no blocks between.
+    // Both this->m_cursors and targetBlock->m_cursors are sorted.
 
-    for (auto range : std::as_const(ranges)) {
-        if (!range->spansMultipleBlocks()) {
+    // Iterating m_cursors backwards to modify TextRange's m_end before m_start.
+    static_assert(offsetof(TextRange, m_start) < offsetof(TextRange, m_end), "m_start should be before m_end otherwise it will break block merging");
+    std::for_each(m_cursors.crbegin(), m_cursors.crend(), [targetBlockLines = targetBlock->lines(), targetBlock, m_buffer = m_buffer] (TextCursor *cursor) -> void {
+        cursor->m_line += targetBlockLines;
+        cursor->m_block = targetBlock;
+        TextRange *range = cursor->m_range;
+        if (range && cursor == &range->m_end && targetBlock == range->m_start.m_block) {
             m_buffer->removeMultilineRange(range);
         }
-    }
-
+    });
+    // move cursors
+    auto first_insertion_pos = targetBlock->m_cursors.insert(targetBlock->m_cursors.cend(), m_cursors.cbegin(), m_cursors.cend());
+    m_cursors.clear();
+    // keep targetBlock->m_cursors sorted
+    std::inplace_merge(targetBlock->m_cursors.begin(), first_insertion_pos, targetBlock->m_cursors.end());
+    Q_ASSERT(std::is_sorted(targetBlock->m_cursors.cbegin(), targetBlock->m_cursors.cend()));
     // move lines
     targetBlock->m_lines.insert(targetBlock->m_lines.cend(), std::make_move_iterator(m_lines.begin()), std::make_move_iterator(m_lines.end()));
     m_lines.clear();
