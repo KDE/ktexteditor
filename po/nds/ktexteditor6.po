@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-31 00:38+0000\n"
+"POT-Creation-Date: 2025-01-02 00:38+0000\n"
 "PO-Revision-Date: 2014-09-18 23:44+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -7827,213 +7827,213 @@ msgstr "Bookstaav links utsöken"
 msgid "Select Word Left"
 msgstr "Woort links utsöken"
 
-#: view/kateview.cpp:1071
+#: view/kateview.cpp:1075
 #, kde-format
 msgid "Move Word Right"
 msgstr "Woort na rechts schuven"
 
-#: view/kateview.cpp:1077
+#: view/kateview.cpp:1081
 #, kde-format
 msgid "Select Character Right"
 msgstr "Bookstaav rechts utsöken"
 
-#: view/kateview.cpp:1083
+#: view/kateview.cpp:1087
 #, kde-format
 msgid "Select Word Right"
 msgstr "Woort rechts utsöken"
 
-#: view/kateview.cpp:1089
+#: view/kateview.cpp:1097
 #, fuzzy, kde-format
 #| msgid "Language Selection"
 msgid "Start the Marked Selection"
 msgstr "Spraak utsöken"
 
-#: view/kateview.cpp:1090
+#: view/kateview.cpp:1098
 #, kde-format
 msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
 
-#: view/kateview.cpp:1095
+#: view/kateview.cpp:1103
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "Na den Reeganfang gahn"
 
-#: view/kateview.cpp:1101
+#: view/kateview.cpp:1109
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "Na den Dokmentanfang gahn"
 
-#: view/kateview.cpp:1107
+#: view/kateview.cpp:1115
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "Bet to den Reeganfang utsöken"
 
-#: view/kateview.cpp:1113
+#: view/kateview.cpp:1125
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "Bet to den Dokmentanfang utsöken"
 
-#: view/kateview.cpp:1119
+#: view/kateview.cpp:1135
 #, kde-format
 msgid "Move to End of Line"
 msgstr "Na't Reegenn gahn"
 
-#: view/kateview.cpp:1125
+#: view/kateview.cpp:1141
 #, kde-format
 msgid "Move to End of Document"
 msgstr "Na't Dokmentenn gahn"
 
-#: view/kateview.cpp:1131
+#: view/kateview.cpp:1147
 #, kde-format
 msgid "Select to End of Line"
 msgstr "Bet na't Reegenn utsöken"
 
-#: view/kateview.cpp:1137
+#: view/kateview.cpp:1157
 #, kde-format
 msgid "Select to End of Document"
 msgstr "Bet to't Dokmentenn utsöken"
 
-#: view/kateview.cpp:1143
+#: view/kateview.cpp:1167
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "Bet to de verleden Reeg utsöken"
 
-#: view/kateview.cpp:1149
+#: view/kateview.cpp:1173
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "Een Reeg na baven rullen"
 
-#: view/kateview.cpp:1155
+#: view/kateview.cpp:1182
 #, kde-format
 msgid "Move to Next Line"
 msgstr "Na nakamen Reeg gahn"
 
-#: view/kateview.cpp:1161
+#: view/kateview.cpp:1188
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "Na verleden Reeg gahn"
 
-#: view/kateview.cpp:1167
+#: view/kateview.cpp:1194
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "Blinker na rechts schuven"
 
-#: view/kateview.cpp:1173
+#: view/kateview.cpp:1200
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "Blinker na links schuven"
 
-#: view/kateview.cpp:1179
+#: view/kateview.cpp:1206
 #, kde-format
 msgid "Select to Next Line"
 msgstr "Bet to de nakamen Reeg utsöken"
 
-#: view/kateview.cpp:1185
+#: view/kateview.cpp:1212
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "Een Reeg na nerrn rullen"
 
-#: view/kateview.cpp:1191
+#: view/kateview.cpp:1221
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "Een Siet na baven rullen"
 
-#: view/kateview.cpp:1197
+#: view/kateview.cpp:1227
 #, kde-format
 msgid "Select Page Up"
 msgstr "Een Siet na baven utsöken"
 
-#: view/kateview.cpp:1203
+#: view/kateview.cpp:1233
 #, kde-format
 msgid "Move to Top of View"
 msgstr "Na de Ansichtkant baven gahn"
 
-#: view/kateview.cpp:1209
+#: view/kateview.cpp:1239
 #, kde-format
 msgid "Select to Top of View"
 msgstr "Bet to de Ansichtkant baven utsöken"
 
-#: view/kateview.cpp:1215
+#: view/kateview.cpp:1245
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "Een Siet na nerrn rullen"
 
-#: view/kateview.cpp:1221
+#: view/kateview.cpp:1251
 #, kde-format
 msgid "Select Page Down"
 msgstr "Een Siet na nerrn utsöken"
 
-#: view/kateview.cpp:1227
+#: view/kateview.cpp:1257
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "Na de Ansichtkant nerrn gahn"
 
-#: view/kateview.cpp:1233
+#: view/kateview.cpp:1263
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "Bet to de Ansichtkant nerrn utsöken"
 
-#: view/kateview.cpp:1239
+#: view/kateview.cpp:1269
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Go to Matching Bracket"
 msgstr "Na de tohören Klemm gahn"
 
-#: view/kateview.cpp:1245
+#: view/kateview.cpp:1275
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "Bet to de tohören Klemm utsöken"
 
-#: view/kateview.cpp:1253
+#: view/kateview.cpp:1283
 #, kde-format
 msgid "Transpose Characters"
 msgstr "Bookstaven tuschen"
 
-#: view/kateview.cpp:1258
+#: view/kateview.cpp:1288
 #, fuzzy, kde-format
 #| msgid "Transpose Characters"
 msgid "Transpose Words"
 msgstr "Bookstaven tuschen"
 
-#: view/kateview.cpp:1263
+#: view/kateview.cpp:1293
 #, kde-format
 msgid "Delete Line"
 msgstr "Reeg wegdoon"
 
-#: view/kateview.cpp:1269
+#: view/kateview.cpp:1299
 #, kde-format
 msgid "Delete Word Left"
 msgstr "Woort links wegdoon"
 
-#: view/kateview.cpp:1275
+#: view/kateview.cpp:1305
 #, kde-format
 msgid "Delete Word Right"
 msgstr "Woort rechts wegdoon"
 
-#: view/kateview.cpp:1281
+#: view/kateview.cpp:1311
 #, kde-format
 msgid "Delete Next Character"
 msgstr "Nakamen Bookstaav wegdoon"
 
-#: view/kateview.cpp:1287
+#: view/kateview.cpp:1317
 #, kde-format
 msgid "Backspace"
 msgstr "Torüchtast"
 
-#: view/kateview.cpp:1295
+#: view/kateview.cpp:1325
 #, fuzzy, kde-format
 #| msgid "Insert Tab"
 msgid "Insert Tab Character"
 msgstr "Tabteken infögen"
 
-#: view/kateview.cpp:1300
+#: view/kateview.cpp:1330
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "Plietsch Reegümbrook infögen"
 
-#: view/kateview.cpp:1301
+#: view/kateview.cpp:1331
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
@@ -8042,46 +8042,46 @@ msgstr ""
 "Reegümbrook infögen un de nakamen Reeg mit de Anfangtekens ut de aktuelle "
 "Reeg anfangen, de keen Bookstaven oder Tallen sünd."
 
-#: view/kateview.cpp:1309
+#: view/kateview.cpp:1339
 #, fuzzy, kde-format
 #| msgid "Insert Smart Newline"
 msgid "Insert a Non-Indented Newline"
 msgstr "Plietsch Reegümbrook infögen"
 
-#: view/kateview.cpp:1310
+#: view/kateview.cpp:1340
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr ""
 
-#: view/kateview.cpp:1318
+#: view/kateview.cpp:1348
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr ""
 
-#: view/kateview.cpp:1319
+#: view/kateview.cpp:1349
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr ""
 
-#: view/kateview.cpp:1327
+#: view/kateview.cpp:1357
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr ""
 
-#: view/kateview.cpp:1328
+#: view/kateview.cpp:1358
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr ""
 
-#: view/kateview.cpp:1337
+#: view/kateview.cpp:1367
 #, kde-format
 msgid "&Indent"
 msgstr "&Inrücken"
 
-#: view/kateview.cpp:1339
+#: view/kateview.cpp:1369
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -8091,101 +8091,101 @@ msgstr ""
 "Disse Befehl rückt utsöcht Text in.<br /><br />Binnen den Instellendialoog "
 "kannst Du fastleggen, wat Free- oder Tabtekens för't Inrücken bruukt warrt."
 
-#: view/kateview.cpp:1346
+#: view/kateview.cpp:1376
 #, kde-format
 msgid "&Unindent"
 msgstr "&Utrücken"
 
-#: view/kateview.cpp:1347
+#: view/kateview.cpp:1377
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr "Mit dissen Befehl kannst Du utsöchten Text utrücken."
 
-#: view/kateview.cpp:1365
+#: view/kateview.cpp:1395
 #, kde-format
 msgid "Fold Toplevel Nodes"
 msgstr "Böverste Evene tosamenfoolden"
 
-#: view/kateview.cpp:1369
+#: view/kateview.cpp:1399
 #, fuzzy, kde-format
 #| msgid "Expand Toplevel"
 msgid "Unfold Toplevel Nodes"
 msgstr "Böverste Evene utfoolden"
 
-#: view/kateview.cpp:1373
+#: view/kateview.cpp:1403
 #, fuzzy, kde-format
 #| msgid "Fold Current Node"
 msgid "Toggle Current Node"
 msgstr "Aktuell Element tosamenfoolden"
 
-#: view/kateview.cpp:1377
+#: view/kateview.cpp:1407
 #, fuzzy, kde-format
 #| msgid "Toggle Comment"
 msgid "Toggle Contained Nodes"
 msgstr "Kommentar an- oder utmaken"
 
-#: view/kateview.cpp:1386
+#: view/kateview.cpp:1416
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgid "Say current selection or document"
 msgstr "Den helen Text vun't aktuelle Dokment utsöken"
 
-#: view/kateview.cpp:1396
+#: view/kateview.cpp:1426
 #, fuzzy, kde-format
 #| msgid "Save the current document"
 msgid "Stop current output"
 msgstr "Dat aktuelle Dokment sekern"
 
-#: view/kateview.cpp:1402
+#: view/kateview.cpp:1432
 #, fuzzy, kde-format
 #| msgid "Save the current document"
 msgid "Pause current output"
 msgstr "Dat aktuelle Dokment sekern"
 
-#: view/kateview.cpp:1408
+#: view/kateview.cpp:1438
 #, fuzzy, kde-format
 #| msgid "Save the current document"
 msgid "Resume current output"
 msgstr "Dat aktuelle Dokment sekern"
 
-#: view/kateview.cpp:1579
+#: view/kateview.cpp:1609
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(b.l.) %1"
 
-#: view/kateview.cpp:1767
+#: view/kateview.cpp:1797
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr ""
 
-#: view/kateview.cpp:1769
+#: view/kateview.cpp:1799
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2304
+#: view/kateview.cpp:2334
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgid "Search wrapped"
 msgstr "Söökmetood"
 
-#: view/kateview.cpp:2991
+#: view/kateview.cpp:3021
 #, kde-format
 msgid "Open File"
 msgstr "Datei opmaken"
 
-#: view/kateview.cpp:3883
+#: view/kateview.cpp:3913
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "U&trichten"
 
-#: view/kateview.cpp:3883
+#: view/kateview.cpp:3913
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4967
+#: view/kateview.cpp:4997
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Datei na HTML exporteren"
