@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-02 00:38+0000\n"
-"PO-Revision-Date: 2024-11-15 13:13+0100\n"
+"PO-Revision-Date: 2024-12-27 14:28+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -6726,7 +6726,7 @@ msgstr "Incolla il contenuto precedentemente selezionato con il mouse"
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Incolla da file"
 
 #: view/kateview.cpp:486
 #, kde-format
