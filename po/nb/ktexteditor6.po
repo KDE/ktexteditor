@@ -1042,8 +1042,6 @@ msgstr "Øk innrykk hvis på blanktegn foran ikk&e-blanke"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
 #, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
 msgid "%v character"
 msgid_plural "%v characters"
 msgstr[0] " tegn"
@@ -1116,8 +1114,6 @@ msgstr "Tekstnavigasjon"
 
 #: dialogs/katedialogs.cpp:578
 #, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
@@ -3028,14 +3024,12 @@ msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:19
 #, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
 msgstr "Flytt markøren til neste samsvarende innrykk"
 
 #: script/data/commands/jumpMatchingIndent.js:24
 #, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
 msgstr "Flytt markøren til forrige samsvarende innrykk"
@@ -3052,13 +3046,11 @@ msgstr "Flytt markøren til neste samsvarende innrykk"
 
 #: script/data/commands/jumpMatchingIndent.js:85
 #, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
 msgid "Move cursor to next blank line"
 msgstr "Flytt markøren til neste samsvarende innrykk"
 
 #: script/data/commands/jumpMatchingIndent.js:87
 #, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
 msgid "Move cursor to previous blank line"
 msgstr "Flytt markøren til forrige samsvarende innrykk"
 
@@ -7718,7 +7710,6 @@ msgstr ""
 
 #: view/kateview.cpp:3021
 #, fuzzy, kde-format
-#| msgid "Save File"
 msgid "Open File"
 msgstr "Lagre fil"
 

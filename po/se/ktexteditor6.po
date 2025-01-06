@@ -1013,8 +1013,6 @@ msgstr "Lokte siskkildandási jus leat &guorus báikkis linnjá álggus"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
 #, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
 msgid "%v character"
 msgid_plural "%v characters"
 msgstr[0] " bustáva"
@@ -1087,8 +1085,6 @@ msgstr ""
 
 #: dialogs/katedialogs.cpp:578
 #, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
@@ -2957,14 +2953,12 @@ msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:19
 #, fuzzy, kde-format
-#| msgid "Move to Next Line"
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
 msgstr "Mana boahtte linnjái"
 
 #: script/data/commands/jumpMatchingIndent.js:24
 #, fuzzy, kde-format
-#| msgid "Move to Previous Line"
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
 msgstr "Mana ovddit linnjái"
@@ -2981,13 +2975,11 @@ msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:85
 #, fuzzy, kde-format
-#| msgid "Move to Next Line"
 msgid "Move cursor to next blank line"
 msgstr "Mana boahtte linnjái"
 
 #: script/data/commands/jumpMatchingIndent.js:87
 #, fuzzy, kde-format
-#| msgid "Move to Previous Line"
 msgid "Move cursor to previous blank line"
 msgstr "Mana ovddit linnjái"
 
