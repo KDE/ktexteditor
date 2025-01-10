@@ -6454,7 +6454,7 @@ msgstr ""
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Vložit ze souboru"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7651,10 +7651,9 @@ msgid "Search wrapped"
 msgstr ""
 
 #: view/kateview.cpp:3021
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "Uložit soubor"
+msgstr "Otevřít soubor"
 
 #: view/kateview.cpp:3913
 #, kde-format
