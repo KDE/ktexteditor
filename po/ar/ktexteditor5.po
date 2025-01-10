@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 01:34+0000\n"
-"PO-Revision-Date: 2025-01-08 22:19+0400\n"
+"PO-Revision-Date: 2025-01-09 11:12+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1762,7 +1762,7 @@ msgstr "فعّل الحفظ الآليّ (للملفات المحلية فقط)"
 #: dialogs/opensaveconfigwidget.ui:254
 #, kde-format
 msgid "Auto save document when focus leaves the editor"
-msgstr ""
+msgstr "احفظ المستند تلقائيًا عند خروج التركيز من المحرر"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
@@ -1872,7 +1872,7 @@ msgstr "سيعرض المحرّر رمزًا للدّلالة على وجود ج
 #: dialogs/textareaappearanceconfigwidget.ui:148
 #, kde-format
 msgid "Show focus frame around editor"
-msgstr ""
+msgstr "أظهر إطار التركيز حول المحرر"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:178
@@ -1909,6 +1909,9 @@ msgid ""
 "bracket, especially in long function/class declarations and deeply nested if "
 "blocks"
 msgstr ""
+"إذا مكنت هذا الخيار، سيعرض معاينة للأسطر بالقرب من قوس مفتوح مطابق. يمكن أن "
+"يساعد هذا في تحديد سياق قوس الإغلاق بسرعة، وخاصة في إعلانات الوظائف/الفئات "
+"الطويلة وكتل if المتداخلة بعمق"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:201
@@ -2039,7 +2042,7 @@ msgstr "أز&ح السطور الملفوفة:"
 #: dialogs/textareaappearanceconfigwidget.ui:384
 #, kde-format
 msgid "Don't indent lines wider than:"
-msgstr ""
+msgstr "لا تزيح السطور أعرض من:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:400
@@ -2265,6 +2268,9 @@ msgid ""
 "that the media you write to is full or the directory of the file is read-"
 "only for you."
 msgstr ""
+"بالنسبة للملف %1، لا يمكن إنشاء نسخة احتياطية قبل الحفظ. إذا حدث خطأ أثناء "
+"الحفظ، فقد تفقد بيانات هذا الملف. قد يكون السبب هو أن الوسائط التي تكتب "
+"عليها ممتلئة أو أن دليل الملف للقراءة فقط بالنسبة لك."
 
 #: document/katedocument.cpp:2723
 #, kde-format
@@ -2499,6 +2505,8 @@ msgid ""
 "Search for syntax highlighting modes by language name or file extension (for "
 "example, C++ or .cpp)"
 msgstr ""
+"ابحث عن أوضاع تمييز بناء الجملة حسب اسم اللغة أو ملحق الملف (على سبيل "
+"المثال، C++ أو .cpp)"
 
 #: mode/katemodemenulist.cpp:566
 #, kde-format
@@ -2542,7 +2550,7 @@ msgstr "اطبع دليل المصطلحات"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "لا تطبع الكود المطوي"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -2768,6 +2776,8 @@ msgid ""
 "the contents of each page. The Header and Footer will be separated from the "
 "contents with a line as well.</p>"
 msgstr ""
+"<p>إذا مكنت هذه الميزة، فسيرسم مربع كما هو محدد في الخصائص أدناه حول محتويات "
+"كل صفحة. وسيفصل الرأس والتذييل عن المحتويات بسطر أيضًا.</p>"
 
 #: printing/printconfigwidgets.cpp:555
 #, kde-format
@@ -3255,11 +3265,12 @@ msgid ""
 "Encode special chars in a single line selection, so the result text can be "
 "used as URI."
 msgstr ""
+"رمّز الأحرف الخاصة في تحديد سطر واحد، حتى يمكن استخدام النص الناتج كعنوان URI."
 
 #: script/data/commands/utils.js:454
 #, kde-format
 msgid "Reverse action of URI encode."
-msgstr ""
+msgstr "اعكس إجراء ترميز URI."
 
 #: script/data/commands/utils.js:456
 #, kde-format
@@ -3267,6 +3278,8 @@ msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
+"حدد النص للأمام من موضع المؤشر الحالي إلى أول ظهور للحجة المحددة بعده (أو "
+"نهاية السطر الحالي بشكل افتراضي)."
 
 #: script/data/commands/utils.js:458
 #, kde-format
@@ -3275,6 +3288,8 @@ msgid ""
 "the given argument before it (or the beginning of the current line by "
 "default)."
 msgstr ""
+"حدد النص للخلف من موضع المؤشر الحالي إلى آخر ظهور للحجة المحددة قبله (أو "
+"بداية السطر الحالي بشكل افتراضي)."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -4805,7 +4820,7 @@ msgstr "استورد..."
 #: syntax/katethemeconfig.cpp:1136
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
-msgstr ""
+msgstr "سمة مُجمَّعة للقراءة فقط. لتعديل السمة؛ يُرجى نسخها."
 
 #: syntax/katethemeconfig.cpp:1147
 #, kde-format
@@ -4843,11 +4858,12 @@ msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
+"سيؤدي الاستيراد إلى استبدال ملف السمة الحالي \"%1\". لا يمكن التراجع عن هذا."
 
 #: syntax/katethemeconfig.cpp:1206
 #, kde-format
 msgid "Import Nevertheless"
-msgstr ""
+msgstr "استورد على أية حال"
 
 #: syntax/katethemeconfig.cpp:1288
 #, kde-format
@@ -4857,7 +4873,7 @@ msgstr "استخدم مخطّط ألوان النظام"
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
-msgstr ""
+msgstr "هل تريد حقًا حذف السمة \"%1\"؟ لا يمكن التراجع عن هذا."
 
 #: syntax/katethemeconfig.cpp:1356
 #, kde-format
@@ -4872,7 +4888,7 @@ msgstr "انسخ سمة"
 #: syntax/katethemeconfig.cpp:1399
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
-msgstr ""
+msgstr "اسم نسخة السمة الملونة \"%1\":"
 
 #: syntax/katethemeconfig.cpp:1411
 #, kde-format
@@ -5155,6 +5171,9 @@ msgid ""
 "the Tools → Highlighting menu. This command provides an autocompletion list "
 "for its argument.</p>"
 msgstr ""
+"<p>set-highlight <b>highlight</b></p><p> يحدد نظام تمييز بناء الجملة "
+"للمستند. يجب أن يكون الوسيط اسم تمييز صالحًا، كما هو موضح في قائمة أدوات ⇽ "
+"التمييز. يوفر هذا الأمر قائمة إكمال تلقائية لحجته.</p>"
 
 #: utils/katecmds.cpp:188
 #, kde-format
@@ -5224,6 +5243,7 @@ msgstr ""
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
 msgstr ""
+"الاستخدام: ‎set-remove-trailing-spaces 0|-|none أو ‎1|+|mod|modified أو ‎2|*|all"
 
 #: utils/katecmds.cpp:435 vimode/cmds.cpp:168
 #, kde-format
@@ -5238,6 +5258,9 @@ msgid ""
 "form.</p><p>Examples:<ul><li>char <b>234</b></li><li>char <b>0x1234</b></"
 "li></ul></p>"
 msgstr ""
+"<p> char <b>identifier</b> </p><p>يتيح لك هذا الأمر إدراج أحرف حرفية حسب "
+"معرفها الرقمي، في شكل عشري أو ثماني أو سداسي عشري.</p><p>الأمثلة:"
+"<ul><li>char <b>234</b></li><li>char <b>0x1234</b></li></ul></p>"
 
 #: utils/katecmds.cpp:560
 #, kde-format
@@ -5713,7 +5736,7 @@ msgstr[5] "%1 سطر"
 #: utils/katevariableexpansionhelpers.cpp:129
 #, kde-format
 msgid "<value>"
-msgstr ""
+msgstr "<value>"
 
 #: utils/katevariableexpansionhelpers.cpp:213
 #, kde-format
@@ -5734,7 +5757,7 @@ msgstr "المرشّح"
 #: utils/katevariableexpansionhelpers.cpp:261
 #, kde-format
 msgid "Please select a variable."
-msgstr ""
+msgstr "رجاءً اختر متغيرًا."
 
 #: utils/katevariableexpansionhelpers.cpp:254
 #, kde-format
@@ -5782,6 +5805,8 @@ msgid ""
 "Full document path including file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
+"المسار الكامل للمستند بما في ذلك اسم الملف، مع فاصل المسار الأصلي (الشرطة "
+"المائلة للخلف على نظام التشغيل Windows)."
 
 #: utils/katevariableexpansionmanager.cpp:88
 #, kde-format
@@ -5789,29 +5814,31 @@ msgid ""
 "Full document path excluding file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
+"المسار الكامل للمستند باستثناء اسم الملف، مع فاصل المسار الأصلي (الشرطة "
+"المائلة للخلف على نظام التشغيل Windows)."
 
 #: utils/katevariableexpansionmanager.cpp:96
 #, kde-format
 msgid ""
 "Line number of the text cursor position in current document (starts with 0)."
-msgstr ""
+msgstr "رقم سطر موضع مؤشر النص في المستند الحالي (يبدأ بـ 0)."
 
 #: utils/katevariableexpansionmanager.cpp:103
 #, kde-format
 msgid ""
 "Column number of the text cursor position in current document (starts with "
 "0)."
-msgstr ""
+msgstr "رقم العمود موضع مؤشر النص في المستند الحالي (يبدأ بـ 0)."
 
 #: utils/katevariableexpansionmanager.cpp:110
 #, kde-format
 msgid "X component in global screen coordinates of the cursor position."
-msgstr ""
+msgstr "مكون س في إحداثيات الشاشة العامة لموضع المؤشر."
 
 #: utils/katevariableexpansionmanager.cpp:117
 #, kde-format
 msgid "Y component in global screen coordinates of the cursor position."
-msgstr ""
+msgstr "مكون ص في إحداثيات الشاشة العامة لموضع المؤشر."
 
 #: utils/katevariableexpansionmanager.cpp:124
 #, kde-format
@@ -5846,17 +5873,17 @@ msgstr "عدد صفوف الوثيقة الحالية."
 #: utils/katevariableexpansionmanager.cpp:166
 #, kde-format
 msgid "Read a document variable."
-msgstr ""
+msgstr "إقراء متغير المستند."
 
 #: utils/katevariableexpansionmanager.cpp:174
 #, kde-format
 msgid "The current date in current locale format."
-msgstr ""
+msgstr "التاريخ الحالي بتنسيق الإعدادات المحلية الحالي."
 
 #: utils/katevariableexpansionmanager.cpp:181
 #, kde-format
 msgid "The current date (ISO)."
-msgstr ""
+msgstr "التاريخ الحالي (ايزو)."
 
 #: utils/katevariableexpansionmanager.cpp:188
 #, kde-format
@@ -5866,22 +5893,22 @@ msgstr "التاريخ الحالي (سلسلة تنسيق QDate)."
 #: utils/katevariableexpansionmanager.cpp:196
 #, kde-format
 msgid "The current time in current locale format."
-msgstr ""
+msgstr "الوقت الحالي بتنسيق الإعدادات المحلية الحالي."
 
 #: utils/katevariableexpansionmanager.cpp:203
 #, kde-format
 msgid "The current time (ISO)."
-msgstr ""
+msgstr "الوقت الحالي (ايزو)."
 
 #: utils/katevariableexpansionmanager.cpp:210
 #, kde-format
 msgid "The current time (QTime formatstring)."
-msgstr ""
+msgstr "الوقت الحالي (تنسيق QTime)."
 
 #: utils/katevariableexpansionmanager.cpp:218
 #, kde-format
 msgid "Access to environment variables."
-msgstr ""
+msgstr "الوصول إلى متغيرات البيئة."
 
 #: utils/katevariableexpansionmanager.cpp:226
 #, kde-format
@@ -5891,12 +5918,12 @@ msgstr "تقييم عبارات جافاسكربت البسيطة."
 #: utils/katevariableexpansionmanager.cpp:236
 #, kde-format
 msgid "Encode text to make it URL compatible."
-msgstr ""
+msgstr "ترميز النص لجعله متوافقًا مع عنوان URL."
 
 #: utils/katevariableexpansionmanager.cpp:244
 #, kde-format
 msgid "Generate a new UUID."
-msgstr ""
+msgstr "أنشئ UUID جديدًا."
 
 #: variableeditor/katehelpbutton.cpp:19
 #, kde-format
@@ -5959,6 +5986,8 @@ msgstr "اضبط لون خلفيّة المحرّر."
 msgctxt "short translation please"
 msgid "Pressing backspace in leading whitespace unindents."
 msgstr ""
+"يؤدي الضغط على زر الرجوع إلى الخلف في المسافة البيضاء البادئة إلى إزالة "
+"الإزاحة."
 
 #: variableeditor/variablelineedit.cpp:139
 #, kde-format
@@ -6090,7 +6119,7 @@ msgstr "فعّل وضع الكتابة الفوقيّة في للمستند."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
-msgstr ""
+msgstr "مكّن تحديد النص الباقي."
 
 #: variableeditor/variablelineedit.cpp:265
 #, kde-format
@@ -6138,19 +6167,19 @@ msgstr "اضبط لون تحديد النّصّ."
 #, kde-format
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
-msgstr ""
+msgstr "اجعل علامات التبويب والمسافات اللاحقة مرئية."
 
 #: variableeditor/variablelineedit.cpp:311
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
-msgstr ""
+msgstr "مكّن  الملاحة المنزلية الذكية."
 
 #: variableeditor/variablelineedit.cpp:316
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
-msgstr ""
+msgstr "الضغط على مفتاح TAB يؤدي إلى إزاحة."
 
 #: variableeditor/variablelineedit.cpp:322
 #, kde-format
@@ -6259,7 +6288,7 @@ msgstr "إبراز الصّياغة"
 #: view/katestatusbar.cpp:260
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "وضع ضغط الخط/العمود"
 
 #: view/katestatusbar.cpp:306
 #, kde-format
@@ -6640,7 +6669,7 @@ msgstr "اذهب إلى السّطر المعدّل السّابق"
 #: view/kateview.cpp:645
 #, kde-format
 msgid "Move upwards to the previous modified line."
-msgstr ""
+msgstr "انتقل لأعلى إلى السطر المعدل السابق."
 
 #: view/kateview.cpp:650
 #, kde-format
@@ -6650,7 +6679,7 @@ msgstr "اذهب إلى السّطر المعدّل التّالي"
 #: view/kateview.cpp:651
 #, kde-format
 msgid "Move downwards to the next modified line."
-msgstr ""
+msgstr "انتقل لأسفل إلى السطر المعدل التالي."
 
 #: view/kateview.cpp:655
 #, kde-format
@@ -6995,7 +7024,7 @@ msgstr "جِد الحدوث التّالي للنّصّ المحدّد."
 #: view/kateview.cpp:861
 #, kde-format
 msgid "Find Selected Backwards"
-msgstr ""
+msgstr "اعثر على المحدد إلى الوراء"
 
 #: view/kateview.cpp:863
 #, kde-format
@@ -7005,7 +7034,7 @@ msgstr "جِد الحدوث السّابق للنّصّ المحدّد."
 #: view/kateview.cpp:867
 #, kde-format
 msgid "Find and Select Next Occurrence"
-msgstr ""
+msgstr "ابحث عن الحدث التالي وحدده"
 
 #: view/kateview.cpp:869
 #, kde-format
@@ -7015,12 +7044,12 @@ msgstr "يبحث عن التواجد التالي للكلمة تحت المؤش
 #: view/kateview.cpp:873
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr ""
+msgstr "ضع علامة على الحدث المحدد حالياً على أنك تجاوزته"
 
 #: view/kateview.cpp:875
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr ""
+msgstr "يضع علامة على الكلمة المحددة حالياً ككلمة متخطاة."
 
 #: view/kateview.cpp:879
 #, kde-format
@@ -7052,17 +7081,17 @@ msgstr "ابحث عن نصّ ما أو تعبير نمطيّ واستبدل ال
 #: view/kateview.cpp:896
 #, kde-format
 msgid "Add Cursors to Line Ends"
-msgstr ""
+msgstr "أضف مؤشرات إلى نهايات السطر"
 
 #: view/kateview.cpp:898
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
-msgstr ""
+msgstr "إنشاء مؤشر في نهاية كل سطر في التحديد."
 
 #: view/kateview.cpp:902
 #, kde-format
 msgid "Add Caret below Cursor"
-msgstr ""
+msgstr "أضف علامة إقحام أسفل المؤشر"
 
 #: view/kateview.cpp:904
 #, kde-format
@@ -7318,7 +7347,7 @@ msgstr "حدّد إلى القوس المطابق"
 #: view/kateview.cpp:1183
 #, kde-format
 msgid "Transpose Characters"
-msgstr ""
+msgstr "تبديل الأحرف"
 
 #: view/kateview.cpp:1188
 #, kde-format
@@ -7366,6 +7395,8 @@ msgid ""
 "Insert newline including leading characters of the current line which are "
 "not letters or numbers."
 msgstr ""
+"أدرج سطرًا جديدًا بما في ذلك الأحرف البادئة للسطر الحالي التي ليست حروفًا أو "
+"أرقامًا."
 
 #: view/kateview.cpp:1239
 #, kde-format
@@ -7381,7 +7412,7 @@ msgstr "أدخل سطر جديد بدون إزاحة، بغض النظر عن إ
 #: view/kateview.cpp:1248
 #, kde-format
 msgid "Insert a Newline Above Current Line"
-msgstr ""
+msgstr "أدرج سطرًا جديدًا فوق السطر الحالي"
 
 #: view/kateview.cpp:1249
 #, kde-format
@@ -7701,17 +7732,17 @@ msgstr "المعامل ناقص. الاستخدام: %1 <من>"
 #: vimode/cmds.cpp:68
 #, kde-format
 msgid "No mapping found for \"%1\""
-msgstr ""
+msgstr "لم يعثر على ربط لـ \"%1\""
 
 #: vimode/cmds.cpp:71
 #, kde-format
 msgid "\"%1\" is mapped to \"%2\""
-msgstr ""
+msgstr "رُبط \"%1\" إلى \"%2\""
 
 #: vimode/cmds.cpp:77
 #, kde-format
 msgid "Missing argument(s). Usage: %1 <from> [<to>]"
-msgstr ""
+msgstr "وسيط مفقود. الاستخدام: %1 <من> [<إلى>]"
 
 #: vimode/cmds.cpp:145 vimode/cmds.cpp:161
 #, kde-format
@@ -7751,13 +7782,13 @@ msgstr "فلتغلب أوامر في‌آي على اختصارات «كيت»"
 msgid ""
 "Show the line number relative to the line with the cursor in front of each "
 "line."
-msgstr ""
+msgstr "أظهر رقم السطر بالنسبة إلى السطر الذي يوجد به المؤشر أمام كل سطر."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkViRelLineNumbers)
 #: vimode/config/configwidget.ui:48
 #, kde-format
 msgid "Display relative line numbers"
-msgstr ""
+msgstr "اعرض أرقام الأسطر النسبية"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, groupBox)
 #: vimode/config/configwidget.ui:63
