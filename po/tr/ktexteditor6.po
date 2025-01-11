@@ -1,7 +1,7 @@
 #
 # Copyright (C) 2003, 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
 #
 # Ömer Fadıl USTA <omer_fad@hotmail.com>, 2002.
 # Görkem Çetin <gorkem@kde.org>, 2002,2003, 2004, 2005.
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-02 00:38+0000\n"
-"PO-Revision-Date: 2024-12-27 13:01+0300\n"
+"PO-Revision-Date: 2025-01-10 16:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1235,7 +1235,7 @@ msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
 "Dosya yedekleme için bir sonek belirlemediniz. Öntanımlı sonek kullanılıyor: "
-"‘~’"
+"“~”"
 
 #: dialogs/katedialogs.cpp:1092
 #, kde-format
@@ -2380,10 +2380,10 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
-"Kullanım dışı ‘remove-trailing-space’ kip satırı kullanılıyor. Lütfen "
-"‘remove-trailing-spaces-modified’ ile değiştirin; bkz. https://docs.kde.org/?"
-"application=katepart&branch=stable5&path=config-variables.html#variable-"
-"remove-trailing-spaces"
+"Artık kullanılmaması gereken “remove-trailing-space” kip satırı "
+"kullanılıyor. Lütfen “remove-trailing-spaces-modified” ile değiştirin; bkz. "
+"https://docs.kde.org/?application=katepart&branch=stable5&path=config-"
+"variables.html#variable-remove-trailing-spaces"
 
 #: document/katedocument.cpp:5262
 #, kde-format
@@ -2393,9 +2393,9 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
-"‘remove-trailing-space-save’ artık kullanım dışı. Lütfen ‘remove-trailing-"
-"spaces all;’ ile değiştirin; bkz: https://docs.kde.org/?"
-"application=katepart&branch=stable5&path=config-variables.html#variable-"
+"Artık kullanılmaması gereken “replace-trailing-space-save” kullanılıyor. "
+"Lütfen “remove-trailing-spaces all;” ile değiştirin; bkz: https://docs.kde."
+"org/?application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
 #: document/katedocument.cpp:5568
@@ -3326,9 +3326,9 @@ msgstr ""
 "olarak verilen düzenli bir ifadeyle verilen sütunda hizalar.<br><br>Boş bir "
 "dizgi verirseniz öntanımlı olarak ilk boş olmayan karaktere hizalanır."
 "<br>Dizginin bir yakalaması varsa yakalanan eşleşmeye girintili olacaktır."
-"<br><br><i>Örnekler</i>:<br>‘<code>alignon -</code>’, tümünü aynı sütuna "
-"hizalamak için her satırdaki ilk ‘-’ öncesi boşluklar ekleyecektir."
-"<br>‘<code>alignon :\\s+(.)</code>’, tümünü aynı sütuna hizalamak için bir "
+"<br><br><i>Örnekler</i>:<br>“<code>alignon -</code>”, tümünü aynı sütuna "
+"hizalamak için her satırdaki ilk “-” öncesi boşluklar ekleyecektir."
+"<br>“<code>alignon :\\s+(.)</code>”, tümünü aynı sütuna hizalamak için bir "
 "iki nokta öncesi oluşan ilk boş olmayan karakter öncesi boşluklar "
 "ekleyecektir."
 
@@ -3727,7 +3727,7 @@ msgstr "Boşluk olmayan karakterler"
 #: search/katesearchbar.cpp:1208
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
-msgstr "Sözcük karakteri (harfler sayılar ve ‘_’)"
+msgstr "Sözcük karakteri (harfler, sayılar ve “_”)"
 
 #: search/katesearchbar.cpp:1209
 #, kde-format
@@ -4372,7 +4372,7 @@ msgid ""
 "\"Use Default Style\" will be automatically unset when you change any style "
 "properties."
 msgstr ""
-"‘Öntanımlı Biçemi Kullan’ seçeneği, değiştirmiş olduğunuz biçem "
+"“Öntanımlı biçemi kullan” seçeneği, değiştirmiş olduğunuz biçem "
 "özelliklerini kendiliğinden yürürlükten kaldıracaktır."
 
 #: syntax/katestyletreewidget.cpp:643
@@ -5478,27 +5478,27 @@ msgid ""
 msgstr ""
 "<p>date or date <b>format</b></p><p>Belirtilen biçime bakarak gün/zaman "
 "dizisini ekler veya hiçbir biçim belirlenmediyse yyyy-MM-dd hh:mm:ss "
-"biçimini kullanır.</p><p>Olası biçim belirticileri:<table><tr><td>d</"
+"biçimini kullanır.</p><p>Olası biçim belirteçleri:<table><tr><td>d</"
 "td><td>Sıfır kullanılmadan bir sayı olarak gün (1–31).</td></tr><tr><td>dd</"
 "td><td>Başında sıfır kullanılarak belirtilmiş bir gün (01–31).</td></"
 "tr><tr><td>ddd</td><td>Kısaltılmış ve yerelleştirilmiş edilmiş gün adı (örn. "
-"‘Paz’…‘Cts’).</td></tr><tr><td>dddd</td><td>Uzun biçimde yerelleştirilmiş "
-"gün (örn. ‘Pazar’…‘Cumartesi’).</td></tr><tr><td>M</td><td>Sıfır ile "
+"“Paz”‥“Cts”).</td></tr><tr><td>dddd</td><td>Uzun biçimde yerelleştirilmiş "
+"gün (örn. “Pazar”‥“Cumartesi”).</td></tr><tr><td>M</td><td>Sıfır ile "
 "başlamayan şekilde numara ile belirtilmiş ay (1–12)</td></tr><tr><td>MM</"
 "td><td>Sıfır ile başlayan numara ile belirtilmiş ay (01–12).</td></"
 "tr><tr><td>MMM</td><td>Kısaltılmış ve yerelleştirilmiş ay adı (örn. "
-"‘Oca’…‘Şub’).</td></tr><tr><td>yy</td><td>İki rakam kullanılmış yıl (00–99)."
+"“Oca”‥“Şub”).</td></tr><tr><td>yy</td><td>İki rakam kullanılmış yıl (00–99)."
 "</td></tr><tr><td>yyyy</td><td>Dört rakam kullanılmış yıl (1752–8000).</td></"
-"tr><tr><td>h</td><td>Sıfır ile başlamayan bir saat (0…23 ve ya 1…12 ÖÖ/ÖS "
+"tr><tr><td>h</td><td>Sıfır ile başlamayan bir saat (0‥23 veya 112 ÖÖ/ÖS "
 "gösterimi varsa).</td></tr><tr><td>hh</td><td>Sıfırla başlayan şekilde "
-"gösterilmiş bir saat (00…23 or 01…12 ÖÖ/ÖS varsa).</td></tr><tr><td>m</"
-"td><td>Sıfır ile başlamayan bir dakika (0…59).</td></tr><tr><td>mm</"
-"td><td>Sıfır ile başlayan bir dakika (00…59).</td></tr><tr><td>s</"
-"td><td>Sıfır ile başlamayan bir saniye (0…59).</td></tr><tr><td>ss</"
-"td><td>Sıfır ile başlayan bir saniy (00…59).</td></tr><tr><td>z</"
-"td><td>Sıfır ile başlamayan bir milisaniye (0…999).</td></tr><tr><td>zzz</"
-"td><td>Sıfır ile başlayan bir milisaniye (000…999).</td></tr><tr><td>AP</"
-"td><td>ÖÖ/ÖS gösterimini kullanın. </td></tr><tr><td>ap</td><td>öö/ös "
+"gösterilmiş bir saat (00‥23 or 01‥12 ÖÖ/ÖS varsa).</td></tr><tr><td>m</"
+"td><td>Sıfır ile başlamayan bir dakika (0‥59).</td></tr><tr><td>mm</"
+"td><td>Sıfır ile başlayan bir dakika (00‥59).</td></tr><tr><td>s</"
+"td><td>Sıfır ile başlamayan bir saniye (0‥59).</td></tr><tr><td>ss</"
+"td><td>Sıfır ile başlayan bir saniye (00‥59).</td></tr><tr><td>z</"
+"td><td>Sıfır ile başlamayan bir milisaniye (0‥999).</td></tr><tr><td>zzz</"
+"td><td>Sıfır ile başlayan bir milisaniye (000‥999).</td></tr><tr><td>AP</"
+"td><td>ÖÖ/ÖS gösterimini kullanın. </td></tr><tr><td>ap</td><td>öö/\t "
 "gösterimini kullanın.</td></tr></table></p>"
 
 #: utils/katecmds.cpp:621
@@ -6716,8 +6716,8 @@ msgid ""
 "<br /><br />This is a static word wrap, meaning the document is changed."
 msgstr ""
 "Geçerli satırı kaydırmak veya seçili satırları paragraf olarak yeniden "
-"biçimlendirmek ve yapılandırma iletişim kutusundaki ‘Sözcükleri şurada "
-"kaydır’ ayarına uyacak şekilde bunu kullanın.<br /><br />Bu, durağan bir "
+"biçimlendirmek ve yapılandırma iletişim kutusundaki “Sözcükleri şurada "
+"kaydır” ayarına uyacak şekilde bunu kullanın.<br /><br />Bu, durağan bir "
 "sözcük kaydırmadır; belgenin değiştirildiği anlamına gelir."
 
 #: view/kateview.cpp:520
@@ -8101,12 +8101,12 @@ msgid ""
 "command only writes the document if it is modified.</p>"
 msgstr ""
 "<p><b>x/xa &mdash; yaz ve kapat</b></p><p>Kullanım: <tt><b>x[a]</b></tt></"
-"p><p>Belge(ler)i kaydeder ve kapatır (e<b>x</b>it). Bu komut iki şekilde "
+"p><p>Belgeleri kaydeder ve kapatır (e<b>x</b>it). Bu komut iki şekilde "
 "çağrılabilir:<br /> <tt>x</tt> &mdash; geçerli görünümü kapatır.<br /> "
 "<tt>xa</tt> &mdash; tüm görünümleri kapatır ve uygulamayı da derhal kapatır."
 "</p><p>Her durumda, eğer kapatılan görünüm sonuncuysa uygulama kapanır. Eğer "
 "belge ile ilişkilendirilmiş bir dosya adı yoksa ve diske yazılması "
-"gerekiyorsa bir dosya iletişim penceresi gösterilir.</p><p>‘w’ komutlarından "
+"gerekiyorsa bir dosya iletişim penceresi gösterilir.</p><p>“w” komutlarından "
 "farklı olarak, bu komut belgeyi yalnızca değiştirilmişse kaydeder.</p>"
 
 #: vimode/appcommands.cpp:242
