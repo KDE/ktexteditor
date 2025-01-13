@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-02 00:38+0000\n"
-"PO-Revision-Date: 2025-01-09 11:12+0400\n"
+"PO-Revision-Date: 2025-01-12 12:30+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -3300,6 +3300,11 @@ msgid ""
 "{return l.length > 0;}'</code><br>To save you some typing, you can also do "
 "this to achieve the same:<br><code>filter 'line.length > 0'</code>"
 msgstr ""
+"عند إعطاء دالة جافاسكربت كوسيط، قم باستدعائها لقائمة الأسطر (المحددة) وإزالة "
+"الأسطر التي ترجع فيها دالة الاستدعاء قيمة false.<br>مثال (انظر أيضًا "
+"<code>rmblank</code>):<br><code>filter 'function(l){return l.length > 0;}'</"
+"code><br>يمكنك كتابتها هكذا لتحصل على نفس النتيجة:<br><code>filter 'line."
+"length > 0'</code>"
 
 #: script/data/commands/utils.js:438
 #, kde-format
@@ -3311,6 +3316,11 @@ msgid ""
 "you can also do this to achieve the same:<br><code>map 'line.replace(/^\\s"
 "+/, \"\")'</code>"
 msgstr ""
+"عند إعطاء دالة جافاسكربت كوسيط، قم باستدعائها لقائمة الأسطر (المحددة) "
+"واستبدل السطر بقيمة الإرجاع من معاودة الاتصال.<br>مثال (انظر أيضًا "
+"<code>ltrim</code>):<br><code>map 'function(line){return line.replace(/^\\s"
+"+/, \"\");}'</code><br>يمكنك كتابتها هكذا لتحصل على نفس النتيجة:"
+"<br><code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
 #: script/data/commands/utils.js:440
 #, kde-format
@@ -4844,6 +4854,12 @@ msgid ""
 "p><p>You can unset the Background and Selected Background colors from the "
 "context menu when appropriate.</p>"
 msgstr ""
+"<p>تعرض هذه القائمة سياقات وضع تمييز بناء الجملة الحالي وتقدم الوسائل "
+"لتحريرها. يعكس اسم السياق إعدادات الأسلوب الحالية.</p><p>للتحرير باستخدام "
+"لوحة المفاتيح، اضغط على <strong>&lt;SPACE&gt;</strong> واختر خاصية من "
+"القائمة المنبثقة.</p><p>لتحرير الألوان، انقر فوق المربعات الملونة، أو حدد "
+"اللون لتحريره من القائمة المنبثقة.</p><p>يمكنك إلغاء تعيين ألوان الخلفية "
+"والخلفية المحددة من قائمة السياق عند الاقتضاء.</p>"
 
 #: syntax/katethemeconfig.cpp:1026
 #, kde-format
@@ -5131,6 +5147,9 @@ msgid ""
 "whitespace will be visualized by a small dot.</p><p>Possible true values: 1 "
 "on true<br/>possible false values: 0 off false</p>"
 msgstr ""
+"<p>set-show-tabs <b>enable</b></p><p>إذا تم تمكينه، سيتم عرض أحرف TAB "
+"والمسافة البيضاء اللاحقة بواسطة نقطة صغيرة.</p><p>القيم الصحيحة المحتملة: 1 "
+"عند القيمة true<br/>القيم الخاطئة المحتملة: 0 عند القيمة false</p>"
 
 #: utils/katecmds.cpp:114
 #, kde-format
@@ -5141,6 +5160,11 @@ msgid ""
 "remove trailing spaces only of modified lines.</li><li><b>all</b>: remove "
 "trailing spaces in the entire document.</li></ul></p>"
 msgstr ""
+"<p>set-remove-trailing-spaces <b>mode</b></p><p>يزيل المسافات الزائدة في "
+"المستند وفقًا للوضع.</p><p>القيم الممكنة:<ul><li><b>none</b>: لا تزيل أي "
+"المسافات الزائدة.</li><li><b>modified</b>: أزل المسافات الزائدة فقط من "
+"الأسطر المعدلة.</li><li><b>all</b>: أزل المسافات الزائدة في المستند بالكامل."
+"</li></ul></p>"
 
 #: utils/katecmds.cpp:125
 #, kde-format
@@ -5220,6 +5244,8 @@ msgid ""
 "wrapping to <b>width</b>. This is used if you are having your text wrapped "
 "automatically.</p>"
 msgstr ""
+"<p>set-word-wrap-column <b>width</b></p><p>يضبط عرض السطر للف الثابت على "
+"<b>width</b>. يُستخدم هذا إذا كنت تريد لف النص تلقائيًا.</p>"
 
 #: utils/katecmds.cpp:175
 #, kde-format
@@ -5228,6 +5254,9 @@ msgid ""
 "replaced with whitespace whenever the document is saved.</p><p> possible "
 "true values: 1 on true<br/>possible false values: 0 off false</p>"
 msgstr ""
+"<p>set-replace-tabs-save <b>enable</b></p><p>عند التمكين، ستستبدل بعلامات "
+"التبويب مسافات بيضاء كلما حُفظ المستند.</p><p>القيم الصحيحة المحتملة: 1 on "
+"true<br/>القيم الخاطئة المحتملة: 0 off false</p>"
 
 #: utils/katecmds.cpp:182
 #, kde-format
@@ -5302,7 +5331,7 @@ msgstr "الاستخدام: ‎%1 on|off|1|0|true|false"
 #: utils/katecmds.cpp:417
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
-msgstr ""
+msgstr "وسيطة سيئة '%1'. الاستخدام: %2 on|off|1|0|true|false"
 
 #: utils/katecmds.cpp:421
 #, kde-format
@@ -6607,6 +6636,9 @@ msgid ""
 "paragraph, to fit the 'Wrap words at' setting in the configuration dialog."
 "<br /><br />This is a static word wrap, meaning the document is changed."
 msgstr ""
+"استخدم هذا للفّ السطر الحالي، أو لإعادة تنسيق الأسطر المحددة كفقرة، لملاءمة "
+"الإعداد \"لف الكلمات عند\" في مربع حوار الضبط.<br /><br />هذا التفاف كلمات "
+"ثابت، مما يعني أن المستند قد تغيير."
 
 #: view/kateview.cpp:520
 #, kde-format
@@ -6666,6 +6698,13 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"يقوم هذا الأمر بمحاذاة الأسطر في الكتلة المحددة أو المستند بالكامل في العمود "
+"المحدد بواسطة تعبير عادي سيُطلب منك.<br /><br />إذا قمت بإعطاء نمط فارغ، "
+"فسيحذا عند أول حرف غير فارغ بشكل افتراضي.<br />إذا كان النمط يحتوي على "
+"التقاط، فستوضع مسافة بادئة عند المطابقة الملتقطة.<br /><br /><i>أمثلة</i>:"
+"<br />باستخدام '-'، سيدرج مسافات قبل أول '-' من كل سطر لمحاذاتها جميعًا في "
+"نفس العمود.<br />باستخدام ':\\s+(.)'، سيدرج مسافات قبل أول حرف غير فارغ يأتي "
+"بعد النقطتين لمحاذاتها جميعًا في نفس العمود."
 
 #: view/kateview.cpp:567
 #, kde-format
@@ -7798,7 +7837,7 @@ msgstr "لا أمر كهذا: \"%1\""
 #: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
-msgstr ""
+msgstr "خطأ: لا يُسمح بنطاق للأمر \"%1\"."
 
 #: view/kateviewhelpers.cpp:1301 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
@@ -7818,7 +7857,7 @@ msgstr "نوع العلامة %1"
 #: view/kateviewhelpers.cpp:2627
 #, kde-format
 msgid "Set Default Mark Type"
-msgstr ""
+msgstr "عين نوع العلامة المبدئية"
 
 #: view/kateviewhelpers.cpp:2768
 #, kde-format
@@ -7902,6 +7941,11 @@ msgid ""
 "<tt>wa</tt> &mdash; writes all documents to disk.</p><p>If no file name is "
 "associated with the document, a file dialog will be shown.</p>"
 msgstr ""
+"<p><b>w/wa &mdash; كتابة المستندات على القرص</b></p><p>الاستخدام: "
+"<tt><b>w[a]</b></tt></p><p>يكتب المستندات الحالية على القرص. ويمكن استدعاؤه "
+"بطريقتين:<br /><tt>w</tt> &mdash; كتابة المستند الحالي على القرص<br /"
+"><tt>wa</tt> &mdash; كتابة جميع المستندات على القرص.</p><p>إذا لم يكن هناك "
+"اسم ملف مرتبط بالمستند، فسيتم عرض مربع حوار ملف.</p>"
 
 #: vimode/appcommands.cpp:213
 #, kde-format
@@ -7917,6 +7961,15 @@ msgid ""
 "no file name is associated with the document and it should be written to "
 "disk, a file dialog will be shown.</p>"
 msgstr ""
+"<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>الاستخدام: "
+"<tt><b>[w]q[a]</b></tt></p><p>إنهاء التطبيق. إذا تم إضافة <tt>w</tt> مسبقًا، "
+"فإنه يكتب أيضًا المستندات على القرص. يمكن استدعاء هذا الأمر بعدة طرق:<br /"
+"><tt>q</tt> &mdash; يغلق العرض الحالي.<br /><tt>qa</tt> &mdash; يغلق جميع "
+"العروض، وينهي التطبيق فعليًا.<br /><tt>wq</tt> &mdash; يكتب المستند الحالي "
+"على القرص ويغلق عرضه.<br /><tt>wqa</tt> &mdash; يكتب جميع المستندات على "
+"القرص وينهي.</p><p>في جميع الحالات، إذا كان العرض الذي يتم إغلاقه هو العرض "
+"الأخير، فإن التطبيق يخرج. إذا لم يكن هناك اسم ملف مرتبط بالمستند وكان يجب "
+"كتابته على القرص، فسيتم عرض مربع حوار الملف.</p>"
 
 #: vimode/appcommands.cpp:228
 #, kde-format
@@ -7930,6 +7983,13 @@ msgid ""
 "disk, a file dialog will be shown.</p><p>Unlike the 'w' commands, this "
 "command only writes the document if it is modified.</p>"
 msgstr ""
+"<p><b>x/xa &mdash; اكتب وأنه</b></p><p>الاستخدام: <tt><b>x[a]</b></tt></"
+"p><p>يحفظ المستندات ويخرج منها (e<b>x</b>its). يمكن استدعاء هذا الأمر "
+"بطريقتين:<br /><tt>x</tt> &mdash; يغلق العرض الحالي.<br /><tt>xa</tt> "
+"&mdash; يغلق جميع العروض، ويخرج التطبيق فعليًا.</p><p>في جميع الحالات، إذا "
+"كان العرض الذي يتم إغلاقه هو العرض الأخير، يخرج التطبيق. إذا لم يكن هناك اسم "
+"ملف مرتبط بالمستند ويجب كتابته على القرص، فسيتم عرض مربع حوار ملف.</p><p>على "
+"عكس أوامر \"w\"، يكتب هذا الأمر المستند فقط إذا تم تعديله.</p>"
 
 #: vimode/appcommands.cpp:242
 #, kde-format
@@ -7938,6 +7998,9 @@ msgid ""
 "p><p>Usage: <tt><b>sp[lit]</b></tt></p><p>The result is two views on the "
 "same document.</p>"
 msgstr ""
+"<p><b>sp,split&mdash; تقسيم العرض الحالي أفقيًا إلى عرضين</b></"
+"p><p>الاستخدام: <tt><b>sp[lit]</b></tt></p><p>النتيجة هي عرضين على نفس "
+"المستند.</p>"
 
 #: vimode/appcommands.cpp:248
 #, kde-format
@@ -7946,6 +8009,9 @@ msgid ""
 "p><p>Usage: <tt><b>vs[plit]</b></tt></p><p>The result is two views on the "
 "same document.</p>"
 msgstr ""
+"<p><b>vs,vsplit&mdash; تقسيم العرض الحالي عموديًا إلى عرضين</b></"
+"p><p>الاستخدام: <tt><b>vs[plit]</b></tt></p><p>النتيجة هي عرضين على نفس "
+"المستند.</p>"
 
 #: vimode/appcommands.cpp:254
 #, kde-format
@@ -7953,6 +8019,8 @@ msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
 "b></tt></p><p>After executing it, the current view will be closed.</p>"
 msgstr ""
+"<p><b>clo[se]&mdash; إغلاق العرض الحالي</b></p><p>الاستخدام: <tt><b>clo[se]</"
+"b></tt></p><p>بعد تنفيذه، سيغلق العرض الحالي.</p>"
 
 #: vimode/appcommands.cpp:260
 #, kde-format
@@ -7964,6 +8032,11 @@ msgid ""
 "<br /> <tt>vnew</tt> &mdash; splits the view vertically and opens a new "
 "document.<br /></p>"
 msgstr ""
+"<p><b>[v]new &mdash; تقسيم العرض وإنشاء مستند جديد</b></p><p>الاستخدام: "
+"<tt><b>[v]new</b></tt></p><p>تقسيم العرض الحالي وفتح مستند جديد في العرض "
+"الجديد. يمكن استدعاء هذا الأمر بطريقتين:<br /><tt>new</tt> &mdash; تقسيم "
+"العرض أفقيًا وفتح مستند جديد.<br /><tt>vnew</tt> &mdash; تقسيم العرض رأسيًا "
+"وفتح مستند جديد.<br /></p>"
 
 #: vimode/appcommands.cpp:270
 #, kde-format
@@ -7972,6 +8045,9 @@ msgid ""
 "b></tt></p><p>Starts <b>e</b>diting the current document again. This is "
 "useful to re-edit the current file, when it was modified on disk.</p>"
 msgstr ""
+"<p><b>e[dit] &mdash; إعادة تحميل المستند الحالي</b></p><p>الاستخدام: "
+"<tt><b>e[dit]</b></tt></p><p>يبدأ <b>تحرير</b>المستند الحالي مرة أخرى. وهذا "
+"مفيد لإعادة تحرير الملف الحالي، عندما تم تعديله على القرص.</p>"
 
 #: vimode/appcommands.cpp:518
 #, kde-format
@@ -7979,6 +8055,8 @@ msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
 "p><p>Usage: <tt><b>b[uffer] [N]</b></tt></p>"
 msgstr ""
+"<p><b>b,buffer - تحرير المستند N من قائمة المستندات</b></p><p>الاستخدام: "
+"<tt><b>b[uffer] [N]</b></tt></p>"
 
 #: vimode/appcommands.cpp:523
 #, kde-format
@@ -7988,6 +8066,10 @@ msgid ""
 "\") in document list. </p><p> <b>[N]</b> defaults to one. </p><p>Wraps "
 "around the start of the document list.</p>"
 msgstr ""
+"<p><b>bp,bprev &mdash; previous buffer</b></p><p>الاستخدام: "
+"<tt><b>bp[revious] [N]</b></tt></p><p>ينتقل إلى المستند السابق <b>[N]</b> "
+"(\"<b>b</b>uffer\") في قائمة المستندات. </p><p> <b>[N]</b> يكون افتراضيًا "
+"واحدًا. </p><p>يلتف حول بداية قائمة المستندات.</p>"
 
 #: vimode/appcommands.cpp:531
 #, kde-format
@@ -7997,6 +8079,10 @@ msgid ""
 "(\"<b>b</b>uffer\") in document list.<b>[N]</b> defaults to one. </"
 "p><p>Wraps around the end of the document list.</p>"
 msgstr ""
+"<p><b>bn,bnext &mdash; التبديل إلى المستند التالي</b></p><p>الاستخدام: "
+"<tt><b>bn[ext] [N]</b></tt></p><p>ينتقل إلى المستند التالي (<b>[N]</b>) "
+"(\"<b>b</b>uffer\") في قائمة المستندات.<b>[N]</b> يكون افتراضيًا واحدًا. </"
+"p><p>يلتف حول نهاية قائمة المستندات.</p>"
 
 #: vimode/appcommands.cpp:539
 #, kde-format
@@ -8005,6 +8091,9 @@ msgid ""
 "tt></p><p>Goes to the <b>f</b>irst document (\"<b>b</b>uffer\") in document "
 "list.</p>"
 msgstr ""
+"<p><b>bf,bfirst &mdash; المستند الأول</b></p><p>الاستخدام: <tt><b>bf[irst]</"
+"b></tt></p><p>ينتقل إلى المستند <b>f</b>irst (\"<b>b</b>uffer\") في قائمة "
+"المستندات.</p>"
 
 #: vimode/appcommands.cpp:545
 #, kde-format
@@ -8013,11 +8102,14 @@ msgid ""
 "tt></p><p>Goes to the <b>l</b>ast document (\"<b>b</b>uffer\") in document "
 "list.</p>"
 msgstr ""
+"<p><b>bl,blast &mdash; المستند الأخير</b></p><p>الاستخدام: <tt><b>bl[ast]</"
+"b></tt></p><p>ينتقل إلى المستند الأخير (\"<b>b</b>uffer\") في قائمة "
+"المستندات.</p>"
 
 #: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
-msgstr ""
+msgstr "<p><b>ls</b></p><p>قائمة المخازن المؤقتة الحالية<p>"
 
 #: vimode/cmds.cpp:52
 #, kde-format
@@ -8098,6 +8190,13 @@ msgid ""
 "\n"
 "This will prepend \"-- \" to a line when pressing F2."
 msgstr ""
+"تُستخدم عملية تعيين المفاتيح لتغيير معنى المفاتيح المكتوبة. يتيح لك هذا نقل "
+"الأوامر إلى مفاتيح أخرى أو إجراء ضغطات مفاتيح خاصة لتنفيذ سلسلة من الأوامر.\n"
+"\n"
+"مثال:\n"
+"\"<F2>\" → \"I-- <esc>\"\n"
+"\n"
+"سيؤدي هذا إلى إضافة \"-- \" إلى سطر عند الضغط على F2."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: vimode/config/configwidget.ui:66
