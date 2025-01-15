@@ -2824,6 +2824,7 @@ void KateViewInternal::updateCursor(const KTextEditor::Cursor newCursor, bool fo
     cursorMoved();
 
     updateDirty(); // paintText(0, 0, width(), height(), true);
+    m_textHintTimer.stop();
 
     Q_EMIT view()->cursorPositionChanged(m_view, m_cursor);
 }
