@@ -807,14 +807,20 @@ bool TextBuffer::save(const QString &filename)
     // codec must be set, else below we fail!
     Q_ASSERT(!m_textCodec.isEmpty());
 
-    SaveResult saveRes = saveBufferUnprivileged(filename);
+    // ensure we do not kill symlinks, see bug 498589
+    auto realFile = filename;
+    if (const auto realFileResolved = QFileInfo(realFile).canonicalFilePath(); !realFileResolved.isEmpty()) {
+        realFile = realFileResolved;
+    }
 
+    const auto saveRes = saveBufferUnprivileged(realFile);
     if (saveRes == SaveResult::Failed) {
         return false;
-    } else if (saveRes == SaveResult::MissingPermissions) {
+    }
+    if (saveRes == SaveResult::MissingPermissions) {
         // either unit-test mode or we're missing permissions to write to the
         // file => use temporary file and try to use authhelper
-        if (!saveBufferEscalated(filename)) {
+        if (!saveBufferEscalated(realFile)) {
             return false;
         }
     }
