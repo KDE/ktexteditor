@@ -12,6 +12,7 @@
 
 #include <QFileInfo>
 #include <QProcess>
+#include <QTest>
 
 QTEST_MAIN(SwapFileTest)
 
