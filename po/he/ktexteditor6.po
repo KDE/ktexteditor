@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-02 00:38+0000\n"
-"PO-Revision-Date: 2024-12-27 08:33+0200\n"
+"PO-Revision-Date: 2025-01-24 09:27+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1256,7 +1256,7 @@ msgstr "מילון:"
 #: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid "Enable Auto Reload"
-msgstr "הפעלת רענון אוטומטי"
+msgstr "הפעלת ריענון אוטומטי"
 
 #: dialogs/katedialogs.cpp:1462
 #, kde-format
@@ -1280,7 +1280,7 @@ msgstr "הצגת הבדל של השינויים."
 #: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "&Reload"
-msgstr "&רענון"
+msgstr "&ריענון"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -1487,7 +1487,7 @@ msgstr "מספר משני סמנים"
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr "רענון אוטומטית קבצים בבקרת הגרסאות"
+msgstr "ריענון אוטומטית קבצים בבקרת הגרסאות"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:41
@@ -1782,7 +1782,7 @@ msgid ""
 "The line break is visible after reloading the file."
 msgstr ""
 "עם השמירה, ירידת שורה תתווסף לסוף המסמך אם עוד אין אחת כזאת. ירידת השורה "
-"תהיה גלויה לאחר רענון הקובץ."
+"תהיה גלויה לאחר ריענון הקובץ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkNewLineAtEof)
 #: dialogs/opensaveconfigwidget.ui:229
@@ -2125,7 +2125,7 @@ msgstr "קובץ חדש"
 #: document/katedocument.cpp:222
 #, kde-format
 msgid "Auto Reload Document"
-msgstr "רענון המסמך אוטומטית"
+msgstr "ריענון המסמך אוטומטית"
 
 #: document/katedocument.cpp:223
 #, kde-format
@@ -6815,7 +6815,7 @@ msgstr "הצגת תצוגה מקדימה להדפסה של המסמך הנוכח
 #: view/kateview.cpp:678
 #, kde-format
 msgid "Reloa&d"
-msgstr "&רענון"
+msgstr "&ריענון"
 
 #: view/kateview.cpp:680
 #, kde-format
@@ -8014,7 +8014,7 @@ msgid ""
 "b></tt></p><p>Starts <b>e</b>diting the current document again. This is "
 "useful to re-edit the current file, when it was modified on disk.</p>"
 msgstr ""
-"<p><b>e[dit] &mdash; רענון המסמך הנוכחי</b></p><p>אופן השימוש: "
+"<p><b>e[dit] &mdash; ריענון המסמך הנוכחי</b></p><p>אופן השימוש: "
 "<tt><b>e[dit]</b></tt></p><p>התחלת עריכת (<b>e</b>diting) המסמך הנוכחי שוב. "
 "שימושי לעריכת הקובץ הנוכחי מחדש, כשהוא משתנה בכונן.</p>"
 
