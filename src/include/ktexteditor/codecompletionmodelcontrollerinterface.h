@@ -20,6 +20,7 @@ class View;
 /*!
  * \class KTextEditor::CodeCompletionModelControllerInterface
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/CodeCompletionModelControllerInterface
  *
  * \brief Controller interface for a CodeCompletionModel instance.
  *
@@ -61,6 +62,9 @@ class View;
 class KTEXTEDITOR_EXPORT CodeCompletionModelControllerInterface
 {
 public:
+    /*!
+     *
+     */
     CodeCompletionModelControllerInterface();
     virtual ~CodeCompletionModelControllerInterface();
 

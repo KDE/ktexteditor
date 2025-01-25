@@ -5,9 +5,16 @@ description = Full text editor component
 
 documentationinheaders = true
 
-headerdirs = . ../docs
+headerdirs = include ../docs
 imagedirs = ../docs/pics
-sourcedirs = ..
+sourcedirs = .
+
+depends = \
+    kde \
+    qtcore \
+    qtwidgets \
+    kconfigcore \
+    kxmlgui
 
 qhp.projects = KTextEditor
 

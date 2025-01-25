@@ -23,6 +23,7 @@ class AbstractAnnotationItemDelegate;
 /*!
  * \class KTextEditor::AnnotationModel
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/AnnotationInterface
  *
  * \brief A model for providing line annotation information.
  *
@@ -43,6 +44,9 @@ class KTEXTEDITOR_EXPORT AnnotationModel : public QObject
 public:
     ~AnnotationModel() override;
 
+    /*!
+     * \value GroupIdentifierRole
+     */
     enum {
         GroupIdentifierRole = Qt::UserRole
     };

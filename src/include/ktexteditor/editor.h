@@ -27,6 +27,7 @@ class Repository;
 /*!
  * \namespace KTextEditor
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/Editor
  *
  * The KTextEditor namespace contains all the public API that is required
  * to use the KTextEditor component. Using the KTextEditor interfaces is
@@ -47,6 +48,7 @@ class ConfigPage;
 /*!
  * \class KTextEditor::Editor
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/Editor
  *
  * \brief Accessor interface for the KTextEditor framework.
  *
@@ -399,9 +401,6 @@ public:
     void addVariableExpansion(const QList<QWidget *> &widgets, const QStringList &variables = QStringList()) const;
 
 private:
-    /**
-     * private d-pointer, pointing to the internal implementation
-     */
     EditorPrivate *const d;
 };
 

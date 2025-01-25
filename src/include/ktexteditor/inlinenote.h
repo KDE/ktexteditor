@@ -23,6 +23,7 @@ namespace KTextEditor
 /*!
  * \class KTextEditor::InlineNote
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/InlineNote
  *
  * \brief Describes an inline note.
  *

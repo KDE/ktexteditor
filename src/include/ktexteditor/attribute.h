@@ -23,6 +23,7 @@ namespace KTextEditor
 /*!
  * \class KTextEditor::Attribute
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/Attribute
  *
  * \brief A class which provides customized text decorations.
  *
@@ -51,13 +52,15 @@ namespace KTextEditor
 class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
 {
 public:
-    /**
+    /*!
+     * \typedef KTextEditor::Attribute::Ptr
      * Shared data pointer for Attribute
      */
     typedef QExplicitlySharedDataPointer<Attribute> Ptr;
 
     /*!
      * Default constructor.
+     *
      * The resulting Attribute has no properties set to begin with.
      */
     Attribute();
@@ -72,14 +75,8 @@ public:
      */
     Attribute(const QString &name, KSyntaxHighlighting::Theme::TextStyle style);
 
-    /*!
-     * Copy constructor.
-     */
     Attribute(const Attribute &a);
 
-    /*!
-     * Virtual destructor.
-     */
     virtual ~Attribute();
 
     // BEGIN custom properties
@@ -312,19 +309,19 @@ private:
     class AttributePrivate *const d;
 };
 
-/**
- * @brief Attribute%s of a part of a line.
+/*
+ * Attribute%s of a part of a line.
  *
  * An AttributeBlock represents an Attribute spanning the interval
  * [start, start + length) of a given line. An AttributeBlock is
  * obtained by calling KTextEditor::View::lineAttributes().
  *
- * \see KTextEditor::View::lineAttributes()
+ * See KTextEditor::View::lineAttributes()
  */
 class AttributeBlock
 {
 public:
-    /**
+    /*
      * Constructor of AttributeBlock.
      */
     AttributeBlock(int _start, int _length, const Attribute::Ptr &_attribute)
@@ -334,17 +331,17 @@ public:
     {
     }
 
-    /**
+    /*
      * The column this attribute starts at.
      */
     int start;
 
-    /**
+    /*
      * The number of columns this attribute spans.
      */
     int length;
 
-    /**
+    /*
      * The attribute for the current range.
      */
     Attribute::Ptr attribute;

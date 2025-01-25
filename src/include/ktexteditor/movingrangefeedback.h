@@ -20,6 +20,7 @@ class MovingRange;
 /*!
  * \class KTextEditor::MovingRangeFeedback
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/MovingRangeFeedback
  *
  * \brief A class which provides notifications of state changes to a MovingRange.
  *
@@ -104,9 +105,6 @@ public:
     virtual void caretExitedRange(MovingRange *range, View *view);
 
 private:
-    /**
-     * private d-pointer
-     */
     class MovingRangeFeedbackPrivate *const d = nullptr;
 };
 

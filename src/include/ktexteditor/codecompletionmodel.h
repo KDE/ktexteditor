@@ -20,6 +20,7 @@ class View;
 /*!
  * \class KTextEditor::CodeCompletionModel
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/CodeCompletionModel
  *
  * \brief An item model for providing code completion, and meta information for
  * enhanced presentation.
@@ -72,6 +73,9 @@ class KTEXTEDITOR_EXPORT CodeCompletionModel : public QAbstractItemModel
     Q_OBJECT
 
 public:
+    /*!
+     *
+     */
     explicit CodeCompletionModel(QObject *parent);
     ~CodeCompletionModel() override;
 
@@ -554,9 +558,6 @@ Q_SIGNALS:
      */
     void waitForReset();
 
-    /*!
-     * Internal
-     */
     void hasGroupsChanged(KTextEditor::CodeCompletionModel *model, bool hasGroups);
 
 protected:

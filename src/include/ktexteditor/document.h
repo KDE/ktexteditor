@@ -36,6 +36,8 @@ class AnnotationModel;
 /*!
    \enum KTextEditor::SearchOption
 
+   \relates KTextEditor::Document
+
    \brief Search flags for use with Document::searchText().
 
    \value Default
@@ -59,8 +61,6 @@ class AnnotationModel;
    Plaintext mode: searches whole words only, e.g. \b not "amp" in "example"
 
    \omitvalue MaxSearchOption
-
-   \author Sebastian Pipping \<webmaster@hartwork.org\>
  */
 enum SearchOption {
     Default = 0,
@@ -76,29 +76,26 @@ enum SearchOption {
     EscapeSequences = 1 << 10,
     WholeWords = 1 << 11,
 
-    MaxSearchOption = 1 << 31 ///< Placeholder for binary compatibility
+    MaxSearchOption = 1 << 31 // Placeholder for binary compatibility
 };
 
 Q_DECLARE_FLAGS(SearchOptions, SearchOption)
 Q_DECLARE_OPERATORS_FOR_FLAGS(SearchOptions)
 
-/**
- * \class Mark
- * \see doc_marktext
- */
 class Mark
 {
 public:
-    /** The line that contains the mark. */
+    /* The line that contains the mark. */
     int line;
 
-    /** The mark types in the line, combined with logical OR. */
+    /* The mark types in the line, combined with logical OR. */
     uint type;
 };
 
 /*!
  * \class KTextEditor::Document
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/Document
  *
  * \brief A KParts derived class representing a text document.
  *
@@ -351,9 +348,6 @@ protected:
     Document(DocumentPrivate *impl, const KPluginMetaData &data, QObject *parent);
 
 public:
-    /*!
-     * Virtual destructor.
-     */
     ~Document() override;
 
     /*

@@ -17,6 +17,7 @@ namespace KTextEditor
 /*!
  * \class KTextEditor::InlineNoteProvider
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/InlineNoteProvider
  *
  * \brief A source of inline notes for a document.
  *

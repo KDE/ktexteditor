@@ -48,6 +48,7 @@ class CodeCompletionModel;
 /*!
  * \class KTextEditor::View
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/View
  *
  * \brief A text widget with KXMLGUIClient that represents a Document.
  *

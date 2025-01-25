@@ -28,6 +28,7 @@ class View;
 /*!
  * \class KTextEditor::MainWindow
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/MainWindow
  *
  * \brief This class allows the application that embeds the KTextEditor component to
  * allow it to access parts of its main window.
@@ -496,14 +497,8 @@ public:
     bool showMessage(const QVariantMap &message);
 
 private:
-    /**
-     * Private d-pointer class is our best friend ;)
-     */
     friend class MainWindowPrivate;
 
-    /**
-     * Private d-pointer
-     */
     class MainWindowPrivate *const d;
 };
 

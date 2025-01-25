@@ -23,6 +23,7 @@ class View;
 /*!
  * \class KTextEditor::StyleOptionAnnotationItem
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/AbstractAnnotationItemDelegate
  *
  * \brief The style option set for an annotation item, as painted by AbstractAnnotationItemDelegate.
  *
@@ -33,41 +34,48 @@ class KTEXTEDITOR_EXPORT StyleOptionAnnotationItem : public QStyleOption
 {
 public:
     // TODO: not sure what SO_Default implies, but no clue how to maintain a user type registry?
+    /*!
+     * \value StyleOptionType
+     */
     enum StyleOptionType {
         Type = SO_Default
     };
+
+    /*!
+     * \value StyleOptionVersion
+     */
     enum StyleOptionVersion {
         Version = 1
     };
 
-    /**
+    /*!
      * Index of the displayed line in the wrapped lines for the given real line
      */
     int wrappedLine = 0;
-    /**
+    /*!
      * Number of wrapped lines for the given real line
      *
      * A value of 1 means no wrapping has happened and the real line is displayed as one line.
      */
     int wrappedLineCount = 1;
-    /**
+    /*!
      * Index of the displayed line in the displayed lines for the same group
      */
     int visibleWrappedLineInGroup = 0;
 
-    /**
+    /*!
      * The view where the annotation is shown
      *
      * There is always a view set.
      */
     KTextEditor::View *view = nullptr;
-    /**
+    /*!
      * Recommended size for icons or other symbols that will be rendered by the delegate
      *
      * The default value is QSize(-1, -1).
      */
     QSize decorationSize;
-    /**
+    /*!
      * The metrics of the font used for rendering the text document
      */
     QFontMetricsF contentFontMetrics;
@@ -100,7 +108,7 @@ public:
     };
     Q_DECLARE_FLAGS(AnnotationItemGroupPositions, AnnotationItemGroupPosition)
 
-    /**
+    /*!
      * Relative position of the real line in the row of consecutive displayed lines
      * which belong to the same group of annotation items
      */
@@ -118,6 +126,7 @@ protected:
 /*!
  * \class KTextEditor::AbstractAnnotationItemDelegate
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/AbstractAnnotationItemDelegate
  *
  * \brief A delegate for rendering line annotation information and handling events.
  *
@@ -143,6 +152,9 @@ class KTEXTEDITOR_EXPORT AbstractAnnotationItemDelegate : public QObject
     Q_OBJECT
 
 protected:
+    /*!
+     *
+     */
     explicit AbstractAnnotationItemDelegate(QObject *parent = nullptr);
 
 public:

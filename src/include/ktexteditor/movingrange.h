@@ -27,6 +27,7 @@ class MovingRangeFeedback;
 /*!
  * \class KTextEditor::MovingRange
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/MovingRange
  *
  * \brief A range that is bound to a specific Document, and maintains its
  * position.
@@ -576,6 +577,8 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(MovingRange::InsertBehaviors)
  * \a range is the range to print
  *
  * Returns debug stream
+ *
+ * \relates KTextEditor::MovingRange
  */
 KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, const MovingRange *range);
 
@@ -587,6 +590,8 @@ KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, const MovingRange *range);
  * \a range is the range to print
  *
  * Returns debug stream
+ *
+ * \relates KTextEditor::MovingRange
  */
 KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, const MovingRange &range);
 }

@@ -21,6 +21,7 @@ namespace KTextEditor
 /*!
  * \class KTextEditor::LineRange
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/LineRange
  *
  * \brief An object representing lines from a start line to an end line.
  *
@@ -511,10 +512,6 @@ private:
     int m_end = 0;
 };
 
-/*!
- * QHash function for KTextEditor::LineRange.
- * Returns the hash value for \a range.
- */
 KTEXTEDITOR_EXPORT size_t qHash(KTextEditor::LineRange range, size_t seed = 0) noexcept;
 }
 
@@ -533,7 +530,7 @@ namespace QTest
 template<typename T>
 char *toString(const T &);
 
-/**
+/*
  * QTestLib integration to have nice output in e.g. QCOMPARE failures.
  */
 template<>

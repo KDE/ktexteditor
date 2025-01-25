@@ -20,6 +20,7 @@ namespace KTextEditor
 /*!
  * \class KTextEditor::SessionConfigInterface
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/SessionConfigInterface
  *
  * \brief Session config interface extension for the Plugin and Plugin views.
  *
@@ -70,6 +71,9 @@ namespace KTextEditor
 class KTEXTEDITOR_EXPORT SessionConfigInterface
 {
 public:
+    /*!
+     *
+     */
     SessionConfigInterface();
 
     /*!

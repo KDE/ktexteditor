@@ -22,6 +22,7 @@ class View;
 /*!
  * \class KTextEditor::TextHintProvider
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/TextHintProvider
  *
  * \brief Class to provide text hints for a View.
  *

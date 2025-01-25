@@ -20,6 +20,7 @@ class MainWindow;
 /*!
  * \class KTextEditor::Plugin
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/Plugin
  *
  * \brief KTextEditor Plugin interface.
  *

@@ -22,6 +22,7 @@ class Document;
 /*!
  * \class KTextEditor::Message
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/Message
  *
  * \brief This class holds a Message to display in Views.
  *

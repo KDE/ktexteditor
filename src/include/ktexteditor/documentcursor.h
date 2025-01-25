@@ -19,6 +19,7 @@ namespace KTextEditor
 /*!
  * \class KTextEditor::DocumentCursor
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/DocumentCursor
  *
  * \brief A Cursor which is bound to a specific Document.
  *
@@ -81,7 +82,7 @@ public:
     //
 public:
     /*!
-     * Constructor that creates a DocumentCursor at the \e invalid position
+     * Constructor that creates a DocumentCursor at the \c invalid position
      * (-1, -1).
      * \sa isValid()
      */
@@ -117,8 +118,8 @@ public:
     }
 
     /*!
-     * Set the current cursor position to \e position.
-     * If \e position is not valid, meaning that either its line < 0 or its
+     * Set the current cursor position to \c position.
+     * If \c position is not valid, meaning that either its line < 0 or its
      * column < 0, then the document cursor will also be invalid
      *
      * \a position is new cursor position
@@ -170,7 +171,7 @@ public:
     /*!
      * Check if the current position of this cursor is a valid position,
      * i.e. whether line() >= 0 and column() >= 0.
-     * Returns \e true, if the cursor position is valid, otherwise \e false
+     * Returns \c true, if the cursor position is valid, otherwise \c false
      * \sa KTextEditor::Cursor::isValid(), isValidTextPosition()
      */
     inline bool isValid() const
@@ -219,7 +220,7 @@ public:
     /*!
      * \overload
      *
-     * Set the cursor position to \e line and \e column.
+     * Set the cursor position to \c line and \c column.
      *
      * \a line is the new cursor line
      *
@@ -229,7 +230,7 @@ public:
     void setPosition(int line, int column);
 
     /*!
-     * Set the cursor line to \e line.  The cursor's column is not changed.
+     * Set the cursor line to \c line.  The cursor's column is not changed.
      *
      * \a line is the new cursor line
      *
@@ -237,7 +238,7 @@ public:
     void setLine(int line);
 
     /*!
-     * Set the cursor column to \e column.  The cursor's line number is not changed.
+     * Set the cursor column to \c column.  The cursor's line number is not changed.
      *
      * \a column is the new cursor column
      *
@@ -247,21 +248,21 @@ public:
     /*!
      * Determine if this cursor is located at column 0 of a valid text line.
      *
-     * Returns \e true if cursor is a valid text position and column()=0, otherwise \e false.
+     * Returns \c true if cursor is a valid text position and column()=0, otherwise \c false.
      */
     bool atStartOfLine() const;
 
     /*!
      * Determine if this cursor is located at the end of the current line.
      *
-     * Returns \e true if the cursor is situated at the end of the line, otherwise \e false.
+     * Returns \c true if the cursor is situated at the end of the line, otherwise \c false.
      */
     bool atEndOfLine() const;
 
     /*!
      * Determine if this cursor is located at line 0 and column 0.
      *
-     * Returns \e true if the cursor is at start of the document, otherwise \e false.
+     * Returns \c true if the cursor is at start of the document, otherwise \c false.
      */
     bool atStartOfDocument() const;
 
@@ -269,25 +270,25 @@ public:
      * Determine if this cursor is located at the end of the last line in the
      * document.
      *
-     * Returns \e true if the cursor is at the end of the document, otherwise \e false.
+     * Returns \c true if the cursor is at the end of the document, otherwise \c false.
      */
     bool atEndOfDocument() const;
 
     /*!
      * Moves the cursor to the next line and sets the column to 0. If the cursor
      * position is already in the last line of the document, the cursor position
-     * remains unchanged and the return value is \e false.
+     * remains unchanged and the return value is \c false.
      *
-     * Returns \e true on success, otherwise \e false
+     * Returns \c true on success, otherwise \c false
      */
     bool gotoNextLine();
 
     /*!
      * Moves the cursor to the previous line and sets the column to 0. If the
      * cursor position is already in line 0, the cursor position remains
-     * unchanged and the return value is \e false.
+     * unchanged and the return value is \c false.
      *
-     * Returns \e true on success, otherwise \e false
+     * Returns \c true on success, otherwise \c false
      */
     bool gotoPreviousLine();
 
@@ -300,7 +301,7 @@ public:
      * \note If the cursor could not be moved the amount of chars requested,
      *       the cursor is not moved at all!
      *
-     * Returns \e true on success, otherwise \e false
+     * Returns \c true on success, otherwise \c false
      */
     bool move(int chars, WrapBehavior wrapBehavior = Wrap);
 
@@ -343,13 +344,13 @@ public:
      * Equality operator.
      *
      * \note comparison between two invalid cursors is undefined.
-     *       comparison between an invalid and a valid cursor will always be \e false.
+     *       comparison between an invalid and a valid cursor will always be \c false.
      *
      * \a c1 is the first cursor to compare
      *
      * \a c2 is the second cursor to compare
      *
-     * Returns \e true, if c1's and c2's assigned document, line and column are \e equal.
+     * Returns \c true, if c1's and c2's assigned document, line and column are \c equal.
      */
     inline friend bool operator==(DocumentCursor c1, DocumentCursor c2)
     {
@@ -363,7 +364,7 @@ public:
      *
      * \a c2 is the second cursor to compare
      *
-     * Returns \e true, if c1's and c2's assigned document, line and column are \e not equal.
+     * Returns \c true, if c1's and c2's assigned document, line and column are \c not equal.
      */
     inline friend bool operator!=(DocumentCursor c1, DocumentCursor c2)
     {
@@ -377,8 +378,8 @@ public:
      *
      * \a c2 is the second cursor to compare
      *
-     * Returns \e true, if c1's position is greater than c2's position,
-     *         otherwise \e false.
+     * Returns \c true, if c1's position is greater than c2's position,
+     *         otherwise \c false.
      */
     inline friend bool operator>(DocumentCursor c1, DocumentCursor c2)
     {
@@ -392,8 +393,8 @@ public:
      *
      * \a c2 is the second cursor to compare
      *
-     * Returns \e true, if c1's position is greater than or equal to c2's
-     *         position, otherwise \e false.
+     * Returns \c true, if c1's position is greater than or equal to c2's
+     *         position, otherwise \c false.
      */
     inline friend bool operator>=(DocumentCursor c1, DocumentCursor c2)
     {
@@ -407,8 +408,8 @@ public:
      *
      * \a c2 is the second cursor to compare
      *
-     * Returns \e true, if c1's position is greater than or equal to c2's
-     *         position, otherwise \e false.
+     * Returns \c true, if c1's position is greater than or equal to c2's
+     *         position, otherwise \c false.
      */
     inline friend bool operator<(DocumentCursor c1, DocumentCursor c2)
     {
@@ -422,8 +423,8 @@ public:
      *
      * \a c2 is the second cursor to compare
      *
-     * Returns \e true, if c1's position is lesser than or equal to c2's
-     *         position, otherwise \e false.
+     * Returns \c true, if c1's position is lesser than or equal to c2's
+     *         position, otherwise \c false.
      */
     inline friend bool operator<=(DocumentCursor c1, DocumentCursor c2)
     {

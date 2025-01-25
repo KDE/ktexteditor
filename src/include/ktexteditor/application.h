@@ -20,6 +20,7 @@ class MainWindow;
 /*!
  * \class KTextEditor::Application
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/Application
  *
  * \brief This class allows the application that embeds the KTextEditor component to
  * allow it access to application wide information and interactions.
@@ -56,9 +57,6 @@ public:
      */
     Application(QObject *parent);
 
-    /*!
-     * Virtual Destructor
-     */
     ~Application() override;
 
     /*!
@@ -208,14 +206,8 @@ Q_SIGNALS:
     void pluginDeleted(const QString &name, KTextEditor::Plugin *plugin);
 
 private:
-    /**
-     * Private d-pointer class is our best friend ;)
-     */
     friend class ApplicationPrivate;
 
-    /**
-     * Private d-pointer
-     */
     class ApplicationPrivate *const d;
 };
 

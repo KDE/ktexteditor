@@ -28,6 +28,7 @@ class Range;
 /*!
  * \class KTextEditor::Cursor
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/Cursor
  *
  * \brief The Cursor represents a position in a Document.
  *
@@ -64,14 +65,16 @@ class Range;
  * Additional Concepts
  *
  * In addition to the Cursor, the KTextEditor API provides advanced concepts:
- * - The DocumentCursor is a Cursor bound to a specific Document. In addition
+ * \list
+ * \li The DocumentCursor is a Cursor bound to a specific Document. In addition
  *   to the Cursor API, it provides convenience functions like
  *   DocumentCursor::isValidTextPosition() or DocumentCursor::move().
  *   The DocumentCursor does not maintain its position, though.
- * - The MovingCursor is also bound to a specific Document. In addition to the
+ * \li The MovingCursor is also bound to a specific Document. In addition to the
  *   DocumentCursor, the MovingCursor maintains its position, meaning that
  *   whenever the Document changes, the MovingCursor moves, too.
- * - The Cursor forms the basis for the Range.
+ * \li The Cursor forms the basis for the Range.
+ * \endlist
  *
  * \sa DocumentCursor, MovingCursor, Range
  */
@@ -414,9 +417,9 @@ private:
     int m_column = 0;
 };
 
-/*!
+/*
  * QHash function for KTextEditor::Cursor.
- * Returns the hash value for \a cursor using \a seed to seed the calculation.
+ * Returns the hash value for cursor using seed to seed the calculation.
  */
 KTEXTEDITOR_EXPORT size_t qHash(KTextEditor::Cursor cursor, size_t seed = 0) noexcept;
 
@@ -441,7 +444,7 @@ namespace QTest
 template<typename T>
 char *toString(const T &);
 
-/**
+/*
  * QTestLib integration to have nice output in e.g. QCOMPARE failures.
  */
 template<>

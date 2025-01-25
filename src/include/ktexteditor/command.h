@@ -25,17 +25,18 @@ class View;
 /*!
  * \class KTextEditor::Command
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/Command
  *
  * \brief An Editor command line command.
  *
  * Introduction
  *
  * The Command class represents a command for the editor command line. A
- * command simply consists of a string, for example \e find. The command
+ * command simply consists of a string, for example \c find. The command
  * auto-registers itself at the Editor. The Editor itself queries
  * the command for a list of accepted strings/commands by calling cmds().
  * If the command gets invoked the function exec() is called, i.e. you have
- * to implement the \e reaction in exec(). Whenever the user needs help for
+ * to implement the \c reaction in exec(). Whenever the user needs help for
  * a command help() is called.
  *
  * Command Information
@@ -64,7 +65,7 @@ class View;
  * Interactive Commands
  *
  * In case the Command needs to interactively process the text of the parameters,
- * override wantsToProcessText() by returning \e true and reimplement processText().
+ * override wantsToProcessText() by returning \c true and reimplement processText().
  *
  * A typical example of an iterative command would be the incremental search.
  *
@@ -93,7 +94,7 @@ public:
      * This is the same list the command was constructed with.
      * A string is the start part of a pure text which can be handled by this
      * command, i.e. for the command s/sdl/sdf/g the corresponding string is
-     * simply \e s, and for char:1212 simply \e char.
+     * simply \c s, and for char:1212 simply \c char.
      * Returns list of supported commands
      */
     inline const QStringList &cmds() const
@@ -108,8 +109,8 @@ public:
      *
      * \a cmd is the command
      *
-     * Returns \e true if command supports acting on a range of lines, \e false
-     *          not. The default implementation returns \e false.
+     * Returns \c true if command supports acting on a range of lines, \c false
+     *          not. The default implementation returns \c false.
      */
     virtual bool supportsRange(const QString &cmd);
 
@@ -118,22 +119,24 @@ public:
      * Return the success value and a \a msg for status. As example we
      * consider a replace command. The replace command would return the number
      * of replaced strings as \a msg, like "16 replacements made." If an error
-     * occurred in the usage it would return \e false and set the \a msg to
+     * occurred in the usage it would return \c false and set the \a msg to
      * something like "missing argument." or such.
      *
      * If a non-invalid \a range is given, the command shall be executed on that range.
      * supportsRange() tells if the command supports that.
      *
-     * Returns \e true on success, otherwise \e false
+     * Returns \c true on success, otherwise \c false
      */
     virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) = 0;
 
     /*!
      * Shows help for the given \a view and \a cmd string.
-     * If your command has a help text for \a cmd you have to return \e true
+     *
+     * If your command has a help text for \a cmd you have to return \c true
      * and set the \a msg to a meaningful text. The help text is embedded by
      * the Editor in a Qt::RichText enabled widget, e.g. a QToolTip.
-     * Returns \e true if your command has a help text, otherwise \e false
+     *
+     * Returns \c true if your command has a help text, otherwise \c false
      */
     virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg) = 0;
 
@@ -147,13 +150,13 @@ public:
      * anymore. Therefore neither delete the completion object yourself nor return
      * the same completion object twice.
      *
-     * The default implementation returns a null pointer (\e nullptr).
+     * The default implementation returns a null pointer (\c nullptr).
      *
      * \a view is the view the command will work on
      *
      * \a cmdname is the command name associated with this request.
      *
-     * Returns a valid completion object or \e nullptr, if a completion object is
+     * Returns a valid completion object or \c nullptr, if a completion object is
      *         not supported
      */
     virtual KCompletion *completionObject(KTextEditor::View *view, const QString &cmdname);
@@ -170,8 +173,8 @@ public:
      *
      * \a cmdname is the command name associated with this query.
      *
-     * Returns \e true, if your command wants to process text interactively,
-     *         otherwise \e false
+     * Returns \c true, if your command wants to process text interactively,
+     *         otherwise \c false
      *
      * \sa processText()
      */
@@ -179,7 +182,7 @@ public:
 
     /*!
      * This is called by the command line each time the argument text for the
-     * command changed, if wantsToProcessText() returns \e true.
+     * command changed, if wantsToProcessText() returns \c true.
      *
      * \a view is the current view
      *
@@ -190,14 +193,11 @@ public:
     virtual void processText(KTextEditor::View *view, const QString &text);
 
 private:
-    /**
+    /*
      * the command list this command got constructed with
      */
     const QStringList m_cmds;
 
-    /**
-     * Private d-pointer
-     */
     class CommandPrivate *const d;
 };
 

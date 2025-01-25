@@ -27,6 +27,7 @@ namespace KTextEditor
 /*!
  * \class KTextEditor::Range
  * \inmodule KTextEditor
+ * \inheaderfile KTextEditor/Range
  *
  * \brief An object representing a section of text, from one Cursor to another.
  *
@@ -623,10 +624,6 @@ private:
     Cursor m_end;
 };
 
-/*!
- * QHash function for KTextEditor::Range.
- * Returns the hash value for \a range.
- */
 KTEXTEDITOR_EXPORT size_t qHash(KTextEditor::Range range, size_t seed = 0) noexcept;
 }
 
@@ -645,7 +642,7 @@ namespace QTest
 template<typename T>
 char *toString(const T &);
 
-/**
+/*
  * QTestLib integration to have nice output in e.g. QCOMPARE failures.
  */
 template<>
