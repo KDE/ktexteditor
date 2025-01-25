@@ -10,7 +10,7 @@ portingAid: false
 deprecated: false
 release: true
 libraries:
- - cmake: "KF6::TextEditor"
+    - cmake: "KF6::TextEditor"
 cmakename: KF6TextEditor
 
 public_lib: true
