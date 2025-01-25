@@ -3412,6 +3412,9 @@ bool KateViewInternal::isAcceptableInput(const QKeyEvent *e)
 
 void KateViewInternal::contextMenuEvent(QContextMenuEvent *e)
 {
+    // avoid text hint if already triggered, bug 499092
+    m_textHintTimer.stop();
+
     // calculate where to show the context menu
 
     QPoint p = e->pos();
