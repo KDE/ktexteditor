@@ -279,7 +279,7 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
         if ((newWidth + scrollBarWidth) != width() && originalViewportWidth != totalColumnsWidth) {
             auto width = newWidth + scrollBarWidth + 2;
             widget()->resize(width, widget()->height());
-            resize(width, widget()->height() - (2 * widget()->frameWidth()));
+            resize(width - (2 * widget()->frameWidth()), widget()->height() - (2 * widget()->frameWidth()));
         }
 
         //   qCDebug(LOG_KTE) << "created geometry:" << widget()->geometry() << geometry() << "newWidth" << newWidth << "viewport" << viewport()->width();
