@@ -1037,6 +1037,10 @@ void KateThemeConfigPage::layoutThemeChooserTab(QWidget *tab)
     layout->setContentsMargins({});
 
     auto *comboLayout = new QHBoxLayout;
+    comboLayout->setContentsMargins(style()->pixelMetric(QStyle::PM_LayoutLeftMargin),
+                                    style()->pixelMetric(QStyle::PM_LayoutTopMargin),
+                                    style()->pixelMetric(QStyle::PM_LayoutRightMargin),
+                                    0);
 
     auto lHl = new QLabel(i18n("Select theme:"), this);
     comboLayout->addWidget(lHl);
@@ -1105,6 +1109,10 @@ void KateThemeConfigPage::layoutThemeEditorTab(QWidget *tab)
 
     // header
     QHBoxLayout *headerLayout = new QHBoxLayout;
+    headerLayout->setContentsMargins(style()->pixelMetric(QStyle::PM_LayoutLeftMargin),
+                                     style()->pixelMetric(QStyle::PM_LayoutTopMargin),
+                                     style()->pixelMetric(QStyle::PM_LayoutRightMargin),
+                                     0);
     layout->addLayout(headerLayout);
 
     QLabel *lHl = new QLabel(i18n("&Theme:"), this);
