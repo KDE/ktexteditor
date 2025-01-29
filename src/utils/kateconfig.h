@@ -1053,6 +1053,7 @@ public:
         StatusbarLineColumnCompact,
         ShowStatusbarEOL,
         EnableAccessibility,
+        CycleThroughBookmarks,
     };
 
 public:

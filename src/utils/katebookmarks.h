@@ -41,6 +41,11 @@ public:
         m_sorting = s;
     }
 
+    void setCycleThroughBookmarks(bool e)
+    {
+        m_cycleThroughBookmarks = e;
+    }
+
 protected:
     void insertBookmarks(QMenu &menu);
 
@@ -68,6 +73,7 @@ private:
     QMenu *m_bookmarksMenu;
 
     uint _tries;
+    bool m_cycleThroughBookmarks = true;
 };
 
 #endif

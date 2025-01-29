@@ -178,6 +178,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QCheckBox" name="cbCycleBookmarks">
+        <property name="text">
+         <string>Allow to cycle through bookmarks</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

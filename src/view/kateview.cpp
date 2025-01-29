@@ -2500,6 +2500,7 @@ void KTextEditor::ViewPrivate::updateConfig()
     m_copy->setEnabled(selection() || m_config->smartCopyCut());
 
     m_accessibilityEnabled = m_config->value(KateViewConfig::EnableAccessibility).toBool();
+    m_bookmarks->setCycleThroughBookmarks(m_config->value(KateViewConfig::CycleThroughBookmarks).toBool());
 
     // if not disabled, update status bar
     if (m_statusBar) {

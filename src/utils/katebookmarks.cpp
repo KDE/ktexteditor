@@ -247,7 +247,7 @@ void KateBookmarks::goNext()
     // either go to next bookmark or the first in the document, bug 472354
     if (found != -1) {
         gotoLine(found);
-    } else {
+    } else if (m_cycleThroughBookmarks) {
         gotoLine(firstBookmarkLine);
     }
 }
@@ -276,7 +276,7 @@ void KateBookmarks::goPrevious()
     // either go to previous bookmark or the last in the document, bug 472354
     if (found != -1) {
         gotoLine(found);
-    } else {
+    } else if (m_cycleThroughBookmarks) {
         gotoLine(lastBookmarkLine);
     }
 }

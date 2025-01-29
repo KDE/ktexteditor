@@ -389,6 +389,7 @@ KateNavigationConfigTab::KateNavigationConfigTab(QWidget *parent)
     observeChanges(ui->sbAutoCenterCursor);
     observeChanges(ui->chkCamelCursor);
     observeChanges(ui->cmbMultiCursorModifier);
+    observeChanges(ui->cbCycleBookmarks);
 
     layout->addWidget(newWidget);
 }
@@ -440,6 +441,7 @@ void KateNavigationConfigTab::apply()
     KateViewConfig::global()->setValue(KateViewConfig::BackspaceRemoveComposedCharacters, ui->chkBackspaceRemoveComposed->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::PersistentSelection, ui->cbTextSelectionMode->currentIndex() == 1);
     KateViewConfig::global()->setValue(KateViewConfig::ScrollPastEnd, ui->chkScrollPastEnd->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::CycleThroughBookmarks, ui->cbCycleBookmarks->isChecked());
 
     const int modifers = ui->cmbMultiCursorModifier->currentData().toInt();
     KateViewConfig::global()->setMultiCursorModifiers(Qt::KeyboardModifiers(modifers));
@@ -459,6 +461,7 @@ void KateNavigationConfigTab::reload()
     ui->chkCamelCursor->setChecked(KateDocumentConfig::global()->camelCursor());
 
     ui->sbAutoCenterCursor->setValue(KateViewConfig::global()->autoCenterLines());
+    ui->cbCycleBookmarks->setChecked(KateViewConfig::global()->value(KateViewConfig::CycleThroughBookmarks).toBool());
 
     const int mods = KateViewConfig::global()->multiCursorModifiers();
     const auto count = ui->cmbMultiCursorModifier->count();

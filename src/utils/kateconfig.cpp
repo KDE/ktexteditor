@@ -567,6 +567,7 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(StatusbarLineColumnCompact, "Statusbar Line Column Compact Mode", QString(), true));
     addConfigEntry(ConfigEntry(ShowStatusbarEOL, "Shoe Line Ending Type in Statusbar", QString(), false));
     addConfigEntry(ConfigEntry(EnableAccessibility, "Enable Accessibility", QString(), true));
+    addConfigEntry(ConfigEntry(CycleThroughBookmarks, "Cycle Through Bookmarks", QString(), true));
 
     // Never forget to finalize or the <CommandName> becomes not available
     finalizeConfigEntries();
