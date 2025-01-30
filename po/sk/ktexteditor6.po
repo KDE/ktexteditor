@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-02 00:38+0000\n"
+"POT-Creation-Date: 2025-01-30 00:38+0000\n"
 "PO-Revision-Date: 2023-12-12 19:23+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -102,7 +102,7 @@ msgid "Word Wrap"
 msgstr "Zalomiť slová"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:84 dialogs/katedialogs.cpp:741
+#: data/katepart5ui.rc:84 dialogs/katedialogs.cpp:744
 #, kde-format
 msgid "Borders"
 msgstr "Orámovanie"
@@ -308,7 +308,7 @@ msgid "Scro&llbars visibility:"
 msgstr "Viditeľnosť rolovacích pruhov:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:749
+#: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:752
 #, kde-format
 msgid "Always On"
 msgstr "Vždy zapnuté"
@@ -415,8 +415,8 @@ msgstr "Žiadne záznamy v histórii schránky"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:605
-#: dialogs/katedialogs.cpp:737 dialogs/katedialogs.cpp:1026
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
+#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1029
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1084,57 +1084,57 @@ msgstr "Automatické dopĺňanie slov"
 msgid "Spellcheck"
 msgstr "Kontrola pravopisu"
 
-#: dialogs/katedialogs.cpp:408 dialogs/katedialogs.cpp:415
+#: dialogs/katedialogs.cpp:409 dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Alt"
 msgstr "Alt"
 
-#: dialogs/katedialogs.cpp:409 dialogs/katedialogs.cpp:417
+#: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:418
 #, kde-format
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: dialogs/katedialogs.cpp:410
+#: dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Meta"
 msgstr "Meta"
 
-#: dialogs/katedialogs.cpp:411 dialogs/katedialogs.cpp:419
+#: dialogs/katedialogs.cpp:412 dialogs/katedialogs.cpp:420
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr "Ctrl + Alt"
 
-#: dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Meta + Alt"
 msgstr "Meta + Alt"
 
-#: dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr "Ctrl + Meta"
 
-#: dialogs/katedialogs.cpp:416
+#: dialogs/katedialogs.cpp:417
 #, kde-format
 msgid "Cmd"
 msgstr "Cmd"
 
-#: dialogs/katedialogs.cpp:418
+#: dialogs/katedialogs.cpp:419
 #, kde-format
 msgid "Cmd + Alt"
 msgstr "Cmd + Alt"
 
-#: dialogs/katedialogs.cpp:420
+#: dialogs/katedialogs.cpp:421
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr "Cmd + Ctrl"
 
-#: dialogs/katedialogs.cpp:476
+#: dialogs/katedialogs.cpp:479
 #, kde-format
 msgid "Text Navigation"
 msgstr "Navigácia textu"
 
-#: dialogs/katedialogs.cpp:578
+#: dialogs/katedialogs.cpp:581
 #, fuzzy, kde-format
 #| msgid " character"
 #| msgid_plural " characters"
@@ -1145,62 +1145,62 @@ msgstr[0] " znak"
 msgstr[1] " znaky"
 msgstr[2] " znakov"
 
-#: dialogs/katedialogs.cpp:583
+#: dialogs/katedialogs.cpp:586
 #, kde-format
 msgid "Feature is not active"
 msgstr "Funkcia nie je aktívna"
 
-#: dialogs/katedialogs.cpp:585
+#: dialogs/katedialogs.cpp:588
 #, kde-format
 msgid "Disable Feature"
 msgstr "Zakázať funkciu"
 
-#: dialogs/katedialogs.cpp:587
+#: dialogs/katedialogs.cpp:590
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr "Môže to byť užitočné s Markdownom"
 
-#: dialogs/katedialogs.cpp:589
+#: dialogs/katedialogs.cpp:592
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr "Zrkadliť znaky, podobné, ale nie rovnaké ako automatické zátvorky"
 
-#: dialogs/katedialogs.cpp:591
+#: dialogs/katedialogs.cpp:594
 #, kde-format
 msgid "Non letter character"
 msgstr "Znak bez písmena"
 
-#: dialogs/katedialogs.cpp:707
+#: dialogs/katedialogs.cpp:710
 #, kde-format
 msgid "Editing"
 msgstr "Editovanie"
 
-#: dialogs/katedialogs.cpp:712
+#: dialogs/katedialogs.cpp:715
 #, kde-format
 msgid "Editing Options"
 msgstr "Možnosti editovania"
 
-#: dialogs/katedialogs.cpp:745
+#: dialogs/katedialogs.cpp:748
 #, kde-format
 msgid "Statusbar"
 msgstr "Stavový riadok"
 
-#: dialogs/katedialogs.cpp:747
+#: dialogs/katedialogs.cpp:750
 #, kde-format
 msgid "Off"
 msgstr "Vypnúť"
 
-#: dialogs/katedialogs.cpp:748
+#: dialogs/katedialogs.cpp:751
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "Sledovať čísla riadkov"
 
-#: dialogs/katedialogs.cpp:947 dialogs/katedialogs.cpp:952
+#: dialogs/katedialogs.cpp:950 dialogs/katedialogs.cpp:955
 #, kde-format
 msgid "Appearance"
 msgstr "Vzhľad"
 
-#: dialogs/katedialogs.cpp:987
+#: dialogs/katedialogs.cpp:990
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1211,12 +1211,12 @@ msgstr ""
 "umožňujú %1 obnoviť vašu prácu v prípade zlyhania systému. Zakázanie "
 "odkladacích súborov môže spôsobiť stratu dát v prípade zlyhania systému."
 
-#: dialogs/katedialogs.cpp:1027
+#: dialogs/katedialogs.cpp:1030
 #, kde-format
 msgid "Advanced"
 msgstr "Pokročilé"
 
-#: dialogs/katedialogs.cpp:1092
+#: dialogs/katedialogs.cpp:1095
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1224,52 +1224,52 @@ msgstr ""
 "Nezadali ste príponu ani predponu pre zálohu. Použije sa štandardná prípona: "
 "'~'"
 
-#: dialogs/katedialogs.cpp:1092
+#: dialogs/katedialogs.cpp:1095
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Žiadna prípona ani predpona pre zálohu"
 
-#: dialogs/katedialogs.cpp:1223
+#: dialogs/katedialogs.cpp:1226
 #, kde-format
 msgid "Open/Save"
 msgstr "Otvoriť/Uložiť"
 
-#: dialogs/katedialogs.cpp:1228
+#: dialogs/katedialogs.cpp:1231
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Otváranie a ukladanie súborov"
 
-#: dialogs/katedialogs.cpp:1251
+#: dialogs/katedialogs.cpp:1254
 #, kde-format
 msgid "&Line:"
 msgstr "Riadok:"
 
-#: dialogs/katedialogs.cpp:1252
+#: dialogs/katedialogs.cpp:1255
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Ísť na číslo riadku zo schránky"
 
-#: dialogs/katedialogs.cpp:1263
+#: dialogs/katedialogs.cpp:1266
 #, kde-format
 msgid "Go to"
 msgstr "Ísť na"
 
-#: dialogs/katedialogs.cpp:1343
+#: dialogs/katedialogs.cpp:1346
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "V schránke sa nenašlo žiadne platné číslo riadka"
 
-#: dialogs/katedialogs.cpp:1407
+#: dialogs/katedialogs.cpp:1410
 #, kde-format
 msgid "Dictionary:"
 msgstr "Slovník:"
 
-#: dialogs/katedialogs.cpp:1459
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Povoliť automatické obnovenie"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1278,61 +1278,61 @@ msgstr ""
 "Znovu sa načíta a bude sa automaticky znovu načítavať bez upozornenia na "
 "zmeny na disku odteraz až do zatvorenia karty alebo okna."
 
-#: dialogs/katedialogs.cpp:1467
+#: dialogs/katedialogs.cpp:1470
 #, kde-format
 msgid "View &Difference"
 msgstr "&Ukázať rozdiel"
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1472
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Zobrazí rozdiel zmien."
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgid "&Reload"
 msgstr "&Obnoviť"
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1479
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Znovu načíta súbor z disku. Neuložené zmeny budú stratené."
 
-#: dialogs/katedialogs.cpp:1480
+#: dialogs/katedialogs.cpp:1483
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Zavrieť súbor"
 
-#: dialogs/katedialogs.cpp:1482
+#: dialogs/katedialogs.cpp:1485
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Zatvorí súbor a zahodí jeho obsah."
 
-#: dialogs/katedialogs.cpp:1486
+#: dialogs/katedialogs.cpp:1489
 #, fuzzy, kde-format
 #| msgid "&Save As..."
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "Uložiť &ako..."
 
-#: dialogs/katedialogs.cpp:1488
+#: dialogs/katedialogs.cpp:1491
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Umožní zvoliť umiestnenie a uložiť súbor znovu."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1493 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1496 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Ignorovať"
 
-#: dialogs/katedialogs.cpp:1494
+#: dialogs/katedialogs.cpp:1497
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignorovať zmeny na disku bez upozornenia."
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1563 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1341,18 +1341,18 @@ msgstr ""
 "Príkaz diff zlyhal. Prosím presvedčte sa, že diff(1) je nainštalovaný a je v "
 "PATH."
 
-#: dialogs/katedialogs.cpp:1562 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1565 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Chyba pri vytváraní rozdielu"
 
-#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Súbory sú rovnaké."
 
-#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff výstup"
@@ -1489,14 +1489,21 @@ msgstr ""
 msgid "Backspace key removes character’s base with its diacritics"
 msgstr "Tlačidlo Backspace odstraňuje základ znaku aj s diakritikou"
 
+#. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
+#: dialogs/navigationconfigwidget.ui:184
+#, fuzzy, kde-format
+#| msgid "Go to the previous bookmark."
+msgid "Allow to cycle through bookmarks"
+msgstr "Prejsť na predchádzajúcu záložku."
+
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
-#: dialogs/navigationconfigwidget.ui:187
+#: dialogs/navigationconfigwidget.ui:194
 #, kde-format
 msgid "Multicursor"
 msgstr "Viacnásobný kurzor"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
-#: dialogs/navigationconfigwidget.ui:193
+#: dialogs/navigationconfigwidget.ui:200
 #, kde-format
 msgid "Multiple Cursor Modifiers"
 msgstr "Modifikátory viacnásobného kurzora"
@@ -7905,23 +7912,23 @@ msgstr "Presun kurzora veľkými písmenami povolený"
 msgid "Search wrapped"
 msgstr "Hľadanie pokračuje od začiatku"
 
-#: view/kateview.cpp:3021
+#: view/kateview.cpp:3022
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Open File"
 msgstr "Uložiť súbor"
 
-#: view/kateview.cpp:3913
+#: view/kateview.cpp:3914
 #, kde-format
 msgid "Align On"
 msgstr "Zarovnať na"
 
-#: view/kateview.cpp:3913
+#: view/kateview.cpp:3914
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Vzor zarovnania:"
 
-#: view/kateview.cpp:4997
+#: view/kateview.cpp:4998
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportovať súbor ako HTML"
