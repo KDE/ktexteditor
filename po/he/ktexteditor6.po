@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:38+0000\n"
+"POT-Creation-Date: 2025-01-31 00:39+0000\n"
 "PO-Revision-Date: 2025-01-24 09:27+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -704,7 +704,7 @@ msgid "Delete the current file type."
 msgstr "מחיקת סוג הקובץ הנוכחי."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1123
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1131
 #, kde-format
 msgid "&Delete"
 msgstr "מ&חיקה"
@@ -2230,8 +2230,8 @@ msgstr ""
 "עלולים ללכת לאיבוד."
 
 #: document/katedocument.cpp:2447 document/katedocument.cpp:2463
-#: document/katedocument.cpp:2783 syntax/katethemeconfig.cpp:1207
-#: syntax/katethemeconfig.cpp:1363
+#: document/katedocument.cpp:2783 syntax/katethemeconfig.cpp:1215
+#: syntax/katethemeconfig.cpp:1371
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "אובדן נתונים אפשרי"
@@ -4863,120 +4863,120 @@ msgstr "ערכת עיצוב כברירת מחדל"
 msgid "Theme Editor"
 msgstr "עורך ערכות עיצוב"
 
-#: syntax/katethemeconfig.cpp:1041
+#: syntax/katethemeconfig.cpp:1045
 #, kde-format
 msgid "Select theme:"
 msgstr "בחירת ערכת עיצוב:"
 
-#: syntax/katethemeconfig.cpp:1110
+#: syntax/katethemeconfig.cpp:1118
 #, kde-format
 msgid "&Theme:"
 msgstr "&ערכת עיצוב:"
 
-#: syntax/katethemeconfig.cpp:1119
+#: syntax/katethemeconfig.cpp:1127
 #, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
 msgstr "ה&עתקה…"
 
-#: syntax/katethemeconfig.cpp:1127
+#: syntax/katethemeconfig.cpp:1135
 #, kde-format
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "ייצוא…"
 
-#: syntax/katethemeconfig.cpp:1131
+#: syntax/katethemeconfig.cpp:1139
 #, kde-format
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "ייבוא…"
 
-#: syntax/katethemeconfig.cpp:1138
+#: syntax/katethemeconfig.cpp:1146
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
 "ערכת עיצוב מאוגדת לקריאה בלבד. כי לשנות את ערכת העיצוב, נא להעתיק אותה."
 
-#: syntax/katethemeconfig.cpp:1149
+#: syntax/katethemeconfig.cpp:1157
 #, kde-format
 msgid "Colors"
 msgstr "צבעים"
 
-#: syntax/katethemeconfig.cpp:1153
+#: syntax/katethemeconfig.cpp:1161
 #, kde-format
 msgid "Default Text Styles"
 msgstr "סגנונות טקסט רגילים"
 
-#: syntax/katethemeconfig.cpp:1157
+#: syntax/katethemeconfig.cpp:1165
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "סגנונות טקסט מודגשים"
 
-#: syntax/katethemeconfig.cpp:1169
+#: syntax/katethemeconfig.cpp:1177
 #, kde-format
 msgid "Exporting color theme: %1"
 msgstr "ערכת הצבעים מיוצאת: %1"
 
-#: syntax/katethemeconfig.cpp:1171 syntax/katethemeconfig.cpp:1192
+#: syntax/katethemeconfig.cpp:1179 syntax/katethemeconfig.cpp:1200
 #, kde-format
 msgid "Color theme"
 msgstr "ערכת צבעים"
 
-#: syntax/katethemeconfig.cpp:1192
+#: syntax/katethemeconfig.cpp:1200
 #, kde-format
 msgid "Importing Color Theme"
 msgstr "ערכת עיצוב מיובאת"
 
-#: syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1214
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr "ייבוא יחליף את קובץ הערכה הקיים „%1”. זאת פעולה בלתי הפיכה."
 
-#: syntax/katethemeconfig.cpp:1208
+#: syntax/katethemeconfig.cpp:1216
 #, kde-format
 msgid "Import Nevertheless"
 msgstr "לייבא בכל זאת"
 
-#: syntax/katethemeconfig.cpp:1296
+#: syntax/katethemeconfig.cpp:1304
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "כמו ערכת הצבע של המערכת"
 
-#: syntax/katethemeconfig.cpp:1362
+#: syntax/katethemeconfig.cpp:1370
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "למחוק את ערכת העיצוב „%1”? זאת פעולה בלתי הפיכה."
 
-#: syntax/katethemeconfig.cpp:1364
+#: syntax/katethemeconfig.cpp:1372
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "למחוק בכל זאת"
 
-#: syntax/katethemeconfig.cpp:1406
+#: syntax/katethemeconfig.cpp:1414
 #, kde-format
 msgid "Copy theme"
 msgstr "העתקת ערכת עיצוב"
 
-#: syntax/katethemeconfig.cpp:1407
+#: syntax/katethemeconfig.cpp:1415
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "שם עותק ערכת העיצוב „%1”:"
 
-#: syntax/katethemeconfig.cpp:1419
+#: syntax/katethemeconfig.cpp:1427
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr "<p>ערכת העיצוב „%1” כבר קיימת.</p><p>נא לבחור שם אחר לערכת העיצוב.</p>"
 
-#: syntax/katethemeconfig.cpp:1420
+#: syntax/katethemeconfig.cpp:1428
 #, kde-format
 msgid "Copy Theme"
 msgstr "העתקת ערכת עיצוב"
 
-#: syntax/katethemeconfig.cpp:1473 syntax/katethemeconfig.cpp:1478
+#: syntax/katethemeconfig.cpp:1481 syntax/katethemeconfig.cpp:1486
 #, kde-format
 msgid "Color Themes"
 msgstr "ערכות צבע"

@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:38+0000\n"
+"POT-Creation-Date: 2025-01-31 00:39+0000\n"
 "PO-Revision-Date: 2024-12-28 09:26+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -793,7 +793,7 @@ msgid "Delete the current file type."
 msgstr "Supprime le type de fichier actuel."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1123
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1131
 #, kde-format
 msgid "&Delete"
 msgstr "&Supprimer"
@@ -2479,8 +2479,8 @@ msgstr ""
 "résulter une perte de données."
 
 #: document/katedocument.cpp:2447 document/katedocument.cpp:2463
-#: document/katedocument.cpp:2783 syntax/katethemeconfig.cpp:1207
-#: syntax/katethemeconfig.cpp:1363
+#: document/katedocument.cpp:2783 syntax/katethemeconfig.cpp:1215
+#: syntax/katethemeconfig.cpp:1371
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Perte possible de données "
@@ -5249,71 +5249,71 @@ msgstr "Thème par défaut"
 msgid "Theme Editor"
 msgstr "Éditeur de thèmes"
 
-#: syntax/katethemeconfig.cpp:1041
+#: syntax/katethemeconfig.cpp:1045
 #, kde-format
 msgid "Select theme:"
 msgstr "Sélectionner un thème :"
 
-#: syntax/katethemeconfig.cpp:1110
+#: syntax/katethemeconfig.cpp:1118
 #, kde-format
 msgid "&Theme:"
 msgstr "&Thème :"
 
-#: syntax/katethemeconfig.cpp:1119
+#: syntax/katethemeconfig.cpp:1127
 #, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
 msgstr "&Copier…"
 
-#: syntax/katethemeconfig.cpp:1127
+#: syntax/katethemeconfig.cpp:1135
 #, kde-format
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "Exporter..."
 
-#: syntax/katethemeconfig.cpp:1131
+#: syntax/katethemeconfig.cpp:1139
 #, kde-format
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "Importer..."
 
-#: syntax/katethemeconfig.cpp:1138
+#: syntax/katethemeconfig.cpp:1146
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
 "Thème intégré, en lecture seule. Pour modifier ce thème, veuillez le copier."
 
-#: syntax/katethemeconfig.cpp:1149
+#: syntax/katethemeconfig.cpp:1157
 #, kde-format
 msgid "Colors"
 msgstr "Couleurs"
 
-#: syntax/katethemeconfig.cpp:1153
+#: syntax/katethemeconfig.cpp:1161
 #, kde-format
 msgid "Default Text Styles"
 msgstr "Styles du texte par défaut"
 
-#: syntax/katethemeconfig.cpp:1157
+#: syntax/katethemeconfig.cpp:1165
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "Styles de texte pour la coloration syntaxique"
 
-#: syntax/katethemeconfig.cpp:1169
+#: syntax/katethemeconfig.cpp:1177
 #, kde-format
 msgid "Exporting color theme: %1"
 msgstr "Exportation du thème de couleurs : %1"
 
-#: syntax/katethemeconfig.cpp:1171 syntax/katethemeconfig.cpp:1192
+#: syntax/katethemeconfig.cpp:1179 syntax/katethemeconfig.cpp:1200
 #, kde-format
 msgid "Color theme"
 msgstr "Thème de couleurs"
 
-#: syntax/katethemeconfig.cpp:1192
+#: syntax/katethemeconfig.cpp:1200
 #, kde-format
 msgid "Importing Color Theme"
 msgstr "Importation du thème de couleurs"
 
-#: syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1214
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
@@ -5322,38 +5322,38 @@ msgstr ""
 "L'importation écrasera le fichier existant de thème « %1 ». Ceci ne peut "
 "être annulé."
 
-#: syntax/katethemeconfig.cpp:1208
+#: syntax/katethemeconfig.cpp:1216
 #, kde-format
 msgid "Import Nevertheless"
 msgstr "Importer malgré tout"
 
-#: syntax/katethemeconfig.cpp:1296
+#: syntax/katethemeconfig.cpp:1304
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "Suivre le thème de couleurs du système"
 
-#: syntax/katethemeconfig.cpp:1362
+#: syntax/katethemeconfig.cpp:1370
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
 "Voulez-vous vraiment supprimer le thème « %1 » ? Ceci ne peut être annulé."
 
-#: syntax/katethemeconfig.cpp:1364
+#: syntax/katethemeconfig.cpp:1372
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "Supprimer malgré tout"
 
-#: syntax/katethemeconfig.cpp:1406
+#: syntax/katethemeconfig.cpp:1414
 #, kde-format
 msgid "Copy theme"
 msgstr "Copier un thème"
 
-#: syntax/katethemeconfig.cpp:1407
+#: syntax/katethemeconfig.cpp:1415
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "Nom de la copie du thème de couleurs « %1 » :"
 
-#: syntax/katethemeconfig.cpp:1419
+#: syntax/katethemeconfig.cpp:1427
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
@@ -5362,12 +5362,12 @@ msgstr ""
 "<p>Le thème « %1 » existe déjà.</p><p>Veuillez choisir un nom de thème "
 "différent.</p>"
 
-#: syntax/katethemeconfig.cpp:1420
+#: syntax/katethemeconfig.cpp:1428
 #, kde-format
 msgid "Copy Theme"
 msgstr "Copier un thème"
 
-#: syntax/katethemeconfig.cpp:1473 syntax/katethemeconfig.cpp:1478
+#: syntax/katethemeconfig.cpp:1481 syntax/katethemeconfig.cpp:1486
 #, kde-format
 msgid "Color Themes"
 msgstr "Thèmes de couleurs"

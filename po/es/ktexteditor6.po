@@ -3,15 +3,15 @@
 # SPDX-FileCopyrightText: 2001, 2002, 2003, 2004, 2005, 2007 Pablo de Vicente <pablo.devicente@gmail.com>
 # SPDX-FileCopyrightText: 2006, 2007 Jaime Robles <jaime@kde.org>
 # SPDX-FileCopyrightText: 2006, 2007 Enrique Matias Sanchez (aka Quique) <cronopios@gmail.com>
-# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 # SPDX-FileCopyrightText: 2011, 2012, 2013 Cristina Yenyxe González García <the.blue.valkyrie@gmail.com>
 # SPDX-FileCopyrightText: 2013, 2014 Rocio Gallego <traducciones@rociogallego.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:38+0000\n"
-"PO-Revision-Date: 2024-12-27 03:38+0100\n"
+"POT-Creation-Date: 2025-01-31 00:39+0000\n"
+"PO-Revision-Date: 2025-01-30 16:19+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -721,7 +721,7 @@ msgid "Delete the current file type."
 msgstr "Borrar el tipo de archivo actual."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1123
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1131
 #, kde-format
 msgid "&Delete"
 msgstr "&Borrar"
@@ -1518,10 +1518,9 @@ msgstr "La tecla de retroceso elimina la base del carácter con sus diacríticos
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
 #: dialogs/navigationconfigwidget.ui:184
-#, fuzzy, kde-format
-#| msgid "Go to the previous bookmark."
+#, kde-format
 msgid "Allow to cycle through bookmarks"
-msgstr "Ir al marcador previo."
+msgstr "Permitir recorrer los marcadores"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:194
@@ -2313,8 +2312,8 @@ msgstr ""
 "como el archivo del disco han cambiado y se podrían perder datos."
 
 #: document/katedocument.cpp:2447 document/katedocument.cpp:2463
-#: document/katedocument.cpp:2783 syntax/katethemeconfig.cpp:1207
-#: syntax/katethemeconfig.cpp:1363
+#: document/katedocument.cpp:2783 syntax/katethemeconfig.cpp:1215
+#: syntax/katethemeconfig.cpp:1371
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Posible pérdida de datos"
@@ -5014,70 +5013,70 @@ msgstr "Tema predeterminado"
 msgid "Theme Editor"
 msgstr "Editor de temas"
 
-#: syntax/katethemeconfig.cpp:1041
+#: syntax/katethemeconfig.cpp:1045
 #, kde-format
 msgid "Select theme:"
 msgstr "Seleccionar tema:"
 
-#: syntax/katethemeconfig.cpp:1110
+#: syntax/katethemeconfig.cpp:1118
 #, kde-format
 msgid "&Theme:"
 msgstr "&Tema:"
 
-#: syntax/katethemeconfig.cpp:1119
+#: syntax/katethemeconfig.cpp:1127
 #, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
 msgstr "&Copiar..."
 
-#: syntax/katethemeconfig.cpp:1127
+#: syntax/katethemeconfig.cpp:1135
 #, kde-format
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "Exportar..."
 
-#: syntax/katethemeconfig.cpp:1131
+#: syntax/katethemeconfig.cpp:1139
 #, kde-format
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "Importar..."
 
-#: syntax/katethemeconfig.cpp:1138
+#: syntax/katethemeconfig.cpp:1146
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr "Tema empaquetado de solo lectura. Para modificar el tema, cópielo."
 
-#: syntax/katethemeconfig.cpp:1149
+#: syntax/katethemeconfig.cpp:1157
 #, kde-format
 msgid "Colors"
 msgstr "Colores"
 
-#: syntax/katethemeconfig.cpp:1153
+#: syntax/katethemeconfig.cpp:1161
 #, kde-format
 msgid "Default Text Styles"
 msgstr "Estilos de texto por omisión"
 
-#: syntax/katethemeconfig.cpp:1157
+#: syntax/katethemeconfig.cpp:1165
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "Estilos de texto realzado"
 
-#: syntax/katethemeconfig.cpp:1169
+#: syntax/katethemeconfig.cpp:1177
 #, kde-format
 msgid "Exporting color theme: %1"
 msgstr "Exportando tema de color: %1"
 
-#: syntax/katethemeconfig.cpp:1171 syntax/katethemeconfig.cpp:1192
+#: syntax/katethemeconfig.cpp:1179 syntax/katethemeconfig.cpp:1200
 #, kde-format
 msgid "Color theme"
 msgstr "Tema de color"
 
-#: syntax/katethemeconfig.cpp:1192
+#: syntax/katethemeconfig.cpp:1200
 #, kde-format
 msgid "Importing Color Theme"
 msgstr "Importando tema de color"
 
-#: syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1214
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
@@ -5086,50 +5085,50 @@ msgstr ""
 "La importación sobrescribirá el archivo del tema existente «%1». Esta acción "
 "no se puede deshacer."
 
-#: syntax/katethemeconfig.cpp:1208
+#: syntax/katethemeconfig.cpp:1216
 #, kde-format
 msgid "Import Nevertheless"
 msgstr "Importar a pesar de todo"
 
-#: syntax/katethemeconfig.cpp:1296
+#: syntax/katethemeconfig.cpp:1304
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "Seguir el esquema de color del sistema"
 
-#: syntax/katethemeconfig.cpp:1362
+#: syntax/katethemeconfig.cpp:1370
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
 "¿Seguro que desea borrar el tema «%1»? Esta acción no se puede deshacer."
 
-#: syntax/katethemeconfig.cpp:1364
+#: syntax/katethemeconfig.cpp:1372
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "Borrar a pesar de todo"
 
-#: syntax/katethemeconfig.cpp:1406
+#: syntax/katethemeconfig.cpp:1414
 #, kde-format
 msgid "Copy theme"
 msgstr "Copiar tema"
 
-#: syntax/katethemeconfig.cpp:1407
+#: syntax/katethemeconfig.cpp:1415
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "Nombre para la copia del tema de color «%1»:"
 
-#: syntax/katethemeconfig.cpp:1419
+#: syntax/katethemeconfig.cpp:1427
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr "<p>El tema «%1» ya existe.</p><p>Seleccione otro nombre de tema.</p>"
 
-#: syntax/katethemeconfig.cpp:1420
+#: syntax/katethemeconfig.cpp:1428
 #, kde-format
 msgid "Copy Theme"
 msgstr "Copiar tema"
 
-#: syntax/katethemeconfig.cpp:1473 syntax/katethemeconfig.cpp:1478
+#: syntax/katethemeconfig.cpp:1481 syntax/katethemeconfig.cpp:1486
 #, kde-format
 msgid "Color Themes"
 msgstr "Temas de color"

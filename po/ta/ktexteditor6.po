@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:38+0000\n"
+"POT-Creation-Date: 2025-01-31 00:39+0000\n"
 "PO-Revision-Date: 2024-11-17 21:53+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -727,7 +727,7 @@ msgid "Delete the current file type."
 msgstr "தற்போதைய கோப்பு வகையை அகற்றுக.சேமி "
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1123
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1131
 #, kde-format
 msgid "&Delete"
 msgstr "&நீக்கு"
@@ -2221,8 +2221,8 @@ msgstr ""
 "அதன் பதிப்பும் மாறுபடுகின்றன. தரவிழப்பு நேரிடலாம்."
 
 #: document/katedocument.cpp:2447 document/katedocument.cpp:2463
-#: document/katedocument.cpp:2783 syntax/katethemeconfig.cpp:1207
-#: syntax/katethemeconfig.cpp:1363
+#: document/katedocument.cpp:2783 syntax/katethemeconfig.cpp:1215
+#: syntax/katethemeconfig.cpp:1371
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "தரவிழப்பு நேரிடலாம்"
@@ -4894,75 +4894,75 @@ msgstr "சாதாரண உரை தோற்றங்கள்"
 msgid "Theme Editor"
 msgstr "தொகுப்பானைத் தேர்வுச் செய்க.."
 
-#: syntax/katethemeconfig.cpp:1041
+#: syntax/katethemeconfig.cpp:1045
 #, fuzzy, kde-format
 #| msgid "Selected text:"
 msgid "Select theme:"
 msgstr "தேர்வு  செய்யபட்ட உரை"
 
-#: syntax/katethemeconfig.cpp:1110
+#: syntax/katethemeconfig.cpp:1118
 #, fuzzy, kde-format
 #| msgctxt "Language"
 #| msgid "Scheme"
 msgid "&Theme:"
 msgstr "திட்டமுறை"
 
-#: syntax/katethemeconfig.cpp:1119
+#: syntax/katethemeconfig.cpp:1127
 #, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
 msgstr "&நகலெடு…"
 
-#: syntax/katethemeconfig.cpp:1127
+#: syntax/katethemeconfig.cpp:1135
 #, kde-format
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "ஏற்றுமதி செய்…"
 
-#: syntax/katethemeconfig.cpp:1131
+#: syntax/katethemeconfig.cpp:1139
 #, kde-format
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "இறக்குமதி செய்…"
 
-#: syntax/katethemeconfig.cpp:1138
+#: syntax/katethemeconfig.cpp:1146
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1149
+#: syntax/katethemeconfig.cpp:1157
 #, kde-format
 msgid "Colors"
 msgstr "நிறங்கள்"
 
-#: syntax/katethemeconfig.cpp:1153
+#: syntax/katethemeconfig.cpp:1161
 #, fuzzy, kde-format
 #| msgid "Normal Text Styles"
 msgid "Default Text Styles"
 msgstr "சாதாரண உரை தோற்றங்கள்"
 
-#: syntax/katethemeconfig.cpp:1157
+#: syntax/katethemeconfig.cpp:1165
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "முன்னிலைப்படுத்தப்பட்ட உரை தோற்றங்கள்"
 
-#: syntax/katethemeconfig.cpp:1169
+#: syntax/katethemeconfig.cpp:1177
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgid "Exporting color theme: %1"
 msgstr "எழுத்துரு & நிறதிட்டமுறை."
 
-#: syntax/katethemeconfig.cpp:1171 syntax/katethemeconfig.cpp:1192
+#: syntax/katethemeconfig.cpp:1179 syntax/katethemeconfig.cpp:1200
 #, kde-format
 msgid "Color theme"
 msgstr "நிறத்திட்டம்"
 
-#: syntax/katethemeconfig.cpp:1192
+#: syntax/katethemeconfig.cpp:1200
 #, kde-format
 msgid "Importing Color Theme"
 msgstr "நிறத்திட்டத்தை இறக்குமதி செய்வது"
 
-#: syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1214
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
@@ -4971,37 +4971,37 @@ msgstr ""
 "இறக்குமதி செய்வது, ஏற்கனவேயுள்ள \"%1\" எனும் கோப்பை மேலெழுதும். இச்செயலை திரும்பப்பெற "
 "முடியாது."
 
-#: syntax/katethemeconfig.cpp:1208
+#: syntax/katethemeconfig.cpp:1216
 #, kde-format
 msgid "Import Nevertheless"
 msgstr "இருப்பினும் இறக்குமதி செய்"
 
-#: syntax/katethemeconfig.cpp:1296
+#: syntax/katethemeconfig.cpp:1304
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "கணினியின் பொதுவான நிறத்திட்டத்தைப் பயன்படுத்து"
 
-#: syntax/katethemeconfig.cpp:1362
+#: syntax/katethemeconfig.cpp:1370
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "\"%1\" எனும் நிறத்திட்டதை நீக்க வேண்டுமா? இச்செயலை திரும்பப்பெற முடியாது."
 
-#: syntax/katethemeconfig.cpp:1364
+#: syntax/katethemeconfig.cpp:1372
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "இருப்பினும் நீக்கு"
 
-#: syntax/katethemeconfig.cpp:1406
+#: syntax/katethemeconfig.cpp:1414
 #, kde-format
 msgid "Copy theme"
 msgstr "நிறத்திட்டத்தை நகலெடு"
 
-#: syntax/katethemeconfig.cpp:1407
+#: syntax/katethemeconfig.cpp:1415
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "\"%1\" எனும் நிறத்திட்டத்தின் நகலுக்கான பெயர்:"
 
-#: syntax/katethemeconfig.cpp:1419
+#: syntax/katethemeconfig.cpp:1427
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
@@ -5009,12 +5009,12 @@ msgid ""
 msgstr ""
 "<p>\"%1\" என்ற நிறத்திட்டம் ஏற்கனவே உள்ளது.</p><p>வேறு பெயரைத் தேர்ந்தெடுக்கவும்.</p>"
 
-#: syntax/katethemeconfig.cpp:1420
+#: syntax/katethemeconfig.cpp:1428
 #, kde-format
 msgid "Copy Theme"
 msgstr "திட்டத்தை நகலெடு"
 
-#: syntax/katethemeconfig.cpp:1473 syntax/katethemeconfig.cpp:1478
+#: syntax/katethemeconfig.cpp:1481 syntax/katethemeconfig.cpp:1486
 #, kde-format
 msgid "Color Themes"
 msgstr "நிறத்திட்டங்கள்"

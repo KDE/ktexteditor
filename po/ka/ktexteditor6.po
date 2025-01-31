@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:38+0000\n"
-"PO-Revision-Date: 2024-12-27 03:36+0100\n"
+"POT-Creation-Date: 2025-01-31 00:39+0000\n"
+"PO-Revision-Date: 2025-01-30 05:25+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -707,7 +707,7 @@ msgid "Delete the current file type."
 msgstr "მიმდინარე ფაილის ტიპის წაშლა."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1123
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1131
 #, kde-format
 msgid "&Delete"
 msgstr "&წაშლა"
@@ -1486,10 +1486,9 @@ msgstr "ღილაკი Backspace სიმბოლოს ფუძეს �
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
 #: dialogs/navigationconfigwidget.ui:184
-#, fuzzy, kde-format
-#| msgid "Go to the previous bookmark."
+#, kde-format
 msgid "Allow to cycle through bookmarks"
-msgstr "წინა სანიშნზე გადასვლა."
+msgstr "რჩეულებში წრიულად მოძრაობის დაშვება"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:194
@@ -2265,8 +2264,8 @@ msgstr ""
 "შეიცვალა. შეიძლება, მონაცემები დაგეკარგოთ."
 
 #: document/katedocument.cpp:2447 document/katedocument.cpp:2463
-#: document/katedocument.cpp:2783 syntax/katethemeconfig.cpp:1207
-#: syntax/katethemeconfig.cpp:1363
+#: document/katedocument.cpp:2783 syntax/katethemeconfig.cpp:1215
+#: syntax/katethemeconfig.cpp:1371
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "შესაძლებელია მონაცემების დაკარგვა"
@@ -4933,72 +4932,72 @@ msgstr "ნაგულისხმები თემა"
 msgid "Theme Editor"
 msgstr "თემების რედაქტორი"
 
-#: syntax/katethemeconfig.cpp:1041
+#: syntax/katethemeconfig.cpp:1045
 #, kde-format
 msgid "Select theme:"
 msgstr "აირჩიეთ თემა:"
 
-#: syntax/katethemeconfig.cpp:1110
+#: syntax/katethemeconfig.cpp:1118
 #, kde-format
 msgid "&Theme:"
 msgstr "&თემა:"
 
-#: syntax/katethemeconfig.cpp:1119
+#: syntax/katethemeconfig.cpp:1127
 #, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
 msgstr "&კოპირება…"
 
-#: syntax/katethemeconfig.cpp:1127
+#: syntax/katethemeconfig.cpp:1135
 #, kde-format
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "გატანა…"
 
-#: syntax/katethemeconfig.cpp:1131
+#: syntax/katethemeconfig.cpp:1139
 #, kde-format
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "შემოტანა…"
 
-#: syntax/katethemeconfig.cpp:1138
+#: syntax/katethemeconfig.cpp:1146
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
 "პაკეტთან ერთად მოყოლილი მხოლოდ-კითხვადი თემა. მის შესაცვლელად ჯერ დააკოპირეთ "
 "ის."
 
-#: syntax/katethemeconfig.cpp:1149
+#: syntax/katethemeconfig.cpp:1157
 #, kde-format
 msgid "Colors"
 msgstr "ფერები"
 
-#: syntax/katethemeconfig.cpp:1153
+#: syntax/katethemeconfig.cpp:1161
 #, kde-format
 msgid "Default Text Styles"
 msgstr "ნაგულისხმები ტექსტის სტილები"
 
-#: syntax/katethemeconfig.cpp:1157
+#: syntax/katethemeconfig.cpp:1165
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "გამოკვეთილი ტექსტის სტილები"
 
-#: syntax/katethemeconfig.cpp:1169
+#: syntax/katethemeconfig.cpp:1177
 #, kde-format
 msgid "Exporting color theme: %1"
 msgstr "ფერის თემის გატანა: %1"
 
-#: syntax/katethemeconfig.cpp:1171 syntax/katethemeconfig.cpp:1192
+#: syntax/katethemeconfig.cpp:1179 syntax/katethemeconfig.cpp:1200
 #, kde-format
 msgid "Color theme"
 msgstr "ფერის თემა"
 
-#: syntax/katethemeconfig.cpp:1192
+#: syntax/katethemeconfig.cpp:1200
 #, kde-format
 msgid "Importing Color Theme"
 msgstr "ფერის თემის შემოტანა"
 
-#: syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1214
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
@@ -5006,49 +5005,49 @@ msgid ""
 msgstr ""
 "შემოტანა არსებულ თემის ფაილს \"%1\" თავზე გადააწერს. ეს ქმედება შეუქცევადია."
 
-#: syntax/katethemeconfig.cpp:1208
+#: syntax/katethemeconfig.cpp:1216
 #, kde-format
 msgid "Import Nevertheless"
 msgstr "მაინც შემოტანა"
 
-#: syntax/katethemeconfig.cpp:1296
+#: syntax/katethemeconfig.cpp:1304
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "სისტემური ფერის სქემის მიყოლა"
 
-#: syntax/katethemeconfig.cpp:1362
+#: syntax/katethemeconfig.cpp:1370
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "მართლა გნებავთ თემის \"%1\" წაშლა? ეს ქმედება შეუქცევადია."
 
-#: syntax/katethemeconfig.cpp:1364
+#: syntax/katethemeconfig.cpp:1372
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "მაინც წაშლა"
 
-#: syntax/katethemeconfig.cpp:1406
+#: syntax/katethemeconfig.cpp:1414
 #, kde-format
 msgid "Copy theme"
 msgstr "თემის კოპირება"
 
-#: syntax/katethemeconfig.cpp:1407
+#: syntax/katethemeconfig.cpp:1415
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "სახელი ფერის თემის \"%1\" ასლისთვის:"
 
-#: syntax/katethemeconfig.cpp:1419
+#: syntax/katethemeconfig.cpp:1427
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr "<p>თემა \"%1\" უკვე არსებობს.</p><p>აირჩიეთ სხვა თემის სახელი.</p>"
 
-#: syntax/katethemeconfig.cpp:1420
+#: syntax/katethemeconfig.cpp:1428
 #, kde-format
 msgid "Copy Theme"
 msgstr "თემის კოპირება"
 
-#: syntax/katethemeconfig.cpp:1473 syntax/katethemeconfig.cpp:1478
+#: syntax/katethemeconfig.cpp:1481 syntax/katethemeconfig.cpp:1486
 #, kde-format
 msgid "Color Themes"
 msgstr "ფერადი თემები"
