@@ -496,19 +496,16 @@ void TextBlock::debugPrint(int blockIndex) const
 
 void TextBlock::splitBlock(int fromLine, TextBlock *newBlock)
 {
-    // half the block
-    const int linesOfNewBlock = lines() - fromLine;
-
     // move lines
-    newBlock->m_lines.reserve(linesOfNewBlock);
-    for (size_t i = fromLine; i < m_lines.size(); ++i) {
-        auto line = std::move(m_lines[i]);
-        const int lineLength = line.length();
-        m_buffer->m_blockSizes[m_blockIndex] -= lineLength + 1;
-        m_buffer->m_blockSizes[newBlock->m_blockIndex] += lineLength + 1;
-        newBlock->m_lines.push_back(std::move(line));
-    }
-
+    auto myLinesToMoveBegin = m_lines.begin() + fromLine;
+    auto myLinesToMoveEnd = m_lines.end();
+    int blockSizeChange = myLinesToMoveEnd - myLinesToMoveBegin;// how many newlines
+    std::for_each(myLinesToMoveBegin, myLinesToMoveEnd, [&blockSizeChange] (const TextLine &line) -> void {
+        blockSizeChange += line.length();// how many non-newlines
+    });
+    m_buffer->m_blockSizes[m_blockIndex] -= blockSizeChange;
+    m_buffer->m_blockSizes[newBlock->m_blockIndex] += blockSizeChange;
+    newBlock->m_lines.insert(newBlock->m_lines.cend(), std::make_move_iterator(myLinesToMoveBegin), std::make_move_iterator(myLinesToMoveEnd));
     m_lines.resize(fromLine);
 
     // move cursors
