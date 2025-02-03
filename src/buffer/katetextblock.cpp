@@ -496,6 +496,7 @@ void TextBlock::debugPrint(int blockIndex) const
 
 void TextBlock::splitBlock(int fromLine, TextBlock *newBlock)
 {
+    Q_ASSERT(newBlock->m_cursors.empty());
     // move lines
     auto myLinesToMoveBegin = m_lines.begin() + fromLine;
     auto myLinesToMoveEnd = m_lines.end();
@@ -527,8 +528,7 @@ void TextBlock::splitBlock(int fromLine, TextBlock *newBlock)
             ++it;
         }
     }
-    // sort the cursors
-    std::sort(newBlock->m_cursors.begin(), newBlock->m_cursors.end());
+    Q_ASSERT(std::is_sorted(newBlock->m_cursors.cbegin(), newBlock->m_cursors.cend()));
 
     for (auto range : std::as_const(ranges)) {
         if (range->spansMultipleBlocks()) {

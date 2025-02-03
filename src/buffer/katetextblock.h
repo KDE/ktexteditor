@@ -148,7 +148,7 @@ public:
      * Split given block. All lines starting from @p fromLine will
      * be moved to it, together with the cursors belonging to it.
      * @param fromLine line from which to split
-     * @param newBlock The block to which the data will be moved after splitting
+     * @param newBlock The block to which the data will be moved after splitting. It shouldn't have any cursors before call.
      */
     void splitBlock(int fromLine, TextBlock *newBlock);
 
