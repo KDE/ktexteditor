@@ -8,13 +8,13 @@
 # ஸ்ரீராமதாஸ் <shriramadhas@gmail.com>, 2007.
 # ஆமாச்சு <amachu@ubuntu.com>, 2007.
 # amachu <amachu@amachu.com>, 2010.
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Kishore G <kishore96@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-31 00:39+0000\n"
-"PO-Revision-Date: 2024-11-17 21:53+0530\n"
+"PO-Revision-Date: 2025-02-02 15:58+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1472,10 +1472,9 @@ msgstr "Backspace விசை, ஒட்டுகளுடன் சேர்�
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
 #: dialogs/navigationconfigwidget.ui:184
-#, fuzzy, kde-format
-#| msgid "Go to the previous bookmark."
+#, kde-format
 msgid "Allow to cycle through bookmarks"
-msgstr "முந்தைய புத்தகக்குறிக்குச் செல்லவும்"
+msgstr "நினைவுக்குறிகளில் சுழல விடு"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:194
@@ -2893,10 +2892,10 @@ msgid "Split or Join a Tag"
 msgstr ""
 
 #: script/data/commands/emmet.js:58
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
-msgstr "எளிய கணித சமன்பாடை"
+msgstr "எளிய கணித சமன்பாட்டின் விடையை கணி"
 
 #: script/data/commands/emmet.js:62
 #, kde-format
@@ -3061,20 +3060,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "பொருந்தும் அடுத்த உள்தள்ளலுக்கு இடஞ்சுட்டியை நகர்த்து"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "பொருந்தும் அடுத்த உள்தள்ளலுக்கு இடஞ்சுட்டியை நகர்த்து"
+msgstr "அடுத்த காலி வரிக்கு இடஞ்சுட்டியை நகர்த்து"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "பொருந்தும் முந்தைய உள்தள்ளலுக்கு இடஞ்சுட்டியை நகர்த்து"
+msgstr "முந்தைய காலி வரிக்கு இடஞ்சுட்டியை நகர்த்து"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3087,16 +3082,14 @@ msgid "Move cursor to next matching indent"
 msgstr "பொருந்தும் அடுத்த உள்தள்ளலுக்கு இடஞ்சுட்டியை நகர்த்து"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "பொருந்தும் அடுத்த உள்தள்ளலுக்கு இடஞ்சுட்டியை நகர்த்து"
+msgstr "அடுத்த காலி வரிக்கு இடஞ்சுட்டியை நகர்த்து"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "பொருந்தும் முந்தைய உள்தள்ளலுக்கு இடஞ்சுட்டியை நகர்த்து"
+msgstr "முந்தைய காலி வரிக்கு இடஞ்சுட்டியை நகர்த்து"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
