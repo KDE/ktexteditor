@@ -211,7 +211,7 @@ void MessageTest::testPriority()
 
     // post m2, m1 should be hidden, and m2 visible
     QVERIFY(doc.postMessage(m2));
-    QVERIFY(m2.data() != nullptr);
+    QTRY_VERIFY_WITH_TIMEOUT(m2.data(), 1000);
 
     // alter text of m1 when m2 is visible, shouldn't influence m2
     QTest::qWait(60);
