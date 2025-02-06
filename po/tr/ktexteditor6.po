@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-31 00:39+0000\n"
-"PO-Revision-Date: 2025-01-30 16:42+0300\n"
+"PO-Revision-Date: 2025-02-05 11:28+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -4558,7 +4558,7 @@ msgstr "Uyarı"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Alert"
-msgstr "Alarm"
+msgstr "İkaz"
 
 #: syntax/katethemeconfig.cpp:110
 #, kde-format
