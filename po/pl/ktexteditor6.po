@@ -2,8 +2,9 @@
 # Version: $Revision$
 # Kate polish translation file.
 # Main translation work:
-#   Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
-#   Jerzy Skalski <skarzy@elmer.net.pl>\n"
+# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
+# Jerzy Skalski <skarzy@elmer.net.pl>\n"
 # Marcin Giedz <mgiedz@elka.pw.edu.pl>, 2002.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2003, 2004, 2005.
 # Mikolaj Machowski <mikmach@wp.pl>, 2003, 2004, 2005, 2007, 2008, 2010.
@@ -11,13 +12,12 @@
 # Robert Gomulka <rgom@o2.pl>, 2006.
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2008, 2009, 2010, 2013.
 # Artur Chłond <eugenewolfe@o2.pl>, 2010.
-# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-31 00:39+0000\n"
-"PO-Revision-Date: 2024-11-30 10:00+0100\n"
+"PO-Revision-Date: 2025-02-08 17:32+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1502,10 +1502,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
 #: dialogs/navigationconfigwidget.ui:184
-#, fuzzy, kde-format
-#| msgid "Go to the previous bookmark."
+#, kde-format
 msgid "Allow to cycle through bookmarks"
-msgstr "Przejdź do poprzedniej zakładki."
+msgstr "Zezwól na krążenie po zakładkach"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:194
@@ -6686,7 +6685,7 @@ msgstr "Wklej zawartość poprzednio zaznaczoną myszą"
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Wklej z pliku"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7916,8 +7915,7 @@ msgid "Search wrapped"
 msgstr "Wyszukiwanie zapętliło"
 
 #: view/kateview.cpp:3022
-#, fuzzy, kde-format
-#| msgid "Open File"
+#, kde-format
 msgid "Open File"
 msgstr "Otwórz plik"
 
