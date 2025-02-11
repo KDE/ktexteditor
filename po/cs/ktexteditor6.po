@@ -1469,10 +1469,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
 #: dialogs/navigationconfigwidget.ui:184
-#, fuzzy, kde-format
-#| msgid "Go to the previous bookmark."
+#, kde-format
 msgid "Allow to cycle through bookmarks"
-msgstr "Jít na předcházející záložku."
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:194
@@ -3054,19 +3053,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "Přejít na následující odpovídající odsazení"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Přejít na následující odpovídající odsazení"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Přesunout kurzor na předchozí odpovídající odsazení"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3079,16 +3075,14 @@ msgid "Move cursor to next matching indent"
 msgstr "Přejít na následující odpovídající odsazení"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Přejít na následující odpovídající odsazení"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Přesunout kurzor na předchozí odpovídající odsazení"
+msgstr ""
 
 #: script/data/commands/navigation.js:9
 #, kde-format
