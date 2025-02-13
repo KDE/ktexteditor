@@ -33,6 +33,7 @@ private Q_SLOTS:
     void testDeletionLeft();
     void testSelectionRight();
     void testSelectionLeft();
+    void testDirectActions();
 
 private:
     KTextEditor::ViewPrivate *view;

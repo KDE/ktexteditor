@@ -1480,13 +1480,13 @@ void KateViewInternal::cursorNextChar(bool sel)
     moveChar(KateViewInternal::right, sel);
 }
 
-void KateViewInternal::wordPrev(bool sel)
+void KateViewInternal::wordPrev(bool sel, bool subword)
 {
     auto characterAtPreviousColumn = [this](KTextEditor::Cursor cursor) -> QChar {
         return doc()->characterAt({cursor.line(), cursor.column() - 1});
     };
 
-    auto wordPrevious = [this, &characterAtPreviousColumn](KTextEditor::Cursor cursor) -> KTextEditor::Cursor {
+    auto wordPrevious = [this, &characterAtPreviousColumn, subword](KTextEditor::Cursor cursor) -> KTextEditor::Cursor {
         WrappingCursor c(this, cursor);
 
         // First we skip backwards all space.
@@ -1506,7 +1506,7 @@ void KateViewInternal::wordPrev(bool sel)
         if (c.atEdge(left)) {
             --c;
         } else if (h->isInWord(characterAtPreviousColumn(c))) {
-            if (doc()->config()->camelCursor()) {
+            if (subword || doc()->config()->camelCursor()) {
                 CamelCursor cc(this, cursor);
                 --cc;
                 return cc;
@@ -1548,9 +1548,9 @@ void KateViewInternal::wordPrev(bool sel)
     updateSecondaryCursors(cursorsToUpdate, sel);
 }
 
-void KateViewInternal::wordNext(bool sel)
+void KateViewInternal::wordNext(bool sel, bool subword)
 {
-    auto nextWord = [this](KTextEditor::Cursor cursor) -> KTextEditor::Cursor {
+    auto nextWord = [this, subword](KTextEditor::Cursor cursor) -> KTextEditor::Cursor {
         WrappingCursor c(this, cursor);
 
         // We look up into which category the current position falls:
@@ -1565,7 +1565,7 @@ void KateViewInternal::wordNext(bool sel)
         if (c.atEdge(right)) {
             ++c;
         } else if (h->isInWord(doc()->characterAt(c))) {
-            if (doc()->config()->camelCursor()) {
+            if (subword || doc()->config()->camelCursor()) {
                 CamelCursor cc(this, cursor);
                 ++cc;
                 return cc;

@@ -172,8 +172,8 @@ private Q_SLOTS:
 public:
     void cursorPrevChar(bool sel = false);
     void cursorNextChar(bool sel = false);
-    void wordPrev(bool sel = false);
-    void wordNext(bool sel = false);
+    void wordPrev(bool sel = false, bool subword = false);
+    void wordNext(bool sel = false, bool subword = false);
     void home(bool sel = false);
     void end(bool sel = false);
     void cursorUp(bool sel = false);

@@ -31,6 +31,7 @@ int main(int argc, char *argv[])
     //     docConfig->setConfigValue(QStringLiteral("replace-tabs"), false);
 
     auto v = doc->createView(&m);
+    v->setBlockSelection(true);
     v->setContextMenu(v->defaultContextMenu());
     //     auto vConfig = qobject_cast<KTextEditor::ConfigInterface*>(v);
     //     vConfig->setConfigValue(QStringLiteral("auto-brackets"), true);

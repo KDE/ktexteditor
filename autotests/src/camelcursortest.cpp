@@ -5,7 +5,9 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 #include "camelcursortest.h"
+#include "kateconfig.h"
 
+#include <kactioncollection.h>
 #include <katedocument.h>
 #include <kateview.h>
 
@@ -263,6 +265,44 @@ void CamelCursorTest::testSelectionLeft()
     view->shiftWordLeft();
     QCOMPARE(view->selectionText(), QStringLiteral("Hello\n"));
     QCOMPARE(view->selectionRange(), KTextEditor::Range(0, 0, 1, 0));
+}
+
+void CamelCursorTest::testDirectActions()
+{
+    // disable camel cursor
+    auto oldValue = doc->config()->camelCursor();
+    doc->config()->setCamelCursor(false);
+    QVERIFY(!doc->config()->camelCursor());
+
+    doc->setText(QStringLiteral("HelloWorld"));
+    view->setCursorPosition({0, 0});
+    view->actionCollection()->action(QStringLiteral("subword_right"))->triggered();
+    QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(0, 5));
+
+    view->actionCollection()->action(QStringLiteral("subword_left"))->triggered();
+    QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(0, 0));
+
+    view->actionCollection()->action(QStringLiteral("select_subword_right"))->triggered();
+    QCOMPARE(view->selectionRange(), KTextEditor::Range(0, 0, 0, 5));
+    view->clearSelection();
+
+    view->setCursorPosition({0, 5});
+    view->actionCollection()->action(QStringLiteral("select_subword_left"))->triggered();
+    QCOMPARE(view->selectionRange(), KTextEditor::Range(0, 0, 0, 5));
+    view->clearSelection();
+
+    view->setCursorPosition({0, 5});
+    view->actionCollection()->action(QStringLiteral("delete_subword_left"))->triggered();
+    QCOMPARE(doc->text(), QStringLiteral("World"));
+    doc->undo();
+    view->setCursorPosition({0, 5});
+
+    view->setCursorPosition({0, 5});
+    view->actionCollection()->action(QStringLiteral("delete_subword_right"))->triggered();
+    QCOMPARE(doc->text(), QStringLiteral("Hello"));
+
+    doc->config()->setCamelCursor(oldValue);
+    QVERIFY(doc->config()->camelCursor() == oldValue);
 }
 
 #include "moc_camelcursortest.cpp"

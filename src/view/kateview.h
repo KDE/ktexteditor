@@ -631,7 +631,7 @@ public Q_SLOTS:
      * space.
      * @see KateViewInternal::wordPrev
      */
-    void deleteWordLeft();
+    void deleteWordLeft(bool subword = false);
 
     /**
      * Remove the current selection. When nothing is selected the char right
@@ -646,7 +646,7 @@ public Q_SLOTS:
      * all trialling space removed.
      * @see KateViewInternal::wordNext
      */
-    void deleteWordRight();
+    void deleteWordRight(bool subword = false);
 
     /**
      * Transpose the characters left and right from the current cursor position
@@ -667,10 +667,10 @@ public Q_SLOTS:
     void shiftCursorLeft();
     void cursorRight();
     void shiftCursorRight();
-    void wordLeft();
-    void shiftWordLeft();
-    void wordRight();
-    void shiftWordRight();
+    void wordLeft(bool subword = false);
+    void shiftWordLeft(bool subword = false);
+    void wordRight(bool subword = false);
+    void shiftWordRight(bool subword = false);
     void markSelection();
     void home();
     void shiftHome();

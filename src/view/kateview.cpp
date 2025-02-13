@@ -1277,6 +1277,36 @@ void KTextEditor::ViewPrivate::setupEditActions()
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftToMatchingBracket);
     // m_editActions << a;
 
+    // BEGIN subword actions
+    a = ac->addAction(QStringLiteral("subword_right"));
+    a->setText(i18n("Move Sub-Word Right"));
+    connect(a, &QAction::triggered, this, [this] {
+        wordRight(/*subword=*/true);
+    });
+    m_editActions.push_back(a);
+
+    a = ac->addAction(QStringLiteral("select_subword_right"));
+    a->setText(i18n("Select Sub-Word Right"));
+    connect(a, &QAction::triggered, this, [this] {
+        shiftWordRight(/*subword=*/true);
+    });
+    m_editActions.push_back(a);
+
+    a = ac->addAction(QStringLiteral("subword_left"));
+    a->setText(i18n("Move Sub-Word Left"));
+    connect(a, &QAction::triggered, this, [this] {
+        wordLeft(/*subword=*/true);
+    });
+    m_editActions.push_back(a);
+
+    a = ac->addAction(QStringLiteral("select_subword_left"));
+    a->setText(i18n("Select Sub-Word Left"));
+    connect(a, &QAction::triggered, this, [this] {
+        shiftWordLeft(/*subword=*/true);
+    });
+    m_editActions.push_back(a);
+    // END subword actions
+
     // anders: shortcuts doing any changes should not be created in read-only mode
     if (!doc()->readOnly()) {
         a = ac->addAction(QStringLiteral("transpose_char"));
@@ -1377,6 +1407,22 @@ void KTextEditor::ViewPrivate::setupEditActions()
         a->setWhatsThis(i18n("Use this to unindent a selected block of text."));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_I));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::unIndent);
+
+        // BEGIN subword actions
+        a = ac->addAction(QStringLiteral("delete_subword_left"));
+        a->setText(i18n("Delete Sub-Word Left"));
+        connect(a, &QAction::triggered, this, [this] {
+            deleteWordLeft(true);
+        });
+        m_editActions.push_back(a);
+
+        a = ac->addAction(QStringLiteral("delete_subword_right"));
+        a->setText(i18n("Delete Sub-Word Right"));
+        connect(a, &QAction::triggered, this, [this] {
+            deleteWordRight(true);
+        });
+        m_editActions.push_back(a);
+        // END
     }
 
     if (hasFocus()) {
@@ -4066,10 +4112,10 @@ void KTextEditor::ViewPrivate::insertTab()
     doc()->insertTab(this, cursorPosition());
 }
 
-void KTextEditor::ViewPrivate::deleteWordLeft()
+void KTextEditor::ViewPrivate::deleteWordLeft(bool subword)
 {
     doc()->editStart();
-    m_viewInternal->wordPrev(true);
+    m_viewInternal->wordPrev(true, subword);
     KTextEditor::Range selection = selectionRange();
     removeSelectedText();
     doc()->editEnd();
@@ -4114,10 +4160,10 @@ void KTextEditor::ViewPrivate::keyDelete()
     ensureUniqueCursors();
 }
 
-void KTextEditor::ViewPrivate::deleteWordRight()
+void KTextEditor::ViewPrivate::deleteWordRight(bool subword)
 {
     doc()->editStart();
-    m_viewInternal->wordNext(true);
+    m_viewInternal->wordNext(true, subword);
     KTextEditor::Range selection = selectionRange();
     removeSelectedText();
     doc()->editEnd();
@@ -4262,39 +4308,39 @@ void KTextEditor::ViewPrivate::shiftCursorRight()
     }
 }
 
-void KTextEditor::ViewPrivate::wordLeft()
+void KTextEditor::ViewPrivate::wordLeft(bool subword)
 {
     if (isLineRTL(cursorPosition().line())) {
-        m_viewInternal->wordNext(m_markedSelection);
+        m_viewInternal->wordNext(m_markedSelection, subword);
     } else {
-        m_viewInternal->wordPrev(m_markedSelection);
+        m_viewInternal->wordPrev(m_markedSelection, subword);
     }
 }
 
-void KTextEditor::ViewPrivate::shiftWordLeft()
+void KTextEditor::ViewPrivate::shiftWordLeft(bool subword)
 {
     if (isLineRTL(cursorPosition().line())) {
-        m_viewInternal->wordNext(true);
+        m_viewInternal->wordNext(/*sel=*/true, subword);
     } else {
-        m_viewInternal->wordPrev(true);
+        m_viewInternal->wordPrev(/*sel=*/true, subword);
     }
 }
 
-void KTextEditor::ViewPrivate::wordRight()
+void KTextEditor::ViewPrivate::wordRight(bool subword)
 {
     if (isLineRTL(cursorPosition().line())) {
-        m_viewInternal->wordPrev(m_markedSelection);
+        m_viewInternal->wordPrev(m_markedSelection, subword);
     } else {
-        m_viewInternal->wordNext(m_markedSelection);
+        m_viewInternal->wordNext(m_markedSelection, subword);
     }
 }
 
-void KTextEditor::ViewPrivate::shiftWordRight()
+void KTextEditor::ViewPrivate::shiftWordRight(bool subword)
 {
     if (isLineRTL(cursorPosition().line())) {
-        m_viewInternal->wordPrev(true);
+        m_viewInternal->wordPrev(true, subword);
     } else {
-        m_viewInternal->wordNext(true);
+        m_viewInternal->wordNext(true, subword);
     }
 }
 
