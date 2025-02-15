@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-31 00:39+0000\n"
+"POT-Creation-Date: 2025-02-15 00:39+0000\n"
 "PO-Revision-Date: 2025-01-30 05:25+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -7695,52 +7695,76 @@ msgstr "შეაბამის ბრჭყალზე გადასვლ�
 msgid "Select to Matching Bracket"
 msgstr "შესაბამის ბრჭყალამდე მონიშვნა"
 
-#: view/kateview.cpp:1283
+#: view/kateview.cpp:1282
+#, fuzzy, kde-format
+#| msgid "Move Word Right"
+msgid "Move Sub-Word Right"
+msgstr "სიტყვის მარჯვნივ გადატანა"
+
+#: view/kateview.cpp:1289
+#, fuzzy, kde-format
+#| msgid "Select Word Right"
+msgid "Select Sub-Word Right"
+msgstr "მარჯვენა სიტყვის მონიშვნა"
+
+#: view/kateview.cpp:1296
+#, fuzzy, kde-format
+#| msgid "Move Word Left"
+msgid "Move Sub-Word Left"
+msgstr "სიტყვის მარცხნივ გადატანა"
+
+#: view/kateview.cpp:1303
+#, fuzzy, kde-format
+#| msgid "Select Word Left"
+msgid "Select Sub-Word Left"
+msgstr "მარცხენა სიტყვის მონიშვნა"
+
+#: view/kateview.cpp:1313
 #, kde-format
 msgid "Transpose Characters"
 msgstr "სიმბოლოების ადგილების მიმოცვლა"
 
-#: view/kateview.cpp:1288
+#: view/kateview.cpp:1318
 #, kde-format
 msgid "Transpose Words"
 msgstr "სიტყვების ადგილების მიმოცვლა"
 
-#: view/kateview.cpp:1293
+#: view/kateview.cpp:1323
 #, kde-format
 msgid "Delete Line"
 msgstr "ხაზის წაშლა"
 
-#: view/kateview.cpp:1299
+#: view/kateview.cpp:1329
 #, kde-format
 msgid "Delete Word Left"
 msgstr "მარცხენა სიტყვის წაშლა"
 
-#: view/kateview.cpp:1305
+#: view/kateview.cpp:1335
 #, kde-format
 msgid "Delete Word Right"
 msgstr "მარჯვენა სიტყვის წაშლა"
 
-#: view/kateview.cpp:1311
+#: view/kateview.cpp:1341
 #, kde-format
 msgid "Delete Next Character"
 msgstr "შემდეგი სმბოლოს წაშლა"
 
-#: view/kateview.cpp:1317
+#: view/kateview.cpp:1347
 #, kde-format
 msgid "Backspace"
 msgstr "Backspace"
 
-#: view/kateview.cpp:1325
+#: view/kateview.cpp:1355
 #, kde-format
 msgid "Insert Tab Character"
 msgstr "ტაბულაციის სიმბოლოს ჩასმა"
 
-#: view/kateview.cpp:1330
+#: view/kateview.cpp:1360
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "ჭკვიანი ხაზისბოლოს ჩასმა"
 
-#: view/kateview.cpp:1331
+#: view/kateview.cpp:1361
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
@@ -7749,48 +7773,48 @@ msgstr ""
 "ახალი ხაზის ჩასმა მიმდინარე ხაზის პირველი სიმბოლოების ჩათვლით, რომლებიც "
 "სიმბოლოები ან ციფრები არაა."
 
-#: view/kateview.cpp:1339
+#: view/kateview.cpp:1369
 #, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "გაუსწორებელი ახალი ხაზის ჩასმა"
 
-#: view/kateview.cpp:1340
+#: view/kateview.cpp:1370
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr ""
 "შეწევის პარამეტრების გაუთვალისწინებლად, ახალი ხაზის შეწევის გარეშე ჩასმა."
 
-#: view/kateview.cpp:1348
+#: view/kateview.cpp:1378
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr "ახალი ხაზის სიმბოლოს ჩასმა მიმდინარე ხაზის ზემოთ"
 
-#: view/kateview.cpp:1349
+#: view/kateview.cpp:1379
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr ""
 "მიმდინარე ხაზის ზემოთ ახალი ხაზის ჩასმა მიმდინარე ხაზის ცვლილების გარეშე."
 
-#: view/kateview.cpp:1357
+#: view/kateview.cpp:1387
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr "ახალი ხაზის სიმბოლოს ჩასმა მიმდინარე ხაზის ქვემოთ"
 
-#: view/kateview.cpp:1358
+#: view/kateview.cpp:1388
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr ""
 "მიმდინარე ხაზის ქვემოთ ახალი ხაზის ჩასმა მიმდინარე ხაზის ცვლილების გარეშე."
 
-#: view/kateview.cpp:1367
+#: view/kateview.cpp:1397
 #, kde-format
 msgid "&Indent"
 msgstr "&შეწევა"
 
-#: view/kateview.cpp:1369
+#: view/kateview.cpp:1399
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -7801,92 +7825,104 @@ msgstr ""
 "ტაბულაციებს ყურაღება მიექცევა, თუ ისინი გამოტოვებების ჩანაცვლდება, მორგების "
 "ფანჯარაში შეგიძლიათ."
 
-#: view/kateview.cpp:1376
+#: view/kateview.cpp:1406
 #, kde-format
 msgid "&Unindent"
 msgstr "&შეწევის გაუქმება"
 
-#: view/kateview.cpp:1377
+#: view/kateview.cpp:1407
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr "გამოიყენეთ მონიშნული ტექსტის ბლოკის შეწევის გაუქმებისთვის."
 
-#: view/kateview.cpp:1395
+#: view/kateview.cpp:1413
+#, fuzzy, kde-format
+#| msgid "Delete Word Left"
+msgid "Delete Sub-Word Left"
+msgstr "მარცხენა სიტყვის წაშლა"
+
+#: view/kateview.cpp:1420
+#, fuzzy, kde-format
+#| msgid "Delete Word Right"
+msgid "Delete Sub-Word Right"
+msgstr "მარჯვენა სიტყვის წაშლა"
+
+#: view/kateview.cpp:1441
 #, kde-format
 msgid "Fold Toplevel Nodes"
 msgstr "ზედა დონის კვანძების გაკეცვა"
 
-#: view/kateview.cpp:1399
+#: view/kateview.cpp:1445
 #, kde-format
 msgid "Unfold Toplevel Nodes"
 msgstr "ზედა დონის კვანძების გაკეცვის გაუქმება"
 
-#: view/kateview.cpp:1403
+#: view/kateview.cpp:1449
 #, kde-format
 msgid "Toggle Current Node"
 msgstr "მიმდინარე კვანძის გადართვა"
 
-#: view/kateview.cpp:1407
+#: view/kateview.cpp:1453
 #, kde-format
 msgid "Toggle Contained Nodes"
 msgstr "შეზღუდული კვანძების გადართვა"
 
-#: view/kateview.cpp:1416
+#: view/kateview.cpp:1462
 #, kde-format
 msgid "Say current selection or document"
 msgstr "მიმდინარე მონიშნულის ან დოკუმენტის წარმოქმნა"
 
-#: view/kateview.cpp:1426
+#: view/kateview.cpp:1472
 #, kde-format
 msgid "Stop current output"
 msgstr "მიმდინარე გამოტანის გაჩერება"
 
-#: view/kateview.cpp:1432
+#: view/kateview.cpp:1478
 #, kde-format
 msgid "Pause current output"
 msgstr "მიმდინარე გამოტანის შეჩერება"
 
-#: view/kateview.cpp:1438
+#: view/kateview.cpp:1484
 #, kde-format
 msgid "Resume current output"
 msgstr "მიმდინარე გამოტანის გაგრძელება"
 
-#: view/kateview.cpp:1609
+#: view/kateview.cpp:1655
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(R/O) %1"
 
-#: view/kateview.cpp:1797
+#: view/kateview.cpp:1843
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "Camelcase-ით გადაადგილება გამორთულია"
 
-#: view/kateview.cpp:1799
+#: view/kateview.cpp:1845
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "Camelcase-ით გადაადგილება ჩართულია"
 
-#: view/kateview.cpp:2334
+#: view/kateview.cpp:2380
 #, kde-format
 msgid "Search wrapped"
 msgstr "გადატანილში ძებნა"
 
-#: view/kateview.cpp:3022
+#: view/kateview.cpp:3068
 #, kde-format
 msgid "Open File"
 msgstr "ფაილის გახსნა"
 
-#: view/kateview.cpp:3914
+#: view/kateview.cpp:3960
 #, kde-format
 msgid "Align On"
 msgstr "სწორება"
 
-#: view/kateview.cpp:3914
+#: view/kateview.cpp:3960
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "სწორების ნიმუში:"
 
-#: view/kateview.cpp:4998
+#: view/kateview.cpp:5044
 #, kde-format
 msgid "Export File as HTML"
 msgstr "ფაილის გატანა HTML ფორმატში"
