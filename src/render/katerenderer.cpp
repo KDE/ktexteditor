@@ -414,23 +414,15 @@ static bool rangeLessThanForRenderer(const Kate::TextRange *a, const Kate::TextR
 {
     // compare Z-Depth first
     // smaller Z-Depths should win!
-    if (a->zDepth() > b->zDepth()) {
-        return true;
-    } else if (a->zDepth() < b->zDepth()) {
-        return false;
+    if (a->zDepth() != b->zDepth()) {
+        return a->zDepth() > b->zDepth();
     }
 
-    // end of a > end of b?
-    if (a->end().toCursor() > b->end().toCursor()) {
-        return true;
+    if (a->end().toCursor() != b->end().toCursor()) {
+        return a->end().toCursor() > b->end().toCursor();
     }
 
-    // if ends are equal, start of a < start of b?
-    if (a->end().toCursor() == b->end().toCursor()) {
-        return a->start().toCursor() < b->start().toCursor();
-    }
-
-    return false;
+    return a->start().toCursor() < b->start().toCursor();
 }
 
 QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly) const
