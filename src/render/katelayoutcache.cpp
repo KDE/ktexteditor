@@ -393,8 +393,10 @@ int KateLayoutCache::displayViewLine(const KTextEditor::Cursor virtualCursor, bo
     }
     ret += viewLine(realCursor);
 
-    if (limitToVisible && (ret < 0 || ret > limit)) {
+    if (limitToVisible && ret < 0) {
         return -1;
+    } else if (limitToVisible && ret > limit) {
+        return -2;
     }
 
     return ret;
