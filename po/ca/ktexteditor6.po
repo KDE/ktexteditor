@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-15 00:39+0000\n"
-"PO-Revision-Date: 2025-01-30 10:15+0100\n"
+"PO-Revision-Date: 2025-02-15 12:36+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -7803,28 +7803,24 @@ msgid "Select to Matching Bracket"
 msgstr "Selecciona fins al parèntesi que concordi"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Mou una paraula a la dreta"
+msgstr "Mou una subparaula a la dreta"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Selecciona una paraula a la dreta"
+msgstr "Selecciona una subparaula a la dreta"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Mou una paraula a l'esquerra"
+msgstr "Mou una subparaula a l'esquerra"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Selecciona una paraula a l'esquerra"
+msgstr "Selecciona una subparaula a l'esquerra"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7945,16 +7941,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Empreu-ho per a treure el sagnat a un bloc de text seleccionat."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Suprimeix una paraula a l'esquerra"
+msgstr "Suprimeix una subparaula a l'esquerra"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Suprimeix una paraula a la dreta"
+msgstr "Suprimeix una subparaula a la dreta"
 
 #: view/kateview.cpp:1441
 #, kde-format

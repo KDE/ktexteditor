@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-15 00:39+0000\n"
-"PO-Revision-Date: 2025-01-30 19:54+0100\n"
+"PO-Revision-Date: 2025-02-15 08:08+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -7724,28 +7724,24 @@ msgid "Select to Matching Bracket"
 msgstr "Markera till matchande parentes"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Gå ett ord åt höger"
+msgstr "Gå ett delord åt höger"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Markera ett ord åt höger"
+msgstr "Markera ett delord åt höger"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Gå ett ord åt vänster"
+msgstr "Gå ett delord åt vänster"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Markera ett ord åt vänster"
+msgstr "Markera ett delord åt vänster"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7863,16 +7859,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Använd det här för att avindentera ett markerat textblock."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Ta bort ett ord åt vänster"
+msgstr "Ta bort ett delord åt vänster"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Ta bort ett ord åt höger"
+msgstr "Ta bort ett delord åt höger"
 
 #: view/kateview.cpp:1441
 #, kde-format

@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-15 00:39+0000\n"
-"PO-Revision-Date: 2025-01-30 07:37+0100\n"
+"PO-Revision-Date: 2025-02-15 09:44+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -7715,28 +7715,24 @@ msgid "Select to Matching Bracket"
 msgstr "Izberi do ujemajočega oklepaja"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Premakni besedo desno"
+msgstr "Premakni del besede desno"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Izberi besedo desno"
+msgstr "Izberi del besede desno"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Premakni besedo levo"
+msgstr "Premakni del besede levo"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Izberi besedo levo"
+msgstr "Izberi del besede levo"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7852,16 +7848,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Uporabite to za zmanjšanje zamika izbranega dela besedila."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Izbriši besedo levo"
+msgstr "Izbriši del besede levo"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Izbriši besedo desno"
+msgstr "Izbriši del besede desno"
 
 #: view/kateview.cpp:1441
 #, kde-format

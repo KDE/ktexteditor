@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-15 00:39+0000\n"
-"PO-Revision-Date: 2025-01-30 05:25+0100\n"
+"PO-Revision-Date: 2025-02-15 04:06+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -7696,28 +7696,24 @@ msgid "Select to Matching Bracket"
 msgstr "შესაბამის ბრჭყალამდე მონიშვნა"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "სიტყვის მარჯვნივ გადატანა"
+msgstr "ქვესიტყვის მარჯვნივ გადატანა"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "მარჯვენა სიტყვის მონიშვნა"
+msgstr "მარჯვენა ქვესიტყვის მონიშვნა"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "სიტყვის მარცხნივ გადატანა"
+msgstr "ქვესიტყვის მარცხნივ გადატანა"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "მარცხენა სიტყვის მონიშვნა"
+msgstr "მარცხენა ქვესიტყვის მონიშვნა"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7836,16 +7832,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "გამოიყენეთ მონიშნული ტექსტის ბლოკის შეწევის გაუქმებისთვის."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "მარცხენა სიტყვის წაშლა"
+msgstr "მარცხენა ქვესიტყვის წაშლა"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "მარჯვენა სიტყვის წაშლა"
+msgstr "მარჯვენა ქვესიტყვის წაშლა"
 
 #: view/kateview.cpp:1441
 #, kde-format

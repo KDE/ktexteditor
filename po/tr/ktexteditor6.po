@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-15 00:39+0000\n"
-"PO-Revision-Date: 2025-02-05 11:28+0300\n"
+"PO-Revision-Date: 2025-02-15 09:43+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -7711,28 +7711,24 @@ msgid "Select to Matching Bracket"
 msgstr "Ayracın Eşine Kadar Seç"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Sözcüğün Sağına Geç"
+msgstr "Alt Sözcüğü Sağa Taşı"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Sağdaki Sözcüğü Seç"
+msgstr "Sağdaki Alt Sözcüğü Seç"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Sözcüğün Soluna Geç"
+msgstr "Alt Sözcüğü Sola Taşı"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Soldaki Sözcüğü Seç"
+msgstr "Soldaki Alt Sözcüğü Seç"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7852,16 +7848,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Seçili metin blokunun girintisini temizlemek için bunu kullanın."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Soldaki Sözcüğü Sil"
+msgstr "Soldaki Alt Sözcüğü Sil"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Sağdaki Sözcüğü Sil"
+msgstr "Sağdaki Alt Sözcüğü Sil"
 
 #: view/kateview.cpp:1441
 #, kde-format
