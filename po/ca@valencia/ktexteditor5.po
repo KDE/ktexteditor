@@ -1106,17 +1106,17 @@ msgstr "Ctrl+Meta"
 #: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Cmd"
-msgstr "Cmd"
+msgstr "Ordre"
 
 #: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
-msgstr "Cmd+Alt"
+msgstr "Ordre+Alt"
 
 #: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr "Cmd+Ctrl"
+msgstr "Ordre+Ctrl"
 
 #: dialogs/katedialogs.cpp:472
 #, kde-format
@@ -6855,7 +6855,7 @@ msgstr "Anomena i guarda amb la codificació…"
 #: view/kateview.cpp:635
 #, kde-format
 msgid "Save &Copy As..."
-msgstr "Anomena i guarda la &còpia…"
+msgstr "Anomena i guarda una &còpia…"
 
 #: view/kateview.cpp:636
 #, kde-format
