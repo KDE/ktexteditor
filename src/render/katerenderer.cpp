@@ -1441,24 +1441,21 @@ bool KateRenderer::isLineRightToLeft(QStringView str)
 #endif
 }
 
-int KateRenderer::cursorToX(const KateTextLayout &range, int col, bool returnPastLine) const
+qreal KateRenderer::cursorToX(const KateTextLayout &range, int col, bool returnPastLine) const
 {
     return cursorToX(range, KTextEditor::Cursor(range.line(), col), returnPastLine);
 }
 
-int KateRenderer::cursorToX(const KateTextLayout &range, const KTextEditor::Cursor pos, bool returnPastLine) const
+qreal KateRenderer::cursorToX(const KateTextLayout &range, const KTextEditor::Cursor pos, bool returnPastLine) const
 {
     Q_ASSERT(range.isValid());
 
-    int x;
+    qreal x = 0;
     if (range.lineLayout().width() > 0) {
-        x = (int)range.lineLayout().cursorToX(pos.column());
-    } else {
-        x = 0;
+        x = range.lineLayout().cursorToX(pos.column());
     }
 
-    int over = pos.column() - range.endCol();
-    if (returnPastLine && over > 0) {
+    if (const int over = pos.column() - range.endCol(); returnPastLine && over > 0) {
         x += over * spaceWidth();
     }
 
