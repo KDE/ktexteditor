@@ -15,13 +15,13 @@
 # Diego Iastrubni <elcuco@kde.org>, 2005, 2006, 2007, 2008, 2012, 2014.
 # Meni Livne <livne@kde.org>, 2007.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
-# SPDX-FileCopyrightText: 2023, 2024 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-15 00:39+0000\n"
-"PO-Revision-Date: 2025-01-30 10:20+0200\n"
+"PO-Revision-Date: 2025-02-15 14:09+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -7572,28 +7572,24 @@ msgid "Select to Matching Bracket"
 msgstr "בחירה עד לסוגר התואם"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "מעבר מילה אחת ימינה"
+msgstr "מעבר תת־מילה אחת ימינה"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "בחירת מילה אחת ימינה"
+msgstr "בחירת תת־מילה אחת ימינה"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "מעבר מילה אחת שמאלה"
+msgstr "מעבר תת־מילה אחת שמאלה"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "בחירת מילה אחת שמאלה"
+msgstr "בחירת תת־מילה אחת שמאלה"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7707,16 +7703,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "יש להשתמש בזה כדי לבטל הזחה של קטע טקסט נבחר."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "מחיקת מילה אחת שמאלה"
+msgstr "מחיקת תת־מילה אחת שמאלה"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "מחיקת מילה אחת ימינה"
+msgstr "מחיקת תת־מילה אחת ימינה"
 
 #: view/kateview.cpp:1441
 #, kde-format

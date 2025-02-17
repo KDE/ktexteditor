@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-15 00:39+0000\n"
-"PO-Revision-Date: 2025-02-12 07:01+0100\n"
+"PO-Revision-Date: 2025-02-16 17:10+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -7693,28 +7693,24 @@ msgid "Select to Matching Bracket"
 msgstr "Selekti ĝis koresponda krampo"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Unu vorton dekstren"
+msgstr "Movi Subvorton Dekstren"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Unu vorton dekstre"
+msgstr "Elekti Subvorton Dekstre"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Unu vorton maldekstren"
+msgstr "Movi Subvorton Maldekstre"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Elekti vorton maldekstre"
+msgstr "Elekti Subvorton Maldekstre"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7830,16 +7826,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Uzu tion por malfari la deŝovon de elektita korpo de teksto."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Forigi vorton maldekstre"
+msgstr "Forigi Subvorton Maldekstre"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Forigi vorton dekstre"
+msgstr "Forigi Subvorton Dekstre"
 
 #: view/kateview.cpp:1441
 #, kde-format
