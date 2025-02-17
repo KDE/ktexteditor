@@ -2216,8 +2216,15 @@ QString KTextEditor::DocumentPrivate::mimeType()
     // only heuristic
     QByteArray buf;
     for (int i = 0; (i < lines()) && (buf.size() <= 4096); ++i) {
+        if (!buf.isEmpty()) {
+            buf.append('\n');
+        }
         buf.append(line(i).toUtf8());
-        buf.append('\n');
+    }
+
+    // Don't be application/x-zerosize, be text.
+    if (buf.isEmpty()) {
+        return QStringLiteral("text/plain");
     }
 
     // use path of url, too, if set
