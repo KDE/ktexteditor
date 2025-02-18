@@ -7438,28 +7438,24 @@ msgid "Select to Matching Bracket"
 msgstr "选择到匹配的括号"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "整词右移"
+msgstr "子词右移"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "选择右边整词"
+msgstr "选择右边子词"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "整词左移"
+msgstr "子词左移"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "选择左边整词"
+msgstr "选择左边子词"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7572,16 +7568,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "使用此命令对选中的一块文字减少缩进。"
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "删除左边整词"
+msgstr "删除左边子词"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "删除右边整词"
+msgstr "删除右边子词"
 
 #: view/kateview.cpp:1441
 #, kde-format

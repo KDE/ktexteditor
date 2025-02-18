@@ -1,4 +1,4 @@
-# Translation of katepart4 to Spanish
+# Translation of ktexteditor6.po to Spanish
 #
 # SPDX-FileCopyrightText: 2001, 2002, 2003, 2004, 2005, 2007 Pablo de Vicente <pablo.devicente@gmail.com>
 # SPDX-FileCopyrightText: 2006, 2007 Jaime Robles <jaime@kde.org>
@@ -8,10 +8,10 @@
 # SPDX-FileCopyrightText: 2013, 2014 Rocio Gallego <traducciones@rociogallego.com>
 msgid ""
 msgstr ""
-"Project-Id-Version: katepart4\n"
+"Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-15 00:39+0000\n"
-"PO-Revision-Date: 2025-01-30 16:19+0100\n"
+"PO-Revision-Date: 2025-02-16 01:45+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 24.12.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -7807,28 +7807,28 @@ msgid "Select to Matching Bracket"
 msgstr "Seleccionar hasta el paréntesis emparejado"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Move Word Right"
 msgid "Move Sub-Word Right"
-msgstr "Moverse una palabra hacia la derecha"
+msgstr "Moverse subpalabra hacia la derecha"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Select Word Right"
 msgid "Select Sub-Word Right"
-msgstr "Seleccionar una palabra a la derecha"
+msgstr "Seleccionar subpalabra a la derecha"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Move Word Left"
 msgid "Move Sub-Word Left"
-msgstr "Moverse una palabra a la izquierda"
+msgstr "Mover subpalabra hacia la izquierda"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Select Word Left"
 msgid "Select Sub-Word Left"
-msgstr "Seleccionar palabra a la izquierda"
+msgstr "Seleccionar subpalabra a la izquierda"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7881,7 +7881,8 @@ msgid ""
 "Insert newline including leading characters of the current line which are "
 "not letters or numbers."
 msgstr ""
-"Insertar salto de línea que incluya los caracteres sobrantes de la línea  actual que no sean letras ni números."
+"Insertar salto de línea que incluya los caracteres sobrantes de la línea  actu"
+"al que no sean letras ni números."
 
 #: view/kateview.cpp:1369
 #, kde-format
@@ -7947,16 +7948,16 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Use esto para desangrar un bloque de texto seleccionado."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Delete Word Left"
 msgid "Delete Sub-Word Left"
-msgstr "Borrar la palabra de la izquierda"
+msgstr "Borrar subpalabra de la izquierda"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Delete Word Right"
 msgid "Delete Sub-Word Right"
-msgstr "Borrar la palabra de la derecha"
+msgstr "Borrar subpalabra de la derecha"
 
 #: view/kateview.cpp:1441
 #, kde-format

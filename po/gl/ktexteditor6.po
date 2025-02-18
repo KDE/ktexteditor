@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-15 00:39+0000\n"
-"PO-Revision-Date: 2025-02-14 08:31+0100\n"
-"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"PO-Revision-Date: 2025-02-16 06:10+0100\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
@@ -7745,28 +7745,24 @@ msgid "Select to Matching Bracket"
 msgstr "Seleccionar ata a parella deste signo delimitador"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Moverse unha palabra á dereita"
+msgstr "Moverse unha subpalabra á dereita"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Escoller unha palabra á dereita"
+msgstr "Escoller unha subpalabra á dereita"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Moverse unha palabra á esquerda"
+msgstr "Moverse unha subpalabra á esquerda"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Escoller unha palabra á esquerda"
+msgstr "Escoller unha subpalabra á esquerda"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7885,16 +7881,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Use isto para reducir a sangría do bloque de texto escollido."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Eliminar unha palabra á esquerda"
+msgstr "Eliminar unha subpalabra á esquerda"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Eliminar unha palabra á dereita"
+msgstr "Eliminar unha subpalabra á dereita"
 
 #: view/kateview.cpp:1441
 #, kde-format
