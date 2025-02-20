@@ -53,7 +53,7 @@ TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, bool alwaysUseKAuth
     , m_document(parent)
     , m_history(*this)
     , m_lines(0)
-    , m_revision(0)
+    , m_revision(-1)
     , m_editingTransactions(0)
     , m_editingLastRevision(0)
     , m_editingLastLines(0)
@@ -65,7 +65,7 @@ TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, bool alwaysUseKAuth
     , m_lineLengthLimit(4096)
     , m_alwaysUseKAuthForSave(alwaysUseKAuth)
 {
-    // create initial state
+    // create initial state, this will set m_revision to 0
     clear();
 }
 
@@ -174,8 +174,9 @@ void TextBuffer::clear()
     // reset lines and last used block
     m_lines = 1;
 
-    // reset revision
-    m_revision = 0;
+    // increment revision, we did reset it here in the past
+    // that is no good idea as we can mix up content variants after an reload
+    ++m_revision;
 
     // reset bom detection
     m_generateByteOrderMark = false;

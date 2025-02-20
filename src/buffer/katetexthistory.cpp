@@ -14,8 +14,7 @@ TextHistory::TextHistory(TextBuffer &buffer)
     , m_lastSavedRevision(-1)
     , m_firstHistoryEntryRevision(0)
 {
-    // just call clear to init
-    clear();
+    // clear will be triggered in buffer constructor
 }
 
 TextHistory::~TextHistory() = default;
@@ -35,8 +34,8 @@ void TextHistory::clear()
     m_historyEntries.clear();
     m_historyEntries.push_back(Entry());
 
-    // first entry will again belong to first revision
-    m_firstHistoryEntryRevision = 0;
+    // first entry will again belong to the current revision
+    m_firstHistoryEntryRevision = revision();
 }
 
 void TextHistory::setLastSavedRevision()

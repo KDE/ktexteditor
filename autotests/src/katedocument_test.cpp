@@ -139,12 +139,12 @@ void KateDocumentTest::testMovingInterfaceSignals()
     QTemporaryFile f;
     f.open();
     doc->openUrl(QUrl::fromLocalFile(f.fileName()));
-    QCOMPARE(doc->revision(), qint64(0));
+    QCOMPARE(doc->revision(), qint64(2));
     // TODO: gets emitted once in closeFile and once in openFile - is that OK?
     QCOMPARE(aboutToInvalidateSpy.count(), 2);
 
     doc->documentReload();
-    QCOMPARE(doc->revision(), qint64(0));
+    QCOMPARE(doc->revision(), qint64(4));
     // TODO: gets emitted once in closeFile and once in openFile - is that OK?
     QCOMPARE(aboutToInvalidateSpy.count(), 4);
 
