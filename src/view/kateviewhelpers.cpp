@@ -1010,6 +1010,28 @@ void KateScrollBar::sliderChange(SliderChange change)
     }
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
+void KateScrollBar::contextMenuEvent(QContextMenuEvent *e)
+{
+    QMenu *menu = createStandardContextMenu(e->pos());
+    menu->setAttribute(Qt::WA_DeleteOnClose);
+
+    QAction *firstStandardAction = menu->actions().first();
+
+    KActionCollection *ac = m_view->actionCollection();
+
+    if (QAction *scrollBarMarks = ac->action(QStringLiteral("view_scrollbar_marks"))) {
+        menu->insertAction(firstStandardAction, scrollBarMarks);
+    }
+    if (QAction *scrollBarMinimap = ac->action(QStringLiteral("view_scrollbar_minimap"))) {
+        menu->insertAction(firstStandardAction, scrollBarMinimap);
+    }
+    menu->insertSeparator(firstStandardAction);
+
+    menu->popup(e->globalPos());
+}
+#endif
+
 void KateScrollBar::marksChanged()
 {
     m_lines.clear();

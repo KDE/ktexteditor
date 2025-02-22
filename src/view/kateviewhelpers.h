@@ -168,6 +168,9 @@ protected:
     void paintEvent(QPaintEvent *e) override;
     void resizeEvent(QResizeEvent *) override;
     void sliderChange(SliderChange change) override;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
+    void contextMenuEvent(QContextMenuEvent *e) override;
+#endif
 
 protected Q_SLOTS:
     void sliderMaybeMoved(int value);
