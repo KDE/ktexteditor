@@ -1005,7 +1005,7 @@ void KTextEditor::ViewPrivate::setupActions()
     m_copyHtmlAction = ac->addAction(QStringLiteral("edit_copy_html"), this, SLOT(exportHtmlToClipboard()));
     m_copyHtmlAction->setIcon(QIcon::fromTheme(QStringLiteral("edit-copy")));
     m_copyHtmlAction->setText(i18n("Copy as &HTML"));
-    m_copyHtmlAction->setWhatsThis(i18n("Use this command to copy the currently selected text as HTML to the system clipboard."));
+    m_copyHtmlAction->setWhatsThis(i18n("Copy the selection as HTML, formatted using the current syntax highlighting and color scheme settings."));
 
     a = ac->addAction(QStringLiteral("file_export_html"), this, SLOT(exportHtmlToFile()));
     a->setIcon(QIcon::fromTheme(QStringLiteral("document-export")));
