@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-19 00:38+0000\n"
+"POT-Creation-Date: 2025-02-23 00:38+0000\n"
 "PO-Revision-Date: 2024-09-20 07:36+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -168,7 +168,7 @@ msgid "&Settings"
 msgstr "&Настройка"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:185
+#: data/katepart5ui.rc:186
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Панель инструментов"
@@ -7551,9 +7551,9 @@ msgstr "Копировать в ф&ормате HTML"
 #: view/kateview.cpp:1008
 #, kde-format
 msgid ""
-"Use this command to copy the currently selected text as HTML to the system "
-"clipboard."
-msgstr "Копировать текст с подсветкой в формате HTML в буфер обмена."
+"Copy the selection as HTML, formatted using the current syntax highlighting "
+"and color scheme settings."
+msgstr ""
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -8512,6 +8512,11 @@ msgstr "«%1» %2,  шестн. %3,  восм. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Отметка не установлена: %1"
+
+#~ msgid ""
+#~ "Use this command to copy the currently selected text as HTML to the "
+#~ "system clipboard."
+#~ msgstr "Копировать текст с подсветкой в формате HTML в буфер обмена."
 
 # Переносить после ... --aspotashev
 #~ msgctxt "Wrap words at (value is at 20 or larger)"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-19 00:38+0000\n"
+"POT-Creation-Date: 2025-02-23 00:38+0000\n"
 "PO-Revision-Date: 2025-02-15 09:43+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -159,7 +159,7 @@ msgid "&Settings"
 msgstr "Ayar&lar"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:185
+#: data/katepart5ui.rc:186
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Ana Araç Çubuğu"
@@ -7515,11 +7515,9 @@ msgstr "&HTML Olarak Kopyala"
 #: view/kateview.cpp:1008
 #, kde-format
 msgid ""
-"Use this command to copy the currently selected text as HTML to the system "
-"clipboard."
+"Copy the selection as HTML, formatted using the current syntax highlighting "
+"and color scheme settings."
 msgstr ""
-"Seçili bulunan metni sistem panosuna HTML olarak kopyalamak için bu komutu "
-"kullanın."
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -8462,6 +8460,13 @@ msgstr "“%1” %2, Altılık %3, Sekizlik %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İm ayarlanmadı: %1"
+
+#~ msgid ""
+#~ "Use this command to copy the currently selected text as HTML to the "
+#~ "system clipboard."
+#~ msgstr ""
+#~ "Seçili bulunan metni sistem panosuna HTML olarak kopyalamak için bu "
+#~ "komutu kullanın."
 
 #~ msgctxt "Wrap words at (value is at 20 or larger)"
 #~ msgid " character"

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-19 00:38+0000\n"
+"POT-Creation-Date: 2025-02-23 00:38+0000\n"
 "PO-Revision-Date: 2025-02-15 09:44+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -162,7 +162,7 @@ msgid "&Settings"
 msgstr "&Nastavitve"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:185
+#: data/katepart5ui.rc:186
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Glavna orodna vrstica"
@@ -7519,11 +7519,9 @@ msgstr "Kopiraj kot &HTML"
 #: view/kateview.cpp:1008
 #, kde-format
 msgid ""
-"Use this command to copy the currently selected text as HTML to the system "
-"clipboard."
+"Copy the selection as HTML, formatted using the current syntax highlighting "
+"and color scheme settings."
 msgstr ""
-"Uporabite ta ukaz za kopiranje trenutno izbranega besedila na sistemsko "
-"odložišče v obliki HTML."
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -8459,6 +8457,13 @@ msgstr "»%1« %2,  Šestn. %3,  Osm. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Oznaka ni nastavljena: %1"
+
+#~ msgid ""
+#~ "Use this command to copy the currently selected text as HTML to the "
+#~ "system clipboard."
+#~ msgstr ""
+#~ "Uporabite ta ukaz za kopiranje trenutno izbranega besedila na sistemsko "
+#~ "odložišče v obliki HTML."
 
 #~ msgctxt "Wrap words at (value is at 20 or larger)"
 #~ msgid " character"

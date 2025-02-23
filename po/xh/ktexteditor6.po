@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-19 00:38+0000\n"
+"POT-Creation-Date: 2025-02-23 00:38+0000\n"
 "PO-Revision-Date: 2002-11-14 16:59SAST\n"
 "Last-Translator: Lwandle Mgidlana <lwandle@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -156,7 +156,7 @@ msgid "&Settings"
 msgstr "Izi&cwangciso Zokubhaliweyo"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:185
+#: data/katepart5ui.rc:186
 #, kde-format
 msgid "Main Toolbar"
 msgstr ""
@@ -7333,13 +7333,11 @@ msgid "Copy as &HTML"
 msgstr ""
 
 #: view/kateview.cpp:1008
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
-"Use this command to copy the currently selected text as HTML to the system "
-"clipboard."
+"Copy the selection as HTML, formatted using the current syntax highlighting "
+"and color scheme settings."
 msgstr ""
-"Sebenzisa lomyalelo ukukhuphela okubhaiweyo okukhethwe ngoku kwindlela "
-"yokusebenza yebhodi eqhotyoshwayo."
 
 #: view/kateview.cpp:1012
 #, fuzzy, kde-format
@@ -8229,6 +8227,14 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Phawula Uhlobo %1"
+
+#, fuzzy
+#~ msgid ""
+#~ "Use this command to copy the currently selected text as HTML to the "
+#~ "system clipboard."
+#~ msgstr ""
+#~ "Sebenzisa lomyalelo ukukhuphela okubhaiweyo okukhethwe ngoku kwindlela "
+#~ "yokusebenza yebhodi eqhotyoshwayo."
 
 #, fuzzy
 #~| msgid "Character"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-19 00:38+0000\n"
+"POT-Creation-Date: 2025-02-23 00:38+0000\n"
 "PO-Revision-Date: 2024-09-26 13:25+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -159,7 +159,7 @@ msgid "&Settings"
 msgstr "S&tillingar"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:185
+#: data/katepart5ui.rc:186
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Aðaltækjastika"
@@ -7505,11 +7505,9 @@ msgstr "Afrita sem &HTML"
 #: view/kateview.cpp:1008
 #, kde-format
 msgid ""
-"Use this command to copy the currently selected text as HTML to the system "
-"clipboard."
+"Copy the selection as HTML, formatted using the current syntax highlighting "
+"and color scheme settings."
 msgstr ""
-"Notaðu þessa skipun til að afrita núverandi textaval á klippispjaldið sem "
-"HTML."
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -8457,6 +8455,13 @@ msgstr "'%1' %2,  hex %3,  áttundakerfis %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Merki ekki stillt: %1"
+
+#~ msgid ""
+#~ "Use this command to copy the currently selected text as HTML to the "
+#~ "system clipboard."
+#~ msgstr ""
+#~ "Notaðu þessa skipun til að afrita núverandi textaval á klippispjaldið sem "
+#~ "HTML."
 
 #~| msgid " character"
 #~| msgid_plural " characters"

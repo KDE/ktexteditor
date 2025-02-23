@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-19 00:38+0000\n"
+"POT-Creation-Date: 2025-02-23 00:38+0000\n"
 "PO-Revision-Date: 2009-05-13 15:41+0530\n"
 "Last-Translator: Kartik Mistry <kartik.mistry@gmail.com>\n"
 "Language-Team: Gujarati <kde-i18n-doc@kde.org>\n"
@@ -154,7 +154,7 @@ msgid "&Settings"
 msgstr "ગોઠવણીઓ (&S)"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:185
+#: data/katepart5ui.rc:186
 #, kde-format
 msgid "Main Toolbar"
 msgstr "મુખ્ય સાધનપટ્ટી"
@@ -7332,8 +7332,8 @@ msgstr "&HTML તરીકે નકલ કરો"
 #: view/kateview.cpp:1008
 #, kde-format
 msgid ""
-"Use this command to copy the currently selected text as HTML to the system "
-"clipboard."
+"Copy the selection as HTML, formatted using the current syntax highlighting "
+"and color scheme settings."
 msgstr ""
 
 #: view/kateview.cpp:1012

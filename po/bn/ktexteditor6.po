@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-19 00:38+0000\n"
+"POT-Creation-Date: 2025-02-23 00:38+0000\n"
 "PO-Revision-Date: 2005-01-04 11:33-0600\n"
 "Last-Translator: Deepayan Sarkar <deepayan@bengalinux.org>\n"
 "Language-Team: Bengali <kde-translation@bengalinux.org>\n"
@@ -148,7 +148,7 @@ msgid "&Settings"
 msgstr "টেক্স&ট সেটিংস"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:185
+#: data/katepart5ui.rc:186
 #, kde-format
 msgid "Main Toolbar"
 msgstr ""
@@ -7167,11 +7167,11 @@ msgid "Copy as &HTML"
 msgstr ""
 
 #: view/kateview.cpp:1008
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
-"Use this command to copy the currently selected text as HTML to the system "
-"clipboard."
-msgstr "এই কমান্ড প্রতি কপি টি বর্তমানে নির্বাচিত লেখা প্রতি টি সিস্টেম ক্লীপবোর্ড."
+"Copy the selection as HTML, formatted using the current syntax highlighting "
+"and color scheme settings."
+msgstr ""
 
 #: view/kateview.cpp:1012
 #, fuzzy, kde-format
@@ -8041,6 +8041,12 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr "ধরন ১"
+
+#, fuzzy
+#~ msgid ""
+#~ "Use this command to copy the currently selected text as HTML to the "
+#~ "system clipboard."
+#~ msgstr "এই কমান্ড প্রতি কপি টি বর্তমানে নির্বাচিত লেখা প্রতি টি সিস্টেম ক্লীপবোর্ড."
 
 #, fuzzy
 #~ msgctxt "Wrap words at (value is at 20 or larger)"

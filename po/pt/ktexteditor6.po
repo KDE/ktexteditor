@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-19 00:38+0000\n"
+"POT-Creation-Date: 2025-02-23 00:38+0000\n"
 "PO-Revision-Date: 2023-01-13 01:21+0000\n"
 "Last-Translator: José Nuno Pires <zepires@gmail.com>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
@@ -210,7 +210,7 @@ msgid "&Settings"
 msgstr "&Configuração"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:185
+#: data/katepart5ui.rc:186
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Barra Principal"
@@ -7718,11 +7718,9 @@ msgstr "Copiar como &HTML"
 #: view/kateview.cpp:1008
 #, kde-format
 msgid ""
-"Use this command to copy the currently selected text as HTML to the system "
-"clipboard."
+"Copy the selection as HTML, formatted using the current syntax highlighting "
+"and color scheme settings."
 msgstr ""
-"Use este comando para copiar o texto seleccionado de momento, no formato "
-"HTML, para a área de transferência."
 
 #: view/kateview.cpp:1012
 #, fuzzy, kde-format
@@ -8687,6 +8685,13 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marcação não definida: %1"
+
+#~ msgid ""
+#~ "Use this command to copy the currently selected text as HTML to the "
+#~ "system clipboard."
+#~ msgstr ""
+#~ "Use este comando para copiar o texto seleccionado de momento, no formato "
+#~ "HTML, para a área de transferência."
 
 #~ msgctxt "Wrap words at (value is at 20 or larger)"
 #~ msgid " character"

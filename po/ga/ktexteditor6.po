@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-19 00:38+0000\n"
+"POT-Creation-Date: 2025-02-23 00:38+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -156,7 +156,7 @@ msgid "&Settings"
 msgstr "&Socruithe"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:185
+#: data/katepart5ui.rc:186
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Príomhbharra Uirlisí"
@@ -7312,11 +7312,9 @@ msgstr "Cóipeáil mar &HTML"
 #: view/kateview.cpp:1008
 #, kde-format
 msgid ""
-"Use this command to copy the currently selected text as HTML to the system "
-"clipboard."
+"Copy the selection as HTML, formatted using the current syntax highlighting "
+"and color scheme settings."
 msgstr ""
-"Leis an ordú seo, is féidir an téacs roghnaithe a chóipeáil go dtí "
-"gearrthaisce an chórais mar HTML."
 
 #: view/kateview.cpp:1012
 #, fuzzy, kde-format
@@ -8211,6 +8209,13 @@ msgstr "'%1' %2,  Heics %3,  Ocht %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marc gan socrú: %1"
+
+#~ msgid ""
+#~ "Use this command to copy the currently selected text as HTML to the "
+#~ "system clipboard."
+#~ msgstr ""
+#~ "Leis an ordú seo, is féidir an téacs roghnaithe a chóipeáil go dtí "
+#~ "gearrthaisce an chórais mar HTML."
 
 #, fuzzy
 #~| msgctxt "Wrap words at"

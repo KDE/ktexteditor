@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-19 00:38+0000\n"
+"POT-Creation-Date: 2025-02-23 00:38+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -150,7 +150,7 @@ msgid "&Settings"
 msgstr "设置(&S)"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:185
+#: data/katepart5ui.rc:186
 #, kde-format
 msgid "Main Toolbar"
 msgstr "主工具栏"
@@ -7247,9 +7247,9 @@ msgstr "复制为 &HTML"
 #: view/kateview.cpp:1008
 #, kde-format
 msgid ""
-"Use this command to copy the currently selected text as HTML to the system "
-"clipboard."
-msgstr "使用此命令可将当前所选文字作为 HTML 内容复制到系统剪贴板。"
+"Copy the selection as HTML, formatted using the current syntax highlighting "
+"and color scheme settings."
+msgstr ""
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -8161,3 +8161,8 @@ msgstr "“%1” %2，十六进制 %3，八进制 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "标记未设置：%1"
+
+#~ msgid ""
+#~ "Use this command to copy the currently selected text as HTML to the "
+#~ "system clipboard."
+#~ msgstr "使用此命令可将当前所选文字作为 HTML 内容复制到系统剪贴板。"

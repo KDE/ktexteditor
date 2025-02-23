@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-19 00:38+0000\n"
+"POT-Creation-Date: 2025-02-23 00:38+0000\n"
 "PO-Revision-Date: 2025-02-15 04:06+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -151,7 +151,7 @@ msgid "&Settings"
 msgstr "გამართვა"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:185
+#: data/katepart5ui.rc:186
 #, kde-format
 msgid "Main Toolbar"
 msgstr "ხელსაწყოთა მთავარი ზოლი"
@@ -7500,11 +7500,9 @@ msgstr "&HTML-ად კოპირება"
 #: view/kateview.cpp:1008
 #, kde-format
 msgid ""
-"Use this command to copy the currently selected text as HTML to the system "
-"clipboard."
+"Copy the selection as HTML, formatted using the current syntax highlighting "
+"and color scheme settings."
 msgstr ""
-"გამოიყენეთ ეს ბრძანება ამჟამად მონიშნული ტექსტის სისტემის ბუფერში "
-"დასაკოპირებლად HTML-ის სახით."
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -8447,6 +8445,13 @@ msgstr "'%1' %2,  თექვსმ %3,  რვაობითი %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "ნიშანი დასმული არაა: %1"
+
+#~ msgid ""
+#~ "Use this command to copy the currently selected text as HTML to the "
+#~ "system clipboard."
+#~ msgstr ""
+#~ "გამოიყენეთ ეს ბრძანება ამჟამად მონიშნული ტექსტის სისტემის ბუფერში "
+#~ "დასაკოპირებლად HTML-ის სახით."
 
 #~ msgctxt "Wrap words at (value is at 20 or larger)"
 #~ msgid " character"
