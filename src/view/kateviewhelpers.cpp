@@ -295,7 +295,7 @@ void KateScrollBar::mousePressEvent(QMouseEvent *e)
     const int lastLine = m_viewInternal->toRealCursor(m_viewInternal->endPos()).line() + 1;
     const QString text = i18nc("from line - to line", "<center>%1<br/>&#x2014;<br/>%2</center>", fromLine, lastLine);
     m_tooltipLineNoInfo.setText(text);
-    m_tooltipLineNoInfo.setVisible(true);
+    m_tooltipLineNoInfo.setVisible(m_leftMouseDown);
     m_tooltipLineNoInfo.adjustSize();
     m_tooltipLineNoInfo.move(mapFromGlobal(toolTipPos));
 
