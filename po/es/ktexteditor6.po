@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-23 00:38+0000\n"
-"PO-Revision-Date: 2025-02-16 01:45+0100\n"
+"PO-Revision-Date: 2025-02-23 02:41+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1012,7 +1012,7 @@ msgstr ""
 "<p>Acción de la tecla «Tabulador» (si no existe una selección) <a href=\"Si "
 "quiere que la tecla <b>Tabulador</b> alinee la línea actual dentro del "
 "bloque de código actual como en Emacs, haga que el <b>Tabulador</b> sea un "
-"atajo de teclado para la acción <b>Formatear sangrado</b>.\"><span>Más...</"
+"atajo de teclado para la acción <b>Formatear sangrado</b>.\"><span>Más…</"
 "span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
@@ -1341,7 +1341,7 @@ msgstr "Cierra el archivo descartando su contenido."
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&Guardar como..."
+msgstr "&Guardar como…"
 
 #: dialogs/katedialogs.cpp:1491
 #, kde-format
@@ -2584,7 +2584,7 @@ msgstr "Modos y tipos de archivo"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "Buscar..."
+msgstr "Buscar…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -2752,7 +2752,7 @@ msgstr ""
 #: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
-msgstr "Añadir parámetro de sustitución..."
+msgstr "Añadir parámetro de sustitución…"
 
 #: printing/printconfigwidgets.cpp:354
 #, kde-format
@@ -3623,7 +3623,7 @@ msgstr "Orden no encontrada: %1"
 #: search/katesearchbar.cpp:73
 #, kde-format
 msgid "Add..."
-msgstr "Añadir..."
+msgstr "Añadir…"
 
 #: search/katesearchbar.cpp:298
 #, kde-format
@@ -4013,7 +4013,7 @@ msgstr "Comprobación ortográfica cancelada."
 #, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Comprobación ortográfica en progreso..."
+msgstr "Comprobación ortográfica en progreso…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4250,7 +4250,7 @@ msgstr "I&gnorar todo"
 #, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Comprobar ortografía (desde el cursor)..."
+msgstr "Comprobar ortografía (desde el cursor)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4375,25 +4375,25 @@ msgstr "&Tachado"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "Color &normal..."
+msgstr "Color &normal…"
 
 #: syntax/katestyletreewidget.cpp:263
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "Color &seleccionado..."
+msgstr "Color &seleccionado…"
 
 #: syntax/katestyletreewidget.cpp:266
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "&Color de fondo..."
+msgstr "&Color de fondo…"
 
 #: syntax/katestyletreewidget.cpp:269
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "Color de fondo &seleccionado..."
+msgstr "Color de fondo &seleccionado…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -5027,19 +5027,19 @@ msgstr "&Tema:"
 #, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "&Copiar..."
+msgstr "&Copiar…"
 
 #: syntax/katethemeconfig.cpp:1135
 #, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Exportar..."
+msgstr "Exportar…"
 
 #: syntax/katethemeconfig.cpp:1139
 #, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Importar..."
+msgstr "Importar…"
 
 #: syntax/katethemeconfig.cpp:1146
 #, kde-format
@@ -5755,7 +5755,7 @@ msgstr "Matt Newell"
 #: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Testing, ..."
-msgstr "Pruebas..."
+msgstr "Pruebas…"
 
 #: utils/kateglobal.cpp:102
 #, kde-format
@@ -6675,7 +6675,7 @@ msgstr "Sangrado/tabulador: %1%2"
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Otros..."
+msgstr "Otros…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6858,7 +6858,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "&Alinear en..."
+msgstr "&Alinear en…"
 
 #: view/kateview.cpp:556
 #, kde-format
@@ -7045,13 +7045,13 @@ msgstr "Guardar el documento actual en el disco con un nombre de su elección."
 #, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "Guardar como con codi&ficación..."
+msgstr "Guardar como con codi&ficación…"
 
 #: view/kateview.cpp:692
 #, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "Guardar co&pia como..."
+msgstr "Guardar co&pia como…"
 
 #: view/kateview.cpp:693
 #, kde-format
@@ -7091,7 +7091,7 @@ msgstr "Mover hacia abajo hasta la siguiente línea modificada."
 #, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "&Configurar editor..."
+msgstr "&Configurar editor…"
 
 #: view/kateview.cpp:714
 #, kde-format
@@ -7583,7 +7583,7 @@ msgstr "Activar/desactivar la corrección ortográfica automática"
 #, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Cambiar diccionario..."
+msgstr "Cambiar diccionario…"
 
 #: view/kateview.cpp:995
 #, kde-format
@@ -7614,12 +7614,14 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Copiar la selección como formato HTML utilizando las preferencias actuales "
+"de resaltado de sintaxis y de esquema de colores."
 
 #: view/kateview.cpp:1012
 #, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "E&xportar como HTML..."
+msgstr "E&xportar como HTML…"
 
 #: view/kateview.cpp:1014
 #, kde-format
@@ -8124,7 +8126,7 @@ msgstr "Copiar"
 #, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Color del fondo..."
+msgstr "Color del fondo…"
 
 #: view/screenshotdialog.cpp:182
 #, kde-format

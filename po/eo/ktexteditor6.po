@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-23 00:38+0000\n"
-"PO-Revision-Date: 2025-02-16 17:10+0100\n"
+"PO-Revision-Date: 2025-02-23 13:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -7500,6 +7500,8 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Kopiu la elekton kiel HTML, formatitan per la aktualaj sintaksreliefigaj kaj "
+"kolorskemaj agordoj."
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -8437,10 +8439,3 @@ msgstr "'%1' %2, Hex %3, Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marko ne agordita: %1"
-
-#~ msgid ""
-#~ "Use this command to copy the currently selected text as HTML to the "
-#~ "system clipboard."
-#~ msgstr ""
-#~ "Uzu ĉi tiun komandon por kopii la elektitan tekston kiel HTMLon al la "
-#~ "sistema poŝo."

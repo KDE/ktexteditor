@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-23 00:38+0000\n"
-"PO-Revision-Date: 2025-02-15 09:43+0300\n"
+"PO-Revision-Date: 2025-02-23 12:10+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -7518,6 +7518,8 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Seçimi, geçerli sözdizim vurgulama ve renk şeması ayarları kullanılarak "
+"biçimlendirilmiş HTML olarak kopyalayın."
 
 #: view/kateview.cpp:1012
 #, kde-format

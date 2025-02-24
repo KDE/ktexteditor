@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-23 00:38+0000\n"
-"PO-Revision-Date: 2025-02-15 09:26+0200\n"
+"PO-Revision-Date: 2025-02-23 08:38+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -7586,6 +7586,9 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Копіювати позначений фрагмент тексту як код HTML, який буде форматовано з "
+"використанням поточного режиму підсвічування синтаксичних конструкцій та "
+"параметрів схеми кольорів."
 
 #: view/kateview.cpp:1012
 #, kde-format

@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-23 00:38+0000\n"
-"PO-Revision-Date: 2025-02-20 16:42+0400\n"
+"PO-Revision-Date: 2025-02-23 19:00+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -7413,6 +7413,8 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"انسخ التحديد بصيغة HTML، منسقًا باستخدام إعدادات تمييز بناء الجملة الحالي "
+"ومخطط الألوان."
 
 #: view/kateview.cpp:1012
 #, kde-format
