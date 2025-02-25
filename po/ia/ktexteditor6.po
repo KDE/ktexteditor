@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-23 00:38+0000\n"
-"PO-Revision-Date: 2025-02-18 15:06+0100\n"
+"PO-Revision-Date: 2025-02-24 16:13+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -7590,6 +7590,8 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Copialeselection como HTML, formattate usante le evidentiar de syntaxe "
+"currente e preferentias de schema de color."
 
 #: view/kateview.cpp:1012
 #, kde-format

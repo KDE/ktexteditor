@@ -7249,7 +7249,7 @@ msgstr "复制为 &HTML"
 msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
-msgstr ""
+msgstr "复制所选内容为 HTML，使用当前语法高亮和配色方案设置格式化。"
 
 #: view/kateview.cpp:1012
 #, kde-format

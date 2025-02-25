@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-23 00:38+0000\n"
-"PO-Revision-Date: 2025-01-31 10:55+0100\n"
+"PO-Revision-Date: 2025-02-24 20:12+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -7527,6 +7527,8 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Копиране на селекцията като HTML, форматиран с помощта на текущите настройки "
+"за подчертаване на синтаксиса и цветова схема."
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -7718,28 +7720,24 @@ msgid "Select to Matching Bracket"
 msgstr "Маркиране до съвпадаща скоба"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Преместване на дума в дясно"
+msgstr "Преместване на под-дума в дясно"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Маркиране на думата в дясно"
+msgstr "Маркиране на под-думата в дясно"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Преместване на дума в ляво"
+msgstr "Преместване на под-дума в ляво"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Маркиране на думата в ляво"
+msgstr "Маркиране на под-дума в ляво"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7855,16 +7853,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Изтриване на отстъп и преместване на текста наляво."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Изтриване на дума в ляво"
+msgstr "Изтриване на под-дума в ляво"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Изтриване на дума в дясно"
+msgstr "Изтриване на под-дума в дясно"
 
 #: view/kateview.cpp:1441
 #, kde-format
@@ -8468,7 +8464,7 @@ msgstr "Няма запис в регистъра %1"
 #: vimode/modes/normalvimode.cpp:1684
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
-msgstr "„%1“ %2,  Hex %3,  Octal %4"
+msgstr "„%1“ %2,  Десетична %3,  Осмична %4"
 
 #: vimode/modes/normalvimode.cpp:2527
 #, kde-format

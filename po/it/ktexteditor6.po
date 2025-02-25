@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-23 00:38+0000\n"
-"PO-Revision-Date: 2025-01-30 18:53+0100\n"
+"PO-Revision-Date: 2025-02-23 23:04+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -7602,6 +7602,8 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Copia la selezione come HTML, formattata utilizzando le impostazioni attuali "
+"di evidenziazione della sintassi e schema di colori."
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -7793,28 +7795,24 @@ msgid "Select to Matching Bracket"
 msgstr "Seleziona fino alla parentesi corrispondente"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Sposta parola a destra"
+msgstr "Sposta la sotto-parola a destra"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Seleziona una parola a destra"
+msgstr "Seleziona la sotto-parola a destra"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Sposta parola a sinistra"
+msgstr "Sposta la sotto-parola a sinistra"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Seleziona una parola a sinistra"
+msgstr "Seleziona la sotto-parola a sinistra"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7936,16 +7934,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Usa questo comando per ridurre il rientro del testo selezionato."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Cancella parola a sinistra"
+msgstr "Elimina la sotto-parola a sinistra"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Cancella parola a destra"
+msgstr "Elimina la sotto-parola a destra"
 
 #: view/kateview.cpp:1441
 #, kde-format
