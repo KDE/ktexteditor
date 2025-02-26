@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-23 00:38+0000\n"
-"PO-Revision-Date: 2025-02-16 21:34+0100\n"
+"PO-Revision-Date: 2025-02-24 09:24+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -7921,6 +7921,9 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Copiez la sélection au format « HTML », formatée en utilisant la "
+"configuration courante pour la mise en surbrillance de la coloration "
+"syntaxique et du thème de couleurs."
 
 #: view/kateview.cpp:1012
 #, kde-format
