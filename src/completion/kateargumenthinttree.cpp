@@ -135,7 +135,7 @@ void ArgumentHintWidget::selectPrevious()
     }
 
     m_current = m_current - 1;
-    if (m_current <= 0) {
+    if (m_current < 0) {
         m_current = rowCount - 1;
     }
 
