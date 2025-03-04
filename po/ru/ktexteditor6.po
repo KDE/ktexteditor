@@ -3,7 +3,7 @@
 # Copyright (C) 2005 KDE Russian translation team.
 #
 # SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2023 Alexander Yavorsky <kekcuha@gmail.com>
-# SPDX-FileCopyrightText: 2024 Olesya Gerasimenko <translation-team@basealt.ru>
+# SPDX-FileCopyrightText: 2024, 2025 Olesya Gerasimenko <translation-team@basealt.ru>
 # Gregory Mokhin <mok@kde.ru>, 2001, 2005.
 # Andrey Cherepanov <skull@kde.ru>, 2001-2009.
 # Leonid Kanter <leon@asplinux.ru>, 2005.
@@ -20,14 +20,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-23 00:38+0000\n"
-"PO-Revision-Date: 2024-09-20 07:36+0300\n"
-"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
-"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"PO-Revision-Date: 2025-03-03 16:09+0300\n"
+"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
+"Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.08.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -1081,15 +1081,13 @@ msgstr "Ув&еличивать уровень отступа если курс�
 
 # Tab width, indent width. --aspotashev
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " символ"
-msgstr[1] " символа"
-msgstr[2] " символов"
-msgstr[3] " символ"
+msgstr[0] "%v символ"
+msgstr[1] "%v символа"
+msgstr[2] "%v символов"
+msgstr[3] "%v символ"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1158,16 +1156,14 @@ msgstr "Навигация по тексту"
 
 # Tab width, indent width. --aspotashev
 #: dialogs/katedialogs.cpp:581
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " символ"
-msgstr[1] " символа"
-msgstr[2] " символов"
-msgstr[3] " символ"
+msgstr[0] "%v символ"
+msgstr[1] "%v символа"
+msgstr[2] "%v символов"
+msgstr[3] "%v символ"
 
 #: dialogs/katedialogs.cpp:586
 #, kde-format
@@ -1520,10 +1516,9 @@ msgstr "Клавиша Backspace удаляет символ совместно 
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
 #: dialogs/navigationconfigwidget.ui:184
-#, fuzzy, kde-format
-#| msgid "Go to the previous bookmark."
+#, kde-format
 msgid "Allow to cycle through bookmarks"
-msgstr "Перейти на предыдущую закладку."
+msgstr "Позволять циклический переход по закладкам"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:194
@@ -1650,10 +1645,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
 #: dialogs/opensaveconfigadvwidget.ui:247
-#, fuzzy, kde-format
-#| msgid "Do not use config file"
+#, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr "Не использовать файл конфигурации"
+msgstr "Использовать параметры в файле .editorconfig"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -3155,20 +3149,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "Перейти к следующему такому же отступу"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Перейти к следующему такому же отступу"
+msgstr "Переместить курсор на следующую пустую строку"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Перейти к предыдущему такому же отступу"
+msgstr "Переместить курсор на предыдущую пустую строку"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3181,16 +3171,14 @@ msgid "Move cursor to next matching indent"
 msgstr "Перейти к следующему такому же отступу"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Перейти к следующему такому же отступу"
+msgstr "Переместить курсор на следующую пустую строку"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Перейти к предыдущему такому же отступу"
+msgstr "Переместить курсор на предыдущую пустую строку"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
@@ -6700,7 +6688,7 @@ msgstr "Вставить текст, ранее выделенный мышью"
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Вставить из файла"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7554,6 +7542,8 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Скопировать выделенный текст в формате HTML с текущими параметрами подсветки "
+"синтаксиса и цветовой схемы."
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -7745,28 +7735,24 @@ msgid "Select to Matching Bracket"
 msgstr "Выделить до открывающей/закрывающей скобки"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "На слово вправо"
+msgstr "На подслово вправо"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Выделить слово справа"
+msgstr "Выделить подслово справа"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "На слово влево"
+msgstr "На подслово влево"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Выделить слово слева"
+msgstr "Выделить подслово слева"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7889,16 +7875,14 @@ msgstr ""
 "Сдвигает строки выделенного фрагмента текста влево на один шаг отступа."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Удалить слово слева"
+msgstr "Удалить подслово слева"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Удалить слово справа"
+msgstr "Удалить подслово справа"
 
 #: view/kateview.cpp:1441
 #, kde-format
