@@ -261,6 +261,7 @@ const std::vector<Command> &VisualViMode::commands()
         ADDCMD("p", commandPaste, IS_CHANGE),
         ADDCMD("P", commandPasteBefore, IS_CHANGE),
         ADDCMD("r.", commandReplaceCharacter, IS_CHANGE | REGEX_PATTERN),
+        ADDCMD("gc", commandToggleComment, IS_CHANGE),
         ADDCMD(":", commandSwitchToCmdLine, SHOULD_NOT_RESET),
         ADDCMD("m.", commandSetMark, REGEX_PATTERN | SHOULD_NOT_RESET),
         ADDCMD(">", commandIndentLines, IS_CHANGE),

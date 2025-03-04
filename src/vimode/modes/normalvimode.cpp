@@ -1062,6 +1062,12 @@ bool NormalViMode::commandJoinLines()
     return true;
 }
 
+bool NormalViMode::commandToggleComment()
+{
+    doc()->comment(m_view, m_view->cursorPosition().line(), m_view->cursorPosition().column(), KTextEditor::DocumentPrivate::ToggleComment);
+    return true;
+}
+
 bool NormalViMode::commandChange()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());

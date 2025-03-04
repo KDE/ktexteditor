@@ -1361,6 +1361,16 @@ void ModesTest::VisualCommandsTests()
     // Ensure we reset the flag that says that the current motion is a text object!
     DoTest("foo[hello]", "jfhlvli[^d", "ello]");
 
+    // Testing comment with "gc"
+    {
+        QString hlmode = kate_document->highlightingMode();
+        kate_document->setHighlightingMode(QStringLiteral("C"));
+        DoTest("void foo()\n{\nint x;\n}", "Vjjjgc", "// void foo()\n// {\n// int x;\n// }");
+        DoTest("void foo()\n{\n    int x; \n}", "vjj$hgc", "/*void foo()\n{\n    int x;*/ \n}");
+        DoTest("/*void foo()\n{\n    int x;*/ \n}", "vjj$hgc", "void foo()\n{\n    int x; \n}");
+        kate_document->setHighlightingMode(hlmode);
+    }
+
     // proper yanking in block mode
     {
         BeginTest(QStringLiteral("aaaa\nbbbb\ncccc\ndddd"));

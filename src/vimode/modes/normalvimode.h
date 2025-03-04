@@ -76,6 +76,8 @@ public:
 
     bool commandJoinLines();
 
+    bool commandToggleComment();
+
     bool commandChange();
     bool commandChangeLine();
     bool commandChangeToEOL();
