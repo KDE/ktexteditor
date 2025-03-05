@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-23 00:38+0000\n"
+"POT-Creation-Date: 2025-03-05 00:39+0000\n"
 "PO-Revision-Date: 2025-01-31 00:17+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -8499,17 +8499,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Ez dago hurrengo laster-markarako karaktere gehiago."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3561
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Ezer ez %1 erregistroan"
 
-#: vimode/modes/normalvimode.cpp:1684
+#: vimode/modes/normalvimode.cpp:1690
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Hamas. %3,  Zortz. %4"
 
-#: vimode/modes/normalvimode.cpp:2527
+#: vimode/modes/normalvimode.cpp:2533
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marka ezarri gabe: %1"

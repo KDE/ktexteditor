@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-23 00:38+0000\n"
+"POT-Creation-Date: 2025-03-05 00:39+0000\n"
 "PO-Revision-Date: 2024-08-21 22:37+0200\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -6049,13 +6049,13 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Thomas Diehl,Georg Schuster"
+msgstr "Deutsches KDE-Übersetzungsteam"
 
 #: utils/kateglobal.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "thd@kde.org,gschuster@utanet.at"
+msgstr "kde-i18n-de@kde.org"
 
 #: utils/kateglobal.cpp:261
 #, kde-format
@@ -8628,18 +8628,18 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Es gibt keine weiteren Zeichen für das nächste Lesezeichen."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3561
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Nichts im Register %1"
 
 # |, no-fancy-quote
-#: vimode/modes/normalvimode.cpp:1684
+#: vimode/modes/normalvimode.cpp:1690
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Hex %3,  Oktal %4"
 
-#: vimode/modes/normalvimode.cpp:2527
+#: vimode/modes/normalvimode.cpp:2533
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Markierung nicht gesetzt: %1"
