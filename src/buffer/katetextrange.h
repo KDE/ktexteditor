@@ -362,11 +362,15 @@ private:
 
     /**
      * Start cursor for this range, is a clever cursor
+     *
+     * Kate::TextBlock::mergeBlock needs m_start to come before m_end.
      */
     TextCursor m_start;
 
     /**
      * End cursor for this range, is a clever cursor
+     *
+     * Kate::TextBlock::mergeBlock needs m_end to come after m_start.
      */
     TextCursor m_end;
 

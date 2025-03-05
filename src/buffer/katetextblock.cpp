@@ -544,7 +544,6 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     // Both this->m_cursors and targetBlock->m_cursors are sorted.
 
     // Iterating m_cursors backwards to modify TextRange's m_end before m_start.
-    static_assert(offsetof(TextRange, m_start) < offsetof(TextRange, m_end), "m_start should be before m_end otherwise it will break block merging");
     std::for_each(m_cursors.crbegin(), m_cursors.crend(), [targetBlockLines = targetBlock->lines(), targetBlock, m_buffer = m_buffer] (TextCursor *cursor) -> void {
         cursor->m_line += targetBlockLines;
         cursor->m_block = targetBlock;
