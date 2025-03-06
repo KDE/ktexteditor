@@ -1687,7 +1687,7 @@ msgid ""
 "On save, a line break is appended to the document if not already present. "
 "The line break is visible after reloading the file."
 msgstr ""
-"保存时，如果文件最后不是换行符，将附加一个换行符。再次打开文件将显示新行。"
+"保存时，如果文档末尾不是换行符，则附加一个换行符。再次打开文件将显示新行。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkNewLineAtEof)
 #: dialogs/opensaveconfigwidget.ui:229
