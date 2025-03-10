@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-05 00:39+0000\n"
-"PO-Revision-Date: 2025-02-02 15:58+0530\n"
+"PO-Revision-Date: 2025-03-09 16:48+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -3230,6 +3230,7 @@ msgstr ""
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
+"தேர்விலோ ஆவணத்திலோ உள்ள வரிகளின் முதலிலோ கடைசியிலோ இருக்கும் இடக்குறிகளை நீக்கும்."
 
 #: script/data/commands/utils.js:426
 #, kde-format
@@ -7176,7 +7177,7 @@ msgstr "காட்சியின் இடது பக்கத்தில�
 #: view/kateview.cpp:844
 #, kde-format
 msgid "Show Scroll&bar Marks"
-msgstr "உருள்பட்டி குறிகளை காட்டு"
+msgstr "உருள்பட்டை குறிகளை காட்டு"
 
 #: view/kateview.cpp:846
 #, fuzzy, kde-format
@@ -7191,10 +7192,9 @@ msgstr ""
 "குறிகள் போன்றவை."
 
 #: view/kateview.cpp:849
-#, fuzzy, kde-format
-#| msgid "Show Scroll&bar Marks"
+#, kde-format
 msgid "Show Scrollbar Mini-Map"
-msgstr "உருள்பட்டி குறிகளை காட்டு"
+msgstr "உருள்பட்டையில் சிறுபடத்தை காட்டு"
 
 #: view/kateview.cpp:851
 #, fuzzy, kde-format
@@ -7716,9 +7716,9 @@ msgid "Backspace"
 msgstr "பின்வெளி"
 
 #: view/kateview.cpp:1355
-#, fuzzy, kde-format
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "%1 வரி:"
+msgstr "தத்தல் குறியை நுழை"
 
 #: view/kateview.cpp:1360
 #, kde-format
