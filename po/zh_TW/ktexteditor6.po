@@ -17,14 +17,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-05 00:39+0000\n"
-"PO-Revision-Date: 2025-02-06 20:11+0900\n"
+"PO-Revision-Date: 2025-03-10 20:37+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.03.70\n"
+"X-Generator: Lokalize 24.12.3\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -7246,7 +7246,7 @@ msgstr "複製為 &HTML"
 msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
-msgstr ""
+msgstr "將選取範圍以 HTML 格式複製，並包含其目前語法突顯與配色。"
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -7434,28 +7434,24 @@ msgid "Select to Matching Bracket"
 msgstr "選擇至對應括號"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "右移文字"
+msgstr "右移子單詞"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "選擇右方文字"
+msgstr "選擇右方子單詞"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "左移文字"
+msgstr "左移子單詞"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "選擇左方文字"
+msgstr "選擇左方子單詞"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7568,16 +7564,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "使用這個來取消所選文字區塊的縮排。"
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "刪除左方文字"
+msgstr "刪除左方子單詞"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "刪除右方文字"
+msgstr "刪除右方子單詞"
 
 #: view/kateview.cpp:1441
 #, kde-format
