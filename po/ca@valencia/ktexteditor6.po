@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-05 00:39+0000\n"
+"POT-Creation-Date: 2025-03-12 00:39+0000\n"
 "PO-Revision-Date: 2025-02-23 08:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -4855,7 +4855,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Colors dels marcadors"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1507
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1529
 #, kde-format
 msgid "Bookmark"
 msgstr "Punt"
@@ -8041,12 +8041,12 @@ msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1183
+#: view/kateviewhelpers.cpp:1205
 #, kde-format
 msgid "Available Commands"
 msgstr "Ordres disponibles"
 
-#: view/kateviewhelpers.cpp:1184
+#: view/kateviewhelpers.cpp:1206
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -8055,17 +8055,17 @@ msgstr ""
 "<p>Per a obtindre ajuda quant a les ordres individuals, feu <code>«help &lt;"
 "ordre&gt;»</code></p>"
 
-#: view/kateviewhelpers.cpp:1191
+#: view/kateviewhelpers.cpp:1213
 #, kde-format
 msgid "No help for '%1'"
 msgstr "No hi ha ajuda per a «%1»"
 
-#: view/kateviewhelpers.cpp:1194
+#: view/kateviewhelpers.cpp:1216
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "No es troba l'ordre: <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1200
+#: view/kateviewhelpers.cpp:1222
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -8079,37 +8079,37 @@ msgstr ""
 "obtindre ajuda sobre les ordres individuals, introduïu <code><b>help &lt;"
 "ordre&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1288 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1310 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "No es troba l'ordre: «%1»"
 
-#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1313 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "S'ha produït un error: no es permet l'abast per a l'ordre «%1»."
 
-#: view/kateviewhelpers.cpp:1301 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1323 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Ha tingut èxit: "
 
-#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1337 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "L'ordre «%1» ha fallat."
 
-#: view/kateviewhelpers.cpp:2603 view/kateviewhelpers.cpp:2604
+#: view/kateviewhelpers.cpp:2625 view/kateviewhelpers.cpp:2626
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Tipus de marca %1"
 
-#: view/kateviewhelpers.cpp:2627
+#: view/kateviewhelpers.cpp:2649
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Establix el tipus de marca predeterminada"
 
-#: view/kateviewhelpers.cpp:2768
+#: view/kateviewhelpers.cpp:2790
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Desactiva la barra d'anotacions"

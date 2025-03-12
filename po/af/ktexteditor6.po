@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 stable\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-05 00:39+0000\n"
+"POT-Creation-Date: 2025-03-12 00:39+0000\n"
 "PO-Revision-Date: 2005-11-25 11:24+0200\n"
 "Last-Translator: Juanita Franz <juanita.franz@vr-web.de>\n"
 "Language-Team: AFRIKAANS <translate-discuss-af@lists.sourceforge.net>\n"
@@ -4986,7 +4986,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Kleure"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1507
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1529
 #, kde-format
 msgid "Bookmark"
 msgstr "Boekmerk"
@@ -8198,12 +8198,12 @@ msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1183
+#: view/kateviewhelpers.cpp:1205
 #, kde-format
 msgid "Available Commands"
 msgstr "Beskikbare Opdragte"
 
-#: view/kateviewhelpers.cpp:1184
+#: view/kateviewhelpers.cpp:1206
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -8212,17 +8212,17 @@ msgstr ""
 "<p>Vir hulp op individuele opdragte, doen <code>'help &lt;opdrag&gt;'</"
 "code></p>"
 
-#: view/kateviewhelpers.cpp:1191
+#: view/kateviewhelpers.cpp:1213
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Geen hulp vir '%1'"
 
-#: view/kateviewhelpers.cpp:1194
+#: view/kateviewhelpers.cpp:1216
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Geen so opdrag <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1200
+#: view/kateviewhelpers.cpp:1222
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>This is the Katepart <b>command line</b>.<br>Syntax: <code><b>command "
@@ -8240,37 +8240,37 @@ msgstr ""
 "<kode><b>hulp lys</b></kode><br>Vir hulp vir individuele opdragte, voortgaan "
 "<kode><b>hulp &lt;opdrag&gt;</b></kode></p>"
 
-#: view/kateviewhelpers.cpp:1288 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1310 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Geen so opdrag: \"%1\""
 
-#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1313 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1301 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1323 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Sukses: "
 
-#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1337 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Opdrag \"%1\" gevaal."
 
-#: view/kateviewhelpers.cpp:2603 view/kateviewhelpers.cpp:2604
+#: view/kateviewhelpers.cpp:2625 view/kateviewhelpers.cpp:2626
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Merk Tipe %1"
 
-#: view/kateviewhelpers.cpp:2627
+#: view/kateviewhelpers.cpp:2649
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Instel Verstek Merk Tipe"
 
-#: view/kateviewhelpers.cpp:2768
+#: view/kateviewhelpers.cpp:2790
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr ""
