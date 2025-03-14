@@ -239,8 +239,7 @@ public:
     /**
      * Change to a different font (soon to be font set?)
      */
-    void increaseFontSizes(qreal step = 1.0) const;
-    void decreaseFontSizes(qreal step = 1.0) const;
+    void addToFontSize(qreal step) const;
     void resetFontSizes() const;
 
     /**

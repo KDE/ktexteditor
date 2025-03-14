@@ -381,12 +381,12 @@ int KateViewInternal::lineToY(int viewLine) const
 
 void KateViewInternal::slotIncFontSizes(qreal step)
 {
-    renderer()->increaseFontSizes(step);
+    renderer()->addToFontSize(step);
 }
 
 void KateViewInternal::slotDecFontSizes(qreal step)
 {
-    renderer()->decreaseFontSizes(step);
+    renderer()->addToFontSize(-step);
 }
 
 void KateViewInternal::slotResetFontSizes()

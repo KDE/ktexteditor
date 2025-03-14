@@ -142,25 +142,19 @@ void KateRenderer::setShowSelections(bool showSelections)
     m_showSelections = showSelections;
 }
 
-void KateRenderer::increaseFontSizes(qreal step) const
+void KateRenderer::addToFontSize(qreal step) const
 {
+    // ensure we don't run into corner cases in Qt, bug 500766
     QFont f(config()->baseFont());
-    f.setPointSizeF(f.pointSizeF() + step);
-    config()->setFont(f);
+    if (auto newS = f.pointSizeF() + step; newS >= 4 && newS <= 2048) {
+        f.setPointSizeF(newS);
+        config()->setFont(f);
+    }
 }
 
 void KateRenderer::resetFontSizes() const
 {
     QFont f(KateRendererConfig::global()->baseFont());
-    config()->setFont(f);
-}
-
-void KateRenderer::decreaseFontSizes(qreal step) const
-{
-    QFont f(config()->baseFont());
-    if ((f.pointSizeF() - step) > 0) {
-        f.setPointSizeF(f.pointSizeF() - step);
-    }
     config()->setFont(f);
 }
 
