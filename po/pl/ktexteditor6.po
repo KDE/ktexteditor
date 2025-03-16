@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-12 00:39+0000\n"
-"PO-Revision-Date: 2025-02-23 12:30+0100\n"
+"PO-Revision-Date: 2025-03-15 10:52+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -7550,6 +7550,8 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Skopiuj zaznaczenie jako HTML, sformatowany przy użyciu bieżącego "
+"podświetlania składni i ustawień kolorystycznych."
 
 #: view/kateview.cpp:1012
 #, kde-format
