@@ -28,6 +28,8 @@
 
 #ifndef Q_OS_WIN
 #include <unistd.h>
+#else
+#include <io.h>
 #endif
 
 // swap file version header
@@ -620,6 +622,8 @@ void SwapFile::writeFileToDisk()
 #else
         fsync(m_swapfile.handle());
 #endif
+#else
+        _commit(m_swapfile.handle());
 #endif
     }
 }
