@@ -152,7 +152,7 @@ QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
 
 int KateArgumentHintModel::rowCount(const QModelIndex &) const
 {
-    return m_rows.size();
+    return int(m_rows.size());
 }
 
 KateCompletionModel::Group *KateArgumentHintModel::group() const
