@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde4libs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:39+0000\n"
+"POT-Creation-Date: 2025-03-21 00:39+0000\n"
 "PO-Revision-Date: 2009-04-25 21:46+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -141,7 +141,7 @@ msgid "Spelling"
 msgstr ""
 
 #. i18n: ectx: Menu (speech)
-#: data/katepart5ui.rc:153
+#: data/katepart5ui.rc:153 data/katepart5ui.rc:184
 #, kde-format
 msgid "Text to Speech"
 msgstr ""
@@ -153,7 +153,7 @@ msgid "&Settings"
 msgstr "&Parametrat"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:186
+#: data/katepart5ui.rc:192
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Shiriti Kryesor"
@@ -3975,22 +3975,22 @@ msgstr ""
 msgid "The diff command '%1' could not be started."
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:629
+#: swapfile/kateswapfile.cpp:633
 #, kde-format
 msgid "The file was not closed properly."
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:632
+#: swapfile/kateswapfile.cpp:636
 #, kde-format
 msgid "View Changes"
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:633
+#: swapfile/kateswapfile.cpp:637
 #, kde-format
 msgid "Recover Data"
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:634
+#: swapfile/kateswapfile.cpp:638
 #, kde-format
 msgid "Discard"
 msgstr ""

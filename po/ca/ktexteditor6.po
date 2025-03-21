@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:39+0000\n"
+"POT-Creation-Date: 2025-03-21 00:39+0000\n"
 "PO-Revision-Date: 2025-02-23 08:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -146,7 +146,7 @@ msgid "Spelling"
 msgstr "Ortografia"
 
 #. i18n: ectx: Menu (speech)
-#: data/katepart5ui.rc:153
+#: data/katepart5ui.rc:153 data/katepart5ui.rc:184
 #, kde-format
 msgid "Text to Speech"
 msgstr "Text a veu"
@@ -158,7 +158,7 @@ msgid "&Settings"
 msgstr "A&rranjament"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:186
+#: data/katepart5ui.rc:192
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Barra d'eines principal"
@@ -4277,22 +4277,22 @@ msgstr ""
 msgid "The diff command '%1' could not be started."
 msgstr "No s'ha pogut iniciar l'ordre «%1» del «diff»."
 
-#: swapfile/kateswapfile.cpp:629
+#: swapfile/kateswapfile.cpp:633
 #, kde-format
 msgid "The file was not closed properly."
 msgstr "El fitxer no s'ha tancat adequadament."
 
-#: swapfile/kateswapfile.cpp:632
+#: swapfile/kateswapfile.cpp:636
 #, kde-format
 msgid "View Changes"
 msgstr "Mostra els canvis"
 
-#: swapfile/kateswapfile.cpp:633
+#: swapfile/kateswapfile.cpp:637
 #, kde-format
 msgid "Recover Data"
 msgstr "Recupera les dades"
 
-#: swapfile/kateswapfile.cpp:634
+#: swapfile/kateswapfile.cpp:638
 #, kde-format
 msgid "Discard"
 msgstr "Descarta"

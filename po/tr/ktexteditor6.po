@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:39+0000\n"
+"POT-Creation-Date: 2025-03-21 00:39+0000\n"
 "PO-Revision-Date: 2025-03-13 15:54+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -147,7 +147,7 @@ msgid "Spelling"
 msgstr "Yazım Denetimi"
 
 #. i18n: ectx: Menu (speech)
-#: data/katepart5ui.rc:153
+#: data/katepart5ui.rc:153 data/katepart5ui.rc:184
 #, kde-format
 msgid "Text to Speech"
 msgstr "Konuşma"
@@ -159,7 +159,7 @@ msgid "&Settings"
 msgstr "Ayar&lar"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:186
+#: data/katepart5ui.rc:192
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Ana Araç Çubuğu"
@@ -4232,22 +4232,22 @@ msgstr ""
 msgid "The diff command '%1' could not be started."
 msgstr "“%1” diff komutu başlatılamadı."
 
-#: swapfile/kateswapfile.cpp:629
+#: swapfile/kateswapfile.cpp:633
 #, kde-format
 msgid "The file was not closed properly."
 msgstr "Dosya düzgün kapatılmamış."
 
-#: swapfile/kateswapfile.cpp:632
+#: swapfile/kateswapfile.cpp:636
 #, kde-format
 msgid "View Changes"
 msgstr "Değişiklikleri Göster"
 
-#: swapfile/kateswapfile.cpp:633
+#: swapfile/kateswapfile.cpp:637
 #, kde-format
 msgid "Recover Data"
 msgstr "Veriyi Kurtar"
 
-#: swapfile/kateswapfile.cpp:634
+#: swapfile/kateswapfile.cpp:638
 #, kde-format
 msgid "Discard"
 msgstr "At"
