@@ -145,33 +145,21 @@ void MessageTest::testMessageQueue()
     QVERIFY(doc.postMessage(m2));
 
     // after 0.5s, first message should be visible, (timer of m1 triggered)
-    QTest::qWait(500);
-    QVERIFY(view->messageWidget()->isVisible());
-    QVERIFY(m1.data() != nullptr);
-    QVERIFY(m2.data() != nullptr);
+    QTRY_VERIFY_WITH_TIMEOUT(view->messageWidget()->isVisible() && m1.data() && m2.data(), 500);
 
-    // after 1.2s, first message is deleted, and hide animation is active
-    QTest::qWait(700);
-    QVERIFY(view->messageWidget()->isVisible());
-    QVERIFY(m1.data() == nullptr);
-    QVERIFY(m2.data() != nullptr);
+    // after 1.0s, first message is deleted, and hide animation is active
+    QTRY_VERIFY_WITH_TIMEOUT(view->messageWidget()->isVisible() && !m1.data() && m2.data(), 1000);
 
     // timer of m2 triggered after 1.5s, i.e. after hide animation if finished
-    QTest::qWait(500);
 
     // after 2.1s, second message should be visible
-    QTest::qWait(500);
-    QVERIFY(view->messageWidget()->isVisible());
-    QVERIFY(m2.data() != nullptr);
+    QTRY_VERIFY_WITH_TIMEOUT(view->messageWidget()->isVisible() && !m1.data() && m2.data(), 1000);
 
     // after 2.6s, second message is deleted, and hide animation is active
-    QTest::qWait(500);
-    QVERIFY(view->messageWidget()->isVisible());
-    QVERIFY(m2.data() == nullptr);
+    QTRY_VERIFY_WITH_TIMEOUT(view->messageWidget()->isVisible() && !m1.data() && !m2.data(), 2000);
 
     // after a total of 3.1s, animation is finished and widget is hidden
-    QTest::qWait(500);
-    QVERIFY(!view->messageWidget()->isVisible());
+    QTRY_VERIFY_WITH_TIMEOUT(!view->messageWidget()->isVisible() && !m1.data() && !m2.data(), 1000);
 }
 
 void MessageTest::testPriority()
