@@ -4323,7 +4323,11 @@ void KateViewInternal::fixDropEvent(QDropEvent *event)
 void KateViewInternal::dragMoveEvent(QDragMoveEvent *event)
 {
     // track the cursor to the current drop location
-    placeCursor(event->position().toPoint(), true, false);
+    // don't do that for file drops, that will just annoy the user, see bug 501618
+    // for file drops the location is of no interest
+    if (!event->mimeData()->hasUrls()) {
+        placeCursor(event->position().toPoint(), true, false);
+    }
 
     // important: accept action to switch between copy and move mode
     // without this, the text will always be copied.
