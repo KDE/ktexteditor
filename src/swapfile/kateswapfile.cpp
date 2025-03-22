@@ -190,7 +190,6 @@ void SwapFile::fileLoaded(const QString &)
 void SwapFile::modifiedChanged()
 {
     if (!m_document->isModified() && !shouldRecover()) {
-        m_needSync = false;
         // the file is not modified and we are not in recover mode
         removeSwapFile();
     }
@@ -408,8 +407,6 @@ bool SwapFile::recover(QDataStream &stream, bool checkDigest)
 
 void SwapFile::fileSaved(const QString &)
 {
-    m_needSync = false;
-
     // remove old swap file (e.g. if a file A was "saved as" B)
     removeSwapFile();
 
@@ -451,6 +448,7 @@ void SwapFile::startEditing()
 
     // format: qint8
     m_stream << EA_StartEditing;
+    m_needSync = true;
 }
 
 void SwapFile::finishEditing()
@@ -469,7 +467,7 @@ void SwapFile::finishEditing()
 
     // format: qint8
     m_stream << EA_FinishEditing;
-    m_swapfile.flush();
+    m_needSync = true;
 }
 
 void SwapFile::wrapLine(KTextEditor::Document *, const KTextEditor::Cursor position)
@@ -481,7 +479,6 @@ void SwapFile::wrapLine(KTextEditor::Document *, const KTextEditor::Cursor posit
 
     // format: qint8, int, int
     m_stream << EA_WrapLine << position.line() << position.column();
-
     m_needSync = true;
 }
 
@@ -494,7 +491,6 @@ void SwapFile::unwrapLine(KTextEditor::Document *, int line)
 
     // format: qint8, int
     m_stream << EA_UnwrapLine << line;
-
     m_needSync = true;
 }
 
@@ -507,7 +503,6 @@ void SwapFile::insertText(KTextEditor::Document *, const KTextEditor::Cursor pos
 
     // format: qint8, int, int, bytearray
     m_stream << EA_InsertText << position.line() << position.column() << text.toUtf8();
-
     m_needSync = true;
 }
 
@@ -521,7 +516,6 @@ void SwapFile::removeText(KTextEditor::Document *, KTextEditor::Range range, con
     // format: qint8, int, int, int
     Q_ASSERT(range.start().line() == range.end().line());
     m_stream << EA_RemoveText << range.start().line() << range.start().column() << range.end().column();
-
     m_needSync = true;
 }
 
@@ -549,6 +543,9 @@ void SwapFile::discard()
 
 void SwapFile::removeSwapFile()
 {
+    // ensure we have no stray sync
+    m_needSync = false;
+
     if (!m_swapfile.fileName().isEmpty() && m_swapfile.exists()) {
         m_stream.setDevice(nullptr);
         m_swapfile.close();
@@ -614,6 +611,9 @@ void SwapFile::writeFileToDisk()
 {
     if (m_needSync) {
         m_needSync = false;
+
+        // ensure buffers are flushed first
+        m_swapfile.flush();
 
 #ifndef Q_OS_WIN
         // ensure that the file is written to disk
