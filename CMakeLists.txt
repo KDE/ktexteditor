@@ -82,7 +82,7 @@ find_package(EditorConfig)
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 ecm_set_disabled_deprecation_versions(
     QT 6.3
-    KF 6.11
+    KF 6.12
 )
 
 # define which offscreen platform plugin to use for tests
