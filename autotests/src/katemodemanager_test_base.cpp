@@ -77,7 +77,7 @@ constexpr FileTypeDataRow fileTypesForFileNames[] = {
 
     {.dataTag = "*.desktop.cmake", .m_inputString = "2_suffixes.desktop.cmake", .m_fileTypeName = ".desktop"},
     {.dataTag = "*.per.err", .m_inputString = "2_suffixes-but-one-a-better-match.per.err", .m_fileTypeName = "4GL"},
-    {.dataTag = "*.xml.eex", .m_inputString = "2_suffixes-one-lang.xml.eex", .m_fileTypeName = "Elixir"},
+    {.dataTag = "*.xml.eex", .m_inputString = "2_suffixes-one-lang.xml.eex", .m_fileTypeName = "Elixir/EEx"},
     {.dataTag = "fishd.*.fish", .m_inputString = "fishd.prefix,suffix=one-lang.fish", .m_fileTypeName = "Fish"},
 
     {.dataTag = "usr.bin.*.ftl", .m_inputString = "usr.bin.heterogenousPatternMatch.ftl", .m_fileTypeName = "AppArmor Security Profile"},
