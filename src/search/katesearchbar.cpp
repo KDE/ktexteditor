@@ -1537,6 +1537,9 @@ void KateSearchBar::enterIncrementalMode()
         m_incUi->setupUi(m_widget);
         m_layout->addWidget(m_widget);
 
+        // Add margin to combo box label
+        m_incUi->label->setContentsMargins(style()->pixelMetric(QStyle::PM_LayoutLeftMargin), 0, 0, 0);
+
         // Filter Up/Down arrow key inputs to save unfinished search text
         m_incUi->pattern->installEventFilter(this);
 
