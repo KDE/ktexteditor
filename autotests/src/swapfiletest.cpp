@@ -54,3 +54,5 @@ void SwapFileTest::testSwapFileIsCreatedAndDestroyed()
     delete doc;
     QTRY_VERIFY(!fi.absoluteDir().exists(swapFileName));
 }
+
+#include "moc_swapfiletest.cpp"
