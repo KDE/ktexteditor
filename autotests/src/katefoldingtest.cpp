@@ -49,7 +49,6 @@ void KateFoldingTest::testCrash311866()
     view->show();
     view->resize(400, 300);
     view->setCursorPosition(Cursor(3, 0));
-    QTest::qWait(100);
 
     view->slotFoldToplevelNodes();
     doc.buffer().ensureHighlighted(6);
@@ -94,9 +93,7 @@ void KateFoldingTest::testBug295632()
     view->setSelection(Range(Cursor(0, 4), Cursor(4, 6)));
     view->setCursorPosition(Cursor(4, 6));
 
-    QTest::qWait(100);
     doc.typeChars(view.get(), QStringLiteral("x"));
-    QTest::qWait(100);
 
     QString line = doc.line(0);
     QCOMPARE(line, QStringLiteral("oooox----------"));

@@ -288,13 +288,6 @@ void DocumentCursorTest::testValidTextPosition()
     doc.insertLine(1, QString::fromUtf16(line1, 5));
     doc.insertLine(2, QString::fromUtf16(line2, 5));
 
-    // set to true if you want to see the contents
-    const bool showView = false;
-    if (showView) {
-        doc.createView(nullptr)->show();
-        QTest::qWait(5000);
-    }
-
     // line 0: invalid in utf-32 char
     c.setPosition(0, 0);
     QVERIFY(c.isValidTextPosition());

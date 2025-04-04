@@ -59,7 +59,6 @@ EmulatedCommandBarSetUpAndTearDown::EmulatedCommandBarSetUpAndTearDown(KateViInp
     m_window->installEventFilter(&m_windowKeepActive);
 
     (void)QTest::qWaitForWindowExposed(m_view);
-    QTest::qWait(100); // For whatever reason needed
 }
 EmulatedCommandBarSetUpAndTearDown::~EmulatedCommandBarSetUpAndTearDown()
 {
