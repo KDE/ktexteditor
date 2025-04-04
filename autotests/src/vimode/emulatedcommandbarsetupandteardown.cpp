@@ -54,11 +54,9 @@ EmulatedCommandBarSetUpAndTearDown::EmulatedCommandBarSetUpAndTearDown(KateViInp
     m_view->show();
     QApplication::setActiveWindow(m_window);
     m_view->setFocus();
-    QApplication::processEvents();
     KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, true);
     m_window->installEventFilter(&m_windowKeepActive);
-
-    (void)QTest::qWaitForWindowExposed(m_view);
+    QVERIFY(QTest::qWaitForWindowExposed(m_view));
 }
 EmulatedCommandBarSetUpAndTearDown::~EmulatedCommandBarSetUpAndTearDown()
 {
@@ -68,7 +66,6 @@ EmulatedCommandBarSetUpAndTearDown::~EmulatedCommandBarSetUpAndTearDown()
     m_view->hide();
     m_window->hide();
     KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, false);
-    QApplication::processEvents();
 }
 
 // END: EmulatedCommandBarSetUpAndTearDown
