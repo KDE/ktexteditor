@@ -86,11 +86,7 @@ ecm_set_disabled_deprecation_versions(
 )
 
 # define which offscreen platform plugin to use for tests
-# windows has issues with offscreen tests in the CI
-set(OFFSCREEN_QPA)
-if(NOT WIN32)
-    set(OFFSCREEN_QPA "-platform" "offscreen")
-endif()
+set(OFFSCREEN_QPA "-platform" "offscreen")
 
 # Subdirectories
 add_definitions(-DTRANSLATION_DOMAIN=\"ktexteditor6\")
