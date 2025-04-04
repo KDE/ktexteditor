@@ -74,9 +74,7 @@ void ScriptTestBase::getTestData(const QString &script)
     }
 
     const QDir testDir(testDataPath + m_section + QLatin1Char('/') + script + QLatin1Char('/'));
-    if (!testDir.exists()) {
-        QSKIP(qPrintable(QString(testDir.path() + QLatin1String(" does not exist"))), SkipAll);
-    }
+    QVERIFY(testDir.exists());
     const auto testList = testDir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name);
     for (const auto &info : testList) {
         QTest::newRow(info.baseName().toUtf8().constData()) << info.absoluteFilePath();
