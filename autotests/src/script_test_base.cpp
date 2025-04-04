@@ -147,9 +147,7 @@ inline QByteArray filesDiff(const QString &refFile, const QString &outFile)
 
 void ScriptTestBase::runTest(const ExpectedFailures &failures)
 {
-    if (!QFile::exists(testDataPath + m_section)) {
-        QSKIP(qPrintable(QString(testDataPath + m_section + QLatin1String(" does not exist"))), SkipAll);
-    }
+    QVERIFY(QFile::exists(testDataPath + m_section));
 
     QFETCH(QString, testcase);
 
