@@ -63,7 +63,6 @@ void BugTest::tryCrash()
     view->setCursorPosition(Cursor(1, 0));
     doc.editEnd();
 
-    QTest::qWait(200);
     // fold toplevel nodes
     for (int line = 0; line < doc.lines(); ++line) {
         if (view->textFolding().isLineVisible(line)) {
@@ -74,14 +73,7 @@ void BugTest::tryCrash()
 
     view->setCursorPosition(Cursor(0, 0));
 
-    QTest::qWait(100);
     doc.undo();
-    QTest::qWait(100);
     doc.redo();
-    QTest::qWait(500);
-    qDebug() << "!!! Does undo crash?";
     doc.undo();
-
-    QTest::qWait(500);
-    qDebug() << "!!! No crash (qWait not long enough)? Nice!";
 }

@@ -65,7 +65,6 @@ void BugTest::tryCrash()
     view->resize(900, 800);
     view->setCursorPosition(Cursor(0, 0));
     doc->editStart();
-    // QTest::qWait(200);
 
     // evaluate test-script
     qDebug() << "attempting crash by moving lines w/ otf spell checking enabled";
