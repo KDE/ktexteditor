@@ -391,11 +391,6 @@ void MovingRangeTest::testFeedbackCaret()
 // - RangeFeedback::mouseExitedRange
 void MovingRangeTest::testFeedbackMouse()
 {
-    // mouse move only on X11
-    if (qApp->platformName() != QLatin1String("xcb")) {
-        QSKIP("mouse moving only on X11");
-    }
-
     KTextEditor::DocumentPrivate doc;
     // the range created below will span the 'x' characters
     QString text(
