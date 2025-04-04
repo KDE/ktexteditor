@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-21 00:39+0000\n"
-"PO-Revision-Date: 2025-02-15 19:48+0200\n"
+"PO-Revision-Date: 2025-03-15 09:28+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -7513,6 +7513,8 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Kopioi valinta nykyisellä syntaksikorostuksella ja väriteemalla muotoiltuna "
+"HTML:ksi."
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -7704,28 +7706,24 @@ msgid "Select to Matching Bracket"
 msgstr "Valitse vastaavaan sulkeeseen"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Siirry sana oikealle"
+msgstr "Siirry alisana oikealle"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Valitse sana oikealta"
+msgstr "Valitse alisana oikealta"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Siirry sana vasemmalle"
+msgstr "Siirry alisana vasemmalle"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Valitse sana vasemmalta"
+msgstr "Valitse alisana vasemmalta"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7745,12 +7743,12 @@ msgstr "Poista rivi"
 #: view/kateview.cpp:1329
 #, kde-format
 msgid "Delete Word Left"
-msgstr "Poista sana vasemmalle"
+msgstr "Poista sana vasemmalta"
 
 #: view/kateview.cpp:1335
 #, kde-format
 msgid "Delete Word Right"
-msgstr "Poista sana oikealle"
+msgstr "Poista sana oikealta"
 
 #: view/kateview.cpp:1341
 #, kde-format
@@ -7840,16 +7838,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Tällä voi vähentää valitun tekstilohkon sisennystä."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Poista sana vasemmalle"
+msgstr "Poista alisana vasemmalta"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Poista sana oikealle"
+msgstr "Poista alisana oikealta"
 
 #: view/kateview.cpp:1441
 #, kde-format
