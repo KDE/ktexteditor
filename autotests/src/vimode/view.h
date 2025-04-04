@@ -22,7 +22,6 @@ class ViewTest : public BaseTest
 private Q_SLOTS:
     void yankHighlightingTests();
     void visualLineUpDownTests();
-    void ScrollViewTests();
     void clipboardTests_data();
     void clipboardTests();
 
