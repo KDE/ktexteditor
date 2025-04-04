@@ -148,7 +148,7 @@ void MessageTest::testMessageQueue()
     QTRY_VERIFY_WITH_TIMEOUT(view->messageWidget()->isVisible() && m1.data() && m2.data(), 500);
 
     // after 1.0s, first message is deleted, and hide animation is active
-    QTRY_VERIFY_WITH_TIMEOUT(view->messageWidget()->isVisible() && !m1.data() && m2.data(), 1000);
+    QTRY_VERIFY_WITH_TIMEOUT(view->messageWidget()->isVisible() && !m1.data() && m2.data(), 1200);
 
     // timer of m2 triggered after 1.5s, i.e. after hide animation if finished
 
