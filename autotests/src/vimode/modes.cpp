@@ -997,13 +997,11 @@ void ModesTest::NormalControlTests()
 
 void ModesTest::NormalNotYetImplementedFeaturesTests()
 {
-    QSKIP("This tests never worked :(", SkipAll);
-
     // Testing "))"
-    DoTest("Foo foo. Bar bar.", "))\\ctrl-ox", "Foo foo. ar bar.");
-    DoTest("Foo foo.\nBar bar.\nBaz baz.", ")))\\ctrl-ox\\ctrl-ox", "Foo foo.\nar bar.\nBaz baz.");
-    DoTest("Foo foo.\nBar bar.\nBaz baz.", "))\\ctrl-ox\\ctrl-ix", "Foo foo.\nBar bar.\naz baz.");
-    DoTest("Foo foo.\nBar bar.\nBaz baz.", "))\\ctrl-ox\\ctrl-ix", "Foo foo.\nBar bar.\naz baz.");
+    DoTest("Foo foo. Bar bar.", "))\\ctrl-ox", "Foo foo. ar bar.", ShouldFail, "not implemented");
+    DoTest("Foo foo.\nBar bar.\nBaz baz.", ")))\\ctrl-ox\\ctrl-ox", "Foo foo.\nar bar.\nBaz baz.", ShouldFail, "not implemented");
+    DoTest("Foo foo.\nBar bar.\nBaz baz.", "))\\ctrl-ox\\ctrl-ix", "Foo foo.\nBar bar.\naz baz.", ShouldFail, "not implemented");
+    DoTest("Foo foo.\nBar bar.\nBaz baz.", "))\\ctrl-ox\\ctrl-ix", "Foo foo.\nBar bar.\naz baz.", ShouldFail, "not implemented");
 }
 
 // END: Normal mode.
