@@ -487,8 +487,7 @@ void KateViewTest::testDragAndDrop()
     view->setSelection(Range(1, 0, 2, 0));
     QCOMPARE(view->selectionRange(), Range(1, 0, 2, 0));
 
-    (void)QTest::qWaitForWindowExposed(view);
-    QTest::qWait(100); // For whatever reason needed
+    QVERIFY(QTest::qWaitForWindowExposed(view));
 
     const QPoint startDragPos = internalView->mapFrom(view, view->cursorToCoordinate(KTextEditor::Cursor(1, 2)));
     const QPoint endDragPos = internalView->mapFrom(view, view->cursorToCoordinate(KTextEditor::Cursor(3, 0)));
