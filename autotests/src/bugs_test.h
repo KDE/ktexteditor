@@ -5,8 +5,8 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef KATE_BUG_205447_TEST_H
-#define KATE_BUG_205447_TEST_H
+#ifndef KATE_BUGS_TEST_H
+#define KATE_BUGS_TEST_H
 
 #include <QObject>
 
@@ -22,8 +22,12 @@ private Q_SLOTS:
     void initTestCase();
     void cleanupTestCase();
 
-    void deleteSurrogates();
-    void backspaceSurrogates();
+    void testBug205447DeleteSurrogates();
+    void testBug205447BackspaceSurrogates();
+    void testBug286887CtrlShiftLeft();
+    void bug313759TryCrash();
+    void bug313769TryCrash();
+    void bug317111TryCrash();
 };
 
 #endif
