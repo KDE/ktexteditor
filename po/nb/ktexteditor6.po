@@ -1453,7 +1453,6 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
 #: dialogs/navigationconfigwidget.ui:184
 #, fuzzy, kde-format
-#| msgid "Go to the previous bookmark."
 msgid "Allow to cycle through bookmarks"
 msgstr "Gå til foregående bokmerke."
 
@@ -7542,25 +7541,21 @@ msgstr "Merk til par-parentes"
 
 #: view/kateview.cpp:1282
 #, fuzzy, kde-format
-#| msgid "Move Word Right"
 msgid "Move Sub-Word Right"
 msgstr "Gå ett ord til høyre"
 
 #: view/kateview.cpp:1289
 #, fuzzy, kde-format
-#| msgid "Select Word Right"
 msgid "Select Sub-Word Right"
 msgstr "Merk ett ord til høyre"
 
 #: view/kateview.cpp:1296
 #, fuzzy, kde-format
-#| msgid "Move Word Left"
 msgid "Move Sub-Word Left"
 msgstr "Gå ett ord til venstre"
 
 #: view/kateview.cpp:1303
 #, fuzzy, kde-format
-#| msgid "Select Word Left"
 msgid "Select Sub-Word Left"
 msgstr "Merk ett ord til venstre"
 
@@ -7679,13 +7674,11 @@ msgstr "Bruk dette for å ta vekk innrykk fra en tekstblokk."
 
 #: view/kateview.cpp:1413
 #, fuzzy, kde-format
-#| msgid "Delete Word Left"
 msgid "Delete Sub-Word Left"
 msgstr "Slett ord til venstre"
 
 #: view/kateview.cpp:1420
 #, fuzzy, kde-format
-#| msgid "Delete Word Right"
 msgid "Delete Sub-Word Right"
 msgstr "Slett ord til høyre"
 
