@@ -3,14 +3,14 @@
 # Sae-keun Kim <segni@susekorea.net>, 2001.
 # Louis JANG <louis@mizi.com>, 2001.
 # KIM KyungHeon <tody@teoal.net>, 2001, 2002, 2003, 2004.
-# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
 # JungHee Lee <daemul72@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-21 00:39+0000\n"
-"PO-Revision-Date: 2024-12-10 01:08+0100\n"
+"PO-Revision-Date: 2025-04-06 23:42+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -1458,10 +1458,9 @@ msgstr "백스페이스 키를 눌렀을 때 글자와 발음 구분 기호 동�
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
 #: dialogs/navigationconfigwidget.ui:184
-#, fuzzy, kde-format
-#| msgid "Go to the previous bookmark."
+#, kde-format
 msgid "Allow to cycle through bookmarks"
-msgstr "이전 책갈피로 이동합니다."
+msgstr "책갈피 순환 전환 허용"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:194
@@ -6532,7 +6531,7 @@ msgstr "이전에 복사하거나 잘라낸 선택 내용 붙여넣기"
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "파일에서 붙여넣기"
 
 #: view/kateview.cpp:486
 #, kde-format
@@ -7361,6 +7360,7 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"선택 영역을 현재 구문 강조와 색 구성표 설정이 포함된 HTML로 복사합니다."
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -7551,28 +7551,24 @@ msgid "Select to Matching Bracket"
 msgstr "일치하는 괄호까지 선택"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "단어 오른쪽으로 이동"
+msgstr "하위 단어 오른쪽으로 이동"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "오른쪽 단어 선택"
+msgstr "오른쪽 하위 단어 선택"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "단어 왼쪽으로 이동"
+msgstr "하위 단어 왼쪽으로 이동"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "왼쪽 단어 선택"
+msgstr "왼쪽 하위 단어 선택"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7685,16 +7681,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "선택한 문자열 블록의 들여쓰기를 취소하려면 선택하십시오."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "왼쪽 단어 삭제"
+msgstr "왼쪽 하위 단어 삭제"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "오른쪽 단어 삭제"
+msgstr "오른쪽 하위 단어 삭제"
 
 #: view/kateview.cpp:1441
 #, kde-format
@@ -7757,10 +7751,9 @@ msgid "Search wrapped"
 msgstr "끝까지 검색되어 돌아옴"
 
 #: view/kateview.cpp:3068
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "파일 저장"
+msgstr "파일 열기"
 
 #: view/kateview.cpp:3960
 #, kde-format
