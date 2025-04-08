@@ -740,7 +740,6 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
 
     // read font, including font features
     auto font = config.readEntry(KEY_FONT, QFontDatabase::systemFont(QFontDatabase::FixedFont));
-#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
     const QStringList rawFeaturesList = config.readEntry(KEY_FONT_FEATURES, QStringList());
     for (const QString &feature : rawFeaturesList) {
         const auto parts = feature.split(QStringLiteral("="), Qt::SkipEmptyParts);
@@ -753,7 +752,6 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
             }
         }
     }
-#endif
     setFont(font);
 
     // setSchema will default to right theme
@@ -780,7 +778,6 @@ void KateRendererConfig::writeConfig(KConfigGroup &config)
     // write font, including font features
     const auto font = baseFont();
     config.writeEntry(KEY_FONT, font);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
     const auto tags = font.featureTags();
     QStringList features;
     for (const auto &tag : tags) {
@@ -789,7 +786,6 @@ void KateRendererConfig::writeConfig(KConfigGroup &config)
         features.push_back(QStringLiteral("%1=%2").arg(name, QString::number(value)));
     }
     config.writeEntry(KEY_FONT_FEATURES, features);
-#endif
 
     config.writeEntry(KEY_COLOR_THEME, schema());
 
