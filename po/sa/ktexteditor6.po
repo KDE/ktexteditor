@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-21 00:39+0000\n"
+"POT-Creation-Date: 2025-04-10 00:38+0000\n"
 "PO-Revision-Date: 2024-12-29 22:54+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -415,7 +415,7 @@ msgstr "क्लिपबोर्ड इतिहासे कोऽपि प
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1029
+#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1021
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1184,12 +1184,12 @@ msgstr "दूरे"
 msgid "Follow Line Numbers"
 msgstr "रेखासङ्ख्यानां अनुसरणं कुर्वन्तु"
 
-#: dialogs/katedialogs.cpp:950 dialogs/katedialogs.cpp:955
+#: dialogs/katedialogs.cpp:942 dialogs/katedialogs.cpp:947
 #, kde-format
 msgid "Appearance"
 msgstr "स्वरूपम्‌"
 
-#: dialogs/katedialogs.cpp:990
+#: dialogs/katedialogs.cpp:982
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1200,63 +1200,63 @@ msgstr ""
 "तन्त्रस्य दुर्घटनायाः सन्दर्भे भवतः कार्यं पुनः प्राप्तुं शक्नुवन्ति । स्वैप् सञ्चिकाः अक्षमीकरणेन "
 "प्रणालीदुर्घटने दत्तांशहानिः भवितुम् अर्हति ।"
 
-#: dialogs/katedialogs.cpp:1030
+#: dialogs/katedialogs.cpp:1022
 #, kde-format
 msgid "Advanced"
 msgstr "उन्नतं"
 
-#: dialogs/katedialogs.cpp:1095
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr "भवता बैकअप प्रत्ययः उपसर्गः वा न दत्तः । पूर्वनिर्धारितप्रत्ययस्य उपयोगः : '~'."
 
-#: dialogs/katedialogs.cpp:1095
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "न बैकअप प्रत्ययः उपसर्गः वा"
 
-#: dialogs/katedialogs.cpp:1226
+#: dialogs/katedialogs.cpp:1218
 #, kde-format
 msgid "Open/Save"
 msgstr "उद्घाटयतु/रक्षतु"
 
-#: dialogs/katedialogs.cpp:1231
+#: dialogs/katedialogs.cpp:1223
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "सञ्चिका उद्घाटनम् & रक्षणम्"
 
-#: dialogs/katedialogs.cpp:1254
+#: dialogs/katedialogs.cpp:1246
 #, kde-format
 msgid "&Line:"
 msgstr "&पंक्ति:"
 
-#: dialogs/katedialogs.cpp:1255
+#: dialogs/katedialogs.cpp:1247
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "क्लिप्बोर्ड् तः रेखासङ्ख्यां प्रति गच्छन्तु"
 
-#: dialogs/katedialogs.cpp:1266
+#: dialogs/katedialogs.cpp:1258
 #, kde-format
 msgid "Go to"
 msgstr "गच्छतु"
 
-#: dialogs/katedialogs.cpp:1346
+#: dialogs/katedialogs.cpp:1338
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "क्लिप्बोर्ड् मध्ये वैधपङ्क्तिसङ्ख्या न प्राप्यते"
 
-#: dialogs/katedialogs.cpp:1410
+#: dialogs/katedialogs.cpp:1402
 #, kde-format
 msgid "Dictionary:"
 msgstr "शब्दकोश:"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1454
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Auto Reload सक्षमं कुर्वन्तु"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1265,60 +1265,60 @@ msgstr ""
 "पुनः लोड् करोति तथा च इतः परं यावत् भवन्तः ट्याब् वा विण्डो वा न बन्दं कुर्वन्ति तावत् "
 "डिस्कपरिवर्तनस्य विषये चेतावनी विना स्वयमेव पुनः लोड् करिष्यति ।"
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid "View &Difference"
 msgstr "दृश्य &भेद"
 
-#: dialogs/katedialogs.cpp:1472
+#: dialogs/katedialogs.cpp:1464
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "परिवर्तनस्य एकं diff दर्शयति ।"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "&Reload"
 msgstr "&पुनः भार"
 
-#: dialogs/katedialogs.cpp:1479
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "डिस्कतः सञ्चिकां पुनः लोड् करोति । असरक्षिताः परिवर्तनाः नष्टाः भविष्यन्ति।"
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1475
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&सञ्चिकां बन्दं कुर्वन्तु"
 
-#: dialogs/katedialogs.cpp:1485
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "सञ्चिकां पिधायति, तस्याः सामग्रीं परित्यजति ।"
 
-#: dialogs/katedialogs.cpp:1489
+#: dialogs/katedialogs.cpp:1481
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "&Save As..."
 
-#: dialogs/katedialogs.cpp:1491
+#: dialogs/katedialogs.cpp:1483
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "भवन्तं स्थानं चित्वा पुनः सञ्चिकां रक्षितुं शक्नोति ।"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1496 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1488 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&उपेक्षा"
 
-#: dialogs/katedialogs.cpp:1497
+#: dialogs/katedialogs.cpp:1489
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "डिस्क मध्ये परिवर्तनं विना किमपि क्रियाम् उपेक्षते ।"
 
-#: dialogs/katedialogs.cpp:1563 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1327,18 +1327,18 @@ msgstr ""
 "diff आदेशः विफलः अभवत् । कृपया सुनिश्चितं कुर्वन्तु यत् diff(1) संस्थापितम् अस्ति तथा च "
 "भवतः PATH मध्ये अस्ति ।"
 
-#: dialogs/katedialogs.cpp:1565 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Diff इत्यस्य निर्माणे त्रुटिः"
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "सञ्चिकाः समानाः सन्ति ।"
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff Output इति"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-21 00:39+0000\n"
+"POT-Creation-Date: 2025-04-10 00:38+0000\n"
 "PO-Revision-Date: 2025-03-03 20:07+0700\n"
 "Last-Translator: Pongsakorn S. <kde@xerusion.me>\n"
 "Language-Team: Thai\n"
@@ -448,7 +448,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1029
+#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1021
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1241,12 +1241,12 @@ msgstr "ปิด"
 msgid "Follow Line Numbers"
 msgstr "ตามหมายเลขบรรทัด"
 
-#: dialogs/katedialogs.cpp:950 dialogs/katedialogs.cpp:955
+#: dialogs/katedialogs.cpp:942 dialogs/katedialogs.cpp:947
 #, kde-format
 msgid "Appearance"
 msgstr "รูปลักษณ์"
 
-#: dialogs/katedialogs.cpp:990
+#: dialogs/katedialogs.cpp:982
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1254,132 +1254,132 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1030
+#: dialogs/katedialogs.cpp:1022
 #, kde-format
 msgid "Advanced"
 msgstr "ขั้นสูง"
 
-#: dialogs/katedialogs.cpp:1095
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
 "คุณยังไม่ได้กำหนดส่วนนำหน้าและต่อท้ายแฟ้มสำรองข้อมูล ดังนั้นจะใช้ค่าต่อท้ายปริยาย: '~' แทน"
 
-#: dialogs/katedialogs.cpp:1095
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "ยังไม่ได้กำหนดส่วนนำหน้าและต่อท้ายแฟ้มสำรองข้อมูล"
 
-#: dialogs/katedialogs.cpp:1226
+#: dialogs/katedialogs.cpp:1218
 #, kde-format
 msgid "Open/Save"
 msgstr "เปิด/บันทึก"
 
-#: dialogs/katedialogs.cpp:1231
+#: dialogs/katedialogs.cpp:1223
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "การเปิดและการบันทึกแฟ้ม"
 
-#: dialogs/katedialogs.cpp:1254
+#: dialogs/katedialogs.cpp:1246
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1255
+#: dialogs/katedialogs.cpp:1247
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1266
+#: dialogs/katedialogs.cpp:1258
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1346
+#: dialogs/katedialogs.cpp:1338
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1410
+#: dialogs/katedialogs.cpp:1402
 #, kde-format
 msgid "Dictionary:"
 msgstr "พจนานุกรม:"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1454
 #, fuzzy, kde-format
 #| msgid "Auto Completion"
 msgid "Enable Auto Reload"
 msgstr "การเติมให้สมบูรณ์"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1462
 #, fuzzy, kde-format
 #| msgid "&View Difference"
 msgid "View &Difference"
 msgstr "แส&ดงความแตกต่าง"
 
-#: dialogs/katedialogs.cpp:1472
+#: dialogs/katedialogs.cpp:1464
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1469
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "เรีย&กใหม่"
 
-#: dialogs/katedialogs.cpp:1479
+#: dialogs/katedialogs.cpp:1471
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "โหลดแฟ้มขึ้นมาจากดิสก์ใหม่ หากคุณยังไม่ได้บันทึกการเปลี่ยนแปลง จะสูญเสียการเปลี่ยนแปลงนั้น"
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1475
 #, fuzzy, kde-format
 #| msgid "&Reload File"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "เ&รียกแฟ้มใหม่อีกครั้ง"
 
-#: dialogs/katedialogs.cpp:1485
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1489
+#: dialogs/katedialogs.cpp:1481
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "&บันทึกแฟ้มเป็น..."
 
-#: dialogs/katedialogs.cpp:1491
+#: dialogs/katedialogs.cpp:1483
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "ช่วยให้คุณเลือกตำแหน่งและบันทึกแฟ้มใหม่อีกครั้ง"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1496 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1488 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "ไม่&สนใจ"
 
-#: dialogs/katedialogs.cpp:1497
+#: dialogs/katedialogs.cpp:1489
 #, fuzzy, kde-format
 #| msgid "Ignore the changes. You will not be prompted again."
 msgid "Ignores the changes on disk without any action."
 msgstr "ไม่สนใจความเปลี่ยนแปลง และคุณจะไม่ถูกถามอีก"
 
-#: dialogs/katedialogs.cpp:1563 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1388,18 +1388,18 @@ msgstr ""
 "คำสั่ง diff ทำงานล้มเหลว โปรดตรวจสอบให้แน่ใจว่า คำสั่ง diff(1) "
 "ได้ถูกติดตั้งและอยู่ในพาธการค้นหาของคุณแล้ว"
 
-#: dialogs/katedialogs.cpp:1565 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "การหาข้อแตกต่างผิดพลาด"
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "คือแฟ้มเดียวกัน"
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "ผลส่งออกของข้อแตกต่าง"

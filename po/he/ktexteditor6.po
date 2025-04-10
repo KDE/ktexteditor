@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-21 00:39+0000\n"
+"POT-Creation-Date: 2025-04-10 00:38+0000\n"
 "PO-Revision-Date: 2025-02-24 08:05+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -421,7 +421,7 @@ msgstr "אין רשומות בהיסטוריית לוח הגזירים"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1029
+#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1021
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1185,12 +1185,12 @@ msgstr "כבוי"
 msgid "Follow Line Numbers"
 msgstr "מעקב אחר מספרי שורות"
 
-#: dialogs/katedialogs.cpp:950 dialogs/katedialogs.cpp:955
+#: dialogs/katedialogs.cpp:942 dialogs/katedialogs.cpp:947
 #, kde-format
 msgid "Appearance"
 msgstr "מראה"
 
-#: dialogs/katedialogs.cpp:990
+#: dialogs/katedialogs.cpp:982
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1201,64 +1201,64 @@ msgstr ""
 "העבודה שלך במקרה של קריסת המערכת. השבתת קובצי ההחלפה יכולה לגרום לאובדן "
 "נתונים במקרה של קריסת מערכת."
 
-#: dialogs/katedialogs.cpp:1030
+#: dialogs/katedialogs.cpp:1022
 #, kde-format
 msgid "Advanced"
 msgstr "מתקדם"
 
-#: dialogs/katedialogs.cpp:1095
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
 "לא ציינת קידומת או סיומת לקובצי גיבוי. ייעשה שימוש בסיומת ברירת המחדל: ‚~’"
 
-#: dialogs/katedialogs.cpp:1095
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "אין קידומת או סיומת לגיבויים"
 
-#: dialogs/katedialogs.cpp:1226
+#: dialogs/katedialogs.cpp:1218
 #, kde-format
 msgid "Open/Save"
 msgstr "פתיחה/שמירה"
 
-#: dialogs/katedialogs.cpp:1231
+#: dialogs/katedialogs.cpp:1223
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "פתיחה ושמירה של קבצים"
 
-#: dialogs/katedialogs.cpp:1254
+#: dialogs/katedialogs.cpp:1246
 #, kde-format
 msgid "&Line:"
 msgstr "&שורה:"
 
-#: dialogs/katedialogs.cpp:1255
+#: dialogs/katedialogs.cpp:1247
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "מעבר למספר השורה מלוח הגזירים"
 
-#: dialogs/katedialogs.cpp:1266
+#: dialogs/katedialogs.cpp:1258
 #, kde-format
 msgid "Go to"
 msgstr "מעבר אל"
 
-#: dialogs/katedialogs.cpp:1346
+#: dialogs/katedialogs.cpp:1338
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "לא נמצא מספר שורה תקף בלוח הגזירים"
 
-#: dialogs/katedialogs.cpp:1410
+#: dialogs/katedialogs.cpp:1402
 #, kde-format
 msgid "Dictionary:"
 msgstr "מילון:"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1454
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "הפעלת ריענון אוטומטי"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1267,78 +1267,78 @@ msgstr ""
 "טוען מחדש וטוען אוטומטית בלי אזהרה על שינויים בכונן מעתה ועד סגירת הלשונית "
 "או החלון."
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid "View &Difference"
 msgstr "הצגת ה&בדלים"
 
-#: dialogs/katedialogs.cpp:1472
+#: dialogs/katedialogs.cpp:1464
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "הצגת הבדל של השינויים."
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "&Reload"
 msgstr "&ריענון"
 
-#: dialogs/katedialogs.cpp:1479
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "מרענן את הקובץ מהכונן. שינויים שלא נשמרו יאבדו."
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1475
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&סגירת קובץ"
 
-#: dialogs/katedialogs.cpp:1485
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "סגירת הקובץ תוך התעלמות מתוכנו."
 
-#: dialogs/katedialogs.cpp:1489
+#: dialogs/katedialogs.cpp:1481
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "&שמירה בשם…"
 
-#: dialogs/katedialogs.cpp:1491
+#: dialogs/katedialogs.cpp:1483
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "מאפשר לך לבחור מקום ולשמור את הקובץ בשנית."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1496 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1488 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "ה&תעלמות"
 
-#: dialogs/katedialogs.cpp:1497
+#: dialogs/katedialogs.cpp:1489
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "התעלמות מהשינויים בכונן בלי אף פעולה בנדון."
 
-#: dialogs/katedialogs.cpp:1563 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
 "your PATH."
 msgstr "הפקודה diff נכשלה. נא לוודא ש־diff(1)‎ מותקנת ונמצאת בנתיב (PATH) שלך."
 
-#: dialogs/katedialogs.cpp:1565 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "שגיאה ביצירת דוח ההבדלים"
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "הקבצים זהים."
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "פלט הבדלים"

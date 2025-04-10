@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-21 00:39+0000\n"
+"POT-Creation-Date: 2025-04-10 00:38+0000\n"
 "PO-Revision-Date: 2025-02-23 08:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -425,7 +425,7 @@ msgstr "No hi ha cap entrada a l'historial del porta-retalls"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1029
+#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1021
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1220,12 +1220,12 @@ msgstr "Inactiu"
 msgid "Follow Line Numbers"
 msgstr "Segueix els números de línia"
 
-#: dialogs/katedialogs.cpp:950 dialogs/katedialogs.cpp:955
+#: dialogs/katedialogs.cpp:942 dialogs/katedialogs.cpp:947
 #, kde-format
 msgid "Appearance"
 msgstr "Aparença"
 
-#: dialogs/katedialogs.cpp:990
+#: dialogs/katedialogs.cpp:982
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1238,12 +1238,12 @@ msgstr ""
 "fitxers d'intercanvi pot provocar la pèrdua de dades en cas d'una fallada "
 "del sistema."
 
-#: dialogs/katedialogs.cpp:1030
+#: dialogs/katedialogs.cpp:1022
 #, kde-format
 msgid "Advanced"
 msgstr "Avançat"
 
-#: dialogs/katedialogs.cpp:1095
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1251,52 +1251,52 @@ msgstr ""
 "No heu proporcionat cap sufix o prefix de les còpies de seguretat. Per "
 "omissió s'usarà: «~»"
 
-#: dialogs/katedialogs.cpp:1095
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Sense sufix o prefix de la còpia de seguretat"
 
-#: dialogs/katedialogs.cpp:1226
+#: dialogs/katedialogs.cpp:1218
 #, kde-format
 msgid "Open/Save"
 msgstr "Obre i desa"
 
-#: dialogs/katedialogs.cpp:1231
+#: dialogs/katedialogs.cpp:1223
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Obrir i desar fitxers"
 
-#: dialogs/katedialogs.cpp:1254
+#: dialogs/katedialogs.cpp:1246
 #, kde-format
 msgid "&Line:"
 msgstr "&Línia:"
 
-#: dialogs/katedialogs.cpp:1255
+#: dialogs/katedialogs.cpp:1247
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Va al número de línia del porta-retalls"
 
-#: dialogs/katedialogs.cpp:1266
+#: dialogs/katedialogs.cpp:1258
 #, kde-format
 msgid "Go to"
 msgstr "Ves a"
 
-#: dialogs/katedialogs.cpp:1346
+#: dialogs/katedialogs.cpp:1338
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "No s'ha trobat cap número vàlid de línia al porta-retalls"
 
-#: dialogs/katedialogs.cpp:1410
+#: dialogs/katedialogs.cpp:1402
 #, kde-format
 msgid "Dictionary:"
 msgstr "Diccionari:"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1454
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Activa la recàrrega automàtica"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1306,60 +1306,60 @@ msgstr ""
 "sobre els canvis del disc des d'ara fins que tanqueu la pestanya o la "
 "finestra."
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid "View &Difference"
 msgstr "Visualitza la &diferència"
 
-#: dialogs/katedialogs.cpp:1472
+#: dialogs/katedialogs.cpp:1464
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Mostra un «diff» dels canvis."
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "&Reload"
 msgstr "&Recarrega"
 
-#: dialogs/katedialogs.cpp:1479
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Recarrega el fitxer des del disc. Els canvis no desats es perdran."
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1475
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "Tan&ca el fitxer"
 
-#: dialogs/katedialogs.cpp:1485
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Tanca el fitxer i descarta el seu contingut."
 
-#: dialogs/katedialogs.cpp:1489
+#: dialogs/katedialogs.cpp:1481
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "De&sa com a…"
 
-#: dialogs/katedialogs.cpp:1491
+#: dialogs/katedialogs.cpp:1483
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Us permet seleccionar una localització i tornar a desar el fitxer."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1496 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1488 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Ignora"
 
-#: dialogs/katedialogs.cpp:1497
+#: dialogs/katedialogs.cpp:1489
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignora els canvis en el disc sense cap acció."
 
-#: dialogs/katedialogs.cpp:1563 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1368,18 +1368,18 @@ msgstr ""
 "Ha fallat l'ordre «diff». Assegureu-vos que el diff(1) està instal·lat i a "
 "la PATH."
 
-#: dialogs/katedialogs.cpp:1565 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Hi ha hagut un error en crear el «diff»"
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Els fitxers són idèntics."
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Sortida del «diff»"

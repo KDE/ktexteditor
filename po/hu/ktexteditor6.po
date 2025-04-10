@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-21 00:39+0000\n"
+"POT-Creation-Date: 2025-04-10 00:38+0000\n"
 "PO-Revision-Date: 2025-01-30 14:45+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -418,7 +418,7 @@ msgstr "Nincsenek bejegyzések a vágólapnaplóban"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1029
+#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1021
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1203,12 +1203,12 @@ msgstr "Ki"
 msgid "Follow Line Numbers"
 msgstr "a sorszámok után"
 
-#: dialogs/katedialogs.cpp:950 dialogs/katedialogs.cpp:955
+#: dialogs/katedialogs.cpp:942 dialogs/katedialogs.cpp:947
 #, kde-format
 msgid "Appearance"
 msgstr "Megjelenés"
 
-#: dialogs/katedialogs.cpp:990
+#: dialogs/katedialogs.cpp:982
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1220,12 +1220,12 @@ msgstr ""
 "visszaállítását rendszerösszeomlás esetén. Az ideiglenes fájlok kikapcsolása "
 "adatvesztést okozhat."
 
-#: dialogs/katedialogs.cpp:1030
+#: dialogs/katedialogs.cpp:1022
 #, kde-format
 msgid "Advanced"
 msgstr "Speciális"
 
-#: dialogs/katedialogs.cpp:1095
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1233,52 +1233,52 @@ msgstr ""
 "Nincs megadva előtag vagy utótag a biztonsági mentéshez, az alapértelmezés "
 "(„~”) lesz érvényes"
 
-#: dialogs/katedialogs.cpp:1095
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Nincs előtag vagy utótag a biztonsági mentéshez"
 
-#: dialogs/katedialogs.cpp:1226
+#: dialogs/katedialogs.cpp:1218
 #, kde-format
 msgid "Open/Save"
 msgstr "Megnyitás/mentés"
 
-#: dialogs/katedialogs.cpp:1231
+#: dialogs/katedialogs.cpp:1223
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Fájlok megnyitása, mentése"
 
-#: dialogs/katedialogs.cpp:1254
+#: dialogs/katedialogs.cpp:1246
 #, kde-format
 msgid "&Line:"
 msgstr "&Sor:"
 
-#: dialogs/katedialogs.cpp:1255
+#: dialogs/katedialogs.cpp:1247
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Ugrás a vágólapon található sorszámra"
 
-#: dialogs/katedialogs.cpp:1266
+#: dialogs/katedialogs.cpp:1258
 #, kde-format
 msgid "Go to"
 msgstr "Ugrás"
 
-#: dialogs/katedialogs.cpp:1346
+#: dialogs/katedialogs.cpp:1338
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "Nem található érvényes sorszám a vágólapon"
 
-#: dialogs/katedialogs.cpp:1410
+#: dialogs/katedialogs.cpp:1402
 #, kde-format
 msgid "Dictionary:"
 msgstr "Szótár:"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1454
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Automatikus újratöltés bekapcsolása"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1287,60 +1287,60 @@ msgstr ""
 "Újratölt, és automatikusan újratölt a lemezváltozásokról figyelmezetés "
 "nélkül mostantól a lap vagy az ablak bezárásáig."
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid "View &Difference"
 msgstr "Az &eltérések megtekintése"
 
-#: dialogs/katedialogs.cpp:1472
+#: dialogs/katedialogs.cpp:1464
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Megjeleníti a változtatások különbségeit."
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "&Reload"
 msgstr "Újr&atöltés"
 
-#: dialogs/katedialogs.cpp:1479
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "A fájl újratöltése a lemezről. A nem mentett módosítások elvesznek."
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1475
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "Fájl &bezárása"
 
-#: dialogs/katedialogs.cpp:1485
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "A fájl bezárása, a tartalmának eldobásával."
 
-#: dialogs/katedialogs.cpp:1489
+#: dialogs/katedialogs.cpp:1481
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "Men&tés másként…"
 
-#: dialogs/katedialogs.cpp:1491
+#: dialogs/katedialogs.cpp:1483
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Lehetővé teszi a fájl elmentését más helyre."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1496 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1488 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Figyelmen kívül hagyás"
 
-#: dialogs/katedialogs.cpp:1497
+#: dialogs/katedialogs.cpp:1489
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Mellőzi a lemezen történt változtatásokat."
 
-#: dialogs/katedialogs.cpp:1563 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1349,18 +1349,18 @@ msgstr ""
 "A diff parancs végrehajtása nem sikerült. Ellenőrizze, hogy a diff(1) "
 "parancs telepítve van-e és szerepel-e az elérési útban."
 
-#: dialogs/katedialogs.cpp:1565 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Hiba történt a diff-fájl létrehozásakor"
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "A fájlok teljesen egyformák."
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff kimenet"
