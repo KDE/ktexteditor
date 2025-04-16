@@ -181,7 +181,14 @@ bool KatePrinter::printPreview(KTextEditor::DocumentPrivate *doc, KTextEditor::V
     QPrinter printer;
     KatePrinterPrivate p(doc, view);
     p.setColorScheme(QStringLiteral("Printing"));
-    QPrintPreviewDialog preview(&printer, view ? view : QApplication::activeWindow());
+
+    // ensure proper parent & sizing
+    auto dialogParent = view ? view : QApplication::activeWindow();
+    QPrintPreviewDialog preview(&printer, dialogParent);
+    if (dialogParent && dialogParent->window()) {
+        preview.resize(dialogParent->window()->size() * 0.75);
+    }
+
     QObject::connect(&preview, &QPrintPreviewDialog::paintRequested, &p, &KatePrinterPrivate::paint);
     return preview.exec();
 }
