@@ -5162,12 +5162,12 @@ void KTextEditor::ViewPrivate::cycleInputMode()
 // BEGIN KTextEditor::PrintInterface stuff
 bool KTextEditor::ViewPrivate::print()
 {
-    return KatePrinter::print(this);
+    return KatePrinter::print(m_doc, this);
 }
 
 void KTextEditor::ViewPrivate::printPreview()
 {
-    KatePrinter::printPreview(this);
+    KatePrinter::printPreview(m_doc, this);
 }
 
 // END

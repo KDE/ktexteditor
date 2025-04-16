@@ -33,7 +33,7 @@ using namespace KatePrinter;
 class KatePrinterPrivate : public QObject
 {
 public:
-    KatePrinterPrivate(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view = nullptr);
+    KatePrinterPrivate(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view);
 
     bool print(QPrinter *printer);
     void setColorScheme(const QString &scheme);
@@ -175,36 +175,19 @@ void KatePrinterPrivate::readSettings(QPrinter *printer)
 
 // BEGIN KatePrinter
 
-bool KatePrinter::print(KTextEditor::ViewPrivate *view)
+bool KatePrinter::print(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
 {
     QPrinter printer;
-    KatePrinterPrivate p(view->doc(), view);
+    KatePrinterPrivate p(doc, view);
     return p.print(&printer);
 }
 
-bool KatePrinter::printPreview(KTextEditor::ViewPrivate *view)
+bool KatePrinter::printPreview(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
 {
     QPrinter printer;
-    KatePrinterPrivate p(view->doc(), view);
+    KatePrinterPrivate p(doc, view);
     p.setColorScheme(QStringLiteral("Printing"));
     QPrintPreviewDialog preview(&printer, view);
-    QObject::connect(&preview, &QPrintPreviewDialog::paintRequested, &p, &KatePrinterPrivate::paint);
-    return preview.exec();
-}
-
-bool KatePrinter::print(KTextEditor::DocumentPrivate *doc)
-{
-    QPrinter printer;
-    KatePrinterPrivate p(doc);
-    return p.print(&printer);
-}
-
-bool KatePrinter::printPreview(KTextEditor::DocumentPrivate *doc)
-{
-    QPrinter printer;
-    KatePrinterPrivate p(doc);
-    p.setColorScheme(QStringLiteral("Printing"));
-    QPrintPreviewDialog preview(&printer);
     QObject::connect(&preview, &QPrintPreviewDialog::paintRequested, &p, &KatePrinterPrivate::paint);
     return preview.exec();
 }

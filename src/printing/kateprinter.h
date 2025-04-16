@@ -19,30 +19,16 @@ class ViewPrivate;
 namespace KatePrinter
 {
 /**
- * Launches print dialog for specified @view
+ * Launches print dialog for specified @doc and optional @view
  * @returns true if document was successfully printed
  */
-bool print(KTextEditor::ViewPrivate *view);
+bool print(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view = nullptr);
 
 /**
- * Launches print preview dialog for specified @view
+ * Launches print preview dialog for specified @doc and optional @view
  * @returns true if document was printed
  */
-bool printPreview(KTextEditor::ViewPrivate *view);
-
-/**
- * Overloaded print function for document
- * Useful when there is no view for the document. Consequently this function
- * cannot print only selected portion of document.
- */
-bool print(KTextEditor::DocumentPrivate *doc);
-
-/**
- * Overloaded print function for document
- * Useful when there is no view for the document. Consequently this function
- * cannot print only selected portion of document.
- */
-bool printPreview(KTextEditor::DocumentPrivate *doc);
+bool printPreview(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view = nullptr);
 }
 
 #endif
