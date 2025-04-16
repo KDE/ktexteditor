@@ -35,7 +35,7 @@ class KatePrinterPrivate : public QObject
 public:
     KatePrinterPrivate(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view);
 
-    bool print(QPrinter *printer);
+    bool print(QPrinter *printer, QWidget *parentWidget);
     void setColorScheme(const QString &scheme);
 
 public:
@@ -57,7 +57,7 @@ KatePrinterPrivate::KatePrinterPrivate(KTextEditor::DocumentPrivate *doc, KTextE
 {
 }
 
-bool KatePrinterPrivate::print(QPrinter *printer)
+bool KatePrinterPrivate::print(QPrinter *printer, QWidget *parentWidget)
 {
     // docname is now always there, including the right Untitled name
     printer->setDocName(m_doc->documentName());
@@ -70,12 +70,6 @@ bool KatePrinterPrivate::print(QPrinter *printer)
     tabs << kpts;
     tabs << kphf;
     tabs << kpl;
-
-    QWidget *parentWidget = m_doc->widget();
-
-    if (!parentWidget) {
-        parentWidget = QApplication::activeWindow();
-    }
 
     readSettings(printer);
 
@@ -179,7 +173,7 @@ bool KatePrinter::print(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPriv
 {
     QPrinter printer;
     KatePrinterPrivate p(doc, view);
-    return p.print(&printer);
+    return p.print(&printer, view ? view : QApplication::activeWindow());
 }
 
 bool KatePrinter::printPreview(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
@@ -187,7 +181,7 @@ bool KatePrinter::printPreview(KTextEditor::DocumentPrivate *doc, KTextEditor::V
     QPrinter printer;
     KatePrinterPrivate p(doc, view);
     p.setColorScheme(QStringLiteral("Printing"));
-    QPrintPreviewDialog preview(&printer, view);
+    QPrintPreviewDialog preview(&printer, view ? view : QApplication::activeWindow());
     QObject::connect(&preview, &QPrintPreviewDialog::paintRequested, &p, &KatePrinterPrivate::paint);
     return preview.exec();
 }
