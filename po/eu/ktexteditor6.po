@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-10 00:38+0000\n"
-"PO-Revision-Date: 2025-01-31 00:17+0100\n"
+"PO-Revision-Date: 2025-05-01 16:08+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 25.04.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -2905,7 +2905,7 @@ msgstr "Bildu etiketarekin"
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
-msgstr "Eraman kurtsorea bat datorren etiketara"
+msgstr "Mugitu kurtsorea bat datorren etiketara"
 
 #: script/data/commands/emmet.js:22
 #, kde-format
@@ -3114,7 +3114,7 @@ msgstr "Gehitu 0,1 kurtsorearen azpiko zenbakiari"
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
-msgstr "Eraman kurtsorea bat datorren aurreko koskara"
+msgstr "Mugitu kurtsorea bat datorren aurreko koskara"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
@@ -3130,39 +3130,39 @@ msgstr "Nabigazioa"
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
-msgstr "Eraman kurtsorea bat datorren hurrengo koskara"
+msgstr "Mugitu kurtsorea bat datorren hurrengo koskara"
 
 #: script/data/commands/jumpMatchingIndent.js:19
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Eraman kurtsorea hurrengo lerro hutsera"
+msgstr "Mugitu kurtsorea hurrengo lerro hutsera"
 
 #: script/data/commands/jumpMatchingIndent.js:24
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Eraman kurtsorea aurreko lerro hutsera"
+msgstr "Mugitu kurtsorea aurreko lerro hutsera"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
 msgid "Move cursor to previous matching indent"
-msgstr "Eraman kurtsorea bat datorren aurreko koskara"
+msgstr "Mugitu kurtsorea bat datorren aurreko koskara"
 
 #: script/data/commands/jumpMatchingIndent.js:83
 #, kde-format
 msgid "Move cursor to next matching indent"
-msgstr "Eraman kurtsorea bat datorren hurrengo koskara"
+msgstr "Mugitu kurtsorea bat datorren hurrengo koskara"
 
 #: script/data/commands/jumpMatchingIndent.js:85
 #, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Eraman kurtsorea hurrengo lerro hutsera"
+msgstr "Mugitu kurtsorea hurrengo lerro hutsera"
 
 #: script/data/commands/jumpMatchingIndent.js:87
 #, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Eraman kurtsorea aurreko lerro hutsera"
+msgstr "Mugitu kurtsorea aurreko lerro hutsera"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
@@ -3215,13 +3215,13 @@ msgstr "Elkartu lerroak"
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
-msgstr "Eraman lerroak behera"
+msgstr "Mugitu lerroak behera"
 
 #: script/data/commands/utils.js:30
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
-msgstr "Eraman lerroak gora"
+msgstr "Mugitu lerroak gora"
 
 #: script/data/commands/utils.js:35
 #, kde-format
@@ -3267,12 +3267,12 @@ msgstr "Ordenatu hautatutako testua edo dokumentu osoa."
 #: script/data/commands/utils.js:412
 #, kde-format
 msgid "Move selected lines down."
-msgstr "Eraman hautatutako lerroak behera"
+msgstr "Mugitu hautatutako lerroak behera"
 
 #: script/data/commands/utils.js:414
 #, kde-format
 msgid "Move selected lines up."
-msgstr "Eraman hautatutako lerroak gora"
+msgstr "Mugitu hautatutako lerroak gora"
 
 #: script/data/commands/utils.js:416
 #, kde-format
@@ -6661,7 +6661,7 @@ msgstr "Zooma: %%1"
 #: view/kateview.cpp:457
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
-msgstr "Ebaki hautatutako testua eta eraman arbelera"
+msgstr "Ebaki hautatutako testua eta Mugitu arbelera"
 
 #: view/kateview.cpp:462
 #, kde-format
@@ -7557,6 +7557,8 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Kopiatu hautapena HTML gisa, uneko sintaxi nabarmentze eta kolore-antolaera "
+"ezarpenak erabiliz."
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -7576,7 +7578,7 @@ msgstr ""
 #: view/kateview.cpp:1053
 #, kde-format
 msgid "Move Word Left"
-msgstr "Eraman hitza ezkerrera"
+msgstr "Mugitu hitza ezkerrera"
 
 #: view/kateview.cpp:1059
 #, kde-format
@@ -7586,12 +7588,12 @@ msgstr "Hautatu karaktere bat ezkerrera"
 #: view/kateview.cpp:1065
 #, kde-format
 msgid "Select Word Left"
-msgstr "Hautatu hitza ezkerrera"
+msgstr "Hautatu ezkerreko hitza"
 
 #: view/kateview.cpp:1075
 #, kde-format
 msgid "Move Word Right"
-msgstr "Eraman hitza eskuinera"
+msgstr "Mugitu hitza eskuinera"
 
 #: view/kateview.cpp:1081
 #, kde-format
@@ -7601,7 +7603,7 @@ msgstr "Hautatu karakterea eskuinera"
 #: view/kateview.cpp:1087
 #, kde-format
 msgid "Select Word Right"
-msgstr "Hautatu hitza eskuinera"
+msgstr "Hautatu eskuineko hitza"
 
 #: view/kateview.cpp:1097
 #, kde-format
@@ -7620,12 +7622,12 @@ msgstr ""
 #: view/kateview.cpp:1103
 #, kde-format
 msgid "Move to Beginning of Line"
-msgstr "Eraman lerroaren hasierara"
+msgstr "Mugitu lerroaren hasierara"
 
 #: view/kateview.cpp:1109
 #, kde-format
 msgid "Move to Beginning of Document"
-msgstr "Eraman dokumentuaren hasierara"
+msgstr "Mugitu dokumentuaren hasierara"
 
 #: view/kateview.cpp:1115
 #, kde-format
@@ -7640,12 +7642,12 @@ msgstr "Hautatu dokumentuaren hasieraraino"
 #: view/kateview.cpp:1135
 #, kde-format
 msgid "Move to End of Line"
-msgstr "Eraman lerroaren amaierara"
+msgstr "Mugitu lerroaren amaierara"
 
 #: view/kateview.cpp:1141
 #, kde-format
 msgid "Move to End of Document"
-msgstr "Eraman dokumentuaren bukaerara"
+msgstr "Mugitu dokumentuaren bukaerara"
 
 #: view/kateview.cpp:1147
 #, kde-format
@@ -7670,22 +7672,22 @@ msgstr "Korritu lerro bat gora"
 #: view/kateview.cpp:1182
 #, kde-format
 msgid "Move to Next Line"
-msgstr "Eraman hurrengo lerrora"
+msgstr "Mugitu hurrengo lerrora"
 
 #: view/kateview.cpp:1188
 #, kde-format
 msgid "Move to Previous Line"
-msgstr "Eraman aurreko lerrora"
+msgstr "Mugitu aurreko lerrora"
 
 #: view/kateview.cpp:1194
 #, kde-format
 msgid "Move Cursor Right"
-msgstr "Eraman kurtsorea eskuinera"
+msgstr "Mugitu kurtsorea eskuinera"
 
 #: view/kateview.cpp:1200
 #, kde-format
 msgid "Move Cursor Left"
-msgstr "Eraman kurtsorea ezkerrera"
+msgstr "Mugitu kurtsorea ezkerrera"
 
 #: view/kateview.cpp:1206
 #, kde-format
@@ -7710,7 +7712,7 @@ msgstr "Hautatu orrialde bat gora"
 #: view/kateview.cpp:1233
 #, kde-format
 msgid "Move to Top of View"
-msgstr "Eraman ikuspegiaren gaineraino"
+msgstr "Mugitu ikuspegiaren gaineraino"
 
 #: view/kateview.cpp:1239
 #, kde-format
@@ -7730,7 +7732,7 @@ msgstr "Hautatu orrialde bat behera"
 #: view/kateview.cpp:1257
 #, kde-format
 msgid "Move to Bottom of View"
-msgstr "Eraman ikuspegiaren behera"
+msgstr "Mugitu ikuspegiaren behera"
 
 #: view/kateview.cpp:1263
 #, kde-format
@@ -7748,28 +7750,24 @@ msgid "Select to Matching Bracket"
 msgstr "Hautatu bat datorkion parentesiraino"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Eraman hitza eskuinera"
+msgstr "Mugitu azpi-hitza eskuinera"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Hautatu hitza eskuinera"
+msgstr "Hautatu eskuineko azpi-hitza"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Eraman hitza ezkerrera"
+msgstr "Mugitu azpi-hitza ezkerrera"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Hautatu hitza ezkerrera"
+msgstr "Hautatu ezkerreko azpi-hitza"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7887,16 +7885,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Erabili hautatutako testuari koska kentzeko."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Ezabatu ezkerreko hitza"
+msgstr "Ezabatu ezkerreko azpi-hitza"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Ezabatu eskuineko hitza"
+msgstr "Ezabatu eskuineko azpi-hitza"
 
 #: view/kateview.cpp:1441
 #, kde-format
