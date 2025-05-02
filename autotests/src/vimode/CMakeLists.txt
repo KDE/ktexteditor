@@ -20,6 +20,7 @@ macro(vimode_unit_test)
         KF6::SyntaxHighlighting
         KF6::Codecs
         KF6::Completion
+        KF6::ColorScheme
         Qt6::Qml
         Qt6::Test)
     ecm_mark_as_test("vimode_${ARGV0}")
