@@ -14,7 +14,8 @@ depends = \
     qtcore \
     qtwidgets \
     kconfigcore \
-    kxmlgui
+    kxmlgui \
+    kparts
 
 qhp.projects = KTextEditor
 
