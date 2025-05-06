@@ -418,8 +418,7 @@ void ScreenshotDialog::onSaveClicked()
     }
 
     QImageWriter writer(name);
-    writer.write(m_base->grabPixmap().toImage());
-    if (!writer.errorString().isEmpty()) {
+    if (!writer.write(m_base->grabPixmap().toImage())) {
         QMessageBox::warning(this, i18nc("@title:window", "Screenshot saving failed"), i18n("Screenshot saving failed: %1", writer.errorString()));
     }
 }
