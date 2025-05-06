@@ -289,6 +289,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
         const auto nl = QLatin1Char('\n');
         const auto rel_lineno = left.count(nl);
         const auto start = m_wholeTemplateRange->start().toCursor();
+
         return Cursor(start.line(), rel_lineno == 0 ? start.column() : 0) + Cursor(rel_lineno, offset - left.lastIndexOf(nl) - 1);
     };
 
@@ -301,8 +302,11 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     // list of escape backslashes to remove after parsing
     QList<KTextEditor::Cursor> stripBackslashes;
     auto fieldMatch = field.globalMatch(templateText);
+
+    // process fields
     while (fieldMatch.hasNext()) {
         const auto match = fieldMatch.next();
+
         if (match.captured(0).startsWith(QLatin1Char('\\'))) {
             // $ is escaped, not a field; mark the backslash for removal
             // prepend it to the list so the characters are removed starting from the
@@ -310,13 +314,16 @@ void KateTemplateHandler::parseFields(const QString &templateText)
             stripBackslashes.prepend(startOfMatch(match));
             continue;
         }
+
         // a template field was found, instantiate a field object and populate it
         auto defaultMatch = defaultField.match(match.captured(0));
         const QString contents = match.captured(1);
+
         TemplateField f;
         f.range.reset(createMovingRangeForMatch(match));
         f.identifier = contents;
         f.kind = TemplateField::Editable;
+
         if (defaultMatch.hasMatch()) {
             // the field has a default value, i.e. ${foo=3}
             f.defaultValue = defaultMatch.captured(1);
@@ -328,6 +335,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
             // field marks the final cursor position
             f.kind = TemplateField::FinalCursorPosition;
         }
+
         for (const auto &other : std::as_const(m_fields)) {
             if (other.kind == TemplateField::Editable && !(f == other) && other.identifier == f.identifier) {
                 // field is a mirror field
@@ -335,6 +343,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
                 break;
             }
         }
+
         m_fields.append(f);
     }
 
