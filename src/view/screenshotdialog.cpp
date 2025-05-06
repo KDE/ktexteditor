@@ -356,7 +356,9 @@ void ScreenshotDialog::renderScreenshot(KateRenderer *r)
     }
 
     width += leftMargin + rightMargin;
-    QPixmap pix(width, height);
+    const auto dpr = devicePixelRatioF();
+    QPixmap pix(width * dpr, height * dpr);
+    pix.setDevicePixelRatio(dpr);
     pix.fill(renderer.view()->rendererConfig()->backgroundColor());
 
     QPainter paint(&pix);
