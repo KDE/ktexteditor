@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-10 00:38+0000\n"
+"POT-Creation-Date: 2025-05-07 00:39+0000\n"
 "PO-Revision-Date: 2025-02-24 07:23+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -8097,13 +8097,13 @@ msgstr "Amosar os números de liña empezando en 1"
 msgid "Show Actual Line Numbers"
 msgstr "Amosar os números de liña reais"
 
-#: view/screenshotdialog.cpp:423
+#: view/screenshotdialog.cpp:424
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr "Non foi posíbel gardar a captura de pantalla"
 
-#: view/screenshotdialog.cpp:423
+#: view/screenshotdialog.cpp:424
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr "Non foi posíbel gardar a captura de pantalla: %1"

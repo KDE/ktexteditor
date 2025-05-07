@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-10 00:38+0000\n"
+"POT-Creation-Date: 2025-05-07 00:39+0000\n"
 "PO-Revision-Date: 2025-04-06 23:42+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -7896,13 +7896,13 @@ msgstr "1부터 줄 번호 표시"
 msgid "Show Actual Line Numbers"
 msgstr "실제 줄 번호 표시"
 
-#: view/screenshotdialog.cpp:423
+#: view/screenshotdialog.cpp:424
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr "스크린샷 저장 실패"
 
-#: view/screenshotdialog.cpp:423
+#: view/screenshotdialog.cpp:424
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr "스크린샷 저장 실패: %1"

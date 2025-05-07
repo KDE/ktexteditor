@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-10 00:38+0000\n"
+"POT-Creation-Date: 2025-05-07 00:39+0000\n"
 "PO-Revision-Date: 2024-01-03 14:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -7980,13 +7980,13 @@ msgstr "ਲਾਈਨ ਨੰਬਰ ਵੇਖੋ(&L)"
 msgid "Show Actual Line Numbers"
 msgstr "ਲਾਈਨ ਨੰਬਰ ਵੇਖੋ(&L)"
 
-#: view/screenshotdialog.cpp:423
+#: view/screenshotdialog.cpp:424
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr ""
 
-#: view/screenshotdialog.cpp:423
+#: view/screenshotdialog.cpp:424
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr ""

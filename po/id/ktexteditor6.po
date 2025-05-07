@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-10 00:38+0000\n"
+"POT-Creation-Date: 2025-05-07 00:39+0000\n"
 "PO-Revision-Date: 2022-08-19 20:36+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -8311,13 +8311,13 @@ msgstr "Tampilkan &Baris Nomor"
 msgid "Show Actual Line Numbers"
 msgstr "Tampilkan &Baris Nomor"
 
-#: view/screenshotdialog.cpp:423
+#: view/screenshotdialog.cpp:424
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr ""
 
-#: view/screenshotdialog.cpp:423
+#: view/screenshotdialog.cpp:424
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr ""

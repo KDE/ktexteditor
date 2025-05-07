@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-10 00:38+0000\n"
+"POT-Creation-Date: 2025-05-07 00:39+0000\n"
 "PO-Revision-Date: 2025-02-23 08:41+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -8047,13 +8047,13 @@ msgstr "&ხაზის ნომრების ჩვენება 1-და
 msgid "Show Actual Line Numbers"
 msgstr "ნამდვილი ხაზის ნომრების ჩვენება"
 
-#: view/screenshotdialog.cpp:423
+#: view/screenshotdialog.cpp:424
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr "ეკრანის ანაბეჭდის შენახვა ჩავარდა"
 
-#: view/screenshotdialog.cpp:423
+#: view/screenshotdialog.cpp:424
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr "ეკრანის ანაბეჭდის შენახვა ჩავარდა: %1"
