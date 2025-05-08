@@ -160,8 +160,16 @@ void TemplateHandlerTest::testAdjacentRanges()
     auto doc = new KTextEditor::DocumentPrivate();
     auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
 
-    view->insertTemplate({0, 0}, QStringLiteral("${foo} ${foo}"));
-    QCOMPARE(doc->text(), QStringLiteral("foo foo"));
+    auto reset = [&view, &doc](const QString &snippet, const QString &expected) {
+        view->selectAll();
+        view->keyDelete();
+        QCOMPARE(doc->text(), QString());
+
+        view->insertTemplate({0, 0}, snippet);
+        QCOMPARE(doc->text(), expected);
+    };
+
+    reset(QStringLiteral("${foo} ${foo}"), QStringLiteral("foo foo"));
     doc->removeText(KTextEditor::Range({0, 3}, {0, 4}));
     QCOMPARE(doc->text(), QStringLiteral("foofoo"));
     doc->insertText({0, 1}, QStringLiteral("x"));
@@ -170,6 +178,40 @@ void TemplateHandlerTest::testAdjacentRanges()
     QCOMPARE(doc->text(), QStringLiteral("fxooyfxooy"));
     doc->removeText(KTextEditor::Range({0, 4}, {0, 5}));
     QCOMPARE(doc->text(), QStringLiteral("fxoofxoo"));
+
+    reset(QStringLiteral("${foo}${bar}${baz} ${foo}/${bar}/${baz}"), QStringLiteral("foobarbaz foo/bar/baz"));
+    doc->insertText({0, 0}, QStringLiteral("x"));
+    QCOMPARE(doc->text(), QStringLiteral("xfoobarbaz xfoo/bar/baz"));
+    doc->insertText({0, 4}, QStringLiteral("x"));
+    QCOMPARE(doc->text(), QStringLiteral("xfooxbarbaz xfoox/bar/baz"));
+    doc->insertText({0, 8}, QStringLiteral("x"));
+    QCOMPARE(doc->text(), QStringLiteral("xfooxbarxbaz xfoox/barx/baz"));
+    doc->insertText({0, 12}, QStringLiteral("x"));
+    QCOMPARE(doc->text(), QStringLiteral("xfooxbarbazx xfoox/barx/bazx"));
+    doc->removeText(KTextEditor::Range({0, 4}, {0, 5}));
+    QCOMPARE(doc->text(), QStringLiteral("xfoobarxbaz xfoo/barx/baz"));
+    doc->insertText({0, 4}, QStringLiteral("y"));
+    QCOMPARE(doc->text(), QStringLiteral("xfooybarxbaz xfooy/barx/baz"));
+    doc->removeText(KTextEditor::Range({0, 8}, {0, 9}));
+    QCOMPARE(doc->text(), QStringLiteral("xfooybarbaz xfooy/bar/baz"));
+    doc->insertText({0, 8}, QStringLiteral("y"));
+    QCOMPARE(doc->text(), QStringLiteral("xfooybarybaz xfooy/bary/baz"));
+
+    reset(QStringLiteral("${foo} ${bar} / ${foo} ${bar}"), QStringLiteral("foo bar / foo bar"));
+    doc->removeText(KTextEditor::Range({0, 2}, {0, 5}));
+    QCOMPARE(doc->text(), QStringLiteral("foar / fo ar"));
+    doc->insertText({0, 2}, QStringLiteral("x"));
+    QCOMPARE(doc->text(), QStringLiteral("foxar / fox ar"));
+    doc->insertText({0, 5}, QStringLiteral("x"));
+    QCOMPARE(doc->text(), QStringLiteral("foxar / fox arx"));
+
+    reset(QStringLiteral("${foo} ${bar} / ${foo} ${bar}"), QStringLiteral("foo bar / foo bar"));
+    doc->removeText(KTextEditor::Range({0, 2}, {0, 7}));
+    QCOMPARE(doc->text(), QStringLiteral("fo / fo "));
+    doc->insertText({0, 2}, QStringLiteral("x"));
+    QCOMPARE(doc->text(), QStringLiteral("fox / fox "));
+    doc->insertText({0, 4}, QStringLiteral("x"));
+    QCOMPARE(doc->text(), QStringLiteral("fox x/ fox "));
 
     delete doc;
 }
@@ -212,6 +254,8 @@ void TemplateHandlerTest::testTab_data()
     QTest::newRow("adjacent_start") << "${foo}${bar}" << 0 << 0 << "fooa";
     QTest::newRow("adjacent_mid_1st") << "${foo}${bar}${baz}" << 2 << 3 << "fooabaz";
     QTest::newRow("adjacent_mid_2nd") << "${foo}${bar}${baz}" << 4 << 6 << "foobara";
+    QTest::newRow("adjacent_mixed_start") << "${foo} ${bar}${baz}" << 5 << 7 << "foo bara";
+    QTest::newRow("adjacent_mixed_end") << "${foo}${bar} ${baz}" << 5 << 7 << "foobar a";
     QTest::newRow("wrap_start") << "${foo} ${bar}" << 4 << 0 << "a bar";
     QTest::newRow("wrap_mid") << "${foo} ${bar}" << 5 << 0 << "a bar";
     QTest::newRow("wrap_end") << "${foo} ${bar}" << 6 << 0 << "a bar";
