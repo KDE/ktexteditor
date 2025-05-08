@@ -28,6 +28,7 @@ class TextBuffer;
  * Class representing a 'clever' text range.
  * It will automagically move if the text inside the buffer it belongs to is modified.
  * By intention no subclass of KTextEditor::Range, must be converted manually.
+ *
  * A TextRange is allowed to be empty. If you call setInvalidateIfEmpty(true),
  * a TextRange will become automatically invalid as soon as start() == end()
  * position holds.
@@ -41,8 +42,7 @@ class TextRange final : public KTextEditor::MovingRange
 public:
     /**
      * Construct a text range.
-     * A TextRange is not allowed to be empty, as soon as start == end position, it will become
-     * automatically invalid!
+     *
      * @param buffer parent text buffer
      * @param range The initial text range assumed by the new range.
      * @param insertBehavior Define whether the range should expand when text is inserted adjacent to the range.
@@ -100,8 +100,7 @@ public:
 
     /**
      * Set the range of this range.
-     * A TextRange is not allowed to be empty, as soon as start == end position, it will become
-     * automatically invalid!
+     *
      * @param range new range for this clever range
      */
     void setRange(KTextEditor::Range range) override;
@@ -109,8 +108,7 @@ public:
     /**
      * \overload
      * Set the range of this range
-     * A TextRange is not allowed to be empty, as soon as start == end position, it will become
-     * automatically invalid!
+     *
      * @param start new start for this clever range
      * @param end new end for this clever range
      */
@@ -123,9 +121,6 @@ public:
      * Set the range of this range and the connected attribute.
      * Avoids internal overhead of separate setting that.
      *
-     * A TextRange is not allowed to be empty, as soon as start == end position, it will become
-     * automatically invalid!
-     *
      * @param range new range for this clever range
      * @param attribute Attribute to assign to this range. If null, simply removes the previous Attribute.
      *
@@ -136,9 +131,6 @@ public:
     /**
      * Set the range of this range and the connected attribute and Z-depth.
      * Avoids internal overhead of separate setting that.
-     *
-     * A TextRange is not allowed to be empty, as soon as start == end position, it will become
-     * automatically invalid!
      *
      * @param range new range for this clever range
      * @param attribute Attribute to assign to this range. If null, simply removes the previous Attribute.

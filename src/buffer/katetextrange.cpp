@@ -100,11 +100,6 @@ void TextRange::setEmptyBehavior(EmptyBehavior emptyBehavior)
 
     // remember value
     m_invalidateIfEmpty = (emptyBehavior == InvalidateIfEmpty);
-
-    // invalidate range?
-    if (endInternal() <= startInternal()) {
-        setRange(KTextEditor::Range::invalid());
-    }
 }
 
 void TextRange::setRange(KTextEditor::Range range)
@@ -188,6 +183,7 @@ void TextRange::checkValidity(bool notifyAboutChange)
 
     KTextEditor::Cursor end(m_end.lineInternal(), m_end.columnInternal());
     KTextEditor::Cursor start(m_start.lineInternal(), m_start.columnInternal());
+
     // check if any cursor is invalid or the range is zero size and it should be invalidated then
     if (!start.isValid() || !end.isValid() || (m_invalidateIfEmpty && end <= start)) {
         m_start.setPosition(-1, -1);
