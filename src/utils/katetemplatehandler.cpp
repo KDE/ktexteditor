@@ -351,6 +351,9 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     for (const auto &backslash : stripBackslashes) {
         doc()->removeText(KTextEditor::Range(backslash, backslash + Cursor(0, 1)));
     }
+
+    // make sure all newly parsed fields are sorted by position
+    sortFields();
 }
 
 void KateTemplateHandler::setupFieldRanges()
