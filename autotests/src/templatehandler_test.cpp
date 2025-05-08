@@ -361,6 +361,10 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("cursor") << QStringLiteral("${foo} ${cursor}") << QStringLiteral("foo ") << S();
     QTest::newRow("only_cursor") << QStringLiteral("${cursor}") << QStringLiteral("") << S();
     QTest::newRow("only_cursor_stuff") << QStringLiteral("fdas ${cursor} asdf") << QStringLiteral("fdas  asdf") << S();
+    QTest::newRow("reference_default") << QStringLiteral("${a='foo'} ${b=a}") << QStringLiteral("foo foo") << S();
+    QTest::newRow("reference_plain") << QStringLiteral("${a} ${b=a}") << QStringLiteral("a a") << S();
+    QTest::newRow("reference_unevaluated") << QStringLiteral("${a=b} ${b='foo'}") << QStringLiteral("${b='foo'} foo") << S();
+    QTest::newRow("reference_error") << QStringLiteral("${a=b}") << QStringLiteral("ReferenceError: b is not defined") << S();
 }
 
 void TemplateHandlerTest::testDefaults()
