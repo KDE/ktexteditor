@@ -223,6 +223,7 @@ void TemplateHandlerTest::testTab_data()
     QTest::newRow("jump_to_cursor") << "${foo} ${cursor}" << 0 << 4 << "foo a";
     QTest::newRow("jump_to_cursor_last") << "${foo} ${cursor} ${bar}" << 0 << 5 << "foo  a";
     QTest::newRow("jump_to_cursor_last2") << "${foo} ${cursor} ${bar}" << 5 << 4 << "foo a bar";
+    QTest::newRow("reference_default") << "${foo} ${bar} ${baz=bar}" << 0 << 4 << "foo a bar";
 }
 
 void TemplateHandlerTest::testExitAtCursor()
@@ -373,6 +374,12 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("reference_plain") << QStringLiteral("${a} ${b=a}") << QStringLiteral("a a") << S();
     QTest::newRow("reference_unevaluated") << QStringLiteral("${a=b} ${b='foo'}") << QStringLiteral("${b='foo'} foo") << S();
     QTest::newRow("reference_error") << QStringLiteral("${a=b}") << QStringLiteral("ReferenceError: b is not defined") << S();
+    QTest::newRow("reference_func") << QStringLiteral("${foo} ${uppercase(foo)}") << QStringLiteral("foo FOO")
+                                    << QStringLiteral("function uppercase(x) { return x.toUpperCase(); }");
+    QTest::newRow("reference_func_default") << QStringLiteral("${foo} ${bar=uppercase(foo)}") << QStringLiteral("foo FOO")
+                                            << QStringLiteral("function uppercase(x) { return x.toUpperCase(); }");
+    QTest::newRow("reference_self") << QStringLiteral("${foo=uppercase(foo)}") << QStringLiteral("FOO")
+                                    << QStringLiteral("function uppercase(x) { return x.toUpperCase(); }");
 }
 
 void TemplateHandlerTest::testDefaults()
