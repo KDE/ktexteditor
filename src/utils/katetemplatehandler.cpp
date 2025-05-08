@@ -539,6 +539,8 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
 
 void KateTemplateHandler::updateRangeBehaviours()
 {
+    sortFields();
+
     KTextEditor::Cursor last = {-1, -1};
     for (int i = 0; i < m_fields.size(); i++) {
         auto field = m_fields.at(i);
