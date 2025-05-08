@@ -205,6 +205,9 @@ void TemplateHandlerTest::testTab_data()
     QTest::newRow("simple_start") << "${foo} ${bar}" << 0 << 4;
     QTest::newRow("simple_mid") << "${foo} ${bar}" << 2 << 4;
     QTest::newRow("simple_end") << "${foo} ${bar}" << 3 << 4;
+    QTest::newRow("adjacent_start") << "${foo}${bar}" << 0 << 0;
+    QTest::newRow("adjacent_mid_1st") << "${foo}${bar}${baz}" << 2 << 3;
+    QTest::newRow("adjacent_mid_2nd") << "${foo}${bar}${baz}" << 4 << 6;
     QTest::newRow("wrap_start") << "${foo} ${bar}" << 4 << 0;
     QTest::newRow("wrap_mid") << "${foo} ${bar}" << 5 << 0;
     QTest::newRow("wrap_end") << "${foo} ${bar}" << 6 << 0;
