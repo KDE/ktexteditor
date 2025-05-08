@@ -358,6 +358,7 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("foo=3") << QStringLiteral("${foo=3}") << QStringLiteral("3") << S();
     QTest::newRow("${foo=3+5}") << QStringLiteral("${foo=3+5}") << QStringLiteral("8") << S();
     QTest::newRow("string") << QStringLiteral("${foo=\"3+5\"}") << QStringLiteral("3+5") << S();
+    QTest::newRow("string_single_quote") << QStringLiteral("${foo='3+5'}") << QStringLiteral("3+5") << S();
     QTest::newRow("string_mirror") << QStringLiteral("${foo=\"Bar\"} ${foo}") << QStringLiteral("Bar Bar") << S();
     QTest::newRow("func_simple") << QStringLiteral("${foo=myfunc()}") << QStringLiteral("hi") << QStringLiteral("function myfunc() { return 'hi'; }");
     QTest::newRow("func_fixed") << QStringLiteral("${myfunc()}") << QStringLiteral("hi") << QStringLiteral("function myfunc() { return 'hi'; }");
