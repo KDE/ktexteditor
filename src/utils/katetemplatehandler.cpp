@@ -384,7 +384,26 @@ void KateTemplateHandler::setupDefaultValues()
             value = field.identifier;
         } else {
             // field has a default value; evaluate it with the JS engine
-            value = m_templateScript.evaluate(field.defaultValue).toString();
+            //
+            // If the default value references other fields, they get included
+            // in their current form.
+            //
+            // Example A:           Evaluates to:
+            //
+            //      ${b="Foo"}      Foo
+            //      ${a=b}          Foo
+            //
+            // Example B:           Evaluates to:
+            //
+            //      ${a=b}          ${b="Foo"}  (i.e. the unevaluated value of $b)
+            //      ${b="Foo"}      Foo
+            auto env = fieldMap();
+
+            // Make sure a field that depends on itself does not cause a reference
+            // error. It uses its own name as value instead.
+            env[field.identifier] = QJSValue(field.identifier);
+
+            value = m_templateScript.evaluate(field.defaultValue, env).toString();
         }
         doc()->replaceText(field.range->toRange(), value);
     }
