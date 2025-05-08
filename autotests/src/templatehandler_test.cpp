@@ -193,6 +193,9 @@ void TemplateHandlerTest::testTab()
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
     QTEST(view->cursorPosition().column(), "expected_cursor");
 
+    QTest::keyClick(view->focusProxy(), Qt::Key_A);
+    QTEST(doc->text(), "expected_edited_result");
+
     delete doc;
 }
 
@@ -201,24 +204,25 @@ void TemplateHandlerTest::testTab_data()
     QTest::addColumn<QString>("tpl");
     QTest::addColumn<int>("cursor");
     QTest::addColumn<int>("expected_cursor");
+    QTest::addColumn<QString>("expected_edited_result");
 
-    QTest::newRow("simple_start") << "${foo} ${bar}" << 0 << 4;
-    QTest::newRow("simple_mid") << "${foo} ${bar}" << 2 << 4;
-    QTest::newRow("simple_end") << "${foo} ${bar}" << 3 << 4;
-    QTest::newRow("adjacent_start") << "${foo}${bar}" << 0 << 0;
-    QTest::newRow("adjacent_mid_1st") << "${foo}${bar}${baz}" << 2 << 3;
-    QTest::newRow("adjacent_mid_2nd") << "${foo}${bar}${baz}" << 4 << 6;
-    QTest::newRow("wrap_start") << "${foo} ${bar}" << 4 << 0;
-    QTest::newRow("wrap_mid") << "${foo} ${bar}" << 5 << 0;
-    QTest::newRow("wrap_end") << "${foo} ${bar}" << 6 << 0;
-    QTest::newRow("non_editable_start") << "${foo} ${foo}" << 0 << 0;
-    QTest::newRow("non_editable_mid") << "${foo} ${foo}" << 2 << 0;
-    QTest::newRow("non_editable_end") << "${foo} ${foo}" << 3 << 0;
-    QTest::newRow("skip_non_editable") << "${foo} ${foo} ${bar}" << 0 << 8;
-    QTest::newRow("skip_non_editable_at_end") << "${foo} ${bar} ${foo}" << 4 << 0;
-    QTest::newRow("jump_to_cursor") << "${foo} ${cursor}" << 0 << 4;
-    QTest::newRow("jump_to_cursor_last") << "${foo} ${cursor} ${bar}" << 0 << 5;
-    QTest::newRow("jump_to_cursor_last2") << "${foo} ${cursor} ${bar}" << 5 << 4;
+    QTest::newRow("simple_start") << "${foo} ${bar}" << 0 << 4 << "foo a";
+    QTest::newRow("simple_mid") << "${foo} ${bar}" << 2 << 4 << "foo a";
+    QTest::newRow("simple_end") << "${foo} ${bar}" << 3 << 4 << "foo a";
+    QTest::newRow("adjacent_start") << "${foo}${bar}" << 0 << 0 << "fooa";
+    QTest::newRow("adjacent_mid_1st") << "${foo}${bar}${baz}" << 2 << 3 << "fooabaz";
+    QTest::newRow("adjacent_mid_2nd") << "${foo}${bar}${baz}" << 4 << 6 << "foobara";
+    QTest::newRow("wrap_start") << "${foo} ${bar}" << 4 << 0 << "a bar";
+    QTest::newRow("wrap_mid") << "${foo} ${bar}" << 5 << 0 << "a bar";
+    QTest::newRow("wrap_end") << "${foo} ${bar}" << 6 << 0 << "a bar";
+    QTest::newRow("non_editable_start") << "${foo} ${foo}" << 0 << 0 << "a a";
+    QTest::newRow("non_editable_mid") << "${foo} ${foo}" << 2 << 0 << "a a";
+    QTest::newRow("non_editable_end") << "${foo} ${foo}" << 3 << 0 << "a a";
+    QTest::newRow("skip_non_editable") << "${foo} ${foo} ${bar}" << 0 << 8 << "foo foo a";
+    QTest::newRow("skip_non_editable_at_end") << "${foo} ${bar} ${foo}" << 4 << 0 << "a bar a";
+    QTest::newRow("jump_to_cursor") << "${foo} ${cursor}" << 0 << 4 << "foo a";
+    QTest::newRow("jump_to_cursor_last") << "${foo} ${cursor} ${bar}" << 0 << 5 << "foo  a";
+    QTest::newRow("jump_to_cursor_last2") << "${foo} ${cursor} ${bar}" << 5 << 4 << "foo a bar";
 }
 
 void TemplateHandlerTest::testExitAtCursor()
