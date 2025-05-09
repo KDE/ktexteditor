@@ -374,6 +374,9 @@ void KateTemplateHandler::setupFieldRanges()
 
 void KateTemplateHandler::setupDefaultValues()
 {
+    // group all the changes into one undo transaction
+    KTextEditor::Document::EditingTransaction t(doc());
+
     for (const auto &field : std::as_const(m_fields)) {
         if (field.kind != TemplateField::Editable) {
             continue;
