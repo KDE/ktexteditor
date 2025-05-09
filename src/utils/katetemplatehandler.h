@@ -217,6 +217,13 @@ private:
         {
             return range == other.range;
         }
+
+        /**
+         * Turn off expanding left/right for all other ranges.
+         * This prevents ranges from overlapping when adjacent ranges are edited
+         * in code. Reset proper range behaviors by calling \l updateRangeBehaviours.
+         */
+        void dontExpandOthers(const QList<TemplateField> &others) const;
     };
     // List of all template fields in the inserted snippet. @see sortFields()
     QList<TemplateField> m_fields;

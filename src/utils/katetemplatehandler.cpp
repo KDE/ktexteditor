@@ -493,18 +493,6 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
         }
     }
 
-    // turn off expanding left/right for all ranges except @p current;
-    // this prevents ranges from overlapping each other when they are adjacent
-    auto dontExpandOthers = [this](const TemplateField &current) {
-        for (qsizetype i = 0; i < m_fields.size(); i++) {
-            if (current.range != m_fields.at(i).range) {
-                m_fields.at(i).range->setInsertBehaviors(MovingRange::DoNotExpand);
-            } else {
-                m_fields.at(i).range->setInsertBehaviors(MovingRange::ExpandLeft | MovingRange::ExpandRight);
-            }
-        }
-    };
-
     // new contents of the changed template field
     const auto &newText = doc()->text(changedField.range->toRange());
     m_internalEdit = true;
@@ -525,11 +513,11 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
         // edits to non-editable mirror fields are ignored
         if (field->kind == TemplateField::Mirror && changedField.kind == TemplateField::Editable && field->identifier == changedField.identifier) {
             // editable field changed, mirror changes
-            dontExpandOthers(*field);
+            field->dontExpandOthers(m_fields);
             doc()->replaceText(field->range->toRange(), newText);
         } else if (field->kind == TemplateField::FunctionCall) {
             // replace field by result of function call
-            dontExpandOthers(*field);
+            field->dontExpandOthers(m_fields);
             // build map of objects in the scope to pass to the function
             auto map = fieldMap();
             const auto &callResult = m_templateScript.evaluate(field->identifier, map);
@@ -579,6 +567,17 @@ KateScript::FieldMap KateTemplateHandler::fieldMap() const
 KTextEditor::ViewPrivate *KateTemplateHandler::view() const
 {
     return m_view;
+}
+
+void KateTemplateHandler::TemplateField::dontExpandOthers(const QList<TemplateField> &others) const
+{
+    for (const auto &i : others) {
+        if (this->range != i.range) {
+            i.range->setInsertBehaviors(KTextEditor::MovingRange::DoNotExpand);
+        } else {
+            i.range->setInsertBehaviors(KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
+        }
+    }
 }
 
 #include "moc_katetemplatehandler.cpp"
