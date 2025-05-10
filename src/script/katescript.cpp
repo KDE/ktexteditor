@@ -193,11 +193,13 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
     // exceptions: Java Reserved Words, Other Reserved Words, HTML Event Handlers,
     // plus "length", "name", "prototype", "hasOwnProperty", "package"
     const auto jsReservedWords = QStringLiteral(
-        "^(abstract|arguments|await|boolean|break|byte|case|catch|char|class|const|continue|debugger|default|delete|do|double|else|enum|eval|export|extends|"
-        "false|final|finally|float|for|function|goto|if|implements|import|in|instanceof|int|interface|let|long|native|new|null|private|protected|"
-        "public|return|short|static|super|switch|synchronized|this|throw|throws|transient|true|try|typeof|var|void|volatile|while|with|yield|abstract|boolean|"
-        "byte|char|double|final|float|goto|int|long|native|short|synchronized|throws|transient|volatile|Array|Date|eval|function|Infinity|isFinite|isNaN|"
-        "isPrototypeOf|Math|NaN|Number|Object|String|toString|undefined|valueOf)$");
+        "^(Array|Date|Infinity|Math|NaN|Number|Object|String|abstract|arguments|await|"
+        "boolean|break|byte|case|catch|char|class|const|continue|debugger|default|delete|"
+        "do|double|else|enum|eval|export|extends|false|final|finally|float|for|function|goto|"
+        "if|implements|import|in|instanceof|int|interface|isFinite|isNaN|isPrototypeOf|let|long|"
+        "native|new|null|private|protected|public|return|short|static|super|switch|synchronized|"
+        "this|throw|throws|toString|transient|true|try|typeof|undefined|valueOf|"
+        "var|void|volatile|while|with|yield)$");
     auto invalidRe = QRegularExpression{jsReservedWords};
     invalidRe.optimize();
 
