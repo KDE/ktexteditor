@@ -191,10 +191,10 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
     // JS reserved words that are not allowed as variable names
     // source: https://web.archive.org/web/20250415020612/https://www.w3schools.com/js/js_reserved.asp
     // exceptions: Java Reserved Words, Other Reserved Words, HTML Event Handlers,
-    // plus "length", "name", "prototype", "hasOwnProperty"
+    // plus "length", "name", "prototype", "hasOwnProperty", "package"
     const auto jsReservedWords = QStringLiteral(
         "^(abstract|arguments|await|boolean|break|byte|case|catch|char|class|const|continue|debugger|default|delete|do|double|else|enum|eval|export|extends|"
-        "false|final|finally|float|for|function|goto|if|implements|import|in|instanceof|int|interface|let|long|native|new|null|package|private|protected|"
+        "false|final|finally|float|for|function|goto|if|implements|import|in|instanceof|int|interface|let|long|native|new|null|private|protected|"
         "public|return|short|static|super|switch|synchronized|this|throw|throws|transient|true|try|typeof|var|void|volatile|while|with|yield|abstract|boolean|"
         "byte|char|double|final|float|goto|int|long|native|short|synchronized|throws|transient|volatile|Array|Date|eval|function|Infinity|isFinite|isNaN|"
         "isPrototypeOf|Math|NaN|Number|Object|String|toString|undefined|valueOf)$");
