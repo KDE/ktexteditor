@@ -277,11 +277,11 @@ Attribute::Ptr getAttribute(QColor color, int alpha = 230)
 void KateTemplateHandler::parseFields(const QString &templateText)
 {
     // matches any field, i.e. the three forms ${foo}, ${foo=expr}, ${func()}
-    static const QRegularExpression field(QStringLiteral(R"((?<!\\)\${([^}]+)})"), QRegularExpression::UseUnicodePropertiesOption);
+    static const QRegularExpression field(QStringLiteral(R"((?<!\\)(?<slash>(?:\\\\)*)\${(?<body>[^}]+)})"), QRegularExpression::UseUnicodePropertiesOption);
     // matches the "foo=expr" form within a match of the above expression
     static const QRegularExpression defaultField(QStringLiteral("\\w+=([^\\}]*)"), QRegularExpression::UseUnicodePropertiesOption);
     // this only captures escaped fields, i.e. \\${foo} etc.
-    static const QRegularExpression escapedField(QStringLiteral(R"((\\+)\${[^}]+})"), QRegularExpression::UseUnicodePropertiesOption);
+    static const QRegularExpression escapedField(QStringLiteral(R"((?<!\\)(?<slash>\\(?:\\\\)*)\${[^}]+})"), QRegularExpression::UseUnicodePropertiesOption);
 
     // compute start cursor of a match
     auto startOfMatch = [this, &templateText](const QRegularExpressionMatch &match) {
@@ -297,17 +297,30 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     // create a moving range spanning the given field
     auto createMovingRangeForMatch = [this, startOfMatch](const QRegularExpressionMatch &match) {
         auto matchStart = startOfMatch(match);
-        return doc()->newMovingRange({matchStart, matchStart + Cursor(0, match.capturedLength(0))}, MovingRange::ExpandLeft | MovingRange::ExpandRight);
+        auto slashOffset = Cursor{0, match.capturedLength("slash")};
+        return doc()->newMovingRange({matchStart + slashOffset, matchStart + Cursor(0, match.capturedLength(0))},
+                                     MovingRange::ExpandLeft | MovingRange::ExpandRight);
     };
+
+    // list of escape backslashes to remove after parsing
+    QList<KTextEditor::Range> stripBackslashes;
 
     // process fields
     auto fieldMatch = field.globalMatch(templateText);
     while (fieldMatch.hasNext()) {
         const auto match = fieldMatch.next();
 
+        // collect leading escaped backslashes
+        if (match.hasCaptured("slash") && match.capturedLength("slash") > 0) {
+            auto slashes = match.captured("slash");
+            auto start = startOfMatch(match);
+            int count = std::floor(match.capturedLength("slash") / 2);
+            stripBackslashes.append({start, start + Cursor{0, count}});
+        }
+
         // a template field was found, instantiate a field object and populate it
         auto defaultMatch = defaultField.match(match.captured(0));
-        const QString contents = match.captured(1);
+        const QString contents = match.captured("body");
 
         TemplateField f;
         f.range.reset(createMovingRangeForMatch(match));
@@ -337,19 +350,20 @@ void KateTemplateHandler::parseFields(const QString &templateText)
         m_fields.append(f);
     }
 
-    // list of escape backslashes to remove after parsing
-    QList<KTextEditor::Range> stripBackslashes;
-
     for (const auto &match : escapedField.globalMatch(templateText)) {
         // $ is escaped, not a field; mark the backslash for removal
-        // prepend it to the list so the characters are removed starting from the
-        // back and ranges do not move around
         auto start = startOfMatch(match);
-        int count = std::floor(match.captured(1).length() / 2) + 1;
-        stripBackslashes.prepend({start, {0, start.column() + count}});
+        int count = std::floor(match.captured("slash").length() / 2) + 1;
+        stripBackslashes.append({start, start + Cursor{0, count}});
     }
 
     // remove escape characters
+    // sort the list so the characters are removed starting from the
+    // back and ranges do not move around
+    std::sort(stripBackslashes.begin(), stripBackslashes.end(), [](const Range l, const Range r) {
+        return l > r;
+    });
+
     for (const auto &backslash : stripBackslashes) {
         doc()->removeText(backslash);
     }
