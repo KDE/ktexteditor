@@ -102,7 +102,7 @@ void TemplateHandlerTest::testEscapes()
     auto doc = new KTextEditor::DocumentPrivate();
     auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
 
-    QEXPECT_FAIL("double", "TBD", Continue);
+    QEXPECT_FAIL("even", "TBD", Continue);
     QEXPECT_FAIL("many_slashes", "TBD", Continue);
     QEXPECT_FAIL("free_slashes", "TBD", Continue);
     QEXPECT_FAIL("multiple_fields", "TBD", Continue);
@@ -121,6 +121,8 @@ void TemplateHandlerTest::testEscapes_data()
     QTest::newRow("mixed") << R"(\${field} ${bar} \${foo})" << R"(${field} bar ${foo})";
     QTest::newRow("defaults") << R"(${bar=1} \${foo=3})" << R"(1 ${foo=3})";
     QTest::newRow("double") << R"(\\\${baz=7})" << R"(\${baz=7})";
+    QTest::newRow("odd") << R"(\\\\\\\\\${baz=7})" << R"(\\\\${baz=7})";
+    QTest::newRow("even") << R"(\\\\\\\\${baz=7})" << R"(\\\\7)";
     QTest::newRow("many_slashes") << R"(\\\\\\\${foo=1} \\\\${bar=2})" << R"(\\\${foo=1} \\2)";
     QTest::newRow("free_slashes") << R"(\\\ \\${foo=1})" << R"(\\\ \1)";
     QTest::newRow("multiple_fields") << R"(\${field} ${bar} \\\${foo=3} \\${baz=7})" << R"(${field} bar \${foo=3} \7)";
