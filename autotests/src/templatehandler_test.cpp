@@ -420,6 +420,8 @@ void TemplateHandlerTest::testCanRetrieveSelection()
 
 void TemplateHandlerTest::testDefaults_data()
 {
+    auto uppercase = QStringLiteral("function uppercase(x) { return x.toUpperCase(); }");
+
     QTest::addColumn<QString>("input");
     QTest::addColumn<QString>("expected");
     QTest::addColumn<QString>("function");
@@ -451,6 +453,19 @@ void TemplateHandlerTest::testDefaults_data()
                                             << QStringLiteral("function uppercase(x) { return x.toUpperCase(); }");
     QTest::newRow("reference_self") << QStringLiteral("${foo=uppercase(foo)}") << QStringLiteral("FOO")
                                     << QStringLiteral("function uppercase(x) { return x.toUpperCase(); }");
+    QTest::newRow("reference_func_body1") << QStringLiteral("${foo} ${myfunc()}") << QStringLiteral("foo ReferenceError: foo is not defined")
+                                          << QStringLiteral("function myfunc() { return foo; }");
+    QTest::newRow("reference_func_body2") << QStringLiteral("${foo} ${myfunc()}") << QStringLiteral("foo foo")
+                                          << QStringLiteral("function myfunc() { return fields.foo; }");
+    QTest::newRow("invalid_js1") << QStringLiteral("${foo=break}") << QStringLiteral("SyntaxError: Break outside of loop") << S();
+    QTest::newRow("invalid_js2") << QStringLiteral("${foo=#break#}") << QStringLiteral("undefined") << S();
+    QTest::newRow("invalid_js_identifier") << QStringLiteral("${foo.bar}") << QStringLiteral("foo.bar") << S();
+    QTest::newRow("invalid_js_identifier_in_env1") << QStringLiteral("${foo.bar} ${uppercase('x')}") << QStringLiteral("foo.bar X") << uppercase;
+    QTest::newRow("invalid_js_identifier_in_env2") << QStringLiteral("${foo.bar} ${baz=foo.bar}")
+                                                   << QStringLiteral("foo.bar ReferenceError: foo is not defined") << S();
+    QTest::newRow("invalid_js_identifier_in_env3") << QStringLiteral("${foo.bar} ${baz=fields['foo.bar']}") << QStringLiteral("foo.bar foo.bar") << S();
+    QTest::newRow("field_name_global") << QStringLiteral("${document='myfield'} ${foo=document.encoding()} ${bar=fields.document}")
+                                       << QStringLiteral("myfield UTF-8 myfield") << uppercase;
 }
 
 void TemplateHandlerTest::testDefaults()

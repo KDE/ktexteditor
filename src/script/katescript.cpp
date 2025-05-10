@@ -188,22 +188,79 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
         return QJSValue();
     }
 
-    // Wrap the arguments in a function to avoid polluting the global object
-    QString programWithContext =
-        QLatin1String("(function(") + QStringList(env.keys()).join(QLatin1Char(',')) + QLatin1String(") { return ") + program + QLatin1String("})");
-    QJSValue programFunction = m_engine->evaluate(programWithContext);
-    Q_ASSERT(programFunction.isCallable());
+    // JS reserved words that are not allowed as variable names
+    // source: https://web.archive.org/web/20250415020612/https://www.w3schools.com/js/js_reserved.asp
+    // exceptions: Java Reserved Words, Other Reserved Words, HTML Event Handlers,
+    // plus "length", "name", "prototype", "hasOwnProperty"
+    const auto jsReservedWords = QStringLiteral(
+        "^(abstract|arguments|await|boolean|break|byte|case|catch|char|class|const|continue|debugger|default|delete|do|double|else|enum|eval|export|extends|"
+        "false|final|finally|float|for|function|goto|if|implements|import|in|instanceof|int|interface|let|long|native|new|null|package|private|protected|"
+        "public|return|short|static|super|switch|synchronized|this|throw|throws|transient|true|try|typeof|var|void|volatile|while|with|yield|abstract|boolean|"
+        "byte|char|double|final|float|goto|int|long|native|short|synchronized|throws|transient|volatile|Array|Date|eval|function|Infinity|isFinite|isNaN|"
+        "isPrototypeOf|Math|NaN|Number|Object|String|toString|undefined|valueOf)$");
+    auto invalidRe = QRegularExpression{jsReservedWords};
+    invalidRe.optimize();
 
-    QJSValueList args;
-    args.reserve(env.size());
-    for (auto it = env.begin(); it != env.end(); it++) {
-        args << it.value();
+    auto validRe = QRegularExpression{QStringLiteral("^[a-zA-Z0-9_]+$")};
+    validRe.optimize();
+
+    auto paramKeys = QStringList{};
+    auto paramValues = QJSValueList{};
+    paramKeys.reserve(env.size());
+    paramValues.reserve(env.size());
+
+    paramKeys << QStringLiteral("__program__");
+    paramValues << program;
+
+    auto fields = m_engine->newObject();
+
+    for (const auto &k : env.keys()) {
+        fields.setProperty(k, env[k]);
+
+        // Skip fields that would overwrite global properties
+        if (m_engine->globalObject().hasProperty(k) || k == QStringLiteral("__program__") || k == QStringLiteral("fields")) {
+            continue;
+        }
+
+        auto matchValid = validRe.matchView(k);
+
+        if (matchValid.hasMatch()) {
+            auto matchInvalid = invalidRe.match(k);
+
+            if (matchInvalid.hasMatch()) {
+                continue;
+            }
+        } else {
+            continue;
+        }
+
+        paramKeys << k;
+        paramValues << env[k];
     }
 
-    QJSValue result = programFunction.call(args);
+    // Export the 'fields' map so that any function has access to
+    // the current fields, even if the names are invalid JS identifiers
+    m_engine->globalObject().setProperty(QStringLiteral("fields"), fields);
+
+    // Wrap the arguments in a function to avoid polluting the global object
+    auto programWithContext = QStringLiteral("(function(%1){ return eval(__program__); })").arg(paramKeys.join(QLatin1Char(',')));
+
+    auto programFunction = m_engine->evaluate(programWithContext);
+    QJSValue result;
+
+    if (programFunction.isCallable()) {
+        result = programFunction.call(paramValues);
+    } else {
+        qCWarning(LOG_KTE) << "Error evaluating script: " << programWithContext;
+        result = QStringLiteral("Bug: unable to evaluate script");
+    }
+
     if (result.isError()) {
         qCWarning(LOG_KTE) << "Error evaluating script: " << result.toString();
     }
+
+    // Reset the 'fields' map to clean up the global object
+    m_engine->globalObject().deleteProperty(QStringLiteral("fields"));
 
     return result;
 }
