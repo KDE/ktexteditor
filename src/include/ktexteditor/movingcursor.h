@@ -41,7 +41,7 @@ class Document;
  * The ownership of the cursor is passed to the user. When finished with a MovingCursor,
  * simply delete it.
  *
- * \sa Cursor, Range, MovingRange and MovingInterface.
+ * \sa Cursor, Range, MovingRange, Document
  *
  * \since 4.5
  */

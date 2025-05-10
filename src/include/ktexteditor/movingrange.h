@@ -66,7 +66,7 @@ class MovingRangeFeedback;
  * \warning MovingRanges may be set to (-1, -1, -1, -1) at any time, if the
  * user reloads a document (F5)! Use a MovingRangeFeedback to get notified
  * if you need to catch this case, and/or listen to the signal
- * MovingInterface::aboutToInvalidateMovingInterfaceContent().
+ * Document::aboutToInvalidateMovingInterfaceContent().
  *
  * \target movingrange_feedback
  * \section1 MovingRange Feedback
@@ -131,7 +131,7 @@ class MovingRangeFeedback;
  *
  * MovingRange%s are invalidated automatically when a document is cleared or closed.
  *
- * \sa Cursor, MovingCursor, Range, MovingInterface, MovingRangeFeedback
+ * \sa Cursor, MovingCursor, Range, MovingRangeFeedback, Document
  *
  * \since 4.5
  */

@@ -47,7 +47,7 @@ namespace KTextEditor
  * redrawn.  Once you have finished changing properties, you should
  * call changed() to force redrawing of affected ranges of text.
  *
- * \sa MovingInterface
+ * \sa MovingRange
  */
 class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
 {
