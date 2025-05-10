@@ -459,6 +459,8 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("invalid_js_identifier_in_env2") << QStringLiteral("${foo.bar} ${baz=foo.bar}")
                                                    << QStringLiteral("foo.bar ReferenceError: foo is not defined") << S();
     QTest::newRow("invalid_js_identifier_in_env3") << QStringLiteral("${foo.bar} ${baz=fields['foo.bar']}") << QStringLiteral("foo.bar foo.bar") << S();
+    QTest::newRow("invalid_js_identifier_in_env4") << QStringLiteral("${volatile} ${foo=volatile}")
+                                                   << QStringLiteral("volatile SyntaxError: access volatile through the fields map") << S();
     QTest::newRow("field_name_global") << QStringLiteral("${document='myfield'} ${foo=document.encoding()} ${bar=fields.document}")
                                        << QStringLiteral("myfield UTF-8 myfield") << uppercase;
 }

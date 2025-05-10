@@ -266,7 +266,7 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
             auto var = result.property(QStringLiteral("message")).toString().split(QLatin1Char(' '))[0];
 
             if (filteredKeys.contains(var)) {
-                result = QStringLiteral("SyntaxError: access “%1” through the “fields” map").arg(var);
+                result = QStringLiteral("SyntaxError: access %1 through the fields map").arg(var);
             }
         }
 
