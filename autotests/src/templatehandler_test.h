@@ -49,6 +49,7 @@ private Q_SLOTS:
     void testCanRetrieveSelection();
 
     void testEscapes();
+    void testEscapes_data();
     void testLinesRemoved();
     void testLinesRemoved2();
 };

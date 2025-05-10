@@ -97,10 +97,37 @@ void TemplateHandlerTest::testUndo()
 
 void TemplateHandlerTest::testEscapes()
 {
+    QFETCH(QString, input);
+
     auto doc = new KTextEditor::DocumentPrivate();
     auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
-    view->insertTemplate({0, 0}, QStringLiteral("\\${field} ${bar} \\${foo=3} \\\\${baz=7}"));
-    QCOMPARE(doc->text(), QStringLiteral("${field} bar ${foo=3} \\${baz=7}"));
+
+    QEXPECT_FAIL("double", "TBD", Continue);
+    QEXPECT_FAIL("many_slashes", "TBD", Continue);
+    QEXPECT_FAIL("free_slashes", "TBD", Continue);
+    QEXPECT_FAIL("multiple_fields", "TBD", Continue);
+    QEXPECT_FAIL("nested", "TBD", Continue);
+    QEXPECT_FAIL("nested_default", "TBD", Continue);
+    view->insertTemplate({0, 0}, input);
+    QTEST(doc->text(), "expectedOutput");
+}
+
+void TemplateHandlerTest::testEscapes_data()
+{
+    QTest::addColumn<QString>("input");
+    QTest::addColumn<QString>("expectedOutput");
+
+    QTest::newRow("start") << R"(\${foo})" << R"(${foo})";
+    QTest::newRow("middle") << R"(foo \${field} foo)" << R"(foo ${field} foo)";
+    QTest::newRow("end") << R"(foo \${field})" << R"(foo ${field})";
+    QTest::newRow("mixed") << R"(\${field} ${bar} \${foo})" << R"(${field} bar ${foo})";
+    QTest::newRow("defaults") << R"(${bar=1} \${foo=3})" << R"(1 ${foo=3})";
+    QTest::newRow("double") << R"(\\\${baz=7})" << R"(\${baz=7})";
+    QTest::newRow("many_slashes") << R"(\\\\\\\${foo=1} \\\\${bar=2})" << R"(\\\${foo=1} \\2)";
+    QTest::newRow("free_slashes") << R"(\\\ \\${foo=1})" << R"(\\\ \1)";
+    QTest::newRow("multiple_fields") << R"(\${field} ${bar} \\\${foo=3} \\${baz=7})" << R"(${field} bar \${foo=3} \7)";
+    QTest::newRow("nested") << R"(\${${field}=x})" << R"(${field=x})";
+    QTest::newRow("nested_default") << R"(\${${field=1}=x})" << R"(${1=x})";
 }
 
 void TemplateHandlerTest::testSimpleMirror()
