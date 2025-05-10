@@ -204,6 +204,7 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
     auto validRe = QRegularExpression{QStringLiteral("^[a-zA-Z0-9_]+$")};
     validRe.optimize();
 
+    auto filteredKeys = QStringList{};
     auto paramKeys = QStringList{};
     auto paramValues = QJSValueList{};
     paramKeys.reserve(env.size());
@@ -219,6 +220,7 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
 
         // Skip fields that would overwrite global properties
         if (m_engine->globalObject().hasProperty(k) || k == QStringLiteral("__program__") || k == QStringLiteral("fields")) {
+            filteredKeys << k;
             continue;
         }
 
@@ -228,9 +230,11 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
             auto matchInvalid = invalidRe.match(k);
 
             if (matchInvalid.hasMatch()) {
+                filteredKeys << k;
                 continue;
             }
         } else {
+            filteredKeys << k;
             continue;
         }
 
@@ -256,6 +260,14 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
     }
 
     if (result.isError()) {
+        if (result.errorType() == QJSValue::ReferenceError) {
+            auto var = result.property(QStringLiteral("message")).toString().split(QLatin1Char(' '))[0];
+
+            if (filteredKeys.contains(var)) {
+                result = QStringLiteral("SyntaxError: access “%1” through the “fields” map").arg(var);
+            }
+        }
+
         qCWarning(LOG_KTE) << "Error evaluating script: " << result.toString();
     }
 
