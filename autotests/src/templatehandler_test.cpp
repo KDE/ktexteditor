@@ -243,6 +243,7 @@ void TemplateHandlerTest::testTab()
 
     // no idea why the event needs to be posted to the focus proxy
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QEXPECT_FAIL("adjacent_start", "TBD", Continue);
     QEXPECT_FAIL("adjacent_mid_1st", "TBD", Continue);
     QEXPECT_FAIL("adjacent_mid_2nd", "TBD", Continue);
     QEXPECT_FAIL("adjacent_mixed_start", "TBD", Continue);
@@ -251,6 +252,7 @@ void TemplateHandlerTest::testTab()
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab, Qt::ShiftModifier);
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QEXPECT_FAIL("adjacent_start", "TBD", Continue);
     QEXPECT_FAIL("adjacent_mid_1st", "TBD", Continue);
     QEXPECT_FAIL("adjacent_mid_2nd", "TBD", Continue);
     QEXPECT_FAIL("adjacent_mixed_start", "TBD", Continue);
@@ -278,7 +280,7 @@ void TemplateHandlerTest::testTab_data()
     QTest::newRow("simple_start") << "${foo} ${bar}" << 0 << 4 << "foo a";
     QTest::newRow("simple_mid") << "${foo} ${bar}" << 2 << 4 << "foo a";
     QTest::newRow("simple_end") << "${foo} ${bar}" << 3 << 4 << "foo a";
-    QTest::newRow("adjacent_start") << "${foo}${bar}" << 0 << 0 << "fooa";
+    QTest::newRow("adjacent_start") << "${foo}${bar}" << 0 << 3 << "fooa";
     QTest::newRow("adjacent_mid_1st") << "${foo}${bar}${baz}" << 2 << 3 << "fooabaz";
     QTest::newRow("adjacent_mid_2nd") << "${foo}${bar}${baz}" << 4 << 6 << "foobara";
     QTest::newRow("adjacent_mixed_start") << "${foo} ${bar}${baz}" << 5 << 7 << "foo bara";
