@@ -106,8 +106,6 @@ void TemplateHandlerTest::testEscapes()
     QEXPECT_FAIL("many_slashes", "TBD", Continue);
     QEXPECT_FAIL("free_slashes", "TBD", Continue);
     QEXPECT_FAIL("multiple_fields", "TBD", Continue);
-    QEXPECT_FAIL("nested", "TBD", Continue);
-    QEXPECT_FAIL("nested_default", "TBD", Continue);
     view->insertTemplate({0, 0}, input);
     QTEST(doc->text(), "expectedOutput");
 }

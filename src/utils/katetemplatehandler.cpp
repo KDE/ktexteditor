@@ -277,10 +277,11 @@ Attribute::Ptr getAttribute(QColor color, int alpha = 230)
 void KateTemplateHandler::parseFields(const QString &templateText)
 {
     // matches any field, i.e. the three forms ${foo}, ${foo=expr}, ${func()}
-    // this also captures escaped fields, i.e. \\${foo} etc.
-    static const QRegularExpression field(QStringLiteral("\\\\?\\${([^}]+)}"), QRegularExpression::UseUnicodePropertiesOption);
+    static const QRegularExpression field(QStringLiteral(R"((?<!\\)\${([^}]+)})"), QRegularExpression::UseUnicodePropertiesOption);
     // matches the "foo=expr" form within a match of the above expression
     static const QRegularExpression defaultField(QStringLiteral("\\w+=([^\\}]*)"), QRegularExpression::UseUnicodePropertiesOption);
+    // this only captures escaped fields, i.e. \\${foo} etc.
+    static const QRegularExpression escapedField(QStringLiteral(R"(\\\${([^}]+)})"), QRegularExpression::UseUnicodePropertiesOption);
 
     // compute start cursor of a match
     auto startOfMatch = [this, &templateText](const QRegularExpressionMatch &match) {
@@ -299,21 +300,10 @@ void KateTemplateHandler::parseFields(const QString &templateText)
         return doc()->newMovingRange({matchStart, matchStart + Cursor(0, match.capturedLength(0))}, MovingRange::ExpandLeft | MovingRange::ExpandRight);
     };
 
-    // list of escape backslashes to remove after parsing
-    QList<KTextEditor::Cursor> stripBackslashes;
-    auto fieldMatch = field.globalMatch(templateText);
-
     // process fields
+    auto fieldMatch = field.globalMatch(templateText);
     while (fieldMatch.hasNext()) {
         const auto match = fieldMatch.next();
-
-        if (match.captured(0).startsWith(QLatin1Char('\\'))) {
-            // $ is escaped, not a field; mark the backslash for removal
-            // prepend it to the list so the characters are removed starting from the
-            // back and ranges do not move around
-            stripBackslashes.prepend(startOfMatch(match));
-            continue;
-        }
 
         // a template field was found, instantiate a field object and populate it
         auto defaultMatch = defaultField.match(match.captured(0));
@@ -345,6 +335,16 @@ void KateTemplateHandler::parseFields(const QString &templateText)
         }
 
         m_fields.append(f);
+    }
+
+    // list of escape backslashes to remove after parsing
+    QList<KTextEditor::Cursor> stripBackslashes;
+
+    for (const auto &match : escapedField.globalMatch(templateText)) {
+        // $ is escaped, not a field; mark the backslash for removal
+        // prepend it to the list so the characters are removed starting from the
+        // back and ranges do not move around
+        stripBackslashes.prepend(startOfMatch(match));
     }
 
     // remove escape characters
