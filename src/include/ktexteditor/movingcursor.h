@@ -35,17 +35,11 @@ class Document;
  *
  * Create a new MovingCursor like this:
  * \code
- * // Retrieve the MovingInterface
- * KTextEditor::MovingInterface* moving =
- *     qobject_cast<KTextEditor::MovingInterface*>( yourDocument );
- *
- * if ( moving ) {
- *     KTextEditor::MovingCursor* cursor = moving->newMovingCursor();
- * }
+ * auto* movingCursor = aDocument->newMovingCursor(position);
  * \endcode
  *
- * When finished with a MovingCursor, simply delete it.
- * If the document the cursor belong to is deleted, it will get deleted automatically.
+ * The ownership of the cursor is passed to the user. When finished with a MovingCursor,
+ * simply delete it.
  *
  * \sa Cursor, Range, MovingRange and MovingInterface.
  *

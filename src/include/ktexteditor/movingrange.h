@@ -43,7 +43,7 @@ class MovingRangeFeedback;
  *
  * Create a new MovingRange like this:
  * \code
- *     KTextEditor::MovingRange* range = yourDocument->newMovingRange();
+ * auto* movingRange = aDocument->newMovingRange(range);
  * \endcode
  *
  * The ownership of the range is passed to the user. When finished with a MovingRange,
