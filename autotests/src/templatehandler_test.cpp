@@ -436,10 +436,8 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("string_mirror") << QStringLiteral("${foo=\"Bar\"} ${foo}") << QStringLiteral("Bar Bar") << S();
     QTest::newRow("func_simple") << QStringLiteral("${foo=myfunc()}") << QStringLiteral("hi") << QStringLiteral("function myfunc() { return 'hi'; }");
     QTest::newRow("func_fixed") << QStringLiteral("${myfunc()}") << QStringLiteral("hi") << QStringLiteral("function myfunc() { return 'hi'; }");
-    QTest::newRow("func_constant_arg") << QStringLiteral("${foo=uppercase(\"Foo\")}") << QStringLiteral("FOO")
-                                       << QStringLiteral("function uppercase(x) { return x.toUpperCase(); }");
-    QTest::newRow("func_constant_arg_mirror") << QStringLiteral("${foo=uppercase(\"hi\")} ${bar=3} ${foo}") << QStringLiteral("HI 3 HI")
-                                              << QStringLiteral("function uppercase(x) { return x.toUpperCase(); }");
+    QTest::newRow("func_constant_arg") << QStringLiteral("${foo=uppercase(\"Foo\")}") << QStringLiteral("FOO") << uppercase;
+    QTest::newRow("func_constant_arg_mirror") << QStringLiteral("${foo=uppercase(\"hi\")} ${bar=3} ${foo}") << QStringLiteral("HI 3 HI") << uppercase;
     QTest::newRow("cursor") << QStringLiteral("${foo} ${cursor}") << QStringLiteral("foo ") << S();
     QTest::newRow("only_cursor") << QStringLiteral("${cursor}") << QStringLiteral("") << S();
     QTest::newRow("only_cursor_stuff") << QStringLiteral("fdas ${cursor} asdf") << QStringLiteral("fdas  asdf") << S();
@@ -447,16 +445,13 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("reference_plain") << QStringLiteral("${a} ${b=a}") << QStringLiteral("a a") << S();
     QTest::newRow("reference_unevaluated") << QStringLiteral("${a=b} ${b='foo'}") << QStringLiteral("${b='foo'} foo") << S();
     QTest::newRow("reference_error") << QStringLiteral("${a=b}") << QStringLiteral("ReferenceError: b is not defined") << S();
-    QTest::newRow("reference_func") << QStringLiteral("${foo} ${uppercase(foo)}") << QStringLiteral("foo FOO")
-                                    << QStringLiteral("function uppercase(x) { return x.toUpperCase(); }");
-    QTest::newRow("reference_func_default") << QStringLiteral("${foo} ${bar=uppercase(foo)}") << QStringLiteral("foo FOO")
-                                            << QStringLiteral("function uppercase(x) { return x.toUpperCase(); }");
-    QTest::newRow("reference_self") << QStringLiteral("${foo=uppercase(foo)}") << QStringLiteral("FOO")
-                                    << QStringLiteral("function uppercase(x) { return x.toUpperCase(); }");
+    QTest::newRow("reference_func") << QStringLiteral("${foo} ${uppercase(foo)}") << QStringLiteral("foo FOO") << uppercase;
+    QTest::newRow("reference_func_default") << QStringLiteral("${foo} ${bar=uppercase(foo)}") << QStringLiteral("foo FOO") << uppercase;
     QTest::newRow("reference_func_body1") << QStringLiteral("${foo} ${myfunc()}") << QStringLiteral("foo ReferenceError: foo is not defined")
                                           << QStringLiteral("function myfunc() { return foo; }");
     QTest::newRow("reference_func_body2") << QStringLiteral("${foo} ${myfunc()}") << QStringLiteral("foo foo")
                                           << QStringLiteral("function myfunc() { return fields.foo; }");
+    QTest::newRow("reference_self") << QStringLiteral("${foo=uppercase(foo)}") << QStringLiteral("FOO") << uppercase;
     QTest::newRow("invalid_js1") << QStringLiteral("${foo=break}") << QStringLiteral("SyntaxError: Break outside of loop") << S();
     QTest::newRow("invalid_js2") << QStringLiteral("${foo=#break#}") << QStringLiteral("undefined") << S();
     QTest::newRow("invalid_js_identifier") << QStringLiteral("${foo.bar}") << QStringLiteral("foo.bar") << S();
