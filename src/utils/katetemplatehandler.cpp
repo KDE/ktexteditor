@@ -390,43 +390,56 @@ void KateTemplateHandler::setupFieldRanges()
 
 void KateTemplateHandler::setupDefaultValues()
 {
-    // group all the changes into one undo transaction
-    KTextEditor::Document::EditingTransaction t(doc());
+    // Evaluate default values and apply them to the field that defined them:
+    // ${x='foo'}, ${x=func()}, etc.
 
-    for (const auto &field : std::as_const(m_fields)) {
+    KateScript::FieldMap defaultsMap;
+
+    for (auto &field : m_fields) {
         if (field.kind != TemplateField::Editable) {
             continue;
         }
-        QString value;
-        if (field.defaultValue.isEmpty()) {
+
+        if (field.defaultValue.isEmpty() && field.kind != TemplateField::FinalCursorPosition) {
             // field has no default value specified; use its identifier
-            value = field.identifier;
+            field.defaultValue = field.identifier;
         } else {
             // field has a default value; evaluate it with the JS engine
             //
-            // If the default value references other fields, they get included
-            // in their current form.
+            // The default value may only reference other fields that are defined
+            // before the current field.
             //
-            // Example A:           Evaluates to:
-            //
-            //      ${b="Foo"}      Foo
-            //      ${a=b}          Foo
-            //
-            // Example B:           Evaluates to:
-            //
-            //      ${a=b}          ${b="Foo"}  (i.e. the unevaluated value of $b)
-            //      ${b="Foo"}      Foo
-            auto env = fieldMap();
+            // Examples:  ${a} ${b=a}        -> a a
+            //            ${a=b} ${b}        -> ReferenceError: b is not defined b
+            //            ${a=fields.b} ${b} -> undefined b
 
             // Make sure a field that depends on itself does not cause a reference
             // error. It uses its own name as value instead.
-            env[field.identifier] = QJSValue(field.identifier);
+            defaultsMap[field.identifier] = field.identifier;
 
-            value = m_templateScript.evaluate(field.defaultValue, env).toString();
+            field.defaultValue = m_templateScript.evaluate(field.defaultValue, defaultsMap).toString();
         }
 
+        defaultsMap[field.identifier] = field.defaultValue;
+    }
+
+    // Evaluate function calls and mirror fields, and store the results in
+    // their defaultValue property.
+
+    for (auto &field : m_fields) {
+        if (field.kind == TemplateField::FunctionCall) {
+            field.defaultValue = m_templateScript.evaluate(field.identifier, defaultsMap).toString();
+        } else if (field.kind == TemplateField::Mirror) {
+            field.defaultValue = defaultsMap[field.identifier].toString();
+        }
+    }
+
+    // group all changes into one undo transaction
+    KTextEditor::Document::EditingTransaction t(doc());
+
+    for (const auto &field : m_fields) {
         field.dontExpandOthers(m_fields);
-        doc()->replaceText(field.range->toRange(), value);
+        doc()->replaceText(field.range->toRange(), field.defaultValue);
     }
 }
 
@@ -437,14 +450,6 @@ void KateTemplateHandler::initializeTemplate()
     setupFieldRanges();
     setupDefaultValues();
     updateRangeBehaviours();
-
-    // call update for each field to set up the initial stuff
-    for (int i = 0; i < m_fields.size(); i++) {
-        auto &field = m_fields[i];
-        ifDebug(qCDebug(LOG_KTE) << "update field:" << field.range->toRange();) updateDependentFields(doc(), field.range->toRange());
-        // remove "user edited field" mark set by the above call since it's not a real edit
-        field.touched = false;
-    }
 }
 
 const KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(KTextEditor::Range range) const

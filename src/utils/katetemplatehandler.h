@@ -112,6 +112,8 @@ private:
      * of the TemplateField instances in m_fields from the raw, user-entered
      * default value to its evaluated equivalent (e.g. "func()" -> result of function call)
      *
+     * Default values are subsequently written into the document.
+     *
      * @sa TemplateField
      */
     void setupDefaultValues();

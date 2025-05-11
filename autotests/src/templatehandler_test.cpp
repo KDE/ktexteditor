@@ -203,16 +203,12 @@ void TemplateHandlerTest::testAdjacentRanges()
     doc->removeText(KTextEditor::Range({0, 4}, {0, 5}));
     QCOMPARE(doc->text(), QStringLiteral("fxoofxoo"));
 
-    QEXPECT_FAIL("", "TBD", Continue);
     reset(QStringLiteral("${foo}${bar}${baz} ${foo}/${bar}/${baz}"), QStringLiteral("foobarbaz foo/bar/baz"));
     doc->insertText({0, 0}, QStringLiteral("x"));
-    QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(doc->text(), QStringLiteral("xfoobarbaz xfoo/bar/baz"));
     doc->insertText({0, 4}, QStringLiteral("x"));
-    QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(doc->text(), QStringLiteral("xfooxbarbaz xfoox/bar/baz"));
     doc->insertText({0, 8}, QStringLiteral("x"));
-    QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(doc->text(), QStringLiteral("xfooxbarxbaz xfoox/barx/baz"));
     doc->insertText({0, 12}, QStringLiteral("x"));
     QEXPECT_FAIL("", "TBD", Continue);
@@ -252,11 +248,9 @@ void TemplateHandlerTest::testAdjacentRanges()
     QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(doc->text(), QStringLiteral("fox x/ fox "));
 
-    QEXPECT_FAIL("", "TBD", Continue);
     reset(QStringLiteral("${foo}${bar} / ${foo} ${bar}"), QStringLiteral("foobar / foo bar"));
     doc->insertText({0, 3}, QStringLiteral("1"));
     doc->insertText({0, 4}, QStringLiteral("2"));
-    QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(doc->text(), QStringLiteral("foo12bar / foo12 bar"));
     doc->insertText({0, 8}, QStringLiteral("x"));
     doc->insertText({0, 9}, QStringLiteral("y"));
@@ -464,6 +458,9 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("string") << QStringLiteral("${foo=\"3+5\"}") << QStringLiteral("3+5") << S();
     QTest::newRow("string_single_quote") << QStringLiteral("${foo='3+5'}") << QStringLiteral("3+5") << S();
     QTest::newRow("string_mirror") << QStringLiteral("${foo=\"Bar\"} ${foo}") << QStringLiteral("Bar Bar") << S();
+    QEXPECT_FAIL("", "Needs handling in parser", Continue);
+    QTest::newRow("mirror_before_default") << QStringLiteral("${foo} ${foo='bar'}") << QStringLiteral("bar bar") << S();
+    QTest::newRow("duplicate_default") << QStringLiteral("${foo=1} ${foo=2}") << QStringLiteral("1 1") << S();
     QTest::newRow("func_simple") << QStringLiteral("${foo=myfunc()}") << QStringLiteral("hi") << QStringLiteral("function myfunc() { return 'hi'; }");
     QTest::newRow("func_fixed") << QStringLiteral("${myfunc()}") << QStringLiteral("hi") << QStringLiteral("function myfunc() { return 'hi'; }");
     QTest::newRow("func_constant_arg") << QStringLiteral("${foo=uppercase(\"Foo\")}") << QStringLiteral("FOO") << uppercase;
@@ -473,7 +470,10 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("only_cursor_stuff") << QStringLiteral("fdas ${cursor} asdf") << QStringLiteral("fdas  asdf") << S();
     QTest::newRow("reference_default") << QStringLiteral("${a='foo'} ${b=a}") << QStringLiteral("foo foo") << S();
     QTest::newRow("reference_plain") << QStringLiteral("${a} ${b=a}") << QStringLiteral("a a") << S();
-    QTest::newRow("reference_unevaluated") << QStringLiteral("${a=b} ${b='foo'}") << QStringLiteral("${b='foo'} foo") << S();
+    QTest::newRow("reference_unevaluated1") << QStringLiteral("${a=b} ${b='foo'}") << QStringLiteral("ReferenceError: b is not defined foo") << S();
+    QTest::newRow("reference_unevaluated2") << QStringLiteral("${a=b} ${b}") << QStringLiteral("ReferenceError: b is not defined b") << S();
+    QTest::newRow("reference_unevaluated3") << QStringLiteral("${a=fields.b} ${b}") << QStringLiteral("undefined b") << S();
+    QTest::newRow("reference_empty") << QStringLiteral("${foo} ${bar=foo}") << QStringLiteral("foo foo") << S();
     QTest::newRow("reference_error") << QStringLiteral("${a=b}") << QStringLiteral("ReferenceError: b is not defined") << S();
     QTest::newRow("reference_func") << QStringLiteral("${foo} ${uppercase(foo)}") << QStringLiteral("foo FOO") << uppercase;
     QTest::newRow("reference_func_default") << QStringLiteral("${foo} ${bar=uppercase(foo)}") << QStringLiteral("foo FOO") << uppercase;
