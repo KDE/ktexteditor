@@ -112,7 +112,7 @@ void KateTemplateHandler::sortFields()
             return true;
         }
         // sort by range
-        return l.range->toRange() < r.range->toRange();
+        return l.range->toRange().start() < r.range->toRange().start();
     });
 }
 
