@@ -424,6 +424,8 @@ void KateTemplateHandler::setupDefaultValues()
 
             value = m_templateScript.evaluate(field.defaultValue, env).toString();
         }
+
+        field.dontExpandOthers(m_fields);
         doc()->replaceText(field.range->toRange(), value);
     }
 }
@@ -434,6 +436,7 @@ void KateTemplateHandler::initializeTemplate()
     parseFields(templateString);
     setupFieldRanges();
     setupDefaultValues();
+    updateRangeBehaviours();
 
     // call update for each field to set up the initial stuff
     for (int i = 0; i < m_fields.size(); i++) {

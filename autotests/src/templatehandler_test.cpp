@@ -278,16 +278,10 @@ void TemplateHandlerTest::testTab()
 
     // no idea why the event needs to be posted to the focus proxy
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
-    QEXPECT_FAIL("adjacent_start", "TBD", Continue);
-    QEXPECT_FAIL("adjacent_mid_1st", "TBD", Continue);
-    QEXPECT_FAIL("adjacent_mid_2nd", "TBD", Continue);
-    QEXPECT_FAIL("adjacent_mixed_start", "TBD", Continue);
-    QEXPECT_FAIL("adjacent_mixed_end", "TBD", Continue);
     QTEST(view->cursorPosition().column(), "expected_cursor");
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab, Qt::ShiftModifier);
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
-    QEXPECT_FAIL("adjacent_start", "TBD", Continue);
     QEXPECT_FAIL("adjacent_mid_1st", "TBD", Continue);
     QEXPECT_FAIL("adjacent_mid_2nd", "TBD", Continue);
     QEXPECT_FAIL("adjacent_mixed_start", "TBD", Continue);
@@ -295,7 +289,6 @@ void TemplateHandlerTest::testTab()
     QTEST(view->cursorPosition().column(), "expected_cursor");
 
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
-    QEXPECT_FAIL("adjacent_start", "TBD", Continue);
     QEXPECT_FAIL("adjacent_mid_1st", "TBD", Continue);
     QEXPECT_FAIL("adjacent_mid_2nd", "TBD", Continue);
     QEXPECT_FAIL("adjacent_mixed_start", "TBD", Continue);
