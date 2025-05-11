@@ -176,6 +176,11 @@ bool View::insertTemplate(KTextEditor::Cursor insertPosition, const QString &tem
     return d->insertTemplateInternal(insertPosition, templateString, script);
 }
 
+bool View::evaluateScript(const QString &script)
+{
+    return d->evaluateScriptInternal(script);
+}
+
 KSyntaxHighlighting::Theme View::theme() const
 {
     return KateHlManager::self()->repository().theme(d->rendererConfig()->schema());

@@ -978,6 +978,18 @@ public:
     bool insertTemplate(KTextEditor::Cursor insertPosition, const QString &templateString, const QString &script = QString());
 
     /*!
+     * Run a piece of javascript.
+     *
+     * \param script the javascript code to run
+     * \return True on success, false if an error orrcured. Note that the document may still have been modified, before an error!
+     *
+     * \since 6.15
+     *
+     * \see insertTemplate()
+     */
+    bool evaluateScript(const QString &script);
+
+    /*!
      * Scroll view to cursor.
      *
      * \a cursor is the cursor position to scroll to.

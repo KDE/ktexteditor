@@ -3183,6 +3183,17 @@ bool KTextEditor::ViewPrivate::insertTemplateInternal(const KTextEditor::Cursor 
     return true;
 }
 
+bool KTextEditor::ViewPrivate::evaluateScriptInternal(const QString &script)
+{
+    KTextEditor::Document::EditingTransaction transaction(document());
+    // separate script into a "library" and a "program", in order to match logic in KateScript::evaluate
+    KateScript kate_script(QStringLiteral("function _runKateScript() {\n") + script + QStringLiteral("\n}"), KateScript::InputSCRIPT);
+    if (!kate_script.load())
+        return false;
+    kate_script.setView(this);
+    return (!kate_script.evaluate(QStringLiteral("_runKateScript();")).isError());
+}
+
 bool KTextEditor::ViewPrivate::tagLines(KTextEditor::Range range, bool realRange)
 {
     return tagLines(range.start(), range.end(), realRange);

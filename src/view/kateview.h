@@ -960,6 +960,8 @@ private:
 public:
     bool insertTemplateInternal(const KTextEditor::Cursor insertPosition, const QString &templateString, const QString &script = QString());
 
+    bool evaluateScriptInternal(const QString &script);
+
     /**
      * Accessors to the bars...
      */
