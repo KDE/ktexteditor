@@ -252,6 +252,16 @@ void TemplateHandlerTest::testAdjacentRanges()
     QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(doc->text(), QStringLiteral("fox x/ fox "));
 
+    QEXPECT_FAIL("", "TBD", Continue);
+    reset(QStringLiteral("${foo}${bar} / ${foo} ${bar}"), QStringLiteral("foobar / foo bar"));
+    doc->insertText({0, 3}, QStringLiteral("1"));
+    doc->insertText({0, 4}, QStringLiteral("2"));
+    QEXPECT_FAIL("", "TBD", Continue);
+    QCOMPARE(doc->text(), QStringLiteral("foo12bar / foo12 bar"));
+    doc->insertText({0, 8}, QStringLiteral("x"));
+    doc->insertText({0, 9}, QStringLiteral("y"));
+    QCOMPARE(doc->text(), QStringLiteral("foo12barxy / foo12 barxy"));
+
     delete doc;
 }
 
