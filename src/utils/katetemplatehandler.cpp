@@ -9,10 +9,12 @@
 #include <QKeyEvent>
 #include <QQueue>
 #include <QRegularExpression>
+#include <algorithm>
 
 #include <ktexteditor/movingcursor.h>
 #include <ktexteditor/movingrange.h>
 
+#include "cursor.h"
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
@@ -129,61 +131,48 @@ void KateTemplateHandler::jumpToPreviousRange()
 void KateTemplateHandler::jump(int by, bool initial)
 {
     Q_ASSERT(by == 1 || by == -1);
-    sortFields();
 
-    // find (editable) field index of current cursor position
-    int pos = -1;
-    auto cursor = view()->cursorPosition();
-    // if initial is not set, should start from the beginning (field -1)
-    if (!initial) {
-        const auto range = KTextEditor::Range(cursor, cursor);
-        auto fd = fieldForRange(range);
-        // if nothing was found try to use the next closest range in text
-        if (fd.kind == TemplateField::Invalid) {
-            int i = 0;
-            for (const auto &field : m_fields) {
-                if (!field.removed && field.range->toRange() > range) {
-                    pos = i;
-                    break;
-                }
-            }
-        } else {
-            pos = m_fields.indexOf(fd);
-        }
+    auto start = view()->cursorPosition();
+
+    if (initial) {
+        start = Cursor{-1, -1};
     }
 
-    // modulo field count and make positive
-    auto wrap = [this](int x) -> unsigned int {
-        x %= m_fields.size();
-        return x + (x < 0 ? m_fields.size() : 0);
-    };
-
-    pos = wrap(pos);
-    // choose field to jump to, including wrap-around
-    auto choose_next_field = [this, by, wrap](unsigned int from_field_index) {
-        for (int i = from_field_index + by;; i += by) {
-            auto wrapped_i = wrap(i);
-            const auto &field = m_fields.at(wrapped_i);
-            const auto kind = field.kind;
-            if ((!field.removed && kind == TemplateField::Editable) || kind == TemplateField::FinalCursorPosition) {
-                // found an editable field by walking into the desired direction
-                return wrapped_i;
-            }
-            if (wrapped_i == from_field_index) {
-                // nothing found, do nothing (i.e. keep cursor in current field)
-                break;
-            }
+    std::stable_sort(m_fields.begin(), m_fields.end(), [&by](const auto &a, const auto &b) {
+        if (by > 0) {
+            return a.range->toRange().start() < b.range->toRange().start();
+        } else {
+            return a.range->toRange().start() > b.range->toRange().start();
         }
-        return from_field_index;
-    };
+    });
 
-    // jump
-    const auto next = choose_next_field(pos);
-    const auto jump_to_field = m_fields.at(next);
-    view()->setCursorPosition(jump_to_field.range->toRange().start());
-    if (!jump_to_field.touched) {
-        // field was never edited by the user, so select its contents
-        view()->setSelection(jump_to_field.range->toRange());
+    std::stable_partition(m_fields.begin(), m_fields.end(), [&by, &start](const auto &a) {
+        if (by > 0) {
+            return a.range->start() > start;
+        } else {
+            return a.range->start() < start;
+        }
+    });
+
+    const auto it = std::find_if(m_fields.begin(), m_fields.end(), [](const auto &a) {
+        return (!a.removed && (a.kind == TemplateField::Editable || a.kind == TemplateField::FinalCursorPosition));
+    });
+
+    if (it != m_fields.end()) {
+        // found a valid field, jump to its start position
+        const auto &field = *it;
+
+        view()->setCursorPosition(field.range->toRange().start());
+
+        if (!field.touched) {
+            // field was never edited by the user, so select its contents
+            view()->setSelection(field.range->toRange());
+        } else {
+            view()->clearSelection();
+        }
+    } else {
+        // found nothing, stay put
+        return;
     }
 }
 
