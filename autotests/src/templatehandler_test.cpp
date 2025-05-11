@@ -458,7 +458,6 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("string") << QStringLiteral("${foo=\"3+5\"}") << QStringLiteral("3+5") << S();
     QTest::newRow("string_single_quote") << QStringLiteral("${foo='3+5'}") << QStringLiteral("3+5") << S();
     QTest::newRow("string_mirror") << QStringLiteral("${foo=\"Bar\"} ${foo}") << QStringLiteral("Bar Bar") << S();
-    QEXPECT_FAIL("", "Needs handling in parser", Continue);
     QTest::newRow("mirror_before_default") << QStringLiteral("${foo} ${foo='bar'}") << QStringLiteral("bar bar") << S();
     QTest::newRow("duplicate_default") << QStringLiteral("${foo=1} ${foo=2}") << QStringLiteral("1 1") << S();
     QTest::newRow("func_simple") << QStringLiteral("${foo=myfunc()}") << QStringLiteral("hi") << QStringLiteral("function myfunc() { return 'hi'; }");

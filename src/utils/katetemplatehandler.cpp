@@ -307,6 +307,8 @@ void KateTemplateHandler::parseFields(const QString &templateText)
 
     // process fields
     auto fieldMatch = field.globalMatch(templateText);
+    QMap<QString, qsizetype> mainFields;
+
     while (fieldMatch.hasNext()) {
         const auto match = fieldMatch.next();
 
@@ -339,15 +341,24 @@ void KateTemplateHandler::parseFields(const QString &templateText)
             f.kind = TemplateField::FinalCursorPosition;
         }
 
-        for (const auto &other : std::as_const(m_fields)) {
-            if (other.kind == TemplateField::Editable && !(f == other) && other.identifier == f.identifier) {
-                // field is a mirror field
-                f.kind = TemplateField::Mirror;
-                break;
+        m_fields.append(f);
+        auto &storedField = m_fields.last();
+        auto index = m_fields.count() - 1;
+
+        if (f.kind != TemplateField::FinalCursorPosition) {
+            if (mainFields.contains(f.identifier)) {
+                auto &other = m_fields[mainFields[f.identifier]];
+
+                if (defaultMatch.hasMatch() && other.defaultValue.isEmpty()) {
+                    other.kind = TemplateField::Mirror;
+                    mainFields[storedField.identifier] = index;
+                } else {
+                    storedField.kind = TemplateField::Mirror;
+                }
+            } else {
+                mainFields[storedField.identifier] = index;
             }
         }
-
-        m_fields.append(f);
     }
 
     for (const auto &match : escapedField.globalMatch(templateText)) {
