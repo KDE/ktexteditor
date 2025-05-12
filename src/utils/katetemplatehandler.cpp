@@ -367,9 +367,6 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     for (const auto &backslash : stripBackslashes) {
         doc()->removeText(backslash);
     }
-
-    // make sure all newly parsed fields are sorted by position
-    sortFields();
 }
 
 void KateTemplateHandler::setupFieldRanges()
@@ -385,6 +382,9 @@ void KateTemplateHandler::setupFieldRanges()
     // color all the template fields
     for (const auto &field : std::as_const(m_fields)) {
         field.range->setAttribute(field.kind == TemplateField::Editable ? editableAttribute : notEditableAttribute);
+
+        // initially set all ranges to be static, as required by setupDefaultValues()
+        field.range->setInsertBehaviors(KTextEditor::MovingRange::DoNotExpand);
     }
 }
 
@@ -438,8 +438,11 @@ void KateTemplateHandler::setupDefaultValues()
     KTextEditor::Document::EditingTransaction t(doc());
 
     for (const auto &field : m_fields) {
-        field.dontExpandOthers(m_fields);
+        // All ranges are static by default, as prepared in setupFieldRanges().
+        // Dynamic behaviors are set in updateRangeBehaviours() after initialization is finished.
+        field.range->setInsertBehaviors(KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
         doc()->replaceText(field.range->toRange(), field.defaultValue);
+        field.range->setInsertBehaviors(KTextEditor::MovingRange::DoNotExpand);
     }
 }
 
