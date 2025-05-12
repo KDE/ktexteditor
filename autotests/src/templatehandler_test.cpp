@@ -444,6 +444,7 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("foo=3") << QStringLiteral("${foo=3}") << QStringLiteral("3") << S();
     QTest::newRow("${foo=3+5}") << QStringLiteral("${foo=3+5}") << QStringLiteral("8") << S();
     QTest::newRow("string") << QStringLiteral("${foo=\"3+5\"}") << QStringLiteral("3+5") << S();
+    QTest::newRow("backslash") << QStringLiteral(R"(${foo='c:\\folder'})") << QStringLiteral(R"(c:\folder)") << S();
     QTest::newRow("string_single_quote") << QStringLiteral("${foo='3+5'}") << QStringLiteral("3+5") << S();
     QTest::newRow("string_mirror") << QStringLiteral("${foo=\"Bar\"} ${foo}") << QStringLiteral("Bar Bar") << S();
     QTest::newRow("mirror_before_default") << QStringLiteral("${foo} ${foo='bar'}") << QStringLiteral("bar bar") << S();
