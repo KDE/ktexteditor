@@ -211,20 +211,15 @@ void TemplateHandlerTest::testAdjacentRanges()
     doc->insertText({0, 8}, QStringLiteral("x"));
     QCOMPARE(doc->text(), QStringLiteral("xfooxbarxbaz xfoox/barx/baz"));
     doc->insertText({0, 12}, QStringLiteral("x"));
-    QEXPECT_FAIL("", "TBD", Continue);
-    QCOMPARE(doc->text(), QStringLiteral("xfooxbarbazx xfoox/barx/bazx"));
+    QCOMPARE(doc->text(), QStringLiteral("xfooxbarxbazx xfoox/barx/bazx"));
     doc->removeText(KTextEditor::Range({0, 4}, {0, 5}));
-    QEXPECT_FAIL("", "TBD", Continue);
-    QCOMPARE(doc->text(), QStringLiteral("xfoobarxbaz xfoo/barx/baz"));
+    QCOMPARE(doc->text(), QStringLiteral("xfoobarxbazx xfoo/barx/bazx"));
     doc->insertText({0, 4}, QStringLiteral("y"));
-    QEXPECT_FAIL("", "TBD", Continue);
-    QCOMPARE(doc->text(), QStringLiteral("xfooybarxbaz xfooy/barx/baz"));
+    QCOMPARE(doc->text(), QStringLiteral("xfooybarxbazx xfooy/barx/bazx"));
     doc->removeText(KTextEditor::Range({0, 8}, {0, 9}));
-    QEXPECT_FAIL("", "TBD", Continue);
-    QCOMPARE(doc->text(), QStringLiteral("xfooybarbaz xfooy/bar/baz"));
+    QCOMPARE(doc->text(), QStringLiteral("xfooybarbazx xfooy/bar/bazx"));
     doc->insertText({0, 8}, QStringLiteral("y"));
-    QEXPECT_FAIL("", "TBD", Continue);
-    QCOMPARE(doc->text(), QStringLiteral("xfooybarybaz xfooy/bary/baz"));
+    QCOMPARE(doc->text(), QStringLiteral("xfooybarybazx xfooy/bary/bazx"));
 
     reset(QStringLiteral("${foo} ${bar} / ${foo} ${bar}"), QStringLiteral("foo bar / foo bar"));
     doc->removeText(KTextEditor::Range({0, 2}, {0, 5}));
@@ -234,8 +229,7 @@ void TemplateHandlerTest::testAdjacentRanges()
     QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(doc->text(), QStringLiteral("foxar / fox ar"));
     doc->insertText({0, 5}, QStringLiteral("x"));
-    QEXPECT_FAIL("", "TBD", Continue);
-    QCOMPARE(doc->text(), QStringLiteral("foxar / fox arx"));
+    QCOMPARE(doc->text(), QStringLiteral("foxarx / fox arx"));
 
     reset(QStringLiteral("${foo} ${bar} / ${foo} ${bar}"), QStringLiteral("foo bar / foo bar"));
     doc->removeText(KTextEditor::Range({0, 2}, {0, 7}));
