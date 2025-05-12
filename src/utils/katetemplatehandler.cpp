@@ -268,7 +268,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     // matches any field, i.e. the three forms ${foo}, ${foo=expr}, ${func()}
     static const QRegularExpression field(QStringLiteral(R"((?<!\\)(?<slash>(?:\\\\)*)\${(?<body>[^}]+)})"), QRegularExpression::UseUnicodePropertiesOption);
     // matches the "foo=expr" form within a match of the above expression
-    static const QRegularExpression defaultField(QStringLiteral("\\w+=([^\\}]*)"), QRegularExpression::UseUnicodePropertiesOption);
+    static const QRegularExpression defaultField(QStringLiteral(R"(\w+=([^}]*))"), QRegularExpression::UseUnicodePropertiesOption);
     // this only captures escaped fields, i.e. \\${foo} etc.
     static const QRegularExpression escapedField(QStringLiteral(R"((?<!\\)(?<slash>\\(?:\\\\)*)\${[^}]+})"), QRegularExpression::UseUnicodePropertiesOption);
 
