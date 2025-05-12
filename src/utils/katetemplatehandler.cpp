@@ -286,7 +286,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     // create a moving range spanning the given field
     auto createMovingRangeForMatch = [this, startOfMatch](const QRegularExpressionMatch &match) {
         auto matchStart = startOfMatch(match);
-        auto slashOffset = Cursor{0, match.capturedLength("slash")};
+        auto slashOffset = Cursor{0, static_cast<int>(match.capturedLength("slash"))};
         return doc()->newMovingRange({matchStart + slashOffset, matchStart + Cursor(0, match.capturedLength(0))},
                                      MovingRange::ExpandLeft | MovingRange::ExpandRight);
     };
