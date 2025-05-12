@@ -19,9 +19,9 @@ public:
 
 private Q_SLOTS:
     void testUndo();
-
     void testError();
     void testSelection();
+    void testReturn();
 };
 
 #endif

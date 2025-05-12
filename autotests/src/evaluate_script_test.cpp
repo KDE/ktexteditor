@@ -89,4 +89,27 @@ void EvaluateScriptTest::testSelection()
     QCOMPARE(view->selectionText(), QStringLiteral("three"));
 }
 
+void EvaluateScriptTest::testReturn()
+{
+    auto doc = new KTextEditor::DocumentPrivate();
+    auto view = doc->createView(nullptr);
+    doc->setText(QStringLiteral("line 1\nline 2\n"));
+    auto cursor = KTextEditor::Cursor(1, 3);
+    view->setCursorPosition(cursor);
+
+    QVariant result;
+    bool success = view->evaluateScript(QStringLiteral("return view.cursorPosition()"), &result);
+    QVERIFY(success);
+    auto map = result.toMap();
+    QCOMPARE(map.size(), 2);
+    QCOMPARE(map.value(QStringLiteral("line")).toInt(), cursor.line());
+    QCOMPARE(map.value(QStringLiteral("column")).toInt(), cursor.column());
+
+    success = view->evaluateScript(QStringLiteral("return ['a', 'b', 'c']"), &result);
+    QVERIFY(success);
+    auto list = result.toList();
+    QCOMPARE(list.size(), 3);
+    QCOMPARE(list.value(2).toString(), QStringLiteral("c"));
+}
+
 #include "moc_evaluate_script_test.cpp"

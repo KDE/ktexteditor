@@ -974,20 +974,29 @@ public:
      * \a script is a script with functions which can be used in \a templateString
      *
      * Returns true on success, false if insertion failed (e.g. read-only mode)
+     *
+     * \sa evaluateScript()
      */
     bool insertTemplate(KTextEditor::Cursor insertPosition, const QString &templateString, const QString &script = QString());
 
     /*!
      * Run a piece of javascript.
      *
-     * \param script the javascript code to run
-     * \return True on success, false if an error orrcured. Note that the document may still have been modified, before an error!
+     * \a script is the javascript code to run
+     *
+     * \a result is set to a QVariant representing the return value.
+     *           If set to nullptr, no result is passed.
+     *           Note that many but not all javascript objects can be accurately
+     *           represented as a QVariant. Consider simplifying / stringifying
+     *           complex objects, if this may be an issue.
+     *
+     * Returns \e true on success, \e false if an error orrcured. Note that the document may still have been modified, before an error!
      *
      * \since 6.15
      *
-     * \see insertTemplate()
+     * \sa insertTemplate()
      */
-    bool evaluateScript(const QString &script);
+    bool evaluateScript(const QString &script, QVariant *result = nullptr);
 
     /*!
      * Scroll view to cursor.

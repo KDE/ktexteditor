@@ -176,9 +176,9 @@ bool View::insertTemplate(KTextEditor::Cursor insertPosition, const QString &tem
     return d->insertTemplateInternal(insertPosition, templateString, script);
 }
 
-bool View::evaluateScript(const QString &script)
+bool View::evaluateScript(const QString &script, QVariant *result)
 {
-    return d->evaluateScriptInternal(script);
+    return d->evaluateScriptInternal(script, result);
 }
 
 KSyntaxHighlighting::Theme View::theme() const
