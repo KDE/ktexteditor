@@ -105,15 +105,7 @@ KateTemplateHandler::~KateTemplateHandler()
 
 void KateTemplateHandler::sortFields()
 {
-    std::sort(m_fields.begin(), m_fields.end(), [](const TemplateField &l, const TemplateField &r) {
-        // always sort the final cursor pos last
-        if (l.kind == TemplateField::FinalCursorPosition) {
-            return false;
-        }
-        if (r.kind == TemplateField::FinalCursorPosition) {
-            return true;
-        }
-        // sort by range
+    std::sort(m_fields.begin(), m_fields.end(), [](const auto &l, const auto &r) {
         return l.range->toRange().start() < r.range->toRange().start();
     });
 }

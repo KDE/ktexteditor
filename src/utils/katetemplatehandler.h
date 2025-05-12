@@ -162,8 +162,7 @@ private:
     void updateRangeBehaviours();
 
     /**
-     * Sort all template fields in m_fields by tab order, which means,
-     * by range; except for ${cursor} which is always sorted last.
+     * Sort all template fields in @p m_fields by start of range.
      */
     void sortFields();
 
