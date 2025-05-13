@@ -7477,28 +7477,24 @@ msgid "Select to Matching Bracket"
 msgstr "Vybrat text do odpovídající závorky"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Přesunout slovo doprava"
+msgstr ""
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Vybrat slovo doprava"
+msgstr ""
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Přesunout slovo doleva"
+msgstr ""
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Vybrat slovo doleva"
+msgstr ""
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7614,16 +7610,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Toto použijte ke zrušení odsazení vybraného bloku textu."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Smazat slovo doleva"
+msgstr ""
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Smazat slovo doprava"
+msgstr ""
 
 #: view/kateview.cpp:1441
 #, kde-format
@@ -8203,10 +8197,3 @@ msgstr "'%1' %2,  šestnáctkově %3,  osmičkově %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Značka nenastavena: %1"
-
-#~ msgid ""
-#~ "Use this command to copy the currently selected text as HTML to the "
-#~ "system clipboard."
-#~ msgstr ""
-#~ "Použijte tento příkaz ke kopírování aktuálně vybraného textu jako HTML do "
-#~ "schránky systému."
