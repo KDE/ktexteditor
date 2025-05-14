@@ -3187,11 +3187,11 @@ bool KTextEditor::ViewPrivate::evaluateScriptInternal(const QString &script, QVa
 {
     KTextEditor::Document::EditingTransaction transaction(document());
     // separate script into a "library" and a "program", in order to match logic in KateScript::evaluate
-    KateScript kate_script(QStringLiteral("function _runKateScript() {\n") + script + QStringLiteral("\n}"), KateScript::InputSCRIPT);
-    if (!kate_script.load())
+    KateScript kateScript(QStringLiteral("function _runKateScript() {\n") + script + QStringLiteral("\n}"), KateScript::InputSCRIPT);
+    if (!kateScript.load())
         return false;
-    kate_script.setView(this);
-    auto res = kate_script.evaluate(QStringLiteral("_runKateScript();"));
+    kateScript.setView(this);
+    auto res = kateScript.evaluate(QStringLiteral("_runKateScript();"));
     if (result)
         *result = res.toVariant(QJSValue::ConvertJSObjects);
     return (!res.isError());
