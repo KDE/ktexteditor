@@ -9,6 +9,8 @@ headerdirs = include ../docs
 imagedirs = ../docs/pics
 sourcedirs = .
 
+navigation.landingpage = "KTextEditor"
+
 depends = \
     kde \
     qtcore \
