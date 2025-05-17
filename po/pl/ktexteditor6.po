@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-07 00:39+0000\n"
+"POT-Creation-Date: 2025-05-17 00:38+0000\n"
 "PO-Revision-Date: 2025-03-15 10:52+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -7949,17 +7949,17 @@ msgstr "Wyszukiwanie zapętliło"
 msgid "Open File"
 msgstr "Otwórz plik"
 
-#: view/kateview.cpp:3960
+#: view/kateview.cpp:3974
 #, kde-format
 msgid "Align On"
 msgstr "Wyrównaj na"
 
-#: view/kateview.cpp:3960
+#: view/kateview.cpp:3974
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Wzorzec wyrównania:"
 
-#: view/kateview.cpp:5044
+#: view/kateview.cpp:5058
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Wyeksportuj plik jako HTML"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-07 00:39+0000\n"
+"POT-Creation-Date: 2025-05-17 00:38+0000\n"
 "PO-Revision-Date: 2002-11-14 16:59SAST\n"
 "Last-Translator: Lwandle Mgidlana <lwandle@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -7752,17 +7752,17 @@ msgstr "Phendla"
 msgid "Open File"
 msgstr "Gcina Ifayile"
 
-#: view/kateview.cpp:3960
+#: view/kateview.cpp:3974
 #, fuzzy, kde-format
 msgid "Align On"
 msgstr "&Zonke"
 
-#: view/kateview.cpp:3960
+#: view/kateview.cpp:3974
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:5044
+#: view/kateview.cpp:5058
 #, fuzzy, kde-format
 msgid "Export File as HTML"
 msgstr "Rhweba ifayile ngaphandle njenge"

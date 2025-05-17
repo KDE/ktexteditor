@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-07 00:39+0000\n"
+"POT-Creation-Date: 2025-05-17 00:38+0000\n"
 "PO-Revision-Date: 2005-01-04 11:33-0600\n"
 "Last-Translator: Deepayan Sarkar <deepayan@bengalinux.org>\n"
 "Language-Team: Bengali <kde-translation@bengalinux.org>\n"
@@ -7570,17 +7570,17 @@ msgstr "সন্ধান"
 msgid "Open File"
 msgstr "ফাইল সংরক্ষণ করো "
 
-#: view/kateview.cpp:3960
+#: view/kateview.cpp:3974
 #, fuzzy, kde-format
 msgid "Align On"
 msgstr "&সব"
 
-#: view/kateview.cpp:3960
+#: view/kateview.cpp:3974
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:5044
+#: view/kateview.cpp:5058
 #, fuzzy, kde-format
 msgid "Export File as HTML"
 msgstr "ফাইল অন্য ফর্ম্যাটে রপ্তানি করো"

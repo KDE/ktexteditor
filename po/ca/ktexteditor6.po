@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-07 00:39+0000\n"
+"POT-Creation-Date: 2025-05-17 00:38+0000\n"
 "PO-Revision-Date: 2025-02-23 08:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -8015,17 +8015,17 @@ msgstr "La cerca continua des del començament"
 msgid "Open File"
 msgstr "Obre un fitxer"
 
-#: view/kateview.cpp:3960
+#: view/kateview.cpp:3974
 #, kde-format
 msgid "Align On"
 msgstr "Alinea a"
 
-#: view/kateview.cpp:3960
+#: view/kateview.cpp:3974
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Patró d'alineació:"
 
-#: view/kateview.cpp:5044
+#: view/kateview.cpp:5058
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exporta el fitxer com a HTML"

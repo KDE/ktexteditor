@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-07 00:39+0000\n"
+"POT-Creation-Date: 2025-05-17 00:38+0000\n"
 "PO-Revision-Date: 2025-03-03 16:09+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -7950,17 +7950,17 @@ msgstr "Поиск продолжен"
 msgid "Open File"
 msgstr "Открыть файл"
 
-#: view/kateview.cpp:3960
+#: view/kateview.cpp:3974
 #, kde-format
 msgid "Align On"
 msgstr "В&ыровнять по"
 
-#: view/kateview.cpp:3960
+#: view/kateview.cpp:3974
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Образец выравнивания:"
 
-#: view/kateview.cpp:5044
+#: view/kateview.cpp:5058
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Экспорт файла в HTML"
