@@ -627,4 +627,18 @@ void KateTemplateHandler::TemplateField::dontExpandOthers(const QList<TemplateFi
     }
 }
 
+QDebug operator<<(QDebug s, const KateTemplateHandler::TemplateField &field)
+{
+    QDebugStateSaver saver(s);
+    s.nospace() << "{" << qSetFieldWidth(12) << Qt::left << field.identifier % QStringLiteral(":") << qSetFieldWidth(0) << "kind=" << field.kind
+                << " removed=" << field.removed;
+
+    if (field.range) {
+        s.nospace() << "\t" << *field.range << field.range->insertBehaviors();
+    }
+
+    s.nospace() << "}";
+    return s;
+}
+
 #include "moc_katetemplatehandler.cpp"

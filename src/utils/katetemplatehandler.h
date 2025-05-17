@@ -17,6 +17,7 @@
 #include <katescript.h>
 #include <ktexteditor/cursor.h>
 
+class QDebug;
 class KateUndoManager;
 
 namespace KTextEditor
@@ -244,6 +245,21 @@ private:
 
     /// template script (i.e. javascript stuff), which can be used by the current template
     KateScript m_templateScript;
+
+    friend QDebug operator<<(QDebug s, const KateTemplateHandler::TemplateField &field);
 };
+
+/*!
+ * qDebug() stream operator for template fields
+ * Writes a template field to the debug output in a nicely formatted way.
+ *
+ * \a s is the debug stream
+ * \a field is the field to print
+ *
+ * Returns debug stream
+ *
+ * \relates KateTemplateHandler::TemplateField
+ */
+KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, const KateTemplateHandler::TemplateField &field);
 
 #endif
