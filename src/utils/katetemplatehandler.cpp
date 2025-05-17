@@ -505,66 +505,80 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
 
     ifDebug(qCDebug(LOG_KTE) << "text changed" << document << range;)
 
-        // group all the changes into one undo transaction
-        KTextEditor::Document::EditingTransaction t(doc());
+        // find the fields which were modified, if any
+        const auto changedFields = fieldsForRange(range);
 
-    // find the field which was modified, if any
-    sortFields();
-    const auto changedField = fieldForRange(range);
-    if (changedField.kind == TemplateField::Invalid) {
-        // edit not within a field, nothing to do
-        ifDebug(qCDebug(LOG_KTE) << "edit not within a field:" << range;) return;
-    }
-    if (changedField.kind == TemplateField::FinalCursorPosition && doc()->text(changedField.range->toRange()).isEmpty()) {
-        // text changed at final cursor position: the user is done, so exit
-        // this is not executed when the field's range is not empty: in that case this call
-        // is for initial setup and we have to continue below
-        ifDebug(qCDebug(LOG_KTE) << "final cursor changed:" << range;) deleteLater();
-        return;
+    if (changedFields.isEmpty()) {
+        ifDebug(qCDebug(LOG_KTE) << "edit did not touch any field:" << range;) return;
     }
 
-    if (textRemoved && !range.onSingleLine()) {
-        for (auto &f : m_fields) {
-            if ((f.kind == TemplateField::Editable || f.kind == TemplateField::Mirror) && !f.removed
-                && (range.contains(f.range->toRange()) && f.range->isEmpty())) {
-                f.removed = true;
+    // group all changes into one undo transaction
+    KTextEditor::Document::EditingTransaction t(doc());
+    m_internalEdit = true; // prevent unwanted recursion
+
+    // If text was removed, mark all affected fields that are now empty as removed
+    if (textRemoved) {
+        for (auto &field : m_fields) {
+            if (field.removed) {
+                continue;
+            }
+
+            if ((range.start() < field.range->start() && range.end() >= field.range->end()) || !field.range->toRange().isValid()) {
+                field.removed = true;
             }
         }
     }
 
-    // new contents of the changed template field
-    const auto &newText = doc()->text(changedField.range->toRange());
-    m_internalEdit = true;
-    // go through all fields and update the contents of the dependent ones
-    for (auto field = m_fields.begin(); field != m_fields.end(); field++) {
-        if (field->kind == TemplateField::FinalCursorPosition) {
-            // only relevant on first run
-            doc()->replaceText(field->range->toRange(), QString());
-        }
+    // Update dynamic range behaviors to consider changed ranges
+    updateRangeBehaviours();
 
-        if (*field == changedField) {
-            // mark that the user changed this field
-            field->touched = true;
-        }
-
-        // If this is mirrored field with the same identifier as the
-        // changed one and the changed one is editable, mirror changes
-        // edits to non-editable mirror fields are ignored
-        if (field->kind == TemplateField::Mirror && changedField.kind == TemplateField::Editable && field->identifier == changedField.identifier) {
-            // editable field changed, mirror changes
-            field->dontExpandOthers(m_fields);
-            doc()->replaceText(field->range->toRange(), newText);
-        } else if (field->kind == TemplateField::FunctionCall) {
-            // replace field by result of function call
-            field->dontExpandOthers(m_fields);
-            // build map of objects in the scope to pass to the function
-            auto map = fieldMap();
-            const auto &callResult = m_templateScript.evaluate(field->identifier, map);
-            doc()->replaceText(field->range->toRange(), callResult.toString());
+    // Collect new values of changed editable fields
+    QMap<QString, QString> mainFieldValues;
+    for (const auto &field : changedFields) {
+        if (field.kind == TemplateField::Editable) {
+            if (field.range->toRange().isValid()) {
+                mainFieldValues[field.identifier] = doc()->text(field.range->toRange());
+            } else {
+                mainFieldValues[field.identifier] = QStringLiteral("");
+            }
         }
     }
-    m_internalEdit = false;
+
+    if (changedFields.length() == 1 && changedFields[0].kind == TemplateField::FinalCursorPosition) {
+        // text changed at final cursor position: the user is done, so exit
+        ifDebug(qCDebug(LOG_KTE) << "final cursor changed:" << range;) deleteLater();
+    }
+
+    // Mark all field ranges as static until we are finished with editing
+    for (const auto &field : m_fields) {
+        field.range->setInsertBehaviors(KTextEditor::MovingRange::DoNotExpand);
+    }
+
+    // - Apply changed main values to mirror fields
+    // - Mark changed main fields as edited
+    // - Re-run all function fields with new values
+    auto jsFields = fieldMap();
+    for (auto &field : m_fields) {
+        if (mainFieldValues.contains(field.identifier)) {
+            if (field.kind == TemplateField::Editable && mainFieldValues[field.identifier] != field.defaultValue) {
+                field.touched = true;
+            } else if (field.kind == TemplateField::Mirror) {
+                field.range->setInsertBehaviors(KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
+                doc()->replaceText(field.range->toRange(), mainFieldValues[field.identifier]);
+                field.range->setInsertBehaviors(KTextEditor::MovingRange::DoNotExpand);
+            }
+        } else if (field.kind == TemplateField::FunctionCall) {
+            const auto &callResult = m_templateScript.evaluate(field.identifier, jsFields);
+            field.range->setInsertBehaviors(KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
+            doc()->replaceText(field.range->toRange(), callResult.toString());
+            field.range->setInsertBehaviors(KTextEditor::MovingRange::DoNotExpand);
+        }
+    }
+
+    // Re-apply dynamic range behaviors now that we are done editing
     updateRangeBehaviours();
+
+    m_internalEdit = false; // enable this slot again
 }
 
 void KateTemplateHandler::updateRangeBehaviours()
