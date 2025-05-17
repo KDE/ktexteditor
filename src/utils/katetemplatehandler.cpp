@@ -469,17 +469,17 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
         return;
     }
 
+    if (m_internalEdit || range.isEmpty()) {
+        // internal or null edit; for internal edits, don't do anything
+        // to prevent unwanted recursion
+        return;
+    }
+
     bool in_range = m_wholeTemplateRange->toRange().contains(range.start());
     bool at_end = m_wholeTemplateRange->toRange().end() == range.end() || m_wholeTemplateRange->toRange().end() == range.start();
     if (m_wholeTemplateRange->toRange().isEmpty() || (!in_range && !at_end)) {
         // edit outside template range, abort
         ifDebug(qCDebug(LOG_KTE) << "edit outside template range, exiting";) deleteLater();
-        return;
-    }
-
-    if (m_internalEdit || range.isEmpty()) {
-        // internal or null edit; for internal edits, don't do anything
-        // to prevent unwanted recursion
         return;
     }
 
