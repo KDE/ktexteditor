@@ -263,12 +263,18 @@ void TemplateHandlerTest::testTab()
 
     // no idea why the event needs to be posted to the focus proxy
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QEXPECT_FAIL("jump_to_cursor_last", "Regression in KateTemplateHandler::jump", Continue);
+    QEXPECT_FAIL("jump_to_cursor_last2", "Regression in KateTemplateHandler::jump", Continue);
     QTEST(view->cursorPosition().column(), "expected_cursor");
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab, Qt::ShiftModifier);
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QEXPECT_FAIL("jump_to_cursor_last", "Regression in KateTemplateHandler::jump", Continue);
+    QEXPECT_FAIL("jump_to_cursor_last2", "Regression in KateTemplateHandler::jump", Continue);
     QTEST(view->cursorPosition().column(), "expected_cursor");
 
+    QEXPECT_FAIL("jump_to_cursor_last", "Regression in KateTemplateHandler::jump", Continue);
+    QEXPECT_FAIL("jump_to_cursor_last2", "Regression in KateTemplateHandler::jump", Continue);
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
     QTEST(doc->text(), "expected_edited_result");
 
@@ -300,8 +306,8 @@ void TemplateHandlerTest::testTab_data()
     QTest::newRow("skip_non_editable") << "${foo} ${foo} ${bar}" << 0 << 8 << "foo foo a";
     QTest::newRow("skip_non_editable_at_end") << "${foo} ${bar} ${foo}" << 4 << 0 << "a bar a";
     QTest::newRow("jump_to_cursor") << "${foo} ${cursor}" << 0 << 4 << "foo a";
-    // QTest::newRow("jump_to_cursor_last") << "${foo} ${cursor} ${bar}" << 0 << 5 << "foo  a";
-    // QTest::newRow("jump_to_cursor_last2") << "${foo} ${cursor} ${bar}" << 5 << 4 << "foo a bar";
+    QTest::newRow("jump_to_cursor_last") << "${foo} ${cursor} ${bar}" << 0 << 5 << "foo  a";
+    QTest::newRow("jump_to_cursor_last2") << "${foo} ${cursor} ${bar}" << 5 << 4 << "foo a bar";
     QTest::newRow("reference_default") << "${foo} ${bar} ${baz=bar}" << 0 << 4 << "foo a bar";
 }
 
