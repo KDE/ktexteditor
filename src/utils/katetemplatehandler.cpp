@@ -549,24 +549,52 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
 
 void KateTemplateHandler::updateRangeBehaviours()
 {
-    sortFields();
+    std::sort(m_fields.begin(), m_fields.end(), [](const auto &l, const auto &r) {
+        return l.range->toRange().start() < r.range->toRange().start();
+    });
 
-    KTextEditor::Cursor last = {-1, -1};
-    for (int i = 0; i < m_fields.size(); i++) {
-        auto field = m_fields.at(i);
-        auto end = field.range->end().toCursor();
-        auto start = field.range->start().toCursor();
+    TemplateField *lastField = nullptr;
+
+    for (auto &field : m_fields) {
+        auto last = lastField != nullptr ? *(lastField->range) : Range::invalid();
+
+        if (field.removed) {
+            // field is removed: it should not receive any changes and should not
+            // be considered in relation to other fields
+            field.range->setInsertBehaviors(MovingRange::DoNotExpand);
+            continue;
+        }
+
         if (field.kind == TemplateField::FinalCursorPosition) {
             // final cursor position never grows
             field.range->setInsertBehaviors(MovingRange::DoNotExpand);
-        } else if (start <= last) {
-            // ranges are adjacent, only expand to the right to prevent overlap
-            field.range->setInsertBehaviors(MovingRange::ExpandRight);
+        } else if (field.range->start() <= last.end()) {
+            // ranges are adjacent...
+            if (field.range->isEmpty() && lastField != nullptr) {
+                if (field.kind != TemplateField::Editable && field.kind != TemplateField::FinalCursorPosition
+                    && (lastField->kind == TemplateField::Editable || lastField->kind == TemplateField::FinalCursorPosition)) {
+                    // ...do not expand the current field to let the previous, more important field expand instead
+                    field.range->setInsertBehaviors(MovingRange::DoNotExpand);
+
+                    // ...let the previous field only expand to the right to prevent overlap
+                    lastField->range->setInsertBehaviors(MovingRange::ExpandRight);
+                } else {
+                    // ...do not expand the previous field to let the empty field expand instead
+                    lastField->range->setInsertBehaviors(MovingRange::DoNotExpand);
+
+                    // ...expand to both sides to catch new input while the field is empty
+                    field.range->setInsertBehaviors(MovingRange::ExpandLeft | MovingRange::ExpandRight);
+                }
+            } else {
+                // ...only expand to the right to prevent overlap
+                field.range->setInsertBehaviors(MovingRange::ExpandRight);
+            }
         } else {
             // ranges are not adjacent, can grow in both directions
             field.range->setInsertBehaviors(MovingRange::ExpandLeft | MovingRange::ExpandRight);
         }
-        last = end;
+
+        lastField = &field;
     }
 }
 
