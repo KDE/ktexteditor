@@ -460,6 +460,26 @@ const KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(KTex
     return {};
 }
 
+const QList<KateTemplateHandler::TemplateField> KateTemplateHandler::fieldsForRange(KTextEditor::Range range) const
+{
+    QList<KateTemplateHandler::TemplateField> collected;
+
+    for (const auto &field : m_fields) {
+        if (field.removed) {
+            continue;
+        }
+
+        if (range.contains(field.range->toRange()) || field.range->contains(range.start()) || field.range->contains(range.end())
+            || field.range->end() == range.start() || field.range->end() == range.end()) {
+            collected << field;
+        } else if (field.kind == TemplateField::FinalCursorPosition && range.end() == field.range->end()) {
+            collected << field;
+        }
+    }
+
+    return collected;
+}
+
 void KateTemplateHandler::updateDependentFields(Document *document, Range range, bool textRemoved)
 {
     Q_ASSERT(document == doc());

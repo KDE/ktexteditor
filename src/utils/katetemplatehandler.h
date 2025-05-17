@@ -233,6 +233,9 @@ private:
     // Get the template field which contains @p range.
     const TemplateField fieldForRange(KTextEditor::Range range) const;
 
+    // Get all template fields which contain or border on @p range.
+    const QList<TemplateField> fieldsForRange(KTextEditor::Range range) const;
+
     /// Construct a map of master fields and their current value, for use in scripts.
     KateScript::FieldMap fieldMap() const;
 
