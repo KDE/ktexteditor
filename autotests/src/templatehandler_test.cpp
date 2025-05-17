@@ -233,10 +233,8 @@ void TemplateHandlerTest::testAdjacentRanges()
     doc->removeText(KTextEditor::Range({0, 2}, {0, 7}));
     QCOMPARE(doc->text(), QStringLiteral("fo / fo "));
     doc->insertText({0, 2}, QStringLiteral("x"));
-    QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(doc->text(), QStringLiteral("fox / fox "));
     doc->insertText({0, 4}, QStringLiteral("x"));
-    QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(doc->text(), QStringLiteral("fox x/ fox "));
 
     reset(QStringLiteral("${foo}${bar} / ${foo} ${bar}"), QStringLiteral("foobar / foo bar"));
@@ -559,11 +557,9 @@ ${cursor}
     QVERIFY(view->selectionRange().isEmpty());
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
-    QEXPECT_FAIL("", "Regression in KateTemplateHandler::updateDependentFields", Continue);
     QCOMPARE(view->selectionText(), QStringLiteral("title"));
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
-    QEXPECT_FAIL("", "Regression in KateTemplateHandler::updateDependentFields", Continue);
     QCOMPARE(view->selectionText(), QStringLiteral("series"));
 }
 

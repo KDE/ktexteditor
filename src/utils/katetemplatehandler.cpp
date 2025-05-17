@@ -438,9 +438,14 @@ void KateTemplateHandler::initializeTemplate()
     setupFieldRanges();
     setupDefaultValues();
     updateRangeBehaviours();
+
+    // initialize static ranges
+    for (auto &field : m_fields) {
+        field.staticRange = field.range->toRange();
+    }
 }
 
-const QList<KateTemplateHandler::TemplateField> KateTemplateHandler::fieldsForRange(KTextEditor::Range range) const
+const QList<KateTemplateHandler::TemplateField> KateTemplateHandler::fieldsForRange(KTextEditor::Range range, bool compareStaticRanges) const
 {
     QList<KateTemplateHandler::TemplateField> collected;
 
@@ -449,10 +454,12 @@ const QList<KateTemplateHandler::TemplateField> KateTemplateHandler::fieldsForRa
             continue;
         }
 
-        if (range.contains(field.range->toRange()) || field.range->contains(range.start()) || field.range->contains(range.end())
-            || field.range->end() == range.start() || field.range->end() == range.end()) {
+        const auto &fieldRange = (compareStaticRanges ? field.staticRange : field.range->toRange());
+
+        if (range.contains(fieldRange) || fieldRange.contains(range.start()) || fieldRange.contains(range.end()) || fieldRange.end() == range.start()
+            || fieldRange.end() == range.end()) {
             collected << field;
-        } else if (field.kind == TemplateField::FinalCursorPosition && range.end() == field.range->end()) {
+        } else if (field.kind == TemplateField::FinalCursorPosition && range.end() == fieldRange.end()) {
             collected << field;
         }
     }
@@ -486,7 +493,7 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
     ifDebug(qCDebug(LOG_KTE) << "text changed" << document << range;)
 
         // find the fields which were modified, if any
-        const auto changedFields = fieldsForRange(range);
+        const auto changedFields = fieldsForRange(range, textRemoved);
 
     if (changedFields.isEmpty()) {
         ifDebug(qCDebug(LOG_KTE) << "edit did not touch any field:" << range;) return;
@@ -503,7 +510,8 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
                 continue;
             }
 
-            if ((range.start() < field.range->start() && range.end() >= field.range->end()) || !field.range->toRange().isValid()) {
+            if ((range.start() < field.staticRange.start() && range.end() >= field.staticRange.end()) || !field.staticRange.isValid()) {
+                qDebug() << "REMOVED" << field << range;
                 field.removed = true;
             }
         }
@@ -557,6 +565,11 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
 
     // Re-apply dynamic range behaviors now that we are done editing
     updateRangeBehaviours();
+
+    // Update saved static ranges
+    for (auto &field : m_fields) {
+        field.staticRange = field.range->toRange();
+    }
 
     m_internalEdit = false; // enable this slot again
 }
@@ -637,7 +650,7 @@ QDebug operator<<(QDebug s, const KateTemplateHandler::TemplateField &field)
                 << " removed=" << field.removed;
 
     if (field.range) {
-        s.nospace() << "\t" << *field.range << field.range->insertBehaviors();
+        s.nospace() << "\t" << *field.range << field.range->insertBehaviors() << field.staticRange;
     }
 
     s.nospace() << "}";

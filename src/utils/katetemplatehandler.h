@@ -16,6 +16,7 @@
 
 #include <katescript.h>
 #include <ktexteditor/cursor.h>
+#include <ktexteditor/range.h>
 
 class QDebug;
 class KateUndoManager;
@@ -194,6 +195,10 @@ private:
     struct TemplateField {
         // up-to-date range for the field
         std::shared_ptr<KTextEditor::MovingRange> range;
+
+        // static range for identifying changes
+        KTextEditor::Range staticRange{KTextEditor::Range::invalid()};
+
         // contents of the field, i.e. identifier or function to call
         QString identifier;
         // default value, if applicable; else empty
@@ -220,7 +225,9 @@ private:
     QList<TemplateField> m_fields;
 
     // Get all template fields which contain or border on @p range.
-    const QList<TemplateField> fieldsForRange(KTextEditor::Range range) const;
+    // If @p compareStaticRanges is @c true, compare with last saved static field
+    // ranges instead of moving field ranges.
+    const QList<TemplateField> fieldsForRange(KTextEditor::Range range, bool compareStaticRanges) const;
 
     /// Construct a map of master fields and their current value, for use in scripts.
     KateScript::FieldMap fieldMap() const;
