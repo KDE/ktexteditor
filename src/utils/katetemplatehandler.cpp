@@ -345,7 +345,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     // remove escape characters
     // sort the list so the characters are removed starting from the
     // back and ranges do not move around
-    std::sort(stripBackslashes.begin(), stripBackslashes.end(), [](const Range l, const Range r) {
+    std::stable_sort(stripBackslashes.begin(), stripBackslashes.end(), [](const Range l, const Range r) {
         return l > r;
     });
 
@@ -576,7 +576,7 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
 
 void KateTemplateHandler::updateRangeBehaviours()
 {
-    std::sort(m_fields.begin(), m_fields.end(), [](const auto &l, const auto &r) {
+    std::stable_sort(m_fields.begin(), m_fields.end(), [](const auto &l, const auto &r) {
         return l.range->toRange().start() < r.range->toRange().start();
     });
 
