@@ -147,7 +147,7 @@ void KateTemplateHandler::jump(int by, bool initial)
     });
 
     const auto it = std::find_if(m_fields.begin(), m_fields.end(), [](const auto &a) {
-        return (!a.removed && (a.kind == TemplateField::Editable || a.kind == TemplateField::FinalCursorPosition));
+        return (!a.removed && ((a.kind == TemplateField::Editable && !a.range->isEmpty()) || a.kind == TemplateField::FinalCursorPosition));
     });
 
     if (it != m_fields.end()) {
