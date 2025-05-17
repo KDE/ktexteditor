@@ -38,6 +38,8 @@ private Q_SLOTS:
     void testNotEditableFields_data();
 
     void testAdjacentRanges();
+    void testAdjacentRanges2();
+    void testAdjacentRanges3();
 
     void testTab();
     void testTab_data();

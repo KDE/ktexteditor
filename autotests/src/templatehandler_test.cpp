@@ -248,6 +248,112 @@ void TemplateHandlerTest::testAdjacentRanges()
     delete doc;
 }
 
+void TemplateHandlerTest::testAdjacentRanges2()
+{
+    auto doc = new KTextEditor::DocumentPrivate();
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+
+    auto reset = [&view, &doc]() {
+        view->selectAll();
+        view->keyDelete();
+
+        view->insertTemplate({0, 0}, QStringLiteral("${foo}${foo='12345'}${foo}"));
+
+        QCOMPARE(doc->text(), QStringLiteral("123451234512345"));
+        QCOMPARE(view->cursorPosition().column(), 5);
+        QCOMPARE(view->selectionText(), QStringLiteral("12345"));
+        QCOMPARE(view->selectionRange().start().column(), 5);
+    };
+
+    reset();
+
+    QTest::keyClick(view->focusProxy(), Qt::Key_A);
+    QEXPECT_FAIL("", "TBD", Continue);
+    QCOMPARE(doc->text(), QStringLiteral("aaa"));
+    QEXPECT_FAIL("", "TBD", Continue);
+    QCOMPARE(view->cursorPosition().column(), 2);
+
+    // QTest::keyClick(view->focusProxy(), Qt::Key_Backspace);
+    view->backspace();
+    QCOMPARE(doc->text(), QStringLiteral(""));
+    QCOMPARE(view->cursorPosition().column(), 0);
+
+    QTest::keyClick(view->focusProxy(), Qt::Key_A);
+    QEXPECT_FAIL("", "TBD", Continue);
+    QCOMPARE(doc->text(), QStringLiteral("aaa"));
+    QEXPECT_FAIL("", "TBD", Continue);
+    QCOMPARE(view->cursorPosition().column(), 2);
+
+    QTest::keyClick(view->focusProxy(), Qt::Key_B);
+    QEXPECT_FAIL("", "TBD", Continue);
+    QCOMPARE(doc->text(), QStringLiteral("ababab"));
+    QEXPECT_FAIL("", "TBD", Continue);
+    QCOMPARE(view->cursorPosition().column(), 4);
+
+    reset();
+
+    view->clearSelection();
+    view->setCursorPosition({0, 8});
+    // QTest::keyClick(view->focusProxy(), Qt::Key_Backspace);
+    view->backspace();
+    QCOMPARE(doc->text(), QStringLiteral("124512451245"));
+    QEXPECT_FAIL("", "Off by one: perhaps a bug in KTextEditor::DocumentPrivate::backspace()", Continue);
+    QCOMPARE(view->cursorPosition().column(), 6);
+
+    reset();
+
+    view->setSelection({{0, 7}, {0, 8}});
+    view->setCursorPosition({0, 7});
+    // QTest::keyClick(view->focusProxy(), Qt::Key_Backspace);
+    view->backspace();
+    QCOMPARE(doc->text(), QStringLiteral("124512451245"));
+    QCOMPARE(view->cursorPosition().column(), 6);
+
+    reset();
+
+    view->clearSelection();
+    view->setCursorPosition({0, 10});
+    QTest::keyClick(view->focusProxy(), 'X');
+    QCOMPARE(doc->text(), QStringLiteral("12345X12345X12345X"));
+    QEXPECT_FAIL("", "Jumps to the end unexpectedly (column 18)", Continue);
+    QCOMPARE(view->cursorPosition().column(), 12);
+
+    delete doc;
+}
+
+void TemplateHandlerTest::testAdjacentRanges3()
+{
+    auto doc = new KTextEditor::DocumentPrivate();
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+
+    view->insertTemplate({0, 0}, QStringLiteral("${foo}${foo='foo'}${foo}"));
+
+    QCOMPARE(doc->text(), QStringLiteral("foofoofoo"));
+    QCOMPARE(view->cursorPosition().column(), 3);
+    QCOMPARE(view->selectionText(), QStringLiteral("foo"));
+    QCOMPARE(view->selectionRange().start().column(), 3);
+
+    view->clearSelection();
+    view->setCursorPosition({0, 4});
+    QCOMPARE(doc->text(), QStringLiteral("foofoofoo"));
+    QCOMPARE(view->cursorPosition().column(), 4);
+
+    QTest::keyClick(view->focusProxy(), 'X');
+    QCOMPARE(doc->text(), QStringLiteral("fXoofXoofXoo"));
+    QCOMPARE(view->cursorPosition().column(), 6);
+
+    // QTest::keyClick(view->focusProxy(), Qt::Key_Backspace);
+    view->backspace();
+    QCOMPARE(doc->text(), QStringLiteral("foofoofoo"));
+    QCOMPARE(view->cursorPosition().column(), 4);
+
+    QTest::keyClick(view->focusProxy(), 'Z');
+    QCOMPARE(doc->text(), QStringLiteral("fZoofZoofZoo"));
+    QCOMPARE(view->cursorPosition().column(), 6);
+
+    delete doc;
+}
+
 void TemplateHandlerTest::testTab()
 {
     QFETCH(QString, tpl);
