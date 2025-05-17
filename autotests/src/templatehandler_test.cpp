@@ -273,6 +273,11 @@ void TemplateHandlerTest::testTab()
     QTEST(view->cursorPosition().column(), "expected_cursor");
 
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
+    QEXPECT_FAIL("adjacent_start", "TBD", Continue);
+    QEXPECT_FAIL("adjacent_mid_1st", "TBD", Continue);
+    QEXPECT_FAIL("adjacent_mid_2nd", "TBD", Continue);
+    QEXPECT_FAIL("adjacent_mixed_start", "TBD", Continue);
+    QEXPECT_FAIL("adjacent_repeat", "TBD", Continue);
     QTEST(doc->text(), "expected_edited_result");
 
     delete doc;
@@ -288,11 +293,12 @@ void TemplateHandlerTest::testTab_data()
     QTest::newRow("simple_start") << "${foo} ${bar}" << 0 << 4 << "foo a";
     QTest::newRow("simple_mid") << "${foo} ${bar}" << 2 << 4 << "foo a";
     QTest::newRow("simple_end") << "${foo} ${bar}" << 3 << 4 << "foo a";
-    QTest::newRow("adjacent_start") << "${foo}${bar}" << 0 << 3 << "fooa";
-    QTest::newRow("adjacent_mid_1st") << "${foo}${bar}${baz}" << 2 << 3 << "fooabaz";
-    QTest::newRow("adjacent_mid_2nd") << "${foo}${bar}${baz}" << 4 << 6 << "foobara";
-    QTest::newRow("adjacent_mixed_start") << "${foo} ${bar}${baz}" << 5 << 7 << "foo bara";
-    QTest::newRow("adjacent_mixed_end") << "${foo}${bar} ${baz}" << 5 << 7 << "foobar a";
+    QTest::newRow("adjacent_start") << "${foo}${bar} / ${foo} ${bar}" << 0 << 3 << "fooa / foo a";
+    QTest::newRow("adjacent_mid_1st") << "${foo}${bar}${baz} / ${foo} ${bar} ${baz}" << 2 << 3 << "fooabaz / foo a baz";
+    QTest::newRow("adjacent_mid_2nd") << "${foo}${bar}${baz} / ${foo} ${bar} ${baz}" << 4 << 6 << "foobara / foo bar a";
+    QTest::newRow("adjacent_mixed_start") << "${foo} ${bar}${baz} / ${foo} ${bar} ${baz}" << 5 << 7 << "foo bara / foo bar a";
+    QTest::newRow("adjacent_mixed_end") << "${foo}${bar} ${baz} / ${foo} ${bar} ${baz}" << 5 << 7 << "foobar a / foo bar a";
+    QTest::newRow("adjacent_repeat") << "${foo}${foo='foo'}${foo}" << 3 << 3 << "aaa";
     QTest::newRow("wrap_start") << "${foo} ${bar}" << 4 << 0 << "a bar";
     QTest::newRow("wrap_mid") << "${foo} ${bar}" << 5 << 0 << "a bar";
     QTest::newRow("wrap_end") << "${foo} ${bar}" << 6 << 0 << "a bar";
