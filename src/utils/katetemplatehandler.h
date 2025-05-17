@@ -162,11 +162,6 @@ private:
      */
     void updateRangeBehaviours();
 
-    /**
-     * Sort all template fields in @p m_fields by start of range.
-     */
-    void sortFields();
-
 private Q_SLOTS:
     /**
      * Saves the range of the inserted template. This is required since
@@ -219,19 +214,10 @@ private:
         {
             return range == other.range;
         }
-
-        /**
-         * Turn off expanding left/right for all other ranges.
-         * This prevents ranges from overlapping when adjacent ranges are edited
-         * in code. Reset proper range behaviors by calling \l updateRangeBehaviours.
-         */
-        void dontExpandOthers(const QList<TemplateField> &others) const;
     };
+
     // List of all template fields in the inserted snippet. @see sortFields()
     QList<TemplateField> m_fields;
-
-    // Get the template field which contains @p range.
-    const TemplateField fieldForRange(KTextEditor::Range range) const;
 
     // Get all template fields which contain or border on @p range.
     const QList<TemplateField> fieldsForRange(KTextEditor::Range range) const;

@@ -103,13 +103,6 @@ KateTemplateHandler::~KateTemplateHandler()
     m_undoManager->setAllowComplexMerge(false);
 }
 
-void KateTemplateHandler::sortFields()
-{
-    std::sort(m_fields.begin(), m_fields.end(), [](const auto &l, const auto &r) {
-        return l.range->toRange().start() < r.range->toRange().start();
-    });
-}
-
 void KateTemplateHandler::jumpToNextRange()
 {
     jump(+1);
@@ -447,19 +440,6 @@ void KateTemplateHandler::initializeTemplate()
     updateRangeBehaviours();
 }
 
-const KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(KTextEditor::Range range) const
-{
-    for (const auto &field : m_fields) {
-        if (!field.removed && (field.range->contains(range.start()) || field.range->end() == range.start())) {
-            return field;
-        }
-        if (field.kind == TemplateField::FinalCursorPosition && range.end() == field.range->end().toCursor()) {
-            return field;
-        }
-    }
-    return {};
-}
-
 const QList<KateTemplateHandler::TemplateField> KateTemplateHandler::fieldsForRange(KTextEditor::Range range) const
 {
     QList<KateTemplateHandler::TemplateField> collected;
@@ -648,17 +628,6 @@ KateScript::FieldMap KateTemplateHandler::fieldMap() const
 KTextEditor::ViewPrivate *KateTemplateHandler::view() const
 {
     return m_view;
-}
-
-void KateTemplateHandler::TemplateField::dontExpandOthers(const QList<TemplateField> &others) const
-{
-    for (const auto &i : others) {
-        if (this->range != i.range) {
-            i.range->setInsertBehaviors(KTextEditor::MovingRange::DoNotExpand);
-        } else {
-            i.range->setInsertBehaviors(KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
-        }
-    }
 }
 
 QDebug operator<<(QDebug s, const KateTemplateHandler::TemplateField &field)
