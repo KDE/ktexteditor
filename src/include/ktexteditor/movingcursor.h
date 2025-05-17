@@ -70,7 +70,7 @@ public:
     /*!
        \enum KTextEditor::MovingCursor::WrapBehavior
 
-       Wrap behavior for end of line treatement used in move().
+       Wrap behavior for end of line treatment used in move().
 
        \value Wrap
        Wrap at end of line
