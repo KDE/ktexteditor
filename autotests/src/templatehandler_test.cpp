@@ -573,6 +573,7 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("reference_error") << QStringLiteral("${a=b}") << QStringLiteral("ReferenceError: b is not defined") << S();
     QTest::newRow("reference_func") << QStringLiteral("${foo} ${uppercase(foo)}") << QStringLiteral("foo FOO") << uppercase;
     QTest::newRow("reference_func_default") << QStringLiteral("${foo} ${bar=uppercase(foo)}") << QStringLiteral("foo FOO") << uppercase;
+    QTest::newRow("reference_func_repeat") << QStringLiteral("${foo} ${uppercase(foo)} ${uppercase(foo)}") << QStringLiteral("foo FOO FOO") << uppercase;
     QTest::newRow("reference_func_body1") << QStringLiteral("${foo} ${myfunc()}") << QStringLiteral("foo ReferenceError: foo is not defined")
                                           << QStringLiteral("function myfunc() { return foo; }");
     QTest::newRow("reference_func_body2") << QStringLiteral("${foo} ${myfunc()}") << QStringLiteral("foo foo")

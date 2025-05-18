@@ -319,7 +319,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
         auto &storedField = m_fields.last();
         auto index = m_fields.count() - 1;
 
-        if (f.kind != TemplateField::FinalCursorPosition) {
+        if (f.kind != TemplateField::FinalCursorPosition && f.kind != TemplateField::FunctionCall) {
             if (mainFields.contains(f.identifier)) {
                 auto &other = m_fields[mainFields[f.identifier]];
 
