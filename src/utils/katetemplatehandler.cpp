@@ -497,6 +497,9 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
 
     if (changedFields.isEmpty()) {
         ifDebug(qCDebug(LOG_KTE) << "edit did not touch any field:" << range;) return;
+    } else if (changedFields.length() == 1 && changedFields[0].kind == TemplateField::FinalCursorPosition) {
+        // text changed at final cursor position: the user is done, so exit
+        ifDebug(qCDebug(LOG_KTE) << "final cursor changed:" << range;) deleteLater();
     }
 
     // group all changes into one undo transaction
@@ -527,11 +530,6 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
                 mainFieldValues[field.identifier] = QStringLiteral("");
             }
         }
-    }
-
-    if (changedFields.length() == 1 && changedFields[0].kind == TemplateField::FinalCursorPosition) {
-        // text changed at final cursor position: the user is done, so exit
-        ifDebug(qCDebug(LOG_KTE) << "final cursor changed:" << range;) deleteLater();
     }
 
     // Mark all field ranges as static until we are finished with editing
