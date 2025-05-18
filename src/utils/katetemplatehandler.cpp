@@ -611,8 +611,8 @@ void KateTemplateHandler::updateRangeBehaviours()
                     // ...do not expand the current field to let the previous, more important field expand instead
                     field.range->setInsertBehaviors(MovingRange::DoNotExpand);
 
-                    // ...let the previous field only expand to the right to prevent overlap
-                    lastField->range->setInsertBehaviors(MovingRange::ExpandRight);
+                    // ...let the previous field expand to the right
+                    lastField->range->setInsertBehaviors(lastField->range->insertBehaviors() | MovingRange::ExpandRight);
                 } else {
                     // ...do not expand the previous field to let the empty field expand instead
                     lastField->range->setInsertBehaviors(MovingRange::DoNotExpand);
