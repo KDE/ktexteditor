@@ -517,9 +517,6 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
         }
     }
 
-    // Update dynamic range behaviors to consider changed ranges
-    updateRangeBehaviours();
-
     // Collect new values of changed editable fields
     QMap<QString, QString> mainFieldValues;
     for (const auto &field : changedFields) {
