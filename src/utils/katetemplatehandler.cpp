@@ -547,6 +547,12 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
     // - Re-run all function fields with new values
     auto jsFields = fieldMap();
     for (auto &field : m_fields) {
+        Cursor reset = {Cursor::invalid()};
+
+        if (field.range->start() == view()->cursorPosition()) {
+            reset = view()->cursorPosition();
+        }
+
         if (mainFieldValues.contains(field.identifier)) {
             if (field.kind == TemplateField::Editable && mainFieldValues[field.identifier] != field.defaultValue) {
                 field.touched = true;
@@ -560,6 +566,10 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
             field.range->setInsertBehaviors(KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
             doc()->replaceText(field.range->toRange(), callResult.toString());
             field.range->setInsertBehaviors(KTextEditor::MovingRange::DoNotExpand);
+        }
+
+        if (reset.isValid()) {
+            view()->setCursorPosition(reset);
         }
     }
 

@@ -322,7 +322,6 @@ void TemplateHandlerTest::testAdjacentRanges2()
     view->setCursorPosition({0, 10});
     QTest::keyClick(view->focusProxy(), 'X');
     QCOMPARE(doc->text(), QStringLiteral("12345X12345X12345X"));
-    QEXPECT_FAIL("", "Jumps to the end unexpectedly (column 18)", Continue);
     QCOMPARE(view->cursorPosition().column(), 12);
 
     delete doc;
