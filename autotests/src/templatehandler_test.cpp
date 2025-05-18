@@ -276,9 +276,7 @@ void TemplateHandlerTest::testAdjacentRanges2()
     reset();
 
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
-    QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(doc->text(), QStringLiteral("aaa"));
-    QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(view->cursorPosition().column(), 2);
 
     // QTest::keyClick(view->focusProxy(), Qt::Key_Backspace);
@@ -287,15 +285,11 @@ void TemplateHandlerTest::testAdjacentRanges2()
     QCOMPARE(view->cursorPosition().column(), 0);
 
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
-    QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(doc->text(), QStringLiteral("aaa"));
-    QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(view->cursorPosition().column(), 2);
 
     QTest::keyClick(view->focusProxy(), Qt::Key_B);
-    QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(doc->text(), QStringLiteral("ababab"));
-    QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(view->cursorPosition().column(), 4);
 
     reset();

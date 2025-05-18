@@ -470,6 +470,65 @@ const QList<KateTemplateHandler::TemplateField> KateTemplateHandler::fieldsForRa
     return collected;
 }
 
+void KateTemplateHandler::reoderEmptyAdjacentFields(const QList<TemplateField> &changedFields)
+{
+    // This function is an elaborate workaround for adjacent (mirror) fields losing order
+    // when their contents are replaced.
+    //
+    // Consider this:
+    //        ${foo}${foo=100}${foo}  =>  100100100
+    //   IDs:   0     1         2
+    //
+    // Field #1 is the only editable field; it is selected when the template
+    // is inserted. Its contents will be replaced as soon as you type:
+    //
+    // 1. contents are deleted: all fields collapse and become empty, sitting at
+    //    the same spot. Order: 0, 1, 2
+    // 2. new contents are inserted: fiels #1 receives new content and pushes
+    //    fields #0 and #2 to the end. Order: 1 (non-empty), 0 (empty), 2 (empty)
+    //
+    // This function resets the original order to be 0, 1, 2 again.
+
+    // find groups of previously empty fields at the same position
+    QList<qsizetype> lastGroup;
+    Cursor lastPosition{Cursor::invalid()};
+
+    QMap<qsizetype, TemplateField *> fieldsLookup;
+    for (auto &field : m_fields) {
+        fieldsLookup.insert(field.id, &field);
+    }
+
+    auto processGroup = [&lastPosition, &lastGroup, &fieldsLookup]() {
+        auto start = lastPosition;
+
+        for (auto &fieldId : lastGroup) {
+            auto &field = *fieldsLookup[fieldId];
+
+            field.range->setRange(start, start + field.range->end() - field.range->start());
+            start = field.range->end();
+        }
+
+        lastGroup.clear();
+    };
+
+    for (qsizetype i = 0; i < changedFields.size(); ++i) {
+        auto &field = changedFields[i];
+
+        if (field.staticRange.isEmpty() && field.staticRange.start() == lastPosition) {
+            lastGroup.push_back(field.id);
+        } else {
+            processGroup();
+            lastPosition = field.staticRange.start();
+
+            if (field.staticRange.isEmpty()) {
+                lastGroup.push_back(field.id);
+            }
+        }
+    }
+
+    processGroup();
+}
+
 void KateTemplateHandler::updateDependentFields(Document *document, Range range, bool textRemoved)
 {
     Q_ASSERT(document == doc());
@@ -509,18 +568,21 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
     KTextEditor::Document::EditingTransaction t(doc());
     m_internalEdit = true; // prevent unwanted recursion
 
-    // If text was removed, mark all affected fields that are now empty as removed
     if (textRemoved) {
+        // If text was removed, mark all affected fields that are now empty as removed
         for (auto &field : m_fields) {
             if (field.removed) {
                 continue;
             }
 
             if ((range.start() < field.staticRange.start() && range.end() >= field.staticRange.end()) || !field.staticRange.isValid()) {
-                qDebug() << "REMOVED" << field << range;
                 field.removed = true;
             }
         }
+    } else {
+        // If no text was removed (i.e. if text was inserted), make sure empty fields
+        // are sorted correctly before continuing.
+        reoderEmptyAdjacentFields(changedFields);
     }
 
     // Collect new values of changed editable fields
