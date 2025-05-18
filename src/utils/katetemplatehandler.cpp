@@ -282,6 +282,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     // process fields
     auto fieldMatch = field.globalMatch(templateText);
     QMap<QString, qsizetype> mainFields;
+    qsizetype nextId = 0;
 
     while (fieldMatch.hasNext()) {
         const auto match = fieldMatch.next();
@@ -299,6 +300,8 @@ void KateTemplateHandler::parseFields(const QString &templateText)
         const QString contents = match.captured("body");
 
         TemplateField f;
+        f.id = nextId;
+        nextId++;
         f.range.reset(createMovingRangeForMatch(match));
         f.identifier = contents;
         f.kind = TemplateField::Editable;
@@ -657,8 +660,8 @@ KTextEditor::ViewPrivate *KateTemplateHandler::view() const
 QDebug operator<<(QDebug s, const KateTemplateHandler::TemplateField &field)
 {
     QDebugStateSaver saver(s);
-    s.nospace() << "{" << qSetFieldWidth(12) << Qt::left << field.identifier % QStringLiteral(":") << qSetFieldWidth(0) << "kind=" << field.kind
-                << " removed=" << field.removed;
+    s.nospace() << "{" << field.id << ":" << qSetFieldWidth(12) << Qt::left << field.identifier % QStringLiteral(":") << qSetFieldWidth(0)
+                << "kind=" << field.kind << " removed=" << field.removed;
 
     if (field.range) {
         s.nospace() << "\t" << *field.range << field.range->insertBehaviors() << field.staticRange;

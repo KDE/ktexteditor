@@ -193,6 +193,9 @@ private:
 
     // Describes a single template field, e.g. ${foo}.
     struct TemplateField {
+        // unique field ID to identify and order fields
+        qsizetype id{-1};
+
         // up-to-date range for the field
         std::shared_ptr<KTextEditor::MovingRange> range;
 
@@ -215,9 +218,15 @@ private:
         bool touched = false;
         // true if this field was removed e.g., because the line that contained it was removed
         bool removed = false;
+
         bool operator==(const TemplateField &other) const
         {
-            return range == other.range;
+            return id == other.id;
+        }
+
+        friend bool operator<(const TemplateField &l, const TemplateField &r)
+        {
+            return l.id < r.id;
         }
     };
 
@@ -228,6 +237,9 @@ private:
     // If @p compareStaticRanges is @c true, compare with last saved static field
     // ranges instead of moving field ranges.
     const QList<TemplateField> fieldsForRange(KTextEditor::Range range, bool compareStaticRanges) const;
+
+    // Restore order of empty adjacent fields after inserting into one.
+    void reoderEmptyAdjacentFields(const QList<TemplateField> &changedFields);
 
     /// Construct a map of master fields and their current value, for use in scripts.
     KateScript::FieldMap fieldMap() const;
