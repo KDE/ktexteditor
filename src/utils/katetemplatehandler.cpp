@@ -612,6 +612,12 @@ void KateTemplateHandler::updateRangeBehaviours()
                     // ...expand to both sides to catch new input while the field is empty
                     field.range->setInsertBehaviors(MovingRange::ExpandLeft | MovingRange::ExpandRight);
                 }
+            } else if (field.kind == TemplateField::Editable && lastField != nullptr && lastField->kind != TemplateField::Editable) {
+                // ...expand to both sides as the current, editable field is more important than the previous field
+                field.range->setInsertBehaviors(MovingRange::ExpandLeft | MovingRange::ExpandRight);
+
+                // ...do not expand the previous field to the right
+                lastField->range->setInsertBehaviors(lastField->range->insertBehaviors() & ~MovingRange::ExpandRight);
             } else {
                 // ...only expand to the right to prevent overlap
                 field.range->setInsertBehaviors(MovingRange::ExpandRight);

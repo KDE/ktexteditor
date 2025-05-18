@@ -267,6 +267,14 @@ void TemplateHandlerTest::testAdjacentRanges2()
 
     reset();
 
+    view->clearSelection();
+    view->setCursorPosition({0, 5});
+    QTest::keyClick(view->focusProxy(), 'X');
+    QCOMPARE(doc->text(), QStringLiteral("X12345X12345X12345"));
+    QCOMPARE(view->cursorPosition().column(), 7);
+
+    reset();
+
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
     QEXPECT_FAIL("", "TBD", Continue);
     QCOMPARE(doc->text(), QStringLiteral("aaa"));
