@@ -297,7 +297,6 @@ void TemplateHandlerTest::testAdjacentRanges2()
     // QTest::keyClick(view->focusProxy(), Qt::Key_Backspace);
     view->backspace();
     QCOMPARE(doc->text(), QStringLiteral("124512451245"));
-    QEXPECT_FAIL("", "Off by one: perhaps a bug in KTextEditor::DocumentPrivate::backspace()", Continue);
     QCOMPARE(view->cursorPosition().column(), 6);
 
     reset();
@@ -345,13 +344,10 @@ void TemplateHandlerTest::testAdjacentRanges3()
     // QTest::keyClick(view->focusProxy(), Qt::Key_Backspace);
     view->backspace();
     QCOMPARE(doc->text(), QStringLiteral("foofoofoo"));
-    QEXPECT_FAIL("", "Off by one: perhaps a bug in KTextEditor::DocumentPrivate::backspace()", Continue);
     QCOMPARE(view->cursorPosition().column(), 4);
 
     QTest::keyClick(view->focusProxy(), 'Z');
-    QEXPECT_FAIL("", "Off by one: perhaps a bug in KTextEditor::DocumentPrivate::backspace()", Continue);
     QCOMPARE(doc->text(), QStringLiteral("fZoofZoofZoo"));
-    QEXPECT_FAIL("", "Off by one: perhaps a bug in KTextEditor::DocumentPrivate::backspace()", Continue);
     QCOMPARE(view->cursorPosition().column(), 6);
 
     delete doc;

@@ -3471,9 +3471,9 @@ KTextEditor::Cursor KTextEditor::DocumentPrivate::backspaceAtCursor(KTextEditor:
                 }
             }
             removeText(KTextEditor::Range(beginCursor, endCursor));
-            // in most cases cursor is moved by removeText, but we should do it manually
+            // We can keep the new position as removeText() moves the cursor already, even
             // for past-end-of-line cursors in block mode
-            return beginCursor;
+            return view->cursorPosition();
         }
         return KTextEditor::Cursor::invalid();
     } else {
