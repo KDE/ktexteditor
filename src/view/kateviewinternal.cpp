@@ -3291,6 +3291,8 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
     }
 
     if (key == Qt::Key_Backspace || key == (Qt::SHIFT | Qt::Key_Backspace).toCombined()) {
+        // 2025-05-18: Why is this commented out? Having this commented out breaks
+        // sending backspace as key click event in tests.
         // view()->backspace();
         e->accept();
 

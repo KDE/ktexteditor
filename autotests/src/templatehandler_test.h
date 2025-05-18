@@ -11,6 +11,35 @@
 
 #include <QObject>
 
+/**
+ * Template handler tests.
+ *
+ * Notes on keyboard input in tests:
+ *
+ * 1. Key clicks must be posted to the view's focus proxy because it is the actual
+ *    receiver of key events: https://doc.qt.io/qt-6/qwidget.html#setFocusProxy
+ *    Key events are caught in KateViewInternal::eventFilter() and handled in
+ *    KateViewInternal::keyPressEvent().
+ *
+ *    - view: KTextEditor::ViewPrivate
+ *    - view->focusProxy(): KateViewInternal
+ *
+ *    - do:    QTest::keyClick(view->focusProxy(), 'A');
+ *    - don't: QTest::keyClick(view, 'A');
+ *
+ * 2. Backspace is not handled in KateViewInternal::keyPressEvent() for some
+ *    reason. The call to view()->backspace() is commented out. Instead of triggering
+ *    the key event, simply call backspace() directly.
+ *
+ *    - do:    view->backspace();
+ *    - don't: QTest::keyClick(view->focusProxy(), Qt::Key_Backspace);
+ *
+ * 3. Don't forget to clear the current selection via "view->clearSelection()"
+ *    when testing keyboard input in a freshly inserted template. Simply calling
+ *    "view->setCursorPosition({0, 0})" will not clear the selection and will
+ *    lead to unexpected results when inserting text via QTest::keyClick().
+ *
+ */
 class TemplateHandlerTest : public QObject
 {
     Q_OBJECT

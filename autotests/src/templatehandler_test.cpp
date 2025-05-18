@@ -365,7 +365,6 @@ void TemplateHandlerTest::testTab()
     view->insertTemplate({0, 0}, tpl);
     view->setCursorPosition({0, cursor});
 
-    // no idea why the event needs to be posted to the focus proxy
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
     QEXPECT_FAIL("jump_to_cursor_last", "Regression in KateTemplateHandler::jump", Continue);
     QEXPECT_FAIL("jump_to_cursor_last2", "Regression in KateTemplateHandler::jump", Continue);
