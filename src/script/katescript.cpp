@@ -2,6 +2,7 @@
     SPDX-FileCopyrightText: 2008 Paul Giannaros <paul@giannaros.org>
     SPDX-FileCopyrightText: 2009-2018 Dominik Haumann <dhaumann@kde.org>
     SPDX-FileCopyrightText: 2010 Joseph Wenninger <jowenn@kde.org>
+    SPDX-FileCopyrightText: 2025 Mirian Margiani <mixosaurus+kde@pm.me>
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */

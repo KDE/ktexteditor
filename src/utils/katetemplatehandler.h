@@ -2,6 +2,7 @@
     SPDX-FileCopyrightText: 2004, 2010 Joseph Wenninger <jowenn@kde.org>
     SPDX-FileCopyrightText: 2009 Milian Wolff <mail@milianw.de>
     SPDX-FileCopyrightText: 2014 Sven Brauch <svenbrauch@gmail.com>
+    SPDX-FileCopyrightText: 2025 Mirian Margiani <mixosaurus+kde@pm.me>
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
