@@ -720,18 +720,4 @@ KTextEditor::ViewPrivate *KateTemplateHandler::view() const
     return m_view;
 }
 
-QDebug operator<<(QDebug s, const KateTemplateHandler::TemplateField &field)
-{
-    QDebugStateSaver saver(s);
-    s.nospace() << "{" << field.id << ":" << qSetFieldWidth(12) << Qt::left << field.identifier % QStringLiteral(":") << qSetFieldWidth(0)
-                << "kind=" << field.kind << " removed=" << field.removed;
-
-    if (field.range) {
-        s.nospace() << "\t" << *field.range << field.range->insertBehaviors() << field.staticRange;
-    }
-
-    s.nospace() << "}";
-    return s;
-}
-
 #include "moc_katetemplatehandler.cpp"
