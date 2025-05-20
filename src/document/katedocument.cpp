@@ -3458,18 +3458,24 @@ KTextEditor::Cursor KTextEditor::DocumentPrivate::backspaceAtCursor(KTextEditor:
         if (!config()->backspaceIndents() || useNextBlock) {
             KTextEditor::Cursor beginCursor(line, 0);
             KTextEditor::Cursor endCursor(line, col);
+            auto backspaceWidth = 0;
+
             if (!view->config()->backspaceRemoveComposed()) { // Normal backspace behavior
-                beginCursor.setColumn(col - 1);
-                // move to left of surrogate pair
-                if (!isValidTextPosition(beginCursor)) {
+                if (isValidTextPosition({line, col - 1})) {
+                    backspaceWidth = 1;
+                } else {
+                    // move to left of surrogate pair
                     Q_ASSERT(col >= 2);
-                    beginCursor.setColumn(col - 2);
+                    backspaceWidth = 2;
                 }
             } else {
                 if (auto l = view->textLayout(c)) {
-                    beginCursor.setColumn(l->previousCursorPosition(c.column()));
+                    backspaceWidth = l->previousCursorPosition(c.column());
                 }
             }
+
+            beginCursor.setColumn(col - backspaceWidth);
+
             removeText(KTextEditor::Range(beginCursor, endCursor));
             // We can keep the new position as removeText() moves the cursor already, even
             // for past-end-of-line cursors in block mode
