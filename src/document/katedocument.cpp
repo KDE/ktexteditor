@@ -3476,10 +3476,14 @@ KTextEditor::Cursor KTextEditor::DocumentPrivate::backspaceAtCursor(KTextEditor:
 
             beginCursor.setColumn(col - backspaceWidth);
 
+            auto isMainCursor = (c == view->cursorPosition());
             removeText(KTextEditor::Range(beginCursor, endCursor));
-            // We can keep the new position as removeText() moves the cursor already, even
-            // for past-end-of-line cursors in block mode
-            return view->cursorPosition();
+
+            // If we are processing the main cursor, we can keep the new position
+            // as removeText() moves the cursor already (even for past-end-of-line
+            // cursors in block mode). When processing secondary cursors, we have
+            // to move the cursor manually.
+            return isMainCursor ? view->cursorPosition() : beginCursor;
         }
         return KTextEditor::Cursor::invalid();
     } else {
