@@ -3470,7 +3470,7 @@ KTextEditor::Cursor KTextEditor::DocumentPrivate::backspaceAtCursor(KTextEditor:
                 }
             } else {
                 if (auto l = view->textLayout(c)) {
-                    backspaceWidth = l->previousCursorPosition(c.column());
+                    backspaceWidth = col - l->previousCursorPosition(c.column());
                 }
             }
 
