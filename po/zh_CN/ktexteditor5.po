@@ -4774,7 +4774,7 @@ msgstr "仍然导入"
 #: syntax/katethemeconfig.cpp:1288
 #, kde-format
 msgid "Follow System Color Scheme"
-msgstr "跟随系统颜色方案"
+msgstr "跟随系统配色方案"
 
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
