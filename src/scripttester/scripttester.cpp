@@ -355,12 +355,12 @@ static inline bool cursorSameAsSecondary(const ScriptTester::Placeholders &place
 
 static inline bool selectionStartSameAsSecondary(const ScriptTester::Placeholders &placeholders)
 {
-    return placeholders.selectionStart == placeholders.selectionStart;
+    return placeholders.selectionStart == placeholders.secondarySelectionStart;
 }
 
 static inline bool selectionEndSameAsSecondary(const ScriptTester::Placeholders &placeholders)
 {
-    return placeholders.selectionEnd == placeholders.selectionEnd;
+    return placeholders.selectionEnd == placeholders.secondarySelectionEnd;
 }
 
 static inline bool selectionSameAsSecondary(const ScriptTester::Placeholders &placeholders)
