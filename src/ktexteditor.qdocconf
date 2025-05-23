@@ -19,10 +19,16 @@ depends = \
     kxmlgui \
     kparts
 
-qhp.projects = KTextEditor
+qhp.projects            = KTextEditor
 
-qhp.KTextEditor.file = ktexteditor.qhp
-qhp.KTextEditor.namespace = org.kde.ktexteditor.$QT_VERSION_TAG
-qhp.KTextEditor.virtualFolder = ktexteditor
-qhp.KTextEditor.indexTitle = KTextEditor
-qhp.KTextEditor.indexRoot = 
+qhp.KTextEditor.file                = ktexteditor.qhp
+qhp.KTextEditor.namespace           = org.kde.ktexteditor.$QT_VERSION_TAG
+qhp.KTextEditor.virtualFolder       = ktexteditor
+qhp.KTextEditor.indexTitle          = KTextEditor
+qhp.KTextEditor.indexRoot           =
+
+qhp.KTextEditor.subprojects         = classes
+qhp.KTextEditor.subprojects.classes.title = C++ Classes
+qhp.KTextEditor.subprojects.classes.indexTitle = KTextEditor C++ Classes
+qhp.KTextEditor.subprojects.classes.selectors = class fake:headerfile
+qhp.KTextEditor.subprojects.classes.sortPages = true
