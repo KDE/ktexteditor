@@ -32,3 +32,5 @@ qhp.KTextEditor.subprojects.classes.title = C++ Classes
 qhp.KTextEditor.subprojects.classes.indexTitle = KTextEditor C++ Classes
 qhp.KTextEditor.subprojects.classes.selectors = class fake:headerfile
 qhp.KTextEditor.subprojects.classes.sortPages = true
+
+tagfile = ktexteditor.tags
