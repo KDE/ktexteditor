@@ -59,8 +59,16 @@ void EvaluateScriptTest::testError()
     auto doc = new KTextEditor::DocumentPrivate();
     auto view = doc->createView(nullptr);
 
-    bool res = view->evaluateScript(QStringLiteral("syntaxerror){"));
-    QVERIFY(!res);
+    QVariant res;
+    bool success = view->evaluateScript(QStringLiteral("syntacticalerror){"), &res);
+    QVERIFY(!success);
+    // we try not to assume any details of the error message, but let's check it actually
+    // looks like an error message of sorts
+    QVERIFY(res.toString().contains(QStringLiteral("syntax"), Qt::CaseInsensitive));
+
+    success = view->evaluateScript(QStringLiteral("doesnotexist()"), &res);
+    QVERIFY(!success);
+    QVERIFY(res.toString().contains(QStringLiteral("doesnotexist")));
 }
 
 void EvaluateScriptTest::testSelection()

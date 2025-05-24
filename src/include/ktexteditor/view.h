@@ -984,7 +984,8 @@ public:
      *
      * \a script is the javascript code to run
      *
-     * \a result is set to a QVariant representing the return value.
+     * \a result is set to a QVariant representing the return value, or
+     *           - in case of an error - the error message as a string.
      *           If set to nullptr, no result is passed.
      *           Note that many but not all javascript objects can be accurately
      *           represented as a QVariant. Consider simplifying / stringifying

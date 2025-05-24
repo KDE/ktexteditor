@@ -211,7 +211,7 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
 bool KateScript::hasException(const QJSValue &object, const QString &file)
 {
     if (object.isError()) {
-        m_errorMessage = i18n("Error loading script %1", file);
+        m_errorMessage = i18n("Error loading script %1: %2", file, object.toString());
         displayBacktrace(object, m_errorMessage);
         delete m_engine;
         m_engine = nullptr;
