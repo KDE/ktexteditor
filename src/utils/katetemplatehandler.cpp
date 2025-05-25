@@ -56,6 +56,9 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
         KTextEditor::Document::EditingTransaction t(doc());
         // insert the raw template string
         if (!doc()->insertText(position, templateString)) {
+            // insertText() fails if the document is read only. That is already
+            // being checked before the template handler is created, so this
+            // code should be unreachable.
             deleteLater();
             return;
         }

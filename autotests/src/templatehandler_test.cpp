@@ -670,4 +670,23 @@ ${cursor}
     QCOMPARE(view->selectionText(), QStringLiteral("series"));
 }
 
+void TemplateHandlerTest::testReadOnly()
+{
+    auto doc = new KTextEditor::DocumentPrivate();
+    doc->setReadWrite(false);
+
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+
+    bool ok = view->insertTemplate({0, 0}, QStringLiteral("${foo} ${foo}"));
+
+    // no text should have been inserted because the document is read-only
+    QCOMPARE(ok, false);
+    QCOMPARE(doc->text(), QStringLiteral(""));
+
+    // input should have no effect
+    view->setCursorPosition({0, 0});
+    QTest::keyClick(view->focusProxy(), Qt::Key_A);
+    QCOMPARE(doc->text(), QStringLiteral(""));
+}
+
 #include "moc_templatehandler_test.cpp"

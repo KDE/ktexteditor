@@ -84,6 +84,8 @@ private Q_SLOTS:
     void testEscapes_data();
     void testLinesRemoved();
     void testLinesRemoved2();
+
+    void testReadOnly();
 };
 
 #endif
