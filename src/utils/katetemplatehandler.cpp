@@ -466,8 +466,6 @@ const QList<KateTemplateHandler::TemplateField> KateTemplateHandler::fieldsForRa
         if (range.contains(fieldRange) || fieldRange.contains(range.start()) || fieldRange.contains(range.end()) || fieldRange.end() == range.start()
             || fieldRange.end() == range.end()) {
             collected << field;
-        } else if (field.kind == TemplateField::FinalCursorPosition && range.end() == fieldRange.end()) {
-            collected << field;
         }
     }
 
