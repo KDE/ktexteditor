@@ -121,46 +121,97 @@ void KateTemplateHandler::jump(int by, bool initial)
 {
     Q_ASSERT(by == 1 || by == -1);
 
-    auto start = view()->cursorPosition();
+    Cursor start;
 
     if (initial) {
         start = Cursor{-1, -1};
+    } else {
+        start = view()->cursorPosition();
     }
 
-    std::stable_sort(m_fields.begin(), m_fields.end(), [&by](const auto &a, const auto &b) {
-        if (by > 0) {
-            return a.range->toRange().start() < b.range->toRange().start();
-        } else {
-            return a.range->toRange().start() > b.range->toRange().start();
+    QMap<Cursor, bool> starts;
+    QList<TemplateField *> fields;
+    QList<TemplateField *> finalCursors;
+    bool startAtFinalCursor = false;
+
+    std::sort(m_fields.begin(), m_fields.end());
+    for (auto &field : m_fields) {
+        if (field.removed) {
+            continue;
         }
-    });
 
-    std::stable_partition(m_fields.begin(), m_fields.end(), [&by, &start](const auto &a) {
-        if (by > 0) {
-            return a.range->start() > start;
-        } else {
-            return a.range->start() < start;
+        if (field.kind == TemplateField::Editable) {
+            if (!starts.contains(field.range->start()) || (!field.touched && !field.range->isEmpty())) {
+                starts.insert(field.range->start(), true);
+                fields.append(&field);
+            }
+        } else if (field.kind == TemplateField::FinalCursorPosition) {
+            finalCursors.append(&field);
+
+            if (field.range->start() == start) {
+                startAtFinalCursor = true;
+            }
         }
-    });
+    }
 
-    const auto it = std::find_if(m_fields.begin(), m_fields.end(), [](const auto &a) {
-        return (!a.removed && ((a.kind == TemplateField::Editable && !a.range->isEmpty()) || a.kind == TemplateField::FinalCursorPosition));
-    });
+    auto findNext = [&fields, &by](const Cursor &cursor) -> TemplateField * {
+        for (const auto &field : fields) {
+            if ((by > 0 && field->range->start() > cursor) || (by < 0 && field->range->start() < cursor)) {
+                return field;
+            }
+        }
 
-    if (it != m_fields.end()) {
-        // found a valid field, jump to its start position
-        const auto &field = *it;
+        return nullptr;
+    };
 
-        view()->setCursorPosition(field.range->toRange().start());
+    auto findNextFinalCursor = [&finalCursors, &by](const Cursor &cursor) -> TemplateField * {
+        for (const auto &field : finalCursors) {
+            if ((by > 0 && field->range->start() > cursor) || (by < 0 && field->range->start() < cursor)) {
+                return field;
+            }
+        }
 
-        if (!field.touched) {
-            // field was never edited by the user, so select its contents
-            view()->setSelection(field.range->toRange());
+        return nullptr;
+    };
+
+    auto updateView = [this](const TemplateField *field) {
+        if (!field->touched && !field->range->isEmpty()) {
+            view()->setSelection(*field->range);
         } else {
             view()->clearSelection();
         }
+
+        view()->setCursorPosition(field->range->toRange().start());
+    };
+
+    Cursor wrap;
+    if (by > 0) {
+        wrap = Cursor{-1, -1};
     } else {
-        // found nothing, stay put
+        wrap = Cursor{std::numeric_limits<int>::max(), std::numeric_limits<int>::max()};
+        std::sort(finalCursors.rbegin(), finalCursors.rend());
+        std::sort(fields.rbegin(), fields.rend());
+    }
+
+    if (!startAtFinalCursor) {
+        if (auto found = findNext(start)) {
+            updateView(found);
+            return;
+        }
+
+        if (auto found = findNextFinalCursor(wrap)) {
+            updateView(found);
+            return;
+        }
+    } else {
+        if (auto found = findNextFinalCursor(start)) {
+            updateView(found);
+            return;
+        }
+    }
+
+    if (auto found = findNext(wrap)) {
+        updateView(found);
         return;
     }
 }

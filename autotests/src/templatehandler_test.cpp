@@ -367,22 +367,16 @@ void TemplateHandlerTest::testTab()
     view->setCursorPosition({0, cursor});
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
-    QEXPECT_FAIL("jump_to_cursor_last", "Regression in KateTemplateHandler::jump", Continue);
-    QEXPECT_FAIL("jump_to_cursor_last2", "Regression in KateTemplateHandler::jump", Continue);
     QTEST(view->cursorPosition().column(), "expected_cursor");
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab, Qt::ShiftModifier);
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
-    QEXPECT_FAIL("jump_to_cursor_last", "Regression in KateTemplateHandler::jump", Continue);
-    QEXPECT_FAIL("jump_to_cursor_last2", "Regression in KateTemplateHandler::jump", Continue);
     QTEST(view->cursorPosition().column(), "expected_cursor");
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Backtab);
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
     QTEST(view->cursorPosition().column(), "expected_cursor");
 
-    QEXPECT_FAIL("jump_to_cursor_last", "Regression in KateTemplateHandler::jump", Continue);
-    QEXPECT_FAIL("jump_to_cursor_last2", "Regression in KateTemplateHandler::jump", Continue);
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
     QTEST(doc->text(), "expected_edited_result");
 
@@ -530,12 +524,10 @@ void TemplateHandlerTest::testAutoSelection()
     QCOMPARE(view->selectionText(), QStringLiteral("bar"));
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
-    // QCOMPARE(view->selectionText(), QStringLiteral("baz"));
-    QVERIFY(view->selectionRange().isEmpty());
+    QCOMPARE(view->selectionText(), QStringLiteral("baz"));
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
-    QCOMPARE(view->selectionText(), QStringLiteral("baz"));
-    // QVERIFY(view->selectionRange().isEmpty());
+    QVERIFY(view->selectionRange().isEmpty());
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
     QCOMPARE(view->selectionText(), QStringLiteral("foo"));
