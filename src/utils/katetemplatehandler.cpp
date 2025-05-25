@@ -154,9 +154,10 @@ void KateTemplateHandler::jump(int by, bool initial)
         }
     }
 
-    auto findNext = [&fields, &by](const Cursor &cursor) -> TemplateField * {
+    auto findNext = [this, &fields, &by](const Cursor &cursor) -> TemplateField * {
         for (const auto &field : fields) {
-            if ((by > 0 && field->range->start() > cursor) || (by < 0 && field->range->start() < cursor)) {
+            if ((field->range->start() == cursor && !field->touched && !field->range->isEmpty() && this->view()->selectionRange() != field->range->toRange())
+                || ((by > 0 && field->range->start() > cursor) || (by < 0 && field->range->start() < cursor))) {
                 return field;
             }
         }

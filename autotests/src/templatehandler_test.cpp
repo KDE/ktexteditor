@@ -399,17 +399,17 @@ void TemplateHandlerTest::testTab_data()
     QTest::newRow("adjacent_mixed_start") << "${foo} ${bar}${baz} / ${foo} ${bar} ${baz}" << 5 << 7 << "foo bara / foo bar a";
     QTest::newRow("adjacent_mixed_end") << "${foo}${bar} ${baz} / ${foo} ${bar} ${baz}" << 5 << 7 << "foobar a / foo bar a";
     QTest::newRow("adjacent_repeat") << "${foo}${foo='foo'}${foo}" << 3 << 3 << "aaa";
-    QTest::newRow("wrap_start") << "${foo} ${bar}" << 4 << 0 << "a bar";
-    QTest::newRow("wrap_mid") << "${foo} ${bar}" << 5 << 0 << "a bar";
-    QTest::newRow("wrap_end") << "${foo} ${bar}" << 6 << 0 << "a bar";
+    QTest::newRow("wrap_start") << "${foo} ${bar}" << 5 << 0 << "a bar";
+    QTest::newRow("wrap_mid") << "${foo} ${bar}" << 6 << 0 << "a bar";
+    QTest::newRow("wrap_end") << "${foo} ${bar}" << 7 << 0 << "a bar";
     QTest::newRow("non_editable_start") << "${foo} ${foo}" << 0 << 0 << "a a";
     QTest::newRow("non_editable_mid") << "${foo} ${foo}" << 2 << 0 << "a a";
     QTest::newRow("non_editable_end") << "${foo} ${foo}" << 3 << 0 << "a a";
     QTest::newRow("skip_non_editable") << "${foo} ${foo} ${bar}" << 0 << 8 << "foo foo a";
-    QTest::newRow("skip_non_editable_at_end") << "${foo} ${bar} ${foo}" << 4 << 0 << "a bar a";
+    QTest::newRow("skip_non_editable_at_end") << "${foo} ${bar} ${foo}" << 5 << 0 << "a bar a";
     QTest::newRow("jump_to_cursor") << "${foo} ${cursor}" << 0 << 4 << "foo a";
     QTest::newRow("jump_to_cursor_last") << "${foo} ${cursor} ${bar}" << 0 << 5 << "foo  a";
-    QTest::newRow("jump_to_cursor_last2") << "${foo} ${cursor} ${bar}" << 5 << 4 << "foo a bar";
+    QTest::newRow("jump_to_cursor_last2") << "${foo} ${cursor} ${bar}" << 6 << 4 << "foo a bar";
     QTest::newRow("reference_default") << "${foo} ${bar} ${baz=bar}" << 0 << 4 << "foo a bar";
 }
 
@@ -659,10 +659,10 @@ void TemplateHandlerTest::testLinesRemoved()
     QVERIFY(view->selectionRange().isEmpty());
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
-    QCOMPARE(view->selectionText(), QStringLiteral("baz"));
+    QCOMPARE(view->selectionText(), QStringLiteral("bax"));
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
-    QCOMPARE(view->selectionText(), QStringLiteral("bax"));
+    QCOMPARE(view->selectionText(), QStringLiteral("baz"));
 }
 
 void TemplateHandlerTest::testLinesRemoved2()
