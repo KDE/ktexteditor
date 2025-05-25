@@ -413,6 +413,140 @@ void TemplateHandlerTest::testTab_data()
     QTest::newRow("reference_default") << "${foo} ${bar} ${baz=bar}" << 0 << 4 << "foo a bar";
 }
 
+void TemplateHandlerTest::testTab2()
+{
+    auto doc = new KTextEditor::DocumentPrivate();
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+
+    auto reset = [&view, &doc](const QString &tmpl, const QString &expected) {
+        view->selectAll();
+        view->keyDelete();
+
+        view->insertTemplate({0, 0}, tmpl);
+        QCOMPARE(doc->text(), expected);
+    };
+
+    {
+        reset(QStringLiteral("${foo}${bar}${baz}"), QStringLiteral("foobarbaz"));
+        QCOMPARE(view->cursorPosition().column(), 0);
+        QCOMPARE(view->selectionText(), QStringLiteral("foo"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 3);
+        QCOMPARE(view->selectionText(), QStringLiteral("bar"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 6);
+        QCOMPARE(view->selectionText(), QStringLiteral("baz"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 0);
+        QCOMPARE(view->selectionText(), QStringLiteral("foo"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab, Qt::ShiftModifier);
+        QCOMPARE(view->cursorPosition().column(), 6);
+        QCOMPARE(view->selectionText(), QStringLiteral("baz"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab, Qt::ShiftModifier);
+        QCOMPARE(view->cursorPosition().column(), 3);
+        QCOMPARE(view->selectionText(), QStringLiteral("bar"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab, Qt::ShiftModifier);
+        QCOMPARE(view->cursorPosition().column(), 0);
+        QCOMPARE(view->selectionText(), QStringLiteral("foo"));
+    }
+
+    {
+        reset(QStringLiteral("${foo} ${cursor} ${bar} ${cursor}"), QStringLiteral("foo  bar "));
+        QCOMPARE(view->cursorPosition().column(), 0);
+        QCOMPARE(view->selectionText(), QStringLiteral("foo"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 5);
+        QCOMPARE(view->selectionText(), QStringLiteral("bar"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 4);
+        QCOMPARE(view->selectionText(), QStringLiteral(""));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 9);
+        QCOMPARE(view->selectionText(), QStringLiteral(""));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 0);
+        QCOMPARE(view->selectionText(), QStringLiteral("foo"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab, Qt::ShiftModifier);
+        QCOMPARE(view->cursorPosition().column(), 9);
+        QCOMPARE(view->selectionText(), QStringLiteral(""));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab, Qt::ShiftModifier);
+        QCOMPARE(view->cursorPosition().column(), 4);
+        QCOMPARE(view->selectionText(), QStringLiteral(""));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab, Qt::ShiftModifier);
+        QCOMPARE(view->cursorPosition().column(), 5);
+        QCOMPARE(view->selectionText(), QStringLiteral("bar"));
+    }
+
+    {
+        reset(QStringLiteral("${foo} ${bar=''} ${baz} ${bax}"), QStringLiteral("foo  baz bax"));
+        QCOMPARE(view->cursorPosition().column(), 0);
+        QCOMPARE(view->selectionText(), QStringLiteral("foo"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 4);
+        QCOMPARE(view->selectionText(), QStringLiteral(""));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 5);
+        QCOMPARE(view->selectionText(), QStringLiteral("baz"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 9);
+        QCOMPARE(view->selectionText(), QStringLiteral("bax"));
+    }
+
+    {
+        reset(QStringLiteral("${foo} ${bar=''}${baz} ${bax}"), QStringLiteral("foo baz bax"));
+        QCOMPARE(view->cursorPosition().column(), 0);
+        QCOMPARE(view->selectionText(), QStringLiteral("foo"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 4);
+        QCOMPARE(view->selectionText(), QStringLiteral(""));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 4);
+        QCOMPARE(view->selectionText(), QStringLiteral("baz"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 8);
+        QCOMPARE(view->selectionText(), QStringLiteral("bax"));
+    }
+
+    {
+        reset(QStringLiteral("${bar}${foo} ${bar=''}${baz} ${bax}"), QStringLiteral("foo baz bax"));
+        QCOMPARE(view->cursorPosition().column(), 0);
+        QCOMPARE(view->selectionText(), QStringLiteral("foo"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 4);
+        QCOMPARE(view->selectionText(), QStringLiteral(""));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 4);
+        QCOMPARE(view->selectionText(), QStringLiteral("baz"));
+
+        QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+        QCOMPARE(view->cursorPosition().column(), 8);
+        QCOMPARE(view->selectionText(), QStringLiteral("bax"));
+    }
+
+    delete doc;
+}
+
 void TemplateHandlerTest::testExit()
 {
     auto doc = new KTextEditor::DocumentPrivate();
