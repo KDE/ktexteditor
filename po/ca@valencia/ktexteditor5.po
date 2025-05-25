@@ -441,7 +441,7 @@ msgstr "Selecciona automàticament la &primera entrada de compleció"
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr "Circula entre la llista de complecions utilitzant «Tab» / «Maj+Tab»"
+msgstr "Circula entre la llista de complecions utilitzant «Tab» / «Majús+Tab»"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
@@ -2099,8 +2099,7 @@ msgstr "Indicadors de l'ajust d&inàmic de paraules:"
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr ""
-"Escolliu quan s'han de mostrar els indicadors d'ajust dinàmic de les "
-"paraules."
+"Trieu quan s'han de mostrar els indicadors d'ajust dinàmic de les paraules."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:370
@@ -3977,13 +3976,13 @@ msgstr ""
 "coincidix amb cap entrada del diccionari actualment en ús. També pot ser una "
 "paraula d'un idioma estranger.</p>\n"
 "<p>Si la paraula no està mal escrita, podeu afegir-la al diccionari clicant "
-"en <b>Afig al diccionari</b>. Si no voleu afegir-la al diccionari, però "
-"voleu deixar-la sense canviar, cliqueu <b>Ignora</b> o <b>Ignora-ho tot</b>."
-"</p>\n"
+"damunt <b>Afig al diccionari</b>. Si no voleu afegir-la al diccionari, però "
+"voleu deixar-la sense canviar, cliqueu damunt <b>Ignora</b> o <b>Ignora-ho "
+"tot</b>.</p>\n"
 "<p>En canvi, si la paraula està mal escrita, podeu intentar de trobar la "
 "substitució correcta en la llista a continuació. Si no hi trobeu una "
 "substitució, podeu escriure en el quadro de text a continuació i clicar "
-"<b>Substituïx</b> o <b>Substituïx-ho tot</b>.</p>\n"
+"damunt <b>Substituïx</b> o <b>Substituïx-ho tot</b>.</p>\n"
 "</qt>"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
@@ -4022,8 +4021,8 @@ msgstr ""
 "no està inclosa al diccionari.<br>\n"
 "Cliqueu ací si considereu que la paraula desconeguda no està mal escrita i "
 "voleu evitar detectar-la incorrectament en el futur. Si voleu deixar-la tal "
-"com està, però no voleu afegir-la al diccionari, llavors cliqueu <b>Ignora</"
-"b> o <b>Ignora-ho tot</b>.</p>\n"
+"com està, però no voleu afegir-la al diccionari, llavors cliqueu damunt "
+"<b>Ignora</b> o <b>Ignora-ho tot</b>.</p>\n"
 "</qt>"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_addBtn)
@@ -4048,9 +4047,9 @@ msgstr ""
 "<p>Si la paraula desconeguda està mal escrita, heu de teclejar la correcció "
 "de l'error ortogràfic ací o seleccionar-la des en la llista a continuació.</"
 "p>\n"
-"<p>Llavors podeu clicar <b>Substituïx</b> si voleu corregir només este cas "
-"de la paraula o <b>Substituïx-ho tot</b> si voleu corregir totes les "
-"ocurrències.</p>\n"
+"<p>Llavors podeu clicar damunt <b>Substituïx</b> si voleu corregir només "
+"este cas de la paraula o <b>Substituïx-ho tot</b> si voleu corregir totes "
+"les ocurrències.</p>\n"
 "</qt>"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
@@ -4868,8 +4867,8 @@ msgid ""
 msgstr ""
 "<p>Esta llista mostra els estils predeterminats per al tema actual i oferix "
 "els mitjans per a editar-los. El nom de l'estil indica la configuració de "
-"l'estil actual.</p><p>Per a editar els colors, cliqueu en els quadros de "
-"color o trieu el color a editar des del menú emergent.</p><p>Quan siga "
+"l'estil actual.</p><p>Per a editar els colors, cliqueu damunt dels quadros "
+"de color o trieu el color a editar des del menú emergent.</p><p>Quan siga "
 "apropiat, podreu traure l'assignació dels colors per al fons i el fons "
 "seleccionat des del menú emergent.</p>"
 
@@ -4922,11 +4921,11 @@ msgstr ""
 "<p>Esta llista mostra els contexts del mode actual de ressaltat sintàctic i "
 "oferix els mitjans per a editar-los. El nom del context indica la "
 "configuració de l'estil actual.</p><p>Per a editar-lo emprant el teclat, "
-"premeu <strong>&lt;ESPAI&gt;</strong> i escolliu una propietat des del menú "
-"emergent.</p><p>Per a editar els colors, cliqueu en els quadros de color o "
-"trieu el color a editar des del menú emergent.</p><p>Quan siga apropiat, "
-"podreu traure l'assignació dels colors per al fons i el fons seleccionat des "
-"del menú contextual.</p>"
+"premeu <strong>&lt;ESPAI&gt;</strong> i trieu una propietat des del menú "
+"emergent.</p><p>Per a editar els colors, cliqueu damunt dels quadros de "
+"color o trieu el color a editar des del menú emergent.</p><p>Quan siga "
+"apropiat, podreu traure l'assignació dels colors per al fons i el fons "
+"seleccionat des del menú contextual.</p>"
 
 #: syntax/katethemeconfig.cpp:1024
 #, kde-format
@@ -5660,7 +5659,7 @@ msgstr "Glen Parker"
 #: utils/kateglobal.cpp:121
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
-msgstr "Historial Desfés de KWrite, integració amb Kspell"
+msgstr "Historial «Desfés» de KWrite, integració amb Kspell"
 
 #: utils/kateglobal.cpp:122
 #, kde-format
@@ -6399,14 +6398,13 @@ msgstr "Activa l'ajust de les paraules en teclejar text."
 #, kde-format
 msgid "Current cursor position. Click to go to a specific line."
 msgstr ""
-"Posició actual del cursor. Feu un clic per a anar fins a una línia "
-"específica."
+"Posició actual del cursor. Cliqueu per a anar fins a una línia específica."
 
 #: view/katestatusbar.cpp:126
 #, kde-format
 msgid "Insert mode and VI input mode indicator. Click to change the mode."
 msgstr ""
-"Indicador del mode d'inserció i del mode d'entrada del VI. Feu clic per a "
+"Indicador del mode d'inserció i del mode d'entrada del VI. Cliqueu per a "
 "canviar el mode."
 
 #: view/katestatusbar.cpp:134
@@ -7005,8 +7003,8 @@ msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
 "existing text."
 msgstr ""
-"Escolliu si voleu que el text introduït s'inserisca o que sobreescriga el "
-"text existent."
+"Trieu si voleu que el text introduït s'inserisca o que sobreescriga el text "
+"existent."
 
 #: view/kateview.cpp:734
 #, kde-format
@@ -7033,7 +7031,7 @@ msgstr "Indicadors de l'ajust dinàmic de les paraules"
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr ""
-"Escolliu quan s'han de mostrar els indicadors d'ajust dinàmic de les paraules"
+"Trieu quan s'han de mostrar els indicadors d'ajust dinàmic de les paraules"
 
 #: view/kateview.cpp:746
 #, kde-format
