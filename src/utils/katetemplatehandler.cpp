@@ -141,7 +141,7 @@ void KateTemplateHandler::jump(int by, bool initial)
         }
 
         if (field.kind == TemplateField::Editable) {
-            if (!starts.contains(field.range->start()) || (!field.touched && !field.range->isEmpty())) {
+            if (!starts.contains(field.range->start()) || !field.range->isEmpty()) {
                 starts.insert(field.range->start(), true);
                 fields.append(&field);
             }
@@ -156,9 +156,17 @@ void KateTemplateHandler::jump(int by, bool initial)
 
     auto findNext = [this, &fields, &by](const Cursor &cursor) -> TemplateField * {
         for (const auto &field : fields) {
-            if ((field->range->start() == cursor && !field->touched && !field->range->isEmpty() && this->view()->selectionRange() != field->range->toRange())
-                || ((by > 0 && field->range->start() > cursor) || (by < 0 && field->range->start() < cursor))) {
-                return field;
+            if (by > 0) {
+                if (field->range->start() > cursor
+                    || (field->range->start() == cursor && this->view()->selection() && this->view()->selectionRange() != field->range->toRange())
+                    || (field->range->start() == cursor && !this->view()->selection() && !field->range->isEmpty())) {
+                    return field;
+                }
+            } else {
+                if ((field->range->end() == cursor && !field->touched && !field->range->isEmpty() && this->view()->selectionRange() != field->range->toRange())
+                    || field->range->end() < cursor) {
+                    return field;
+                }
             }
         }
 
@@ -182,7 +190,7 @@ void KateTemplateHandler::jump(int by, bool initial)
             view()->clearSelection();
         }
 
-        view()->setCursorPosition(field->range->toRange().start());
+        view()->setCursorPosition(field->range->toRange().end());
     };
 
     Cursor wrap;
