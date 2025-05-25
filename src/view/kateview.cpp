@@ -2836,6 +2836,10 @@ bool KTextEditor::ViewPrivate::selection() const
 
 QString KTextEditor::ViewPrivate::selectionText() const
 {
+    if (!selection() && m_secondaryCursors.empty()) {
+        return {};
+    }
+
     if (blockSelect) {
         return doc()->text(m_selection, blockSelect);
     }
