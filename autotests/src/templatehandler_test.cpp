@@ -415,33 +415,72 @@ void TemplateHandlerTest::testTab_data()
     QTest::newRow("reference_default") << "${foo} ${bar} ${baz=bar}" << 0 << 4 << "foo a bar";
 }
 
-void TemplateHandlerTest::testExitAtCursor()
+void TemplateHandlerTest::testExit()
 {
     auto doc = new KTextEditor::DocumentPrivate();
     auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
 
-    view->insertTemplate({0, 0}, QStringLiteral("${foo} ${bar} ${cursor} ${foo}"));
+    auto reset = [&view, &doc](const QString &snippet, const QString &expected) {
+        view->selectAll();
+        view->keyDelete();
+
+        view->insertTemplate({0, 0}, snippet);
+        QCOMPARE(doc->text(), expected);
+    };
+
+    auto finish = [&view, &doc](const QString &expected) {
+        // required to process the deleteLater() used to exit the template handler
+        QCoreApplication::sendPostedEvents(nullptr, QEvent::DeferredDelete);
+        QApplication::processEvents();
+
+        // go to the first field and verify it's not mirrored any more (i.e. the handler exited)
+        view->setCursorPosition({0, 0});
+        QTest::keyClick(view->focusProxy(), Qt::Key_A);
+        QCOMPARE(doc->text(), QStringLiteral("a") + expected);
+    };
+
+    // Test: insert at ${cursor}
+    reset(QStringLiteral("${foo} ${bar} ${cursor} ${foo}"), QStringLiteral("foo bar  foo"));
     view->setCursorPosition({0, 0});
 
-    // check it jumps to the cursor
+    // - check it jumps to the cursor
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
     QCOMPARE(view->cursorPosition().column(), 4);
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
     QCOMPARE(view->cursorPosition().column(), 8);
 
-    // insert an a at cursor position
+    // - insert an "a" at ${cursor}
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
     // check it was inserted
     QCOMPARE(doc->text(), QStringLiteral("foo bar a foo"));
 
-    // required to process the deleteLater() used to exit the template handler
-    QCoreApplication::sendPostedEvents(nullptr, QEvent::DeferredDelete);
-    QApplication::processEvents();
+    finish(QStringLiteral("foo bar a foo"));
 
-    // go to the first field and verify it's not mirrored any more (i.e. the handler exited)
+    // Test: press escape
+    reset(QStringLiteral("${foo} ${bar} ${cursor} ${foo}"), QStringLiteral("foo bar  foo"));
+
+    // - ensure fields work as expected
     view->setCursorPosition({0, 0});
+    view->clearSelection();
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
-    QCOMPARE(doc->text(), QStringLiteral("afoo bar a foo"));
+    QCOMPARE(doc->text(), QStringLiteral("afoo bar  afoo"));
+
+    // - finish editing
+    QTest::keyClick(view->focusProxy(), Qt::Key_Escape);
+    finish(QStringLiteral("afoo bar  afoo"));
+
+    // Test: press alt+return
+    reset(QStringLiteral("${foo} ${bar} ${cursor} ${foo}"), QStringLiteral("foo bar  foo"));
+
+    // - ensure fields work as expected
+    view->setCursorPosition({0, 0});
+    view->clearSelection();
+    QTest::keyClick(view->focusProxy(), Qt::Key_A);
+    QCOMPARE(doc->text(), QStringLiteral("afoo bar  afoo"));
+
+    // - finish editing
+    QTest::keyClick(view->focusProxy(), Qt::Key_Return, Qt::AltModifier);
+    finish(QStringLiteral("afoo bar  afoo"));
 
     delete doc;
 }

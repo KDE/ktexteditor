@@ -74,7 +74,7 @@ private Q_SLOTS:
     void testTab();
     void testTab_data();
 
-    void testExitAtCursor();
+    void testExit();
 
     void testAutoSelection();
 
