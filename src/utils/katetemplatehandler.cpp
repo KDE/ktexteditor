@@ -541,7 +541,7 @@ void KateTemplateHandler::reorderEmptyAdjacentFields(const QList<TemplateField> 
     //
     // 1. contents are deleted: all fields collapse and become empty, sitting at
     //    the same spot. Order: 0, 1, 2
-    // 2. new contents are inserted: fiels #1 receives new content and pushes
+    // 2. new contents are inserted: fields #1 receives new content and pushes
     //    fields #0 and #2 to the end. Order: 1 (non-empty), 0 (empty), 2 (empty)
     //
     // This function resets the original order to be 0, 1, 2 again.
