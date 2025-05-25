@@ -490,7 +490,7 @@ void KateTemplateHandler::setupDefaultValues()
         field.staticRange = field.range->toRange();
     }
 
-    reoderEmptyAdjacentFields(m_fields);
+    reorderEmptyAdjacentFields(m_fields);
 
     // initialize static ranges
     for (auto &field : m_fields) {
@@ -527,7 +527,7 @@ const QList<KateTemplateHandler::TemplateField> KateTemplateHandler::fieldsForRa
     return collected;
 }
 
-void KateTemplateHandler::reoderEmptyAdjacentFields(const QList<TemplateField> &changedFields)
+void KateTemplateHandler::reorderEmptyAdjacentFields(const QList<TemplateField> &changedFields)
 {
     // This function is an elaborate workaround for adjacent (mirror) fields losing order
     // when their contents are replaced.
@@ -640,7 +640,7 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
     } else {
         // If no text was removed (i.e. if text was inserted), make sure empty fields
         // are sorted correctly before continuing.
-        reoderEmptyAdjacentFields(changedFields);
+        reorderEmptyAdjacentFields(changedFields);
     }
 
     // Collect new values of changed editable fields

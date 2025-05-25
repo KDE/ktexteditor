@@ -240,7 +240,7 @@ private:
     const QList<TemplateField> fieldsForRange(KTextEditor::Range range, bool compareStaticRanges) const;
 
     // Restore order of empty adjacent fields after inserting into one.
-    void reoderEmptyAdjacentFields(const QList<TemplateField> &changedFields);
+    void reorderEmptyAdjacentFields(const QList<TemplateField> &changedFields);
 
     /// Construct a map of master fields and their current value, for use in scripts.
     KateScript::FieldMap fieldMap() const;
