@@ -100,6 +100,8 @@ void TextRange::setEmptyBehavior(EmptyBehavior emptyBehavior)
 
     // remember value
     m_invalidateIfEmpty = (emptyBehavior == InvalidateIfEmpty);
+
+    checkValidity();
 }
 
 void TextRange::setRange(KTextEditor::Range range)
