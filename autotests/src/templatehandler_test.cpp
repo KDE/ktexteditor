@@ -377,6 +377,10 @@ void TemplateHandlerTest::testTab()
     QEXPECT_FAIL("jump_to_cursor_last2", "Regression in KateTemplateHandler::jump", Continue);
     QTEST(view->cursorPosition().column(), "expected_cursor");
 
+    QTest::keyClick(view->focusProxy(), Qt::Key_Backtab);
+    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QTEST(view->cursorPosition().column(), "expected_cursor");
+
     QEXPECT_FAIL("jump_to_cursor_last", "Regression in KateTemplateHandler::jump", Continue);
     QEXPECT_FAIL("jump_to_cursor_last2", "Regression in KateTemplateHandler::jump", Continue);
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
