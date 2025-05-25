@@ -577,7 +577,8 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
                 continue;
             }
 
-            if ((range.start() < field.staticRange.start() && range.end() >= field.staticRange.end()) || !field.staticRange.isValid()) {
+            if ((range.start() < field.staticRange.start() && range.end() >= field.staticRange.end())
+                || (range.start() <= field.staticRange.start() && range.end().line() > field.staticRange.end().line()) || !field.staticRange.isValid()) {
                 field.removed = true;
             }
         }
