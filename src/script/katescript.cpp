@@ -193,19 +193,15 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
     // source: https://web.archive.org/web/20250415020612/https://www.w3schools.com/js/js_reserved.asp
     // exceptions: Java Reserved Words, Other Reserved Words, HTML Event Handlers,
     // plus "length", "name", "prototype", "hasOwnProperty", "package"
-    const auto jsReservedWords = QStringLiteral(
-        "^(Array|Date|Infinity|Math|NaN|Number|Object|String|abstract|arguments|await|"
-        "boolean|break|byte|case|catch|char|class|const|continue|debugger|default|delete|"
-        "do|double|else|enum|eval|export|extends|false|final|finally|float|for|function|goto|"
-        "if|implements|import|in|instanceof|int|interface|isFinite|isNaN|isPrototypeOf|let|long|"
-        "native|new|null|private|protected|public|return|short|static|super|switch|synchronized|"
-        "this|throw|throws|toString|transient|true|try|typeof|undefined|valueOf|"
-        "var|void|volatile|while|with|yield)$");
-    auto invalidRe = QRegularExpression{jsReservedWords};
-    invalidRe.optimize();
-
-    auto validRe = QRegularExpression{QStringLiteral("^[a-zA-Z0-9_]+$")};
-    validRe.optimize();
+    static const auto invalidRe =
+        QRegularExpression{QStringLiteral("^(Array|Date|Infinity|Math|NaN|Number|Object|String|abstract|arguments|await|"
+                                          "boolean|break|byte|case|catch|char|class|const|continue|debugger|default|delete|"
+                                          "do|double|else|enum|eval|export|extends|false|final|finally|float|for|function|goto|"
+                                          "if|implements|import|in|instanceof|int|interface|isFinite|isNaN|isPrototypeOf|let|long|"
+                                          "native|new|null|private|protected|public|return|short|static|super|switch|synchronized|"
+                                          "this|throw|throws|toString|transient|true|try|typeof|undefined|valueOf|"
+                                          "var|void|volatile|while|with|yield)$")};
+    static const auto validRe = QRegularExpression{QStringLiteral("^[a-zA-Z0-9_]+$")};
 
     auto filteredKeys = QStringList{};
     auto paramKeys = QStringList{};
