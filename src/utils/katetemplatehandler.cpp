@@ -481,12 +481,20 @@ void KateTemplateHandler::setupDefaultValues()
     // group all changes into one undo transaction
     KTextEditor::Document::EditingTransaction t(doc());
 
-    for (const auto &field : m_fields) {
+    for (auto &field : m_fields) {
         // All ranges are static by default, as prepared in setupFieldRanges().
         // Dynamic behaviors are set in updateRangeBehaviours() after initialization is finished.
         field.range->setInsertBehaviors(KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
         doc()->replaceText(field.range->toRange(), field.defaultValue);
         field.range->setInsertBehaviors(KTextEditor::MovingRange::DoNotExpand);
+        field.staticRange = field.range->toRange();
+    }
+
+    reoderEmptyAdjacentFields(m_fields);
+
+    // initialize static ranges
+    for (auto &field : m_fields) {
+        field.staticRange = field.range->toRange();
     }
 }
 
@@ -497,11 +505,6 @@ void KateTemplateHandler::initializeTemplate()
     setupFieldRanges();
     setupDefaultValues();
     updateRangeBehaviours();
-
-    // initialize static ranges
-    for (auto &field : m_fields) {
-        field.staticRange = field.range->toRange();
-    }
 }
 
 const QList<KateTemplateHandler::TemplateField> KateTemplateHandler::fieldsForRange(KTextEditor::Range range, bool compareStaticRanges) const
