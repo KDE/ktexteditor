@@ -593,10 +593,10 @@ void KateTemplateHandler::updateDependentFields(Document *document, Range range,
     QMap<QString, QString> mainFieldValues;
     for (const auto &field : changedFields) {
         if (field.kind == TemplateField::Editable) {
+            mainFieldValues[field.identifier] = QStringLiteral("");
+
             if (field.range->toRange().isValid()) {
                 mainFieldValues[field.identifier] = doc()->text(field.range->toRange());
-            } else {
-                mainFieldValues[field.identifier] = QStringLiteral("");
             }
         }
     }
