@@ -689,4 +689,18 @@ void TemplateHandlerTest::testReadOnly()
     QCOMPARE(doc->text(), QStringLiteral(""));
 }
 
+void TemplateHandlerTest::testMultipleViews()
+{
+    auto doc = new KTextEditor::DocumentPrivate();
+
+    auto view1 = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    view1->insertTemplate({0, 0}, QStringLiteral("${foo} ${foo}"));
+    QCOMPARE(doc->text(), QStringLiteral("foo foo"));
+
+    auto view2 = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    view2->setCursorPosition({0, 1});
+    QTest::keyClick(view2->focusProxy(), 'X');
+    QCOMPARE(doc->text(), QStringLiteral("fXoo fXoo"));
+}
+
 #include "moc_templatehandler_test.cpp"

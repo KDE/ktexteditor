@@ -86,6 +86,7 @@ private Q_SLOTS:
     void testLinesRemoved2();
 
     void testReadOnly();
+    void testMultipleViews();
 };
 
 #endif
