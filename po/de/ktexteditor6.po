@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-17 00:38+0000\n"
+"POT-Creation-Date: 2025-05-26 00:38+0000\n"
 "PO-Revision-Date: 2024-08-21 22:37+0200\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -2241,12 +2241,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Erneut laden"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6542
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
 #, kde-format
 msgid "&Close"
 msgstr "&Schließen"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6543
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2386,29 +2386,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "Trotzdem schließen"
 
-#: document/katedocument.cpp:4591
+#: document/katedocument.cpp:4601
 #, kde-format
 msgid "Untitled"
 msgstr "Unbenannt"
 
-#: document/katedocument.cpp:4714 document/katedocument.cpp:4940
-#: document/katedocument.cpp:4950 document/katedocument.cpp:5746
-#: document/katedocument.cpp:5933
+#: document/katedocument.cpp:4724 document/katedocument.cpp:4950
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
+#: document/katedocument.cpp:5943
 #, kde-format
 msgid "Save File"
 msgstr "Datei speichern"
 
-#: document/katedocument.cpp:4717
+#: document/katedocument.cpp:4727
 #, kde-format
 msgid "Save failed"
 msgstr "Speichern fehlgeschlagen"
 
-#: document/katedocument.cpp:4961
+#: document/katedocument.cpp:4971
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Kopie der Datei speichern"
 
-#: document/katedocument.cpp:4973
+#: document/katedocument.cpp:4983
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2422,7 +2422,7 @@ msgstr ""
 "Bitte überprüfen Sie, ob Sie Schreibrechte für die Datei besitzen und genug "
 "Speicherplatz vorhanden ist."
 
-#: document/katedocument.cpp:5263
+#: document/katedocument.cpp:5273
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2435,7 +2435,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5269
+#: document/katedocument.cpp:5279
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2448,23 +2448,23 @@ msgstr ""
 "org/?application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5575
+#: document/katedocument.cpp:5585
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Die Datei „%1“ wurde auf dem Speichermedium geändert."
 
-#: document/katedocument.cpp:5578
+#: document/katedocument.cpp:5588
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Die Datei „%1“ wurde auf dem Speichermedium erstellt."
 
-#: document/katedocument.cpp:5581
+#: document/katedocument.cpp:5591
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted on disk."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Die Datei „%1“ wurde von vom Speichermedium gelöscht."
 
-#: document/katedocument.cpp:5918
+#: document/katedocument.cpp:5928
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2473,17 +2473,17 @@ msgstr ""
 "Das Dokument „%1“ ist geändert worden.\n"
 "Möchten Sie die Änderungen speichern oder verwerfen?"
 
-#: document/katedocument.cpp:5921
+#: document/katedocument.cpp:5931
 #, kde-format
 msgid "Close Document"
 msgstr "Dokument schließen"
 
-#: document/katedocument.cpp:6032
+#: document/katedocument.cpp:6042
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Die Datei <a href=\"%1\">%2</a> wird immer noch geladen."
 
-#: document/katedocument.cpp:6037
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Laden &abbrechen"
@@ -3619,9 +3619,10 @@ msgstr "Fehler beim Aufruf von „help %1“"
 msgid "No help specified for command '%1' in script %2"
 msgstr "Für den Befehl „%1“ aus dem Skript „%2“ ist keine Hilfe verfügbar"
 
-#: script/katescript.cpp:214
-#, kde-format
-msgid "Error loading script %1"
+#: script/katescript.cpp:282
+#, fuzzy, kde-format
+#| msgid "Error loading script %1"
+msgid "Error loading script %1: %2"
 msgstr "Das Skript „%1“ kann nicht geladen werden."
 
 #: script/katescriptmanager.cpp:310
@@ -8085,23 +8086,23 @@ msgstr "Camel-Case-Cursorbewegung aktiviert"
 msgid "Search wrapped"
 msgstr "Suche hat das Ende erreicht"
 
-#: view/kateview.cpp:3068
+#: view/kateview.cpp:3072
 #, fuzzy, kde-format
 #| msgid "Open File"
 msgid "Open File"
 msgstr "Datei öffnen"
 
-#: view/kateview.cpp:3974
+#: view/kateview.cpp:3983
 #, kde-format
 msgid "Align On"
 msgstr "Ausrichten an"
 
-#: view/kateview.cpp:3974
+#: view/kateview.cpp:3983
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Ausrichtungsmuster:"
 
-#: view/kateview.cpp:5058
+#: view/kateview.cpp:5067
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Datei als HTML exportieren"

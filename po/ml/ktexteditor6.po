@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-17 00:38+0000\n"
+"POT-Creation-Date: 2025-05-26 00:38+0000\n"
 "PO-Revision-Date: 2019-12-12 21:03+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc-"
@@ -2033,12 +2033,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6542
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6543
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2150,29 +2150,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr ""
 
-#: document/katedocument.cpp:4591
+#: document/katedocument.cpp:4601
 #, kde-format
 msgid "Untitled"
 msgstr "തലക്കെട്ടില്ലാത്ത"
 
-#: document/katedocument.cpp:4714 document/katedocument.cpp:4940
-#: document/katedocument.cpp:4950 document/katedocument.cpp:5746
-#: document/katedocument.cpp:5933
+#: document/katedocument.cpp:4724 document/katedocument.cpp:4950
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
+#: document/katedocument.cpp:5943
 #, kde-format
 msgid "Save File"
 msgstr "ഫയല്‍ സൂക്ഷിക്കുക"
 
-#: document/katedocument.cpp:4717
+#: document/katedocument.cpp:4727
 #, kde-format
 msgid "Save failed"
 msgstr "സൂക്ഷിക്കുവാന്‍ സാധ്യമായില്ല"
 
-#: document/katedocument.cpp:4961
+#: document/katedocument.cpp:4971
 #, fuzzy, kde-format
 msgid "Save Copy of File"
 msgstr "ഫയല്‍ സൂക്ഷിക്കുക"
 
-#: document/katedocument.cpp:4973
+#: document/katedocument.cpp:4983
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2181,7 +2181,7 @@ msgid ""
 "available."
 msgstr ""
 
-#: document/katedocument.cpp:5263
+#: document/katedocument.cpp:5273
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2190,7 +2190,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5269
+#: document/katedocument.cpp:5279
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2199,25 +2199,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5575
+#: document/katedocument.cpp:5585
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "ഫയല്‍ '%1' മറ്റൊരു പ്രോഗ്രാം ഉപയോഗിച്ചു് മാറ്റം വരുത്തിയിരിക്കുന്നു."
 
-#: document/katedocument.cpp:5578
+#: document/katedocument.cpp:5588
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "ഫയല്‍ '%1' മറ്റൊരു പ്രോഗ്രാം ഉപയോഗിച്ചു് ഉണ്ടാക്കിയിരിക്കുന്നു."
 
-#: document/katedocument.cpp:5581
+#: document/katedocument.cpp:5591
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "ഫയല്‍ '%1' മറ്റൊരു പ്രോഗ്രാം ഉപയോഗിച്ചു് വെട്ടിമാറ്റിയിരിക്കുന്നു."
 
-#: document/katedocument.cpp:5918
+#: document/katedocument.cpp:5928
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2226,17 +2226,17 @@ msgstr ""
 "രേഖ \"%1\"-ല്‍ മാറ്റം വരുത്തയിരിക്കുന്നു.\n"
 "നിങ്ങള്‍ക്കു് ഈ മാറ്റങ്ങള്‍ സൂക്ഷിക്കണമോ?"
 
-#: document/katedocument.cpp:5921
+#: document/katedocument.cpp:5931
 #, kde-format
 msgid "Close Document"
 msgstr "രേഖ അടയ്ക്കുക"
 
-#: document/katedocument.cpp:6032
+#: document/katedocument.cpp:6042
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6037
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -3283,9 +3283,10 @@ msgstr "സ്ക്രിപ്റ്റ് %1 ലഭ്യമാക്കു�
 msgid "No help specified for command '%1' in script %2"
 msgstr ""
 
-#: script/katescript.cpp:214
-#, kde-format
-msgid "Error loading script %1"
+#: script/katescript.cpp:282
+#, fuzzy, kde-format
+#| msgid "Error loading script %1"
+msgid "Error loading script %1: %2"
 msgstr "സ്ക്രിപ്റ്റ് %1 ലഭ്യമാക്കുന്നതില്‍ പിശകു്"
 
 #: script/katescriptmanager.cpp:310
@@ -7390,22 +7391,22 @@ msgstr ""
 msgid "Search wrapped"
 msgstr ""
 
-#: view/kateview.cpp:3068
+#: view/kateview.cpp:3072
 #, kde-format
 msgid "Open File"
 msgstr "ഫയല്‍ തുറക്കുക"
 
-#: view/kateview.cpp:3974
+#: view/kateview.cpp:3983
 #, kde-format
 msgid "Align On"
 msgstr ""
 
-#: view/kateview.cpp:3974
+#: view/kateview.cpp:3983
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:5058
+#: view/kateview.cpp:5067
 #, kde-format
 msgid "Export File as HTML"
 msgstr "ഫയല്‍ HTML ആയി ലഭ്യമാക്കുക"

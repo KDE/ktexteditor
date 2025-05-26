@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-17 00:38+0000\n"
+"POT-Creation-Date: 2025-05-26 00:38+0000\n"
 "PO-Revision-Date: 2024-12-29 22:54+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -2163,12 +2163,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "पुनः प्रयासं कुर्वन्तु"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6542
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
 #, kde-format
 msgid "&Close"
 msgstr "&पिधानं करोतु"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6543
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2303,29 +2303,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "Close तथापि"
 
-#: document/katedocument.cpp:4591
+#: document/katedocument.cpp:4601
 #, kde-format
 msgid "Untitled"
 msgstr "अनामिका"
 
-#: document/katedocument.cpp:4714 document/katedocument.cpp:4940
-#: document/katedocument.cpp:4950 document/katedocument.cpp:5746
-#: document/katedocument.cpp:5933
+#: document/katedocument.cpp:4724 document/katedocument.cpp:4950
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
+#: document/katedocument.cpp:5943
 #, kde-format
 msgid "Save File"
 msgstr "सञ्चिकां रक्षतु"
 
-#: document/katedocument.cpp:4717
+#: document/katedocument.cpp:4727
 #, kde-format
 msgid "Save failed"
 msgstr "रक्षणं विफलम् अभवत्"
 
-#: document/katedocument.cpp:4961
+#: document/katedocument.cpp:4971
 #, kde-format
 msgid "Save Copy of File"
 msgstr "सञ्चिकायाः प्रतिलिपिं रक्षन्तु"
 
-#: document/katedocument.cpp:4973
+#: document/katedocument.cpp:4983
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2337,7 +2337,7 @@ msgstr ""
 "\n"
 "भवतः अस्याः सञ्चिकायाः लेखनप्रवेशः अस्ति वा पर्याप्तं डिस्कस्थानं उपलब्धं वा इति पश्यन्तु ।"
 
-#: document/katedocument.cpp:5263
+#: document/katedocument.cpp:5273
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2350,7 +2350,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces पश्यन्तु"
 
-#: document/katedocument.cpp:5269
+#: document/katedocument.cpp:5279
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2363,22 +2363,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces पश्यन्तु"
 
-#: document/katedocument.cpp:5575
+#: document/katedocument.cpp:5585
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "'%1' इति सञ्चिका डिस्कमध्ये परिवर्तिता आसीत् ।"
 
-#: document/katedocument.cpp:5578
+#: document/katedocument.cpp:5588
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "'%1' इति सञ्चिका डिस्कमध्ये निर्मितवती ।"
 
-#: document/katedocument.cpp:5581
+#: document/katedocument.cpp:5591
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "'%1' इति सञ्चिका विलोपिता अथवा डिस्कमध्ये स्थानान्तरिता ।"
 
-#: document/katedocument.cpp:5918
+#: document/katedocument.cpp:5928
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2387,17 +2387,17 @@ msgstr ""
 "\"%1\" इति दस्तावेजं परिवर्तितम् अस्ति ।\n"
 "किं भवन्तः स्वपरिवर्तनानि रक्षितुं इच्छन्ति वा परित्यक्तुं इच्छन्ति वा?"
 
-#: document/katedocument.cpp:5921
+#: document/katedocument.cpp:5931
 #, kde-format
 msgid "Close Document"
 msgstr "दस्तावेजं बन्दं कुर्वन्तु"
 
-#: document/katedocument.cpp:6032
+#: document/katedocument.cpp:6042
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2 इति</a> सञ्चिका अद्यापि लोड् भवति ।"
 
-#: document/katedocument.cpp:6037
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&लोडिंग निरस्त करो"
@@ -3499,9 +3499,10 @@ msgstr "'help %1' इति आह्वानं कृत्वा त्र�
 msgid "No help specified for command '%1' in script %2"
 msgstr "स्क्रिप्ट् %2 मध्ये '%1' आदेशस्य कृते कोऽपि सहायता निर्दिष्टा नास्ति"
 
-#: script/katescript.cpp:214
-#, kde-format
-msgid "Error loading script %1"
+#: script/katescript.cpp:282
+#, fuzzy, kde-format
+#| msgid "Error loading script %1"
+msgid "Error loading script %1: %2"
 msgstr "स्क्रिप्ट् लोड् करणं त्रुटिः %1"
 
 #: script/katescriptmanager.cpp:310
@@ -7794,22 +7795,22 @@ msgstr "उष्ट्रप्रकरणस्य गतिः सक्ष�
 msgid "Search wrapped"
 msgstr "अन्वेषणं वेष्टितम्"
 
-#: view/kateview.cpp:3068
+#: view/kateview.cpp:3072
 #, kde-format
 msgid "Open File"
 msgstr "सञ्चिकां उद्घाटयन्तु"
 
-#: view/kateview.cpp:3974
+#: view/kateview.cpp:3983
 #, kde-format
 msgid "Align On"
 msgstr "Align On इति"
 
-#: view/kateview.cpp:3974
+#: view/kateview.cpp:3983
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "संरेखणप्रतिमानः :"
 
-#: view/kateview.cpp:5058
+#: view/kateview.cpp:5067
 #, kde-format
 msgid "Export File as HTML"
 msgstr "सञ्चिकां HTML इति रूपेण निर्यातयन्तु"

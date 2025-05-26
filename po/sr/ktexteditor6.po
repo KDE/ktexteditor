@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-17 00:38+0000\n"
+"POT-Creation-Date: 2025-05-26 00:38+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -2272,12 +2272,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Покушај поново"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6542
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
 #, kde-format
 msgid "&Close"
 msgstr "&Затвори"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6543
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2421,31 +2421,31 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "Ипак затвори"
 
-#: document/katedocument.cpp:4591
+#: document/katedocument.cpp:4601
 #, kde-format
 msgid "Untitled"
 msgstr "Неименовано"
 
 # >> @title:window
-#: document/katedocument.cpp:4714 document/katedocument.cpp:4940
-#: document/katedocument.cpp:4950 document/katedocument.cpp:5746
-#: document/katedocument.cpp:5933
+#: document/katedocument.cpp:4724 document/katedocument.cpp:4950
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
+#: document/katedocument.cpp:5943
 #, kde-format
 msgid "Save File"
 msgstr "Уписивање фајла"
 
-#: document/katedocument.cpp:4717
+#: document/katedocument.cpp:4727
 #, kde-format
 msgid "Save failed"
 msgstr "Уписивање није успело"
 
 # >> @title:window
-#: document/katedocument.cpp:4961
+#: document/katedocument.cpp:4971
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Уписивање копије фајла"
 
-#: document/katedocument.cpp:4973
+#: document/katedocument.cpp:4983
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2460,7 +2460,7 @@ msgstr ""
 
 # literal-segment: remove-trailing-space
 # literal-segment: remove-trailing-spaces
-#: document/katedocument.cpp:5263
+#: document/katedocument.cpp:5273
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2478,7 +2478,7 @@ msgstr ""
 
 # literal-segment: replace-trailing-space-save
 # literal-segment: remove-trailing-spaces
-#: document/katedocument.cpp:5269
+#: document/katedocument.cpp:5279
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2495,25 +2495,25 @@ msgstr ""
 "stable/en/applications/kate/config-variables.html#variable-remove-trailing-"
 "spaces."
 
-#: document/katedocument.cpp:5575
+#: document/katedocument.cpp:5585
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Неки други програм је изменио фајл ‘%1’."
 
-#: document/katedocument.cpp:5578
+#: document/katedocument.cpp:5588
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Неки други програм је направио фајл ‘%1’."
 
-#: document/katedocument.cpp:5581
+#: document/katedocument.cpp:5591
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Неки други програм је обрисао фајл ‘%1’."
 
-#: document/katedocument.cpp:5918
+#: document/katedocument.cpp:5928
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2523,17 +2523,17 @@ msgstr ""
 "Желите ли да измене сачувате или одбаците?"
 
 # >> @title:window
-#: document/katedocument.cpp:5921
+#: document/katedocument.cpp:5931
 #, kde-format
 msgid "Close Document"
 msgstr "Затварање документа"
 
-#: document/katedocument.cpp:6032
+#: document/katedocument.cpp:6042
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Фајл <a href=\"%1\">%2</a> још се учитава."
 
-#: document/katedocument.cpp:6037
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Обустави учитавање"
@@ -3709,9 +3709,10 @@ msgstr "Грешка при позиву „help %1“"
 msgid "No help specified for command '%1' in script %2"
 msgstr "Помоћ није дефинисана за наредбу „%1“ у скрипти ‘%2’"
 
-#: script/katescript.cpp:214
-#, kde-format
-msgid "Error loading script %1"
+#: script/katescript.cpp:282
+#, fuzzy, kde-format
+#| msgid "Error loading script %1"
+msgid "Error loading script %1: %2"
 msgstr "Грешка при учитавању скрипте ‘%1’"
 
 # >> @info
@@ -8277,25 +8278,25 @@ msgid "Search wrapped"
 msgstr "Режим тражења"
 
 # >> @title:window
-#: view/kateview.cpp:3068
+#: view/kateview.cpp:3072
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Open File"
 msgstr "Уписивање фајла"
 
-#: view/kateview.cpp:3974
+#: view/kateview.cpp:3983
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Поравнај"
 
-#: view/kateview.cpp:3974
+#: view/kateview.cpp:3983
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
 # >> @title:window
-#: view/kateview.cpp:5058
+#: view/kateview.cpp:5067
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Извоз фајла у виду ХТМЛ‑а"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-17 00:38+0000\n"
+"POT-Creation-Date: 2025-05-26 00:38+0000\n"
 "PO-Revision-Date: 2024-10-08 14:47+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -2149,12 +2149,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Zkusit znovu"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6542
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
 #, kde-format
 msgid "&Close"
 msgstr "&Zavřít"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6543
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2289,29 +2289,29 @@ msgstr "Opravdu si přejete uzavřít tento soubor? Může dojít ke ztrátě da
 msgid "Close Nevertheless"
 msgstr "Přesto uzavřít"
 
-#: document/katedocument.cpp:4591
+#: document/katedocument.cpp:4601
 #, kde-format
 msgid "Untitled"
 msgstr "Nepojmenovaný"
 
-#: document/katedocument.cpp:4714 document/katedocument.cpp:4940
-#: document/katedocument.cpp:4950 document/katedocument.cpp:5746
-#: document/katedocument.cpp:5933
+#: document/katedocument.cpp:4724 document/katedocument.cpp:4950
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
+#: document/katedocument.cpp:5943
 #, kde-format
 msgid "Save File"
 msgstr "Uložit soubor"
 
-#: document/katedocument.cpp:4717
+#: document/katedocument.cpp:4727
 #, kde-format
 msgid "Save failed"
 msgstr "Uložení selhalo"
 
-#: document/katedocument.cpp:4961
+#: document/katedocument.cpp:4971
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Uložit kopii souboru"
 
-#: document/katedocument.cpp:4973
+#: document/katedocument.cpp:4983
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2323,7 +2323,7 @@ msgstr ""
 "Zkontrolujte, zda máte oprávnění k zápisu do tohoto souboru a že je na disku "
 "dostatek místa."
 
-#: document/katedocument.cpp:5263
+#: document/katedocument.cpp:5273
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2332,7 +2332,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5269
+#: document/katedocument.cpp:5279
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2341,22 +2341,22 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5575
+#: document/katedocument.cpp:5585
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5578
+#: document/katedocument.cpp:5588
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5581
+#: document/katedocument.cpp:5591
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Soubor '%1' byl smazán nebo přesunut na disku."
 
-#: document/katedocument.cpp:5918
+#: document/katedocument.cpp:5928
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2365,17 +2365,17 @@ msgstr ""
 "Dokument \"%1\" byl změněn.\n"
 "Přejete si uložit změny nebo je zapomenout?"
 
-#: document/katedocument.cpp:5921
+#: document/katedocument.cpp:5931
 #, kde-format
 msgid "Close Document"
 msgstr "Uzavřít dokument"
 
-#: document/katedocument.cpp:6032
+#: document/katedocument.cpp:6042
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6037
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -3461,9 +3461,10 @@ msgstr "Chyba při volání 'help %1'"
 msgid "No help specified for command '%1' in script %2"
 msgstr "Nápověda pro příkaz '%1' není ve skriptu %2 obsažena"
 
-#: script/katescript.cpp:214
-#, kde-format
-msgid "Error loading script %1"
+#: script/katescript.cpp:282
+#, fuzzy, kde-format
+#| msgid "Error loading script %1"
+msgid "Error loading script %1: %2"
 msgstr "Chyba při načítání skriptu %1"
 
 #: script/katescriptmanager.cpp:310
@@ -7679,22 +7680,22 @@ msgstr ""
 msgid "Search wrapped"
 msgstr ""
 
-#: view/kateview.cpp:3068
+#: view/kateview.cpp:3072
 #, kde-format
 msgid "Open File"
 msgstr "Otevřít soubor"
 
-#: view/kateview.cpp:3974
+#: view/kateview.cpp:3983
 #, kde-format
 msgid "Align On"
 msgstr ""
 
-#: view/kateview.cpp:3974
+#: view/kateview.cpp:3983
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Vzorec zarovnání:"
 
-#: view/kateview.cpp:5058
+#: view/kateview.cpp:5067
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportovat soubor do HTML"

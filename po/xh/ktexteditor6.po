@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-17 00:38+0000\n"
+"POT-Creation-Date: 2025-05-26 00:38+0000\n"
 "PO-Revision-Date: 2002-11-14 16:59SAST\n"
 "Last-Translator: Lwandle Mgidlana <lwandle@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -2121,12 +2121,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6542
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6543
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2238,30 +2238,30 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr ""
 
-#: document/katedocument.cpp:4591
+#: document/katedocument.cpp:4601
 #, fuzzy, kde-format
 msgid "Untitled"
 msgstr "Ayinasiphelo"
 
-#: document/katedocument.cpp:4714 document/katedocument.cpp:4940
-#: document/katedocument.cpp:4950 document/katedocument.cpp:5746
-#: document/katedocument.cpp:5933
+#: document/katedocument.cpp:4724 document/katedocument.cpp:4950
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
+#: document/katedocument.cpp:5943
 #, kde-format
 msgid "Save File"
 msgstr "Gcina Ifayile"
 
-#: document/katedocument.cpp:4717
+#: document/katedocument.cpp:4727
 #, fuzzy, kde-format
 msgid "Save failed"
 msgstr "Gcina Ifayile"
 
-#: document/katedocument.cpp:4961
+#: document/katedocument.cpp:4971
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "Gcina Ifayile"
 
-#: document/katedocument.cpp:4973
+#: document/katedocument.cpp:4983
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2270,7 +2270,7 @@ msgid ""
 "available."
 msgstr ""
 
-#: document/katedocument.cpp:5263
+#: document/katedocument.cpp:5273
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2279,7 +2279,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5269
+#: document/katedocument.cpp:5279
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2288,39 +2288,39 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5575
+#: document/katedocument.cpp:5585
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5578
+#: document/katedocument.cpp:5588
 #, fuzzy, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Ifayile Itshintshile kwi Diski"
 
-#: document/katedocument.cpp:5581
+#: document/katedocument.cpp:5591
 #, fuzzy, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Ifayile Itshintshile kwi Diski"
 
-#: document/katedocument.cpp:5918
+#: document/katedocument.cpp:5928
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
 
-#: document/katedocument.cpp:5921
+#: document/katedocument.cpp:5931
 #, fuzzy, kde-format
 msgid "Close Document"
 msgstr "Songela Igama"
 
-#: document/katedocument.cpp:6032
+#: document/katedocument.cpp:6042
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6037
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -3444,10 +3444,11 @@ msgstr ""
 msgid "No help specified for command '%1' in script %2"
 msgstr ""
 
-#: script/katescript.cpp:214
-#, kde-format
-msgid "Error loading script %1"
-msgstr ""
+#: script/katescript.cpp:282
+#, fuzzy, kde-format
+#| msgid "Error: %1"
+msgid "Error loading script %1: %2"
+msgstr "Imposiso: %1"
 
 #: script/katescriptmanager.cpp:310
 #, kde-format
@@ -7747,22 +7748,22 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "Phendla"
 
-#: view/kateview.cpp:3068
+#: view/kateview.cpp:3072
 #, fuzzy, kde-format
 msgid "Open File"
 msgstr "Gcina Ifayile"
 
-#: view/kateview.cpp:3974
+#: view/kateview.cpp:3983
 #, fuzzy, kde-format
 msgid "Align On"
 msgstr "&Zonke"
 
-#: view/kateview.cpp:3974
+#: view/kateview.cpp:3983
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:5058
+#: view/kateview.cpp:5067
 #, fuzzy, kde-format
 msgid "Export File as HTML"
 msgstr "Rhweba ifayile ngaphandle njenge"
@@ -8263,11 +8264,6 @@ msgstr "Phawula Uhlobo %1"
 #, fuzzy
 #~ msgid "Change Dictionary..."
 #~ msgstr "&Qwalasela umhleli..."
-
-#, fuzzy
-#~| msgid "Error: %1"
-#~ msgid "Error loading script %1\n"
-#~ msgstr "Imposiso: %1"
 
 #, fuzzy
 #~ msgid "Namespaces"
