@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-26 00:38+0000\n"
-"PO-Revision-Date: 2025-02-23 08:38+0200\n"
+"PO-Revision-Date: 2025-05-26 08:55+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -3576,10 +3576,9 @@ msgid "No help specified for command '%1' in script %2"
 msgstr "Довідки до команди «%1» у скрипті %2 немає"
 
 #: script/katescript.cpp:282
-#, fuzzy, kde-format
-#| msgid "Error loading script %1"
+#, kde-format
 msgid "Error loading script %1: %2"
-msgstr "Помилка завантаження скрипту %1"
+msgstr "Помилка завантаження скрипту %1: %2"
 
 #: script/katescriptmanager.cpp:310
 #, kde-format

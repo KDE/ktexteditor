@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-26 00:38+0000\n"
-"PO-Revision-Date: 2025-02-23 08:41+0100\n"
+"PO-Revision-Date: 2025-05-26 04:02+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -3540,10 +3540,9 @@ msgid "No help specified for command '%1' in script %2"
 msgstr "დახმარება ბრძანებისთვის '%1' სკრიპტში %2 მითითებული არაა"
 
 #: script/katescript.cpp:282
-#, fuzzy, kde-format
-#| msgid "Error loading script %1"
+#, kde-format
 msgid "Error loading script %1: %2"
-msgstr "სკრიპტის (%1) ჩატვირთვის შეცდომა"
+msgstr "სკრიპტის %1 ჩატვირთვის შეცდომა: %2"
 
 #: script/katescriptmanager.cpp:310
 #, kde-format

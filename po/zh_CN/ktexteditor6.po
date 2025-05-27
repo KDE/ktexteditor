@@ -3405,10 +3405,9 @@ msgid "No help specified for command '%1' in script %2"
 msgstr "在脚本 %2 中没有对应命令“%1”的帮助信息"
 
 #: script/katescript.cpp:282
-#, fuzzy, kde-format
-#| msgid "Error loading script %1"
+#, kde-format
 msgid "Error loading script %1: %2"
-msgstr "加载脚本 %1 时出错"
+msgstr ""
 
 #: script/katescriptmanager.cpp:310
 #, kde-format
