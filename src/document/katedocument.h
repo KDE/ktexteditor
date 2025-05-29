@@ -542,7 +542,7 @@ public:
 
 private:
     QHash<int, KTextEditor::Mark *> m_marks;
-    QHash<int, QIcon> m_markIcons; // QPixmap or QIcon, KF6: remove QPixmap support
+    QHash<int, QIcon> m_markIcons;
     QHash<int, QString> m_markDescriptions;
     uint m_editableMarks = markType01;
 
