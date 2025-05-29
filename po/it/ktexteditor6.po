@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-26 00:38+0000\n"
-"PO-Revision-Date: 2025-02-23 23:04+0100\n"
+"PO-Revision-Date: 2025-05-27 14:13+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -3591,10 +3591,9 @@ msgid "No help specified for command '%1' in script %2"
 msgstr "Nessun aiuto specificato per il comando «%1» nello script %2"
 
 #: script/katescript.cpp:282
-#, fuzzy, kde-format
-#| msgid "Error loading script %1"
+#, kde-format
 msgid "Error loading script %1: %2"
-msgstr "Errore nel caricamento dello script %1"
+msgstr "Errore durante il caricamento dello script %1: %2"
 
 #: script/katescriptmanager.cpp:310
 #, kde-format
