@@ -5582,14 +5582,10 @@ QString KTextEditor::DocumentPrivate::reasonedMOHString() const
 
     switch (m_modOnHdReason) {
     case OnDiskModified:
+    case OnDiskCreated: // 'rm test && touch test' will trigger this, just handle is like modified for user output
         return i18n("The file '%1' was modified on disk.", str);
-        break;
-    case OnDiskCreated:
-        return i18n("The file '%1' was created on disk.", str);
-        break;
     case OnDiskDeleted:
         return i18n("The file '%1' was deleted or moved on disk.", str);
-        break;
     default:
         return QString();
     }
