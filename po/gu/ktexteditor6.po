@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-26 00:38+0000\n"
+"POT-Creation-Date: 2025-05-31 00:39+0000\n"
 "PO-Revision-Date: 2009-05-13 15:41+0530\n"
 "Last-Translator: Kartik Mistry <kartik.mistry@gmail.com>\n"
 "Language-Team: Gujarati <kde-i18n-doc@kde.org>\n"
@@ -2116,12 +2116,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2239,8 +2239,8 @@ msgid "Untitled"
 msgstr "શીર્ષક વિનાનું"
 
 #: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
-#: document/katedocument.cpp:5943
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Save File"
 msgstr "ફાઇલ સંગ્રહ કરો"
@@ -2283,7 +2283,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5586
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
@@ -2291,17 +2291,11 @@ msgstr "ફાઇલ '%1' બીજા કાર્યક્રમ વડે બ
 
 #: document/katedocument.cpp:5588
 #, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
-msgid "The file '%1' was created on disk."
-msgstr "ફાઇલ '%1' બીજા કાર્યક્રમ વડે બનાવવામાં આવી હતી."
-
-#: document/katedocument.cpp:5591
-#, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "ફાઇલ '%1' બીજા કાર્યક્રમ વડે દૂર કરવામાં આવી હતી."
 
-#: document/katedocument.cpp:5928
+#: document/katedocument.cpp:5924
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2310,17 +2304,17 @@ msgstr ""
 "દસ્તાવેજ \"%1\" માં ફેરફાર કરેલ છે.\n"
 "શું તમારે ફેરફારો સંગ્રહ કરવા છે કે તમે તેને અવગણવા માંગો છો?"
 
-#: document/katedocument.cpp:5931
+#: document/katedocument.cpp:5927
 #, kde-format
 msgid "Close Document"
 msgstr "દસ્તાવેજ બંધ કરો"
 
-#: document/katedocument.cpp:6042
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -8235,6 +8229,11 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "પ્રકાર %1 નિશાની કરો"
+
+#, fuzzy
+#~| msgid "The file '%1' was created by another program."
+#~ msgid "The file '%1' was created on disk."
+#~ msgstr "ફાઇલ '%1' બીજા કાર્યક્રમ વડે બનાવવામાં આવી હતી."
 
 #, fuzzy
 #~| msgid " characters"

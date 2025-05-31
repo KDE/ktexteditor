@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-26 00:38+0000\n"
+"POT-Creation-Date: 2025-05-31 00:39+0000\n"
 "PO-Revision-Date: 2005-01-04 11:33-0600\n"
 "Last-Translator: Deepayan Sarkar <deepayan@bengalinux.org>\n"
 "Language-Team: Bengali <kde-translation@bengalinux.org>\n"
@@ -2075,12 +2075,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2206,8 +2206,8 @@ msgid "Untitled"
 msgstr "অসীম"
 
 #: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
-#: document/katedocument.cpp:5943
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Save File"
 msgstr "ফাইল সংরক্ষণ করো "
@@ -2252,7 +2252,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5586
 #, fuzzy, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
@@ -2261,36 +2261,29 @@ msgstr ""
 
 #: document/katedocument.cpp:5588
 #, fuzzy, kde-format
-msgid "The file '%1' was created on disk."
-msgstr ""
-"অপর একটি প্রোগ্রাম %1 ফাইলটিকে ডিস্ক-এ পাল্টেছে (মুছে ফেলেছে)!\n"
-"\n"
-
-#: document/katedocument.cpp:5591
-#, fuzzy, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr ""
 "অপর একটি প্রোগ্রাম %1 ফাইলটিকে ডিস্ক-এ পাল্টেছে (মুছে ফেলেছে)!\n"
 "\n"
 
-#: document/katedocument.cpp:5928
+#: document/katedocument.cpp:5924
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
 
-#: document/katedocument.cpp:5931
+#: document/katedocument.cpp:5927
 #, kde-format
 msgid "Close Document"
 msgstr ""
 
-#: document/katedocument.cpp:6042
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -8042,6 +8035,12 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr "ধরন ১"
+
+#, fuzzy
+#~ msgid "The file '%1' was created on disk."
+#~ msgstr ""
+#~ "অপর একটি প্রোগ্রাম %1 ফাইলটিকে ডিস্ক-এ পাল্টেছে (মুছে ফেলেছে)!\n"
+#~ "\n"
 
 #, fuzzy
 #~ msgid ""

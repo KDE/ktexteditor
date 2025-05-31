@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-26 00:38+0000\n"
+"POT-Creation-Date: 2025-05-31 00:39+0000\n"
 "PO-Revision-Date: 2025-02-24 20:12+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -2199,12 +2199,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Повторно опитване"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr "&Затваряне"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2351,8 +2351,8 @@ msgid "Untitled"
 msgstr "Неозаглавено"
 
 #: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
-#: document/katedocument.cpp:5943
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Save File"
 msgstr "Запис на файл"
@@ -2406,22 +2406,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5586
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Файлът „%1“ е модифициран на диска."
 
 #: document/katedocument.cpp:5588
 #, kde-format
-msgid "The file '%1' was created on disk."
-msgstr "Файлът „%1“ е създаден на диска."
-
-#: document/katedocument.cpp:5591
-#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Файлът „%1“ е изтрит или преместен от диска."
 
-#: document/katedocument.cpp:5928
+#: document/katedocument.cpp:5924
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2432,17 +2427,17 @@ msgstr ""
 "променен.\n"
 "Искате ли да запазите промените си или да ги отхвърлите?"
 
-#: document/katedocument.cpp:5931
+#: document/katedocument.cpp:5927
 #, kde-format
 msgid "Close Document"
 msgstr "Затваряне на документа"
 
-#: document/katedocument.cpp:6042
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Файлът <a href=„%1“> %2 </a> все още се зарежда."
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Прекъсване на зареждането"
@@ -8471,6 +8466,9 @@ msgstr "„%1“ %2,  Десетична %3,  Осмична %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Маркирането не е зададено: %1"
+
+#~ msgid "The file '%1' was created on disk."
+#~ msgstr "Файлът „%1“ е създаден на диска."
 
 #~ msgid ""
 #~ "Use this command to copy the currently selected text as HTML to the "

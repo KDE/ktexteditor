@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-26 00:38+0000\n"
+"POT-Creation-Date: 2025-05-31 00:39+0000\n"
 "PO-Revision-Date: 2011-04-24 13:17-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -2278,12 +2278,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2433,8 +2433,8 @@ msgid "Untitled"
 msgstr "タイトルなし"
 
 #: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
-#: document/katedocument.cpp:5943
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Save File"
 msgstr "ファイルを保存"
@@ -2481,7 +2481,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5586
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
@@ -2489,17 +2489,11 @@ msgstr "ディスク上のファイル ‘%1’ は他のプログラムによ�
 
 #: document/katedocument.cpp:5588
 #, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
-msgid "The file '%1' was created on disk."
-msgstr "ディスク上のファイル ‘%1’ は他のプログラムによって作成されました。"
-
-#: document/katedocument.cpp:5591
-#, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "ディスク上のファイル ‘%1’ は他のプログラムによって削除されました。"
 
-#: document/katedocument.cpp:5928
+#: document/katedocument.cpp:5924
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2508,17 +2502,17 @@ msgstr ""
 "文書 “%1” は変更されています。\n"
 "変更を保存しますか？それとも破棄しますか？"
 
-#: document/katedocument.cpp:5931
+#: document/katedocument.cpp:5927
 #, kde-format
 msgid "Close Document"
 msgstr "文書を閉じる"
 
-#: document/katedocument.cpp:6042
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -8583,6 +8577,11 @@ msgstr "'%1' %2,  十六進 %3,  八進 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "マークが未セット: %1"
+
+#, fuzzy
+#~| msgid "The file '%1' was created by another program."
+#~ msgid "The file '%1' was created on disk."
+#~ msgstr "ディスク上のファイル ‘%1’ は他のプログラムによって作成されました。"
 
 #~ msgid ""
 #~ "Use this command to copy the currently selected text as HTML to the "

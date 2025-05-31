@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-26 00:38+0000\n"
+"POT-Creation-Date: 2025-05-31 00:39+0000\n"
 "PO-Revision-Date: 2025-03-03 20:07+0700\n"
 "Last-Translator: Pongsakorn S. <kde@xerusion.me>\n"
 "Language-Team: Thai\n"
@@ -2240,12 +2240,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2394,8 +2394,8 @@ msgid "Untitled"
 msgstr "ยังไม่กำหนดชื่อ"
 
 #: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
-#: document/katedocument.cpp:5943
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Save File"
 msgstr "บันทึกแฟ้ม"
@@ -2441,7 +2441,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5586
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
@@ -2449,17 +2449,11 @@ msgstr "แฟ้ม '%1' ถูกแก้ไขโดยโปรแกรม
 
 #: document/katedocument.cpp:5588
 #, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
-msgid "The file '%1' was created on disk."
-msgstr "แฟ้ม '%1' ถูกสร้างขึ้นโดยโปรแกรมอื่น"
-
-#: document/katedocument.cpp:5591
-#, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "แฟ้ม '%1' ถูกลบโดยโปรแกรมอื่น"
 
-#: document/katedocument.cpp:5928
+#: document/katedocument.cpp:5924
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2469,17 +2463,17 @@ msgstr ""
 "\"%1\"\n"
 "คุณต้องการจะบันทึกมันหรือจะละทิ้งการเปลี่ยนแปลง ?"
 
-#: document/katedocument.cpp:5931
+#: document/katedocument.cpp:5927
 #, kde-format
 msgid "Close Document"
 msgstr "ปิดเอกสาร"
 
-#: document/katedocument.cpp:6042
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -8502,6 +8496,11 @@ msgstr ""
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "ยังไม่ได้ทำเครื่องหมาย: %1"
+
+#, fuzzy
+#~| msgid "The file '%1' was created by another program."
+#~ msgid "The file '%1' was created on disk."
+#~ msgstr "แฟ้ม '%1' ถูกสร้างขึ้นโดยโปรแกรมอื่น"
 
 #~ msgid ""
 #~ "Use this command to copy the currently selected text as HTML to the "

@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-26 00:38+0000\n"
+"POT-Creation-Date: 2025-05-31 00:39+0000\n"
 "PO-Revision-Date: 2025-03-15 09:28+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2204,12 +2204,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Yritä uudelleen"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr "&Sulje"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2352,8 +2352,8 @@ msgid "Untitled"
 msgstr "Nimetön"
 
 #: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
-#: document/katedocument.cpp:5943
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Save File"
 msgstr "Tallenna tiedosto"
@@ -2407,22 +2407,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5586
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Tiedostoa ”%1” on muutettu levyllä."
 
 #: document/katedocument.cpp:5588
 #, kde-format
-msgid "The file '%1' was created on disk."
-msgstr "Tiedosto ”%1” on luotu levylle."
-
-#: document/katedocument.cpp:5591
-#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Tiedosto ”%1” on poistettu levyltä tai siirretty."
 
-#: document/katedocument.cpp:5928
+#: document/katedocument.cpp:5924
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2431,17 +2426,17 @@ msgstr ""
 "Tiedostoa ”%1” on muutettu.\n"
 "Haluatko tallentaa muutokset vai hylätä ne?"
 
-#: document/katedocument.cpp:5931
+#: document/katedocument.cpp:5927
 #, kde-format
 msgid "Close Document"
 msgstr "Sulje tiedosto"
 
-#: document/katedocument.cpp:6042
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Tiedosto <a href=\"%1\">%2</a> latautuu vielä."
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Keskeytä lataus"
@@ -8453,6 +8448,9 @@ msgstr "”%1” %2, heksa %3, oktaali %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Merkkiä ei asetettu: %1"
+
+#~ msgid "The file '%1' was created on disk."
+#~ msgstr "Tiedosto ”%1” on luotu levylle."
 
 #~ msgid ""
 #~ "Use this command to copy the currently selected text as HTML to the "

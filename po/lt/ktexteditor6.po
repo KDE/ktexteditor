@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-26 00:38+0000\n"
+"POT-Creation-Date: 2025-05-31 00:39+0000\n"
 "PO-Revision-Date: 2017-07-30 15:55+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -2287,12 +2287,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Mėginti vėl"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr "&Užverti"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2441,8 +2441,8 @@ msgid "Untitled"
 msgstr "Be pavadinimo"
 
 #: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
-#: document/katedocument.cpp:5943
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Save File"
 msgstr "Įrašyti failą"
@@ -2488,7 +2488,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5586
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
@@ -2496,17 +2496,11 @@ msgstr "Failą „%1“ pakeitė kita programa."
 
 #: document/katedocument.cpp:5588
 #, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
-msgid "The file '%1' was created on disk."
-msgstr "Failą „%1“ sukūrė kita programa."
-
-#: document/katedocument.cpp:5591
-#, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Failą „%1“ ištrynė kita programa."
 
-#: document/katedocument.cpp:5928
+#: document/katedocument.cpp:5924
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2515,17 +2509,17 @@ msgstr ""
 "Dokumentas „%1“ buvo pakeistas.\n"
 "Ar norite jį įrašyti, ar atmesti pakeitimus?"
 
-#: document/katedocument.cpp:5931
+#: document/katedocument.cpp:5927
 #, kde-format
 msgid "Close Document"
 msgstr "Užverti dokumentą"
 
-#: document/katedocument.cpp:6042
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Failas <a href=\"%1\">%2</a> vis dar įkeliamas."
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Nutraukti įkėlimą"
@@ -8688,6 +8682,11 @@ msgstr "„%1“ %2,  Šešioliktainė %3,  Aštuntainė %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Žymė nenustatyta: %1"
+
+#, fuzzy
+#~| msgid "The file '%1' was created by another program."
+#~ msgid "The file '%1' was created on disk."
+#~ msgstr "Failą „%1“ sukūrė kita programa."
 
 #~ msgid ""
 #~ "Use this command to copy the currently selected text as HTML to the "

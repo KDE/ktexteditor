@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-26 00:38+0000\n"
+"POT-Creation-Date: 2025-05-31 00:39+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -2261,12 +2261,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr "បិទ"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2420,8 +2420,8 @@ msgid "Untitled"
 msgstr "គ្មាន​ចំណង​ជើង"
 
 #: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
-#: document/katedocument.cpp:5943
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Save File"
 msgstr "រក្សាទុក​ឯកសារ"
@@ -2481,7 +2481,7 @@ msgstr ""
 "ចន្លោះ​​មិន​ឃើញ​នៅ​ខាង​ក្រោយ​ចេញ​ទាំងអស់;', មើល http://docs.kde.org/stable/en/kde-"
 "baseapps/kate/config-variables.html#variable-​យក​ចន្លោះ​មិន​ឃើញ​​នៅ​ខាងក្រោយ​ចេញ"
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5586
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
@@ -2489,17 +2489,11 @@ msgstr "ឯកសារ '%1' ត្រូវ​បាន​កែប្រែ​
 
 #: document/katedocument.cpp:5588
 #, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
-msgid "The file '%1' was created on disk."
-msgstr "ឯកសារ '%1' ត្រូវ​បាន​បង្កើត​ដោយ​កម្មវិធី​ផ្សេងទៀត ។"
-
-#: document/katedocument.cpp:5591
-#, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "ឯកសារ '%1' ត្រូវ​បាន​លុប​ដោយ​កម្មវិធី​ផ្សេងទៀត ។"
 
-#: document/katedocument.cpp:5928
+#: document/katedocument.cpp:5924
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2508,18 +2502,18 @@ msgstr ""
 "ឯកសារ \"%1\" ត្រូវ​បាន​កែប្រែ ។\n"
 "តើ​អ្នក​ចង់​រក្សាទុក​ការ​ផ្លាស់ប្ដូរ ឬ​បោះបង់​ពួកវា ?"
 
-#: document/katedocument.cpp:5931
+#: document/katedocument.cpp:5927
 #, kde-format
 msgid "Close Document"
 msgstr "បិទ​ឯកសារ"
 
-#: document/katedocument.cpp:6042
+#: document/katedocument.cpp:6038
 #, fuzzy, kde-format
 #| msgid "The file %1 is still loading."
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "ឯកសារ %1 នៅ​តែ​កំពុង​ផ្ទុក ។"
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -8639,6 +8633,11 @@ msgstr "'%1' %2,  គោល​ដប់​ប្រាំមួយ %3  គោល
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "សញ្ញា​សម្គាល់​មិន​បានកំណត់ ៖ %1"
+
+#, fuzzy
+#~| msgid "The file '%1' was created by another program."
+#~ msgid "The file '%1' was created on disk."
+#~ msgstr "ឯកសារ '%1' ត្រូវ​បាន​បង្កើត​ដោយ​កម្មវិធី​ផ្សេងទៀត ។"
 
 #, fuzzy
 #~| msgid ""

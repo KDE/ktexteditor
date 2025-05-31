@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-26 00:38+0000\n"
+"POT-Creation-Date: 2025-05-31 00:39+0000\n"
 "PO-Revision-Date: 2019-12-12 21:03+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc-"
@@ -2033,12 +2033,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2156,8 +2156,8 @@ msgid "Untitled"
 msgstr "തലക്കെട്ടില്ലാത്ത"
 
 #: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
-#: document/katedocument.cpp:5943
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Save File"
 msgstr "ഫയല്‍ സൂക്ഷിക്കുക"
@@ -2199,7 +2199,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5586
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
@@ -2207,17 +2207,11 @@ msgstr "ഫയല്‍ '%1' മറ്റൊരു പ്രോഗ്രാം �
 
 #: document/katedocument.cpp:5588
 #, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
-msgid "The file '%1' was created on disk."
-msgstr "ഫയല്‍ '%1' മറ്റൊരു പ്രോഗ്രാം ഉപയോഗിച്ചു് ഉണ്ടാക്കിയിരിക്കുന്നു."
-
-#: document/katedocument.cpp:5591
-#, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "ഫയല്‍ '%1' മറ്റൊരു പ്രോഗ്രാം ഉപയോഗിച്ചു് വെട്ടിമാറ്റിയിരിക്കുന്നു."
 
-#: document/katedocument.cpp:5928
+#: document/katedocument.cpp:5924
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2226,17 +2220,17 @@ msgstr ""
 "രേഖ \"%1\"-ല്‍ മാറ്റം വരുത്തയിരിക്കുന്നു.\n"
 "നിങ്ങള്‍ക്കു് ഈ മാറ്റങ്ങള്‍ സൂക്ഷിക്കണമോ?"
 
-#: document/katedocument.cpp:5931
+#: document/katedocument.cpp:5927
 #, kde-format
 msgid "Close Document"
 msgstr "രേഖ അടയ്ക്കുക"
 
-#: document/katedocument.cpp:6042
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -7865,6 +7859,11 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr "ചേര്‍ക്കുക: %1"
+
+#, fuzzy
+#~| msgid "The file '%1' was created by another program."
+#~ msgid "The file '%1' was created on disk."
+#~ msgstr "ഫയല്‍ '%1' മറ്റൊരു പ്രോഗ്രാം ഉപയോഗിച്ചു് ഉണ്ടാക്കിയിരിക്കുന്നു."
 
 #, fuzzy
 #~ msgctxt "Wrap words at (value is at 20 or larger)"

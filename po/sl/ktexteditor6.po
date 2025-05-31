@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-26 00:38+0000\n"
+"POT-Creation-Date: 2025-05-31 00:39+0000\n"
 "PO-Revision-Date: 2025-05-26 06:10+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2206,12 +2206,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Znova naloži"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr "Zapri"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2354,8 +2354,8 @@ msgid "Untitled"
 msgstr "Brez naslova"
 
 #: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
-#: document/katedocument.cpp:5943
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Save File"
 msgstr "Shrani datoteko"
@@ -2409,22 +2409,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5586
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Datoteka »%1« je bila spremenjena na disku."
 
 #: document/katedocument.cpp:5588
 #, kde-format
-msgid "The file '%1' was created on disk."
-msgstr "Datoteka »%1« je bila ustvarjena na disku."
-
-#: document/katedocument.cpp:5591
-#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Datoteka '%1' je bila izbrisana ali premaknjena na disku."
 
-#: document/katedocument.cpp:5928
+#: document/katedocument.cpp:5924
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2433,17 +2428,17 @@ msgstr ""
 "Dokument »%1« je bil spremenjen.\n"
 "Ali želite shraniti spremembe ali jih zavreči?"
 
-#: document/katedocument.cpp:5931
+#: document/katedocument.cpp:5927
 #, kde-format
 msgid "Close Document"
 msgstr "Zapri dokument"
 
-#: document/katedocument.cpp:6042
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Datoteka <a href=\"%1\">%2</a> se še vedno nalaga."
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Prekini nalaganje"
@@ -8459,6 +8454,9 @@ msgstr "»%1« %2,  Šestn. %3,  Osm. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Oznaka ni nastavljena: %1"
+
+#~ msgid "The file '%1' was created on disk."
+#~ msgstr "Datoteka »%1« je bila ustvarjena na disku."
 
 #~ msgid ""
 #~ "Use this command to copy the currently selected text as HTML to the "

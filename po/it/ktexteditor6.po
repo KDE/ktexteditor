@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-26 00:38+0000\n"
+"POT-Creation-Date: 2025-05-31 00:39+0000\n"
 "PO-Revision-Date: 2025-05-27 14:13+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -2228,12 +2228,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Riprova"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr "&Chiudi"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2380,8 +2380,8 @@ msgid "Untitled"
 msgstr "Senza nome"
 
 #: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
-#: document/katedocument.cpp:5943
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Save File"
 msgstr "Salva il file"
@@ -2436,22 +2436,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5586
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Il file «%1» è stato modificato su disco."
 
 #: document/katedocument.cpp:5588
 #, kde-format
-msgid "The file '%1' was created on disk."
-msgstr "Il file «%1» è stato creato su disco."
-
-#: document/katedocument.cpp:5591
-#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Il file «%1» è stato eliminato o spostato su disco."
 
-#: document/katedocument.cpp:5928
+#: document/katedocument.cpp:5924
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2460,17 +2455,17 @@ msgstr ""
 "Il documento «%1» è stato modificato.\n"
 "Vuoi salvare o scartare le tue modifiche?"
 
-#: document/katedocument.cpp:5931
+#: document/katedocument.cpp:5927
 #, kde-format
 msgid "Close Document"
 msgstr "Chiudi documento"
 
-#: document/katedocument.cpp:6042
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Il file <a href=\"%1\">%2</a> è ancora in caricamento."
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Interrompi caricamento"
@@ -8547,6 +8542,9 @@ msgstr "«%1» %2, Esa %3, Ottale %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Segno non impostato: %1"
+
+#~ msgid "The file '%1' was created on disk."
+#~ msgstr "Il file «%1» è stato creato su disco."
 
 #~ msgid ""
 #~ "Use this command to copy the currently selected text as HTML to the "

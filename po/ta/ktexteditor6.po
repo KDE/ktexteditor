@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-26 00:38+0000\n"
+"POT-Creation-Date: 2025-05-31 00:39+0000\n"
 "PO-Revision-Date: 2025-03-09 16:48+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -2142,12 +2142,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "மீண்டும் முயற்சி செய்"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr "&மூடு"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2288,8 +2288,8 @@ msgid "Untitled"
 msgstr "தலைப்பில்லாதது"
 
 #: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
-#: document/katedocument.cpp:5943
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Save File"
 msgstr "கோப்பினைச் சேமி..."
@@ -2335,22 +2335,17 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5586
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "'%1' எனும் கோப்பு வட்டில் மாற்றப்பட்டுள்ளது."
 
 #: document/katedocument.cpp:5588
 #, kde-format
-msgid "The file '%1' was created on disk."
-msgstr "'%1' எனும் கோப்பு வட்டில் உருவாக்கப்பட்டுள்ளது."
-
-#: document/katedocument.cpp:5591
-#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "'%1' எனும் கோப்பு வட்டிலிருந்து நீக்கப்பட்டுள்ளது அல்லது நகர்த்தப்பட்டது."
 
-#: document/katedocument.cpp:5928
+#: document/katedocument.cpp:5924
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2359,17 +2354,17 @@ msgstr ""
 "\"%1\" எனும் ஆவணம் மாற்றப்பட்டுள்ளது.\n"
 "உங்கள் மாற்றங்களை கைவிடலாமா, அல்லது அவற்றைச் சேமிக்க வேண்டுமா?"
 
-#: document/katedocument.cpp:5931
+#: document/katedocument.cpp:5927
 #, kde-format
 msgid "Close Document"
 msgstr "ஆவணத்தை மூடு"
 
-#: document/katedocument.cpp:6042
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2</a> எனும் கோப்பு ஏற்றப்படுகிறது."
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&ஏற்றுவதை கைவிடு"
@@ -8359,6 +8354,9 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "குறி வகை%1"
+
+#~ msgid "The file '%1' was created on disk."
+#~ msgstr "'%1' எனும் கோப்பு வட்டில் உருவாக்கப்பட்டுள்ளது."
 
 #~ msgid ""
 #~ "Use this command to copy the currently selected text as HTML to the "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-26 00:38+0000\n"
+"POT-Creation-Date: 2025-05-31 00:39+0000\n"
 "PO-Revision-Date: 2024-12-29 22:54+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -2163,12 +2163,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "पुनः प्रयासं कुर्वन्तु"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr "&पिधानं करोतु"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2309,8 +2309,8 @@ msgid "Untitled"
 msgstr "अनामिका"
 
 #: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5756
-#: document/katedocument.cpp:5943
+#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Save File"
 msgstr "सञ्चिकां रक्षतु"
@@ -2363,22 +2363,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces पश्यन्तु"
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5586
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "'%1' इति सञ्चिका डिस्कमध्ये परिवर्तिता आसीत् ।"
 
 #: document/katedocument.cpp:5588
 #, kde-format
-msgid "The file '%1' was created on disk."
-msgstr "'%1' इति सञ्चिका डिस्कमध्ये निर्मितवती ।"
-
-#: document/katedocument.cpp:5591
-#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "'%1' इति सञ्चिका विलोपिता अथवा डिस्कमध्ये स्थानान्तरिता ।"
 
-#: document/katedocument.cpp:5928
+#: document/katedocument.cpp:5924
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2387,17 +2382,17 @@ msgstr ""
 "\"%1\" इति दस्तावेजं परिवर्तितम् अस्ति ।\n"
 "किं भवन्तः स्वपरिवर्तनानि रक्षितुं इच्छन्ति वा परित्यक्तुं इच्छन्ति वा?"
 
-#: document/katedocument.cpp:5931
+#: document/katedocument.cpp:5927
 #, kde-format
 msgid "Close Document"
 msgstr "दस्तावेजं बन्दं कुर्वन्तु"
 
-#: document/katedocument.cpp:6042
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2 इति</a> सञ्चिका अद्यापि लोड् भवति ।"
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&लोडिंग निरस्त करो"
@@ -8330,6 +8325,9 @@ msgstr "'%1' %2, हेक्स %3, अष्टक %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "न सेट् इति चिह्नं कुर्वन्तु: %1"
+
+#~ msgid "The file '%1' was created on disk."
+#~ msgstr "'%1' इति सञ्चिका डिस्कमध्ये निर्मितवती ।"
 
 #~ msgid ""
 #~ "Use this command to copy the currently selected text as HTML to the "
