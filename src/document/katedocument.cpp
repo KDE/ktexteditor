@@ -4700,7 +4700,7 @@ void KTextEditor::DocumentPrivate::slotModifiedOnDisk(KTextEditor::View * /*v*/)
         return;
     }
 
-    if (!m_fileChangedDialogsActivated || m_modOnHdHandler) {
+    if (!m_fileChangedDialogsActivated) {
         return;
     }
 
@@ -4710,6 +4710,8 @@ void KTextEditor::DocumentPrivate::slotModifiedOnDisk(KTextEditor::View * /*v*/)
     }
     m_prevModOnHdReason = m_modOnHdReason;
 
+    // trigger refresh of message if the type did change, see bug 504150
+    delete m_modOnHdHandler;
     m_modOnHdHandler = new KateModOnHdPrompt(this, m_modOnHdReason, reasonedMOHString());
     connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::saveAsTriggered, this, &DocumentPrivate::onModOnHdSaveAs);
     connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::closeTriggered, this, &DocumentPrivate::onModOnHdClose);
