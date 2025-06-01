@@ -40,6 +40,7 @@ private Q_SLOTS:
     void testUpdateFoldingMarkersHighlighting();
     void testDdisplayRangeChangedEmitted();
     void testCrashOnPasteInOverwriteMode();
+    void testCommandBarSearchReplace();
 };
 
 #endif // KATE_VIEW_TEST_H

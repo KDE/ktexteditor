@@ -22,6 +22,7 @@ CommandRangeExpressionParser::CommandRangeExpressionParser()
     m_line = QStringLiteral("\\d+");
     m_lastLine = QStringLiteral("\\$");
     m_thisLine = QStringLiteral("\\.");
+    m_mark = QStringLiteral("\\'[0-9a-z><\\+\\*\\_]");
 
     m_forwardSearch = QStringLiteral("/([^/]*)/?");
     m_forwardSearch2 = QStringLiteral("/[^/]*/?"); // no group

@@ -16,6 +16,7 @@
 #include <ktexteditor/message.h>
 #include <ktexteditor/movingcursor.h>
 
+#include <KLineEdit>
 #include <QScrollBar>
 #include <QSignalSpy>
 #include <QStandardPaths>
@@ -786,6 +787,27 @@ void KateViewTest::testCrashOnPasteInOverwriteMode()
 
     // check result is ok
     QCOMPARE(doc.text(), QStringLiteral("test1\ntest2\ntest1\ntest2\ntest3\n"));
+}
+
+void KateViewTest::testCommandBarSearchReplace()
+{
+    KTextEditor::DocumentPrivate doc(false, false);
+    const QString testText(QStringLiteral("hello\nhello\nabc\nhello"));
+    doc.setText(testText);
+
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    view->switchToCmdLine();
+    const auto childs = view->findChildren<QWidget *>();
+    KLineEdit *lineEdit = nullptr;
+    for (auto c : childs) {
+        if (strcmp("KateCmdLineEdit", c->metaObject()->className()) == 0) {
+            lineEdit = qobject_cast<KLineEdit *>(c);
+            break;
+        }
+    }
+    QVERIFY(lineEdit);
+    lineEdit->returnKeyPressed(QStringLiteral("%s/hell/bell"));
+    QCOMPARE(doc.text(), QStringLiteral("bello\nbello\nabc\nbello"));
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;
