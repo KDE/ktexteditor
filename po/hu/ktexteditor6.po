@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-31 00:39+0000\n"
+"POT-Creation-Date: 2025-06-02 00:39+0000\n"
 "PO-Revision-Date: 2025-01-30 14:45+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2200,12 +2200,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Próbálja újra"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6548
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6550
 #, kde-format
 msgid "&Close"
 msgstr "&Bezárás"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6549
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6551
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2347,24 +2347,24 @@ msgstr "Bezárás"
 msgid "Untitled"
 msgstr "Nincs cím"
 
-#: document/katedocument.cpp:4724 document/katedocument.cpp:4950
-#: document/katedocument.cpp:4960 document/katedocument.cpp:5752
-#: document/katedocument.cpp:5939
+#: document/katedocument.cpp:4726 document/katedocument.cpp:4952
+#: document/katedocument.cpp:4962 document/katedocument.cpp:5754
+#: document/katedocument.cpp:5941
 #, kde-format
 msgid "Save File"
 msgstr "A fájl mentése"
 
-#: document/katedocument.cpp:4727
+#: document/katedocument.cpp:4729
 #, kde-format
 msgid "Save failed"
 msgstr "A mentés nem sikerült"
 
-#: document/katedocument.cpp:4971
+#: document/katedocument.cpp:4973
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Másolat mentése"
 
-#: document/katedocument.cpp:4983
+#: document/katedocument.cpp:4985
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2377,7 +2377,7 @@ msgstr ""
 "Ellenőrizze, hogy rendelkezik-e írási jogosultsággal a fájlhoz és van-e elég "
 "szabad lemezterület."
 
-#: document/katedocument.cpp:5273
+#: document/katedocument.cpp:5275
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2390,7 +2390,7 @@ msgstr ""
 "kde.org/?application=katepart&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5279
+#: document/katedocument.cpp:5281
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2403,17 +2403,17 @@ msgstr ""
 "org/?application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5586
+#: document/katedocument.cpp:5588
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "A(z) „%1” fájl módosult a lemezen."
 
-#: document/katedocument.cpp:5588
+#: document/katedocument.cpp:5590
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "A(z) „%1” fájl törlődött a lemezen, vagy áthelyezték."
 
-#: document/katedocument.cpp:5924
+#: document/katedocument.cpp:5926
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2422,17 +2422,17 @@ msgstr ""
 "Megváltozott egy dokumentum: \"%1\".\n"
 "El szeretné menteni a módosításokat?"
 
-#: document/katedocument.cpp:5927
+#: document/katedocument.cpp:5929
 #, kde-format
 msgid "Close Document"
 msgstr "A dokumentum bezárása"
 
-#: document/katedocument.cpp:6038
+#: document/katedocument.cpp:6040
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "A(z) <a href=\"%1\">%2</a> fájl betöltése még folyamatban."
 
-#: document/katedocument.cpp:6043
+#: document/katedocument.cpp:6045
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Betöltés &megszakítása"
