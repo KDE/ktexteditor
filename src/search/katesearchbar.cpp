@@ -649,6 +649,15 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
     // restore connection
     connect(m_view, &KTextEditor::View::selectionChanged, this, &KateSearchBar::updateSelectionOnly);
 
+    if (m_incUi) {
+        // TODO: We need to calculate the values every time we press the search up/down, then we have to calculate which item
+        // our caret is on
+        findAll();
+        if (m_incUi) {
+            m_incUi->itemsFound->setText(QStringLiteral("%1 / %2").arg(m_currentMatch).arg(QString::number(m_matchCounter)));
+        }
+    }
+
     return true; // == No pattern error
 }
 
@@ -850,7 +859,13 @@ void KateSearchBar::findOrReplaceAll()
                 workingRangeCopy = m_workingRange->toRange();
             } else {
                 lastRange = match.range();
+
                 ++m_matchCounter;
+                qWarning() << m_view->cursorPosition() << lastRange;
+                if (lastRange.boundaryAtCursor(m_view->cursorPosition())) {
+                    qWarning() << "Caret is on this line " << currentSearchLine;
+                    m_currentMatch = QString::number(m_matchCounter);
+                }
             }
 
             // remember ranges if limit not reached

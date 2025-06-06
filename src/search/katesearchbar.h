@@ -232,6 +232,7 @@ private:
     KTextEditor::Range m_inputRange;
     QString m_replacement;
     uint m_matchCounter = 0;
+    QString m_currentMatch;
     bool m_replaceMode = false;
     bool m_cancelFindOrReplace = true;
     bool m_selectionChangedByUndoRedo = false;
