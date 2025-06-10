@@ -492,9 +492,6 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
             backgroundAttribute = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
         }
 
-        if (!hasCustomLineHeight()) {
-            backgroundAttribute->setBackground(config()->selectionColor());
-        }
         backgroundAttribute->setForeground(attribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->selectedForeground().color());
 
         // Create a range for the current selection
@@ -530,8 +527,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
     }
 
     // Background formats have lower priority so they get overriden by selection
-    const bool shoudlClearBackground = m_view && hasCustomLineHeight() && m_view->selection();
-    const KTextEditor::Range selectionRange = shoudlClearBackground ? m_view->selectionRange() : KTextEditor::Range::invalid();
+    const KTextEditor::Range selectionRange = m_view->selectionRange();
 
     // Main iterative loop.  This walks through each set of highlighting ranges, and stops each
     // time the highlighting changes.  It then creates the corresponding QTextLayout::FormatRanges.
@@ -563,15 +559,9 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
         KTextEditor::Attribute::Ptr a = renderRanges.generateAttribute();
         if (a) {
             fr.format = *a;
-
-            if (selectionsOnly) {
+            if (selectionRange.contains(currentPosition)) {
                 assignSelectionBrushesFromAttribute(fr, *a);
             }
-        }
-
-        // Clear background if this position overlaps selection
-        if (shoudlClearBackground && selectionRange.contains(currentPosition) && fr.format.hasProperty(QTextFormat::BackgroundBrush)) {
-            fr.format.clearBackground();
         }
 
         newHighlight.append(fr);
@@ -727,7 +717,6 @@ void KateRenderer::paintTextLine(QPainter &paint,
             }
         }
 
-        QList<QTextLayout::FormatRange> additionalFormats;
         if (range->length() > 0) {
             // We may have changed the pen, be absolutely sure it gets set back to
             // normal foreground color before drawing text for text that does not
@@ -753,16 +742,10 @@ void KateRenderer::paintTextLine(QPainter &paint,
             }
 
             if (drawSelection) {
-                additionalFormats = decorationsForLine(range->textLine(), range->line(), true);
-                if (hasCustomLineHeight()) {
-                    paintTextBackground(paint, range, additionalFormats, config()->selectionColor(), xStart);
-                }
-                // DONT apply clipping, it breaks rendering when there are selections
-                range->layout().draw(&paint, QPoint(-xStart, 0), additionalFormats);
-
-            } else {
-                range->layout().draw(&paint, QPoint(-xStart, 0), QList<QTextLayout::FormatRange>{}, textClipRect);
+                QList<QTextLayout::FormatRange> additionalFormats = decorationsForLine(range->textLine(), range->line(), true);
+                paintTextBackground(paint, range, additionalFormats, config()->selectionColor(), xStart);
             }
+            range->layout().draw(&paint, QPoint(-xStart, 0), QList<QTextLayout::FormatRange>{}, textClipRect);
         }
 
         // Check if we are at a bracket and color the indentation
