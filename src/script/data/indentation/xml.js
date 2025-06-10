@@ -85,9 +85,13 @@ function _calcAttributeIndent(lineNr, indentWidth) {
     if (num_open_tag > num_close_tag) {
         dbg("unfinished tag");
         for (col = text.lastIndexOf("<"); col < text.length; ++col) {
-            if (document.isOthers(lineNr, col) &&
-                document.isSpace(lineNr, col))
-                return col + 1;
+            // space followed by attribute
+            if (document.isSpace(lineNr, col)) {
+                var nextCol = document.nextNonSpaceColumn(lineNr, col);
+                if (nextCol != -1 && document.isOthers(lineNr, nextCol)) {
+                    return nextCol;
+                }
+            }
         }
     } else if (num_open_tag < num_close_tag) {
         dbg("closing unfinished tag");
