@@ -45,7 +45,7 @@ testCase('bug_317892', () => {
 <!-- closed comment -->
 <!-- open comment >
 `, `\
-[Code]<?xml[/Code] version="1.0" encoding="UTF-8"[Code]?>
+[Code]<?xml [/Code]version="1.0"[Code] [/Code]encoding="UTF-8"[Code]?>
 [/Code][Comment]<!-- closed comment -->
 <!-- open comment >
 
