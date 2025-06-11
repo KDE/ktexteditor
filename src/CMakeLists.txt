@@ -375,34 +375,6 @@ install(FILES
   COMPONENT Devel
 )
 
-if(BUILD_QCH)
-    ecm_add_qch(
-        KF6TextEditor_QCH
-        NAME KTextEditor
-        BASE_NAME KF6TextEditor
-        VERSION ${KF_VERSION}
-        ORG_DOMAIN org.kde
-        SOURCES # using only public headers, to cover only public API
-            ${KTEXTEDITOR_PUBLIC_HEADERS}
-             "${CMAKE_SOURCE_DIR}/docs/apidocs-groups.dox"
-             "${CMAKE_SOURCE_DIR}/docs/coding-guidelines.dox"
-             "${CMAKE_SOURCE_DIR}/docs/design.dox"
-             "${CMAKE_SOURCE_DIR}/docs/porting.dox"
-        MD_MAINPAGE "${CMAKE_SOURCE_DIR}/README.md"
-        IMAGE_DIRS "${CMAKE_SOURCE_DIR}/docs/pics"
-        LINK_QCHS
-            KF6Parts_QCH
-        BLANK_MACROS
-            KTEXTEDITOR_EXPORT
-            KTEXTEDITOR_DEPRECATED
-            KTEXTEDITOR_DEPRECATED_EXPORT
-            "KTEXTEDITOR_DEPRECATED_VERSION(x, y, t)"
-        TAGFILE_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
-        QCH_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
-        COMPONENT Devel
-    )
-endif()
-
 if(HAVE_KAUTH)
     add_executable(kauth_ktexteditor_helper buffer/katesecuretextbuffer.cpp)
     target_link_libraries(kauth_ktexteditor_helper KF6::AuthCore)
