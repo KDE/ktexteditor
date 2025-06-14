@@ -165,8 +165,12 @@ void KateSpellingMenu::prepareToBeShown(QMenu *contextMenu)
     if (m_currentMisspelledRange != nullptr) {
         setVisible(true);
         m_selectedRange = m_currentMisspelledRange->toRange(); // Support actions of m_dictionaryGroup
+
+        // avoid that we create xxxxxx pixel long menus
+        QFontMetrics fontMetrics(contextMenu->fontMetrics());
         const QString &misspelledWord = m_view->doc()->text(*m_currentMisspelledRange);
-        m_spellingMenuAction->setText(i18n("Spelling '%1'", misspelledWord));
+        m_spellingMenuAction->setText(i18n("Spelling '%1'", fontMetrics.elidedText(misspelledWord, Qt::ElideRight, fontMetrics.maxWidth() * 16)));
+
         // Add suggestions on top of menu
         m_currentDictionary = m_view->doc()->dictionaryForMisspelledRange(*m_currentMisspelledRange);
         m_currentSuggestions = KTextEditor::EditorPrivate::self()->spellCheckManager()->suggestions(misspelledWord, m_currentDictionary);
