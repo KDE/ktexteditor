@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-02 00:39+0000\n"
+"POT-Creation-Date: 2025-06-15 00:39+0000\n"
 "PO-Revision-Date: 2025-05-27 17:59+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -144,7 +144,7 @@ msgstr "إكمال الكلمات"
 
 #. i18n: ectx: Menu (spelling)
 #: data/katepart5ui.rc:144 spellcheck/spellingmenu.cpp:71
-#: spellcheck/spellingmenu.cpp:191
+#: spellcheck/spellingmenu.cpp:195
 #, kde-format
 msgid "Spelling"
 msgstr "هجاء"
@@ -4148,7 +4148,7 @@ msgstr "تجاهل الكلمة"
 msgid "Add to Dictionary"
 msgstr "أضف إلى القاموس"
 
-#: spellcheck/spellingmenu.cpp:169
+#: spellcheck/spellingmenu.cpp:172
 #, kde-format
 msgid "Spelling '%1'"
 msgstr "هجاء '%1'"

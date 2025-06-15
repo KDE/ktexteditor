@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-02 00:39+0000\n"
+"POT-Creation-Date: 2025-06-15 00:39+0000\n"
 "PO-Revision-Date: 2025-05-31 11:37+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -138,7 +138,7 @@ msgstr "Ordkomplettering"
 
 #. i18n: ectx: Menu (spelling)
 #: data/katepart5ui.rc:144 spellcheck/spellingmenu.cpp:71
-#: spellcheck/spellingmenu.cpp:191
+#: spellcheck/spellingmenu.cpp:195
 #, kde-format
 msgid "Spelling"
 msgstr "Stavning"
@@ -4209,7 +4209,7 @@ msgstr "Ignorera ord"
 msgid "Add to Dictionary"
 msgstr "Lägg till i ordlista"
 
-#: spellcheck/spellingmenu.cpp:169
+#: spellcheck/spellingmenu.cpp:172
 #, kde-format
 msgid "Spelling '%1'"
 msgstr "Stavning '%1'"

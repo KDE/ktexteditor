@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-02 00:39+0000\n"
+"POT-Creation-Date: 2025-06-15 00:39+0000\n"
 "PO-Revision-Date: 2025-02-23 19:21-0300\n"
 "Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -144,7 +144,7 @@ msgstr "Complementação de palavra"
 
 #. i18n: ectx: Menu (spelling)
 #: data/katepart5ui.rc:144 spellcheck/spellingmenu.cpp:71
-#: spellcheck/spellingmenu.cpp:191
+#: spellcheck/spellingmenu.cpp:195
 #, kde-format
 msgid "Spelling"
 msgstr "Ortografia"
@@ -4335,7 +4335,7 @@ msgstr "Ignorar palavra"
 msgid "Add to Dictionary"
 msgstr "Adicionar ao dicionário"
 
-#: spellcheck/spellingmenu.cpp:169
+#: spellcheck/spellingmenu.cpp:172
 #, fuzzy, kde-format
 #| msgid "Spelling"
 msgid "Spelling '%1'"

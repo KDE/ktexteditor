@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-02 00:39+0000\n"
+"POT-Creation-Date: 2025-06-15 00:39+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -139,7 +139,7 @@ msgstr "Dopuna reči"
 # >> @title:menu
 #. i18n: ectx: Menu (spelling)
 #: data/katepart5ui.rc:144 spellcheck/spellingmenu.cpp:71
-#: spellcheck/spellingmenu.cpp:191
+#: spellcheck/spellingmenu.cpp:195
 #, kde-format
 msgid "Spelling"
 msgstr "Pravopis"
@@ -4367,7 +4367,7 @@ msgid "Add to Dictionary"
 msgstr "Dodaj u rečnik"
 
 # >> @title:menu
-#: spellcheck/spellingmenu.cpp:169
+#: spellcheck/spellingmenu.cpp:172
 #, fuzzy, kde-format
 #| msgid "Spelling"
 msgid "Spelling '%1'"

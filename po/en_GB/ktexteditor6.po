@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-02 00:39+0000\n"
+"POT-Creation-Date: 2025-06-15 00:39+0000\n"
 "PO-Revision-Date: 2024-11-16 12:54+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -136,7 +136,7 @@ msgstr "Word Completion"
 
 #. i18n: ectx: Menu (spelling)
 #: data/katepart5ui.rc:144 spellcheck/spellingmenu.cpp:71
-#: spellcheck/spellingmenu.cpp:191
+#: spellcheck/spellingmenu.cpp:195
 #, kde-format
 msgid "Spelling"
 msgstr "Spelling"
@@ -4189,7 +4189,7 @@ msgstr "Ignore Word"
 msgid "Add to Dictionary"
 msgstr "Add to Dictionary"
 
-#: spellcheck/spellingmenu.cpp:169
+#: spellcheck/spellingmenu.cpp:172
 #, kde-format
 msgid "Spelling '%1'"
 msgstr "Spelling '%1'"

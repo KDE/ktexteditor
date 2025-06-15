@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-02 00:39+0000\n"
+"POT-Creation-Date: 2025-06-15 00:39+0000\n"
 "PO-Revision-Date: 2024-01-03 14:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -140,7 +140,7 @@ msgstr "ਅੱਖਰ ਮੁਕੰਮਲ"
 
 #. i18n: ectx: Menu (spelling)
 #: data/katepart5ui.rc:144 spellcheck/spellingmenu.cpp:71
-#: spellcheck/spellingmenu.cpp:191
+#: spellcheck/spellingmenu.cpp:195
 #, kde-format
 msgid "Spelling"
 msgstr "ਸਪੈਲਿੰਗ"
@@ -4177,7 +4177,7 @@ msgstr "ਸ਼ਬਦ ਅਣਡਿੱਠਾ"
 msgid "Add to Dictionary"
 msgstr "ਡਿਕਸ਼ਨਰੀ ਵਿੱਚ ਜੋੜੋ"
 
-#: spellcheck/spellingmenu.cpp:169
+#: spellcheck/spellingmenu.cpp:172
 #, fuzzy, kde-format
 #| msgid "Spelling"
 msgid "Spelling '%1'"
