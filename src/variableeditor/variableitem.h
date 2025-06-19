@@ -205,7 +205,12 @@ public:
     VariableEditor *createEditor(QWidget *parent) override;
 
 private:
-    int m_value;
+    enum RemoveOp {
+        None,
+        Modified,
+        All,
+    };
+    RemoveOp m_operation;
 };
 // END class VariableRemoveSpacesItem
 

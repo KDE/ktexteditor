@@ -300,25 +300,29 @@ VariableEditor *VariableSpellCheckItem::createEditor(QWidget *parent)
 // BEGIN class VariableRemoveSpacesItem
 VariableRemoveSpacesItem::VariableRemoveSpacesItem(const QString &variable, int value)
     : VariableItem(variable)
-    , m_value(value)
 {
+    setValue(value);
 }
 
 int VariableRemoveSpacesItem::value() const
 {
-    return m_value;
+    return m_operation;
 }
 
 void VariableRemoveSpacesItem::setValue(int value)
 {
-    m_value = value;
+    if (value >= RemoveOp::None && value <= RemoveOp::All) {
+        m_operation = static_cast<RemoveOp>(value);
+    } else {
+        m_operation = RemoveOp::None;
+    }
 }
 
 QString VariableRemoveSpacesItem::valueAsString() const
 {
-    if (m_value == 2) {
+    if (m_operation == RemoveOp::All) {
         return QStringLiteral("all");
-    } else if (m_value == 1) {
+    } else if (m_operation == RemoveOp::Modified) {
         return QStringLiteral("modified");
     } else {
         return QStringLiteral("none");
@@ -330,11 +334,11 @@ void VariableRemoveSpacesItem::setValueByString(const QString &value)
     QString tmp = value.trimmed().toLower();
 
     if (tmp == QLatin1String("1") || tmp == QLatin1String("modified") || tmp == QLatin1String("mod") || tmp == QLatin1String("+")) {
-        m_value = 1;
+        m_operation = RemoveOp::Modified;
     } else if (tmp == QLatin1String("2") || tmp == QLatin1String("all") || tmp == QLatin1String("*")) {
-        m_value = 2;
+        m_operation = RemoveOp::All;
     } else {
-        m_value = 0;
+        m_operation = RemoveOp::None;
     }
 }
 
