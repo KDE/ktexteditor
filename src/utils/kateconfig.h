@@ -543,6 +543,11 @@ public:
         AutoReloadIfStateIsInVersionControl,
 
         /**
+         * Should we auto-reload if any external changes occur?
+         */
+        AutoReloadOnExternalChanges,
+
+        /**
          * Should we use editorconfig
          */
         UseEditorConfig

@@ -1002,6 +1002,7 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     observeChanges(ui->spbAutoSaveInterval);
 
     observeChanges(uiadv->chkAutoReloadVersionControl);
+    observeChanges(uiadv->chkAutoReloadOnExternalChanges);
 
     observeChanges(uiadv->chkBackupLocalFiles);
     observeChanges(uiadv->chkBackupRemoteFiles);
@@ -1118,6 +1119,7 @@ void KateSaveConfigTab::apply()
     KateDocumentConfig::global()->setValue(KateDocumentConfig::AutoSaveInteral, ui->spbAutoSaveInterval->value());
 
     KateDocumentConfig::global()->setValue(KateDocumentConfig::AutoReloadIfStateIsInVersionControl, uiadv->chkAutoReloadVersionControl->isChecked());
+    KateDocumentConfig::global()->setValue(KateDocumentConfig::AutoReloadOnExternalChanges, uiadv->chkAutoReloadOnExternalChanges->isChecked());
     KateDocumentConfig::global()->setValue(KateDocumentConfig::UseEditorConfig, uiadv->chkEditorConfig->isChecked());
 
     KateDocumentConfig::global()->configEnd();
@@ -1188,6 +1190,7 @@ void KateSaveConfigTab::reload()
     ui->spbAutoSaveInterval->setValue(KateDocumentConfig::global()->autoSaveInterval());
 
     uiadv->chkAutoReloadVersionControl->setChecked(KateDocumentConfig::global()->value(KateDocumentConfig::AutoReloadIfStateIsInVersionControl).toBool());
+    uiadv->chkAutoReloadOnExternalChanges->setChecked(KateDocumentConfig::global()->value(KateDocumentConfig::AutoReloadOnExternalChanges).toBool());
     uiadv->chkEditorConfig->setChecked(KateDocumentConfig::global()->value(KateDocumentConfig::UseEditorConfig).toBool());
 }
 
