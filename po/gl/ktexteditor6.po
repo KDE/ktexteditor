@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-15 00:39+0000\n"
-"PO-Revision-Date: 2025-02-24 07:23+0100\n"
+"PO-Revision-Date: 2025-06-19 09:42+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -3572,10 +3572,9 @@ msgid "No help specified for command '%1' in script %2"
 msgstr "Non se indicou ningunha axuda para a orde «%1» no guión %2."
 
 #: script/katescript.cpp:282
-#, fuzzy, kde-format
-#| msgid "Error loading script %1"
+#, kde-format
 msgid "Error loading script %1: %2"
-msgstr "Produciuse un erro ao cargar o guión %1"
+msgstr "Produciuse un erro ao cargar o guión %1: %2"
 
 #: script/katescriptmanager.cpp:310
 #, kde-format

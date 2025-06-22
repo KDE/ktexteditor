@@ -8465,19 +8465,3 @@ msgstr "„%1“ %2,  Десетична %3,  Осмична %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Маркирането не е зададено: %1"
-
-#~ msgid "The file '%1' was created on disk."
-#~ msgstr "Файлът „%1“ е създаден на диска."
-
-#~ msgid ""
-#~ "Use this command to copy the currently selected text as HTML to the "
-#~ "system clipboard."
-#~ msgstr ""
-#~ "Използвайте тази команда, за да копирате избрания в момента текст като "
-#~ "HTML в системния клипборд."
-
-#~ msgctxt "Wrap words at (value is at 20 or larger)"
-#~ msgid " character"
-#~ msgid_plural " characters"
-#~ msgstr[0] " символ"
-#~ msgstr[1] " символ"
