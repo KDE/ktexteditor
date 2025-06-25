@@ -220,10 +220,8 @@ KTextEditor::DocumentPrivate::DocumentPrivate(const KPluginMetaData &data, bool 
 
     m_autoReloadMode = new KToggleAction(i18n("Auto Reload Document"), this);
     // Setup auto reload stuff
-    if (!config()->value(KateDocumentConfig::AutoReloadOnExternalChanges).toBool()) {
-        m_autoReloadMode->setWhatsThis(i18n("Automatic reload the document when it was changed on disk"));
-        connect(m_autoReloadMode, &KToggleAction::triggered, this, &DocumentPrivate::autoReloadToggled);
-    }
+    m_autoReloadMode->setWhatsThis(i18n("Automatic reload the document when it was changed on disk"));
+    connect(m_autoReloadMode, &KToggleAction::triggered, this, &DocumentPrivate::autoReloadToggled);
     // Prepare some reload amok protector...
     m_autoReloadThrottle.setSingleShot(true);
     //...but keep the value small in unit tests
@@ -4968,6 +4966,11 @@ bool KTextEditor::DocumentPrivate::documentSaveAsWithEncoding(const QString &enc
 
     setEncoding(encoding);
     return saveAs(saveUrl);
+}
+
+bool KTextEditor::DocumentPrivate::documentHasAutoReloadConfiguration()
+{
+    return isAutoReload();
 }
 
 void KTextEditor::DocumentPrivate::documentSaveCopyAs()
