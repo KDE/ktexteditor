@@ -534,11 +534,6 @@ public:
     virtual bool documentSaveAs() = 0;
 
     /*!
-     * Returns true if document has Autoreload configuration set otherwise false.
-     */
-    virtual bool documentHasAutoReloadConfiguration() = 0;
-
-    /*!
      * True, eg if the file for opening could not be read
      * This doesn't have to handle the KPart job canceled cases.
      * Returns was there some problem loading the file?

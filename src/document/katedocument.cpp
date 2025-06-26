@@ -4968,11 +4968,6 @@ bool KTextEditor::DocumentPrivate::documentSaveAsWithEncoding(const QString &enc
     return saveAs(saveUrl);
 }
 
-bool KTextEditor::DocumentPrivate::documentHasAutoReloadConfiguration()
-{
-    return isAutoReload();
-}
-
 void KTextEditor::DocumentPrivate::documentSaveCopyAs()
 {
     const QUrl saveUrl = getSaveFileUrl(i18n("Save Copy of File"));

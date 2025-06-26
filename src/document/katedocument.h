@@ -988,7 +988,6 @@ public Q_SLOTS:
 
     bool documentSave() override;
     bool documentSaveAs() override;
-    bool documentHasAutoReloadConfiguration() override;
     bool documentSaveAsWithEncoding(const QString &encoding);
     void documentSaveCopyAs();
 
