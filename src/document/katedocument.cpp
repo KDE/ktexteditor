@@ -4774,6 +4774,7 @@ void KTextEditor::DocumentPrivate::onModOnHdReload()
 void KTextEditor::DocumentPrivate::autoReloadToggled(bool b)
 {
     m_autoReloadMode->setChecked(b);
+    config()->setValue(KateDocumentConfig::AutoReloadOnExternalChanges, b);
     if (b) {
         connect(&m_modOnHdTimer, &QTimer::timeout, this, &DocumentPrivate::onModOnHdAutoReload);
     } else {
@@ -4783,7 +4784,7 @@ void KTextEditor::DocumentPrivate::autoReloadToggled(bool b)
 
 bool KTextEditor::DocumentPrivate::isAutoReload()
 {
-    return config()->value(KateDocumentConfig::AutoReloadOnExternalChanges).toBool() || m_autoReloadMode->isChecked();
+    return config()->value(KateDocumentConfig::AutoReloadOnExternalChanges).toBool();
 }
 
 void KTextEditor::DocumentPrivate::delayAutoReload()

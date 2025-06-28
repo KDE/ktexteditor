@@ -362,7 +362,7 @@ KateDocumentConfig::KateDocumentConfig()
     // Shall we do auto reloading for stuff e.g. in Git?
     addConfigEntry(ConfigEntry(AutoReloadIfStateIsInVersionControl, "Auto Reload If State Is In Version Control", QString(), true));
     addConfigEntry(
-        ConfigEntry(AutoReloadOnExternalChanges, "Auto Reload If Any External Changes Occurs", QStringLiteral("autoreload-on-external-changes"), true));
+        ConfigEntry(AutoReloadOnExternalChanges, "Auto Reload If Any External Changes Occurs", QStringLiteral("auto-reload-on-external-changes"), false));
     // .editorconfig
     addConfigEntry(ConfigEntry(UseEditorConfig, "Use Editor Config", QString(), true));
 
