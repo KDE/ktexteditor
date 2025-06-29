@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-15 00:39+0000\n"
+"POT-Creation-Date: 2025-06-29 00:40+0000\n"
 "PO-Revision-Date: 2025-05-26 13:45+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -424,7 +424,7 @@ msgstr "No hi ha cap entrada en l'historial del porta-retalls"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1021
+#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1022
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1236,12 +1236,12 @@ msgstr ""
 "fitxers d'intercanvi pot provocar la pèrdua de dades en cas d'una fallada "
 "del sistema."
 
-#: dialogs/katedialogs.cpp:1022
+#: dialogs/katedialogs.cpp:1023
 #, kde-format
 msgid "Advanced"
 msgstr "Avançat"
 
-#: dialogs/katedialogs.cpp:1087
+#: dialogs/katedialogs.cpp:1088
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1249,52 +1249,52 @@ msgstr ""
 "No heu proporcionat cap sufix o prefix de les còpies de seguretat. De manera "
 "predeterminada, s'utilitzarà: «~»"
 
-#: dialogs/katedialogs.cpp:1087
+#: dialogs/katedialogs.cpp:1088
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Sense sufix o prefix de la còpia de seguretat"
 
-#: dialogs/katedialogs.cpp:1218
+#: dialogs/katedialogs.cpp:1221
 #, kde-format
 msgid "Open/Save"
 msgstr "Obri i guarda"
 
-#: dialogs/katedialogs.cpp:1223
+#: dialogs/katedialogs.cpp:1226
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Òbriga i guarda fitxers"
 
-#: dialogs/katedialogs.cpp:1246
+#: dialogs/katedialogs.cpp:1249
 #, kde-format
 msgid "&Line:"
 msgstr "&Línia:"
 
-#: dialogs/katedialogs.cpp:1247
+#: dialogs/katedialogs.cpp:1250
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Va fins al número de línia des del porta-retalls"
 
-#: dialogs/katedialogs.cpp:1258
+#: dialogs/katedialogs.cpp:1261
 #, kde-format
 msgid "Go to"
 msgstr "Ves fins a"
 
-#: dialogs/katedialogs.cpp:1338
+#: dialogs/katedialogs.cpp:1341
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "No s'ha trobat cap número vàlid de línia a dins del porta-retalls"
 
-#: dialogs/katedialogs.cpp:1402
+#: dialogs/katedialogs.cpp:1405
 #, kde-format
 msgid "Dictionary:"
 msgstr "Diccionari:"
 
-#: dialogs/katedialogs.cpp:1454
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Activa la recàrrega automàtica"
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1460
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1304,61 +1304,61 @@ msgstr ""
 "sobre els canvis del disc des d'ara fins que tanqueu la pestanya o la "
 "finestra."
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid "View &Difference"
 msgstr "Visualitza la &diferència"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1467
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Mostra un «diff» dels canvis."
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1472
 #, kde-format
 msgid "&Reload"
 msgstr "Torna a ca&rregar"
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Torna a carregar el fitxer des del disc. Els canvis no guardats es perdran."
 
-#: dialogs/katedialogs.cpp:1475
+#: dialogs/katedialogs.cpp:1478
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "Tan&ca el fitxer"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Tanca el fitxer i descarta el seu contingut."
 
-#: dialogs/katedialogs.cpp:1481
+#: dialogs/katedialogs.cpp:1484
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "Guar&da com a…"
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1486
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Us permet seleccionar una ubicació i tornar a guardar el fitxer."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1488 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1491 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Ignora"
 
-#: dialogs/katedialogs.cpp:1489
+#: dialogs/katedialogs.cpp:1492
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignora els canvis en el disc sense cap acció."
 
-#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1367,18 +1367,18 @@ msgstr ""
 "No s'ha pogut executar l'ordre «diff». Assegureu-vos que diff(1) està "
 "instal·lat i que es troba en la PATH."
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "S'ha produït un error en crear «diff»"
 
-#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Els fitxers són idèntics."
 
-#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Eixida de «diff»"
@@ -1457,8 +1457,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbSwapFileSync)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, sbAutoCenterCursor)
-#: dialogs/navigationconfigwidget.ui:92 dialogs/opensaveconfigadvwidget.ui:145
-#: dialogs/opensaveconfigadvwidget.ui:193
+#: dialogs/navigationconfigwidget.ui:92 dialogs/opensaveconfigadvwidget.ui:152
+#: dialogs/opensaveconfigadvwidget.ui:200
 #, kde-format
 msgid "Disabled"
 msgstr "Desactivat"
@@ -1542,14 +1542,21 @@ msgstr "Modificadors de cursor múltiples"
 msgid "Auto reload files in version control"
 msgstr "Torna a carregar automàticament els fitxers en el control de versions"
 
-#. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
+#, fuzzy, kde-format
+#| msgid "Auto reload files in version control"
+msgid "Auto reload files on external changes"
+msgstr "Torna a carregar automàticament els fitxers en el control de versions"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: dialogs/opensaveconfigadvwidget.ui:48
 #, kde-format
 msgid "Write a backup file on save for:"
 msgstr "Introduïu un fitxer a on s'han de guardar les còpies de seguretat:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
-#: dialogs/opensaveconfigadvwidget.ui:48
+#: dialogs/opensaveconfigadvwidget.ui:55
 #, kde-format
 msgid ""
 "If this option is enabled, backups for local files will be created when "
@@ -1559,13 +1566,13 @@ msgstr ""
 "locals."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupLocalFiles)
-#: dialogs/opensaveconfigadvwidget.ui:51
+#: dialogs/opensaveconfigadvwidget.ui:58
 #, kde-format
 msgid "&Local files"
 msgstr "Fitxers &locals"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupRemoteFiles)
-#: dialogs/opensaveconfigadvwidget.ui:58
+#: dialogs/opensaveconfigadvwidget.ui:65
 #, kde-format
 msgid ""
 "If this option is enabled, backups for remote files will be created when "
@@ -1575,75 +1582,75 @@ msgstr ""
 "remots."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupRemoteFiles)
-#: dialogs/opensaveconfigadvwidget.ui:61
+#: dialogs/opensaveconfigadvwidget.ui:68
 #, kde-format
 msgid "&Remote files"
 msgstr "Fitxers &remots"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/opensaveconfigadvwidget.ui:84
+#: dialogs/opensaveconfigadvwidget.ui:91
 #, kde-format
 msgid "Prefix for backup files:"
 msgstr "Prefix dels fitxers de còpia de seguretat:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
-#: dialogs/opensaveconfigadvwidget.ui:94
+#: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Enter the prefix to prepend to the backup file names."
 msgstr ""
 "Introduïu el prefix que precedirà al nom dels fitxers de còpia de seguretat."
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/opensaveconfigadvwidget.ui:101
+#: dialogs/opensaveconfigadvwidget.ui:108
 #, kde-format
 msgid "Suffix for backup files:"
 msgstr "Sufix dels fitxers de còpia de seguretat:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
-#: dialogs/opensaveconfigadvwidget.ui:111
+#: dialogs/opensaveconfigadvwidget.ui:118
 #, kde-format
 msgid "Enter the suffix to append to the backup file names."
 msgstr ""
 "Introduïu el sufix que s'afegirà al nom dels fitxers de còpia de seguretat."
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:134
+#: dialogs/opensaveconfigadvwidget.ui:141
 #, kde-format
 msgid "Swap file mode:"
 msgstr "Mode del fitxer d'intercanvi:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:150
+#: dialogs/opensaveconfigadvwidget.ui:157
 #, kde-format
 msgid "Enabled, Store In Default Directory"
 msgstr "Activat, emmagatzematge en el directori predeterminat"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:155
+#: dialogs/opensaveconfigadvwidget.ui:162
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
 msgstr "Activat, emmagatzematge en un directori personalitzat"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
-#: dialogs/opensaveconfigadvwidget.ui:163
+#: dialogs/opensaveconfigadvwidget.ui:170
 #, kde-format
 msgid "Store swap files in:"
 msgstr "Emmagatzema els fitxers d'intercanvi a:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
-#: dialogs/opensaveconfigadvwidget.ui:183
+#: dialogs/opensaveconfigadvwidget.ui:190
 #, kde-format
 msgid "Save swap files every:"
 msgstr "Guarda els fitxers d'intercanvi cada:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
-#: dialogs/opensaveconfigadvwidget.ui:196
+#: dialogs/opensaveconfigadvwidget.ui:203
 #, kde-format
 msgid "s"
 msgstr "s"
 
 #. i18n: ectx: property (text), widget (QLabel, lblExplanatory)
-#: dialogs/opensaveconfigadvwidget.ui:221
+#: dialogs/opensaveconfigadvwidget.ui:228
 #, kde-format
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
@@ -1652,7 +1659,7 @@ msgstr ""
 "KateSaveConfigTab."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
-#: dialogs/opensaveconfigadvwidget.ui:247
+#: dialogs/opensaveconfigadvwidget.ui:254
 #, kde-format
 msgid "Honor settings in .editorconfig file"
 msgstr "Respecta els paràmetres del fitxer «.editorconfig»"
@@ -2208,7 +2215,7 @@ msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "Fitxer nou"
 
-#: document/katedocument.cpp:222
+#: document/katedocument.cpp:221
 #, kde-format
 msgid "Auto Reload Document"
 msgstr "Torna a carregar automàticament el document"
@@ -2233,12 +2240,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Torneu-ho a provar"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6550
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6558
 #, kde-format
 msgid "&Close"
 msgstr "Tan&ca"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6551
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6559
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2380,9 +2387,9 @@ msgstr "Tanca de totes maneres"
 msgid "Untitled"
 msgstr "Sense títol"
 
-#: document/katedocument.cpp:4726 document/katedocument.cpp:4952
-#: document/katedocument.cpp:4962 document/katedocument.cpp:5754
-#: document/katedocument.cpp:5941
+#: document/katedocument.cpp:4726 document/katedocument.cpp:4953
+#: document/katedocument.cpp:4963 document/katedocument.cpp:5762
+#: document/katedocument.cpp:5949
 #, kde-format
 msgid "Save File"
 msgstr "Guarda el fitxer"
@@ -2392,12 +2399,12 @@ msgstr "Guarda el fitxer"
 msgid "Save failed"
 msgstr "No s'ha pogut fer la guardada"
 
-#: document/katedocument.cpp:4973
+#: document/katedocument.cpp:4974
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Guarda una còpia del fitxer"
 
-#: document/katedocument.cpp:4985
+#: document/katedocument.cpp:4986
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2410,7 +2417,7 @@ msgstr ""
 "Comproveu que teniu accés d'escriptura a este fitxer o que hi ha prou espai "
 "disponible."
 
-#: document/katedocument.cpp:5275
+#: document/katedocument.cpp:5276
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2423,7 +2430,7 @@ msgstr ""
 "org/?application=katepart&language=ca&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5281
+#: document/katedocument.cpp:5282
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2436,17 +2443,17 @@ msgstr ""
 "org/?application=katepart&language=ca&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5588
+#: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "El fitxer «%1» s'ha modificat en el disc."
 
-#: document/katedocument.cpp:5590
+#: document/katedocument.cpp:5598
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "El fitxer «%1» s'ha suprimit o mogut en el disc."
 
-#: document/katedocument.cpp:5926
+#: document/katedocument.cpp:5934
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2455,17 +2462,17 @@ msgstr ""
 "El document «%1» ha sigut modificat.\n"
 "Voleu guardar els canvis o descartar-los?"
 
-#: document/katedocument.cpp:5929
+#: document/katedocument.cpp:5937
 #, kde-format
 msgid "Close Document"
 msgstr "Tanca el document"
 
-#: document/katedocument.cpp:6040
+#: document/katedocument.cpp:6048
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "El fitxer <a href=\"%1\">%2</a> encara s'està carregant."
 
-#: document/katedocument.cpp:6045
+#: document/katedocument.cpp:6053
 #, kde-format
 msgid "&Abort Loading"
 msgstr "In&terromp la càrrega"

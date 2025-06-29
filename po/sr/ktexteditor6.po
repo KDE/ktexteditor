@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-15 00:39+0000\n"
+"POT-Creation-Date: 2025-06-29 00:40+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -445,7 +445,7 @@ msgstr "&Историјат клипборда"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1021
+#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1022
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1276,130 +1276,130 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1022
+#: dialogs/katedialogs.cpp:1023
 #, kde-format
 msgid "Advanced"
 msgstr "Напредно"
 
-#: dialogs/katedialogs.cpp:1087
+#: dialogs/katedialogs.cpp:1088
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
 "Нисте унели префикс или суфикс за име резерве. Користим подразумевани: ~"
 
-#: dialogs/katedialogs.cpp:1087
+#: dialogs/katedialogs.cpp:1088
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Нема суфикса или префикса резерве"
 
 # rewrite-msgid: |Open/Save|File actions|
-#: dialogs/katedialogs.cpp:1218
+#: dialogs/katedialogs.cpp:1221
 #, kde-format
 msgid "Open/Save"
 msgstr "Радње с фајлом"
 
-#: dialogs/katedialogs.cpp:1223
+#: dialogs/katedialogs.cpp:1226
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Отварање и уписивање фајлова"
 
-#: dialogs/katedialogs.cpp:1246
+#: dialogs/katedialogs.cpp:1249
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1247
+#: dialogs/katedialogs.cpp:1250
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1258
+#: dialogs/katedialogs.cpp:1261
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1338
+#: dialogs/katedialogs.cpp:1341
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1402
+#: dialogs/katedialogs.cpp:1405
 #, kde-format
 msgid "Dictionary:"
 msgstr "Речник:"
 
-#: dialogs/katedialogs.cpp:1454
+#: dialogs/katedialogs.cpp:1457
 #, fuzzy, kde-format
 #| msgid "Enable &auto completion"
 msgid "Enable Auto Reload"
 msgstr "&Самодопуна"
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1460
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid "View &Difference"
 msgstr "Прикажи &разлику"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1467
 #, fuzzy, kde-format
 #| msgid "Shows a diff of the changes"
 msgid "Shows a diff of the changes."
 msgstr "Приказује разлику измена."
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1472
 #, kde-format
 msgid "&Reload"
 msgstr "&Учитај поново"
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
 #| msgid "Reload the file from disk. Unsaved changes will be lost."
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Учитава поново фајл са диска. Несачуване измене ће бити изгубљене."
 
-#: dialogs/katedialogs.cpp:1475
+#: dialogs/katedialogs.cpp:1478
 #, fuzzy, kde-format
 #| msgid "&Close"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Затвори"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1481
+#: dialogs/katedialogs.cpp:1484
 #, fuzzy, kde-format
 #| msgid "&Save As..."
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "&Сачувај као..."
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1486
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Можете изабрати локацију и поново сачувати фајл."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1488 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1491 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Игнориши"
 
-#: dialogs/katedialogs.cpp:1489
+#: dialogs/katedialogs.cpp:1492
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Игнорише измене на диску без икакве радње."
 
-#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1408,18 +1408,18 @@ msgstr ""
 "Наредба diff није успела. Уверите се да је diff(1) инсталирана и да се "
 "налази у путањи."
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Грешка при разликовању"
 
-#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Фајлови су истоветни."
 
-#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Излаз разлике"
@@ -1494,8 +1494,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbSwapFileSync)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, sbAutoCenterCursor)
-#: dialogs/navigationconfigwidget.ui:92 dialogs/opensaveconfigadvwidget.ui:145
-#: dialogs/opensaveconfigadvwidget.ui:193
+#: dialogs/navigationconfigwidget.ui:92 dialogs/opensaveconfigadvwidget.ui:152
+#: dialogs/opensaveconfigadvwidget.ui:200
 #, kde-format
 msgid "Disabled"
 msgstr "искључено"
@@ -1578,14 +1578,20 @@ msgstr ""
 msgid "Auto reload files in version control"
 msgstr ""
 
-#. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
+#, kde-format
+msgid "Auto reload files on external changes"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: dialogs/opensaveconfigadvwidget.ui:48
 #, kde-format
 msgid "Write a backup file on save for:"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
-#: dialogs/opensaveconfigadvwidget.ui:48
+#: dialogs/opensaveconfigadvwidget.ui:55
 #, kde-format
 msgid ""
 "If this option is enabled, backups for local files will be created when "
@@ -1594,13 +1600,13 @@ msgstr ""
 "Ако је ово укључено, за локалне фајлове се праве резерве при уписивању."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupLocalFiles)
-#: dialogs/opensaveconfigadvwidget.ui:51
+#: dialogs/opensaveconfigadvwidget.ui:58
 #, kde-format
 msgid "&Local files"
 msgstr "&Локални фајлови"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupRemoteFiles)
-#: dialogs/opensaveconfigadvwidget.ui:58
+#: dialogs/opensaveconfigadvwidget.ui:65
 #, kde-format
 msgid ""
 "If this option is enabled, backups for remote files will be created when "
@@ -1609,83 +1615,83 @@ msgstr ""
 "Ако је ово укључено, при уписивању се праве резерве и за удаљене фајлове."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupRemoteFiles)
-#: dialogs/opensaveconfigadvwidget.ui:61
+#: dialogs/opensaveconfigadvwidget.ui:68
 #, kde-format
 msgid "&Remote files"
 msgstr "&Удаљени фајлови"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/opensaveconfigadvwidget.ui:84
+#: dialogs/opensaveconfigadvwidget.ui:91
 #, kde-format
 msgid "Prefix for backup files:"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
-#: dialogs/opensaveconfigadvwidget.ui:94
+#: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Enter the prefix to prepend to the backup file names."
 msgstr "Унесите префикс за имена резервних фајлова."
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/opensaveconfigadvwidget.ui:101
+#: dialogs/opensaveconfigadvwidget.ui:108
 #, kde-format
 msgid "Suffix for backup files:"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
-#: dialogs/opensaveconfigadvwidget.ui:111
+#: dialogs/opensaveconfigadvwidget.ui:118
 #, kde-format
 msgid "Enter the suffix to append to the backup file names."
 msgstr "Унесите суфикс за имена резервних фајлова."
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:134
+#: dialogs/opensaveconfigadvwidget.ui:141
 #, fuzzy, kde-format
 #| msgid "Swap file:"
 msgid "Swap file mode:"
 msgstr "Разменски фајл:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:150
+#: dialogs/opensaveconfigadvwidget.ui:157
 #, kde-format
 msgid "Enabled, Store In Default Directory"
 msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:155
+#: dialogs/opensaveconfigadvwidget.ui:162
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
-#: dialogs/opensaveconfigadvwidget.ui:163
+#: dialogs/opensaveconfigadvwidget.ui:170
 #, fuzzy, kde-format
 #| msgid "Swap file:"
 msgid "Store swap files in:"
 msgstr "Разменски фајл:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
-#: dialogs/opensaveconfigadvwidget.ui:183
+#: dialogs/opensaveconfigadvwidget.ui:190
 #, fuzzy, kde-format
 #| msgid "Swap file:"
 msgid "Save swap files every:"
 msgstr "Разменски фајл:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
-#: dialogs/opensaveconfigadvwidget.ui:196
+#: dialogs/opensaveconfigadvwidget.ui:203
 #, kde-format
 msgid "s"
 msgstr "s"
 
 #. i18n: ectx: property (text), widget (QLabel, lblExplanatory)
-#: dialogs/opensaveconfigadvwidget.ui:221
+#: dialogs/opensaveconfigadvwidget.ui:228
 #, kde-format
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
-#: dialogs/opensaveconfigadvwidget.ui:247
+#: dialogs/opensaveconfigadvwidget.ui:254
 #, kde-format
 msgid "Honor settings in .editorconfig file"
 msgstr ""
@@ -2246,7 +2252,7 @@ msgid "New file"
 msgstr "Нови фајл"
 
 # >> @title:window
-#: document/katedocument.cpp:222
+#: document/katedocument.cpp:221
 #, fuzzy, kde-format
 #| msgid "Close Document"
 msgid "Auto Reload Document"
@@ -2272,12 +2278,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Покушај поново"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6550
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6558
 #, kde-format
 msgid "&Close"
 msgstr "&Затвори"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6551
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6559
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2427,9 +2433,9 @@ msgid "Untitled"
 msgstr "Неименовано"
 
 # >> @title:window
-#: document/katedocument.cpp:4726 document/katedocument.cpp:4952
-#: document/katedocument.cpp:4962 document/katedocument.cpp:5754
-#: document/katedocument.cpp:5941
+#: document/katedocument.cpp:4726 document/katedocument.cpp:4953
+#: document/katedocument.cpp:4963 document/katedocument.cpp:5762
+#: document/katedocument.cpp:5949
 #, kde-format
 msgid "Save File"
 msgstr "Уписивање фајла"
@@ -2440,12 +2446,12 @@ msgid "Save failed"
 msgstr "Уписивање није успело"
 
 # >> @title:window
-#: document/katedocument.cpp:4973
+#: document/katedocument.cpp:4974
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Уписивање копије фајла"
 
-#: document/katedocument.cpp:4985
+#: document/katedocument.cpp:4986
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2460,7 +2466,7 @@ msgstr ""
 
 # literal-segment: remove-trailing-space
 # literal-segment: remove-trailing-spaces
-#: document/katedocument.cpp:5275
+#: document/katedocument.cpp:5276
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2478,7 +2484,7 @@ msgstr ""
 
 # literal-segment: replace-trailing-space-save
 # literal-segment: remove-trailing-spaces
-#: document/katedocument.cpp:5281
+#: document/katedocument.cpp:5282
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2495,19 +2501,19 @@ msgstr ""
 "stable/en/applications/kate/config-variables.html#variable-remove-trailing-"
 "spaces."
 
-#: document/katedocument.cpp:5588
+#: document/katedocument.cpp:5596
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Неки други програм је изменио фајл ‘%1’."
 
-#: document/katedocument.cpp:5590
+#: document/katedocument.cpp:5598
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Неки други програм је обрисао фајл ‘%1’."
 
-#: document/katedocument.cpp:5926
+#: document/katedocument.cpp:5934
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2517,17 +2523,17 @@ msgstr ""
 "Желите ли да измене сачувате или одбаците?"
 
 # >> @title:window
-#: document/katedocument.cpp:5929
+#: document/katedocument.cpp:5937
 #, kde-format
 msgid "Close Document"
 msgstr "Затварање документа"
 
-#: document/katedocument.cpp:6040
+#: document/katedocument.cpp:6048
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Фајл <a href=\"%1\">%2</a> још се учитава."
 
-#: document/katedocument.cpp:6045
+#: document/katedocument.cpp:6053
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Обустави учитавање"

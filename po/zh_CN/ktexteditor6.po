@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-15 00:39+0000\n"
+"POT-Creation-Date: 2025-06-29 00:40+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -399,7 +399,7 @@ msgstr "剪贴板历史中没有条目"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1021
+#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1022
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1161,63 +1161,63 @@ msgstr ""
 "%1 备份未保存的文件到“交换文件”。交换文件允许 %1 在系统崩溃时恢复您的工作进"
 "度。禁用交换文件可能会导致系统崩溃时丢失数据。"
 
-#: dialogs/katedialogs.cpp:1022
+#: dialogs/katedialogs.cpp:1023
 #, kde-format
 msgid "Advanced"
 msgstr "高级"
 
-#: dialogs/katedialogs.cpp:1087
+#: dialogs/katedialogs.cpp:1088
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr "您没有指定备份文件的后缀或前缀。将使用后缀“~”"
 
-#: dialogs/katedialogs.cpp:1087
+#: dialogs/katedialogs.cpp:1088
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "无备份文件的后缀或前缀"
 
-#: dialogs/katedialogs.cpp:1218
+#: dialogs/katedialogs.cpp:1221
 #, kde-format
 msgid "Open/Save"
 msgstr "打开/保存"
 
-#: dialogs/katedialogs.cpp:1223
+#: dialogs/katedialogs.cpp:1226
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "文件打开和保存"
 
-#: dialogs/katedialogs.cpp:1246
+#: dialogs/katedialogs.cpp:1249
 #, kde-format
 msgid "&Line:"
 msgstr "行(&L)："
 
-#: dialogs/katedialogs.cpp:1247
+#: dialogs/katedialogs.cpp:1250
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "转到剪贴板中的行号"
 
-#: dialogs/katedialogs.cpp:1258
+#: dialogs/katedialogs.cpp:1261
 #, kde-format
 msgid "Go to"
 msgstr "转到"
 
-#: dialogs/katedialogs.cpp:1338
+#: dialogs/katedialogs.cpp:1341
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "剪贴板中找不到有效的行号"
 
-#: dialogs/katedialogs.cpp:1402
+#: dialogs/katedialogs.cpp:1405
 #, kde-format
 msgid "Dictionary:"
 msgstr "词典："
 
-#: dialogs/katedialogs.cpp:1454
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "启用自动重新加载"
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1460
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1226,78 +1226,78 @@ msgstr ""
 "从现在开始直到您关闭标签页或者窗口，文档将在不提示磁盘更改的情况下自动进行重"
 "新加载。"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid "View &Difference"
 msgstr "查看差异(&D)"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1467
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "显示更改的差异。"
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1472
 #, kde-format
 msgid "&Reload"
 msgstr "重新加载(&R)"
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "重新从磁盘加载文件。未保存的更改将丢失。"
 
-#: dialogs/katedialogs.cpp:1475
+#: dialogs/katedialogs.cpp:1478
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "关闭文件(&C)"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "关闭文件，丢弃内容。"
 
-#: dialogs/katedialogs.cpp:1481
+#: dialogs/katedialogs.cpp:1484
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "另存为(&S)…"
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1486
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "让您选择一个位置以再次保存文件。"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1488 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1491 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "忽略(&I)"
 
-#: dialogs/katedialogs.cpp:1489
+#: dialogs/katedialogs.cpp:1492
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "不进行任何操作忽略磁盘更改。"
 
-#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
 "your PATH."
 msgstr "diff 命令失败。请确定安装了 diff(1)，并且该命令在您的路径中。"
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "创建 diff 失败"
 
-#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "文件是相同的。"
 
-#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "diff 输出"
@@ -1368,8 +1368,8 @@ msgstr "设置在可能情况下光标上下可见的行的数量。"
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbSwapFileSync)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, sbAutoCenterCursor)
-#: dialogs/navigationconfigwidget.ui:92 dialogs/opensaveconfigadvwidget.ui:145
-#: dialogs/opensaveconfigadvwidget.ui:193
+#: dialogs/navigationconfigwidget.ui:92 dialogs/opensaveconfigadvwidget.ui:152
+#: dialogs/opensaveconfigadvwidget.ui:200
 #, kde-format
 msgid "Disabled"
 msgstr "禁止"
@@ -1451,14 +1451,21 @@ msgstr "多光标修饰键"
 msgid "Auto reload files in version control"
 msgstr "自动重新加载版本控制中的文件"
 
-#. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
+#, fuzzy, kde-format
+#| msgid "Auto reload files in version control"
+msgid "Auto reload files on external changes"
+msgstr "自动重新加载版本控制中的文件"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: dialogs/opensaveconfigadvwidget.ui:48
 #, kde-format
 msgid "Write a backup file on save for:"
 msgstr "保存时写入备份文件："
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
-#: dialogs/opensaveconfigadvwidget.ui:48
+#: dialogs/opensaveconfigadvwidget.ui:55
 #, kde-format
 msgid ""
 "If this option is enabled, backups for local files will be created when "
@@ -1466,13 +1473,13 @@ msgid ""
 msgstr "如果选中此项，在保存的时候将会为本地文件创建备份。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupLocalFiles)
-#: dialogs/opensaveconfigadvwidget.ui:51
+#: dialogs/opensaveconfigadvwidget.ui:58
 #, kde-format
 msgid "&Local files"
 msgstr "本地文件(&L)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupRemoteFiles)
-#: dialogs/opensaveconfigadvwidget.ui:58
+#: dialogs/opensaveconfigadvwidget.ui:65
 #, kde-format
 msgid ""
 "If this option is enabled, backups for remote files will be created when "
@@ -1480,80 +1487,80 @@ msgid ""
 msgstr "如果选中此项，在保存的时候将会为远程文件创建备份。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupRemoteFiles)
-#: dialogs/opensaveconfigadvwidget.ui:61
+#: dialogs/opensaveconfigadvwidget.ui:68
 #, kde-format
 msgid "&Remote files"
 msgstr "远程文件(&R)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/opensaveconfigadvwidget.ui:84
+#: dialogs/opensaveconfigadvwidget.ui:91
 #, kde-format
 msgid "Prefix for backup files:"
 msgstr "备份文件前缀："
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
-#: dialogs/opensaveconfigadvwidget.ui:94
+#: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Enter the prefix to prepend to the backup file names."
 msgstr "输入备份文件名的前缀。"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/opensaveconfigadvwidget.ui:101
+#: dialogs/opensaveconfigadvwidget.ui:108
 #, kde-format
 msgid "Suffix for backup files:"
 msgstr "备份文件后缀："
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
-#: dialogs/opensaveconfigadvwidget.ui:111
+#: dialogs/opensaveconfigadvwidget.ui:118
 #, kde-format
 msgid "Enter the suffix to append to the backup file names."
 msgstr "输入备份文件名的后缀。"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:134
+#: dialogs/opensaveconfigadvwidget.ui:141
 #, kde-format
 msgid "Swap file mode:"
 msgstr "交换文件模式："
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:150
+#: dialogs/opensaveconfigadvwidget.ui:157
 #, kde-format
 msgid "Enabled, Store In Default Directory"
 msgstr "启用，存储在默认目录"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:155
+#: dialogs/opensaveconfigadvwidget.ui:162
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
 msgstr "启用，存储在自定义目录"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
-#: dialogs/opensaveconfigadvwidget.ui:163
+#: dialogs/opensaveconfigadvwidget.ui:170
 #, kde-format
 msgid "Store swap files in:"
 msgstr "交换文件存储位置："
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
-#: dialogs/opensaveconfigadvwidget.ui:183
+#: dialogs/opensaveconfigadvwidget.ui:190
 #, kde-format
 msgid "Save swap files every:"
 msgstr "交换文件保存间隔："
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
-#: dialogs/opensaveconfigadvwidget.ui:196
+#: dialogs/opensaveconfigadvwidget.ui:203
 #, kde-format
 msgid "s"
 msgstr "秒"
 
 #. i18n: ectx: property (text), widget (QLabel, lblExplanatory)
-#: dialogs/opensaveconfigadvwidget.ui:221
+#: dialogs/opensaveconfigadvwidget.ui:228
 #, kde-format
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr "此字符串在位于 Katedialogs.cpp 的 KateSaveConfigTb 的构筑程序。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
-#: dialogs/opensaveconfigadvwidget.ui:247
+#: dialogs/opensaveconfigadvwidget.ui:254
 #, kde-format
 msgid "Honor settings in .editorconfig file"
 msgstr "遵循 .editorconfig 配置文件中的设置"
@@ -2073,7 +2080,7 @@ msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "新建文件"
 
-#: document/katedocument.cpp:222
+#: document/katedocument.cpp:221
 #, kde-format
 msgid "Auto Reload Document"
 msgstr "自动重新加载文档"
@@ -2097,12 +2104,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "重试"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6550
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6558
 #, kde-format
 msgid "&Close"
 msgstr "关闭(&C)"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6551
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6559
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2234,9 +2241,9 @@ msgstr "仍然关闭"
 msgid "Untitled"
 msgstr "无标题"
 
-#: document/katedocument.cpp:4726 document/katedocument.cpp:4952
-#: document/katedocument.cpp:4962 document/katedocument.cpp:5754
-#: document/katedocument.cpp:5941
+#: document/katedocument.cpp:4726 document/katedocument.cpp:4953
+#: document/katedocument.cpp:4963 document/katedocument.cpp:5762
+#: document/katedocument.cpp:5949
 #, kde-format
 msgid "Save File"
 msgstr "保存文件"
@@ -2246,12 +2253,12 @@ msgstr "保存文件"
 msgid "Save failed"
 msgstr "保存失败"
 
-#: document/katedocument.cpp:4973
+#: document/katedocument.cpp:4974
 #, kde-format
 msgid "Save Copy of File"
 msgstr "保存文件副本"
 
-#: document/katedocument.cpp:4985
+#: document/katedocument.cpp:4986
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2263,7 +2270,7 @@ msgstr ""
 "\n"
 "请检查您是否有此文件的写权限，或者磁盘空间是否充足。"
 
-#: document/katedocument.cpp:5275
+#: document/katedocument.cpp:5276
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2276,7 +2283,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5281
+#: document/katedocument.cpp:5282
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2289,17 +2296,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5588
+#: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "文件“%1”已在存储设备中修改。"
 
-#: document/katedocument.cpp:5590
+#: document/katedocument.cpp:5598
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "文件“%1”已在存储设备中移动或者删除。"
 
-#: document/katedocument.cpp:5926
+#: document/katedocument.cpp:5934
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2308,17 +2315,17 @@ msgstr ""
 "文档“%1”已被修改。\n"
 "您想要保存还是忽略更改？"
 
-#: document/katedocument.cpp:5929
+#: document/katedocument.cpp:5937
 #, kde-format
 msgid "Close Document"
 msgstr "关闭文档"
 
-#: document/katedocument.cpp:6040
+#: document/katedocument.cpp:6048
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "文件 <a href=\"%1\">%2</a> 仍在加载。"
 
-#: document/katedocument.cpp:6045
+#: document/katedocument.cpp:6053
 #, kde-format
 msgid "&Abort Loading"
 msgstr "中止加载(&A)"

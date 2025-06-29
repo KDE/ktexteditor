@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-15 00:39+0000\n"
+"POT-Creation-Date: 2025-06-29 00:40+0000\n"
 "PO-Revision-Date: 2024-10-08 14:47+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -416,7 +416,7 @@ msgstr "Žádné záznamy v historii schránky"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1021
+#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1022
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1198,12 +1198,12 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1022
+#: dialogs/katedialogs.cpp:1023
 #, kde-format
 msgid "Advanced"
 msgstr "Pokročilé"
 
-#: dialogs/katedialogs.cpp:1087
+#: dialogs/katedialogs.cpp:1088
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1211,112 +1211,112 @@ msgstr ""
 "Neposkytli jste příponu ani předponu pro zálohu. Používám výchozí příponu: "
 "'~'"
 
-#: dialogs/katedialogs.cpp:1087
+#: dialogs/katedialogs.cpp:1088
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Žádná přípona ani předpona zálohy"
 
-#: dialogs/katedialogs.cpp:1218
+#: dialogs/katedialogs.cpp:1221
 #, kde-format
 msgid "Open/Save"
 msgstr "Otevřít/Uložit"
 
-#: dialogs/katedialogs.cpp:1223
+#: dialogs/katedialogs.cpp:1226
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Otevírání a ukládání souborů"
 
-#: dialogs/katedialogs.cpp:1246
+#: dialogs/katedialogs.cpp:1249
 #, kde-format
 msgid "&Line:"
 msgstr "Čá&ra:"
 
-#: dialogs/katedialogs.cpp:1247
+#: dialogs/katedialogs.cpp:1250
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1258
+#: dialogs/katedialogs.cpp:1261
 #, kde-format
 msgid "Go to"
 msgstr "Přejít na"
 
-#: dialogs/katedialogs.cpp:1338
+#: dialogs/katedialogs.cpp:1341
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1402
+#: dialogs/katedialogs.cpp:1405
 #, kde-format
 msgid "Dictionary:"
 msgstr "Slovník:"
 
-#: dialogs/katedialogs.cpp:1454
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Povolit automatické opětovné načtení"
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1460
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid "View &Difference"
 msgstr "Zobrazit roz&díl"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1467
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1472
 #, kde-format
 msgid "&Reload"
 msgstr "Znovu načís&t"
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Znovu načte soubor z disku. Neuložené změny budou ztraceny."
 
-#: dialogs/katedialogs.cpp:1475
+#: dialogs/katedialogs.cpp:1478
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Zavřít soubor"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1481
+#: dialogs/katedialogs.cpp:1484
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "Uložit &jako…"
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1486
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Umožní vám vybrat umístění a uložit soubor znovu."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1488 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1491 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Ignorovat"
 
-#: dialogs/katedialogs.cpp:1489
+#: dialogs/katedialogs.cpp:1492
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignoruje změny na disku bez jakékoliv činnosti."
 
-#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1325,18 +1325,18 @@ msgstr ""
 "Spuštění příkazu 'diff' selhalo. Ujistěte se, že je nainstalován a v "
 "proměnné PATH."
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Chyba při vytvoření rozdílu"
 
-#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Soubory jsou stejné."
 
-#: dialogs/katedialogs.cpp:1564 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Výstup z diffu"
@@ -1410,8 +1410,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbSwapFileSync)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, sbAutoCenterCursor)
-#: dialogs/navigationconfigwidget.ui:92 dialogs/opensaveconfigadvwidget.ui:145
-#: dialogs/opensaveconfigadvwidget.ui:193
+#: dialogs/navigationconfigwidget.ui:92 dialogs/opensaveconfigadvwidget.ui:152
+#: dialogs/opensaveconfigadvwidget.ui:200
 #, kde-format
 msgid "Disabled"
 msgstr "Vypnuto"
@@ -1491,14 +1491,21 @@ msgstr "Modifikátory mnohonásobných kurzorů"
 msgid "Auto reload files in version control"
 msgstr "Automaticky opětovně načíst soubory ve správě verzí"
 
-#. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
+#, fuzzy, kde-format
+#| msgid "Auto reload files in version control"
+msgid "Auto reload files on external changes"
+msgstr "Automaticky opětovně načíst soubory ve správě verzí"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: dialogs/opensaveconfigadvwidget.ui:48
 #, kde-format
 msgid "Write a backup file on save for:"
 msgstr "Vytvořit zálohu při uložení pro:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
-#: dialogs/opensaveconfigadvwidget.ui:48
+#: dialogs/opensaveconfigadvwidget.ui:55
 #, kde-format
 msgid ""
 "If this option is enabled, backups for local files will be created when "
@@ -1506,13 +1513,13 @@ msgid ""
 msgstr "Zaškrtněte, pokud si přejete zálohovat místní soubory při ukládání."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupLocalFiles)
-#: dialogs/opensaveconfigadvwidget.ui:51
+#: dialogs/opensaveconfigadvwidget.ui:58
 #, kde-format
 msgid "&Local files"
 msgstr "&Místní soubory"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupRemoteFiles)
-#: dialogs/opensaveconfigadvwidget.ui:58
+#: dialogs/opensaveconfigadvwidget.ui:65
 #, kde-format
 msgid ""
 "If this option is enabled, backups for remote files will be created when "
@@ -1520,80 +1527,80 @@ msgid ""
 msgstr "Zaškrtněte, pokud si přejete zálohovat vzdálené soubory při ukládání."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupRemoteFiles)
-#: dialogs/opensaveconfigadvwidget.ui:61
+#: dialogs/opensaveconfigadvwidget.ui:68
 #, kde-format
 msgid "&Remote files"
 msgstr "Vzdálené soubo&ry"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/opensaveconfigadvwidget.ui:84
+#: dialogs/opensaveconfigadvwidget.ui:91
 #, kde-format
 msgid "Prefix for backup files:"
 msgstr "Předpona souborů zálohy:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
-#: dialogs/opensaveconfigadvwidget.ui:94
+#: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Enter the prefix to prepend to the backup file names."
 msgstr "Zadejte předponu, která se přidá před název souboru se zálohou."
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/opensaveconfigadvwidget.ui:101
+#: dialogs/opensaveconfigadvwidget.ui:108
 #, kde-format
 msgid "Suffix for backup files:"
 msgstr "Přípona souborů zálohy:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
-#: dialogs/opensaveconfigadvwidget.ui:111
+#: dialogs/opensaveconfigadvwidget.ui:118
 #, kde-format
 msgid "Enter the suffix to append to the backup file names."
 msgstr "Zadejte příponu, která se přidá za název souboru se zálohou."
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:134
+#: dialogs/opensaveconfigadvwidget.ui:141
 #, kde-format
 msgid "Swap file mode:"
 msgstr "Režim odkládacího souboru:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:150
+#: dialogs/opensaveconfigadvwidget.ui:157
 #, kde-format
 msgid "Enabled, Store In Default Directory"
 msgstr "Povoleno. Ukládat ve výchozím adresáři"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:155
+#: dialogs/opensaveconfigadvwidget.ui:162
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
 msgstr "Povoleno. Ukládat ve vlastním adresáři"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
-#: dialogs/opensaveconfigadvwidget.ui:163
+#: dialogs/opensaveconfigadvwidget.ui:170
 #, kde-format
 msgid "Store swap files in:"
 msgstr "Ukládat odkládací soubory v:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
-#: dialogs/opensaveconfigadvwidget.ui:183
+#: dialogs/opensaveconfigadvwidget.ui:190
 #, kde-format
 msgid "Save swap files every:"
 msgstr "Uložit odkládací soubory každých:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
-#: dialogs/opensaveconfigadvwidget.ui:196
+#: dialogs/opensaveconfigadvwidget.ui:203
 #, kde-format
 msgid "s"
 msgstr "s"
 
 #. i18n: ectx: property (text), widget (QLabel, lblExplanatory)
-#: dialogs/opensaveconfigadvwidget.ui:221
+#: dialogs/opensaveconfigadvwidget.ui:228
 #, kde-format
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
-#: dialogs/opensaveconfigadvwidget.ui:247
+#: dialogs/opensaveconfigadvwidget.ui:254
 #, kde-format
 msgid "Honor settings in .editorconfig file"
 msgstr "Dodržet nastavení v souboru .editorconfig"
@@ -2124,7 +2131,7 @@ msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "Nový soubor"
 
-#: document/katedocument.cpp:222
+#: document/katedocument.cpp:221
 #, kde-format
 msgid "Auto Reload Document"
 msgstr "Automaticky znovu načíst dokument"
@@ -2149,12 +2156,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Zkusit znovu"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6550
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6558
 #, kde-format
 msgid "&Close"
 msgstr "&Zavřít"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6551
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6559
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2294,9 +2301,9 @@ msgstr "Přesto uzavřít"
 msgid "Untitled"
 msgstr "Nepojmenovaný"
 
-#: document/katedocument.cpp:4726 document/katedocument.cpp:4952
-#: document/katedocument.cpp:4962 document/katedocument.cpp:5754
-#: document/katedocument.cpp:5941
+#: document/katedocument.cpp:4726 document/katedocument.cpp:4953
+#: document/katedocument.cpp:4963 document/katedocument.cpp:5762
+#: document/katedocument.cpp:5949
 #, kde-format
 msgid "Save File"
 msgstr "Uložit soubor"
@@ -2306,12 +2313,12 @@ msgstr "Uložit soubor"
 msgid "Save failed"
 msgstr "Uložení selhalo"
 
-#: document/katedocument.cpp:4973
+#: document/katedocument.cpp:4974
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Uložit kopii souboru"
 
-#: document/katedocument.cpp:4985
+#: document/katedocument.cpp:4986
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2323,7 +2330,7 @@ msgstr ""
 "Zkontrolujte, zda máte oprávnění k zápisu do tohoto souboru a že je na disku "
 "dostatek místa."
 
-#: document/katedocument.cpp:5275
+#: document/katedocument.cpp:5276
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2332,7 +2339,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5281
+#: document/katedocument.cpp:5282
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2341,17 +2348,17 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5588
+#: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5590
+#: document/katedocument.cpp:5598
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Soubor '%1' byl smazán nebo přesunut na disku."
 
-#: document/katedocument.cpp:5926
+#: document/katedocument.cpp:5934
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2360,17 +2367,17 @@ msgstr ""
 "Dokument \"%1\" byl změněn.\n"
 "Přejete si uložit změny nebo je zapomenout?"
 
-#: document/katedocument.cpp:5929
+#: document/katedocument.cpp:5937
 #, kde-format
 msgid "Close Document"
 msgstr "Uzavřít dokument"
 
-#: document/katedocument.cpp:6040
+#: document/katedocument.cpp:6048
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6045
+#: document/katedocument.cpp:6053
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
