@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-29 00:40+0000\n"
-"PO-Revision-Date: 2025-05-26 06:10+0200\n"
+"PO-Revision-Date: 2025-06-29 07:21+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -68,7 +68,7 @@ msgstr "Znova uporabi besedo spodaj"
 #: data/katepart5ui.rc:4
 #, kde-format
 msgid "&File"
-msgstr "&Datoteka"
+msgstr "Datoteka"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
@@ -1525,10 +1525,9 @@ msgstr "Samodejno ponovno nalagaj datoteke v kontroli različic"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
-#, fuzzy, kde-format
-#| msgid "Auto reload files in version control"
+#, kde-format
 msgid "Auto reload files on external changes"
-msgstr "Samodejno ponovno nalagaj datoteke v kontroli različic"
+msgstr "Samodejno ponovno nalaganje datotek ob zunanjih spremembah"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48

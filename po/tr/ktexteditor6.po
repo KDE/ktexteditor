@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-29 00:40+0000\n"
-"PO-Revision-Date: 2025-05-27 00:45+0300\n"
+"PO-Revision-Date: 2025-06-29 18:03+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1525,10 +1525,9 @@ msgstr "Sürüm denetiminde dosyaları kendiliğinden yeniden yükle"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
-#, fuzzy, kde-format
-#| msgid "Auto reload files in version control"
+#, kde-format
 msgid "Auto reload files on external changes"
-msgstr "Sürüm denetiminde dosyaları kendiliğinden yeniden yükle"
+msgstr "Dışarıdan değişikliklerde dosyaları kendiliğinden yeniden yükle"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -2463,32 +2462,32 @@ msgstr "Normal Kip"
 #: inputmode/kateviinputmode.cpp:31
 #, kde-format
 msgid "VI: INSERT MODE"
-msgstr "VI: EKLE KİPİ"
+msgstr "Vİ: EKLE KİPİ"
 
 #: inputmode/kateviinputmode.cpp:34
 #, kde-format
 msgid "VI: NORMAL MODE"
-msgstr "VI: NORMAL KİP"
+msgstr "Vİ: NORMAL KİP"
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format
 msgid "VI: VISUAL"
-msgstr "VI: GÖRSEL"
+msgstr "Vİ: GÖRSEL"
 
 #: inputmode/kateviinputmode.cpp:40
 #, kde-format
 msgid "VI: VISUAL BLOCK"
-msgstr "VI: GÖRSEL BLOK"
+msgstr "Vİ: GÖRSEL BLOK"
 
 #: inputmode/kateviinputmode.cpp:43
 #, kde-format
 msgid "VI: VISUAL LINE"
-msgstr "VI: GÖRSEL SATIR"
+msgstr "Vİ: GÖRSEL SATIR"
 
 #: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
-msgstr "VI: DEĞİŞTİR"
+msgstr "Vİ: DEĞİŞTİR"
 
 #: inputmode/kateviinputmode.cpp:146
 #, kde-format
@@ -2600,7 +2599,7 @@ msgstr "Satır &numaralarını yazdır"
 #: printing/printconfigwidgets.cpp:43
 #, kde-format
 msgid "Print &legend"
-msgstr "Yazdırma &göstergesi"
+msgstr "&Lejantı yazdır"
 
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
@@ -2689,7 +2688,7 @@ msgstr "&Arka Plan"
 #, kde-format
 msgid "<p>Format of the page header. The following tags are supported:</p>"
 msgstr ""
-"<p>Sayfa üstbilgisini biçimlendirir. Aşağıdaki etiketler desteklenir:</p>"
+"<p>Sayfa üstbilgisini biçimlendirir. Aşağıdaki künyeler desteklenir:</p>"
 
 #: printing/printconfigwidgets.cpp:252
 #, kde-format
@@ -2712,7 +2711,7 @@ msgstr ""
 #, kde-format
 msgid "<p>Format of the page footer. The following tags are supported:</p>"
 msgstr ""
-"<p>Sayfa altbilgisini biçimlendirir. Aşağıdaki etiketler desteklenir:</p>"
+"<p>Sayfa altbilgisini biçimlendirir. Aşağıdaki künyeler desteklenir:</p>"
 
 #: printing/printconfigwidgets.cpp:352
 #, kde-format
@@ -2895,25 +2894,25 @@ msgstr "Emmet"
 #, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
-msgstr "Etiketle Sar"
+msgstr "Künyeyle Sar"
 
 #: script/data/commands/emmet.js:18
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
-msgstr "İmleci Eşleşen Etikete Taşı"
+msgstr "İmleci Eşleşen Künyeye Taşı"
 
 #: script/data/commands/emmet.js:22
 #, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
-msgstr "HTML/XML Etiket İçeriğini İçe Doğru Seç"
+msgstr "HTML/XML Künyesi İçeriğini İçe Doğru Seç"
 
 #: script/data/commands/emmet.js:26
 #, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
-msgstr "HTML/XML Etiket İçeriğini Dışa Doğru Seç"
+msgstr "HTML/XML Künyesi İçeriğini Dışa Doğru Seç"
 
 #: script/data/commands/emmet.js:30
 #, kde-format
@@ -2949,13 +2948,13 @@ msgstr "Önceki Düzenleme Noktasını Seç"
 #, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
-msgstr "İmleç Altındaki Etiketi Sil"
+msgstr "İmleç Altındaki Künyeyi Sil"
 
 #: script/data/commands/emmet.js:54
 #, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
-msgstr "Bir Etiketi Ayır veya Kat"
+msgstr "Bir Künyeyi Ayır veya Kat"
 
 #: script/data/commands/emmet.js:58
 #, kde-format
@@ -3014,62 +3013,62 @@ msgid ""
 "Wraps the selected text in XML tags constructed from the provided Emmet "
 "expression (defaults to div)."
 msgstr ""
-"Emmet ifadelerinden yapılan XML etiketlerindeki seçili metinleri kaydırır "
+"Emmet ifadelerinden yapılan XML künyelerindeki seçili metinleri kaydırır "
 "(öntanımlı div)."
 
 #: script/data/commands/emmet.js:98
 #, kde-format
 msgid "Moves the caret to the current tag's pair"
-msgstr "Şapkayı geçerli etiket çiftine taşır"
+msgstr "Metin imlecini geçerli künye çiftine taşır"
 
 #: script/data/commands/emmet.js:99
 #, kde-format
 msgid ""
 "Select contents of HTML/XML tag, moving inward on continuous invocations"
 msgstr ""
-"Sürekli çağırmaların içine doğru giderek HTML/XML etiketinin içeriği seç"
+"Sürekli çağırmaların içine doğru giderek HTML/XML künyesinin içeriğini seç"
 
 #: script/data/commands/emmet.js:100
 #, kde-format
 msgid ""
 "Select contents of HTML/XML tag, moving outwards on continuous invocations"
 msgstr ""
-"Sürekli çağırmaların dışına doğru giderek HTML/XML etiketinin içeriği seç"
+"Sürekli çağırmaların dışına doğru giderek HTML/XML künyesinin içeriğini seç"
 
 #: script/data/commands/emmet.js:101
 #, kde-format
 msgid "Move to the next edit point (tag or empty attribute)."
-msgstr "Sonraki düzenleme noktasına git (etiket veya boş öznitelik)."
+msgstr "Sonraki düzenleme noktasına git (künye veya boş öznitelik)."
 
 #: script/data/commands/emmet.js:102
 #, kde-format
 msgid "Move to the previous edit point (tag or empty attribute)."
-msgstr "Önceki düzenleme noktasına git (etiket veya boş öznitelik)."
+msgstr "Önceki düzenleme noktasına git (künye veya boş öznitelik)."
 
 #: script/data/commands/emmet.js:103
 #, kde-format
 msgid "Select next edit point (tag or empty attribute)."
-msgstr "Sonraki düzenleme noktasını seç (etiket veya boş öznitelik)."
+msgstr "Sonraki düzenleme noktasını seç (künye veya boş öznitelik)."
 
 #: script/data/commands/emmet.js:104
 #, kde-format
 msgid "Select previous edit point (tag or empty attribute)."
-msgstr "Önceki düzenleme noktasını seç (etiket veya boş öznitelik)."
+msgstr "Önceki düzenleme noktasını seç (künye veya boş öznitelik)."
 
 #: script/data/commands/emmet.js:105
 #, kde-format
 msgid "Toggle comment of current tag or CSS selector"
-msgstr "Geçerli etiket veya CSS seçicinin yorumunu aç/kapat"
+msgstr "Geçerli künye veya CSS seçicinin yorumunu aç/kapat"
 
 #: script/data/commands/emmet.js:106
 #, kde-format
 msgid "Deletes tag under cursor"
-msgstr "İmleç altındaki etiketi siler"
+msgstr "İmleç altındaki künyeyi siler"
 
 #: script/data/commands/emmet.js:107
 #, kde-format
 msgid "Splits or joins a tag"
-msgstr "Bir etiketi ayırır veya diğerine katar"
+msgstr "Bir künyeyi ayırır veya diğerine katar"
 
 #: script/data/commands/emmet.js:108
 #, kde-format
@@ -7443,7 +7442,7 @@ msgstr "İmlecin Altına Ek İmleç Ekle"
 #: view/kateview.cpp:967
 #, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr "Geçerli imlecin altındaki satıra bir imleç ekler."
+msgstr "Geçerli metin imlecinin altındaki satıra bir imleç ekler."
 
 #: view/kateview.cpp:971
 #, kde-format
@@ -7453,7 +7452,7 @@ msgstr "İmlecin Üstüne Ek İmleç Ekle"
 #: view/kateview.cpp:973
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
-msgstr "Geçerli imlecin üstündeki satıra bir imleç ekler."
+msgstr "Geçerli metin imlecinin üstündeki satıra bir imleç ekler."
 
 #: view/kateview.cpp:977
 #, kde-format
