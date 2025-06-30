@@ -483,7 +483,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
     }
 
     // Add selection highlighting if we're creating the selection decorations
-    if ((m_view && selectionsOnly && showSelections() && m_view->selection()) || (m_view && m_view->blockSelection())) {
+    if ((m_view && showSelections() && m_view->selection()) || (m_view && m_view->blockSelection())) {
         auto &currentRange = renderRanges.pushNewRange();
 
         // Set up the selection background attribute TODO: move this elsewhere, eg. into the config?

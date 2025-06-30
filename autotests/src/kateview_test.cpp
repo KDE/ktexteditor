@@ -21,6 +21,7 @@
 #include <QSignalSpy>
 #include <QStandardPaths>
 #include <QTemporaryFile>
+#include <QTextLayout>
 #include <QtTestWidgets>
 
 #define testNewRow() (QTest::newRow(QStringLiteral("line %1").arg(__LINE__).toLatin1().data()))
@@ -808,6 +809,36 @@ void KateViewTest::testCommandBarSearchReplace()
     QVERIFY(lineEdit);
     lineEdit->returnKeyPressed(QStringLiteral("%s/hell/bell"));
     QCOMPARE(doc.text(), QStringLiteral("bello\nbello\nabc\nbello"));
+}
+
+void KateViewTest::testSelectedTextFormats()
+{
+    KTextEditor::DocumentPrivate doc(false, false);
+    const QString testText(QStringLiteral("- []KOrganizer: add more new stuff to the Whatsnew dialog\n"));
+    QVERIFY(doc.setHighlightingMode(QStringLiteral("Markdown")));
+    doc.setText(testText);
+
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    view->setCursorPosition({0, 6});
+    view->setSelection({0, 3, 0, 6});
+    QCOMPARE(view->selectionRange(), KTextEditor::Range(0, 3, 0, 6));
+
+    const QTextLayout *layout = view->textLayout({0, 0});
+    QVERIFY(layout);
+    const auto formats = layout->formats();
+    QCOMPARE(formats.size(), 4);
+
+    auto verifyFormat = [](const QTextLayout::FormatRange &f, int start, int length, bool bg, bool fg) {
+        QCOMPARE(f.start, start);
+        QCOMPARE(f.length, length);
+        QCOMPARE(f.format.hasProperty(QTextFormat::BackgroundBrush), bg);
+        QCOMPARE(f.format.hasProperty(QTextFormat::ForegroundBrush), fg);
+    };
+
+    verifyFormat(formats[0], 0, 2, /*hasBg=*/false, /*hasFg=*/true);
+    verifyFormat(formats[1], 2, 1, /*hasBg=*/false, /*hasFg=*/true);
+    verifyFormat(formats[2], 3, 3, /*hasBg=*/false, /*hasFg=*/true);
+    verifyFormat(formats[3], 6, 51, /*hasBg=*/false, /*hasFg=*/true);
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

@@ -41,6 +41,7 @@ private Q_SLOTS:
     void testDdisplayRangeChangedEmitted();
     void testCrashOnPasteInOverwriteMode();
     void testCommandBarSearchReplace();
+    void testSelectedTextFormats();
 };
 
 #endif // KATE_VIEW_TEST_H
