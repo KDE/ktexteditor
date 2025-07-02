@@ -321,6 +321,9 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     // this only captures escaped fields, i.e. \\${foo} etc.
     static const QRegularExpression escapedField(QStringLiteral(R"((?<!\\)(?<slash>\\(?:\\\\)*)\${[^}]+})"), QRegularExpression::UseUnicodePropertiesOption);
 
+    static const QString slash = QStringLiteral("slash");
+    static const QString body = QStringLiteral("body");
+
     // compute start cursor of a match
     auto startOfMatch = [this, &templateText](const QRegularExpressionMatch &match) {
         const auto offset = match.capturedStart(0);
@@ -335,7 +338,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     // create a moving range spanning the given field
     auto createMovingRangeForMatch = [this, startOfMatch](const QRegularExpressionMatch &match) {
         auto matchStart = startOfMatch(match);
-        auto slashOffset = Cursor{0, static_cast<int>(match.capturedLength("slash"))};
+        auto slashOffset = Cursor{0, static_cast<int>(match.capturedLength(slash))};
         return doc()->newMovingRange({matchStart + slashOffset, matchStart + Cursor(0, match.capturedLength(0))},
                                      MovingRange::ExpandLeft | MovingRange::ExpandRight);
     };
@@ -352,16 +355,16 @@ void KateTemplateHandler::parseFields(const QString &templateText)
         const auto match = fieldMatch.next();
 
         // collect leading escaped backslashes
-        if (match.hasCaptured("slash") && match.capturedLength("slash") > 0) {
-            auto slashes = match.captured("slash");
+        if (match.hasCaptured(slash) && match.capturedLength(slash) > 0) {
+            auto slashes = match.captured(slash);
             auto start = startOfMatch(match);
-            int count = std::floor(match.capturedLength("slash") / 2);
+            int count = std::floor(match.capturedLength(slash) / 2);
             stripBackslashes.append({start, start + Cursor{0, count}});
         }
 
         // a template field was found, instantiate a field object and populate it
         auto defaultMatch = defaultField.match(match.captured(0));
-        const QString contents = match.captured("body");
+        const QString contents = match.captured(body);
 
         TemplateField f;
         f.id = nextId;
@@ -405,7 +408,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     for (const auto &match : escapedField.globalMatch(templateText)) {
         // $ is escaped, not a field; mark the backslash for removal
         auto start = startOfMatch(match);
-        int count = std::floor(match.captured("slash").length() / 2) + 1;
+        int count = std::floor(match.captured(slash).length() / 2) + 1;
         stripBackslashes.append({start, start + Cursor{0, count}});
     }
 
