@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-29 00:40+0000\n"
-"PO-Revision-Date: 2025-05-28 23:17+0900\n"
+"PO-Revision-Date: 2025-07-01 19:11+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -1451,10 +1451,9 @@ msgstr "自動重新載入已進版控的檔案"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
-#, fuzzy, kde-format
-#| msgid "Auto reload files in version control"
+#, kde-format
 msgid "Auto reload files on external changes"
-msgstr "自動重新載入已進版控的檔案"
+msgstr "有外部變更時自動重新載入檔案"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48
