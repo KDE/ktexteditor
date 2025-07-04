@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-29 00:40+0000\n"
-"PO-Revision-Date: 2025-05-27 14:13+0200\n"
+"PO-Revision-Date: 2025-06-30 07:42+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1539,10 +1539,9 @@ msgstr "Ricarica automaticamente i file nel controllo di versione"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
-#, fuzzy, kde-format
-#| msgid "Auto reload files in version control"
+#, kde-format
 msgid "Auto reload files on external changes"
-msgstr "Ricarica automaticamente i file nel controllo di versione"
+msgstr "Ricarica automaticamente i file in caso di modifiche esterne"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48
