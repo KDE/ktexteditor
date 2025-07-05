@@ -1455,7 +1455,7 @@ msgstr "自动重新加载版本控制中的文件"
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Auto reload files on external changes"
-msgstr ""
+msgstr "检测到外部更改时自动重新加载文件。"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48
