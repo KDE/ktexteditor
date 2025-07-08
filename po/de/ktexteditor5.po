@@ -9,20 +9,21 @@
 # Panagiotis Papadopoulos <pano_90@gmx.net>, 2010.
 # Torbjörn Klatt <torbjoern.k@googlemail.com>, 2011.
 # Frank Steinmetzger <dev-kde@felsenfleischer.de>, 2022.
+# SPDX-FileCopyrightText: 2025 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 01:34+0000\n"
-"PO-Revision-Date: 2024-08-21 22:37+0200\n"
-"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
+"PO-Revision-Date: 2025-06-25 21:43+0200\n"
+"Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -983,7 +984,7 @@ msgstr ""
 "<p>Aktion der Tabulatortaste (wenn keine Auswahl vorhanden ist) <a href="
 "\"Wenn die Taste <b>Tabulator</b> verwendet werden soll, um die aktuelle "
 "Zeile im aktuellen Quelltextblock auszurichten wie in Emacs, so weisen Sie "
-"der Tabulatortaste die Aktion <b>Einrücken</b> zu.\"><span>Mehr ...</span></"
+"der Tabulatortaste die Aktion <b>Einrücken</b> zu.\"><span>Mehr …</span></"
 "a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
@@ -1228,7 +1229,7 @@ msgstr "Öffnen/Speichern"
 #: dialogs/katedialogs.cpp:1211
 #, kde-format
 msgid "File Opening & Saving"
-msgstr "Öffnen und Speichern von Dateien"
+msgstr "Öffnen & Speichern von Dateien"
 
 #: dialogs/katedialogs.cpp:1234
 #, kde-format
@@ -1302,7 +1303,7 @@ msgstr "Datei schließen und Inhalt verwerfen."
 #: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "&Save As..."
-msgstr "&Speichern unter ..."
+msgstr "&Speichern unter …"
 
 #: dialogs/katedialogs.cpp:1471
 #, kde-format
@@ -2581,7 +2582,7 @@ msgstr "Modi && Dateitypen"
 #, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
-msgstr "Suchen ..."
+msgstr "Suchen …"
 
 #: mode/katemodemenulist.cpp:143
 #, kde-format
@@ -2750,7 +2751,7 @@ msgstr ""
 #: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
-msgstr "Platzhalter hinzufügen ..."
+msgstr "Platzhalter hinzufügen …"
 
 #: printing/printconfigwidgets.cpp:354
 #, kde-format
@@ -3563,7 +3564,7 @@ msgstr "Befehl nicht gefunden: %1"
 #: search/katesearchbar.cpp:73
 #, kde-format
 msgid "Add..."
-msgstr "Hinzufügen ..."
+msgstr "Hinzufügen …"
 
 #: search/katesearchbar.cpp:298
 #, kde-format
@@ -3953,7 +3954,7 @@ msgstr "Rechtschreibprüfung abgebrochen."
 #, kde-format
 msgctxt "progress label"
 msgid "Spell checking in progress..."
-msgstr "Rechtschreibprüfung wird durchgeführt ..."
+msgstr "Rechtschreibprüfung wird durchgeführt …"
 
 #: spellcheck/spellcheckbar.cpp:247 spellcheck/spellcheckbar.cpp:436
 #, kde-format
@@ -4191,7 +4192,7 @@ msgstr "A&lle ignorieren"
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr "Rechtschreibprüfung (ab Cursor) ..."
+msgstr "Rechtschreibprüfung (ab Cursor) …"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4315,22 +4316,22 @@ msgstr "Durch&gestrichen"
 #: syntax/katestyletreewidget.cpp:253
 #, kde-format
 msgid "Normal &Color..."
-msgstr "Standard&farbe ..."
+msgstr "Standard&farbe …"
 
 #: syntax/katestyletreewidget.cpp:256
 #, kde-format
 msgid "&Selected Color..."
-msgstr "&Auswahl-Farbe ..."
+msgstr "&Auswahl-Farbe …"
 
 #: syntax/katestyletreewidget.cpp:259
 #, kde-format
 msgid "&Background Color..."
-msgstr "&Hintergrundfarbe ..."
+msgstr "&Hintergrundfarbe …"
 
 #: syntax/katestyletreewidget.cpp:262
 #, kde-format
 msgid "S&elected Background Color..."
-msgstr "&Auswahl-Hintergrundfarbe ..."
+msgstr "&Auswahl-Hintergrundfarbe …"
 
 #: syntax/katestyletreewidget.cpp:268
 #, kde-format
@@ -4964,17 +4965,17 @@ msgstr "&Schema:"
 #: syntax/katethemeconfig.cpp:1117
 #, kde-format
 msgid "&Copy..."
-msgstr "&Kopieren ..."
+msgstr "&Kopieren …"
 
 #: syntax/katethemeconfig.cpp:1125
 #, kde-format
 msgid "Export..."
-msgstr "Exportieren ..."
+msgstr "Exportieren …"
 
 #: syntax/katethemeconfig.cpp:1129
 #, kde-format
 msgid "Import..."
-msgstr "Importieren ..."
+msgstr "Importieren …"
 
 #: syntax/katethemeconfig.cpp:1136
 #, kde-format
@@ -5498,26 +5499,26 @@ msgstr ""
 "Formatangaben sind:<table><tr><td>d</td><td>Der Tag als Zahl ohne "
 "vorangestellte Null (1-31).</td></tr><tr><td>dd</td><td>Der Tag als Zahl mit "
 "vorangestellter Null (01-31).</td></tr><tr><td>ddd</td><td>Die übersetzte "
-"Abkürzung für die Bezeichnung des Tages (z. B. „Mon“...„Son“).</td></"
+"Abkürzung für die Bezeichnung des Tages (z. B. „Mo“…„So“).</td></"
 "tr><tr><td>dddd</td><td>Der ausgeschriebene übersetzte Bezeichnung des Tages "
-"(z. B. „Montag“...„Sonntag“).</td></tr><tr><td>M</td><td>Der Monat als Zahl "
+"(z. B. „Montag“…„Sonntag“).</td></tr><tr><td>M</td><td>Der Monat als Zahl "
 "ohne vorangestellte Null (1-12).</td></tr><tr><td>MM</td><td>Der Monat als "
 "Zahl mit vorangestellter Null (01-12).</td></tr><tr><td>MMM</td><td>Die "
-"übersetzte Abkürzung für die Bezeichnung des Monats (z. B. „Jan“...„Dez“).</"
+"übersetzte Abkürzung für die Bezeichnung des Monats (z. B. „Jan“…„Dez“).</"
 "td></tr><tr><td>yy</td><td>Das Jahr als zweistellige Zahl (00-99).</td></"
 "tr><tr><td>yyyy</td><td>Das Jahr als vierstellige Zahl (1752-8000).</td></"
-"tr><tr><td>h</td><td>Die Stunde ohne vorangestellte Null (0...23 oder 1...12 "
-"für AM/PM-Anzeige).</td></tr><tr><td>hh</td><td>Die Stunde mit "
-"vorangestellter Null (00..23 oder 01...12 für AM/PM-Anzeige).</td></"
-"tr><tr><td>m</td><td>Die Minute ohne vorangestellte Null (0...59).</td></"
-"tr><tr><td>mm</td><td>Die Minute mit vorangestellter Null (00...59).</td></"
-"tr><tr><td>s</td><td>Die Sekunde ohne vorangestellte Null (0...59).</td></"
-"tr><tr><td>ss</td><td>Die Sekunde mit vorangestellter Null (0...59).</td></"
-"tr><tr><td>z</td><td>Die Millisekunden ohne vorangestellte Nullen (0...999)."
-"</td></tr><tr><td>zzz</td><td>Die Millisekunden ohne vorangestellte Nullen "
-"(000...999).</td></tr><tr><td>AP</td><td>AM/PM-Anzeige verwenden. AP wird "
-"durch „AM“ oder „PM“ ersetzt.</td></tr><tr><td>ap</td><td>am/pm-Anzeige "
-"verwenden. ap wird durch „am“ oder „pm“ ersetzt.</td></tr></table></p>"
+"tr><tr><td>h</td><td>Die Stunde ohne vorangestellte Null (0…23 oder 1…12 für "
+"AM/PM-Anzeige).</td></tr><tr><td>hh</td><td>Die Stunde mit vorangestellter "
+"Null (00…23 oder 01…12 für AM/PM-Anzeige).</td></tr><tr><td>m</td><td>Die "
+"Minute ohne vorangestellte Null (0…59).</td></tr><tr><td>mm</td><td>Die "
+"Minute mit vorangestellter Null (00…59).</td></tr><tr><td>s</td><td>Die "
+"Sekunde ohne vorangestellte Null (0…59).</td></tr><tr><td>ss</td><td>Die "
+"Sekunde mit vorangestellter Null (0…59).</td></tr><tr><td>z</td><td>Die "
+"Millisekunden ohne vorangestellte Nullen (0…999).</td></tr><tr><td>zzz</"
+"td><td>Die Millisekunden ohne vorangestellte Nullen (000…999).</td></"
+"tr><tr><td>AP</td><td>AM/PM-Anzeige verwenden. AP wird durch „AM“ oder „PM“ "
+"ersetzt.</td></tr><tr><td>ap</td><td>am/pm-Anzeige verwenden. ap wird durch "
+"„am“ oder „pm“ ersetzt.</td></tr></table></p>"
 
 #: utils/kateglobal.cpp:73
 #, kde-format
@@ -5638,7 +5639,7 @@ msgstr "Matt Newell"
 #: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Testing, ..."
-msgstr "Tests, ..."
+msgstr "Tests, …"
 
 #: utils/kateglobal.cpp:116
 #, kde-format
@@ -6548,7 +6549,7 @@ msgstr "Einrückung/Tabulator: %1/%2"
 #: view/katestatusbar.cpp:448 view/katestatusbar.cpp:474
 #, kde-format
 msgid "Other..."
-msgstr "Sonstige ..."
+msgstr "Sonstige …"
 
 #: view/katestatusbar.cpp:476
 #, kde-format
@@ -6703,7 +6704,7 @@ msgstr ""
 #: view/kateview.cpp:512
 #, kde-format
 msgid "&Align On..."
-msgstr "&Ausrichten an ..."
+msgstr "&Ausrichten an …"
 
 #: view/kateview.cpp:514
 #, kde-format
@@ -6875,12 +6876,12 @@ msgstr "Speichert das aktive Dokument unter einem Namen Ihrer Wahl."
 #: view/kateview.cpp:629
 #, kde-format
 msgid "Save As with Encoding..."
-msgstr "Mit &Kodierung speichern unter ..."
+msgstr "Mit Kodierung speichern unter …"
 
 #: view/kateview.cpp:635
 #, kde-format
 msgid "Save &Copy As..."
-msgstr "&Kopie speichern unter ..."
+msgstr "&Kopie speichern unter …"
 
 #: view/kateview.cpp:636
 #, kde-format
@@ -6919,7 +6920,7 @@ msgstr "Cursor nach unten zur nächsten geänderten Zeile verschieben."
 #: view/kateview.cpp:655
 #, kde-format
 msgid "&Configure Editor..."
-msgstr "&Editor einrichten ..."
+msgstr "&Editor einrichten …"
 
 #: view/kateview.cpp:657
 #, kde-format
@@ -7398,7 +7399,7 @@ msgstr "Automatische Rechtschreibprüfung aktivieren/deaktivieren"
 #: view/kateview.cpp:931
 #, kde-format
 msgid "Change Dictionary..."
-msgstr "Wörterbuch auswählen ..."
+msgstr "Wörterbuch auswählen …"
 
 #: view/kateview.cpp:932
 #, kde-format
@@ -7436,7 +7437,7 @@ msgstr ""
 #: view/kateview.cpp:949
 #, kde-format
 msgid "E&xport as HTML..."
-msgstr "Als &HTML exportieren ..."
+msgstr "Als &HTML exportieren …"
 
 #: view/kateview.cpp:951
 #, kde-format
