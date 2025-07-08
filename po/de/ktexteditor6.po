@@ -9,20 +9,21 @@
 # Panagiotis Papadopoulos <pano_90@gmx.net>, 2010.
 # Torbjörn Klatt <torbjoern.k@googlemail.com>, 2011.
 # Frank Steinmetzger <dev-kde@felsenfleischer.de>, 2022.
+# SPDX-FileCopyrightText: 2025 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-29 00:40+0000\n"
-"PO-Revision-Date: 2024-08-21 22:37+0200\n"
-"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
+"PO-Revision-Date: 2025-06-25 21:43+0200\n"
+"Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -67,10 +68,9 @@ msgstr "&Datei"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
-#, fuzzy, kde-format
-#| msgid "Print/Export"
+#, kde-format
 msgid "&Print/Export"
-msgstr "Druck/Export"
+msgstr "Druck/E&xport"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -458,6 +458,9 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Durch Drücken der Eingabetaste wird der Text des ausgewählten "
+"Vervollständigungselements ins Editorfenster eingefügt. Sollte dies "
+"deaktiviert sein, können dafür Tabulator oder Doppelklick verwendet werden."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
@@ -683,7 +686,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "Benachrichtigungen zu Zugangshilfen aktivieren"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
@@ -1018,7 +1021,7 @@ msgstr ""
 "<p>Aktion der Tabulatortaste (wenn keine Auswahl vorhanden ist) <a href="
 "\"Wenn die Taste <b>Tabulator</b> verwendet werden soll, um die aktuelle "
 "Zeile im aktuellen Quelltextblock auszurichten wie in Emacs, so weisen Sie "
-"der Tabulatortaste die Aktion <b>Einrücken</b> zu.\"><span>Mehr ...</span></"
+"der Tabulatortaste die Aktion <b>Einrücken</b> zu.\"><span>Mehr …</span></"
 "a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
@@ -1091,13 +1094,11 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "Einrückungsebene erhöhen, wenn im &Leerraum am Zeilenanfang"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " Zeichen"
-msgstr[1] " Zeichen"
+msgstr[0] "%v Zeichen"
+msgstr[1] "%v Zeichen"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1165,14 +1166,12 @@ msgid "Text Navigation"
 msgstr "Textnavigation"
 
 #: dialogs/katedialogs.cpp:581
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " Zeichen"
-msgstr[1] " Zeichen"
+msgstr[0] "%v Zeichen"
+msgstr[1] "%v Zeichen"
 
 #: dialogs/katedialogs.cpp:586
 #, kde-format
@@ -1267,7 +1266,7 @@ msgstr "Öffnen/Speichern"
 #: dialogs/katedialogs.cpp:1226
 #, kde-format
 msgid "File Opening & Saving"
-msgstr "Öffnen und Speichern von Dateien"
+msgstr "Öffnen & Speichern von Dateien"
 
 #: dialogs/katedialogs.cpp:1249
 #, kde-format
@@ -1525,10 +1524,9 @@ msgstr "Rücktaste löscht Basis- und zugehöriges diakritisches Zeichen"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
 #: dialogs/navigationconfigwidget.ui:184
-#, fuzzy, kde-format
-#| msgid "Go to the previous bookmark."
+#, kde-format
 msgid "Allow to cycle through bookmarks"
-msgstr "Zum vorherigen Lesezeichen gehen."
+msgstr "Erlauben, durch Lesezeichen zu blättern"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:194
@@ -1666,10 +1664,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
 #: dialogs/opensaveconfigadvwidget.ui:254
-#, fuzzy, kde-format
-#| msgid "Do not use config file"
+#, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr "Konfigurationsdatei nicht verwenden"
+msgstr "Einstellungen in .editorconfig-Datei berücksichtigen"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -2461,10 +2458,9 @@ msgid "The file '%1' was modified on disk."
 msgstr "Die Datei „%1“ wurde auf dem Speichermedium geändert."
 
 #: document/katedocument.cpp:5598
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted on disk."
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "Die Datei „%1“ wurde von vom Speichermedium gelöscht."
+msgstr "Die Datei „%1“ wurde von vom Speichermedium gelöscht oder verschoben."
 
 #: document/katedocument.cpp:5934
 #, kde-format
@@ -2765,7 +2761,7 @@ msgstr ""
 #: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
-msgstr "Platzhalter hinzufügen ..."
+msgstr "Platzhalter hinzufügen …"
 
 #: printing/printconfigwidgets.cpp:354
 #, kde-format
@@ -3179,20 +3175,16 @@ msgid "Move Cursor to Next Matching Indent"
 msgstr "Cursor zur nächsten passenden Einrückung verschieben"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Next Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Cursor zur nächsten passenden Einrückung verschieben"
+msgstr "Cursor zur nächsten Leerzeile verschieben"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move Cursor to Previous Matching Indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Cursor zur vorherigen passenden Einrückung verschieben"
+msgstr "Cursor zur vorherigen Leerzeile verschieben"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3205,22 +3197,20 @@ msgid "Move cursor to next matching indent"
 msgstr "Cursor zur nächsten passenden Einrückung verschieben"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Cursor zur nächsten passenden Einrückung verschieben"
+msgstr "Cursor zur nächsten Leerzeile verschieben"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Cursor zur vorherigen passenden Einrückung verschieben"
+msgstr "Cursor zur vorherigen Leerzeile verschieben"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Zum nächsten Bearbeitungspunkt gehen"
 
 #: script/data/commands/navigation.js:13
 #, kde-format
@@ -3622,10 +3612,9 @@ msgid "No help specified for command '%1' in script %2"
 msgstr "Für den Befehl „%1“ aus dem Skript „%2“ ist keine Hilfe verfügbar"
 
 #: script/katescript.cpp:282
-#, fuzzy, kde-format
-#| msgid "Error loading script %1"
+#, kde-format
 msgid "Error loading script %1: %2"
-msgstr "Das Skript „%1“ kann nicht geladen werden."
+msgstr "Das Skript „%1“ kann nicht geladen werden: %2"
 
 #: script/katescriptmanager.cpp:310
 #, kde-format
@@ -3642,7 +3631,7 @@ msgstr "Befehl nicht gefunden: %1"
 #: search/katesearchbar.cpp:73
 #, kde-format
 msgid "Add..."
-msgstr "Hinzufügen ..."
+msgstr "Hinzufügen …"
 
 #: search/katesearchbar.cpp:298
 #, kde-format
@@ -5585,72 +5574,64 @@ msgstr ""
 "Formatangaben sind:<table><tr><td>d</td><td>Der Tag als Zahl ohne "
 "vorangestellte Null (1-31).</td></tr><tr><td>dd</td><td>Der Tag als Zahl mit "
 "vorangestellter Null (01-31).</td></tr><tr><td>ddd</td><td>Die übersetzte "
-"Abkürzung für die Bezeichnung des Tages (z. B. „Mon“...„Son“).</td></"
+"Abkürzung für die Bezeichnung des Tages (z. B. „Mo“…„So“).</td></"
 "tr><tr><td>dddd</td><td>Der ausgeschriebene übersetzte Bezeichnung des Tages "
-"(z. B. „Montag“...„Sonntag“).</td></tr><tr><td>M</td><td>Der Monat als Zahl "
+"(z. B. „Montag“…„Sonntag“).</td></tr><tr><td>M</td><td>Der Monat als Zahl "
 "ohne vorangestellte Null (1-12).</td></tr><tr><td>MM</td><td>Der Monat als "
 "Zahl mit vorangestellter Null (01-12).</td></tr><tr><td>MMM</td><td>Die "
-"übersetzte Abkürzung für die Bezeichnung des Monats (z. B. „Jan“...„Dez“).</"
+"übersetzte Abkürzung für die Bezeichnung des Monats (z. B. „Jan“…„Dez“).</"
 "td></tr><tr><td>yy</td><td>Das Jahr als zweistellige Zahl (00-99).</td></"
 "tr><tr><td>yyyy</td><td>Das Jahr als vierstellige Zahl (1752-8000).</td></"
-"tr><tr><td>h</td><td>Die Stunde ohne vorangestellte Null (0...23 oder 1...12 "
-"für AM/PM-Anzeige).</td></tr><tr><td>hh</td><td>Die Stunde mit "
-"vorangestellter Null (00..23 oder 01...12 für AM/PM-Anzeige).</td></"
-"tr><tr><td>m</td><td>Die Minute ohne vorangestellte Null (0...59).</td></"
-"tr><tr><td>mm</td><td>Die Minute mit vorangestellter Null (00...59).</td></"
-"tr><tr><td>s</td><td>Die Sekunde ohne vorangestellte Null (0...59).</td></"
-"tr><tr><td>ss</td><td>Die Sekunde mit vorangestellter Null (0...59).</td></"
-"tr><tr><td>z</td><td>Die Millisekunden ohne vorangestellte Nullen (0...999)."
-"</td></tr><tr><td>zzz</td><td>Die Millisekunden ohne vorangestellte Nullen "
-"(000...999).</td></tr><tr><td>AP</td><td>AM/PM-Anzeige verwenden. AP wird "
-"durch „AM“ oder „PM“ ersetzt.</td></tr><tr><td>ap</td><td>am/pm-Anzeige "
-"verwenden. ap wird durch „am“ oder „pm“ ersetzt.</td></tr></table></p>"
+"tr><tr><td>h</td><td>Die Stunde ohne vorangestellte Null (0…23 oder 1…12 für "
+"AM/PM-Anzeige).</td></tr><tr><td>hh</td><td>Die Stunde mit vorangestellter "
+"Null (00…23 oder 01…12 für AM/PM-Anzeige).</td></tr><tr><td>m</td><td>Die "
+"Minute ohne vorangestellte Null (0…59).</td></tr><tr><td>mm</td><td>Die "
+"Minute mit vorangestellter Null (00…59).</td></tr><tr><td>s</td><td>Die "
+"Sekunde ohne vorangestellte Null (0…59).</td></tr><tr><td>ss</td><td>Die "
+"Sekunde mit vorangestellter Null (0…59).</td></tr><tr><td>z</td><td>Die "
+"Millisekunden ohne vorangestellte Nullen (0…999).</td></tr><tr><td>zzz</"
+"td><td>Die Millisekunden ohne vorangestellte Nullen (000…999).</td></"
+"tr><tr><td>AP</td><td>AM/PM-Anzeige verwenden. AP wird durch „AM“ oder „PM“ "
+"ersetzt.</td></tr><tr><td>ap</td><td>am/pm-Anzeige verwenden. ap wird durch "
+"„am“ oder „pm“ ersetzt.</td></tr></table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicate Lines"
+#, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "Doppelte Zeilen entfernen"
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr ""
-"Doppelte Zeilen aus der Textauswahl entfernen und alphabetisch sortieren"
+msgstr "Doppelte Zeilen entfernen und den Text alphabetisch sortieren"
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "Ausgewählten Text alphabetisch sortieren"
+msgstr "Text natürlich sortieren"
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text Alphabetically"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "Ausgewählten Text alphabetisch sortieren"
 
 #: utils/katecmds.cpp:699
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "Markierten Text oder gesamtes Dokument sortieren."
+msgstr ""
+"<p>sort</p><p>Ausgewählten Text sortieren. Wenn nichts ausgewählt ist, wird "
+"das gesamte Dokument sortiert</p>"
 
 #: utils/katecmds.cpp:703
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
 msgstr ""
-"Doppelte Zeilen aus der Textauswahl oder dem gesamten Dokument entfernen."
+"<p>uniq</p><p>Doppelte Zeilen aus der Textauswahl entfernen. Wenn nichts "
+"ausgewählt ist, doppelte Zeilen aus dem gesamten Dokument entfernen.</p>"
 
 #: utils/katecmds.cpp:707
 #, kde-format
@@ -5658,23 +5639,22 @@ msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
+"<p>sortuniq</p><p>Ausgewählten Text sortieren und anschließend daraus "
+"doppelte Zeilen entfernen. Wenn nichts ausgewählt ist, das gesamte Dokument "
+"verwenden.</p>"
 
 #: utils/katecmds.cpp:711
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"Markierten Text oder gesamtes Dokument in natürlicher Reihenfolge sortieren."
-"<br>Hier ist ein Beispiel, das den Unterschied zur normalen Sortierung "
-"demonstriert:<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => "
-"a1, a2, a10"
+"<p>natsort</p><p>Markierten Text oder gesamtes Dokument in natürlicher "
+"Reihenfolge sortieren.<br>Hier ist ein Beispiel, das den Unterschied zur "
+"normalen Sortierung demonstriert:<br>sort(a10, a1, a2) => a1, a10, "
+"a2<br>natsort(a10, a1, a2) => a1, a2, a10</p>"
 
 #: utils/kateglobal.cpp:59
 #, kde-format
@@ -5795,7 +5775,7 @@ msgstr "Matt Newell"
 #: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Testing, ..."
-msgstr "Tests, ..."
+msgstr "Tests, …"
 
 #: utils/kateglobal.cpp:102
 #, kde-format
@@ -6395,6 +6375,8 @@ msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
+"Drücken der Eingabetaste soll das ausgewählte Vervollständigungselement "
+"einfügen."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
@@ -6789,13 +6771,12 @@ msgstr "Fügt den Inhalt der vorherigen der Mausauswahl ein"
 #: view/kateview.cpp:482
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Aus Datei einfügen"
 
 #: view/kateview.cpp:486
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "Swap-Dateieinstellungen"
+msgstr "Dateispeicherort kopieren"
 
 #: view/kateview.cpp:487
 #, kde-format
@@ -6872,16 +6853,14 @@ msgstr ""
 "sie durch Leerzeichen ersetzt werden sollen."
 
 #: view/kateview.cpp:527
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "Einrückungseigenschaften"
+msgstr "Tabulatoren in der Einrückung zu Leerzeichen umwandeln"
 
 #: view/kateview.cpp:534
-#, fuzzy, kde-format
-#| msgid "&Format Indentation"
+#, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "&Einrücken"
+msgstr "Leerzeichen in der Einrückung zu Tabulatoren umwandeln"
 
 #: view/kateview.cpp:549
 #, kde-format
@@ -6899,11 +6878,10 @@ msgstr ""
 "möchten."
 
 #: view/kateview.cpp:554
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Ausrichten an"
+msgstr "&Ausrichten an …"
 
 #: view/kateview.cpp:556
 #, kde-format
@@ -7088,18 +7066,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Speichert das aktive Dokument unter einem Namen Ihrer Wahl."
 
 #: view/kateview.cpp:686
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "Mit &Kodierung speichern unter ..."
+msgstr "Mit &Kodierung speichern unter …"
 
 #: view/kateview.cpp:692
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "&Kopie speichern unter ..."
+msgstr "&Kopie speichern unter …"
 
 #: view/kateview.cpp:693
 #, kde-format
@@ -7136,11 +7112,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Cursor nach unten zur nächsten geänderten Zeile verschieben."
 
 #: view/kateview.cpp:712
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "&Editor einrichten ..."
+msgstr "&Editor einrichten …"
 
 #: view/kateview.cpp:714
 #, kde-format
@@ -7255,24 +7230,19 @@ msgstr ""
 "oder dieser überschrieben werden soll."
 
 #: view/kateview.cpp:790
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Leerräume"
+msgstr "Leerraum anzeigen"
 
 #: view/kateview.cpp:793
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"Bei Aktivierung dieser Einstellung werden Textzeilen am Rand des Fensters "
-"umgebrochen, wenn sie zu lang sind.<br /><br />Die ist nur eine "
-"Darstellungsoption, das Dokument wird nicht geändert."
+"Bei Aktivierung dieser Einstellung werden Leerräume in diesem Dokument "
+"sichtbar.<br /><br />Die ist nur eine Darstellungsoption, das Dokument wird "
+"nicht geändert."
 
 #: view/kateview.cpp:797
 #, kde-format
@@ -7280,11 +7250,7 @@ msgid "&Dynamic Word Wrap"
 msgstr "&Dynamischer Zeilenumbruch"
 
 #: view/kateview.cpp:801
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
@@ -7554,8 +7520,7 @@ msgid "Find and Select All Occurrences"
 msgstr "Alle Vorkommen suchen und auswählen"
 
 #: view/kateview.cpp:944
-#, fuzzy, kde-format
-#| msgid "Finds all occurrences of the word under cursor and select them."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr ""
 "Sucht alle Vorkommen des Wortes an der Cursorposition und wählt diese aus."
@@ -7677,6 +7642,8 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Die Auswahl als HTML kopieren, dessen Formatierung unter Verwendung der "
+"aktuellen Syntaxhervorhebung und Farbschemaeinstellungen durchgeführt wird."
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -7724,10 +7691,9 @@ msgid "Select Word Right"
 msgstr "Wort rechts auswählen"
 
 #: view/kateview.cpp:1097
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "Auswahl einfügen"
+msgstr "Markierte Auswahl starten"
 
 #: view/kateview.cpp:1098
 #, kde-format
@@ -7735,6 +7701,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Auswahlmodus ähnlich dem von Emacs emulieren, bei dem der Anfang markiert "
+"wird, und die Auswahl kontinuierlich erweitert wird."
 
 #: view/kateview.cpp:1103
 #, kde-format
@@ -7867,28 +7835,24 @@ msgid "Select to Matching Bracket"
 msgstr "Bis zur passenden Klammer markieren"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Wort nach rechts"
+msgstr "Wortteil nach rechts verschieben"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Wort rechts auswählen"
+msgstr "Wortteil rechts auswählen"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Wort nach links"
+msgstr "Wortteil nach links verschieben"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Wort links auswählen"
+msgstr "Wortteil links auswählen"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -8013,16 +7977,14 @@ msgstr ""
 "Textblocks."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Wort links löschen"
+msgstr "Wortteil links löschen"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Wort rechts löschen"
+msgstr "Wortteil rechts löschen"
 
 #: view/kateview.cpp:1441
 #, kde-format
@@ -8045,28 +8007,24 @@ msgid "Toggle Contained Nodes"
 msgstr "Enthaltene Knoten umschalten"
 
 #: view/kateview.cpp:1462
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Textauswahl im aktiven Dokument."
+msgstr "Aktuelle Auswahl oder Dokument vorlesen"
 
 #: view/kateview.cpp:1472
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "Das aktuelle Dokument speichern"
+msgstr "Die aktuelle Ausgabe beenden"
 
 #: view/kateview.cpp:1478
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "Das aktuelle Dokument speichern"
+msgstr "Die aktuelle Ausgabe anhalten"
 
 #: view/kateview.cpp:1484
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "Das aktuelle Dokument speichern"
+msgstr "Die aktuelle Ausgabe fortsetzen"
 
 #: view/kateview.cpp:1655
 #, kde-format
@@ -8089,8 +8047,7 @@ msgid "Search wrapped"
 msgstr "Suche hat das Ende erreicht"
 
 #: view/kateview.cpp:3072
-#, fuzzy, kde-format
-#| msgid "Open File"
+#, kde-format
 msgid "Open File"
 msgstr "Datei öffnen"
 
@@ -8215,8 +8172,7 @@ msgid "Show Window Decorations"
 msgstr "Fensterdekoration anzeigen"
 
 #: view/screenshotdialog.cpp:188
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Bildschirmfoto der Auswahl aufnehmen"
