@@ -588,7 +588,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:91
 #, kde-format
 msgid "Default input mode:"
-msgstr "ნაგულისხმები შეყვანის რეჟიმი:"
+msgstr "ნაგულისხმევი შეყვანის რეჟიმი:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/editconfigwidget.ui:120
@@ -838,7 +838,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:43
 #, kde-format
 msgid "Default indentation mode:"
-msgstr "ნაგულისხმები სწორების რეჟიმი:"
+msgstr "ნაგულისხმევი სწორების რეჟიმი:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbMode)
 #: dialogs/indentationconfigwidget.ui:53
@@ -1221,7 +1221,7 @@ msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
 "მარქაფის პრეფიქსი ან სუფიქსი არ მიგითითებიათ. გამოყენებული იქნება "
-"ნაგულისხმები '~'"
+"ნაგულისხმევი '~'"
 
 #: dialogs/katedialogs.cpp:1088
 #, kde-format
@@ -1586,7 +1586,7 @@ msgstr "სვოპ ფაილის რეჟიმი:"
 #: dialogs/opensaveconfigadvwidget.ui:157
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr "ჩართულია. შეინახება ნაგულისხმებ საქაღალდეში"
+msgstr "ჩართულია. შეინახება ნაგულისხმევ საქაღალდეში"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:162
@@ -2498,7 +2498,7 @@ msgstr "<Unchanged>"
 #: mode/katemodeconfigpage.cpp:58
 #, kde-format
 msgid "Use Default"
-msgstr "ნაგულისხმების გამოყენება"
+msgstr "ნაგულისხმევის გამოყენება"
 
 #: mode/katemodeconfigpage.cpp:99 mode/katemodeconfigpage.cpp:241
 #, kde-format
@@ -4239,7 +4239,7 @@ msgstr "გაუქმება"
 #: syntax/katecolortreewidget.cpp:34 syntax/katecolortreewidget.cpp:61
 #, kde-format
 msgid "Use default color from the color theme"
-msgstr "ნაგულისხმები ფერის ფერის თემიდან გამოყენება"
+msgstr "ნაგულისხმევი ფერის ფერის თემიდან გამოყენება"
 
 #: syntax/katehighlightmenu.cpp:39
 #, kde-format
@@ -4279,7 +4279,7 @@ msgstr "მონიშნულის ფონი"
 #: syntax/katestyletreewidget.cpp:139
 #, kde-format
 msgid "Use Default Style"
-msgstr "ნაგულისხმები სტილის გამოყენება"
+msgstr "ნაგულისხმევი სტილის გამოყენება"
 
 #: syntax/katestyletreewidget.cpp:238
 #, kde-format
@@ -4348,7 +4348,7 @@ msgstr "არჩეული ფონის ფერის მოხსნა
 #: syntax/katestyletreewidget.cpp:295
 #, kde-format
 msgid "Use &Default Style"
-msgstr "&ნაგულისხმები სტილის გამოყენება"
+msgstr "&ნაგულისხმევი სტილის გამოყენება"
 
 #: syntax/katestyletreewidget.cpp:408
 #, kde-format
@@ -4559,7 +4559,7 @@ msgstr "შეცდომა"
 #: syntax/katethemeconfig.cpp:162
 #, kde-format
 msgid "Use Default Colors"
-msgstr "ნაგულისხმები ფერების გამოყენება"
+msgstr "ნაგულისხმევი ფერების გამოყენება"
 
 #: syntax/katethemeconfig.cpp:182
 #, kde-format
@@ -4926,7 +4926,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:1026
 #, kde-format
 msgid "Default Theme"
-msgstr "ნაგულისხმები თემა"
+msgstr "ნაგულისხმევი თემა"
 
 #: syntax/katethemeconfig.cpp:1027
 #, kde-format
@@ -4976,7 +4976,7 @@ msgstr "ფერები"
 #: syntax/katethemeconfig.cpp:1161
 #, kde-format
 msgid "Default Text Styles"
-msgstr "ნაგულისხმები ტექსტის სტილები"
+msgstr "ნაგულისხმევი ტექსტის სტილები"
 
 #: syntax/katethemeconfig.cpp:1165
 #, kde-format
@@ -7994,7 +7994,7 @@ msgstr "ნიშნის ტიპი %1"
 #: view/kateviewhelpers.cpp:2649
 #, kde-format
 msgid "Set Default Mark Type"
-msgstr "ნაგულისხმები ნიშნის ტიპის დაყენება"
+msgstr "ნაგულისხმევი ნიშნის ტიპის დაყენება"
 
 #: view/kateviewhelpers.cpp:2790
 #, kde-format
