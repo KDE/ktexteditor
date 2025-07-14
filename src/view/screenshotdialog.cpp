@@ -55,8 +55,13 @@ public:
         auto layout = new QHBoxLayout(this);
         setColor(Qt::yellow);
 
+        auto vLayout = new QVBoxLayout();
+        vLayout->addStretch();
+        vLayout->addWidget(m_screenshot);
+        vLayout->addStretch();
+
         layout->addStretch();
-        layout->addWidget(m_screenshot);
+        layout->addLayout(vLayout);
         layout->addStretch();
 
         m_renableEffects.setInterval(500);
@@ -75,19 +80,12 @@ public:
     void setPixmap(const QPixmap &p)
     {
         temporarilyDisableDropShadow();
-
         m_screenshot->setPixmap(p);
-        m_screenshotSize = p.size();
     }
 
     QPixmap grabPixmap()
     {
-        const int h = m_screenshotSize.height();
-        const int y = std::max(((height() - h) / 2), 0);
-        const int x = m_screenshot->geometry().x();
-        QRect r(x, y, m_screenshotSize.width(), m_screenshotSize.height());
-        r.adjust(-6, -6, 6, 6);
-        return grab(r);
+        return grab(m_screenshot->geometry().adjusted(-6, -6, 6, 6));
     }
 
     void mousePressEvent(QMouseEvent *event) override
@@ -143,7 +141,6 @@ private:
     }
 
     QLabel *const m_screenshot;
-    QSize m_screenshotSize;
     QTimer m_renableEffects;
     QPoint m_dragStartCandidatePos;
 
