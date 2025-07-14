@@ -419,7 +419,7 @@ static bool rangeLessThanForRenderer(const Kate::TextRange *a, const Kate::TextR
     return a->start().toCursor() < b->start().toCursor();
 }
 
-QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly) const
+QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly, bool skipSelections) const
 {
     // limit number of attributes we can highlight in reasonable time
     const int limitOfRanges = 1024;
@@ -483,7 +483,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
     }
 
     // Add selection highlighting if we're creating the selection decorations
-    if ((m_view && showSelections() && m_view->selection()) || (m_view && m_view->blockSelection())) {
+    if (!skipSelections && ((m_view && showSelections() && m_view->selection()) || (m_view && m_view->blockSelection()))) {
         auto &currentRange = renderRanges.pushNewRange();
 
         // Set up the selection background attribute TODO: move this elsewhere, eg. into the config?
@@ -510,7 +510,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
     // Calculate the range which we need to iterate in order to get the highlighting for just this line
     KTextEditor::Cursor currentPosition;
     KTextEditor::Cursor endPosition;
-    if (m_view && selectionsOnly) {
+    if (!skipSelections && m_view && selectionsOnly) {
         if (m_view->blockSelection()) {
             KTextEditor::Range subRange = m_doc->rangeOnLine(m_view->selectionRange(), line);
             currentPosition = subRange.start();
@@ -559,7 +559,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
         KTextEditor::Attribute::Ptr a = renderRanges.generateAttribute();
         if (a) {
             fr.format = *a;
-            if (selectionRange.contains(currentPosition)) {
+            if (!skipSelections && selectionRange.contains(currentPosition)) {
                 assignSelectionBrushesFromAttribute(fr, *a);
             }
         }
@@ -1225,7 +1225,7 @@ qreal KateRenderer::spaceWidth() const
     return m_fontMetrics.horizontalAdvance(spaceChar);
 }
 
-void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cacheLayout) const
+void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cacheLayout, bool skipSelections) const
 {
     // if maxwidth == -1 we have no wrap
 
@@ -1277,7 +1277,7 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
     l.setTextOption(opt);
 
     // Syntax highlighting, inbuilt and arbitrary
-    QList<QTextLayout::FormatRange> decorations = decorationsForLine(textLine, lineLayout->line());
+    QList<QTextLayout::FormatRange> decorations = decorationsForLine(textLine, lineLayout->line(), /*selectionsOnly=*/false, skipSelections);
 
     // Qt works badly if you have RTL text and formats set on that text.
     // It will shape the text according to the given format ranges which
@@ -1493,7 +1493,7 @@ void KateRenderer::paintSelection(QPaintDevice *d, int startLine, int xStart, in
         // compute layout WITHOUT cache to not poison it + render it
         KateLineLayout lineLayout(*this);
         lineLayout.setLine(line, -1);
-        layoutLine(&lineLayout, viewWidth, false /* no layout cache */);
+        layoutLine(&lineLayout, viewWidth, false /* no layout cache */, /*skipSelections=*/true);
         KateRenderer::PaintTextLineFlags flags;
         flags.setFlag(KateRenderer::SkipDrawFirstInvisibleLineUnderlined);
         flags.setFlag(KateRenderer::SkipDrawLineSelection);

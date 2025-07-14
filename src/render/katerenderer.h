@@ -276,7 +276,7 @@ public:
     /**
      * Text width & height calculation functions...
      */
-    void layoutLine(KateLineLayout *line, int maxwidth = -1, bool cacheLayout = false) const;
+    void layoutLine(KateLineLayout *line, int maxwidth = -1, bool cacheLayout = false, bool skipSelections = false) const;
 
     /**
      * This is a smaller QString::isRightToLeft(). It's also marked as internal to kate
@@ -295,7 +295,8 @@ public:
      *
      * \param selectionsOnly return decorations for selections and/or dynamic highlighting.
      */
-    QList<QTextLayout::FormatRange> decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly = false) const;
+    QList<QTextLayout::FormatRange>
+    decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly = false, bool skipSelections = false) const;
 
     // Width calculators
     qreal spaceWidth() const;
