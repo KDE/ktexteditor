@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-29 00:40+0000\n"
+"POT-Creation-Date: 2025-07-15 00:40+0000\n"
 "PO-Revision-Date: 2023-02-18 21:30+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -4693,7 +4693,7 @@ msgstr "Fon"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>Başlıq zolağının fon rəngini seç.</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:268
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:265
 #, kde-format
 msgid "Line Numbers"
 msgstr "Sətir nömrələri"
@@ -8085,69 +8085,69 @@ msgstr "Nişan növünü təyin edin"
 msgid "Disable Annotation Bar"
 msgstr "Mətnin qısa təsviri panelini göstərmə"
 
-#: view/screenshotdialog.cpp:178
+#: view/screenshotdialog.cpp:175
 #, fuzzy, kde-format
 #| msgid "Open/Save"
 msgid "Save"
 msgstr "Açın/Saxlayın"
 
-#: view/screenshotdialog.cpp:179
+#: view/screenshotdialog.cpp:176
 #, fuzzy, kde-format
 #| msgid "&Copy..."
 msgid "Copy"
 msgstr "&Kopyamaq..."
 
-#: view/screenshotdialog.cpp:180
+#: view/screenshotdialog.cpp:177
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
 msgctxt "@action:button"
 msgid "Background Color…"
 msgstr "&Fon Rəngi..."
 
-#: view/screenshotdialog.cpp:182
+#: view/screenshotdialog.cpp:179
 #, fuzzy, kde-format
 #| msgid "Text Decorations"
 msgid "Show Extra Decorations"
 msgstr "Mətnin Çərçivələnməsi"
 
-#: view/screenshotdialog.cpp:183
+#: view/screenshotdialog.cpp:180
 #, fuzzy, kde-format
 #| msgid "Show i&ndentation lines"
 msgid "Show Window Decorations"
 msgstr "Abzas sətirləri&ni göstər"
 
-#: view/screenshotdialog.cpp:188
+#: view/screenshotdialog.cpp:185
 #, fuzzy, kde-format
 #| msgid "Paste Selection"
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Seçiləni Yerləşdirmək"
 
-#: view/screenshotdialog.cpp:260
+#: view/screenshotdialog.cpp:257
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Don't Show Line Numbers"
 msgstr "Sətir nömrə&lərini gostər"
 
-#: view/screenshotdialog.cpp:261
+#: view/screenshotdialog.cpp:258
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show Line Numbers From 1"
 msgstr "Sətir nömrə&lərini gostər"
 
-#: view/screenshotdialog.cpp:262
+#: view/screenshotdialog.cpp:259
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Sətir nömrə&lərini gostər"
 
-#: view/screenshotdialog.cpp:424
+#: view/screenshotdialog.cpp:421
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr ""
 
-#: view/screenshotdialog.cpp:424
+#: view/screenshotdialog.cpp:421
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr ""

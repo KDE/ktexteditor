@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-29 00:40+0000\n"
+"POT-Creation-Date: 2025-07-15 00:40+0000\n"
 "PO-Revision-Date: 2025-03-15 09:28+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -4666,7 +4666,7 @@ msgstr "Tausta-alue"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>Asettaa kuvakereunuksen taustavärin.</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:268
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:265
 #, kde-format
 msgid "Line Numbers"
 msgstr "Rivinumerot"
@@ -8009,60 +8009,60 @@ msgstr "Aseta oletustyyppi"
 msgid "Disable Annotation Bar"
 msgstr "Piilota merkintäpalkki"
 
-#: view/screenshotdialog.cpp:178
+#: view/screenshotdialog.cpp:175
 #, kde-format
 msgid "Save"
 msgstr "Tallenna"
 
-#: view/screenshotdialog.cpp:179
+#: view/screenshotdialog.cpp:176
 #, kde-format
 msgid "Copy"
 msgstr "Kopioi"
 
-#: view/screenshotdialog.cpp:180
+#: view/screenshotdialog.cpp:177
 #, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
 msgstr "Taustaväri…"
 
-#: view/screenshotdialog.cpp:182
+#: view/screenshotdialog.cpp:179
 #, kde-format
 msgid "Show Extra Decorations"
 msgstr "Näytä lisäkoristeet"
 
-#: view/screenshotdialog.cpp:183
+#: view/screenshotdialog.cpp:180
 #, kde-format
 msgid "Show Window Decorations"
 msgstr "Näytä ikkunakoristeet"
 
-#: view/screenshotdialog.cpp:188
+#: view/screenshotdialog.cpp:185
 #, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Ota valinnasta ruutukaappaus"
 
-#: view/screenshotdialog.cpp:260
+#: view/screenshotdialog.cpp:257
 #, kde-format
 msgid "Don't Show Line Numbers"
 msgstr "Älä näytä rivinumeroita"
 
-#: view/screenshotdialog.cpp:261
+#: view/screenshotdialog.cpp:258
 #, kde-format
 msgid "Show Line Numbers From 1"
 msgstr "Näytä rivinumerot 1:stä alkaen"
 
-#: view/screenshotdialog.cpp:262
+#: view/screenshotdialog.cpp:259
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Näytä todelliset rivinumerot"
 
-#: view/screenshotdialog.cpp:424
+#: view/screenshotdialog.cpp:421
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr "Ruutukaappauksen tallentaminen epäonnistui"
 
-#: view/screenshotdialog.cpp:424
+#: view/screenshotdialog.cpp:421
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr "Ruutukaappauksen tallentaminen epäonnistui: %1"

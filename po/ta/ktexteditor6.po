@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-29 00:40+0000\n"
+"POT-Creation-Date: 2025-07-15 00:40+0000\n"
 "PO-Revision-Date: 2025-03-09 16:48+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -4557,7 +4557,7 @@ msgstr "பின்னணி"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>தொகுக்கும் பரப்பின் பின்னணி வண்ணத்தை அமை</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:268
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:265
 #, fuzzy, kde-format
 #| msgid "Line numbers:"
 msgid "Line Numbers"
@@ -7974,60 +7974,60 @@ msgstr "முன்னிருப்பு குறி வகையை அம
 msgid "Disable Annotation Bar"
 msgstr "குறிப்புப்பட்டையை முடக்கு"
 
-#: view/screenshotdialog.cpp:178
+#: view/screenshotdialog.cpp:175
 #, kde-format
 msgid "Save"
 msgstr "சேமி"
 
-#: view/screenshotdialog.cpp:179
+#: view/screenshotdialog.cpp:176
 #, kde-format
 msgid "Copy"
 msgstr "நகலெடு"
 
-#: view/screenshotdialog.cpp:180
+#: view/screenshotdialog.cpp:177
 #, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
 msgstr "பின்புல நிறம்…"
 
-#: view/screenshotdialog.cpp:182
+#: view/screenshotdialog.cpp:179
 #, kde-format
 msgid "Show Extra Decorations"
 msgstr "கூடுதலான அலங்காரங்களைக் காட்டு"
 
-#: view/screenshotdialog.cpp:183
+#: view/screenshotdialog.cpp:180
 #, kde-format
 msgid "Show Window Decorations"
 msgstr "சாளர விளிம்புகளைக் காட்டு"
 
-#: view/screenshotdialog.cpp:188
+#: view/screenshotdialog.cpp:185
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "தன்னியக்க  உள்தள்"
 
-#: view/screenshotdialog.cpp:260
+#: view/screenshotdialog.cpp:257
 #, kde-format
 msgid "Don't Show Line Numbers"
 msgstr "வரி எண்ணைக் காட்டாதே"
 
-#: view/screenshotdialog.cpp:261
+#: view/screenshotdialog.cpp:258
 #, kde-format
 msgid "Show Line Numbers From 1"
 msgstr "வரி எண்ணை 1-இலிருந்து துவங்குவதுபோல் காட்டு"
 
-#: view/screenshotdialog.cpp:262
+#: view/screenshotdialog.cpp:259
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "உண்மையாக வரி எண்ணைக் காட்டு"
 
-#: view/screenshotdialog.cpp:424
+#: view/screenshotdialog.cpp:421
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr "திரைப்பிடிப்பை சேமிப்பது தோல்வியடைந்தது"
 
-#: view/screenshotdialog.cpp:424
+#: view/screenshotdialog.cpp:421
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr "திரைப்பிடிப்பை சேமிப்பது தோல்வியடைந்தது: %1"

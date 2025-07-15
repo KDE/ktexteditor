@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-29 00:40+0000\n"
+"POT-Creation-Date: 2025-07-15 00:40+0000\n"
 "PO-Revision-Date: 2025-06-30 07:42+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -4701,7 +4701,7 @@ msgstr "Area di sfondo"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>Imposta il colore di sfondo del bordo delle icone.</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:268
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:265
 #, kde-format
 msgid "Line Numbers"
 msgstr "Numeri di riga"
@@ -8103,60 +8103,60 @@ msgstr "Imposta tipo di segno predefinito"
 msgid "Disable Annotation Bar"
 msgstr "Disabilita la barra delle annotazioni"
 
-#: view/screenshotdialog.cpp:178
+#: view/screenshotdialog.cpp:175
 #, kde-format
 msgid "Save"
 msgstr "Salva"
 
-#: view/screenshotdialog.cpp:179
+#: view/screenshotdialog.cpp:176
 #, kde-format
 msgid "Copy"
 msgstr "Copia"
 
-#: view/screenshotdialog.cpp:180
+#: view/screenshotdialog.cpp:177
 #, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
 msgstr "Colore di sfondo…"
 
-#: view/screenshotdialog.cpp:182
+#: view/screenshotdialog.cpp:179
 #, kde-format
 msgid "Show Extra Decorations"
 msgstr "Mostra decorazioni aggiuntive"
 
-#: view/screenshotdialog.cpp:183
+#: view/screenshotdialog.cpp:180
 #, kde-format
 msgid "Show Window Decorations"
 msgstr "Mostra decorazioni delle finestre"
 
-#: view/screenshotdialog.cpp:188
+#: view/screenshotdialog.cpp:185
 #, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Acquisisci schermata della selezione"
 
-#: view/screenshotdialog.cpp:260
+#: view/screenshotdialog.cpp:257
 #, kde-format
 msgid "Don't Show Line Numbers"
 msgstr "Non mostrare i numeri di riga"
 
-#: view/screenshotdialog.cpp:261
+#: view/screenshotdialog.cpp:258
 #, kde-format
 msgid "Show Line Numbers From 1"
 msgstr "Mostra i numeri di riga da 1"
 
-#: view/screenshotdialog.cpp:262
+#: view/screenshotdialog.cpp:259
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Mostra i numeri di riga effettivi"
 
-#: view/screenshotdialog.cpp:424
+#: view/screenshotdialog.cpp:421
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr "Salvataggio della schermata non riuscito"
 
-#: view/screenshotdialog.cpp:424
+#: view/screenshotdialog.cpp:421
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr "Salvataggio della schermata non riuscito: %1"

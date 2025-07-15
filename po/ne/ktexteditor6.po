@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-29 00:40+0000\n"
+"POT-Creation-Date: 2025-07-15 00:40+0000\n"
 "PO-Revision-Date: 2007-08-19 14:23+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -4842,7 +4842,7 @@ msgstr "पृष्ठभूमि"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>सम्पादन क्षेत्रको पृष्ठभूमि रङ सेट गर्दछ ।</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:268
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:265
 #, fuzzy, kde-format
 #| msgid "Line numbers:"
 msgid "Line Numbers"
@@ -8290,69 +8290,69 @@ msgstr "पूर्वानिर्धारित चिनो प्रक�
 msgid "Disable Annotation Bar"
 msgstr ""
 
-#: view/screenshotdialog.cpp:178
+#: view/screenshotdialog.cpp:175
 #, fuzzy, kde-format
 #| msgid "Open/Save"
 msgid "Save"
 msgstr "खोल्नुहोस्/ बचत गर्नुहोस्"
 
-#: view/screenshotdialog.cpp:179
+#: view/screenshotdialog.cpp:176
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "Copy"
 msgstr "यस रूपमा फाइल बचत गर्नुहोस्..."
 
-#: view/screenshotdialog.cpp:180
+#: view/screenshotdialog.cpp:177
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
 msgctxt "@action:button"
 msgid "Background Color…"
 msgstr "पृष्ठभूमि रङ..."
 
-#: view/screenshotdialog.cpp:182
+#: view/screenshotdialog.cpp:179
 #, fuzzy, kde-format
 #| msgid "Text Selection Mode"
 msgid "Show Extra Decorations"
 msgstr "पाठ चयन मोड"
 
-#: view/screenshotdialog.cpp:183
+#: view/screenshotdialog.cpp:180
 #, fuzzy, kde-format
 #| msgid "Show i&ndentation lines"
 msgid "Show Window Decorations"
 msgstr "इन्डेन्टेसन रेखा देखाउनुहोस्"
 
-#: view/screenshotdialog.cpp:188
+#: view/screenshotdialog.cpp:185
 #, fuzzy, kde-format
 #| msgid "A&utomatic end of line detection"
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "रेखा खोजको स्वाचालित अन्त्य"
 
-#: view/screenshotdialog.cpp:260
+#: view/screenshotdialog.cpp:257
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Don't Show Line Numbers"
 msgstr "रेखा सङ्ख्या देखाउनुहोस्"
 
-#: view/screenshotdialog.cpp:261
+#: view/screenshotdialog.cpp:258
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show Line Numbers From 1"
 msgstr "रेखा सङ्ख्या देखाउनुहोस्"
 
-#: view/screenshotdialog.cpp:262
+#: view/screenshotdialog.cpp:259
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "रेखा सङ्ख्या देखाउनुहोस्"
 
-#: view/screenshotdialog.cpp:424
+#: view/screenshotdialog.cpp:421
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr ""
 
-#: view/screenshotdialog.cpp:424
+#: view/screenshotdialog.cpp:421
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr ""

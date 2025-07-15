@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-29 00:40+0000\n"
+"POT-Creation-Date: 2025-07-15 00:40+0000\n"
 "PO-Revision-Date: 2025-06-29 11:23+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -4685,7 +4685,7 @@ msgstr "Область тла"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>Встановлює колір тла смужки піктограм.</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:268
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:265
 #, kde-format
 msgid "Line Numbers"
 msgstr "Номери рядків"
@@ -8086,60 +8086,60 @@ msgstr "Встановити типовий стиль позначки"
 msgid "Disable Annotation Bar"
 msgstr "Вимкнути панель анотування"
 
-#: view/screenshotdialog.cpp:178
+#: view/screenshotdialog.cpp:175
 #, kde-format
 msgid "Save"
 msgstr "Зберегти"
 
-#: view/screenshotdialog.cpp:179
+#: view/screenshotdialog.cpp:176
 #, kde-format
 msgid "Copy"
 msgstr "Копіювати"
 
-#: view/screenshotdialog.cpp:180
+#: view/screenshotdialog.cpp:177
 #, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
 msgstr "Колір тла…"
 
-#: view/screenshotdialog.cpp:182
+#: view/screenshotdialog.cpp:179
 #, kde-format
 msgid "Show Extra Decorations"
 msgstr "Показувати додаткове декорування"
 
-#: view/screenshotdialog.cpp:183
+#: view/screenshotdialog.cpp:180
 #, kde-format
 msgid "Show Window Decorations"
 msgstr "Показувати обрамлення вікна"
 
-#: view/screenshotdialog.cpp:188
+#: view/screenshotdialog.cpp:185
 #, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Зробити знімок позначеного"
 
-#: view/screenshotdialog.cpp:260
+#: view/screenshotdialog.cpp:257
 #, kde-format
 msgid "Don't Show Line Numbers"
 msgstr "Не показувати номери рядків"
 
-#: view/screenshotdialog.cpp:261
+#: view/screenshotdialog.cpp:258
 #, kde-format
 msgid "Show Line Numbers From 1"
 msgstr "Показати номери рядків з 1"
 
-#: view/screenshotdialog.cpp:262
+#: view/screenshotdialog.cpp:259
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Показати справжні номери рядків"
 
-#: view/screenshotdialog.cpp:424
+#: view/screenshotdialog.cpp:421
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr "Не вдалося зберегти знімок"
 
-#: view/screenshotdialog.cpp:424
+#: view/screenshotdialog.cpp:421
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr "Не вдалося зберегти знімок: %1"
