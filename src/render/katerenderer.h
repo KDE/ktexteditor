@@ -295,8 +295,7 @@ public:
      *
      * \param selectionsOnly return decorations for selections and/or dynamic highlighting.
      */
-    QList<QTextLayout::FormatRange>
-    decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly = false, bool skipSelections = false) const;
+    QList<QTextLayout::FormatRange> decorationsForLine(const Kate::TextLine &textLine, int line, bool skipSelections = false) const;
 
     // Width calculators
     qreal spaceWidth() const;
@@ -381,7 +380,7 @@ public:
      */
     void paintTextLineBackground(QPainter &paint, KateLineLayout *layout, int currentViewLine, int xStart, int xEnd);
 
-    void paintTextBackground(QPainter &paint, KateLineLayout *layout, const QList<QTextLayout::FormatRange> &selRanges, const QBrush &br, int xStart) const;
+    void paintTextBackground(QPainter &paint, KateLineLayout *layout, const QList<QTextLayout::FormatRange> &selRanges, int xStart) const;
 
     /**
      * This takes an in index, and returns all the attributes for it.

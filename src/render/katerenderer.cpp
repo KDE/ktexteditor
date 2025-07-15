@@ -419,7 +419,7 @@ static bool rangeLessThanForRenderer(const Kate::TextRange *a, const Kate::TextR
     return a->start().toCursor() < b->start().toCursor();
 }
 
-QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly, bool skipSelections) const
+QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool skipSelections) const
 {
     // limit number of attributes we can highlight in reasonable time
     const int limitOfRanges = 1024;
@@ -430,7 +430,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
 
     // Don't compute the highlighting if there isn't going to be any highlighting
     const auto &al = textLine.attributesList();
-    if (!(selectionsOnly || !al.empty() || !rangesWithAttributes.empty())) {
+    if (al.empty() && rangesWithAttributes.empty() && !m_view->selection()) {
         return QList<QTextLayout::FormatRange>();
     }
 
@@ -492,6 +492,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
             backgroundAttribute = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
         }
 
+        backgroundAttribute->setBackground(config()->selectionColor());
         backgroundAttribute->setForeground(attribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->selectedForeground().color());
 
         // Create a range for the current selection
@@ -508,23 +509,8 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
     }
 
     // Calculate the range which we need to iterate in order to get the highlighting for just this line
-    KTextEditor::Cursor currentPosition;
-    KTextEditor::Cursor endPosition;
-    if (!skipSelections && m_view && selectionsOnly) {
-        if (m_view->blockSelection()) {
-            KTextEditor::Range subRange = m_doc->rangeOnLine(m_view->selectionRange(), line);
-            currentPosition = subRange.start();
-            endPosition = subRange.end();
-        } else {
-            KTextEditor::Range rangeNeeded = m_view->selectionRange() & KTextEditor::Range(line, 0, line + 1, 0);
-
-            currentPosition = qMax(KTextEditor::Cursor(line, 0), rangeNeeded.start());
-            endPosition = qMin(KTextEditor::Cursor(line + 1, 0), rangeNeeded.end());
-        }
-    } else {
-        currentPosition = KTextEditor::Cursor(line, 0);
-        endPosition = KTextEditor::Cursor(line + 1, 0);
-    }
+    KTextEditor::Cursor currentPosition = KTextEditor::Cursor(line, 0);
+    const KTextEditor::Cursor endPosition = KTextEditor::Cursor(line + 1, 0);
 
     // Background formats have lower priority so they get overriden by selection
     const KTextEditor::Range selectionRange = m_view->selectionRange();
@@ -589,26 +575,16 @@ void KateRenderer::assignSelectionBrushesFromAttribute(QTextLayout::FormatRange 
     }
 }
 
-void KateRenderer::paintTextBackground(QPainter &paint,
-                                       KateLineLayout *layout,
-                                       const QList<QTextLayout::FormatRange> &selRanges,
-                                       const QBrush &brush,
-                                       int xStart) const
+void KateRenderer::paintTextBackground(QPainter &paint, KateLineLayout *layout, const QList<QTextLayout::FormatRange> &selRanges, int xStart) const
 {
     const bool rtl = layout->isRightToLeft();
 
     for (const auto &sel : selRanges) {
         const int s = sel.start;
         const int e = sel.start + sel.length;
-        QBrush br;
+        QBrush br = sel.format.background();
 
-        // Prefer using the brush supplied by user
-        if (brush != Qt::NoBrush) {
-            br = brush;
-        } else if (sel.format.background() != Qt::NoBrush) {
-            // Otherwise use the brush in format
-            br = sel.format.background();
-        } else {
+        if (br == Qt::NoBrush) {
             // skip if no brush to fill with
             continue;
         }
@@ -722,29 +698,12 @@ void KateRenderer::paintTextLine(QPainter &paint,
             // normal foreground color before drawing text for text that does not
             // set the pen color
             paint.setPen(attribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color());
+
+            // Draw text background
+            const auto decos = decorationsForLine(range->textLine(), range->line(), /*skipSelections=*/!drawSelection);
+            paintTextBackground(paint, range, decos, xStart);
+
             // Draw the text :)
-
-            if (range->layout().textOption().textDirection() == Qt::RightToLeft) {
-                // If the text is RTL, we draw text background ourselves
-                auto decos = decorationsForLine(range->textLine(), range->line(), false);
-                auto sr = view()->selectionRange();
-                auto c = config()->selectionColor();
-                int line = range->line();
-                // Remove "selection" format from decorations
-                // "selection" will get painted below
-                decos.erase(std::remove_if(decos.begin(),
-                                           decos.end(),
-                                           [sr, c, line](const QTextLayout::FormatRange &fr) {
-                                               return sr.overlapsLine(line) && sr.overlapsColumn(fr.start) && fr.format.background().color() == c;
-                                           }),
-                            decos.end());
-                paintTextBackground(paint, range, decos, Qt::NoBrush, xStart);
-            }
-
-            if (drawSelection) {
-                QList<QTextLayout::FormatRange> additionalFormats = decorationsForLine(range->textLine(), range->line(), true);
-                paintTextBackground(paint, range, additionalFormats, config()->selectionColor(), xStart);
-            }
             range->layout().draw(&paint, QPoint(-xStart, 0), QList<QTextLayout::FormatRange>{}, textClipRect);
         }
 
@@ -1277,30 +1236,10 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
     l.setTextOption(opt);
 
     // Syntax highlighting, inbuilt and arbitrary
-    QList<QTextLayout::FormatRange> decorations = decorationsForLine(textLine, lineLayout->line(), /*selectionsOnly=*/false, skipSelections);
-
-    // Qt works badly if you have RTL text and formats set on that text.
-    // It will shape the text according to the given format ranges which
-    // produces incorrect results as a letter in RTL can have a different
-    // shape depending upon where in the word it resides. The resulting output
-    // looks like: وقار vs وق ار, i.e, the ligature قا is broken into ق ا which
-    // is really bad for readability
-    if (opt.textDirection() == Qt::RightToLeft) {
-        // We can fix this to a large extent here by using QGlyphRun etc, but for now
-        // we only fix this for formats which have a background color and a foreground
-        // color that is same as "dsNormal". Reasoning is that, it is unlikely that RTL
-        // text will have a lot of cases where you have partially colored ligatures. BG
-        // formats are different, you can easily have a format that covers a ligature partially
-        // as a result of "Search" or "multiple cursor selection"
-        QColor c = view()->theme().textColor(KSyntaxHighlighting::Theme::Normal);
-        decorations.erase(std::remove_if(decorations.begin(),
-                                         decorations.end(),
-                                         [c](const QTextLayout::FormatRange &fr) {
-                                             return fr.format.hasProperty(QTextFormat::BackgroundBrush)
-                                                 && (fr.format.property(QTextFormat::ForegroundBrush).value<QBrush>().color() == c
-                                                     || fr.format.foreground() == Qt::NoBrush);
-                                         }),
-                          decorations.end());
+    QList<QTextLayout::FormatRange> decorations = decorationsForLine(textLine, lineLayout->line(), skipSelections);
+    // clear background, that is draw separately
+    for (auto &decoration : decorations) {
+        decoration.format.clearBackground();
     }
 
     int firstLineOffset = 0;
