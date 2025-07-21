@@ -64,8 +64,7 @@ private:
 
 private:
     KTextEditor::ViewPrivate *m_view;
-    KToggleAction *m_bookmarkToggle;
-    QAction *m_bookmarkToggleAlt;
+    QAction *m_bookmarkToggle;
     QAction *m_bookmarkClear;
     QAction *m_goNext;
     QAction *m_goPrevious;

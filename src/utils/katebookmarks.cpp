@@ -46,18 +46,12 @@ KateBookmarks::~KateBookmarks() = default;
 
 void KateBookmarks::createActions(KActionCollection *ac)
 {
-    m_bookmarkToggle = new KToggleAction(i18n("Toggle &Bookmark"), this);
+    m_bookmarkToggle = new QAction(i18n("Toggle &Bookmark"), this);
+    ac->addAction(QStringLiteral("bookmarks_toggle"), m_bookmarkToggle);
+    ac->setDefaultShortcut(m_bookmarkToggle, Qt::CTRL | Qt::Key_B);
     m_bookmarkToggle->setIcon(QIcon::fromTheme(QStringLiteral("bookmark-new")));
     m_bookmarkToggle->setWhatsThis(i18n("If a line has no bookmark then add one, otherwise remove it."));
     connect(m_bookmarkToggle, &QAction::triggered, this, &KateBookmarks::toggleBookmark);
-
-    // Create stateless toggle action which can be added to toolbars by the user
-    m_bookmarkToggleAlt = new QAction(m_bookmarkToggle->text(), this);
-    ac->addAction(QStringLiteral("bookmarks_toggle"), m_bookmarkToggleAlt);
-    ac->setDefaultShortcut(m_bookmarkToggleAlt, Qt::CTRL | Qt::Key_B);
-    m_bookmarkToggleAlt->setIcon(m_bookmarkToggle->icon());
-    m_bookmarkToggleAlt->setWhatsThis(m_bookmarkToggle->whatsThis());
-    connect(m_bookmarkToggleAlt, &QAction::triggered, this, &KateBookmarks::toggleBookmark);
 
     m_bookmarkClear = new QAction(i18n("Clear &All Bookmarks"), this);
     ac->addAction(QStringLiteral("bookmarks_clear"), m_bookmarkClear);
@@ -219,7 +213,6 @@ void KateBookmarks::gotoLine(int line)
 void KateBookmarks::bookmarkMenuAboutToShow()
 {
     m_bookmarksMenu->clear();
-    m_bookmarkToggle->setChecked(m_view->doc()->mark(m_view->cursorPosition().line()) & KTextEditor::Document::markType01);
     m_bookmarksMenu->addAction(m_bookmarkToggle);
     m_bookmarksMenu->addAction(m_bookmarkClear);
 
