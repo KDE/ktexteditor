@@ -343,14 +343,15 @@ bool SwapFile::recover(QDataStream &stream, bool checkDigest)
             int column;
             QByteArray text;
             stream >> line >> column >> text;
-            m_document->insertText(KTextEditor::Cursor(line, column), QString::fromUtf8(text.data(), text.size()));
+            QString textStr = QString::fromUtf8(text.data(), text.size());
+            m_document->insertText(KTextEditor::Cursor(line, column), textStr);
 
             // track undo/redo cursor
             if (firstEditInGroup) {
                 firstEditInGroup = false;
                 undoCursor = KTextEditor::Cursor(line, column);
             }
-            redoCursor = KTextEditor::Cursor(line, column + text.size());
+            redoCursor = KTextEditor::Cursor(line, column + textStr.length());
 
             break;
         }
