@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-15 00:40+0000\n"
+"POT-Creation-Date: 2025-07-25 00:39+0000\n"
 "PO-Revision-Date: 2025-06-30 07:42+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -4276,22 +4276,22 @@ msgstr ""
 msgid "The diff command '%1' could not be started."
 msgstr "Il comando diff «%1» non può essere avviato."
 
-#: swapfile/kateswapfile.cpp:633
+#: swapfile/kateswapfile.cpp:634
 #, kde-format
 msgid "The file was not closed properly."
 msgstr "Il file non è stato chiuso correttamente."
 
-#: swapfile/kateswapfile.cpp:636
+#: swapfile/kateswapfile.cpp:637
 #, kde-format
 msgid "View Changes"
 msgstr "Mostra le modifiche"
 
-#: swapfile/kateswapfile.cpp:637
+#: swapfile/kateswapfile.cpp:638
 #, kde-format
 msgid "Recover Data"
 msgstr "Recupera dati"
 
-#: swapfile/kateswapfile.cpp:638
+#: swapfile/kateswapfile.cpp:639
 #, kde-format
 msgid "Discard"
 msgstr "Scarta"

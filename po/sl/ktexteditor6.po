@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-15 00:40+0000\n"
+"POT-Creation-Date: 2025-07-25 00:39+0000\n"
 "PO-Revision-Date: 2025-06-29 07:21+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -4236,22 +4236,22 @@ msgstr ""
 msgid "The diff command '%1' could not be started."
 msgstr "Ukaza za primerjanje razlik »%1« ni bilo mogoče zagnati."
 
-#: swapfile/kateswapfile.cpp:633
+#: swapfile/kateswapfile.cpp:634
 #, kde-format
 msgid "The file was not closed properly."
 msgstr "Datoteka ni bila pravilno zaprta."
 
-#: swapfile/kateswapfile.cpp:636
+#: swapfile/kateswapfile.cpp:637
 #, kde-format
 msgid "View Changes"
 msgstr "Poglej spremembe"
 
-#: swapfile/kateswapfile.cpp:637
+#: swapfile/kateswapfile.cpp:638
 #, kde-format
 msgid "Recover Data"
 msgstr "Obnovi podatke"
 
-#: swapfile/kateswapfile.cpp:638
+#: swapfile/kateswapfile.cpp:639
 #, kde-format
 msgid "Discard"
 msgstr "Zavrzi"

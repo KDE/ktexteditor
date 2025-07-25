@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-15 00:40+0000\n"
+"POT-Creation-Date: 2025-07-25 00:39+0000\n"
 "PO-Revision-Date: 2015-05-31 21:21+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -4124,22 +4124,22 @@ msgstr ""
 msgid "The diff command '%1' could not be started."
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:633
+#: swapfile/kateswapfile.cpp:634
 #, kde-format
 msgid "The file was not closed properly."
 msgstr "Fila ble ikke korrekt lukket."
 
-#: swapfile/kateswapfile.cpp:636
+#: swapfile/kateswapfile.cpp:637
 #, kde-format
 msgid "View Changes"
 msgstr "Vis endringene"
 
-#: swapfile/kateswapfile.cpp:637
+#: swapfile/kateswapfile.cpp:638
 #, kde-format
 msgid "Recover Data"
 msgstr "Gjenopprett data"
 
-#: swapfile/kateswapfile.cpp:638
+#: swapfile/kateswapfile.cpp:639
 #, kde-format
 msgid "Discard"
 msgstr "Forkast"
