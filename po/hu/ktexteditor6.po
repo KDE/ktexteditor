@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-25 00:39+0000\n"
-"PO-Revision-Date: 2025-01-30 14:45+0100\n"
+"PO-Revision-Date: 2025-07-28 22:51+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1523,10 +1523,9 @@ msgstr "Verziókezelt fájlok automatikus újratöltése"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
-#, fuzzy, kde-format
-#| msgid "Auto reload files in version control"
+#, kde-format
 msgid "Auto reload files on external changes"
-msgstr "Verziókezelt fájlok automatikus újratöltése"
+msgstr "Fájlok automatikus újratöltése külső változások esetén"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -3562,10 +3561,9 @@ msgid "No help specified for command '%1' in script %2"
 msgstr "Nincs súgó megadva a(z) „%1” parancshoz ebben a szkriptben: %2"
 
 #: script/katescript.cpp:282
-#, fuzzy, kde-format
-#| msgid "Error loading script %1"
+#, kde-format
 msgid "Error loading script %1: %2"
-msgstr "Nem sikerült betölteni egy szkriptet: %1"
+msgstr "Hiba a(z) %1 szkript betöltésekor: %2"
 
 #: script/katescriptmanager.cpp:310
 #, kde-format
@@ -7538,6 +7536,8 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Kijelölés másolása HTML-ként, a jelenlegi szintaxiskiemelési- és színséma-"
+"beállítások használatával formázottan."
 
 #: view/kateview.cpp:1012
 #, kde-format
@@ -7729,28 +7729,24 @@ msgid "Select to Matching Bracket"
 msgstr "Kijelölés a zárójel párjáig"
 
 #: view/kateview.cpp:1282
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Egy szóval jobbra"
+msgstr "Szótag jobbra"
 
 #: view/kateview.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "A kurzortól jobbra álló karakter kijelölése"
+msgstr "A kurzortól jobbra álló szótag kijelölése"
 
 #: view/kateview.cpp:1296
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Egy szóval balra"
+msgstr "Szótag balra"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "A kurzortól balra álló szó kijelölése"
+msgstr "A kurzortól balra álló szótag kijelölése"
 
 #: view/kateview.cpp:1313
 #, kde-format
@@ -7867,16 +7863,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Ezzel lehet a kijelölt szövegrész behúzását megszüntetni."
 
 #: view/kateview.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "A kurzortól balra álló szó törlése"
+msgstr "A kurzortól balra álló szótag törlése"
 
 #: view/kateview.cpp:1420
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "A kurzortól jobbra álló szó törlése"
+msgstr "A kurzortól jobbra álló szótag törlése"
 
 #: view/kateview.cpp:1441
 #, kde-format
