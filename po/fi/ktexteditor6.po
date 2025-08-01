@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-25 00:39+0000\n"
-"PO-Revision-Date: 2025-03-15 09:28+0200\n"
+"PO-Revision-Date: 2025-07-14 11:54+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -1533,10 +1533,9 @@ msgstr "Virkistä versionhallinnan tiedostot automaattisesti"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
-#, fuzzy, kde-format
-#| msgid "Auto reload files in version control"
+#, kde-format
 msgid "Auto reload files on external changes"
-msgstr "Virkistä versionhallinnan tiedostot automaattisesti"
+msgstr "Virkistä ulkoisesti muuttuneet tiedostot automaattisesti"
 
 # *** TARKISTA: ”For” jää kääntämättä, koska ei tiedä, mitä seuraa
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -3562,10 +3561,9 @@ msgid "No help specified for command '%1' in script %2"
 msgstr "Komennolle ”%1” ei ole määritelty ohjetta skriptissä %2"
 
 #: script/katescript.cpp:282
-#, fuzzy, kde-format
-#| msgid "Error loading script %1"
+#, kde-format
 msgid "Error loading script %1: %2"
-msgstr "Virhe ladattaessa skriptiä %1"
+msgstr "Virhe ladattaessa skriptiä %1: %2"
 
 #: script/katescriptmanager.cpp:310
 #, kde-format
