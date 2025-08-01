@@ -2554,6 +2554,10 @@ void KateIconBorder::contextMenuEvent(QContextMenuEvent *e)
 
     KActionCollection *ac = m_view->actionCollection();
 
+    // NOTE Assumes cursor position was updated before the menu opens
+    if (QAction *bookmarkToggle = ac->action(QStringLiteral("bookmarks_toggle"))) {
+        menu.addAction(bookmarkToggle);
+    }
     if (QAction *bookmarkClear = ac->action(QStringLiteral("bookmarks_clear"))) {
         menu.addAction(bookmarkClear);
     }
