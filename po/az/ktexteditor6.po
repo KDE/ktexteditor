@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2023-02-18 21:30+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -5115,8 +5115,9 @@ msgid "Normal"
 msgstr "Adi mətn"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "Əlfəcini yara&dın"
 
 #: utils/katebookmarks.cpp:53
@@ -5134,7 +5135,7 @@ msgstr "Əlfəcinlərin h&amısını silin"
 msgid "Remove all bookmarks of the current document."
 msgstr "Cari sənədin bütün əlfəcinlərini silin."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Növbəti əlfəcin"
@@ -5144,7 +5145,7 @@ msgstr "Növbəti əlfəcin"
 msgid "Go to the next bookmark."
 msgstr "Növbəti əlfəcinə keçin"
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Əvvəllki əlfəcin"

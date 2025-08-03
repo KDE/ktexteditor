@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2008-11-10 22:45+0100\n"
 "Last-Translator: Eduard Werner <edi.werner@gmx.de>\n"
 "Language-Team: en_US <kde-i18n-doc@lists.kde.org>\n"
@@ -4859,9 +4859,10 @@ msgid "Normal"
 msgstr ""
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Bookmark"
+msgid "Toggle &Bookmark"
+msgstr "Lubušk"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -4878,7 +4879,7 @@ msgstr ""
 msgid "Remove all bookmarks of the current document."
 msgstr ""
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr ""
@@ -4888,7 +4889,7 @@ msgstr ""
 msgid "Go to the next bookmark."
 msgstr ""
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr ""

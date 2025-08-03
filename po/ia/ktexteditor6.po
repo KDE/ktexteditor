@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2025-05-27 12:28+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
@@ -5130,8 +5130,9 @@ msgid "Normal"
 msgstr "Normal"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "Fixa marcator de li&bro"
 
 #: utils/katebookmarks.cpp:53
@@ -5150,7 +5151,7 @@ msgstr "Netta tote m&arcatores de libro"
 msgid "Remove all bookmarks of the current document."
 msgstr "Remove omne marcatores de libro de documento currente"
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Proxime marcator de libro"
@@ -5160,7 +5161,7 @@ msgstr "Proxime marcator de libro"
 msgid "Go to the next bookmark."
 msgstr "Vade al proxime marcator de libro"
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Previe marcator de libro"

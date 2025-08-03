@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2007-08-19 14:23+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -5331,8 +5331,9 @@ msgid "Normal"
 msgstr "सामान्य"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "पुस्तकचिनो सेट गर्नुहोस्"
 
 #: utils/katebookmarks.cpp:53
@@ -5350,7 +5351,7 @@ msgstr "सबै पुस्तकचिनो खाली गर्नुह
 msgid "Remove all bookmarks of the current document."
 msgstr "हालका कागजातको सबै पुस्तकचिनो हटाउनुहोस् ।"
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "पछिल्लो पुस्तकचिनो"
@@ -5360,7 +5361,7 @@ msgstr "पछिल्लो पुस्तकचिनो"
 msgid "Go to the next bookmark."
 msgstr "पछिल्लो पुस्तकचिनोमा जानुहोस्"
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "अघिल्लो पुस्तकचिनो"

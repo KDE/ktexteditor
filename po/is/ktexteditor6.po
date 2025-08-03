@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2024-09-26 13:25+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -5083,8 +5083,9 @@ msgid "Normal"
 msgstr "Venjulegt"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "Bæta við &bókamerki"
 
 #: utils/katebookmarks.cpp:53
@@ -5102,7 +5103,7 @@ msgstr "Eyða ö&llum bókamerkjum"
 msgid "Remove all bookmarks of the current document."
 msgstr "Eyða öllum bókamerkjum úr núverandi skjali."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Næsta bókamerki"
@@ -5112,7 +5113,7 @@ msgstr "Næsta bókamerki"
 msgid "Go to the next bookmark."
 msgstr "Fara á næsta bókamerki."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Fyrra bókamerki"

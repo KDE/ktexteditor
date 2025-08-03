@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2014-09-18 23:44+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -5299,8 +5299,9 @@ msgid "Normal"
 msgstr "Normaal"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "&Leesteken setten"
 
 #: utils/katebookmarks.cpp:53
@@ -5319,7 +5320,7 @@ msgstr "&All Leestekens wegdoon"
 msgid "Remove all bookmarks of the current document."
 msgstr "All Leestekens vun dat aktive Dokment wegdoon."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Nakamen Leesteken"
@@ -5329,7 +5330,7 @@ msgstr "Nakamen Leesteken"
 msgid "Go to the next bookmark."
 msgstr "Na't nakamen Leesteken gahn"
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Verleden Leesteken"

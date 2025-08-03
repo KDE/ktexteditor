@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2019-09-29 12:28+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -5232,9 +5232,10 @@ msgid "Normal"
 msgstr "Муқаррарӣ"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
-msgstr "&Гузориши оянда"
+#, fuzzy, kde-format
+#| msgid "Clear &Bookmark"
+msgid "Toggle &Bookmark"
+msgstr "&Монданиро ҳузф кунед"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -5253,7 +5254,7 @@ msgstr "Тамоми гузоришҳоро &тасҳеҳ диҳед"
 msgid "Remove all bookmarks of the current document."
 msgstr "Ҳама монданҳо дар ин ҳуҷҷат нобуд кунед."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Мондани оянда"
@@ -5263,7 +5264,7 @@ msgstr "Мондани оянда"
 msgid "Go to the next bookmark."
 msgstr "Ба мондани оянда равед."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Мондани пешина"
@@ -8584,6 +8585,9 @@ msgstr ""
 msgid "Mark not set: %1"
 msgstr "Ҷудокунии Намуди %1"
 
+#~ msgid "Set &Bookmark"
+#~ msgstr "&Гузориши оянда"
+
 #, fuzzy
 #~| msgid "File Was Deleted on Disk"
 #~ msgid "The file '%1' was created on disk."
@@ -10974,9 +10978,6 @@ msgstr "Ҷудокунии Намуди %1"
 #~ "кунед.\n"
 #~ "Дар инҷо қайд кардан лозим аст, ки чунин тағйиротҳо худкорона ба рӯйхати "
 #~ "вусъати файл, қайд карда мешаванд."
-
-#~ msgid "Clear &Bookmark"
-#~ msgstr "&Монданиро ҳузф кунед"
 
 #~ msgid "Hide Folding &Markers"
 #~ msgstr "Пинҳон кардани тобиши &маркерҳо"

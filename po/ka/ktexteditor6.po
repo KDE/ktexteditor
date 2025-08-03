@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2025-06-29 04:13+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -5066,8 +5066,9 @@ msgid "Normal"
 msgstr "ნორმალური"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "&სანიშნის დასმა"
 
 #: utils/katebookmarks.cpp:53
@@ -5085,7 +5086,7 @@ msgstr "ყველა სანიშნის &წაშლა"
 msgid "Remove all bookmarks of the current document."
 msgstr "ამ დოკუმენტისთვის ყველა სანიშნის წაშლა."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "შემდეგი სანიშნი"
@@ -5095,7 +5096,7 @@ msgstr "შემდეგი სანიშნი"
 msgid "Go to the next bookmark."
 msgstr "შემდეგ სანიშნზე გადასვლა."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "წინა სანიშნი"

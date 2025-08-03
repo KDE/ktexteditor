@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2025-06-25 21:43+0200\n"
 "Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -5162,8 +5162,9 @@ msgid "Normal"
 msgstr "Normal"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "&Lesezeichen setzen"
 
 #: utils/katebookmarks.cpp:53
@@ -5183,7 +5184,7 @@ msgstr "&Alle Lesezeichen löschen"
 msgid "Remove all bookmarks of the current document."
 msgstr "Entfernt alle Lesezeichen im aktiven Dokument."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Nächstes Lesezeichen"
@@ -5193,7 +5194,7 @@ msgstr "Nächstes Lesezeichen"
 msgid "Go to the next bookmark."
 msgstr "Zum nächsten Lesezeichen gehen."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Vorheriges Lesezeichen"

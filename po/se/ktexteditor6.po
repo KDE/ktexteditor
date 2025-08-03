@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2010-08-28 22:06+0200\n"
 "Last-Translator: Børre Gaup <boerre@skolelinux.no>\n"
 "Language-Team: Northern Sami <l10n-no@lister.huftis.org>\n"
@@ -4835,8 +4835,9 @@ msgid "Normal"
 msgstr "Dábálaš"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "Ráhkat &girjemearkka"
 
 #: utils/katebookmarks.cpp:53
@@ -4854,7 +4855,7 @@ msgstr "Sálke &buot girjemearkkaid"
 msgid "Remove all bookmarks of the current document."
 msgstr "Váldde eret buot girjemearkkaid dálá dokumeanttas."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Čuovvovaš girjemearka"
@@ -4864,7 +4865,7 @@ msgstr "Čuovvovaš girjemearka"
 msgid "Go to the next bookmark."
 msgstr "Mana čuovvovaš girjemerkii."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Ovddit girjemearka"

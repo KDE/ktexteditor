@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2014-01-31 20:37+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: bosanski <bs@li.org>\n"
@@ -5285,8 +5285,9 @@ msgid "Normal"
 msgstr "obično"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "Postavi &obilježivač"
 
 #: utils/katebookmarks.cpp:53
@@ -5304,7 +5305,7 @@ msgstr "Ukloni &sve obilježivače"
 msgid "Remove all bookmarks of the current document."
 msgstr "Ukloni sve obilježivače iz tekućeg dokumenta."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Sljedeći obilježivač"
@@ -5314,7 +5315,7 @@ msgstr "Sljedeći obilježivač"
 msgid "Go to the next bookmark."
 msgstr "Idi na sljedeći obilježivač."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Prethodni obilježivač"

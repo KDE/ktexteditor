@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2010-06-06 14:00+0200\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -5113,9 +5113,9 @@ msgid "Normal"
 msgstr "Normalno"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
-msgstr "Postavi &oznaku"
+#, fuzzy, kde-format
+msgid "Toggle &Bookmark"
+msgstr "Obriši oznake"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -5132,7 +5132,7 @@ msgstr "Očisti sve ozn&ake"
 msgid "Remove all bookmarks of the current document."
 msgstr "Uklanje sve oznake u trenutnom dokumentu."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Sljedeća oznaka"
@@ -5142,7 +5142,7 @@ msgstr "Sljedeća oznaka"
 msgid "Go to the next bookmark."
 msgstr "Kreće na slijedeću oznaku."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Prethodna oznaka"
@@ -8466,6 +8466,9 @@ msgstr "'%1' %2,  Heksa %3,  Okta %4"
 msgid "Mark not set: %1"
 msgstr "Oznaka nije postavljena: %1"
 
+#~ msgid "Set &Bookmark"
+#~ msgstr "Postavi &oznaku"
+
 #, fuzzy
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr ""
@@ -10732,10 +10735,6 @@ msgstr "Oznaka nije postavljena: %1"
 #~ "Izaberite Mime tipove koje želite osvjetliti koristeći '%1' pravila. \n"
 #~ "Molim uočite da će to automatski urediti i pridružene nastavke imena "
 #~ "datoteka. "
-
-#, fuzzy
-#~ msgid "Clear &Bookmark"
-#~ msgstr "Obriši oznake"
 
 #, fuzzy
 #~ msgid "Hide Folding &Markers"

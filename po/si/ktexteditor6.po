@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2011-07-24 15:43+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -5282,8 +5282,9 @@ msgid "Normal"
 msgstr "සාමාන්‍යය"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "පිටු සළකුණ තබන්න (~B)"
 
 #: utils/katebookmarks.cpp:53
@@ -5301,7 +5302,7 @@ msgstr "පොත්සලකුණු සියල්ල හිස් කරන
 msgid "Remove all bookmarks of the current document."
 msgstr "වත්මන් ලිපියේ සියළි පිටු සළකුණු ඉවත් කරන්න."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "ඊළඟ පිටු සළකුණ"
@@ -5311,7 +5312,7 @@ msgstr "ඊළඟ පිටු සළකුණ"
 msgid "Go to the next bookmark."
 msgstr "ඊළඟ පිටු සළකුණට යන්න."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "පෙර පිටු සළකුණ"

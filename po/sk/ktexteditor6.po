@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2023-12-12 19:23+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -5086,8 +5086,9 @@ msgid "Normal"
 msgstr "Normálne"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "Nastaviť zá&ložku"
 
 #: utils/katebookmarks.cpp:53
@@ -5105,7 +5106,7 @@ msgstr "Zmazať &všetky záložky"
 msgid "Remove all bookmarks of the current document."
 msgstr "Odstrániť všetky záložky z aktuálneho dokumentu."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Nasledujúca záložka"
@@ -5115,7 +5116,7 @@ msgstr "Nasledujúca záložka"
 msgid "Go to the next bookmark."
 msgstr "Prejsť na ďalšiu nasledujúcu záložku."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Predchádzajúca záložka"

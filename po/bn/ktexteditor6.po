@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2005-01-04 11:33-0600\n"
 "Last-Translator: Deepayan Sarkar <deepayan@bengalinux.org>\n"
 "Language-Team: Bengali <kde-translation@bengalinux.org>\n"
@@ -4874,8 +4874,9 @@ msgstr "স্বাভাবিক"
 
 #: utils/katebookmarks.cpp:49
 #, fuzzy, kde-format
-msgid "Set &Bookmark"
-msgstr "পরবর্তী বুকমার্ক"
+#| msgid "Clear &Bookmark"
+msgid "Toggle &Bookmark"
+msgstr "বু&কমার্ক ফাঁকা করো "
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -4892,7 +4893,7 @@ msgstr "&সব বুকমার্ক ফাঁকা করো "
 msgid "Remove all bookmarks of the current document."
 msgstr "বর্তমান ডকুমেন্ট থেকে সব বুকমার্ক মুছে ফেলো"
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "পরবর্তী বুকমার্ক"
@@ -4902,7 +4903,7 @@ msgstr "পরবর্তী বুকমার্ক"
 msgid "Go to the next bookmark."
 msgstr "পরবর্তী বুকমার্ক-এ যাও"
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "পূর্ববর্তী বুকমার্ক"
@@ -8043,6 +8044,10 @@ msgid "Mark not set: %1"
 msgstr "ধরন ১"
 
 #, fuzzy
+#~ msgid "Set &Bookmark"
+#~ msgstr "পরবর্তী বুকমার্ক"
+
+#, fuzzy
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr ""
 #~ "অপর একটি প্রোগ্রাম %1 ফাইলটিকে ডিস্ক-এ পাল্টেছে (মুছে ফেলেছে)!\n"
@@ -9960,9 +9965,6 @@ msgstr "ধরন ১"
 #~ msgstr ""
 #~ "টি আপনি চাই চিহ্নিত ব্যবহার করে টি বাক্যরীতি নিয়ম নোট ঐ এই   স্বয়ংক্রীয়ভাবে "
 #~ "সম্পাদন, বদলানো, এডিট টি সংশ্লিষ্ট ফাইল বর্ধিতাংশ   ভাল."
-
-#~ msgid "Clear &Bookmark"
-#~ msgstr "বু&কমার্ক ফাঁকা করো "
 
 #, fuzzy
 #~ msgid "Hide &Icon Border"

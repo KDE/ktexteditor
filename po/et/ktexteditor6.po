@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -5205,8 +5205,9 @@ msgid "Normal"
 msgstr "Tavaline"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "Sea &järjehoidja"
 
 #: utils/katebookmarks.cpp:53
@@ -5224,7 +5225,7 @@ msgstr "Kõrvalda &kõik järjehoidjad"
 msgid "Remove all bookmarks of the current document."
 msgstr "Eemaldab kõik aktiivse dokumendi järjehoidjad."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Järgmine järjehoidja"
@@ -5234,7 +5235,7 @@ msgstr "Järgmine järjehoidja"
 msgid "Go to the next bookmark."
 msgstr "Mine järgmise järjehoidja juurde."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Eelmine järjehoidja"

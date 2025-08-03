@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2002-11-14 16:59SAST\n"
 "Last-Translator: Lwandle Mgidlana <lwandle@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -4963,8 +4963,8 @@ msgstr "Eqhelekileyo"
 
 #: utils/katebookmarks.cpp:49
 #, fuzzy, kde-format
-msgid "Set &Bookmark"
-msgstr "Inqaku lencwadi elilandelayo"
+msgid "Toggle &Bookmark"
+msgstr "Cacisa amanqaku lencwadi"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -4982,7 +4982,7 @@ msgstr "Cacisa amanqaku lencwadi"
 msgid "Remove all bookmarks of the current document."
 msgstr "Susa onke amanqaku encwadi oxwebhu lwangoku."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Inqaku lencwadi elilandelayo"
@@ -4992,7 +4992,7 @@ msgstr "Inqaku lencwadi elilandelayo"
 msgid "Go to the next bookmark."
 msgstr "Yiya kwelona nqaku lencwadi elikufutshane."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Inqaku lencwadi elidlulileyo"
@@ -8231,6 +8231,10 @@ msgid "Mark not set: %1"
 msgstr "Phawula Uhlobo %1"
 
 #, fuzzy
+#~ msgid "Set &Bookmark"
+#~ msgstr "Inqaku lencwadi elilandelayo"
+
+#, fuzzy
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "Ifayile Itshintshile kwi Diski"
 
@@ -10147,10 +10151,6 @@ msgstr "Phawula Uhlobo %1"
 #~ "yophawulo lesivakalisi.\n"
 #~ "Nceda qaphela ukuba oku kuzakuhlela ngokuzenzekelayo izandiso zefayile "
 #~ "ezayamanisiweyo nazo."
-
-#, fuzzy
-#~ msgid "Clear &Bookmark"
-#~ msgstr "Cacisa amanqaku lencwadi"
 
 #, fuzzy
 #~ msgid "Hide &Icon Border"

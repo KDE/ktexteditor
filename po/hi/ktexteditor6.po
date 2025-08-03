@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2024-12-15 19:31+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -5107,9 +5107,10 @@ msgid "Normal"
 msgstr "सामान्य"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
-msgstr "पुस्तचिन्ह सेट करें (&B)"
+#, fuzzy, kde-format
+#| msgid "Clear &Bookmark"
+msgid "Toggle &Bookmark"
+msgstr "पसंदीदा साफ करें (&B)"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -5126,7 +5127,7 @@ msgstr "सभी पसंद साफ करें (&A)"
 msgid "Remove all bookmarks of the current document."
 msgstr "मौज़ूदा दस्तावेज़ के सभी पसंदीदा को हटाएँ"
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "अगला पुस्तचिन्ह "
@@ -5136,7 +5137,7 @@ msgstr "अगला पुस्तचिन्ह "
 msgid "Go to the next bookmark."
 msgstr "अगले पसंदीदा पर जाएँ"
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "पिछला पुस्तचिन्ह "
@@ -8429,6 +8430,9 @@ msgstr ""
 msgid "Mark not set: %1"
 msgstr "मार्क टाइप %1"
 
+#~ msgid "Set &Bookmark"
+#~ msgstr "पुस्तचिन्ह सेट करें (&B)"
+
 #, fuzzy
 #~| msgid "The file '%1' was created by another program."
 #~ msgid "The file '%1' was created on disk."
@@ -11074,9 +11078,6 @@ msgstr "मार्क टाइप %1"
 
 #~ msgid "Smart search t&ext from:"
 #~ msgstr "स्मार्ट खोज पाठ से: (&e)"
-
-#~ msgid "Clear &Bookmark"
-#~ msgstr "पसंदीदा साफ करें (&B)"
 
 #~ msgid "(c) 2000-2004 The Kate Authors"
 #~ msgstr "(c) 2000-2004 केएटीई के लेखकगण"

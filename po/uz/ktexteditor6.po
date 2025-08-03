@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2006-10-01 21:04+0000\n"
 "Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
 "Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
@@ -4959,8 +4959,9 @@ msgstr "Oddiy"
 
 #: utils/katebookmarks.cpp:49
 #, fuzzy, kde-format
-msgid "Set &Bookmark"
-msgstr "Keyingi xatchoʻplar"
+#| msgid "Clear &Bookmark"
+msgid "Toggle &Bookmark"
+msgstr "Xatchoʻpni &tozalash"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -4977,7 +4978,7 @@ msgstr "Xatchoʻp&larni tozalash"
 msgid "Remove all bookmarks of the current document."
 msgstr "Joriy hujjatning hamma xatchoʻplarini olib tashlash."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Keyingi xatchoʻplar"
@@ -4987,7 +4988,7 @@ msgstr "Keyingi xatchoʻplar"
 msgid "Go to the next bookmark."
 msgstr "Keyingi xatchoʻpga oʻtish."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Oldingi xatchoʻp"
@@ -8192,6 +8193,10 @@ msgid "Mark not set: %1"
 msgstr " Satr: %1"
 
 #, fuzzy
+#~ msgid "Set &Bookmark"
+#~ msgstr "Keyingi xatchoʻplar"
+
+#, fuzzy
 #~| msgid "File Was Deleted on Disk"
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "Diskdagi fayl oʻchirildi"
@@ -9743,9 +9748,6 @@ msgstr " Satr: %1"
 #, fuzzy
 #~ msgid "Script Manager"
 #~ msgstr "Plagin boshqaruvchisi"
-
-#~ msgid "Clear &Bookmark"
-#~ msgstr "Xatchoʻpni &tozalash"
 
 #~ msgid "Hide &Line Numbers"
 #~ msgstr "Satr tartib raqamlarini &bekitish"

@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
-"PO-Revision-Date: 2025-06-29 09:31+0300\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
+"PO-Revision-Date: 2025-08-02 21:41+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -4994,8 +4994,9 @@ msgid "Normal"
 msgstr "רגיל"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "הגדרת &סימנייה"
 
 #: utils/katebookmarks.cpp:53
@@ -5013,7 +5014,7 @@ msgstr "ניקוי &כל הסימניות"
 msgid "Remove all bookmarks of the current document."
 msgstr "הסרת כל הסימניות מהמסמך הנוכחי."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "הסימנייה הבאה"
@@ -5023,7 +5024,7 @@ msgstr "הסימנייה הבאה"
 msgid "Go to the next bookmark."
 msgstr "מעבר לסימנייה הבאה."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "הסימנייה הקודמת"
@@ -5963,12 +5964,12 @@ msgstr "מספר עמודת מקום סמן הטקסט במסמך הנוכחי (
 #: utils/katevariableexpansionmanager.cpp:110
 #, kde-format
 msgid "X component in global screen coordinates of the cursor position."
-msgstr "רכיב X בנקודות ציון במסך באופן כללי של מקום הסמן."
+msgstr "רכיב X בנקודות ציון במסך באופן מקיף של מקום הסמן."
 
 #: utils/katevariableexpansionmanager.cpp:117
 #, kde-format
 msgid "Y component in global screen coordinates of the cursor position."
-msgstr "רכיב Y בנקודות ציון במסך באופן כללי של מקום הסמן."
+msgstr "רכיב Y בנקודות ציון במסך באופן מקיף של מקום הסמן."
 
 #: utils/katevariableexpansionmanager.cpp:124
 #, kde-format

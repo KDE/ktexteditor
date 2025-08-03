@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -5101,8 +5101,9 @@ msgid "Normal"
 msgstr "Thường"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "Đặt &dấu nhớ"
 
 #: utils/katebookmarks.cpp:53
@@ -5120,7 +5121,7 @@ msgstr "Xoá &hết các dấu nhớ"
 msgid "Remove all bookmarks of the current document."
 msgstr "Xoá tất cả các dấu nhớ của tài liệu hiện tại."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Dấu nhớ sau"
@@ -5130,7 +5131,7 @@ msgstr "Dấu nhớ sau"
 msgid "Go to the next bookmark."
 msgstr "Đi đến dấu nhớ sau."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Dấu nhớ trước"

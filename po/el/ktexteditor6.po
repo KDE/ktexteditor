@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2024-09-22 18:40+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -5260,8 +5260,9 @@ msgid "Normal"
 msgstr "Κανονικό"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "Ορισμός &σελιδοδείκτη"
 
 #: utils/katebookmarks.cpp:53
@@ -5280,7 +5281,7 @@ msgstr "Καθαρισμός όλων &των σελιδοδεικτών"
 msgid "Remove all bookmarks of the current document."
 msgstr "Αφαίρεση όλων των σελιδοδεικτών του τρέχοντος εγγράφου."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Επόμενος σελιδοδείκτης"
@@ -5290,7 +5291,7 @@ msgstr "Επόμενος σελιδοδείκτης"
 msgid "Go to the next bookmark."
 msgstr "Μετάβαση στον επόμενο σελιδοδείκτη."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Προηγούμενος σελιδοδείκτης"

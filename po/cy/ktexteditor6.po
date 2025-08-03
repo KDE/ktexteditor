@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2003-11-12 14:22+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -4874,9 +4874,9 @@ msgid "Normal"
 msgstr "Arferol"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
-msgstr "Gosod &Tudnod"
+#, fuzzy, kde-format
+msgid "Toggle &Bookmark"
+msgstr "Nod Tudalen"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -4893,7 +4893,7 @@ msgstr ""
 msgid "Remove all bookmarks of the current document."
 msgstr ""
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr ""
@@ -4903,7 +4903,7 @@ msgstr ""
 msgid "Go to the next bookmark."
 msgstr ""
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr ""
@@ -8074,6 +8074,9 @@ msgstr ""
 msgid "Mark not set: %1"
 msgstr "Llinell: %1 "
 
+#~ msgid "Set &Bookmark"
+#~ msgstr "Gosod &Tudnod"
+
 #, fuzzy
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "Mae'r Ffeil wedi Newid ar Dddisg"
@@ -9131,10 +9134,6 @@ msgstr "Llinell: %1 "
 #, fuzzy
 #~ msgid "Script Manager"
 #~ msgstr "Rheolydd Ategynion"
-
-#, fuzzy
-#~ msgid "Clear &Bookmark"
-#~ msgstr "Nod Tudalen"
 
 #, fuzzy
 #~ msgid "Hide &Line Numbers"

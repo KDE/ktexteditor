@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2025-07-20 01:44+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -4980,8 +4980,9 @@ msgid "Normal"
 msgstr "일반"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "책갈피 설정(&B)"
 
 #: utils/katebookmarks.cpp:53
@@ -4999,7 +5000,7 @@ msgstr "모든 책갈피 삭제(&A)"
 msgid "Remove all bookmarks of the current document."
 msgstr "현재 문서의 모든 책갈피를 삭제합니다."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "다음 책갈피"
@@ -5009,7 +5010,7 @@ msgstr "다음 책갈피"
 msgid "Go to the next bookmark."
 msgstr "다음 책갈피로 이동합니다."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "이전 책갈피"

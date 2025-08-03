@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2009-01-19 13:14+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <maithili.sf.net>\n"
@@ -5121,8 +5121,9 @@ msgid "Normal"
 msgstr "सामान्य"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "मनपसिन्न सेट करू (&B)"
 
 #: utils/katebookmarks.cpp:53
@@ -5140,7 +5141,7 @@ msgstr "सभटा पसिन्न साफ करू (&A)"
 msgid "Remove all bookmarks of the current document."
 msgstr "मोजुदा दस्ताबेज केर सबहि  मनपसिन्न  केँ हटाबू"
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "अगिला  मनपसिन्न "
@@ -5150,7 +5151,7 @@ msgstr "अगिला  मनपसिन्न "
 msgid "Go to the next bookmark."
 msgstr "अगिला  मनपसिन्न  पर जाउ"
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "पछिला  मनपसिन्न "

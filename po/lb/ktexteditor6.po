@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2006-05-02 17:35+0200\n"
 "Last-Translator: Michel Ludwig <michel.ludwig@kdemail.net>\n"
 "Language-Team: Luxembourgish <kde-i18n-lb@kde.org>\n"
@@ -5000,9 +5000,10 @@ msgid "Normal"
 msgstr "Normal"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
-msgstr "Lies&zeechen setzen"
+#, fuzzy, kde-format
+#| msgid "Clear &Bookmark"
+msgid "Toggle &Bookmark"
+msgstr "Lies&zeeche läschen"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -5021,7 +5022,7 @@ msgstr "&All d'Lieszeeche läschen"
 msgid "Remove all bookmarks of the current document."
 msgstr "Maach all d'Lieszeeche vum aktuellen Dokument ewech."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Näscht Lieszeechen"
@@ -5031,7 +5032,7 @@ msgstr "Näscht Lieszeechen"
 msgid "Go to the next bookmark."
 msgstr "Zum nächste Lieszeeche goen."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Lieszeeche virdrun"
@@ -8230,6 +8231,9 @@ msgstr ""
 msgid "Mark not set: %1"
 msgstr "Markéierungstyp %1"
 
+#~ msgid "Set &Bookmark"
+#~ msgstr "Lies&zeechen setzen"
+
 #, fuzzy
 #~| msgid "The file '%1' was created by another program."
 #~ msgid "The file '%1' was created on disk."
@@ -9939,9 +9943,6 @@ msgstr "Markéierungstyp %1"
 #, fuzzy
 #~ msgid "Script Manager"
 #~ msgstr "Plugin-Manager"
-
-#~ msgid "Clear &Bookmark"
-#~ msgstr "Lies&zeeche läschen"
 
 #~ msgid "Continue from the beginning?"
 #~ msgstr "Vum Ufank u weidermaachen ?"

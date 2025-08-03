@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2025-02-23 13:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -5073,8 +5073,9 @@ msgid "Normal"
 msgstr "Normala"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "Meti &Legosignon"
 
 #: utils/katebookmarks.cpp:53
@@ -5092,7 +5093,7 @@ msgstr "Forigi Ĉ&iujn Legosignojn"
 msgid "Remove all bookmarks of the current document."
 msgstr "Forigi ĉiujn legosignojn de la aktuala dokumento"
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Sekva legosigno"
@@ -5102,7 +5103,7 @@ msgstr "Sekva legosigno"
 msgid "Go to the next bookmark."
 msgstr "Iri al la sekva legosigno."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Antaŭa Legosigno"

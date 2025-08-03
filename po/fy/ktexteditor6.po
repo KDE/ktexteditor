@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2009-05-22 10:03+0100\n"
 "Last-Translator: Berend Ytsma <berendy@gmail.com>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -5456,8 +5456,9 @@ msgid "Normal"
 msgstr "Normaal"
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "&Blêdwizer ynstelle"
 
 #: utils/katebookmarks.cpp:53
@@ -5477,7 +5478,7 @@ msgstr "&Alle blêdwizers fuortsmite"
 msgid "Remove all bookmarks of the current document."
 msgstr "Alle blêdwizers fan it aktive dokumint fuortsmite."
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "Blêdwizer fierder"
@@ -5487,7 +5488,7 @@ msgstr "Blêdwizer fierder"
 msgid "Go to the next bookmark."
 msgstr "Gean neid e folgjende blêdwizer."
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "Foarige blêdwizer"

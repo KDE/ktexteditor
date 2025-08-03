@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-03 00:39+0000\n"
 "PO-Revision-Date: 2019-12-12 21:03+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc-"
@@ -4737,8 +4737,9 @@ msgid "Normal"
 msgstr ""
 
 #: utils/katebookmarks.cpp:49
-#, kde-format
-msgid "Set &Bookmark"
+#, fuzzy, kde-format
+#| msgid "Set &Bookmark"
+msgid "Toggle &Bookmark"
 msgstr "&ഓര്‍മ്മക്കുറിപ്പു് സജ്ജമാക്കുക"
 
 #: utils/katebookmarks.cpp:53
@@ -4756,7 +4757,7 @@ msgstr "&എല്ലാ ഓര്‍മ്മക്കുറിപ്പുക�
 msgid "Remove all bookmarks of the current document."
 msgstr ""
 
-#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
+#: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
 msgstr "അടുത്ത ഓര്‍മ്മക്കുറിപ്പു്"
@@ -4766,7 +4767,7 @@ msgstr "അടുത്ത ഓര്‍മ്മക്കുറിപ്പു�
 msgid "Go to the next bookmark."
 msgstr "അടുത്ത ഓര്‍മ്മക്കുറിപ്പിലേക്കു് പോകുക"
 
-#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:221
+#: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
 msgstr "മുമ്പുള്ള ഓര്‍മ്മക്കുറിപ്പു്"
