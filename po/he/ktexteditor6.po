@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-03 00:39+0000\n"
-"PO-Revision-Date: 2025-08-02 21:41+0300\n"
+"PO-Revision-Date: 2025-08-03 11:10+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -4994,10 +4994,9 @@ msgid "Normal"
 msgstr "רגיל"
 
 #: utils/katebookmarks.cpp:49
-#, fuzzy, kde-format
-#| msgid "Set &Bookmark"
+#, kde-format
 msgid "Toggle &Bookmark"
-msgstr "הגדרת &סימנייה"
+msgstr "החלפת מצב &סימנייה"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format

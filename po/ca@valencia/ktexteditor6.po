@@ -8,20 +8,20 @@
 # Albert Astals Cid <aacid@kde.org>, 2004, 2005.
 # Robert Millan <rmh@aybabtu.com>, 2009.
 # Empar Montoro Martín <montoro_mde@gva.es>, 2019.
-# Josep M. Ferrer <txemaq@gmail.com>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-03 00:39+0000\n"
-"PO-Revision-Date: 2025-06-29 09:04+0200\n"
+"PO-Revision-Date: 2025-08-03 10:57+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 25.04.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -1340,7 +1340,7 @@ msgstr "Tanca el fitxer i descarta el seu contingut."
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "Guar&da com a…"
+msgstr "Anomena i gu&arda…"
 
 #: dialogs/katedialogs.cpp:1486
 #, kde-format
@@ -5112,8 +5112,7 @@ msgstr "Nom per a la còpia del tema de color «%1»:"
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
-msgstr ""
-"<p>El tema %1 ja existix.</p><p>Seleccioneu un nom de tema diferent.</p>"
+msgstr "<p>El tema %1 ja existix.</p><p>Trieu un nom de tema diferent.</p>"
 
 #: syntax/katethemeconfig.cpp:1428
 #, kde-format
@@ -5138,10 +5137,9 @@ msgid "Normal"
 msgstr "Normal"
 
 #: utils/katebookmarks.cpp:49
-#, fuzzy, kde-format
-#| msgid "Set &Bookmark"
+#, kde-format
 msgid "Toggle &Bookmark"
-msgstr "Establix un &punt"
+msgstr "Canvia el &punt"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -7392,8 +7390,7 @@ msgstr "&Final de línia"
 #: view/kateview.cpp:895
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
-msgstr ""
-"Seleccioneu quin final de línia s'haurà d'utilitzar en guardar el document"
+msgstr "Trieu quin final de línia s'haurà d'utilitzar en guardar el document"
 
 #: view/kateview.cpp:896
 #, kde-format

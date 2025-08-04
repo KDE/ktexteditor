@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-03 00:39+0000\n"
-"PO-Revision-Date: 2025-06-29 11:23+0300\n"
+"PO-Revision-Date: 2025-08-03 16:05+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -5121,10 +5121,9 @@ msgid "Normal"
 msgstr "Звичайний"
 
 #: utils/katebookmarks.cpp:49
-#, fuzzy, kde-format
-#| msgid "Set &Bookmark"
+#, kde-format
 msgid "Toggle &Bookmark"
-msgstr "&Встановити закладку"
+msgstr "Пере&мкнути закладку"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format

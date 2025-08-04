@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-03 00:39+0000\n"
-"PO-Revision-Date: 2025-06-29 04:13+0200\n"
+"PO-Revision-Date: 2025-08-03 05:07+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -374,7 +374,7 @@ msgid ""
 "Each new bookmark will be added to the bottom, independently from where it "
 "is placed in the document."
 msgstr ""
-"ყველა ახალი სანიშნი ქვემოთ დაემატება იმის მიუხედავად, ის დოკუმენტში რომელი "
+"ყველა ახალი სანიშნე ქვემოთ დაემატება იმის მიუხედავად, ის დოკუმენტში რომელი "
 "ნაწილიდან მოთავსდა."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByCreation)
@@ -4788,7 +4788,7 @@ msgstr "მარკერის ფერები"
 #: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1529
 #, kde-format
 msgid "Bookmark"
-msgstr "სანიშნი"
+msgstr "სანიშნე"
 
 #: syntax/katethemeconfig.cpp:325
 #, kde-format
@@ -5066,10 +5066,9 @@ msgid "Normal"
 msgstr "ნორმალური"
 
 #: utils/katebookmarks.cpp:49
-#, fuzzy, kde-format
-#| msgid "Set &Bookmark"
+#, kde-format
 msgid "Toggle &Bookmark"
-msgstr "&სანიშნის დასმა"
+msgstr "სანიშნეს გადართ&ვა"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -5079,17 +5078,17 @@ msgstr "თუ ხაზი სანიშნს არ შეიცავს, 
 #: utils/katebookmarks.cpp:56
 #, kde-format
 msgid "Clear &All Bookmarks"
-msgstr "ყველა სანიშნის &წაშლა"
+msgstr "ყველა სანიშნეს &წაშლა"
 
 #: utils/katebookmarks.cpp:59
 #, kde-format
 msgid "Remove all bookmarks of the current document."
-msgstr "ამ დოკუმენტისთვის ყველა სანიშნის წაშლა."
+msgstr "ამ დოკუმენტისთვის ყველა სანიშნეს წაშლა."
 
 #: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:219
 #, kde-format
 msgid "Next Bookmark"
-msgstr "შემდეგი სანიშნი"
+msgstr "შემდეგი სანიშნე"
 
 #: utils/katebookmarks.cpp:66
 #, kde-format
@@ -5099,7 +5098,7 @@ msgstr "შემდეგ სანიშნზე გადასვლა."
 #: utils/katebookmarks.cpp:69 utils/katebookmarks.cpp:220
 #, kde-format
 msgid "Previous Bookmark"
-msgstr "წინა სანიშნი"
+msgstr "წინა სანიშნე"
 
 #: utils/katebookmarks.cpp:73
 #, kde-format

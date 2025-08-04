@@ -4901,10 +4901,9 @@ msgid "Normal"
 msgstr "正常"
 
 #: utils/katebookmarks.cpp:49
-#, fuzzy, kde-format
-#| msgid "Set &Bookmark"
+#, kde-format
 msgid "Toggle &Bookmark"
-msgstr "设置书签(&B)"
+msgstr ""
 
 #: utils/katebookmarks.cpp:53
 #, kde-format

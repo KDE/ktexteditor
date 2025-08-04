@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-03 00:39+0000\n"
-"PO-Revision-Date: 2025-03-09 16:48+0530\n"
+"PO-Revision-Date: 2025-08-03 12:05+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1496,10 +1496,9 @@ msgstr "பதிப்புக் கட்டுப்பாட்டில�
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
-#, fuzzy, kde-format
-#| msgid "Auto reload files in version control"
+#, kde-format
 msgid "Auto reload files on external changes"
-msgstr "பதிப்புக் கட்டுப்பாட்டிலுள்ள கோப்புகளைத் தானாக மீளேற்று"
+msgstr "கோப்பு இன்னொரு நிரலால் மாற்றப்படும்போது அதை மீளேற்று"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -1988,6 +1987,8 @@ msgstr "பொருந்தும் அடைப்புக்குறி�
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
 msgstr ""
+"இது இயக்கப்பட்டிருந்தால், பொருந்தும் அடைப்புகுறிகள் எளிதில் கண்டறியக்கூடிய விதத்தில் "
+"அசைவூட்டப்படும்."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:238
@@ -4880,29 +4881,24 @@ msgstr ""
 "context menu when appropriate.</p>"
 
 #: syntax/katethemeconfig.cpp:1026
-#, fuzzy, kde-format
-#| msgid "Normal Text Styles"
+#, kde-format
 msgid "Default Theme"
-msgstr "சாதாரண உரை தோற்றங்கள்"
+msgstr "இயல்பிருப்பு தோற்றத்திட்டம்"
 
 #: syntax/katethemeconfig.cpp:1027
-#, fuzzy, kde-format
-#| msgid "Choose Editor..."
+#, kde-format
 msgid "Theme Editor"
-msgstr "தொகுப்பானைத் தேர்வுச் செய்க.."
+msgstr "தோற்றத்திட்ட திருத்தி"
 
 #: syntax/katethemeconfig.cpp:1045
-#, fuzzy, kde-format
-#| msgid "Selected text:"
+#, kde-format
 msgid "Select theme:"
-msgstr "தேர்வு  செய்யபட்ட உரை"
+msgstr "தோற்றத்திட்டத்தை தேர்ந்தெடு:"
 
 #: syntax/katethemeconfig.cpp:1118
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Scheme"
+#, kde-format
 msgid "&Theme:"
-msgstr "திட்டமுறை"
+msgstr "தோற்றத்திட்டம்:"
 
 #: syntax/katethemeconfig.cpp:1127
 #, kde-format
