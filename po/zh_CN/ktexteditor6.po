@@ -4903,7 +4903,7 @@ msgstr "正常"
 #: utils/katebookmarks.cpp:49
 #, kde-format
 msgid "Toggle &Bookmark"
-msgstr ""
+msgstr "打开/关闭书签(&B)"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format

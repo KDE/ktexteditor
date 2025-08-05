@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-03 00:39+0000\n"
-"PO-Revision-Date: 2025-08-03 16:04+0400\n"
+"PO-Revision-Date: 2025-08-04 21:57+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -427,13 +427,13 @@ msgstr "عامّ"
 #: dialogs/completionconfigtab.ui:35
 #, kde-format
 msgid "Enable &auto completion"
-msgstr "فعّل الإكمال الآ&ليّ"
+msgstr "مكّن الإكمال الآ&ليّ"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoSelectFirstEntry)
 #: dialogs/completionconfigtab.ui:42
 #, kde-format
 msgid "Auto select &first completion entry"
-msgstr "تحديد آلي &لمدخلة الإكمال الأولى"
+msgstr "تحديد آليّ &لمدخلة الإكمال الأولى"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
 #: dialogs/completionconfigtab.ui:49
@@ -462,7 +462,7 @@ msgstr "استخدم مفتاح الإدخال لإدراج الإكمال ال�
 #: dialogs/completionconfigtab.ui:69
 #, kde-format
 msgid "A&uto word completion"
-msgstr "إ&كمال الكلمات الآلي"
+msgstr "إ&كمال الكلمات الآليّ"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/completionconfigtab.ui:83
@@ -540,8 +540,8 @@ msgid ""
 msgstr ""
 "<p>ابدأ سطرًا جديدًا للنّصّ آليًّا عندما يتعدّى النّصّ الحاليّ الطّول الذي يحدّده خيار "
 "<b>لفّ الكلمات عند:</b>.</p><p>لا يلفّ هذا الخيار الأسطر النّصّيّة الموجودة، "
-"استخدم خيار <b>فعّل لفّ الكلمات سكونيًّا</b> في قائمة <b>أدوات</b> لهذا الغرض.</"
-"p><p>إن أردت أن <i>تبدو الأسطر ملفوفة</i>، وذلك حسب عرض المنظور، ففعّل <b>لفّ "
+"استخدم خيار <b>مكّن لفّ الكلمات الثابت</b> في قائمة <b>أدوات</b> لهذا الغرض.</"
+"p><p>إن أردت أن <i>تبدو الأسطر ملفوفة</i>، وذلك حسب عرض المنظور، فمكّن <b>لفّ "
 "الكلمات حركيًّا</b> في صفحة ضبط <b>المظهر</b>.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkStaticWordWrap)
@@ -586,7 +586,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:91
 #, kde-format
 msgid "Default input mode:"
-msgstr "وضع الدّخل الافتراضيّ:"
+msgstr "وضع الدّخل المبدئي:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/editconfigwidget.ui:120
@@ -598,7 +598,7 @@ msgstr "الأقواس:"
 #: dialogs/editconfigwidget.ui:127
 #, kde-format
 msgid "Automatically close brackets when opening bracket is typed"
-msgstr "أغلق الأقواس آليا عند كتابة القوس الأول"
+msgstr "أغلق الأقواس آليّا عند كتابة القوس الأول"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:140
@@ -607,7 +607,7 @@ msgid ""
 "When some text is selected these chars will be added on both its sides in a "
 "way \"Auto Bracket\" do"
 msgstr ""
-"عند تحديد نص ستضاف هذه المحارف في كلا الطرفين بنفس طريقة \"الأقواس الآلية\""
+"عند تحديد نص ستضاف هذه المحارف في كلا الطرفين بنفس طريقة \"الأقواس الآليّة\""
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:143
@@ -833,7 +833,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:43
 #, kde-format
 msgid "Default indentation mode:"
-msgstr "وضع الإزاحة الافتراضيّ:"
+msgstr "وضع الإزاحة المبدئي:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbMode)
 #: dialogs/indentationconfigwidget.ui:53
@@ -1159,7 +1159,7 @@ msgstr "قد يكون سهلًا مع مارك‌داون"
 #: dialogs/katedialogs.cpp:592
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
-msgstr "محارف معكوسة، تشبه الأقواس التلقائية ولكنها لا تشبهها تمامًا"
+msgstr "محارف معكوسة، تشبه الأقواس الآليّة ولكنها لا تشبهها تمامًا"
 
 #: dialogs/katedialogs.cpp:594
 #, kde-format
@@ -1216,8 +1216,7 @@ msgstr "متقدّم"
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
-msgstr ""
-"لم تقدّم لاحقة أو سابقة للنّسخ الاحتياطيّ. ستُستخدم اللاحقة الافتراضيّة: '~'"
+msgstr "لم تقدّم لاحقة أو سابقة للنّسخ الاحتياطيّ. ستُستخدم اللاحقة المبدئية: '~'"
 
 #: dialogs/katedialogs.cpp:1088
 #, kde-format
@@ -1262,7 +1261,7 @@ msgstr "القاموس:"
 #: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid "Enable Auto Reload"
-msgstr "فعّل إعادة التحميل الآلي"
+msgstr "مكّن إعادة التحميل الآليّ"
 
 #: dialogs/katedialogs.cpp:1460
 #, kde-format
@@ -1270,7 +1269,7 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
-"يعيد التحميل وسيعيد التحميل تلقائيًا دون تحذير بشأن تغييرات القرص من الآن حتى "
+"يعيد التحميل وسيعيد التحميل آليًّا دون تحذير بشأن تغييرات القرص من الآن حتى "
 "تقوم بإغلاق اللسان أو النافذة."
 
 #: dialogs/katedialogs.cpp:1465
@@ -1498,13 +1497,13 @@ msgstr "معدلات المؤشرات المتعددة"
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr "إعادة تحميل الملفات تلقائيًا في التحكم في الإصدار"
+msgstr "إعادة تحميل الملفات آليًّا في التحكم في الإصدار"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Auto reload files on external changes"
-msgstr "إعادة تحميل الملفات آليًا عند التغييرات الخارجية"
+msgstr "إعادة تحميل الملفات آليًّا عند التغييرات الخارجية"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -1550,7 +1549,7 @@ msgstr "بادئة لملفات النسخ الاحتياطي:"
 #: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Enter the prefix to prepend to the backup file names."
-msgstr "أدخل سابقة لإضافتها قبل أسماء الملفّات المنسوخة احتياطيًّّا."
+msgstr "أدخل سابقة لإضافتها قبل أسماء الملفّات المنسوخة احتياطيًّا."
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/opensaveconfigadvwidget.ui:108
@@ -1562,7 +1561,7 @@ msgstr "لاحقة لملفات النسخ الاحتياطي:"
 #: dialogs/opensaveconfigadvwidget.ui:118
 #, kde-format
 msgid "Enter the suffix to append to the backup file names."
-msgstr "أدخل لاحقة لإضافتها بعد أسماء الملفّات المنسوخة احتياطيًّّا."
+msgstr "أدخل لاحقة لإضافتها بعد أسماء الملفّات المنسوخة احتياطيًّا."
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:141
@@ -1632,8 +1631,8 @@ msgid ""
 "This defines the standard encoding to use to open/save files, if not changed "
 "in the open/save dialog or by using a command line option."
 msgstr ""
-"يعرّف هذا التّرميز الافتراضيّ لاستخدامه لفتح الملفّات وحفظها، وذلك إن لم تتغيّر "
-"في حواريّ الفتح/الحفظ أو باستخدام خيار سطر الأوامر."
+"يعرّف هذا التّرميز المبدئي لاستخدامه لفتح الملفّات وحفظها، وذلك إن لم تتغيّر في "
+"حواريّ الفتح/الحفظ أو باستخدام خيار سطر الأوامر."
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncodingDetection)
 #: dialogs/opensaveconfigwidget.ui:57
@@ -1735,7 +1734,7 @@ msgstr ""
 #: dialogs/opensaveconfigwidget.ui:135
 #, kde-format
 msgid "Enable byte order mark (BOM)"
-msgstr "فعّل علامة ترتيب البايتات (BOM)"
+msgstr "مكّن علامة ترتيب البايتات (BOM)"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigwidget.ui:142
@@ -1813,19 +1812,19 @@ msgstr "أضف سطرًا جديدًا نهاية الملفّ عند الحفظ
 #: dialogs/opensaveconfigwidget.ui:239
 #, kde-format
 msgid "Enable Auto Save (local files only)"
-msgstr "فعّل الحفظ الآليّ (للملفات المحلية فقط)"
+msgstr "مكّن الحفظ الآليّ (للملفات المحلية فقط)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
 #, kde-format
 msgid "Auto save document when the active document is losing focus"
-msgstr "حفظ المستند تلقائيًا عندما يفقد المستند النشط التركيز"
+msgstr "حفظ المستند آليًّا عندما يفقد المستند النشط التركيز"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
 #, kde-format
 msgid "Auto save interval:"
-msgstr "فترة الحفظ آلي:"
+msgstr "فترة الحفظ آليّ:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbAutoSaveInterval)
 #: dialogs/opensaveconfigwidget.ui:273
@@ -1894,8 +1893,8 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
-"ستُضرب هذه القيمة في ارتفاع السطر الافتراضي للخط. تعني القيمة 1.0 أنه سيُستخدم "
-"الارتفاع الافتراضي."
+"ستُضرب هذه القيمة في ارتفاع السطر المبدئي للخط. تعني القيمة 1.0 أنه سيُستخدم "
+"الارتفاع المبدئي."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:93
@@ -2145,12 +2144,12 @@ msgstr "ملفّ جديد"
 #: document/katedocument.cpp:221
 #, kde-format
 msgid "Auto Reload Document"
-msgstr "أعد تحميل المستند آليا"
+msgstr "أعد تحميل المستند آليّا"
 
 #: document/katedocument.cpp:223
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
-msgstr "إعادة تحميل المستند تلقائيًا عند تغييره على القرص"
+msgstr "إعادة تحميل المستند آليًّا عند تغييره على القرص"
 
 #: document/katedocument.cpp:2244
 #, kde-format
@@ -2188,7 +2187,7 @@ msgid ""
 msgstr ""
 "فُتح الملفّ %1 بالتّرميز %2 ولكنّه يحوي محارف غير صالحة.<br />ضُبط الملفّ إلى وضع "
 "القراءة فقط، إذ أنّ الحفظ قد يتلف محتواه.<br />إمّا أن تعيد فتح الملفّ بالتّرميز "
-"الصّحيح أو أن تفعّل وضع القراءة فقط مجدّدًا من قائمة \"أدوات\" لتحرّره."
+"الصّحيح أو أن تمكّن وضع القراءة فقط مجدّدًا من قائمة \"أدوات\" لتحرّره."
 
 #: document/katedocument.cpp:2405
 #, kde-format
@@ -2467,7 +2466,7 @@ msgstr "<لم يُعدّل>"
 #: mode/katemodeconfigpage.cpp:58
 #, kde-format
 msgid "Use Default"
-msgstr "استخدم الافتراضيّ"
+msgstr "استخدم المبدئي"
 
 #: mode/katemodeconfigpage.cpp:99 mode/katemodeconfigpage.cpp:241
 #, kde-format
@@ -2720,7 +2719,7 @@ msgstr "إجماليّ عدد الصّفحات"
 #: printing/printconfigwidgets.cpp:478
 #, kde-format
 msgid "L&ayout"
-msgstr "التّ&صميم"
+msgstr "الت&خطيط"
 
 #: printing/printconfigwidgets.cpp:484
 #, kde-format
@@ -2961,7 +2960,7 @@ msgid ""
 "expression (defaults to div)."
 msgstr ""
 "يقوم بتغليف النص المحدد في علامات XML التي تم إنشاؤها من تعبير Emmet المتوفر "
-"(الافتراضيات هي div)."
+"(المبدئيات هي div)."
 
 #: script/data/commands/emmet.js:98
 #, kde-format
@@ -3277,8 +3276,8 @@ msgid ""
 msgstr ""
 "يقوم هذا الأمر بمحاذاة الأسطر في الكتلة المحددة أو المستند بالكامل على "
 "العمود المحدد بواسطة تعبير نمطي يقدم كوسيط.<br><br>إذا أعطيت نمطا فارغا، "
-"فسيحاذى عند أول حرف غير فارغ بشكل افتراضي.<br>إذا كان النمط يحتوي على "
-"التقاط، فستوضع مسافة بادئة عند المطابقة الملتقطة.<br><br><i>أمثلة</i>:"
+"فسيحاذى عند أول حرف غير فارغ بشكل مبدئي.<br>إذا كان النمط يحتوي على التقاط، "
+"فستوضع مسافة بادئة عند المطابقة الملتقطة.<br><br><i>أمثلة</i>:"
 "<br>'<code>alignon -</code>' سيُدخل مسافات قبل أول '-' من كل سطر لمحاذاتها "
 "جميعًا في نفس العمود.<br>'<code>alignon :\\s+(.)</code>' سيُدخل مسافات قبل أول "
 "حرف غير فارغ يظهر بعد النقطتين لمحاذاتها جميعًا في نفس العمود."
@@ -3359,7 +3358,7 @@ msgid ""
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
 "حدد النص للأمام من موضع المؤشر الحالي إلى أول ظهور للحجة المحددة بعده (أو "
-"نهاية السطر الحالي بشكل افتراضي)."
+"نهاية السطر الحالي بشكل مبدئي)."
 
 #: script/data/commands/utils.js:452
 #, kde-format
@@ -3369,7 +3368,7 @@ msgid ""
 "default)."
 msgstr ""
 "حدد النص للخلف من موضع المؤشر الحالي إلى آخر ظهور للحجة المحددة قبله (أو "
-"بداية السطر الحالي بشكل افتراضي)."
+"بداية السطر الحالي بشكل مبدئي)."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -3588,7 +3587,7 @@ msgstr "نهاية السّطر"
 #: search/katesearchbar.cpp:1161
 #, kde-format
 msgid "Match any character excluding new line (by default)"
-msgstr "مطابقة أي حرف باستثناء السطر الجديد (افتراضيًا)"
+msgstr "مطابقة أي حرف باستثناء السطر الجديد (مبدئيًا)"
 
 #: search/katesearchbar.cpp:1162
 #, kde-format
@@ -4194,7 +4193,7 @@ msgstr "ارفض"
 #: syntax/katecolortreewidget.cpp:34 syntax/katecolortreewidget.cpp:61
 #, kde-format
 msgid "Use default color from the color theme"
-msgstr "استخدم الألوان الافتراضيّة من سمة الألوان"
+msgstr "استخدم الألوان المبدئية من سمة الألوان"
 
 #: syntax/katehighlightmenu.cpp:39
 #, kde-format
@@ -4234,7 +4233,7 @@ msgstr "خلفيّة التّحديد"
 #: syntax/katestyletreewidget.cpp:139
 #, kde-format
 msgid "Use Default Style"
-msgstr "استخدم النّمط الافتراضيّ"
+msgstr "استخدم النّمط المبدئي"
 
 #: syntax/katestyletreewidget.cpp:238
 #, kde-format
@@ -4283,7 +4282,7 @@ msgstr "لون خلفيّة التّح&ديد…"
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
 msgid "Unset Normal Color"
-msgstr "أزل ضبط اللون الافتراضيّ"
+msgstr "أزل ضبط اللون المبدئي"
 
 #: syntax/katestyletreewidget.cpp:278
 #, kde-format
@@ -4303,7 +4302,7 @@ msgstr "أزل ضبط لون خلفيّة التّحديد"
 #: syntax/katestyletreewidget.cpp:295
 #, kde-format
 msgid "Use &Default Style"
-msgstr "استخدم النّم&ط الافتراضيّ"
+msgstr "استخدم النّم&ط المبدئي"
 
 #: syntax/katestyletreewidget.cpp:408
 #, kde-format
@@ -4316,8 +4315,7 @@ msgstr "لم يُضبط"
 msgid ""
 "\"Use Default Style\" will be automatically unset when you change any style "
 "properties."
-msgstr ""
-"سيُزال ضبط \"استخدم النّمط الافتراضيّ\" آليًّا عند تغيير أيّة خاصيّة في النّمط."
+msgstr "سيُزال ضبط \"استخدم النّمط المبدئي\" آليًّا عند تغيير أيّة خاصيّة في النّمط."
 
 #: syntax/katestyletreewidget.cpp:643
 #, kde-format
@@ -4627,7 +4625,7 @@ msgid ""
 "icon borders, if both are enabled.</p>"
 msgstr ""
 "<p>سيُستخدم هذا اللون في رسم الخطّ الفاصل بين أرقام الأسطر وحدود الأيقونات، إن "
-"كانا مفعّلين.</p>"
+"كانا ممكّنين.</p>"
 
 #: syntax/katethemeconfig.cpp:254
 #, kde-format
@@ -4642,7 +4640,7 @@ msgid ""
 "wrapped</dd><dt>Dynamic Word Wrap</dt><dd>An arrow shown to the left of "
 "visually-wrapped lines</dd></dl>"
 msgstr ""
-"<p>يضبط لون علامات لفّ الكلمات:</p><dl><dt>لفّ الكلمات سكونيًّا</dt><dd>خطّ رأسيّ "
+"<p>يضبط لون علامات لفّ الكلمات:</p><dl><dt>لفّ الكلمات الثابت</dt><dd>خطّ رأسيّ "
 "يعرض العمود الذي سيُلفّ عنده النّصّ</dd><dt>لفّ الكلمات حركيًّا</dt><dd>سهم يُعرض "
 "يسار الأسهم الملفوفة</dd></dl>"
 
@@ -4810,7 +4808,7 @@ msgid ""
 "color to edit from the popup menu.</p><p>You can unset the Background and "
 "Selected Background colors from the popup menu when appropriate.</p>"
 msgstr ""
-"<p> تعرض هذه القائمة الأنماط الافتراضيّة لسمة الألوان الحاليّة وتوفّر طرقًا "
+"<p> تعرض هذه القائمة الأنماط المبدئية لسمة الألوان الحاليّة وتوفّر طرقًا "
 "لتحريرها. اسم النّمط يعكس إعدادات النّمط الحاليّ.</p><p>لتحرير الألوان، انقر "
 "المربّعات الملوّنة، أو اختر لونًا لتحريره من القائمة المنبثقة.</p><p>يمكنك "
 "إزالة ضبط الخلفيّة وألوان الخلفيّة المحدّدة من القائمة المنبثقة عند</p>"
@@ -4919,7 +4917,7 @@ msgstr "الألوان"
 #: syntax/katethemeconfig.cpp:1161
 #, kde-format
 msgid "Default Text Styles"
-msgstr "أنماط النّصّ الافتراضيّة"
+msgstr "أنماط النّصّ المبدئية"
 
 #: syntax/katethemeconfig.cpp:1165
 #, kde-format
@@ -5009,10 +5007,9 @@ msgid "Normal"
 msgstr "عاديّ"
 
 #: utils/katebookmarks.cpp:49
-#, fuzzy, kde-format
-#| msgid "Set &Bookmark"
+#, kde-format
 msgid "Toggle &Bookmark"
-msgstr "ضع &علامة"
+msgstr "أضف/أزل &علامة"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -5199,7 +5196,7 @@ msgid ""
 "p><p>possible true values: 1 on true<br/>possible false values: 0 off false</"
 "p>"
 msgstr ""
-"<p>set-auto-indent <b>enable</b></p><p>تمكين أو تعطيل الإزاحة التلقائية.</"
+"<p>set-auto-indent <b>enable</b></p><p>تمكين أو تعطيل الإزاحة الآليّة.</"
 "p><p>القيم الصحيحة المحتملة: 1 on true<br/>القيم الخاطئة المحتملة: 0 off "
 "false</p>"
 
@@ -5241,7 +5238,7 @@ msgid ""
 "<b>enable</b></p><p> possible true values: 1 on true<br/>possible false "
 "values: 0 off false</p>"
 msgstr ""
-"<p>set-word-wrap <b>enable</b></p><p>يفعّل لفّ الكلمات حركيًّا حسب <b>enable</"
+"<p>set-word-wrap <b>enable</b></p><p>يمكّن لفّ الكلمات حركيًّا حسب <b>enable</"
 "b></p><p> قيم \"صحيح\" الممكنة: 1 on true<br/>قيم \"خطأ\" الممكنة: 0 off "
 "false</p>"
 
@@ -5253,7 +5250,7 @@ msgid ""
 "automatically.</p>"
 msgstr ""
 "<p>set-word-wrap-column <b>width</b></p><p>يضبط عرض السطر للف الثابت على "
-"<b>width</b>. يُستخدم هذا إذا كنت تريد لف النص تلقائيًا.</p>"
+"<b>width</b>. يُستخدم هذا إذا كنت تريد لف النص آليًّا.</p>"
 
 #: utils/katecmds.cpp:175
 #, kde-format
@@ -5276,7 +5273,7 @@ msgid ""
 msgstr ""
 "<p>set-highlight <b>highlight</b></p><p> يحدد نظام تمييز بناء الجملة "
 "للمستند. يجب أن يكون الوسيط اسم تمييز صالحًا، كما هو موضح في قائمة أدوات ⇽ "
-"التمييز. يوفر هذا الأمر قائمة إكمال تلقائية لحجته.</p>"
+"التمييز. يوفر هذا الأمر قائمة إكمال آليّة لحجته.</p>"
 
 #: utils/katecmds.cpp:188
 #, kde-format
@@ -5497,7 +5494,7 @@ msgstr "Christoph Cullmann"
 #: utils/kateglobal.cpp:83
 #, kde-format
 msgid "Maintainer"
-msgstr "المصين"
+msgstr "الصائن"
 
 #: utils/kateglobal.cpp:84
 #, kde-format
@@ -6128,7 +6125,7 @@ msgstr "أظهر قائمة المتغيّرات الصّالحة."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
-msgstr "فعّل إدراج الأقواس آليًّا."
+msgstr "مكّن إدراج الأقواس آليًّا."
 
 #: variableeditor/variablelineedit.cpp:120
 #, kde-format
@@ -6154,13 +6151,13 @@ msgstr ""
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable block selection mode."
-msgstr "فعّل وضع التّحديد الكتليّ."
+msgstr "مكّن وضع التّحديد الكتليّ."
 
 #: variableeditor/variablelineedit.cpp:143
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the byte order mark (BOM) when saving Unicode files."
-msgstr "فعّل علامة ترتيب البايتات (BOM) عند حفظ ملفّات يونيكوديّة."
+msgstr "مكّن علامة ترتيب البايتات (BOM) عند حفظ ملفّات يونيكوديّة."
 
 #: variableeditor/variablelineedit.cpp:148
 #, kde-format
@@ -6178,13 +6175,13 @@ msgstr "اضبط لون خلفيّة السّطر الحاليّ."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
-msgstr "اضبط القاموس المستخدم افتراضيًّا لتدقيق الهجاء."
+msgstr "اضبط القاموس المستخدم مبدئيًا لتدقيق الهجاء."
 
 #: variableeditor/variablelineedit.cpp:164
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
-msgstr "فعّل لفّ الكلمات الحركيّ للأسطر الطّويلة."
+msgstr "مكّن لفّ الكلمات الحركيّ للأسطر الطّويلة."
 
 #: variableeditor/variablelineedit.cpp:171
 #, kde-format
@@ -6198,7 +6195,7 @@ msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
-"مكّن ما إذا كان الضغط على مفتاح الإدخال سيؤدي إلى إدراج عنصر الإكمال التلقائي "
+"مكّن ما إذا كان الضغط على مفتاح الإدخال سيؤدي إلى إدراج عنصر الإكمال الآليّ "
 "المحدد."
 
 #: variableeditor/variablelineedit.cpp:181
@@ -6241,7 +6238,7 @@ msgstr "اضبط لون شريط الأيقونات."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
-msgstr "فعّل حدّ الأيقونات في منظور المحرّر."
+msgstr "مكّن حدّ الأيقونات في منظور المحرّر."
 
 #: variableeditor/variablelineedit.cpp:228
 #, kde-format
@@ -6283,7 +6280,7 @@ msgstr "أدرج سطرًا جديدًا نهاية الملفّ عند الحف
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
-msgstr "فعّل وضع الكتابة الفوقيّة في للمستند."
+msgstr "مكّن وضع الكتابة الفوقيّة في للمستند."
 
 #: variableeditor/variablelineedit.cpp:264
 #, kde-format
@@ -6379,7 +6376,7 @@ msgstr "اضبط لون علامة لفّ الكلمات."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
-msgstr "فعّل لفّ الكلمات أثناء الكتابة."
+msgstr "مكّن لفّ الكلمات أثناء الكتابة."
 
 #: view/katestatusbar.cpp:114
 #, kde-format
@@ -6685,7 +6682,7 @@ msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
 msgstr ""
-"استخدم هذا لإزاحة السّطر الحاليّ آليًا أو كتلة النّصّ إلى مستوى الإزاحة الصّحيح."
+"استخدم هذا لإزاحة السّطر الحاليّ آليًّا أو كتلة النّصّ إلى مستوى الإزاحة الصّحيح."
 
 #: view/kateview.cpp:554
 #, kde-format
@@ -6708,11 +6705,11 @@ msgid ""
 msgstr ""
 "يقوم هذا الأمر بمحاذاة الأسطر في الكتلة المحددة أو المستند بالكامل في العمود "
 "المحدد بواسطة تعبير عادي سيُطلب منك.<br /><br />إذا قمت بإعطاء نمط فارغ، "
-"فسيحذا عند أول حرف غير فارغ بشكل افتراضي.<br />إذا كان النمط يحتوي على "
-"التقاط، فستوضع مسافة بادئة عند المطابقة الملتقطة.<br /><br /><i>أمثلة</i>:"
-"<br />باستخدام '-'، سيدرج مسافات قبل أول '-' من كل سطر لمحاذاتها جميعًا في "
-"نفس العمود.<br />باستخدام ':\\s+(.)'، سيدرج مسافات قبل أول حرف غير فارغ يأتي "
-"بعد النقطتين لمحاذاتها جميعًا في نفس العمود."
+"فسيحذا عند أول حرف غير فارغ بشكل مبدئي.<br />إذا كان النمط يحتوي على التقاط، "
+"فستوضع مسافة بادئة عند المطابقة الملتقطة.<br /><br /><i>أمثلة</i>:<br /"
+">باستخدام '-'، سيدرج مسافات قبل أول '-' من كل سطر لمحاذاتها جميعًا في نفس "
+"العمود.<br />باستخدام ':\\s+(.)'، سيدرج مسافات قبل أول حرف غير فارغ يأتي بعد "
+"النقطتين لمحاذاتها جميعًا في نفس العمود."
 
 #: view/kateview.cpp:567
 #, kde-format
@@ -6986,7 +6983,7 @@ msgstr "صفّر حجم الخط"
 #: view/kateview.cpp:768
 #, kde-format
 msgid "This resets the display font size."
-msgstr "هذا يصفر حجم خطّ العرض."
+msgstr "هذا يصفّر حجم خطّ العرض."
 
 #: view/kateview.cpp:771
 #, kde-format
@@ -7080,7 +7077,7 @@ msgstr "&دائمًا تعمل"
 #: view/kateview.cpp:813
 #, kde-format
 msgid "Static Word Wrap"
-msgstr "لفّ الكلمات سكونيًّا"
+msgstr "لفّ الكلمات الثابت"
 
 #: view/kateview.cpp:815
 #, kde-format
@@ -7092,7 +7089,7 @@ msgstr "إن أُشّر هذا الخيار، ستُلّف الأسطر عند �
 #: view/kateview.cpp:822
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
-msgstr "أظهر علامة ل&فّ الكلمات سكونيًّا"
+msgstr "أظهر علامة ل&فّ الكلمات الثابت"
 
 #: view/kateview.cpp:825
 #, kde-format
@@ -7202,7 +7199,7 @@ msgstr "أوضاع الدّخل"
 #: view/kateview.cpp:883
 #, kde-format
 msgid "Activate/deactivate %1"
-msgstr "فعّل/أزل تفعيل %1"
+msgstr "مكّن/أزل تفعيل %1"
 
 #: view/kateview.cpp:893
 #, kde-format
@@ -7243,7 +7240,7 @@ msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
 "while saving"
 msgstr ""
-"فعّل/عطّل إضافة علامات ترتيب البايتات للملفّات المرمّزة ب‍UTF-8/UTF-16 أثناء الحفظ"
+"مكّن/عطّل إضافة علامات ترتيب البايتات للملفّات المرمّزة ب‍UTF-8/UTF-16 أثناء الحفظ"
 
 #: view/kateview.cpp:910
 #, kde-format
@@ -7380,7 +7377,7 @@ msgstr "تدقيق آليّ للهجاء"
 #: view/kateview.cpp:988
 #, kde-format
 msgid "Enable/disable automatic spell checking"
-msgstr "فعّل/عطّل تدقيق الهجاء الآليّ"
+msgstr "مكّن/عطّل تدقيق الهجاء الآليّ"
 
 #: view/kateview.cpp:994
 #, kde-format
@@ -8108,7 +8105,7 @@ msgid ""
 msgstr ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>الاستخدام: "
 "<tt><b>bp[revious] [N]</b></tt></p><p>ينتقل إلى المستند السابق <b>[N]</b> "
-"(\"<b>b</b>uffer\") في قائمة المستندات. </p><p> <b>[N]</b> يكون افتراضيًا "
+"(\"<b>b</b>uffer\") في قائمة المستندات. </p><p> <b>[N]</b> يكون مبدئيًا "
 "واحدًا. </p><p>يلتف حول بداية قائمة المستندات.</p>"
 
 #: vimode/appcommands.cpp:531
@@ -8121,7 +8118,7 @@ msgid ""
 msgstr ""
 "<p><b>bn,bnext &mdash; التبديل إلى المستند التالي</b></p><p>الاستخدام: "
 "<tt><b>bn[ext] [N]</b></tt></p><p>ينتقل إلى المستند التالي (<b>[N]</b>) "
-"(\"<b>b</b>uffer\") في قائمة المستندات.<b>[N]</b> يكون افتراضيًا واحدًا. </"
+"(\"<b>b</b>uffer\") في قائمة المستندات.<b>[N]</b> يكون مبدئيًا واحدًا. </"
 "p><p>يلتف حول نهاية قائمة المستندات.</p>"
 
 #: vimode/appcommands.cpp:539
@@ -8330,7 +8327,7 @@ msgstr "لا يوجد المزيد من الأحرف للإشارة المرجع
 #: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
-msgstr "لا شيء في السّجلّ %1"
+msgstr "لا شيء في السجل %1"
 
 #: vimode/modes/normalvimode.cpp:1690
 #, kde-format
