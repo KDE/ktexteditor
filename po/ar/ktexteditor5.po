@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 01:34+0000\n"
-"PO-Revision-Date: 2025-08-04 21:57+0400\n"
+"PO-Revision-Date: 2025-08-05 17:37+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1705,8 +1705,8 @@ msgid ""
 "Depending on the choice, trailing spaces are removed when saving a document, "
 "either in the entire document or only of modified lines."
 msgstr ""
-"تبعًا لاختيارك، ستُزال المسافات الزّائدة عند حفظ المتند، إمّا للمستند بالكامل أو "
-"للأسطر المعدّلة فقط."
+"تبعًا لاختيارك، ستُزال المسافات الزّائدة عند حفظ المستند، إمّا للمستند بالكامل "
+"أو للأسطر المعدّلة فقط."
 
 #. i18n: ectx: property (text), widget (QLabel, lblRemoveTrailingSpaces)
 #: dialogs/opensaveconfigwidget.ui:179
@@ -2256,8 +2256,7 @@ msgstr ""
 "تعذر حفظ المستند، لأنه لم يكن من الممكن الكتابة إلى %1.\n"
 "تأكد من أن لديك حق الوصول للكتابة إلى هذا الملف أو من توفر مساحة كافية على "
 "القرص.\n"
-"قد يكون الملف الأصلي مفقودًا أو تالفًا. لا تنه التطبيق حتى تتم كتابة الملف "
-"بنجاح."
+"قد يكون الملف الأصلي مفقودًا أو تالفًا. لا تنه التطبيق حتى تكتب الملف بنجاح."
 
 #: document/katedocument.cpp:2719
 #, kde-format
@@ -2333,8 +2332,8 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
-"استخدامت نموذج قديم \"remove-trailing-space\". يُرجى استخدام \"remove-"
-"trailing-spaces modified;\"، راجع https://docs.kde.org/?"
+"استخدمت نموذج قديم \"remove-trailing-space\". يُرجى استخدام \"remove-trailing-"
+"spaces modified;\"، راجع https://docs.kde.org/?"
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
@@ -2952,7 +2951,7 @@ msgid ""
 "Wraps the selected text in XML tags constructed from the provided Emmet "
 "expression (defaults to div)."
 msgstr ""
-"يقوم بتغليف النص المحدد في علامات XML التي تم إنشاؤها من تعبير Emmet المتوفر "
+"يقوم بتغليف النص المحدد في علامات XML التي المنشئة من تعبير Emmet المتوفر "
 "(المبدئيات هي div)."
 
 #: script/data/commands/emmet.js:98
@@ -4639,7 +4638,7 @@ msgstr "سطر الإزاحة"
 #: syntax/katethemeconfig.cpp:306
 #, kde-format
 msgid "<p>Sets the color of the vertical indentation lines.</p>"
-msgstr "<p>يضبط لون أسطر الإزاحة الرّئسيّة.</p>"
+msgstr "<p>يضبط لون أسطر الإزاحة الرأسية.</p>"
 
 #: syntax/katethemeconfig.cpp:311
 #, kde-format
@@ -5079,9 +5078,9 @@ msgid ""
 "whitespace will be visualized by a small dot.</p><p>Possible true values: 1 "
 "on true<br/>possible false values: 0 off false</p>"
 msgstr ""
-"<p>set-show-tabs <b>enable</b></p><p>إذا تم تمكينه، سيتم عرض أحرف TAB "
-"والمسافة البيضاء اللاحقة بواسطة نقطة صغيرة.</p><p>القيم الصحيحة المحتملة: 1 "
-"عند القيمة true<br/>القيم الخاطئة المحتملة: 0 عند القيمة false</p>"
+"<p>set-show-tabs <b>enable</b></p><p>إذا تم تمكينه، سيعرض أحرف TAB والمسافة "
+"البيضاء اللاحقة بواسطة نقطة صغيرة.</p><p>القيم الصحيحة المحتملة: 1 عند "
+"القيمة true<br/>القيم الخاطئة المحتملة: 0 عند القيمة false</p>"
 
 #: utils/katecmds.cpp:114
 #, kde-format
@@ -5318,7 +5317,7 @@ msgid ""
 "replaced by either \"am\" or \"pm\".</td></tr></table></p>"
 msgstr ""
 "<p>date or date <b>format</b></p><p>يُدرج سلسلة تاريخ/وقت كما هو محدد "
-"بالتنسيق المحدد، أو التنسيق yyyy-MM-dd hh:mm:ss إذا لم يتم تحديد أي تنسيق.</"
+"بالتنسيق المحدد، أو التنسيق yyyy-MM-dd hh:mm:ss إذا لم يُحدد أي تنسيق.</"
 "p><p>مواصفات التنسيق الممكنة هي:<table><tr><td>d</td><td>اليوم كرقم دون صفر "
 "بادئ (1-31).</td></tr><tr><td>dd</td><td>اليوم كرقم بصفر بادئ (01-31).</td></"
 "tr><tr><td>ddd</td><td>اسم اليوم المختصر الموضعي (على سبيل المثال "
@@ -5337,8 +5336,8 @@ msgstr ""
 "tr><tr><td>ss</td><td>الثانية التي تبدأ بصفر (00..59).</td></tr><tr><td>z</"
 "td><td>الملي ثانية دون أصفار (0..999).</td></tr><tr><td>zzz</td><td>الملي "
 "ثانية التي تبدأ بأصفار (000..999).</td></tr><tr><td>AP</td><td>استخدم عرض AM/"
-"PM. سيتم استبدال AP بـ \"AM\" أو \"PM\".</td></tr><tr><td>ap</td><td>استخدم "
-"عرض AM/PM. سيتم استبدال ap بـ \"am\" أو \"pm\".</td></tr></table></p>"
+"PM. سيستبدل AP بـ \"AM\" أو \"PM\".</td></tr><tr><td>ap</td><td>استخدم عرض "
+"AM/PM. سيستبدل ap بـ \"am\" أو \"pm\".</td></tr></table></p>"
 
 #: utils/kateglobal.cpp:73
 #, kde-format
@@ -6218,7 +6217,7 @@ msgstr "اضبط عرض الجدولة."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
-msgstr "اضبط عدد خطوات التّراجع لتذكّرها (0 يعني مالانهاية)."
+msgstr "اضبط عدد خطوات التّراجع لتذكّرها (0 يعني ما لانهاية)."
 
 #: variableeditor/variablelineedit.cpp:334
 #, kde-format
@@ -6907,7 +6906,7 @@ msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
 "possible."
 msgstr ""
-"يمكنك اختيار ما اذا كان يجب إظهار علامات طي الشفرة ؛ اذا كان هذا الخيار "
+"يمكنك اختيار ما إذا كان يجب إظهار علامات طي الشفرة ؛ إذا كان هذا الخيار "
 "ممكناَ."
 
 #: view/kateview.cpp:771
@@ -6932,7 +6931,7 @@ msgstr "أظهر أر&قام الأسطر"
 #: view/kateview.cpp:778
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
-msgstr "إظهار/إخفاء عدد الاسطر على الجانب الايسر من العرض ."
+msgstr "إظهار/إخفاء عدد الأسطر على الجانب الأيسر من العرض ."
 
 #: view/kateview.cpp:781
 #, kde-format
@@ -7628,7 +7627,7 @@ msgstr "عطل شريط التعليقات التوضيحية"
 #: vimode/appcommands.cpp:67
 #, kde-format
 msgid "All documents written to disk"
-msgstr "كُتبت كلّ المستندا إلى القرص"
+msgstr "كُتبت كلّ المستندات إلى القرص"
 
 #: vimode/appcommands.cpp:70
 #, kde-format
@@ -7648,7 +7647,7 @@ msgstr ""
 "<tt><b>w[a]</b></tt></p><p>يكتب المستندات الحالية على القرص. ويمكن استدعاؤه "
 "بطريقتين:<br /><tt>w</tt> &mdash; كتابة المستند الحالي على القرص<br /"
 "><tt>wa</tt> &mdash; كتابة جميع المستندات على القرص.</p><p>إذا لم يكن هناك "
-"اسم ملف مرتبط بالمستند، فسيتم عرض مربع حوار ملف.</p>"
+"اسم ملف مرتبط بالمستند، فسيعرض مربع حوار ملف.</p>"
 
 #: vimode/appcommands.cpp:213
 #, kde-format
@@ -7665,14 +7664,14 @@ msgid ""
 "disk, a file dialog will be shown.</p>"
 msgstr ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>الاستخدام: "
-"<tt><b>[w]q[a]</b></tt></p><p>إنهاء التطبيق. إذا تم إضافة <tt>w</tt> مسبقًا، "
+"<tt><b>[w]q[a]</b></tt></p><p>إنهاء التطبيق. إذا أضيفت <tt>w</tt> مسبقًا، "
 "فإنه يكتب أيضًا المستندات على القرص. يمكن استدعاء هذا الأمر بعدة طرق:<br /"
 "><tt>q</tt> &mdash; يغلق العرض الحالي.<br /><tt>qa</tt> &mdash; يغلق جميع "
 "العروض، وينهي التطبيق فعليًا.<br /><tt>wq</tt> &mdash; يكتب المستند الحالي "
 "على القرص ويغلق عرضه.<br /><tt>wqa</tt> &mdash; يكتب جميع المستندات على "
-"القرص وينهي.</p><p>في جميع الحالات، إذا كان العرض الذي يتم إغلاقه هو العرض "
-"الأخير، فإن التطبيق يخرج. إذا لم يكن هناك اسم ملف مرتبط بالمستند وكان يجب "
-"كتابته على القرص، فسيتم عرض مربع حوار الملف.</p>"
+"القرص وينهي.</p><p>في جميع الحالات، إذا كان العرض المُغلق هو العرض الأخير، "
+"فإن التطبيق يخرج. إذا لم يكن هناك اسم ملف مرتبط بالمستند وكان يجب كتابته على "
+"القرص، فسيعرض مربع حوار الملف.</p>"
 
 #: vimode/appcommands.cpp:228
 #, kde-format
@@ -7690,9 +7689,9 @@ msgstr ""
 "p><p>يحفظ المستندات ويخرج منها (e<b>x</b>its). يمكن استدعاء هذا الأمر "
 "بطريقتين:<br /><tt>x</tt> &mdash; يغلق العرض الحالي.<br /><tt>xa</tt> "
 "&mdash; يغلق جميع العروض، ويخرج التطبيق فعليًا.</p><p>في جميع الحالات، إذا "
-"كان العرض الذي يتم إغلاقه هو العرض الأخير، يخرج التطبيق. إذا لم يكن هناك اسم "
-"ملف مرتبط بالمستند ويجب كتابته على القرص، فسيتم عرض مربع حوار ملف.</p><p>على "
-"عكس أوامر \"w\"، يكتب هذا الأمر المستند فقط إذا تم تعديله.</p>"
+"كان العرض المُغلق هو العرض الأخير، يخرج التطبيق. إذا لم يكن هناك اسم ملف "
+"مرتبط بالمستند ويجب كتابته على القرص، فسيُعرض مربع حوار ملف.</p><p>على عكس "
+"أوامر \"w\"، يكتب هذا الأمر المستند فقط إذا عُدل.</p>"
 
 #: vimode/appcommands.cpp:242
 #, kde-format
@@ -7750,7 +7749,7 @@ msgid ""
 msgstr ""
 "<p><b>e[dit] &mdash; إعادة تحميل المستند الحالي</b></p><p>الاستخدام: "
 "<tt><b>e[dit]</b></tt></p><p>يبدأ <b>تحرير</b>المستند الحالي مرة أخرى. وهذا "
-"مفيد لإعادة تحرير الملف الحالي، عندما تم تعديله على القرص.</p>"
+"مفيد لإعادة تحرير الملف الحالي، عندما يُعدل على القرص.</p>"
 
 #: vimode/appcommands.cpp:512
 #, kde-format
