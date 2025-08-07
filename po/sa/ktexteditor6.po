@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-03 00:39+0000\n"
+"POT-Creation-Date: 2025-08-07 18:27+0000\n"
 "PO-Revision-Date: 2024-12-29 22:54+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -415,7 +415,7 @@ msgstr "क्लिपबोर्ड इतिहासे कोऽपि प
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1022
+#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1021
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1200,63 +1200,63 @@ msgstr ""
 "तन्त्रस्य दुर्घटनायाः सन्दर्भे भवतः कार्यं पुनः प्राप्तुं शक्नुवन्ति । स्वैप् सञ्चिकाः अक्षमीकरणेन "
 "प्रणालीदुर्घटने दत्तांशहानिः भवितुम् अर्हति ।"
 
-#: dialogs/katedialogs.cpp:1023
+#: dialogs/katedialogs.cpp:1022
 #, kde-format
 msgid "Advanced"
 msgstr "उन्नतं"
 
-#: dialogs/katedialogs.cpp:1088
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr "भवता बैकअप प्रत्ययः उपसर्गः वा न दत्तः । पूर्वनिर्धारितप्रत्ययस्य उपयोगः : '~'."
 
-#: dialogs/katedialogs.cpp:1088
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "न बैकअप प्रत्ययः उपसर्गः वा"
 
-#: dialogs/katedialogs.cpp:1221
+#: dialogs/katedialogs.cpp:1220
 #, kde-format
 msgid "Open/Save"
 msgstr "उद्घाटयतु/रक्षतु"
 
-#: dialogs/katedialogs.cpp:1226
+#: dialogs/katedialogs.cpp:1225
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "सञ्चिका उद्घाटनम् & रक्षणम्"
 
-#: dialogs/katedialogs.cpp:1249
+#: dialogs/katedialogs.cpp:1248
 #, kde-format
 msgid "&Line:"
 msgstr "&पंक्ति:"
 
-#: dialogs/katedialogs.cpp:1250
+#: dialogs/katedialogs.cpp:1249
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "क्लिप्बोर्ड् तः रेखासङ्ख्यां प्रति गच्छन्तु"
 
-#: dialogs/katedialogs.cpp:1261
+#: dialogs/katedialogs.cpp:1260
 #, kde-format
 msgid "Go to"
 msgstr "गच्छतु"
 
-#: dialogs/katedialogs.cpp:1341
+#: dialogs/katedialogs.cpp:1340
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "क्लिप्बोर्ड् मध्ये वैधपङ्क्तिसङ्ख्या न प्राप्यते"
 
-#: dialogs/katedialogs.cpp:1405
+#: dialogs/katedialogs.cpp:1404
 #, kde-format
 msgid "Dictionary:"
 msgstr "शब्दकोश:"
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1456
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Auto Reload सक्षमं कुर्वन्तु"
 
-#: dialogs/katedialogs.cpp:1460
+#: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1265,60 +1265,60 @@ msgstr ""
 "पुनः लोड् करोति तथा च इतः परं यावत् भवन्तः ट्याब् वा विण्डो वा न बन्दं कुर्वन्ति तावत् "
 "डिस्कपरिवर्तनस्य विषये चेतावनी विना स्वयमेव पुनः लोड् करिष्यति ।"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1464
 #, kde-format
 msgid "View &Difference"
 msgstr "दृश्य &भेद"
 
-#: dialogs/katedialogs.cpp:1467
+#: dialogs/katedialogs.cpp:1466
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "परिवर्तनस्य एकं diff दर्शयति ।"
 
-#: dialogs/katedialogs.cpp:1472
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "&Reload"
 msgstr "&पुनः भार"
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1473
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "डिस्कतः सञ्चिकां पुनः लोड् करोति । असरक्षिताः परिवर्तनाः नष्टाः भविष्यन्ति।"
 
-#: dialogs/katedialogs.cpp:1478
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&सञ्चिकां बन्दं कुर्वन्तु"
 
-#: dialogs/katedialogs.cpp:1480
+#: dialogs/katedialogs.cpp:1479
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "सञ्चिकां पिधायति, तस्याः सामग्रीं परित्यजति ।"
 
-#: dialogs/katedialogs.cpp:1484
+#: dialogs/katedialogs.cpp:1483
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "&Save As..."
 
-#: dialogs/katedialogs.cpp:1486
+#: dialogs/katedialogs.cpp:1485
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "भवन्तं स्थानं चित्वा पुनः सञ्चिकां रक्षितुं शक्नोति ।"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1491 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1490 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&उपेक्षा"
 
-#: dialogs/katedialogs.cpp:1492
+#: dialogs/katedialogs.cpp:1491
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "डिस्क मध्ये परिवर्तनं विना किमपि क्रियाम् उपेक्षते ।"
 
-#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1327,18 +1327,18 @@ msgstr ""
 "diff आदेशः विफलः अभवत् । कृपया सुनिश्चितं कुर्वन्तु यत् diff(1) संस्थापितम् अस्ति तथा च "
 "भवतः PATH मध्ये अस्ति ।"
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1559 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Diff इत्यस्य निर्माणे त्रुटिः"
 
-#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1566 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "सञ्चिकाः समानाः सन्ति ।"
 
-#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1566 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff Output इति"
@@ -1412,8 +1412,8 @@ msgstr "यदा सम्भवं तदा कर्सरस्य उप�
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbSwapFileSync)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, sbAutoCenterCursor)
-#: dialogs/navigationconfigwidget.ui:92 dialogs/opensaveconfigadvwidget.ui:152
-#: dialogs/opensaveconfigadvwidget.ui:200
+#: dialogs/navigationconfigwidget.ui:92 dialogs/opensaveconfigadvwidget.ui:120
+#: dialogs/opensaveconfigadvwidget.ui:168
 #, kde-format
 msgid "Disabled"
 msgstr "अक्षमित"
@@ -1541,67 +1541,67 @@ msgid "&Remote files"
 msgstr "&दूरस्थसञ्चिकाः"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/opensaveconfigadvwidget.ui:91
+#: dialogs/opensaveconfigadvwidget.ui:75
 #, kde-format
 msgid "Prefix for backup files:"
 msgstr "बैकअप सञ्चिकानां कृते उपसर्गः :"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
-#: dialogs/opensaveconfigadvwidget.ui:101
+#: dialogs/opensaveconfigadvwidget.ui:85
 #, kde-format
 msgid "Enter the prefix to prepend to the backup file names."
 msgstr "बैकअप सञ्चिकानामानां पूर्ववर्ती उपसर्गं प्रविशन्तु ।"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/opensaveconfigadvwidget.ui:108
+#: dialogs/opensaveconfigadvwidget.ui:92
 #, kde-format
 msgid "Suffix for backup files:"
 msgstr "बैकअप सञ्चिकानां कृते प्रत्ययः :"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
-#: dialogs/opensaveconfigadvwidget.ui:118
+#: dialogs/opensaveconfigadvwidget.ui:102
 #, kde-format
 msgid "Enter the suffix to append to the backup file names."
 msgstr "बैकअप सञ्चिकानामसु योजयितुं प्रत्ययं प्रविशन्तु ।"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:141
+#: dialogs/opensaveconfigadvwidget.ui:109
 #, kde-format
 msgid "Swap file mode:"
 msgstr "स्वैप सञ्चिकाविधिः :"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:157
+#: dialogs/opensaveconfigadvwidget.ui:125
 #, kde-format
 msgid "Enabled, Store In Default Directory"
 msgstr "सक्षमम्, पूर्वनिर्धारितनिर्देशिकायां संग्रहयन्तु"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:162
+#: dialogs/opensaveconfigadvwidget.ui:130
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
 msgstr "सक्षमम्, इष्टनिर्देशिकायां संग्रहयन्तु"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
-#: dialogs/opensaveconfigadvwidget.ui:170
+#: dialogs/opensaveconfigadvwidget.ui:138
 #, kde-format
 msgid "Store swap files in:"
 msgstr "स्वैप् सञ्चिकाः अत्र संगृह्यताम् :"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
-#: dialogs/opensaveconfigadvwidget.ui:190
+#: dialogs/opensaveconfigadvwidget.ui:158
 #, kde-format
 msgid "Save swap files every:"
 msgstr "प्रत्येकं स्वैप सञ्चिकाः रक्षन्तु:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
-#: dialogs/opensaveconfigadvwidget.ui:203
+#: dialogs/opensaveconfigadvwidget.ui:171
 #, kde-format
 msgid "s"
 msgstr "स"
 
 #. i18n: ectx: property (text), widget (QLabel, lblExplanatory)
-#: dialogs/opensaveconfigadvwidget.ui:228
+#: dialogs/opensaveconfigadvwidget.ui:196
 #, kde-format
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
@@ -1610,7 +1610,7 @@ msgstr ""
 "स्थितम् अस्ति ।"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
-#: dialogs/opensaveconfigadvwidget.ui:254
+#: dialogs/opensaveconfigadvwidget.ui:209
 #, kde-format
 msgid "Honor settings in .editorconfig file"
 msgstr ".editorconfig सञ्चिकायां सेटिङ्ग्स् सम्मानयन्तु"

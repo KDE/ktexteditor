@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-03 00:39+0000\n"
-"PO-Revision-Date: 2025-07-01 19:11+0900\n"
+"POT-Creation-Date: 2025-08-07 18:27+0000\n"
+"PO-Revision-Date: 2025-08-08 01:37+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -408,7 +408,7 @@ msgstr "剪貼簿歷史紀錄中沒有項目"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1022
+#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1021
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1162,141 +1162,141 @@ msgstr ""
 "%1 會備份未儲存的檔案到「置換檔」裡。置換檔讓 %1 能在系統發生崩潰後復原您的工"
 "作。停用置換檔可能會在系統若發生崩潰時造成資料遺失。"
 
-#: dialogs/katedialogs.cpp:1023
+#: dialogs/katedialogs.cpp:1022
 #, kde-format
 msgid "Advanced"
 msgstr "進階"
 
-#: dialogs/katedialogs.cpp:1088
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr "你沒有提供備份的後綴或前綴。使用預設後綴：'~'"
 
-#: dialogs/katedialogs.cpp:1088
+#: dialogs/katedialogs.cpp:1087
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "沒有備份後綴和前綴"
 
-#: dialogs/katedialogs.cpp:1221
+#: dialogs/katedialogs.cpp:1220
 #, kde-format
 msgid "Open/Save"
 msgstr "開啟/儲存"
 
-#: dialogs/katedialogs.cpp:1226
+#: dialogs/katedialogs.cpp:1225
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "檔案的開啟與儲存"
 
-#: dialogs/katedialogs.cpp:1249
+#: dialogs/katedialogs.cpp:1248
 #, kde-format
 msgid "&Line:"
 msgstr "行號(&L)："
 
-#: dialogs/katedialogs.cpp:1250
+#: dialogs/katedialogs.cpp:1249
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "前往剪貼簿所複製的行號"
 
-#: dialogs/katedialogs.cpp:1261
+#: dialogs/katedialogs.cpp:1260
 #, kde-format
 msgid "Go to"
 msgstr "前往"
 
-#: dialogs/katedialogs.cpp:1341
+#: dialogs/katedialogs.cpp:1340
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "未在剪貼簿找到有效行號"
 
-#: dialogs/katedialogs.cpp:1405
+#: dialogs/katedialogs.cpp:1404
 #, kde-format
 msgid "Dictionary:"
 msgstr "字典："
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1456
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "開啟自動重新載入"
 
-#: dialogs/katedialogs.cpp:1460
+#: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr "重新載入，並且直到分頁或視窗關閉都不會再提出關於磁碟變更的警告。"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1464
 #, kde-format
 msgid "View &Difference"
 msgstr "檢視差異(&D)"
 
-#: dialogs/katedialogs.cpp:1467
+#: dialogs/katedialogs.cpp:1466
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "顯示變更間的差異。"
 
-#: dialogs/katedialogs.cpp:1472
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "&Reload"
 msgstr "重新載入(&R)"
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1473
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "自磁碟重新載入檔案。未儲存的變更將會遺失。"
 
-#: dialogs/katedialogs.cpp:1478
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "關閉檔案(&C)"
 
-#: dialogs/katedialogs.cpp:1480
+#: dialogs/katedialogs.cpp:1479
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "關閉檔案，放棄檔案內容。"
 
-#: dialogs/katedialogs.cpp:1484
+#: dialogs/katedialogs.cpp:1483
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "另存新檔(&S)…"
 
-#: dialogs/katedialogs.cpp:1486
+#: dialogs/katedialogs.cpp:1485
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "讓您選擇一個位置並再次儲存檔案。"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1491 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1490 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "忽略(&I)"
 
-#: dialogs/katedialogs.cpp:1492
+#: dialogs/katedialogs.cpp:1491
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "沒有動作，忽略在磁碟上的變更。"
 
-#: dialogs/katedialogs.cpp:1558 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
 "your PATH."
 msgstr "diff 指令失敗。請確定 diff(1) 已安裝於您的 PATH。"
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1559 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "建立 Diff 發生錯誤"
 
-#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1566 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "檔案完全相同。"
 
-#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1566 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff 輸出"
@@ -1367,8 +1367,8 @@ msgstr "設定在可能的情況下，游標上方與下方分別要多少行。
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbSwapFileSync)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, sbAutoCenterCursor)
-#: dialogs/navigationconfigwidget.ui:92 dialogs/opensaveconfigadvwidget.ui:152
-#: dialogs/opensaveconfigadvwidget.ui:200
+#: dialogs/navigationconfigwidget.ui:92 dialogs/opensaveconfigadvwidget.ui:120
+#: dialogs/opensaveconfigadvwidget.ui:168
 #, kde-format
 msgid "Disabled"
 msgstr "已停用"
@@ -1490,74 +1490,74 @@ msgid "&Remote files"
 msgstr "遠端檔案(&R)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/opensaveconfigadvwidget.ui:91
+#: dialogs/opensaveconfigadvwidget.ui:75
 #, kde-format
 msgid "Prefix for backup files:"
 msgstr "備份檔前綴："
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
-#: dialogs/opensaveconfigadvwidget.ui:101
+#: dialogs/opensaveconfigadvwidget.ui:85
 #, kde-format
 msgid "Enter the prefix to prepend to the backup file names."
 msgstr "請輸入備份檔名的前置字串。"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/opensaveconfigadvwidget.ui:108
+#: dialogs/opensaveconfigadvwidget.ui:92
 #, kde-format
 msgid "Suffix for backup files:"
 msgstr "備份檔後綴："
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
-#: dialogs/opensaveconfigadvwidget.ui:118
+#: dialogs/opensaveconfigadvwidget.ui:102
 #, kde-format
 msgid "Enter the suffix to append to the backup file names."
 msgstr "請輸入備份檔名的後置字串。"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:141
+#: dialogs/opensaveconfigadvwidget.ui:109
 #, kde-format
 msgid "Swap file mode:"
 msgstr "置換檔模式："
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:157
+#: dialogs/opensaveconfigadvwidget.ui:125
 #, kde-format
 msgid "Enabled, Store In Default Directory"
 msgstr "已啟用，儲存於預設目錄"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
-#: dialogs/opensaveconfigadvwidget.ui:162
+#: dialogs/opensaveconfigadvwidget.ui:130
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
 msgstr "已啟用，儲存於自訂目錄"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
-#: dialogs/opensaveconfigadvwidget.ui:170
+#: dialogs/opensaveconfigadvwidget.ui:138
 #, kde-format
 msgid "Store swap files in:"
 msgstr "儲存置換檔於："
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
-#: dialogs/opensaveconfigadvwidget.ui:190
+#: dialogs/opensaveconfigadvwidget.ui:158
 #, kde-format
 msgid "Save swap files every:"
 msgstr "置換檔儲存頻率："
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
-#: dialogs/opensaveconfigadvwidget.ui:203
+#: dialogs/opensaveconfigadvwidget.ui:171
 #, kde-format
 msgid "s"
 msgstr "秒"
 
 #. i18n: ectx: property (text), widget (QLabel, lblExplanatory)
-#: dialogs/opensaveconfigadvwidget.ui:228
+#: dialogs/opensaveconfigadvwidget.ui:196
 #, kde-format
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr "這個字串位於 katedialogs.cpp，在 KateSaveConfigTab 的建構函式裡。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
-#: dialogs/opensaveconfigadvwidget.ui:254
+#: dialogs/opensaveconfigadvwidget.ui:209
 #, kde-format
 msgid "Honor settings in .editorconfig file"
 msgstr "遵循 .editorconfig 檔案中的設定值"
@@ -4902,10 +4902,9 @@ msgid "Normal"
 msgstr "一般"
 
 #: utils/katebookmarks.cpp:49
-#, fuzzy, kde-format
-#| msgid "Set &Bookmark"
+#, kde-format
 msgid "Toggle &Bookmark"
-msgstr "設定書籤(&B)"
+msgstr "切換書籤(&B)"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
