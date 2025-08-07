@@ -982,7 +982,6 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
         i18n("%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover your work in the case of a system crash. Disabling swap files may "
              "cause data loss in case of a system crash.",
              QCoreApplication::applicationName()));
-    uiadv->lblExplanatory->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
 
     // "What's This?" help can be found in the ui file
 
