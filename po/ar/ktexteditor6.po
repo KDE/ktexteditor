@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-07 18:27+0000\n"
-"PO-Revision-Date: 2025-08-06 14:07+0400\n"
+"PO-Revision-Date: 2025-08-13 18:21+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -996,15 +996,15 @@ msgid ""
 "are inserted; otherwise, a single tabulator is inserted."
 msgstr ""
 "إذا حُدد هذا الخيار، يقوم مفتاح <b>Tab</b> دائمًا بإدراج مسافة بيضاء حتى يصل "
-"إلى موضع علامة التبويب التالي. إذا مُكّن الخيار <b>إدراج مسافات بدلاً من علامات "
-"التبويب</b> في القسم <b>التحرير</b>، ستدرج المسافات؛ وإلا ستدرج علامة تبويب "
+"إلى موضع علامة الجدولة التالي. إذا مُكّن الخيار <b>إدراج مسافات بدلاً من علامات "
+"الجدولة</b> في القسم <b>التحرير</b>، ستدرج المسافات؛ وإلا ستدرج علامة جدولة "
 "واحدة."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:279
 #, kde-format
 msgid "Always advance to the &next tab position"
-msgstr "التقدم دائمًا إلى &موضع علامة التبويب التالية"
+msgstr "التقدم دائمًا إلى &موضع علامة الجدولة التالية"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabIndents)
 #: dialogs/indentationconfigwidget.ui:286
@@ -1039,12 +1039,12 @@ msgid ""
 "inserted."
 msgstr ""
 "إذا حُدد هذا الخيار، فإن مفتاح <b>Tab</b> إما أن يزاح السطر الحالي أو أن "
-"ينتقل إلى موضع علامة التبويب التالي.<p> إذا كانت نقطة الإدراج عند أو قبل أول "
-"حرف غير مسافة في السطر، أو إذا كان هناك تحديد، سيزاح السطر الحالي بعدد مواضع "
-"الأحرف المحددة في <b>عرض الإزاحة</b>.<p> إذا كانت نقطة الإدراج تقع بعد أول "
-"حرف غير مسافة في السطر ولم يكن هناك تحديد، ستدرج مسافة بيضاء حتى يصل إلى "
-"موضع علامة التبويب التالية: إذا مُكن الخيار <b>إدراج مسافات بدلاً من علامات "
-"التبويب</b> في القسم <b>التحرير</b> ستدرج المسافات؛ وإلا سيدرج علامة تبويب "
+"ينتقل إلى موضع علامة الجدولة التالية.<p> إذا كانت نقطة الإدراج عند أو قبل "
+"أول حرف غير مسافة في السطر، أو إذا كان هناك تحديد، سيزاح السطر الحالي بعدد "
+"مواضع الأحرف المحددة في <b>عرض الإزاحة</b>.<p> إذا كانت نقطة الإدراج تقع بعد "
+"أول حرف غير مسافة في السطر ولم يكن هناك تحديد، ستدرج مسافة بيضاء حتى يصل إلى "
+"موضع علامة الجدولة التالية: إذا مُكن الخيار <b>إدراج مسافات بدلاً من علامات "
+"الجدولة</b> في القسم <b>التحرير</b> ستدرج المسافات؛ وإلا سيدرج علامة جدولة "
 "واحدة."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabSmart)
@@ -5259,7 +5259,7 @@ msgid ""
 "true values: 1 on true<br/>possible false values: 0 off false</p>"
 msgstr ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>عند التمكين، ستستبدل بعلامات "
-"التبويب مسافات بيضاء كلما حُفظ المستند.</p><p>القيم الصحيحة المحتملة: 1 on "
+"الجدولة مسافات بيضاء كلما حُفظ المستند.</p><p>القيم الصحيحة المحتملة: 1 on "
 "true<br/>القيم الخاطئة المحتملة: 0 off false</p>"
 
 #: utils/katecmds.cpp:182
@@ -6333,7 +6333,7 @@ msgstr "اضبط لون تحديد النّصّ."
 #, kde-format
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
-msgstr "اجعل علامات التبويب والمسافات اللاحقة مرئية."
+msgstr "اجعل علامات الجدولة والمسافات اللاحقة مرئية."
 
 #: variableeditor/variablelineedit.cpp:315
 #, kde-format
@@ -6657,7 +6657,7 @@ msgid ""
 "and used or replaced with spaces, in the configuration dialog."
 msgstr ""
 "استخدم هذا لمحو إزاحة كتلة نصّ محدّدة (فقط جدولات/فقط مسافات).<br /><br /"
-">بإمكانك ضبط ما إذا كان يجب احترام علامات التبويب واستخدامها أو استبدالها "
+">بإمكانك ضبط ما إذا كان يجب احترام علامات الجدولة واستخدامها أو استبدالها "
 "بمسافات، في مربع حوار الضبط."
 
 #: view/kateview.cpp:527
@@ -7110,8 +7110,7 @@ msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
 "possible."
 msgstr ""
-"يمكنك اختيار ما إذا كان يجب إظهار علامات طي الشفرة ؛ إذا كان هذا الخيار "
-"ممكناَ."
+"يمكنك اختيار ما إذا كان يجب إظهار علامات طي الشفرة؛ إذا كان هذا الخيار ممكناَ."
 
 #: view/kateview.cpp:834
 #, kde-format
@@ -7659,7 +7658,7 @@ msgstr "فراغ عكسي"
 #: view/kateview.cpp:1355
 #, kde-format
 msgid "Insert Tab Character"
-msgstr "أدرج حرف التبويب"
+msgstr "أدرج حرف الجدولة"
 
 #: view/kateview.cpp:1360
 #, kde-format
@@ -7720,8 +7719,8 @@ msgid ""
 "whether tabs should be honored and used or replaced with spaces, in the "
 "configuration dialog."
 msgstr ""
-"استخدم هذا لإزاحة الكتلة نصية المحددة.<br /><br /> يمكنك ضبط ما إذا كان يجب "
-"احترام علامات التبويب واستخدامها أو استبدالها بمسافات، في مربع حوار الضبط."
+"استخدم هذا لإزاحة الكتلة نصية المحددة.<br /><br /> يمكنك ضبط إذا كان يجب "
+"احترام علامات الجدولة واستخدامها أو استبدالها بمسافات، في مربع حوار الضبط."
 
 #: view/kateview.cpp:1406
 #, kde-format
