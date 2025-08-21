@@ -6,13 +6,15 @@
 */
 
 #include "kateview_test.h"
-#include "moc_kateview_test.cpp"
 
+#include <KSyntaxHighlighting/Repository>
+#include <KSyntaxHighlighting/Theme>
 #include <katebuffer.h>
 #include <kateconfig.h>
 #include <katedocument.h>
 #include <kateview.h>
 #include <kateviewinternal.h>
+#include <ktexteditor/editor.h>
 #include <ktexteditor/message.h>
 #include <ktexteditor/movingcursor.h>
 
@@ -839,6 +841,42 @@ void KateViewTest::testSelectedTextFormats()
     verifyFormat(formats[1], 2, 1, /*hasBg=*/false, /*hasFg=*/true);
     verifyFormat(formats[2], 3, 3, /*hasBg=*/false, /*hasFg=*/true);
     verifyFormat(formats[3], 6, 51, /*hasBg=*/false, /*hasFg=*/true);
+
+    // Test with block selection
+
+    const auto &repository = KTextEditor::Editor::instance()->repository();
+    auto lightTheme = repository.defaultTheme(KSyntaxHighlighting::Repository::LightTheme);
+    view->setConfigValue(QStringLiteral("theme"), lightTheme.name());
+
+    doc.setText(QStringLiteral("* hello\n* hello\n* hello\n"));
+    view->show();
+    view->setBlockSelection(true);
+    view->setCursorPosition({1, 4});
+    view->setSelection({0, 2, 1, 4});
+
+    // this test will break if someone removes "selected color" format normal textstyle
+    const QColor normalSelColor = lightTheme.selectedTextColor(KSyntaxHighlighting::Theme::TextStyle::Normal);
+
+    {
+        const QTextLayout *layoutLine0 = view->textLayout({0, 0});
+
+        auto fmt = layoutLine0->formats()[0];
+        QVERIFY(fmt.start == 0 && fmt.length == 2);
+
+        fmt = layoutLine0->formats()[1];
+        QVERIFY(fmt.start == 2 && fmt.length == 2 && fmt.format.foreground() == normalSelColor);
+
+        fmt = layoutLine0->formats()[2];
+        QVERIFY(fmt.start == 4 && fmt.length == 3 && fmt.format.foreground() != normalSelColor);
+
+        const QTextLayout *layoutLine1 = view->textLayout({1, 0});
+        fmt = layoutLine1->formats()[1];
+        QVERIFY(fmt.start == 2 && fmt.length == 2 && fmt.format.foreground() == normalSelColor);
+
+        fmt = layoutLine1->formats()[2];
+        QVERIFY(fmt.start == 4 && fmt.length == 3 && fmt.format.foreground() != normalSelColor);
+    }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;
+#include "moc_kateview_test.cpp"

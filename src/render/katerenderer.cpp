@@ -546,7 +546,11 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
         if (a) {
             fr.format = *a;
             if (!skipSelections && selectionRange.contains(currentPosition)) {
-                assignSelectionBrushesFromAttribute(fr, *a);
+                if (!m_view->blockSelection()) {
+                    assignSelectionBrushesFromAttribute(fr, *a);
+                } else if (m_doc->rangeOnLine(selectionRange, line).containsColumn(currentPosition.column())) {
+                    assignSelectionBrushesFromAttribute(fr, *a);
+                }
             }
         }
 
