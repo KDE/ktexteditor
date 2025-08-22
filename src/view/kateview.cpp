@@ -4169,11 +4169,11 @@ void KTextEditor::ViewPrivate::keyDelete()
         return;
     }
 
-    for (const auto &c : m_secondaryCursors) {
-        if (c.range) {
-            doc()->removeText(c.range->toRange());
+    for (auto it = m_secondaryCursors.rbegin(); it != m_secondaryCursors.rend(); ++it) {
+        if (it->range) {
+            doc()->removeText(it->range->toRange());
         } else {
-            doc()->del(this, c.cursor());
+            doc()->del(this, it->cursor());
         }
     }
 

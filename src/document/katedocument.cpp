@@ -3527,10 +3527,10 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view)
     // Handle multi cursors
     const auto &multiCursors = view->secondaryCursors();
     view->completionWidget()->setIgnoreBufferSignals(true);
-    for (const auto &c : multiCursors) {
-        const auto newPos = backspaceAtCursor(view, c.cursor());
+    for (auto it = multiCursors.rbegin(); it != multiCursors.rend(); ++it) {
+        const auto newPos = backspaceAtCursor(view, it->cursor());
         if (newPos.isValid()) {
-            c.pos->setPosition(newPos);
+            it->pos->setPosition(newPos);
         }
     }
     view->completionWidget()->setIgnoreBufferSignals(false);
