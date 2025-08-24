@@ -282,11 +282,6 @@ KTextEditor::Cursor KateLayoutCache::viewCacheStart() const
     return !m_textLayouts.empty() ? m_textLayouts.front().start() : KTextEditor::Cursor();
 }
 
-KTextEditor::Cursor KateLayoutCache::viewCacheEnd() const
-{
-    return !m_textLayouts.empty() ? m_textLayouts.back().end() : KTextEditor::Cursor();
-}
-
 int KateLayoutCache::viewWidth() const
 {
     return m_viewWidth;

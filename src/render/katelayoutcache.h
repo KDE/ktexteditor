@@ -114,7 +114,6 @@ public:
 
     int viewCacheLineCount() const;
     KTextEditor::Cursor viewCacheStart() const;
-    KTextEditor::Cursor viewCacheEnd() const;
     void updateViewCache(const KTextEditor::Cursor startPos, int newViewLineCount = -1, int viewLinesScrolled = 0);
 
     void relayoutLines(int startRealLine, int endRealLine);
