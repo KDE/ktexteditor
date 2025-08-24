@@ -18,19 +18,22 @@ namespace KTextEditor
 {
 class DocumentPrivate;
 }
+namespace Kate
+{
+class TextFolding;
+}
 class KateTextLayout;
 class KateRenderer;
 
 class KateLineLayout
 {
 public:
-    explicit KateLineLayout(KateRenderer &renderer);
+    explicit KateLineLayout();
 
     void debugOutput() const;
 
     void clear();
     bool isValid() const;
-    bool isOutsideDocument() const;
 
     bool isRightToLeft() const;
 
@@ -45,7 +48,7 @@ public:
     /**
      * Only pass virtualLine if you know it (and thus we shouldn't try to look it up)
      */
-    void setLine(int line, int virtualLine = -1);
+    void setLine(Kate::TextFolding &folding, int line, int virtualLine = -1);
     KTextEditor::Cursor start() const;
 
     int virtualLine() const;
@@ -61,7 +64,7 @@ public:
     KateTextLayout viewLine(int viewLine);
     int viewLineForColumn(int column) const;
 
-    bool startsInvisibleBlock() const;
+    bool startsInvisibleBlock(Kate::TextFolding &folding) const;
 
     const QTextLayout &layout() const
     {
@@ -92,7 +95,6 @@ private:
     // Disable copy
     KateLineLayout(const KateLineLayout &copy);
 
-    KateRenderer &m_renderer;
     int m_line;
     int m_virtualLine;
 

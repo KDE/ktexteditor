@@ -25,7 +25,7 @@ public:
 
     void relayoutLines(int startRealLine, int endRealLine);
 
-    void slotEditDone(int fromLine, int toLine, int shiftAmount, std::vector<KateTextLayout> &textLayouts);
+    void slotEditDone(KateRenderer *renderer, int fromLine, int toLine, int shiftAmount, std::vector<KateTextLayout> &textLayouts);
 
     KateLineLayout *find(int i);
 

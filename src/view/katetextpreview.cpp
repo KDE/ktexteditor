@@ -130,8 +130,8 @@ void KateTextPreview::paintEvent(QPaintEvent *event)
         }
 
         // compute layout WITHOUT cache to not poison it + render it
-        KateLineLayout lineLayout(*renderer);
-        lineLayout.setLine(realLine, -1);
+        KateLineLayout lineLayout;
+        lineLayout.setLine(renderer->folding(), realLine, -1);
         Kate::TextLine textLine = renderer->doc()->kateTextLine(lineLayout.line());
         renderer->layoutLine(textLine, &lineLayout, -1 /* no wrap */, false /* no layout cache */);
         renderer->paintTextLine(paint, &lineLayout, xStart, xEnd, QRectF{}, nullptr, KateRenderer::SkipDrawFirstInvisibleLineUnderlined);

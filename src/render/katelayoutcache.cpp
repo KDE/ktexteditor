@@ -47,7 +47,7 @@ void KateLineLayoutMap::relayoutLines(int startRealLine, int endRealLine)
     }
 }
 
-void KateLineLayoutMap::slotEditDone(int fromLine, int toLine, int shiftAmount, std::vector<KateTextLayout> &textLayouts)
+void KateLineLayoutMap::slotEditDone(KateRenderer *renderer, int fromLine, int toLine, int shiftAmount, std::vector<KateTextLayout> &textLayouts)
 {
     auto start = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(fromLine, nullptr), lessThan);
     auto end = std::upper_bound(start, m_lineLayouts.end(), LineLayoutPair(toLine, nullptr), lessThan);
@@ -55,7 +55,7 @@ void KateLineLayoutMap::slotEditDone(int fromLine, int toLine, int shiftAmount, 
     if (shiftAmount != 0) {
         for (auto it = end; it != m_lineLayouts.end(); ++it) {
             (*it).first += shiftAmount;
-            (*it).second->setLine((*it).second->line() + shiftAmount);
+            (*it).second->setLine(renderer->folding(), (*it).second->line() + shiftAmount);
         }
 
         for (auto it = start; it != end; ++it) {
@@ -235,8 +235,8 @@ KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
         return nullptr;
     }
 
-    KateLineLayout *l = new KateLineLayout(*m_renderer);
-    l->setLine(realLine, virtualLine);
+    KateLineLayout *l = new KateLineLayout;
+    l->setLine(m_renderer->folding(), realLine, virtualLine);
 
     // because it may not have the syntax highlighting applied, allow layoutLine to use plainLines...
     const Kate::TextLine textLine = acceptDirtyLayouts() ? m_renderer->doc()->plainKateTextLine(l->line()) : m_renderer->doc()->kateTextLine(l->line());
@@ -426,22 +426,22 @@ void KateLayoutCache::viewCacheDebugOutput() const
 
 void KateLayoutCache::wrapLine(KTextEditor::Document *, const KTextEditor::Cursor position)
 {
-    m_lineLayouts.slotEditDone(position.line(), position.line() + 1, 1, m_textLayouts);
+    m_lineLayouts.slotEditDone(m_renderer, position.line(), position.line() + 1, 1, m_textLayouts);
 }
 
 void KateLayoutCache::unwrapLine(KTextEditor::Document *, int line)
 {
-    m_lineLayouts.slotEditDone(line - 1, line, -1, m_textLayouts);
+    m_lineLayouts.slotEditDone(m_renderer, line - 1, line, -1, m_textLayouts);
 }
 
 void KateLayoutCache::insertText(KTextEditor::Document *, const KTextEditor::Cursor position, const QString &)
 {
-    m_lineLayouts.slotEditDone(position.line(), position.line(), 0, m_textLayouts);
+    m_lineLayouts.slotEditDone(m_renderer, position.line(), position.line(), 0, m_textLayouts);
 }
 
 void KateLayoutCache::removeText(KTextEditor::Document *, KTextEditor::Range range, const QString &)
 {
-    m_lineLayouts.slotEditDone(range.start().line(), range.start().line(), 0, m_textLayouts);
+    m_lineLayouts.slotEditDone(m_renderer, range.start().line(), range.start().line(), 0, m_textLayouts);
 }
 
 void KateLayoutCache::clear()

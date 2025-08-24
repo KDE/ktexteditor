@@ -13,12 +13,8 @@
 
 #include "katepartdebug.h"
 
-#include "katedocument.h"
-#include "katerenderer.h"
-
-KateLineLayout::KateLineLayout(KateRenderer &renderer)
-    : m_renderer(renderer)
-    , m_line(-1)
+KateLineLayout::KateLineLayout()
+    : m_line(-1)
     , m_virtualLine(-1)
 {
 }
@@ -43,10 +39,10 @@ int KateLineLayout::line() const
     return m_line;
 }
 
-void KateLineLayout::setLine(int line, int virtualLine)
+void KateLineLayout::setLine(Kate::TextFolding &folding, int line, int virtualLine)
 {
     m_line = line;
-    m_virtualLine = (virtualLine == -1) ? m_renderer.folding().lineToVisibleLine(line) : virtualLine;
+    m_virtualLine = (virtualLine == -1) ? folding.lineToVisibleLine(line) : virtualLine;
 }
 
 int KateLineLayout::virtualLine() const
@@ -59,13 +55,13 @@ void KateLineLayout::setVirtualLine(int virtualLine)
     m_virtualLine = virtualLine;
 }
 
-bool KateLineLayout::startsInvisibleBlock() const
+bool KateLineLayout::startsInvisibleBlock(Kate::TextFolding &folding) const
 {
     if (!isValid()) {
         return false;
     }
 
-    return (virtualLine() + 1) != m_renderer.folding().lineToVisibleLine(line() + 1);
+    return (virtualLine() + 1) != folding.lineToVisibleLine(line() + 1);
 }
 
 bool KateLineLayout::isValid() const
@@ -139,11 +135,6 @@ int KateLineLayout::widthOfLastLine()
 {
     const KateTextLayout &lastLine = viewLine(viewLineCount() - 1);
     return lastLine.width() + lastLine.xOffset();
-}
-
-bool KateLineLayout::isOutsideDocument() const
-{
-    return line() < 0 || line() >= m_renderer.doc()->lines();
 }
 
 void KateLineLayout::debugOutput() const

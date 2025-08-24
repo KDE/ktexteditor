@@ -662,7 +662,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
     paintTextLineBackground(paint, range, currentViewLine, xStart, xEnd);
 
     // Draws the dashed underline at the start of a folded block of text.
-    if (!(flags & SkipDrawFirstInvisibleLineUnderlined) && range->startsInvisibleBlock()) {
+    if (!(flags & SkipDrawFirstInvisibleLineUnderlined) && range->startsInvisibleBlock(folding())) {
         QPen pen(config()->foldingColor());
         pen.setCosmetic(true);
         pen.setStyle(Qt::DashLine);
@@ -1434,8 +1434,8 @@ void KateRenderer::paintSelection(QPaintDevice *d, int startLine, int xStart, in
         }
 
         // compute layout WITHOUT cache to not poison it + render it
-        KateLineLayout lineLayout(*this);
-        lineLayout.setLine(line, -1);
+        KateLineLayout lineLayout;
+        lineLayout.setLine(folding(), line, -1);
         layoutLine(doc()->kateTextLine(line), &lineLayout, viewWidth, false /* no layout cache */, /*skipSelections=*/true);
         KateRenderer::PaintTextLineFlags flags;
         flags.setFlag(KateRenderer::SkipDrawFirstInvisibleLineUnderlined);

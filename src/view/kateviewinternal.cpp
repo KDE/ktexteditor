@@ -4955,13 +4955,13 @@ void KateViewInternal::showBracketMatchPreview()
 
     const int previewLine = openBracketCursor.line();
     KateRenderer *const renderer_ = renderer();
-    KateLineLayout *lineLayout(new KateLineLayout(*renderer_));
-    lineLayout->setLine(previewLine, -1);
+    KateLineLayout *lineLayout(new KateLineLayout());
+    lineLayout->setLine(renderer_->folding(), previewLine, -1);
 
     // If the opening bracket is on its own line, start preview at the line above it instead (where the context is likely to be)
     const int col = doc()->plainKateTextLine(lineLayout->line()).firstChar();
     if (previewLine > 0 && (col == -1 || col == openBracketCursor.column())) {
-        lineLayout->setLine(previewLine - 1, lineLayout->virtualLine() - 1);
+        lineLayout->setLine(renderer_->folding(), previewLine - 1, lineLayout->virtualLine() - 1);
     }
     Kate::TextLine textLine = doc()->kateTextLine(lineLayout->line());
 
