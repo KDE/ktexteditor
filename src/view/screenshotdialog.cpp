@@ -331,7 +331,8 @@ void ScreenshotDialog::renderScreenshot(KateRenderer *r)
     for (int line = startLine; line <= endLine; ++line) {
         auto lineLayout = std::make_unique<KateLineLayout>(renderer);
         lineLayout->setLine(line, -1);
-        renderer.layoutLine(lineLayout.get(), xEnd, false /* no layout cache */, /*skipSelections=*/true);
+        Kate::TextLine textLine = renderer.doc()->kateTextLine(lineLayout->line());
+        renderer.layoutLine(textLine, lineLayout.get(), xEnd, false /* no layout cache */, /*skipSelections=*/true);
         height += lineLayout->viewLineCount() * renderer.lineHeight();
         lineLayouts.push_back(std::move(lineLayout));
     }

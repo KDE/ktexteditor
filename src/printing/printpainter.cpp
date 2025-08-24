@@ -367,7 +367,7 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
         for (unsigned int i = pl.firstline; i <= pl.lastline; ++i) {
             KateLineLayout rangeptr(*m_renderer);
             rangeptr.setLine(i);
-            m_renderer->layoutLine(&rangeptr, (int)pl.maxWidth, false);
+            m_renderer->layoutLine(m_renderer->doc()->kateTextLine(rangeptr.line()), &rangeptr, (int)pl.maxWidth, false);
             totalLines += rangeptr.viewLineCount();
         }
 
@@ -637,7 +637,7 @@ void PrintPainter::paintLine(QPainter &painter, const uint line, uint &y, uint &
     // HA! this is where we print [part of] a line ;]]
     KateLineLayout rangeptr(*m_renderer);
     rangeptr.setLine(line);
-    m_renderer->layoutLine(&rangeptr, (int)pl.maxWidth, false);
+    m_renderer->layoutLine(m_renderer->doc()->kateTextLine(rangeptr.line()), &rangeptr, (int)pl.maxWidth, false);
 
     // selectionOnly: clip non-selection parts and adjust painter position if needed
     int _xadjust = 0;

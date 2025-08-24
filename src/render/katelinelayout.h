@@ -12,10 +12,6 @@
 #include <QSharedData>
 #include <QTextLayout>
 
-#include <optional>
-
-#include "katetextline.h"
-
 #include <ktexteditor/cursor.h>
 
 namespace KTextEditor
@@ -44,9 +40,6 @@ public:
     friend bool operator>=(const KateLineLayout &r, const KTextEditor::Cursor c);
     friend bool operator<(const KateLineLayout &r, const KTextEditor::Cursor c);
     friend bool operator<=(const KateLineLayout &r, const KTextEditor::Cursor c);
-
-    const Kate::TextLine &textLine(bool forceReload = false) const;
-    int length() const;
 
     int line() const;
     /**
@@ -85,7 +78,6 @@ public:
     void invalidateLayout();
 
     bool layoutDirty = true;
-    bool usePlainTextLine = false;
 
     // This variable is used as follows:
     // non-dynamic-wrapping mode: unused
@@ -101,7 +93,6 @@ private:
     KateLineLayout(const KateLineLayout &copy);
 
     KateRenderer &m_renderer;
-    mutable std::optional<Kate::TextLine> m_textLine;
     int m_line;
     int m_virtualLine;
 

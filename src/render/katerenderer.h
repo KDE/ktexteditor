@@ -276,7 +276,7 @@ public:
     /**
      * Text width & height calculation functions...
      */
-    void layoutLine(KateLineLayout *line, int maxwidth = -1, bool cacheLayout = false, bool skipSelections = false) const;
+    void layoutLine(Kate::TextLine textLine, KateLineLayout *line, int maxwidth = -1, bool cacheLayout = false, bool skipSelections = false) const;
 
     /**
      * This is a smaller QString::isRightToLeft(). It's also marked as internal to kate

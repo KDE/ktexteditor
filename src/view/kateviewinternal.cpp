@@ -1042,19 +1042,20 @@ public:
             qCWarning(LOG_KTE) << "Did not retrieve valid layout for line " << line();
             return *this;
         }
+        const int lineLength = m_vi->doc()->lineLength(thisLine->line());
 
         const bool wrapCursor = view()->wrapCursor();
         int maxColumn = -1;
         if (n >= 0) {
             for (int i = 0; i < n; i++) {
-                if (column() >= thisLine->length()) {
+                if (column() >= lineLength) {
                     if (wrapCursor) {
                         break;
 
                     } else if (view()->dynWordWrap()) {
                         // Don't go past the edge of the screen in dynamic wrapping mode
                         if (maxColumn == -1) {
-                            maxColumn = thisLine->length() + ((m_vi->width() - thisLine->widthOfLastLine()) / m_vi->renderer()->spaceWidth()) - 1;
+                            maxColumn = lineLength + ((m_vi->width() - thisLine->widthOfLastLine()) / m_vi->renderer()->spaceWidth()) - 1;
                         }
 
                         if (column() >= maxColumn) {
@@ -1074,7 +1075,7 @@ public:
             }
         } else {
             for (int i = 0; i > n; i--) {
-                if (column() >= thisLine->length()) {
+                if (column() >= lineLength) {
                     m_cursor.setColumn(column() - 1);
                 } else if (column() == 0) {
                     break;
@@ -1118,8 +1119,9 @@ public:
         }
 
         if (n >= 0) {
+            const int lineLength = m_vi->doc()->lineLength(thisLine->line());
             for (int i = 0; i < n; i++) {
-                if (column() >= thisLine->length()) {
+                if (column() >= lineLength) {
                     // Have come to the end of a line
                     if (line() >= doc()->lines() - 1)
                     // Have come to the end of the document
@@ -1157,18 +1159,19 @@ public:
 
                     // Retrieve the next text range
                     thisLine = m_vi->cache()->line(line());
+                    const int lineLength = m_vi->doc()->lineLength(thisLine->line());
                     if (!thisLine || !thisLine->isValid()) {
                         qCWarning(LOG_KTE) << "Did not retrieve a valid layout for line " << line();
                         return *this;
                     }
 
                     // Finish going back to the end of the last line
-                    m_cursor.setColumn(thisLine->length());
+                    m_cursor.setColumn(lineLength);
 
                     continue;
                 }
 
-                if (column() > thisLine->length()) {
+                if (column() > m_vi->doc()->lineLength(thisLine->line())) {
                     m_cursor.setColumn(column() - 1);
                 } else {
                     m_cursor.setColumn(thisLine->layout().previousCursorPosition(column()));
@@ -1306,13 +1309,13 @@ public:
 
             int jump = -1;
             int col = column();
-            const QString &text = thisLine->textLine().text();
+            const QString text = m_vi->doc()->line(thisLine->line());
 
             if (col < text.size() && text.at(col).isUpper()) {
                 skipCaps(text, col);
             }
 
-            for (int i = col; i < thisLine->length(); ++i) {
+            for (int i = col; i < text.length(); ++i) {
                 const auto c = text.at(i);
                 if (isSurrogate(c)) {
                     col++;
@@ -1357,7 +1360,7 @@ public:
                 }
             };
 
-            const QString &text = thisLine->textLine().text();
+            const QString text = m_vi->doc()->line(thisLine->line());
             int col = std::min<int>(column(), text.size() - 1);
             // decrement because we might be standing at a camel hump
             // already and don't want to return the same position
@@ -4956,12 +4959,13 @@ void KateViewInternal::showBracketMatchPreview()
     lineLayout->setLine(previewLine, -1);
 
     // If the opening bracket is on its own line, start preview at the line above it instead (where the context is likely to be)
-    const int col = lineLayout->textLine().firstChar();
+    const int col = doc()->plainKateTextLine(lineLayout->line()).firstChar();
     if (previewLine > 0 && (col == -1 || col == openBracketCursor.column())) {
         lineLayout->setLine(previewLine - 1, lineLayout->virtualLine() - 1);
     }
+    Kate::TextLine textLine = doc()->kateTextLine(lineLayout->line());
 
-    renderer_->layoutLine(lineLayout, -1 /* no wrap */, false /* no layout cache */);
+    renderer_->layoutLine(textLine, lineLayout, -1 /* no wrap */, false /* no layout cache */);
     const int lineWidth =
         qBound(m_view->width() / 5, int(lineLayout->width() + renderer_->spaceWidth() * 2), m_view->width() - m_leftBorder->width() - m_lineScroll->width());
     m_bmPreview->resize(lineWidth, renderer_->lineHeight() * 2);

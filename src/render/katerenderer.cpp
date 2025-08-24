@@ -652,6 +652,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
 
     // font data
     const QFontMetricsF &fm = m_fontMetrics;
+    const Kate::TextLine textLine = doc()->kateTextLine(range->line());
 
     int currentViewLine = -1;
     if (cursor && cursor->line() == range->line()) {
@@ -697,14 +698,14 @@ void KateRenderer::paintTextLine(QPainter &paint,
             }
         }
 
-        if (range->length() > 0) {
+        if (textLine.length() > 0) {
             // We may have changed the pen, be absolutely sure it gets set back to
             // normal foreground color before drawing text for text that does not
             // set the pen color
             paint.setPen(attribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color());
 
             // Draw text background
-            const auto decos = decorationsForLine(range->textLine(), range->line(), /*skipSelections=*/!drawSelection);
+            const auto decos = decorationsForLine(textLine, range->line(), /*skipSelections=*/!drawSelection);
             paintTextBackground(paint, range, decos, xStart);
 
             // Draw the text :)
@@ -729,7 +730,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
             // Draw indent lines
             if (!m_printerFriendly && (indentLinesEnabled && i == 0)) {
                 const qreal w = spaceWidth();
-                const int lastIndentColumn = range->textLine().indentDepth(m_tabWidth);
+                const int lastIndentColumn = textLine.indentDepth(m_tabWidth);
                 for (int x = m_indentWidth; x < lastIndentColumn; x += m_indentWidth) {
                     auto xPos = x * w + 1 - xStart;
                     if (xPos >= 0) {
@@ -739,7 +740,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
             }
 
             // draw an open box to mark non-breaking spaces
-            const QString &text = range->textLine().text();
+            const QString &text = textLine.text();
             int y = lineHeight() * i + m_fontAscent - fm.strikeOutPos();
             int nbSpaceIndex = text.indexOf(nbSpaceChar, line.lineLayout().xToCursor(xStart));
 
@@ -768,7 +769,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
             // draw trailing spaces
             if (showSpaces() != KateDocumentConfig::None) {
                 int spaceIndex = line.endCol() - 1;
-                const int trailingPos = showSpaces() == KateDocumentConfig::All ? 0 : qMax(range->textLine().lastChar(), 0);
+                const int trailingPos = showSpaces() == KateDocumentConfig::All ? 0 : qMax(textLine.lastChar(), 0);
 
                 if (spaceIndex >= trailingPos) {
                     QVarLengthArray<int, 32> spacePositions;
@@ -933,9 +934,9 @@ void KateRenderer::paintTextLine(QPainter &paint,
             } else /* rtl + dynWordWrap == false */ {
                 // if text is rtl and dynamic wrap is false, the x offsets are in the opposite
                 // direction i.e., [0] == biggest offset, [1] = next
-                x = range->viewLine(viewLine).lineLayout().cursorToX(range->length() - column) - xStart;
+                x = range->viewLine(viewLine).lineLayout().cursorToX(textLine.length() - column) - xStart;
             }
-            int textLength = range->length();
+            int textLength = textLine.length();
             if (column == 0 || column < textLength) {
                 // If the note is inside text or at the beginning, then there is a hole in the text where the
                 // note should be painted and the cursor gets placed at the right side of it. So we have to
@@ -985,7 +986,8 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range,
         int caretWidth;
         int lineWidth = 2;
         QColor color;
-        QTextLine line = range->layout().lineForTextPosition(qMin(cursor.column(), range->length()));
+        const int lineLength = range->layout().text().length();
+        QTextLine line = range->layout().lineForTextPosition(qMin(cursor.column(), lineLength));
 
         // Determine the caret's style
         KTextEditor::caretStyles style = caretStyle();
@@ -993,7 +995,7 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range,
         // Make the caret the desired width
         if (style == KTextEditor::caretStyles::Line) {
             caretWidth = lineWidth;
-        } else if (line.isValid() && cursor.column() < range->length()) {
+        } else if (line.isValid() && cursor.column() < lineLength) {
             caretWidth = int(line.cursorToX(cursor.column() + 1) - line.cursorToX(cursor.column()));
             if (caretWidth < 0) {
                 caretWidth = -caretWidth;
@@ -1044,13 +1046,13 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range,
             break;
         }
 
-        if (cursor.column() <= range->length()) {
+        if (cursor.column() <= lineLength) {
             // Ensure correct cursor placement for RTL text
             if (range->layout().textOption().textDirection() == Qt::RightToLeft) {
                 xStart += caretWidth;
             }
             qreal width = 0;
-            if (cursor.column() < range->length()) {
+            if (cursor.column() < lineLength) {
                 const auto inlineNotes = m_view->inlineNotes(range->line());
                 for (const auto &inlineNoteData : inlineNotes) {
                     KTextEditor::InlineNote inlineNote(inlineNoteData);
@@ -1188,11 +1190,9 @@ qreal KateRenderer::spaceWidth() const
     return m_fontMetrics.horizontalAdvance(spaceChar);
 }
 
-void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cacheLayout, bool skipSelections) const
+void KateRenderer::layoutLine(Kate::TextLine textLine, KateLineLayout *lineLayout, int maxwidth, bool cacheLayout, bool skipSelections) const
 {
     // if maxwidth == -1 we have no wrap
-
-    Kate::TextLine textLine = lineLayout->textLine();
 
     QTextLayout &l = lineLayout->modifiableLayout();
     l.setText(textLine.text());
@@ -1436,7 +1436,7 @@ void KateRenderer::paintSelection(QPaintDevice *d, int startLine, int xStart, in
         // compute layout WITHOUT cache to not poison it + render it
         KateLineLayout lineLayout(*this);
         lineLayout.setLine(line, -1);
-        layoutLine(&lineLayout, viewWidth, false /* no layout cache */, /*skipSelections=*/true);
+        layoutLine(doc()->kateTextLine(line), &lineLayout, viewWidth, false /* no layout cache */, /*skipSelections=*/true);
         KateRenderer::PaintTextLineFlags flags;
         flags.setFlag(KateRenderer::SkipDrawFirstInvisibleLineUnderlined);
         flags.setFlag(KateRenderer::SkipDrawLineSelection);
