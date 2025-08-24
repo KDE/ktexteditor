@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-07 18:27+0000\n"
-"PO-Revision-Date: 2025-08-14 13:20+0400\n"
+"PO-Revision-Date: 2025-08-23 08:53+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -122,7 +122,7 @@ msgstr "الحدود"
 #: data/katepart5ui.rc:92
 #, kde-format
 msgid "&Code Folding"
-msgstr "&طيّ الكود"
+msgstr "&طيّ الشفرة"
 
 #. i18n: ectx: Menu (go)
 #: data/katepart5ui.rc:109
@@ -5414,12 +5414,12 @@ msgstr ""
 #: utils/katecmds.cpp:621
 #, kde-format
 msgid "Remove Duplicate Lines"
-msgstr "إزالة الأسطر المكررة"
+msgstr "أزل الأسطر المكررة"
 
 #: utils/katecmds.cpp:622
 #, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr "إزالة التكرارات وفرز النص أبجديا"
+msgstr "أزل التكرارات وافرز النص أبجديًا"
 
 #: utils/katecmds.cpp:623
 #, kde-format
