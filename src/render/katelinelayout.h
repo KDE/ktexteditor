@@ -8,8 +8,6 @@
 #ifndef _KATE_LINELAYOUT_H_
 #define _KATE_LINELAYOUT_H_
 
-#include <QExplicitlySharedDataPointer>
-#include <QSharedData>
 #include <QTextLayout>
 
 #include <ktexteditor/cursor.h>
