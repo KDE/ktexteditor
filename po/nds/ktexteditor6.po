@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-07 18:27+0000\n"
+"POT-Creation-Date: 2025-08-25 00:39+0000\n"
 "PO-Revision-Date: 2014-09-18 23:44+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -8371,13 +8371,13 @@ msgstr "Reegn&ummern wiesen"
 msgid "Show Actual Line Numbers"
 msgstr "Reegn&ummern wiesen"
 
-#: view/screenshotdialog.cpp:421
+#: view/screenshotdialog.cpp:422
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr ""
 
-#: view/screenshotdialog.cpp:421
+#: view/screenshotdialog.cpp:422
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr ""

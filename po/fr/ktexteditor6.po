@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-07 18:27+0000\n"
+"POT-Creation-Date: 2025-08-25 00:39+0000\n"
 "PO-Revision-Date: 2025-06-30 08:48+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -8487,13 +8487,13 @@ msgstr "Afficher les numéros de lignes à partir de 1"
 msgid "Show Actual Line Numbers"
 msgstr "Afficher les numéros de la ligne actuelle"
 
-#: view/screenshotdialog.cpp:421
+#: view/screenshotdialog.cpp:422
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr "Impossible d'enregistrer la copie d'écran"
 
-#: view/screenshotdialog.cpp:421
+#: view/screenshotdialog.cpp:422
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr "Impossible d'enregistrer la copie d'écran : %1"

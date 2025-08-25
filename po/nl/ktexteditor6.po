@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-07 18:27+0000\n"
+"POT-Creation-Date: 2025-08-25 00:39+0000\n"
 "PO-Revision-Date: 2025-08-03 09:21+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -8152,13 +8152,13 @@ msgstr "Regelnummering vanaf 1 tonen"
 msgid "Show Actual Line Numbers"
 msgstr "Actuele regelnummering tonen"
 
-#: view/screenshotdialog.cpp:421
+#: view/screenshotdialog.cpp:422
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr "Schermafdruk opslaan is mislukt"
 
-#: view/screenshotdialog.cpp:421
+#: view/screenshotdialog.cpp:422
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr "Schermafdruk opslaan is mislukt: %1"

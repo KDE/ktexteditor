@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-07 18:27+0000\n"
+"POT-Creation-Date: 2025-08-25 00:39+0000\n"
 "PO-Revision-Date: 2025-06-30 15:20+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -8093,13 +8093,13 @@ msgstr "Начать нумерацию строк с 1"
 msgid "Show Actual Line Numbers"
 msgstr "Показывать исходные номера строк"
 
-#: view/screenshotdialog.cpp:421
+#: view/screenshotdialog.cpp:422
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr "Не удалось сохранить снимок экрана"
 
-#: view/screenshotdialog.cpp:421
+#: view/screenshotdialog.cpp:422
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr "Не удалось сохранить снимок экрана: %1"

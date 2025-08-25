@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 stable\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-07 18:27+0000\n"
+"POT-Creation-Date: 2025-08-25 00:39+0000\n"
 "PO-Revision-Date: 2005-11-25 11:24+0200\n"
 "Last-Translator: Juanita Franz <juanita.franz@vr-web.de>\n"
 "Language-Team: AFRIKAANS <translate-discuss-af@lists.sourceforge.net>\n"
@@ -8333,13 +8333,13 @@ msgstr "Vertoon Lyn Nommers"
 msgid "Show Actual Line Numbers"
 msgstr "Vertoon Lyn Nommers"
 
-#: view/screenshotdialog.cpp:421
+#: view/screenshotdialog.cpp:422
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr ""
 
-#: view/screenshotdialog.cpp:421
+#: view/screenshotdialog.cpp:422
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr ""
