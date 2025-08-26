@@ -1,21 +1,21 @@
 # SPDX-FileCopyrightText: 2010, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
-# Thomas Diehl <thd@kde.org>, 2002, 2003, 2004.
-# Stefan Winter <swinter@kde.org>, 2002.
-# Stephan Johach <hunsum@gmx.de>, 2004, 2005, 2006, 2007.
-# Georg Schuster <gschuster@utanet.at>, 2005.
-# Thomas Reitelbach <tr@erdfunkstelle.de>, 2005, 2006, 2007, 2008, 2009, 2010.
-# Burkhard Lück <lueck@hube-lueck.de>, 2006, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
-# Frederik Schwarzer <schwarzer@kde.org>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2022, 2023.
-# Panagiotis Papadopoulos <pano_90@gmx.net>, 2010.
-# Torbjörn Klatt <torbjoern.k@googlemail.com>, 2011.
-# Frank Steinmetzger <dev-kde@felsenfleischer.de>, 2022.
+# SPDX-FileCopyrightText: 2002, 2003, 2004 Thomas Diehl <thd@kde.org>
+# SPDX-FileCopyrightText: 2002 Stefan Winter <swinter@kde.org>
+# SPDX-FileCopyrightText: 2004, 2005, 2006, 2007 Stephan Johach <hunsum@gmx.de>
+# SPDX-FileCopyrightText: 2005 Georg Schuster <gschuster@utanet.at>
+# SPDX-FileCopyrightText: 2005, 2006, 2007, 2008, 2009, 2010 Thomas Reitelbach <tr@erdfunkstelle.de>
+# SPDX-FileCopyrightText: 2006, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021 Burkhard Lück <lueck@hube-lueck.de>
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2022, 2023 Frederik Schwarzer <schwarzer@kde.org>
+# SPDX-FileCopyrightText: 2010 Panagiotis Papadopoulos <pano_90@gmx.net>
+# SPDX-FileCopyrightText: 2011 Torbjörn Klatt <torbjoern.k@googlemail.com>
+# SPDX-FileCopyrightText: 2022 Frank Steinmetzger <dev-kde@felsenfleischer.de>
 # SPDX-FileCopyrightText: 2025 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 01:34+0000\n"
-"PO-Revision-Date: 2025-06-25 21:43+0200\n"
+"PO-Revision-Date: 2025-08-21 00:07+0200\n"
 "Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -984,7 +984,7 @@ msgstr ""
 "<p>Aktion der Tabulatortaste (wenn keine Auswahl vorhanden ist) <a href="
 "\"Wenn die Taste <b>Tabulator</b> verwendet werden soll, um die aktuelle "
 "Zeile im aktuellen Quelltextblock auszurichten wie in Emacs, so weisen Sie "
-"der Tabulatortaste die Aktion <b>Einrücken</b> zu.\"><span>Mehr …</span></"
+"der Tabulatortaste die Aktion <b>Einrücken</b> zu.\"><span>Mehr …</span></"
 "a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
@@ -1303,7 +1303,7 @@ msgstr "Datei schließen und Inhalt verwerfen."
 #: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "&Save As..."
-msgstr "&Speichern unter …"
+msgstr "&Speichern unter …"
 
 #: dialogs/katedialogs.cpp:1471
 #, kde-format
@@ -2582,7 +2582,7 @@ msgstr "Modi && Dateitypen"
 #, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
-msgstr "Suchen …"
+msgstr "Suchen …"
 
 #: mode/katemodemenulist.cpp:143
 #, kde-format
@@ -2751,7 +2751,7 @@ msgstr ""
 #: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
-msgstr "Platzhalter hinzufügen …"
+msgstr "Platzhalter hinzufügen …"
 
 #: printing/printconfigwidgets.cpp:354
 #, kde-format
@@ -3564,7 +3564,7 @@ msgstr "Befehl nicht gefunden: %1"
 #: search/katesearchbar.cpp:73
 #, kde-format
 msgid "Add..."
-msgstr "Hinzufügen …"
+msgstr "Hinzufügen …"
 
 #: search/katesearchbar.cpp:298
 #, kde-format
@@ -3954,7 +3954,7 @@ msgstr "Rechtschreibprüfung abgebrochen."
 #, kde-format
 msgctxt "progress label"
 msgid "Spell checking in progress..."
-msgstr "Rechtschreibprüfung wird durchgeführt …"
+msgstr "Rechtschreibprüfung wird durchgeführt …"
 
 #: spellcheck/spellcheckbar.cpp:247 spellcheck/spellcheckbar.cpp:436
 #, kde-format
@@ -4192,7 +4192,7 @@ msgstr "A&lle ignorieren"
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr "Rechtschreibprüfung (ab Cursor) …"
+msgstr "Rechtschreibprüfung (ab Cursor) …"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4316,22 +4316,22 @@ msgstr "Durch&gestrichen"
 #: syntax/katestyletreewidget.cpp:253
 #, kde-format
 msgid "Normal &Color..."
-msgstr "Standard&farbe …"
+msgstr "Standard&farbe …"
 
 #: syntax/katestyletreewidget.cpp:256
 #, kde-format
 msgid "&Selected Color..."
-msgstr "&Auswahl-Farbe …"
+msgstr "&Auswahl-Farbe …"
 
 #: syntax/katestyletreewidget.cpp:259
 #, kde-format
 msgid "&Background Color..."
-msgstr "&Hintergrundfarbe …"
+msgstr "&Hintergrundfarbe …"
 
 #: syntax/katestyletreewidget.cpp:262
 #, kde-format
 msgid "S&elected Background Color..."
-msgstr "&Auswahl-Hintergrundfarbe …"
+msgstr "&Auswahl-Hintergrundfarbe …"
 
 #: syntax/katestyletreewidget.cpp:268
 #, kde-format
@@ -4965,17 +4965,17 @@ msgstr "&Schema:"
 #: syntax/katethemeconfig.cpp:1117
 #, kde-format
 msgid "&Copy..."
-msgstr "&Kopieren …"
+msgstr "&Kopieren …"
 
 #: syntax/katethemeconfig.cpp:1125
 #, kde-format
 msgid "Export..."
-msgstr "Exportieren …"
+msgstr "Exportieren …"
 
 #: syntax/katethemeconfig.cpp:1129
 #, kde-format
 msgid "Import..."
-msgstr "Importieren …"
+msgstr "Importieren …"
 
 #: syntax/katethemeconfig.cpp:1136
 #, kde-format
@@ -5533,7 +5533,7 @@ msgstr "Eingebettete Editorkomponente"
 #: utils/kateglobal.cpp:77
 #, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
-msgstr "Copyright 2000–2022, die Autoren von Kate"
+msgstr "© 2000–2022, die Kate-Autoren"
 
 #: utils/kateglobal.cpp:97
 #, kde-format
@@ -5639,7 +5639,7 @@ msgstr "Matt Newell"
 #: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Testing, ..."
-msgstr "Tests, …"
+msgstr "Tests, …"
 
 #: utils/kateglobal.cpp:116
 #, kde-format
@@ -5749,7 +5749,7 @@ msgstr "Jochen Wilhelmy"
 #: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Original KWrite Author"
-msgstr "Ursprünglicher Autor von KWrite"
+msgstr "Ursprünglicher KWrite-Autor"
 
 #: utils/kateglobal.cpp:132
 #, kde-format
@@ -6549,7 +6549,7 @@ msgstr "Einrückung/Tabulator: %1/%2"
 #: view/katestatusbar.cpp:448 view/katestatusbar.cpp:474
 #, kde-format
 msgid "Other..."
-msgstr "Sonstige …"
+msgstr "Sonstige …"
 
 #: view/katestatusbar.cpp:476
 #, kde-format
@@ -6704,7 +6704,7 @@ msgstr ""
 #: view/kateview.cpp:512
 #, kde-format
 msgid "&Align On..."
-msgstr "&Ausrichten an …"
+msgstr "&Ausrichten an …"
 
 #: view/kateview.cpp:514
 #, kde-format
@@ -6876,12 +6876,12 @@ msgstr "Speichert das aktive Dokument unter einem Namen Ihrer Wahl."
 #: view/kateview.cpp:629
 #, kde-format
 msgid "Save As with Encoding..."
-msgstr "Mit Kodierung speichern unter …"
+msgstr "Mit Kodierung speichern unter …"
 
 #: view/kateview.cpp:635
 #, kde-format
 msgid "Save &Copy As..."
-msgstr "&Kopie speichern unter …"
+msgstr "&Kopie speichern unter …"
 
 #: view/kateview.cpp:636
 #, kde-format
@@ -6920,7 +6920,7 @@ msgstr "Cursor nach unten zur nächsten geänderten Zeile verschieben."
 #: view/kateview.cpp:655
 #, kde-format
 msgid "&Configure Editor..."
-msgstr "&Editor einrichten …"
+msgstr "&Editor einrichten …"
 
 #: view/kateview.cpp:657
 #, kde-format
@@ -7399,7 +7399,7 @@ msgstr "Automatische Rechtschreibprüfung aktivieren/deaktivieren"
 #: view/kateview.cpp:931
 #, kde-format
 msgid "Change Dictionary..."
-msgstr "Wörterbuch auswählen …"
+msgstr "Wörterbuch auswählen …"
 
 #: view/kateview.cpp:932
 #, kde-format
@@ -7437,7 +7437,7 @@ msgstr ""
 #: view/kateview.cpp:949
 #, kde-format
 msgid "E&xport as HTML..."
-msgstr "Als &HTML exportieren …"
+msgstr "Als &HTML exportieren …"
 
 #: view/kateview.cpp:951
 #, kde-format
