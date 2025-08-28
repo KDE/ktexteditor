@@ -1493,10 +1493,9 @@ msgstr "Automaticky opětovně načíst soubory ve správě verzí"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
-#, fuzzy, kde-format
-#| msgid "Auto reload files in version control"
+#, kde-format
 msgid "Auto reload files on external changes"
-msgstr "Automaticky opětovně načíst soubory ve správě verzí"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -3464,10 +3463,9 @@ msgid "No help specified for command '%1' in script %2"
 msgstr "Nápověda pro příkaz '%1' není ve skriptu %2 obsažena"
 
 #: script/katescript.cpp:282
-#, fuzzy, kde-format
-#| msgid "Error loading script %1"
+#, kde-format
 msgid "Error loading script %1: %2"
-msgstr "Chyba při načítání skriptu %1"
+msgstr ""
 
 #: script/katescriptmanager.cpp:310
 #, kde-format
@@ -4986,10 +4984,9 @@ msgid "Normal"
 msgstr "Normální"
 
 #: utils/katebookmarks.cpp:49
-#, fuzzy, kde-format
-#| msgid "Set &Bookmark"
+#, kde-format
 msgid "Toggle &Bookmark"
-msgstr "Na&stavit záložku"
+msgstr ""
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
