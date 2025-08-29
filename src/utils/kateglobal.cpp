@@ -23,6 +23,7 @@
 #include "katedocument.h"
 #include "katehighlightingcmds.h"
 #include "katekeywordcompletion.h"
+#include "katemodelinecompletion.h"
 #include "katemodemanager.h"
 #include "katescriptmanager.h"
 #include "katesedcmd.h"
@@ -204,6 +205,8 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
 
     // global keyword completion model
     m_keywordCompletionModel = new KateKeywordCompletionModel(this);
+
+    m_modelineCompletion = new KateModelineCompletionModel(this);
 
     // tap to QApplication object for color palette changes
     qApp->installEventFilter(this);

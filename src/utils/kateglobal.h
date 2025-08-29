@@ -51,6 +51,7 @@ class KateWordCompletionModel;
 class KateAbstractInputModeFactory;
 class KateKeywordCompletionModel;
 class KateVariableExpansionManager;
+class KateModelineCompletionModel;
 
 namespace KTextEditor
 {
@@ -309,6 +310,11 @@ public:
     KateKeywordCompletionModel *keywordCompletionModel()
     {
         return m_keywordCompletionModel;
+    }
+
+    KateModelineCompletionModel *modelineCompletionModel()
+    {
+        return m_modelineCompletion;
     }
 
     /**
@@ -582,6 +588,8 @@ private:
      * used to show error messages and to stop output on view destruction
      */
     QPointer<KTextEditor::ViewPrivate> m_speechEngineLastUser;
+
+    KateModelineCompletionModel *m_modelineCompletion;
 };
 
 }

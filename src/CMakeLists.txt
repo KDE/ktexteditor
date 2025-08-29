@@ -58,6 +58,7 @@ completion/kateargumenthintmodel.cpp
 completion/katecompletiondelegate.cpp
 completion/expandingtree/expandingwidgetmodel.cpp
 completion/documentation_tip.cpp
+completion/katemodelinecompletion.cpp
 
 # simple internal word completion
 completion/katewordcompletion.cpp

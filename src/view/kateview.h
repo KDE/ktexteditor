@@ -20,6 +20,7 @@
 
 #include <array>
 
+#include "katemodelinecompletion.h"
 #include "katetextfolding.h"
 #include "katetextrange.h"
 

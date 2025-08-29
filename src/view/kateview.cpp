@@ -31,6 +31,7 @@
 #include "katekeywordcompletion.h"
 #include "katelayoutcache.h"
 #include "katemessagewidget.h"
+#include "katemodelinecompletion.h"
 #include "katemodemenu.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
@@ -240,6 +241,8 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
 
     // setup layout
     setupLayout();
+
+    registerCompletionModel(EditorPrivate::self()->modelineCompletionModel());
 }
 
 KTextEditor::ViewPrivate::~ViewPrivate()
