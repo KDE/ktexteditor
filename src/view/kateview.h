@@ -20,6 +20,7 @@
 
 #include <array>
 
+#include "katemodelinecompletion.h"
 #include "katetextfolding.h"
 #include "katetextrange.h"
 
@@ -1253,6 +1254,7 @@ private:
     // for showSearchWrappedHint()
     QPointer<KTextEditor::Message> m_wrappedMessage;
     bool m_isLastSearchReversed = false;
+    KateModelineCompletionModel m_modelineCompletion;
 };
 
 }

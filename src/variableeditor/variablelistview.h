@@ -22,6 +22,11 @@ public:
 
     void addItem(VariableItem *item);
 
+    const std::vector<VariableItem *> &items() const
+    {
+        return m_items;
+    }
+
     /// always returns the up-to-date variables line
     QString variableLine();
 
