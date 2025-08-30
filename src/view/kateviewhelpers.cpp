@@ -501,8 +501,9 @@ void KateScrollBar::getCharColorRanges(const QList<Kate::TextLine::Attribute> &a
 
         bool styleFound = false;
         for (auto range : decorations) {
-            if (range->containsColumn(i)) {
-                QBrush color = range->attribute()->foreground();
+            // ensure we only handle decorations that set foreground color, see bug 507542
+            // otherwise spelling underlines will remove text from the mini map
+            if (const QBrush color = range->attribute()->foreground(); color.style() != Qt::NoBrush && range->containsColumn(i)) {
                 styleFound = true;
                 int startCol = range->start().column();
                 int endCol = range->end().column();
