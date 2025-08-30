@@ -6,7 +6,7 @@
 # Henrique Pinto <stampede@coltec.ufmg.br>, 2003.
 # Lisiane Sztoltz Teixeira <lisiane@conectiva.com.br>, 2004.
 # Lisiane Sztoltz Teixeira <lisiane@kdemail.net>, 2004, 2005.
-# Marcus Gama <marcus.gama@gmail.com>, 2006.
+# SPDX-FileCopyrightText: 2006, 2025 Marcus Gama <marcus.gama@gmail.com>
 # doutor.zero <doutor.zero@gmail.com>, 2007.
 # Diniz Bortolotto <diniz.bortolotto@gmail.com>, 2007, 2008.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
@@ -18,15 +18,15 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 01:34+0000\n"
-"PO-Revision-Date: 2023-11-08 14:51-0300\n"
-"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
+"PO-Revision-Date: 2025-08-29 16:06-0300\n"
+"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -1197,6 +1197,10 @@ msgid ""
 "your work in the case of a system crash. Disabling swap files may cause data "
 "loss in case of a system crash."
 msgstr ""
+"%1 faz backup de arquivos não salvos em \"arquivos de troca\". Arquivos de "
+"troca permitem que %1 recupere seu trabalho em caso de falha do sistema. "
+"Desativar os arquivos de troca pode causar perda de dados em caso de falha "
+"do sistema."
 
 #: dialogs/katedialogs.cpp:1008
 #, kde-format
@@ -1486,19 +1490,19 @@ msgstr "Multicursor"
 #: dialogs/navigationconfigwidget.ui:193
 #, kde-format
 msgid "Multiple Cursor Modifiers"
-msgstr ""
+msgstr "Modificadores de cursor múltiplo"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadVersionControl)
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr ""
+msgstr "Recarregar arquivos arquivos no controle de versão automaticamente"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Write a backup file on save for:"
-msgstr ""
+msgstr "Gravar um arquivo de backup ao salvar para:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -1536,7 +1540,7 @@ msgstr "Arquivos &remotos"
 #: dialogs/opensaveconfigadvwidget.ui:84
 #, kde-format
 msgid "Prefix for backup files:"
-msgstr ""
+msgstr "Prefixo para os arquivos de backup:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
 #: dialogs/opensaveconfigadvwidget.ui:94
@@ -1548,7 +1552,7 @@ msgstr "Digite o prefixo a ser prefixado ao nomes do arquivos de backup."
 #: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Suffix for backup files:"
-msgstr ""
+msgstr "Sufixo para os arquivos de backup:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
 #: dialogs/opensaveconfigadvwidget.ui:111
@@ -1558,36 +1562,33 @@ msgstr "Digite o sufixo a ser anexado ao nomes do arquivos de backup."
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:134
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Swap file mode:"
-msgstr "Arquivo temporário:"
+msgstr "Modo de arquivo de troca:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:150
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr ""
+msgstr "Habilitado, armazenar na pasta padrão"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:155
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
-msgstr ""
+msgstr "Habilitado, armazenar em pasta personalizada"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:163
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Store swap files in:"
-msgstr "Arquivo temporário:"
+msgstr "Armazenar arquivos de troca em:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:183
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Save swap files every:"
-msgstr "Arquivo temporário:"
+msgstr "Salvar arquivos de troca a cada:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:196
@@ -1601,6 +1602,8 @@ msgstr "s"
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr ""
+"Esta string está localizada em katedialogs.cpp no ​​construtor do "
+"KateSaveConfigTab."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -1829,51 +1832,45 @@ msgstr " segundos"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgid "Syntax highlighting"
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "Realce de sintaxe"
+msgstr "Mostrar modo de realce"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Show &icon border"
+#, kde-format
 msgid "Show input mode"
-msgstr "Mostrar &borda de ícones"
+msgstr "Mostrar modo de entrada"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgid "Show active dictionary"
-msgstr "Alterar dicionário"
+msgstr "Mostrar dicionário ativo"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "Show tab indicators:"
+#, kde-format
 msgid "Show tab setting"
-msgstr "Mostrar indicadores de tabulação:"
+msgstr "Mostrar configuração de tabulação"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show line column"
-msgstr "Mostrar número de linhas"
+msgstr "Mostrar linha e coluna"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "Mostrar número de linhas"
+msgstr "Mostrar codificação do arquivo"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "Mostrar estilo de fim de linha"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -1931,7 +1928,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:148
 #, kde-format
 msgid "Show focus frame around editor"
-msgstr ""
+msgstr "Mostrar quadro de foco ao redor do editor"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:178
@@ -2634,7 +2631,7 @@ msgstr "Imprimir &legenda"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Não imprimir código dobrado"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -3180,12 +3177,10 @@ msgid "Editing"
 msgstr "Edição"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr ""
-"Remove as linhas duplicadas do texto selecionado ou do documento inteiro."
+msgstr "Remover duplicadas e ordenar texto selecionado alfabeticamente"
 
 #: script/data/commands/utils.js:17
 #, kde-format
@@ -3303,6 +3298,15 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
+"Este comando alinha linhas no bloco selecionado ou no documento inteiro na "
+"coluna fornecida por uma expressão regular como argumento.<br><br>Se você "
+"fornecer um padrão vazio, ele alinhará no primeiro caractere não vazio por "
+"padrão.<br>Se o padrão tiver uma captura, ele recuará na correspondência "
+"capturada.<br><br><i>Exemplos</i>:<br>'<code>alignon -</code>' inserirá "
+"espaços antes do primeiro '-' de cada linha para alinhá-las todas na mesma "
+"coluna.<br>'<code>alignon :\\s+(.)</code>' inserirá espaços antes do "
+"primeiro caractere não vazio que ocorrer após dois pontos para alinhá-las "
+"todas na mesma coluna."
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -3383,6 +3387,9 @@ msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
+"Seleciona o texto para a frente, da posição atual do cursor até a primeira "
+"ocorrência do argumento fornecido depois dele (ou até o final da linha "
+"atual, por padrão)."
 
 #: script/data/commands/utils.js:458
 #, kde-format
@@ -3391,6 +3398,9 @@ msgid ""
 "the given argument before it (or the beginning of the current line by "
 "default)."
 msgstr ""
+"Seleciona o texto para trás, da posição atual do cursor até a última "
+"ocorrência do argumento fornecido antes dele (ou o início da linha atual por "
+"padrão)."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -6464,7 +6474,7 @@ msgstr "Realce de sintaxe"
 #: view/katestatusbar.cpp:260
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "Modo compacto de Linha/Coluna"
 
 #: view/katestatusbar.cpp:306
 #, kde-format
@@ -6656,16 +6666,13 @@ msgid "&Format Indentation"
 msgstr "F&ormatar recuo"
 
 #: view/kateview.cpp:508
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
 msgstr ""
-"Use isto para alinhar a linha ou bloco de texto atual para o seu nível de "
-"recuo correto."
+"Use isto para recuar automaticamente a linha ou bloco de texto atual para o "
+"seu nível de recuo correto."
 
 #: view/kateview.cpp:512
 #, kde-format
@@ -6685,6 +6692,15 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"Este comando alinha linhas no bloco selecionado ou no documento inteiro na "
+"coluna fornecida por uma expressão regular que será solicitada.<br /><br /"
+">Se você fornecer um padrão vazio, ele será alinhado no primeiro caractere "
+"não vazio por padrão.<br />Se o padrão tiver uma captura, ele recuará na "
+"correspondência capturada.<br /><br /><i>Exemplos</i>:<br />Com '-', ele "
+"inserirá espaços antes do primeiro '-' de cada linha para alinhá-las todas "
+"na mesma coluna.<br />Com ':\\s+(.)', ele inserirá espaços antes do primeiro "
+"caractere não vazio que ocorrer após dois pontos para alinhá-las todas na "
+"mesma coluna."
 
 #: view/kateview.cpp:525
 #, kde-format
@@ -7248,12 +7264,12 @@ msgstr ""
 #: view/kateview.cpp:873
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr ""
+msgstr "Marcar a ocorrência selecionada como ignorada"
 
 #: view/kateview.cpp:875
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr ""
+msgstr "Marca a palavra selecionada no momento como ignorada."
 
 #: view/kateview.cpp:879
 #, kde-format
@@ -7297,47 +7313,44 @@ msgstr "Cria um cursor no final de cada linha da seleção."
 #: view/kateview.cpp:902
 #, kde-format
 msgid "Add Caret below Cursor"
-msgstr ""
+msgstr "Adicionar cursor abaixo do cursor"
 
 #: view/kateview.cpp:904
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr "Selecionar o texto completo do documento atual."
+msgstr "Adiciona um cursor na linha abaixo do cursor atual."
 
 #: view/kateview.cpp:908
 #, kde-format
 msgid "Add Caret above Cursor"
-msgstr ""
+msgstr "Adicionar cursor acima do cursor"
 
 #: view/kateview.cpp:910
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
-msgstr ""
+msgstr "Adiciona um cursor na linha acima do cursor atual."
 
 #: view/kateview.cpp:914
-#, fuzzy, kde-format
-#| msgid "Enable camel case cursor movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Ativar movimento de cursor em Camel Case"
 
 #: view/kateview.cpp:915
-#, fuzzy, kde-format
-#| msgid "Enable camel case cursor movement"
+#, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
-msgstr "Ativar movimento de cursor em Camel Case"
+msgstr ""
+"Alterna entre o movimento normal das palavras e o movimento do cursor em "
+"camel case."
 
 #: view/kateview.cpp:919
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
-msgstr "Mover o cursor para o recuo correspondente seguinte"
+msgstr "Remover cursores de linhas vazias"
 
 #: view/kateview.cpp:920
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove cursors from empty lines"
-msgstr "Mover o cursor para o recuo correspondente seguinte"
+msgstr "Remove os cursores das linhas vazias"
 
 #: view/kateview.cpp:924
 #, kde-format
@@ -7551,10 +7564,9 @@ msgid "Select to Bottom of View"
 msgstr "Selecionar até o fundo da visão"
 
 #: view/kateview.cpp:1169
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Go to Matching Bracket"
-msgstr "Mover até o parênteses correspondente"
+msgstr "Ir para o parênteses correspondente"
 
 #: view/kateview.cpp:1175
 #, kde-format
@@ -7597,10 +7609,9 @@ msgid "Backspace"
 msgstr "Backspace"
 
 #: view/kateview.cpp:1225
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "Inserir tabulação"
+msgstr "Inserir caractere de tabulação"
 
 #: view/kateview.cpp:1230
 #, kde-format
@@ -7632,24 +7643,26 @@ msgstr ""
 #: view/kateview.cpp:1248
 #, kde-format
 msgid "Insert a Newline Above Current Line"
-msgstr ""
+msgstr "Inserir uma linha nova acima da linha atual"
 
 #: view/kateview.cpp:1249
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr ""
+"Insere uma nova linha acima da linha atual sem modificar a linha atual."
 
 #: view/kateview.cpp:1257
 #, kde-format
 msgid "Insert a Newline Below Current Line"
-msgstr ""
+msgstr "Inserir uma linha nova abaixo da linha atual"
 
 #: view/kateview.cpp:1258
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr ""
+"Insere uma nova linha abaixo da linha atual sem modificar a linha atual."
 
 #: view/kateview.cpp:1267
 #, kde-format
@@ -7705,13 +7718,12 @@ msgstr "%1 (R/O)"
 #: view/kateview.cpp:1662
 #, kde-format
 msgid "Camel case movement disabled"
-msgstr ""
+msgstr "Movimento de Camel Case desativado"
 
 #: view/kateview.cpp:1664
-#, fuzzy, kde-format
-#| msgid "Enable camel case cursor movement"
+#, kde-format
 msgid "Camel case movement enabled"
-msgstr "Ativar movimento de cursor em Camel Case"
+msgstr "Movimento de Camel Case ativado"
 
 #: view/kateview.cpp:2146
 #, kde-format
