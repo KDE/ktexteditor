@@ -408,7 +408,7 @@ msgstr "Mostra sempre"
 #: dialogs/clipboardhistorydialog.cpp:267
 #, kde-format
 msgid "Select text to paste."
-msgstr "Selecciona el text que s'apegarà."
+msgstr "Selecciona el text a apegar."
 
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
@@ -668,7 +668,7 @@ msgstr "Tipus de fi&txer:"
 #: dialogs/filetypeconfigwidget.ui:24
 #, kde-format
 msgid "Select the filetype you want to change."
-msgstr "Seleccioneu el tipus de fitxer que voleu canviar."
+msgstr "Trieu el tipus de fitxer que voleu canviar."
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, btnNew)
 #: dialogs/filetypeconfigwidget.ui:31
@@ -1300,7 +1300,7 @@ msgstr "Tanca el fitxer i descarta el seu contingut."
 #: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "&Save As..."
-msgstr "Guar&da com a…"
+msgstr "Anomena i gu&arda…"
 
 #: dialogs/katedialogs.cpp:1471
 #, kde-format
@@ -1375,8 +1375,8 @@ msgid ""
 "Selects whether the PageUp and PageDown keys should alter the vertical "
 "position of the cursor relative to the top of the view."
 msgstr ""
-"Selecciona quan les tecles d'avançar o retrocedir pàgina haurien d'alterar "
-"la posició vertical del cursor en relació amb la part superior de la vista."
+"Tria quan les tecles d'avançar o retrocedir pàgina haurien d'alterar la "
+"posició vertical del cursor en relació amb la part superior de la vista."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkPagingMovesCursor)
 #: dialogs/navigationconfigwidget.ui:48
@@ -1389,8 +1389,8 @@ msgstr "«&Av Pàg»/«Re Pàg» mouen el cursor"
 #, kde-format
 msgid "Selects whether cursor jumps full words or breaks at camel case humps."
 msgstr ""
-"Selecciona si el cursor salta paraules completes o es para a les gepes de "
-"les majúscules per parts."
+"Tria si el cursor salta paraules completes o es para a les gepes de les "
+"majúscules per parts."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -2011,8 +2011,8 @@ msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
 "indent lines."
 msgstr ""
-"Si està marcada, l'editor mostrarà línies verticals per a ajudar a "
-"identificar el sagnat de les línies."
+"Si està marcada, l'editor mostrarà línies verticals per ajudar a identificar "
+"el sagnat de les línies."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:224
@@ -2559,14 +2559,14 @@ msgid ""
 "Please note that this will automatically edit the associated file extensions "
 "as well."
 msgstr ""
-"Seleccioneu els tipus MIME que voleu per a este tipus de fitxer.\n"
+"Trieu els tipus MIME que voleu per a este tipus de fitxer.\n"
 "Cal tindre en compte que també s'editaran automàticament les extensions dels "
 "fitxers associats."
 
 #: mode/katemodeconfigpage.cpp:295
 #, kde-format
 msgid "Select Mime Types"
-msgstr "Seleccioneu el tipus MIME"
+msgstr "Trieu el tipus MIME"
 
 #: mode/katemodeconfigpage.cpp:306
 #, kde-format
@@ -2844,7 +2844,7 @@ msgstr "Co&lor:"
 #: printing/printconfigwidgets.cpp:547
 #, kde-format
 msgid "Select the color theme to use for the print."
-msgstr "Seleccioneu el tema de color que s'utilitzarà en imprimir."
+msgstr "Trieu el tema de color que s'utilitzarà en imprimir."
 
 #: printing/printconfigwidgets.cpp:549
 #, kde-format
@@ -2884,7 +2884,7 @@ msgstr "El color de la línia que s'emprarà en els quadros"
 #: printing/printpainter.cpp:269
 #, kde-format
 msgid "(Selection of) "
-msgstr "(Seleccioneu el) "
+msgstr "(Trieu el) "
 
 #: printing/printpainter.cpp:522
 #, kde-format
@@ -2933,13 +2933,13 @@ msgstr "Mou el cursor fins a l'etiqueta que coincidisca"
 #, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
-msgstr "Selecciona el contingut intern de l'etiqueta HTML/XML"
+msgstr "Tria el contingut intern de l'etiqueta HTML/XML"
 
 #: script/data/commands/emmet.js:26
 #, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
-msgstr "Selecciona el contingut extern de l'etiqueta HTML/XML"
+msgstr "Tria el contingut extern de l'etiqueta HTML/XML"
 
 #: script/data/commands/emmet.js:30
 #, kde-format
@@ -2963,13 +2963,13 @@ msgstr "Ves fins al punt d'edició anterior"
 #, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
-msgstr "Selecciona el punt d'edició següent"
+msgstr "Tria el punt d'edició següent"
 
 #: script/data/commands/emmet.js:46
 #, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
-msgstr "Selecciona el punt d'edició anterior"
+msgstr "Tria el punt d'edició anterior"
 
 #: script/data/commands/emmet.js:50
 #, kde-format
@@ -3053,7 +3053,7 @@ msgstr "Mou el cursor fins el parell actual d'etiquetes"
 msgid ""
 "Select contents of HTML/XML tag, moving inward on continuous invocations"
 msgstr ""
-"Selecciona el contingut de l'etiqueta HTML/XML, movent-se cap dins en les "
+"Tria el contingut de l'etiqueta HTML/XML, movent-se cap dins en les "
 "invocacions contínues"
 
 #: script/data/commands/emmet.js:100
@@ -3061,7 +3061,7 @@ msgstr ""
 msgid ""
 "Select contents of HTML/XML tag, moving outwards on continuous invocations"
 msgstr ""
-"Selecciona el contingut de l'etiqueta HTML/XML, movent-se cap enfora en les "
+"Tria el contingut de l'etiqueta HTML/XML, movent-se cap enfora en les "
 "invocacions contínues"
 
 #: script/data/commands/emmet.js:101
@@ -3077,12 +3077,12 @@ msgstr "Va fins al punt d'edició anterior (etiqueta o atribut buit)."
 #: script/data/commands/emmet.js:103
 #, kde-format
 msgid "Select next edit point (tag or empty attribute)."
-msgstr "Selecciona el punt d'edició següent (etiqueta o atribut buit)."
+msgstr "Tria el punt d'edició següent (etiqueta o atribut buit)."
 
 #: script/data/commands/emmet.js:104
 #, kde-format
 msgid "Select previous edit point (tag or empty attribute)."
-msgstr "Selecciona el punt d'edició anterior (etiqueta o atribut buit)."
+msgstr "Tria el punt d'edició anterior (etiqueta o atribut buit)."
 
 #: script/data/commands/emmet.js:105
 #, kde-format
@@ -4045,8 +4045,7 @@ msgid ""
 msgstr ""
 "<qt>\n"
 "<p>Si la paraula desconeguda està mal escrita, heu de teclejar la correcció "
-"de l'error ortogràfic ací o seleccionar-la des en la llista a continuació.</"
-"p>\n"
+"de l'error ortogràfic ací o triar-la des en la llista a continuació.</p>\n"
 "<p>Llavors podeu clicar damunt <b>Substituïx</b> si voleu corregir només "
 "este cas de la paraula o <b>Substituïx-ho tot</b> si voleu corregir totes "
 "les ocurrències.</p>\n"
@@ -4107,7 +4106,7 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>Seleccioneu l'idioma del document que esteu comprovant ací.</p>\n"
+"<p>Trieu l'idioma del document que esteu comprovant ací.</p>\n"
 "</qt>"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel5)
@@ -4120,7 +4119,7 @@ msgstr "&Idioma:"
 #: spellcheck/spellcheckbar.ui:169
 #, kde-format
 msgid "Language Selection"
-msgstr "Seleccioneu l'idioma"
+msgstr "Trieu l'idioma"
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_autoCorrect)
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_skipAllBtn)
@@ -4260,7 +4259,7 @@ msgstr "Normal"
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Selected"
-msgstr "Seleccionat"
+msgstr "Triat"
 
 #: syntax/katestyletreewidget.cpp:131
 #, kde-format
@@ -4940,7 +4939,7 @@ msgstr "Editor de temes"
 #: syntax/katethemeconfig.cpp:1039
 #, kde-format
 msgid "Select theme:"
-msgstr "Seleccioneu el tema:"
+msgstr "Trieu el tema:"
 
 #: syntax/katethemeconfig.cpp:1108
 #, kde-format
@@ -5041,8 +5040,7 @@ msgstr "Nom per a la còpia del tema de color «%1»:"
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
-msgstr ""
-"<p>El tema %1 ja existix.</p><p>Seleccioneu un nom de tema diferent.</p>"
+msgstr "<p>El tema %1 ja existix.</p><p>Trieu un nom de tema diferent.</p>"
 
 #: syntax/katethemeconfig.cpp:1412
 #, kde-format
@@ -5928,7 +5926,7 @@ msgstr "Filtre"
 #: utils/katevariableexpansionhelpers.cpp:261
 #, kde-format
 msgid "Please select a variable."
-msgstr "Seleccioneu una variable."
+msgstr "Trieu una variable."
 
 #: utils/katevariableexpansionhelpers.cpp:254
 #, kde-format
@@ -7186,8 +7184,7 @@ msgstr "&Final de línia"
 #: view/kateview.cpp:832
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
-msgstr ""
-"Seleccioneu quin final de línia s'haurà d'utilitzar en guardar el document"
+msgstr "Trieu quin final de línia s'haurà d'utilitzar en guardar el document"
 
 #: view/kateview.cpp:833
 #, kde-format
