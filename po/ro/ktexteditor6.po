@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-31 00:39+0000\n"
 "PO-Revision-Date: 2021-05-15 16:59+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -5056,7 +5056,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Culori marcatori"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1529
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1530
 #, kde-format
 msgid "Bookmark"
 msgstr "Semn de carte"
@@ -8225,18 +8225,18 @@ msgid "Export File as HTML"
 msgstr ""
 
 #: view/kateviewhelpers.cpp:296 view/kateviewhelpers.cpp:345
-#: view/kateviewhelpers.cpp:1005
+#: view/kateviewhelpers.cpp:1006
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1205
+#: view/kateviewhelpers.cpp:1206
 #, kde-format
 msgid "Available Commands"
 msgstr "Comenzi disponibile"
 
-#: view/kateviewhelpers.cpp:1206
+#: view/kateviewhelpers.cpp:1207
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -8245,17 +8245,17 @@ msgstr ""
 "<p>Pentru informații de ajutor despre o anumită comandă, executați "
 "<code>'help &lt;comandă&gt;'</code></p>"
 
-#: view/kateviewhelpers.cpp:1213
+#: view/kateviewhelpers.cpp:1214
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Nici un text de ajutor pentru '%1'"
 
-#: view/kateviewhelpers.cpp:1216
+#: view/kateviewhelpers.cpp:1217
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Această comandă nu există: <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1222
+#: view/kateviewhelpers.cpp:1223
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -8269,37 +8269,37 @@ msgstr ""
 "ajutor despre o anumită comandă, executați <code><b>help &lt;nume_comandă&gt;"
 "</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1310 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1311 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Această comandă nu există: „%1”"
 
-#: view/kateviewhelpers.cpp:1313 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1314 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Eroare: Nu este permis un interval pentru comanda \"%1\"."
 
-#: view/kateviewhelpers.cpp:1323 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1324 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Succes: "
 
-#: view/kateviewhelpers.cpp:1337 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1338 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Comanda „%1” a eșuat."
 
-#: view/kateviewhelpers.cpp:2625 view/kateviewhelpers.cpp:2626
+#: view/kateviewhelpers.cpp:2626 view/kateviewhelpers.cpp:2627
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Tip de marcare %1"
 
-#: view/kateviewhelpers.cpp:2649
+#: view/kateviewhelpers.cpp:2650
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Stabilește stilul implicit de marcare"
 
-#: view/kateviewhelpers.cpp:2790
+#: view/kateviewhelpers.cpp:2791
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Dezactivează bara de adnotare"

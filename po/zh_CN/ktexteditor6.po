@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-25 00:39+0000\n"
+"POT-Creation-Date: 2025-08-31 00:39+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -4628,7 +4628,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "标记颜色"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1529
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1530
 #, kde-format
 msgid "Bookmark"
 msgstr "书签"
@@ -7659,18 +7659,18 @@ msgid "Export File as HTML"
 msgstr "文件导出为 HTML"
 
 #: view/kateviewhelpers.cpp:296 view/kateviewhelpers.cpp:345
-#: view/kateviewhelpers.cpp:1005
+#: view/kateviewhelpers.cpp:1006
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1205
+#: view/kateviewhelpers.cpp:1206
 #, kde-format
 msgid "Available Commands"
 msgstr "可用的命令"
 
-#: view/kateviewhelpers.cpp:1206
+#: view/kateviewhelpers.cpp:1207
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7678,17 +7678,17 @@ msgid ""
 msgstr ""
 "<p>要获得关于单个命令的帮助，请执行<code>“help &lt;命令&gt;”</code></p>"
 
-#: view/kateviewhelpers.cpp:1213
+#: view/kateviewhelpers.cpp:1214
 #, kde-format
 msgid "No help for '%1'"
 msgstr "没有“%1”的帮助"
 
-#: view/kateviewhelpers.cpp:1216
+#: view/kateviewhelpers.cpp:1217
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "没有这样的命令 <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1222
+#: view/kateviewhelpers.cpp:1223
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7700,37 +7700,37 @@ msgstr ""
 "code><br />要获得可用命令的列表，请输入 <code><b>help list</b></code><br />要"
 "获得关于单个命令的帮助，请输入 <code><b>help &lt;命令&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1310 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1311 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "没有这样的命令：“%1”"
 
-#: view/kateviewhelpers.cpp:1313 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1314 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "错误：没有命令“%1”允许的操作范围。"
 
-#: view/kateviewhelpers.cpp:1323 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1324 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "成功："
 
-#: view/kateviewhelpers.cpp:1337 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1338 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "命令“%1”失败。"
 
-#: view/kateviewhelpers.cpp:2625 view/kateviewhelpers.cpp:2626
+#: view/kateviewhelpers.cpp:2626 view/kateviewhelpers.cpp:2627
 #, kde-format
 msgid "Mark Type %1"
 msgstr "标记类型%1"
 
-#: view/kateviewhelpers.cpp:2649
+#: view/kateviewhelpers.cpp:2650
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "设定默认标记类型"
 
-#: view/kateviewhelpers.cpp:2790
+#: view/kateviewhelpers.cpp:2791
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "禁用批注栏"
