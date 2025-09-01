@@ -7184,7 +7184,7 @@ msgstr "&Final de línia"
 #: view/kateview.cpp:832
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
-msgstr "Trieu quin final de línia s'haurà d'utilitzar en guardar el document"
+msgstr "Trieu quin final de línia s'haurà d'emprar en guardar el document"
 
 #: view/kateview.cpp:833
 #, kde-format
