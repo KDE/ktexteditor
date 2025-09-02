@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-31 00:39+0000\n"
+"POT-Creation-Date: 2025-09-02 00:40+0000\n"
 "PO-Revision-Date: 2024-09-26 13:25+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -2495,7 +2495,7 @@ msgstr "vi-snið"
 msgid "recording"
 msgstr "upptaka"
 
-#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:90
+#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:91
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
@@ -5560,378 +5560,378 @@ msgstr ""
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 
-#: utils/kateglobal.cpp:59
+#: utils/kateglobal.cpp:60
 #, kde-format
 msgid "Kate Part"
 msgstr "Kate Part"
 
-#: utils/kateglobal.cpp:61
+#: utils/kateglobal.cpp:62
 #, kde-format
 msgid "Embeddable editor component"
 msgstr "Innfellanleg ritilseining"
 
-#: utils/kateglobal.cpp:63
+#: utils/kateglobal.cpp:64
 #, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
 msgstr "(c) 2000-2022 höfundar Kate"
 
-#: utils/kateglobal.cpp:83
+#: utils/kateglobal.cpp:84
 #, kde-format
 msgid "Christoph Cullmann"
 msgstr "Christoph Cullmann"
 
-#: utils/kateglobal.cpp:83
+#: utils/kateglobal.cpp:84
 #, kde-format
 msgid "Maintainer"
 msgstr "Umsjónarmaður"
 
-#: utils/kateglobal.cpp:84
+#: utils/kateglobal.cpp:85
 #, kde-format
 msgid "Dominik Haumann"
 msgstr "Dominik Haumann"
 
-#: utils/kateglobal.cpp:84 utils/kateglobal.cpp:85 utils/kateglobal.cpp:87
-#: utils/kateglobal.cpp:95 utils/kateglobal.cpp:98 utils/kateglobal.cpp:103
+#: utils/kateglobal.cpp:85 utils/kateglobal.cpp:86 utils/kateglobal.cpp:88
+#: utils/kateglobal.cpp:96 utils/kateglobal.cpp:99 utils/kateglobal.cpp:104
 #, kde-format
 msgid "Core Developer"
 msgstr "Aðalhönnuður"
 
-#: utils/kateglobal.cpp:85
+#: utils/kateglobal.cpp:86
 #, kde-format
 msgid "Milian Wolff"
 msgstr "Milian Wolff"
 
-#: utils/kateglobal.cpp:86
+#: utils/kateglobal.cpp:87
 #, kde-format
 msgid "Joseph Wenninger"
 msgstr "Joseph Wenninger"
 
-#: utils/kateglobal.cpp:90
+#: utils/kateglobal.cpp:91
 #, kde-format
 msgid "Erlend Hamberg"
 msgstr "Erlend Hamberg"
 
-#: utils/kateglobal.cpp:91
+#: utils/kateglobal.cpp:92
 #, kde-format
 msgid "Bernhard Beschow"
 msgstr "Bernhard Beschow"
 
-#: utils/kateglobal.cpp:92 utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:93 utils/kateglobal.cpp:111
 #, kde-format
 msgid "Developer"
 msgstr "Forritari"
 
-#: utils/kateglobal.cpp:95
+#: utils/kateglobal.cpp:96
 #, kde-format
 msgid "Anders Lund"
 msgstr "Anders Lund"
 
-#: utils/kateglobal.cpp:96
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "Michel Ludwig"
 msgstr "Michel Ludwig"
 
-#: utils/kateglobal.cpp:96
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "On-the-fly spell checking"
 msgstr "Stafsetningarkönnun við innslátt"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Pascal Létourneau"
 msgstr "Pascal Létourneau"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Large scale bug fixing"
 msgstr "Mikilvægar villuleiðréttingar"
 
-#: utils/kateglobal.cpp:98
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "Hamish Rodda"
 msgstr "Hamish Rodda"
 
-#: utils/kateglobal.cpp:99
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "Waldo Bastian"
 msgstr "Waldo Bastian"
 
-#: utils/kateglobal.cpp:99
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "The cool buffersystem"
 msgstr "Flotta biðminniskerfið"
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Charles Samuels"
 msgstr "Charles Samuels"
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "The Editing Commands"
 msgstr "Ritunarskipanirnar"
 
-#: utils/kateglobal.cpp:101
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "Matt Newell"
 msgstr "Matt Newell"
 
-#: utils/kateglobal.cpp:101
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "Testing, ..."
 msgstr "Prófanir, ..."
 
-#: utils/kateglobal.cpp:102
+#: utils/kateglobal.cpp:103
 #, kde-format
 msgid "Michael Bartl"
 msgstr "Michael Bartl"
 
-#: utils/kateglobal.cpp:102
+#: utils/kateglobal.cpp:103
 #, kde-format
 msgid "Former Core Developer"
 msgstr "Fyrrum aðalhönnuður"
 
-#: utils/kateglobal.cpp:103
+#: utils/kateglobal.cpp:104
 #, kde-format
 msgid "Michael McCallum"
 msgstr "Michael McCallum"
 
-#: utils/kateglobal.cpp:104
+#: utils/kateglobal.cpp:105
 #, kde-format
 msgid "Michael Koch"
 msgstr "Michael Koch"
 
-#: utils/kateglobal.cpp:104
+#: utils/kateglobal.cpp:105
 #, kde-format
 msgid "KWrite port to KParts"
 msgstr "Flutti KWrite í KParts"
 
-#: utils/kateglobal.cpp:105
+#: utils/kateglobal.cpp:106
 #, kde-format
 msgid "Christian Gebauer"
 msgstr "Christian Gebauer"
 
-#: utils/kateglobal.cpp:106
+#: utils/kateglobal.cpp:107
 #, kde-format
 msgid "Simon Hausmann"
 msgstr "Simon Hausmann"
 
-#: utils/kateglobal.cpp:107
+#: utils/kateglobal.cpp:108
 #, kde-format
 msgid "Glen Parker"
 msgstr "Glen Parker"
 
-#: utils/kateglobal.cpp:107
+#: utils/kateglobal.cpp:108
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
 msgstr "Afturköllunarferill KWrite, innleiðing á KSpell"
 
-#: utils/kateglobal.cpp:108
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "Scott Manson"
 msgstr "Scott Manson"
 
-#: utils/kateglobal.cpp:108
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
 msgstr "Stuðningur við XML textalitun í KWrite"
 
-#: utils/kateglobal.cpp:109
+#: utils/kateglobal.cpp:110
 #, kde-format
 msgid "John Firebaugh"
 msgstr "John Firebaugh"
 
-#: utils/kateglobal.cpp:109
+#: utils/kateglobal.cpp:110
 #, kde-format
 msgid "Patches and more"
 msgstr "Bætur og fleira"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "Andreas Kling"
 msgstr "Andreas Kling"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Mirko Stocker"
 msgstr "Mirko Stocker"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Various bugfixes"
 msgstr "Ýmsar betrumbætur"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "Matthew Woehlke"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Selection, KColorScheme integration"
 msgstr "Valeiginleikar, KColorScheme aðlögun"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:114
 #, kde-format
 msgid "Sebastian Pipping"
 msgstr "Sebastian Pipping"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Search bar back- and front-end"
 msgstr "Grunnkerfi og viðmót fyrir leitarstiku"
 
-#: utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Jochen Wilhelmy"
 msgstr "Jochen Wilhelmy"
 
-#: utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Original KWrite Author"
 msgstr "Upprunalegur höfundur KWrite"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:119
 #, kde-format
 msgid "Gerald Senarclens de Grancy"
 msgstr "Gerald Senarclens de Grancy"
 
-#: utils/kateglobal.cpp:119
+#: utils/kateglobal.cpp:120
 #, kde-format
 msgid "QA and Scripting"
 msgstr "Gæðaeftirlit og skriftun"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Matteo Merli"
 msgstr "Matteo Merli"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
 msgstr "Textalitun á RPM Spec-skrám, Perl, Diff og fleiru"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Rocky Scaletta"
 msgstr "Rocky Scaletta"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Highlighting for VHDL"
 msgstr "Textalitun fyrir VHDL-skrár"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Yury Lebedev"
 msgstr "Yury Lebedev"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Highlighting for SQL"
 msgstr "Textalitun fyrir SQL-skrár"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Chris Ross"
 msgstr "Chris Ross"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Highlighting for Ferite"
 msgstr "Textalitun fyrir Ferite-skrár"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Nick Roux"
 msgstr "Nick Roux"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Highlighting for ILERPG"
 msgstr "Textalitun fyrir ILERPG-skrár"
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Carsten Niehaus"
 msgstr "Carsten Niehaus"
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Highlighting for LaTeX"
 msgstr "Textalitun fyrir LaTeX-skrár"
 
-#: utils/kateglobal.cpp:129
+#: utils/kateglobal.cpp:130
 #, kde-format
 msgid "Per Wigren"
 msgstr "Per Wigren"
 
-#: utils/kateglobal.cpp:129
+#: utils/kateglobal.cpp:130
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
 msgstr "Textalitun fyrir Makefiles, Python"
 
-#: utils/kateglobal.cpp:130
+#: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Jan Fritz"
 msgstr "Jan Fritz"
 
-#: utils/kateglobal.cpp:130
+#: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Highlighting for Python"
 msgstr "Textalitun fyrir Python"
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Daniel Naber"
 msgstr "Daniel Naber"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "Roland Pabel"
 msgstr "Roland Pabel"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "Highlighting for Scheme"
 msgstr "Textalitun fyrir Scheme"
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:134
 #, kde-format
 msgid "Cristi Dumitrescu"
 msgstr "Cristi Dumitrescu"
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:134
 #, kde-format
 msgid "PHP Keyword/Datatype list"
 msgstr "Listi lykilorða og gagnataga fyrir PHP"
 
-#: utils/kateglobal.cpp:134
+#: utils/kateglobal.cpp:135
 #, kde-format
 msgid "Carsten Pfeiffer"
 msgstr "Carsten Pfeiffer"
 
-#: utils/kateglobal.cpp:134
+#: utils/kateglobal.cpp:135
 #, kde-format
 msgid "Very nice help"
 msgstr "Afar góð hjálp"
 
-#: utils/kateglobal.cpp:135
+#: utils/kateglobal.cpp:136
 #, kde-format
 msgid "Bruno Massa"
 msgstr "Bruno Massa"
 
-#: utils/kateglobal.cpp:135
+#: utils/kateglobal.cpp:136
 #, kde-format
 msgid "Highlighting for Lua"
 msgstr "Textalitun fyrir Lua"
 
-#: utils/kateglobal.cpp:137
+#: utils/kateglobal.cpp:138
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
 msgstr "Öll þau sem hafa lagt verkinu lið og við höfum gleymt að minnast á"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:140
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
@@ -5939,7 +5939,7 @@ msgstr ""
 "Richard Allen, Smári P. McCarthy, Pjetur G. Hjaltason, Sveinn í Felli, "
 "Guðmundur Erlingsson"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:140
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -5947,7 +5947,7 @@ msgstr ""
 "ra@ra.is, spm@vlug.eyjar.is, pjetur@pjetur.net, sv1@fellsnet.is, "
 "gudmundure@gmail.com"
 
-#: utils/kateglobal.cpp:261
+#: utils/kateglobal.cpp:264
 #, kde-format
 msgid "Configure"
 msgstr "Grunnstilla"
@@ -6520,7 +6520,7 @@ msgstr "Gerð línuendingar"
 msgid "Mode"
 msgstr "Snið"
 
-#: view/katestatusbar.cpp:209 view/kateview.cpp:720
+#: view/katestatusbar.cpp:209 view/kateview.cpp:723
 #, kde-format
 msgid ""
 "Here you can choose which mode should be used for the current document. This "
@@ -6626,93 +6626,93 @@ msgstr "%1 orð, %2 stafir"
 msgid "Zoom: %1%"
 msgstr "Aðdráttur: %1%"
 
-#: view/kateview.cpp:457
+#: view/kateview.cpp:460
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
 msgstr "Klippa valinn texta og setja hann á klippispjaldið"
 
-#: view/kateview.cpp:462
+#: view/kateview.cpp:465
 #, kde-format
 msgid "Paste previously copied or cut clipboard contents"
 msgstr "Líma texta sem áður var settur á klippispjaldið"
 
-#: view/kateview.cpp:465
+#: view/kateview.cpp:468
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
 msgstr "Notaðu þessa skipun til að afrita valda textann á klippispjaldið."
 
-#: view/kateview.cpp:471
+#: view/kateview.cpp:474
 #, kde-format
 msgid "Clipboard &History Paste"
 msgstr "Límingarferill &klippispjalds"
 
-#: view/kateview.cpp:476
+#: view/kateview.cpp:479
 #, kde-format
 msgid "Paste Selection"
 msgstr "Líma val"
 
-#: view/kateview.cpp:478
+#: view/kateview.cpp:481
 #, kde-format
 msgid "Paste previously mouse selection contents"
 msgstr "Líma það sem var valið með músinni"
 
-#: view/kateview.cpp:482
+#: view/kateview.cpp:485
 #, kde-format
 msgid "Paste From File"
 msgstr ""
 
-#: view/kateview.cpp:486
+#: view/kateview.cpp:489
 #, kde-format
 msgid "Copy File Location"
 msgstr "Afrita staðsetningu skráar"
 
-#: view/kateview.cpp:487
+#: view/kateview.cpp:490
 #, kde-format
 msgid "Copy the current file name and line number"
 msgstr "Afrita heiti núverandi skráar og línunúmer"
 
-#: view/kateview.cpp:490
+#: view/kateview.cpp:493
 #, kde-format
 msgid "Swap with Clipboard Contents"
 msgstr "Skipta út fyrir innihald klippispjalds"
 
-#: view/kateview.cpp:491
+#: view/kateview.cpp:494
 #, kde-format
 msgid "Swap the selected text with the clipboard contents"
 msgstr "Skipta út valda textanum fyrir innihald klippispjalds"
 
-#: view/kateview.cpp:494
+#: view/kateview.cpp:497
 #, kde-format
 msgid "Take Screenshot of Selection"
 msgstr "Taka skjámynd af vali"
 
-#: view/kateview.cpp:498
+#: view/kateview.cpp:501
 #, kde-format
 msgid "Save the current document"
 msgstr "Vista núverandi skjal"
 
-#: view/kateview.cpp:501
+#: view/kateview.cpp:504
 #, kde-format
 msgid "Revert the most recent editing actions"
 msgstr "Afturkalla nýlegustu breytingarnar"
 
-#: view/kateview.cpp:504
+#: view/kateview.cpp:507
 #, kde-format
 msgid "Revert the most recent undo operation"
 msgstr "Afturkalla nýlegustu afturköllunaraðgerðina"
 
-#: view/kateview.cpp:508
+#: view/kateview.cpp:511
 #, kde-format
 msgid "&Scripts"
 msgstr "&Skriftur"
 
-#: view/kateview.cpp:512
+#: view/kateview.cpp:515
 #, kde-format
 msgid "Apply &Word Wrap"
 msgstr "Nota &línuskil"
 
-#: view/kateview.cpp:514
+#: view/kateview.cpp:517
 #, kde-format
 msgid ""
 "Use this to wrap the current line, or to reformat the selected lines as "
@@ -6724,12 +6724,12 @@ msgstr ""
 "'Línuskil við' í grunnstillingaglugganum.<br /><br />Þetta eru varanleg "
 "línuskil, sem þýðir að skjalið breytist."
 
-#: view/kateview.cpp:520
+#: view/kateview.cpp:523
 #, kde-format
 msgid "&Clean Indentation"
 msgstr "&Hreinsa inndrátt"
 
-#: view/kateview.cpp:522
+#: view/kateview.cpp:525
 #, kde-format
 msgid ""
 "Use this to clean the indentation of a selected block of text (only tabs/"
@@ -6740,22 +6740,22 @@ msgstr ""
 "aðeins bil) <br /><br />Í grunnstillingum ritilsins geturðuskilgreint hvort "
 "það eigi að virða og nota dálkmerki eða skipta þeim út fyrir auð bil."
 
-#: view/kateview.cpp:527
+#: view/kateview.cpp:530
 #, kde-format
 msgid "Convert Indentation to Spaces"
 msgstr "Breyta inndrætti í bil"
 
-#: view/kateview.cpp:534
+#: view/kateview.cpp:537
 #, kde-format
 msgid "Convert Indentation to Tabs"
 msgstr "Breyta inndrætti í dálkmerki"
 
-#: view/kateview.cpp:549
+#: view/kateview.cpp:552
 #, kde-format
 msgid "&Format Indentation"
 msgstr "&Forsníða inndrátt"
 
-#: view/kateview.cpp:550
+#: view/kateview.cpp:553
 #, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
@@ -6764,13 +6764,13 @@ msgstr ""
 "Notaðu þetta til að draga sjálfkrafa inn núverandi línu eða textablokk á "
 "rétt inndráttarstig."
 
-#: view/kateview.cpp:554
+#: view/kateview.cpp:557
 #, kde-format
 msgctxt "@action"
 msgid "&Align On…"
 msgstr "&Jafna við..."
 
-#: view/kateview.cpp:556
+#: view/kateview.cpp:559
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -6792,12 +6792,12 @@ msgstr ""
 "\\s+(.)' verður sett inn bil á undan fyrir stafnum sem ekki er auður sem "
 "kemur upp á eftir tvípunkti til að jafna þær allar við sama dálkinn."
 
-#: view/kateview.cpp:567
+#: view/kateview.cpp:570
 #, kde-format
 msgid "C&omment"
 msgstr "Athugasem&d"
 
-#: view/kateview.cpp:570
+#: view/kateview.cpp:573
 #, kde-format
 msgid ""
 "This command comments out the current line or a selected block of text.<br /"
@@ -6808,22 +6808,22 @@ msgstr ""
 ">Eiginleikar athugasemda (ein eða fleiri línur) eru skilgreindir í "
 "textalitunarstillingum forritunarmálsins."
 
-#: view/kateview.cpp:575
+#: view/kateview.cpp:578
 #, kde-format
 msgid "Go to Previous Editing Location"
 msgstr "Fara á fyrri breytistað"
 
-#: view/kateview.cpp:581
+#: view/kateview.cpp:584
 #, kde-format
 msgid "Go to Next Editing Location"
 msgstr "Fara á næsta breytistað"
 
-#: view/kateview.cpp:587
+#: view/kateview.cpp:590
 #, kde-format
 msgid "Unco&mment"
 msgstr "&Eyða athugasemd"
 
-#: view/kateview.cpp:590
+#: view/kateview.cpp:593
 #, kde-format
 msgid ""
 "This command removes comments from the current line or a selected block of "
@@ -6834,37 +6834,37 @@ msgstr ""
 "<br /><br />Eiginleikar athugasemda (ein eða fleiri línur) eru skilgreindir "
 "í textalitunarstillingum forritunarmálsins."
 
-#: view/kateview.cpp:595
+#: view/kateview.cpp:598
 #, kde-format
 msgid "Toggle Comment"
 msgstr "Víxla athugasemd af/á"
 
-#: view/kateview.cpp:599
+#: view/kateview.cpp:602
 #, kde-format
 msgid "&Read Only Mode"
 msgstr "&Skrifvarið snið"
 
-#: view/kateview.cpp:600
+#: view/kateview.cpp:603
 #, kde-format
 msgid "Lock/unlock the document for writing"
 msgstr "Læsa/aflæsa skjalinu til skriftar"
 
-#: view/kateview.cpp:605
+#: view/kateview.cpp:608
 #, kde-format
 msgid "&Force RTL Direction"
 msgstr "&Þvinga stefnu frá hægri til vinstri"
 
-#: view/kateview.cpp:606
+#: view/kateview.cpp:609
 #, kde-format
 msgid "Force RTL Text Direction"
 msgstr "Þvinga textastefnu frá hægri til vinstri"
 
-#: view/kateview.cpp:616
+#: view/kateview.cpp:619
 #, kde-format
 msgid "Uppercase"
 msgstr "Hástafir"
 
-#: view/kateview.cpp:619
+#: view/kateview.cpp:622
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
@@ -6873,12 +6873,12 @@ msgstr ""
 "Breyta valinu í hástafi eða einungis stafnum hægra megin við bendilinn ef "
 "enginn texti er valinn."
 
-#: view/kateview.cpp:625
+#: view/kateview.cpp:628
 #, kde-format
 msgid "Lowercase"
 msgstr "Lágstafir"
 
-#: view/kateview.cpp:628
+#: view/kateview.cpp:631
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
@@ -6887,12 +6887,12 @@ msgstr ""
 "Breyta valinu í lágstafi eða einungis stafnum hægra megin við bendilinn ef "
 "enginn texti er valinn."
 
-#: view/kateview.cpp:634
+#: view/kateview.cpp:637
 #, kde-format
 msgid "Capitalize"
 msgstr "Hástafa"
 
-#: view/kateview.cpp:637
+#: view/kateview.cpp:640
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
@@ -6900,17 +6900,17 @@ msgid ""
 msgstr ""
 "Hástafa valið eða einungis orðið undir bendlinum ef enginn texti er valinn."
 
-#: view/kateview.cpp:642
+#: view/kateview.cpp:645
 #, kde-format
 msgid "Join Lines"
 msgstr "Sameina línur"
 
-#: view/kateview.cpp:647
+#: view/kateview.cpp:650
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "Virkja kóðaútfyllingu"
 
-#: view/kateview.cpp:648
+#: view/kateview.cpp:651
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
@@ -6919,54 +6919,54 @@ msgstr ""
 "Virkja kóðaútfyllingu handvirkt, venjulega með því að nota flýtilykla "
 "semtengdir eru þeirri aðgerð."
 
-#: view/kateview.cpp:653
+#: view/kateview.cpp:656
 #, kde-format
 msgid "Remove Trailing Spaces"
 msgstr "Fjarlægja auð bil aftast"
 
-#: view/kateview.cpp:671
+#: view/kateview.cpp:674
 #, kde-format
 msgid "Print the current document."
 msgstr "Prenta núverandi skjal."
 
-#: view/kateview.cpp:674
+#: view/kateview.cpp:677
 #, kde-format
 msgid "Show print preview of current document"
 msgstr "Forskoða prentútgáfu núverandi skjals"
 
-#: view/kateview.cpp:678
+#: view/kateview.cpp:681
 #, kde-format
 msgid "Reloa&d"
 msgstr "En&durhlaða"
 
-#: view/kateview.cpp:680
+#: view/kateview.cpp:683
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "Endurhlaða skjalinu af diski."
 
-#: view/kateview.cpp:684
+#: view/kateview.cpp:687
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr "Vista núverandi skjal á diski, með heiti að eigin vali."
 
-#: view/kateview.cpp:686
+#: view/kateview.cpp:689
 #, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
 msgstr "Vista með stafatöflu..."
 
-#: view/kateview.cpp:692
+#: view/kateview.cpp:695
 #, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
 msgstr "Vista a&frit sem..."
 
-#: view/kateview.cpp:693
+#: view/kateview.cpp:696
 #, kde-format
 msgid "Save a copy of the current document to disk."
 msgstr "Vista afrit af núverandi skjali á diski."
 
-#: view/kateview.cpp:697
+#: view/kateview.cpp:700
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
@@ -6975,68 +6975,68 @@ msgstr ""
 "Þessi skipun opnar svarglugga þar sem þú getur valið línu þangað sem þú vilt "
 "færa bendilinn."
 
-#: view/kateview.cpp:701
+#: view/kateview.cpp:704
 #, kde-format
 msgid "Go to Previous Modified Line"
 msgstr "Fara að fyrri breyttu línu"
 
-#: view/kateview.cpp:702
+#: view/kateview.cpp:705
 #, kde-format
 msgid "Move upwards to the previous modified line."
 msgstr "Fara upp á við á fyrri línu sem var breytt."
 
-#: view/kateview.cpp:707
+#: view/kateview.cpp:710
 #, kde-format
 msgid "Go to Next Modified Line"
 msgstr "Fara á næstu breyttu línu"
 
-#: view/kateview.cpp:708
+#: view/kateview.cpp:711
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr "Fara niður á við á næstu línu sem var breytt."
 
-#: view/kateview.cpp:712
+#: view/kateview.cpp:715
 #, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "&Grunnstilla ritil..."
 
-#: view/kateview.cpp:714
+#: view/kateview.cpp:717
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "Grunnstilla ýmsa eiginleika ritilsins."
 
-#: view/kateview.cpp:717
+#: view/kateview.cpp:720
 #, kde-format
 msgid "&Mode"
 msgstr "&Snið"
 
-#: view/kateview.cpp:723
+#: view/kateview.cpp:726
 #, kde-format
 msgid "&Highlighting"
 msgstr "&Textalitun"
 
-#: view/kateview.cpp:725
+#: view/kateview.cpp:728
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr "Hér getur þú valið textalitun fyrir núverandi skjal."
 
-#: view/kateview.cpp:728
+#: view/kateview.cpp:731
 #, kde-format
 msgid "&Editor Color Theme"
 msgstr "Litaþ&emu ritils"
 
-#: view/kateview.cpp:734
+#: view/kateview.cpp:737
 #, kde-format
 msgid "&Indentation"
 msgstr "&Inndráttur"
 
-#: view/kateview.cpp:741
+#: view/kateview.cpp:744
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "Velja allan textann í núverandi skjali."
 
-#: view/kateview.cpp:744
+#: view/kateview.cpp:747
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
@@ -7044,42 +7044,42 @@ msgid ""
 msgstr ""
 "Ef þú hefur valið eitthvað í núverandi skjali verður það ekki lengur valið."
 
-#: view/kateview.cpp:748
+#: view/kateview.cpp:751
 #, kde-format
 msgid "Enlarge Font"
 msgstr "Stækka letur"
 
-#: view/kateview.cpp:750
+#: view/kateview.cpp:753
 #, kde-format
 msgid "This increases the display font size."
 msgstr "Þetta stækkar letrið á skjánum."
 
-#: view/kateview.cpp:757
+#: view/kateview.cpp:760
 #, kde-format
 msgid "Shrink Font"
 msgstr "Minnka letur"
 
-#: view/kateview.cpp:759
+#: view/kateview.cpp:762
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "Þetta minnkar letrið á skjánum."
 
-#: view/kateview.cpp:766
+#: view/kateview.cpp:769
 #, kde-format
 msgid "Reset Font Size"
 msgstr "Endurstilla leturstærð"
 
-#: view/kateview.cpp:768
+#: view/kateview.cpp:771
 #, kde-format
 msgid "This resets the display font size."
 msgstr "Þetta endurstillir leturstærðina á skjánum."
 
-#: view/kateview.cpp:771
+#: view/kateview.cpp:774
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "Bl&okkarvalsstilling"
 
-#: view/kateview.cpp:774
+#: view/kateview.cpp:777
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
@@ -7088,22 +7088,22 @@ msgstr ""
 "Þessi skipun víxlar á milli venjulegs vals (línuvals) og "
 "blokkarvalsstillingar."
 
-#: view/kateview.cpp:778
+#: view/kateview.cpp:781
 #, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Skipta í næsta innsetningarsnið"
 
-#: view/kateview.cpp:780
+#: view/kateview.cpp:783
 #, kde-format
 msgid "Switch to the next input mode."
 msgstr "Skipta í næsta innsetningarsnið."
 
-#: view/kateview.cpp:783
+#: view/kateview.cpp:786
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "Yfirskr&iftarsnið"
 
-#: view/kateview.cpp:786
+#: view/kateview.cpp:789
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
@@ -7112,12 +7112,12 @@ msgstr ""
 "Veldu hvort þú vilt að textinn sem þú skrifar verði bætt við eða skrifi yfir "
 "texta sem er fyrir."
 
-#: view/kateview.cpp:790
+#: view/kateview.cpp:793
 #, kde-format
 msgid "Show Whitespace"
 msgstr "Sýna bilmerki"
 
-#: view/kateview.cpp:793
+#: view/kateview.cpp:796
 #, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
@@ -7126,12 +7126,12 @@ msgstr ""
 "Ef hakað er hér verða bilmerki í skjalinu sýnileg.<br /><br />Þetta er "
 "einungis sjónræn breyting, skjalið sjálft breytist ekki."
 
-#: view/kateview.cpp:797
+#: view/kateview.cpp:800
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "&Orðskrið"
 
-#: view/kateview.cpp:801
+#: view/kateview.cpp:804
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
@@ -7142,37 +7142,37 @@ msgstr ""
 "lengra en að brún gluggans.<br /><br />Þetta er einungis sjónræn breyting, "
 "skjalið sjálft breytist ekki."
 
-#: view/kateview.cpp:805
+#: view/kateview.cpp:808
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "Orðskriðsmerki"
 
-#: view/kateview.cpp:807
+#: view/kateview.cpp:810
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr "Velja hvenær á að birta orðskriðsmerkin"
 
-#: view/kateview.cpp:809
+#: view/kateview.cpp:812
 #, kde-format
 msgid "&Off"
 msgstr "&Slökkt"
 
-#: view/kateview.cpp:809
+#: view/kateview.cpp:812
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "Fylgja &línunúmerum"
 
-#: view/kateview.cpp:809
+#: view/kateview.cpp:812
 #, kde-format
 msgid "&Always On"
 msgstr "&Alltaf kveikt"
 
-#: view/kateview.cpp:813
+#: view/kateview.cpp:816
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "Varanleg línuskil"
 
-#: view/kateview.cpp:815
+#: view/kateview.cpp:818
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
@@ -7181,12 +7181,12 @@ msgstr ""
 "Ef hakað er hér er texta skipt á milli lína við dálkinn sem tilgreindur er í "
 "ritunarstillingunum."
 
-#: view/kateview.cpp:822
+#: view/kateview.cpp:825
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "Sýna merki fyrir varanleg &línuskil"
 
-#: view/kateview.cpp:825
+#: view/kateview.cpp:828
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -7195,12 +7195,12 @@ msgstr ""
 "Sýna/fela línuskilamerkið, lóðrétta línu á dálkinum þar sem skipt er á milli "
 "lína í samræmi við skilgreiningar í ritunarstillingunum"
 
-#: view/kateview.cpp:829
+#: view/kateview.cpp:832
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "Sýna földunar&merki"
 
-#: view/kateview.cpp:831
+#: view/kateview.cpp:834
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
@@ -7209,34 +7209,34 @@ msgstr ""
 "Þú getur valið hvort merki fyrir kóðaföldun séu sýnileg, ef hægt er að falda "
 "kóðablokkir."
 
-#: view/kateview.cpp:834
+#: view/kateview.cpp:837
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "Sýna &táknaborða"
 
-#: view/kateview.cpp:836
+#: view/kateview.cpp:839
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
 "symbols, for instance."
 msgstr "Sýna/fela táknaborðann.<br /><br />Táknaborðinn sýnir m.a. bókamerki."
 
-#: view/kateview.cpp:839
+#: view/kateview.cpp:842
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "Sýna &línunúmer"
 
-#: view/kateview.cpp:841
+#: view/kateview.cpp:844
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "Sýna/fela línunúmer á vinstri hlið ritilsgluggans."
 
-#: view/kateview.cpp:844
+#: view/kateview.cpp:847
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "Sýna s&krunstikumerki"
 
-#: view/kateview.cpp:846
+#: view/kateview.cpp:849
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7245,12 +7245,12 @@ msgstr ""
 "Sýna/fela merki á lóðréttu skrunstikunni.<br /><br />Merkin sýna til dæmis "
 "bókamerkin."
 
-#: view/kateview.cpp:849
+#: view/kateview.cpp:852
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
 msgstr "Sýna yfirlitsmynd á skrunstiku"
 
-#: view/kateview.cpp:851
+#: view/kateview.cpp:854
 #, kde-format
 msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
@@ -7264,70 +7264,70 @@ msgstr ""
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SlOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:863
+#: view/kateview.cpp:866
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr "Sýna óprentanleg bil"
 
-#: view/kateview.cpp:865
+#: view/kateview.cpp:868
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr "Sýna/fela hneppiramma utan um óprentanleg bil"
 
-#: view/kateview.cpp:869
+#: view/kateview.cpp:872
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "Fara í skipanalínu"
 
-#: view/kateview.cpp:871
+#: view/kateview.cpp:874
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "Sýna/fela skipanalínuna neðst á ritilsglugganum."
 
-#: view/kateview.cpp:874
+#: view/kateview.cpp:877
 #, kde-format
 msgid "Input Modes"
 msgstr "Innsetningarsnið"
 
-#: view/kateview.cpp:883
+#: view/kateview.cpp:886
 #, kde-format
 msgid "Activate/deactivate %1"
 msgstr "Virkja/afvirkja %1"
 
-#: view/kateview.cpp:893
+#: view/kateview.cpp:896
 #, kde-format
 msgid "&End of Line"
 msgstr "Línu&ending"
 
-#: view/kateview.cpp:895
+#: view/kateview.cpp:898
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr "Veldu hvaða endingar verða notaðar þegar þú vistar skjalið"
 
-#: view/kateview.cpp:896
+#: view/kateview.cpp:899
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "&UNIX"
 
-#: view/kateview.cpp:897
+#: view/kateview.cpp:900
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "&Windows/DOS"
 
-#: view/kateview.cpp:898
+#: view/kateview.cpp:901
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "&Macintosh"
 
-#: view/kateview.cpp:903
+#: view/kateview.cpp:906
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "Bæta við &bætaröðunarmerki (BOM)"
 
-#: view/kateview.cpp:906
+#: view/kateview.cpp:909
 #, kde-format
 msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
@@ -7336,77 +7336,77 @@ msgstr ""
 "Virkja/afvirkja að bæta við bætaröðunarmerki þegar skrár með UTF-8/UTF-16 "
 "stafatöflu eru vistaðar"
 
-#: view/kateview.cpp:910
+#: view/kateview.cpp:913
 #, kde-format
 msgid "E&ncoding"
 msgstr "Stafa&tafla"
 
-#: view/kateview.cpp:914
+#: view/kateview.cpp:917
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr "Leita að fyrsta tilviki af texta eða reglulegri segð."
 
-#: view/kateview.cpp:918
+#: view/kateview.cpp:921
 #, kde-format
 msgid "Find Selected"
 msgstr "Finna valið"
 
-#: view/kateview.cpp:920
+#: view/kateview.cpp:923
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "Finnur næsta tilvik af völdum texta."
 
-#: view/kateview.cpp:924
+#: view/kateview.cpp:927
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "Finna valið aftur á bak"
 
-#: view/kateview.cpp:926
+#: view/kateview.cpp:929
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "Leita að fyrra tilviki af völdum texta."
 
-#: view/kateview.cpp:930
+#: view/kateview.cpp:933
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr "Finna og velja næsta tilvik"
 
-#: view/kateview.cpp:932
+#: view/kateview.cpp:935
 #, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr "Finnur næsta tilvik af orðinu undir bendlinum og bætir við valið."
 
-#: view/kateview.cpp:936
+#: view/kateview.cpp:939
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr "Merkja tilvik sem er valið sem slepptu"
 
-#: view/kateview.cpp:938
+#: view/kateview.cpp:941
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr "Merkja orðið sem er valið sem slepptu."
 
-#: view/kateview.cpp:942
+#: view/kateview.cpp:945
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr "Finna og velja öll tilvik"
 
-#: view/kateview.cpp:944
+#: view/kateview.cpp:947
 #, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr "Finnur öll tilvik af orðinu undir bendlinum og velur þau."
 
-#: view/kateview.cpp:948
+#: view/kateview.cpp:951
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "Leita að næsta tilviki af leitartextanum."
 
-#: view/kateview.cpp:952
+#: view/kateview.cpp:955
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "Leita að fyrra tilviki af leitartextanum."
 
-#: view/kateview.cpp:956
+#: view/kateview.cpp:959
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
@@ -7415,85 +7415,85 @@ msgstr ""
 "Leita að textabroti eða reglulegri segð og skipta innihaldinu út fyrir "
 "tiltekinn texta."
 
-#: view/kateview.cpp:959
+#: view/kateview.cpp:962
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr "Bæta bendlum við línuenda"
 
-#: view/kateview.cpp:961
+#: view/kateview.cpp:964
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
 msgstr "Býr til bendla við enda allra lína í valinu."
 
-#: view/kateview.cpp:965
+#: view/kateview.cpp:968
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr "Setja inn innskotsmerki fyrir neðan bendil"
 
-#: view/kateview.cpp:967
+#: view/kateview.cpp:970
 #, kde-format
 msgid "Adds a caret in the line below the current caret."
 msgstr "Setur innskotsmerki inn í línu fyrir neðan núverandi innskotsmerki."
 
-#: view/kateview.cpp:971
+#: view/kateview.cpp:974
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr "Setja inn innskotsmerki fyrir ofan bendil"
 
-#: view/kateview.cpp:973
+#: view/kateview.cpp:976
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr "Setur innskotsmerki inn í línu fyrir ofan núverandi innskotsmerki."
 
-#: view/kateview.cpp:977
+#: view/kateview.cpp:980
 #, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Víxla hvort bendill stoppi á hástöfum inni í orðum (camel case)"
 
-#: view/kateview.cpp:978
+#: view/kateview.cpp:981
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 "Víxla hvort bendill hoppi á milli orða eða stoppi á hástöfum inni í orðum "
 "(camel case)."
 
-#: view/kateview.cpp:982
+#: view/kateview.cpp:985
 #, kde-format
 msgid "Remove Cursors from Empty Lines"
 msgstr "Fjarlægja bendla úr auðum línum"
 
-#: view/kateview.cpp:983
+#: view/kateview.cpp:986
 #, kde-format
 msgid "Remove cursors from empty lines"
 msgstr "Fjarlægja bendla úr auðum línum"
 
-#: view/kateview.cpp:987
+#: view/kateview.cpp:990
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "Sjálfvirk stafsetningarvilluleit"
 
-#: view/kateview.cpp:988
+#: view/kateview.cpp:991
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "Virkja/afvirkja sjálfvirka stafsetningarkönnun"
 
-#: view/kateview.cpp:994
+#: view/kateview.cpp:997
 #, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
 msgstr "Skipta um orðasafn..."
 
-#: view/kateview.cpp:995
+#: view/kateview.cpp:998
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "Skipta um orðasafnið sem er notað við stafsetningarkönnun."
 
-#: view/kateview.cpp:999
+#: view/kateview.cpp:1002
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "Hreinsa orðasafnssvið"
 
-#: view/kateview.cpp:1001
+#: view/kateview.cpp:1004
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
@@ -7501,25 +7501,25 @@ msgstr ""
 "Fjarlægja öll aðskilin orðasafnssvið sem voru valin fyrir "
 "stafsetningarkönnun."
 
-#: view/kateview.cpp:1007
+#: view/kateview.cpp:1010
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "Afrita sem &HTML"
 
-#: view/kateview.cpp:1008
+#: view/kateview.cpp:1011
 #, kde-format
 msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
 
-#: view/kateview.cpp:1012
+#: view/kateview.cpp:1015
 #, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "Fl&ytja út sem HTML…"
 
-#: view/kateview.cpp:1014
+#: view/kateview.cpp:1017
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7528,42 +7528,42 @@ msgstr ""
 "Með þessari skipun getur þú flutt út núverandi skjal með öllum "
 "textalitunarupplýsingum í HTML-skjal."
 
-#: view/kateview.cpp:1053
+#: view/kateview.cpp:1056
 #, kde-format
 msgid "Move Word Left"
 msgstr "Færa um orð til vinstri"
 
-#: view/kateview.cpp:1059
+#: view/kateview.cpp:1062
 #, kde-format
 msgid "Select Character Left"
 msgstr "Velja staf til vinstri"
 
-#: view/kateview.cpp:1065
+#: view/kateview.cpp:1068
 #, kde-format
 msgid "Select Word Left"
 msgstr "Velja orð til vinstri"
 
-#: view/kateview.cpp:1075
+#: view/kateview.cpp:1078
 #, kde-format
 msgid "Move Word Right"
 msgstr "Færa um orð til hægri"
 
-#: view/kateview.cpp:1081
+#: view/kateview.cpp:1084
 #, kde-format
 msgid "Select Character Right"
 msgstr "Velja staf til hægri"
 
-#: view/kateview.cpp:1087
+#: view/kateview.cpp:1090
 #, kde-format
 msgid "Select Word Right"
 msgstr "Velja orð til hægri"
 
-#: view/kateview.cpp:1097
+#: view/kateview.cpp:1100
 #, kde-format
 msgid "Start the Marked Selection"
 msgstr "Byrja merkta valið"
 
-#: view/kateview.cpp:1098
+#: view/kateview.cpp:1101
 #, kde-format
 msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
@@ -7572,206 +7572,206 @@ msgstr ""
 "Herma eftir valstillingu í anda Emacs, þar sem upphafið er merkt og valið "
 "síðan uppfært stöðugt."
 
-#: view/kateview.cpp:1103
+#: view/kateview.cpp:1106
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "Færa í byrjun línu"
 
-#: view/kateview.cpp:1109
+#: view/kateview.cpp:1112
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "Færa í byrjun skjals"
 
-#: view/kateview.cpp:1115
+#: view/kateview.cpp:1118
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "Velja að byrjun línu"
 
-#: view/kateview.cpp:1125
+#: view/kateview.cpp:1128
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "Velja að byrjun skjals"
 
-#: view/kateview.cpp:1135
+#: view/kateview.cpp:1138
 #, kde-format
 msgid "Move to End of Line"
 msgstr "Færa í enda línu"
 
-#: view/kateview.cpp:1141
+#: view/kateview.cpp:1144
 #, kde-format
 msgid "Move to End of Document"
 msgstr "Færa í enda skjals"
 
-#: view/kateview.cpp:1147
+#: view/kateview.cpp:1150
 #, kde-format
 msgid "Select to End of Line"
 msgstr "Velja að enda línu"
 
-#: view/kateview.cpp:1157
+#: view/kateview.cpp:1160
 #, kde-format
 msgid "Select to End of Document"
 msgstr "Velja að enda skjals"
 
-#: view/kateview.cpp:1167
+#: view/kateview.cpp:1170
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "Velja að fyrri línu"
 
-#: view/kateview.cpp:1173
+#: view/kateview.cpp:1176
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "Skruna upp um línu"
 
-#: view/kateview.cpp:1182
+#: view/kateview.cpp:1185
 #, kde-format
 msgid "Move to Next Line"
 msgstr "Færa í næstu línu"
 
-#: view/kateview.cpp:1188
+#: view/kateview.cpp:1191
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "Færa í fyrri línu"
 
-#: view/kateview.cpp:1194
+#: view/kateview.cpp:1197
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "Færa bendil til hægri"
 
-#: view/kateview.cpp:1200
+#: view/kateview.cpp:1203
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "Færa bendil til vinstri"
 
-#: view/kateview.cpp:1206
+#: view/kateview.cpp:1209
 #, kde-format
 msgid "Select to Next Line"
 msgstr "Velja að næstu línu"
 
-#: view/kateview.cpp:1212
+#: view/kateview.cpp:1215
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "Skruna niður um línu"
 
-#: view/kateview.cpp:1221
+#: view/kateview.cpp:1224
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "Skruna upp um síðu"
 
-#: view/kateview.cpp:1227
+#: view/kateview.cpp:1230
 #, kde-format
 msgid "Select Page Up"
 msgstr "Velja upp um síðu"
 
-#: view/kateview.cpp:1233
+#: view/kateview.cpp:1236
 #, kde-format
 msgid "Move to Top of View"
 msgstr "Færa efst í ritilsglugga"
 
-#: view/kateview.cpp:1239
+#: view/kateview.cpp:1242
 #, kde-format
 msgid "Select to Top of View"
 msgstr "Velja að efst í ritilsglugga"
 
-#: view/kateview.cpp:1245
+#: view/kateview.cpp:1248
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "Skruna niður um síðu"
 
-#: view/kateview.cpp:1251
+#: view/kateview.cpp:1254
 #, kde-format
 msgid "Select Page Down"
 msgstr "Velja niður um síðu"
 
-#: view/kateview.cpp:1257
+#: view/kateview.cpp:1260
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "Færa neðst á ritilsglugga"
 
-#: view/kateview.cpp:1263
+#: view/kateview.cpp:1266
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "Velja að neðst á ritilsglugga"
 
-#: view/kateview.cpp:1269
+#: view/kateview.cpp:1272
 #, kde-format
 msgid "Go to Matching Bracket"
 msgstr "Fara á mótsvarandi sviga"
 
-#: view/kateview.cpp:1275
+#: view/kateview.cpp:1278
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "Velja að mótsvarandi sviga"
 
-#: view/kateview.cpp:1282
+#: view/kateview.cpp:1285
 #, fuzzy, kde-format
 #| msgid "Move Word Right"
 msgid "Move Sub-Word Right"
 msgstr "Færa um orð til hægri"
 
-#: view/kateview.cpp:1289
+#: view/kateview.cpp:1292
 #, fuzzy, kde-format
 #| msgid "Select Word Right"
 msgid "Select Sub-Word Right"
 msgstr "Velja orð til hægri"
 
-#: view/kateview.cpp:1296
+#: view/kateview.cpp:1299
 #, fuzzy, kde-format
 #| msgid "Move Word Left"
 msgid "Move Sub-Word Left"
 msgstr "Færa um orð til vinstri"
 
-#: view/kateview.cpp:1303
+#: view/kateview.cpp:1306
 #, fuzzy, kde-format
 #| msgid "Select Word Left"
 msgid "Select Sub-Word Left"
 msgstr "Velja orð til vinstri"
 
-#: view/kateview.cpp:1313
+#: view/kateview.cpp:1316
 #, kde-format
 msgid "Transpose Characters"
 msgstr "Víxla stöfum"
 
-#: view/kateview.cpp:1318
+#: view/kateview.cpp:1321
 #, kde-format
 msgid "Transpose Words"
 msgstr "Víxla orðum"
 
-#: view/kateview.cpp:1323
+#: view/kateview.cpp:1326
 #, kde-format
 msgid "Delete Line"
 msgstr "Eyða línu"
 
-#: view/kateview.cpp:1329
+#: view/kateview.cpp:1332
 #, kde-format
 msgid "Delete Word Left"
 msgstr "Eyða orði til vinstri"
 
-#: view/kateview.cpp:1335
+#: view/kateview.cpp:1338
 #, kde-format
 msgid "Delete Word Right"
 msgstr "Eyða orði til hægri"
 
-#: view/kateview.cpp:1341
+#: view/kateview.cpp:1344
 #, kde-format
 msgid "Delete Next Character"
 msgstr "Eyða næsta staf"
 
-#: view/kateview.cpp:1347
+#: view/kateview.cpp:1350
 #, kde-format
 msgid "Backspace"
 msgstr "Bakklykill"
 
-#: view/kateview.cpp:1355
+#: view/kateview.cpp:1358
 #, kde-format
 msgid "Insert Tab Character"
 msgstr "Setja inn dálkmerki"
 
-#: view/kateview.cpp:1360
+#: view/kateview.cpp:1363
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "Setja inn snjalla nýja línu"
 
-#: view/kateview.cpp:1361
+#: view/kateview.cpp:1364
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
@@ -7780,23 +7780,23 @@ msgstr ""
 "Setja inn nýja línu ásamt fyrstu stöfum í núverandi línu sem eru ekki bók- "
 "eða tölustafir."
 
-#: view/kateview.cpp:1369
+#: view/kateview.cpp:1372
 #, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "Setja inn óinndregna nýja línu"
 
-#: view/kateview.cpp:1370
+#: view/kateview.cpp:1373
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr "Setja inn nýja línu án inndráttar, sama hver inndráttarstillingin er."
 
-#: view/kateview.cpp:1378
+#: view/kateview.cpp:1381
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr "Setja inn nýja línu fyrir ofan núverandi línu"
 
-#: view/kateview.cpp:1379
+#: view/kateview.cpp:1382
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
@@ -7804,12 +7804,12 @@ msgstr ""
 "Setja inn nýja línu fyrir ofan núverandi línu án þess að breyta núverandi "
 "línu."
 
-#: view/kateview.cpp:1387
+#: view/kateview.cpp:1390
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr "Setja inn nýja línu fyrir neðan núverandi línu"
 
-#: view/kateview.cpp:1388
+#: view/kateview.cpp:1391
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
@@ -7817,12 +7817,12 @@ msgstr ""
 "Setja inn nýja línu fyrir neðan núverandi línu án þess að breyta núverandi "
 "línu."
 
-#: view/kateview.cpp:1397
+#: view/kateview.cpp:1400
 #, kde-format
 msgid "&Indent"
 msgstr "Draga &inn"
 
-#: view/kateview.cpp:1399
+#: view/kateview.cpp:1402
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -7833,104 +7833,104 @@ msgstr ""
 "grunnstillingaglugganum getur þú valið hvort það eigi að virða og nota "
 "dálkmerki eða skipta þeim út fyrir auð bil."
 
-#: view/kateview.cpp:1406
+#: view/kateview.cpp:1409
 #, kde-format
 msgid "&Unindent"
 msgstr "Fjarl&ægja inndrátt"
 
-#: view/kateview.cpp:1407
+#: view/kateview.cpp:1410
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr "Notaðu þetta til að fjarlægja inndrátt af textablokk."
 
-#: view/kateview.cpp:1413
+#: view/kateview.cpp:1416
 #, fuzzy, kde-format
 #| msgid "Delete Word Left"
 msgid "Delete Sub-Word Left"
 msgstr "Eyða orði til vinstri"
 
-#: view/kateview.cpp:1420
+#: view/kateview.cpp:1423
 #, fuzzy, kde-format
 #| msgid "Delete Word Right"
 msgid "Delete Sub-Word Right"
 msgstr "Eyða orði til hægri"
 
-#: view/kateview.cpp:1441
+#: view/kateview.cpp:1444
 #, kde-format
 msgid "Fold Toplevel Nodes"
 msgstr "Falda efsta stigs hnúta"
 
-#: view/kateview.cpp:1445
+#: view/kateview.cpp:1448
 #, kde-format
 msgid "Unfold Toplevel Nodes"
 msgstr "Opna efsta stigs hnúta"
 
-#: view/kateview.cpp:1449
+#: view/kateview.cpp:1452
 #, kde-format
 msgid "Toggle Current Node"
 msgstr "Opna/falda núverandi hnút"
 
-#: view/kateview.cpp:1453
+#: view/kateview.cpp:1456
 #, kde-format
 msgid "Toggle Contained Nodes"
 msgstr "Opna/falda innifalda hnúta"
 
-#: view/kateview.cpp:1462
+#: view/kateview.cpp:1465
 #, kde-format
 msgid "Say current selection or document"
 msgstr "Segja núverandi val eða skjal"
 
-#: view/kateview.cpp:1472
+#: view/kateview.cpp:1475
 #, kde-format
 msgid "Stop current output"
 msgstr "Stöðva núverandi úttak"
 
-#: view/kateview.cpp:1478
+#: view/kateview.cpp:1481
 #, kde-format
 msgid "Pause current output"
 msgstr "Gera hlé á núverandi úttaki"
 
-#: view/kateview.cpp:1484
+#: view/kateview.cpp:1487
 #, kde-format
 msgid "Resume current output"
 msgstr "Halda áfram núverandi úttaki"
 
-#: view/kateview.cpp:1655
+#: view/kateview.cpp:1658
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(R/O) %1"
 
-#: view/kateview.cpp:1843
+#: view/kateview.cpp:1846
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "Afvirkjað að bendill stoppi á hástöfum inni í orðum"
 
-#: view/kateview.cpp:1845
+#: view/kateview.cpp:1848
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "Virkjað að bendill stoppi á hástöfum inni í orðum"
 
-#: view/kateview.cpp:2380
+#: view/kateview.cpp:2383
 #, kde-format
 msgid "Search wrapped"
 msgstr "Leit fer hringinn"
 
-#: view/kateview.cpp:3072
+#: view/kateview.cpp:3075
 #, kde-format
 msgid "Open File"
 msgstr "Opna skrá"
 
-#: view/kateview.cpp:3983
+#: view/kateview.cpp:3986
 #, kde-format
 msgid "Align On"
 msgstr "Jafna við"
 
-#: view/kateview.cpp:3983
+#: view/kateview.cpp:3986
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Jöfnunarmynstur:"
 
-#: view/kateview.cpp:5067
+#: view/kateview.cpp:5070
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Flytja út skrá sem HTML"

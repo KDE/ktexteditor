@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-31 00:39+0000\n"
+"POT-Creation-Date: 2025-09-02 00:40+0000\n"
 "PO-Revision-Date: 2024-09-22 18:40+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2618,7 +2618,7 @@ msgstr "λειτουργία vi"
 msgid "recording"
 msgstr "καταγραφή"
 
-#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:90
+#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:91
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
@@ -5760,385 +5760,385 @@ msgstr ""
 "είναι ένα παράδειγμα που δείχνει τη διαφορά με τη μέθοδο φυσικής ταξινόμησης:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
-#: utils/kateglobal.cpp:59
+#: utils/kateglobal.cpp:60
 #, kde-format
 msgid "Kate Part"
 msgstr "Kate Part"
 
-#: utils/kateglobal.cpp:61
+#: utils/kateglobal.cpp:62
 #, kde-format
 msgid "Embeddable editor component"
 msgstr "Ενσωματώσιμο συστατικό επεξεργαστή"
 
-#: utils/kateglobal.cpp:63
+#: utils/kateglobal.cpp:64
 #, fuzzy, kde-format
 #| msgid "(c) 2000-2005 The Kate Authors"
 msgid "(c) 2000-2022 The Kate Authors"
 msgstr "(c) 2000-2005 Οι συγγραφείς του Kate"
 
-#: utils/kateglobal.cpp:83
+#: utils/kateglobal.cpp:84
 #, kde-format
 msgid "Christoph Cullmann"
 msgstr "Christoph Cullmann"
 
-#: utils/kateglobal.cpp:83
+#: utils/kateglobal.cpp:84
 #, kde-format
 msgid "Maintainer"
 msgstr "Συντηρητής"
 
-#: utils/kateglobal.cpp:84
+#: utils/kateglobal.cpp:85
 #, kde-format
 msgid "Dominik Haumann"
 msgstr "Dominik Haumann"
 
-#: utils/kateglobal.cpp:84 utils/kateglobal.cpp:85 utils/kateglobal.cpp:87
-#: utils/kateglobal.cpp:95 utils/kateglobal.cpp:98 utils/kateglobal.cpp:103
+#: utils/kateglobal.cpp:85 utils/kateglobal.cpp:86 utils/kateglobal.cpp:88
+#: utils/kateglobal.cpp:96 utils/kateglobal.cpp:99 utils/kateglobal.cpp:104
 #, kde-format
 msgid "Core Developer"
 msgstr "Κεντρικός προγραμματιστής"
 
-#: utils/kateglobal.cpp:85
+#: utils/kateglobal.cpp:86
 #, kde-format
 msgid "Milian Wolff"
 msgstr "Milian Wolff"
 
-#: utils/kateglobal.cpp:86
+#: utils/kateglobal.cpp:87
 #, kde-format
 msgid "Joseph Wenninger"
 msgstr "Joseph Wenninger"
 
-#: utils/kateglobal.cpp:90
+#: utils/kateglobal.cpp:91
 #, kde-format
 msgid "Erlend Hamberg"
 msgstr "Erlend Hamberg"
 
-#: utils/kateglobal.cpp:91
+#: utils/kateglobal.cpp:92
 #, kde-format
 msgid "Bernhard Beschow"
 msgstr "Bernhard Beschow"
 
-#: utils/kateglobal.cpp:92 utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:93 utils/kateglobal.cpp:111
 #, kde-format
 msgid "Developer"
 msgstr "Προγραμματιστής"
 
-#: utils/kateglobal.cpp:95
+#: utils/kateglobal.cpp:96
 #, kde-format
 msgid "Anders Lund"
 msgstr "Anders Lund"
 
-#: utils/kateglobal.cpp:96
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "Michel Ludwig"
 msgstr "Michel Ludwig"
 
-#: utils/kateglobal.cpp:96
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "On-the-fly spell checking"
 msgstr "Ορθογραφικός έλεγχος κατά την πληκτρολόγηση"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Pascal Létourneau"
 msgstr "Pascal Létourneau"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Large scale bug fixing"
 msgstr "Διόρθωση σφαλμάτων μεγάλης κλίμακας"
 
-#: utils/kateglobal.cpp:98
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "Hamish Rodda"
 msgstr "Hamish Rodda"
 
-#: utils/kateglobal.cpp:99
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "Waldo Bastian"
 msgstr "Waldo Bastian"
 
-#: utils/kateglobal.cpp:99
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "The cool buffersystem"
 msgstr "Το εξαιρετικό σύστημα ενδιάμεσης μνήμης"
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Charles Samuels"
 msgstr "Charles Samuels"
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "The Editing Commands"
 msgstr "Οι εντολές επεξεργασίας"
 
-#: utils/kateglobal.cpp:101
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "Matt Newell"
 msgstr "Matt Newell"
 
-#: utils/kateglobal.cpp:101
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "Testing, ..."
 msgstr "Δοκιμές, ..."
 
-#: utils/kateglobal.cpp:102
+#: utils/kateglobal.cpp:103
 #, kde-format
 msgid "Michael Bartl"
 msgstr "Michael Bartl"
 
-#: utils/kateglobal.cpp:102
+#: utils/kateglobal.cpp:103
 #, kde-format
 msgid "Former Core Developer"
 msgstr "Πρώην κεντρικός προγραμματιστής"
 
-#: utils/kateglobal.cpp:103
+#: utils/kateglobal.cpp:104
 #, kde-format
 msgid "Michael McCallum"
 msgstr "Michael McCallum"
 
-#: utils/kateglobal.cpp:104
+#: utils/kateglobal.cpp:105
 #, kde-format
 msgid "Michael Koch"
 msgstr "Michael Koch"
 
-#: utils/kateglobal.cpp:104
+#: utils/kateglobal.cpp:105
 #, kde-format
 msgid "KWrite port to KParts"
 msgstr "Μεταφορά του KWrite στην τεχνολογία KParts"
 
-#: utils/kateglobal.cpp:105
+#: utils/kateglobal.cpp:106
 #, kde-format
 msgid "Christian Gebauer"
 msgstr "Christian Gebauer"
 
-#: utils/kateglobal.cpp:106
+#: utils/kateglobal.cpp:107
 #, kde-format
 msgid "Simon Hausmann"
 msgstr "Simon Hausmann"
 
-#: utils/kateglobal.cpp:107
+#: utils/kateglobal.cpp:108
 #, kde-format
 msgid "Glen Parker"
 msgstr "Glen Parker"
 
-#: utils/kateglobal.cpp:107
+#: utils/kateglobal.cpp:108
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
 msgstr "Ιστορικό αναιρέσεων του KWrite, ενσωμάτωση Kspell"
 
-#: utils/kateglobal.cpp:108
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "Scott Manson"
 msgstr "Scott Manson"
 
-#: utils/kateglobal.cpp:108
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
 msgstr "Υποστήριξη τονισμού σύνδεσης με XML στο KWrite"
 
-#: utils/kateglobal.cpp:109
+#: utils/kateglobal.cpp:110
 #, kde-format
 msgid "John Firebaugh"
 msgstr "John Firebaugh"
 
-#: utils/kateglobal.cpp:109
+#: utils/kateglobal.cpp:110
 #, kde-format
 msgid "Patches and more"
 msgstr "Μπαλώματα και άλλα"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "Andreas Kling"
 msgstr "Andreas Kling"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Mirko Stocker"
 msgstr "Mirko Stocker"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Various bugfixes"
 msgstr "Διάφορες διορθώσεις"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "Matthew Woehlke"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Selection, KColorScheme integration"
 msgstr "Ενσωμάτωση του KColorScheme και επιλογών"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:114
 #, kde-format
 msgid "Sebastian Pipping"
 msgstr "Sebastian Pipping"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Search bar back- and front-end"
 msgstr "Σύστημα υποστήριξης γραμμής αναζήτησης"
 
-#: utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Jochen Wilhelmy"
 msgstr "Jochen Wilhelmy"
 
-#: utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Original KWrite Author"
 msgstr "Αρχικός συγγραφέας του KWrite"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:119
 #, kde-format
 msgid "Gerald Senarclens de Grancy"
 msgstr "Gerald Senarclens de Grancy"
 
-#: utils/kateglobal.cpp:119
+#: utils/kateglobal.cpp:120
 #, kde-format
 msgid "QA and Scripting"
 msgstr "Έλεγχος ποιότητας και συγγραφή σεναρίων"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Matteo Merli"
 msgstr "Matteo Merli"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
 msgstr "Τονισμός για αρχεία RPM spec, Perl, Diff και άλλα"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Rocky Scaletta"
 msgstr "Rocky Scaletta"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Highlighting for VHDL"
 msgstr "Τονισμός για VHDL"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Yury Lebedev"
 msgstr "Yury Lebedev"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Highlighting for SQL"
 msgstr "Τονισμός για SQL"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Chris Ross"
 msgstr "Chris Ross"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Highlighting for Ferite"
 msgstr "Τονισμός για Ferite"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Nick Roux"
 msgstr "Nick Roux"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Highlighting for ILERPG"
 msgstr "Τονισμός για ILERPG"
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Carsten Niehaus"
 msgstr "Carsten Niehaus"
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Highlighting for LaTeX"
 msgstr "Τονισμός για LaTeX"
 
-#: utils/kateglobal.cpp:129
+#: utils/kateglobal.cpp:130
 #, kde-format
 msgid "Per Wigren"
 msgstr "Per Wigren"
 
-#: utils/kateglobal.cpp:129
+#: utils/kateglobal.cpp:130
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
 msgstr "Τονισμός για Makefiles, Python"
 
-#: utils/kateglobal.cpp:130
+#: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Jan Fritz"
 msgstr "Jan Fritz"
 
-#: utils/kateglobal.cpp:130
+#: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Highlighting for Python"
 msgstr "Τονισμός για Python"
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Daniel Naber"
 msgstr "Daniel Naber"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "Roland Pabel"
 msgstr "Roland Pabel"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "Highlighting for Scheme"
 msgstr "Τονισμός για Scheme"
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:134
 #, kde-format
 msgid "Cristi Dumitrescu"
 msgstr "Cristi Dumitrescu"
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:134
 #, kde-format
 msgid "PHP Keyword/Datatype list"
 msgstr "Λίστα PHP Λέξεων κλειδιών/Τύπων δεδομένων"
 
-#: utils/kateglobal.cpp:134
+#: utils/kateglobal.cpp:135
 #, kde-format
 msgid "Carsten Pfeiffer"
 msgstr "Carsten Pfeiffer"
 
-#: utils/kateglobal.cpp:134
+#: utils/kateglobal.cpp:135
 #, kde-format
 msgid "Very nice help"
 msgstr "Πολύ καλή βοήθεια"
 
-#: utils/kateglobal.cpp:135
+#: utils/kateglobal.cpp:136
 #, kde-format
 msgid "Bruno Massa"
 msgstr "Bruno Massa"
 
-#: utils/kateglobal.cpp:135
+#: utils/kateglobal.cpp:136
 #, kde-format
 msgid "Highlighting for Lua"
 msgstr "Τονισμός για Lua"
 
-#: utils/kateglobal.cpp:137
+#: utils/kateglobal.cpp:138
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
 msgstr "Όλοι όσοι προσέφεραν και ξέχασα να τους αναφέρω"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:140
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Σπύρος Γεωργαράς, Τούσης Μανώλης, Φαμέλης Γιώργος, Πέτρος Βιδάλης"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:140
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -6146,7 +6146,7 @@ msgstr ""
 "sng@hellug.gr, manolis@koppermind.homelinux.org, famelis@gmail.com, "
 "p_vidalis@hotmail.com"
 
-#: utils/kateglobal.cpp:261
+#: utils/kateglobal.cpp:264
 #, kde-format
 msgid "Configure"
 msgstr "Διαμόρφωση"
@@ -6738,7 +6738,7 @@ msgstr "Τέλος της γραμμής"
 msgid "Mode"
 msgstr "Λειτουργία"
 
-#: view/katestatusbar.cpp:209 view/kateview.cpp:720
+#: view/katestatusbar.cpp:209 view/kateview.cpp:723
 #, kde-format
 msgid ""
 "Here you can choose which mode should be used for the current document. This "
@@ -6846,18 +6846,18 @@ msgstr "Λέξεις %1/%2, Χαρακτήρες %3/%4"
 msgid "Zoom: %1%"
 msgstr ""
 
-#: view/kateview.cpp:457
+#: view/kateview.cpp:460
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
 msgstr "Αποκοπή του επιλεγμένου κειμένου και μετακίνησή του στο πρόχειρο"
 
-#: view/kateview.cpp:462
+#: view/kateview.cpp:465
 #, kde-format
 msgid "Paste previously copied or cut clipboard contents"
 msgstr ""
 "Επικόλληση προηγούμενα αντιγραμμένων ή αποκομμένων περιεχομένων του προχείρου"
 
-#: view/kateview.cpp:465
+#: view/kateview.cpp:468
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
@@ -6865,86 +6865,86 @@ msgstr ""
 "Χρησιμοποιήστε αυτή την εντολή για να αντιγράψετε το τρέχον επιλεγμένο "
 "κείμενο στο πρόχειρο συστήματος."
 
-#: view/kateview.cpp:471
+#: view/kateview.cpp:474
 #, fuzzy, kde-format
 #| msgid "Clipboard &History"
 msgid "Clipboard &History Paste"
 msgstr "Ιστορικό του προχείρου"
 
-#: view/kateview.cpp:476
+#: view/kateview.cpp:479
 #, fuzzy, kde-format
 #| msgid "Language Selection"
 msgid "Paste Selection"
 msgstr "Επιλογή γλώσσας"
 
-#: view/kateview.cpp:478
+#: view/kateview.cpp:481
 #, fuzzy, kde-format
 #| msgid "Paste previously copied or cut clipboard contents"
 msgid "Paste previously mouse selection contents"
 msgstr ""
 "Επικόλληση προηγούμενα αντιγραμμένων ή αποκομμένων περιεχομένων του προχείρου"
 
-#: view/kateview.cpp:482
+#: view/kateview.cpp:485
 #, kde-format
 msgid "Paste From File"
 msgstr ""
 
-#: view/kateview.cpp:486
+#: view/kateview.cpp:489
 #, fuzzy, kde-format
 #| msgid "Swap File Options"
 msgid "Copy File Location"
 msgstr "Επιλογές αρχείου swap"
 
-#: view/kateview.cpp:487
+#: view/kateview.cpp:490
 #, kde-format
 msgid "Copy the current file name and line number"
 msgstr ""
 
-#: view/kateview.cpp:490
+#: view/kateview.cpp:493
 #, fuzzy, kde-format
 #| msgid "Paste previously copied or cut clipboard contents"
 msgid "Swap with Clipboard Contents"
 msgstr ""
 "Επικόλληση προηγούμενα αντιγραμμένων ή αποκομμένων περιεχομένων του προχείρου"
 
-#: view/kateview.cpp:491
+#: view/kateview.cpp:494
 #, fuzzy, kde-format
 #| msgid "Cut the selected text and move it to the clipboard"
 msgid "Swap the selected text with the clipboard contents"
 msgstr "Αποκοπή του επιλεγμένου κειμένου και μετακίνησή του στο πρόχειρο"
 
-#: view/kateview.cpp:494
+#: view/kateview.cpp:497
 #, fuzzy, kde-format
 #| msgid "Language Selection"
 msgid "Take Screenshot of Selection"
 msgstr "Επιλογή γλώσσας"
 
-#: view/kateview.cpp:498
+#: view/kateview.cpp:501
 #, kde-format
 msgid "Save the current document"
 msgstr "Αποθήκευση του τρέχοντος εγγράφου"
 
-#: view/kateview.cpp:501
+#: view/kateview.cpp:504
 #, kde-format
 msgid "Revert the most recent editing actions"
 msgstr "Αντιστροφή των πιο πρόσφατων ενεργειών επεξεργασίας"
 
-#: view/kateview.cpp:504
+#: view/kateview.cpp:507
 #, kde-format
 msgid "Revert the most recent undo operation"
 msgstr "Αντιστροφή της πιο πρόσφατης λειτουργίας αναίρεσης"
 
-#: view/kateview.cpp:508
+#: view/kateview.cpp:511
 #, kde-format
 msgid "&Scripts"
 msgstr "&Σενάρια"
 
-#: view/kateview.cpp:512
+#: view/kateview.cpp:515
 #, kde-format
 msgid "Apply &Word Wrap"
 msgstr "Εφαρμογή ανα&δίπλωσης λέξεων"
 
-#: view/kateview.cpp:514
+#: view/kateview.cpp:517
 #, kde-format
 msgid ""
 "Use this to wrap the current line, or to reformat the selected lines as "
@@ -6952,12 +6952,12 @@ msgid ""
 "<br /><br />This is a static word wrap, meaning the document is changed."
 msgstr ""
 
-#: view/kateview.cpp:520
+#: view/kateview.cpp:523
 #, kde-format
 msgid "&Clean Indentation"
 msgstr "&Καθάρισμα χρήσης εσοχής"
 
-#: view/kateview.cpp:522
+#: view/kateview.cpp:525
 #, kde-format
 msgid ""
 "Use this to clean the indentation of a selected block of text (only tabs/"
@@ -6969,25 +6969,25 @@ msgstr ""
 "διαμορφώσετε το αν θα διατηρηθούν και χρησιμοποιηθούν οι αθλοθέτησες ή θα "
 "αντικατασταθούν με κενά, στο διάλογο ρυθμίσεων."
 
-#: view/kateview.cpp:527
+#: view/kateview.cpp:530
 #, fuzzy, kde-format
 #| msgid "Indentation Properties"
 msgid "Convert Indentation to Spaces"
 msgstr "Ιδιότητες εσοχών"
 
-#: view/kateview.cpp:534
+#: view/kateview.cpp:537
 #, fuzzy, kde-format
 #| msgid "&Indentation"
 msgid "Convert Indentation to Tabs"
 msgstr "Χρήσ&η εσοχών"
 
-#: view/kateview.cpp:549
+#: view/kateview.cpp:552
 #, fuzzy, kde-format
 #| msgid "&Indentation"
 msgid "&Format Indentation"
 msgstr "Χρήσ&η εσοχών"
 
-#: view/kateview.cpp:550
+#: view/kateview.cpp:553
 #, fuzzy, kde-format
 #| msgid ""
 #| "Use this to align the current line or block of text to its proper indent "
@@ -6999,14 +6999,14 @@ msgstr ""
 "Χρησιμοποιήστε αυτό για να στοιχίσετε την τρέχουσα γραμμή ή τμήμα κειμένου "
 "στο σωστό επίπεδο εσοχής."
 
-#: view/kateview.cpp:554
+#: view/kateview.cpp:557
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgctxt "@action"
 msgid "&Align On…"
 msgstr "&Στοίχιση"
 
-#: view/kateview.cpp:556
+#: view/kateview.cpp:559
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -7020,12 +7020,12 @@ msgid ""
 "column."
 msgstr ""
 
-#: view/kateview.cpp:567
+#: view/kateview.cpp:570
 #, kde-format
 msgid "C&omment"
 msgstr "&Σχόλιο"
 
-#: view/kateview.cpp:570
+#: view/kateview.cpp:573
 #, kde-format
 msgid ""
 "This command comments out the current line or a selected block of text.<br /"
@@ -7036,24 +7036,24 @@ msgstr ""
 "τμήμα κειμένου.<br /><br />Οι χαρακτήρες για μονά/πολλαπλά σχόλια γραμμής "
 "καθορίζονται από τον τονισμό της γλώσσας."
 
-#: view/kateview.cpp:575
+#: view/kateview.cpp:578
 #, fuzzy, kde-format
 #| msgid "Go to previous editing line"
 msgid "Go to Previous Editing Location"
 msgstr "Μετάβαση στην προηγούμενη γραμμή επεξεργασίας"
 
-#: view/kateview.cpp:581
+#: view/kateview.cpp:584
 #, fuzzy, kde-format
 #| msgid "Go to next editing line"
 msgid "Go to Next Editing Location"
 msgstr "Μετάβαση στην επόμενη γραμμή επεξεργασίας"
 
-#: view/kateview.cpp:587
+#: view/kateview.cpp:590
 #, kde-format
 msgid "Unco&mment"
 msgstr "&Αφαίρεση σχολίου"
 
-#: view/kateview.cpp:590
+#: view/kateview.cpp:593
 #, kde-format
 msgid ""
 "This command removes comments from the current line or a selected block of "
@@ -7064,38 +7064,38 @@ msgstr ""
 "τμήμα κειμένου.<br /><br />Οι χαρακτήρες για μονά/πολλαπλά σχόλια γραμμής "
 "καθορίζονται από τον τονισμό της γλώσσας."
 
-#: view/kateview.cpp:595
+#: view/kateview.cpp:598
 #, kde-format
 msgid "Toggle Comment"
 msgstr "Εναλλαγή σχολίου"
 
-#: view/kateview.cpp:599
+#: view/kateview.cpp:602
 #, kde-format
 msgid "&Read Only Mode"
 msgstr "Κατάσταση &μόνο ανάγνωσης"
 
-#: view/kateview.cpp:600
+#: view/kateview.cpp:603
 #, kde-format
 msgid "Lock/unlock the document for writing"
 msgstr "Κλείδωμα/ξεκλείδωμα του εγγράφου για εγγραφή"
 
-#: view/kateview.cpp:605
+#: view/kateview.cpp:608
 #, kde-format
 msgid "&Force RTL Direction"
 msgstr ""
 
-#: view/kateview.cpp:606
+#: view/kateview.cpp:609
 #, fuzzy, kde-format
 #| msgid "Text Decorations"
 msgid "Force RTL Text Direction"
 msgstr "Διακοσμήσεις κειμένου"
 
-#: view/kateview.cpp:616
+#: view/kateview.cpp:619
 #, kde-format
 msgid "Uppercase"
 msgstr "Κεφαλαία"
 
-#: view/kateview.cpp:619
+#: view/kateview.cpp:622
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
@@ -7104,12 +7104,12 @@ msgstr ""
 "Μετατροπή της επιλογής σε κεφαλαία ή το χαρακτήρα στα δεξιά του δρομέα αν "
 "δεν έχει επιλεχθεί κείμενο."
 
-#: view/kateview.cpp:625
+#: view/kateview.cpp:628
 #, kde-format
 msgid "Lowercase"
 msgstr "Μικρά"
 
-#: view/kateview.cpp:628
+#: view/kateview.cpp:631
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
@@ -7118,12 +7118,12 @@ msgstr ""
 "Μετατροπή της επιλογής σε μικρά ή το χαρακτήρα στα δεξιά του δρομέα αν δεν "
 "έχει επιλεχθεί κείμενο."
 
-#: view/kateview.cpp:634
+#: view/kateview.cpp:637
 #, kde-format
 msgid "Capitalize"
 msgstr "Πρώτο γράμμα κεφαλαίο"
 
-#: view/kateview.cpp:637
+#: view/kateview.cpp:640
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
@@ -7132,17 +7132,17 @@ msgstr ""
 "Μετατροπή σε κεφαλαία της επιλογής, ή της λέξης κάτω από το δρομέα αν δεν "
 "έχει επιλεγεί κείμενο."
 
-#: view/kateview.cpp:642
+#: view/kateview.cpp:645
 #, kde-format
 msgid "Join Lines"
 msgstr "Ένωση γραμμών"
 
-#: view/kateview.cpp:647
+#: view/kateview.cpp:650
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "Κλήση συμπλήρωσης κώδικα"
 
-#: view/kateview.cpp:648
+#: view/kateview.cpp:651
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
@@ -7151,55 +7151,55 @@ msgstr ""
 "Χειροκίνητη κλήση συμπλήρωσης εντολής, συνήθως με τη χρήση μιας συντόμευσης "
 "γι' αυτήν την ενέργεια."
 
-#: view/kateview.cpp:653
+#: view/kateview.cpp:656
 #, kde-format
 msgid "Remove Trailing Spaces"
 msgstr "Αφαίρεση κενών στο τέλος"
 
-#: view/kateview.cpp:671
+#: view/kateview.cpp:674
 #, kde-format
 msgid "Print the current document."
 msgstr "Εκτύπωση του τρέχοντος εγγράφου."
 
-#: view/kateview.cpp:674
+#: view/kateview.cpp:677
 #, kde-format
 msgid "Show print preview of current document"
 msgstr "Εμφάνιση προεπισκόπησης εκτύπωσης του τρέχοντος εγγράφου"
 
-#: view/kateview.cpp:678
+#: view/kateview.cpp:681
 #, kde-format
 msgid "Reloa&d"
 msgstr "Επα&ναφόρτωση"
 
-#: view/kateview.cpp:680
+#: view/kateview.cpp:683
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "Επαναφόρτωση του τρέχοντος εγγράφου από το δίσκο."
 
-#: view/kateview.cpp:684
+#: view/kateview.cpp:687
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr ""
 "Αποθήκευση του τρέχοντος εγγράφου στον δίσκο με ένα όνομα της επιλογής σας."
 
-#: view/kateview.cpp:686
+#: view/kateview.cpp:689
 #, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
 msgstr "Απο&θήκευση ως με κωδικοποίηση…"
 
-#: view/kateview.cpp:692
+#: view/kateview.cpp:695
 #, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
 msgstr "Αποθήκευση αντι&γράφου ως…"
 
-#: view/kateview.cpp:693
+#: view/kateview.cpp:696
 #, kde-format
 msgid "Save a copy of the current document to disk."
 msgstr "Αποθήκευση ενός αντιγράφου του τρέχοντος εγγράφου στον δίσκο."
 
-#: view/kateview.cpp:697
+#: view/kateview.cpp:700
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
@@ -7208,71 +7208,71 @@ msgstr ""
 "Αυτή η εντολή ανοίγει ένα διάλογο και σας αφήνει να επιλέξετε τη γραμμή στην "
 "οποία θέλετε να μετακινηθεί ο δρομέας."
 
-#: view/kateview.cpp:701
+#: view/kateview.cpp:704
 #, fuzzy, kde-format
 #| msgid "Move to Previous Modified Line"
 msgid "Go to Previous Modified Line"
 msgstr "Μετακίνηση στην προηγούμενη τροποποιημένη γραμμή"
 
-#: view/kateview.cpp:702
+#: view/kateview.cpp:705
 #, kde-format
 msgid "Move upwards to the previous modified line."
 msgstr "Μετακίνηση προς τα πάνω στην προηγούμενη τροποποιημένη γραμμή."
 
-#: view/kateview.cpp:707
+#: view/kateview.cpp:710
 #, fuzzy, kde-format
 #| msgid "Move to Next Modified Line"
 msgid "Go to Next Modified Line"
 msgstr "Μετακίνηση στην επόμενη τροποποιημένη γραμμή"
 
-#: view/kateview.cpp:708
+#: view/kateview.cpp:711
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr "Μετακίνηση προς τα κάτω στην επόμενη τροποποιημένη γραμμή."
 
-#: view/kateview.cpp:712
+#: view/kateview.cpp:715
 #, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "Διαμόρφωσ&η επεξεργαστή…"
 
-#: view/kateview.cpp:714
+#: view/kateview.cpp:717
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "Διαμόρφωση διάφορων λειτουργιών αυτού του επεξεργαστή."
 
-#: view/kateview.cpp:717
+#: view/kateview.cpp:720
 #, kde-format
 msgid "&Mode"
 msgstr "&Λειτουργία"
 
-#: view/kateview.cpp:723
+#: view/kateview.cpp:726
 #, kde-format
 msgid "&Highlighting"
 msgstr "&Τονισμός"
 
-#: view/kateview.cpp:725
+#: view/kateview.cpp:728
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr "Εδώ μπορείτε να επιλέξετε τη μέθοδο τονισμού του τρέχοντος εγγράφου."
 
-#: view/kateview.cpp:728
+#: view/kateview.cpp:731
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "&Editor Color Theme"
 msgstr "Χρώματα"
 
-#: view/kateview.cpp:734
+#: view/kateview.cpp:737
 #, kde-format
 msgid "&Indentation"
 msgstr "Χρήσ&η εσοχών"
 
-#: view/kateview.cpp:741
+#: view/kateview.cpp:744
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "Επιλογή ολόκληρου του κειμένου του τρέχοντος εγγράφου."
 
-#: view/kateview.cpp:744
+#: view/kateview.cpp:747
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
@@ -7281,43 +7281,43 @@ msgstr ""
 "Αν έχετε επιλέξει κάτι μέσα στο τρέχον έγγραφο αυτό δε θα είναι πλέον "
 "επιλεγμένο."
 
-#: view/kateview.cpp:748
+#: view/kateview.cpp:751
 #, kde-format
 msgid "Enlarge Font"
 msgstr "Μεγέθυνση γραμματοσειράς"
 
-#: view/kateview.cpp:750
+#: view/kateview.cpp:753
 #, kde-format
 msgid "This increases the display font size."
 msgstr "Αυτό αυξάνει το μέγεθος της γραμματοσειράς προβολής."
 
-#: view/kateview.cpp:757
+#: view/kateview.cpp:760
 #, kde-format
 msgid "Shrink Font"
 msgstr "Σμίκρυνση γραμματοσειράς"
 
-#: view/kateview.cpp:759
+#: view/kateview.cpp:762
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "Αυτό μειώνει το μέγεθος της γραμματοσειράς προβολής."
 
-#: view/kateview.cpp:766
+#: view/kateview.cpp:769
 #, kde-format
 msgid "Reset Font Size"
 msgstr ""
 
-#: view/kateview.cpp:768
+#: view/kateview.cpp:771
 #, fuzzy, kde-format
 #| msgid "This increases the display font size."
 msgid "This resets the display font size."
 msgstr "Αυτό αυξάνει το μέγεθος της γραμματοσειράς προβολής."
 
-#: view/kateview.cpp:771
+#: view/kateview.cpp:774
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "Κατάσταση επιλογής &τμημάτων"
 
-#: view/kateview.cpp:774
+#: view/kateview.cpp:777
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
@@ -7326,22 +7326,22 @@ msgstr ""
 "Αυτή η εντολή επιτρέπει την αλλαγή μεταξύ της κατάστασης κανονικής επιλογής "
 "(γραμμής) και επιλογής τμημάτων."
 
-#: view/kateview.cpp:778
+#: view/kateview.cpp:781
 #, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Εναλλαγή στην επόμενη λειτουργία εισαγωγής"
 
-#: view/kateview.cpp:780
+#: view/kateview.cpp:783
 #, kde-format
 msgid "Switch to the next input mode."
 msgstr "Εναλλαγή στην επόμενη λειτουργία εισαγωγής."
 
-#: view/kateview.cpp:783
+#: view/kateview.cpp:786
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "Λειτουργία &αντικατάστασης"
 
-#: view/kateview.cpp:786
+#: view/kateview.cpp:789
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
@@ -7350,13 +7350,13 @@ msgstr ""
 "Επιλέξτε το αν θέλετε το κείμενο που πληκτρολογείτε να εισάγεται ή να "
 "αντικαθιστά το υπάρχον κείμενο."
 
-#: view/kateview.cpp:790
+#: view/kateview.cpp:793
 #, fuzzy, kde-format
 #| msgid "Spaces"
 msgid "Show Whitespace"
 msgstr "Κενά"
 
-#: view/kateview.cpp:793
+#: view/kateview.cpp:796
 #, fuzzy, kde-format
 #| msgid ""
 #| "If this option is checked, the text lines will be wrapped at the view "
@@ -7368,12 +7368,12 @@ msgstr ""
 "Αν αυτή η επιλογή ενεργοποιηθεί, οι γραμμές κειμένου θα αναδιπλωθούν στο "
 "όριο προβολής στην οθόνη."
 
-#: view/kateview.cpp:797
+#: view/kateview.cpp:800
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "&Δυναμική αναδίπλωση λέξεων"
 
-#: view/kateview.cpp:801
+#: view/kateview.cpp:804
 #, fuzzy, kde-format
 #| msgid ""
 #| "If this option is checked, the text lines will be wrapped at the view "
@@ -7386,38 +7386,38 @@ msgstr ""
 "Αν αυτή η επιλογή ενεργοποιηθεί, οι γραμμές κειμένου θα αναδιπλωθούν στο "
 "όριο προβολής στην οθόνη."
 
-#: view/kateview.cpp:805
+#: view/kateview.cpp:808
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "Δείκτες δυναμικής αναδίπλωσης λέξεων"
 
-#: view/kateview.cpp:807
+#: view/kateview.cpp:810
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr ""
 "Επιλέξτε το πότε θα εμφανίζονται οι δείκτες δυναμικής αναδίπλωσης λέξεων"
 
-#: view/kateview.cpp:809
+#: view/kateview.cpp:812
 #, kde-format
 msgid "&Off"
 msgstr "&Ανενεργοί"
 
-#: view/kateview.cpp:809
+#: view/kateview.cpp:812
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "Ακολούθηση αριθμών &γραμμής"
 
-#: view/kateview.cpp:809
+#: view/kateview.cpp:812
 #, kde-format
 msgid "&Always On"
 msgstr "&Πάντα ενεργοί"
 
-#: view/kateview.cpp:813
+#: view/kateview.cpp:816
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "Στατική αναδίπλωση λέξεων"
 
-#: view/kateview.cpp:815
+#: view/kateview.cpp:818
 #, fuzzy, kde-format
 #| msgid ""
 #| "If this option is checked, the text lines will be wrapped at the view "
@@ -7429,12 +7429,12 @@ msgstr ""
 "Αν αυτή η επιλογή ενεργοποιηθεί, οι γραμμές κειμένου θα αναδιπλωθούν στο "
 "όριο προβολής στην οθόνη."
 
-#: view/kateview.cpp:822
+#: view/kateview.cpp:825
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "Εμφάνιση σημαδιού στατικής αναδίπλωσης &λέξεων"
 
-#: view/kateview.cpp:825
+#: view/kateview.cpp:828
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -7444,12 +7444,12 @@ msgstr ""
 "γραμμή που εμφανίζεται στη στήλη αναδίπλωσης λέξεων όπως αυτή καθορίζεται "
 "στις επιλογές επεξεργασίας"
 
-#: view/kateview.cpp:829
+#: view/kateview.cpp:832
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "Εμφάνιση &δεικτών τυλίγματος κώδικα"
 
-#: view/kateview.cpp:831
+#: view/kateview.cpp:834
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
@@ -7458,12 +7458,12 @@ msgstr ""
 "Μπορείτε να επιλέξετε αν θα εμφανίζονται τα σημάδια τυλίγματος κώδικα, αν το "
 "τύλιγμα κώδικα μπορεί να γίνει."
 
-#: view/kateview.cpp:834
+#: view/kateview.cpp:837
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "Εμφάνιση περιθωρίου &εικονιδίων"
 
-#: view/kateview.cpp:836
+#: view/kateview.cpp:839
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
@@ -7472,23 +7472,23 @@ msgstr ""
 "Εμφάνιση/απόκρυψη του περιθωρίου εικονιδίων.<br /><br /> Στο περιθώριο "
 "εικονιδίων εμφανίζονται, για παράδειγμα, σύμβολα σελιδοδεικτών."
 
-#: view/kateview.cpp:839
+#: view/kateview.cpp:842
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "Εμφάνιση αριθμών &γραμμής"
 
-#: view/kateview.cpp:841
+#: view/kateview.cpp:844
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr ""
 "Εμφάνιση/απόκρυψη των αριθμών γραμμής στην αριστερή πλευρά της προβολής."
 
-#: view/kateview.cpp:844
+#: view/kateview.cpp:847
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "Εμφάνιση σημαδιών γραμμής κύ&λισης"
 
-#: view/kateview.cpp:846
+#: view/kateview.cpp:849
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7497,12 +7497,12 @@ msgstr ""
 "Εμφάνιση/απόκρυψη των σημαδιών στην κατακόρυφη γραμμή κύλισης.<br /><br /> "
 "Τα σημάδια, για παράδειγμα, εμφανίζουν σελιδοδείκτες."
 
-#: view/kateview.cpp:849
+#: view/kateview.cpp:852
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
 msgstr "Εμφάνιση μινι-χάρτη γραμμής κύ&λισης"
 
-#: view/kateview.cpp:851
+#: view/kateview.cpp:854
 #, kde-format
 msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
@@ -7516,73 +7516,73 @@ msgstr ""
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SlOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:863
+#: view/kateview.cpp:866
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr "Εμφάνιση μη εκτυπώσιμων κενών διαστημάτων"
 
-#: view/kateview.cpp:865
+#: view/kateview.cpp:868
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr ""
 "Εμφάνιση/απόκρυψη του πλαισίου οριοθέτησης γύρω από τα μη εκτυπώσιμα κενά "
 "διαστήματα"
 
-#: view/kateview.cpp:869
+#: view/kateview.cpp:872
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "Μετάβαση στη γραμμή εντολών"
 
-#: view/kateview.cpp:871
+#: view/kateview.cpp:874
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "Εμφάνιση/απόκρυψη της γραμμής εντολών στο κάτω μέρος της προβολής."
 
-#: view/kateview.cpp:874
+#: view/kateview.cpp:877
 #, kde-format
 msgid "Input Modes"
 msgstr "Λειτουργίες εισαγωγής"
 
-#: view/kateview.cpp:883
+#: view/kateview.cpp:886
 #, kde-format
 msgid "Activate/deactivate %1"
 msgstr "Ενεργοποίηση/απενεργοποίηση %1"
 
-#: view/kateview.cpp:893
+#: view/kateview.cpp:896
 #, kde-format
 msgid "&End of Line"
 msgstr "&Τέλος γραμμής"
 
-#: view/kateview.cpp:895
+#: view/kateview.cpp:898
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr ""
 "Επιλέξτε τι τέλος γραμμής θα χρησιμοποιηθεί όταν αποθηκεύετε ένα έγγραφο"
 
-#: view/kateview.cpp:896
+#: view/kateview.cpp:899
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "&UNIX"
 
-#: view/kateview.cpp:897
+#: view/kateview.cpp:900
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "&Windows/DOS"
 
-#: view/kateview.cpp:898
+#: view/kateview.cpp:901
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "&Macintosh"
 
-#: view/kateview.cpp:903
+#: view/kateview.cpp:906
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "Προσθήκη χαρακτήρων που δηλώνουν τη σειρά των ψηφιολέξεων (BOM)"
 
-#: view/kateview.cpp:906
+#: view/kateview.cpp:909
 #, fuzzy, kde-format
 #| msgid ""
 #| "Enable/disable adding of byte order markers for UTF-8/UTF-16 encoded "
@@ -7594,80 +7594,80 @@ msgstr ""
 "Ενεργοποίηση/απενεργοποίηση της προσθήκης, κατά το σώσιμο, χαρακτήρων που "
 "δηλώνουν την σειρά των ψηφιολέξεων, για αρχεία κωδικοποιημένα σε UTF-8/UTF-16"
 
-#: view/kateview.cpp:910
+#: view/kateview.cpp:913
 #, kde-format
 msgid "E&ncoding"
 msgstr "&Κωδικοποίηση"
 
-#: view/kateview.cpp:914
+#: view/kateview.cpp:917
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr ""
 "Αναζήτηση της πρώτης εμφάνισης ενός κομματιού κειμένου ή κανονικής έκφρασης."
 
-#: view/kateview.cpp:918
+#: view/kateview.cpp:921
 #, kde-format
 msgid "Find Selected"
 msgstr "Αναζήτηση επιλεγμένου"
 
-#: view/kateview.cpp:920
+#: view/kateview.cpp:923
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "Αναζήτηση της επόμενης εμφάνισης του επιλεγμένου κειμένου."
 
-#: view/kateview.cpp:924
+#: view/kateview.cpp:927
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "Αναζήτηση επιλεγμένου προς τα πίσω"
 
-#: view/kateview.cpp:926
+#: view/kateview.cpp:929
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "Αναζήτηση της προηγούμενης εμφάνισης του επιλεγμένου κειμένου."
 
-#: view/kateview.cpp:930
+#: view/kateview.cpp:933
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr ""
 
-#: view/kateview.cpp:932
+#: view/kateview.cpp:935
 #, fuzzy, kde-format
 #| msgid "Finds next occurrence of selected text."
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr "Αναζήτηση της επόμενης εμφάνισης του επιλεγμένου κειμένου."
 
-#: view/kateview.cpp:936
+#: view/kateview.cpp:939
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr ""
 
-#: view/kateview.cpp:938
+#: view/kateview.cpp:941
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr ""
 
-#: view/kateview.cpp:942
+#: view/kateview.cpp:945
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr ""
 
-#: view/kateview.cpp:944
+#: view/kateview.cpp:947
 #, fuzzy, kde-format
 #| msgid "Finds next occurrence of selected text."
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr "Αναζήτηση της επόμενης εμφάνισης του επιλεγμένου κειμένου."
 
-#: view/kateview.cpp:948
+#: view/kateview.cpp:951
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "Αναζήτηση της επόμενης εμφάνισης της φράσης αναζήτησης."
 
-#: view/kateview.cpp:952
+#: view/kateview.cpp:955
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "Αναζήτηση της προηγούμενης εμφάνισης της φράσης αναζήτησης."
 
-#: view/kateview.cpp:956
+#: view/kateview.cpp:959
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
@@ -7676,89 +7676,89 @@ msgstr ""
 "Αναζήτηση ενός κομματιού κειμένου ή κανονικής έκφρασης και αντικατάστασή του "
 "αποτελέσματος με κάποιο δοσμένο κείμενο."
 
-#: view/kateview.cpp:959
+#: view/kateview.cpp:962
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr ""
 
-#: view/kateview.cpp:961
+#: view/kateview.cpp:964
 #, fuzzy, kde-format
 #| msgctxt "short translation please"
 #| msgid "Wrap the text cursor at the end of a line."
 msgid "Creates a cursor at the end of every line in selection."
 msgstr "Αναδίπλωση δρομέα κειμένου στο τέλος γραμμής."
 
-#: view/kateview.cpp:965
+#: view/kateview.cpp:968
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr ""
 
-#: view/kateview.cpp:967
+#: view/kateview.cpp:970
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgid "Adds a caret in the line below the current caret."
 msgstr "Επιλογή ολόκληρου του κειμένου του τρέχοντος εγγράφου."
 
-#: view/kateview.cpp:971
+#: view/kateview.cpp:974
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr ""
 
-#: view/kateview.cpp:973
+#: view/kateview.cpp:976
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr ""
 
-#: view/kateview.cpp:977
+#: view/kateview.cpp:980
 #, fuzzy, kde-format
 #| msgid "Text Cursor Movement"
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Κίνηση δρομέα κειμένου"
 
-#: view/kateview.cpp:978
+#: view/kateview.cpp:981
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 
-#: view/kateview.cpp:982
+#: view/kateview.cpp:985
 #, fuzzy, kde-format
 #| msgid "Move cursor to next matching indent"
 msgid "Remove Cursors from Empty Lines"
 msgstr "Μετακίνηση του δρομέα στην επόμενη εσοχή που ταιριάζει"
 
-#: view/kateview.cpp:983
+#: view/kateview.cpp:986
 #, fuzzy, kde-format
 #| msgid "Move cursor to next matching indent"
 msgid "Remove cursors from empty lines"
 msgstr "Μετακίνηση του δρομέα στην επόμενη εσοχή που ταιριάζει"
 
-#: view/kateview.cpp:987
+#: view/kateview.cpp:990
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "Αυτόματος ορθογραφικός έλεγχος"
 
-#: view/kateview.cpp:988
+#: view/kateview.cpp:991
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "Ενεργοποίηση/απενεργοποίηση αυτόματου ορθογραφικού ελέγχου"
 
-#: view/kateview.cpp:994
+#: view/kateview.cpp:997
 #, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
 msgstr "Αλλαγή λεξικού…"
 
-#: view/kateview.cpp:995
+#: view/kateview.cpp:998
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "Αλλαγή του λεξικού που χρησιμοποιείται για τον ορθογραφικό έλεγχο."
 
-#: view/kateview.cpp:999
+#: view/kateview.cpp:1002
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "Καθαρισμός των περιοχών του Λεξικού"
 
-#: view/kateview.cpp:1001
+#: view/kateview.cpp:1004
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
@@ -7766,25 +7766,25 @@ msgstr ""
 "Αφαίρεση όλων των διακεκριμένων περιοχών του λεξικού που είχαν σημειωθεί για "
 "ορθογραφικό έλεγχο"
 
-#: view/kateview.cpp:1007
+#: view/kateview.cpp:1010
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "Αντιγραφή ως &HTML"
 
-#: view/kateview.cpp:1008
+#: view/kateview.cpp:1011
 #, kde-format
 msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
 
-#: view/kateview.cpp:1012
+#: view/kateview.cpp:1015
 #, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "Εξα&γωγή ως HTML…"
 
-#: view/kateview.cpp:1014
+#: view/kateview.cpp:1017
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7793,252 +7793,252 @@ msgstr ""
 "Αυτή η εντολή σας επιτρέπει να εξάγετε το τρέχον έγγραφο με όλες τις "
 "πληροφορίες τονισμού σε ένα έγγραφο HTML."
 
-#: view/kateview.cpp:1053
+#: view/kateview.cpp:1056
 #, kde-format
 msgid "Move Word Left"
 msgstr "Μετακίνηση λέξης αριστερά"
 
-#: view/kateview.cpp:1059
+#: view/kateview.cpp:1062
 #, kde-format
 msgid "Select Character Left"
 msgstr "Επιλογή χαρακτήρα αριστερά"
 
-#: view/kateview.cpp:1065
+#: view/kateview.cpp:1068
 #, kde-format
 msgid "Select Word Left"
 msgstr "Επιλογή λέξης αριστερά"
 
-#: view/kateview.cpp:1075
+#: view/kateview.cpp:1078
 #, kde-format
 msgid "Move Word Right"
 msgstr "Μετακίνηση λέξης δεξιά"
 
-#: view/kateview.cpp:1081
+#: view/kateview.cpp:1084
 #, kde-format
 msgid "Select Character Right"
 msgstr "Επιλογή χαρακτήρα δεξιά"
 
-#: view/kateview.cpp:1087
+#: view/kateview.cpp:1090
 #, kde-format
 msgid "Select Word Right"
 msgstr "Επιλογή λέξης δεξιά"
 
-#: view/kateview.cpp:1097
+#: view/kateview.cpp:1100
 #, fuzzy, kde-format
 #| msgid "Language Selection"
 msgid "Start the Marked Selection"
 msgstr "Επιλογή γλώσσας"
 
-#: view/kateview.cpp:1098
+#: view/kateview.cpp:1101
 #, kde-format
 msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
 
-#: view/kateview.cpp:1103
+#: view/kateview.cpp:1106
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "Μετακίνηση στην αρχή της γραμμής"
 
-#: view/kateview.cpp:1109
+#: view/kateview.cpp:1112
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "Μετακίνηση στην αρχή του εγγράφου"
 
-#: view/kateview.cpp:1115
+#: view/kateview.cpp:1118
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "Επιλογή μέχρι την αρχή της γραμμής"
 
-#: view/kateview.cpp:1125
+#: view/kateview.cpp:1128
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "Επιλογή μέχρι την αρχή του εγγράφου"
 
-#: view/kateview.cpp:1135
+#: view/kateview.cpp:1138
 #, kde-format
 msgid "Move to End of Line"
 msgstr "Μετακίνηση στο τέλος της γραμμής"
 
-#: view/kateview.cpp:1141
+#: view/kateview.cpp:1144
 #, kde-format
 msgid "Move to End of Document"
 msgstr "Μετακίνηση στο τέλος του εγγράφου"
 
-#: view/kateview.cpp:1147
+#: view/kateview.cpp:1150
 #, kde-format
 msgid "Select to End of Line"
 msgstr "Επιλογή μέχρι το τέλος της γραμμής"
 
-#: view/kateview.cpp:1157
+#: view/kateview.cpp:1160
 #, kde-format
 msgid "Select to End of Document"
 msgstr "Επιλογή μέχρι το τέλος του εγγράφου"
 
-#: view/kateview.cpp:1167
+#: view/kateview.cpp:1170
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "Επιλογή μέχρι την προηγούμενη γραμμή"
 
-#: view/kateview.cpp:1173
+#: view/kateview.cpp:1176
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "Κύλιση μια γραμμή πάνω"
 
-#: view/kateview.cpp:1182
+#: view/kateview.cpp:1185
 #, kde-format
 msgid "Move to Next Line"
 msgstr "Μετακίνηση στην επόμενη γραμμή"
 
-#: view/kateview.cpp:1188
+#: view/kateview.cpp:1191
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "Μετακίνηση στην προηγούμενη γραμμή"
 
-#: view/kateview.cpp:1194
+#: view/kateview.cpp:1197
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "Μετακίνηση του δρομέα δεξιά"
 
-#: view/kateview.cpp:1200
+#: view/kateview.cpp:1203
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "Μετακίνηση του δρομέα αριστερά"
 
-#: view/kateview.cpp:1206
+#: view/kateview.cpp:1209
 #, kde-format
 msgid "Select to Next Line"
 msgstr "Επιλογή μέχρι την επόμενη γραμμή"
 
-#: view/kateview.cpp:1212
+#: view/kateview.cpp:1215
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "Κύλιση μια γραμμή κάτω"
 
-#: view/kateview.cpp:1221
+#: view/kateview.cpp:1224
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "Κύλιση μια σελίδα πάνω"
 
-#: view/kateview.cpp:1227
+#: view/kateview.cpp:1230
 #, kde-format
 msgid "Select Page Up"
 msgstr "Επιλογή μια σελίδα πάνω"
 
-#: view/kateview.cpp:1233
+#: view/kateview.cpp:1236
 #, kde-format
 msgid "Move to Top of View"
 msgstr "Μετακίνηση στην αρχή της προβολής"
 
-#: view/kateview.cpp:1239
+#: view/kateview.cpp:1242
 #, kde-format
 msgid "Select to Top of View"
 msgstr "Επιλογή στην αρχή της προβολής"
 
-#: view/kateview.cpp:1245
+#: view/kateview.cpp:1248
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "Κύλιση μια σελίδα κάτω"
 
-#: view/kateview.cpp:1251
+#: view/kateview.cpp:1254
 #, kde-format
 msgid "Select Page Down"
 msgstr "Επιλογή μια σελίδα κάτω"
 
-#: view/kateview.cpp:1257
+#: view/kateview.cpp:1260
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "Μετακίνηση στο τέλος της προβολής"
 
-#: view/kateview.cpp:1263
+#: view/kateview.cpp:1266
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "Επιλογή στο τέλος της προβολής"
 
-#: view/kateview.cpp:1269
+#: view/kateview.cpp:1272
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Go to Matching Bracket"
 msgstr "Μετακίνηση στην αγκύλη που ταιριάζει"
 
-#: view/kateview.cpp:1275
+#: view/kateview.cpp:1278
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "Επιλογή στην αγκύλη που ταιριάζει"
 
-#: view/kateview.cpp:1282
+#: view/kateview.cpp:1285
 #, fuzzy, kde-format
 #| msgid "Move Word Right"
 msgid "Move Sub-Word Right"
 msgstr "Μετακίνηση λέξης δεξιά"
 
-#: view/kateview.cpp:1289
+#: view/kateview.cpp:1292
 #, fuzzy, kde-format
 #| msgid "Select Word Right"
 msgid "Select Sub-Word Right"
 msgstr "Επιλογή λέξης δεξιά"
 
-#: view/kateview.cpp:1296
+#: view/kateview.cpp:1299
 #, fuzzy, kde-format
 #| msgid "Move Word Left"
 msgid "Move Sub-Word Left"
 msgstr "Μετακίνηση λέξης αριστερά"
 
-#: view/kateview.cpp:1303
+#: view/kateview.cpp:1306
 #, fuzzy, kde-format
 #| msgid "Select Word Left"
 msgid "Select Sub-Word Left"
 msgstr "Επιλογή λέξης αριστερά"
 
-#: view/kateview.cpp:1313
+#: view/kateview.cpp:1316
 #, kde-format
 msgid "Transpose Characters"
 msgstr "Μετατόπιση χαρακτήρων"
 
-#: view/kateview.cpp:1318
+#: view/kateview.cpp:1321
 #, fuzzy, kde-format
 #| msgid "Transpose Characters"
 msgid "Transpose Words"
 msgstr "Μετατόπιση χαρακτήρων"
 
-#: view/kateview.cpp:1323
+#: view/kateview.cpp:1326
 #, kde-format
 msgid "Delete Line"
 msgstr "Διαγραφή γραμμής"
 
-#: view/kateview.cpp:1329
+#: view/kateview.cpp:1332
 #, kde-format
 msgid "Delete Word Left"
 msgstr "Διαγραφή λέξης αριστερά"
 
-#: view/kateview.cpp:1335
+#: view/kateview.cpp:1338
 #, kde-format
 msgid "Delete Word Right"
 msgstr "Διαγραφή λέξης δεξιά"
 
-#: view/kateview.cpp:1341
+#: view/kateview.cpp:1344
 #, kde-format
 msgid "Delete Next Character"
 msgstr "Διαγραφή του επόμενου χαρακτήρα"
 
-#: view/kateview.cpp:1347
+#: view/kateview.cpp:1350
 #, kde-format
 msgid "Backspace"
 msgstr "Backspace"
 
-#: view/kateview.cpp:1355
+#: view/kateview.cpp:1358
 #, fuzzy, kde-format
 #| msgid "Insert Tab"
 msgid "Insert Tab Character"
 msgstr "Εισαγωγή καρτέλας"
 
-#: view/kateview.cpp:1360
+#: view/kateview.cpp:1363
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "Εισαγωγή έξυπνης νέας γραμμής"
 
-#: view/kateview.cpp:1361
+#: view/kateview.cpp:1364
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
@@ -8047,46 +8047,46 @@ msgstr ""
 "Εισαγωγή νέας γραμμής συμπεριλαμβανομένου προπορευόμενων χαρακτήρων της νέας "
 "γραμμής  που δεν είναι γράμματα ή αριθμοί."
 
-#: view/kateview.cpp:1369
+#: view/kateview.cpp:1372
 #, fuzzy, kde-format
 #| msgid "Insert Smart Newline"
 msgid "Insert a Non-Indented Newline"
 msgstr "Εισαγωγή έξυπνης νέας γραμμής"
 
-#: view/kateview.cpp:1370
+#: view/kateview.cpp:1373
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr ""
 
-#: view/kateview.cpp:1378
+#: view/kateview.cpp:1381
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr ""
 
-#: view/kateview.cpp:1379
+#: view/kateview.cpp:1382
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr ""
 
-#: view/kateview.cpp:1387
+#: view/kateview.cpp:1390
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr ""
 
-#: view/kateview.cpp:1388
+#: view/kateview.cpp:1391
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr ""
 
-#: view/kateview.cpp:1397
+#: view/kateview.cpp:1400
 #, kde-format
 msgid "&Indent"
 msgstr "&Εσοχή"
 
-#: view/kateview.cpp:1399
+#: view/kateview.cpp:1402
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -8097,114 +8097,114 @@ msgstr ""
 "<br /><br />Μπορείτε να διαμορφώσετε τη διατήρηση και χρήση των στηλοθετών ή "
 "την αντικατάστασή τους με κενά, στο διάλογο διαμόρφωσης."
 
-#: view/kateview.cpp:1406
+#: view/kateview.cpp:1409
 #, kde-format
 msgid "&Unindent"
 msgstr "&Αφαίρεση εσοχής"
 
-#: view/kateview.cpp:1407
+#: view/kateview.cpp:1410
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr ""
 "Χρησιμοποιήστε αυτό για να αφαιρέσετε εσοχές σε ένα επιλεγμένο τμήμα "
 "κειμένου."
 
-#: view/kateview.cpp:1413
+#: view/kateview.cpp:1416
 #, fuzzy, kde-format
 #| msgid "Delete Word Left"
 msgid "Delete Sub-Word Left"
 msgstr "Διαγραφή λέξης αριστερά"
 
-#: view/kateview.cpp:1420
+#: view/kateview.cpp:1423
 #, fuzzy, kde-format
 #| msgid "Delete Word Right"
 msgid "Delete Sub-Word Right"
 msgstr "Διαγραφή λέξης δεξιά"
 
-#: view/kateview.cpp:1441
+#: view/kateview.cpp:1444
 #, kde-format
 msgid "Fold Toplevel Nodes"
 msgstr "Τύλιγμα κόμβων κορυφής"
 
-#: view/kateview.cpp:1445
+#: view/kateview.cpp:1448
 #, kde-format
 msgid "Unfold Toplevel Nodes"
 msgstr "Ξετύλιγμα κόμβων κορυφής"
 
-#: view/kateview.cpp:1449
+#: view/kateview.cpp:1452
 #, fuzzy, kde-format
 #| msgid "Fold Current Node"
 msgid "Toggle Current Node"
 msgstr "Τύλιγμα τρέχοντος κόμβου"
 
-#: view/kateview.cpp:1453
+#: view/kateview.cpp:1456
 #, fuzzy, kde-format
 #| msgid "Toggle Comment"
 msgid "Toggle Contained Nodes"
 msgstr "Εναλλαγή σχολίου"
 
-#: view/kateview.cpp:1462
+#: view/kateview.cpp:1465
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgid "Say current selection or document"
 msgstr "Επιλογή ολόκληρου του κειμένου του τρέχοντος εγγράφου."
 
-#: view/kateview.cpp:1472
+#: view/kateview.cpp:1475
 #, fuzzy, kde-format
 #| msgid "Save the current document"
 msgid "Stop current output"
 msgstr "Αποθήκευση του τρέχοντος εγγράφου"
 
-#: view/kateview.cpp:1478
+#: view/kateview.cpp:1481
 #, fuzzy, kde-format
 #| msgid "Save the current document"
 msgid "Pause current output"
 msgstr "Αποθήκευση του τρέχοντος εγγράφου"
 
-#: view/kateview.cpp:1484
+#: view/kateview.cpp:1487
 #, fuzzy, kde-format
 #| msgid "Save the current document"
 msgid "Resume current output"
 msgstr "Αποθήκευση του τρέχοντος εγγράφου"
 
-#: view/kateview.cpp:1655
+#: view/kateview.cpp:1658
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(R/O) %1"
 
-#: view/kateview.cpp:1843
+#: view/kateview.cpp:1846
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr ""
 
-#: view/kateview.cpp:1845
+#: view/kateview.cpp:1848
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2380
+#: view/kateview.cpp:2383
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgid "Search wrapped"
 msgstr "Λειτουργία αναζήτησης"
 
-#: view/kateview.cpp:3072
+#: view/kateview.cpp:3075
 #, kde-format
 msgid "Open File"
 msgstr "Άνοιγμα αρχείου"
 
-#: view/kateview.cpp:3983
+#: view/kateview.cpp:3986
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Στοίχιση"
 
-#: view/kateview.cpp:3983
+#: view/kateview.cpp:3986
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:5067
+#: view/kateview.cpp:5070
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Εξαγωγή αρχείου ως HTML"

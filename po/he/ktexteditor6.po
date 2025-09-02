@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-31 00:39+0000\n"
+"POT-Creation-Date: 2025-09-02 00:40+0000\n"
 "PO-Revision-Date: 2025-08-03 11:10+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -2445,7 +2445,7 @@ msgstr "מצב vi"
 msgid "recording"
 msgstr "מקליט"
 
-#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:90
+#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:91
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
@@ -5452,390 +5452,390 @@ msgstr ""
 "שמציגה את ההבדל מול השיטה הרגילה:<br>sort(a10,a1,a2) => a1,a10,"
 "a2<br>natsort(a10, a1, a2) => a1, a2, a10</p>"
 
-#: utils/kateglobal.cpp:59
+#: utils/kateglobal.cpp:60
 #, kde-format
 msgid "Kate Part"
 msgstr "רכיב Kate"
 
-#: utils/kateglobal.cpp:61
+#: utils/kateglobal.cpp:62
 #, kde-format
 msgid "Embeddable editor component"
 msgstr "רכיב עורך שאפשר לשבץ"
 
-#: utils/kateglobal.cpp:63
+#: utils/kateglobal.cpp:64
 #, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
 msgstr "(c) 2000‏-2022 יוצרי Kate"
 
-#: utils/kateglobal.cpp:83
+#: utils/kateglobal.cpp:84
 #, kde-format
 msgid "Christoph Cullmann"
 msgstr "כריסטוף קלמן"
 
-#: utils/kateglobal.cpp:83
+#: utils/kateglobal.cpp:84
 #, kde-format
 msgid "Maintainer"
 msgstr "מתחזק"
 
-#: utils/kateglobal.cpp:84
+#: utils/kateglobal.cpp:85
 #, kde-format
 msgid "Dominik Haumann"
 msgstr "דומיניק האומן"
 
-#: utils/kateglobal.cpp:84 utils/kateglobal.cpp:85 utils/kateglobal.cpp:87
-#: utils/kateglobal.cpp:95 utils/kateglobal.cpp:98 utils/kateglobal.cpp:103
+#: utils/kateglobal.cpp:85 utils/kateglobal.cpp:86 utils/kateglobal.cpp:88
+#: utils/kateglobal.cpp:96 utils/kateglobal.cpp:99 utils/kateglobal.cpp:104
 #, kde-format
 msgid "Core Developer"
 msgstr "מפתח מרכזי"
 
-#: utils/kateglobal.cpp:85
+#: utils/kateglobal.cpp:86
 #, kde-format
 msgid "Milian Wolff"
 msgstr "מיליאן וולף"
 
-#: utils/kateglobal.cpp:86
+#: utils/kateglobal.cpp:87
 #, kde-format
 msgid "Joseph Wenninger"
 msgstr "ג׳וזף ונינגר"
 
-#: utils/kateglobal.cpp:90
+#: utils/kateglobal.cpp:91
 #, kde-format
 msgid "Erlend Hamberg"
 msgstr "ארלנד המברג"
 
-#: utils/kateglobal.cpp:91
+#: utils/kateglobal.cpp:92
 #, kde-format
 msgid "Bernhard Beschow"
 msgstr "ברנהרד בשקוב"
 
-#: utils/kateglobal.cpp:92 utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:93 utils/kateglobal.cpp:111
 #, kde-format
 msgid "Developer"
 msgstr "מפתח"
 
-#: utils/kateglobal.cpp:95
+#: utils/kateglobal.cpp:96
 #, kde-format
 msgid "Anders Lund"
 msgstr "אנדרס לונד"
 
-#: utils/kateglobal.cpp:96
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "Michel Ludwig"
 msgstr "מישל לודוויג"
 
-#: utils/kateglobal.cpp:96
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "On-the-fly spell checking"
 msgstr "בדיקת איות בזמן הקלדה"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Pascal Létourneau"
 msgstr "פסקל לטורנו"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Large scale bug fixing"
 msgstr "תיקון של תקלות בקנה מידה גדול"
 
-#: utils/kateglobal.cpp:98
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "Hamish Rodda"
 msgstr "האמיש רודה"
 
-#: utils/kateglobal.cpp:99
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "Waldo Bastian"
 msgstr "ולדו בסטיאן"
 
-#: utils/kateglobal.cpp:99
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "The cool buffersystem"
 msgstr "מערכת הזיכרון החוצץ המגניבה"
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Charles Samuels"
 msgstr "צ׳ארלס סמואלס"
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "The Editing Commands"
 msgstr "פקודות העריכה"
 
-#: utils/kateglobal.cpp:101
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "Matt Newell"
 msgstr "מט ניואל"
 
-#: utils/kateglobal.cpp:101
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "Testing, ..."
 msgstr "בדיקות, …"
 
-#: utils/kateglobal.cpp:102
+#: utils/kateglobal.cpp:103
 #, kde-format
 msgid "Michael Bartl"
 msgstr "מייקל ברטי"
 
-#: utils/kateglobal.cpp:102
+#: utils/kateglobal.cpp:103
 #, kde-format
 msgid "Former Core Developer"
 msgstr "מפתח מרכזי לשעבר"
 
-#: utils/kateglobal.cpp:103
+#: utils/kateglobal.cpp:104
 #, kde-format
 msgid "Michael McCallum"
 msgstr "מייקל מקקולום"
 
-#: utils/kateglobal.cpp:104
+#: utils/kateglobal.cpp:105
 #, kde-format
 msgid "Michael Koch"
 msgstr "מייקל קוך"
 
-#: utils/kateglobal.cpp:104
+#: utils/kateglobal.cpp:105
 #, kde-format
 msgid "KWrite port to KParts"
 msgstr "הסבת KWrite ל־KParts"
 
-#: utils/kateglobal.cpp:105
+#: utils/kateglobal.cpp:106
 #, kde-format
 msgid "Christian Gebauer"
 msgstr "כריסטיאן גבאואר"
 
-#: utils/kateglobal.cpp:106
+#: utils/kateglobal.cpp:107
 #, kde-format
 msgid "Simon Hausmann"
 msgstr "סיימון האוסמן"
 
-#: utils/kateglobal.cpp:107
+#: utils/kateglobal.cpp:108
 #, kde-format
 msgid "Glen Parker"
 msgstr "גלן פרקר"
 
-#: utils/kateglobal.cpp:107
+#: utils/kateglobal.cpp:108
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
 msgstr "היסטוריית ההסגה של KWrite, שילוב מול Kspell"
 
-#: utils/kateglobal.cpp:108
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "Scott Manson"
 msgstr "סקוט מנסון"
 
-#: utils/kateglobal.cpp:108
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
 msgstr "התמיכה של KWrite בהדגשת תחביר XML"
 
-#: utils/kateglobal.cpp:109
+#: utils/kateglobal.cpp:110
 #, kde-format
 msgid "John Firebaugh"
 msgstr "ג׳ון פיירבו"
 
-#: utils/kateglobal.cpp:109
+#: utils/kateglobal.cpp:110
 #, kde-format
 msgid "Patches and more"
 msgstr "טלאים ועוד"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "Andreas Kling"
 msgstr "אנדראס קלינג"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Mirko Stocker"
 msgstr "מירקו שטוקר"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Various bugfixes"
 msgstr "תיקון מגוון תקלות"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "מת׳יו ולקי"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Selection, KColorScheme integration"
 msgstr "בחירה, הטמעה של KColorScheme"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:114
 #, kde-format
 msgid "Sebastian Pipping"
 msgstr "סבסטיאן פיפינג"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Search bar back- and front-end"
 msgstr "מנגנון וממשק גרפי של סרגל החיפוש"
 
-#: utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Jochen Wilhelmy"
 msgstr "יוכן וילהלמי"
 
-#: utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Original KWrite Author"
 msgstr "היוצר המקורי של KWrite"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:119
 #, kde-format
 msgid "Gerald Senarclens de Grancy"
 msgstr "Gerald Senarclens de Grancy"
 
-#: utils/kateglobal.cpp:119
+#: utils/kateglobal.cpp:120
 #, kde-format
 msgid "QA and Scripting"
 msgstr "בקרת איכות וסקריפטים"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Matteo Merli"
 msgstr "מתיאו מרלי"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
 msgstr "הדגשה לקובצי Spec של RPM,‏ Perl,‏ Diff ועוד"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Rocky Scaletta"
 msgstr "רוקי סקלטה"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Highlighting for VHDL"
 msgstr "הדגשה ל־VHDL"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Yury Lebedev"
 msgstr "יורי לבדב"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Highlighting for SQL"
 msgstr "הדגשה ל־SQL"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Chris Ross"
 msgstr "כריס רוס"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Highlighting for Ferite"
 msgstr "הדגשה ל־Ferite"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Nick Roux"
 msgstr "ניק רוקס"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Highlighting for ILERPG"
 msgstr "הדגשה עבור ILERPG"
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Carsten Niehaus"
 msgstr "קרסטן ניהאוס"
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Highlighting for LaTeX"
 msgstr "הדגשה ל־LaTeX"
 
-#: utils/kateglobal.cpp:129
+#: utils/kateglobal.cpp:130
 #, kde-format
 msgid "Per Wigren"
 msgstr "פר ויגרן"
 
-#: utils/kateglobal.cpp:129
+#: utils/kateglobal.cpp:130
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
 msgstr "הדגשה לקובצי Make,‏ Python"
 
-#: utils/kateglobal.cpp:130
+#: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Jan Fritz"
 msgstr "יאן פריץ"
 
-#: utils/kateglobal.cpp:130
+#: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Highlighting for Python"
 msgstr "הדגשה ל־Python"
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Daniel Naber"
 msgstr "דניאל נייבר"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "Roland Pabel"
 msgstr "רולנד פייבל"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "Highlighting for Scheme"
 msgstr "הדגשה עבור Scheme"
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:134
 #, kde-format
 msgid "Cristi Dumitrescu"
 msgstr "קריסטי דומיטרסקו"
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:134
 #, kde-format
 msgid "PHP Keyword/Datatype list"
 msgstr "רשימת טיפוסי נתונים/מילות מפתח של PHP"
 
-#: utils/kateglobal.cpp:134
+#: utils/kateglobal.cpp:135
 #, kde-format
 msgid "Carsten Pfeiffer"
 msgstr "קרסטן פייפר"
 
-#: utils/kateglobal.cpp:134
+#: utils/kateglobal.cpp:135
 #, kde-format
 msgid "Very nice help"
 msgstr "עזרה אדיבה מאוד"
 
-#: utils/kateglobal.cpp:135
+#: utils/kateglobal.cpp:136
 #, kde-format
 msgid "Bruno Massa"
 msgstr "ברונו מאסה"
 
-#: utils/kateglobal.cpp:135
+#: utils/kateglobal.cpp:136
 #, kde-format
 msgid "Highlighting for Lua"
 msgstr "הדגשה עבור Lua"
 
-#: utils/kateglobal.cpp:137
+#: utils/kateglobal.cpp:138
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
 msgstr "כל האנשים שתרמו ושכחתי להזכיר"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:140
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "דיאגו יסטרובני,צוות התרגום של KDE ישראל"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:140
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "elcuco@kde.org,kde-l10n-he@kde.org"
 
-#: utils/kateglobal.cpp:261
+#: utils/kateglobal.cpp:264
 #, kde-format
 msgid "Configure"
 msgstr "הגדרה"
@@ -6406,7 +6406,7 @@ msgstr "סוג סוף השורה"
 msgid "Mode"
 msgstr "מצב"
 
-#: view/katestatusbar.cpp:209 view/kateview.cpp:720
+#: view/katestatusbar.cpp:209 view/kateview.cpp:723
 #, kde-format
 msgid ""
 "Here you can choose which mode should be used for the current document. This "
@@ -6514,94 +6514,94 @@ msgstr "מילים %1, תווים %2"
 msgid "Zoom: %1%"
 msgstr "תקריב: %1%"
 
-#: view/kateview.cpp:457
+#: view/kateview.cpp:460
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
 msgstr "גזירת הטקסט הנבחר והעברתו ללוח הגזירים"
 
-#: view/kateview.cpp:462
+#: view/kateview.cpp:465
 #, kde-format
 msgid "Paste previously copied or cut clipboard contents"
 msgstr "הדבקת תוכן לוח הגזירים שהועתק או נגזר מקודם"
 
-#: view/kateview.cpp:465
+#: view/kateview.cpp:468
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
 msgstr ""
 "אפשר להשתמש בפקודה זו כדי להעתיק את הטקסט הנבחר אל לוח הגזירים של המערכת."
 
-#: view/kateview.cpp:471
+#: view/kateview.cpp:474
 #, kde-format
 msgid "Clipboard &History Paste"
 msgstr "הדבקות הי&סטוריות מלוח הגזירים"
 
-#: view/kateview.cpp:476
+#: view/kateview.cpp:479
 #, kde-format
 msgid "Paste Selection"
 msgstr "הדבקת הבחירה"
 
-#: view/kateview.cpp:478
+#: view/kateview.cpp:481
 #, kde-format
 msgid "Paste previously mouse selection contents"
 msgstr "הדבקת תוכן שנבחר קודם עם העכבר"
 
-#: view/kateview.cpp:482
+#: view/kateview.cpp:485
 #, kde-format
 msgid "Paste From File"
 msgstr "הדבקה מקובץ"
 
-#: view/kateview.cpp:486
+#: view/kateview.cpp:489
 #, kde-format
 msgid "Copy File Location"
 msgstr "העתקת מקום הקובץ"
 
-#: view/kateview.cpp:487
+#: view/kateview.cpp:490
 #, kde-format
 msgid "Copy the current file name and line number"
 msgstr "העתקת שם הקובץ ומספר השורה הנוכחיים"
 
-#: view/kateview.cpp:490
+#: view/kateview.cpp:493
 #, kde-format
 msgid "Swap with Clipboard Contents"
 msgstr "החלפה בתוכן לוח הגזירים"
 
-#: view/kateview.cpp:491
+#: view/kateview.cpp:494
 #, kde-format
 msgid "Swap the selected text with the clipboard contents"
 msgstr "החלפת הטקסט הנבחר בתוכן לוח הגזירים"
 
-#: view/kateview.cpp:494
+#: view/kateview.cpp:497
 #, kde-format
 msgid "Take Screenshot of Selection"
 msgstr "צילום הבחירה"
 
-#: view/kateview.cpp:498
+#: view/kateview.cpp:501
 #, kde-format
 msgid "Save the current document"
 msgstr "שמירת המסמך הנוכחי"
 
-#: view/kateview.cpp:501
+#: view/kateview.cpp:504
 #, kde-format
 msgid "Revert the most recent editing actions"
 msgstr "ביטול פעולות העריכה האחרונות"
 
-#: view/kateview.cpp:504
+#: view/kateview.cpp:507
 #, kde-format
 msgid "Revert the most recent undo operation"
 msgstr "שחזור פעולת ההסגה האחרונה"
 
-#: view/kateview.cpp:508
+#: view/kateview.cpp:511
 #, kde-format
 msgid "&Scripts"
 msgstr "&סקריפטים"
 
-#: view/kateview.cpp:512
+#: view/kateview.cpp:515
 #, kde-format
 msgid "Apply &Word Wrap"
 msgstr "החלת &גלישת שורות"
 
-#: view/kateview.cpp:514
+#: view/kateview.cpp:517
 #, kde-format
 msgid ""
 "Use this to wrap the current line, or to reformat the selected lines as "
@@ -6612,12 +6612,12 @@ msgstr ""
 "הנבחרת כפסקה כדי שתתאים להגדרת ‚גלישת שורות לאחר’ בחלונית ההגדרה<br /><br /"
 ">זאת גלישת שורות קבועה, כלומר שהמסמך משתנה."
 
-#: view/kateview.cpp:520
+#: view/kateview.cpp:523
 #, kde-format
 msgid "&Clean Indentation"
 msgstr "&ניקוי הזחה"
 
-#: view/kateview.cpp:522
+#: view/kateview.cpp:525
 #, kde-format
 msgid ""
 "Use this to clean the indentation of a selected block of text (only tabs/"
@@ -6628,22 +6628,22 @@ msgstr ""
 "בחלונית ההגדרות אם להתחשב בטאבים ולעשות בהם שימוש, או האם להחליף טאבים "
 "ברווחים."
 
-#: view/kateview.cpp:527
+#: view/kateview.cpp:530
 #, kde-format
 msgid "Convert Indentation to Spaces"
 msgstr "המרת הזחה לרווחים"
 
-#: view/kateview.cpp:534
+#: view/kateview.cpp:537
 #, kde-format
 msgid "Convert Indentation to Tabs"
 msgstr "המרת הזחה לטאבים"
 
-#: view/kateview.cpp:549
+#: view/kateview.cpp:552
 #, kde-format
 msgid "&Format Indentation"
 msgstr "&עיצוב הזחה"
 
-#: view/kateview.cpp:550
+#: view/kateview.cpp:553
 #, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
@@ -6652,13 +6652,13 @@ msgstr ""
 "אפשר להשתמש בזה כדי להזיח אוטומטית את שורת או מקטע הטקסט הנוכחיים לרמת ההזחה "
 "המתאימה."
 
-#: view/kateview.cpp:554
+#: view/kateview.cpp:557
 #, kde-format
 msgctxt "@action"
 msgid "&Align On…"
 msgstr "יישור &לפי…"
 
-#: view/kateview.cpp:556
+#: view/kateview.cpp:559
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -6679,12 +6679,12 @@ msgstr ""
 "רווחים לפני התו הראשון שאינו ריק שמופיע אחרי נקודתיים כדי ליישר אותם לאותה "
 "העמודה."
 
-#: view/kateview.cpp:567
+#: view/kateview.cpp:570
 #, kde-format
 msgid "C&omment"
 msgstr "ה&פיכה להערה"
 
-#: view/kateview.cpp:570
+#: view/kateview.cpp:573
 #, kde-format
 msgid ""
 "This command comments out the current line or a selected block of text.<br /"
@@ -6695,22 +6695,22 @@ msgstr ""
 ">התווים המשמשים עבור הערות של שורה אחת/מספר שורות מוגדרים בהגדרות ההדגשה של "
 "השפה."
 
-#: view/kateview.cpp:575
+#: view/kateview.cpp:578
 #, kde-format
 msgid "Go to Previous Editing Location"
 msgstr "מעבר לנקודת העריכה הקודמת"
 
-#: view/kateview.cpp:581
+#: view/kateview.cpp:584
 #, kde-format
 msgid "Go to Next Editing Location"
 msgstr "מעבר לנקודת העריכה הבאה"
 
-#: view/kateview.cpp:587
+#: view/kateview.cpp:590
 #, kde-format
 msgid "Unco&mment"
 msgstr "ביטו&ל הערה"
 
-#: view/kateview.cpp:590
+#: view/kateview.cpp:593
 #, kde-format
 msgid ""
 "This command removes comments from the current line or a selected block of "
@@ -6720,37 +6720,37 @@ msgstr ""
 "פקודה זו מסירה הערות מהשורה הנוכחית או מקטע הטקסט הנבחר.<br /><br />התווים "
 "המשמשים עבור הערות של שורה אחת/מספר שורות מוגדרים בהגדרות ההדגשה של השפה."
 
-#: view/kateview.cpp:595
+#: view/kateview.cpp:598
 #, kde-format
 msgid "Toggle Comment"
 msgstr "החלפת הצגת הערה"
 
-#: view/kateview.cpp:599
+#: view/kateview.cpp:602
 #, kde-format
 msgid "&Read Only Mode"
 msgstr "&מצב קריאה בלבד"
 
-#: view/kateview.cpp:600
+#: view/kateview.cpp:603
 #, kde-format
 msgid "Lock/unlock the document for writing"
 msgstr "נעילה/שחרור נעילה של הקובץ מפני כתיבה"
 
-#: view/kateview.cpp:605
+#: view/kateview.cpp:608
 #, kde-format
 msgid "&Force RTL Direction"
 msgstr "&אילוץ כיוון מימין לשמאל"
 
-#: view/kateview.cpp:606
+#: view/kateview.cpp:609
 #, kde-format
 msgid "Force RTL Text Direction"
 msgstr "אילוץ כיוון טקסט מימין לשמאל"
 
-#: view/kateview.cpp:616
+#: view/kateview.cpp:619
 #, kde-format
 msgid "Uppercase"
 msgstr "אותיות רישיות"
 
-#: view/kateview.cpp:619
+#: view/kateview.cpp:622
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
@@ -6758,12 +6758,12 @@ msgid ""
 msgstr ""
 "המרת הטקסט הנבחר לאותיות רישיות, או את התו שאחרי הסמן אם לא נבחר קטע טקסט."
 
-#: view/kateview.cpp:625
+#: view/kateview.cpp:628
 #, kde-format
 msgid "Lowercase"
 msgstr "אותיות רגילות"
 
-#: view/kateview.cpp:628
+#: view/kateview.cpp:631
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
@@ -6772,12 +6772,12 @@ msgstr ""
 "המרת הטקסט הנבחר לאותיות רגילות (לא גדולות), או את התו שאחרי הסמן אם לא נבחר "
 "קטע טקסט."
 
-#: view/kateview.cpp:634
+#: view/kateview.cpp:637
 #, kde-format
 msgid "Capitalize"
 msgstr "הגדלת אותיות ראשונות לרישיות"
 
-#: view/kateview.cpp:637
+#: view/kateview.cpp:640
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
@@ -6786,17 +6786,17 @@ msgstr ""
 "הגדלת אותיות ראשונות לרישיות בטקסט הנבחר, או במילה שמתחת לסמן אם לא נבחר קטע "
 "טקסט."
 
-#: view/kateview.cpp:642
+#: view/kateview.cpp:645
 #, kde-format
 msgid "Join Lines"
 msgstr "צירוף שורות"
 
-#: view/kateview.cpp:647
+#: view/kateview.cpp:650
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "השלמת קוד"
 
-#: view/kateview.cpp:648
+#: view/kateview.cpp:651
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
@@ -6804,164 +6804,164 @@ msgid ""
 msgstr ""
 "הפעלה ידנית של השלמת פקודות, בדרך כלל באמצעות קיצור מקשים המקושר לפעולה הזאת."
 
-#: view/kateview.cpp:653
+#: view/kateview.cpp:656
 #, kde-format
 msgid "Remove Trailing Spaces"
 msgstr "הסרת רווחים מהסוף"
 
-#: view/kateview.cpp:671
+#: view/kateview.cpp:674
 #, kde-format
 msgid "Print the current document."
 msgstr "הדפסת המסמך הנוכחי."
 
-#: view/kateview.cpp:674
+#: view/kateview.cpp:677
 #, kde-format
 msgid "Show print preview of current document"
 msgstr "הצגת תצוגה מקדימה להדפסה של המסמך הנוכחי"
 
-#: view/kateview.cpp:678
+#: view/kateview.cpp:681
 #, kde-format
 msgid "Reloa&d"
 msgstr "&ריענון"
 
-#: view/kateview.cpp:680
+#: view/kateview.cpp:683
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "טעינה מחדש של המסמך הנוכחי מתוך הכונן."
 
-#: view/kateview.cpp:684
+#: view/kateview.cpp:687
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr "שמירת המסמך הנוכחי לכונן, בשם הנבחר."
 
-#: view/kateview.cpp:686
+#: view/kateview.cpp:689
 #, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
 msgstr "שמירה &בשם עם קידוד…"
 
-#: view/kateview.cpp:692
+#: view/kateview.cpp:695
 #, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
 msgstr "שמירת &עותק בשם…"
 
-#: view/kateview.cpp:693
+#: view/kateview.cpp:696
 #, kde-format
 msgid "Save a copy of the current document to disk."
 msgstr "שמירת עותק של המסמך הנוכחי לכונן."
 
-#: view/kateview.cpp:697
+#: view/kateview.cpp:700
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
 "cursor to move to."
 msgstr "הפקודה הזאת פותחת חלונית ומאפשרת לך לבחור את השורה אליה להזיז את הסמן."
 
-#: view/kateview.cpp:701
+#: view/kateview.cpp:704
 #, kde-format
 msgid "Go to Previous Modified Line"
 msgstr "מעבר לשורה הקודמת שנערכה"
 
-#: view/kateview.cpp:702
+#: view/kateview.cpp:705
 #, kde-format
 msgid "Move upwards to the previous modified line."
 msgstr "קפיצה מעלה לשורה הקודמת שנערכה."
 
-#: view/kateview.cpp:707
+#: view/kateview.cpp:710
 #, kde-format
 msgid "Go to Next Modified Line"
 msgstr "מעבר לשורה הבאה שנערכה"
 
-#: view/kateview.cpp:708
+#: view/kateview.cpp:711
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr "קפיצה מטה לשורה הבאה שנערכה."
 
-#: view/kateview.cpp:712
+#: view/kateview.cpp:715
 #, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "ה&גדרת העורך…"
 
-#: view/kateview.cpp:714
+#: view/kateview.cpp:717
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "הגדרת מגוון היבטים של עורך זה."
 
-#: view/kateview.cpp:717
+#: view/kateview.cpp:720
 #, kde-format
 msgid "&Mode"
 msgstr "מ&צב"
 
-#: view/kateview.cpp:723
+#: view/kateview.cpp:726
 #, kde-format
 msgid "&Highlighting"
 msgstr "ה&דגשה"
 
-#: view/kateview.cpp:725
+#: view/kateview.cpp:728
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr "כאן אפשר לבחור כיצד יודגש המסמך הנוכחי."
 
-#: view/kateview.cpp:728
+#: view/kateview.cpp:731
 #, kde-format
 msgid "&Editor Color Theme"
 msgstr "ערכת &צבעים של העורך"
 
-#: view/kateview.cpp:734
+#: view/kateview.cpp:737
 #, kde-format
 msgid "&Indentation"
 msgstr "ה&זחה"
 
-#: view/kateview.cpp:741
+#: view/kateview.cpp:744
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "בחירת כל הטקסט של המסמך הנוכחי."
 
-#: view/kateview.cpp:744
+#: view/kateview.cpp:747
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
 "longer be selected."
 msgstr "אם בחרת משהו במסמך הנוכחי, הוא לא ייבחר עוד."
 
-#: view/kateview.cpp:748
+#: view/kateview.cpp:751
 #, kde-format
 msgid "Enlarge Font"
 msgstr "הגדלת כתב"
 
-#: view/kateview.cpp:750
+#: view/kateview.cpp:753
 #, kde-format
 msgid "This increases the display font size."
 msgstr "הגדלת גודל כתב התצוגה."
 
-#: view/kateview.cpp:757
+#: view/kateview.cpp:760
 #, kde-format
 msgid "Shrink Font"
 msgstr "הקטנת כתב"
 
-#: view/kateview.cpp:759
+#: view/kateview.cpp:762
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "הקטנת גודל כתב התצוגה."
 
-#: view/kateview.cpp:766
+#: view/kateview.cpp:769
 #, kde-format
 msgid "Reset Font Size"
 msgstr "איפוס גודל הכתב"
 
-#: view/kateview.cpp:768
+#: view/kateview.cpp:771
 #, kde-format
 msgid "This resets the display font size."
 msgstr "מאפס את גודל כתב התצוגה."
 
-#: view/kateview.cpp:771
+#: view/kateview.cpp:774
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "מצב בחירות מלב&ניות"
 
-#: view/kateview.cpp:774
+#: view/kateview.cpp:777
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
@@ -6970,34 +6970,34 @@ msgstr ""
 "הפקודה הזאת מאפשרת לעבור בין מצב הבחירה הרגיל (המבוסס על שורות) ובין מצב "
 "הבחירות המלבניות."
 
-#: view/kateview.cpp:778
+#: view/kateview.cpp:781
 #, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "מעבר למצב הקלט הבא"
 
-#: view/kateview.cpp:780
+#: view/kateview.cpp:783
 #, kde-format
 msgid "Switch to the next input mode."
 msgstr "מעבר למצב הקלט הבא."
 
-#: view/kateview.cpp:783
+#: view/kateview.cpp:786
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "מצב &שכתוב"
 
-#: view/kateview.cpp:786
+#: view/kateview.cpp:789
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
 "existing text."
 msgstr "נא לבחר אם הטקסט המוקלד יתווסף לטקסט הקיים או ייכתב עליו."
 
-#: view/kateview.cpp:790
+#: view/kateview.cpp:793
 #, kde-format
 msgid "Show Whitespace"
 msgstr "הצגת רווח"
 
-#: view/kateview.cpp:793
+#: view/kateview.cpp:796
 #, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
@@ -7006,12 +7006,12 @@ msgstr ""
 "אם האפשרות הזאת מסומנת, רווחים במסמך הזה יהיו גלויים.<br /><br />זאת אפשרות "
 "שקשורה בתצוגה בלבד, כלומר שהמסמך לא ישתנה."
 
-#: view/kateview.cpp:797
+#: view/kateview.cpp:800
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "גלישת שורות &דינמית"
 
-#: view/kateview.cpp:801
+#: view/kateview.cpp:804
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
@@ -7021,37 +7021,37 @@ msgstr ""
 "אם האפשרות הזאת מסומנת, שורות הטקסט תגלושנה בגבול התצוגה של המסך הזה.<br /"
 "><br />זאת אפשרות שקשורה בתצוגה בלבד, כלומר שהמסמך לא ישתנה."
 
-#: view/kateview.cpp:805
+#: view/kateview.cpp:808
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "סמני גלישת שורות דינמית"
 
-#: view/kateview.cpp:807
+#: view/kateview.cpp:810
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr "נא לבחור מתי יוצגו סמני גלישת השורות הדינמית"
 
-#: view/kateview.cpp:809
+#: view/kateview.cpp:812
 #, kde-format
 msgid "&Off"
 msgstr "&כבוי"
 
-#: view/kateview.cpp:809
+#: view/kateview.cpp:812
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "מעקב אחר מספרי &שורות"
 
-#: view/kateview.cpp:809
+#: view/kateview.cpp:812
 #, kde-format
 msgid "&Always On"
 msgstr "&תמיד מופעל"
 
-#: view/kateview.cpp:813
+#: view/kateview.cpp:816
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "גלישת שורות סטטית"
 
-#: view/kateview.cpp:815
+#: view/kateview.cpp:818
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
@@ -7060,12 +7060,12 @@ msgstr ""
 "אם האפשרות הזאת מסומנת, שורות הטקסט תגלושנה בעמודה כמו שמוגדר במאפייני "
 "העריכה."
 
-#: view/kateview.cpp:822
+#: view/kateview.cpp:825
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "הצגת סמן גלישת שורות ס&טטית"
 
-#: view/kateview.cpp:825
+#: view/kateview.cpp:828
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -7074,24 +7074,24 @@ msgstr ""
 "הצגה/הסתרה של סמן גלישת השורות, קו אנכי המוצג בעמודת גלישת השורות כמוגדר "
 "במאפייני העריכה"
 
-#: view/kateview.cpp:829
+#: view/kateview.cpp:832
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "הצגת סימני &צמצום"
 
-#: view/kateview.cpp:831
+#: view/kateview.cpp:834
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
 "possible."
 msgstr "אפשר לבחור אם יוצגו סימני צמצום קוד כשאפשר."
 
-#: view/kateview.cpp:834
+#: view/kateview.cpp:837
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "הצגת מסגרת סמ&לים"
 
-#: view/kateview.cpp:836
+#: view/kateview.cpp:839
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
@@ -7099,22 +7099,22 @@ msgid ""
 msgstr ""
 "הצגה/הסתרה של מסגרת הסמלים.<br /><br />מסגרת הסמלים מציגה למשל סמלי סימניות."
 
-#: view/kateview.cpp:839
+#: view/kateview.cpp:842
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "הצגת מספ&רי שורות"
 
-#: view/kateview.cpp:841
+#: view/kateview.cpp:844
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "הצגה/הסתרה של מספרי השורות בצד שמאל של התצוגה."
 
-#: view/kateview.cpp:844
+#: view/kateview.cpp:847
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "הצגת סימני פסי &גלילה"
 
-#: view/kateview.cpp:846
+#: view/kateview.cpp:849
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7123,12 +7123,12 @@ msgstr ""
 "הצגה/הסתרה של הסימונים שעל גבי פס הגלילה האנכי.<br /><br />הסימונים מציגים "
 "למשל את מקומן של סימניות."
 
-#: view/kateview.cpp:849
+#: view/kateview.cpp:852
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
 msgstr "הצגת מפת מסמך בסרגל גלילה"
 
-#: view/kateview.cpp:851
+#: view/kateview.cpp:854
 #, kde-format
 msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
@@ -7142,241 +7142,241 @@ msgstr ""
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SlOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:863
+#: view/kateview.cpp:866
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr "הצגת רווחים שאינם מוצגים"
 
-#: view/kateview.cpp:865
+#: view/kateview.cpp:868
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr "הצגת/הסתרת תיבה תוחמת סביב רווחים שאינם מוצגים"
 
-#: view/kateview.cpp:869
+#: view/kateview.cpp:872
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "מעבר לשורת הפקודה"
 
-#: view/kateview.cpp:871
+#: view/kateview.cpp:874
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "הצגה/הסתרה של שורת הפקודה בתחתית התצוגה."
 
-#: view/kateview.cpp:874
+#: view/kateview.cpp:877
 #, kde-format
 msgid "Input Modes"
 msgstr "מצבי קלט"
 
-#: view/kateview.cpp:883
+#: view/kateview.cpp:886
 #, kde-format
 msgid "Activate/deactivate %1"
 msgstr "הפעלה/השבתה של %1"
 
-#: view/kateview.cpp:893
+#: view/kateview.cpp:896
 #, kde-format
 msgid "&End of Line"
 msgstr "סוף &שורה"
 
-#: view/kateview.cpp:895
+#: view/kateview.cpp:898
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr "נא לבחור באיזה סוף שורה להשתמש בשמירת המסמך"
 
-#: view/kateview.cpp:896
+#: view/kateview.cpp:899
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "&UNIX"
 
-#: view/kateview.cpp:897
+#: view/kateview.cpp:900
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "&Windows/DOS"
 
-#: view/kateview.cpp:898
+#: view/kateview.cpp:901
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "&Macintosh"
 
-#: view/kateview.cpp:903
+#: view/kateview.cpp:906
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "הוספת סימן &סדר בתים (BOM)"
 
-#: view/kateview.cpp:906
+#: view/kateview.cpp:909
 #, kde-format
 msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
 "while saving"
 msgstr "הפעלת/השבתת סימני סדר בתים לקבצים בקידוד UTF-8/UTF-16 בזמן השמירה"
 
-#: view/kateview.cpp:910
+#: view/kateview.cpp:913
 #, kde-format
 msgid "E&ncoding"
 msgstr "&קידוד"
 
-#: view/kateview.cpp:914
+#: view/kateview.cpp:917
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr "חיפוש המופע הראשון של קטע טקסט או ביטוי רגולרי."
 
-#: view/kateview.cpp:918
+#: view/kateview.cpp:921
 #, kde-format
 msgid "Find Selected"
 msgstr "חיפוש הנבחר"
 
-#: view/kateview.cpp:920
+#: view/kateview.cpp:923
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "מאתר את המופע הבא של הטקסט הנבחר."
 
-#: view/kateview.cpp:924
+#: view/kateview.cpp:927
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "איתור הנבחר לאחור"
 
-#: view/kateview.cpp:926
+#: view/kateview.cpp:929
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "חיפוש המופע הקודם של ביטוי הטקסט הנבחר."
 
-#: view/kateview.cpp:930
+#: view/kateview.cpp:933
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr "איתור ובחירת המופע הבא"
 
-#: view/kateview.cpp:932
+#: view/kateview.cpp:935
 #, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr "איתור המופע הבא של המילה תחת הסמן והוספתו לבחירה."
 
-#: view/kateview.cpp:936
+#: view/kateview.cpp:939
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr "סימון המופע הנבחר כמדולג"
 
-#: view/kateview.cpp:938
+#: view/kateview.cpp:941
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr "סימון המילה הנבחרת כמדולגת."
 
-#: view/kateview.cpp:942
+#: view/kateview.cpp:945
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr "איתור ובחירה של כל המופעים"
 
-#: view/kateview.cpp:944
+#: view/kateview.cpp:947
 #, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr "איתור כל המופעים של המילה תחת הסמן ובחירתם."
 
-#: view/kateview.cpp:948
+#: view/kateview.cpp:951
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "חיפוש המופע הבא של ביטוי החיפוש."
 
-#: view/kateview.cpp:952
+#: view/kateview.cpp:955
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "חיפוש המופע הקודם של ביטוי החיפוש."
 
-#: view/kateview.cpp:956
+#: view/kateview.cpp:959
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
 "some given text."
 msgstr "חיפוש קטע טקסט או ביטוי רגולרי והחלפת התוצאה בטקסט נתון."
 
-#: view/kateview.cpp:959
+#: view/kateview.cpp:962
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr "הוספת סמנים לסוף השורות"
 
-#: view/kateview.cpp:961
+#: view/kateview.cpp:964
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
 msgstr "יצירת סמן בסוף כל שורה בבחירה."
 
-#: view/kateview.cpp:965
+#: view/kateview.cpp:968
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr "הוספת סימן ניווט מעל הסמן"
 
-#: view/kateview.cpp:967
+#: view/kateview.cpp:970
 #, kde-format
 msgid "Adds a caret in the line below the current caret."
 msgstr "הוספת סמן טקסט בשורה שמתחת לסמן הטקסט הנוכחי."
 
-#: view/kateview.cpp:971
+#: view/kateview.cpp:974
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr "הוספת סימן ניווט מתחת לסמן"
 
-#: view/kateview.cpp:973
+#: view/kateview.cpp:976
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr "הוספת סמן טקסט בשורה שמעל לסמן הטקסט הנוכחי."
 
-#: view/kateview.cpp:977
+#: view/kateview.cpp:980
 #, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "החלפת מצב תנועת סמן לפי הגדלת/הקטנת אותיות ראשונות (קאמל קייס)"
 
-#: view/kateview.cpp:978
+#: view/kateview.cpp:981
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr "החלפה בין מעבר רגיל בין מילים לבין תנועת סמן לפי רישיות פותחות."
 
-#: view/kateview.cpp:982
+#: view/kateview.cpp:985
 #, kde-format
 msgid "Remove Cursors from Empty Lines"
 msgstr "הסרת מצביעים משורות ריקות"
 
-#: view/kateview.cpp:983
+#: view/kateview.cpp:986
 #, kde-format
 msgid "Remove cursors from empty lines"
 msgstr "הסרת מצביעים משורות ריקות"
 
-#: view/kateview.cpp:987
+#: view/kateview.cpp:990
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "בדיקת איות אוטומטית"
 
-#: view/kateview.cpp:988
+#: view/kateview.cpp:991
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "הפעלת/השבתת בדיקת איות אוטומטית"
 
-#: view/kateview.cpp:994
+#: view/kateview.cpp:997
 #, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
 msgstr "החלפת מילון…"
 
-#: view/kateview.cpp:995
+#: view/kateview.cpp:998
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "החלפת המילון שמשמש לבדיקת איות."
 
-#: view/kateview.cpp:999
+#: view/kateview.cpp:1002
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "מחיקת טווחי מילון"
 
-#: view/kateview.cpp:1001
+#: view/kateview.cpp:1004
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
 msgstr "הסרת כל טווחי המילון הנפרדים שהוגדרו לבדיקת איות."
 
-#: view/kateview.cpp:1007
+#: view/kateview.cpp:1010
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "העתקה &כ־HTML"
 
-#: view/kateview.cpp:1008
+#: view/kateview.cpp:1011
 #, kde-format
 msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
@@ -7385,13 +7385,13 @@ msgstr ""
 "להעתיק את הבחירה כ־HTML, העיצוב יהיה תואם להגדרות הדגשת התחביר ולערכת הצבעים "
 "הנוכחיות."
 
-#: view/kateview.cpp:1012
+#: view/kateview.cpp:1015
 #, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "ייצוא &כ־HTML…"
 
-#: view/kateview.cpp:1014
+#: view/kateview.cpp:1017
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7399,42 +7399,42 @@ msgid ""
 msgstr ""
 "פקודה זו מאפשרת לך לייצא את המסמך הנוכחי, עם כל פרטי ההדגשה, למסמך HTML."
 
-#: view/kateview.cpp:1053
+#: view/kateview.cpp:1056
 #, kde-format
 msgid "Move Word Left"
 msgstr "מעבר מילה אחת שמאלה"
 
-#: view/kateview.cpp:1059
+#: view/kateview.cpp:1062
 #, kde-format
 msgid "Select Character Left"
 msgstr "בחירת תו אחד שמאלה"
 
-#: view/kateview.cpp:1065
+#: view/kateview.cpp:1068
 #, kde-format
 msgid "Select Word Left"
 msgstr "בחירת מילה אחת שמאלה"
 
-#: view/kateview.cpp:1075
+#: view/kateview.cpp:1078
 #, kde-format
 msgid "Move Word Right"
 msgstr "מעבר מילה אחת ימינה"
 
-#: view/kateview.cpp:1081
+#: view/kateview.cpp:1084
 #, kde-format
 msgid "Select Character Right"
 msgstr "בחירת תו אחד ימינה"
 
-#: view/kateview.cpp:1087
+#: view/kateview.cpp:1090
 #, kde-format
 msgid "Select Word Right"
 msgstr "בחירת מילה אחת ימינה"
 
-#: view/kateview.cpp:1097
+#: view/kateview.cpp:1100
 #, kde-format
 msgid "Start the Marked Selection"
 msgstr "התחלת הבחירה המסומנת"
 
-#: view/kateview.cpp:1098
+#: view/kateview.cpp:1101
 #, kde-format
 msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
@@ -7442,202 +7442,202 @@ msgid ""
 msgstr ""
 "הדמיית מצב בחירה דמוי Emacs, בו ההתחלה מסומנת ואז הבחירה ממשיכה להתעדכן."
 
-#: view/kateview.cpp:1103
+#: view/kateview.cpp:1106
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "מעבר לתחילת השורה"
 
-#: view/kateview.cpp:1109
+#: view/kateview.cpp:1112
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "מעבר לתחילת המסמך"
 
-#: view/kateview.cpp:1115
+#: view/kateview.cpp:1118
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "בחירה עד לתחילת השורה"
 
-#: view/kateview.cpp:1125
+#: view/kateview.cpp:1128
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "בחירה עד לתחילת המסמך"
 
-#: view/kateview.cpp:1135
+#: view/kateview.cpp:1138
 #, kde-format
 msgid "Move to End of Line"
 msgstr "מעבר לסוף השורה"
 
-#: view/kateview.cpp:1141
+#: view/kateview.cpp:1144
 #, kde-format
 msgid "Move to End of Document"
 msgstr "מעבר לסוף המסמך"
 
-#: view/kateview.cpp:1147
+#: view/kateview.cpp:1150
 #, kde-format
 msgid "Select to End of Line"
 msgstr "בחירה עד לסוף השורה"
 
-#: view/kateview.cpp:1157
+#: view/kateview.cpp:1160
 #, kde-format
 msgid "Select to End of Document"
 msgstr "בחירה עד לסוף המסמך"
 
-#: view/kateview.cpp:1167
+#: view/kateview.cpp:1170
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "בחירה עד לשורה הקודמת"
 
-#: view/kateview.cpp:1173
+#: view/kateview.cpp:1176
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "גלילת שורה אחת למעלה"
 
-#: view/kateview.cpp:1182
+#: view/kateview.cpp:1185
 #, kde-format
 msgid "Move to Next Line"
 msgstr "מעבר לשורה הבאה"
 
-#: view/kateview.cpp:1188
+#: view/kateview.cpp:1191
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "מעבר לשורה הקודמת"
 
-#: view/kateview.cpp:1194
+#: view/kateview.cpp:1197
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "הזזת סמן ימינה"
 
-#: view/kateview.cpp:1200
+#: view/kateview.cpp:1203
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "הזזת סמן ימינה"
 
-#: view/kateview.cpp:1206
+#: view/kateview.cpp:1209
 #, kde-format
 msgid "Select to Next Line"
 msgstr "סימון עד לשורה הבאה"
 
-#: view/kateview.cpp:1212
+#: view/kateview.cpp:1215
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "גלילת שורה אחת למטה"
 
-#: view/kateview.cpp:1221
+#: view/kateview.cpp:1224
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "גלילת עמוד אחד למעלה"
 
-#: view/kateview.cpp:1227
+#: view/kateview.cpp:1230
 #, kde-format
 msgid "Select Page Up"
 msgstr "בחירת עמוד אחד למעלה"
 
-#: view/kateview.cpp:1233
+#: view/kateview.cpp:1236
 #, kde-format
 msgid "Move to Top of View"
 msgstr "מעבר לתחילת התצוגה"
 
-#: view/kateview.cpp:1239
+#: view/kateview.cpp:1242
 #, kde-format
 msgid "Select to Top of View"
 msgstr "סימון עד לתחילת התצוגה"
 
-#: view/kateview.cpp:1245
+#: view/kateview.cpp:1248
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "גלילת עמוד אחד למטה"
 
-#: view/kateview.cpp:1251
+#: view/kateview.cpp:1254
 #, kde-format
 msgid "Select Page Down"
 msgstr "בחירה עמוד אחד למטה"
 
-#: view/kateview.cpp:1257
+#: view/kateview.cpp:1260
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "מעבר לתחתית התצוגה"
 
-#: view/kateview.cpp:1263
+#: view/kateview.cpp:1266
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "בחירה עד לתחתית התצוגה"
 
-#: view/kateview.cpp:1269
+#: view/kateview.cpp:1272
 #, kde-format
 msgid "Go to Matching Bracket"
 msgstr "מעבר לסוגר התואם"
 
-#: view/kateview.cpp:1275
+#: view/kateview.cpp:1278
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "בחירה עד לסוגר התואם"
 
-#: view/kateview.cpp:1282
+#: view/kateview.cpp:1285
 #, kde-format
 msgid "Move Sub-Word Right"
 msgstr "מעבר תת־מילה אחת ימינה"
 
-#: view/kateview.cpp:1289
+#: view/kateview.cpp:1292
 #, kde-format
 msgid "Select Sub-Word Right"
 msgstr "בחירת תת־מילה אחת ימינה"
 
-#: view/kateview.cpp:1296
+#: view/kateview.cpp:1299
 #, kde-format
 msgid "Move Sub-Word Left"
 msgstr "מעבר תת־מילה אחת שמאלה"
 
-#: view/kateview.cpp:1303
+#: view/kateview.cpp:1306
 #, kde-format
 msgid "Select Sub-Word Left"
 msgstr "בחירת תת־מילה אחת שמאלה"
 
-#: view/kateview.cpp:1313
+#: view/kateview.cpp:1316
 #, kde-format
 msgid "Transpose Characters"
 msgstr "שחלוף תווים"
 
-#: view/kateview.cpp:1318
+#: view/kateview.cpp:1321
 #, kde-format
 msgid "Transpose Words"
 msgstr "שחלוף מילים"
 
-#: view/kateview.cpp:1323
+#: view/kateview.cpp:1326
 #, kde-format
 msgid "Delete Line"
 msgstr "מחיקת שורה"
 
-#: view/kateview.cpp:1329
+#: view/kateview.cpp:1332
 #, kde-format
 msgid "Delete Word Left"
 msgstr "מחיקת מילה אחת שמאלה"
 
-#: view/kateview.cpp:1335
+#: view/kateview.cpp:1338
 #, kde-format
 msgid "Delete Word Right"
 msgstr "מחיקת מילה אחת ימינה"
 
-#: view/kateview.cpp:1341
+#: view/kateview.cpp:1344
 #, kde-format
 msgid "Delete Next Character"
 msgstr "מחיקת התו הבא"
 
-#: view/kateview.cpp:1347
+#: view/kateview.cpp:1350
 #, kde-format
 msgid "Backspace"
 msgstr "Backspace"
 
-#: view/kateview.cpp:1355
+#: view/kateview.cpp:1358
 #, kde-format
 msgid "Insert Tab Character"
 msgstr "הוספת תו טאב"
 
-#: view/kateview.cpp:1360
+#: view/kateview.cpp:1363
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "הוספת שורה חדשה חכמה"
 
-#: view/kateview.cpp:1361
+#: view/kateview.cpp:1364
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
@@ -7645,45 +7645,45 @@ msgid ""
 msgstr ""
 "הוספת שורה חדשה, כולל תווים מובילים מהשורה הנוכחית שאינם אותיות או מספרים."
 
-#: view/kateview.cpp:1369
+#: view/kateview.cpp:1372
 #, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "הוספת שורה חדשה ללא הזחה"
 
-#: view/kateview.cpp:1370
+#: view/kateview.cpp:1373
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr "הוספת שורה חדשה בלי הזחה, ללא תלות בהגדרות ההזחה."
 
-#: view/kateview.cpp:1378
+#: view/kateview.cpp:1381
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr "הוספת שורה חדשה מעל לשורה הנוכחית"
 
-#: view/kateview.cpp:1379
+#: view/kateview.cpp:1382
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr "הוספת שורה חדשה מעל לשורה הנוכחית מבלי לשנות את השורה הנוכחית."
 
-#: view/kateview.cpp:1387
+#: view/kateview.cpp:1390
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr "הוספת שורה חדשה מתחת לשורה הנוכחית"
 
-#: view/kateview.cpp:1388
+#: view/kateview.cpp:1391
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr "הוספת שורה חדשה מתחת לשורה הנוכחית מבלי לשנות את השורה הנוכחית."
 
-#: view/kateview.cpp:1397
+#: view/kateview.cpp:1400
 #, kde-format
 msgid "&Indent"
 msgstr "ה&זחה"
 
-#: view/kateview.cpp:1399
+#: view/kateview.cpp:1402
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -7693,102 +7693,102 @@ msgstr ""
 "הזחת קטע טקסט נבחר.<br /><br />אפשר לקבוע בחלונית ההגדרות אם להתחשב בטאבים "
 "ולעשות בהם שימוש, או אם להחליף טאבים ברווחים."
 
-#: view/kateview.cpp:1406
+#: view/kateview.cpp:1409
 #, kde-format
 msgid "&Unindent"
 msgstr "ביטול הז&חה"
 
-#: view/kateview.cpp:1407
+#: view/kateview.cpp:1410
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr "יש להשתמש בזה כדי לבטל הזחה של קטע טקסט נבחר."
 
-#: view/kateview.cpp:1413
+#: view/kateview.cpp:1416
 #, kde-format
 msgid "Delete Sub-Word Left"
 msgstr "מחיקת תת־מילה אחת שמאלה"
 
-#: view/kateview.cpp:1420
+#: view/kateview.cpp:1423
 #, kde-format
 msgid "Delete Sub-Word Right"
 msgstr "מחיקת תת־מילה אחת ימינה"
 
-#: view/kateview.cpp:1441
+#: view/kateview.cpp:1444
 #, kde-format
 msgid "Fold Toplevel Nodes"
 msgstr "קיפול מפרקים תחתונים"
 
-#: view/kateview.cpp:1445
+#: view/kateview.cpp:1448
 #, kde-format
 msgid "Unfold Toplevel Nodes"
 msgstr "פריסת מפרקים עליונים"
 
-#: view/kateview.cpp:1449
+#: view/kateview.cpp:1452
 #, kde-format
 msgid "Toggle Current Node"
 msgstr "החלפת מצב המפרק הנוכחי"
 
-#: view/kateview.cpp:1453
+#: view/kateview.cpp:1456
 #, kde-format
 msgid "Toggle Contained Nodes"
 msgstr "החלפת מצב המפרקים המוכלים"
 
-#: view/kateview.cpp:1462
+#: view/kateview.cpp:1465
 #, kde-format
 msgid "Say current selection or document"
 msgstr "להקריא את הבחירה או המסמך הנבחרים"
 
-#: view/kateview.cpp:1472
+#: view/kateview.cpp:1475
 #, kde-format
 msgid "Stop current output"
 msgstr "עצירת הפלט הנוכחי"
 
-#: view/kateview.cpp:1478
+#: view/kateview.cpp:1481
 #, kde-format
 msgid "Pause current output"
 msgstr "השהיית הפלט הנוכחי"
 
-#: view/kateview.cpp:1484
+#: view/kateview.cpp:1487
 #, kde-format
 msgid "Resume current output"
 msgstr "להמשיך את הפלט הנוכחי"
 
-#: view/kateview.cpp:1655
+#: view/kateview.cpp:1658
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(קריאה בלבד) %1"
 
-#: view/kateview.cpp:1843
+#: view/kateview.cpp:1846
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "תנועת סמן לפי רישיות פותחות מושבתת"
 
-#: view/kateview.cpp:1845
+#: view/kateview.cpp:1848
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "תנועת סמן לפי רישיות פותחות פעילה"
 
-#: view/kateview.cpp:2380
+#: view/kateview.cpp:2383
 #, kde-format
 msgid "Search wrapped"
 msgstr "החיפוש גלש"
 
-#: view/kateview.cpp:3072
+#: view/kateview.cpp:3075
 #, kde-format
 msgid "Open File"
 msgstr "פתיחת קובץ"
 
-#: view/kateview.cpp:3983
+#: view/kateview.cpp:3986
 #, kde-format
 msgid "Align On"
 msgstr "יישור פעיל"
 
-#: view/kateview.cpp:3983
+#: view/kateview.cpp:3986
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "תבנית יישור:"
 
-#: view/kateview.cpp:5067
+#: view/kateview.cpp:5070
 #, kde-format
 msgid "Export File as HTML"
 msgstr "ייצוא קובץ בתור HTML"
