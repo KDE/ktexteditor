@@ -8,9 +8,9 @@
 
 #include "katetextbuffer.h"
 
+#include <QChar>
 #include <QCoreApplication>
 #include <QStandardPaths>
-#include <qchar.h>
 
 int main(int argc, char *argv[])
 {

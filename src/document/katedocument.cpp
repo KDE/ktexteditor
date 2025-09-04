@@ -39,8 +39,8 @@
 #include "spellcheck/ontheflycheck.h"
 #include "spellcheck/prefixstore.h"
 #include "spellcheck/spellcheck.h"
+#include <QChar>
 #include <fcntl.h>
-#include <qchar.h>
 
 #if EDITORCONFIG_FOUND
 #include "editorconfig.h"
