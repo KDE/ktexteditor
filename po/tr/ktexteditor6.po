@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-02 00:40+0000\n"
-"PO-Revision-Date: 2025-08-03 19:01+0300\n"
+"PO-Revision-Date: 2025-09-04 15:08+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -7053,32 +7053,32 @@ msgstr ""
 #: view/kateview.cpp:751
 #, kde-format
 msgid "Enlarge Font"
-msgstr "Yazıtipi Boyutunu Büyüt"
+msgstr "Yazıtipi Puntosunu Artır"
 
 #: view/kateview.cpp:753
 #, kde-format
 msgid "This increases the display font size."
-msgstr "Görüntü yazıtipi büyüklüğünü artırır."
+msgstr "Bu, görüntü yazıtipi büyüklüğünü artırır."
 
 #: view/kateview.cpp:760
 #, kde-format
 msgid "Shrink Font"
-msgstr "Yazıtipi Boyutunu Küçült"
+msgstr "Yazıtipini Puntosunu Azalt"
 
 #: view/kateview.cpp:762
 #, kde-format
 msgid "This decreases the display font size."
-msgstr "Görüntü yazıtipi büyüklüğünü azaltır."
+msgstr "Bu, görüntü yazıtipi büyüklüğünü azaltır."
 
 #: view/kateview.cpp:769
 #, kde-format
 msgid "Reset Font Size"
-msgstr "Yazıtipi Boyutunu Sıfırla"
+msgstr "Yazıtipi Puntosunu Sıfırla"
 
 #: view/kateview.cpp:771
 #, kde-format
 msgid "This resets the display font size."
-msgstr "Bu, yazıtipi boyutunu öntanımlı değerine sıfırlar."
+msgstr "Bu, yazıtipi büyüklüğünü öntanımlı değerine sıfırlar."
 
 #: view/kateview.cpp:774
 #, kde-format
@@ -7091,8 +7091,8 @@ msgid ""
 "This command allows switching between the normal (line based) selection mode "
 "and the block selection mode."
 msgstr ""
-"Bu komut, normal ( satır temelli ) seçim kipi ile blok seçim kipi arasında "
-"geçiş yapmanıza izin verir."
+"Bu komut, normal (satır temelli) seçim kipi ile blok seçim kipi arasında "
+"geçiş yapmanıza olanak tanır."
 
 #: view/kateview.cpp:781
 #, kde-format
