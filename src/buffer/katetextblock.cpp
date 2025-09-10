@@ -253,13 +253,18 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
                     changedRanges.push_back({range, spansMultipleBlocks});
                 }
 
-                // remove from previous block
-                it = previousBlock->m_cursors.erase(it);
+                // mark the cursor to be removed from previous block
+                *it = nullptr;
+                it++;
             } else {
                 // keep in previous block
                 ++it;
             }
         }
+
+        std::erase_if(previousBlock->m_cursors, [](auto *c) {
+            return c == nullptr;
+        });
 
         // fixup the ranges that might be effected, because they moved from last line to this block
         // we might need to invalidate ranges or notify about their changes
