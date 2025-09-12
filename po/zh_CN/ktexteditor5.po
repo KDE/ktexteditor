@@ -602,7 +602,7 @@ msgstr "剪贴板历史记录数量："
 #: dialogs/editconfigwidget.ui:198
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
-msgstr "这决定了在剪切板中所能保留的历史记录的最大数量"
+msgstr "这决定了在剪贴板中所能保留的历史记录的最大数量"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:220
