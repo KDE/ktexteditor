@@ -2729,6 +2729,10 @@ void KateIconBorder::delayedUpdateOfSizeWithRepaint()
     setUpdatesEnabled(false);
     updateGeometry();
     repaint();
+    // still trigger delayed update, else we miss some resizing and get artifacts, see bug 509269
+    QTimer::singleShot(0, this, [this]() {
+        update();
+    });
     setUpdatesEnabled(true);
 }
 
