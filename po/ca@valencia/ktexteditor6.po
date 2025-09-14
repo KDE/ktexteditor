@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-02 00:40+0000\n"
+"POT-Creation-Date: 2025-09-14 00:39+0000\n"
 "PO-Revision-Date: 2025-08-03 10:57+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -7040,7 +7040,7 @@ msgstr "Anomena i guarda amb la codi&ficació…"
 #, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "Anomena i guarda la còp&ia…"
+msgstr "Anomena i guar&da una còpia…"
 
 #: view/kateview.cpp:696
 #, kde-format
@@ -8105,7 +8105,7 @@ msgstr "Tipus de marca %1"
 msgid "Set Default Mark Type"
 msgstr "Establix el tipus de marca predeterminada"
 
-#: view/kateviewhelpers.cpp:2791
+#: view/kateviewhelpers.cpp:2795
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Desactiva la barra d'anotacions"

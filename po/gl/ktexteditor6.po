@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-02 00:40+0000\n"
+"POT-Creation-Date: 2025-09-14 00:39+0000\n"
 "PO-Revision-Date: 2025-06-19 09:42+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -8048,7 +8048,7 @@ msgstr "Tipo de marca %1"
 msgid "Set Default Mark Type"
 msgstr "Definir o tipo de marca predeterminada"
 
-#: view/kateviewhelpers.cpp:2791
+#: view/kateviewhelpers.cpp:2795
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Desactivar a barra de anotacións"

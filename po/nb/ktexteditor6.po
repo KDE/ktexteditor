@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-02 00:40+0000\n"
+"POT-Creation-Date: 2025-09-14 00:39+0000\n"
 "PO-Revision-Date: 2015-05-31 21:21+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -7840,7 +7840,7 @@ msgstr "Markeringstype %1"
 msgid "Set Default Mark Type"
 msgstr "Velg standardstil for merking"
 
-#: view/kateviewhelpers.cpp:2791
+#: view/kateviewhelpers.cpp:2795
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Slå av merknadslinja"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-02 00:40+0000\n"
+"POT-Creation-Date: 2025-09-14 00:39+0000\n"
 "PO-Revision-Date: 2025-02-23 13:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -7993,7 +7993,7 @@ msgstr "Marka tipo %1"
 msgid "Set Default Mark Type"
 msgstr "Fiksi defaŭltan markotipon"
 
-#: view/kateviewhelpers.cpp:2791
+#: view/kateviewhelpers.cpp:2795
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Malebligi Komentarion"
