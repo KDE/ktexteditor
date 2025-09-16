@@ -6715,7 +6715,7 @@ msgstr "Palabras %1, Caracteres %2"
 #: view/katestatusbar.cpp:589
 #, kde-format
 msgid "Zoom: %1%"
-msgstr "Ampliación: %1%"
+msgstr "Ampliación: %1 %"
 
 #: view/kateview.cpp:460
 #, kde-format
