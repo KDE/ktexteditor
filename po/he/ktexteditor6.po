@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-14 00:39+0000\n"
-"PO-Revision-Date: 2025-08-03 11:10+0300\n"
+"PO-Revision-Date: 2025-09-17 10:47+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1645,7 +1645,7 @@ msgid ""
 "the content of the file, this detection will be run."
 msgstr ""
 "אם אף אחת מהקידודים שלהלן או מהקידודים בחלונית פתיחה/שמירה או הקידודים "
-"שצוינו דרך שורת הפקודה לא תואמים לתוכן הקובץ, הזיהוי יופעל."
+"שצוינו דרך שורת הפקודות לא תואמים לתוכן הקובץ, הזיהוי יופעל."
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncodingDetection2)
 #: dialogs/opensaveconfigwidget.ui:74
@@ -3489,7 +3489,8 @@ msgstr "שגיאה בטעינת הסקריפט %1: %2"
 #: script/katescriptmanager.cpp:310
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
-msgstr "טעינת כל קובצי ה־JavaScript (מזיחים, סקריפטים לשורת הפקודה וכו׳) מחדש."
+msgstr ""
+"טעינת כל קובצי ה־JavaScript (מזיחים, סקריפטים לשורת הפקודות וכו׳) מחדש."
 
 #: script/katescriptview.cpp:207
 #, kde-format
@@ -7155,12 +7156,12 @@ msgstr "הצגת/הסתרת תיבה תוחמת סביב רווחים שאינם
 #: view/kateview.cpp:872
 #, kde-format
 msgid "Switch to Command Line"
-msgstr "מעבר לשורת הפקודה"
+msgstr "מעבר לשורת הפקודות"
 
 #: view/kateview.cpp:874
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
-msgstr "הצגה/הסתרה של שורת הפקודה בתחתית התצוגה."
+msgstr "הצגה/הסתרה של שורת הפקודות בתחתית התצוגה."
 
 #: view/kateview.cpp:877
 #, kde-format
@@ -7832,7 +7833,7 @@ msgid ""
 "<code><b>help list</b></code><br />For help for individual commands, enter "
 "<code><b>help &lt;command&gt;</b></code></p>"
 msgstr ""
-"<p>זוהי <b>שורת הפקודה</b> של רכיב Kate.<br />תחביר: <code><b>command "
+"<p>זוהי <b>שורת הפקודות</b> של רכיב Kate.<br />תחביר: <code><b>command "
 "[ arguments ]‎</b></code> כאשר command הוא הפקודה ו־arguments הארגומנטים.<br /"
 ">כדי לקבל רשימה של כל הפקודות הזמינות, נא להקליד <code><b>help list</b></"
 "code><br />כדי לקבל עזרה לגבי פקודה מסויימת, נא להקליד <code><b>help &lt;"
