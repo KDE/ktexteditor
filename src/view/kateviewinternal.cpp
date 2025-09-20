@@ -4266,18 +4266,18 @@ void KateViewInternal::doDrag()
         view()->clearHighlights();
     }
 
-    // Create a pixmap this selection
+    // Create a pixmap this selection and set it, if not null
     const qreal dpr = devicePixelRatioF();
-    QPixmap pixmap(w * dpr, h * dpr);
-    if (!pixmap.isNull()) {
+    if (QPixmap pixmap(w * dpr, h * dpr); !pixmap.isNull()) {
         pixmap.setDevicePixelRatio(dpr);
         pixmap.fill(Qt::transparent);
         renderer()->paintSelection(&pixmap, startLine, sX, endLine, eX, cache()->viewWidth(), scale);
+        m_dragInfo.dragObject->setPixmap(pixmap);
+    }
 
-        if (view()->selection()) {
-            // Tell the view to restore the highlights
-            Q_EMIT view()->selectionChanged(view());
-        }
+    // Tell the view to restore the highlights
+    if (view()->selection()) {
+        Q_EMIT view()->selectionChanged(view());
     }
 
     // Calculate position where pixmap will appear when user
@@ -4291,8 +4291,6 @@ void KateViewInternal::doDrag()
      */
     const int y = lineToY(view()->m_textFolding.lineToVisibleLine(startLine));
     const QPoint pos = mapFromGlobal(QCursor::pos()) - QPoint(x, y);
-
-    m_dragInfo.dragObject->setPixmap(pixmap);
     m_dragInfo.dragObject->setHotSpot(pos);
     m_dragInfo.dragObject->setMimeData(mimeData.release());
     m_dragInfo.dragObject->exec(Qt::MoveAction | Qt::CopyAction);
