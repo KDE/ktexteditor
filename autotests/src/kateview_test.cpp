@@ -42,17 +42,30 @@ KateViewTest::~KateViewTest()
 {
 }
 
+void KateViewTest::testCoordinatesToCursor_data()
+{
+    using Flags = KTextEditor::View::CoordinatesToCursorFlags;
+    QTest::addColumn<Flags>("flags");
+
+    QTest::newRow("ClosestCursorOutsideText") << Flags{};
+    QTest::newRow("InvalidCursorOutsideText") << Flags{KTextEditor::View::InvalidCursorOutsideText};
+}
+
 void KateViewTest::testCoordinatesToCursor()
 {
     KTextEditor::DocumentPrivate doc(false, false);
     doc.setText(QStringLiteral("Hi World!\nHi\n"));
 
+    constexpr KTextEditor::Cursor beginningOfFirstLine(0, 0);
+    constexpr KTextEditor::Cursor endOfFirstLine(0, 9);
+
     KTextEditor::View *view1 = static_cast<KTextEditor::View *>(doc.createView(nullptr));
     view1->resize(400, 300);
     view1->show();
 
-    const auto coordinatesToCursor = [view1](QPoint coords) {
-        return view1->coordinatesToCursor(coords);
+    QFETCH(const KTextEditor::View::CoordinatesToCursorFlags, flags);
+    const auto coordinatesToCursor = [view1, flags](QPoint coords) {
+        return view1->coordinatesToCursor(coords, flags);
     };
 
     QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 2))), KTextEditor::Cursor(0, 2));
@@ -67,9 +80,9 @@ void KateViewTest::testCoordinatesToCursor()
     QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(view1->cursorPosition())), KTextEditor::Cursor(0, 3));
     QCOMPARE(coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(0, 3));
     // end of line
-    view1->setCursorPosition(KTextEditor::Cursor(0, 9));
-    QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 9))), KTextEditor::Cursor(0, 9));
-    QCOMPARE(coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(0, 9));
+    view1->setCursorPosition(endOfFirstLine);
+    QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(endOfFirstLine)), endOfFirstLine);
+    QCOMPARE(coordinatesToCursor(view1->cursorPositionCoordinates()), endOfFirstLine);
     // empty line
     view1->setCursorPosition(KTextEditor::Cursor(2, 0));
     QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(2, 0))), KTextEditor::Cursor(2, 0));
@@ -87,6 +100,28 @@ void KateViewTest::testCoordinatesToCursor()
     // behind end of line should give an invalid cursor
     QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 5))), KTextEditor::Cursor::invalid());
     QCOMPARE(view1->cursorToCoordinate(KTextEditor::Cursor(3, 1)), QPoint(-1, -1));
+
+    const auto leftmostCoordinates = view1->cursorToCoordinate(beginningOfFirstLine);
+    const auto rightmostCoordinates = view1->cursorToCoordinate(endOfFirstLine);
+
+    const auto adjusted = [](QPoint coordinates, int xOffset) {
+        auto ret = coordinates;
+        ret.rx() += xOffset;
+        return ret;
+    };
+
+    const auto expectedCursorToTheLeftOfText = flags & KTextEditor::View::InvalidCursorOutsideText ? KTextEditor::Cursor::invalid() : beginningOfFirstLine;
+    const auto expectedCursorToTheRightOfText = flags & KTextEditor::View::InvalidCursorOutsideText ? KTextEditor::Cursor::invalid() : endOfFirstLine;
+
+    QCOMPARE(coordinatesToCursor(adjusted(leftmostCoordinates, 0)), beginningOfFirstLine);
+    QCOMPARE(coordinatesToCursor(adjusted(leftmostCoordinates, 1)), beginningOfFirstLine); // the width of a character should be greater than 2 pixels
+    QCOMPARE(coordinatesToCursor(adjusted(leftmostCoordinates, -1000)), expectedCursorToTheLeftOfText);
+    QCOMPARE(coordinatesToCursor(adjusted(leftmostCoordinates, -1)), expectedCursorToTheLeftOfText);
+
+    QCOMPARE(coordinatesToCursor(adjusted(rightmostCoordinates, 0)), endOfFirstLine);
+    QCOMPARE(coordinatesToCursor(adjusted(rightmostCoordinates, -1)), endOfFirstLine); // the width of a character should be greater than 2 pixels
+    QCOMPARE(coordinatesToCursor(adjusted(rightmostCoordinates, 500)), expectedCursorToTheRightOfText);
+    QCOMPARE(coordinatesToCursor(adjusted(rightmostCoordinates, 1)), expectedCursorToTheRightOfText);
 }
 
 void KateViewTest::testCursorToCoordinates()
