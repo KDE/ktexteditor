@@ -22,6 +22,8 @@ private Q_SLOTS:
     void testReloadMultipleViews();
     void testTabCursorOnReload();
     void testLowerCaseBlockSelection();
+
+    void testCoordinatesToCursor_data();
     void testCoordinatesToCursor();
     void testCursorToCoordinates();
     void testSelection();

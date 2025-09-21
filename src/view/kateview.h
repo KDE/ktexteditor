@@ -181,6 +181,7 @@ public:
     QPoint cursorToCoordinate(KTextEditor::Cursor cursor) const override;
 
     KTextEditor::Cursor coordinatesToCursor(const QPoint &coord) const override;
+    [[nodiscard]] KTextEditor::Cursor coordinatesToCursor(QPoint coords, CoordinatesToCursorFlags flags) const;
 
     QPoint cursorPositionCoordinates() const override;
 

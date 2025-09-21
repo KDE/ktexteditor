@@ -719,16 +719,36 @@ public:
     virtual QPoint cursorPositionCoordinates() const = 0;
 
     /*!
+       \enum KTextEditor::View::CoordinatesToCursorFlags
+
+       \brief Modifiers to the conversion of coordinates to cursor.
+       \since 6.20
+
+       \value InvalidCursorOutsideText
+       If this flag is set, an invalid cursor is returned for coordinates outside text.
+       Otherwise (by default) the closest cursor on the same line is returned.
+     */
+    enum CoordinatesToCursorFlags {
+        InvalidCursorOutsideText = 1,
+    };
+
+    /*!
      * Get the text-cursor in the document from the screen coordinates,
      * relative to the view widget.
      *
      * To map a cursor to pixel coordinates (the reverse transformation)
      * use cursorToCoordinate().
      *
-     * \a coord is the coordinates relative to the view widget
+     * \a coords is the coordinates relative to the view widget
+     * \a flags is the modifiers to the conversion
      *
      * Returns cursor in the View, that points onto the character under
      *         the given coordinate. May be KTextEditor::Cursor::invalid().
+     */
+    [[nodiscard]] KTextEditor::Cursor coordinatesToCursor(QPoint coords, CoordinatesToCursorFlags flags) const;
+
+    /*!
+     * Returns coordinatesToCursor(coord, {})
      */
     virtual KTextEditor::Cursor coordinatesToCursor(const QPoint &coord) const = 0;
 
