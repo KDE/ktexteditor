@@ -219,7 +219,8 @@ public:
 
     QPoint cursorToCoordinate(const KTextEditor::Cursor cursor, bool realCursor = true, bool includeBorder = true) const;
     // by default, works on coordinates of the whole widget, eg. offsetted by the border
-    KTextEditor::Cursor coordinatesToCursor(const QPoint &coord, bool includeBorder = true) const;
+    [[nodiscard]] KTextEditor::Cursor
+    coordinatesToCursor(QPoint coord, KTextEditor::View::CoordinatesToCursorFlags flags = {}, bool includeBorder = true) const;
     QPoint cursorCoordinates(bool includeBorder = true) const;
     KTextEditor::Cursor findMatchingBracket();
 

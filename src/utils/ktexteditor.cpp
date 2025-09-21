@@ -196,6 +196,11 @@ QList<KTextEditor::Cursor> View::cursorPositions() const
     return d->cursors();
 }
 
+KTextEditor::Cursor View::coordinatesToCursor(QPoint coords, CoordinatesToCursorFlags flags) const
+{
+    return d->coordinatesToCursor(coords, flags);
+}
+
 void View::setSelections(const QList<KTextEditor::Range> &ranges)
 {
     d->setSelections(ranges);

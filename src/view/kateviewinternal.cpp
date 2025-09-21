@@ -3752,10 +3752,8 @@ void KateViewInternal::leaveEvent(QEvent *)
     hideBracketMatchPreview();
 }
 
-KTextEditor::Cursor KateViewInternal::coordinatesToCursor(const QPoint &_coord, bool includeBorder) const
+KTextEditor::Cursor KateViewInternal::coordinatesToCursor(QPoint coord, KTextEditor::View::CoordinatesToCursorFlags flags, bool includeBorder) const
 {
-    QPoint coord(_coord);
-
     KTextEditor::Cursor ret = KTextEditor::Cursor::invalid();
 
     if (includeBorder) {
@@ -3765,13 +3763,12 @@ KTextEditor::Cursor KateViewInternal::coordinatesToCursor(const QPoint &_coord, 
 
     const KateTextLayout &thisLine = yToKateTextLayout(coord.y());
     if (thisLine.isValid()) {
+        if (flags & KTextEditor::View::InvalidCursorOutsideText) {
+            if (coord.x() < 0 || coord.x() > thisLine.lineLayout().naturalTextWidth()) {
+                return ret;
+            }
+        }
         ret = renderer()->xToCursor(thisLine, coord.x(), !view()->wrapCursor());
-    }
-
-    if (ret.column() > view()->document()->lineLength(ret.line())) {
-        // The cursor is beyond the end of the line; in that case the renderer
-        // gives the index of the character behind the last one.
-        return KTextEditor::Cursor::invalid();
     }
 
     return ret;
@@ -3783,7 +3780,7 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
         // Touchscreen is handled by scrollEvent()
         return;
     }
-    KTextEditor::Cursor newPosition = coordinatesToCursor(e->pos(), false);
+    KTextEditor::Cursor newPosition = coordinatesToCursor(e->pos(), {}, false);
     if (newPosition != m_mouse) {
         m_mouse = newPosition;
         mouseMoved();
@@ -4137,7 +4134,7 @@ void KateViewInternal::textHintTimeout()
 {
     m_textHintTimer.stop();
 
-    KTextEditor::Cursor c = coordinatesToCursor(m_textHintPos, false);
+    KTextEditor::Cursor c = coordinatesToCursor(m_textHintPos, {}, false);
     if (!c.isValid()) {
         return;
     }
