@@ -39,7 +39,6 @@
 
 #include <KLocalizedString>
 #include <QApplication>
-#include <QList>
 
 using namespace KateVi;
 

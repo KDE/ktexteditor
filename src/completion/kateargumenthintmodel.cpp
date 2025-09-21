@@ -5,7 +5,6 @@
 */
 
 #include "kateargumenthintmodel.h"
-#include "katecompletionmodel.h"
 #include "katepartdebug.h"
 #include <ktexteditor/codecompletionmodel.h>
 

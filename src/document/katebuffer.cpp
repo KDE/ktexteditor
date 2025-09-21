@@ -11,7 +11,6 @@
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "katehighlight.h"
 #include "katepartdebug.h"
 #include "katesyntaxmanager.h"
 #include "ktexteditor/message.h"
