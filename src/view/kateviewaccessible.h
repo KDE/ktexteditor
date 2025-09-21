@@ -134,7 +134,7 @@ public:
     int offsetAtPoint(const QPoint &point) const override
     {
         if (view()) {
-            KTextEditor::Cursor c = view()->coordinatesToCursor(point);
+            KTextEditor::Cursor c = view()->coordinatesToCursor(point, KateViewInternal::CursorForCoordinatesOutsideText::ClosestOnTheSameLine);
             return positionFromCursor(view(), c);
         }
         return 0;

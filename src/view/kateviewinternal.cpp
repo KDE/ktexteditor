@@ -3752,7 +3752,7 @@ void KateViewInternal::leaveEvent(QEvent *)
     hideBracketMatchPreview();
 }
 
-KTextEditor::Cursor KateViewInternal::coordinatesToCursor(const QPoint &_coord, bool includeBorder) const
+KTextEditor::Cursor KateViewInternal::coordinatesToCursor(const QPoint &_coord, CursorForCoordinatesOutsideText behaviorOutsideText, bool includeBorder) const
 {
     QPoint coord(_coord);
 
@@ -3765,13 +3765,12 @@ KTextEditor::Cursor KateViewInternal::coordinatesToCursor(const QPoint &_coord, 
 
     const KateTextLayout &thisLine = yToKateTextLayout(coord.y());
     if (thisLine.isValid()) {
+        if (behaviorOutsideText == CursorForCoordinatesOutsideText::Invalid) {
+            if (coord.x() < 0 || coord.x() > thisLine.lineLayout().naturalTextWidth()) {
+                return ret;
+            }
+        }
         ret = renderer()->xToCursor(thisLine, coord.x(), !view()->wrapCursor());
-    }
-
-    if (ret.column() > view()->document()->lineLength(ret.line())) {
-        // The cursor is beyond the end of the line; in that case the renderer
-        // gives the index of the character behind the last one.
-        return KTextEditor::Cursor::invalid();
     }
 
     return ret;
@@ -3783,7 +3782,7 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
         // Touchscreen is handled by scrollEvent()
         return;
     }
-    KTextEditor::Cursor newPosition = coordinatesToCursor(e->pos(), false);
+    KTextEditor::Cursor newPosition = coordinatesToCursor(e->pos(), CursorForCoordinatesOutsideText::ClosestOnTheSameLine, false);
     if (newPosition != m_mouse) {
         m_mouse = newPosition;
         mouseMoved();
@@ -4137,7 +4136,7 @@ void KateViewInternal::textHintTimeout()
 {
     m_textHintTimer.stop();
 
-    KTextEditor::Cursor c = coordinatesToCursor(m_textHintPos, false);
+    KTextEditor::Cursor c = coordinatesToCursor(m_textHintPos, CursorForCoordinatesOutsideText::ClosestOnTheSameLine, false);
     if (!c.isValid()) {
         return;
     }
@@ -5039,7 +5038,7 @@ QRect KateViewInternal::inlineNoteRect(const KateInlineNoteData &noteData) const
 KateInlineNoteData KateViewInternal::inlineNoteAt(const QPoint &globalPos) const
 {
     // compute the associated cursor to get the right line
-    const int line = coordinatesToCursor(mapFromGlobal(globalPos)).line();
+    const int line = coordinatesToCursor(mapFromGlobal(globalPos), CursorForCoordinatesOutsideText::ClosestOnTheSameLine).line();
     const auto inlineNotes = view()->inlineNotes(line);
     // loop over all notes and check if the point is inside it
     for (const auto &note : inlineNotes) {

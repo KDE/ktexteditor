@@ -3791,7 +3791,7 @@ QPoint KTextEditor::ViewPrivate::cursorToCoordinate(KTextEditor::Cursor cursor) 
 KTextEditor::Cursor KTextEditor::ViewPrivate::coordinatesToCursor(const QPoint &coords) const
 {
     // map from View to ViewInternal coordinates
-    return m_viewInternal->coordinatesToCursor(m_viewInternal->mapFromParent(coords), false);
+    return m_viewInternal->coordinatesToCursor(m_viewInternal->mapFromParent(coords), KateViewInternal::CursorForCoordinatesOutsideText::Invalid, false);
 }
 
 QPoint KTextEditor::ViewPrivate::cursorPositionCoordinates() const

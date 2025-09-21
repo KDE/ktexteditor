@@ -218,8 +218,14 @@ public:
     }
 
     QPoint cursorToCoordinate(const KTextEditor::Cursor cursor, bool realCursor = true, bool includeBorder = true) const;
+
+    enum class CursorForCoordinatesOutsideText {
+        Invalid,
+        ClosestOnTheSameLine,
+    };
+
     // by default, works on coordinates of the whole widget, eg. offsetted by the border
-    KTextEditor::Cursor coordinatesToCursor(const QPoint &coord, bool includeBorder = true) const;
+    KTextEditor::Cursor coordinatesToCursor(const QPoint &coord, CursorForCoordinatesOutsideText behaviorOutsideText, bool includeBorder = true) const;
     QPoint cursorCoordinates(bool includeBorder = true) const;
     KTextEditor::Cursor findMatchingBracket();
 
