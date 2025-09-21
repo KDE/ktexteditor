@@ -81,19 +81,13 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     //
     // fill about data
     //
-    m_aboutData.addAuthor(i18n("Christoph Cullmann"), i18n("Maintainer"), QStringLiteral("cullmann@kde.org"), QStringLiteral("https://cullmann.io"));
+    m_aboutData.addAuthor(i18n("Christoph Cullmann"), i18n("Maintainer"), QStringLiteral("cullmann@kde.org"), QStringLiteral("https://cullmann.dev"));
     m_aboutData.addAuthor(i18n("Dominik Haumann"), i18n("Core Developer"), QStringLiteral("dhaumann@kde.org"));
     m_aboutData.addAuthor(i18n("Milian Wolff"), i18n("Core Developer"), QStringLiteral("mail@milianw.de"), QStringLiteral("https://milianw.de/"));
-    m_aboutData.addAuthor(i18n("Joseph Wenninger"),
-                          i18n("Core Developer"),
-                          QStringLiteral("jowenn@kde.org"),
-                          QStringLiteral("http://stud3.tuwien.ac.at/~e9925371"));
+    m_aboutData.addAuthor(i18n("Joseph Wenninger"), i18n("Core Developer"), QStringLiteral("jowenn@kde.org"));
     m_aboutData.addAuthor(i18n("Erlend Hamberg"), i18n("Vi Input Mode"), QStringLiteral("ehamberg@gmail.com"), QStringLiteral("https://hamberg.no/erlend"));
-    m_aboutData.addAuthor(i18n("Bernhard Beschow"),
-                          i18n("Developer"),
-                          QStringLiteral("bbeschow@cs.tu-berlin.de"),
-                          QStringLiteral("https://user.cs.tu-berlin.de/~bbeschow"));
-    m_aboutData.addAuthor(i18n("Anders Lund"), i18n("Core Developer"), QStringLiteral("anders@alweb.dk"), QStringLiteral("https://alweb.dk"));
+    m_aboutData.addAuthor(i18n("Bernhard Beschow"), i18n("Developer"), QStringLiteral("bbeschow@cs.tu-berlin.de"));
+    m_aboutData.addAuthor(i18n("Anders Lund"), i18n("Core Developer"), QStringLiteral("anders@alweb.dk"));
     m_aboutData.addAuthor(i18n("Michel Ludwig"), i18n("On-the-fly spell checking"), QStringLiteral("michel.ludwig@kdemail.net"));
     m_aboutData.addAuthor(i18n("Pascal Létourneau"), i18n("Large scale bug fixing"), QStringLiteral("pascal.letourneau@gmail.com"));
     m_aboutData.addAuthor(i18n("Hamish Rodda"), i18n("Core Developer"), QStringLiteral("rodda@kde.org"));
@@ -116,10 +110,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
                           QStringLiteral("webmaster@hartwork.org"),
                           QStringLiteral("https://hartwork.org/"));
     m_aboutData.addAuthor(i18n("Jochen Wilhelmy"), i18n("Original KWrite Author"), QStringLiteral("digisnap@cs.tu-berlin.de"));
-    m_aboutData.addAuthor(i18n("Gerald Senarclens de Grancy"),
-                          i18n("QA and Scripting"),
-                          QStringLiteral("oss@senarclens.eu"),
-                          QStringLiteral("http://find-santa.eu/"));
+    m_aboutData.addAuthor(i18n("Gerald Senarclens de Grancy"), i18n("QA and Scripting"), QStringLiteral("oss@senarclens.eu"));
 
     m_aboutData.addCredit(i18n("Matteo Merli"), i18n("Highlighting for RPM Spec-Files, Perl, Diff and more"), QStringLiteral("merlim@libero.it"));
     m_aboutData.addCredit(i18n("Rocky Scaletta"), i18n("Highlighting for VHDL"), QStringLiteral("rocky@purdue.edu"));
