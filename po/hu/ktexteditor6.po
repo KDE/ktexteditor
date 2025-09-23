@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-14 00:39+0000\n"
+"POT-Creation-Date: 2025-09-23 00:39+0000\n"
 "PO-Revision-Date: 2025-09-03 20:51+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2175,7 +2175,7 @@ msgstr ""
 "Ha ez be van kapcsolva, a szerkesztő függőleges vonalakat húz, hogy "
 "könnyebben felismerhetők legyenek a behúzott sorok."
 
-#: document/katebuffer.cpp:136
+#: document/katebuffer.cpp:135
 #, kde-format
 msgctxt "short translation, user created new file"
 msgid "New file"
@@ -2498,7 +2498,7 @@ msgstr "vi-mód"
 msgid "recording"
 msgstr "felvétel"
 
-#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:91
+#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:88
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
@@ -5588,8 +5588,9 @@ msgid "Embeddable editor component"
 msgstr "Beágyazható szövegszerkesztő-komponens"
 
 #: utils/kateglobal.cpp:64
-#, kde-format
-msgid "(c) 2000-2022 The Kate Authors"
+#, fuzzy, kde-format
+#| msgid "(c) 2000-2022 The Kate Authors"
+msgid "(c) 2000-2025 The Kate Authors"
 msgstr "(c) A Kate szerzői, 2000-2022."
 
 #: utils/kateglobal.cpp:84
@@ -5607,8 +5608,8 @@ msgstr "Karbantartó"
 msgid "Dominik Haumann"
 msgstr "Dominik Haumann"
 
-#: utils/kateglobal.cpp:85 utils/kateglobal.cpp:86 utils/kateglobal.cpp:88
-#: utils/kateglobal.cpp:96 utils/kateglobal.cpp:99 utils/kateglobal.cpp:104
+#: utils/kateglobal.cpp:85 utils/kateglobal.cpp:86 utils/kateglobal.cpp:87
+#: utils/kateglobal.cpp:90 utils/kateglobal.cpp:93 utils/kateglobal.cpp:98
 #, kde-format
 msgid "Core Developer"
 msgstr "Kiemelt fejlesztő"
@@ -5623,344 +5624,344 @@ msgstr "Milian Wolff"
 msgid "Joseph Wenninger"
 msgstr "Joseph Wenninger"
 
-#: utils/kateglobal.cpp:91
+#: utils/kateglobal.cpp:88
 #, kde-format
 msgid "Erlend Hamberg"
 msgstr "Erlend Hamberg"
 
-#: utils/kateglobal.cpp:92
+#: utils/kateglobal.cpp:89
 #, kde-format
 msgid "Bernhard Beschow"
 msgstr "Bernhard Beschow"
 
-#: utils/kateglobal.cpp:93 utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:89 utils/kateglobal.cpp:105
 #, kde-format
 msgid "Developer"
 msgstr "Fejlesztő"
 
-#: utils/kateglobal.cpp:96
+#: utils/kateglobal.cpp:90
 #, kde-format
 msgid "Anders Lund"
 msgstr "Anders Lund"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:91
 #, kde-format
 msgid "Michel Ludwig"
 msgstr "Michel Ludwig"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:91
 #, kde-format
 msgid "On-the-fly spell checking"
 msgstr "Automatikus helyesírás-ellenőrzés"
 
-#: utils/kateglobal.cpp:98
+#: utils/kateglobal.cpp:92
 #, kde-format
 msgid "Pascal Létourneau"
 msgstr "Pascal Létourneau"
 
-#: utils/kateglobal.cpp:98
+#: utils/kateglobal.cpp:92
 #, kde-format
 msgid "Large scale bug fixing"
 msgstr "Sok-sok hibajavítás"
 
-#: utils/kateglobal.cpp:99
+#: utils/kateglobal.cpp:93
 #, kde-format
 msgid "Hamish Rodda"
 msgstr "Hamish Rodda"
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:94
 #, kde-format
 msgid "Waldo Bastian"
 msgstr "Waldo Bastian"
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:94
 #, kde-format
 msgid "The cool buffersystem"
 msgstr "A nagyszerű pufferelési rendszer"
 
-#: utils/kateglobal.cpp:101
+#: utils/kateglobal.cpp:95
 #, kde-format
 msgid "Charles Samuels"
 msgstr "Charles Samuels"
 
-#: utils/kateglobal.cpp:101
+#: utils/kateglobal.cpp:95
 #, kde-format
 msgid "The Editing Commands"
 msgstr "Szerkesztési parancsok"
 
-#: utils/kateglobal.cpp:102
+#: utils/kateglobal.cpp:96
 #, kde-format
 msgid "Matt Newell"
 msgstr "Matt Newell"
 
-#: utils/kateglobal.cpp:102
+#: utils/kateglobal.cpp:96
 #, kde-format
 msgid "Testing, ..."
 msgstr "Tesztelés stb."
 
-#: utils/kateglobal.cpp:103
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "Michael Bartl"
 msgstr "Michael Bartl"
 
-#: utils/kateglobal.cpp:103
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "Former Core Developer"
 msgstr "Korábbi vezető fejlesztő"
 
-#: utils/kateglobal.cpp:104
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Michael McCallum"
 msgstr "Michael McCallum"
 
-#: utils/kateglobal.cpp:105
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "Michael Koch"
 msgstr "Michael Koch"
 
-#: utils/kateglobal.cpp:105
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "KWrite port to KParts"
 msgstr "A KWrite újraírása objektumok felhasználásával"
 
-#: utils/kateglobal.cpp:106
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "Christian Gebauer"
 msgstr "Christian Gebauer"
 
-#: utils/kateglobal.cpp:107
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Simon Hausmann"
 msgstr "Simon Hausmann"
 
-#: utils/kateglobal.cpp:108
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "Glen Parker"
 msgstr "Glen Parker"
 
-#: utils/kateglobal.cpp:108
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
 msgstr "KWrite visszavonási napló, KSpell-integráció"
 
-#: utils/kateglobal.cpp:109
+#: utils/kateglobal.cpp:103
 #, kde-format
 msgid "Scott Manson"
 msgstr "Scott Manson"
 
-#: utils/kateglobal.cpp:109
+#: utils/kateglobal.cpp:103
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
 msgstr "XML-szintaxiskiemelés a KWrite-ban"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:104
 #, kde-format
 msgid "John Firebaugh"
 msgstr "John Firebaugh"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:104
 #, kde-format
 msgid "Patches and more"
 msgstr "Javítások stb."
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:105
 #, kde-format
 msgid "Andreas Kling"
 msgstr "Andreas Kling"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:106
 #, kde-format
 msgid "Mirko Stocker"
 msgstr "Mirko Stocker"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:106
 #, kde-format
 msgid "Various bugfixes"
 msgstr "Hibajavítások"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:107
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "Matthew Woehlke"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:107
 #, kde-format
 msgid "Selection, KColorScheme integration"
 msgstr "Kijelölés, KColorScheme-integráció"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:108
 #, kde-format
 msgid "Sebastian Pipping"
 msgstr "Sebastian Pipping"
 
-#: utils/kateglobal.cpp:115
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "Search bar back- and front-end"
 msgstr "Keresősáv-motor és kezelőfelület"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Jochen Wilhelmy"
 msgstr "Jochen Wilhelmy"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Original KWrite Author"
 msgstr "A KWrite eredeti szerzője"
 
-#: utils/kateglobal.cpp:119
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Gerald Senarclens de Grancy"
 msgstr "Gerald Senarclens de Grancy"
 
-#: utils/kateglobal.cpp:120
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "QA and Scripting"
 msgstr "QA és szkriptelés"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Matteo Merli"
 msgstr "Matteo Merli"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
 msgstr "Az RPM-leíró, Perl, Diff stb. fájlok szintaxiskiemelése"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:116
 #, kde-format
 msgid "Rocky Scaletta"
 msgstr "Rocky Scaletta"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:116
 #, kde-format
 msgid "Highlighting for VHDL"
 msgstr "VHDL-szintaxiskiemelés"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:117
 #, kde-format
 msgid "Yury Lebedev"
 msgstr "Yury Lebedev"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:117
 #, kde-format
 msgid "Highlighting for SQL"
 msgstr "SQL-szintaxiskiemelés"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Chris Ross"
 msgstr "Chris Ross"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Highlighting for Ferite"
 msgstr "Ferite-szintaxiskiemelés"
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:119
 #, kde-format
 msgid "Nick Roux"
 msgstr "Nick Roux"
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:119
 #, kde-format
 msgid "Highlighting for ILERPG"
 msgstr "ILERPG-szintaxiskiemelés"
 
-#: utils/kateglobal.cpp:129
+#: utils/kateglobal.cpp:120
 #, kde-format
 msgid "Carsten Niehaus"
 msgstr "Carsten Niehaus"
 
-#: utils/kateglobal.cpp:129
+#: utils/kateglobal.cpp:120
 #, kde-format
 msgid "Highlighting for LaTeX"
 msgstr "LaTeX-szintaxiskiemelés"
 
-#: utils/kateglobal.cpp:130
+#: utils/kateglobal.cpp:121
 #, kde-format
 msgid "Per Wigren"
 msgstr "Per Wigren"
 
-#: utils/kateglobal.cpp:130
+#: utils/kateglobal.cpp:121
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
 msgstr "A Makefile-ok és a Python szintaxiskiemelése"
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:122
 #, kde-format
 msgid "Jan Fritz"
 msgstr "Jan Fritz"
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:122
 #, kde-format
 msgid "Highlighting for Python"
 msgstr "Python-szintaxiskiemelés"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:123
 #, kde-format
 msgid "Daniel Naber"
 msgstr "Daniel Naber"
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Roland Pabel"
 msgstr "Roland Pabel"
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Highlighting for Scheme"
 msgstr "Scheme-szintaxiskiemelés"
 
-#: utils/kateglobal.cpp:134
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Cristi Dumitrescu"
 msgstr "Cristi Dumitrescu"
 
-#: utils/kateglobal.cpp:134
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "PHP Keyword/Datatype list"
 msgstr "PHP kulcsszó- és adattípuslista"
 
-#: utils/kateglobal.cpp:135
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Carsten Pfeiffer"
 msgstr "Carsten Pfeiffer"
 
-#: utils/kateglobal.cpp:135
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Very nice help"
 msgstr "Sokat segített"
 
-#: utils/kateglobal.cpp:136
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Bruno Massa"
 msgstr "Bruno Massa"
 
-#: utils/kateglobal.cpp:136
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Highlighting for Lua"
 msgstr "Lua-szintaxiskiemelés"
 
-#: utils/kateglobal.cpp:138
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
 msgstr "Mindenki, aki segített valamiben, de nincs név szerint megemlítve"
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:131
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Kiszel Kristóf"
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:131
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ulysses@fsf.hu"
 
-#: utils/kateglobal.cpp:264
+#: utils/kateglobal.cpp:255
 #, kde-format
 msgid "Configure"
 msgstr "Beállítások"
@@ -6536,7 +6537,7 @@ msgstr "Sorvégtípus"
 msgid "Mode"
 msgstr "Mód"
 
-#: view/katestatusbar.cpp:209 view/kateview.cpp:723
+#: view/katestatusbar.cpp:209 view/kateview.cpp:722
 #, kde-format
 msgid ""
 "Here you can choose which mode should be used for the current document. This "
@@ -6642,93 +6643,93 @@ msgstr "%1 szó, %2 karakter"
 msgid "Zoom: %1%"
 msgstr "Nagyítás: %1%"
 
-#: view/kateview.cpp:460
+#: view/kateview.cpp:459
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
 msgstr "A kijelölt szövegrész kivágása a vágólapra"
 
-#: view/kateview.cpp:465
+#: view/kateview.cpp:464
 #, kde-format
 msgid "Paste previously copied or cut clipboard contents"
 msgstr "A vágólapon található szövegrész beillesztése"
 
-#: view/kateview.cpp:468
+#: view/kateview.cpp:467
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
 msgstr "A kijelölt szövegrészt kimásolja a vágólapra."
 
-#: view/kateview.cpp:474
+#: view/kateview.cpp:473
 #, kde-format
 msgid "Clipboard &History Paste"
 msgstr "Vágólap &előzmények beillesztése"
 
-#: view/kateview.cpp:479
+#: view/kateview.cpp:478
 #, kde-format
 msgid "Paste Selection"
 msgstr "A kijelölés beillesztése"
 
-#: view/kateview.cpp:481
+#: view/kateview.cpp:480
 #, kde-format
 msgid "Paste previously mouse selection contents"
 msgstr "Az egérrel korábban kijelölt tartalom beillesztése"
 
-#: view/kateview.cpp:485
+#: view/kateview.cpp:484
 #, kde-format
 msgid "Paste From File"
 msgstr "Beillesztés fájlból"
 
-#: view/kateview.cpp:489
+#: view/kateview.cpp:488
 #, kde-format
 msgid "Copy File Location"
 msgstr "Fájl helyének másolása"
 
-#: view/kateview.cpp:490
+#: view/kateview.cpp:489
 #, kde-format
 msgid "Copy the current file name and line number"
 msgstr "Jelenlegi fájlnév és sorszám másolása"
 
-#: view/kateview.cpp:493
+#: view/kateview.cpp:492
 #, kde-format
 msgid "Swap with Clipboard Contents"
 msgstr "Csere a vágólap tartalmára"
 
-#: view/kateview.cpp:494
+#: view/kateview.cpp:493
 #, kde-format
 msgid "Swap the selected text with the clipboard contents"
 msgstr "A kijelölt szöveg cseréje a vágólap tartalmával"
 
-#: view/kateview.cpp:497
+#: view/kateview.cpp:496
 #, kde-format
 msgid "Take Screenshot of Selection"
 msgstr "Képernyőkép készítése a kijelölésről"
 
-#: view/kateview.cpp:501
+#: view/kateview.cpp:500
 #, kde-format
 msgid "Save the current document"
 msgstr "Az aktuális dokumentum mentése"
 
-#: view/kateview.cpp:504
+#: view/kateview.cpp:503
 #, kde-format
 msgid "Revert the most recent editing actions"
 msgstr "A legutóbbi szerkesztési művelet visszavonása"
 
-#: view/kateview.cpp:507
+#: view/kateview.cpp:506
 #, kde-format
 msgid "Revert the most recent undo operation"
 msgstr "A legutóbbi visszavonási művelet visszavonása"
 
-#: view/kateview.cpp:511
+#: view/kateview.cpp:510
 #, kde-format
 msgid "&Scripts"
 msgstr "&Szkriptek"
 
-#: view/kateview.cpp:515
+#: view/kateview.cpp:514
 #, kde-format
 msgid "Apply &Word Wrap"
 msgstr "Szó&tördelés alkalmazása"
 
-#: view/kateview.cpp:517
+#: view/kateview.cpp:516
 #, kde-format
 msgid ""
 "Use this to wrap the current line, or to reformat the selected lines as "
@@ -6740,12 +6741,12 @@ msgstr ""
 "beállításhoz.<br /><br />Ez egy statikus szótördelés, azaz megváltoztatja a "
 "dokumentumot."
 
-#: view/kateview.cpp:523
+#: view/kateview.cpp:522
 #, kde-format
 msgid "&Clean Indentation"
 msgstr "N&ormalizált behúzás"
 
-#: view/kateview.cpp:525
+#: view/kateview.cpp:524
 #, kde-format
 msgid ""
 "Use this to clean the indentation of a selected block of text (only tabs/"
@@ -6757,22 +6758,22 @@ msgstr ""
 "tabulátorokat használjon-e a program vagy inkább helyettesítse azokat "
 "szóközökkel."
 
-#: view/kateview.cpp:530
+#: view/kateview.cpp:529
 #, kde-format
 msgid "Convert Indentation to Spaces"
 msgstr "Behúzási átalakítása szóközökké"
 
-#: view/kateview.cpp:537
+#: view/kateview.cpp:536
 #, kde-format
 msgid "Convert Indentation to Tabs"
 msgstr "Behúzás átalakítása tabulátorokká"
 
-#: view/kateview.cpp:552
+#: view/kateview.cpp:551
 #, kde-format
 msgid "&Format Indentation"
 msgstr "Behúzás &formázása"
 
-#: view/kateview.cpp:553
+#: view/kateview.cpp:552
 #, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
@@ -6781,13 +6782,13 @@ msgstr ""
 "Ennek hatására az aktuális sor vagy szövegblokk felveszi a megfelelő "
 "behúzást."
 
-#: view/kateview.cpp:557
+#: view/kateview.cpp:556
 #, kde-format
 msgctxt "@action"
 msgid "&Align On…"
 msgstr "Ig&azítás ehhez…"
 
-#: view/kateview.cpp:559
+#: view/kateview.cpp:558
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -6809,12 +6810,12 @@ msgstr ""
 "azokat.<br />A „:\\s+(.)” az összes, pont után következő nem üres karakter "
 "elé szúr be szóközöket, hogy esgy oszlopba kerüljenek."
 
-#: view/kateview.cpp:570
+#: view/kateview.cpp:569
 #, kde-format
 msgid "C&omment"
 msgstr "Megjegy&zésjel"
 
-#: view/kateview.cpp:573
+#: view/kateview.cpp:572
 #, kde-format
 msgid ""
 "This command comments out the current line or a selected block of text.<br /"
@@ -6825,22 +6826,22 @@ msgstr ""
 "megjegyzésbe tenni.<br /><br />Az egy- ill. többsoros megjegyzést jelölő "
 "karakterek a programnyelv kiemelési módjánál vannak megadva."
 
-#: view/kateview.cpp:578
+#: view/kateview.cpp:577
 #, kde-format
 msgid "Go to Previous Editing Location"
 msgstr "Ugrás az előző szerkesztési helyre"
 
-#: view/kateview.cpp:584
+#: view/kateview.cpp:583
 #, kde-format
 msgid "Go to Next Editing Location"
 msgstr "Ugrás a következő szerkesztési helyre"
 
-#: view/kateview.cpp:590
+#: view/kateview.cpp:589
 #, kde-format
 msgid "Unco&mment"
 msgstr "Megjegyzésjel eltá&volítása"
 
-#: view/kateview.cpp:593
+#: view/kateview.cpp:592
 #, kde-format
 msgid ""
 "This command removes comments from the current line or a selected block of "
@@ -6852,37 +6853,37 @@ msgstr ""
 "megjegyzést jelölő karakterek a programnyelv kiemelési módjánál vannak "
 "megadva."
 
-#: view/kateview.cpp:598
+#: view/kateview.cpp:597
 #, kde-format
 msgid "Toggle Comment"
 msgstr "Megjegyzés átváltása"
 
-#: view/kateview.cpp:602
+#: view/kateview.cpp:601
 #, kde-format
 msgid "&Read Only Mode"
 msgstr "Í&rásvédett mód"
 
-#: view/kateview.cpp:603
+#: view/kateview.cpp:602
 #, kde-format
 msgid "Lock/unlock the document for writing"
 msgstr "A dokumentum zárolása írásnál"
 
-#: view/kateview.cpp:608
+#: view/kateview.cpp:607
 #, kde-format
 msgid "&Force RTL Direction"
 msgstr "RTL irány &kényszerítése"
 
-#: view/kateview.cpp:609
+#: view/kateview.cpp:608
 #, kde-format
 msgid "Force RTL Text Direction"
 msgstr "Jobbról-balra szövegirány kényszerítése"
 
-#: view/kateview.cpp:619
+#: view/kateview.cpp:618
 #, kde-format
 msgid "Uppercase"
 msgstr "Nagybetűkké"
 
-#: view/kateview.cpp:622
+#: view/kateview.cpp:621
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
@@ -6891,12 +6892,12 @@ msgstr ""
 "A kijelölt szöveg nagybetűssé alakítása. Ha nincs kijelölve szöveg, akkor a "
 "kurzortól jobbra álló karakter lesz átalakítva."
 
-#: view/kateview.cpp:628
+#: view/kateview.cpp:627
 #, kde-format
 msgid "Lowercase"
 msgstr "Kisbetűkké"
 
-#: view/kateview.cpp:631
+#: view/kateview.cpp:630
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
@@ -6905,12 +6906,12 @@ msgstr ""
 "A kijelölt szöveg kisbetűssé alakítása. Ha nincs kijelölve szöveg, akkor a "
 "kurzortól jobbra álló karakter lesz átalakítva."
 
-#: view/kateview.cpp:637
+#: view/kateview.cpp:636
 #, kde-format
 msgid "Capitalize"
 msgstr "Nagy kezdőbetűs szavakká"
 
-#: view/kateview.cpp:640
+#: view/kateview.cpp:639
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
@@ -6919,17 +6920,17 @@ msgstr ""
 "A kijelölt szöveg szavaiban a kezdőbetű nagybetűvé alakítása. Ha nincs "
 "kijelölve szöveg, akkor csak azt a szót, amelyen a kurzor áll."
 
-#: view/kateview.cpp:645
+#: view/kateview.cpp:644
 #, kde-format
 msgid "Join Lines"
 msgstr "Sorok összevonása"
 
-#: view/kateview.cpp:650
+#: view/kateview.cpp:649
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "Kódkiegészítés"
 
-#: view/kateview.cpp:651
+#: view/kateview.cpp:650
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
@@ -6938,54 +6939,54 @@ msgstr ""
 "Meghívja a parancskiegészítő eljárást, általában a hozzárendelt "
 "billentyűkombináció használatával."
 
-#: view/kateview.cpp:656
+#: view/kateview.cpp:655
 #, kde-format
 msgid "Remove Trailing Spaces"
 msgstr "Sorvégi szóközök levágása"
 
-#: view/kateview.cpp:674
+#: view/kateview.cpp:673
 #, kde-format
 msgid "Print the current document."
 msgstr "Kinyomtatja az aktuális dokumentumot."
 
-#: view/kateview.cpp:677
+#: view/kateview.cpp:676
 #, kde-format
 msgid "Show print preview of current document"
 msgstr "A jelenlegi dokumentum nyomtatási képének megjelenítése"
 
-#: view/kateview.cpp:681
+#: view/kateview.cpp:680
 #, kde-format
 msgid "Reloa&d"
 msgstr "Újr&atöltés"
 
-#: view/kateview.cpp:683
+#: view/kateview.cpp:682
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "Az aktuális dokumentum újratöltése a lemezről."
 
-#: view/kateview.cpp:687
+#: view/kateview.cpp:686
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr "Az aktuális dokumentum mentése a lemezre, a fájlnév bekérésével."
 
-#: view/kateview.cpp:689
+#: view/kateview.cpp:688
 #, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
 msgstr "Mentés másként &kódolással…"
 
-#: view/kateview.cpp:695
+#: view/kateview.cpp:694
 #, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
 msgstr "&Másolat mentése másként…"
 
-#: view/kateview.cpp:696
+#: view/kateview.cpp:695
 #, kde-format
 msgid "Save a copy of the current document to disk."
 msgstr "A jelenlegi dokumentum másolatának mentése a lemezre."
 
-#: view/kateview.cpp:700
+#: view/kateview.cpp:699
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
@@ -6994,70 +6995,70 @@ msgstr ""
 "A parancs megnyit egy párbeszédablakot, melyben meg lehet adni annak a "
 "sornak a számát, amelyre rá szeretne lépni."
 
-#: view/kateview.cpp:704
+#: view/kateview.cpp:703
 #, kde-format
 msgid "Go to Previous Modified Line"
 msgstr "Ugrás az előző módosított sorra"
 
-#: view/kateview.cpp:705
+#: view/kateview.cpp:704
 #, kde-format
 msgid "Move upwards to the previous modified line."
 msgstr "Ugrás felfelé az előző módosított sorra."
 
-#: view/kateview.cpp:710
+#: view/kateview.cpp:709
 #, kde-format
 msgid "Go to Next Modified Line"
 msgstr "Ugrás a következő módosított sorra"
 
-#: view/kateview.cpp:711
+#: view/kateview.cpp:710
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr "Ugrás lefelé a következő módosított sorra."
 
-#: view/kateview.cpp:715
+#: view/kateview.cpp:714
 #, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "A szerkesztő beá&llításai…"
 
-#: view/kateview.cpp:717
+#: view/kateview.cpp:716
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "A szerkesztő tulajdonságait lehet itt módosítani."
 
-#: view/kateview.cpp:720
+#: view/kateview.cpp:719
 #, kde-format
 msgid "&Mode"
 msgstr "Mó&d"
 
-#: view/kateview.cpp:726
+#: view/kateview.cpp:725
 #, kde-format
 msgid "&Highlighting"
 msgstr "Kieme&lés"
 
-#: view/kateview.cpp:728
+#: view/kateview.cpp:727
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr ""
 "Itt lehet kiválasztani, hogy az aktuális dokumentum szintaxiskiemelése "
 "milyen legyen."
 
-#: view/kateview.cpp:731
+#: view/kateview.cpp:730
 #, kde-format
 msgid "&Editor Color Theme"
 msgstr "Sz&erkesztő színtémája"
 
-#: view/kateview.cpp:737
+#: view/kateview.cpp:736
 #, kde-format
 msgid "&Indentation"
 msgstr "Be&húzás"
 
-#: view/kateview.cpp:744
+#: view/kateview.cpp:743
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "Az aktuális dokumentum teljes szövegének kijelölése."
 
-#: view/kateview.cpp:747
+#: view/kateview.cpp:746
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
@@ -7066,42 +7067,42 @@ msgstr ""
 "Ha valami ki van jelölve az aktuális dokumentumban, akkor ennek hatására a "
 "kijelölés meg fog szűnni."
 
-#: view/kateview.cpp:751
+#: view/kateview.cpp:750
 #, kde-format
 msgid "Enlarge Font"
 msgstr "Nagyobb betűméret"
 
-#: view/kateview.cpp:753
+#: view/kateview.cpp:752
 #, kde-format
 msgid "This increases the display font size."
 msgstr "Megnöveli a megjelenítési betűméretet."
 
-#: view/kateview.cpp:760
+#: view/kateview.cpp:759
 #, kde-format
 msgid "Shrink Font"
 msgstr "Kisebb betűméret"
 
-#: view/kateview.cpp:762
+#: view/kateview.cpp:761
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "Lecsökkenti a megjelenítési betűméretet."
 
-#: view/kateview.cpp:769
+#: view/kateview.cpp:768
 #, kde-format
 msgid "Reset Font Size"
 msgstr "Betűméret visszaállítása"
 
-#: view/kateview.cpp:771
+#: view/kateview.cpp:770
 #, kde-format
 msgid "This resets the display font size."
 msgstr "Visszaállítja a megjelenítési betűméretet."
 
-#: view/kateview.cpp:774
+#: view/kateview.cpp:773
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "Átváltás bl&okkos kijelölésre"
 
-#: view/kateview.cpp:777
+#: view/kateview.cpp:776
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
@@ -7110,22 +7111,22 @@ msgstr ""
 "Ezzel lehet átváltani a normál (soronkénti) és a blokkos kijelölési mód "
 "között."
 
-#: view/kateview.cpp:781
+#: view/kateview.cpp:780
 #, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Váltás a következő beviteli módra"
 
-#: view/kateview.cpp:783
+#: view/kateview.cpp:782
 #, kde-format
 msgid "Switch to the next input mode."
 msgstr "Váltás a következő beviteli módra."
 
-#: view/kateview.cpp:786
+#: view/kateview.cpp:785
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "F&elülírás"
 
-#: view/kateview.cpp:789
+#: view/kateview.cpp:788
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
@@ -7134,12 +7135,12 @@ msgstr ""
 "Itt lehet megadni, hogy a beírt szöveg a meglevő szöveget félretolja vagy "
 "felülírja."
 
-#: view/kateview.cpp:793
+#: view/kateview.cpp:792
 #, kde-format
 msgid "Show Whitespace"
 msgstr "Üres helyek megjelenítése"
 
-#: view/kateview.cpp:796
+#: view/kateview.cpp:795
 #, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
@@ -7149,12 +7150,12 @@ msgstr ""
 "dokumentumban.<br /><br />Ez csak egy nézetopció, a dokumentum nem változik "
 "meg."
 
-#: view/kateview.cpp:800
+#: view/kateview.cpp:799
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "&Dinamikus sortördelés"
 
-#: view/kateview.cpp:804
+#: view/kateview.cpp:803
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
@@ -7165,38 +7166,38 @@ msgstr ""
 "automatikusan új sorban folytatódik.<br /><br />Ez csak egy nézetopció, a "
 "dokumentum nem változik meg."
 
-#: view/kateview.cpp:808
+#: view/kateview.cpp:807
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "Dinamikus sortördelésjelzők"
 
-#: view/kateview.cpp:810
+#: view/kateview.cpp:809
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr ""
 "Itt lehet megadni, hogy mikor jelenjenek meg dinamikus sortördelésjelzők"
 
-#: view/kateview.cpp:812
+#: view/kateview.cpp:811
 #, kde-format
 msgid "&Off"
 msgstr "&Kikapcsolva"
 
-#: view/kateview.cpp:812
+#: view/kateview.cpp:811
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "A sorszámok &után"
 
-#: view/kateview.cpp:812
+#: view/kateview.cpp:811
 #, kde-format
 msgid "&Always On"
 msgstr "Mindi&g bekapcsolva"
 
-#: view/kateview.cpp:816
+#: view/kateview.cpp:815
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "Statikus tördelés"
 
-#: view/kateview.cpp:818
+#: view/kateview.cpp:817
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
@@ -7205,12 +7206,12 @@ msgstr ""
 "Ha ez az opció be van jelölve, akkor a szöveg a szerkesztési beállításokban "
 "definiált oszlopban tördelődik."
 
-#: view/kateview.cpp:825
+#: view/kateview.cpp:824
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "Sortördelésjel&zők megjelenítése"
 
-#: view/kateview.cpp:828
+#: view/kateview.cpp:827
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -7219,24 +7220,24 @@ msgstr ""
 "A sortördelésjelző ki-be kapcsolása, mely lényegében egy függőleges vonal a "
 "beállításoknál megadott oszlopban"
 
-#: view/kateview.cpp:832
+#: view/kateview.cpp:831
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "Szegélyjel&zők megjelenítése"
 
-#: view/kateview.cpp:834
+#: view/kateview.cpp:833
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
 "possible."
 msgstr "Itt lehet megadni, hogy a szegélyjelzők látszódjanak-e vagy sem."
 
-#: view/kateview.cpp:837
+#: view/kateview.cpp:836
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "&Ikonszegély megjelenítése"
 
-#: view/kateview.cpp:839
+#: view/kateview.cpp:838
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
@@ -7245,22 +7246,22 @@ msgstr ""
 "Az ikonszegélyek megjelenítése/elrejtése.<br /><br />Az ikonszegélyen "
 "jelennek meg például a könyvjelzők szimbólumai."
 
-#: view/kateview.cpp:842
+#: view/kateview.cpp:841
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "&Sorszámok megjelenítése"
 
-#: view/kateview.cpp:844
+#: view/kateview.cpp:843
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "A nézet bal oldali részén a sorszámok megjelenítése/elrejtése."
 
-#: view/kateview.cpp:847
+#: view/kateview.cpp:846
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "Gördítősáv&jelzők megjelenítése"
 
-#: view/kateview.cpp:849
+#: view/kateview.cpp:848
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7269,12 +7270,12 @@ msgstr ""
 "A függőleges gördítősáv jelzéseinek megjelenítése/elrejtése.<br /><br />Ezek "
 "a jelzések mutatják például a könyvjelzőket."
 
-#: view/kateview.cpp:852
+#: view/kateview.cpp:851
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
 msgstr "Gördítősáv minitérkép megjelenítése"
 
-#: view/kateview.cpp:854
+#: view/kateview.cpp:853
 #, kde-format
 msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
@@ -7288,71 +7289,71 @@ msgstr ""
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SlOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:866
+#: view/kateview.cpp:865
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr "Nem nyomtatható szóközök megjelenítése"
 
-#: view/kateview.cpp:868
+#: view/kateview.cpp:867
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr "Nem nyomtatható szóközök határoló négyzetének megjelenítése/elrejtése"
 
-#: view/kateview.cpp:872
+#: view/kateview.cpp:871
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "Váltás a parancssorra"
 
-#: view/kateview.cpp:874
+#: view/kateview.cpp:873
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "A nézet alsó részén a parancssor megjelenítése/elrejtése."
 
-#: view/kateview.cpp:877
+#: view/kateview.cpp:876
 #, kde-format
 msgid "Input Modes"
 msgstr "Beviteli módok"
 
-#: view/kateview.cpp:886
+#: view/kateview.cpp:885
 #, kde-format
 msgid "Activate/deactivate %1"
 msgstr "%1 be-/kikapcsolása"
 
-#: view/kateview.cpp:896
+#: view/kateview.cpp:895
 #, kde-format
 msgid "&End of Line"
 msgstr "A s&or vége"
 
-#: view/kateview.cpp:898
+#: view/kateview.cpp:897
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr ""
 "Itt lehet megadni, hogy mentésnél melyik sorvége-jelet használja a program."
 
-#: view/kateview.cpp:899
+#: view/kateview.cpp:898
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "&UNIX"
 
-#: view/kateview.cpp:900
+#: view/kateview.cpp:899
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "&Windows/DOS"
 
-#: view/kateview.cpp:901
+#: view/kateview.cpp:900
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "&Macintosh"
 
-#: view/kateview.cpp:906
+#: view/kateview.cpp:905
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "&Bájtsorrendjelölő (BOM) hozzáadása"
 
-#: view/kateview.cpp:909
+#: view/kateview.cpp:908
 #, kde-format
 msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
@@ -7361,80 +7362,80 @@ msgstr ""
 "Itt lehet engedélyezni vagy tiltani BOM bájtsorrendjelző használatát UTF-8 "
 "vagy UTF-16 kódolású fájloknál."
 
-#: view/kateview.cpp:913
+#: view/kateview.cpp:912
 #, kde-format
 msgid "E&ncoding"
 msgstr "Kó&dolás"
 
-#: view/kateview.cpp:917
+#: view/kateview.cpp:916
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr "Egy szöveg vagy reguláris kifejezés első előfordulását keresi meg."
 
-#: view/kateview.cpp:921
+#: view/kateview.cpp:920
 #, kde-format
 msgid "Find Selected"
 msgstr "A kijelölt szöveg keresése"
 
-#: view/kateview.cpp:923
+#: view/kateview.cpp:922
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "Megkeresi a kijelölt szöveg következő előfordulását."
 
-#: view/kateview.cpp:927
+#: view/kateview.cpp:926
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "A kijelölt szöveg keresése visszafelé"
 
-#: view/kateview.cpp:929
+#: view/kateview.cpp:928
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "Megkeresi a kijelölt szöveg előző előfordulását."
 
-#: view/kateview.cpp:933
+#: view/kateview.cpp:932
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr "Következő előfordulás keresése és kijelölése"
 
-#: view/kateview.cpp:935
+#: view/kateview.cpp:934
 #, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr ""
 "Megkeresi a kurzor alatti szó következő előfordulását, és hozzáadja a "
 "kijelöléshez."
 
-#: view/kateview.cpp:939
+#: view/kateview.cpp:938
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr "Jelenleg kijelölt előfordulás megjelölése Kihagyottként"
 
-#: view/kateview.cpp:941
+#: view/kateview.cpp:940
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr "Megjelöli a jelenleg kijelölt szót kihagyottként."
 
-#: view/kateview.cpp:945
+#: view/kateview.cpp:944
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr "Összes előfordulás keresése és kijelölése"
 
-#: view/kateview.cpp:947
+#: view/kateview.cpp:946
 #, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr ""
 "Megkeresi a kurzor alatti szó összes előfordulását, és kijelöli azokat."
 
-#: view/kateview.cpp:951
+#: view/kateview.cpp:950
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "A keresett szöveg következő előfordulása."
 
-#: view/kateview.cpp:955
+#: view/kateview.cpp:954
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "A keresett szöveg előző előfordulása."
 
-#: view/kateview.cpp:959
+#: view/kateview.cpp:958
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
@@ -7443,94 +7444,94 @@ msgstr ""
 "A megadott szöveg vagy reguláris kifejezés megkeresése és adott másik "
 "szövegre cserélése."
 
-#: view/kateview.cpp:962
+#: view/kateview.cpp:961
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr "Kurzorok hozzáadása a sorvégekhez"
 
-#: view/kateview.cpp:964
+#: view/kateview.cpp:963
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
 msgstr "Létrehoz egy kurzort a kijelölés minden sorának végén."
 
-#: view/kateview.cpp:968
+#: view/kateview.cpp:967
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr "Kurzor hozzáadása a kurzor alatt"
 
-#: view/kateview.cpp:970
+#: view/kateview.cpp:969
 #, kde-format
 msgid "Adds a caret in the line below the current caret."
 msgstr "Hozzáad egy kurzort a jelenlegi kurzor alatti sorban."
 
-#: view/kateview.cpp:974
+#: view/kateview.cpp:973
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr "Kurzor hozzáadása a kurzor fölött"
 
-#: view/kateview.cpp:976
+#: view/kateview.cpp:975
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr "Hozzáad egy kurzort a jelenlegi kurzor fölötti sorban."
 
-#: view/kateview.cpp:980
+#: view/kateview.cpp:979
 #, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "CamelCase kurzormozgatás be/ki"
 
-#: view/kateview.cpp:981
+#: view/kateview.cpp:980
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr "Váltás a normál szóáthelyezés és a CamelCase kurzormozgatás között."
 
-#: view/kateview.cpp:985
+#: view/kateview.cpp:984
 #, kde-format
 msgid "Remove Cursors from Empty Lines"
 msgstr "Kurzorok eltávolítása az üres sorokból"
 
-#: view/kateview.cpp:986
+#: view/kateview.cpp:985
 #, kde-format
 msgid "Remove cursors from empty lines"
 msgstr "Kurzorok eltávolítása az üres sorokból"
 
-#: view/kateview.cpp:990
+#: view/kateview.cpp:989
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "Automatikus helyesírás-ellenőrzés"
 
-#: view/kateview.cpp:991
+#: view/kateview.cpp:990
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "Ki-be kapcsolja az automatikus helyesírás-ellenőrzést"
 
-#: view/kateview.cpp:997
+#: view/kateview.cpp:996
 #, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
 msgstr "Szótárválasztás…"
 
-#: view/kateview.cpp:998
+#: view/kateview.cpp:997
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "Itt választható ki a helyesírás-ellenőrzéshez használt szótár."
 
-#: view/kateview.cpp:1002
+#: view/kateview.cpp:1001
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "A szótártartományok törlése"
 
-#: view/kateview.cpp:1004
+#: view/kateview.cpp:1003
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
 msgstr "Törli a helyesírás-ellenőrzéshez beállított szótártartományokat."
 
-#: view/kateview.cpp:1010
+#: view/kateview.cpp:1009
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "Másolás &HTML formátumban"
 
-#: view/kateview.cpp:1011
+#: view/kateview.cpp:1010
 #, kde-format
 msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
@@ -7539,13 +7540,13 @@ msgstr ""
 "Kijelölés másolása HTML-ként, a jelenlegi szintaxiskiemelési- és színséma-"
 "beállítások használatával formázottan."
 
-#: view/kateview.cpp:1015
+#: view/kateview.cpp:1014
 #, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "E&xportálás HTML formátumban…"
 
-#: view/kateview.cpp:1017
+#: view/kateview.cpp:1016
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7554,42 +7555,42 @@ msgstr ""
 "Ez a parancs lehetővé teszi a jelenlegi dokumentum exportálását HTML "
 "dokumentumba az összes kiemelési információval együtt."
 
-#: view/kateview.cpp:1056
+#: view/kateview.cpp:1055
 #, kde-format
 msgid "Move Word Left"
 msgstr "Egy szóval balra"
 
-#: view/kateview.cpp:1062
+#: view/kateview.cpp:1061
 #, kde-format
 msgid "Select Character Left"
 msgstr "A kurzortól balra álló karakter kijelölése"
 
-#: view/kateview.cpp:1068
+#: view/kateview.cpp:1067
 #, kde-format
 msgid "Select Word Left"
 msgstr "A kurzortól balra álló szó kijelölése"
 
-#: view/kateview.cpp:1078
+#: view/kateview.cpp:1077
 #, kde-format
 msgid "Move Word Right"
 msgstr "Egy szóval jobbra"
 
-#: view/kateview.cpp:1084
+#: view/kateview.cpp:1083
 #, kde-format
 msgid "Select Character Right"
 msgstr "A kurzortól jobbra álló karakter kijelölése"
 
-#: view/kateview.cpp:1090
+#: view/kateview.cpp:1089
 #, kde-format
 msgid "Select Word Right"
 msgstr "A kurzortól jobbra álló karakter kijelölése"
 
-#: view/kateview.cpp:1100
+#: view/kateview.cpp:1099
 #, kde-format
 msgid "Start the Marked Selection"
 msgstr "Jelölt kiválasztás indítása"
 
-#: view/kateview.cpp:1101
+#: view/kateview.cpp:1100
 #, kde-format
 msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
@@ -7598,202 +7599,202 @@ msgstr ""
 "Az Emacs kijelölési módjának emulálása, amikor is a kezdet meg van jelölve, "
 "és a kijelölés folyamatosan frissül."
 
-#: view/kateview.cpp:1106
+#: view/kateview.cpp:1105
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "Ugrás a sor elejére"
 
-#: view/kateview.cpp:1112
+#: view/kateview.cpp:1111
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "Ugrás a dokumentum elejére"
 
-#: view/kateview.cpp:1118
+#: view/kateview.cpp:1117
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "Kijelölés a sor elejéig"
 
-#: view/kateview.cpp:1128
+#: view/kateview.cpp:1127
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "Kijelölés a dokumentum elejéig"
 
-#: view/kateview.cpp:1138
+#: view/kateview.cpp:1137
 #, kde-format
 msgid "Move to End of Line"
 msgstr "Ugrás a sor végére"
 
-#: view/kateview.cpp:1144
+#: view/kateview.cpp:1143
 #, kde-format
 msgid "Move to End of Document"
 msgstr "Ugrás a dokumentum végére"
 
-#: view/kateview.cpp:1150
+#: view/kateview.cpp:1149
 #, kde-format
 msgid "Select to End of Line"
 msgstr "Kijelölés a sor végéig"
 
-#: view/kateview.cpp:1160
+#: view/kateview.cpp:1159
 #, kde-format
 msgid "Select to End of Document"
 msgstr "Kijelölés a dokumentum végéig"
 
-#: view/kateview.cpp:1170
+#: view/kateview.cpp:1169
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "Kijelölés az előző sorig"
 
-#: view/kateview.cpp:1176
+#: view/kateview.cpp:1175
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "Egy sorral feljebb görgetés"
 
-#: view/kateview.cpp:1185
+#: view/kateview.cpp:1184
 #, kde-format
 msgid "Move to Next Line"
 msgstr "Mozgás a következő sorra"
 
-#: view/kateview.cpp:1191
+#: view/kateview.cpp:1190
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "Mozgás az előző sorra"
 
-#: view/kateview.cpp:1197
+#: view/kateview.cpp:1196
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "Jobbra"
 
-#: view/kateview.cpp:1203
+#: view/kateview.cpp:1202
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "Balra"
 
-#: view/kateview.cpp:1209
+#: view/kateview.cpp:1208
 #, kde-format
 msgid "Select to Next Line"
 msgstr "Kijelölés a következő sorig"
 
-#: view/kateview.cpp:1215
+#: view/kateview.cpp:1214
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "Egy sorral lejjebb görgetés"
 
-#: view/kateview.cpp:1224
+#: view/kateview.cpp:1223
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "Egy oldallal feljebb görgetés"
 
-#: view/kateview.cpp:1230
+#: view/kateview.cpp:1229
 #, kde-format
 msgid "Select Page Up"
 msgstr "Kijelölés az előző oldalig"
 
-#: view/kateview.cpp:1236
+#: view/kateview.cpp:1235
 #, kde-format
 msgid "Move to Top of View"
 msgstr "Ugrás a nézet tetejére"
 
-#: view/kateview.cpp:1242
+#: view/kateview.cpp:1241
 #, kde-format
 msgid "Select to Top of View"
 msgstr "Kiválasztás a nézet tetejéig"
 
-#: view/kateview.cpp:1248
+#: view/kateview.cpp:1247
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "Egy lappal lejjebb görgetés"
 
-#: view/kateview.cpp:1254
+#: view/kateview.cpp:1253
 #, kde-format
 msgid "Select Page Down"
 msgstr "Kijelölés a következő oldalig"
 
-#: view/kateview.cpp:1260
+#: view/kateview.cpp:1259
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "Ugrás a nézet aljára"
 
-#: view/kateview.cpp:1266
+#: view/kateview.cpp:1265
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "Kiválasztás a nézet aljáig"
 
-#: view/kateview.cpp:1272
+#: view/kateview.cpp:1271
 #, kde-format
 msgid "Go to Matching Bracket"
 msgstr "Ugrás a zárójel párjához"
 
-#: view/kateview.cpp:1278
+#: view/kateview.cpp:1277
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "Kijelölés a zárójel párjáig"
 
-#: view/kateview.cpp:1285
+#: view/kateview.cpp:1284
 #, kde-format
 msgid "Move Sub-Word Right"
 msgstr "Szótag jobbra"
 
-#: view/kateview.cpp:1292
+#: view/kateview.cpp:1291
 #, kde-format
 msgid "Select Sub-Word Right"
 msgstr "A kurzortól jobbra álló szótag kijelölése"
 
-#: view/kateview.cpp:1299
+#: view/kateview.cpp:1298
 #, kde-format
 msgid "Move Sub-Word Left"
 msgstr "Szótag balra"
 
-#: view/kateview.cpp:1306
+#: view/kateview.cpp:1305
 #, kde-format
 msgid "Select Sub-Word Left"
 msgstr "A kurzortól balra álló szótag kijelölése"
 
-#: view/kateview.cpp:1316
+#: view/kateview.cpp:1315
 #, kde-format
 msgid "Transpose Characters"
 msgstr "A karakterek transzponálása"
 
-#: view/kateview.cpp:1321
+#: view/kateview.cpp:1320
 #, kde-format
 msgid "Transpose Words"
 msgstr "A szavak transzponálása"
 
-#: view/kateview.cpp:1326
+#: view/kateview.cpp:1325
 #, kde-format
 msgid "Delete Line"
 msgstr "Sor törlése"
 
-#: view/kateview.cpp:1332
+#: view/kateview.cpp:1331
 #, kde-format
 msgid "Delete Word Left"
 msgstr "A kurzortól balra álló szó törlése"
 
-#: view/kateview.cpp:1338
+#: view/kateview.cpp:1337
 #, kde-format
 msgid "Delete Word Right"
 msgstr "A kurzortól jobbra álló szó törlése"
 
-#: view/kateview.cpp:1344
+#: view/kateview.cpp:1343
 #, kde-format
 msgid "Delete Next Character"
 msgstr "A következő karakter törlése"
 
-#: view/kateview.cpp:1350
+#: view/kateview.cpp:1349
 #, kde-format
 msgid "Backspace"
 msgstr "Backspace"
 
-#: view/kateview.cpp:1358
+#: view/kateview.cpp:1357
 #, kde-format
 msgid "Insert Tab Character"
 msgstr "Tabulátor beszúrása"
 
-#: view/kateview.cpp:1363
+#: view/kateview.cpp:1362
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "Intelligens újsor beszúrása"
 
-#: view/kateview.cpp:1364
+#: view/kateview.cpp:1363
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
@@ -7802,46 +7803,46 @@ msgstr ""
 "Újsor beszúrása az aktuális sorban a sor elején álló nem betű vagy szám "
 "karakterekkel együtt."
 
-#: view/kateview.cpp:1372
+#: view/kateview.cpp:1371
 #, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "Nem behúzott új sor beszúrása"
 
-#: view/kateview.cpp:1373
+#: view/kateview.cpp:1372
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr ""
 "Új sor beszúrása behúzás nélkül, a behúzási beállításoktól függetlenül."
 
-#: view/kateview.cpp:1381
+#: view/kateview.cpp:1380
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr "Új sor beszúrása a jelenlegi sor fölé"
 
-#: view/kateview.cpp:1382
+#: view/kateview.cpp:1381
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr "Új sor beszúrása a jelenlegi sor fölé annak módosítása nélkül."
 
-#: view/kateview.cpp:1390
+#: view/kateview.cpp:1389
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr "Új sor beszúrása a jelenlegi sor alá"
 
-#: view/kateview.cpp:1391
+#: view/kateview.cpp:1390
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr "Új sor beszúrása a jelenlegi sor alá annak módosítása nélkül."
 
-#: view/kateview.cpp:1400
+#: view/kateview.cpp:1399
 #, kde-format
 msgid "&Indent"
 msgstr "Behú&zás"
 
-#: view/kateview.cpp:1402
+#: view/kateview.cpp:1401
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -7852,102 +7853,102 @@ msgstr ""
 "kezelési módja, például hogy le legyenek-e cserélve szóközökre vagy sem, a "
 "beállítóablakban adható meg."
 
-#: view/kateview.cpp:1409
+#: view/kateview.cpp:1408
 #, kde-format
 msgid "&Unindent"
 msgstr "&Behúzás megszüntetése"
 
-#: view/kateview.cpp:1410
+#: view/kateview.cpp:1409
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr "Ezzel lehet a kijelölt szövegrész behúzását megszüntetni."
 
-#: view/kateview.cpp:1416
+#: view/kateview.cpp:1415
 #, kde-format
 msgid "Delete Sub-Word Left"
 msgstr "A kurzortól balra álló szótag törlése"
 
-#: view/kateview.cpp:1423
+#: view/kateview.cpp:1422
 #, kde-format
 msgid "Delete Sub-Word Right"
 msgstr "A kurzortól jobbra álló szótag törlése"
 
-#: view/kateview.cpp:1444
+#: view/kateview.cpp:1443
 #, kde-format
 msgid "Fold Toplevel Nodes"
 msgstr "A legfelső szintű bejegyzések összecsukása"
 
-#: view/kateview.cpp:1448
+#: view/kateview.cpp:1447
 #, kde-format
 msgid "Unfold Toplevel Nodes"
 msgstr "A legfelső szintű bejegyzések kibontása"
 
-#: view/kateview.cpp:1452
+#: view/kateview.cpp:1451
 #, kde-format
 msgid "Toggle Current Node"
 msgstr "Jelenlegi bejegyzés be-/kikapcsolása"
 
-#: view/kateview.cpp:1456
+#: view/kateview.cpp:1455
 #, kde-format
 msgid "Toggle Contained Nodes"
 msgstr "Tartalmazott bejegyzések be-/kikapcsolása"
 
-#: view/kateview.cpp:1465
+#: view/kateview.cpp:1464
 #, kde-format
 msgid "Say current selection or document"
 msgstr "Jelenlegi kijelölés vagy dokumentum"
 
-#: view/kateview.cpp:1475
+#: view/kateview.cpp:1474
 #, kde-format
 msgid "Stop current output"
 msgstr "Jelenlegi kimenet leállítása"
 
-#: view/kateview.cpp:1481
+#: view/kateview.cpp:1480
 #, kde-format
 msgid "Pause current output"
 msgstr "Jelenlegi kimenet szüneteltetése"
 
-#: view/kateview.cpp:1487
+#: view/kateview.cpp:1486
 #, kde-format
 msgid "Resume current output"
 msgstr "Jelenlegi kimenet folytatása"
 
-#: view/kateview.cpp:1658
+#: view/kateview.cpp:1657
 #, kde-format
 msgid "(R/O) %1"
 msgstr "%1 (Í/O)"
 
-#: view/kateview.cpp:1846
+#: view/kateview.cpp:1845
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "CamelCase áthelyezés kikapcsolva"
 
-#: view/kateview.cpp:1848
+#: view/kateview.cpp:1847
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "CamelCase áthelyezés bekapcsolva"
 
-#: view/kateview.cpp:2383
+#: view/kateview.cpp:2382
 #, kde-format
 msgid "Search wrapped"
 msgstr "Körkörös keresés"
 
-#: view/kateview.cpp:3075
+#: view/kateview.cpp:3074
 #, kde-format
 msgid "Open File"
 msgstr "Fájl megnyitása"
 
-#: view/kateview.cpp:3986
+#: view/kateview.cpp:3985
 #, kde-format
 msgid "Align On"
 msgstr "Igazítás ehhez"
 
-#: view/kateview.cpp:3986
+#: view/kateview.cpp:3985
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Igazítási minta:"
 
-#: view/kateview.cpp:5070
+#: view/kateview.cpp:5069
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportálás HTML formátumban"
@@ -8466,17 +8467,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Nincs több karakter a következő könyvjelzőhöz."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3567
+#: vimode/modes/normalvimode.cpp:3566
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Semmi sincs ebben a regiszterben: %1"
 
-#: vimode/modes/normalvimode.cpp:1690
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "„%1” %2, hexa %3, okta %4"
 
-#: vimode/modes/normalvimode.cpp:2533
+#: vimode/modes/normalvimode.cpp:2532
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Nincs beállítva jelölés: %1"
