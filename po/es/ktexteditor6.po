@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-23 00:39+0000\n"
-"PO-Revision-Date: 2025-09-20 17:04+0100\n"
+"PO-Revision-Date: 2025-09-23 14:24+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -5651,10 +5651,9 @@ msgid "Embeddable editor component"
 msgstr "Componente de editor empotrable"
 
 #: utils/kateglobal.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2022 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2025 The Kate Authors"
-msgstr "© 2000-2022 Los autores de Kate"
+msgstr "© 2000-2025 Los autores de Kate"
 
 #: utils/kateglobal.cpp:84
 #, kde-format

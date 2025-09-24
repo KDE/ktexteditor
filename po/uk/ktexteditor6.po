@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-23 00:39+0000\n"
-"PO-Revision-Date: 2025-08-03 16:05+0300\n"
+"PO-Revision-Date: 2025-09-23 09:44+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -5632,10 +5632,9 @@ msgid "Embeddable editor component"
 msgstr "Вмонтована компонента редактора"
 
 #: utils/kateglobal.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2022 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2025 The Kate Authors"
-msgstr "© Автори Kate, 2000–2022"
+msgstr "© Автори Kate, 2000–2025"
 
 #: utils/kateglobal.cpp:84
 #, kde-format
