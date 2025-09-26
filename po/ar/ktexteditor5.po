@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 01:34+0000\n"
-"PO-Revision-Date: 2025-08-23 08:53+0400\n"
+"PO-Revision-Date: 2025-09-25 11:58+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -2352,7 +2352,7 @@ msgstr ""
 #: document/katedocument.cpp:5613
 #, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "لقد عدّل الملفّ '%1' على القرص."
+msgstr "لقد عُدّل الملفّ '%1' على القرص."
 
 #: document/katedocument.cpp:5616
 #, kde-format
