@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-23 00:39+0000\n"
-"PO-Revision-Date: 2025-08-23 08:53+0400\n"
+"PO-Revision-Date: 2025-09-25 11:58+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -2364,12 +2364,12 @@ msgstr ""
 #: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "لقد عدّل الملفّ '%1' على القرص."
+msgstr "لقد عُدّل الملفّ '%1' على القرص."
 
 #: document/katedocument.cpp:5598
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "حذف الملفّ '%1'أو نقل على القرص."
+msgstr "حُذف الملفّ '%1' أو نُقل على القرص."
 
 #: document/katedocument.cpp:5934
 #, kde-format
@@ -5480,10 +5480,9 @@ msgid "Embeddable editor component"
 msgstr "مكوّن محرّر مدمج"
 
 #: utils/kateglobal.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2022 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2025 The Kate Authors"
-msgstr "© 2000-2022 مؤلّفو «كيت»"
+msgstr "© 2000-2025 مؤلّفو «كيت»"
 
 #: utils/kateglobal.cpp:84
 #, kde-format
