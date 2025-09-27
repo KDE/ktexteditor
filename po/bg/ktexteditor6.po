@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-23 00:39+0000\n"
-"PO-Revision-Date: 2025-08-16 22:18+0200\n"
+"PO-Revision-Date: 2025-09-26 15:11+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -5589,10 +5589,9 @@ msgid "Embeddable editor component"
 msgstr "Текстов редактор, който може да се вгражда"
 
 #: utils/kateglobal.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2022 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2025 The Kate Authors"
-msgstr "(c) 2000-2022 авторите на Kate"
+msgstr "(c) 2000-2025 авторите на Kate"
 
 #: utils/kateglobal.cpp:84
 #, kde-format
