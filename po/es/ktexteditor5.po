@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 01:34+0000\n"
-"PO-Revision-Date: 2025-09-20 22:17+0100\n"
+"PO-Revision-Date: 2025-09-29 20:23+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -107,7 +107,7 @@ msgstr "&Ver"
 #: data/katepart5ui.rc:74
 #, kde-format
 msgid "Word Wrap"
-msgstr "Ajuste de palabras"
+msgstr "Ajuste de línea"
 
 #. i18n: ectx: Menu (view_menu_borders)
 #: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:732
@@ -515,7 +515,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:22
 #, kde-format
 msgid "Word wrap:"
-msgstr "Ajuste de palabras:"
+msgstr "Ajuste de línea:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:29
@@ -550,13 +550,13 @@ msgid ""
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
 "<p>Si se marca esta opción, se dibujará una línea vertical en la columna de "
-"cambio de línea, definida en las propiedades de <strong>Edición</strong>.</p>"
+"ajuste de línea, definida en las propiedades de <strong>Edición</strong>.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
 #, kde-format
 msgid "&Draw vertical line at the word wrap column"
-msgstr "&Dibujar una línea vertical en la columna de ajuste de palabras"
+msgstr "&Dibujar una línea vertical en la columna de ajuste de línea"
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
@@ -571,7 +571,7 @@ msgid ""
 "If the Word Wrap option is selected this entry determines the length (in "
 "characters) at which the editor will automatically start a new line."
 msgstr ""
-"Si la opción de «Cambiar de línea» está seleccionada, esta entrada determina "
+"Si la opción de «Ajuste de línea» está seleccionada, esta entrada determina "
 "la longitud (en caracteres) en la que el editor iniciará automáticamente una "
 "línea nueva."
 
@@ -2082,7 +2082,7 @@ msgstr "Ajuste de línea dinámico:"
 #: dialogs/textareaappearanceconfigwidget.ui:323
 #, kde-format
 msgid "Wrap dynamically at static word wrap marker"
-msgstr "Ajuste dinámico en el marcador de ajuste estático de palabras"
+msgstr "Ajustar dinámicamente en la marca de ajuste de línea estático"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
 #: dialogs/textareaappearanceconfigwidget.ui:330
@@ -2095,14 +2095,14 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:337
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr "Indicadores de ajuste de línea dinámico:"
+msgstr "&Indicadores de ajuste de línea dinámico:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:347
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr ""
-"Elija cuándo se deben mostrar los indicadores de ajuste dinámico de línea."
+"Elija cuándo se deben mostrar los indicadores de ajuste de línea dinámico."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:370
@@ -4689,7 +4689,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:254
 #, kde-format
 msgid "Word Wrap Marker"
-msgstr "Marca de ajuste de líneas"
+msgstr "Marca de ajuste de línea"
 
 #: syntax/katethemeconfig.cpp:257
 #, kde-format
@@ -4700,9 +4700,9 @@ msgid ""
 "visually-wrapped lines</dd></dl>"
 msgstr ""
 "<p>Establece el color de las marcas relativas al ajuste de línea:</"
-"p><dl><dt>Ajuste de línea estático</dt><dd>Una línea vertical que muestra la "
+"p><dl><dt>Ajuste de línea estático</dt><dd>Una línea vertical muestra la "
 "columna en la que se partirá el texto</dd><dt>Ajuste de línea dinámico</"
-"dt><dd>Una flecha que se muestra a la izquierda de las líneas partidas "
+"dt><dd>Una flecha se muestra a la izquierda de las líneas partidas "
 "visualmente</dd></dl>"
 
 #: syntax/katethemeconfig.cpp:264
@@ -6219,7 +6219,7 @@ msgstr ""
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
-msgstr "Activar el ajuste dinámico para líneas largas."
+msgstr "Activar el ajuste de línea dinámico para líneas largas."
 
 #: variableeditor/variablelineedit.cpp:172
 #, kde-format
@@ -6394,19 +6394,19 @@ msgstr ""
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
-msgstr "Fijar la columna de ajuste de palabras."
+msgstr "Definir la columna de ajuste de línea."
 
 #: variableeditor/variablelineedit.cpp:339
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
-msgstr "Fijar el color del marcador de ajuste de palabras."
+msgstr "Definir el color del marcador de ajuste de línea."
 
 #: variableeditor/variablelineedit.cpp:344
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
-msgstr "Activar ajuste de palabras al escribir texto."
+msgstr "Activar ajuste de línea al escribir texto."
 
 #: view/katestatusbar.cpp:113
 #, kde-format
@@ -6651,9 +6651,9 @@ msgid ""
 "<br /><br />This is a static word wrap, meaning the document is changed."
 msgstr ""
 "Use esto para ajustar la línea actual (o para reformatear las líneas "
-"seleccionadas como párrafo) para cumplir la preferencia «Ajustar palabras "
-"en» del diálogo de configuración.<br /><br />Se trata de un ajuste de "
-"palabras estático, lo que significa que el documento se modifica."
+"seleccionadas como párrafo) para cumplir la preferencia «Ajuste de línea en» "
+"del diálogo de configuración.<br /><br />Se trata de un ajuste de línea "
+"estático, lo que significa que el documento se modifica."
 
 #: view/kateview.cpp:500
 #, kde-format
@@ -7043,7 +7043,7 @@ msgstr "Indicadores de ajuste de línea dinámico"
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr ""
-"Elegir cuándo se deben mostrar los indicadores de ajuste dinámico de línea"
+"Elegir cuándo se deben mostrar los indicadores de ajuste de línea dinámico"
 
 #: view/kateview.cpp:746
 #, kde-format
