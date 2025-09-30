@@ -625,7 +625,7 @@ msgstr "剪贴板历史记录数量："
 #: dialogs/editconfigwidget.ui:204
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
-msgstr "这决定了在剪切板中所能保留的历史记录的最大数量"
+msgstr "这决定了在剪贴板中所能保留的历史记录的最大数量"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:226
@@ -5360,10 +5360,9 @@ msgid "Embeddable editor component"
 msgstr "可嵌入的编辑器组件"
 
 #: utils/kateglobal.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2022 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2025 The Kate Authors"
-msgstr "(c) 2000-2022 Kate 全体开发人员"
+msgstr "(c) 2000-2025 The Kate Authors"
 
 #: utils/kateglobal.cpp:84
 #, kde-format
