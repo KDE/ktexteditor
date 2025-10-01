@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-23 00:39+0000\n"
-"PO-Revision-Date: 2025-09-29 20:00+0200\n"
+"PO-Revision-Date: 2025-09-29 22:35+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -2530,7 +2530,7 @@ msgstr "VI: SUSTITUIR"
 #: inputmode/kateviinputmode.cpp:146
 #, kde-format
 msgid "vi-mode"
-msgstr "modo vi"
+msgstr "Modo vi"
 
 #: inputmode/kateviinputmode.cpp:159
 #, kde-format
@@ -3700,22 +3700,22 @@ msgstr "Coincidir con cualquier carácter excepto saltos de línea (por omisión
 #: search/katesearchbar.cpp:1162
 #, kde-format
 msgid "One or more occurrences"
-msgstr "Una o más ocurrencias"
+msgstr "Una o más coincidencias"
 
 #: search/katesearchbar.cpp:1163
 #, kde-format
 msgid "Zero or more occurrences"
-msgstr "Cero o más ocurrencias"
+msgstr "Cero o más coincidencias"
 
 #: search/katesearchbar.cpp:1164
 #, kde-format
 msgid "Zero or one occurrences"
-msgstr "Cero o una ocurrencias"
+msgstr "Cero o una coincidencias"
 
 #: search/katesearchbar.cpp:1167
 #, kde-format
 msgid "<a> through <b> occurrences"
-msgstr "<a> a través de <b> las ocurrencias"
+msgstr "<a> a través de <b> las coincidencias"
 
 #: search/katesearchbar.cpp:1173
 #, kde-format
@@ -7074,22 +7074,22 @@ msgstr ""
 #: view/kateview.cpp:703
 #, kde-format
 msgid "Go to Previous Modified Line"
-msgstr "Ir a la anterior línea modificada"
+msgstr "Ir a la línea modificada anterior"
 
 #: view/kateview.cpp:704
 #, kde-format
 msgid "Move upwards to the previous modified line."
-msgstr "Mover hacia arriba hasta la anterior línea modificada."
+msgstr "Mover hacia arriba hasta la línea modificada anterior."
 
 #: view/kateview.cpp:709
 #, kde-format
 msgid "Go to Next Modified Line"
-msgstr "Ir a la siguiente línea modificada"
+msgstr "Ir a la línea modificada siguiente"
 
 #: view/kateview.cpp:710
 #, kde-format
 msgid "Move downwards to the next modified line."
-msgstr "Mover hacia abajo hasta la siguiente línea modificada."
+msgstr "Mover hacia abajo hasta la línea modificada siguiente."
 
 #: view/kateview.cpp:714
 #, kde-format
@@ -7493,7 +7493,7 @@ msgstr "Marca la palabra seleccionada como omitida."
 #: view/kateview.cpp:944
 #, kde-format
 msgid "Find and Select All Occurrences"
-msgstr "Encontrar y seleccionar todas las ocurrencias"
+msgstr "Encontrar y seleccionar todas las coincidencias"
 
 #: view/kateview.cpp:946
 #, kde-format
