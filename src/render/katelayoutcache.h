@@ -8,8 +8,6 @@
 #ifndef KATELAYOUTCACHE_H
 #define KATELAYOUTCACHE_H
 
-#include <QPair>
-
 #include <ktexteditor/range.h>
 
 #include "katetextlayout.h"
