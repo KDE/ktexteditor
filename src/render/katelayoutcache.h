@@ -25,7 +25,7 @@ public:
 
     void clear();
 
-    void insert(int realLine, KateLineLayout *lineLayoutPtr);
+    void insert(KateLineLayout *lineLayoutPtr);
 
     void relayoutLines(int startRealLine, int endRealLine);
 
@@ -33,11 +33,8 @@ public:
 
     KateLineLayout *find(int i);
 
-    typedef std::pair<int, KateLineLayout *> LineLayoutPair;
-
 private:
-    typedef std::vector<LineLayoutPair> LineLayoutMap;
-    LineLayoutMap m_lineLayouts;
+    std::vector<KateLineLayout *> m_lineLayouts;
     std::pmr::unsynchronized_pool_resource &m_allocator;
 };
 

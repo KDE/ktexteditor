@@ -16,11 +16,17 @@ namespace
 {
 bool enableLayoutCache = false;
 
-bool lessThan(const KateLineLayoutMap::LineLayoutPair &lhs, const KateLineLayoutMap::LineLayoutPair &rhs)
+// for lower_bound
+bool lessThan(KateLineLayout *lhs, int line)
 {
-    return lhs.first < rhs.first;
+    return lhs->line() < line;
 }
 
+// for upper_bound
+bool lessThan2(int line, KateLineLayout *lhs)
+{
+    return line < lhs->line();
+}
 }
 
 // BEGIN KateLineLayoutMap
@@ -33,8 +39,8 @@ KateLineLayoutMap::KateLineLayoutMap(std::pmr::unsynchronized_pool_resource &all
 void KateLineLayoutMap::clear()
 {
     for (auto l : m_lineLayouts) {
-        l.second->~KateLineLayout();
-        m_allocator.deallocate(l.second, sizeof(KateLineLayout), alignof(KateLineLayout));
+        l->~KateLineLayout();
+        m_allocator.deallocate(l, sizeof(KateLineLayout), alignof(KateLineLayout));
     }
 
     const auto numLayouts = m_lineLayouts.size();
@@ -45,38 +51,37 @@ void KateLineLayoutMap::clear()
     }
 }
 
-void KateLineLayoutMap::insert(int realLine, KateLineLayout *lineLayoutPtr)
+void KateLineLayoutMap::insert(KateLineLayout *lineLayoutPtr)
 {
-    auto it = std::upper_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, nullptr), lessThan);
-    m_lineLayouts.insert(it, LineLayoutPair(realLine, lineLayoutPtr));
+    auto it = std::upper_bound(m_lineLayouts.begin(), m_lineLayouts.end(), lineLayoutPtr->line(), lessThan2);
+    m_lineLayouts.insert(it, lineLayoutPtr);
 }
 
 void KateLineLayoutMap::relayoutLines(int startRealLine, int endRealLine)
 {
-    auto start = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(startRealLine, nullptr), lessThan);
-    auto end = std::upper_bound(start, m_lineLayouts.end(), LineLayoutPair(endRealLine, nullptr), lessThan);
+    auto start = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), startRealLine, lessThan);
+    auto end = std::upper_bound(start, m_lineLayouts.end(), endRealLine, lessThan2);
 
     while (start != end) {
-        (*start).second->layoutDirty = true;
+        (*start)->layoutDirty = true;
         ++start;
     }
 }
 
 void KateLineLayoutMap::slotEditDone(KateRenderer *renderer, int fromLine, int toLine, int shiftAmount, std::vector<KateTextLayout> &textLayouts)
 {
-    auto start = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(fromLine, nullptr), lessThan);
-    auto end = std::upper_bound(start, m_lineLayouts.end(), LineLayoutPair(toLine, nullptr), lessThan);
+    auto start = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), fromLine, lessThan);
+    auto end = std::upper_bound(start, m_lineLayouts.end(), toLine, lessThan2);
 
     if (shiftAmount != 0) {
-        for (auto it = end; it != m_lineLayouts.end(); ++it) {
-            (*it).first += shiftAmount;
-            (*it).second->setLine(renderer->folding(), (*it).second->line() + shiftAmount);
+        for (auto l : std::span(end, m_lineLayouts.end())) {
+            l->setLine(renderer->folding(), l->line() + shiftAmount);
         }
 
         for (auto it = start; it != end; ++it) {
-            (*it).second->clear();
+            (*it)->clear();
             for (auto &tl : textLayouts) {
-                if (tl.kateLineLayout() == it->second) {
+                if (tl.kateLineLayout() == *it) {
                     // Invalidate the layout, this will mark it as dirty
                     tl = KateTextLayout::invalid();
                 }
@@ -84,22 +89,22 @@ void KateLineLayoutMap::slotEditDone(KateRenderer *renderer, int fromLine, int t
         }
 
         for (auto l : std::span(start, end)) {
-            l.second->~KateLineLayout();
-            m_allocator.deallocate(l.second, sizeof(KateLineLayout), alignof(KateLineLayout));
+            l->~KateLineLayout();
+            m_allocator.deallocate(l, sizeof(KateLineLayout), alignof(KateLineLayout));
         }
         m_lineLayouts.erase(start, end);
     } else {
         for (auto it = start; it != end; ++it) {
-            (*it).second->layoutDirty = true;
+            (*it)->layoutDirty = true;
         }
     }
 }
 
 KateLineLayout *KateLineLayoutMap::find(int i)
 {
-    const auto it = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(i, nullptr), lessThan);
-    if (it != m_lineLayouts.end() && it->first == i) {
-        return it->second;
+    const auto it = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), i, lessThan);
+    if (it != m_lineLayouts.end() && (*it)->line() == i) {
+        return *it;
     }
     return nullptr;
 }
@@ -271,7 +276,7 @@ KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
     }
 
     // transfer ownership to m_lineLayouts
-    m_lineLayouts.insert(realLine, l);
+    m_lineLayouts.insert(l);
     return l;
 }
 
