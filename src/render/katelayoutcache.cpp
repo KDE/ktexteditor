@@ -78,17 +78,14 @@ void KateLineLayoutMap::slotEditDone(KateRenderer *renderer, int fromLine, int t
             l->setLine(renderer->folding(), l->line() + shiftAmount);
         }
 
-        for (auto it = start; it != end; ++it) {
-            (*it)->clear();
+        for (auto l : std::span(start, end)) {
+            l->clear();
             for (auto &tl : textLayouts) {
-                if (tl.kateLineLayout() == *it) {
+                if (tl.kateLineLayout() == l) {
                     // Invalidate the layout, this will mark it as dirty
                     tl = KateTextLayout::invalid();
                 }
             }
-        }
-
-        for (auto l : std::span(start, end)) {
             l->~KateLineLayout();
             m_allocator.deallocate(l, sizeof(KateLineLayout), alignof(KateLineLayout));
         }
