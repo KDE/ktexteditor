@@ -104,6 +104,11 @@ void KateScriptManager::collect()
     m_languageToIndenters.clear();
     m_indentationScriptMap.clear();
 
+    /**
+     * When testing, we don't need to load stuff outside this repo
+     */
+    const bool isTestMode = QStandardPaths::isTestModeEnabled();
+
     // now, we search all kinds of known scripts
     for (const auto &type : {QLatin1String("indentation"), QLatin1String("commands")}) {
         // basedir for filesystem lookup
@@ -112,16 +117,20 @@ void KateScriptManager::collect()
         QStringList dirs;
 
         // first writable locations, e.g. stuff the user has provided
-        dirs += QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + basedir;
+        if (!isTestMode) {
+            dirs += QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + basedir;
+        }
 
         // then resources, e.g. the stuff we ship with us
         dirs.append(QLatin1String(":/ktexteditor/script/") + type);
 
         // then all other locations, this includes global stuff installed by other applications
         // this will not allow global stuff to overwrite the stuff we ship in our resources to allow to install a more up-to-date ktexteditor lib locally!
-        const auto genericDataDirs = QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
-        for (const QString &dir : genericDataDirs) {
-            dirs.append(dir + basedir);
+        if (!isTestMode) {
+            const auto genericDataDirs = QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
+            for (const QString &dir : genericDataDirs) {
+                dirs.append(dir + basedir);
+            }
         }
 
         QStringList list;

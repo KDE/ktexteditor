@@ -946,11 +946,7 @@ int main(int ac, char **av)
     query.xdgDataDirs = qgetenv("XDG_DATA_DIRS");
 
     qputenv("QT_QPA_PLATFORM", "offscreen"); // equivalent to `-platform offscreen` in cli
-    // Set an unknown folder for XDG_DATA_DIRS so that KateScriptManager::collect()
-    // does not retrieve system scripts.
-    // If the variable is empty, QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation)
-    // returns /usr/local/share and /usr/share
-    qputenv("XDG_DATA_DIRS", "/XDG_DATA_DIRS_unknown_folder");
+
     QStandardPaths::setTestModeEnabled(true);
     originalHandler = qInstallMessageHandler(filterMessageOutput);
 
