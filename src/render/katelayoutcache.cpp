@@ -62,9 +62,8 @@ void KateLineLayoutMap::relayoutLines(int startRealLine, int endRealLine)
     auto start = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), startRealLine, lessThan);
     auto end = std::upper_bound(start, m_lineLayouts.end(), endRealLine, lessThan2);
 
-    while (start != end) {
-        (*start)->layoutDirty = true;
-        ++start;
+    for (auto l : std::span(start, end)) {
+        l->layoutDirty = true;
     }
 }
 
@@ -91,8 +90,8 @@ void KateLineLayoutMap::slotEditDone(KateRenderer *renderer, int fromLine, int t
         }
         m_lineLayouts.erase(start, end);
     } else {
-        for (auto it = start; it != end; ++it) {
-            (*it)->layoutDirty = true;
+        for (auto l : std::span(start, end)) {
+            l->layoutDirty = true;
         }
     }
 }
