@@ -385,7 +385,7 @@ void initCommandLineParser(QCoreApplication &app, QCommandLineParser &parser)
         // paths
         // @{
         {{u"s"_s, u"script"_s},
-         tr("Shorcut for --command=${script}/commands --command=${script}/indentation --library=${script}/library --file=${script}/files."),
+         tr("Shortcut for --command=${script}/commands --command=${script}/indentation --library=${script}/library --file=${script}/files."),
          translatedFolder},
         {{u"c"_s, u"command"_s}, tr("Adds a search folder for loadScript()."), translatedFolder},
         {{u"l"_s, u"library"_s}, tr("Adds a search folder for require() (KTextEditor JS API)."), translatedFolder},
@@ -419,7 +419,7 @@ void initCommandLineParser(QCoreApplication &app, QCommandLineParser &parser)
          translatedOption},
         {{u"H"_s, u"hidden-name"_s}, tr("Do not display test names.")},
         {{u"p"_s, u"parade"_s}, tr("Displays all tests run or skipped. By default, only error tests are displayed.")},
-        {{u"V"_s, u"verbose"_s}, tr("Displays input and ouput on each tests. By default, only error tests are displayed.")},
+        {{u"V"_s, u"verbose"_s}, tr("Displays input and output on each test. By default, only error tests are displayed.")},
         {{u"f"_s, u"format"_s},
          tr("Defines the document text display format:\n"
             "- raw: no transformation\n"
@@ -505,7 +505,7 @@ void initCommandLineParser(QCoreApplication &app, QCommandLineParser &parser)
         {u"color-debug-marker"_s, tr("Color for 'DEBUG:' and 'PRINT:' prefixes inserted with debug(), print() and printSep()."), translatedColors},
         {u"color-debug-message"_s, tr("Color for message with debug()."), translatedColors},
         {u"color-test-name"_s, tr("Color for name of the test."), translatedColors},
-        {u"color-program"_s, tr("Color for program paramater in cmd() / test() and function name in stacktrace."), translatedColors},
+        {u"color-program"_s, tr("Color for program parameter in cmd() / test() and function name in stacktrace."), translatedColors},
         {u"color-file"_s, tr("Color for file name."), translatedColors},
         {u"color-line"_s, tr("Color for line number."), translatedColors},
         {u"color-block-selection-info"_s, tr("Color for [blockSelection=...] in a check."), translatedColors},

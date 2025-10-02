@@ -368,7 +368,7 @@ public:
      * Paint the background of a line
      *
      * Split off from the main @ref paintTextLine method to make it smaller. As it's being
-     * called only once per line it shouldn't noticably affect performance and it
+     * called only once per line it shouldn't noticeably affect performance and it
      * helps readability a LOT.
      *
      * @param paint           painter to use

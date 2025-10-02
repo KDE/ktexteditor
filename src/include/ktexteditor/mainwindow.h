@@ -267,7 +267,7 @@ public:
 
     /*!
      * Create a new toolview with unique \a identifier at side \a pos
-     * with \a icon and caption \a text. Use the returned widget to embedd
+     * with \a icon and caption \a text. Use the returned widget to embed
      * your widgets.
      *
      * \a plugin is the plugin which owns this tool view

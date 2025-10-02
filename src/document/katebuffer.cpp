@@ -405,7 +405,7 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
 
 KateHighlighting::Foldings KateBuffer::computeFoldings(int line)
 {
-    // no hightlighting, no work
+    // no highlighting, no work
     KateHighlighting::Foldings foldings;
     if (!m_highlight || m_highlight->noHighlighting()) {
         return foldings;

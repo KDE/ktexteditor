@@ -78,7 +78,7 @@ public:
     void add(QLayoutItem *item, KTextEditor::Message::MessagePosition pos);
 
 private:
-    void addItem(QLayoutItem *item) override; // never called publically
+    void addItem(QLayoutItem *item) override; // never called publicly
 
     struct ItemWrapper {
         ItemWrapper() = default;

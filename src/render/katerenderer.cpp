@@ -512,7 +512,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
     KTextEditor::Cursor currentPosition = KTextEditor::Cursor(line, 0);
     const KTextEditor::Cursor endPosition = KTextEditor::Cursor(line + 1, 0);
 
-    // Background formats have lower priority so they get overriden by selection
+    // Background formats have lower priority so they get overridden by selection
     const KTextEditor::Range selectionRange = m_view->selectionRange();
 
     // Main iterative loop.  This walks through each set of highlighting ranges, and stops each

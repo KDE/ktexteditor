@@ -55,7 +55,7 @@ you need to implement two interfacing classes:
 The latter corresponds to top level windows in your application (it's ok, if your application only supports a single
 toplevel window), with the assumption being that several document- and/or tool-windows can existing in each main window.
 
-The two classes are really just a thin layer to dispatch from API to be used in plugins to the appropiate
+The two classes are really just a thin layer to dispatch from API to be used in plugins to the appropriate
 functionality in your application. For best runtime compatibility even across different version of KTextEditor, this is
 implemented using Qt slots. E.g. KTextEditor::MainWindow::activeView() is defined as:
 

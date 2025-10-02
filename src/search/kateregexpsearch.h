@@ -100,7 +100,7 @@ private:
      * set to true.
      *
      * "\s" is treated specially so that it doesn't match new line characters; this
-     * is achieved by replacing any occurences of "\s" with "[ \t]" in the search
+     * is achieved by replacing any occurrences of "\s" with "[ \t]" in the search
      * \p pattern.
      *
      * \param pattern the regular expression search pattern

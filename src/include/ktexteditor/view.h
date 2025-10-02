@@ -703,7 +703,7 @@ public:
     /*!
      * Get the screen coordinates (x, y) of the cursor position in pixels.
      * The returned coordinates are relative to the View such that (0, 0)
-     * represents tht top-left corner of the View.
+     * represents the top-left corner of the View.
      *
      * If global screen coordinates are required, e.g. for showing a QToolTip,
      * convert the view coordinates to global screen coordinates as follows:

@@ -275,7 +275,7 @@ void TextRange::setFeedback(KTextEditor::MovingRangeFeedback *feedback)
 
 void TextRange::setAttributeOnlyForViews(bool onlyForViews)
 {
-    // just set the value, no need to trigger updates, printing is not interruptable
+    // just set the value, no need to trigger updates, printing is not interruptible
     m_attributeOnlyForViews = onlyForViews;
 }
 

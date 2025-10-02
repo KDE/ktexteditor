@@ -162,7 +162,7 @@ public:
         QString debugMsg = error;
         /// Name of the test passed to testCase and co.
         QString testName;
-        /// Program paramater in \c cmd() / \c test(). Function name in stacktrace.
+        /// Program parameter in \c cmd() / \c test(). Function name in stacktrace.
         QString program;
         QString fileName;
         QString lineNumber;
@@ -372,7 +372,7 @@ public:
     Q_INVOKABLE void setConfig(const QJSValue &config);
 
     /**
-     * Reset the configuraion to the original state.
+     * Reset the configuration to the original state.
      */
     Q_INVOKABLE void resetConfig();
 

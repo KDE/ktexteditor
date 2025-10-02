@@ -336,8 +336,8 @@ export function toComparableString(value) {
 }
 
 function addFunctionCallExprFragments(fn, args, codeFragments, ancestors, mustBeStable) {
-    // the Fonction object has a name, but may be empty
-    const name = (typeof fn === 'function') ? (fn.name || '/*Unamed Function*/')
+    // the Function object has a name, but may be empty
+    const name = (typeof fn === 'function') ? (fn.name || '/*Unnamed Function*/')
         : (fn === undefined) ? 'undefined'
         : (fn === null) ? 'null'
         : fn.toString();
@@ -579,7 +579,7 @@ function toProgram(command) {
     if (typeof command === 'function') {
         return [
             command,
-            () => command.name ? command.name + '()' : '/*Unamed Function*/',
+            () => command.name ? command.name + '()' : '/*Unnamed Function*/',
         ];
     }
 
@@ -848,7 +848,7 @@ function testCommand(command, expectedOutput, msgOrExpectedResultInfo, xcheck) {
         : (blockSelection == 1);
 
     /*
-     * Init exepected output
+     * Init expected output
      */
     if (expectedOutput === EXPECTED_OUTPUT_AS_INPUT) {
         internal.copyInputToExpectedOutput(blockSelectionOutput);

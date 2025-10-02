@@ -44,7 +44,7 @@ class View;
  * \li When more than one variable exists,TAB and SHIFT TAB can be used to navigate
  *     to the next/previous variable.
  * \li When a variable occurs more than once in the template, edits to any of the
- *     occurrences will be mirroed to the other ones.
+ *     occurrences will be mirrored to the other ones.
  * \li When ESC is pressed, the template handler closes.
  * \li When ALT + RETURN is pressed and a \c ${cursor} variable
  *     exists in the template,the cursor will be placed there. Else the cursor will

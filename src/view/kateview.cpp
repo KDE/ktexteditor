@@ -2285,7 +2285,7 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
     }
 
     // Move our primary to cursor to this match and select it
-    // Ensure we don't create occurence highlights
+    // Ensure we don't create occurrence highlights
     setSelection(matches.constFirst());
     setCursorPosition(matches.constFirst().end());
     clearHighlights();
@@ -2345,7 +2345,7 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
         }
     } while (matches.first().isValid());
 
-    // ensure to clear occurence highlights
+    // ensure to clear occurrence highlights
     if (!resultRanges.empty()) {
         clearHighlights();
     }

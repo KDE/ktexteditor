@@ -47,7 +47,7 @@ Q_SIGNALS:
     void changed();
 
 private:
-    // multiple shemas may be edited. Hence, we need one ColorList for each schema
+    // multiple schemas may be edited. Hence, we need one ColorList for each schema
     std::map<QString, QList<KateColorItem>> m_schemas;
     QString m_currentSchema;
     KateColorTreeWidget *ui;

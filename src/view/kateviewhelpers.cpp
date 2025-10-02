@@ -605,7 +605,7 @@ void KateScrollBar::updatePixmap()
     // reusable buffer for color->range
     QList<KateScrollBar::ColumnRangeWithColor> colorRangesForLine;
     const QPen defaultTextPen = QPen(defaultTextColor, 1);
-    // resusable buffer for line ranges;
+    // reusable buffer for line ranges;
     QList<Kate::TextRange *> decorations;
 
     QPainter painter;
@@ -2212,7 +2212,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                             if (anyFolded) {
                                 paintTriangle(p, foldingColor, lnX, y, m_foldingAreaWidth, h, false);
                             } else {
-                                // Don't try to use currentLineNumberColor, the folded icon gets also not highligted
+                                // Don't try to use currentLineNumberColor, the folded icon also gets unhighlighted
                                 paintTriangle(p, lineNumberColor, lnX, y, m_foldingAreaWidth, h, true);
                             }
                         }

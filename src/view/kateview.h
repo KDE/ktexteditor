@@ -314,7 +314,7 @@ public:
 public:
     /**
      * Try to fold an unfolded range starting at @p line
-     * @return the new folded range on success, otherwise an unvalid range
+     * @return the new folded range on success, otherwise an invalid range
      */
     KTextEditor::Range foldLine(int line);
 
@@ -1169,7 +1169,7 @@ public:
     }
 
     /**
-     * Toogle status bar, e.g. create or remove it
+     * Toggle status bar, e.g. create or remove it
      */
     void toggleStatusBar();
 

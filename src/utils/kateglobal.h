@@ -434,7 +434,7 @@ private Q_SLOTS:
     void speechEngineUserDestoyed();
 
     /**
-     * Speech error occured.
+     * Speech error occurred.
      * @param view view to signal error to
      * @param errorString error to show
      */

@@ -177,7 +177,7 @@ void TextBlock::wrapLine(const KTextEditor::Cursor position, int fixStartLinesSt
 
 void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLinesStartIndex)
 {
-    // two possiblities: either first line of this block or later line
+    // two possibilities: either first line of this block or later line
     if (line == 0) {
         // we need previous block with at least one line
         Q_ASSERT(previousBlock);

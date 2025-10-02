@@ -120,7 +120,7 @@ private:
         }
 
         /**
-         * Reference counter, how often ist this entry referenced from the outside?
+         * Reference counter, how often is this entry referenced from the outside?
          */
         unsigned int referenceCounter = 0;
 

@@ -807,7 +807,7 @@ QString KateRegExpSearch::repairPattern(const QString &pattern, bool &stillMulti
 
                 case L'n':
                     stillMultiLine = true;
-                    // FALLTROUGH
+                    // FALLTHROUGH
                     Q_FALLTHROUGH();
 
                 default:
@@ -867,7 +867,7 @@ QString KateRegExpSearch::repairPattern(const QString &pattern, bool &stillMulti
 
                 case L'n':
                     stillMultiLine = true;
-                    // FALLTROUGH
+                    // FALLTHROUGH
                     Q_FALLTHROUGH();
                 default:
                     // copy "\?" unmodified

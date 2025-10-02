@@ -363,8 +363,8 @@ There are 5 special constants:
 - `loadModule(path)`: load a javascript file as a module.
 - `paste(str)`: paste `str` to the current position.
 
-- `kdb.type(str)`: insert `str` into current documment. To be used as a command: `cmd([kbd.type, str], ...)`
-- `kdb.enter()`: insert a new line into current documment. To be used as a command: `cmd(enter, ...)`
+- `kdb.type(str)`: insert `str` into current document. To be used as a command: `cmd([kbd.type, str], ...)`
+- `kdb.enter()`: insert a new line into current document. To be used as a command: `cmd(enter, ...)`
 - `keys(str) -> kdb.enter | [kbd.type, str]`: To be used as a command: `cmd(keys(str), ...)`
 
 For full documentation, see the functions and classes exported from `testframework.js` (those prefixed with `export`).

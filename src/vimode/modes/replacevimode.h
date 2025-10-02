@@ -49,12 +49,12 @@ private:
      */
     bool commandInsertFromLine(int offset);
 
-    // Auxiliar methods for moving the cursor in replace mode.
+    // Auxiliary methods for moving the cursor in replace mode.
 
     bool commandMoveOneWordLeft();
     bool commandMoveOneWordRight();
 
-    // Auxiliar methods for removing modifications.
+    // Auxiliary methods for removing modifications.
 
     void backspace();
     void commandBackWord();

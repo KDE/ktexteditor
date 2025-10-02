@@ -1196,7 +1196,7 @@ public:
  * when you press Ctrl+Shift+Left/Right for selection and Ctrl+Del
  * Ctrl + backspace for deletion.
  *
- * It is absoloutely essential that if you move through a word in 'n'
+ * It is absolutely essential that if you move through a word in 'n'
  * jumps, you should be able to move back with exactly same 'n' movements
  * which you made when moving forward. Example:
  *
@@ -1232,7 +1232,7 @@ public:
  * back.
  *
  * If a word has multiple leading underscores: snake___case, the underscores will
- * be considered part of the word and thus a jump wil land us "after" the last underscore.
+ * be considered part of the word and thus a jump will land us "after" the last underscore.
  *
  * There are some other variations in this, for example Capitalized words, or identifiers
  * with numbers in betweens. For such cases, All capitalized words are skipped in one go
@@ -1258,11 +1258,11 @@ public:
  *
  * And of course, the reverse will be exact opposite.
  *
- * Similar to PHP, with CSS Colors, jump will break on '#' charachter
+ * Similar to PHP, with CSS Colors, jump will break on '#' character
  *
  * Please see the test cases testWordMovementSingleRow() for more examples/data.
  *
- * It is absoloutely essential to know that this class *only* gets triggered for
+ * It is absolutely essential to know that this class *only* gets triggered for
  * cursor movement if we are in a word.
  *
  * Note to bugfixer: If some bug occurs, before changing anything please add a test

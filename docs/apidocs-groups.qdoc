@@ -129,7 +129,7 @@ The following classes are a list of all available Editor extension interfaces.
 \target kte_group_plugin_extensions
 \title Plugin Extension Interfaces
 A KTextEditor Plugin can use extension interfaces, but it does not \e need
-to. So as a KTextEditor implementator you have to cast the Plugin to the desired
+to. So as a KTextEditor implementer you have to cast the Plugin to the desired
 interface and then check, whether the cast returns NULL or the valid interface.
 
 Use qobject_cast to cast a Plugin \e plugin into the
@@ -160,7 +160,7 @@ Use qobject_cast to cast a Plugin \e plugin into the
 \title Command Extension Interfaces
 
 A KTextEditor command-line Command can use extension interfaces, but it does not
-\e need to. So as a KTextEditor implementator you have to cast the Command to
+\e need to. So as a KTextEditor implementer you have to cast the Command to
 the desired interface and then check, whether the cast returns NULL or the valid
 interface.
 

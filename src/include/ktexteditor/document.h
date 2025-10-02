@@ -659,7 +659,7 @@ public:
         EditingTransaction(const EditingTransaction &) = delete;
 
         /*!
-         * No assignment operator, no copying around editing transations.
+         * No assignment operator, no copying around editing transactions.
          */
         EditingTransaction &operator=(const EditingTransaction &) = delete;
 

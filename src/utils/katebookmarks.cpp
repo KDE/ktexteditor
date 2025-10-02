@@ -144,7 +144,7 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
         // Get text in this particular line in a QString
         QFontMetrics fontMetrics(menu.fontMetrics());
         QString bText = fontMetrics.elidedText(m_view->doc()->line(lineNo), Qt::ElideRight, fontMetrics.maxWidth() * 32);
-        bText.replace(re, QStringLiteral("&&")); // kill undesired accellerators!
+        bText.replace(re, QStringLiteral("&&")); // kill undesired accelerators!
         bText.replace(QLatin1Char('\t'), QLatin1Char(' ')); // kill tabs, as they are interpreted as shortcuts
 
         QAction *before = nullptr;

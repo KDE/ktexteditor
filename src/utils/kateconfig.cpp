@@ -253,7 +253,7 @@ KateGlobalConfig::KateGlobalConfig()
                                    return isEncodingOk(value.toString());
                                }));
 
-    // finalize the entries, e.g. hashs them
+    // finalize the entries, e.g. hashes them
     finalizeConfigEntries();
 
     // init with defaults from config or really hardcoded ones
@@ -366,7 +366,7 @@ KateDocumentConfig::KateDocumentConfig()
     // .editorconfig
     addConfigEntry(ConfigEntry(UseEditorConfig, "Use Editor Config", QString(), true));
 
-    // finalize the entries, e.g. hashs them
+    // finalize the entries, e.g. hashes them
     finalizeConfigEntries();
 
     // init with defaults from config or really hardcoded ones
