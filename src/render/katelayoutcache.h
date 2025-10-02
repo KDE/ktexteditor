@@ -14,14 +14,18 @@
 
 #include "katetextlayout.h"
 
+#include <memory_resource>
+
 class KateRenderer;
 
 class KateLineLayoutMap
 {
 public:
+    KateLineLayoutMap(std::pmr::unsynchronized_pool_resource &allocator);
+
     void clear();
 
-    void insert(int realLine, std::unique_ptr<KateLineLayout> lineLayoutPtr);
+    void insert(int realLine, KateLineLayout *lineLayoutPtr);
 
     void relayoutLines(int startRealLine, int endRealLine);
 
@@ -29,11 +33,12 @@ public:
 
     KateLineLayout *find(int i);
 
-    typedef std::pair<int, std::unique_ptr<KateLineLayout>> LineLayoutPair;
+    typedef std::pair<int, KateLineLayout *> LineLayoutPair;
 
 private:
     typedef std::vector<LineLayoutPair> LineLayoutMap;
     LineLayoutMap m_lineLayouts;
+    std::pmr::unsynchronized_pool_resource &m_allocator;
 };
 
 /**
@@ -135,6 +140,8 @@ private:
 
 private:
     KateRenderer *m_renderer;
+
+    std::pmr::unsynchronized_pool_resource m_allocator;
 
     /**
      * The master cache of all line layouts.

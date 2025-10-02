@@ -25,15 +25,30 @@ bool lessThan(const KateLineLayoutMap::LineLayoutPair &lhs, const KateLineLayout
 
 // BEGIN KateLineLayoutMap
 
-void KateLineLayoutMap::clear()
+KateLineLayoutMap::KateLineLayoutMap(std::pmr::unsynchronized_pool_resource &allocator)
+    : m_allocator(allocator)
 {
-    m_lineLayouts.clear();
 }
 
-void KateLineLayoutMap::insert(int realLine, std::unique_ptr<KateLineLayout> lineLayoutPtr)
+void KateLineLayoutMap::clear()
+{
+    for (auto l : m_lineLayouts) {
+        l.second->~KateLineLayout();
+        m_allocator.deallocate(l.second, sizeof(KateLineLayout), alignof(KateLineLayout));
+    }
+
+    const auto numLayouts = m_lineLayouts.size();
+    m_lineLayouts.clear();
+    // If we cleared a lot of layouts, release memory
+    if (numLayouts > 1500) {
+        m_allocator.release();
+    }
+}
+
+void KateLineLayoutMap::insert(int realLine, KateLineLayout *lineLayoutPtr)
 {
     auto it = std::upper_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, nullptr), lessThan);
-    m_lineLayouts.insert(it, LineLayoutPair(realLine, std::move(lineLayoutPtr)));
+    m_lineLayouts.insert(it, LineLayoutPair(realLine, lineLayoutPtr));
 }
 
 void KateLineLayoutMap::relayoutLines(int startRealLine, int endRealLine)
@@ -61,13 +76,17 @@ void KateLineLayoutMap::slotEditDone(KateRenderer *renderer, int fromLine, int t
         for (auto it = start; it != end; ++it) {
             (*it).second->clear();
             for (auto &tl : textLayouts) {
-                if (tl.kateLineLayout() == it->second.get()) {
+                if (tl.kateLineLayout() == it->second) {
                     // Invalidate the layout, this will mark it as dirty
                     tl = KateTextLayout::invalid();
                 }
             }
         }
 
+        for (auto l : std::span(start, end)) {
+            l.second->~KateLineLayout();
+            m_allocator.deallocate(l.second, sizeof(KateLineLayout), alignof(KateLineLayout));
+        }
         m_lineLayouts.erase(start, end);
     } else {
         for (auto it = start; it != end; ++it) {
@@ -80,7 +99,7 @@ KateLineLayout *KateLineLayoutMap::find(int i)
 {
     const auto it = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(i, nullptr), lessThan);
     if (it != m_lineLayouts.end() && it->first == i) {
-        return it->second.get();
+        return it->second;
     }
     return nullptr;
 }
@@ -89,6 +108,8 @@ KateLineLayout *KateLineLayoutMap::find(int i)
 KateLayoutCache::KateLayoutCache(KateRenderer *renderer, QObject *parent)
     : QObject(parent)
     , m_renderer(renderer)
+    , m_allocator(std::pmr::pool_options{.largest_required_pool_block = sizeof(KateLineLayout)})
+    , m_lineLayouts(m_allocator)
 {
     Q_ASSERT(m_renderer);
 
@@ -235,7 +256,9 @@ KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
         return nullptr;
     }
 
-    KateLineLayout *l = new KateLineLayout;
+    void *memory = m_allocator.allocate(sizeof(KateLineLayout), alignof(KateLineLayout));
+    auto *l = new (memory) KateLineLayout;
+
     l->setLine(m_renderer->folding(), realLine, virtualLine);
 
     // because it may not have the syntax highlighting applied, allow layoutLine to use plainLines...
@@ -248,7 +271,7 @@ KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
     }
 
     // transfer ownership to m_lineLayouts
-    m_lineLayouts.insert(realLine, std::unique_ptr<KateLineLayout>(l));
+    m_lineLayouts.insert(realLine, l);
     return l;
 }
 
@@ -449,9 +472,7 @@ void KateLayoutCache::clear()
 void KateLayoutCache::setViewWidth(int width)
 {
     m_viewWidth = width;
-    m_lineLayouts.clear();
-    m_textLayouts.clear();
-    m_startPos = KTextEditor::Cursor(-1, -1);
+    clear();
 }
 
 bool KateLayoutCache::wrap() const
