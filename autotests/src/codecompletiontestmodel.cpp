@@ -119,14 +119,9 @@ QVariant CodeCompletionTestModel::data(const QModelIndex &index, int role) const
 
     case CompletionRole: {
         CompletionProperties p;
-        if (index.row() < rowCount() / 2) {
-            p |= Function;
-        } else {
-            p |= Variable;
-        }
         switch (index.row() % 3) {
         case 0:
-            p |= Const | Public;
+            p |= Public;
             break;
         case 1:
             p |= Protected;
@@ -137,9 +132,6 @@ QVariant CodeCompletionTestModel::data(const QModelIndex &index, int role) const
         }
         return (int)p;
     }
-
-    case ScopeIndex:
-        return (index.row() % 4) - 1;
     }
 
     return QVariant();

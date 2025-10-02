@@ -91,10 +91,6 @@ QVariant KateModelineCompletionModel::data(const QModelIndex &index, int role) c
         return m_matches.at(index.row()).variable;
     }
 
-    if (role == KTextEditor::CodeCompletionModel::IsExpandable) {
-        return !m_matches.at(index.row()).description.isEmpty();
-    }
-
     if (role == KTextEditor::CodeCompletionModel::ExpandingWidget) {
         return m_matches.at(index.row()).description;
     }
