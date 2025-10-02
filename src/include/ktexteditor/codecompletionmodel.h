@@ -293,24 +293,12 @@ public:
        \list
        \li QWidget*:
         If the model returns a QVariant of type QWidget*, the code-completion takes over the given widget
-        and embeds it into the completion-list under the completion-item. The widget will be automatically deleted at some point.
+        and embeds it into the completion-list under the completion-item. Ownership is transferred to completion-widget
         The completion-widget will use the height of the widget as a hint for its preferred size, but it will
         resize the widget at will.
        \li QString:
         If the mode returns a QVariant of type QString, it will create a small html-widget showing the given html-code,
         and embed it into the completion-list under the completion-item.
-       \warning This will not work correctly:
-       \code
-         QWidget* widget;
-        return QVariant(widget);
-       \endcode
-       Use the following instead.:
-       \code
-         QVariant v;
-         v.setValue<QWidget*>(widget);
-         return v;
-       \endcode
-       \endlist
 
        \value ItemSelected
        Whenever an item is selected, this will be requested from the underlying model.
