@@ -171,6 +171,7 @@ public:
         Protected = 0x2,
         Private = 0x4,
 
+#if KTEXTEDITOR_ENABLE_DEPRECATED_SINCE(6, 19)
         // Extra access specifiers - any number per item
         Static = 0x8,
         Const = 0x10,
@@ -193,6 +194,7 @@ public:
         Friend = 0x20000,
         Signal = 0x40000,
         Slot = 0x80000,
+#endif
 
         // Scope - no more than 1 per item
         LocalScope = 0x100000,
@@ -418,22 +420,28 @@ public:
      */
     enum ExtraItemDataRoles {
         CompletionRole = Qt::UserRole,
-        ScopeIndex,
-        MatchQuality,
-        SetMatchContext,
-        HighlightingMethod,
-        CustomHighlight,
-        InheritanceDepth,
-        IsExpandable,
-        ExpandingWidget,
-        ItemSelected,
-        ArgumentHintDepth,
-        BestMatchesCount,
-        AccessibilityNext,
-        AccessibilityPrevious,
-        AccessibilityAccept,
-        GroupRole,
-        UnimportantItemRole,
+#if KTEXTEDITOR_ENABLE_DEPRECATED_SINCE(6, 19)
+        ScopeIndex = Qt::UserRole + 1,
+#endif
+        MatchQuality = Qt::UserRole + 2,
+        SetMatchContext = Qt::UserRole + 3,
+        HighlightingMethod = Qt::UserRole + 4,
+        CustomHighlight = Qt::UserRole + 5,
+        InheritanceDepth = Qt::UserRole + 6,
+#if KTEXTEDITOR_ENABLE_DEPRECATED_SINCE(6, 19)
+        IsExpandable = Qt::UserRole + 7,
+#endif
+        ExpandingWidget = Qt::UserRole + 8,
+#if KTEXTEDITOR_ENABLE_DEPRECATED_SINCE(6, 19)
+        ItemSelected = Qt::UserRole + 9,
+#endif
+        ArgumentHintDepth = Qt::UserRole + 10,
+        BestMatchesCount = Qt::UserRole + 11,
+        AccessibilityNext = Qt::UserRole + 12,
+        AccessibilityPrevious = Qt::UserRole + 13,
+        AccessibilityAccept = Qt::UserRole + 14,
+        GroupRole = Qt::UserRole + 15,
+        UnimportantItemRole = Qt::UserRole + 16,
         LastExtraItemDataRole
     };
 
