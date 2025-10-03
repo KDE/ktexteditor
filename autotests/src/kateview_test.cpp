@@ -51,25 +51,29 @@ void KateViewTest::testCoordinatesToCursor()
     view1->resize(400, 300);
     view1->show();
 
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 2))), KTextEditor::Cursor(0, 2));
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 1))), KTextEditor::Cursor(1, 1));
+    const auto coordinatesToCursor = [view1](QPoint coords) {
+        return view1->coordinatesToCursor(coords);
+    };
+
+    QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 2))), KTextEditor::Cursor(0, 2));
+    QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 1))), KTextEditor::Cursor(1, 1));
     // behind end of line should give an invalid cursor
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 5))), KTextEditor::Cursor::invalid());
+    QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 5))), KTextEditor::Cursor::invalid());
     QCOMPARE(view1->cursorToCoordinate(KTextEditor::Cursor(3, 1)), QPoint(-1, -1));
 
     // check consistency between cursorToCoordinate(view->cursorPosition() and cursorPositionCoordinates()
     // random position
     view1->setCursorPosition(KTextEditor::Cursor(0, 3));
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(view1->cursorPosition())), KTextEditor::Cursor(0, 3));
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(0, 3));
+    QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(view1->cursorPosition())), KTextEditor::Cursor(0, 3));
+    QCOMPARE(coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(0, 3));
     // end of line
     view1->setCursorPosition(KTextEditor::Cursor(0, 9));
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 9))), KTextEditor::Cursor(0, 9));
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(0, 9));
+    QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 9))), KTextEditor::Cursor(0, 9));
+    QCOMPARE(coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(0, 9));
     // empty line
     view1->setCursorPosition(KTextEditor::Cursor(2, 0));
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(2, 0))), KTextEditor::Cursor(2, 0));
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(2, 0));
+    QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(2, 0))), KTextEditor::Cursor(2, 0));
+    QCOMPARE(coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(2, 0));
 
     // same test again, but with message widget on top visible
     KTextEditor::Message *message = new KTextEditor::Message(QStringLiteral("Jo World!"), KTextEditor::Message::Information);
@@ -78,10 +82,10 @@ void KateViewTest::testCoordinatesToCursor()
     // wait 500ms until show animation is finished, so the message widget is visible
     QTest::qWait(500);
 
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 2))), KTextEditor::Cursor(0, 2));
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 1))), KTextEditor::Cursor(1, 1));
+    QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 2))), KTextEditor::Cursor(0, 2));
+    QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 1))), KTextEditor::Cursor(1, 1));
     // behind end of line should give an invalid cursor
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 5))), KTextEditor::Cursor::invalid());
+    QCOMPARE(coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 5))), KTextEditor::Cursor::invalid());
     QCOMPARE(view1->cursorToCoordinate(KTextEditor::Cursor(3, 1)), QPoint(-1, -1));
 }
 
