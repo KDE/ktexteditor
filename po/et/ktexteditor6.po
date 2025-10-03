@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-23 00:39+0000\n"
+"POT-Creation-Date: 2025-10-03 00:40+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -3650,7 +3650,7 @@ msgstr "Käsule '%1' ei ole skriptis %2 abi määratud"
 msgid "Error loading script %1: %2"
 msgstr "Viga skripti %1 laadimisel"
 
-#: script/katescriptmanager.cpp:310
+#: script/katescriptmanager.cpp:319
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""

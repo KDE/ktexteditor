@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-23 00:39+0000\n"
+"POT-Creation-Date: 2025-10-03 00:40+0000\n"
 "PO-Revision-Date: 2025-09-23 03:57+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -3545,7 +3545,7 @@ msgstr "დახმარება ბრძანებისთვის '%1'
 msgid "Error loading script %1: %2"
 msgstr "სკრიპტის %1 ჩატვირთვის შეცდომა: %2"
 
-#: script/katescriptmanager.cpp:310
+#: script/katescriptmanager.cpp:319
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""

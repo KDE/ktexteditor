@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-23 00:39+0000\n"
+"POT-Creation-Date: 2025-10-03 00:40+0000\n"
 "PO-Revision-Date: 2024-09-26 13:25+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -3558,7 +3558,7 @@ msgstr "Engin hjálp tilgreind fyrir skipun '%1' í skriftu %2"
 msgid "Error loading script %1: %2"
 msgstr "Villa við að hlaða skriftu %1"
 
-#: script/katescriptmanager.cpp:310
+#: script/katescriptmanager.cpp:319
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-23 00:39+0000\n"
+"POT-Creation-Date: 2025-10-03 00:40+0000\n"
 "PO-Revision-Date: 2025-09-03 20:51+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -3565,7 +3565,7 @@ msgstr "Nincs súgó megadva a(z) „%1” parancshoz ebben a szkriptben: %2"
 msgid "Error loading script %1: %2"
 msgstr "Hiba a(z) %1 szkript betöltésekor: %2"
 
-#: script/katescriptmanager.cpp:310
+#: script/katescriptmanager.cpp:319
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""

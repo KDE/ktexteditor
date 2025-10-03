@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-23 00:39+0000\n"
+"POT-Creation-Date: 2025-10-03 00:40+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -3640,7 +3640,7 @@ msgstr "قوليازما %2 دا ماس ھالدىكى بۇيرۇق «%1» نى�
 msgid "Error loading script %1: %2"
 msgstr "قوليازما %1 نى يۈكلەشتە خاتالىق كۆرۈلدى"
 
-#: script/katescriptmanager.cpp:310
+#: script/katescriptmanager.cpp:319
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr "ھەممە JavaScript ھۆججەتنى قايتا يۈكلە(بۇيرۇق قۇرى قوليازما قاتارلىق)"

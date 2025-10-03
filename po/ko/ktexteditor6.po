@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-23 00:39+0000\n"
+"POT-Creation-Date: 2025-10-03 00:40+0000\n"
 "PO-Revision-Date: 2025-07-20 01:44+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -3478,7 +3478,7 @@ msgstr "스크립트 %2의 명령 '%1'에 대한 도움말 없음"
 msgid "Error loading script %1: %2"
 msgstr "스크립트 %1을(를) 불러오는 중 오류 발생: %2"
 
-#: script/katescriptmanager.cpp:310
+#: script/katescriptmanager.cpp:319
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr "모든 자바스크립트 파일 새로 고침 (인덴터, 명령행 스크립트, 기타)."
