@@ -56,7 +56,7 @@ void Mappings::readMappings(const KConfigGroup &config, const QString &mappingMo
     const QStringList mappings = config.readEntry(mappingModeName + QLatin1String(" Mode Mappings"), QStringList());
     const QList<bool> isRecursive = config.readEntry(mappingModeName + QLatin1String(" Mode Mappings Recursion"), QList<bool>());
 
-    const QString &mapLeader = config.readEntry(QStringLiteral("Map Leader"), QString());
+    const QString &mapLeader = config.readEntry("Map Leader", QString());
     m_leader = (mapLeader.isEmpty()) ? QChar::fromLatin1('\\') : mapLeader[0];
 
     // sanity check

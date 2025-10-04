@@ -73,14 +73,14 @@ void KateModeManager::update()
         type->name = g[z];
         type->wildcards = cg.readXdgListEntry(QStringLiteral("Wildcards"));
         type->mimetypes = cg.readXdgListEntry(QStringLiteral("Mimetypes"));
-        type->priority = cg.readEntry(QStringLiteral("Priority"), 0);
-        type->varLine = cg.readEntry(QStringLiteral("Variables"));
-        type->indenter = cg.readEntry(QStringLiteral("Indenter"));
+        type->priority = cg.readEntry("Priority", 0);
+        type->varLine = cg.readEntry("Variables");
+        type->indenter = cg.readEntry("Indenter");
 
-        type->hl = cg.readEntry(QStringLiteral("Highlighting"));
+        type->hl = cg.readEntry("Highlighting");
 
         // only for generated types...
-        type->hlGenerated = cg.readEntry(QStringLiteral("Highlighting Generated"), false);
+        type->hlGenerated = cg.readEntry("Highlighting Generated", false);
 
         // the "Normal" mode will be added later
         if (type->name == QLatin1String("Normal")) {
@@ -88,8 +88,8 @@ void KateModeManager::update()
                 normalType = type;
             }
         } else {
-            type->section = cg.readEntry(QStringLiteral("Section"));
-            type->version = cg.readEntry(QStringLiteral("Highlighting Version"));
+            type->section = cg.readEntry("Section");
+            type->version = cg.readEntry("Highlighting Version");
 
             // already add all non-highlighting generated user types
             if (!type->hlGenerated) {
