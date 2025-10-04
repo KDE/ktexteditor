@@ -2607,7 +2607,7 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
     QMenu selectDefaultMark;
     auto selectDefaultMarkActionGroup = new QActionGroup(&selectDefaultMark);
 
-    std::vector<int> vec(33);
+    int vec[33]{};
     int i = 1;
 
     for (uint bit = 0; bit < 32; bit++) {
