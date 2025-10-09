@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-03 00:40+0000\n"
-"PO-Revision-Date: 2025-07-20 01:44+0200\n"
+"PO-Revision-Date: 2025-10-09 01:03+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -4980,10 +4980,9 @@ msgid "Normal"
 msgstr "일반"
 
 #: utils/katebookmarks.cpp:49
-#, fuzzy, kde-format
-#| msgid "Set &Bookmark"
+#, kde-format
 msgid "Toggle &Bookmark"
-msgstr "책갈피 설정(&B)"
+msgstr "책갈피 전환(&B)"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -5454,10 +5453,9 @@ msgid "Embeddable editor component"
 msgstr "첨부 가능한 편집기 구성 요소"
 
 #: utils/kateglobal.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2022 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2025 The Kate Authors"
-msgstr "(c) 2000-2022 The Kate Authors"
+msgstr "(c) 2000-2025 The Kate Authors"
 
 #: utils/kateglobal.cpp:84
 #, kde-format
