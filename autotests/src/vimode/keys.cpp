@@ -722,7 +722,7 @@ void KeysTest::AltGr()
     QApplication::postEvent(kate_view->focusProxy(), altGrDown);
     QApplication::sendPostedEvents();
     QKeyEvent *altGrAndUGrave = new QKeyEvent(QEvent::KeyPress, Qt::Key_Ugrave, Qt::ShiftModifier | Qt::GroupSwitchModifier, ugrave);
-    qDebug() << QStringLiteral("%1").arg(altGrAndUGrave->modifiers(), 10, 16);
+    qDebug() << QStringLiteral("%1").arg(static_cast<int>(altGrAndUGrave->modifiers()), 10, 16);
     QApplication::postEvent(kate_view->focusProxy(), altGrAndUGrave);
     QApplication::sendPostedEvents();
     altGrUp = new QKeyEvent(QEvent::KeyRelease, Qt::Key_AltGr, Qt::NoModifier);
