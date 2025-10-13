@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 01:34+0000\n"
-"PO-Revision-Date: 2024-02-10 00:07+0100\n"
+"PO-Revision-Date: 2025-10-12 13:39+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -6920,12 +6920,12 @@ msgstr ""
 #: view/kateview.cpp:800
 #, kde-format
 msgid "Show Non-Printable Spaces"
-msgstr "인쇄할 수 없는 공백 문자 보기"
+msgstr "출력할 수 없는 공백 문자 보기"
 
 #: view/kateview.cpp:802
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
-msgstr "인쇄할 수 없는 공백 문자 주위를 둘러싸는 상자 보기/숨기기"
+msgstr "출력할 수 없는 공백 문자 주위를 둘러싸는 상자 보기/숨기기"
 
 #: view/kateview.cpp:806
 #, kde-format
