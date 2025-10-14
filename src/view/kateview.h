@@ -840,6 +840,9 @@ public:
     // should the current line be highlighted during rendering?
     bool isHighlightCurrentLineActive() const;
 
+    // should the cursor be painted during rendering?
+    bool isCursorVisible() const;
+
 private Q_SLOTS:
     void slotDocumentReloaded();
     void slotDocumentAboutToReload();

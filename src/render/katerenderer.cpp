@@ -874,7 +874,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
         }
 
         // Draw carets
-        if (m_view && cursor && drawCaret()) {
+        if (m_view && cursor && drawCaret() && m_view->isCursorVisible()) {
             const auto &secCursors = view()->secondaryCursors();
             // Find carets on this line
             auto mIt = std::lower_bound(secCursors.begin(), secCursors.end(), range->line(), [](const KTextEditor::ViewPrivate::SecondaryCursor &l, int line) {

@@ -5307,4 +5307,9 @@ bool KTextEditor::ViewPrivate::isHighlightCurrentLineActive() const
     return hasFocus() || !config()->value(KateViewConfig::DisableCurrentLineHighlightIfInactive).toBool();
 }
 
+bool KTextEditor::ViewPrivate::isCursorVisible() const
+{
+    return hasFocus() || !config()->value(KateViewConfig::HideCursorIfInactive).toBool();
+}
+
 #include "moc_kateview.cpp"
