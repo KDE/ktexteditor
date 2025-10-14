@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-03 00:40+0000\n"
+"POT-Creation-Date: 2025-10-14 00:39+0000\n"
 "PO-Revision-Date: 2025-10-08 13:46+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -7899,17 +7899,17 @@ msgstr "Leit fer hringinn"
 msgid "Open File"
 msgstr "Opna skrá"
 
-#: view/kateview.cpp:3985
+#: view/kateview.cpp:3990
 #, kde-format
 msgid "Align On"
 msgstr "Jafna við"
 
-#: view/kateview.cpp:3985
+#: view/kateview.cpp:3990
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Jöfnunarmynstur:"
 
-#: view/kateview.cpp:5069
+#: view/kateview.cpp:5074
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Flytja út skrá sem HTML"

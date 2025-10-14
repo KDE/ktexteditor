@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-03 00:40+0000\n"
+"POT-Creation-Date: 2025-10-14 00:39+0000\n"
 "PO-Revision-Date: 2025-08-21 00:07+0200\n"
 "Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -8051,17 +8051,17 @@ msgstr "Suche hat das Ende erreicht"
 msgid "Open File"
 msgstr "Datei öffnen"
 
-#: view/kateview.cpp:3985
+#: view/kateview.cpp:3990
 #, kde-format
 msgid "Align On"
 msgstr "Ausrichten an"
 
-#: view/kateview.cpp:3985
+#: view/kateview.cpp:3990
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Ausrichtungsmuster:"
 
-#: view/kateview.cpp:5069
+#: view/kateview.cpp:5074
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Datei als HTML exportieren"

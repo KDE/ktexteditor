@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-03 00:40+0000\n"
+"POT-Creation-Date: 2025-10-14 00:39+0000\n"
 "PO-Revision-Date: 2009-05-22 10:03+0100\n"
 "Last-Translator: Berend Ytsma <berendy@gmail.com>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -8328,18 +8328,18 @@ msgstr "Sykmodus"
 msgid "Open File"
 msgstr "Triem iepenje"
 
-#: view/kateview.cpp:3985
+#: view/kateview.cpp:3990
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Rjochtsje"
 
-#: view/kateview.cpp:3985
+#: view/kateview.cpp:3990
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:5069
+#: view/kateview.cpp:5074
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Triem eksportearje as HTML"

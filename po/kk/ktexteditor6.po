@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-03 00:40+0000\n"
+"POT-Creation-Date: 2025-10-14 00:39+0000\n"
 "PO-Revision-Date: 2013-11-17 02:59+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -8184,18 +8184,18 @@ msgstr "Іздеу режімі"
 msgid "Open File"
 msgstr "Файлды ашу"
 
-#: view/kateview.cpp:3985
+#: view/kateview.cpp:3990
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Туралау"
 
-#: view/kateview.cpp:3985
+#: view/kateview.cpp:3990
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:5069
+#: view/kateview.cpp:5074
 #, kde-format
 msgid "Export File as HTML"
 msgstr "HTML түрінде экспорттау"

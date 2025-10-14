@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-03 00:40+0000\n"
+"POT-Creation-Date: 2025-10-14 00:39+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -8095,18 +8095,18 @@ msgstr "របៀប​ស្វែងរក"
 msgid "Open File"
 msgstr "រក្សាទុក​ឯកសារ"
 
-#: view/kateview.cpp:3985
+#: view/kateview.cpp:3990
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "តម្រឹម"
 
-#: view/kateview.cpp:3985
+#: view/kateview.cpp:3990
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:5069
+#: view/kateview.cpp:5074
 #, kde-format
 msgid "Export File as HTML"
 msgstr ""
