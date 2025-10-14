@@ -655,7 +655,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
     const Kate::TextLine textLine = doc()->kateTextLine(range->line());
 
     int currentViewLine = -1;
-    if (cursor && cursor->line() == range->line()) {
+    if (cursor && cursor->line() == range->line() && m_view && m_view->isHighlightCurrentLineActive()) {
         currentViewLine = range->viewLineForColumn(cursor->column());
     }
 

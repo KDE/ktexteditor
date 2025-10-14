@@ -1059,6 +1059,7 @@ public:
         ShowStatusbarEOL,
         EnableAccessibility,
         CycleThroughBookmarks,
+        DisableCurrentLineHighlightIfInactive,
     };
 
 public:

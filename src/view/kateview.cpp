@@ -5302,4 +5302,9 @@ void KTextEditor::ViewPrivate::copyFileLocation() const
                                           + QString::number(cursorPosition().line() + 1));
 }
 
+bool KTextEditor::ViewPrivate::isHighlightCurrentLineActive() const
+{
+    return hasFocus() || !config()->value(KateViewConfig::DisableCurrentLineHighlightIfInactive).toBool();
+}
+
 #include "moc_kateview.cpp"

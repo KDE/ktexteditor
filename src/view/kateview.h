@@ -837,6 +837,9 @@ public:
 
     void exportHtmlToFile(const QString &file);
 
+    // should the current line be highlighted during rendering?
+    bool isHighlightCurrentLineActive() const;
+
 private Q_SLOTS:
     void slotDocumentReloaded();
     void slotDocumentAboutToReload();
@@ -934,7 +937,12 @@ private Q_SLOTS:
      * Configuration
      */
 public:
-    inline KateViewConfig *config()
+    KateViewConfig *config()
+    {
+        return m_config;
+    }
+
+    const KateViewConfig *config() const
     {
         return m_config;
     }
