@@ -577,6 +577,7 @@ KateViewConfig::KateViewConfig()
                                "Disable current line highlight if inactive",
                                QStringLiteral("disable-current-line-highlight-if-inactive"),
                                false));
+    addConfigEntry(ConfigEntry(HideCursorIfInactive, "Hide cursor if inactive", QStringLiteral("hide-cursor-if-inactive"), false));
 
     // Never forget to finalize or the <CommandName> becomes not available
     finalizeConfigEntries();

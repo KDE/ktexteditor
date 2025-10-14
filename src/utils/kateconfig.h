@@ -1060,6 +1060,7 @@ public:
         EnableAccessibility,
         CycleThroughBookmarks,
         DisableCurrentLineHighlightIfInactive,
+        HideCursorIfInactive,
     };
 
 public:
