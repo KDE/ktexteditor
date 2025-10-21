@@ -23,6 +23,7 @@ private Q_SLOTS:
     void testTabCursorOnReload();
     void testLowerCaseBlockSelection();
 
+    void testEditorWidget();
     void testCoordinatesToCursor_data();
     void testCoordinatesToCursor();
     void testCursorToCoordinates();

@@ -63,16 +63,6 @@ MulticursorTest::~MulticursorTest()
 {
 }
 
-static QWidget *findViewInternal(KTextEditor::ViewPrivate *view)
-{
-    for (QObject *child : view->children()) {
-        if (child->metaObject()->className() == QByteArrayLiteral("KateViewInternal")) {
-            return qobject_cast<QWidget *>(child);
-        }
-    }
-    return nullptr;
-}
-
 static void clickAtPosition(ViewPrivate *view, QWidget *internalView, Cursor pos, Qt::KeyboardModifiers m)
 {
     QPoint p = view->cursorToCoordinate(pos);
@@ -99,7 +89,7 @@ void MulticursorTest::testKillline()
 void MulticursorTest::insertRemoveText()
 {
     auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\n"), 0, 0);
-    QObject *internalView = findViewInternal(view);
+    QObject *const internalView = view->editorWidget();
     QVERIFY(internalView);
 
     { // Same line
@@ -366,7 +356,7 @@ void MulticursorTest::testCreateMultiCursor()
 {
     auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\n"), 0, 0);
 
-    auto *internalView = findViewInternal(view);
+    auto *const internalView = view->editorWidget();
     QVERIFY(internalView);
 
     // Alt + click should add a cursor

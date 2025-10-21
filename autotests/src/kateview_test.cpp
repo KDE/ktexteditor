@@ -42,6 +42,28 @@ KateViewTest::~KateViewTest()
 {
 }
 
+void KateViewTest::testEditorWidget()
+{
+    QCOMPARE_EQ(View::fromEditorWidget(nullptr), nullptr);
+    KTextEditor::DocumentPrivate doc(false, false);
+
+    auto *const view1 = doc.createView(nullptr);
+    auto *const editorWidget1 = view1->editorWidget();
+    QVERIFY(editorWidget1);
+    QCOMPARE(editorWidget1->metaObject()->className(), "KateViewInternal");
+    QCOMPARE_EQ(View::fromEditorWidget(editorWidget1), view1);
+
+    auto *const view2 = doc.createView(nullptr);
+    auto *const editorWidget2 = view2->editorWidget();
+    QVERIFY(editorWidget2);
+    QCOMPARE(editorWidget2->metaObject()->className(), "KateViewInternal");
+    QCOMPARE_EQ(View::fromEditorWidget(editorWidget2), view2);
+
+    QCOMPARE_NE(editorWidget1, editorWidget2);
+    QCOMPARE_EQ(view1->editorWidget(), editorWidget1);
+    QCOMPARE_EQ(View::fromEditorWidget(nullptr), nullptr);
+}
+
 void KateViewTest::testCoordinatesToCursor_data()
 {
     using Flags = KTextEditor::View::CoordinatesToCursorFlags;
@@ -212,19 +234,6 @@ void KateViewTest::testIndentBlockSelection()
     QCOMPARE(doc.text(), QStringLiteral("nY\nnYY\n"));
 }
 
-namespace
-{
-QWidget *findViewInternal(KTextEditor::View *view)
-{
-    for (QObject *child : view->children()) {
-        if (child->metaObject()->className() == QByteArrayLiteral("KateViewInternal")) {
-            return qobject_cast<QWidget *>(child);
-        }
-    }
-    return nullptr;
-}
-}
-
 void KateViewTest::testSelection()
 {
     // see also: https://bugs.kde.org/show_bug.cgi?id=277422
@@ -252,7 +261,7 @@ void KateViewTest::testSelection()
     view->resize(100, 200);
     view->show();
 
-    auto *internalView = findViewInternal(view);
+    auto *const internalView = view->editorWidget();
     QVERIFY(internalView);
 
     const QPoint afterA = view->cursorToCoordinate(Cursor(0, 1));
@@ -523,7 +532,7 @@ void KateViewTest::testDragAndDrop()
     view->show();
     view->resize(400, 300);
 
-    QWidget *internalView = findViewInternal(view);
+    auto *const internalView = view->editorWidget();
     QVERIFY(internalView);
 
     // select "line1\n"

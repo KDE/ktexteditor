@@ -145,6 +145,19 @@ const KSyntaxHighlighting::Repository &Editor::repository() const
     return KateHlManager::self()->repository();
 }
 
+QWidget *View::editorWidget() const
+{
+    return focusProxy();
+}
+
+View *View::fromEditorWidget(QWidget *editorWidget)
+{
+    if (!editorWidget) {
+        return nullptr;
+    }
+    return qobject_cast<KTextEditor::View *>(editorWidget->parent());
+}
+
 bool View::insertText(const QString &text)
 {
     KTextEditor::Document *doc = document();

@@ -122,7 +122,7 @@ private:
     void setupDefaultValues();
 
     /**
-     * Install an event filter on the filter proxy of \p view for
+     * Install an event filter on the editor widget of \p view for
      * navigation between the ranges and terminating the KateTemplateHandler.
      *
      * \see eventFilter()

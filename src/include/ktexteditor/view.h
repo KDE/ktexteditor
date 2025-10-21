@@ -489,6 +489,27 @@ public:
      */
     virtual KTextEditor::MainWindow *mainWindow() const = 0;
 
+    /*!
+     * Get the view's editor widget.
+     *
+     * Returns the non-null editor widget, which contains the actual text editing area
+     *
+     * \sa fromEditorWidget()
+     * \since 6.20
+     */
+    [[nodiscard]] QWidget *editorWidget() const;
+
+    /*!
+     * Get the view that owns a given editor widget.
+     *
+     * \a editorWidget is a widget that has been returned from editorWidget()
+     *
+     * Returns the matching view or \c nullptr for a null widget
+     *
+     * \since 6.20
+     */
+    [[nodiscard]] static View *fromEditorWidget(QWidget *editorWidget);
+
     /*
      * SIGNALS
      * following signals should be emitted by the editor view

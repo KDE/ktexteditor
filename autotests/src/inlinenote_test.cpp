@@ -25,16 +25,6 @@ QTEST_MAIN(InlineNoteTest)
 
 namespace
 {
-QWidget *findViewInternal(KTextEditor::View *view)
-{
-    for (QObject *child : view->children()) {
-        if (child->metaObject()->className() == QByteArrayLiteral("KateViewInternal")) {
-            return qobject_cast<QWidget *>(child);
-        }
-    }
-    return nullptr;
-}
-
 class NoteProvider : public InlineNoteProvider
 {
 public:
@@ -175,7 +165,7 @@ void InlineNoteTest::testInlineNote()
     }
 
     // move mouse onto first note
-    auto internalView = findViewInternal(&view);
+    auto *const internalView = view.editorWidget();
     QVERIFY(internalView);
 
     // focus in

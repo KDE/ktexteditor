@@ -257,7 +257,7 @@ void KateTemplateHandler::slotViewCreated(Document *document, View *view)
 
 void KateTemplateHandler::setupEventHandler(View *view)
 {
-    view->focusProxy()->installEventFilter(this);
+    view->editorWidget()->installEventFilter(this);
 }
 
 bool KateTemplateHandler::eventFilter(QObject *object, QEvent *event)
