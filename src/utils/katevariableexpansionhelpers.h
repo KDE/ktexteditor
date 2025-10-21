@@ -26,18 +26,6 @@ class Variable;
 }
 
 /**
- * Helper for macro expansion.
- */
-namespace KateMacroExpander
-{
-/**
- * Expands the @p input text based on the @p view.
- * @return the expanded text.
- */
-QString expandMacro(const QString &input, KTextEditor::View *view);
-}
-
-/**
  * Helper dialog that shows a non-modal dialog listing all available
  * variables. If the user selects a variable, the variable is inserted
  * into the respective widget.

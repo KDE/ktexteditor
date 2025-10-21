@@ -24,6 +24,59 @@
 #include <QTime>
 #include <QUuid>
 
+/**
+ * Find closing bracket for @p str starting a position @p pos.
+ */
+static int findClosing(QStringView str, int pos = 0)
+{
+    const int len = str.size();
+    int nesting = 0;
+
+    while (pos < len) {
+        const QChar c = str[pos];
+        if (c == QLatin1Char('}')) {
+            if (nesting == 0) {
+                return pos;
+            }
+            nesting--;
+        } else if (c == QLatin1Char('{')) {
+            nesting++;
+        }
+        ++pos;
+    }
+    return -1;
+}
+
+/**
+ * Expands the @p input text based on the @p view.
+ * @return the expanded text.
+ */
+static QString expandMacro(const QString &input, KTextEditor::View *view)
+{
+    QString output = input;
+    QString oldStr;
+    do {
+        oldStr = output;
+        const int startIndex = output.indexOf(QLatin1String("%{"));
+        if (startIndex < 0) {
+            break;
+        }
+
+        const int endIndex = findClosing(output, startIndex + 2);
+        if (endIndex <= startIndex) {
+            break;
+        }
+
+        const int varLen = endIndex - (startIndex + 2);
+        QString variable = output.mid(startIndex + 2, varLen);
+        variable = expandMacro(variable, view);
+        if (KTextEditor::Editor::instance()->expandVariable(variable, view, variable)) {
+            output.replace(startIndex, endIndex - startIndex + 1, variable);
+        }
+    } while (output != oldStr); // str comparison guards against infinite loop
+    return output;
+}
+
 static void registerVariables(KateVariableExpansionManager &mng)
 {
     using KTextEditor::Variable;
@@ -330,7 +383,7 @@ bool KateVariableExpansionManager::expandVariable(const QString &name, KTextEdit
 
 QString KateVariableExpansionManager::expandText(const QString &text, KTextEditor::View *view)
 {
-    return KateMacroExpander::expandMacro(text, view);
+    return expandMacro(text, view);
 }
 
 void KateVariableExpansionManager::showDialog(const QList<QWidget *> &widgets, const QStringList &names) const
