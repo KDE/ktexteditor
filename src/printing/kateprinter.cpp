@@ -29,112 +29,7 @@
 
 using namespace KatePrinter;
 
-// BEGIN KatePrinterPrivate
-class KatePrinterPrivate : public QObject
-{
-public:
-    KatePrinterPrivate(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view);
-
-    bool print(QPrinter *printer, QWidget *parentWidget);
-    void setColorScheme(const QString &scheme);
-
-public:
-    void paint(QPrinter *printer);
-
-private:
-    KTextEditor::ViewPrivate *m_view;
-    KTextEditor::DocumentPrivate *m_doc;
-    PrintPainter m_painter;
-    static void readSettings(QPrinter *printer);
-    static void writeSettings(QPrinter *printer);
-};
-
-KatePrinterPrivate::KatePrinterPrivate(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
-    : QObject()
-    , m_view(view)
-    , m_doc(doc)
-    , m_painter(m_doc, m_view)
-{
-}
-
-bool KatePrinterPrivate::print(QPrinter *printer, QWidget *parentWidget)
-{
-    // docname is now always there, including the right Untitled name
-    printer->setDocName(m_doc->documentName());
-
-    KatePrintTextSettings *kpts = new KatePrintTextSettings;
-    KatePrintHeaderFooter *kphf = new KatePrintHeaderFooter;
-    KatePrintLayout *kpl = new KatePrintLayout;
-
-    QList<QWidget *> tabs;
-    tabs << kpts;
-    tabs << kphf;
-    tabs << kpl;
-
-    readSettings(printer);
-
-    QPointer<QPrintDialog> printDialog(new QPrintDialog(printer, parentWidget));
-    printDialog->setOptionTabs(tabs);
-
-    if (m_view && m_view->selection()) {
-        printer->setPrintRange(QPrinter::Selection);
-        printDialog->setOption(QAbstractPrintDialog::PrintSelection, true);
-    }
-
-    printDialog->setOption(QAbstractPrintDialog::PrintPageRange, true);
-
-    const int dlgCode = printDialog->exec();
-    if (dlgCode != QDialog::Accepted || !printDialog) {
-        delete printDialog;
-        return false;
-    }
-
-    writeSettings(printer);
-
-    // configure the painter
-    m_painter.setPrintGuide(kpts->printGuide());
-    m_painter.setPrintLineNumbers(kpts->printLineNumbers());
-    m_painter.setDontPrintFoldedCode(kpts->dontPrintFoldedCode());
-
-    m_painter.setColorScheme(kpl->colorScheme());
-    m_painter.setTextFont(kpl->textFont());
-    m_painter.setUseBackground(kpl->useBackground());
-    m_painter.setUseBox(kpl->useBox());
-    m_painter.setBoxMargin(kpl->boxMargin());
-    m_painter.setBoxWidth(kpl->boxWidth());
-    m_painter.setBoxColor(kpl->boxColor());
-
-    m_painter.setHeadersFont(kphf->font());
-
-    m_painter.setUseHeader(kphf->useHeader());
-    m_painter.setHeaderBackground(kphf->headerBackground());
-    m_painter.setHeaderForeground(kphf->headerForeground());
-    m_painter.setUseHeaderBackground(kphf->useHeaderBackground());
-    m_painter.setHeaderFormat(kphf->headerFormat());
-
-    m_painter.setUseFooter(kphf->useFooter());
-    m_painter.setFooterBackground(kphf->footerBackground());
-    m_painter.setFooterForeground(kphf->footerForeground());
-    m_painter.setUseFooterBackground(kphf->useFooterBackground());
-    m_painter.setFooterFormat(kphf->footerFormat());
-
-    delete printDialog;
-    m_painter.paint(printer);
-
-    return true;
-}
-
-void KatePrinterPrivate::paint(QPrinter *printer)
-{
-    m_painter.paint(printer);
-}
-
-void KatePrinterPrivate::setColorScheme(const QString &scheme)
-{
-    m_painter.setColorScheme(scheme);
-}
-
-void KatePrinterPrivate::writeSettings(QPrinter *printer)
+static void writeSettings(QPrinter *printer)
 {
     KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
     KConfigGroup group(config, QStringLiteral("Kate Print Settings"));
@@ -147,7 +42,7 @@ void KatePrinterPrivate::writeSettings(QPrinter *printer)
     margins.writeEntry("bottom", m.bottom());
 }
 
-void KatePrinterPrivate::readSettings(QPrinter *printer)
+static void readSettings(QPrinter *printer)
 {
     KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
     KConfigGroup group(config, QStringLiteral("Kate Print Settings"));
@@ -165,6 +60,75 @@ void KatePrinterPrivate::readSettings(QPrinter *printer)
     printer->setPageMargins(m, QPageLayout::Millimeter);
 }
 
+static bool print(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view, QPrinter *printer, QWidget *parentWidget)
+{
+    // docname is now always there, including the right Untitled name
+    printer->setDocName(doc->documentName());
+
+    KatePrintTextSettings *kpts = new KatePrintTextSettings;
+    KatePrintHeaderFooter *kphf = new KatePrintHeaderFooter;
+    KatePrintLayout *kpl = new KatePrintLayout;
+
+    QList<QWidget *> tabs;
+    tabs << kpts;
+    tabs << kphf;
+    tabs << kpl;
+
+    readSettings(printer);
+
+    QPointer<QPrintDialog> printDialog(new QPrintDialog(printer, parentWidget));
+    printDialog->setOptionTabs(tabs);
+
+    if (view && view->selection()) {
+        printer->setPrintRange(QPrinter::Selection);
+        printDialog->setOption(QAbstractPrintDialog::PrintSelection, true);
+    }
+
+    printDialog->setOption(QAbstractPrintDialog::PrintPageRange, true);
+
+    const int dlgCode = printDialog->exec();
+    if (dlgCode != QDialog::Accepted || !printDialog) {
+        delete printDialog;
+        return false;
+    }
+
+    writeSettings(printer);
+
+    PrintPainter painter(doc, view);
+
+    // configure the painter
+    painter.setPrintGuide(kpts->printGuide());
+    painter.setPrintLineNumbers(kpts->printLineNumbers());
+    painter.setDontPrintFoldedCode(kpts->dontPrintFoldedCode());
+
+    painter.setColorScheme(kpl->colorScheme());
+    painter.setTextFont(kpl->textFont());
+    painter.setUseBackground(kpl->useBackground());
+    painter.setUseBox(kpl->useBox());
+    painter.setBoxMargin(kpl->boxMargin());
+    painter.setBoxWidth(kpl->boxWidth());
+    painter.setBoxColor(kpl->boxColor());
+
+    painter.setHeadersFont(kphf->font());
+
+    painter.setUseHeader(kphf->useHeader());
+    painter.setHeaderBackground(kphf->headerBackground());
+    painter.setHeaderForeground(kphf->headerForeground());
+    painter.setUseHeaderBackground(kphf->useHeaderBackground());
+    painter.setHeaderFormat(kphf->headerFormat());
+
+    painter.setUseFooter(kphf->useFooter());
+    painter.setFooterBackground(kphf->footerBackground());
+    painter.setFooterForeground(kphf->footerForeground());
+    painter.setUseFooterBackground(kphf->useFooterBackground());
+    painter.setFooterFormat(kphf->footerFormat());
+
+    delete printDialog;
+    painter.paint(printer);
+
+    return true;
+}
+
 // END KatePrinterPrivate
 
 // BEGIN KatePrinter
@@ -172,15 +136,12 @@ void KatePrinterPrivate::readSettings(QPrinter *printer)
 bool KatePrinter::print(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
 {
     QPrinter printer;
-    KatePrinterPrivate p(doc, view);
-    return p.print(&printer, view ? view : QApplication::activeWindow());
+    return print(doc, view, &printer, view ? view : QApplication::activeWindow());
 }
 
 bool KatePrinter::printPreview(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
 {
     QPrinter printer;
-    KatePrinterPrivate p(doc, view);
-    p.setColorScheme(QStringLiteral("Printing"));
 
     // ensure proper parent & sizing
     auto dialogParent = view ? view : QApplication::activeWindow();
@@ -189,7 +150,11 @@ bool KatePrinter::printPreview(KTextEditor::DocumentPrivate *doc, KTextEditor::V
         preview.resize(dialogParent->window()->size() * 0.75);
     }
 
-    QObject::connect(&preview, &QPrintPreviewDialog::paintRequested, &p, &KatePrinterPrivate::paint);
+    QObject::connect(&preview, &QPrintPreviewDialog::paintRequested, &preview, [doc, view](QPrinter *printer) {
+        PrintPainter p(doc, view);
+        p.setColorScheme(QStringLiteral("Printing"));
+        p.paint(printer);
+    });
     return preview.exec();
 }
 
