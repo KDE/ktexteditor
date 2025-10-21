@@ -9,10 +9,10 @@
 
 #include <QList>
 #include <QString>
-#include <QWidget>
 
 #include "variable.h"
 
+class QWidget;
 namespace KTextEditor
 {
 class View;
@@ -21,13 +21,13 @@ class View;
 /**
  * Manager class for variable expansion.
  */
-class KateVariableExpansionManager : public QObject
+class KateVariableExpansionManager
 {
 public:
     /**
      * Constructor with @p parent that takes ownership.
      */
-    KateVariableExpansionManager(QObject *parent);
+    KateVariableExpansionManager();
 
     /**
      * Adds @p variable to the expansion list view.

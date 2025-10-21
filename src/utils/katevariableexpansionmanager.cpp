@@ -301,8 +301,7 @@ static void registerVariables(KateVariableExpansionManager &mng)
         false));
 }
 
-KateVariableExpansionManager::KateVariableExpansionManager(QObject *parent)
-    : QObject(parent)
+KateVariableExpansionManager::KateVariableExpansionManager()
 {
     // register default variables for expansion
     registerVariables(*this);

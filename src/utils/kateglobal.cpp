@@ -146,7 +146,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     //
     // variable expansion manager
     //
-    m_variableExpansionManager = new KateVariableExpansionManager(this);
+    m_variableExpansionManager = new KateVariableExpansionManager();
 
     //
     // hl manager
