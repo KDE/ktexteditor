@@ -246,6 +246,14 @@ class CodeCompletionModel;
  *       \li enter-to-insert-completion
  *       \li [bool]
  *       \li enable/disable whether pressing enter inserts completion
+ *    \row
+ *       \li disable-current-line-highlight-if-inactive
+ *       \li [bool]
+ *       \li disable current line highlight if the view has no focus (\since 6.20)
+ *    \row
+ *       \li hide-cursor-if-inactive
+ *       \li [bool]
+ *       \li hide cursor if the view has no focus (\since 6.20)
  * \endtable
  *
  * You can retrieve the value of a config key using configValue() and set the value
