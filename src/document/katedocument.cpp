@@ -32,6 +32,7 @@
 #include "kateswapfile.h"
 #include "katesyntaxmanager.h"
 #include "katetemplatehandler.h"
+#include "katetextline.h"
 #include "kateundomanager.h"
 #include "katevariableexpansionmanager.h"
 #include "kateview.h"
@@ -48,6 +49,7 @@
 
 #include <KTextEditor/Attribute>
 #include <KTextEditor/DocumentCursor>
+#include <ktexteditor/mainwindow.h>
 #include <ktexteditor/message.h>
 
 #include <KConfigGroup>

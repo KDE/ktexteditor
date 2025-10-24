@@ -13,8 +13,6 @@
 #ifndef KATE_AUTO_INDENT_H
 #define KATE_AUTO_INDENT_H
 
-#include "kateconfig.h"
-
 #include <QObject>
 
 #include <KActionMenu>
@@ -23,6 +21,8 @@ namespace KTextEditor
 {
 class DocumentPrivate;
 class Cursor;
+class Range;
+class ViewPrivate;
 }
 class KateIndentScript;
 class KateHighlighting;

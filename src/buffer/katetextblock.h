@@ -176,25 +176,13 @@ public:
      * Insert cursor into this block.
      * @param cursor cursor to insert
      */
-    void insertCursor(Kate::TextCursor *cursor)
-    {
-        auto it = std::lower_bound(m_cursors.begin(), m_cursors.end(), cursor);
-        if (it == m_cursors.end() || cursor != *it) {
-            m_cursors.insert(it, cursor);
-        }
-    }
+    void insertCursor(Kate::TextCursor *cursor);
 
     /**
      * Remove cursor from this block.
      * @param cursor cursor to remove
      */
-    void removeCursor(Kate::TextCursor *cursor)
-    {
-        auto it = std::lower_bound(m_cursors.begin(), m_cursors.end(), cursor);
-        if (it != m_cursors.end() && cursor == *it) {
-            m_cursors.erase(it);
-        }
-    }
+    void removeCursor(Kate::TextCursor *cursor);
 
 private:
     /**

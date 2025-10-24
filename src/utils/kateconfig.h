@@ -10,16 +10,13 @@
 #include <ktexteditor_export.h>
 
 #include <ktexteditor/document.h>
-#include <ktexteditor/view.h>
 
-#include <functional>
 #include <map>
 #include <memory>
 
 #include <QBitArray>
 #include <QColor>
 #include <QList>
-#include <QObject>
 
 class KConfigGroup;
 namespace KTextEditor
@@ -1235,11 +1232,6 @@ public:
     bool persistentSelection() const
     {
         return value(PersistentSelection).toBool();
-    }
-
-    KTextEditor::View::InputMode inputMode() const
-    {
-        return static_cast<KTextEditor::View::InputMode>(value(InputMode).toUInt());
     }
 
     bool viInputModeStealKeys() const

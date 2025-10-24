@@ -24,6 +24,7 @@
 
 #include <KLocalizedString>
 
+#include <QKeyEvent>
 #include <QLineEdit>
 #include <QRegularExpression>
 #include <QWhatsThis>

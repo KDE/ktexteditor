@@ -10,6 +10,7 @@
 #include <vimode/inputmodemanager.h>
 
 #include <QApplication>
+#include <QKeyEvent>
 #include <QString>
 
 #include <KConfig>

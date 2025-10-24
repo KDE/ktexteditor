@@ -10,9 +10,10 @@
 #include "completion.h"
 #include "keyevent.h"
 
-#include <QKeyEvent>
 #include <QList>
 #include <QString>
+
+class QKeyEvent;
 
 namespace KateVi
 {

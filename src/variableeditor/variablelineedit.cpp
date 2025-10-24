@@ -8,6 +8,7 @@
 #include "variablelineedit.h"
 
 #include "kateautoindent.h"
+#include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katesyntaxmanager.h"

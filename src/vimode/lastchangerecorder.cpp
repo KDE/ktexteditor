@@ -9,6 +9,8 @@
 #include <vimode/inputmodemanager.h>
 #include <vimode/keyparser.h>
 
+#include <QKeyEvent>
+
 using namespace KateVi;
 
 bool KateVi::isRepeatOfLastShortcutOverrideAsKeyPress(const QKeyEvent &currentKeyPress, const QList<KeyEvent> &keyEventLog)

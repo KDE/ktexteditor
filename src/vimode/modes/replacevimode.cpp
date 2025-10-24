@@ -14,6 +14,8 @@
 #include <vimode/marks.h>
 #include <vimode/modes/replacevimode.h>
 
+#include <QKeyEvent>
+
 using namespace KateVi;
 
 ReplaceViMode::ReplaceViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)

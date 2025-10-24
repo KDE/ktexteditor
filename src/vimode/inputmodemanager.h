@@ -9,7 +9,6 @@
 #ifndef KATEVI_INPUT_MODE_MANAGER_H
 #define KATEVI_INPUT_MODE_MANAGER_H
 
-#include <QKeyEvent>
 #include <QStack>
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/view.h>
@@ -22,6 +21,7 @@ class KConfigGroup;
 class KateViewInternal;
 class KateViInputMode;
 class QString;
+class QKeyEvent;
 
 namespace KTextEditor
 {
