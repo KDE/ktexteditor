@@ -16,6 +16,7 @@
 #include <KColorScheme>
 
 #include <QApplication>
+#include <QKeyEvent>
 #include <QLineEdit>
 
 using namespace KateVi;

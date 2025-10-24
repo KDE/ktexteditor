@@ -23,6 +23,7 @@
 #include "../registers.h"
 
 #include <QApplication>
+#include <QKeyEvent>
 #include <QLabel>
 #include <QLineEdit>
 #include <QVBoxLayout>

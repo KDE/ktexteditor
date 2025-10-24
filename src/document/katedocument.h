@@ -15,10 +15,8 @@
 #include <QTimer>
 
 #include <ktexteditor/document.h>
-#include <ktexteditor/mainwindow.h>
 #include <ktexteditor/movingrangefeedback.h>
 
-#include "katetextline.h"
 #include <ktexteditor_export.h>
 
 #include <span>
@@ -40,6 +38,7 @@ class TransferJob;
 namespace Kate
 {
 class SwapFile;
+class TextLine;
 }
 
 class KateBuffer;
@@ -47,6 +46,7 @@ namespace KTextEditor
 {
 class Message;
 class ViewPrivate;
+class MainWindow;
 }
 class KateDocumentConfig;
 class KateHighlighting;

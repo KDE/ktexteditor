@@ -615,4 +615,20 @@ void TextBlock::markModifiedLinesAsSaved()
         }
     }
 }
+
+void TextBlock::insertCursor(Kate::TextCursor *cursor)
+{
+    auto it = std::lower_bound(m_cursors.begin(), m_cursors.end(), cursor);
+    if (it == m_cursors.end() || cursor != *it) {
+        m_cursors.insert(it, cursor);
+    }
+}
+
+void TextBlock::removeCursor(Kate::TextCursor *cursor)
+{
+    auto it = std::lower_bound(m_cursors.begin(), m_cursors.end(), cursor);
+    if (it != m_cursors.end() && cursor == *it) {
+        m_cursors.erase(it);
+    }
+}
 }

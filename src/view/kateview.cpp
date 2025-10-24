@@ -886,7 +886,7 @@ void KTextEditor::ViewPrivate::setupActions()
         const InputMode im = mode->viewInputMode();
         a->setData(static_cast<int>(im));
         a->setCheckable(true);
-        if (im == m_config->inputMode()) {
+        if (im == m_config->value(KateViewConfig::InputMode).toUInt()) {
             a->setChecked(true);
         }
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toggleInputMode);
@@ -2521,7 +2521,8 @@ void KTextEditor::ViewPrivate::updateConfig()
         input->updateConfig();
     }
 
-    setInputMode(config()->inputMode(), false /* don't remember in config for these calls */);
+    auto inputMode = static_cast<View::InputMode>(config()->value(KateViewConfig::InputMode).toUInt());
+    setInputMode(inputMode, false /* don't remember in config for these calls */);
 
     reflectOnTheFlySpellCheckStatus(doc()->isOnTheFlySpellCheckingEnabled());
 

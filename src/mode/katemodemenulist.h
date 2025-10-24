@@ -19,7 +19,6 @@
 
 #include <QGridLayout>
 #include <QIcon>
-#include <QKeyEvent>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListView>
@@ -30,6 +29,7 @@
 #include <QStandardItemModel>
 #include <QString>
 
+class QKeyEvent;
 namespace KTextEditor
 {
 class DocumentPrivate;

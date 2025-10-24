@@ -598,7 +598,7 @@ void KateEditGeneralConfigTab::reload()
     }
     ui->cmbEncloseSelection->setCurrentIndex(ui->cmbEncloseSelection->findText(KateViewConfig::global()->charsToEncloseSelection()));
 
-    const int id = static_cast<int>(KateViewConfig::global()->inputMode());
+    const int id = static_cast<int>(KateViewConfig::global()->value(KateViewConfig::InputMode).toUInt());
     ui->cmbInputMode->setCurrentIndex(ui->cmbInputMode->findData(id));
     ui->chkAccessibility->setChecked(KateViewConfig::global()->value(KateViewConfig::EnableAccessibility).toBool());
 }

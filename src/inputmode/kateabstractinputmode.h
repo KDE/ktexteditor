@@ -12,8 +12,6 @@ class KateViewInternal;
 
 #include "ktexteditor/view.h"
 
-#include <QKeyEvent>
-
 class KateViewInternal;
 class KConfigGroup;
 class QKeyEvent;

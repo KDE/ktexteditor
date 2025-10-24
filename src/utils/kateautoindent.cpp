@@ -12,6 +12,7 @@
 */
 
 #include "kateautoindent.h"
+#include "kateconfig.h"
 
 #include "attribute.h"
 #include "katedocument.h"

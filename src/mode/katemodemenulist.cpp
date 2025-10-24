@@ -15,6 +15,7 @@
 #include <QApplication>
 #include <QFrame>
 #include <QHBoxLayout>
+#include <QKeyEvent>
 #include <QVBoxLayout>
 #include <QWidgetAction>
 
