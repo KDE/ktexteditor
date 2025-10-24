@@ -373,7 +373,10 @@ private:
     bool m_updatePositionToArea : 1;
     bool m_mouseOver = false;
 
-    typedef QPair<int, KateIconBorder::BorderArea> AreaPosition;
+    struct AreaPosition {
+        int xPos;
+        KateIconBorder::BorderArea borderArea;
+    };
     std::vector<AreaPosition> m_positionToArea;
 
     const int m_separatorWidth = 2;

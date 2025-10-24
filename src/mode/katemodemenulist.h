@@ -477,7 +477,11 @@ private:
      * corresponds to the original position of the item in the model. The purpose of this
      * is to restore the position of the items when starting or cleaning a search.
      */
-    QList<QPair<ListItem *, int>> m_bestResults;
+    struct BestItem {
+        ListItem *item;
+        int originalPosition;
+    };
+    QList<BestItem> m_bestResults;
 
     KateModeMenuList *m_parentMenu = nullptr;
     friend Factory;

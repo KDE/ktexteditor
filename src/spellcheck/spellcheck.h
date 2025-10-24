@@ -25,8 +25,6 @@ class KateSpellCheckManager : public QObject
 {
     Q_OBJECT
 
-    typedef QPair<KTextEditor::Range, QString> RangeDictionaryPair;
-
 public:
     explicit KateSpellCheckManager(QObject *parent = nullptr);
     ~KateSpellCheckManager() override;
@@ -50,14 +48,19 @@ Q_SIGNALS:
     void wordIgnored(const QString &word);
 
 public:
-    static QList<QPair<KTextEditor::Range, QString>> spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range);
+    struct RangeAndDictionary {
+        KTextEditor::Range range;
+        QString dictionary;
+    };
 
-    QList<QPair<KTextEditor::Range, QString>> spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *doc,
-                                                                              KTextEditor::Range range,
-                                                                              const QString &dictionary = QString(),
-                                                                              bool singleLine = false,
-                                                                              bool returnSingleRange = false);
-    QList<QPair<KTextEditor::Range, QString>> spellCheckRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range, bool singleLine = false);
+    static QList<RangeAndDictionary> spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range);
+
+    QList<RangeAndDictionary> spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *doc,
+                                                              KTextEditor::Range range,
+                                                              const QString &dictionary = QString(),
+                                                              bool singleLine = false,
+                                                              bool returnSingleRange = false);
+    QList<RangeAndDictionary> spellCheckRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range, bool singleLine = false);
 
     static void replaceCharactersEncodedIfNecessary(const QString &newWord, KTextEditor::DocumentPrivate *doc, KTextEditor::Range replacementRange);
 

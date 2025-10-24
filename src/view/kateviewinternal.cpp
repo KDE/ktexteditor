@@ -2633,22 +2633,25 @@ void KateViewInternal::updateSecondaryCursors(const QVarLengthArray<CursorPair, 
     auto it = std::unique(linesToUpdate.begin(), linesToUpdate.end());
 
     // Collapse ranges to avoid extra work
-    using Range = std::pair<int, int>; // start, length
+    struct Range {
+        int start;
+        int length;
+    };
     QVarLengthArray<Range> ranges;
     int prev = 0;
     for (auto i = linesToUpdate.begin(); i != it; ++i) {
         int curLine = *i;
         if (!ranges.isEmpty() && prev + 1 == curLine) {
-            ranges.back().second++;
+            ranges.back().length++;
         } else {
-            ranges.push_back({curLine, 0});
+            ranges.push_back({.start = curLine, .length = 0});
         }
         prev = curLine;
     }
 
     for (auto range : ranges) {
-        int startLine = range.first;
-        int endLine = range.first + range.second;
+        int startLine = range.start;
+        int endLine = range.start + range.length;
         tagLines(startLine, endLine, /*realLines=*/true);
     }
     updateDirty();

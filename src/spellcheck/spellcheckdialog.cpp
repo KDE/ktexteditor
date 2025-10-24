@@ -208,10 +208,10 @@ void KateSpellCheckDialog::installNextSpellCheckRange()
     KTextEditor::Cursor nextRangeBegin = (m_currentSpellCheckRange.isValid() ? m_currentSpellCheckRange.end() : KTextEditor::Cursor::invalid());
     m_currentSpellCheckRange = KTextEditor::Range::invalid();
     m_currentDecToEncOffsetList.clear();
-    QList<QPair<KTextEditor::Range, QString>> rangeDictionaryPairList;
+    QList<KateSpellCheckManager::RangeAndDictionary> rangeDictionaryPairList;
     while (m_currentLanguageRangeIterator != m_languagesInSpellCheckRange.end()) {
-        KTextEditor::Range currentLanguageRange = (*m_currentLanguageRangeIterator).first;
-        const QString &dictionary = (*m_currentLanguageRangeIterator).second;
+        KTextEditor::Range currentLanguageRange = (*m_currentLanguageRangeIterator).range;
+        const QString &dictionary = (*m_currentLanguageRangeIterator).dictionary;
         KTextEditor::Range languageSubRange =
             (nextRangeBegin.isValid() ? KTextEditor::Range(nextRangeBegin, currentLanguageRange.end()) : currentLanguageRange);
         rangeDictionaryPairList = spellCheckManager->spellCheckWrtHighlightingRanges(m_view->doc(), languageSubRange, dictionary, false, true);
@@ -219,11 +219,11 @@ void KateSpellCheckDialog::installNextSpellCheckRange()
         if (rangeDictionaryPairList.size() == 0) {
             ++m_currentLanguageRangeIterator;
             if (m_currentLanguageRangeIterator != m_languagesInSpellCheckRange.end()) {
-                nextRangeBegin = (*m_currentLanguageRangeIterator).first.start();
+                nextRangeBegin = (*m_currentLanguageRangeIterator).range.start();
             }
         } else {
-            m_currentSpellCheckRange = rangeDictionaryPairList.first().first;
-            QString dictionary = rangeDictionaryPairList.first().second;
+            m_currentSpellCheckRange = rangeDictionaryPairList.first().range;
+            QString dictionary = rangeDictionaryPairList.first().dictionary;
             const bool languageChanged = (dictionary != m_previousGivenSpellCheckLanguage);
             m_previousGivenSpellCheckLanguage = dictionary;
 

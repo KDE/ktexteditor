@@ -533,7 +533,11 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
     int openedRegionOffset = -1;
     {
         // mapping of type to "first" offset of it and current number of not matched openings
-        QHash<int, QPair<int, int>> foldingStartToOffsetAndCount;
+        struct OffsetAndCount {
+            int offset;
+            int count;
+        };
+        QHash<int, OffsetAndCount> foldingStartToOffsetAndCount;
 
         // walk over all attributes of the line and compute the matchings
         const auto startLineAttributes = computeFoldings(startLine);
@@ -543,8 +547,8 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
                 // search for this type, try to decrement counter, perhaps erase element!
                 auto end = foldingStartToOffsetAndCount.find(startLineAttributes[i].foldingRegion.id());
                 if (end != foldingStartToOffsetAndCount.end()) {
-                    if (end.value().second > 1) {
-                        --(end.value().second);
+                    if (end.value().count > 1) {
+                        --(end.value().count);
                     } else {
                         foldingStartToOffsetAndCount.erase(end);
                     }
@@ -556,20 +560,20 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
                 // search for this type, either insert it, with current offset or increment counter!
                 auto start = foldingStartToOffsetAndCount.find(startLineAttributes[i].foldingRegion.id());
                 if (start != foldingStartToOffsetAndCount.end()) {
-                    ++(start.value().second);
+                    ++(start.value().count);
                 } else {
-                    foldingStartToOffsetAndCount.insert(startLineAttributes[i].foldingRegion.id(), qMakePair(startLineAttributes[i].offset, 1));
+                    foldingStartToOffsetAndCount.insert(startLineAttributes[i].foldingRegion.id(), OffsetAndCount(startLineAttributes[i].offset, 1));
                 }
             }
         }
 
         // compute first type with offset
-        QHashIterator<int, QPair<int, int>> hashIt(foldingStartToOffsetAndCount);
+        QHashIterator<int, OffsetAndCount> hashIt(foldingStartToOffsetAndCount);
         while (hashIt.hasNext()) {
             hashIt.next();
-            if (openedRegionOffset == -1 || hashIt.value().first < openedRegionOffset) {
+            if (openedRegionOffset == -1 || hashIt.value().offset < openedRegionOffset) {
                 openedRegionType = hashIt.key();
-                openedRegionOffset = hashIt.value().first;
+                openedRegionOffset = hashIt.value().offset;
             }
         }
     }

@@ -1664,7 +1664,7 @@ QSize KateIconBorder::sizeHint() const
 
     const int i = m_positionToArea.size();
     if (i > 0) {
-        w = m_positionToArea.at(i - 1).first;
+        w = m_positionToArea.at(i - 1).xPos;
     }
 
     return QSize(w, 0);
@@ -2200,10 +2200,10 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                 }
 
                 if (lineLayout.startCol() == 0) {
-                    QList<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>> startingRanges = m_view->textFolding().foldingRangesStartingOnLine(realLine);
+                    QList<Kate::TextFolding::IdAndFlag> startingRanges = m_view->textFolding().foldingRangesStartingOnLine(realLine);
                     bool anyFolded = false;
                     for (int i = 0; i < startingRanges.size(); ++i) {
-                        if (startingRanges[i].second & Kate::TextFolding::Folded) {
+                        if (startingRanges[i].flags & Kate::TextFolding::Folded) {
                             anyFolded = true;
                         }
                     }
@@ -2266,10 +2266,10 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 KateIconBorder::BorderArea KateIconBorder::positionToArea(const QPoint &p) const
 {
     auto it = std::find_if(m_positionToArea.cbegin(), m_positionToArea.cend(), [p](const AreaPosition &ap) {
-        return p.x() <= ap.first;
+        return p.x() <= ap.xPos;
     });
     if (it != m_positionToArea.cend()) {
-        return it->second;
+        return it->borderArea;
     }
     return None;
 }

@@ -40,17 +40,18 @@ const QString &KateIndentScript::triggerCharacters()
     return m_triggerCharacters;
 }
 
-QPair<int, int> KateIndentScript::indent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor position, QChar typedCharacter, int indentWidth)
+KateIndentScript::IndentResult
+KateIndentScript::indent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor position, QChar typedCharacter, int indentWidth)
 {
     // if it hasn't loaded or we can't load, return
     if (!setView(view)) {
-        return qMakePair(-2, -2);
+        return IndentResult{.indentAmount = -2, .alignAmount = -2};
     }
 
     clearExceptions();
     QJSValue indentFunction = function(QStringLiteral("indent"));
     if (!indentFunction.isCallable()) {
-        return qMakePair(-2, -2);
+        return IndentResult{.indentAmount = -2, .alignAmount = -2};
     }
     // add the arguments that we are going to pass to the function
     QJSValueList arguments;
@@ -62,7 +63,7 @@ QPair<int, int> KateIndentScript::indent(KTextEditor::ViewPrivate *view, const K
     // error during the calling?
     if (result.isError()) {
         displayBacktrace(result, QStringLiteral("Error calling indent()"));
-        return qMakePair(-2, -2);
+        return IndentResult{.indentAmount = -2, .alignAmount = -2};
     }
     int indentAmount = -2;
     int alignAmount = -2;
@@ -73,5 +74,5 @@ QPair<int, int> KateIndentScript::indent(KTextEditor::ViewPrivate *view, const K
         indentAmount = result.toInt();
     }
 
-    return qMakePair(indentAmount, alignAmount);
+    return IndentResult(indentAmount, alignAmount);
 }

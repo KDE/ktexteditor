@@ -839,8 +839,8 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
     if (!m_bestResults.isEmpty()) {
         const int sizeBestResults = m_bestResults.size();
         for (int i = 0; i < sizeBestResults; ++i) {
-            listModel->takeRow(m_bestResults.at(i).first->index().row());
-            listModel->insertRow(m_bestResults.at(i).second + sizeBestResults - i - 1, m_bestResults.at(i).first);
+            listModel->takeRow(m_bestResults.at(i).item->index().row());
+            listModel->insertRow(m_bestResults.at(i).originalPosition + sizeBestResults - i - 1, m_bestResults.at(i).item);
         }
         m_bestResults.clear();
     }
@@ -996,7 +996,7 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
             if (lastItem == -1) {
                 bNotShowBestResults = true;
             } else {
-                m_bestResults.append(qMakePair(item, i));
+                m_bestResults.append(BestItem(item, i));
                 continue;
             }
         }
@@ -1013,7 +1013,7 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
                 if (item->getMode()->name.startsWith(searchText + QLatin1Char(' '), m_caseSensitivity)) {
                     if (QString(QLatin1Char(' ') + item->getSearchName() + QLatin1Char(' '))
                             .contains(QLatin1Char(' ') + searchText + QLatin1Char(' '), m_caseSensitivity)) {
-                        m_bestResults.append(qMakePair(item, i));
+                        m_bestResults.append(BestItem(item, i));
                         continue;
                     } else {
                         bMatchCharDel = false;
@@ -1116,22 +1116,22 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
 
         // Special Case: always show the "R Script" mode first by typing "r" in the search box
         if (searchText.length() == 1 && searchText.compare(QLatin1String("r"), m_caseSensitivity) == 0) {
-            for (const QPair<ListItem *, int> &itemBestResults : std::as_const(m_bestResults)) {
-                listModel->takeRow(itemBestResults.second);
+            for (const auto &[item, originalPos] : std::as_const(m_bestResults)) {
+                listModel->takeRow(originalPos);
                 ++rowModelBestResults;
-                if (itemBestResults.first->getMode()->name == QLatin1String("R Script")) {
-                    listModel->insertRow(1, itemBestResults.first);
+                if (item->getMode()->name == QLatin1String("R Script")) {
+                    listModel->insertRow(1, item);
                     listView->setRowHidden(1, false);
                 } else {
-                    listModel->insertRow(rowModelBestResults, itemBestResults.first);
+                    listModel->insertRow(rowModelBestResults, item);
                     listView->setRowHidden(rowModelBestResults, false);
                 }
             }
         } else {
             // Move items to the "Best Search Matches" section
-            for (const QPair<ListItem *, int> &itemBestResults : std::as_const(m_bestResults)) {
-                listModel->takeRow(itemBestResults.second);
-                listModel->insertRow(++rowModelBestResults, itemBestResults.first);
+            for (const auto &[item, originalPos] : std::as_const(m_bestResults)) {
+                listModel->takeRow(originalPos);
+                listModel->insertRow(++rowModelBestResults, item);
                 listView->setRowHidden(rowModelBestResults, false);
             }
         }

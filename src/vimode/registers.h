@@ -42,7 +42,10 @@ public:
     OperationMode getFlag(const QChar &reg) const;
 
 private:
-    typedef QPair<QString, OperationMode> Register;
+    struct Register {
+        QString contents;
+        OperationMode opMode;
+    };
 
 private:
     void setNumberedRegister(const QChar &reg, const QString &text, OperationMode flag = CharWise);

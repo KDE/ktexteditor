@@ -181,7 +181,7 @@ void ScriptTestBase::runTest(const ExpectedFailures &failures)
     m_document->closeUrl();
 
     for (const Failure &failure : failures) {
-        QEXPECT_FAIL(failure.first, failure.second, Abort);
+        QEXPECT_FAIL(failure.dataIndex, failure.comment, Abort);
     }
 
     // compare files, expected fail will invert this verify

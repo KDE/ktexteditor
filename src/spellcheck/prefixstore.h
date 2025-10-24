@@ -26,8 +26,6 @@
 class KatePrefixStore
 {
 public:
-    typedef QPair<bool, bool> BooleanPair;
-
     virtual ~KatePrefixStore() = default;
 
     void addPrefix(const QString &prefix);
@@ -56,7 +54,11 @@ protected:
     QSet<QString> m_prefixSet;
 
     // State x Char -> Nr. of char occurrences in prefixes x State
-    typedef QHash<unsigned short, QPair<unsigned int, unsigned long long>> CharToOccurrenceStateHash;
+    struct OccurrenceAndState {
+        quint32 occurrences;
+        quint64 state;
+    };
+    typedef QHash<unsigned short, OccurrenceAndState> CharToOccurrenceStateHash;
     typedef QHash<unsigned long long, CharToOccurrenceStateHash> TransitionFunction;
     TransitionFunction m_transitionFunction;
     QSet<unsigned long long> m_acceptingStates;

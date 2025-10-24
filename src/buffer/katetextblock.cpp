@@ -219,7 +219,11 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
 
         // move all cursors because of the unwrapped line
         // remember all ranges modified, optimize for the standard case of a few ranges
-        QVarLengthArray<QPair<TextRange *, bool>, 32> changedRanges;
+        struct ChangedRange {
+            TextRange *range;
+            bool spansMultipleBlocks;
+        };
+        QVarLengthArray<ChangedRange, 32> changedRanges;
         for (TextCursor *cursor : m_cursors) {
             // this is the unwrapped line
             if (cursor->lineInBlock() == 0) {
@@ -230,7 +234,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
                 auto range = cursor->kateRange();
                 if (range && !range->isValidityCheckRequired()) {
                     range->setValidityCheckRequired();
-                    changedRanges.push_back({range, range->spansMultipleBlocks()});
+                    changedRanges.push_back(ChangedRange{range, range->spansMultipleBlocks()});
                 }
             }
         }
@@ -505,9 +509,9 @@ void TextBlock::splitBlock(int fromLine, TextBlock *newBlock)
     // move lines
     auto myLinesToMoveBegin = m_lines.begin() + fromLine;
     auto myLinesToMoveEnd = m_lines.end();
-    int blockSizeChange = myLinesToMoveEnd - myLinesToMoveBegin;// how many newlines
-    std::for_each(myLinesToMoveBegin, myLinesToMoveEnd, [&blockSizeChange] (const TextLine &line) -> void {
-        blockSizeChange += line.length();// how many non-newlines
+    int blockSizeChange = myLinesToMoveEnd - myLinesToMoveBegin; // how many newlines
+    std::for_each(myLinesToMoveBegin, myLinesToMoveEnd, [&blockSizeChange](const TextLine &line) -> void {
+        blockSizeChange += line.length(); // how many non-newlines
     });
     m_buffer->m_blockSizes[m_blockIndex] -= blockSizeChange;
     m_buffer->m_blockSizes[newBlock->m_blockIndex] += blockSizeChange;
@@ -549,14 +553,16 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     // Both this->m_cursors and targetBlock->m_cursors are sorted.
 
     // Iterating m_cursors backwards to modify TextRange's m_end before m_start.
-    std::for_each(m_cursors.crbegin(), m_cursors.crend(), [targetBlockLines = targetBlock->lines(), targetBlock, m_buffer = m_buffer] (TextCursor *cursor) -> void {
-        cursor->m_line += targetBlockLines;
-        cursor->m_block = targetBlock;
-        TextRange *range = cursor->m_range;
-        if (range && cursor == &range->m_end && targetBlock == range->m_start.m_block) {
-            m_buffer->removeMultilineRange(range);
-        }
-    });
+    std::for_each(m_cursors.crbegin(),
+                  m_cursors.crend(),
+                  [targetBlockLines = targetBlock->lines(), targetBlock, m_buffer = m_buffer](TextCursor *cursor) -> void {
+                      cursor->m_line += targetBlockLines;
+                      cursor->m_block = targetBlock;
+                      TextRange *range = cursor->m_range;
+                      if (range && cursor == &range->m_end && targetBlock == range->m_start.m_block) {
+                          m_buffer->removeMultilineRange(range);
+                      }
+                  });
     // move cursors
     auto first_insertion_pos = targetBlock->m_cursors.insert(targetBlock->m_cursors.cend(), m_cursors.cbegin(), m_cursors.cend());
     m_cursors.clear();
@@ -594,8 +600,7 @@ void TextBlock::rangesForLine(const int line, KTextEditor::View *view, bool rang
             // simple case
             (cursor->lineInBlock() == lineInBlock) ||
             // if line is in the range, ok
-            (range->startInternal().lineInternal() <= line && line <= range->endInternal().lineInternal())
-        ) {
+            (range->startInternal().lineInternal() <= line && line <= range->endInternal().lineInternal())) {
             outRanges.append(range);
         }
     }

@@ -28,12 +28,12 @@ QModelIndex KateArgumentHintModel::mapToSource(const QModelIndex &index) const
     }
 
     KateCompletionModel::ModelRow source = group()->filtered[m_rows[index.row()]].sourceRow();
-    if (!source.first) {
+    if (!source.completionModel) {
         qCDebug(LOG_KTE) << "KateArgumentHintModel::data: Row does not exist in source";
         return QModelIndex();
     }
 
-    QModelIndex sourceIndex = source.second.sibling(source.second.row(), index.column());
+    QModelIndex sourceIndex = source.index.sibling(source.index.row(), index.column());
 
     return sourceIndex;
 }
@@ -52,7 +52,7 @@ void KateArgumentHintModel::buildRows()
     std::map<int, std::vector<int>> m_depths; // Map each hint-depth to a list of functions of that depth
     for (int a = 0; a < (int)group()->filtered.size(); a++) {
         KateCompletionModel::ModelRow source = group()->filtered[a].sourceRow();
-        QModelIndex sourceIndex = source.second.sibling(source.second.row(), 0);
+        QModelIndex sourceIndex = source.index.sibling(source.index.row(), 0);
         QVariant v = sourceIndex.data(CodeCompletionModel::ArgumentHintDepth);
         if (v.userType() == QMetaType::Int) {
             std::vector<int> &lst(m_depths[v.toInt()]);
@@ -92,12 +92,12 @@ QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
     }
 
     KateCompletionModel::ModelRow source = group()->filtered[m_rows[index.row()]].sourceRow();
-    if (!source.first) {
+    if (!source.completionModel) {
         qCDebug(LOG_KTE) << "KateArgumentHintModel::data: Row does not exist in source";
         return QVariant();
     }
 
-    QModelIndex sourceIndex = source.second.sibling(source.second.row(), index.column());
+    QModelIndex sourceIndex = source.index.sibling(source.index.row(), index.column());
 
     if (!sourceIndex.isValid()) {
         qCDebug(LOG_KTE) << "KateArgumentHintModel::data: Source-index is not valid";
@@ -110,7 +110,7 @@ QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
         QString totalText;
         for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
             if (a != CodeCompletionModel::Scope) { // Skip the scope
-                totalText += source.second.sibling(source.second.row(), a).data(Qt::DisplayRole).toString() + QLatin1Char(' ');
+                totalText += source.index.sibling(source.index.row(), a).data(Qt::DisplayRole).toString() + QLatin1Char(' ');
             }
         }
 
@@ -119,7 +119,7 @@ QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
     case CodeCompletionModel::HighlightingMethod: {
         // Return that we are doing custom-highlighting of one of the sub-strings does it
         for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
-            QVariant method = source.second.sibling(source.second.row(), a).data(CodeCompletionModel::HighlightingMethod);
+            QVariant method = source.index.sibling(source.index.row(), a).data(CodeCompletionModel::HighlightingMethod);
             if (method.userType() == QMetaType::Int && method.toInt() == CodeCompletionModel::CustomHighlighting) {
                 return QVariant(CodeCompletionModel::CustomHighlighting);
             }
@@ -132,14 +132,14 @@ QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
 
         // Collect strings
         for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
-            strings << source.second.sibling(source.second.row(), a).data(Qt::DisplayRole).toString();
+            strings << source.index.sibling(source.index.row(), a).data(Qt::DisplayRole).toString();
         }
 
         QList<QVariantList> highlights;
 
         // Collect custom-highlightings
         for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
-            highlights << source.second.sibling(source.second.row(), a).data(CodeCompletionModel::CustomHighlight).toList();
+            highlights << source.index.sibling(source.index.row(), a).data(CodeCompletionModel::CustomHighlight).toList();
         }
 
         return mergeCustomHighlighting(strings, highlights, 1);

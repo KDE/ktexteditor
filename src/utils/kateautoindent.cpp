@@ -269,8 +269,8 @@ void KateAutoIndent::scriptIndent(KTextEditor::ViewPrivate *view, const KTextEdi
     doc->pushEditState();
     doc->editStart();
 
-    QPair<int, int> result = m_script->indent(view, position, typedChar, indentWidth);
-    int newIndentInChars = result.first;
+    auto result = m_script->indent(view, position, typedChar, indentWidth);
+    int newIndentInChars = result.indentAmount;
 
     // handle negative values special
     if (newIndentInChars < -1) {
@@ -286,7 +286,7 @@ void KateAutoIndent::scriptIndent(KTextEditor::ViewPrivate *view, const KTextEdi
     // get align
     else {
         // we got a positive or zero indent to use...
-        doIndent(position.line(), newIndentInChars, result.second);
+        doIndent(position.line(), newIndentInChars, result.alignAmount);
     }
 
     // end edit in all cases

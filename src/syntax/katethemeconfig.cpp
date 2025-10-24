@@ -843,8 +843,8 @@ void KateThemeConfigHighlightTab::schemaChanged(const QString &schema)
 
         QString highlighting = attributes[i]->name().left(c);
         QString name = attributes[i]->name().mid(c + 1);
-        auto &uniqueAttribute = m_uniqueAttributes[m_schema][highlighting][name].first;
-        auto &uniqueAttributeDefault = m_uniqueAttributes[m_schema][highlighting][name].second;
+        auto &uniqueAttribute = m_uniqueAttributes[m_schema][highlighting][name].value;
+        auto &uniqueAttributeDefault = m_uniqueAttributes[m_schema][highlighting][name].defaultValue;
 
         if (uniqueAttribute.data()) {
             attributes[i] = uniqueAttribute;
@@ -938,8 +938,8 @@ void KateThemeConfigHighlightTab::apply()
             for (const auto &attributeIt : highlightingIt.second) {
                 // we need to store even if we have nothing set as long as the value differs from the default, see bug 459093
                 QJsonObject style;
-                KTextEditor::Attribute::Ptr p = attributeIt.second.first;
-                KTextEditor::Attribute::Ptr pDefault = attributeIt.second.second;
+                KTextEditor::Attribute::Ptr p = attributeIt.second.value;
+                KTextEditor::Attribute::Ptr pDefault = attributeIt.second.defaultValue;
                 if (p->foreground().color() != pDefault->foreground().color()) {
                     style[QLatin1String("text-color")] = hexName(p->foreground().color());
                 }

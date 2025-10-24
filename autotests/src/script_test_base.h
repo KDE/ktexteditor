@@ -27,7 +27,10 @@ class ScriptTestBase : public QObject
 protected:
     void initTestCase();
     void cleanupTestCase();
-    typedef QPair<const char *, const char *> Failure;
+    struct Failure {
+        const char *dataIndex;
+        const char *comment;
+    };
     typedef QList<Failure> ExpectedFailures;
     void getTestData(const QString &script);
     void runTest(const ExpectedFailures &failures);

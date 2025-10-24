@@ -3199,7 +3199,11 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
         const bool hasClosingBracket = !closingBracket.isNull();
         const QString closingChar = closingBracket;
 
-        std::vector<std::pair<Kate::TextCursor *, KTextEditor::Cursor>> freezedCursors;
+        struct FreezedCursor {
+            Kate::TextCursor *cursor;
+            KTextEditor::Cursor freezedPos;
+        };
+        std::vector<FreezedCursor> freezedCursors;
         for (auto it = sc.begin(); it != sc.end(); ++it) {
             auto pos = it->cursor();
             if (it != sc.begin() && pos == std::prev(it)->cursor()) {
@@ -3226,7 +3230,7 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
         insertText(view->cursorPosition(), chars);
 
         for (auto &freezed : freezedCursors) {
-            freezed.first->setPosition(freezed.second);
+            freezed.cursor->setPosition(freezed.freezedPos);
         }
     }
 
@@ -4884,9 +4888,13 @@ bool KTextEditor::DocumentPrivate::documentReload()
     m_storedVariables.clear();
 
     // save cursor positions for all views
-    QVarLengthArray<std::pair<KTextEditor::ViewPrivate *, KTextEditor::Cursor>, 4> cursorPositions;
+    struct ViewCursorPos {
+        ViewPrivate *view;
+        Cursor cursorPos;
+    };
+    QVarLengthArray<ViewCursorPos, 4> cursorPositions;
     std::transform(m_views.cbegin(), m_views.cend(), std::back_inserter(cursorPositions), [](KTextEditor::View *v) {
-        return std::pair<KTextEditor::ViewPrivate *, KTextEditor::Cursor>(static_cast<ViewPrivate *>(v), v->cursorPosition());
+        return ViewCursorPos(static_cast<ViewPrivate *>(v), v->cursorPosition());
     });
 
     // clear multicursors
@@ -4908,10 +4916,10 @@ bool KTextEditor::DocumentPrivate::documentReload()
     // restore cursor positions for all views
     for (auto v : std::as_const(m_views)) {
         setActiveView(v);
-        auto it = std::find_if(cursorPositions.cbegin(), cursorPositions.cend(), [v](const std::pair<KTextEditor::ViewPrivate *, KTextEditor::Cursor> &p) {
-            return p.first == v;
+        auto it = std::find_if(cursorPositions.cbegin(), cursorPositions.cend(), [v](const ViewCursorPos &p) {
+            return p.view == v;
         });
-        v->setCursorPosition(it->second);
+        v->setCursorPosition(it->cursorPos);
         if (v->isVisible()) {
             v->repaint();
         }
@@ -6153,7 +6161,7 @@ QString KTextEditor::DocumentPrivate::defaultDictionary() const
     return m_defaultDictionary;
 }
 
-QList<QPair<KTextEditor::MovingRange *, QString>> KTextEditor::DocumentPrivate::dictionaryRanges() const
+QList<KTextEditor::DocumentPrivate::DictionaryRange> KTextEditor::DocumentPrivate::dictionaryRanges() const
 {
     return m_dictionaryRanges;
 }
@@ -6161,7 +6169,7 @@ QList<QPair<KTextEditor::MovingRange *, QString>> KTextEditor::DocumentPrivate::
 void KTextEditor::DocumentPrivate::clearDictionaryRanges()
 {
     for (auto i = m_dictionaryRanges.cbegin(); i != m_dictionaryRanges.cend(); ++i) {
-        delete (*i).first;
+        delete i->range;
     }
     m_dictionaryRanges.clear();
     if (m_onTheFlyChecker) {
@@ -6189,16 +6197,15 @@ void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, K
     if (!newDictionaryRange.isValid() || newDictionaryRange.isEmpty()) {
         return;
     }
-    QList<QPair<KTextEditor::MovingRange *, QString>> newRanges;
+    QList<DictionaryRange> newRanges;
     // all ranges is 'm_dictionaryRanges' are assumed to be mutually disjoint
     for (auto i = m_dictionaryRanges.begin(); i != m_dictionaryRanges.end();) {
         qCDebug(LOG_KTE) << "new iteration" << newDictionaryRange;
         if (newDictionaryRange.isEmpty()) {
             break;
         }
-        QPair<KTextEditor::MovingRange *, QString> pair = *i;
-        QString dictionarySet = pair.second;
-        KTextEditor::MovingRange *dictionaryRange = pair.first;
+        QString dictionarySet = i->dictionary;
+        KTextEditor::MovingRange *dictionaryRange = i->range;
         qCDebug(LOG_KTE) << *dictionaryRange << dictionarySet;
         if (dictionaryRange->contains(newDictionaryRange) && newDictionary == dictionarySet) {
             qCDebug(LOG_KTE) << "dictionaryRange contains newDictionaryRange";
@@ -6322,8 +6329,8 @@ void KTextEditor::DocumentPrivate::deleteDictionaryRange(KTextEditor::MovingRang
 {
     qCDebug(LOG_KTE) << "deleting" << movingRange;
 
-    auto finder = [=](const QPair<KTextEditor::MovingRange *, QString> &item) -> bool {
-        return item.first == movingRange;
+    auto finder = [=](const DictionaryRange &item) -> bool {
+        return item.range == movingRange;
     };
 
     auto it = std::find_if(m_dictionaryRanges.begin(), m_dictionaryRanges.end(), finder);
