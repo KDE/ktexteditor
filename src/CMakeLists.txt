@@ -355,7 +355,7 @@ if(ENABLE_PCH)
             <QSharedData>
             <QString>
             <QStringList>
-            <QJsonDocument>
+            <QJsonObject>
             <QTextFormat>
             <QWidget>
             <QObject>
