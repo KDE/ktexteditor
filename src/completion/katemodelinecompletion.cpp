@@ -43,6 +43,7 @@ KateModelineCompletionModel::KateModelineCompletionModel(QObject *parent)
 
 void KateModelineCompletionModel::completionInvoked(KTextEditor::View *view, const KTextEditor::Range &range, InvocationType)
 {
+    m_matches = {};
     if (shouldStartCompletion(view, {}, true, range.start())) {
         auto cursor = view->cursorPosition();
         const QString line = view->document()->line(cursor.line());
@@ -51,8 +52,8 @@ void KateModelineCompletionModel::completionInvoked(KTextEditor::View *view, con
         } else {
             m_matches = allVariables();
         }
-        setRowCount(int(m_matches.size()));
     }
+    setRowCount(int(m_matches.size()));
 }
 
 bool KateModelineCompletionModel::shouldStartCompletion(KTextEditor::View *view, const QString &, bool userInsertion, const KTextEditor::Cursor &position)
