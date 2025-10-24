@@ -55,8 +55,11 @@ public:
     }
 
 private:
-    typedef std::pair<CodeCompletionModel::ExtraItemDataRoles, QVariant> RoleAndValue;
-    typedef std::vector<std::pair<CodeCompletionModel::ExtraItemDataRoles, QVariant>> RoleMap;
+    struct RoleAndValue {
+        CodeCompletionModel::ExtraItemDataRoles role;
+        QVariant value;
+    };
+    typedef std::vector<RoleAndValue> RoleMap;
     RoleMap m_roleValues;
     QString m_customGroup;
     int m_groupSortingKey;
@@ -111,10 +114,10 @@ void HierarchicalModelHandler::takeRole(const QModelIndex &index)
 QVariant HierarchicalModelHandler::getData(CodeCompletionModel::ExtraItemDataRoles role, const QModelIndex &index) const
 {
     auto it = std::find_if(m_roleValues.begin(), m_roleValues.end(), [role](const RoleAndValue &v) {
-        return v.first == role;
+        return v.role == role;
     });
     if (it != m_roleValues.end()) {
-        return it->second;
+        return it->value;
     } else {
         return index.data(role);
     }
@@ -129,10 +132,10 @@ HierarchicalModelHandler::HierarchicalModelHandler(CodeCompletionModel *model)
 void HierarchicalModelHandler::addValue(CodeCompletionModel::ExtraItemDataRoles role, const QVariant &value)
 {
     auto it = std::find_if(m_roleValues.begin(), m_roleValues.end(), [role](const RoleAndValue &v) {
-        return v.first == role;
+        return v.role == role;
     });
     if (it != m_roleValues.end()) {
-        it->second = value;
+        it->value = value;
     } else {
         m_roleValues.push_back({role, value});
     }
@@ -293,17 +296,17 @@ int KateCompletionModel::contextMatchQuality(const QModelIndex &index) const
 
 int KateCompletionModel::contextMatchQuality(const ModelRow &source) const
 {
-    QModelIndex realIndex = source.second;
+    QModelIndex realIndex = source.index;
 
     int bestMatch = -1;
     // Iterate through all argument-hints and find the best match-quality
     for (const Item &item : m_argumentHints->filtered) {
         const ModelRow &row(item.sourceRow());
-        if (realIndex.model() != row.first) {
+        if (realIndex.model() != row.completionModel) {
             continue; // We can only match within the same source-model
         }
 
-        QModelIndex hintIndex = row.second;
+        QModelIndex hintIndex = row.index;
 
         QVariant depth = hintIndex.data(CodeCompletionModel::ArgumentHintDepth);
         if (!depth.isValid() || depth.userType() != QMetaType::Int || depth.toInt() != 1) {
@@ -364,7 +367,7 @@ int KateCompletionModel::columnCount(const QModelIndex &) const
 
 KateCompletionModel::ModelRow KateCompletionModel::modelRowPair(const QModelIndex &index)
 {
-    return qMakePair(static_cast<CodeCompletionModel *>(const_cast<QAbstractItemModel *>(index.model())), index);
+    return {static_cast<CodeCompletionModel *>(const_cast<QAbstractItemModel *>(index.model())), index};
 }
 
 bool KateCompletionModel::hasChildren(const QModelIndex &parent) const
@@ -813,7 +816,7 @@ QModelIndex KateCompletionModel::mapToSource(const QModelIndex &proxyIndex) cons
 
         if (proxyIndex.row() >= 0 && proxyIndex.row() < (int)g->filtered.size()) {
             ModelRow source = g->filtered[proxyIndex.row()].sourceRow();
-            return source.second.sibling(source.second.row(), proxyIndex.column());
+            return source.index.sibling(source.index.row(), proxyIndex.column());
         } else {
             qCDebug(LOG_KTE) << "Invalid proxy-index";
         }
@@ -886,7 +889,7 @@ QString KateCompletionModel::commonPrefixInternal(const QString &forcePrefix) co
 
     for (Group *g : groups) {
         for (const Item &item : g->filtered) {
-            uint startPos = currentCompletion(item.sourceRow().first).length();
+            uint startPos = currentCompletion(item.sourceRow().completionModel).length();
             const QString candidate = item.name().mid(startPos);
 
             if (!candidate.startsWith(forcePrefix)) {
@@ -929,7 +932,7 @@ QString KateCompletionModel::commonPrefix(QModelIndex selectedIndex) const
         if (g && selectedIndex.row() < (int)g->filtered.size()) {
             // Follow the path of the selected item, finding the next non-empty common prefix
             Item item = g->filtered[selectedIndex.row()];
-            int matchLength = currentCompletion(item.sourceRow().first).length();
+            int matchLength = currentCompletion(item.sourceRow().completionModel).length();
             commonPrefix = commonPrefixInternal(item.name().mid(matchLength).left(1));
         }
     }
@@ -1158,10 +1161,10 @@ KateCompletionModel::Item::Item(bool doInitialMatch, KateCompletionModel *m, con
     , matchCompletion(StartsWithMatch)
     , m_haveExactMatch(false)
 {
-    inheritanceDepth = handler.getData(CodeCompletionModel::InheritanceDepth, m_sourceRow.second).toInt();
-    m_unimportant = handler.getData(CodeCompletionModel::UnimportantItemRole, m_sourceRow.second).toBool();
+    inheritanceDepth = handler.getData(CodeCompletionModel::InheritanceDepth, m_sourceRow.index).toInt();
+    m_unimportant = handler.getData(CodeCompletionModel::UnimportantItemRole, m_sourceRow.index).toBool();
 
-    QModelIndex nameSibling = sr.second.sibling(sr.second.row(), CodeCompletionModel::Name);
+    QModelIndex nameSibling = sr.index.sibling(sr.index.row(), CodeCompletionModel::Name);
     m_nameColumn = nameSibling.data(Qt::DisplayRole).toString();
 
     if (doInitialMatch) {
@@ -1194,7 +1197,7 @@ bool KateCompletionModel::Item::lessThan(KateCompletionModel *model, const Item 
     ret = inheritanceDepth - rhs.inheritanceDepth;
 
     if (ret == 0) {
-        auto it = model->m_currentMatch.constFind(rhs.m_sourceRow.first);
+        auto it = model->m_currentMatch.constFind(rhs.m_sourceRow.completionModel);
         if (it != model->m_currentMatch.cend()) {
             const QString &filter = it.value();
             bool thisStartWithFilter = m_nameColumn.startsWith(filter, Qt::CaseSensitive);
@@ -1216,7 +1219,7 @@ bool KateCompletionModel::Item::lessThan(KateCompletionModel *model, const Item 
 
     if (ret == 0) {
         // FIXME need to define a better default ordering for multiple model display
-        ret = m_sourceRow.second.row() - rhs.m_sourceRow.second.row();
+        ret = m_sourceRow.index.row() - rhs.m_sourceRow.index.row();
     }
 
     return ret < 0;
@@ -1348,18 +1351,18 @@ bool KateCompletionModel::shouldMatchHideCompletionList() const
         for (const Item &item : group->filtered) {
             if (item.haveExactMatch()) {
                 KTextEditor::CodeCompletionModelControllerInterface *iface3 =
-                    qobject_cast<KTextEditor::CodeCompletionModelControllerInterface *>(item.sourceRow().first);
+                    qobject_cast<KTextEditor::CodeCompletionModelControllerInterface *>(item.sourceRow().completionModel);
                 bool hide = false;
                 if (!iface3) {
                     hide = true;
                 }
                 if (iface3
-                    && iface3->matchingItem(item.sourceRow().second) == KTextEditor::CodeCompletionModelControllerInterface::HideListIfAutomaticInvocation) {
+                    && iface3->matchingItem(item.sourceRow().index) == KTextEditor::CodeCompletionModelControllerInterface::HideListIfAutomaticInvocation) {
                     hide = true;
                 }
                 if (hide) {
                     doHide = true;
-                    hideModel = item.sourceRow().first;
+                    hideModel = item.sourceRow().completionModel;
                 }
             }
         }
@@ -1369,7 +1372,7 @@ bool KateCompletionModel::shouldMatchHideCompletionList() const
         // Check if all other visible items are from the same model
         for (Group *group : m_rowTable) {
             for (const Item &item : group->filtered) {
-                if (item.sourceRow().first != hideModel) {
+                if (item.sourceRow().completionModel != hideModel) {
                     return false;
                 }
             }
@@ -1442,7 +1445,7 @@ static inline bool containsAtWordBeginning(const QString &word, const QString &t
 
 KateCompletionModel::Item::MatchType KateCompletionModel::Item::match(KateCompletionModel *model)
 {
-    const QString match = model->currentCompletion(m_sourceRow.first);
+    const QString match = model->currentCompletion(m_sourceRow.completionModel);
 
     m_haveExactMatch = false;
 
@@ -1603,11 +1606,11 @@ void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
             temp.reserve(items.size());
             for (const Item &item : items) {
                 auto it = had.constFind(item.name());
-                if (it != had.constEnd() && *it != item.sourceRow().first && m_needShadowing.contains(item.sourceRow().first)) {
+                if (it != had.constEnd() && *it != item.sourceRow().completionModel && m_needShadowing.contains(item.sourceRow().completionModel)) {
                     continue;
                 }
 
-                had.insert(item.name(), item.sourceRow().first);
+                had.insert(item.name(), item.sourceRow().completionModel);
                 temp.push_back(item);
             }
             items.swap(temp);
@@ -1666,7 +1669,11 @@ void KateCompletionModel::updateBestMatches()
 
     m_updateBestMatchesTimer->stop();
     // Maps match-qualities to ModelRows paired together with the BestMatchesCount returned by the items.
-    typedef QMultiMap<int, QPair<int, ModelRow>> BestMatchMap;
+    struct BestMatch {
+        int bestMatchesCount;
+        ModelRow row;
+    };
+    typedef QMultiMap<int, BestMatch> BestMatchMap;
     BestMatchMap matches;
 
     if (!hasGroups()) {
@@ -1677,7 +1684,7 @@ void KateCompletionModel::updateBestMatches()
         for (const Item &item : m_ungrouped->filtered) {
             ModelRow source = item.sourceRow();
 
-            QVariant v = source.second.data(CodeCompletionModel::BestMatchesCount);
+            QVariant v = source.index.data(CodeCompletionModel::BestMatchesCount);
 
             if (v.userType() == QMetaType::Int && v.toInt() > 0) {
                 int quality = contextMatchQuality(source);
@@ -1724,14 +1731,14 @@ void KateCompletionModel::updateBestMatches()
         for (int a = 0; a < (int)g->filtered.size(); a++) {
             ModelRow source = g->filtered[a].sourceRow();
 
-            QVariant v = source.second.data(CodeCompletionModel::BestMatchesCount);
+            QVariant v = source.index.data(CodeCompletionModel::BestMatchesCount);
 
             if (v.userType() == QMetaType::Int && v.toInt() > 0) {
                 // Return the best match with any of the argument-hints
 
                 int quality = contextMatchQuality(source);
                 if (quality > 0) {
-                    matches.insert(quality, qMakePair(v.toInt(), g->filtered[a].sourceRow()));
+                    matches.insert(quality, BestMatch{v.toInt(), g->filtered[a].sourceRow()});
                 }
                 --maxMatches;
             }
@@ -1753,7 +1760,7 @@ void KateCompletionModel::updateBestMatches()
     while (it != matches.constBegin()) {
         --it;
         ++cnt;
-        matchesSum += (*it).first;
+        matchesSum += it->bestMatchesCount;
         if (cnt > matchesSum / cnt) {
             break;
         }
@@ -1767,7 +1774,7 @@ void KateCompletionModel::updateBestMatches()
         --it;
         --cnt;
 
-        m_bestMatches->filtered.push_back(Item(true, this, HierarchicalModelHandler((*it).second.first), (*it).second));
+        m_bestMatches->filtered.push_back(Item(true, this, HierarchicalModelHandler(it->row.completionModel), it->row));
     }
 
     hideOrShowGroup(m_bestMatches);

@@ -360,10 +360,10 @@ int TextFolding::visibleLineToLine(int visibleLine) const
     return line;
 }
 
-QList<QPair<qint64, TextFolding::FoldingRangeFlags>> TextFolding::foldingRangesStartingOnLine(int line) const
+QList<TextFolding::IdAndFlag> TextFolding::foldingRangesStartingOnLine(int line) const
 {
     // results vector
-    QList<QPair<qint64, TextFolding::FoldingRangeFlags>> results;
+    QList<TextFolding::IdAndFlag> results;
 
     // recursively do binary search
     foldingRangesStartingOnLine(results, m_foldingRanges, line);
@@ -372,7 +372,7 @@ QList<QPair<qint64, TextFolding::FoldingRangeFlags>> TextFolding::foldingRangesS
     return results;
 }
 
-void TextFolding::foldingRangesStartingOnLine(QList<QPair<qint64, FoldingRangeFlags>> &results, const TextFolding::FoldingRange::Vector &ranges, int line) const
+void TextFolding::foldingRangesStartingOnLine(QList<TextFolding::IdAndFlag> &results, const TextFolding::FoldingRange::Vector &ranges, int line) const
 {
     // early out for no folds
     if (ranges.isEmpty()) {
@@ -394,7 +394,7 @@ void TextFolding::foldingRangesStartingOnLine(QList<QPair<qint64, FoldingRangeFl
     for (FoldingRange::Vector::const_iterator it = lowerBound; it != upperBound; ++it) {
         // this range already ok? add it to results
         if ((*it)->start->line() == line) {
-            results.push_back(qMakePair((*it)->id, (*it)->flags));
+            results.push_back(TextFolding::IdAndFlag((*it)->id, (*it)->flags));
         }
 
         // recurse anyway
@@ -402,7 +402,7 @@ void TextFolding::foldingRangesStartingOnLine(QList<QPair<qint64, FoldingRangeFl
     }
 }
 
-QList<QPair<qint64, TextFolding::FoldingRangeFlags>> TextFolding::foldingRangesForParentRange(qint64 parentRangeId) const
+QList<TextFolding::IdAndFlag> TextFolding::foldingRangesForParentRange(qint64 parentRangeId) const
 {
     // toplevel ranges requested or real parent?
     const FoldingRange::Vector *ranges = nullptr;
@@ -413,14 +413,14 @@ QList<QPair<qint64, TextFolding::FoldingRangeFlags>> TextFolding::foldingRangesF
     }
 
     // no ranges => nothing to do
-    QList<QPair<qint64, FoldingRangeFlags>> results;
+    QList<TextFolding::IdAndFlag> results;
     if (!ranges) {
         return results;
     }
 
     // else convert ranges to id + flags and pass that back
     for (FoldingRange::Vector::const_iterator it = ranges->begin(); it != ranges->end(); ++it) {
-        results.append(qMakePair((*it)->id, (*it)->flags));
+        results.append(TextFolding::IdAndFlag((*it)->id, (*it)->flags));
     }
     return results;
 }

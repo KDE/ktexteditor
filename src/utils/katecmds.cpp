@@ -261,11 +261,11 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view, const QString &_c
     } else if (cmd == QLatin1String("tfold")) {
         return (v->textFolding().newFoldingRange(range.isValid() ? range : v->selectionRange(), Kate::TextFolding::Folded) != -1);
     } else if (cmd == QLatin1String("unfold")) {
-        QList<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>> startingRanges = v->textFolding().foldingRangesStartingOnLine(v->cursorPosition().line());
+        QList<Kate::TextFolding::IdAndFlag> startingRanges = v->textFolding().foldingRangesStartingOnLine(v->cursorPosition().line());
         bool unfolded = false;
         for (int i = 0; i < startingRanges.size(); ++i) {
-            if (startingRanges[i].second & Kate::TextFolding::Folded) {
-                unfolded = v->textFolding().unfoldRange(startingRanges[i].first) || unfolded;
+            if (startingRanges[i].flags & Kate::TextFolding::Folded) {
+                unfolded = v->textFolding().unfoldRange(startingRanges[i].id) || unfolded;
             }
         }
         return unfolded;

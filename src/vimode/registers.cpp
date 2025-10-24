@@ -41,12 +41,12 @@ void Registers::writeConfig(KConfigGroup &config) const
     QStringList contents;
     QList<int> flags;
     for (const auto &[name, reg] : m_registers) {
-        if (reg.first.length() <= 1000) {
+        if (reg.contents.length() <= 1000) {
             names << name;
-            contents << reg.first;
-            flags << int(reg.second);
+            contents << reg.contents;
+            flags << int(reg.opMode);
         } else {
-            qCDebug(LOG_KTE) << "Did not save contents of register " << name << ": contents too long (" << reg.first.length() << " characters)";
+            qCDebug(LOG_KTE) << "Did not save contents of register " << name << ": contents too long (" << reg.contents.length() << " characters)";
         }
     }
 
@@ -75,7 +75,7 @@ void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
     } else {
         const QChar lowercase_reg = reg.toLower();
         if (reg != lowercase_reg) {
-            m_registers[lowercase_reg].first.append(text);
+            m_registers[lowercase_reg].contents.append(text);
         } else {
             m_registers.insert_or_assign(lowercase_reg, Register(text, flag));
         }
@@ -88,12 +88,12 @@ void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
 
 QString Registers::getContent(const QChar &reg) const
 {
-    return getRegister(reg).first;
+    return getRegister(reg).contents;
 }
 
 OperationMode Registers::getFlag(const QChar &reg) const
 {
-    return getRegister(reg).second;
+    return getRegister(reg).opMode;
 }
 
 Registers::Register Registers::getRegister(const QChar &reg) const
@@ -138,7 +138,7 @@ void Registers::setNumberedRegister(const QChar &reg, const QString &text, Opera
         // register 0 is used for the last yank command, so insert at position 1
         m_numbered.prepend(Register(text, flag));
     } else {
-        m_numbered[index].first = text;
-        m_numbered[index].second = flag;
+        m_numbered[index].contents = text;
+        m_numbered[index].opMode = flag;
     }
 }

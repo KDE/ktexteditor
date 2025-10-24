@@ -120,7 +120,11 @@ private:
      *
      * theme => highlighting => attribute => pair of value + default
      */
-    std::map<QString, std::map<QString, std::map<QString, std::pair<KTextEditor::Attribute::Ptr, KTextEditor::Attribute::Ptr>>>> m_uniqueAttributes;
+    struct AttribPair {
+        KTextEditor::Attribute::Ptr value;
+        KTextEditor::Attribute::Ptr defaultValue;
+    };
+    std::map<QString, std::map<QString, std::map<QString, AttribPair>>> m_uniqueAttributes;
 
 public:
     QList<int> hlsForSchema(const QString &schema);

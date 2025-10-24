@@ -1281,8 +1281,13 @@ private:
     // END KTextEditor::MessageInterface
 
 public:
+    struct DictionaryRange {
+        KTextEditor::MovingRange *range;
+        QString dictionary;
+    };
+
     QString defaultDictionary() const;
-    QList<QPair<KTextEditor::MovingRange *, QString>> dictionaryRanges() const;
+    QList<DictionaryRange> dictionaryRanges() const;
     bool isOnTheFlySpellCheckingEnabled() const;
     KateOnTheFlyChecker *onTheFlySpellChecker() const
     {
@@ -1323,7 +1328,7 @@ public:
 protected:
     KateOnTheFlyChecker *m_onTheFlyChecker = nullptr;
     QString m_defaultDictionary;
-    QList<QPair<KTextEditor::MovingRange *, QString>> m_dictionaryRanges;
+    QList<DictionaryRange> m_dictionaryRanges;
 
     // from KTextEditor::MovingRangeFeedback
     void rangeInvalid(KTextEditor::MovingRange *movingRange) override;

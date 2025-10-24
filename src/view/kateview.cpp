@@ -1502,7 +1502,7 @@ void KTextEditor::ViewPrivate::slotExpandToplevelNodes()
 {
     const auto topLevelRanges(textFolding().foldingRangesForParentRange());
     for (const auto &range : topLevelRanges) {
-        textFolding().unfoldRange(range.first);
+        textFolding().unfoldRange(range.id);
     }
 }
 
@@ -1546,7 +1546,7 @@ KTextEditor::Range KTextEditor::ViewPrivate::foldLine(int line)
     // in order to actually open it.
     auto folds = textFolding().foldingRangesStartingOnLine(line);
     for (int i = 0; i < folds.size(); ++i) {
-        KTextEditor::Range fold = textFolding().foldingRange(folds[i].first);
+        KTextEditor::Range fold = textFolding().foldingRange(folds[i].id);
         if (fold == foldingRange) {
             return foldingRange;
         }
@@ -1571,9 +1571,9 @@ bool KTextEditor::ViewPrivate::unfoldLine(int line)
     auto startingRanges = textFolding().foldingRangesStartingOnLine(line);
     for (int i = 0; i < startingRanges.size() && !actionDone; ++i) {
         // Avoid jumping view in case of a big unfold and ensure nice highlight of folding marker
-        setCursorPosition(textFolding().foldingRange(startingRanges[i].first).start());
+        setCursorPosition(textFolding().foldingRange(startingRanges[i].id).start());
 
-        actionDone |= textFolding().unfoldRange(startingRanges[i].first);
+        actionDone |= textFolding().unfoldRange(startingRanges[i].id);
     }
 
     if (!actionDone) {

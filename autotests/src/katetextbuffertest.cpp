@@ -247,10 +247,10 @@ void KateTextBufferTest::foldingTest()
     }
 
     // there shall be one range starting at 5
-    QList<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>> forLine = folding.foldingRangesStartingOnLine(5);
+    QList<Kate::TextFolding::IdAndFlag> forLine = folding.foldingRangesStartingOnLine(5);
     QVERIFY(forLine.size() == 1);
-    QVERIFY(forLine[0].first == 0);
-    QVERIFY(forLine[0].second & Kate::TextFolding::Folded);
+    QVERIFY(forLine[0].id == 0);
+    QVERIFY(forLine[0].flags & Kate::TextFolding::Folded);
 
     // we shall be able to insert new range
     QVERIFY(folding.newFoldingRange(KTextEditor::Range(KTextEditor::Cursor(20, 0), KTextEditor::Cursor(30, 0)), Kate::TextFolding::Folded) == 1);
@@ -296,8 +296,8 @@ void KateTextBufferTest::foldingTest()
     // there shall be one range starting at 20
     forLine = folding.foldingRangesStartingOnLine(20);
     QVERIFY(forLine.size() == 1);
-    QVERIFY(forLine[0].first == 1);
-    QVERIFY(forLine[0].second & Kate::TextFolding::Folded);
+    QVERIFY(forLine[0].id == 1);
+    QVERIFY(forLine[0].flags & Kate::TextFolding::Folded);
 
     // this shall fail to be inserted, as it badly overlaps with the first range!
     QVERIFY(folding.newFoldingRange(KTextEditor::Range(KTextEditor::Cursor(6, 0), KTextEditor::Cursor(15, 0)), Kate::TextFolding::Folded) == -1);
@@ -347,8 +347,8 @@ void KateTextBufferTest::foldingTest()
     // there shall still be one range starting at 20
     forLine = folding.foldingRangesStartingOnLine(20);
     QVERIFY(forLine.size() == 1);
-    QVERIFY(forLine[0].first == 1);
-    QVERIFY(forLine[0].second & Kate::TextFolding::Folded);
+    QVERIFY(forLine[0].id == 1);
+    QVERIFY(forLine[0].flags & Kate::TextFolding::Folded);
 
     // add more regions starting at 20
     QVERIFY(folding.newFoldingRange(KTextEditor::Range(KTextEditor::Cursor(20, 5), KTextEditor::Cursor(24, 0)), Kate::TextFolding::Folded) == 4);
@@ -358,12 +358,12 @@ void KateTextBufferTest::foldingTest()
     // there shall still be three ranges starting at 20
     forLine = folding.foldingRangesStartingOnLine(20);
     QVERIFY(forLine.size() == 3);
-    QVERIFY(forLine[0].first == 1);
-    QVERIFY(forLine[0].second & Kate::TextFolding::Folded);
-    QVERIFY(forLine[1].first == 5);
-    QVERIFY(forLine[1].second & Kate::TextFolding::Folded);
-    QVERIFY(forLine[2].first == 4);
-    QVERIFY(forLine[2].second & Kate::TextFolding::Folded);
+    QVERIFY(forLine[0].id == 1);
+    QVERIFY(forLine[0].flags & Kate::TextFolding::Folded);
+    QVERIFY(forLine[1].id == 5);
+    QVERIFY(forLine[1].flags & Kate::TextFolding::Folded);
+    QVERIFY(forLine[2].id == 4);
+    QVERIFY(forLine[2].flags & Kate::TextFolding::Folded);
 
     // 50 lines are hidden
     QVERIFY(folding.visibleLines() == (100 - 50));

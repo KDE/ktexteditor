@@ -30,22 +30,19 @@ class KateOnTheFlyChecker : public QObject, private KTextEditor::MovingRangeFeed
         TEXT_INSERTED = 0,
         TEXT_REMOVED
     };
+    struct ModificationItem {
+        ModificationType type;
+        KTextEditor::MovingRange *range;
+    };
 
-    typedef QPair<KTextEditor::MovingRange *, QString> SpellCheckItem;
-    typedef QList<KTextEditor::MovingRange *> MovingRangeList;
-    typedef QPair<KTextEditor::MovingRange *, QString> MisspelledItem;
-    typedef QList<MisspelledItem> MisspelledList;
-
-    typedef QPair<ModificationType, KTextEditor::MovingRange *> ModificationItem;
     typedef QList<ModificationItem> ModificationList;
 
 public:
     explicit KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document);
     ~KateOnTheFlyChecker() override;
 
-    QPair<KTextEditor::Range, QString> getMisspelledItem(const KTextEditor::Cursor cursor) const;
     QString dictionaryForMisspelledRange(KTextEditor::Range range) const;
-    MovingRangeList installedMovingRanges(KTextEditor::Range range) const;
+    QList<KTextEditor::MovingRange *> installedMovingRanges(KTextEditor::Range range) const;
 
     void clearMisspellingForWord(const QString &word);
 
@@ -58,13 +55,18 @@ public:
 
     void updateInstalledMovingRanges(KTextEditor::View *view);
 
+    struct SpellCheckItem {
+        KTextEditor::MovingRange *range;
+        QString dictionary;
+    };
+
 protected:
     KTextEditor::DocumentPrivate *const m_document;
     Sonnet::Speller m_speller;
     QList<SpellCheckItem> m_spellCheckQueue;
     Sonnet::BackgroundChecker *m_backgroundChecker;
     SpellCheckItem m_currentlyCheckedItem;
-    MisspelledList m_misspelledList;
+    QList<SpellCheckItem> m_misspelledList;
     ModificationList m_modificationList;
     KTextEditor::DocumentPrivate::OffsetList m_currentDecToEncOffsetList;
     std::map<KTextEditor::View *, KTextEditor::Range> m_displayRangeMap;

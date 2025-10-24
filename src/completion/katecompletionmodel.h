@@ -133,7 +133,15 @@ private Q_SLOTS:
     void makeGroupItemsUnique(bool onlyFiltered = false);
 
 private:
-    typedef QPair<KTextEditor::CodeCompletionModel *, QModelIndex> ModelRow;
+    struct ModelRow {
+        KTextEditor::CodeCompletionModel *completionModel;
+        QModelIndex index;
+
+        bool operator==(const ModelRow &r) const
+        {
+            return completionModel == r.completionModel && index == r.index;
+        }
+    };
     virtual int contextMatchQuality(const ModelRow &sourceRow) const;
 
     QTreeView *treeView() const override;

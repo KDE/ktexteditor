@@ -24,12 +24,12 @@ void KatePrefixStore::addPrefix(const QString &prefix)
         CharToOccurrenceStateHash::iterator it = hash.find(c.unicode());
         if (it == hash.end()) {
             state = nextFreeState();
-            hash[c.unicode()] = QPair<unsigned int, unsigned long long>(1, state);
+            hash[c.unicode()] = OccurrenceAndState(1, state);
             continue;
         }
 
-        ++(*it).first;
-        state = (*it).second;
+        ++(*it).occurrences;
+        state = (*it).state;
     }
     // add the last state as accepting state
     m_acceptingStates.insert(state);
@@ -56,21 +56,21 @@ void KatePrefixStore::removePrefix(const QString &prefix)
         QChar c = prefix.at(i);
 
         CharToOccurrenceStateHash &hash = m_transitionFunction[state];
-        CharToOccurrenceStateHash::iterator it = hash.find(c.unicode());
+        auto it = hash.find(c.unicode());
         if (it == hash.end()) {
             continue;
         }
 
-        state = (*it).second;
+        state = (*it).state;
         if (m_acceptingStates.contains(state) && i == prefix.length() - 1) {
             m_acceptingStates.remove(state);
         }
 
-        if ((*it).first <= 1) {
+        if ((*it).occurrences <= 1) {
             hash.erase(it);
             m_stateFreeList.push_back(state);
         } else {
-            --(*it).first;
+            --(*it).occurrences;
         }
     }
 
@@ -84,7 +84,7 @@ void KatePrefixStore::dump()
     for (unsigned long long i = 0; i < m_lastAssignedState; ++i) {
         CharToOccurrenceStateHash &hash = m_transitionFunction[i];
         for (CharToOccurrenceStateHash::iterator it = hash.begin(); it != hash.end(); ++it) {
-            qCDebug(LOG_KTE) << i << "x" << QChar(it.key()) << "->" << it.value().first << "x" << it.value().second;
+            qCDebug(LOG_KTE) << i << "x" << QChar(it.key()) << "->" << it.value().occurrences << "x" << it.value().state;
         }
     }
     qCDebug(LOG_KTE) << "Accepting states" << m_acceptingStates;
@@ -101,7 +101,7 @@ QString KatePrefixStore::findPrefix(const QString &s, int start) const
             return QString();
         }
 
-        state = (*it).second;
+        state = (*it).state;
         if (m_acceptingStates.contains(state)) {
             return s.mid(start, i + 1 - start);
         }
@@ -120,7 +120,7 @@ QString KatePrefixStore::findPrefix(const Kate::TextLine &line, int start) const
             return QString();
         }
 
-        state = (*it).second;
+        state = (*it).state;
         if (m_acceptingStates.contains(state)) {
             return line.string(start, i + 1 - start);
         }

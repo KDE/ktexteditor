@@ -22,7 +22,7 @@
 
 QTEST_MAIN(IndentTest)
 
-#define FAILURE(test, comment) qMakePair<const char *, const char *>((test), (comment))
+#define FAILURE(test, comment) Failure((test), (comment))
 
 void IndentTest::initTestCase()
 {

@@ -63,19 +63,19 @@ QList<KTextEditor::Range> KateSpellCheckManager::rangeDifference(KTextEditor::Ra
 
 namespace
 {
-bool lessThanRangeDictionaryPair(const QPair<KTextEditor::Range, QString> &s1, const QPair<KTextEditor::Range, QString> &s2)
+bool lessThanRangeDictionaryPair(const KateSpellCheckManager::RangeAndDictionary &s1, const KateSpellCheckManager::RangeAndDictionary &s2)
 {
-    return s1.first.end() <= s2.first.start();
+    return s1.range.end() <= s2.range.start();
 }
 }
 
-QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range)
+QList<KateSpellCheckManager::RangeAndDictionary> KateSpellCheckManager::spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range)
 {
     QString defaultDict = doc->defaultDictionary();
-    QList<RangeDictionaryPair> toReturn;
-    QList<QPair<KTextEditor::MovingRange *, QString>> dictionaryRanges = doc->dictionaryRanges();
+    QList<RangeAndDictionary> toReturn;
+    const auto dictionaryRanges = doc->dictionaryRanges();
     if (dictionaryRanges.isEmpty()) {
-        toReturn.push_back(RangeDictionaryPair(range, defaultDict));
+        toReturn.push_back(RangeAndDictionary(range, defaultDict));
         return toReturn;
     }
     QList<KTextEditor::Range> splitQueue;
@@ -83,20 +83,20 @@ QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckLangu
     while (!splitQueue.isEmpty()) {
         bool handled = false;
         KTextEditor::Range consideredRange = splitQueue.takeFirst();
-        for (QList<QPair<KTextEditor::MovingRange *, QString>>::iterator i = dictionaryRanges.begin(); i != dictionaryRanges.end(); ++i) {
-            KTextEditor::Range languageRange = *((*i).first);
+        for (const auto &[range, dict] : dictionaryRanges) {
+            KTextEditor::Range languageRange = range->toRange();
             KTextEditor::Range intersection = languageRange.intersect(consideredRange);
             if (intersection.isEmpty()) {
                 continue;
             }
-            toReturn.push_back(RangeDictionaryPair(intersection, (*i).second));
+            toReturn.push_back(RangeAndDictionary(intersection, dict));
             splitQueue += rangeDifference(consideredRange, intersection);
             handled = true;
             break;
         }
         if (!handled) {
             // 'consideredRange' did not intersect with any dictionary range, so we add it with the default dictionary
-            toReturn.push_back(RangeDictionaryPair(consideredRange, defaultDict));
+            toReturn.push_back(RangeAndDictionary(consideredRange, defaultDict));
         }
     }
     // finally, we still have to sort the list
@@ -104,13 +104,13 @@ QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckLangu
     return toReturn;
 }
 
-QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *document,
-                                                                                                 KTextEditor::Range range,
-                                                                                                 const QString &dictionary,
-                                                                                                 bool singleLine,
-                                                                                                 bool returnSingleRange)
+QList<KateSpellCheckManager::RangeAndDictionary> KateSpellCheckManager::spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *document,
+                                                                                                        KTextEditor::Range range,
+                                                                                                        const QString &dictionary,
+                                                                                                        bool singleLine,
+                                                                                                        bool returnSingleRange)
 {
-    QList<QPair<KTextEditor::Range, QString>> toReturn;
+    QList<KateSpellCheckManager::RangeAndDictionary> toReturn;
     if (range.isEmpty()) {
         return toReturn;
     }
@@ -159,7 +159,7 @@ QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckWrtHi
                         // work around Qt bug 6498
                         trimRange(document, spellCheckRange);
                         if (!spellCheckRange.isEmpty()) {
-                            toReturn.push_back(RangeDictionaryPair(spellCheckRange, dictionary));
+                            toReturn.push_back(RangeAndDictionary(spellCheckRange, dictionary));
                             if (returnSingleRange) {
                                 return toReturn;
                             }
@@ -183,7 +183,7 @@ QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckWrtHi
             // work around Qt bug 6498
             trimRange(document, spellCheckRange);
             if (!spellCheckRange.isEmpty()) {
-                toReturn.push_back(RangeDictionaryPair(spellCheckRange, dictionary));
+                toReturn.push_back(RangeAndDictionary(spellCheckRange, dictionary));
                 if (returnSingleRange) {
                     return toReturn;
                 }
@@ -194,13 +194,13 @@ QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckWrtHi
     return toReturn;
 }
 
-QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range, bool singleLine)
+QList<KateSpellCheckManager::RangeAndDictionary>
+KateSpellCheckManager::spellCheckRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range, bool singleLine)
 {
-    QList<RangeDictionaryPair> toReturn;
-    QList<RangeDictionaryPair> languageRangeList = spellCheckLanguageRanges(doc, range);
-    for (QList<RangeDictionaryPair>::iterator i = languageRangeList.begin(); i != languageRangeList.end(); ++i) {
-        const RangeDictionaryPair &p = *i;
-        toReturn += spellCheckWrtHighlightingRanges(doc, p.first, p.second, singleLine);
+    QList<RangeAndDictionary> toReturn;
+    const QList<RangeAndDictionary> languageRangeList = spellCheckLanguageRanges(doc, range);
+    for (const auto &[range, dict] : languageRangeList) {
+        toReturn += spellCheckWrtHighlightingRanges(doc, range, dict, singleLine);
     }
     return toReturn;
 }

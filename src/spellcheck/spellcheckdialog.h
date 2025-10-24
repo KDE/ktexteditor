@@ -30,6 +30,7 @@ class Speller;
 }
 
 #include "ktexteditor/range.h"
+#include "spellcheck.h"
 
 namespace KTextEditor
 {
@@ -92,8 +93,8 @@ private:
 
     QList<QPair<int, int>> m_currentDecToEncOffsetList;
 
-    QList<QPair<KTextEditor::Range, QString>> m_languagesInSpellCheckRange;
-    QList<QPair<KTextEditor::Range, QString>>::iterator m_currentLanguageRangeIterator;
+    QList<KateSpellCheckManager::RangeAndDictionary> m_languagesInSpellCheckRange;
+    QList<KateSpellCheckManager::RangeAndDictionary>::iterator m_currentLanguageRangeIterator;
 
     // keep track of where we are.
     KTextEditor::Cursor m_spellPosCursor;
