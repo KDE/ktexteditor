@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:39+0000\n"
+"POT-Creation-Date: 2025-10-24 00:39+0000\n"
 "PO-Revision-Date: 2025-09-23 11:31+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -6034,73 +6034,73 @@ msgid_plural "%1 lines"
 msgstr[0] "1 línia"
 msgstr[1] "%1 línies"
 
-#: utils/katevariableexpansionhelpers.cpp:130
+#: utils/katevariableexpansionhelpers.cpp:77
 #, kde-format
 msgid "<value>"
 msgstr "<valor>"
 
-#: utils/katevariableexpansionhelpers.cpp:214
+#: utils/katevariableexpansionhelpers.cpp:161
 #, kde-format
 msgid "Insert variable"
 msgstr "Insereix una variable"
 
-#: utils/katevariableexpansionhelpers.cpp:218
+#: utils/katevariableexpansionhelpers.cpp:165
 #, kde-format
 msgid "Variables"
 msgstr "Variables"
 
-#: utils/katevariableexpansionhelpers.cpp:222
+#: utils/katevariableexpansionhelpers.cpp:169
 #, kde-format
 msgid "Filter"
 msgstr "Filtre"
 
-#: utils/katevariableexpansionhelpers.cpp:241
-#: utils/katevariableexpansionhelpers.cpp:270
+#: utils/katevariableexpansionhelpers.cpp:188
+#: utils/katevariableexpansionhelpers.cpp:217
 #, kde-format
 msgid "Please select a variable."
 msgstr "Seleccioneu una variable."
 
-#: utils/katevariableexpansionhelpers.cpp:259
+#: utils/katevariableexpansionhelpers.cpp:206
 #, kde-format
 msgid "Current value: %1<value>"
 msgstr "Valor actual: %1<value>"
 
-#: utils/katevariableexpansionhelpers.cpp:267
+#: utils/katevariableexpansionhelpers.cpp:214
 #, kde-format
 msgid "Current value: %1"
 msgstr "Valor actual: %1"
 
-#: utils/katevariableexpansionmanager.cpp:33
+#: utils/katevariableexpansionmanager.cpp:86
 #, kde-format
 msgid "File base name without path and suffix of the current document."
 msgstr "Nom base del fitxer sense el camí ni el sufix del document actual."
 
-#: utils/katevariableexpansionmanager.cpp:41
+#: utils/katevariableexpansionmanager.cpp:94
 #, kde-format
 msgid "File extension of the current document."
 msgstr "Extensió de fitxer del document actual."
 
-#: utils/katevariableexpansionmanager.cpp:49
+#: utils/katevariableexpansionmanager.cpp:102
 #, kde-format
 msgid "File name without path of the current document."
 msgstr "Nom del fitxer sense el camí del document actual."
 
-#: utils/katevariableexpansionmanager.cpp:57
+#: utils/katevariableexpansionmanager.cpp:110
 #, kde-format
 msgid "Full path of the current document including the file name."
 msgstr "Camí complet del document actual incloent el nom de fitxer."
 
-#: utils/katevariableexpansionmanager.cpp:65
+#: utils/katevariableexpansionmanager.cpp:118
 #, kde-format
 msgid "Contents of the current document."
 msgstr "Contingut del document actual."
 
-#: utils/katevariableexpansionmanager.cpp:72
+#: utils/katevariableexpansionmanager.cpp:125
 #, kde-format
 msgid "Full path of the current document excluding the file name."
 msgstr "Camí complet del document actual excloent el nom de fitxer."
 
-#: utils/katevariableexpansionmanager.cpp:80
+#: utils/katevariableexpansionmanager.cpp:133
 #, kde-format
 msgid ""
 "Full document path including file name, with native path separator "
@@ -6109,7 +6109,7 @@ msgstr ""
 "Camí complet del document incloent el nom de fitxer, amb el separador de "
 "camí natiu (barra inversa al Windows)."
 
-#: utils/katevariableexpansionmanager.cpp:88
+#: utils/katevariableexpansionmanager.cpp:141
 #, kde-format
 msgid ""
 "Full document path excluding file name, with native path separator "
@@ -6118,7 +6118,7 @@ msgstr ""
 "Camí complet del document excloent el nom de fitxer, amb el separador de "
 "camí natiu (barra inversa al Windows)."
 
-#: utils/katevariableexpansionmanager.cpp:96
+#: utils/katevariableexpansionmanager.cpp:149
 #, kde-format
 msgid ""
 "Line number of the text cursor position in current document (starts with 0)."
@@ -6126,7 +6126,7 @@ msgstr ""
 "Número de línia de la posició del cursor de text al document actual (comença "
 "per 0)."
 
-#: utils/katevariableexpansionmanager.cpp:103
+#: utils/katevariableexpansionmanager.cpp:156
 #, kde-format
 msgid ""
 "Column number of the text cursor position in current document (starts with "
@@ -6135,101 +6135,101 @@ msgstr ""
 "Número de columna de la posició del cursor de text al document actual "
 "(comença per 0)."
 
-#: utils/katevariableexpansionmanager.cpp:110
+#: utils/katevariableexpansionmanager.cpp:163
 #, kde-format
 msgid "X component in global screen coordinates of the cursor position."
 msgstr ""
 "Component X de les coordenades de la pantalla global de la posició del "
 "cursor."
 
-#: utils/katevariableexpansionmanager.cpp:117
+#: utils/katevariableexpansionmanager.cpp:170
 #, kde-format
 msgid "Y component in global screen coordinates of the cursor position."
 msgstr ""
 "Component Y de les coordenades de la pantalla global de la posició del "
 "cursor."
 
-#: utils/katevariableexpansionmanager.cpp:124
+#: utils/katevariableexpansionmanager.cpp:177
 #, kde-format
 msgid "Text selection of the current document."
 msgstr "Selecció de text del document actual."
 
-#: utils/katevariableexpansionmanager.cpp:131
+#: utils/katevariableexpansionmanager.cpp:184
 #, kde-format
 msgid "Start line of selected text of the current document."
 msgstr "Línia d'inici del text seleccionat del document actual."
 
-#: utils/katevariableexpansionmanager.cpp:138
+#: utils/katevariableexpansionmanager.cpp:191
 #, kde-format
 msgid "Start column of selected text of the current document."
 msgstr "Columna inicial del text seleccionat del document actual."
 
-#: utils/katevariableexpansionmanager.cpp:145
+#: utils/katevariableexpansionmanager.cpp:198
 #, kde-format
 msgid "End line of selected text of the current document."
 msgstr "Línia final del text seleccionat del document actual."
 
-#: utils/katevariableexpansionmanager.cpp:152
+#: utils/katevariableexpansionmanager.cpp:205
 #, kde-format
 msgid "End column of selected text of the current document."
 msgstr "Columna final del text seleccionat del document actual."
 
-#: utils/katevariableexpansionmanager.cpp:159
+#: utils/katevariableexpansionmanager.cpp:212
 #, kde-format
 msgid "Number of rows of the current document."
 msgstr "Nombre de files del document actual."
 
-#: utils/katevariableexpansionmanager.cpp:166
+#: utils/katevariableexpansionmanager.cpp:219
 #, kde-format
 msgid "Read a document variable."
 msgstr "Llegeix una variable de document."
 
-#: utils/katevariableexpansionmanager.cpp:174
+#: utils/katevariableexpansionmanager.cpp:227
 #, kde-format
 msgid "The current date in current locale format."
 msgstr "La data actual en la configuració regional actual."
 
-#: utils/katevariableexpansionmanager.cpp:181
+#: utils/katevariableexpansionmanager.cpp:234
 #, kde-format
 msgid "The current date (ISO)."
 msgstr "La data actual (ISO)."
 
-#: utils/katevariableexpansionmanager.cpp:188
+#: utils/katevariableexpansionmanager.cpp:241
 #, kde-format
 msgid "The current date (QDate formatstring)."
 msgstr "La data actual (format de cadena QDate)."
 
-#: utils/katevariableexpansionmanager.cpp:196
+#: utils/katevariableexpansionmanager.cpp:249
 #, kde-format
 msgid "The current time in current locale format."
 msgstr "L'hora actual en la configuració regional actual."
 
-#: utils/katevariableexpansionmanager.cpp:203
+#: utils/katevariableexpansionmanager.cpp:256
 #, kde-format
 msgid "The current time (ISO)."
 msgstr "L'hora actual (ISO)."
 
-#: utils/katevariableexpansionmanager.cpp:210
+#: utils/katevariableexpansionmanager.cpp:263
 #, kde-format
 msgid "The current time (QTime formatstring)."
 msgstr "L'hora actual (format de cadena QTime)."
 
-#: utils/katevariableexpansionmanager.cpp:218
+#: utils/katevariableexpansionmanager.cpp:271
 #, kde-format
 msgid "Access to environment variables."
 msgstr "Accés a les variables d'entorn."
 
-#: utils/katevariableexpansionmanager.cpp:226
+#: utils/katevariableexpansionmanager.cpp:279
 #, kde-format
 msgid "Evaluate simple JavaScript statements."
 msgstr "Avalua una sentència JavaScript senzilla."
 
-#: utils/katevariableexpansionmanager.cpp:236
+#: utils/katevariableexpansionmanager.cpp:289
 #, kde-format
 msgid "Encode text to make it URL compatible."
 msgstr "Codifica el text per a fer-lo compatible amb un URL."
 
-#: utils/katevariableexpansionmanager.cpp:244
+#: utils/katevariableexpansionmanager.cpp:297
 #, kde-format
 msgid "Generate a new UUID."
 msgstr "Genera un UUID nou."

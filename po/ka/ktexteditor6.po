@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:39+0000\n"
+"POT-Creation-Date: 2025-10-24 00:39+0000\n"
 "PO-Revision-Date: 2025-09-23 03:57+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -5954,73 +5954,73 @@ msgid_plural "%1 lines"
 msgstr[0] "1 ხაზი"
 msgstr[1] "%1 ხაზი"
 
-#: utils/katevariableexpansionhelpers.cpp:130
+#: utils/katevariableexpansionhelpers.cpp:77
 #, kde-format
 msgid "<value>"
 msgstr "<მნიშვნელობა>"
 
-#: utils/katevariableexpansionhelpers.cpp:214
+#: utils/katevariableexpansionhelpers.cpp:161
 #, kde-format
 msgid "Insert variable"
 msgstr "ცვლადის ჩასმა"
 
-#: utils/katevariableexpansionhelpers.cpp:218
+#: utils/katevariableexpansionhelpers.cpp:165
 #, kde-format
 msgid "Variables"
 msgstr "ცვლადები"
 
-#: utils/katevariableexpansionhelpers.cpp:222
+#: utils/katevariableexpansionhelpers.cpp:169
 #, kde-format
 msgid "Filter"
 msgstr "ფილტრი"
 
-#: utils/katevariableexpansionhelpers.cpp:241
-#: utils/katevariableexpansionhelpers.cpp:270
+#: utils/katevariableexpansionhelpers.cpp:188
+#: utils/katevariableexpansionhelpers.cpp:217
 #, kde-format
 msgid "Please select a variable."
 msgstr "აირჩიეთ ცვლადი."
 
-#: utils/katevariableexpansionhelpers.cpp:259
+#: utils/katevariableexpansionhelpers.cpp:206
 #, kde-format
 msgid "Current value: %1<value>"
 msgstr "მიმდინარე მნიშვნელობა: %1 <მნიშვნელობა>"
 
-#: utils/katevariableexpansionhelpers.cpp:267
+#: utils/katevariableexpansionhelpers.cpp:214
 #, kde-format
 msgid "Current value: %1"
 msgstr "მიმდინარე მნიშვნელობა: %1"
 
-#: utils/katevariableexpansionmanager.cpp:33
+#: utils/katevariableexpansionmanager.cpp:86
 #, kde-format
 msgid "File base name without path and suffix of the current document."
 msgstr "მიმდინარე დოკუმენტის ფაილის სახელი ბილიკისა და გაფართოების გარეშე."
 
-#: utils/katevariableexpansionmanager.cpp:41
+#: utils/katevariableexpansionmanager.cpp:94
 #, kde-format
 msgid "File extension of the current document."
 msgstr "მიმდინარე დოკუმენტის ფაილის გაფართოება."
 
-#: utils/katevariableexpansionmanager.cpp:49
+#: utils/katevariableexpansionmanager.cpp:102
 #, kde-format
 msgid "File name without path of the current document."
 msgstr "მიმდინარე დოკუმენტის ფაილის სახელი, ბილიკის გარეშე."
 
-#: utils/katevariableexpansionmanager.cpp:57
+#: utils/katevariableexpansionmanager.cpp:110
 #, kde-format
 msgid "Full path of the current document including the file name."
 msgstr "მიმდინარე დოკუმენტის სრული ბილიკი, ფაილის სახელის ჩათვლით."
 
-#: utils/katevariableexpansionmanager.cpp:65
+#: utils/katevariableexpansionmanager.cpp:118
 #, kde-format
 msgid "Contents of the current document."
 msgstr "მიმდინარე დოკუმენტის შემცველობა."
 
-#: utils/katevariableexpansionmanager.cpp:72
+#: utils/katevariableexpansionmanager.cpp:125
 #, kde-format
 msgid "Full path of the current document excluding the file name."
 msgstr "მიმდინარე დოკუმენტის სრული ბილიკი ფაილის სახელის გარეშე."
 
-#: utils/katevariableexpansionmanager.cpp:80
+#: utils/katevariableexpansionmanager.cpp:133
 #, kde-format
 msgid ""
 "Full document path including file name, with native path separator "
@@ -6029,7 +6029,7 @@ msgstr ""
 "სრული დოკუმენტის ბილიკი სახელის ჩათვლით, სისტემის ბილიკის გამყოფით ('\\' "
 "Windows-ზე)."
 
-#: utils/katevariableexpansionmanager.cpp:88
+#: utils/katevariableexpansionmanager.cpp:141
 #, kde-format
 msgid ""
 "Full document path excluding file name, with native path separator "
@@ -6038,110 +6038,110 @@ msgstr ""
 "სრული დოკუმენტის ბილიკი სახელის არჩათვლით, სისტემის ბილიკის გამყოფით ('\\' "
 "Windows-ზე)."
 
-#: utils/katevariableexpansionmanager.cpp:96
+#: utils/katevariableexpansionmanager.cpp:149
 #, kde-format
 msgid ""
 "Line number of the text cursor position in current document (starts with 0)."
 msgstr "მიმდინარე დოკუმენტში ტექსტის კურსორის ხაზის ნომერი (იწყება 0-დან)."
 
-#: utils/katevariableexpansionmanager.cpp:103
+#: utils/katevariableexpansionmanager.cpp:156
 #, kde-format
 msgid ""
 "Column number of the text cursor position in current document (starts with "
 "0)."
 msgstr "მიმდინარე დოკუმენტში ტექსტის კურსორის სვეტის ნომერი (იწყება 0-დან)."
 
-#: utils/katevariableexpansionmanager.cpp:110
+#: utils/katevariableexpansionmanager.cpp:163
 #, kde-format
 msgid "X component in global screen coordinates of the cursor position."
 msgstr "კურსორის პოზიციის X კომპონენტი გლობალური ეკრანის კოორდინატებში."
 
-#: utils/katevariableexpansionmanager.cpp:117
+#: utils/katevariableexpansionmanager.cpp:170
 #, kde-format
 msgid "Y component in global screen coordinates of the cursor position."
 msgstr "კურსორის პოზიციის Y კომპონენტი გლობალური ეკრანის კოორდინატებში."
 
-#: utils/katevariableexpansionmanager.cpp:124
+#: utils/katevariableexpansionmanager.cpp:177
 #, kde-format
 msgid "Text selection of the current document."
 msgstr "მონიშნული ტექსტი მიმდინარე დოკუმენტში."
 
-#: utils/katevariableexpansionmanager.cpp:131
+#: utils/katevariableexpansionmanager.cpp:184
 #, kde-format
 msgid "Start line of selected text of the current document."
 msgstr "მონიშნული ტექსტის საწყისი ხაზი მიმდინარე დოკუმენტში."
 
-#: utils/katevariableexpansionmanager.cpp:138
+#: utils/katevariableexpansionmanager.cpp:191
 #, kde-format
 msgid "Start column of selected text of the current document."
 msgstr "მონიშნული ტექსტის საწყისი სვეტი მიმდინარე დოკუმენტში."
 
-#: utils/katevariableexpansionmanager.cpp:145
+#: utils/katevariableexpansionmanager.cpp:198
 #, kde-format
 msgid "End line of selected text of the current document."
 msgstr "მონიშნული ტექსტის ბოლო ხაზი მიმდინარე დოკუმენტში."
 
-#: utils/katevariableexpansionmanager.cpp:152
+#: utils/katevariableexpansionmanager.cpp:205
 #, kde-format
 msgid "End column of selected text of the current document."
 msgstr "მონიშნული ტექსტის ბოლო სვეტი მიმდინარე დოკუმენტში."
 
-#: utils/katevariableexpansionmanager.cpp:159
+#: utils/katevariableexpansionmanager.cpp:212
 #, kde-format
 msgid "Number of rows of the current document."
 msgstr "მიმდინარე დოკუმენტების მწკრივების რაოდენობა."
 
-#: utils/katevariableexpansionmanager.cpp:166
+#: utils/katevariableexpansionmanager.cpp:219
 #, kde-format
 msgid "Read a document variable."
 msgstr "დოკუმენტის ცვლადის წაკითხვა."
 
-#: utils/katevariableexpansionmanager.cpp:174
+#: utils/katevariableexpansionmanager.cpp:227
 #, kde-format
 msgid "The current date in current locale format."
 msgstr "მიმდინარე თარიღი მიმდინარე ენის ფორმატში."
 
-#: utils/katevariableexpansionmanager.cpp:181
+#: utils/katevariableexpansionmanager.cpp:234
 #, kde-format
 msgid "The current date (ISO)."
 msgstr "მიმდინარე თარიღი (ISO)."
 
-#: utils/katevariableexpansionmanager.cpp:188
+#: utils/katevariableexpansionmanager.cpp:241
 #, kde-format
 msgid "The current date (QDate formatstring)."
 msgstr "მიმდინარე თარიღი (QDate formatstring)."
 
-#: utils/katevariableexpansionmanager.cpp:196
+#: utils/katevariableexpansionmanager.cpp:249
 #, kde-format
 msgid "The current time in current locale format."
 msgstr "მიმდინარე დრო მიმდინარე ენის ფორმატში."
 
-#: utils/katevariableexpansionmanager.cpp:203
+#: utils/katevariableexpansionmanager.cpp:256
 #, kde-format
 msgid "The current time (ISO)."
 msgstr "მიმდინარე დრო (ISO)."
 
-#: utils/katevariableexpansionmanager.cpp:210
+#: utils/katevariableexpansionmanager.cpp:263
 #, kde-format
 msgid "The current time (QTime formatstring)."
 msgstr "მიმდინარე დრო (QTime formatstring)."
 
-#: utils/katevariableexpansionmanager.cpp:218
+#: utils/katevariableexpansionmanager.cpp:271
 #, kde-format
 msgid "Access to environment variables."
 msgstr "წვდომა გარემოს ცვლადებზე."
 
-#: utils/katevariableexpansionmanager.cpp:226
+#: utils/katevariableexpansionmanager.cpp:279
 #, kde-format
 msgid "Evaluate simple JavaScript statements."
 msgstr "მარტივი JavaScrpt გამოსახულების შემოწმება."
 
-#: utils/katevariableexpansionmanager.cpp:236
+#: utils/katevariableexpansionmanager.cpp:289
 #, kde-format
 msgid "Encode text to make it URL compatible."
 msgstr "ტექსტის კოდირება მისი URL-ში გამოყენებისთვის."
 
-#: utils/katevariableexpansionmanager.cpp:244
+#: utils/katevariableexpansionmanager.cpp:297
 #, kde-format
 msgid "Generate a new UUID."
 msgstr "ახალი UUID-ის გენერაცია."

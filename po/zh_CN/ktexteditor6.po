@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:39+0000\n"
+"POT-Creation-Date: 2025-10-24 00:39+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -5756,80 +5756,80 @@ msgid "1 line"
 msgid_plural "%1 lines"
 msgstr[0] "%1 行"
 
-#: utils/katevariableexpansionhelpers.cpp:130
+#: utils/katevariableexpansionhelpers.cpp:77
 #, kde-format
 msgid "<value>"
 msgstr "<value>"
 
-#: utils/katevariableexpansionhelpers.cpp:214
+#: utils/katevariableexpansionhelpers.cpp:161
 #, kde-format
 msgid "Insert variable"
 msgstr "插入变量"
 
-#: utils/katevariableexpansionhelpers.cpp:218
+#: utils/katevariableexpansionhelpers.cpp:165
 #, kde-format
 msgid "Variables"
 msgstr "变量"
 
-#: utils/katevariableexpansionhelpers.cpp:222
+#: utils/katevariableexpansionhelpers.cpp:169
 #, kde-format
 msgid "Filter"
 msgstr "过滤"
 
-#: utils/katevariableexpansionhelpers.cpp:241
-#: utils/katevariableexpansionhelpers.cpp:270
+#: utils/katevariableexpansionhelpers.cpp:188
+#: utils/katevariableexpansionhelpers.cpp:217
 #, kde-format
 msgid "Please select a variable."
 msgstr "请选择变量。"
 
-#: utils/katevariableexpansionhelpers.cpp:259
+#: utils/katevariableexpansionhelpers.cpp:206
 #, kde-format
 msgid "Current value: %1<value>"
 msgstr "当前值：%1<value>"
 
-#: utils/katevariableexpansionhelpers.cpp:267
+#: utils/katevariableexpansionhelpers.cpp:214
 #, kde-format
 msgid "Current value: %1"
 msgstr "当前值：%1"
 
-#: utils/katevariableexpansionmanager.cpp:33
+#: utils/katevariableexpansionmanager.cpp:86
 #, kde-format
 msgid "File base name without path and suffix of the current document."
 msgstr "当前文档的文件基名，不带路径和后缀。"
 
-#: utils/katevariableexpansionmanager.cpp:41
+#: utils/katevariableexpansionmanager.cpp:94
 #, kde-format
 msgid "File extension of the current document."
 msgstr "当前文档的文件扩展名。"
 
-#: utils/katevariableexpansionmanager.cpp:49
+#: utils/katevariableexpansionmanager.cpp:102
 #, kde-format
 msgid "File name without path of the current document."
 msgstr "当前文档的文件名，不带路径。"
 
-#: utils/katevariableexpansionmanager.cpp:57
+#: utils/katevariableexpansionmanager.cpp:110
 #, kde-format
 msgid "Full path of the current document including the file name."
 msgstr "当前文档的完整路径，包含文件名。"
 
-#: utils/katevariableexpansionmanager.cpp:65
+#: utils/katevariableexpansionmanager.cpp:118
 #, kde-format
 msgid "Contents of the current document."
 msgstr "当前文档的内容。"
 
-#: utils/katevariableexpansionmanager.cpp:72
+#: utils/katevariableexpansionmanager.cpp:125
 #, kde-format
 msgid "Full path of the current document excluding the file name."
 msgstr "当前文档的完整路径，不包括文件名。"
 
-#: utils/katevariableexpansionmanager.cpp:80
+#: utils/katevariableexpansionmanager.cpp:133
 #, kde-format
 msgid ""
 "Full document path including file name, with native path separator "
 "(backslash on Windows)."
 msgstr "完整文档路径，包括文件名，使用本地路径分隔符 (在 Windows 中是反斜线)。"
 
-#: utils/katevariableexpansionmanager.cpp:88
+#: utils/katevariableexpansionmanager.cpp:141
 #, kde-format
 msgid ""
 "Full document path excluding file name, with native path separator "
@@ -5837,110 +5837,110 @@ msgid ""
 msgstr ""
 "完整文档路径，不包括文件名，使用本地路径分隔符 (在 Windows 中是反斜线)。"
 
-#: utils/katevariableexpansionmanager.cpp:96
+#: utils/katevariableexpansionmanager.cpp:149
 #, kde-format
 msgid ""
 "Line number of the text cursor position in current document (starts with 0)."
 msgstr "当前文档文本光标位置的行号 (从 0 开始)。"
 
-#: utils/katevariableexpansionmanager.cpp:103
+#: utils/katevariableexpansionmanager.cpp:156
 #, kde-format
 msgid ""
 "Column number of the text cursor position in current document (starts with "
 "0)."
 msgstr "当前文档文本光标位置的列号 (从 0 开始)。"
 
-#: utils/katevariableexpansionmanager.cpp:110
+#: utils/katevariableexpansionmanager.cpp:163
 #, kde-format
 msgid "X component in global screen coordinates of the cursor position."
 msgstr "在光标位置的全局屏幕坐标的 X。"
 
-#: utils/katevariableexpansionmanager.cpp:117
+#: utils/katevariableexpansionmanager.cpp:170
 #, kde-format
 msgid "Y component in global screen coordinates of the cursor position."
 msgstr "在光标位置的全局屏幕坐标的 Y。"
 
-#: utils/katevariableexpansionmanager.cpp:124
+#: utils/katevariableexpansionmanager.cpp:177
 #, kde-format
 msgid "Text selection of the current document."
 msgstr "当前文档的文本选区。"
 
-#: utils/katevariableexpansionmanager.cpp:131
+#: utils/katevariableexpansionmanager.cpp:184
 #, kde-format
 msgid "Start line of selected text of the current document."
 msgstr "当前文档的选中文本的起始行。"
 
-#: utils/katevariableexpansionmanager.cpp:138
+#: utils/katevariableexpansionmanager.cpp:191
 #, kde-format
 msgid "Start column of selected text of the current document."
 msgstr "当前文档的选中文本的起始列。"
 
-#: utils/katevariableexpansionmanager.cpp:145
+#: utils/katevariableexpansionmanager.cpp:198
 #, kde-format
 msgid "End line of selected text of the current document."
 msgstr "当前文档的选中文本的结束行。"
 
-#: utils/katevariableexpansionmanager.cpp:152
+#: utils/katevariableexpansionmanager.cpp:205
 #, kde-format
 msgid "End column of selected text of the current document."
 msgstr "当前文档的选中文本的结束列。"
 
-#: utils/katevariableexpansionmanager.cpp:159
+#: utils/katevariableexpansionmanager.cpp:212
 #, kde-format
 msgid "Number of rows of the current document."
 msgstr "当前文档的行数。"
 
-#: utils/katevariableexpansionmanager.cpp:166
+#: utils/katevariableexpansionmanager.cpp:219
 #, kde-format
 msgid "Read a document variable."
 msgstr "读取文档变量。"
 
-#: utils/katevariableexpansionmanager.cpp:174
+#: utils/katevariableexpansionmanager.cpp:227
 #, kde-format
 msgid "The current date in current locale format."
 msgstr "当前日期的本地化格式。"
 
-#: utils/katevariableexpansionmanager.cpp:181
+#: utils/katevariableexpansionmanager.cpp:234
 #, kde-format
 msgid "The current date (ISO)."
 msgstr "当前日期 (ISO)。"
 
-#: utils/katevariableexpansionmanager.cpp:188
+#: utils/katevariableexpansionmanager.cpp:241
 #, kde-format
 msgid "The current date (QDate formatstring)."
 msgstr "当前日期 (QDate 格式字符串)。"
 
-#: utils/katevariableexpansionmanager.cpp:196
+#: utils/katevariableexpansionmanager.cpp:249
 #, kde-format
 msgid "The current time in current locale format."
 msgstr "当前时间的本地化格式。"
 
-#: utils/katevariableexpansionmanager.cpp:203
+#: utils/katevariableexpansionmanager.cpp:256
 #, kde-format
 msgid "The current time (ISO)."
 msgstr "当前时间 (ISO)。"
 
-#: utils/katevariableexpansionmanager.cpp:210
+#: utils/katevariableexpansionmanager.cpp:263
 #, kde-format
 msgid "The current time (QTime formatstring)."
 msgstr "当前时间 (QTime 格式字符串)。"
 
-#: utils/katevariableexpansionmanager.cpp:218
+#: utils/katevariableexpansionmanager.cpp:271
 #, kde-format
 msgid "Access to environment variables."
 msgstr "访问环境变量。"
 
-#: utils/katevariableexpansionmanager.cpp:226
+#: utils/katevariableexpansionmanager.cpp:279
 #, kde-format
 msgid "Evaluate simple JavaScript statements."
 msgstr "执行简单的 JavaScript 语句。"
 
-#: utils/katevariableexpansionmanager.cpp:236
+#: utils/katevariableexpansionmanager.cpp:289
 #, kde-format
 msgid "Encode text to make it URL compatible."
 msgstr "将文本编码为 URL 兼容格式."
 
-#: utils/katevariableexpansionmanager.cpp:244
+#: utils/katevariableexpansionmanager.cpp:297
 #, kde-format
 msgid "Generate a new UUID."
 msgstr "生成新的 UUID。"

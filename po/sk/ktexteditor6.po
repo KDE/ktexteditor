@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:39+0000\n"
+"POT-Creation-Date: 2025-10-24 00:39+0000\n"
 "PO-Revision-Date: 2023-12-12 19:23+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -5985,73 +5985,73 @@ msgstr[0] "1 riadok"
 msgstr[1] "%1 riadky"
 msgstr[2] "%1 riadkov"
 
-#: utils/katevariableexpansionhelpers.cpp:130
+#: utils/katevariableexpansionhelpers.cpp:77
 #, kde-format
 msgid "<value>"
 msgstr "<hodnota>"
 
-#: utils/katevariableexpansionhelpers.cpp:214
+#: utils/katevariableexpansionhelpers.cpp:161
 #, kde-format
 msgid "Insert variable"
 msgstr "Vložiť hodnotu"
 
-#: utils/katevariableexpansionhelpers.cpp:218
+#: utils/katevariableexpansionhelpers.cpp:165
 #, kde-format
 msgid "Variables"
 msgstr "Premenné"
 
-#: utils/katevariableexpansionhelpers.cpp:222
+#: utils/katevariableexpansionhelpers.cpp:169
 #, kde-format
 msgid "Filter"
 msgstr "Filtrovať"
 
-#: utils/katevariableexpansionhelpers.cpp:241
-#: utils/katevariableexpansionhelpers.cpp:270
+#: utils/katevariableexpansionhelpers.cpp:188
+#: utils/katevariableexpansionhelpers.cpp:217
 #, kde-format
 msgid "Please select a variable."
 msgstr "Prosím vyberte premennú."
 
-#: utils/katevariableexpansionhelpers.cpp:259
+#: utils/katevariableexpansionhelpers.cpp:206
 #, kde-format
 msgid "Current value: %1<value>"
 msgstr "Aktuálna hodnota: %1<value>"
 
-#: utils/katevariableexpansionhelpers.cpp:267
+#: utils/katevariableexpansionhelpers.cpp:214
 #, kde-format
 msgid "Current value: %1"
 msgstr "Aktuálna hodnota: %1"
 
-#: utils/katevariableexpansionmanager.cpp:33
+#: utils/katevariableexpansionmanager.cpp:86
 #, kde-format
 msgid "File base name without path and suffix of the current document."
 msgstr "Základný názov súboru bez cesty a prípony aktuálneho dokumentu."
 
-#: utils/katevariableexpansionmanager.cpp:41
+#: utils/katevariableexpansionmanager.cpp:94
 #, kde-format
 msgid "File extension of the current document."
 msgstr "Prípona súboru aktuálneho dokumentu."
 
-#: utils/katevariableexpansionmanager.cpp:49
+#: utils/katevariableexpansionmanager.cpp:102
 #, kde-format
 msgid "File name without path of the current document."
 msgstr "Názov súboru bez cesty k aktuálnemu dokumentu."
 
-#: utils/katevariableexpansionmanager.cpp:57
+#: utils/katevariableexpansionmanager.cpp:110
 #, kde-format
 msgid "Full path of the current document including the file name."
 msgstr "Úplná cesta k aktuálnemu dokumentu vrátane názvu súboru."
 
-#: utils/katevariableexpansionmanager.cpp:65
+#: utils/katevariableexpansionmanager.cpp:118
 #, kde-format
 msgid "Contents of the current document."
 msgstr "Obsah aktuálneho dokumentu."
 
-#: utils/katevariableexpansionmanager.cpp:72
+#: utils/katevariableexpansionmanager.cpp:125
 #, kde-format
 msgid "Full path of the current document excluding the file name."
 msgstr "Celá cesta k aktuálnemu dokumentu bez názvu súboru."
 
-#: utils/katevariableexpansionmanager.cpp:80
+#: utils/katevariableexpansionmanager.cpp:133
 #, kde-format
 msgid ""
 "Full document path including file name, with native path separator "
@@ -6060,7 +6060,7 @@ msgstr ""
 "Úplná cesta k dokumentu vrátane názvu súboru, s natívnym oddeľovačom "
 "cesty(spätná lomka v systéme Windows)."
 
-#: utils/katevariableexpansionmanager.cpp:88
+#: utils/katevariableexpansionmanager.cpp:141
 #, kde-format
 msgid ""
 "Full document path excluding file name, with native path separator "
@@ -6069,14 +6069,14 @@ msgstr ""
 "Úplná cesta k dokumentu okrem názvu súboru, s natívnym oddeľovačom "
 "cesty(spätná lomka v systéme Windows)."
 
-#: utils/katevariableexpansionmanager.cpp:96
+#: utils/katevariableexpansionmanager.cpp:149
 #, kde-format
 msgid ""
 "Line number of the text cursor position in current document (starts with 0)."
 msgstr ""
 "Číslo riadku pozície textového kurzora v aktuálnom dokumente (začína 0)."
 
-#: utils/katevariableexpansionmanager.cpp:103
+#: utils/katevariableexpansionmanager.cpp:156
 #, kde-format
 msgid ""
 "Column number of the text cursor position in current document (starts with "
@@ -6084,97 +6084,97 @@ msgid ""
 msgstr ""
 "Číslo stĺpca pozície kurzora textu v aktuálnom dokumente (začína znakom0)."
 
-#: utils/katevariableexpansionmanager.cpp:110
+#: utils/katevariableexpansionmanager.cpp:163
 #, kde-format
 msgid "X component in global screen coordinates of the cursor position."
 msgstr "X komponent v globálnych súradniciach obrazovky polohy kurzora."
 
-#: utils/katevariableexpansionmanager.cpp:117
+#: utils/katevariableexpansionmanager.cpp:170
 #, kde-format
 msgid "Y component in global screen coordinates of the cursor position."
 msgstr "Y komponent v globálnych súradniciach obrazovky polohy kurzora."
 
-#: utils/katevariableexpansionmanager.cpp:124
+#: utils/katevariableexpansionmanager.cpp:177
 #, kde-format
 msgid "Text selection of the current document."
 msgstr "Výber textu aktuálneho dokumentu."
 
-#: utils/katevariableexpansionmanager.cpp:131
+#: utils/katevariableexpansionmanager.cpp:184
 #, kde-format
 msgid "Start line of selected text of the current document."
 msgstr "Začiatočný riadok vybraného textu aktuálneho dokumentu."
 
-#: utils/katevariableexpansionmanager.cpp:138
+#: utils/katevariableexpansionmanager.cpp:191
 #, kde-format
 msgid "Start column of selected text of the current document."
 msgstr "Začiatočný stĺpec vybraného textu aktuálneho dokumentu."
 
-#: utils/katevariableexpansionmanager.cpp:145
+#: utils/katevariableexpansionmanager.cpp:198
 #, kde-format
 msgid "End line of selected text of the current document."
 msgstr "Koncový riadok vybraného textu aktuálneho dokumentu."
 
-#: utils/katevariableexpansionmanager.cpp:152
+#: utils/katevariableexpansionmanager.cpp:205
 #, kde-format
 msgid "End column of selected text of the current document."
 msgstr "Koncový stĺpec vybraného textu aktuálneho dokumentu."
 
-#: utils/katevariableexpansionmanager.cpp:159
+#: utils/katevariableexpansionmanager.cpp:212
 #, kde-format
 msgid "Number of rows of the current document."
 msgstr "Počet riadkov aktuálneho dokumentu."
 
-#: utils/katevariableexpansionmanager.cpp:166
+#: utils/katevariableexpansionmanager.cpp:219
 #, kde-format
 msgid "Read a document variable."
 msgstr "Čítať premennú dokumentu."
 
-#: utils/katevariableexpansionmanager.cpp:174
+#: utils/katevariableexpansionmanager.cpp:227
 #, kde-format
 msgid "The current date in current locale format."
 msgstr "Aktuálny dátum v aktuálnom formáte miestneho nastavenia."
 
-#: utils/katevariableexpansionmanager.cpp:181
+#: utils/katevariableexpansionmanager.cpp:234
 #, kde-format
 msgid "The current date (ISO)."
 msgstr "Aktuálny dátum (ISO)."
 
-#: utils/katevariableexpansionmanager.cpp:188
+#: utils/katevariableexpansionmanager.cpp:241
 #, kde-format
 msgid "The current date (QDate formatstring)."
 msgstr "Aktuálny dátum (formát QDate)."
 
-#: utils/katevariableexpansionmanager.cpp:196
+#: utils/katevariableexpansionmanager.cpp:249
 #, kde-format
 msgid "The current time in current locale format."
 msgstr "Aktuálny čas v aktuálnom formáte miestneho nastavenia."
 
-#: utils/katevariableexpansionmanager.cpp:203
+#: utils/katevariableexpansionmanager.cpp:256
 #, kde-format
 msgid "The current time (ISO)."
 msgstr "Aktuálny čas (ISO)."
 
-#: utils/katevariableexpansionmanager.cpp:210
+#: utils/katevariableexpansionmanager.cpp:263
 #, kde-format
 msgid "The current time (QTime formatstring)."
 msgstr "Aktuálny čas (formát QTime)."
 
-#: utils/katevariableexpansionmanager.cpp:218
+#: utils/katevariableexpansionmanager.cpp:271
 #, kde-format
 msgid "Access to environment variables."
 msgstr "Prístup k premenným prostredia."
 
-#: utils/katevariableexpansionmanager.cpp:226
+#: utils/katevariableexpansionmanager.cpp:279
 #, kde-format
 msgid "Evaluate simple JavaScript statements."
 msgstr "Vyhodnotiť jednoduché príkazy jazyka JavaScript."
 
-#: utils/katevariableexpansionmanager.cpp:236
+#: utils/katevariableexpansionmanager.cpp:289
 #, kde-format
 msgid "Encode text to make it URL compatible."
 msgstr "Zakódovať text tak, aby bol kompatibilný s URL."
 
-#: utils/katevariableexpansionmanager.cpp:244
+#: utils/katevariableexpansionmanager.cpp:297
 #, kde-format
 msgid "Generate a new UUID."
 msgstr "Generovanie nového identifikátora UUID."
