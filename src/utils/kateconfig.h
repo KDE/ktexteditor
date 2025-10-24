@@ -147,7 +147,7 @@ protected:
          * @param defaultVal default value
          * @param valid validator function, default none
          */
-        ConfigEntry(int enumId, const char *configId, QString command, QVariant defaultVal, std::function<bool(const QVariant &)> valid = nullptr)
+        ConfigEntry(int enumId, const char *configId, QString command, QVariant defaultVal, bool (*valid)(const QVariant &) = nullptr)
             : enumKey(enumId)
             , configKey(configId)
             , commandName(command)
@@ -189,7 +189,7 @@ protected:
          * we accept a given new value.
          * Is no validator set, we accept any value.
          */
-        std::function<bool(const QVariant &)> validator;
+        bool (*validator)(const QVariant &);
     };
 
     /**
