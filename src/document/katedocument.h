@@ -1309,22 +1309,6 @@ Q_SIGNALS:
     void dictionaryRangesPresent(bool yesNo);
     void defaultDictionaryChanged(KTextEditor::DocumentPrivate *document);
 
-public:
-    bool containsCharacterEncoding(KTextEditor::Range range);
-
-    typedef QList<QPair<int, int>> OffsetList;
-
-    static int computePositionWrtOffsets(const OffsetList &offsetList, int pos);
-
-    /**
-     * The first OffsetList is from decoded to encoded, and the second OffsetList from
-     * encoded to decoded.
-     **/
-    QString decodeCharacters(KTextEditor::Range range,
-                             KTextEditor::DocumentPrivate::OffsetList &decToEncOffsetList,
-                             KTextEditor::DocumentPrivate::OffsetList &encToDecOffsetList);
-    void replaceCharactersByEncoding(KTextEditor::Range range);
-
 protected:
     KateOnTheFlyChecker *m_onTheFlyChecker = nullptr;
     QString m_defaultDictionary;

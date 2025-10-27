@@ -39,6 +39,11 @@ public:
      **/
     static QList<KTextEditor::Range> rangeDifference(KTextEditor::Range r1, KTextEditor::Range r2);
 
+    typedef QList<QPair<int, int>> OffsetList;
+    static int computePositionWrtOffsets(const OffsetList &offsetList, int pos);
+    static QString
+    decodeCharacters(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range, OffsetList &decToEncOffsetList, OffsetList &encToDecOffsetList);
+
 Q_SIGNALS:
     /**
      * These signals are used to propagate the dictionary changes to the

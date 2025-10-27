@@ -351,8 +351,8 @@ void KateOnTheFlyChecker::performSpellCheck()
     deleteMovingRanges(highlightsList);
 
     m_currentDecToEncOffsetList.clear();
-    KTextEditor::DocumentPrivate::OffsetList encToDecOffsetList;
-    QString text = m_document->decodeCharacters(*spellCheckRange, m_currentDecToEncOffsetList, encToDecOffsetList);
+    KateSpellCheckManager::OffsetList encToDecOffsetList;
+    QString text = KateSpellCheckManager::decodeCharacters(m_document, *spellCheckRange, m_currentDecToEncOffsetList, encToDecOffsetList);
     ON_THE_FLY_DEBUG << "next spell checking" << text;
     if (text.isEmpty()) { // passing an empty string to Sonnet can lead to a bad allocation exception
         spellCheckDone(); // (bug 225867)
@@ -507,23 +507,23 @@ KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cu
     static const QRegularExpression boundaryQuoteRegExp(QStringLiteral("\\b\\w+'\\w*$"), QRegularExpression::UseUnicodePropertiesOption);
     static const QRegularExpression extendedBoundaryRegExp(QStringLiteral("\\W|$"), QRegularExpression::UseUnicodePropertiesOption);
     static const QRegularExpression extendedBoundaryQuoteRegExp(QStringLiteral("^\\w*'\\w+\\b"), QRegularExpression::UseUnicodePropertiesOption); // see above
-    KTextEditor::DocumentPrivate::OffsetList decToEncOffsetList;
-    KTextEditor::DocumentPrivate::OffsetList encToDecOffsetList;
+    KateSpellCheckManager::OffsetList decToEncOffsetList;
+    KateSpellCheckManager::OffsetList encToDecOffsetList;
     const int startLine = begin.line();
     const int startColumn = begin.column();
     KTextEditor::Cursor boundaryStart;
     KTextEditor::Cursor boundaryEnd;
     // first we take care of the start position
     const KTextEditor::Range startLineRange(startLine, 0, startLine, m_document->lineLength(startLine));
-    QString decodedLineText = m_document->decodeCharacters(startLineRange, decToEncOffsetList, encToDecOffsetList);
-    int translatedColumn = m_document->computePositionWrtOffsets(encToDecOffsetList, startColumn);
+    QString decodedLineText = KateSpellCheckManager::decodeCharacters(m_document, startLineRange, decToEncOffsetList, encToDecOffsetList);
+    int translatedColumn = KateSpellCheckManager::computePositionWrtOffsets(encToDecOffsetList, startColumn);
     QString text = decodedLineText.mid(0, translatedColumn);
     boundaryStart.setLine(startLine);
     int match = text.lastIndexOf(boundaryQuoteRegExp);
     if (match < 0) {
         match = text.lastIndexOf(boundaryRegExp, -2);
     }
-    boundaryStart.setColumn(m_document->computePositionWrtOffsets(decToEncOffsetList, qMax(0, match)));
+    boundaryStart.setColumn(KateSpellCheckManager::computePositionWrtOffsets(decToEncOffsetList, qMax(0, match)));
     // and now the end position
     const int endLine = end.line();
     const int endColumn = end.column();
@@ -531,9 +531,9 @@ KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cu
         decToEncOffsetList.clear();
         encToDecOffsetList.clear();
         const KTextEditor::Range endLineRange(endLine, 0, endLine, m_document->lineLength(endLine));
-        decodedLineText = m_document->decodeCharacters(endLineRange, decToEncOffsetList, encToDecOffsetList);
+        decodedLineText = KateSpellCheckManager::decodeCharacters(m_document, endLineRange, decToEncOffsetList, encToDecOffsetList);
     }
-    translatedColumn = m_document->computePositionWrtOffsets(encToDecOffsetList, endColumn);
+    translatedColumn = KateSpellCheckManager::computePositionWrtOffsets(encToDecOffsetList, endColumn);
     text = decodedLineText.mid(translatedColumn);
     boundaryEnd.setLine(endLine);
 
@@ -544,7 +544,7 @@ KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cu
     } else {
         match = text.indexOf(extendedBoundaryRegExp);
     }
-    boundaryEnd.setColumn(m_document->computePositionWrtOffsets(decToEncOffsetList, translatedColumn + qMax(0, match)));
+    boundaryEnd.setColumn(KateSpellCheckManager::computePositionWrtOffsets(decToEncOffsetList, translatedColumn + qMax(0, match)));
     return KTextEditor::Range(boundaryStart, boundaryEnd);
 }
 
@@ -554,7 +554,7 @@ void KateOnTheFlyChecker::misspelling(const QString &word, int start)
         ON_THE_FLY_DEBUG << "exited as no spell check is taking place";
         return;
     }
-    int translatedStart = m_document->computePositionWrtOffsets(m_currentDecToEncOffsetList, start);
+    int translatedStart = KateSpellCheckManager::computePositionWrtOffsets(m_currentDecToEncOffsetList, start);
     //   ON_THE_FLY_DEBUG << "misspelled " << word
     //                                     << " at line "
     //                                     << *m_currentlyCheckedItem.first
@@ -563,7 +563,7 @@ void KateOnTheFlyChecker::misspelling(const QString &word, int start)
     KTextEditor::MovingRange *spellCheckRange = m_currentlyCheckedItem.range;
     int line = spellCheckRange->start().line();
     int rangeStart = spellCheckRange->start().column();
-    int translatedEnd = m_document->computePositionWrtOffsets(m_currentDecToEncOffsetList, start + word.length());
+    int translatedEnd = KateSpellCheckManager::computePositionWrtOffsets(m_currentDecToEncOffsetList, start + word.length());
 
     KTextEditor::MovingRange *movingRange =
         m_document->newMovingRange(KTextEditor::Range(line, rangeStart + translatedStart, line, rangeStart + translatedEnd));

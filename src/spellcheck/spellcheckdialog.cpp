@@ -151,9 +151,9 @@ void KateSpellCheckDialog::misspelling(const QString &word, int pos)
 {
     KTextEditor::Cursor cursor;
     int length;
-    int origPos = m_view->doc()->computePositionWrtOffsets(m_currentDecToEncOffsetList, pos);
+    int origPos = KateSpellCheckManager::computePositionWrtOffsets(m_currentDecToEncOffsetList, pos);
     cursor = locatePosition(origPos);
-    length = m_view->doc()->computePositionWrtOffsets(m_currentDecToEncOffsetList, pos + word.length()) - origPos;
+    length = KateSpellCheckManager::computePositionWrtOffsets(m_currentDecToEncOffsetList, pos + word.length()) - origPos;
 
     m_view->setCursorPositionInternal(cursor, 1);
     m_view->setSelection(KTextEditor::Range(cursor, length));
@@ -161,9 +161,9 @@ void KateSpellCheckDialog::misspelling(const QString &word, int pos)
 
 void KateSpellCheckDialog::corrected(const QString &word, int pos, const QString &newWord)
 {
-    int origPos = m_view->doc()->computePositionWrtOffsets(m_currentDecToEncOffsetList, pos);
+    int origPos = KateSpellCheckManager::computePositionWrtOffsets(m_currentDecToEncOffsetList, pos);
 
-    int length = m_view->doc()->computePositionWrtOffsets(m_currentDecToEncOffsetList, pos + word.length()) - origPos;
+    int length = KateSpellCheckManager::computePositionWrtOffsets(m_currentDecToEncOffsetList, pos + word.length()) - origPos;
 
     KTextEditor::Cursor replacementStartCursor = locatePosition(origPos);
     KTextEditor::Range replacementRange = KTextEditor::Range(replacementStartCursor, length);
@@ -242,8 +242,8 @@ void KateSpellCheckDialog::installNextSpellCheckRange()
             m_spellLastPos = 0;
 
             m_currentDecToEncOffsetList.clear();
-            KTextEditor::DocumentPrivate::OffsetList encToDecOffsetList;
-            QString text = m_view->doc()->decodeCharacters(m_currentSpellCheckRange, m_currentDecToEncOffsetList, encToDecOffsetList);
+            KateSpellCheckManager::OffsetList encToDecOffsetList;
+            QString text = KateSpellCheckManager::decodeCharacters(m_view->doc(), m_currentSpellCheckRange, m_currentDecToEncOffsetList, encToDecOffsetList);
             // ensure that no empty string is passed on to Sonnet as this can lead to a crash
             // (bug 228789)
             if (text.isEmpty()) {

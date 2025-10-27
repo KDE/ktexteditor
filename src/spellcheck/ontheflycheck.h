@@ -18,6 +18,7 @@
 #include <sonnet/speller.h>
 
 #include "katedocument.h"
+#include "spellcheck.h"
 
 namespace Sonnet
 {
@@ -68,7 +69,7 @@ protected:
     SpellCheckItem m_currentlyCheckedItem;
     QList<SpellCheckItem> m_misspelledList;
     ModificationList m_modificationList;
-    KTextEditor::DocumentPrivate::OffsetList m_currentDecToEncOffsetList;
+    KateSpellCheckManager::OffsetList m_currentDecToEncOffsetList;
     std::map<KTextEditor::View *, KTextEditor::Range> m_displayRangeMap;
 
     void freeDocument();
