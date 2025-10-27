@@ -94,15 +94,6 @@ bool hasCommentInFirstLine(KTextEditor::DocumentPrivate *doc)
 
 }
 
-void KTextEditor::ViewPrivate::blockFix(KTextEditor::Range &range)
-{
-    if (range.start().column() > range.end().column()) {
-        int tmp = range.start().column();
-        range.setStart(KTextEditor::Cursor(range.start().line(), range.end().column()));
-        range.setEnd(KTextEditor::Cursor(range.end().line(), tmp));
-    }
-}
-
 KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow)
     : KTextEditor::View(this, parent)
     , m_completionWidget(nullptr)

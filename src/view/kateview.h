@@ -434,8 +434,6 @@ public:
     bool blockSelection() const override;
     KTextEditor::Range selectionRange() const override;
 
-    static void blockFix(KTextEditor::Range &range);
-
     //
     // Arbitrary Syntax HL + Action extensions
     //
