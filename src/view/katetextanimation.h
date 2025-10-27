@@ -17,8 +17,8 @@
 namespace KTextEditor
 {
 class DocumentPrivate;
+class ViewPrivate;
 }
-class KateViewInternal;
 class QTimeLine;
 class QPainter;
 
@@ -30,7 +30,7 @@ class QPainter;
 class KateTextAnimation : public QObject
 {
 public:
-    KateTextAnimation(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute, KateViewInternal *view);
+    KateTextAnimation(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute, KTextEditor::ViewPrivate *view);
     ~KateTextAnimation() override;
 
     // draw the text to highlight, given the current animation progress
@@ -49,8 +49,7 @@ private:
     QString m_text;
     KTextEditor::Attribute::Ptr m_attribute;
 
-    KTextEditor::DocumentPrivate *m_doc;
-    KateViewInternal *m_view;
+    KTextEditor::ViewPrivate *m_view;
     QTimeLine *m_timeLine;
     qreal m_value;
 };

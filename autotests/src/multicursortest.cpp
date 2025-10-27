@@ -13,7 +13,6 @@
 #include <katedocument.h>
 #include <kateundomanager.h>
 #include <kateview.h>
-#include <kateviewinternal.h>
 #include <ktexteditor/message.h>
 #include <ktexteditor/movingcursor.h>
 

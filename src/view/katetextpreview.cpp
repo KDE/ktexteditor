@@ -11,7 +11,6 @@
 #include "katepartdebug.h"
 #include "katerenderer.h"
 #include "kateview.h"
-#include "kateviewinternal.h"
 
 #include <QPainter>
 

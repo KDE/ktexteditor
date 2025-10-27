@@ -79,7 +79,6 @@ class KTEXTEDITOR_EXPORT ViewPrivate final : public KTextEditor::View
     friend class KTextEditor::View;
     friend class ::KateViewInternal;
     friend class ::KateIconBorder;
-    friend class ::KateTextPreview;
     friend MulticursorTest;
 
 public:

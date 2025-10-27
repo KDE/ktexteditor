@@ -11,7 +11,6 @@
 #include "katerenderer.h"
 #include "katesearchbar.h"
 #include "kateview.h"
-#include "kateviewinternal.h"
 
 #include <KLocalizedString>
 

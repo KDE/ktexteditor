@@ -8,7 +8,6 @@
 
 #include "kateview.h"
 #include <utils/kateconfig.h>
-#include <view/kateviewinternal.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/inputmodemanager.h>
 #include <vimode/marks.h>

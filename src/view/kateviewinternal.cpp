@@ -4928,7 +4928,7 @@ void KateViewInternal::flashChar(const KTextEditor::Cursor pos, KTextEditor::Att
     if (m_textAnimation) {
         m_textAnimation->deleteLater();
     }
-    m_textAnimation = new KateTextAnimation(range, std::move(attribute), this);
+    m_textAnimation = new KateTextAnimation(range, std::move(attribute), view());
 }
 
 void KateViewInternal::showBracketMatchPreview()

@@ -8,7 +8,6 @@
 
 #include "katerenderer.h"
 #include "kateview.h"
-#include "kateviewinternal.h"
 #include <ktexteditor/document.h>
 
 #include <QPainter>
@@ -17,12 +16,11 @@
 #include <QSizeF>
 #include <QTimeLine>
 
-KateTextAnimation::KateTextAnimation(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute, KateViewInternal *view)
+KateTextAnimation::KateTextAnimation(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute, KTextEditor::ViewPrivate *view)
     : QObject(view)
     , m_range(range)
-    , m_text(view->view()->document()->text(range))
+    , m_text(view->document()->text(range))
     , m_attribute(std::move(attribute))
-    , m_doc(view->view()->doc())
     , m_view(view)
     , m_timeLine(new QTimeLine(250, this))
     , m_value(0.0)
@@ -47,14 +45,14 @@ KateTextAnimation::~KateTextAnimation()
 
 QRectF KateTextAnimation::rectForText()
 {
-    const QFontMetricsF fm = m_view->view()->renderer()->currentFontMetrics();
-    const int lineHeight = m_view->view()->renderer()->lineHeight();
-    QPoint pixelPos = m_view->cursorToCoordinate(m_range.start(), /*bool realCursor*/ true, /*bool includeBorder*/ false);
+    const QFontMetricsF fm = m_view->renderer()->currentFontMetrics();
+    const int lineHeight = m_view->renderer()->lineHeight();
+    QPoint pixelPos = m_view->cursorToCoordinate(m_range.start());
 
     if (pixelPos.x() == -1 || pixelPos.y() == -1) {
         return QRectF();
     } else {
-        QRectF rect(pixelPos.x(), pixelPos.y(), fm.boundingRect(m_view->view()->document()->text(m_range)).width(), lineHeight);
+        QRectF rect(pixelPos.x(), pixelPos.y(), fm.boundingRect(m_view->document()->text(m_range)).width(), lineHeight);
         const QPointF center = rect.center();
         const qreal factor = 1.0 + 0.5 * m_value;
         rect.setWidth(rect.width() * factor);
@@ -77,7 +75,7 @@ void KateTextAnimation::draw(QPainter &painter)
     painter.fillRect(rect, m_attribute->background());
 
     // scale font with animation
-    QFont f = m_view->view()->renderer()->currentFont();
+    QFont f = m_view->renderer()->currentFont();
     f.setBold(m_attribute->fontBold());
     f.setPointSizeF(f.pointSizeF() * (1.0 + 0.5 * m_value));
     painter.setFont(f);
@@ -101,5 +99,5 @@ void KateTextAnimation::nextFrame(qreal value)
     const QRect updateRect = nextRect.united(prevRect).adjusted(-1, -1, 1, 1).toRect();
 
     // request repaint
-    m_view->update(updateRect);
+    m_view->editorWidget()->update(updateRect);
 }
