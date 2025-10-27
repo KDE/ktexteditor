@@ -28,6 +28,7 @@
 #include "katepartdebug.h"
 #include "katerenderer.h"
 #include "katetextanimation.h"
+#include "katetextline.h"
 #include "katetextpreview.h"
 #include "kateview.h"
 #include "kateviewaccessible.h"
@@ -35,6 +36,8 @@
 #include "spellcheck/spellingmenu.h"
 
 #include <KCursor>
+#include <KSyntaxHighlighting/FoldingRegion>
+#include <ktexteditor/attribute.h>
 #include <ktexteditor/documentcursor.h>
 #include <ktexteditor/inlinenoteprovider.h>
 #include <ktexteditor/movingrange.h>
@@ -43,6 +46,7 @@
 #include <QAccessible>
 #include <QApplication>
 #include <QClipboard>
+#include <QDrag>
 #include <QKeyEvent>
 #include <QLayout>
 #include <QMenu>

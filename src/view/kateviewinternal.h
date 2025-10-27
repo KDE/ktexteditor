@@ -13,22 +13,14 @@
 #ifndef _KATE_VIEW_INTERNAL_
 #define _KATE_VIEW_INTERNAL_
 
-#include <KSyntaxHighlighting/FoldingRegion>
-
-#include <ktexteditor/attribute.h>
 #include <ktexteditor/range.h>
 #include <ktexteditor/view.h>
 
 #include "inlinenotedata.h"
 #include "katetextcursor.h"
-#include "katetextline.h"
 
-#include <QDrag>
-#include <QElapsedTimer>
 #include <QPoint>
 #include <QPointer>
-#include <QSet>
-#include <QTime>
 #include <QTimer>
 #include <QWidget>
 
@@ -41,6 +33,13 @@ class MovingRange;
 class TextHintProvider;
 class DocumentPrivate;
 class ViewPrivate;
+class Attribute;
+typedef QExplicitlySharedDataPointer<Attribute> AttributePtr;
+}
+
+namespace KSyntaxHighlighting
+{
+class FoldingRegion;
 }
 
 class KateIconBorder;
@@ -59,6 +58,7 @@ class QScrollBar;
 class QScroller;
 class QScrollEvent;
 class QScrollPrepareEvent;
+class QDrag;
 
 class KateViewInternal final : public QWidget
 {
@@ -293,7 +293,7 @@ private:
     void scrollPos(KTextEditor::Cursor &c, bool force = false, bool calledExternally = false, bool emitSignals = true);
     void scrollLines(int lines, bool sel);
 
-    KTextEditor::Attribute::Ptr attributeAt(const KTextEditor::Cursor position) const;
+    KTextEditor::AttributePtr attributeAt(const KTextEditor::Cursor position) const;
     int linesDisplayed() const;
 
     int lineToY(int viewLine) const;
@@ -457,7 +457,7 @@ private:
     // implementation details for KTextEditor::FlashTextInterface
     //
 public:
-    void flashChar(const KTextEditor::Cursor pos, KTextEditor::Attribute::Ptr attribute);
+    void flashChar(const KTextEditor::Cursor pos, KTextEditor::AttributePtr attribute);
     void showBracketMatchPreview();
     void hideBracketMatchPreview();
 
