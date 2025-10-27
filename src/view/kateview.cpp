@@ -84,16 +84,6 @@
 
 // END includes
 
-namespace
-{
-bool hasCommentInFirstLine(KTextEditor::DocumentPrivate *doc)
-{
-    const Kate::TextLine line = doc->kateTextLine(0);
-    return doc->isComment(0, line.firstChar());
-}
-
-}
-
 KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow)
     : KTextEditor::View(this, parent)
     , m_completionWidget(nullptr)
@@ -2617,7 +2607,8 @@ void KTextEditor::ViewPrivate::updateFoldingConfig()
     m_viewInternal->m_leftBorder->setFoldingMarkersOn(config()->foldingBar());
     m_toggleFoldingMarkers->setChecked(config()->foldingBar());
 
-    if (hasCommentInFirstLine(m_doc)) {
+    bool hasCommentInFirstLine = m_doc->isComment(0, m_doc->kateTextLine(0).firstChar());
+    if (hasCommentInFirstLine) {
         if (config()->foldFirstLine() && !m_autoFoldedFirstLine) {
             foldLine(0);
             m_autoFoldedFirstLine = true;
