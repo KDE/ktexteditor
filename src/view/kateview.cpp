@@ -31,6 +31,7 @@
 #include "katekeywordcompletion.h"
 #include "katelayoutcache.h"
 #include "katemessagewidget.h"
+#include "katemodelinecompletion.h"
 #include "katemodemenu.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
