@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-24 00:39+0000\n"
+"POT-Creation-Date: 2025-10-27 00:39+0000\n"
 "PO-Revision-Date: 2025-06-19 09:42+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -23,12 +23,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 25.04.2\n"
 
-#: completion/katecompletionmodel.cpp:144
+#: completion/katecompletionmodel.cpp:147
 #, kde-format
 msgid "Argument-hints"
 msgstr "Consellos dos argumentos"
 
-#: completion/katecompletionmodel.cpp:145
+#: completion/katecompletionmodel.cpp:148
 #, kde-format
 msgid "Best matches"
 msgstr "Os que mellor concorden"
@@ -2197,17 +2197,17 @@ msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "Novo ficheiro"
 
-#: document/katedocument.cpp:221
+#: document/katedocument.cpp:223
 #, kde-format
 msgid "Auto Reload Document"
 msgstr "Cargar de novo o documento automaticamente"
 
-#: document/katedocument.cpp:223
+#: document/katedocument.cpp:225
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "Cargar de novo automaticamente o documento cando cambie en disco"
 
-#: document/katedocument.cpp:2244
+#: document/katedocument.cpp:2246
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2216,24 +2216,24 @@ msgstr ""
 "Non foi posíbel cargar o ficheiro %1, debido a que non foi posíbel lelo.<br /"
 ">Comprobe que ten permiso de lectura deste ficheiro."
 
-#: document/katedocument.cpp:2249
+#: document/katedocument.cpp:2251
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Intentalo de novo"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6558
+#: document/katedocument.cpp:2255 document/katedocument.cpp:6567
 #, kde-format
 msgid "&Close"
 msgstr "&Pechar"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2256 document/katedocument.cpp:6568
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Pechar a mensaxe"
 
-#: document/katedocument.cpp:2386
+#: document/katedocument.cpp:2388
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2247,7 +2247,7 @@ msgstr ""
 "codificación correcta ou activar o modo de lectura e escritura no menú de "
 "ferramentas para poder editalo."
 
-#: document/katedocument.cpp:2405
+#: document/katedocument.cpp:2407
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2260,17 +2260,17 @@ msgstr ""
 "con %3 caracteres.<br />Esas liñas dividíronse e o documento púxose no modo "
 "de só para lectura, xa que gardalo había modificar o contido."
 
-#: document/katedocument.cpp:2412
+#: document/katedocument.cpp:2414
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Aumentar temporalmente o límite e cargar o ficheiro de novo"
 
-#: document/katedocument.cpp:2415
+#: document/katedocument.cpp:2417
 #, kde-format
 msgid "Close"
 msgstr "Pechar"
 
-#: document/katedocument.cpp:2442
+#: document/katedocument.cpp:2444
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2279,18 +2279,18 @@ msgstr ""
 "Seguro que quere gardar este ficheiro non cambiado? Podería sobrescribir "
 "datos cambiados no ficheiro do disco."
 
-#: document/katedocument.cpp:2443
+#: document/katedocument.cpp:2445
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Intento de gardar un ficheiro non modificado"
 
-#: document/katedocument.cpp:2444 document/katedocument.cpp:2455
-#: document/katedocument.cpp:2471
+#: document/katedocument.cpp:2446 document/katedocument.cpp:2457
+#: document/katedocument.cpp:2473
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Gardar aínda así"
 
-#: document/katedocument.cpp:2453
+#: document/katedocument.cpp:2455
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2299,14 +2299,14 @@ msgstr ""
 "Seguro que quere gardar este ficheiro? Tanto o ficheiro aberto como o do "
 "disco cambiaron. Podería producirse unha perda de datos."
 
-#: document/katedocument.cpp:2454 document/katedocument.cpp:2470
-#: document/katedocument.cpp:2790 syntax/katethemeconfig.cpp:1215
+#: document/katedocument.cpp:2456 document/katedocument.cpp:2472
+#: document/katedocument.cpp:2792 syntax/katethemeconfig.cpp:1215
 #: syntax/katethemeconfig.cpp:1371
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Posíbel perda de datos"
 
-#: document/katedocument.cpp:2468
+#: document/katedocument.cpp:2470
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2315,7 +2315,7 @@ msgstr ""
 "A codificación escollida non pode codificar todos o caracteres Unicode deste "
 "documento. Seguro que quere gardalo? Podería haber perda de datos."
 
-#: document/katedocument.cpp:2538
+#: document/katedocument.cpp:2540
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2330,7 +2330,7 @@ msgstr ""
 "Pode que se perdese ou danase o ficheiro orixinal. Non saia da aplicación "
 "ata que o ficheiro se escriba correctamente."
 
-#: document/katedocument.cpp:2659
+#: document/katedocument.cpp:2661
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2343,51 +2343,51 @@ msgstr ""
 "pode ser que o medio onde estea a escribir estea completo ou que só poida "
 "ler no cartafol no que estea o ficheiro."
 
-#: document/katedocument.cpp:2663
+#: document/katedocument.cpp:2665
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Non foi posíbel crear a salvagarda."
 
-#: document/katedocument.cpp:2664
+#: document/katedocument.cpp:2666
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Intentar gardar aínda así"
 
-#: document/katedocument.cpp:2789
+#: document/katedocument.cpp:2791
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Seguro que quere continuar a pechar este ficheiro? Pode producirse unha "
 "perda de datos."
 
-#: document/katedocument.cpp:2791
+#: document/katedocument.cpp:2793
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Pechar aínda así"
 
-#: document/katedocument.cpp:4601
+#: document/katedocument.cpp:4607
 #, kde-format
 msgid "Untitled"
 msgstr "Sen título"
 
-#: document/katedocument.cpp:4726 document/katedocument.cpp:4953
-#: document/katedocument.cpp:4963 document/katedocument.cpp:5762
-#: document/katedocument.cpp:5949
+#: document/katedocument.cpp:4732 document/katedocument.cpp:4963
+#: document/katedocument.cpp:4973 document/katedocument.cpp:5772
+#: document/katedocument.cpp:5959
 #, kde-format
 msgid "Save File"
 msgstr "Gardar o ficheiro"
 
-#: document/katedocument.cpp:4729
+#: document/katedocument.cpp:4735
 #, kde-format
 msgid "Save failed"
 msgstr "Fallou a garda"
 
-#: document/katedocument.cpp:4974
+#: document/katedocument.cpp:4984
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Gardar unha copia do ficheiro"
 
-#: document/katedocument.cpp:4986
+#: document/katedocument.cpp:4996
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2401,7 +2401,7 @@ msgstr ""
 "abondo no disco."
 
 # skip-rule: normalization-ble
-#: document/katedocument.cpp:5276
+#: document/katedocument.cpp:5286
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2415,7 +2415,7 @@ msgstr ""
 "remove-trailing-spaces"
 
 # skip-rule: normalization-ble
-#: document/katedocument.cpp:5282
+#: document/katedocument.cpp:5292
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2429,17 +2429,17 @@ msgstr ""
 "consulte https://docs.kde.org/stable5/en/applications/katepart/config-"
 "variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5596
+#: document/katedocument.cpp:5606
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "O ficheiro «%1» modificouse no disco."
 
-#: document/katedocument.cpp:5598
+#: document/katedocument.cpp:5608
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "O ficheiro «%1» eliminouse do disco ou moveuse."
 
-#: document/katedocument.cpp:5934
+#: document/katedocument.cpp:5944
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2448,17 +2448,17 @@ msgstr ""
 "Modificouse o documento «%1».\n"
 "Quere gardar os seus cambios ou descartalos?"
 
-#: document/katedocument.cpp:5937
+#: document/katedocument.cpp:5947
 #, kde-format
 msgid "Close Document"
 msgstr "Pechar o documento"
 
-#: document/katedocument.cpp:6048
+#: document/katedocument.cpp:6058
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "O ficheiro <a href=\"%1\">%2</a> está aínda a cargarse."
 
-#: document/katedocument.cpp:6053
+#: document/katedocument.cpp:6063
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Interromper a carga"
@@ -2565,13 +2565,13 @@ msgstr "Escoller os tipos MIME"
 msgid "Modes && Filetypes"
 msgstr "Modos e tipos de ficheiro"
 
-#: mode/katemodemenulist.cpp:139
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Buscar…"
 
-#: mode/katemodemenulist.cpp:141
+#: mode/katemodemenulist.cpp:142
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2581,13 +2581,13 @@ msgstr ""
 "Buscar modos de realce de sintaxe por nome de linguaxe ou extensión de "
 "ficheiro (por exemplo: C++ ou .cpp)."
 
-#: mode/katemodemenulist.cpp:564
+#: mode/katemodemenulist.cpp:565
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Ningún elemento coincide coa busca"
 
-#: mode/katemodemenulist.cpp:1091
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2596,7 +2596,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Mellor coincidencia da busca"
 
-#: mode/katemodemenulist.cpp:1096
+#: mode/katemodemenulist.cpp:1097
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -5095,13 +5095,13 @@ msgstr "Copiar o tema"
 msgid "Color Themes"
 msgstr "Temas de cores"
 
-#: utils/kateautoindent.cpp:87
+#: utils/kateautoindent.cpp:88
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "Ningún"
 
-#: utils/kateautoindent.cpp:91
+#: utils/kateautoindent.cpp:92
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
@@ -6235,78 +6235,78 @@ msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
 msgstr "todo"
 
-#: variableeditor/variablelineedit.cpp:41
+#: variableeditor/variablelineedit.cpp:42
 #, kde-format
 msgid "Show list of valid variables."
 msgstr "Amosar a lista de variábeis correctas."
 
-#: variableeditor/variablelineedit.cpp:114
+#: variableeditor/variablelineedit.cpp:115
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
 msgstr "Activar a inserción automática de signos delimitadores."
 
-#: variableeditor/variablelineedit.cpp:120
+#: variableeditor/variablelineedit.cpp:121
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of autocenter lines."
 msgstr "Define o número de liñas centradas automaticamente."
 
-#: variableeditor/variablelineedit.cpp:125
+#: variableeditor/variablelineedit.cpp:126
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the document background color."
 msgstr "Define a cor do fondo do documento."
 
-#: variableeditor/variablelineedit.cpp:130
+#: variableeditor/variablelineedit.cpp:131
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing backspace in leading whitespace unindents."
 msgstr "A tecla de retroceso no espazo en branco inicial quita o sangrado."
 
-#: variableeditor/variablelineedit.cpp:138
+#: variableeditor/variablelineedit.cpp:139
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable block selection mode."
 msgstr "Activar a selección por bloques."
 
-#: variableeditor/variablelineedit.cpp:143
+#: variableeditor/variablelineedit.cpp:144
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the byte order mark (BOM) when saving Unicode files."
 msgstr "Activar a marca da orde dos bytes (BOM) ao gardar ficheiros Unicode."
 
-#: variableeditor/variablelineedit.cpp:148
+#: variableeditor/variablelineedit.cpp:149
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color for the bracket highlight."
 msgstr "Definir a cor de realzado de signos delimitadores."
 
-#: variableeditor/variablelineedit.cpp:153
+#: variableeditor/variablelineedit.cpp:154
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the background color for the current line."
 msgstr "Definir a cor de fondo da liña actual."
 
-#: variableeditor/variablelineedit.cpp:159
+#: variableeditor/variablelineedit.cpp:160
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
 msgstr "Definir o dicionario predeterminado da corrección ortográfica."
 
-#: variableeditor/variablelineedit.cpp:164
+#: variableeditor/variablelineedit.cpp:165
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
 msgstr "Activar a división visual das liñas longas."
 
-#: variableeditor/variablelineedit.cpp:171
+#: variableeditor/variablelineedit.cpp:172
 #, kde-format
 msgctxt "short translation please"
 msgid "Sets the end of line mode."
 msgstr "Definir o modo do final da liña."
 
-#: variableeditor/variablelineedit.cpp:176
+#: variableeditor/variablelineedit.cpp:177
 #, kde-format
 msgctxt "short translation please"
 msgid ""
@@ -6315,182 +6315,182 @@ msgstr ""
 "Activar se premer Intro insire o elemento de completación automática "
 "seleccionado."
 
-#: variableeditor/variablelineedit.cpp:181
+#: variableeditor/variablelineedit.cpp:182
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding markers in the editor border."
 msgstr "Activar os marcadores de contracción da beira do editor."
 
-#: variableeditor/variablelineedit.cpp:186
+#: variableeditor/variablelineedit.cpp:187
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
 msgstr "Activar a previsualización do pregado á beira do editor."
 
-#: variableeditor/variablelineedit.cpp:192
+#: variableeditor/variablelineedit.cpp:193
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
 msgstr "Definir o tamaño de punto da fonte do documento."
 
-#: variableeditor/variablelineedit.cpp:197
+#: variableeditor/variablelineedit.cpp:198
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the font of the document."
 msgstr "Definir a fonte do documento."
 
-#: variableeditor/variablelineedit.cpp:213
+#: variableeditor/variablelineedit.cpp:214
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the syntax highlighting."
 msgstr "Definir o realzado de sintaxe."
 
-#: variableeditor/variablelineedit.cpp:218
+#: variableeditor/variablelineedit.cpp:219
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
 msgstr "Definir a cor da barra de iconas."
 
-#: variableeditor/variablelineedit.cpp:223
+#: variableeditor/variablelineedit.cpp:224
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
 msgstr "Activar a beira con iconas na vista do editor."
 
-#: variableeditor/variablelineedit.cpp:228
+#: variableeditor/variablelineedit.cpp:229
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
 msgstr "Define o estilo de sangrado automático."
 
-#: variableeditor/variablelineedit.cpp:233
+#: variableeditor/variablelineedit.cpp:234
 #, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
 msgstr "Axustar o sangrado do texto pegado do portapapeis."
 
-#: variableeditor/variablelineedit.cpp:239
+#: variableeditor/variablelineedit.cpp:240
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
 msgstr "Define a distancia de sangrado de cada nivel."
 
-#: variableeditor/variablelineedit.cpp:244
+#: variableeditor/variablelineedit.cpp:245
 #, kde-format
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
 msgstr "Permitir niveis estraños de sangrado (non múltiplos do sangrado)."
 
-#: variableeditor/variablelineedit.cpp:249
+#: variableeditor/variablelineedit.cpp:250
 #, kde-format
 msgctxt "short translation please"
 msgid "Show line numbers."
 msgstr "Amosar os números de liña."
 
-#: variableeditor/variablelineedit.cpp:254
+#: variableeditor/variablelineedit.cpp:255
 #, kde-format
 msgctxt "short translation please"
 msgid "Insert newline at end of file on save."
 msgstr "Inserir un salto de liña ao final do ficheiro ao gardar."
 
-#: variableeditor/variablelineedit.cpp:259
+#: variableeditor/variablelineedit.cpp:260
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
 msgstr "Activar no documento o modo sobrescribir."
 
-#: variableeditor/variablelineedit.cpp:264
+#: variableeditor/variablelineedit.cpp:265
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
 msgstr "Activar a escolla persistente de texto."
 
-#: variableeditor/variablelineedit.cpp:269
+#: variableeditor/variablelineedit.cpp:270
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
 msgstr "Substituír as tabulacións por espazos ao gardar."
 
-#: variableeditor/variablelineedit.cpp:274
+#: variableeditor/variablelineedit.cpp:275
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces."
 msgstr "Substituír as tabulacións por espazos."
 
-#: variableeditor/variablelineedit.cpp:279
+#: variableeditor/variablelineedit.cpp:280
 #, kde-format
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
 msgstr "Retirar os espazos finais ao gardar o documento."
 
-#: variableeditor/variablelineedit.cpp:284
+#: variableeditor/variablelineedit.cpp:285
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
 msgstr "Amosar o minimapa da barra de desprazamento."
 
-#: variableeditor/variablelineedit.cpp:289
+#: variableeditor/variablelineedit.cpp:290
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
 msgstr "Amosar unha previsualización na barra de desprazamento."
 
-#: variableeditor/variablelineedit.cpp:300
+#: variableeditor/variablelineedit.cpp:301
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color scheme."
 msgstr "Definir o esquema de cores."
 
-#: variableeditor/variablelineedit.cpp:305
+#: variableeditor/variablelineedit.cpp:306
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
 msgstr "Definir a cor do texto escollido."
 
-#: variableeditor/variablelineedit.cpp:310
+#: variableeditor/variablelineedit.cpp:311
 #, kde-format
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
 msgstr "Ver as tabulacións e os espazos finais."
 
-#: variableeditor/variablelineedit.cpp:315
+#: variableeditor/variablelineedit.cpp:316
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
 msgstr "Activar a navegación intelixente."
 
-#: variableeditor/variablelineedit.cpp:320
+#: variableeditor/variablelineedit.cpp:321
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
 msgstr "Premer a tecla TAB sangra."
 
-#: variableeditor/variablelineedit.cpp:326
+#: variableeditor/variablelineedit.cpp:327
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
 msgstr "Definir a anchura da tabulación."
 
-#: variableeditor/variablelineedit.cpp:332
+#: variableeditor/variablelineedit.cpp:333
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
 msgstr ""
 "Definir a cantidade de pasos de desfacer que se lembrar (0 é infinitos)."
 
-#: variableeditor/variablelineedit.cpp:338
+#: variableeditor/variablelineedit.cpp:339
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
 msgstr "Definir a columna de división das liñas."
 
-#: variableeditor/variablelineedit.cpp:343
+#: variableeditor/variablelineedit.cpp:344
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
 msgstr "Definir a cor do marcador de división da liña."
 
-#: variableeditor/variablelineedit.cpp:348
+#: variableeditor/variablelineedit.cpp:349
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
@@ -6513,12 +6513,12 @@ msgstr ""
 msgid "Change dictionary"
 msgstr "Cambiar de dicionario"
 
-#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:489
+#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:488
 #, kde-format
 msgid "Tab Width"
 msgstr "Anchura da tabulación"
 
-#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:504
+#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:503
 #, kde-format
 msgid "Indentation Width"
 msgstr "Anchura do sangrado"
@@ -6602,50 +6602,50 @@ msgstr "Liña %1 de %2, columna %3"
 msgid "Line %1, Column %2"
 msgstr "Liña %1, columna %2"
 
-#: view/katestatusbar.cpp:406
+#: view/katestatusbar.cpp:405
 #, kde-format
 msgid "Soft Tabs: %1"
 msgstr "Lapelas suaves: %1"
 
-#: view/katestatusbar.cpp:407
+#: view/katestatusbar.cpp:406
 #, kde-format
 msgid "Soft Tabs: %1 (%2)"
 msgstr "Lapelas suaves: %1 (%2)"
 
-#: view/katestatusbar.cpp:408
+#: view/katestatusbar.cpp:407
 #, kde-format
 msgid "Tab Size: %1"
 msgstr "Tamaño das tabulacións: %1"
 
-#: view/katestatusbar.cpp:409
+#: view/katestatusbar.cpp:408
 #, kde-format
 msgid "Indent/Tab: %1/%2"
 msgstr "Sangrado ou tabulación: %1/%2"
 
-#: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
+#: view/katestatusbar.cpp:448 view/katestatusbar.cpp:474
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
 msgstr "Outra…"
 
-#: view/katestatusbar.cpp:477
+#: view/katestatusbar.cpp:476
 #, kde-format
 msgid "Other (%1)"
 msgid_plural "Other (%1)"
 msgstr[0] "Outra (%1)"
 msgstr[1] "Outra (%1)"
 
-#: view/katestatusbar.cpp:489
+#: view/katestatusbar.cpp:488
 #, kde-format
 msgid "Please specify the wanted tab width:"
 msgstr "Indique unha anchura para as tabulacións:"
 
-#: view/katestatusbar.cpp:505
+#: view/katestatusbar.cpp:504
 #, kde-format
 msgid "Please specify the wanted indentation width:"
 msgstr "Indique unha anchura para o sangrado:"
 
-#: view/katestatusbar.cpp:568
+#: view/katestatusbar.cpp:567
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6653,13 +6653,13 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr "Palabras: %1/%2, caracteres: %3/%4"
 
-#: view/katestatusbar.cpp:574
+#: view/katestatusbar.cpp:573
 #, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
 msgstr "%1 palabras, %2 caracteres"
 
-#: view/katestatusbar.cpp:589
+#: view/katestatusbar.cpp:588
 #, kde-format
 msgid "Zoom: %1%"
 msgstr "Ampliación: %1%"
@@ -7955,22 +7955,22 @@ msgstr "Activouse o movemento de maiúsculas de camelo"
 msgid "Search wrapped"
 msgstr "Buscar ignorando saltos de liña"
 
-#: view/kateview.cpp:3074
+#: view/kateview.cpp:3075
 #, kde-format
 msgid "Open File"
 msgstr "Abrir un ficheiro"
 
-#: view/kateview.cpp:3990
+#: view/kateview.cpp:3991
 #, kde-format
 msgid "Align On"
 msgstr "Aliñar en"
 
-#: view/kateview.cpp:3990
+#: view/kateview.cpp:3991
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Padrón de aliñamento:"
 
-#: view/kateview.cpp:5074
+#: view/kateview.cpp:5075
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportar o ficheiro como HTML"
@@ -8019,22 +8019,22 @@ msgstr ""
 "insira <code><b>help list</b></code><br/>Para obter axuda sobre unha orde, "
 "insira <code><b>help &lt;orde&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1311 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1311 vimode/emulatedcommandbar/commandmode.cpp:211
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Non hai tal orde: «%1»"
 
-#: view/kateviewhelpers.cpp:1314 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1314 vimode/emulatedcommandbar/commandmode.cpp:193
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Erro: Non se permiten intervalos na orde «%1»."
 
-#: view/kateviewhelpers.cpp:1324 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1324 vimode/emulatedcommandbar/commandmode.cpp:197
 #, kde-format
 msgid "Success: "
 msgstr "Éxito: "
 
-#: view/kateviewhelpers.cpp:1338 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1338 vimode/emulatedcommandbar/commandmode.cpp:206
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "A orde «%1» fallou."

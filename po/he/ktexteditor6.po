@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-24 00:39+0000\n"
+"POT-Creation-Date: 2025-10-27 00:39+0000\n"
 "PO-Revision-Date: 2025-10-05 12:30+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -32,12 +32,12 @@ msgstr ""
 "n % 10 == 0) ? 2 : 3));\n"
 "X-Generator: Lokalize 25.08.1\n"
 
-#: completion/katecompletionmodel.cpp:144
+#: completion/katecompletionmodel.cpp:147
 #, kde-format
 msgid "Argument-hints"
 msgstr "רמזים לארגומנטים"
 
-#: completion/katecompletionmodel.cpp:145
+#: completion/katecompletionmodel.cpp:148
 #, kde-format
 msgid "Best matches"
 msgstr "ההתאמות הטובות ביותר"
@@ -2134,17 +2134,17 @@ msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "קובץ חדש"
 
-#: document/katedocument.cpp:221
+#: document/katedocument.cpp:223
 #, kde-format
 msgid "Auto Reload Document"
 msgstr "ריענון המסמך אוטומטית"
 
-#: document/katedocument.cpp:223
+#: document/katedocument.cpp:225
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "לרענן את המסמך אוטומטית כשהוא נערך בכונן"
 
-#: document/katedocument.cpp:2244
+#: document/katedocument.cpp:2246
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2153,24 +2153,24 @@ msgstr ""
 "אי אפשר לטעון את הקובץ %1 כי אי אפשר לקרוא ממנו.<br />נא לבדוק אם יש לך "
 "הרשאה לקרוא מהקובץ."
 
-#: document/katedocument.cpp:2249
+#: document/katedocument.cpp:2251
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "לנסות שוב"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6558
+#: document/katedocument.cpp:2255 document/katedocument.cpp:6567
 #, kde-format
 msgid "&Close"
 msgstr "ל&סגור"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2256 document/katedocument.cpp:6568
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "סגירת הודעה"
 
-#: document/katedocument.cpp:2386
+#: document/katedocument.cpp:2388
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2183,7 +2183,7 @@ msgstr ""
 "את הקובץ מחדש עם הקידוד הנכון, או לאפשר מחדש את אפשרות הכתיבה מתוך תפריט "
 "הכלים כדי לאפשר לך לערוך אותו."
 
-#: document/katedocument.cpp:2405
+#: document/katedocument.cpp:2407
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2195,17 +2195,17 @@ msgstr ""
 ">הארוכה מבין השורות האלו הייתה באורך %3<br />השורות הללו גלשו, והמסמך הוגדר "
 "לקריאה בלבד כיוון ששמירה שלו כנראה תשנה את התוכן שלו."
 
-#: document/katedocument.cpp:2412
+#: document/katedocument.cpp:2414
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "להגדיל את המגבלה זמנית ולרענן את הקובץ"
 
-#: document/katedocument.cpp:2415
+#: document/katedocument.cpp:2417
 #, kde-format
 msgid "Close"
 msgstr "סגירה"
 
-#: document/katedocument.cpp:2442
+#: document/katedocument.cpp:2444
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2214,18 +2214,18 @@ msgstr ""
 "לשמור קובץ זה שלא מכיל שינויים? פעולה זו עלולה לכתוב על נתונים ששונו בקובץ "
 "בכונן."
 
-#: document/katedocument.cpp:2443
+#: document/katedocument.cpp:2445
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "מתבצע ניסיון לשמור קובץ שלא שונה"
 
-#: document/katedocument.cpp:2444 document/katedocument.cpp:2455
-#: document/katedocument.cpp:2471
+#: document/katedocument.cpp:2446 document/katedocument.cpp:2457
+#: document/katedocument.cpp:2473
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "לשמור בכל זאת"
 
-#: document/katedocument.cpp:2453
+#: document/katedocument.cpp:2455
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2234,14 +2234,14 @@ msgstr ""
 "לשמור קובץ זה? הן הקובץ הפתוח שלך והן הקובץ שבכונן נערכו. חלק מהנתונים "
 "עלולים ללכת לאיבוד."
 
-#: document/katedocument.cpp:2454 document/katedocument.cpp:2470
-#: document/katedocument.cpp:2790 syntax/katethemeconfig.cpp:1215
+#: document/katedocument.cpp:2456 document/katedocument.cpp:2472
+#: document/katedocument.cpp:2792 syntax/katethemeconfig.cpp:1215
 #: syntax/katethemeconfig.cpp:1371
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "אובדן נתונים אפשרי"
 
-#: document/katedocument.cpp:2468
+#: document/katedocument.cpp:2470
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2250,7 +2250,7 @@ msgstr ""
 "הקידוד הנבחר לא יכול לקודד כל תו יוניקוד במסמך הזה. לשמור אותו? יכול להיות "
 "שחלק מהנתונים ילכו לאיבוד."
 
-#: document/katedocument.cpp:2538
+#: document/katedocument.cpp:2540
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2264,7 +2264,7 @@ msgstr ""
 "הקובץ המקורי כנראה אבד או נפגם. לא לצאת מהיישום עד שכתיבת הקובץ הושלמה "
 "בהצלחה."
 
-#: document/katedocument.cpp:2659
+#: document/katedocument.cpp:2661
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2276,49 +2276,49 @@ msgstr ""
 "המידע של הקובץ הזה עלול ללכת לאיבוד. הסיבה לכך יכולה להיות שהמדיה המיועדת "
 "לשמירה עליה מלאה או שהתיקייה של הקובץ נמצאת במצב לקריאה בלבד."
 
-#: document/katedocument.cpp:2663
+#: document/katedocument.cpp:2665
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "יצירת עותק גיבוי נכשלה."
 
-#: document/katedocument.cpp:2664
+#: document/katedocument.cpp:2666
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "לנסות לשמור בכל זאת"
 
-#: document/katedocument.cpp:2789
+#: document/katedocument.cpp:2791
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "להמשיך ולסגור קובץ זה? עלול להוביל לאובדן של נתונים."
 
-#: document/katedocument.cpp:2791
+#: document/katedocument.cpp:2793
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "לסגור בכל זאת"
 
-#: document/katedocument.cpp:4601
+#: document/katedocument.cpp:4607
 #, kde-format
 msgid "Untitled"
 msgstr "ללא שם"
 
-#: document/katedocument.cpp:4726 document/katedocument.cpp:4953
-#: document/katedocument.cpp:4963 document/katedocument.cpp:5762
-#: document/katedocument.cpp:5949
+#: document/katedocument.cpp:4732 document/katedocument.cpp:4963
+#: document/katedocument.cpp:4973 document/katedocument.cpp:5772
+#: document/katedocument.cpp:5959
 #, kde-format
 msgid "Save File"
 msgstr "שמירת קובץ"
 
-#: document/katedocument.cpp:4729
+#: document/katedocument.cpp:4735
 #, kde-format
 msgid "Save failed"
 msgstr "השמירה נכשלה"
 
-#: document/katedocument.cpp:4974
+#: document/katedocument.cpp:4984
 #, kde-format
 msgid "Save Copy of File"
 msgstr "שמירת עותק של קובץ"
 
-#: document/katedocument.cpp:4986
+#: document/katedocument.cpp:4996
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2330,7 +2330,7 @@ msgstr ""
 "\n"
 "נא לבדוק שיש לך הרשאת כתיבה לקובץ זה ושיש מספיק מקום פנוי בכונן."
 
-#: document/katedocument.cpp:5276
+#: document/katedocument.cpp:5286
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2343,7 +2343,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5282
+#: document/katedocument.cpp:5292
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2356,17 +2356,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5596
+#: document/katedocument.cpp:5606
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "הקובץ ‚%1’ נערך בכונן."
 
-#: document/katedocument.cpp:5598
+#: document/katedocument.cpp:5608
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "הקובץ ‚%1’ נמחק מהכונן או הועבר."
 
-#: document/katedocument.cpp:5934
+#: document/katedocument.cpp:5944
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2375,17 +2375,17 @@ msgstr ""
 "המסמך „%1” נערך.\n"
 "לשמור את השינויים או להתעלם מהם?"
 
-#: document/katedocument.cpp:5937
+#: document/katedocument.cpp:5947
 #, kde-format
 msgid "Close Document"
 msgstr "סגירת מסמך"
 
-#: document/katedocument.cpp:6048
+#: document/katedocument.cpp:6058
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "הקובץ <a href=\"%1\">%2</a> עדיין נטען."
 
-#: document/katedocument.cpp:6053
+#: document/katedocument.cpp:6063
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&ביטול טעינה"
@@ -2491,13 +2491,13 @@ msgstr "בחירת סוגי תוכן"
 msgid "Modes && Filetypes"
 msgstr "מצבים וסוגי קבצים"
 
-#: mode/katemodemenulist.cpp:139
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "חיפוש…"
 
-#: mode/katemodemenulist.cpp:141
+#: mode/katemodemenulist.cpp:142
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2505,13 +2505,13 @@ msgid ""
 "example, C++ or .cpp)"
 msgstr "חיפוש מצבי הדגשת תחביר לפי שם השפה או סיומת קובץ (למשל: C++‎ או ‎.cpp)"
 
-#: mode/katemodemenulist.cpp:564
+#: mode/katemodemenulist.cpp:565
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "אין פריטים שעונים לחיפוש שלך"
 
-#: mode/katemodemenulist.cpp:1091
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2520,7 +2520,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "תוצאת החיפוש הטובה ביותר"
 
-#: mode/katemodemenulist.cpp:1096
+#: mode/katemodemenulist.cpp:1097
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -4982,13 +4982,13 @@ msgstr "העתקת ערכת עיצוב"
 msgid "Color Themes"
 msgstr "ערכות צבע"
 
-#: utils/kateautoindent.cpp:87
+#: utils/kateautoindent.cpp:88
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "ללא"
 
-#: utils/kateautoindent.cpp:91
+#: utils/kateautoindent.cpp:92
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
@@ -6089,259 +6089,259 @@ msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
 msgstr "הכול"
 
-#: variableeditor/variablelineedit.cpp:41
+#: variableeditor/variablelineedit.cpp:42
 #, kde-format
 msgid "Show list of valid variables."
 msgstr "הצגת רשימת המשתנים הזמינים."
 
-#: variableeditor/variablelineedit.cpp:114
+#: variableeditor/variablelineedit.cpp:115
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
 msgstr "הפעלת הוספת סוגריים אוטומטית."
 
-#: variableeditor/variablelineedit.cpp:120
+#: variableeditor/variablelineedit.cpp:121
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of autocenter lines."
 msgstr "הגדרת מספר השורות למרכוז אוטומטי."
 
-#: variableeditor/variablelineedit.cpp:125
+#: variableeditor/variablelineedit.cpp:126
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the document background color."
 msgstr "הגדרת צבע רקע המסמך."
 
-#: variableeditor/variablelineedit.cpp:130
+#: variableeditor/variablelineedit.cpp:131
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing backspace in leading whitespace unindents."
 msgstr "לחיצה על Backspace ברווחים הפותחים מצמצמת את ההזחה."
 
-#: variableeditor/variablelineedit.cpp:138
+#: variableeditor/variablelineedit.cpp:139
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable block selection mode."
 msgstr "הפעלת מצב בחירת מקטעים."
 
-#: variableeditor/variablelineedit.cpp:143
+#: variableeditor/variablelineedit.cpp:144
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the byte order mark (BOM) when saving Unicode files."
 msgstr "להפעיל את סמן סדר הבתים (BOM) בעת שמירת קובצי יוניקוד."
 
-#: variableeditor/variablelineedit.cpp:148
+#: variableeditor/variablelineedit.cpp:149
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color for the bracket highlight."
 msgstr "הגדרת צבע הדגשת הסוגריים."
 
-#: variableeditor/variablelineedit.cpp:153
+#: variableeditor/variablelineedit.cpp:154
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the background color for the current line."
 msgstr "הגדרת צבע הרקע של השורה הנוכחית."
 
-#: variableeditor/variablelineedit.cpp:159
+#: variableeditor/variablelineedit.cpp:160
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
 msgstr "הגדרת מילון ברירת המחדל שמשמש לבדיקת איות."
 
-#: variableeditor/variablelineedit.cpp:164
+#: variableeditor/variablelineedit.cpp:165
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
 msgstr "הפעלת גלישת שורות דינמית לשורות ארוכות."
 
-#: variableeditor/variablelineedit.cpp:171
+#: variableeditor/variablelineedit.cpp:172
 #, kde-format
 msgctxt "short translation please"
 msgid "Sets the end of line mode."
 msgstr "הגדרת מצב סוף השורה."
 
-#: variableeditor/variablelineedit.cpp:176
+#: variableeditor/variablelineedit.cpp:177
 #, kde-format
 msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr "להפעיל האם לחיצה על Enter תוסיף את הפריט הנבחר מההשלמה האוטומטית."
 
-#: variableeditor/variablelineedit.cpp:181
+#: variableeditor/variablelineedit.cpp:182
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding markers in the editor border."
 msgstr "הפעלת סמני קיפול במסגרת של העורך."
 
-#: variableeditor/variablelineedit.cpp:186
+#: variableeditor/variablelineedit.cpp:187
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
 msgstr "הפעלת תצוגה מקדימה מקופלת במסגרת העורך."
 
-#: variableeditor/variablelineedit.cpp:192
+#: variableeditor/variablelineedit.cpp:193
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
 msgstr "הגדרת גודל הנקודות של גופן המסמך."
 
-#: variableeditor/variablelineedit.cpp:197
+#: variableeditor/variablelineedit.cpp:198
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the font of the document."
 msgstr "הגדרת גופן המסמך."
 
-#: variableeditor/variablelineedit.cpp:213
+#: variableeditor/variablelineedit.cpp:214
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the syntax highlighting."
 msgstr "הגדרת הדגשת התחביר."
 
-#: variableeditor/variablelineedit.cpp:218
+#: variableeditor/variablelineedit.cpp:219
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
 msgstr "הגדרת צבע פס הסמל."
 
-#: variableeditor/variablelineedit.cpp:223
+#: variableeditor/variablelineedit.cpp:224
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
 msgstr "הפעלת מסגרת סמל בתצוגת העורך."
 
-#: variableeditor/variablelineedit.cpp:228
+#: variableeditor/variablelineedit.cpp:229
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
 msgstr "הגדרת סגנון ההזחה האוטומטית."
 
-#: variableeditor/variablelineedit.cpp:233
+#: variableeditor/variablelineedit.cpp:234
 #, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
 msgstr "התאמת הזחה של קוד שמודבק מלוח הגזירים."
 
-#: variableeditor/variablelineedit.cpp:239
+#: variableeditor/variablelineedit.cpp:240
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
 msgstr "הגדרת עומק ההזחה לכל רמת הזחה."
 
-#: variableeditor/variablelineedit.cpp:244
+#: variableeditor/variablelineedit.cpp:245
 #, kde-format
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
 msgstr "לאפשר רמת הזחה אי־זוגית (לא בכפולות של רוחב ההזחה)."
 
-#: variableeditor/variablelineedit.cpp:249
+#: variableeditor/variablelineedit.cpp:250
 #, kde-format
 msgctxt "short translation please"
 msgid "Show line numbers."
 msgstr "הצגת מספרי שורות."
 
-#: variableeditor/variablelineedit.cpp:254
+#: variableeditor/variablelineedit.cpp:255
 #, kde-format
 msgctxt "short translation please"
 msgid "Insert newline at end of file on save."
 msgstr "הוספת שורה חדשה בסוף הקובץ עם השמירה."
 
-#: variableeditor/variablelineedit.cpp:259
+#: variableeditor/variablelineedit.cpp:260
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
 msgstr "הפעלת מצב דריסה במסמך."
 
-#: variableeditor/variablelineedit.cpp:264
+#: variableeditor/variablelineedit.cpp:265
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
 msgstr "הפעלת בחירת טקסט דביקה."
 
-#: variableeditor/variablelineedit.cpp:269
+#: variableeditor/variablelineedit.cpp:270
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
 msgstr "להחליף טאבים ברווחים בעת שמירת המסמך."
 
-#: variableeditor/variablelineedit.cpp:274
+#: variableeditor/variablelineedit.cpp:275
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces."
 msgstr "החלפת טאבים ברווחים."
 
-#: variableeditor/variablelineedit.cpp:279
+#: variableeditor/variablelineedit.cpp:280
 #, kde-format
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
 msgstr "הסרת רווחים עוקבים בעת שמירת המסמך."
 
-#: variableeditor/variablelineedit.cpp:284
+#: variableeditor/variablelineedit.cpp:285
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
 msgstr "הצגת מפה ממוזערת בפס הגלילה."
 
-#: variableeditor/variablelineedit.cpp:289
+#: variableeditor/variablelineedit.cpp:290
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
 msgstr "הצגת תצוגה מקדימה בפס הגלילה."
 
-#: variableeditor/variablelineedit.cpp:300
+#: variableeditor/variablelineedit.cpp:301
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color scheme."
 msgstr "הגדרת ערכת הצבע."
 
-#: variableeditor/variablelineedit.cpp:305
+#: variableeditor/variablelineedit.cpp:306
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
 msgstr "הגדרת צבע בחירת טקסט."
 
-#: variableeditor/variablelineedit.cpp:310
+#: variableeditor/variablelineedit.cpp:311
 #, kde-format
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
 msgstr "ייצוג חזותי של טאבים ורווחים עוקבים."
 
-#: variableeditor/variablelineedit.cpp:315
+#: variableeditor/variablelineedit.cpp:316
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
 msgstr "הפעלת ניווט חכם לבית."
 
-#: variableeditor/variablelineedit.cpp:320
+#: variableeditor/variablelineedit.cpp:321
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
 msgstr "לחיצה על מקש TAB מזיחה."
 
-#: variableeditor/variablelineedit.cpp:326
+#: variableeditor/variablelineedit.cpp:327
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
 msgstr "הגדרת רוחב תצוגת טאב."
 
-#: variableeditor/variablelineedit.cpp:332
+#: variableeditor/variablelineedit.cpp:333
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
 msgstr "הגדרת מספר צעדי ההסגה לשמירה (0 זה אינסוף)."
 
-#: variableeditor/variablelineedit.cpp:338
+#: variableeditor/variablelineedit.cpp:339
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
 msgstr "הגדרת עמודת גלישת טקסט."
 
-#: variableeditor/variablelineedit.cpp:343
+#: variableeditor/variablelineedit.cpp:344
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
 msgstr "הגדרת צבע סמן גלישת שורות."
 
-#: variableeditor/variablelineedit.cpp:348
+#: variableeditor/variablelineedit.cpp:349
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
@@ -6362,12 +6362,12 @@ msgstr "מחוון מצב כתיבה ומצב קלט VI. לחיצה משנה א�
 msgid "Change dictionary"
 msgstr "החלפת מילון"
 
-#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:489
+#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:488
 #, kde-format
 msgid "Tab Width"
 msgstr "רוחב טאב"
 
-#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:504
+#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:503
 #, kde-format
 msgid "Indentation Width"
 msgstr "רוחב הזחה"
@@ -6451,33 +6451,33 @@ msgstr "שורה %1 מתוך %2, עמודה %3"
 msgid "Line %1, Column %2"
 msgstr "שורה %1, עמודה %2"
 
-#: view/katestatusbar.cpp:406
+#: view/katestatusbar.cpp:405
 #, kde-format
 msgid "Soft Tabs: %1"
 msgstr "טאבים רכים: %1"
 
-#: view/katestatusbar.cpp:407
+#: view/katestatusbar.cpp:406
 #, kde-format
 msgid "Soft Tabs: %1 (%2)"
 msgstr "טאבים רכים: %1 (%2)"
 
-#: view/katestatusbar.cpp:408
+#: view/katestatusbar.cpp:407
 #, kde-format
 msgid "Tab Size: %1"
 msgstr "גודל טאב: %1"
 
-#: view/katestatusbar.cpp:409
+#: view/katestatusbar.cpp:408
 #, kde-format
 msgid "Indent/Tab: %1/%2"
 msgstr "הזחה/טאב: %1/%2"
 
-#: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
+#: view/katestatusbar.cpp:448 view/katestatusbar.cpp:474
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
 msgstr "אחר…"
 
-#: view/katestatusbar.cpp:477
+#: view/katestatusbar.cpp:476
 #, kde-format
 msgid "Other (%1)"
 msgid_plural "Other (%1)"
@@ -6486,17 +6486,17 @@ msgstr[1] "אחרים (%1)"
 msgstr[2] "אחרים (%1)"
 msgstr[3] "אחרים (%1)"
 
-#: view/katestatusbar.cpp:489
+#: view/katestatusbar.cpp:488
 #, kde-format
 msgid "Please specify the wanted tab width:"
 msgstr "נא לציין את רוחב הטאב הרצוי:"
 
-#: view/katestatusbar.cpp:505
+#: view/katestatusbar.cpp:504
 #, kde-format
 msgid "Please specify the wanted indentation width:"
 msgstr "נא לציין את רוחב ההזחה הרצוי:"
 
-#: view/katestatusbar.cpp:568
+#: view/katestatusbar.cpp:567
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6504,13 +6504,13 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr "מילים %1/%2, תווים %3/%4"
 
-#: view/katestatusbar.cpp:574
+#: view/katestatusbar.cpp:573
 #, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
 msgstr "מילים %1, תווים %2"
 
-#: view/katestatusbar.cpp:589
+#: view/katestatusbar.cpp:588
 #, kde-format
 msgid "Zoom: %1%"
 msgstr "תקריב: %1%"
@@ -7774,22 +7774,22 @@ msgstr "תנועת סמן לפי רישיות פותחות פעילה"
 msgid "Search wrapped"
 msgstr "החיפוש גלש"
 
-#: view/kateview.cpp:3074
+#: view/kateview.cpp:3075
 #, kde-format
 msgid "Open File"
 msgstr "פתיחת קובץ"
 
-#: view/kateview.cpp:3990
+#: view/kateview.cpp:3991
 #, kde-format
 msgid "Align On"
 msgstr "יישור פעיל"
 
-#: view/kateview.cpp:3990
+#: view/kateview.cpp:3991
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "תבנית יישור:"
 
-#: view/kateview.cpp:5074
+#: view/kateview.cpp:5075
 #, kde-format
 msgid "Export File as HTML"
 msgstr "ייצוא קובץ בתור HTML"
@@ -7839,22 +7839,22 @@ msgstr ""
 "code><br />כדי לקבל עזרה לגבי פקודה מסויימת, נא להקליד <code><b>help &lt;"
 "command&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1311 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1311 vimode/emulatedcommandbar/commandmode.cpp:211
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "אין פקודה כזאת: „%1”"
 
-#: view/kateviewhelpers.cpp:1314 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1314 vimode/emulatedcommandbar/commandmode.cpp:193
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "שגיאה: אסור טווח לפקודה „%1”."
 
-#: view/kateviewhelpers.cpp:1324 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1324 vimode/emulatedcommandbar/commandmode.cpp:197
 #, kde-format
 msgid "Success: "
 msgstr "הצלחה: "
 
-#: view/kateviewhelpers.cpp:1338 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1338 vimode/emulatedcommandbar/commandmode.cpp:206
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "הפקודה „%1” נכשלה."

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-24 00:39+0000\n"
+"POT-Creation-Date: 2025-10-27 00:39+0000\n"
 "PO-Revision-Date: 2025-08-03 12:05+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -24,12 +24,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 25.04.3\n"
 
-#: completion/katecompletionmodel.cpp:144
+#: completion/katecompletionmodel.cpp:147
 #, kde-format
 msgid "Argument-hints"
 msgstr ""
 
-#: completion/katecompletionmodel.cpp:145
+#: completion/katecompletionmodel.cpp:148
 #, kde-format
 msgid "Best matches"
 msgstr "சிறந்த பொருத்தங்கள்"
@@ -2125,17 +2125,17 @@ msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "புதிய கோப்பு"
 
-#: document/katedocument.cpp:221
+#: document/katedocument.cpp:223
 #, kde-format
 msgid "Auto Reload Document"
 msgstr "ஆவணத்தைத் தானாக மீளேற்று"
 
-#: document/katedocument.cpp:223
+#: document/katedocument.cpp:225
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "ஆவணம் வட்டில் மாற்றப்பட்டிருந்தால் அதைத் தானாக மீளேற்று"
 
-#: document/katedocument.cpp:2244
+#: document/katedocument.cpp:2246
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2144,24 +2144,24 @@ msgstr ""
 "%1 எனும் கோப்பைப் படிக்க முடியாத‍தால் அதை ஏற்ற முடியவில்லை.<br />அதைப் படிக்கும் அனுமதி "
 "உங்களிடம் உள்ளதா எனப் பாருங்கள்."
 
-#: document/katedocument.cpp:2249
+#: document/katedocument.cpp:2251
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "மீண்டும் முயற்சி செய்"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6558
+#: document/katedocument.cpp:2255 document/katedocument.cpp:6567
 #, kde-format
 msgid "&Close"
 msgstr "&மூடு"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2256 document/katedocument.cpp:6568
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "தகவலை மூடு"
 
-#: document/katedocument.cpp:2386
+#: document/katedocument.cpp:2388
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2175,7 +2175,7 @@ msgstr ""
 "தேர்ந்தெடுத்து அதை மீண்டும் திறக்கவும், அல்லது கருவிகள் பட்டியில் படித்தல்-எழுதல் பயன்முறையை "
 "இயக்கவும்."
 
-#: document/katedocument.cpp:2405
+#: document/katedocument.cpp:2407
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2188,17 +2188,17 @@ msgstr ""
 "வரிகள் மடிக்கப்பட்டு, ஆவணம் படிக்க-மட்டும் கூடியதாக மாற்றப்பட்டுள்ளது. அதை சேமித்தல், "
 "அக்கோப்பின் உள்ளடக்கத்தை மாற்றும்."
 
-#: document/katedocument.cpp:2412
+#: document/katedocument.cpp:2414
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "வரம்பை தற்காலிகமாக உயர்த்தி கோப்பை மீளேற்று"
 
-#: document/katedocument.cpp:2415
+#: document/katedocument.cpp:2417
 #, kde-format
 msgid "Close"
 msgstr "மூடு"
 
-#: document/katedocument.cpp:2442
+#: document/katedocument.cpp:2444
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2207,18 +2207,18 @@ msgstr ""
 "இந்த மாற்றப்படா கோப்பை உறுதியாக சேமிக்க வேண்டுமா? வட்டில் இக்கோப்பு மாறியிருந்தால் அதை "
 "மேலெழுத நேரிடலாம்."
 
-#: document/katedocument.cpp:2443
+#: document/katedocument.cpp:2445
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "மாற்றப்படா கோப்பை சேமிப்பது"
 
-#: document/katedocument.cpp:2444 document/katedocument.cpp:2455
-#: document/katedocument.cpp:2471
+#: document/katedocument.cpp:2446 document/katedocument.cpp:2457
+#: document/katedocument.cpp:2473
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "இருப்பினும் சேமி"
 
-#: document/katedocument.cpp:2453
+#: document/katedocument.cpp:2455
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2227,14 +2227,14 @@ msgstr ""
 "கண்டிப்பாக இந்தக் கோப்பைச் சேமிக்க விரும்புகிறீர்களா? திறந்துள்ள அதன் பதிப்பும் வட்டிலுள்ள "
 "அதன் பதிப்பும் மாறுபடுகின்றன. தரவிழப்பு நேரிடலாம்."
 
-#: document/katedocument.cpp:2454 document/katedocument.cpp:2470
-#: document/katedocument.cpp:2790 syntax/katethemeconfig.cpp:1215
+#: document/katedocument.cpp:2456 document/katedocument.cpp:2472
+#: document/katedocument.cpp:2792 syntax/katethemeconfig.cpp:1215
 #: syntax/katethemeconfig.cpp:1371
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "தரவிழப்பு நேரிடலாம்"
 
-#: document/katedocument.cpp:2468
+#: document/katedocument.cpp:2470
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2243,7 +2243,7 @@ msgstr ""
 "தேர்ந்தெடுத்துள்ள குறியாக்கத்தில், இக்கோப்பிலுள்ள சில யூனிகோடு எழுத்துகளை குறியாக்க "
 "முடியாது. கோப்பை உறுதியாக சேமிக்க விரும்புகிறீர்களா? தரவிழப்பு நேரிடலாம்."
 
-#: document/katedocument.cpp:2538
+#: document/katedocument.cpp:2540
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2258,7 +2258,7 @@ msgstr ""
 "மூலக்கோப்பு இழக்கப்பட்டிருக்கலாம், அல்லது சேதமடைந்திருக்கலாம். கோப்பு வெற்றிகரமாக "
 "சேமிக்கப்படுமுன் இச்செயலியிலிருந்து வெளியேறாதீர்கள்."
 
-#: document/katedocument.cpp:2659
+#: document/katedocument.cpp:2661
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2270,49 +2270,49 @@ msgstr ""
 "நேர்ந்தால், இக்கோப்பின் உள்ளடக்கத்தை இழக்க நேரிடலாம். சேமிப்பகம் நிரம்பியிருந்தாலோ, "
 "அக்கோப்பின் அடைவு படிக்க மட்டும் கூடியதாக இருந்தாலோ, காப்புநகல் எடுக்க முடியாமல் போகலாம்."
 
-#: document/katedocument.cpp:2663
+#: document/katedocument.cpp:2665
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "காப்பு நகலை உருவாக்குவது தோல்வியடைந்தது."
 
-#: document/katedocument.cpp:2664
+#: document/katedocument.cpp:2666
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "இருப்பினும் சேமி"
 
-#: document/katedocument.cpp:2789
+#: document/katedocument.cpp:2791
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "கண்டிப்பாக இந்த கோப்பினை மூட விரும்புகிறீர்களா? தகவல் இழப்பு ஏற்படலாம்."
 
-#: document/katedocument.cpp:2791
+#: document/katedocument.cpp:2793
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "இருப்பினும் மூடு"
 
-#: document/katedocument.cpp:4601
+#: document/katedocument.cpp:4607
 #, kde-format
 msgid "Untitled"
 msgstr "தலைப்பில்லாதது"
 
-#: document/katedocument.cpp:4726 document/katedocument.cpp:4953
-#: document/katedocument.cpp:4963 document/katedocument.cpp:5762
-#: document/katedocument.cpp:5949
+#: document/katedocument.cpp:4732 document/katedocument.cpp:4963
+#: document/katedocument.cpp:4973 document/katedocument.cpp:5772
+#: document/katedocument.cpp:5959
 #, kde-format
 msgid "Save File"
 msgstr "கோப்பினைச் சேமி..."
 
-#: document/katedocument.cpp:4729
+#: document/katedocument.cpp:4735
 #, kde-format
 msgid "Save failed"
 msgstr "சேமிக்க முடியவில்லை"
 
-#: document/katedocument.cpp:4974
+#: document/katedocument.cpp:4984
 #, kde-format
 msgid "Save Copy of File"
 msgstr "கோப்பை நகலெடுத்து சேமி"
 
-#: document/katedocument.cpp:4986
+#: document/katedocument.cpp:4996
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2325,7 +2325,7 @@ msgstr ""
 "இக்கோப்புக்கு எழுதும் அனுமதி உங்களிடம் உள்ளதையும், வட்டில் போதுமான இடம் உள்ளதையும் "
 "சரிபாருங்கள்."
 
-#: document/katedocument.cpp:5276
+#: document/katedocument.cpp:5286
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2334,7 +2334,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5282
+#: document/katedocument.cpp:5292
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2343,17 +2343,17 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5596
+#: document/katedocument.cpp:5606
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "'%1' எனும் கோப்பு வட்டில் மாற்றப்பட்டுள்ளது."
 
-#: document/katedocument.cpp:5598
+#: document/katedocument.cpp:5608
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "'%1' எனும் கோப்பு வட்டிலிருந்து நீக்கப்பட்டுள்ளது அல்லது நகர்த்தப்பட்டது."
 
-#: document/katedocument.cpp:5934
+#: document/katedocument.cpp:5944
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2362,17 +2362,17 @@ msgstr ""
 "\"%1\" எனும் ஆவணம் மாற்றப்பட்டுள்ளது.\n"
 "உங்கள் மாற்றங்களை கைவிடலாமா, அல்லது அவற்றைச் சேமிக்க வேண்டுமா?"
 
-#: document/katedocument.cpp:5937
+#: document/katedocument.cpp:5947
 #, kde-format
 msgid "Close Document"
 msgstr "ஆவணத்தை மூடு"
 
-#: document/katedocument.cpp:6048
+#: document/katedocument.cpp:6058
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2</a> எனும் கோப்பு ஏற்றப்படுகிறது."
 
-#: document/katedocument.cpp:6053
+#: document/katedocument.cpp:6063
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&ஏற்றுவதை கைவிடு"
@@ -2479,13 +2479,13 @@ msgstr "மைம்வகைகளைத் தேர்ந்தெடுக�
 msgid "Modes && Filetypes"
 msgstr "பயன்முறைகளும் கோப்பு வகைகளும்"
 
-#: mode/katemodemenulist.cpp:139
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "தேடு…"
 
-#: mode/katemodemenulist.cpp:141
+#: mode/katemodemenulist.cpp:142
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2495,13 +2495,13 @@ msgstr ""
 "கோப்புவகையின் அடிப்படையிலோ, நிரலாக்க மொழியின் பெயரின் அடிப்படையிலோ, முன்னிலைப்பாட்டு "
 "பயன்முறைகளைத் தேடுங்கள் (எ.கா. C++ அல்லது .cpp)"
 
-#: mode/katemodemenulist.cpp:564
+#: mode/katemodemenulist.cpp:565
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "உங்கள் தேடலுக்கு பொருத்தமானது ஏதுமில்லை"
 
-#: mode/katemodemenulist.cpp:1091
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2510,7 +2510,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "சிறந்த பொருத்தம்"
 
-#: mode/katemodemenulist.cpp:1096
+#: mode/katemodemenulist.cpp:1097
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -5012,13 +5012,13 @@ msgstr "திட்டத்தை நகலெடு"
 msgid "Color Themes"
 msgstr "நிறத்திட்டங்கள்"
 
-#: utils/kateautoindent.cpp:87
+#: utils/kateautoindent.cpp:88
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "எதுவும் இல்லை"
 
-#: utils/kateautoindent.cpp:91
+#: utils/kateautoindent.cpp:92
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
@@ -6069,259 +6069,259 @@ msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
 msgstr "அனைத்து"
 
-#: variableeditor/variablelineedit.cpp:41
+#: variableeditor/variablelineedit.cpp:42
 #, kde-format
 msgid "Show list of valid variables."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:114
+#: variableeditor/variablelineedit.cpp:115
 #, fuzzy, kde-format
 #| msgid "Select to Matching Bracket"
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
 msgstr "பொருந்தும் அடைப்புக்குறிக்கு தேர்ந்தெடு"
 
-#: variableeditor/variablelineedit.cpp:120
+#: variableeditor/variablelineedit.cpp:121
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of autocenter lines."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:125
+#: variableeditor/variablelineedit.cpp:126
 #, fuzzy, kde-format
 #| msgid "S&elected Background Color..."
 msgctxt "short translation please"
 msgid "Set the document background color."
 msgstr "தேர்ந்தெடுத்த பின்னணி நிறம்..."
 
-#: variableeditor/variablelineedit.cpp:130
+#: variableeditor/variablelineedit.cpp:131
 #, fuzzy, kde-format
 #| msgid "&Backspace key indents"
 msgctxt "short translation please"
 msgid "Pressing backspace in leading whitespace unindents."
 msgstr "பின்நகர்வு விசை உள்ளடக்கம் அமைத்தல்"
 
-#: variableeditor/variablelineedit.cpp:138
+#: variableeditor/variablelineedit.cpp:139
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable block selection mode."
 msgstr "பாளம் பாளமாக தேர்ந்தெடுக்கும் முறையை இயக்கு."
 
-#: variableeditor/variablelineedit.cpp:143
+#: variableeditor/variablelineedit.cpp:144
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the byte order mark (BOM) when saving Unicode files."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:148
+#: variableeditor/variablelineedit.cpp:149
 #, fuzzy, kde-format
 #| msgid "Select the color scheme to use for the print."
 msgctxt "short translation please"
 msgid "Set the color for the bracket highlight."
 msgstr "அச்சுக்குப் பயன்படுத்த உகந்த வண்ண மாதிரியைத் தேர்வு செய்க."
 
-#: variableeditor/variablelineedit.cpp:153
+#: variableeditor/variablelineedit.cpp:154
 #, fuzzy, kde-format
 #| msgid "<p>Sets the background color of the editing area.</p>"
 msgctxt "short translation please"
 msgid "Set the background color for the current line."
 msgstr "<p>தொகுக்கும் பரப்பின் பின்னணி வண்ணத்தை அமை</p>"
 
-#: variableeditor/variablelineedit.cpp:159
+#: variableeditor/variablelineedit.cpp:160
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:164
+#: variableeditor/variablelineedit.cpp:165
 #, fuzzy, kde-format
 #| msgid "Enable static &word wrap"
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
 msgstr "நிலையான வார்த்தை மடிப்பை செயல்படுத்து"
 
-#: variableeditor/variablelineedit.cpp:171
+#: variableeditor/variablelineedit.cpp:172
 #, fuzzy, kde-format
 #| msgid "Select to End of Line"
 msgctxt "short translation please"
 msgid "Sets the end of line mode."
 msgstr "வரியின் முடிவு வரை தேர்ந்தெடு"
 
-#: variableeditor/variablelineedit.cpp:176
+#: variableeditor/variablelineedit.cpp:177
 #, kde-format
 msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:181
+#: variableeditor/variablelineedit.cpp:182
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding markers in the editor border."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:186
+#: variableeditor/variablelineedit.cpp:187
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:192
+#: variableeditor/variablelineedit.cpp:193
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
 msgstr "தற்போதுள்ள ஆவணத்தின் முழு உரையை தேர்தெடு"
 
-#: variableeditor/variablelineedit.cpp:197
+#: variableeditor/variablelineedit.cpp:198
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgctxt "short translation please"
 msgid "Set the font of the document."
 msgstr "தற்போதுள்ள ஆவணத்தின் முழு உரையை தேர்தெடு"
 
-#: variableeditor/variablelineedit.cpp:213
+#: variableeditor/variablelineedit.cpp:214
 #, fuzzy, kde-format
 #| msgid "Kate Syntax Highlighting Parser"
 msgctxt "short translation please"
 msgid "Set the syntax highlighting."
 msgstr "கேட் தொடரமைப்பை முன்னிலைப்படுத்தும் பார்சர்"
 
-#: variableeditor/variablelineedit.cpp:218
+#: variableeditor/variablelineedit.cpp:219
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:223
+#: variableeditor/variablelineedit.cpp:224
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:228
+#: variableeditor/variablelineedit.cpp:229
 #, fuzzy, kde-format
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
 msgstr "உள்ளமைவு விதிகள்"
 
-#: variableeditor/variablelineedit.cpp:233
+#: variableeditor/variablelineedit.cpp:234
 #, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:239
+#: variableeditor/variablelineedit.cpp:240
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:244
+#: variableeditor/variablelineedit.cpp:245
 #, kde-format
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:249
+#: variableeditor/variablelineedit.cpp:250
 #, fuzzy, kde-format
 #| msgid "Show &line numbers"
 msgctxt "short translation please"
 msgid "Show line numbers."
 msgstr "வரி எண்களை காட்டு."
 
-#: variableeditor/variablelineedit.cpp:254
+#: variableeditor/variablelineedit.cpp:255
 #, kde-format
 msgctxt "short translation please"
 msgid "Insert newline at end of file on save."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:259
+#: variableeditor/variablelineedit.cpp:260
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:264
+#: variableeditor/variablelineedit.cpp:265
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:269
+#: variableeditor/variablelineedit.cpp:270
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:274
+#: variableeditor/variablelineedit.cpp:275
 #, fuzzy, kde-format
 #| msgid "Replace &All"
 msgctxt "short translation please"
 msgid "Replace tabs with spaces."
 msgstr "அனைத்தையும் மாற்று"
 
-#: variableeditor/variablelineedit.cpp:279
+#: variableeditor/variablelineedit.cpp:280
 #, fuzzy, kde-format
 #| msgid "Remove &trailing spaces"
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
 msgstr "வெள்ளோட்ட இடைவெளிகளை நீக்கு"
 
-#: variableeditor/variablelineedit.cpp:284
+#: variableeditor/variablelineedit.cpp:285
 #, fuzzy, kde-format
 #| msgid "Show &scrollbar marks"
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
 msgstr "உருள்பட்டி குறிகளை காட்டு"
 
-#: variableeditor/variablelineedit.cpp:289
+#: variableeditor/variablelineedit.cpp:290
 #, fuzzy, kde-format
 #| msgid "Show &scrollbar marks"
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
 msgstr "உருள்பட்டி குறிகளை காட்டு"
 
-#: variableeditor/variablelineedit.cpp:300
+#: variableeditor/variablelineedit.cpp:301
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgctxt "short translation please"
 msgid "Set the color scheme."
 msgstr "எழுத்துரு & நிறதிட்டமுறை."
 
-#: variableeditor/variablelineedit.cpp:305
+#: variableeditor/variablelineedit.cpp:306
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:310
+#: variableeditor/variablelineedit.cpp:311
 #, fuzzy, kde-format
 #| msgid "Highlighting Rules"
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
 msgstr "முன்னிலைப்படுத்தல் விதிகள்"
 
-#: variableeditor/variablelineedit.cpp:315
+#: variableeditor/variablelineedit.cpp:316
 #, fuzzy, kde-format
 #| msgid "Word Completion Plugin"
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
 msgstr "வார்த்தை முடிவு சொருகல்"
 
-#: variableeditor/variablelineedit.cpp:320
+#: variableeditor/variablelineedit.cpp:321
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:326
+#: variableeditor/variablelineedit.cpp:327
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:332
+#: variableeditor/variablelineedit.cpp:333
 #, fuzzy, kde-format
 #| msgid ""
 #| "Sets the number of undo/redo steps to record. More steps uses more memory."
@@ -6331,20 +6331,20 @@ msgstr ""
 "நிறைய திருத்தி/திரும்ப செய்வதை அமைத்திடுக நிறைய வழி நிறைய நினைவகத்தை "
 "பயன்படுத்துகிறது."
 
-#: variableeditor/variablelineedit.cpp:338
+#: variableeditor/variablelineedit.cpp:339
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:343
+#: variableeditor/variablelineedit.cpp:344
 #, fuzzy, kde-format
 #| msgid "S&elected Background Color..."
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
 msgstr "தேர்ந்தெடுத்த பின்னணி நிறம்..."
 
-#: variableeditor/variablelineedit.cpp:348
+#: variableeditor/variablelineedit.cpp:349
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
@@ -6366,13 +6366,13 @@ msgstr ""
 msgid "Change dictionary"
 msgstr "தொகுப்பானைத் தேர்வுச் செய்க.."
 
-#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:489
+#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:488
 #, fuzzy, kde-format
 #| msgid "Tab width:"
 msgid "Tab Width"
 msgstr "தத்தல் அகலம்:"
 
-#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:504
+#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:503
 #, fuzzy, kde-format
 #| msgid "Indentation with Spaces"
 msgid "Indentation Width"
@@ -6470,33 +6470,33 @@ msgstr " வரி: %1 நெடுவரிசை: %2 "
 msgid "Line %1, Column %2"
 msgstr " வரி: %1 நெடுவரிசை: %2 "
 
-#: view/katestatusbar.cpp:406
+#: view/katestatusbar.cpp:405
 #, kde-format
 msgid "Soft Tabs: %1"
 msgstr ""
 
-#: view/katestatusbar.cpp:407
+#: view/katestatusbar.cpp:406
 #, kde-format
 msgid "Soft Tabs: %1 (%2)"
 msgstr ""
 
-#: view/katestatusbar.cpp:408
+#: view/katestatusbar.cpp:407
 #, kde-format
 msgid "Tab Size: %1"
 msgstr ""
 
-#: view/katestatusbar.cpp:409
+#: view/katestatusbar.cpp:408
 #, kde-format
 msgid "Indent/Tab: %1/%2"
 msgstr ""
 
-#: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
+#: view/katestatusbar.cpp:448 view/katestatusbar.cpp:474
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
 msgstr "வேறு…"
 
-#: view/katestatusbar.cpp:477
+#: view/katestatusbar.cpp:476
 #, fuzzy, kde-format
 #| msgid "Other"
 msgid "Other (%1)"
@@ -6504,17 +6504,17 @@ msgid_plural "Other (%1)"
 msgstr[0] "அடுத்த"
 msgstr[1] "அடுத்த"
 
-#: view/katestatusbar.cpp:489
+#: view/katestatusbar.cpp:488
 #, kde-format
 msgid "Please specify the wanted tab width:"
 msgstr ""
 
-#: view/katestatusbar.cpp:505
+#: view/katestatusbar.cpp:504
 #, kde-format
 msgid "Please specify the wanted indentation width:"
 msgstr ""
 
-#: view/katestatusbar.cpp:568
+#: view/katestatusbar.cpp:567
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6522,13 +6522,13 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr ""
 
-#: view/katestatusbar.cpp:574
+#: view/katestatusbar.cpp:573
 #, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
 msgstr ""
 
-#: view/katestatusbar.cpp:589
+#: view/katestatusbar.cpp:588
 #, kde-format
 msgid "Zoom: %1%"
 msgstr ""
@@ -7872,23 +7872,23 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "தேடு"
 
-#: view/kateview.cpp:3074
+#: view/kateview.cpp:3075
 #, kde-format
 msgid "Open File"
 msgstr "கோப்பினை திறக்க..."
 
-#: view/kateview.cpp:3990
+#: view/kateview.cpp:3991
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "சீரமை"
 
-#: view/kateview.cpp:3990
+#: view/kateview.cpp:3991
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:5074
+#: view/kateview.cpp:5075
 #, kde-format
 msgid "Export File as HTML"
 msgstr "கோப்பினை மீஉஅமொ யாாக ஏற்றுமதி செயய"
@@ -7936,22 +7936,22 @@ msgstr ""
 "code>இடவும்<br />தனித்தனியளா ஆணைகளின் உதவிக்கு,  <code><b>help &lt;command&gt;</"
 "b></code>இடவும்</p>"
 
-#: view/kateviewhelpers.cpp:1311 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1311 vimode/emulatedcommandbar/commandmode.cpp:211
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "இதுபோல் எந்த ஆணையும் இல்லை: \"%1\""
 
-#: view/kateviewhelpers.cpp:1314 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1314 vimode/emulatedcommandbar/commandmode.cpp:193
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1324 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1324 vimode/emulatedcommandbar/commandmode.cpp:197
 #, kde-format
 msgid "Success: "
 msgstr "வெற்றி:"
 
-#: view/kateviewhelpers.cpp:1338 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1338 vimode/emulatedcommandbar/commandmode.cpp:206
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "ஆணை\"%1\" தோல்வி அடைந்தது."

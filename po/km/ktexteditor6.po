@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-24 00:39+0000\n"
+"POT-Creation-Date: 2025-10-27 00:39+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -18,12 +18,12 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "X-Language: km-KH\n"
 
-#: completion/katecompletionmodel.cpp:144
+#: completion/katecompletionmodel.cpp:147
 #, kde-format
 msgid "Argument-hints"
 msgstr "ព័ត៌មាន​ជំនួយ​អាគុយម៉ង់"
 
-#: completion/katecompletionmodel.cpp:145
+#: completion/katecompletionmodel.cpp:148
 #, kde-format
 msgid "Best matches"
 msgstr "ការ​ផ្គូផ្គង​ល្អ​បំផុត"
@@ -2241,18 +2241,18 @@ msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "ប្រភេទ​ឯកសារ​ថ្មី"
 
-#: document/katedocument.cpp:221
+#: document/katedocument.cpp:223
 #, fuzzy, kde-format
 #| msgid "Close Document"
 msgid "Auto Reload Document"
 msgstr "បិទ​ឯកសារ"
 
-#: document/katedocument.cpp:223
+#: document/katedocument.cpp:225
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr ""
 
-#: document/katedocument.cpp:2244
+#: document/katedocument.cpp:2246
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2261,25 +2261,25 @@ msgstr ""
 "មិន​អាច​ផ្ទុក​ឯកសារ %1 បាន​ទេ វា​មិន​អាច​អាន​ពី​វា ។<br />ពិនិត្យ​មើល​ ប្រសិនបើ​អ្នក​បាន​អាច​អំពី​ការ​ចូល​"
 "ដំណើរការ​ឯកសារ​នេះ ។"
 
-#: document/katedocument.cpp:2249
+#: document/katedocument.cpp:2251
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6558
+#: document/katedocument.cpp:2255 document/katedocument.cpp:6567
 #, kde-format
 msgid "&Close"
 msgstr "បិទ"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2256 document/katedocument.cpp:6568
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "បិទ​សារ"
 
-#: document/katedocument.cpp:2386
+#: document/katedocument.cpp:2388
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2296,7 +2296,7 @@ msgstr ""
 "របៀប​បាន​តែ​អាន ការ​រក្សាទុក​អាច​ត្រូវ​បាន​បំផ្លាញ​មាតិកា​របស់​វា ។<br />បើក​ឯកសារ​ឡើង​វិញ​​​ដោយ​ជ្រើស​ការ​"
 "អ៊ិនកូដ​ត្រឹមត្រូវ ឬ​បើក​របៀប​សរសេរ​អាន​ម្ដងទៀត​​ក្នុង​ម៉ឺនុយ​ដែល​អាច​កែសម្រួល​​វា​បាន​ ។"
 
-#: document/katedocument.cpp:2405
+#: document/katedocument.cpp:2407
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened and contained lines longer than the configured "
@@ -2311,18 +2311,18 @@ msgstr ""
 "ឯកសារ %1 ត្រូវ​បាន​បើក​ ហើយ​មាន​ប្រវែង​​តួអក្សរ​វែង​ពេក (ច្រើន​ជាង %2 តួអក្សរ) ។<br />ប្រវែង​"
 "តួអក្សរ​ត្រូវ​បាន​រុំ ហើយ​ឯកសារ​ត្រូវ​បាន​កំណត់​របៀប​បាន​តែ​អាន ការ​រក្សាទុក​នឹង​ត្រូវ​បាន​កែប្រែ​មាតិកា​របស់​វា ។"
 
-#: document/katedocument.cpp:2412
+#: document/katedocument.cpp:2414
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr ""
 
-#: document/katedocument.cpp:2415
+#: document/katedocument.cpp:2417
 #, fuzzy, kde-format
 #| msgid "&Close"
 msgid "Close"
 msgstr "បិទ"
 
-#: document/katedocument.cpp:2442
+#: document/katedocument.cpp:2444
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2331,18 +2331,18 @@ msgstr ""
 "តើ​អ្នក​ពិត​ជា​ចង់​រក្សា​ទុក​ឯកសារ​ដែល​មិន​បាន​កែប្រែ​នេះ​ឬ ? អ្នក​អាច​សរសេរ​ជាន់​លើ​ទិន្នន័យ​ដែល​បាន​ផ្លាស់ប្ដូរ​"
 "ក្នុង​ឯកសារ​លើ​ថាស ។"
 
-#: document/katedocument.cpp:2443
+#: document/katedocument.cpp:2445
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "ព្យាយាម​រក្សាទុក​ឯកសារ​ដែល​មិនបាន​កែប្រែ"
 
-#: document/katedocument.cpp:2444 document/katedocument.cpp:2455
-#: document/katedocument.cpp:2471
+#: document/katedocument.cpp:2446 document/katedocument.cpp:2457
+#: document/katedocument.cpp:2473
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "រក្សាទុក ទោះ​យ៉ាងណា​ក៏ដោយ"
 
-#: document/katedocument.cpp:2453
+#: document/katedocument.cpp:2455
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2351,14 +2351,14 @@ msgstr ""
 "តើ​អ្នក​ពិត​ជា​ចង់​រក្សា​ទុក​ឯកសារ​នេះ​ឬ ? ទាំង​ឯកសារ​ទូទៅ​របស់​អ្នក និង​ឯកសារ​នៅ​លើ​ថាស​ត្រូវ​បាន​ផ្លាស់ប្ដូរ ។ "
 "ទិន្នន័យ​មួយ​ចំនួន​អាច​នឹង​បាត់​បង់ ។"
 
-#: document/katedocument.cpp:2454 document/katedocument.cpp:2470
-#: document/katedocument.cpp:2790 syntax/katethemeconfig.cpp:1215
+#: document/katedocument.cpp:2456 document/katedocument.cpp:2472
+#: document/katedocument.cpp:2792 syntax/katethemeconfig.cpp:1215
 #: syntax/katethemeconfig.cpp:1371
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "អាច​បណ្ដាល​ឲ្យ​បាត់​ទិន្នន័យ"
 
-#: document/katedocument.cpp:2468
+#: document/katedocument.cpp:2470
 #, fuzzy, kde-format
 #| msgid ""
 #| "The selected encoding cannot encode every unicode character in this "
@@ -2370,7 +2370,7 @@ msgstr ""
 "ការ​អ៊ិនកូដ​ដែល​បាន​ជ្រើស​មិន​អាច​អ៊ិនកូដ​រាល់​តួអក្សរ​យូនីកូដ​​នៅ​ក្នុង​តួអក្សរ​នេះ​បាន​ទេ ។ តើ​អ្នក​ពិត​ជា​ចង់​រក្សាទុក​"
 "វា​ឬ ? អាច​មាន​​ទិន្នន័យ​មួយ​ចំនួន​ត្រូវ​បាត់បង ។"
 
-#: document/katedocument.cpp:2538
+#: document/katedocument.cpp:2540
 #, fuzzy, kde-format
 #| msgid ""
 #| "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2388,7 +2388,7 @@ msgstr ""
 "\n"
 "ពិនិត្យ​មើល​ថា អ្នក​មាន​សិទ្ធិ​សរសេរ​ទៅ​ឯកសារ​នេះ ឬ​មាន​ទំហំ​ថាស​គ្រប់​គ្រាន់ ។"
 
-#: document/katedocument.cpp:2659
+#: document/katedocument.cpp:2661
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2400,50 +2400,50 @@ msgstr ""
 "ពេល​រក្សាទុក ពេល​នោះ​គឺ​អាច​បង្ក​ឲ្យ​ឲ្យ​បាត់​បង់​ទិន្នន័យ​របស់​ឯកសារ ។ មូលហេតុ​អាច​មកពី ឧបករណ៍​ផ្ទុក​ដែល​អ្នក​"
 "សរសេរ​​គឺ​ពេញ ឬ​អ្នក​មាន​សិទ្ធិ​បាន​តែ​អាន​ចំពោះ​ថត​ឯកសារ ។"
 
-#: document/katedocument.cpp:2663
+#: document/katedocument.cpp:2665
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "បរាជ័យ​ក្នុង​ការ​បង្កើត​ច្បាប់​ចម្លង​បម្រុងទុក ។"
 
-#: document/katedocument.cpp:2664
+#: document/katedocument.cpp:2666
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "ព្យាយាម​រក្សាទុក ទោះ​យ៉ាងណា​ក៏ដោយ"
 
-#: document/katedocument.cpp:2789
+#: document/katedocument.cpp:2791
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "តើ​អ្នក​ពិត​ជា​ចង់​បន្ត​បិទ​ឯកសារ​នេះ​ឬ ? អាច​មាន​ទិន្នន័យ​បាត់បង់ ។"
 
-#: document/katedocument.cpp:2791
+#: document/katedocument.cpp:2793
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "បិទ ទោះ​យ៉ាងណា​ក៏ដោយ"
 
-#: document/katedocument.cpp:4601
+#: document/katedocument.cpp:4607
 #, kde-format
 msgid "Untitled"
 msgstr "គ្មាន​ចំណង​ជើង"
 
-#: document/katedocument.cpp:4726 document/katedocument.cpp:4953
-#: document/katedocument.cpp:4963 document/katedocument.cpp:5762
-#: document/katedocument.cpp:5949
+#: document/katedocument.cpp:4732 document/katedocument.cpp:4963
+#: document/katedocument.cpp:4973 document/katedocument.cpp:5772
+#: document/katedocument.cpp:5959
 #, kde-format
 msgid "Save File"
 msgstr "រក្សាទុក​ឯកសារ"
 
-#: document/katedocument.cpp:4729
+#: document/katedocument.cpp:4735
 #, kde-format
 msgid "Save failed"
 msgstr "បាន​បរាជ័យ​ក្នុង​ការ​រក្សាទុក"
 
-#: document/katedocument.cpp:4974
+#: document/katedocument.cpp:4984
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "រក្សាទុក​ឯកសារ"
 
-#: document/katedocument.cpp:4986
+#: document/katedocument.cpp:4996
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2455,7 +2455,7 @@ msgstr ""
 "\n"
 "ពិនិត្យ​មើល​ថា អ្នក​មាន​សិទ្ធិ​សរសេរ​ទៅ​ឯកសារ​នេះ ឬ​មាន​ទំហំ​ថាស​គ្រប់​គ្រាន់ ។"
 
-#: document/katedocument.cpp:5276
+#: document/katedocument.cpp:5286
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2471,7 +2471,7 @@ msgstr ""
 "នៅ​ខាងក្រោម​​ដែល​បាន​កែប្រែ​ចេញ;', មើល http://docs.kde.org/stable/en/kde-baseapps/"
 "kate/config-variables.html#variable-យក​​ចន្លោះ​មិន​ឃើញ​​នៅ​ខាង​ក្រោយ​ចេញ"
 
-#: document/katedocument.cpp:5282
+#: document/katedocument.cpp:5292
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2487,19 +2487,19 @@ msgstr ""
 "ចន្លោះ​​មិន​ឃើញ​នៅ​ខាង​ក្រោយ​ចេញ​ទាំងអស់;', មើល http://docs.kde.org/stable/en/kde-"
 "baseapps/kate/config-variables.html#variable-​យក​ចន្លោះ​មិន​ឃើញ​​នៅ​ខាងក្រោយ​ចេញ"
 
-#: document/katedocument.cpp:5596
+#: document/katedocument.cpp:5606
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "ឯកសារ '%1' ត្រូវ​បាន​កែប្រែ​ដោយ​កម្មវិធី​ផ្សេងទៀត ។"
 
-#: document/katedocument.cpp:5598
+#: document/katedocument.cpp:5608
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "ឯកសារ '%1' ត្រូវ​បាន​លុប​ដោយ​កម្មវិធី​ផ្សេងទៀត ។"
 
-#: document/katedocument.cpp:5934
+#: document/katedocument.cpp:5944
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2508,18 +2508,18 @@ msgstr ""
 "ឯកសារ \"%1\" ត្រូវ​បាន​កែប្រែ ។\n"
 "តើ​អ្នក​ចង់​រក្សាទុក​ការ​ផ្លាស់ប្ដូរ ឬ​បោះបង់​ពួកវា ?"
 
-#: document/katedocument.cpp:5937
+#: document/katedocument.cpp:5947
 #, kde-format
 msgid "Close Document"
 msgstr "បិទ​ឯកសារ"
 
-#: document/katedocument.cpp:6048
+#: document/katedocument.cpp:6058
 #, fuzzy, kde-format
 #| msgid "The file %1 is still loading."
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "ឯកសារ %1 នៅ​តែ​កំពុង​ផ្ទុក ។"
 
-#: document/katedocument.cpp:6053
+#: document/katedocument.cpp:6063
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -2627,14 +2627,14 @@ msgstr "ជ្រើស​ប្រភេទ Mime"
 msgid "Modes && Filetypes"
 msgstr "របៀប និង​ប្រភេទ​ឯកសារ"
 
-#: mode/katemodemenulist.cpp:139
+#: mode/katemodemenulist.cpp:140
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "របៀប​ស្វែងរក"
 
-#: mode/katemodemenulist.cpp:141
+#: mode/katemodemenulist.cpp:142
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2642,13 +2642,13 @@ msgid ""
 "example, C++ or .cpp)"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:564
+#: mode/katemodemenulist.cpp:565
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:1091
+#: mode/katemodemenulist.cpp:1092
 #, fuzzy, kde-format
 #| msgid "Best matches"
 msgctxt ""
@@ -2658,7 +2658,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "ការ​ផ្គូផ្គង​ល្អ​បំផុត"
 
-#: mode/katemodemenulist.cpp:1096
+#: mode/katemodemenulist.cpp:1097
 #, fuzzy, kde-format
 #| msgid "Best matches"
 msgctxt ""
@@ -5232,13 +5232,13 @@ msgstr "ពណ៌"
 msgid "Color Themes"
 msgstr "ពណ៌"
 
-#: utils/kateautoindent.cpp:87
+#: utils/kateautoindent.cpp:88
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "គ្មាន"
 
-#: utils/kateautoindent.cpp:91
+#: utils/kateautoindent.cpp:92
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
@@ -6342,43 +6342,43 @@ msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
 msgstr "ទាំងអស់"
 
-#: variableeditor/variablelineedit.cpp:41
+#: variableeditor/variablelineedit.cpp:42
 #, kde-format
 msgid "Show list of valid variables."
 msgstr "បង្ហាញ​បញ្ជី​នៃ​អថេរ​ត្រឹមត្រូវ ។"
 
-#: variableeditor/variablelineedit.cpp:114
+#: variableeditor/variablelineedit.cpp:115
 #, fuzzy, kde-format
 #| msgid "Select to Matching Bracket"
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
 msgstr "ជ្រើស​ទៅ​តង្កៀប​ដែល​ដូច"
 
-#: variableeditor/variablelineedit.cpp:120
+#: variableeditor/variablelineedit.cpp:121
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of autocenter lines."
 msgstr "កំណត់​ចំនួន​ជួរ​ចំកណ្ដាល​ស្វ័យប្រវត្តិ ។"
 
-#: variableeditor/variablelineedit.cpp:125
+#: variableeditor/variablelineedit.cpp:126
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the document background color."
 msgstr "កំណត់​ពណ៌​ផ្ទៃ​ខាងក្រោយ​របស់​ឯកសារ ។"
 
-#: variableeditor/variablelineedit.cpp:130
+#: variableeditor/variablelineedit.cpp:131
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing backspace in leading whitespace unindents."
 msgstr "ការ​ចុច​គ្រាប់ចុច​លុប​ថយក្រោយ​ក្នុង​ចន្លោះ​ទទេ​ខាងមុខ​ដែល​មិន​ចូល​បន្ទាត់ ។"
 
-#: variableeditor/variablelineedit.cpp:138
+#: variableeditor/variablelineedit.cpp:139
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable block selection mode."
 msgstr "បើក​របៀប​ជ្រើស​ប្លុក ។"
 
-#: variableeditor/variablelineedit.cpp:143
+#: variableeditor/variablelineedit.cpp:144
 #, fuzzy, kde-format
 #| msgctxt "short translation please"
 #| msgid "Enable the byte order marker when saving unicode files."
@@ -6386,50 +6386,50 @@ msgctxt "short translation please"
 msgid "Enable the byte order mark (BOM) when saving Unicode files."
 msgstr "បើក​ឧបករណ៍​សម្គាល់​លំដាប់​បៃ​នៅ​ពេល​រក្សាទុក​ឯកសារ​យូនីកូដ ។"
 
-#: variableeditor/variablelineedit.cpp:148
+#: variableeditor/variablelineedit.cpp:149
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color for the bracket highlight."
 msgstr "កំណត់​ពណ៌​សម្រាប់​ផ្នែក​សំខាន់​តង្កៀប( [ ]) ។"
 
-#: variableeditor/variablelineedit.cpp:153
+#: variableeditor/variablelineedit.cpp:154
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the background color for the current line."
 msgstr "កំណត់​ពណ៌​ផ្ទៃ​ខាងក្រោយ​សម្រាប់​ជួរ​បច្ចុប្បន្ន ។"
 
-#: variableeditor/variablelineedit.cpp:159
+#: variableeditor/variablelineedit.cpp:160
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
 msgstr "កំណត់​វចនានុក្រម​លំនាំ​ដើម​ដែល​ប្រើ​សម្រាប់​ការ​ពិនិត្យ​អក្ខរាវិរុទ្ធ ។"
 
-#: variableeditor/variablelineedit.cpp:164
+#: variableeditor/variablelineedit.cpp:165
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
 msgstr "អនុញ្ញាត​ការ​រុំ​ពាក្យ​ជា​ថាមវន្ត​នៃ​ជួរ​វែង ។"
 
-#: variableeditor/variablelineedit.cpp:171
+#: variableeditor/variablelineedit.cpp:172
 #, kde-format
 msgctxt "short translation please"
 msgid "Sets the end of line mode."
 msgstr "កំណត់​ចុង​នៃ​របៀប​បន្ទាត់ ។"
 
-#: variableeditor/variablelineedit.cpp:176
+#: variableeditor/variablelineedit.cpp:177
 #, kde-format
 msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:181
+#: variableeditor/variablelineedit.cpp:182
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding markers in the editor border."
 msgstr "បើក​ឧបករណ៍​សម្គាល់​របត់​នៅ​ក្នុង​ស៊ុម​កម្មវិធី​និពន្ធ ។"
 
-#: variableeditor/variablelineedit.cpp:186
+#: variableeditor/variablelineedit.cpp:187
 #, fuzzy, kde-format
 #| msgctxt "short translation please"
 #| msgid "Enable folding markers in the editor border."
@@ -6437,172 +6437,172 @@ msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
 msgstr "បើក​ឧបករណ៍​សម្គាល់​របត់​នៅ​ក្នុង​ស៊ុម​កម្មវិធី​និពន្ធ ។"
 
-#: variableeditor/variablelineedit.cpp:192
+#: variableeditor/variablelineedit.cpp:193
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
 msgstr "កំណត់​ទំហំ​ចំណុច​នៃ​ពុម្ពអក្សរ​ឯកសារ ។"
 
-#: variableeditor/variablelineedit.cpp:197
+#: variableeditor/variablelineedit.cpp:198
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the font of the document."
 msgstr "កំណត់​ពុម្ពអក្សរ​​របស់​​ឯកសារ ។"
 
-#: variableeditor/variablelineedit.cpp:213
+#: variableeditor/variablelineedit.cpp:214
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the syntax highlighting."
 msgstr "កំណត់​ការ​រំលេច​​វាក្យសម្ពន្ធ ។"
 
-#: variableeditor/variablelineedit.cpp:218
+#: variableeditor/variablelineedit.cpp:219
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
 msgstr "កំណត់​ពណ៌​របស់​របារ​រូបតំណាង ។"
 
-#: variableeditor/variablelineedit.cpp:223
+#: variableeditor/variablelineedit.cpp:224
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
 msgstr "បើក​ស៊ុម​រូបតំណាង​ក្នុង​ទិដ្ឋភាព​កម្មវិធី​កែស្រួល ។"
 
-#: variableeditor/variablelineedit.cpp:228
+#: variableeditor/variablelineedit.cpp:229
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
 msgstr "កំណត់​រចនាប័ទ្ម​ការ​ចូល​បន្ទាត់​ស្វ័យប្រវត្តិ ។"
 
-#: variableeditor/variablelineedit.cpp:233
+#: variableeditor/variablelineedit.cpp:234
 #, fuzzy, kde-format
 #| msgid "Adjust indentation of code &pasted from the clipboard"
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
 msgstr "លៃតម្រូវ​ការចូល​បន្ទាត់​របស់​កូដ​ដែលបាន​បិទភ្ជាប់​ពី​ក្ដារតម្បៀតខ្ទាស់"
 
-#: variableeditor/variablelineedit.cpp:239
+#: variableeditor/variablelineedit.cpp:240
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
 msgstr "កំណត់​​ការ​ចូល​បន្ទាត់​សម្រាប់​កម្រិត​ចូល​បន្ទាត់​នីមួយៗ ។"
 
-#: variableeditor/variablelineedit.cpp:244
+#: variableeditor/variablelineedit.cpp:245
 #, kde-format
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
 msgstr "អនុញ្ញាត​កម្រិត​ចូល​បន្ទាត់​សេស (គ្មាន​ពហុ​បន្ទាត់​​​ទទឹង​ចូល​បន្ទាត់) ។"
 
-#: variableeditor/variablelineedit.cpp:249
+#: variableeditor/variablelineedit.cpp:250
 #, kde-format
 msgctxt "short translation please"
 msgid "Show line numbers."
 msgstr "បង្ហាញ​​ចំនួន​ជួរ ។"
 
-#: variableeditor/variablelineedit.cpp:254
+#: variableeditor/variablelineedit.cpp:255
 #, kde-format
 msgctxt "short translation please"
 msgid "Insert newline at end of file on save."
 msgstr "បញ្ចូល​បន្ទាត់​ថ្មី​នៅ​ចុង​ឯកសារ​ពេល​ដែល​​រក្សាទុក ។"
 
-#: variableeditor/variablelineedit.cpp:259
+#: variableeditor/variablelineedit.cpp:260
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
 msgstr "បើក​របៀប​សរសេរ​ជាន់​លើ​នៅ​ក្នុង​ឯកសារ ។"
 
-#: variableeditor/variablelineedit.cpp:264
+#: variableeditor/variablelineedit.cpp:265
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
 msgstr "បើក​ការ​ជ្រើស​អត្ថបទ​អចិន្ត្រៃយ៍ ។"
 
-#: variableeditor/variablelineedit.cpp:269
+#: variableeditor/variablelineedit.cpp:270
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
 msgstr "ជំនួស​ថេប​ដោយ​ចន្លោះ នៅ​ពេល​រក្សាទុក​ឯកសារ ។"
 
-#: variableeditor/variablelineedit.cpp:274
+#: variableeditor/variablelineedit.cpp:275
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces."
 msgstr "ជំនួស​ថេប​ដោយ​ចន្លោះ ។"
 
-#: variableeditor/variablelineedit.cpp:279
+#: variableeditor/variablelineedit.cpp:280
 #, kde-format
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
 msgstr "យក​ចន្លោះ​ពីក្រោយ​ចេញ នៅ​ពេល​រក្សាទុក​ឯកសារ ។"
 
-#: variableeditor/variablelineedit.cpp:284
+#: variableeditor/variablelineedit.cpp:285
 #, fuzzy, kde-format
 #| msgid "Show scrollbar mini-map"
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
 msgstr "បង្ហាញ​​របារ​រមូរ​ផែនទី​តូច"
 
-#: variableeditor/variablelineedit.cpp:289
+#: variableeditor/variablelineedit.cpp:290
 #, fuzzy, kde-format
 #| msgid "Show &scrollbar marks"
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
 msgstr "បង្ហាញ​សញ្ញា​សម្គាល់​របារ​រមូរ"
 
-#: variableeditor/variablelineedit.cpp:300
+#: variableeditor/variablelineedit.cpp:301
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color scheme."
 msgstr "កំណត់​ពណ៌​ចម្រុះ ។"
 
-#: variableeditor/variablelineedit.cpp:305
+#: variableeditor/variablelineedit.cpp:306
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
 msgstr "កំណត់​ពណ៌​នៃ​ការ​ជ្រើស​អត្ថបទ ។"
 
-#: variableeditor/variablelineedit.cpp:310
+#: variableeditor/variablelineedit.cpp:311
 #, kde-format
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
 msgstr "ធ្វើ​ឲ្យ​មើល​ឃើញ​ថេប និង​ចន្លោះ​ពីក្រោយ ។"
 
-#: variableeditor/variablelineedit.cpp:315
+#: variableeditor/variablelineedit.cpp:316
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
 msgstr "បើក​ការ​រុករក​ទៅ​ដើម​ដែល​ឆ្លាតវៃ ។"
 
-#: variableeditor/variablelineedit.cpp:320
+#: variableeditor/variablelineedit.cpp:321
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
 msgstr "​ចុច​គ្រាប់ចុច ថេប (TAB) នឹង​ចូល​បន្ទាត់ ។"
 
-#: variableeditor/variablelineedit.cpp:326
+#: variableeditor/variablelineedit.cpp:327
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
 msgstr "កំណត់​ទទឹង​ការ​បង្ហាញ​ថេប ។"
 
-#: variableeditor/variablelineedit.cpp:332
+#: variableeditor/variablelineedit.cpp:333
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
 msgstr "កំណត់​ចំនួន​ជំហាន​មិន​ធ្វើ​វិញ​ឲ្យ​ចងចាំ (០ អនន្ត​ភាព​ស្មើ) ។"
 
-#: variableeditor/variablelineedit.cpp:338
+#: variableeditor/variablelineedit.cpp:339
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
 msgstr "កំណត់​ជួរឈរ​នៃ​ការ​រុំ​ពាក្យ ។"
 
-#: variableeditor/variablelineedit.cpp:343
+#: variableeditor/variablelineedit.cpp:344
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
 msgstr "កំណត់​ពណ៌​របស់​ឧបករណ៍​សម្គាល់​ការ​រុំ​ពាក្យ ។"
 
-#: variableeditor/variablelineedit.cpp:348
+#: variableeditor/variablelineedit.cpp:349
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
@@ -6624,13 +6624,13 @@ msgstr ""
 msgid "Change dictionary"
 msgstr "ផ្លាស់ប្ដូរ​វចនានុក្រម..."
 
-#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:489
+#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:488
 #, fuzzy, kde-format
 #| msgid "Tab wi&dth:"
 msgid "Tab Width"
 msgstr "ទទឹង​ថេប ៖"
 
-#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:504
+#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:503
 #, fuzzy, kde-format
 #| msgid "&Indentation width:"
 msgid "Indentation Width"
@@ -6724,28 +6724,28 @@ msgstr ""
 msgid "Line %1, Column %2"
 msgstr ""
 
-#: view/katestatusbar.cpp:406
+#: view/katestatusbar.cpp:405
 #, kde-format
 msgid "Soft Tabs: %1"
 msgstr ""
 
-#: view/katestatusbar.cpp:407
+#: view/katestatusbar.cpp:406
 #, kde-format
 msgid "Soft Tabs: %1 (%2)"
 msgstr ""
 
-#: view/katestatusbar.cpp:408
+#: view/katestatusbar.cpp:407
 #, fuzzy, kde-format
 #| msgid "Snippet: %1"
 msgid "Tab Size: %1"
 msgstr "Snippet: %1"
 
-#: view/katestatusbar.cpp:409
+#: view/katestatusbar.cpp:408
 #, kde-format
 msgid "Indent/Tab: %1/%2"
 msgstr ""
 
-#: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
+#: view/katestatusbar.cpp:448 view/katestatusbar.cpp:474
 #, fuzzy, kde-format
 #| msgctxt "Language Section"
 #| msgid "Other"
@@ -6753,7 +6753,7 @@ msgctxt "@item:inmenu"
 msgid "Other…"
 msgstr "ផ្សេងៗ"
 
-#: view/katestatusbar.cpp:477
+#: view/katestatusbar.cpp:476
 #, fuzzy, kde-format
 #| msgctxt "Language Section"
 #| msgid "Other"
@@ -6761,17 +6761,17 @@ msgid "Other (%1)"
 msgid_plural "Other (%1)"
 msgstr[0] "ផ្សេងៗ"
 
-#: view/katestatusbar.cpp:489
+#: view/katestatusbar.cpp:488
 #, kde-format
 msgid "Please specify the wanted tab width:"
 msgstr ""
 
-#: view/katestatusbar.cpp:505
+#: view/katestatusbar.cpp:504
 #, kde-format
 msgid "Please specify the wanted indentation width:"
 msgstr ""
 
-#: view/katestatusbar.cpp:568
+#: view/katestatusbar.cpp:567
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6779,13 +6779,13 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr ""
 
-#: view/katestatusbar.cpp:574
+#: view/katestatusbar.cpp:573
 #, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
 msgstr ""
 
-#: view/katestatusbar.cpp:589
+#: view/katestatusbar.cpp:588
 #, kde-format
 msgid "Zoom: %1%"
 msgstr ""
@@ -8089,24 +8089,24 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "របៀប​ស្វែងរក"
 
-#: view/kateview.cpp:3074
+#: view/kateview.cpp:3075
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Open File"
 msgstr "រក្សាទុក​ឯកសារ"
 
-#: view/kateview.cpp:3990
+#: view/kateview.cpp:3991
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "តម្រឹម"
 
-#: view/kateview.cpp:3990
+#: view/kateview.cpp:3991
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:5074
+#: view/kateview.cpp:5075
 #, kde-format
 msgid "Export File as HTML"
 msgstr ""
@@ -8156,22 +8156,22 @@ msgstr ""
 "<code><b>help list</b></code><br />ចំពោះ​ជំនួយ​អំពី​ពាក្យ​បញ្ជី​នីមួយៗ សូម​បញ្ចូល <code><b>help "
 "&lt;ពាក្យ​បញ្ជា&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1311 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1311 vimode/emulatedcommandbar/commandmode.cpp:211
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "គ្មាន​ពាក្យ​បញ្ជា​បែប​នេះទេ ៖ \"%1\""
 
-#: view/kateviewhelpers.cpp:1314 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1314 vimode/emulatedcommandbar/commandmode.cpp:193
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "កំហុស ៖ គ្មាន​ជួរ​បាន​អនុញ្ញាត​សម្រាប់​ពាក្យ​បញ្ជា \"%1\" ។"
 
-#: view/kateviewhelpers.cpp:1324 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1324 vimode/emulatedcommandbar/commandmode.cpp:197
 #, kde-format
 msgid "Success: "
 msgstr "ជោគជ័យ ៖ "
 
-#: view/kateviewhelpers.cpp:1338 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1338 vimode/emulatedcommandbar/commandmode.cpp:206
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "ពាក្យ​បញ្ជា \"%1\" បាន​បរាជ័យ ។"
