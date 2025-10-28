@@ -575,11 +575,11 @@ void KateViewInternal::scrollColumns(int x)
         x = m_columnScroll->maximum();
     }
 
-    if (x == startX()) {
+    if (x == m_startX) {
         return;
     }
 
-    int dx = startX() - x;
+    int dx = m_startX - x;
     m_startX = x;
 
     if (qAbs(dx) < width()) {
@@ -593,7 +593,7 @@ void KateViewInternal::scrollColumns(int x)
     Q_EMIT view()->displayRangeChanged(m_view);
 
     bool blocked = m_columnScroll->blockSignals(true);
-    m_columnScroll->setValue(startX());
+    m_columnScroll->setValue(m_startX);
     m_columnScroll->blockSignals(blocked);
 }
 
@@ -670,7 +670,7 @@ void KateViewInternal::updateView(bool changed, int viewLinesScrolled)
 
         m_columnScroll->setRange(0, max + (renderer()->spaceWidth() / 2)); // Add some space for the caret at EOL
 
-        m_columnScroll->setValue(startX());
+        m_columnScroll->setValue(m_startX);
 
         // Approximate linescroll
         m_columnScroll->setSingleStep(renderer()->currentFontMetrics().horizontalAdvance(QLatin1Char('a')));
@@ -732,9 +732,9 @@ void KateViewInternal::makeVisible(const KTextEditor::Cursor c, int endCol, bool
             sXborder = 0;
         }
 
-        if (sX < startX()) {
+        if (sX < m_startX) {
             scrollColumns(sXborder);
-        } else if (sX > startX() + width()) {
+        } else if (sX > m_startX + width()) {
             scrollColumns(sX - width() + 8);
         }
     }
@@ -860,7 +860,7 @@ QPoint KateViewInternal::cursorToCoordinate(const KTextEditor::Cursor cursor, bo
         x += m_leftBorder->width();
     }
 
-    x -= startX();
+    x -= m_startX;
 
     return QPoint(x, y);
 }
@@ -3000,7 +3000,7 @@ KTextEditor::Cursor KateViewInternal::cursorForPoint(QPoint p)
         thisLine = cache()->textLayout(doc()->lines() - 1, -1);
     }
 
-    c = renderer()->xToCursor(thisLine, startX() + p.x(), !view()->wrapCursor());
+    c = renderer()->xToCursor(thisLine, m_startX + p.x(), !view()->wrapCursor());
 
     if (c.line() < 0 || c.line() >= doc()->lines()) {
         return KTextEditor::Cursor::invalid();
@@ -3067,7 +3067,7 @@ bool KateViewInternal::isTargetSelected(const QPoint &p)
         return false;
     }
 
-    return view()->cursorSelected(renderer()->xToCursor(thisLine, startX() + p.x(), !view()->wrapCursor()));
+    return view()->cursorSelected(renderer()->xToCursor(thisLine, m_startX + p.x(), !view()->wrapCursor()));
 }
 
 // BEGIN EVENT HANDLING STUFF
@@ -3384,7 +3384,7 @@ void KateViewInternal::contextMenuEvent(QContextMenuEvent *e)
     if (e->reason() == QContextMenuEvent::Keyboard) {
         makeVisible(m_displayCursor, 0);
         p = cursorCoordinates(false);
-        p.rx() -= startX();
+        p.rx() -= m_startX;
     } else if (!view()->selection() || view()->config()->persistentSelection()) {
         placeCursor(e->pos());
     }
@@ -3716,7 +3716,7 @@ KTextEditor::Cursor KateViewInternal::coordinatesToCursor(QPoint coord, KTextEdi
     if (includeBorder) {
         coord.rx() -= m_leftBorder->width();
     }
-    coord.rx() += startX();
+    coord.rx() += m_startX;
 
     const KateTextLayout &thisLine = yToKateTextLayout(coord.y());
     if (thisLine.isValid()) {
@@ -3905,7 +3905,7 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
 
     const QRect &unionRect = e->rect();
 
-    int xStart = startX() + unionRect.x();
+    int xStart = m_startX + unionRect.x();
     int xEnd = xStart + unionRect.width();
     uint h = renderer()->lineHeight();
     uint startz = (unionRect.y() / h);
@@ -4032,8 +4032,8 @@ void KateViewInternal::resizeEvent(QResizeEvent *e)
     } else {
         updateView();
 
-        if (expandedHorizontally && startX() > 0) {
-            scrollColumns(startX() - (width() - e->oldSize().width()));
+        if (expandedHorizontally && m_startX > 0) {
+            scrollColumns(m_startX - (width() - e->oldSize().width()));
         }
     }
 
@@ -4043,7 +4043,7 @@ void KateViewInternal::resizeEvent(QResizeEvent *e)
             KateTextLayout thisLine = currentLayout(m_cursor);
 
             KTextEditor::Cursor newCursor(m_cursor.line(),
-                                          thisLine.endCol() + ((width() - thisLine.xOffset() - (thisLine.width() - startX())) / renderer()->spaceWidth()) - 1);
+                                          thisLine.endCol() + ((width() - thisLine.xOffset() - (thisLine.width() - m_startX)) / renderer()->spaceWidth()) - 1);
             if (newCursor.column() < m_cursor.column()) {
                 updateCursor(newCursor);
             }
@@ -4114,7 +4114,7 @@ void KateViewInternal::textHintTimeout()
         for (const QString &str : std::as_const(textHints)) {
             hint += QStringLiteral("<p>%1</p>").arg(str);
         }
-        QPoint pos(startX() + m_textHintPos.x(), m_textHintPos.y());
+        QPoint pos(m_startX + m_textHintPos.x(), m_textHintPos.y());
         QToolTip::showText(mapToGlobal(pos), hint);
     }
 }
@@ -4484,7 +4484,7 @@ void KateViewInternal::doDragScroll()
     }
 
     if (columnScrollingPossible() && dx) {
-        scrollColumns(qMin(startX() + dx, m_columnScroll->maximum()));
+        scrollColumns(qMin(m_startX + dx, m_columnScroll->maximum()));
     }
 
     if (!dy && !dx) {

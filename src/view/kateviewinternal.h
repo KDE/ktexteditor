@@ -138,10 +138,6 @@ public:
     {
         return m_startPos.line();
     }
-    int startX() const
-    {
-        return m_startX;
-    }
 
     KTextEditor::Cursor endPos() const;
     int endLine() const;
