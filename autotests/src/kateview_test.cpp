@@ -740,9 +740,6 @@ void KateViewTest::testFindMatchingFoldingMarker()
                        "    fi\n"
                        "done\n"));
 
-    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
-    KateViewInternal *viewInternal = view->getViewInternal();
-
     const auto ifvalue = doc.buffer().computeFoldings(1)[0].foldingRegion;
     const auto dovalue = doc.buffer().computeFoldings(0)[0].foldingRegion;
 
@@ -752,19 +749,19 @@ void KateViewTest::testFindMatchingFoldingMarker()
     const KTextEditor::Range firstIfMatching(1, 36, 1, 38);
 
     // first test the do folding marker with cursor above first position of the word.
-    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDo.start(), dovalue, 2000), firstDoMatching);
+    QCOMPARE(doc.buffer().findMatchingFoldingMarker(firstDo.start(), dovalue, 2000), firstDoMatching);
     // with cursor above last position of the word
-    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDo.end(), dovalue, 2000), firstDoMatching);
+    QCOMPARE(doc.buffer().findMatchingFoldingMarker(firstDo.end(), dovalue, 2000), firstDoMatching);
     // now to test the maxLines param.
-    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDo.start(), dovalue, 2), KTextEditor::Range::invalid());
+    QCOMPARE(doc.buffer().findMatchingFoldingMarker(firstDo.start(), dovalue, 2), KTextEditor::Range::invalid());
 
     // it must work from end folding to start folding too.
-    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDoMatching.start(), dovalue.sibling(), 2000), firstDo);
-    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDoMatching.start(), dovalue.sibling(), 2), KTextEditor::Range::invalid());
+    QCOMPARE(doc.buffer().findMatchingFoldingMarker(firstDoMatching.start(), dovalue.sibling(), 2000), firstDo);
+    QCOMPARE(doc.buffer().findMatchingFoldingMarker(firstDoMatching.start(), dovalue.sibling(), 2), KTextEditor::Range::invalid());
 
     // folding in the same line
-    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstIf.start(), ifvalue, 2000), firstIfMatching);
-    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstIfMatching.start(), ifvalue.sibling(), 2000), firstIf);
+    QCOMPARE(doc.buffer().findMatchingFoldingMarker(firstIf.start(), ifvalue, 2000), firstIfMatching);
+    QCOMPARE(doc.buffer().findMatchingFoldingMarker(firstIfMatching.start(), ifvalue.sibling(), 2000), firstIf);
 }
 
 void KateViewTest::testUpdateFoldingMarkersHighlighting()

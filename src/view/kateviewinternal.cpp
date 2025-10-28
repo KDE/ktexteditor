@@ -2516,68 +2516,18 @@ void KateViewInternal::moveCursorToSelectionEdge(bool scroll)
     m_minLinesVisible = tmp;
 }
 
-KTextEditor::Range KateViewInternal::findMatchingFoldingMarker(const KTextEditor::Cursor currentCursorPos,
-                                                               const KSyntaxHighlighting::FoldingRegion foldingRegion,
-                                                               const int maxLines)
-{
-    const int direction = (foldingRegion.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? 1 : -1;
-    int foldCounter = 0;
-    int lineCounter = 0;
-    const auto foldMarkers = m_view->doc()->buffer().computeFoldings(currentCursorPos.line());
-
-    // searching a end folding marker? go left to right
-    // otherwise, go right to left
-    long i = direction == 1 ? 0 : (long)foldMarkers.size() - 1;
-
-    // For the first line, we start considering the first folding after the cursor
-    for (; i >= 0 && i < (long)foldMarkers.size(); i += direction) {
-        if ((foldMarkers[i].offset - currentCursorPos.column()) * direction > 0 && foldMarkers[i].foldingRegion.id() == foldingRegion.id()) {
-            if (foldMarkers[i].foldingRegion.type() == foldingRegion.type()) {
-                foldCounter += 1;
-            } else if (foldCounter > 0) {
-                foldCounter -= 1;
-            } else if (foldCounter == 0) {
-                return KTextEditor::Range(currentCursorPos.line(),
-                                          getStartOffset(direction, foldMarkers[i].offset, foldMarkers[i].length),
-                                          currentCursorPos.line(),
-                                          getEndOffset(direction, foldMarkers[i].offset, foldMarkers[i].length));
-            }
-        }
-    }
-
-    // for the other lines
-    int currentLine = currentCursorPos.line() + direction;
-    for (; currentLine >= 0 && currentLine < m_view->doc()->lines() && lineCounter < maxLines; currentLine += direction) {
-        // update line attributes
-        const auto foldMarkers = m_view->doc()->buffer().computeFoldings(currentLine);
-        i = direction == 1 ? 0 : (long)foldMarkers.size() - 1;
-
-        // iterate through the markers
-        for (; i >= 0 && i < (long)foldMarkers.size(); i += direction) {
-            if (foldMarkers[i].foldingRegion.id() == foldingRegion.id()) {
-                if (foldMarkers[i].foldingRegion.type() == foldingRegion.type()) {
-                    foldCounter += 1;
-                } else if (foldCounter != 0) {
-                    foldCounter -= 1;
-                } else if (foldCounter == 0) {
-                    return KTextEditor::Range(currentLine,
-                                              getStartOffset(direction, foldMarkers[i].offset, foldMarkers[i].length),
-                                              currentLine,
-                                              getEndOffset(direction, foldMarkers[i].offset, foldMarkers[i].length));
-                }
-            }
-        }
-        lineCounter += 1;
-    }
-
-    // got out of loop, no matching folding found
-    // returns a invalid folding range
-    return KTextEditor::Range::invalid();
-}
-
 void KateViewInternal::updateFoldingMarkersHighlighting()
 {
-    const auto foldings = m_view->doc()->buffer().computeFoldings(m_cursor.line());
+    auto getStartOffset = [](int direction, int offset, int length) {
+        return direction == 1 ? offset - length : offset;
+    };
+
+    auto getEndOffset = [](int direction, int offset, int length) {
+        return direction == 1 ? offset : offset + length;
+    };
+
+    KateBuffer &buffer = m_view->doc()->buffer();
+    const auto foldings = buffer.computeFoldings(m_cursor.line());
     for (unsigned long i = 0; i < foldings.size(); i++) {
         // 1 -> left to right, the current folding is start type
         // -1 -> right to left, the current folding is end type
@@ -2587,7 +2537,7 @@ void KateViewInternal::updateFoldingMarkersHighlighting()
         int endOffset = getEndOffset(-direction, foldings[i].offset, foldings[i].length);
 
         if (m_cursor.column() >= startOffset && m_cursor.column() <= endOffset) {
-            const auto foldingMarkerMatch = findMatchingFoldingMarker(KTextEditor::Cursor(m_cursor.line(), m_cursor.column()), foldings[i].foldingRegion, 2000);
+            const auto foldingMarkerMatch = buffer.findMatchingFoldingMarker(m_cursor.toCursor(), foldings[i].foldingRegion, 2000);
 
             if (!foldingMarkerMatch.isValid()) {
                 break;

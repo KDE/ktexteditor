@@ -243,6 +243,9 @@ public:
      */
     KTextEditor::Range computeFoldingRangeForStartLine(int startLine);
 
+    KTextEditor::Range
+    findMatchingFoldingMarker(const KTextEditor::Cursor current_cursor_pos, const KSyntaxHighlighting::FoldingRegion foldingRegion, const int maxLines);
+
 private:
     /**
      * Highlight information needs to be updated.
