@@ -223,8 +223,7 @@ public:
     QPoint cursorCoordinates(bool includeBorder = true) const;
     KTextEditor::Cursor findMatchingBracket();
 
-    // exported for unit tests
-    KTEXTEDITOR_EXPORT void updateFoldingMarkersHighlighting();
+    void updateFoldingMarkersHighlighting();
 
     KateIconBorder *iconBorder() const
     {

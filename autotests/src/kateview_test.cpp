@@ -779,7 +779,7 @@ void KateViewTest::testUpdateFoldingMarkersHighlighting()
                        "done\n"));
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
-    KateViewInternal *viewInternal = view->getViewInternal();
+    auto viewInternal = view->getViewInternal();
 
     const KTextEditor::Cursor positionWithoutMarker(0, 4);
     const KTextEditor::Range firstDo(0, 16, 0, 18);
@@ -789,20 +789,17 @@ void KateViewTest::testUpdateFoldingMarkersHighlighting()
     KTextEditor::MovingRange *foldingMarkerEnd = viewInternal->m_fmEnd.get();
 
     // If the cursor is not above any folding marker, the highlighting range is invalid
-    view->editSetCursor(positionWithoutMarker);
-    viewInternal->updateFoldingMarkersHighlighting();
+    view->setCursorPosition(positionWithoutMarker);
     QCOMPARE(foldingMarkerStart->toRange(), KTextEditor::Range::invalid());
     QCOMPARE(foldingMarkerEnd->toRange(), KTextEditor::Range::invalid());
 
     // If the cursor is above a opening folding marker, the highlighting range is the range of both opening and end folding markers words
-    view->editSetCursor(firstDo.start());
-    viewInternal->updateFoldingMarkersHighlighting();
+    view->setCursorPosition(firstDo.start());
     QCOMPARE(foldingMarkerStart->toRange(), firstDo);
     QCOMPARE(foldingMarkerEnd->toRange(), firstDoMatching);
 
     // If the cursor is above a ending folding marker, then same rule above
-    view->editSetCursor(firstDoMatching.start());
-    viewInternal->updateFoldingMarkersHighlighting();
+    view->setCursorPosition(firstDoMatching.start());
     QCOMPARE(foldingMarkerStart->toRange(), firstDo);
     QCOMPARE(foldingMarkerEnd->toRange(), firstDoMatching);
 }
