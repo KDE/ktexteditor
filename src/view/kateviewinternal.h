@@ -230,8 +230,6 @@ public:
 private:
     void fixDropEvent(QDropEvent *event);
 
-    static bool isAcceptableInput(const QKeyEvent *e);
-
 protected:
     void hideEvent(QHideEvent *e) override;
     void paintEvent(QPaintEvent *e) override;

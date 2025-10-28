@@ -3193,6 +3193,41 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
     return QWidget::eventFilter(obj, e);
 }
 
+static bool isAcceptableInput(const QKeyEvent *e)
+{
+    // reimplemented from QInputControl::isAcceptableInput()
+
+    const QString text = e->text();
+    if (text.isEmpty()) {
+        return false;
+    }
+
+    const QChar c = text.at(0);
+
+    // Formatting characters such as ZWNJ, ZWJ, RLM, etc. This needs to go before the
+    // next test, since CTRL+SHIFT is sometimes used to input it on Windows.
+    // see bug 389796 (typing formatting characters such as ZWNJ)
+    // and bug 396764 (typing soft-hyphens)
+    if (c.category() == QChar::Other_Format) {
+        return true;
+    }
+
+    // QTBUG-35734: ignore Ctrl/Ctrl+Shift; accept only AltGr (Alt+Ctrl) on German keyboards
+    if ((e->modifiers() == Qt::ControlModifier) || (e->modifiers() == (Qt::ShiftModifier | Qt::ControlModifier))) {
+        return false;
+    }
+
+    if (c.isPrint() || (c.category() == QChar::Other_PrivateUse)) {
+        return true;
+    };
+
+    if (c.isHighSurrogate() && text.size() > 1 && text.at(1).isLowSurrogate()) {
+        return true;
+    }
+
+    return false;
+}
+
 void KateViewInternal::keyPressEvent(QKeyEvent *e)
 {
     m_shiftKeyPressed = e->modifiers() & Qt::ShiftModifier;
@@ -3335,41 +3370,6 @@ void KateViewInternal::keyReleaseEvent(QKeyEvent *e)
 
     e->ignore();
     return;
-}
-
-bool KateViewInternal::isAcceptableInput(const QKeyEvent *e)
-{
-    // reimplemented from QInputControl::isAcceptableInput()
-
-    const QString text = e->text();
-    if (text.isEmpty()) {
-        return false;
-    }
-
-    const QChar c = text.at(0);
-
-    // Formatting characters such as ZWNJ, ZWJ, RLM, etc. This needs to go before the
-    // next test, since CTRL+SHIFT is sometimes used to input it on Windows.
-    // see bug 389796 (typing formatting characters such as ZWNJ)
-    // and bug 396764 (typing soft-hyphens)
-    if (c.category() == QChar::Other_Format) {
-        return true;
-    }
-
-    // QTBUG-35734: ignore Ctrl/Ctrl+Shift; accept only AltGr (Alt+Ctrl) on German keyboards
-    if ((e->modifiers() == Qt::ControlModifier) || (e->modifiers() == (Qt::ShiftModifier | Qt::ControlModifier))) {
-        return false;
-    }
-
-    if (c.isPrint() || (c.category() == QChar::Other_PrivateUse)) {
-        return true;
-    };
-
-    if (c.isHighSurrogate() && text.size() > 1 && text.at(1).isLowSurrogate()) {
-        return true;
-    }
-
-    return false;
 }
 
 void KateViewInternal::contextMenuEvent(QContextMenuEvent *e)
