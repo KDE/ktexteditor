@@ -906,12 +906,6 @@ public:
     // These constructors constrain their arguments to valid positions
     // before only the third one did, but that leads to crashes
     // see bug 227449
-    CalculatingCursor(KateViewInternal *vi)
-        : m_vi(vi)
-    {
-        makeValid();
-    }
-
     CalculatingCursor(KateViewInternal *vi, const KTextEditor::Cursor c)
         : m_cursor(c)
         , m_vi(vi)
@@ -919,16 +913,7 @@ public:
         makeValid();
     }
 
-    CalculatingCursor(KateViewInternal *vi, int line, int col)
-        : m_cursor(line, col)
-        , m_vi(vi)
-    {
-        makeValid();
-    }
-
-    virtual ~CalculatingCursor()
-    {
-    }
+    virtual ~CalculatingCursor() = default;
 
     int line() const
     {
@@ -1025,16 +1010,8 @@ protected:
 class BoundedCursor final : public CalculatingCursor
 {
 public:
-    BoundedCursor(KateViewInternal *vi)
-        : CalculatingCursor(vi)
-    {
-    }
     BoundedCursor(KateViewInternal *vi, const KTextEditor::Cursor c)
         : CalculatingCursor(vi, c)
-    {
-    }
-    BoundedCursor(KateViewInternal *vi, int line, int col)
-        : CalculatingCursor(vi, line, col)
     {
     }
     CalculatingCursor &operator+=(int n) override
@@ -1099,16 +1076,8 @@ public:
 class WrappingCursor final : public CalculatingCursor
 {
 public:
-    WrappingCursor(KateViewInternal *vi)
-        : CalculatingCursor(vi)
-    {
-    }
     WrappingCursor(KateViewInternal *vi, const KTextEditor::Cursor c)
         : CalculatingCursor(vi, c)
-    {
-    }
-    WrappingCursor(KateViewInternal *vi, int line, int col)
-        : CalculatingCursor(vi, line, col)
     {
     }
 
