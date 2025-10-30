@@ -79,7 +79,6 @@ class KateViewInternal final : public QWidget
 public:
     enum Bias {
         left = -1,
-        none = 0,
         right = 1
     };
 
