@@ -989,14 +989,12 @@ public:
         switch (bias) {
         case KateViewInternal::left:
             return column() == 0;
-        case KateViewInternal::none:
-            return atEdge();
         case KateViewInternal::right:
             return column() >= doc()->lineLength(line());
-        default:
-            Q_ASSERT(false);
-            return false;
         }
+
+        Q_UNREACHABLE();
+        return false;
     }
 
 protected:
