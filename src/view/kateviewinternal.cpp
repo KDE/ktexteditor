@@ -1012,41 +1012,32 @@ public:
         const bool wrapCursor = view()->wrapCursor();
         int maxColumn = -1;
         if (n >= 0) {
-            for (int i = 0; i < n; i++) {
-                if (column() >= lineLength) {
-                    if (wrapCursor) {
-                        break;
+            if (column() >= lineLength) {
+                if (wrapCursor) {
+                    // do nothing
+                } else if (view()->dynWordWrap()) {
+                    // Don't go past the edge of the screen in dynamic wrapping mode
+                    if (maxColumn == -1) {
+                        maxColumn = lineLength + ((m_vi->width() - thisLine->widthOfLastLine()) / m_vi->renderer()->spaceWidth()) - 1;
+                    }
 
-                    } else if (view()->dynWordWrap()) {
-                        // Don't go past the edge of the screen in dynamic wrapping mode
-                        if (maxColumn == -1) {
-                            maxColumn = lineLength + ((m_vi->width() - thisLine->widthOfLastLine()) / m_vi->renderer()->spaceWidth()) - 1;
-                        }
-
-                        if (column() >= maxColumn) {
-                            m_cursor.setColumn(maxColumn);
-                            break;
-                        }
-
-                        m_cursor.setColumn(column() + 1);
-
+                    if (column() >= maxColumn) {
+                        m_cursor.setColumn(maxColumn);
                     } else {
                         m_cursor.setColumn(column() + 1);
                     }
-
                 } else {
-                    m_cursor.setColumn(thisLine->layout().nextCursorPosition(column()));
+                    m_cursor.setColumn(column() + 1);
                 }
+
+            } else {
+                m_cursor.setColumn(thisLine->layout().nextCursorPosition(column()));
             }
         } else {
-            for (int i = 0; i > n; i--) {
-                if (column() >= lineLength) {
-                    m_cursor.setColumn(column() - 1);
-                } else if (column() == 0) {
-                    break;
-                } else {
-                    m_cursor.setColumn(thisLine->layout().previousCursorPosition(column()));
-                }
+            if (column() >= lineLength) {
+                m_cursor.setColumn(column() - 1);
+            } else if (column() > 0) {
+                m_cursor.setColumn(thisLine->layout().previousCursorPosition(column()));
             }
         }
 
@@ -1073,57 +1064,24 @@ public:
 
         if (n >= 0) {
             const int lineLength = m_vi->doc()->lineLength(thisLine->line());
-            for (int i = 0; i < n; i++) {
-                if (column() >= lineLength) {
-                    // Have come to the end of a line
-                    if (line() >= doc()->lines() - 1)
-                    // Have come to the end of the document
-                    {
-                        break;
-                    }
-
-                    // Advance to the beginning of the next line
-                    m_cursor.setColumn(0);
-                    m_cursor.setLine(line() + 1);
-
-                    // Retrieve the next text range
-                    thisLine = m_vi->cache()->line(line());
-                    if (!thisLine || !thisLine->isValid()) {
-                        qCWarning(LOG_KTE) << "Did not retrieve a valid layout for line " << line();
-                        return *this;
-                    }
-
-                    continue;
-                }
-
+            if (column() >= lineLength && line() < doc()->lines() - 1) {
+                // Advance to the beginning of the next line
+                m_cursor.setColumn(0);
+                m_cursor.setLine(line() + 1);
+            } else {
                 m_cursor.setColumn(thisLine->layout().nextCursorPosition(column()));
             }
-
         } else {
-            for (int i = 0; i > n; i--) {
-                if (column() == 0) {
-                    // Have come to the start of the document
-                    if (line() == 0) {
-                        break;
-                    }
-
+            if (column() == 0) {
+                if (line() > 0) {
                     // Start going back to the end of the last line
                     m_cursor.setLine(line() - 1);
-
-                    // Retrieve the next text range
-                    thisLine = m_vi->cache()->line(line());
-                    const int lineLength = m_vi->doc()->lineLength(thisLine->line());
-                    if (!thisLine || !thisLine->isValid()) {
-                        qCWarning(LOG_KTE) << "Did not retrieve a valid layout for line " << line();
-                        return *this;
-                    }
-
+                    // Retrieve the next line length
+                    const int lineLength = m_vi->doc()->lineLength(line());
                     // Finish going back to the end of the last line
                     m_cursor.setColumn(lineLength);
-
-                    continue;
                 }
-
+            } else {
                 if (column() > m_vi->doc()->lineLength(thisLine->line())) {
                     m_cursor.setColumn(column() - 1);
                 } else {
