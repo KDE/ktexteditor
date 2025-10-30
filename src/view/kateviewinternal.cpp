@@ -960,12 +960,7 @@ public:
         }
     }
 
-    bool atEdge() const
-    {
-        return atEdge(KateViewInternal::left) || atEdge(KateViewInternal::right);
-    }
-
-    bool atEdge(KateViewInternal::Bias bias) const
+    bool atEdge(KateViewInternal::Bias bias)
     {
         switch (bias) {
         case KateViewInternal::left:
@@ -981,7 +976,7 @@ public:
 protected:
     virtual CalculatingCursor &move(int n) = 0;
 
-    bool valid() const
+    bool valid()
     {
         return line() >= 0 && line() < doc()->lines() && column() >= 0 && (!view()->wrapCursor() || column() <= doc()->lineLength(line()));
     }
@@ -989,15 +984,7 @@ protected:
     {
         return m_vi->m_view;
     }
-    const KTextEditor::ViewPrivate *view() const
-    {
-        return m_vi->m_view;
-    }
     KTextEditor::DocumentPrivate *doc()
-    {
-        return view()->doc();
-    }
-    const KTextEditor::DocumentPrivate *doc() const
     {
         return view()->doc();
     }
