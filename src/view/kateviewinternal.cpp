@@ -926,18 +926,14 @@ public:
         return m_cursor;
     }
 
-    virtual CalculatingCursor &operator+=(int n) = 0;
-
-    virtual CalculatingCursor &operator-=(int n) = 0;
-
-    CalculatingCursor &operator++()
+    CalculatingCursor &moveForward()
     {
-        return operator+=(1);
+        return move(1);
     }
 
-    CalculatingCursor &operator--()
+    CalculatingCursor &moveBack()
     {
-        return operator-=(1);
+        return move(-1);
     }
 
     void makeValid()
@@ -979,6 +975,8 @@ public:
     }
 
 protected:
+    virtual CalculatingCursor &move(int n) = 0;
+
     bool valid() const
     {
         return line() >= 0 && line() < doc()->lines() && column() >= 0 && (!view()->wrapCursor() || column() <= doc()->lineLength(line()));
@@ -1010,7 +1008,8 @@ public:
         : CalculatingCursor(vi, c)
     {
     }
-    CalculatingCursor &operator+=(int n) override
+
+    CalculatingCursor &move(int n) override
     {
         KateLineLayout *thisLine = m_vi->cache()->line(line());
         if (!thisLine || !thisLine->isValid()) {
@@ -1063,10 +1062,6 @@ public:
         Q_ASSERT(valid());
         return *this;
     }
-    CalculatingCursor &operator-=(int n) override
-    {
-        return operator+=(-n);
-    }
 };
 
 class WrappingCursor final : public CalculatingCursor
@@ -1077,7 +1072,7 @@ public:
     {
     }
 
-    CalculatingCursor &operator+=(int n) override
+    CalculatingCursor &move(int n) override
     {
         KateLineLayout *thisLine = m_vi->cache()->line(line());
         if (!thisLine || !thisLine->isValid()) {
@@ -1148,10 +1143,6 @@ public:
 
         Q_ASSERT(valid());
         return *this;
-    }
-    CalculatingCursor &operator-=(int n) override
-    {
-        return operator+=(-n);
     }
 };
 
@@ -1246,7 +1237,7 @@ public:
     {
     }
 
-    CalculatingCursor &operator+=(int n) override
+    CalculatingCursor &move(int n) override
     {
         KateLineLayout *thisLine = m_vi->cache()->line(line());
         if (!thisLine || !thisLine->isValid()) {
@@ -1393,20 +1384,15 @@ public:
         Q_ASSERT(valid());
         return *this;
     }
-
-    CalculatingCursor &operator-=(int n) override
-    {
-        return operator+=(-n);
-    }
 };
 
 void KateViewInternal::moveChar(KateViewInternal::Bias bias, bool sel)
 {
     KTextEditor::Cursor c;
     if (view()->wrapCursor()) {
-        c = WrappingCursor(this, m_cursor) += bias;
+        c = WrappingCursor(this, m_cursor).move(bias);
     } else {
-        c = BoundedCursor(this, m_cursor) += bias;
+        c = BoundedCursor(this, m_cursor).move(bias);
     }
 
     const auto &sc = view()->m_secondaryCursors;
@@ -1416,9 +1402,9 @@ void KateViewInternal::moveChar(KateViewInternal::Bias bias, bool sel)
     for (const auto &c : sc) {
         auto oldPos = c.cursor();
         if (view()->wrapCursor()) {
-            c.pos->setPosition(WrappingCursor(this, oldPos) += bias);
+            c.pos->setPosition(WrappingCursor(this, oldPos).move(bias));
         } else {
-            c.pos->setPosition(BoundedCursor(this, oldPos) += bias);
+            c.pos->setPosition(BoundedCursor(this, oldPos).move(bias));
         }
         const auto newPos = c.pos->toCursor();
         multiCursors.push_back({.oldPos = oldPos, .newPos = newPos});
@@ -1470,19 +1456,19 @@ void KateViewInternal::wordPrev(bool sel, bool subword)
         KateHighlighting *h = doc()->highlight();
 
         while (!c.atEdge(left) && (c.column() > doc()->lineLength(c.line()) || characterAtPreviousColumn(c).isSpace())) {
-            --c;
+            c.moveBack();
         }
 
         if (c.atEdge(left)) {
-            --c;
+            c.moveBack();
         } else if (h->isInWord(characterAtPreviousColumn(c))) {
             if (subword || doc()->config()->camelCursor()) {
                 CamelCursor cc(this, cursor);
-                --cc;
+                cc.moveBack();
                 return cc;
             } else {
                 while (!c.atEdge(left) && h->isInWord(characterAtPreviousColumn(c))) {
-                    --c;
+                    c.moveBack();
                 }
             }
         } else {
@@ -1491,7 +1477,7 @@ void KateViewInternal::wordPrev(bool sel, bool subword)
                    // in order to stay symmetric to wordLeft()
                    // we must not skip space preceding a non-word sequence
                    && !characterAtPreviousColumn(c).isSpace()) {
-                --c;
+                c.moveBack();
             }
         }
 
@@ -1533,15 +1519,15 @@ void KateViewInternal::wordNext(bool sel, bool subword)
 
         KateHighlighting *h = doc()->highlight();
         if (c.atEdge(right)) {
-            ++c;
+            c.moveForward();
         } else if (h->isInWord(doc()->characterAt(c))) {
             if (subword || doc()->config()->camelCursor()) {
                 CamelCursor cc(this, cursor);
-                ++cc;
+                cc.moveForward();
                 return cc;
             } else {
                 while (!c.atEdge(right) && h->isInWord(doc()->characterAt(c))) {
-                    ++c;
+                    c.moveForward();
                 }
             }
         } else {
@@ -1550,12 +1536,12 @@ void KateViewInternal::wordNext(bool sel, bool subword)
                    // we must not skip space, because if that space is followed
                    // by more non-word characters, we would skip them, too
                    && !doc()->characterAt(c).isSpace()) {
-                ++c;
+                c.moveForward();
             }
         }
 
         while (!c.atEdge(right) && doc()->characterAt(c).isSpace()) {
-            ++c;
+            c.moveForward();
         }
 
         return c;
