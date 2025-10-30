@@ -930,14 +930,14 @@ public:
         return m_cursor;
     }
 
-    CalculatingCursor &moveForward()
+    void moveForward()
     {
-        return move(1);
+        move(1);
     }
 
-    CalculatingCursor &moveBack()
+    void moveBack()
     {
-        return move(-1);
+        move(-1);
     }
 
     void makeValid()
