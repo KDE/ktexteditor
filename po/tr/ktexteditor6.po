@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-27 00:39+0000\n"
+"POT-Creation-Date: 2025-11-01 00:42+0000\n"
 "PO-Revision-Date: 2025-10-03 10:10+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1465,7 +1465,7 @@ msgid "Text selection mode:"
 msgstr "Metin seçim kipi:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbTextSelectionMode)
-#: dialogs/navigationconfigwidget.ui:139 inputmode/katenormalinputmode.cpp:65
+#: dialogs/navigationconfigwidget.ui:139 inputmode/katenormalinputmode.cpp:64
 #: mode/katemodemanager.cpp:162
 #, kde-format
 msgid "Normal"
@@ -2208,12 +2208,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Yeniden Dene"
 
-#: document/katedocument.cpp:2255 document/katedocument.cpp:6567
+#: document/katedocument.cpp:2255 document/katedocument.cpp:6444
 #, kde-format
 msgid "&Close"
 msgstr "&Kapat"
 
-#: document/katedocument.cpp:2256 document/katedocument.cpp:6568
+#: document/katedocument.cpp:2256 document/katedocument.cpp:6445
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2444,12 +2444,12 @@ msgstr "<a href=\"%1\">%2</a> dosyası hâlâ yükleniyor."
 msgid "&Abort Loading"
 msgstr "&Yüklemeyi İptal Et"
 
-#: inputmode/katenormalinputmode.cpp:75
+#: inputmode/katenormalinputmode.cpp:74
 #, kde-format
 msgid "OVERWRITE"
 msgstr "ÜZERİNE YAZ"
 
-#: inputmode/katenormalinputmode.cpp:75
+#: inputmode/katenormalinputmode.cpp:74
 #, kde-format
 msgid "INSERT"
 msgstr "EKLE"
@@ -6522,7 +6522,7 @@ msgstr "Satır sonu türü"
 msgid "Mode"
 msgstr "Kip"
 
-#: view/katestatusbar.cpp:209 view/kateview.cpp:722
+#: view/katestatusbar.cpp:209 view/kateview.cpp:704
 #, kde-format
 msgid ""
 "Here you can choose which mode should be used for the current document. This "
@@ -6629,93 +6629,93 @@ msgstr "%1 sözcük, %2 karakter"
 msgid "Zoom: %1%"
 msgstr "Yakınlaştırma: %​%1"
 
-#: view/kateview.cpp:459
+#: view/kateview.cpp:441
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
 msgstr "Seçilen metni kes ve panoya taşı"
 
-#: view/kateview.cpp:464
+#: view/kateview.cpp:446
 #, kde-format
 msgid "Paste previously copied or cut clipboard contents"
 msgstr "Önceden kesilip kopyalanmış pano içeriğini yapıştır"
 
-#: view/kateview.cpp:467
+#: view/kateview.cpp:449
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
 msgstr "Seçilen metni sistem panosuna kopyalamak için bu komutu kullanın."
 
-#: view/kateview.cpp:473
+#: view/kateview.cpp:455
 #, kde-format
 msgid "Clipboard &History Paste"
 msgstr "Pano Geçmişini &Yapıştır"
 
-#: view/kateview.cpp:478
+#: view/kateview.cpp:460
 #, kde-format
 msgid "Paste Selection"
 msgstr "Seçimi Yapıştır"
 
-#: view/kateview.cpp:480
+#: view/kateview.cpp:462
 #, kde-format
 msgid "Paste previously mouse selection contents"
 msgstr "Fare ile daha önceden seçilmiş içeriği yapıştır"
 
-#: view/kateview.cpp:484
+#: view/kateview.cpp:466
 #, kde-format
 msgid "Paste From File"
 msgstr "Dosyadan Yapıştır"
 
-#: view/kateview.cpp:488
+#: view/kateview.cpp:470
 #, kde-format
 msgid "Copy File Location"
 msgstr "Dosya Konumunu Kopyala"
 
-#: view/kateview.cpp:489
+#: view/kateview.cpp:471
 #, kde-format
 msgid "Copy the current file name and line number"
 msgstr "Geçerli dosya adını ve satır numarasını kopyala"
 
-#: view/kateview.cpp:492
+#: view/kateview.cpp:474
 #, kde-format
 msgid "Swap with Clipboard Contents"
 msgstr "Pano İçeriği ile Değiştir"
 
-#: view/kateview.cpp:493
+#: view/kateview.cpp:475
 #, kde-format
 msgid "Swap the selected text with the clipboard contents"
 msgstr "Seçili metni pano içeriğyle değiştir"
 
-#: view/kateview.cpp:496
+#: view/kateview.cpp:478
 #, kde-format
 msgid "Take Screenshot of Selection"
 msgstr "Seçimin Ekran Görüntüsünü Al"
 
-#: view/kateview.cpp:500
+#: view/kateview.cpp:482
 #, kde-format
 msgid "Save the current document"
 msgstr "Geçerli belgeyi kaydet"
 
-#: view/kateview.cpp:503
+#: view/kateview.cpp:485
 #, kde-format
 msgid "Revert the most recent editing actions"
 msgstr "En son yapılan düzenleme eylemlerini geri alır"
 
-#: view/kateview.cpp:506
+#: view/kateview.cpp:488
 #, kde-format
 msgid "Revert the most recent undo operation"
 msgstr "En son yapılan Geri Al işlemlerini geri al"
 
-#: view/kateview.cpp:510
+#: view/kateview.cpp:492
 #, kde-format
 msgid "&Scripts"
 msgstr "&Betikler"
 
-#: view/kateview.cpp:514
+#: view/kateview.cpp:496
 #, kde-format
 msgid "Apply &Word Wrap"
 msgstr "&Sözcük Kaydırmayı Uygula"
 
-#: view/kateview.cpp:516
+#: view/kateview.cpp:498
 #, kde-format
 msgid ""
 "Use this to wrap the current line, or to reformat the selected lines as "
@@ -6727,12 +6727,12 @@ msgstr ""
 "kaydır” ayarına uyacak şekilde bunu kullanın.<br /><br />Bu, durağan bir "
 "sözcük kaydırmadır; belgenin değiştirildiği anlamına gelir."
 
-#: view/kateview.cpp:522
+#: view/kateview.cpp:504
 #, kde-format
 msgid "&Clean Indentation"
 msgstr "&Girintilemeyi Temizle"
 
-#: view/kateview.cpp:524
+#: view/kateview.cpp:506
 #, kde-format
 msgid ""
 "Use this to clean the indentation of a selected block of text (only tabs/"
@@ -6744,22 +6744,22 @@ msgstr ""
 "özelliklerini ve birbirlerinin yerlerine kullanımlarını "
 "yapılandırabilirsiniz."
 
-#: view/kateview.cpp:529
+#: view/kateview.cpp:511
 #, kde-format
 msgid "Convert Indentation to Spaces"
 msgstr "Girintilemeyi Boşluklara Dönüştür"
 
-#: view/kateview.cpp:536
+#: view/kateview.cpp:518
 #, kde-format
 msgid "Convert Indentation to Tabs"
 msgstr "Girintilemeyi Sekmelere Dönüştür"
 
-#: view/kateview.cpp:551
+#: view/kateview.cpp:533
 #, kde-format
 msgid "&Format Indentation"
 msgstr "Girintilemeyi &Biçimlendir"
 
-#: view/kateview.cpp:552
+#: view/kateview.cpp:534
 #, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
@@ -6768,13 +6768,13 @@ msgstr ""
 "Geçerli satırı veya metin blokunu onun olması gereken girintileme düzeyine "
 "kendiliğinden girintilemek için bunu kullanın."
 
-#: view/kateview.cpp:556
+#: view/kateview.cpp:538
 #, kde-format
 msgctxt "@action"
 msgid "&Align On…"
 msgstr "Şuna Göre &Hizala…"
 
-#: view/kateview.cpp:558
+#: view/kateview.cpp:540
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -6796,12 +6796,12 @@ msgstr ""
 "aynı sütuna hizalamak için bir iki nokta öncesi oluşan ilk boş olmayan "
 "karakter öncesi boşluklar ekleyecektir."
 
-#: view/kateview.cpp:569
+#: view/kateview.cpp:551
 #, kde-format
 msgid "C&omment"
 msgstr "Y&orum"
 
-#: view/kateview.cpp:572
+#: view/kateview.cpp:554
 #, kde-format
 msgid ""
 "This command comments out the current line or a selected block of text.<br /"
@@ -6812,22 +6812,22 @@ msgstr ""
 "<br /><br /> Tekli/çoklu satır yorumları için kullanılan karakterler, ait "
 "olduğu dilin renklendirme kuralları içinde tanımlanmıştır."
 
-#: view/kateview.cpp:577
+#: view/kateview.cpp:559
 #, kde-format
 msgid "Go to Previous Editing Location"
 msgstr "Önceki Düzenleme Konumuna Git"
 
-#: view/kateview.cpp:583
+#: view/kateview.cpp:565
 #, kde-format
 msgid "Go to Next Editing Location"
 msgstr "Sonraki Düzenleme Konumuna Git"
 
-#: view/kateview.cpp:589
+#: view/kateview.cpp:571
 #, kde-format
 msgid "Unco&mment"
 msgstr "Yoru&mu Kaldır"
 
-#: view/kateview.cpp:592
+#: view/kateview.cpp:574
 #, kde-format
 msgid ""
 "This command removes comments from the current line or a selected block of "
@@ -6838,37 +6838,37 @@ msgstr ""
 "<br /><br />Tekli/çoklu satır yorumları için kullanılan karakterler, ait "
 "olduğu dilin renklendirme kuralları içinde tanımlanmıştır."
 
-#: view/kateview.cpp:597
+#: view/kateview.cpp:579
 #, kde-format
 msgid "Toggle Comment"
 msgstr "Yorum/Yorumları Kaldır"
 
-#: view/kateview.cpp:601
+#: view/kateview.cpp:583
 #, kde-format
 msgid "&Read Only Mode"
 msgstr "&Saltokunur Kip"
 
-#: view/kateview.cpp:602
+#: view/kateview.cpp:584
 #, kde-format
 msgid "Lock/unlock the document for writing"
 msgstr "Belgeyi yazmaya karşı kilitle/kilidi aç"
 
-#: view/kateview.cpp:607
+#: view/kateview.cpp:589
 #, kde-format
 msgid "&Force RTL Direction"
 msgstr "Sağdan Sola Yönü &Zorla"
 
-#: view/kateview.cpp:608
+#: view/kateview.cpp:590
 #, kde-format
 msgid "Force RTL Text Direction"
 msgstr "Sağdan Sola Metin Yönünü Zorla"
 
-#: view/kateview.cpp:618
+#: view/kateview.cpp:600
 #, kde-format
 msgid "Uppercase"
 msgstr "Büyük Harf"
 
-#: view/kateview.cpp:621
+#: view/kateview.cpp:603
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
@@ -6877,12 +6877,12 @@ msgstr ""
 "Seçimi veya herhangi bir metin seçili değilse imlecin sağındaki karakteri "
 "BÜYÜK harfe dönüştürün."
 
-#: view/kateview.cpp:627
+#: view/kateview.cpp:609
 #, kde-format
 msgid "Lowercase"
 msgstr "Küçük Harf"
 
-#: view/kateview.cpp:630
+#: view/kateview.cpp:612
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
@@ -6891,12 +6891,12 @@ msgstr ""
 "Seçili metin alanını veya hiç metin seçilmemişse imlecin hemen sağındaki "
 "harfi küçük harfler haline çevir."
 
-#: view/kateview.cpp:636
+#: view/kateview.cpp:618
 #, kde-format
 msgid "Capitalize"
 msgstr "Büyük Harf Yap"
 
-#: view/kateview.cpp:639
+#: view/kateview.cpp:621
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
@@ -6905,17 +6905,17 @@ msgstr ""
 "Hiçbir metin seçili değilse seçimi veya imlecin altındaki sözcüğü BÜYÜK "
 "harfle yazın."
 
-#: view/kateview.cpp:644
+#: view/kateview.cpp:626
 #, kde-format
 msgid "Join Lines"
 msgstr "Satırları Birbirine Kat"
 
-#: view/kateview.cpp:649
+#: view/kateview.cpp:631
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "Kod Tamamlamayı Başlat"
 
-#: view/kateview.cpp:650
+#: view/kateview.cpp:632
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
@@ -6924,54 +6924,54 @@ msgstr ""
 "Genellikle bu eyleme bağlı bir kısayol kullanarak komut tamamlamayı elle "
 "çağırın."
 
-#: view/kateview.cpp:655
+#: view/kateview.cpp:637
 #, kde-format
 msgid "Remove Trailing Spaces"
 msgstr "Satır Sonu Boşluklarını Kaldır"
 
-#: view/kateview.cpp:673
+#: view/kateview.cpp:655
 #, kde-format
 msgid "Print the current document."
 msgstr "Çalışılan belgeyi yazdır."
 
-#: view/kateview.cpp:676
+#: view/kateview.cpp:658
 #, kde-format
 msgid "Show print preview of current document"
 msgstr "Geçerli belgenin yazdırma önizlemesini göster"
 
-#: view/kateview.cpp:680
+#: view/kateview.cpp:662
 #, kde-format
 msgid "Reloa&d"
 msgstr "Yeni&den Yükle"
 
-#: view/kateview.cpp:682
+#: view/kateview.cpp:664
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "Çalışılan belgeyi diskten yeniden okuyun."
 
-#: view/kateview.cpp:686
+#: view/kateview.cpp:668
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr "Çalışılan belgeyi seçtiğiniz bir adla diske kaydedin."
 
-#: view/kateview.cpp:688
+#: view/kateview.cpp:670
 #, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
 msgstr "Kodlamay&la Farklı Kaydet…"
 
-#: view/kateview.cpp:694
+#: view/kateview.cpp:676
 #, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
 msgstr "Ko&pyayı Farklı Kaydet…"
 
-#: view/kateview.cpp:695
+#: view/kateview.cpp:677
 #, kde-format
 msgid "Save a copy of the current document to disk."
 msgstr "Geçerli belgenin bir kopyasını diske kaydedin."
 
-#: view/kateview.cpp:699
+#: view/kateview.cpp:681
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
@@ -6980,68 +6980,68 @@ msgstr ""
 "Bu komut, bir iletişim penceresi açarak, imleci taşımak istediğiniz ( gitmek "
 "istediğiniz ) satırı seçmenize izin verir."
 
-#: view/kateview.cpp:703
+#: view/kateview.cpp:685
 #, kde-format
 msgid "Go to Previous Modified Line"
 msgstr "Önceki Değiştirilen Satıra Git"
 
-#: view/kateview.cpp:704
+#: view/kateview.cpp:686
 #, kde-format
 msgid "Move upwards to the previous modified line."
 msgstr "Önceki değiştirilen satıra yukarı doğru ilerleyin."
 
-#: view/kateview.cpp:709
+#: view/kateview.cpp:691
 #, kde-format
 msgid "Go to Next Modified Line"
 msgstr "Sonraki Değiştirilen Satıra Git"
 
-#: view/kateview.cpp:710
+#: view/kateview.cpp:692
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr "Önceki değiştirilen satıra aşağı doğru ilerleyin."
 
-#: view/kateview.cpp:714
+#: view/kateview.cpp:696
 #, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "Düzenleyi&ciyi Yapılandır…"
 
-#: view/kateview.cpp:716
+#: view/kateview.cpp:698
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "Düzenleyicinin çeşitli görünümlerini yapılandırır."
 
-#: view/kateview.cpp:719
+#: view/kateview.cpp:701
 #, kde-format
 msgid "&Mode"
 msgstr "&Kip"
 
-#: view/kateview.cpp:725
+#: view/kateview.cpp:707
 #, kde-format
 msgid "&Highlighting"
 msgstr "&Vurgulama"
 
-#: view/kateview.cpp:727
+#: view/kateview.cpp:709
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr "Burada çalışılan belgenin nasıl renklendirileceğini seçebilirsiniz."
 
-#: view/kateview.cpp:730
+#: view/kateview.cpp:712
 #, kde-format
 msgid "&Editor Color Theme"
 msgstr "Dü&zenleyici Renk Teması"
 
-#: view/kateview.cpp:736
+#: view/kateview.cpp:718
 #, kde-format
 msgid "&Indentation"
 msgstr "G&irintileme"
 
-#: view/kateview.cpp:743
+#: view/kateview.cpp:725
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "Çalışılan belgedeki metnin tümünü seçer."
 
-#: view/kateview.cpp:746
+#: view/kateview.cpp:728
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
@@ -7050,42 +7050,42 @@ msgstr ""
 "Eğer güncel belge içinde bir şeyleri seçmişseniz bundan sonra seçili "
 "olmayacak."
 
-#: view/kateview.cpp:750
+#: view/kateview.cpp:732
 #, kde-format
 msgid "Enlarge Font"
 msgstr "Yazıtipi Puntosunu Artır"
 
-#: view/kateview.cpp:752
+#: view/kateview.cpp:734
 #, kde-format
 msgid "This increases the display font size."
 msgstr "Bu, görüntü yazıtipi büyüklüğünü artırır."
 
-#: view/kateview.cpp:759
+#: view/kateview.cpp:741
 #, kde-format
 msgid "Shrink Font"
 msgstr "Yazıtipini Puntosunu Azalt"
 
-#: view/kateview.cpp:761
+#: view/kateview.cpp:743
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "Bu, görüntü yazıtipi büyüklüğünü azaltır."
 
-#: view/kateview.cpp:768
+#: view/kateview.cpp:750
 #, kde-format
 msgid "Reset Font Size"
 msgstr "Yazıtipi Puntosunu Sıfırla"
 
-#: view/kateview.cpp:770
+#: view/kateview.cpp:752
 #, kde-format
 msgid "This resets the display font size."
 msgstr "Bu, yazıtipi büyüklüğünü öntanımlı değerine sıfırlar."
 
-#: view/kateview.cpp:773
+#: view/kateview.cpp:755
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "Bl&ok Seçim Kipi"
 
-#: view/kateview.cpp:776
+#: view/kateview.cpp:758
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
@@ -7094,22 +7094,22 @@ msgstr ""
 "Bu komut, normal (satır temelli) seçim kipi ile blok seçim kipi arasında "
 "geçiş yapmanıza olanak tanır."
 
-#: view/kateview.cpp:780
+#: view/kateview.cpp:762
 #, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Sonraki Giriş Kipine Geç"
 
-#: view/kateview.cpp:782
+#: view/kateview.cpp:764
 #, kde-format
 msgid "Switch to the next input mode."
 msgstr "Bir sonraki giriş kipine geç."
 
-#: view/kateview.cpp:785
+#: view/kateview.cpp:767
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "Üzer&ine Yazma Kipi"
 
-#: view/kateview.cpp:788
+#: view/kateview.cpp:770
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
@@ -7118,12 +7118,12 @@ msgstr ""
 "Yazdığınız metnin, var olan metnin arasına eklenerek mi yoksa üzerine "
 "yazılarak mı yazılacağını seçin."
 
-#: view/kateview.cpp:792
+#: view/kateview.cpp:774
 #, kde-format
 msgid "Show Whitespace"
 msgstr "Boşlukları göster"
 
-#: view/kateview.cpp:795
+#: view/kateview.cpp:777
 #, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
@@ -7132,12 +7132,12 @@ msgstr ""
 "Bu seçenek işaretlenirse belgedeki boşluklar görünür olacaktır.<br /><br /"
 ">Bu yalnızca bir görüntüleme seçeneğidir, belge değiştirilmez."
 
-#: view/kateview.cpp:799
+#: view/kateview.cpp:781
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "&Devingen Sözcük Kaydırma"
 
-#: view/kateview.cpp:803
+#: view/kateview.cpp:785
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
@@ -7147,38 +7147,38 @@ msgstr ""
 "Bu seçenek işaretlenirse metin satırları ekrandaki görünüm sınırında sarılır."
 "<br /><br />Bu yalnızca bir görüntüleme seçeneğidir, belge değiştirilmez."
 
-#: view/kateview.cpp:807
+#: view/kateview.cpp:789
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "Devingen Sözcük Kaydırma Göstergeleri"
 
-#: view/kateview.cpp:809
+#: view/kateview.cpp:791
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr ""
 "Devingen Sözcük Kaydırma Göstergelerinin ne zaman görüntüleneceğini seçin"
 
-#: view/kateview.cpp:811
+#: view/kateview.cpp:793
 #, kde-format
 msgid "&Off"
 msgstr "Ka&palı"
 
-#: view/kateview.cpp:811
+#: view/kateview.cpp:793
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "Satır Numara&larını İzle"
 
-#: view/kateview.cpp:811
+#: view/kateview.cpp:793
 #, kde-format
 msgid "&Always On"
 msgstr "&Her Zaman Açık"
 
-#: view/kateview.cpp:815
+#: view/kateview.cpp:797
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "Durağan Sözcük Kaydırma"
 
-#: view/kateview.cpp:817
+#: view/kateview.cpp:799
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
@@ -7187,12 +7187,12 @@ msgstr ""
 "Bu seçenek işaretlenirse metin satırları düzenleme özelliklerinde tanımlanan "
 "sütunda kaydırılır."
 
-#: view/kateview.cpp:824
+#: view/kateview.cpp:806
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "Durağan Sö&zcük Kaydırma İmleyicisini Göster"
 
-#: view/kateview.cpp:827
+#: view/kateview.cpp:809
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -7201,12 +7201,12 @@ msgstr ""
 "Sözcük Kaydırma İmlerinin gösterilip gizlenmesi, düzenleme özellikleri "
 "içinde tanımlanan sözcük kaydırma sütununda dikey bir çizginin çizilmesidir"
 
-#: view/kateview.cpp:831
+#: view/kateview.cpp:813
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "&Katlama İmlerini Göster"
 
-#: view/kateview.cpp:833
+#: view/kateview.cpp:815
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
@@ -7215,12 +7215,12 @@ msgstr ""
 "Kod katlama imlerinin gösterilip gösterilmeyeceğini eğer kod katlama "
 "olanaklıysa seçebilirsiniz."
 
-#: view/kateview.cpp:836
+#: view/kateview.cpp:818
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "S&imge Kenarlığını Göster"
 
-#: view/kateview.cpp:838
+#: view/kateview.cpp:820
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
@@ -7229,22 +7229,22 @@ msgstr ""
 "Simge kenarlığını gösterir/gizler.<br /><br /> Örneğin, simge kenarlığı, yer "
 "imlerini gösterir."
 
-#: view/kateview.cpp:841
+#: view/kateview.cpp:823
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "S&atır Numaralarını Göster"
 
-#: view/kateview.cpp:843
+#: view/kateview.cpp:825
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "Görünümün sol yanında satır numaralarının görünüp/gizleneceği."
 
-#: view/kateview.cpp:846
+#: view/kateview.cpp:828
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "Sarma Çu&buğu İmlerini Göster"
 
-#: view/kateview.cpp:848
+#: view/kateview.cpp:830
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7253,12 +7253,12 @@ msgstr ""
 "Dikey sarma çubuğu imlerini göster/gizle.<br /><br />Örneğin, imler, yer "
 "imlerini gösterir."
 
-#: view/kateview.cpp:851
+#: view/kateview.cpp:833
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
 msgstr "Sarma Çubuğu Mini Haritasını Göster"
 
-#: view/kateview.cpp:853
+#: view/kateview.cpp:835
 #, kde-format
 msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
@@ -7272,70 +7272,70 @@ msgstr ""
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SlOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:865
+#: view/kateview.cpp:847
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr "Yazdırılmayacak Boşlukları Göster"
 
-#: view/kateview.cpp:867
+#: view/kateview.cpp:849
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr "Yazdırılmayacak boşlukları sınırlayan kutuyu göster/gizle"
 
-#: view/kateview.cpp:871
+#: view/kateview.cpp:853
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "Komut Satırına Geç"
 
-#: view/kateview.cpp:873
+#: view/kateview.cpp:855
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "Görünümün alt kısmındaki komut satırını göster/gizle."
 
-#: view/kateview.cpp:876
+#: view/kateview.cpp:858
 #, kde-format
 msgid "Input Modes"
 msgstr "Giriş Kipleri"
 
-#: view/kateview.cpp:885
+#: view/kateview.cpp:867
 #, kde-format
 msgid "Activate/deactivate %1"
 msgstr "%1 Etkin/Kapalı"
 
-#: view/kateview.cpp:895
+#: view/kateview.cpp:877
 #, kde-format
 msgid "&End of Line"
 msgstr "Sa&tır Sonu"
 
-#: view/kateview.cpp:897
+#: view/kateview.cpp:879
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr "Belge kaydedilirken hangi satır sonlandırmanın seçileceği"
 
-#: view/kateview.cpp:898
+#: view/kateview.cpp:880
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "&UNIX"
 
-#: view/kateview.cpp:899
+#: view/kateview.cpp:881
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "&Windows/DOS"
 
-#: view/kateview.cpp:900
+#: view/kateview.cpp:882
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "&Macintosh"
 
-#: view/kateview.cpp:905
+#: view/kateview.cpp:887
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "&Bayt Sırası İmi (BOM) Ekle"
 
-#: view/kateview.cpp:908
+#: view/kateview.cpp:890
 #, kde-format
 msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
@@ -7344,78 +7344,78 @@ msgstr ""
 "Kaydederken, UTF-8/UTF-16 ile kodlanmış dosyalar için bayt sırası imini "
 "eklemeyi etkinleştir/devre dışı bırak"
 
-#: view/kateview.cpp:912
+#: view/kateview.cpp:894
 #, kde-format
 msgid "E&ncoding"
 msgstr "&Kodlama"
 
-#: view/kateview.cpp:916
+#: view/kateview.cpp:898
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr "Girilen bir sözcük veya düzenli ifadenin ilk geçtiği yeri bulun."
 
-#: view/kateview.cpp:920
+#: view/kateview.cpp:902
 #, kde-format
 msgid "Find Selected"
 msgstr "Seçiliyi Bul"
 
-#: view/kateview.cpp:922
+#: view/kateview.cpp:904
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "Seçili metnin sonraki oluşunu bulur."
 
-#: view/kateview.cpp:926
+#: view/kateview.cpp:908
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "Seçiliyi Geriye Doğru Bul"
 
-#: view/kateview.cpp:928
+#: view/kateview.cpp:910
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "Seçili metnin önceki oluşunu bulur."
 
-#: view/kateview.cpp:932
+#: view/kateview.cpp:914
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr "Sonraki Oluşu Bul ve Seç"
 
-#: view/kateview.cpp:934
+#: view/kateview.cpp:916
 #, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr ""
 "İmlecin altındaki karakterin bir sonraki oluşunu bulur ve seçime ekler."
 
-#: view/kateview.cpp:938
+#: view/kateview.cpp:920
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr "Geçerli Seçili Oluşu Atlandı Olarak İmle"
 
-#: view/kateview.cpp:940
+#: view/kateview.cpp:922
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr "Şu anda seçili sözcüğü atlanmış olarak imler."
 
-#: view/kateview.cpp:944
+#: view/kateview.cpp:926
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr "Tüm Oluşları Bul ve Seç"
 
-#: view/kateview.cpp:946
+#: view/kateview.cpp:928
 #, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr "İmlecin altındaki sözcüğün tüm oluşlarını bulur ve onları seçer."
 
-#: view/kateview.cpp:950
+#: view/kateview.cpp:932
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "Arama ifadesinin bir sonraki oluşuna bakın."
 
-#: view/kateview.cpp:954
+#: view/kateview.cpp:936
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "Arama ifadesinin bir önceki oluşuna bakın."
 
-#: view/kateview.cpp:958
+#: view/kateview.cpp:940
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
@@ -7424,96 +7424,96 @@ msgstr ""
 "Girilen bir sözcük veya düzenli ifadeyi bul ve bulunanı, verilen metin ile "
 "değiştir."
 
-#: view/kateview.cpp:961
+#: view/kateview.cpp:943
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr "Satır Sonlarına İmleçler Ekle"
 
-#: view/kateview.cpp:963
+#: view/kateview.cpp:945
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
 msgstr "Seçimdeki her satırın sonunda bir imleç oluşturur."
 
-#: view/kateview.cpp:967
+#: view/kateview.cpp:949
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr "İmlecin Altına Ek İmleç Ekle"
 
-#: view/kateview.cpp:969
+#: view/kateview.cpp:951
 #, kde-format
 msgid "Adds a caret in the line below the current caret."
 msgstr "Geçerli metin imlecinin altındaki satıra bir imleç ekler."
 
-#: view/kateview.cpp:973
+#: view/kateview.cpp:955
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr "İmlecin Üstüne Ek İmleç Ekle"
 
-#: view/kateview.cpp:975
+#: view/kateview.cpp:957
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr "Geçerli metin imlecinin üstündeki satıra bir imleç ekler."
 
-#: view/kateview.cpp:979
+#: view/kateview.cpp:961
 #, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Deve Biçimi İmleç Hareketini Aç/Kapat"
 
-#: view/kateview.cpp:980
+#: view/kateview.cpp:962
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 "Normal sözcük hareketi ve deve biçimli sözcük hareketi arasında geçiş yapın."
 
-#: view/kateview.cpp:984
+#: view/kateview.cpp:966
 #, kde-format
 msgid "Remove Cursors from Empty Lines"
 msgstr "Boş Satırlardan İmleçleri Kaldır"
 
-#: view/kateview.cpp:985
+#: view/kateview.cpp:967
 #, kde-format
 msgid "Remove cursors from empty lines"
 msgstr "Boş satırlardan imleçleri kaldır"
 
-#: view/kateview.cpp:989
+#: view/kateview.cpp:971
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "Kendiliğinden Yazım Denetimi"
 
-#: view/kateview.cpp:990
+#: view/kateview.cpp:972
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "Kendiliğinden yazım denetimini etkinleştir/devre dışı bırak"
 
-#: view/kateview.cpp:996
+#: view/kateview.cpp:978
 #, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
 msgstr "Sözlüğü Değiştir…"
 
-#: view/kateview.cpp:997
+#: view/kateview.cpp:979
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "Yazım denetimi için kullanılan sözlüğü değiştirin."
 
-#: view/kateview.cpp:1001
+#: view/kateview.cpp:983
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "Sözlük Erimlerini Temizle"
 
-#: view/kateview.cpp:1003
+#: view/kateview.cpp:985
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
 msgstr ""
 "Yazım denetimi için ayarlanmış olan tüm ayrı sözlük erimlerini kaldırın."
 
-#: view/kateview.cpp:1009
+#: view/kateview.cpp:991
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "&HTML Olarak Kopyala"
 
-#: view/kateview.cpp:1010
+#: view/kateview.cpp:992
 #, kde-format
 msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
@@ -7522,13 +7522,13 @@ msgstr ""
 "Seçimi, geçerli sözdizim vurgulama ve renk şeması ayarları kullanılarak "
 "biçimlendirilmiş HTML olarak kopyalayın."
 
-#: view/kateview.cpp:1014
+#: view/kateview.cpp:996
 #, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "HTML Olarak Dışa A&ktar…"
 
-#: view/kateview.cpp:1016
+#: view/kateview.cpp:998
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7537,42 +7537,42 @@ msgstr ""
 "Bu komut, güncel belgeyi, tüm renklendirme bilgisiyle beraber bir HTML belge "
 "içine aktarmanıza olanak tanır."
 
-#: view/kateview.cpp:1055
+#: view/kateview.cpp:1037
 #, kde-format
 msgid "Move Word Left"
 msgstr "Sözcüğün Soluna Geç"
 
-#: view/kateview.cpp:1061
+#: view/kateview.cpp:1043
 #, kde-format
 msgid "Select Character Left"
 msgstr "Soldaki Karakteri Seç"
 
-#: view/kateview.cpp:1067
+#: view/kateview.cpp:1049
 #, kde-format
 msgid "Select Word Left"
 msgstr "Soldaki Sözcüğü Seç"
 
-#: view/kateview.cpp:1077
+#: view/kateview.cpp:1059
 #, kde-format
 msgid "Move Word Right"
 msgstr "Sözcüğün Sağına Geç"
 
-#: view/kateview.cpp:1083
+#: view/kateview.cpp:1065
 #, kde-format
 msgid "Select Character Right"
 msgstr "Sağdaki Harfi Seç"
 
-#: view/kateview.cpp:1089
+#: view/kateview.cpp:1071
 #, kde-format
 msgid "Select Word Right"
 msgstr "Sağdaki Sözcüğü Seç"
 
-#: view/kateview.cpp:1099
+#: view/kateview.cpp:1081
 #, kde-format
 msgid "Start the Marked Selection"
 msgstr "İmli Seçimi Başlat"
 
-#: view/kateview.cpp:1100
+#: view/kateview.cpp:1082
 #, kde-format
 msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
@@ -7581,202 +7581,202 @@ msgstr ""
 "Başlangıcın imlendiği ve ardından seçimin sürekli olarak güncellendiği Emacs "
 "benzeri seçim kipine öykünün."
 
-#: view/kateview.cpp:1105
+#: view/kateview.cpp:1087
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "Satırın Başına Git"
 
-#: view/kateview.cpp:1111
+#: view/kateview.cpp:1093
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "Belgenin Başına Git"
 
-#: view/kateview.cpp:1117
+#: view/kateview.cpp:1099
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "Satırın Başına Kadar Seç"
 
-#: view/kateview.cpp:1127
+#: view/kateview.cpp:1109
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "Belgenin Başına Kadar Seç"
 
-#: view/kateview.cpp:1137
+#: view/kateview.cpp:1119
 #, kde-format
 msgid "Move to End of Line"
 msgstr "Satırın Sonuna Git"
 
-#: view/kateview.cpp:1143
+#: view/kateview.cpp:1125
 #, kde-format
 msgid "Move to End of Document"
 msgstr "Belgenin Sonuna Git"
 
-#: view/kateview.cpp:1149
+#: view/kateview.cpp:1131
 #, kde-format
 msgid "Select to End of Line"
 msgstr "Satırın Sonuna Kadar Seç"
 
-#: view/kateview.cpp:1159
+#: view/kateview.cpp:1141
 #, kde-format
 msgid "Select to End of Document"
 msgstr "Belgenin Sonuna Kadar Seç"
 
-#: view/kateview.cpp:1169
+#: view/kateview.cpp:1151
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "Önceki Satıra Kadar Seç"
 
-#: view/kateview.cpp:1175
+#: view/kateview.cpp:1157
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "Satırı Yukarı Sar"
 
-#: view/kateview.cpp:1184
+#: view/kateview.cpp:1166
 #, kde-format
 msgid "Move to Next Line"
 msgstr "Sonraki Satıra Geç"
 
-#: view/kateview.cpp:1190
+#: view/kateview.cpp:1172
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "Önceki Satıra Geç"
 
-#: view/kateview.cpp:1196
+#: view/kateview.cpp:1178
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "Sözcüğün Sağına Geç"
 
-#: view/kateview.cpp:1202
+#: view/kateview.cpp:1184
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "Sözcüğün Soluna Geç"
 
-#: view/kateview.cpp:1208
+#: view/kateview.cpp:1190
 #, kde-format
 msgid "Select to Next Line"
 msgstr "Sonraki Satıra Kadar Seç"
 
-#: view/kateview.cpp:1214
+#: view/kateview.cpp:1196
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "Satırı Aşağı Sar"
 
-#: view/kateview.cpp:1223
+#: view/kateview.cpp:1205
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "Sayfayı Yukarı Sar"
 
-#: view/kateview.cpp:1229
+#: view/kateview.cpp:1211
 #, kde-format
 msgid "Select Page Up"
 msgstr "Sayfa Başına Kadar Seç"
 
-#: view/kateview.cpp:1235
+#: view/kateview.cpp:1217
 #, kde-format
 msgid "Move to Top of View"
 msgstr "Görünümün En Üstüne Git"
 
-#: view/kateview.cpp:1241
+#: view/kateview.cpp:1223
 #, kde-format
 msgid "Select to Top of View"
 msgstr "Görünümün Başına Kadar Seç"
 
-#: view/kateview.cpp:1247
+#: view/kateview.cpp:1229
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "Sayfayı Aşağı Sar"
 
-#: view/kateview.cpp:1253
+#: view/kateview.cpp:1235
 #, kde-format
 msgid "Select Page Down"
 msgstr "Sayfa Sonuna Kadar Seç"
 
-#: view/kateview.cpp:1259
+#: view/kateview.cpp:1241
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "Görünümün En Altına Git"
 
-#: view/kateview.cpp:1265
+#: view/kateview.cpp:1247
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "Görünümün Sonuna Kadar Seç"
 
-#: view/kateview.cpp:1271
+#: view/kateview.cpp:1253
 #, kde-format
 msgid "Go to Matching Bracket"
 msgstr "Ayracın Eşine Git"
 
-#: view/kateview.cpp:1277
+#: view/kateview.cpp:1259
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "Ayracın Eşine Kadar Seç"
 
-#: view/kateview.cpp:1284
+#: view/kateview.cpp:1266
 #, kde-format
 msgid "Move Sub-Word Right"
 msgstr "Alt Sözcüğü Sağa Taşı"
 
-#: view/kateview.cpp:1291
+#: view/kateview.cpp:1273
 #, kde-format
 msgid "Select Sub-Word Right"
 msgstr "Sağdaki Alt Sözcüğü Seç"
 
-#: view/kateview.cpp:1298
+#: view/kateview.cpp:1280
 #, kde-format
 msgid "Move Sub-Word Left"
 msgstr "Alt Sözcüğü Sola Taşı"
 
-#: view/kateview.cpp:1305
+#: view/kateview.cpp:1287
 #, kde-format
 msgid "Select Sub-Word Left"
 msgstr "Soldaki Alt Sözcüğü Seç"
 
-#: view/kateview.cpp:1315
+#: view/kateview.cpp:1297
 #, kde-format
 msgid "Transpose Characters"
 msgstr "Harflerin Yerini Değiştir"
 
-#: view/kateview.cpp:1320
+#: view/kateview.cpp:1302
 #, kde-format
 msgid "Transpose Words"
 msgstr "Sözcüklerin Yerini Değiştir"
 
-#: view/kateview.cpp:1325
+#: view/kateview.cpp:1307
 #, kde-format
 msgid "Delete Line"
 msgstr "Satırı Sil"
 
-#: view/kateview.cpp:1331
+#: view/kateview.cpp:1313
 #, kde-format
 msgid "Delete Word Left"
 msgstr "Soldaki Sözcüğü Sil"
 
-#: view/kateview.cpp:1337
+#: view/kateview.cpp:1319
 #, kde-format
 msgid "Delete Word Right"
 msgstr "Sağdaki Sözcüğü Sil"
 
-#: view/kateview.cpp:1343
+#: view/kateview.cpp:1325
 #, kde-format
 msgid "Delete Next Character"
 msgstr "Sonraki Karakteri Sil"
 
-#: view/kateview.cpp:1349
+#: view/kateview.cpp:1331
 #, kde-format
 msgid "Backspace"
 msgstr "Geri Sil"
 
-#: view/kateview.cpp:1357
+#: view/kateview.cpp:1339
 #, kde-format
 msgid "Insert Tab Character"
 msgstr "Sekme Karakteri Ekle"
 
-#: view/kateview.cpp:1362
+#: view/kateview.cpp:1344
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "Akıllı Yeni Satır Ekle"
 
-#: view/kateview.cpp:1363
+#: view/kateview.cpp:1345
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
@@ -7785,48 +7785,48 @@ msgstr ""
 "Geçerli satırın harf veya sayı olmayan baştaki karakterleri içermek üzere "
 "yeni satır ekleyin."
 
-#: view/kateview.cpp:1371
+#: view/kateview.cpp:1353
 #, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "Girintilenmemiş Bir Yenisatır Ekle"
 
-#: view/kateview.cpp:1372
+#: view/kateview.cpp:1354
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr ""
 "Girintileme ayarlarından bağımsız olarak girintisiz yeni bir satır ekleyin."
 
-#: view/kateview.cpp:1380
+#: view/kateview.cpp:1362
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr "Geçerli Satırın Üzerinde Bir Yenisatır Ekle"
 
-#: view/kateview.cpp:1381
+#: view/kateview.cpp:1363
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr ""
 "Geçerli satırı değiştirmeden geçerli satırın üzerinde bir yeni satır ekleyin."
 
-#: view/kateview.cpp:1389
+#: view/kateview.cpp:1371
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr "Geçerli Satırın Altında Bir Yenisatır Ekle"
 
-#: view/kateview.cpp:1390
+#: view/kateview.cpp:1372
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr ""
 "Geçerli satırı değiştirmeden geçerli satırın altında bir yeni satır ekleyin."
 
-#: view/kateview.cpp:1399
+#: view/kateview.cpp:1381
 #, kde-format
 msgid "&Indent"
 msgstr "&Girintile"
 
-#: view/kateview.cpp:1401
+#: view/kateview.cpp:1383
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -7838,102 +7838,102 @@ msgstr ""
 "özelliklerini ve birbirlerinin yerlerine kullanımlarını "
 "yapılandırabilirsiniz."
 
-#: view/kateview.cpp:1408
+#: view/kateview.cpp:1390
 #, kde-format
 msgid "&Unindent"
 msgstr "Girintiy&i Kaldır"
 
-#: view/kateview.cpp:1409
+#: view/kateview.cpp:1391
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr "Seçili metin blokunun girintisini temizlemek için bunu kullanın."
 
-#: view/kateview.cpp:1415
+#: view/kateview.cpp:1397
 #, kde-format
 msgid "Delete Sub-Word Left"
 msgstr "Soldaki Alt Sözcüğü Sil"
 
-#: view/kateview.cpp:1422
+#: view/kateview.cpp:1404
 #, kde-format
 msgid "Delete Sub-Word Right"
 msgstr "Sağdaki Alt Sözcüğü Sil"
 
-#: view/kateview.cpp:1443
+#: view/kateview.cpp:1425
 #, kde-format
 msgid "Fold Toplevel Nodes"
 msgstr "En Üst Düzey Düğümleri Katla"
 
-#: view/kateview.cpp:1447
+#: view/kateview.cpp:1429
 #, kde-format
 msgid "Unfold Toplevel Nodes"
 msgstr "En Üst Düzey Düğümleri Aç"
 
-#: view/kateview.cpp:1451
+#: view/kateview.cpp:1433
 #, kde-format
 msgid "Toggle Current Node"
 msgstr "Geçerli Düğümü Aç/Kapat"
 
-#: view/kateview.cpp:1455
+#: view/kateview.cpp:1437
 #, kde-format
 msgid "Toggle Contained Nodes"
 msgstr "Kapsanılan Düğümleri Aç/Kapat"
 
-#: view/kateview.cpp:1464
+#: view/kateview.cpp:1446
 #, kde-format
 msgid "Say current selection or document"
 msgstr "Geçerli Seçimi veya Belgeyi Seslendir"
 
-#: view/kateview.cpp:1474
+#: view/kateview.cpp:1456
 #, kde-format
 msgid "Stop current output"
 msgstr "Geçerli Çıktıyı Durdur"
 
-#: view/kateview.cpp:1480
+#: view/kateview.cpp:1462
 #, kde-format
 msgid "Pause current output"
 msgstr "Geçerli Çıktıyı Duraklat"
 
-#: view/kateview.cpp:1486
+#: view/kateview.cpp:1468
 #, kde-format
 msgid "Resume current output"
 msgstr "Geçerli Çıktıyı Sürdür"
 
-#: view/kateview.cpp:1657
+#: view/kateview.cpp:1639
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(S/O) %1"
 
-#: view/kateview.cpp:1845
+#: view/kateview.cpp:1827
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "Deve biçimli hareket devre dışı"
 
-#: view/kateview.cpp:1847
+#: view/kateview.cpp:1829
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "Deve biçimli hareket etkin"
 
-#: view/kateview.cpp:2382
+#: view/kateview.cpp:2364
 #, kde-format
 msgid "Search wrapped"
 msgstr "Kaydırılmış ara"
 
-#: view/kateview.cpp:3075
+#: view/kateview.cpp:3058
 #, kde-format
 msgid "Open File"
 msgstr "Dosya Aç"
 
-#: view/kateview.cpp:3991
+#: view/kateview.cpp:3974
 #, kde-format
 msgid "Align On"
 msgstr "Şuna Göre Hizala"
 
-#: view/kateview.cpp:3991
+#: view/kateview.cpp:3974
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Hizalama dizgisi:"
 
-#: view/kateview.cpp:5075
+#: view/kateview.cpp:5058
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Dosyayı HTML Olarak Dışa Aktar"

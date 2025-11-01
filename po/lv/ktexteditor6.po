@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-27 00:39+0000\n"
+"POT-Creation-Date: 2025-11-01 00:42+0000\n"
 "PO-Revision-Date: 2025-07-02 17:20+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -1456,7 +1456,7 @@ msgid "Text selection mode:"
 msgstr "Teksta iezīmēšanas režīms:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbTextSelectionMode)
-#: dialogs/navigationconfigwidget.ui:139 inputmode/katenormalinputmode.cpp:65
+#: dialogs/navigationconfigwidget.ui:139 inputmode/katenormalinputmode.cpp:64
 #: mode/katemodemanager.cpp:162
 #, kde-format
 msgid "Normal"
@@ -2196,12 +2196,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Mēģināt vēlreiz"
 
-#: document/katedocument.cpp:2255 document/katedocument.cpp:6567
+#: document/katedocument.cpp:2255 document/katedocument.cpp:6444
 #, kde-format
 msgid "&Close"
 msgstr "&Aizvērt"
 
-#: document/katedocument.cpp:2256 document/katedocument.cpp:6568
+#: document/katedocument.cpp:2256 document/katedocument.cpp:6445
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2432,12 +2432,12 @@ msgstr "Datne „<a href=\"%1\">%2</a>“ joprojām tiek ielādēta."
 msgid "&Abort Loading"
 msgstr "Pārtr&aukt ielādi"
 
-#: inputmode/katenormalinputmode.cpp:75
+#: inputmode/katenormalinputmode.cpp:74
 #, kde-format
 msgid "OVERWRITE"
 msgstr "PĀRRAKSTĪT"
 
-#: inputmode/katenormalinputmode.cpp:75
+#: inputmode/katenormalinputmode.cpp:74
 #, kde-format
 msgid "INSERT"
 msgstr "IEVIETOT"
@@ -6509,7 +6509,7 @@ msgstr "Rindas beigu tips"
 msgid "Mode"
 msgstr "Režīms"
 
-#: view/katestatusbar.cpp:209 view/kateview.cpp:722
+#: view/katestatusbar.cpp:209 view/kateview.cpp:704
 #, kde-format
 msgid ""
 "Here you can choose which mode should be used for the current document. This "
@@ -6616,94 +6616,94 @@ msgstr "Vārdi: %1, rakstzīmes: %2"
 msgid "Zoom: %1%"
 msgstr "Tuvinājums; %1%"
 
-#: view/kateview.cpp:459
+#: view/kateview.cpp:441
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
 msgstr "Izgriezt izvēlēto tekstu un to pārvietot uz starpliktuvi"
 
-#: view/kateview.cpp:464
+#: view/kateview.cpp:446
 #, kde-format
 msgid "Paste previously copied or cut clipboard contents"
 msgstr "Ielīmēt iepriekš nokopēto vai izgriezto starpliktuves saturu"
 
-#: view/kateview.cpp:467
+#: view/kateview.cpp:449
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
 msgstr ""
 "Lietojiet šo komandu, lai kopētu iezīmēto tekstu uz sistēmas starpliktuvi."
 
-#: view/kateview.cpp:473
+#: view/kateview.cpp:455
 #, kde-format
 msgid "Clipboard &History Paste"
 msgstr "Starpliktuves &vēstures ielīmēšana"
 
-#: view/kateview.cpp:478
+#: view/kateview.cpp:460
 #, kde-format
 msgid "Paste Selection"
 msgstr "Ielīmēt atlasīto"
 
-#: view/kateview.cpp:480
+#: view/kateview.cpp:462
 #, kde-format
 msgid "Paste previously mouse selection contents"
 msgstr "Ielīmēt iepriekš ar peli atlasīto saturu"
 
-#: view/kateview.cpp:484
+#: view/kateview.cpp:466
 #, kde-format
 msgid "Paste From File"
 msgstr "Ielīmēt no datnes"
 
-#: view/kateview.cpp:488
+#: view/kateview.cpp:470
 #, kde-format
 msgid "Copy File Location"
 msgstr "Kopēt datnes atrašanās vietu"
 
-#: view/kateview.cpp:489
+#: view/kateview.cpp:471
 #, kde-format
 msgid "Copy the current file name and line number"
 msgstr "Kopēt datnes nosaukumu un rindas numuru"
 
-#: view/kateview.cpp:492
+#: view/kateview.cpp:474
 #, kde-format
 msgid "Swap with Clipboard Contents"
 msgstr "Nomainīt pret starpliktuves saturu"
 
-#: view/kateview.cpp:493
+#: view/kateview.cpp:475
 #, kde-format
 msgid "Swap the selected text with the clipboard contents"
 msgstr "Nomainīt atlasīto tekstu pret starpliktuves saturu"
 
-#: view/kateview.cpp:496
+#: view/kateview.cpp:478
 #, kde-format
 msgid "Take Screenshot of Selection"
 msgstr "Uzņemt atlases ekrānattēlu"
 
-#: view/kateview.cpp:500
+#: view/kateview.cpp:482
 #, kde-format
 msgid "Save the current document"
 msgstr "Saglabāt aktīvo dokumentu"
 
-#: view/kateview.cpp:503
+#: view/kateview.cpp:485
 #, kde-format
 msgid "Revert the most recent editing actions"
 msgstr "Atsaukt pēdējās rediģēšanas izmaiņas"
 
-#: view/kateview.cpp:506
+#: view/kateview.cpp:488
 #, kde-format
 msgid "Revert the most recent undo operation"
 msgstr "Atsaukt pēdējo atsaukšanas darbību"
 
-#: view/kateview.cpp:510
+#: view/kateview.cpp:492
 #, kde-format
 msgid "&Scripts"
 msgstr "&Skripti"
 
-#: view/kateview.cpp:514
+#: view/kateview.cpp:496
 #, kde-format
 msgid "Apply &Word Wrap"
 msgstr "Pielietot &teksta aplaušanu"
 
-#: view/kateview.cpp:516
+#: view/kateview.cpp:498
 #, kde-format
 msgid ""
 "Use this to wrap the current line, or to reformat the selected lines as "
@@ -6715,12 +6715,12 @@ msgstr ""
 "iestatījumā konfigurācijas lodziņā.<br /><br />Šī ir statiska vārdu "
 "aplaušana, kas nozīmē, ka tiek izmainīts dokuments."
 
-#: view/kateview.cpp:522
+#: view/kateview.cpp:504
 #, kde-format
 msgid "&Clean Indentation"
 msgstr "&Izņemt atkāpi"
 
-#: view/kateview.cpp:524
+#: view/kateview.cpp:506
 #, kde-format
 msgid ""
 "Use this to clean the indentation of a selected block of text (only tabs/"
@@ -6731,22 +6731,22 @@ msgstr ""
 "tabulatorus/tikai atstarpes).<br /><br /> Konfigurācijas logā varat "
 "iestatīt, vai lietot tabulatorus vai aizstāt tos ar atstarpēm."
 
-#: view/kateview.cpp:529
+#: view/kateview.cpp:511
 #, kde-format
 msgid "Convert Indentation to Spaces"
 msgstr "Atkāpes pārveidot par atstarpēm"
 
-#: view/kateview.cpp:536
+#: view/kateview.cpp:518
 #, kde-format
 msgid "Convert Indentation to Tabs"
 msgstr "Atkāpes pārveidot par tabulatoriem"
 
-#: view/kateview.cpp:551
+#: view/kateview.cpp:533
 #, kde-format
 msgid "&Format Indentation"
 msgstr "&Formatēt atkāpes"
 
-#: view/kateview.cpp:552
+#: view/kateview.cpp:534
 #, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
@@ -6755,13 +6755,13 @@ msgstr ""
 "Lietojiet šo, lai automātiski līdzinātu pašreizējo rindu vai teksta bloku "
 "pret tam atbilstošo atkāpi."
 
-#: view/kateview.cpp:556
+#: view/kateview.cpp:538
 #, kde-format
 msgctxt "@action"
 msgid "&Align On…"
 msgstr "&Līdzināt pie…"
 
-#: view/kateview.cpp:558
+#: view/kateview.cpp:540
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -6784,12 +6784,12 @@ msgstr ""
 "pirms pirmās rakstzīmes, kas nav atstarpe un kas atrodas pēc kola, rindas "
 "izlīdzinot vienā kolonnā"
 
-#: view/kateview.cpp:569
+#: view/kateview.cpp:551
 #, kde-format
 msgid "C&omment"
 msgstr "K&omentēt"
 
-#: view/kateview.cpp:572
+#: view/kateview.cpp:554
 #, kde-format
 msgid ""
 "This command comments out the current line or a selected block of text.<br /"
@@ -6800,22 +6800,22 @@ msgstr ""
 "> <br /> Vienas/vairāku rindiņu komentāru simboli ir definēti valodas "
 "sintakses izcelšanas aprakstā."
 
-#: view/kateview.cpp:577
+#: view/kateview.cpp:559
 #, kde-format
 msgid "Go to Previous Editing Location"
 msgstr "Iet uz iepriekšējo rediģēšanas vietu"
 
-#: view/kateview.cpp:583
+#: view/kateview.cpp:565
 #, kde-format
 msgid "Go to Next Editing Location"
 msgstr "Iet uz nākamo rediģēšanas vietu"
 
-#: view/kateview.cpp:589
+#: view/kateview.cpp:571
 #, kde-format
 msgid "Unco&mment"
 msgstr "Noņemt ko&mentāru"
 
-#: view/kateview.cpp:592
+#: view/kateview.cpp:574
 #, kde-format
 msgid ""
 "This command removes comments from the current line or a selected block of "
@@ -6826,37 +6826,37 @@ msgstr ""
 "<br /> <br /> Vienas/vairāku rindu komentāru simboli ir definēti valodas "
 "sintakses izcelšanas aprakstā."
 
-#: view/kateview.cpp:597
+#: view/kateview.cpp:579
 #, kde-format
 msgid "Toggle Comment"
 msgstr "Pārslēgt komentāru"
 
-#: view/kateview.cpp:601
+#: view/kateview.cpp:583
 #, kde-format
 msgid "&Read Only Mode"
 msgstr "Tikai lasīšanas &režīms"
 
-#: view/kateview.cpp:602
+#: view/kateview.cpp:584
 #, kde-format
 msgid "Lock/unlock the document for writing"
 msgstr "Bloķēt/atbloķēt dokumentu rediģēšanai"
 
-#: view/kateview.cpp:607
+#: view/kateview.cpp:589
 #, kde-format
 msgid "&Force RTL Direction"
 msgstr "&Piespiest virzienu no labās uz kreiso"
 
-#: view/kateview.cpp:608
+#: view/kateview.cpp:590
 #, kde-format
 msgid "Force RTL Text Direction"
 msgstr "Piespiest teksta virzienu no labās uz kreiso"
 
-#: view/kateview.cpp:618
+#: view/kateview.cpp:600
 #, kde-format
 msgid "Uppercase"
 msgstr "Lielie burti"
 
-#: view/kateview.cpp:621
+#: view/kateview.cpp:603
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
@@ -6865,12 +6865,12 @@ msgstr ""
 "Uz lielajiem burtiem pārveidot atlasīto tekstu vai rakstzīmi pa labi no "
 "kursora, ja nekas nav izvēlēts."
 
-#: view/kateview.cpp:627
+#: view/kateview.cpp:609
 #, kde-format
 msgid "Lowercase"
 msgstr "Mazie burti"
 
-#: view/kateview.cpp:630
+#: view/kateview.cpp:612
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
@@ -6879,12 +6879,12 @@ msgstr ""
 "Uz mazajiem burtiem pārveidot atlasīto tekstu vai rakstzīmi pa labi no "
 "kursora, ja nekas nav izvēlēts."
 
-#: view/kateview.cpp:636
+#: view/kateview.cpp:618
 #, kde-format
 msgid "Capitalize"
 msgstr "Lielais sākumburts"
 
-#: view/kateview.cpp:639
+#: view/kateview.cpp:621
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
@@ -6893,17 +6893,17 @@ msgstr ""
 "Salikt lielos sākumburtus iezīmētajam tekstam vai vārdam zem kursora, ja "
 "nekas nav izvēlēts."
 
-#: view/kateview.cpp:644
+#: view/kateview.cpp:626
 #, kde-format
 msgid "Join Lines"
 msgstr "Savienot rindas"
 
-#: view/kateview.cpp:649
+#: view/kateview.cpp:631
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "Pielietot koda pabeigšanu"
 
-#: view/kateview.cpp:650
+#: view/kateview.cpp:632
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
@@ -6912,54 +6912,54 @@ msgstr ""
 "Manuāli pielietot komandas pabeigšanu, parasti lietojot taustiņa saīsni, kas "
 "piesaistīts šai darbībai."
 
-#: view/kateview.cpp:655
+#: view/kateview.cpp:637
 #, kde-format
 msgid "Remove Trailing Spaces"
 msgstr "Izņemt beigu atstarpes"
 
-#: view/kateview.cpp:673
+#: view/kateview.cpp:655
 #, kde-format
 msgid "Print the current document."
 msgstr "Izdrukāt šo dokumentu."
 
-#: view/kateview.cpp:676
+#: view/kateview.cpp:658
 #, kde-format
 msgid "Show print preview of current document"
 msgstr "Parādīt dokumenta drukas priekšskatījumu"
 
-#: view/kateview.cpp:680
+#: view/kateview.cpp:662
 #, kde-format
 msgid "Reloa&d"
 msgstr "Pārlā&dēt"
 
-#: view/kateview.cpp:682
+#: view/kateview.cpp:664
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "Pārlādēt aktīvo dokumentu no diska."
 
-#: view/kateview.cpp:686
+#: view/kateview.cpp:668
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr "Saglabāt diskā aktīvo dokumentu, izvēloties nosaukumu."
 
-#: view/kateview.cpp:688
+#: view/kateview.cpp:670
 #, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
 msgstr "Saglabāt kā ar kodē&jumu..."
 
-#: view/kateview.cpp:694
+#: view/kateview.cpp:676
 #, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
 msgstr "Saglabāt &kopiju kā…"
 
-#: view/kateview.cpp:695
+#: view/kateview.cpp:677
 #, kde-format
 msgid "Save a copy of the current document to disk."
 msgstr "Saglabāt diskā pašreizējā dokumenta kopiju"
 
-#: view/kateview.cpp:699
+#: view/kateview.cpp:681
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
@@ -6967,68 +6967,68 @@ msgid ""
 msgstr ""
 "Šī komanda atver lodziņu un ļauj izvēlēties rindu, uz kuru pārvietot kursoru."
 
-#: view/kateview.cpp:703
+#: view/kateview.cpp:685
 #, kde-format
 msgid "Go to Previous Modified Line"
 msgstr "Iet uz iepriekšējo mainīto rindu"
 
-#: view/kateview.cpp:704
+#: view/kateview.cpp:686
 #, kde-format
 msgid "Move upwards to the previous modified line."
 msgstr "Iet augšup uz iepriekšējo mainīto rindu."
 
-#: view/kateview.cpp:709
+#: view/kateview.cpp:691
 #, kde-format
 msgid "Go to Next Modified Line"
 msgstr "Iet uz nākamo mainīto rindu"
 
-#: view/kateview.cpp:710
+#: view/kateview.cpp:692
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr "Pārvietots lejup uz nākamo mainīto rindu."
 
-#: view/kateview.cpp:714
+#: view/kateview.cpp:696
 #, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "&Konfigurēt redaktoru…"
 
-#: view/kateview.cpp:716
+#: view/kateview.cpp:698
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "Konfigurēt dažādus redaktora aspektus."
 
-#: view/kateview.cpp:719
+#: view/kateview.cpp:701
 #, kde-format
 msgid "&Mode"
 msgstr "Režī&ms"
 
-#: view/kateview.cpp:725
+#: view/kateview.cpp:707
 #, kde-format
 msgid "&Highlighting"
 msgstr "&Izcelšana"
 
-#: view/kateview.cpp:727
+#: view/kateview.cpp:709
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr "Šeit varat izvēlēties atvērtā dokumenta izcēlumus."
 
-#: view/kateview.cpp:730
+#: view/kateview.cpp:712
 #, kde-format
 msgid "&Editor Color Theme"
 msgstr "&Redaktora krāsu motīvs"
 
-#: view/kateview.cpp:736
+#: view/kateview.cpp:718
 #, kde-format
 msgid "&Indentation"
 msgstr "&Atkāpes"
 
-#: view/kateview.cpp:743
+#: view/kateview.cpp:725
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "Atlasīt visu atvērtā dokumenta tekstu."
 
-#: view/kateview.cpp:746
+#: view/kateview.cpp:728
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
@@ -7036,42 +7036,42 @@ msgid ""
 msgstr ""
 "Ja esat kaut ko izvēlējies pašreizējā dokumentā, tas vairs nebūs izvēlēts."
 
-#: view/kateview.cpp:750
+#: view/kateview.cpp:732
 #, kde-format
 msgid "Enlarge Font"
 msgstr "Palielināt fontu"
 
-#: view/kateview.cpp:752
+#: view/kateview.cpp:734
 #, kde-format
 msgid "This increases the display font size."
 msgstr "Palielina attēlojamā fonta izmēru."
 
-#: view/kateview.cpp:759
+#: view/kateview.cpp:741
 #, kde-format
 msgid "Shrink Font"
 msgstr "Samazināt fontu"
 
-#: view/kateview.cpp:761
+#: view/kateview.cpp:743
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "Samazina attēlojamā fonta izmēru."
 
-#: view/kateview.cpp:768
+#: view/kateview.cpp:750
 #, kde-format
 msgid "Reset Font Size"
 msgstr "Atstatīt fonta izmēru"
 
-#: view/kateview.cpp:770
+#: view/kateview.cpp:752
 #, kde-format
 msgid "This resets the display font size."
 msgstr "Atstata attēlojamā fonta izmēru."
 
-#: view/kateview.cpp:773
+#: view/kateview.cpp:755
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "Bl&oka atlasīšanas režīms"
 
-#: view/kateview.cpp:776
+#: view/kateview.cpp:758
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
@@ -7080,22 +7080,22 @@ msgstr ""
 "Šī komanda ļauj pārslēgties starp normālo (rindu) atlasīšanas un bloka "
 "atlasīšanas režīmu."
 
-#: view/kateview.cpp:780
+#: view/kateview.cpp:762
 #, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Pārslēgties uz nākamo ievades režīmu"
 
-#: view/kateview.cpp:782
+#: view/kateview.cpp:764
 #, kde-format
 msgid "Switch to the next input mode."
 msgstr "Pārslēgties uz nākamo ievades režīmu."
 
-#: view/kateview.cpp:785
+#: view/kateview.cpp:767
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "Pā&rrakstīšanas režīms"
 
-#: view/kateview.cpp:788
+#: view/kateview.cpp:770
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
@@ -7104,12 +7104,12 @@ msgstr ""
 "Izvēlieties, vai teksts rakstīšanas laikā tiek ievietots starp esošo tekstu "
 "vai to pārraksta."
 
-#: view/kateview.cpp:792
+#: view/kateview.cpp:774
 #, kde-format
 msgid "Show Whitespace"
 msgstr "Rādīt atstarpju simbolus"
 
-#: view/kateview.cpp:795
+#: view/kateview.cpp:777
 #, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
@@ -7118,12 +7118,12 @@ msgstr ""
 "Ja ieslēgts, šajā dokumentā būs redzami atstarpju simboli.<br /><br />Šī ir "
 "tikai skata opcija, kas nozīmē, ka pats dokuments netiks mainīts."
 
-#: view/kateview.cpp:799
+#: view/kateview.cpp:781
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "&Dinamiskā teksta aplaušana"
 
-#: view/kateview.cpp:803
+#: view/kateview.cpp:785
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
@@ -7133,37 +7133,37 @@ msgstr ""
 "Ja ieslēgts, teksta rindas aplauzīs pie ekrāna skata robežas.<br /><br />Šī "
 "ir tikai skata opcija, kas nozīmē, ka pats dokuments netiks mainīts."
 
-#: view/kateview.cpp:807
+#: view/kateview.cpp:789
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "Dinamiskās teksta aplaušanas indikatori"
 
-#: view/kateview.cpp:809
+#: view/kateview.cpp:791
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr "Izvēlieties, vai rādīt dinamiskās teksta aplaušanas indikatoru."
 
-#: view/kateview.cpp:811
+#: view/kateview.cpp:793
 #, kde-format
 msgid "&Off"
 msgstr "&Izslēgts"
 
-#: view/kateview.cpp:811
+#: view/kateview.cpp:793
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "Pēc &rindu numuriem"
 
-#: view/kateview.cpp:811
+#: view/kateview.cpp:793
 #, kde-format
 msgid "&Always On"
 msgstr "&Vienmēr ieslēgts"
 
-#: view/kateview.cpp:815
+#: view/kateview.cpp:797
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "Statiskā teksta aplaušana"
 
-#: view/kateview.cpp:817
+#: view/kateview.cpp:799
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
@@ -7172,12 +7172,12 @@ msgstr ""
 "Ja šī opcija ir ieslēgta, teksta rindas tiks aplauztas pie kolonnas, kas ir "
 "definēta rediģēšanas iestatījumos."
 
-#: view/kateview.cpp:824
+#: view/kateview.cpp:806
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "Rādīt statiskās teksta &aplaušanas marķierus"
 
-#: view/kateview.cpp:827
+#: view/kateview.cpp:809
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -7186,12 +7186,12 @@ msgstr ""
 "Rādīt/slēpt rindu aplaušanas marķieri — vertikālu līniju aplaušanas kolonnā, "
 "kā noteikts rediģēšanas īpašībās"
 
-#: view/kateview.cpp:831
+#: view/kateview.cpp:813
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "Rādīt sakļaušanas &marķierus"
 
-#: view/kateview.cpp:833
+#: view/kateview.cpp:815
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
@@ -7200,12 +7200,12 @@ msgstr ""
 "Varat izvēlēties, vai rādīt koda sakļaušanas zīmes, ja ir iespējama koda "
 "sakļaušana."
 
-#: view/kateview.cpp:836
+#: view/kateview.cpp:818
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "Rādīt &ikonu joslu"
 
-#: view/kateview.cpp:838
+#: view/kateview.cpp:820
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
@@ -7214,22 +7214,22 @@ msgstr ""
 "Rādīt/slēpt ikonu joslu. <br /> <br />Ikonu josla rāda, piemēram, "
 "grāmatzīmju ikonas."
 
-#: view/kateview.cpp:841
+#: view/kateview.cpp:823
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "Rādīt &rindu numurus"
 
-#: view/kateview.cpp:843
+#: view/kateview.cpp:825
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "Rādīt/slēpt rindu numurus skata kreisajā pusē."
 
-#: view/kateview.cpp:846
+#: view/kateview.cpp:828
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "Rādīt &ritjoslas iezīmes"
 
-#: view/kateview.cpp:848
+#: view/kateview.cpp:830
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7238,12 +7238,12 @@ msgstr ""
 "Rādīt/slēpt iezīmes uz vertikālās ritjoslas. <br /> <br /> Iezīmes rāda, "
 "piemēram, grāmatzīmju vietas."
 
-#: view/kateview.cpp:851
+#: view/kateview.cpp:833
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
 msgstr "Rādīt ritjoslas minikarti"
 
-#: view/kateview.cpp:853
+#: view/kateview.cpp:835
 #, kde-format
 msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
@@ -7257,70 +7257,70 @@ msgstr ""
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SlOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:865
+#: view/kateview.cpp:847
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr "Rādīt nedrukājamās atstarpes"
 
-#: view/kateview.cpp:867
+#: view/kateview.cpp:849
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr "Rādīt/slēpt robežrāmi apkārt nedrukājamajām atstarpēm"
 
-#: view/kateview.cpp:871
+#: view/kateview.cpp:853
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "Pārslēgties uz komandrindu"
 
-#: view/kateview.cpp:873
+#: view/kateview.cpp:855
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "Rādīt/slēpt komandrindu skata apakšā."
 
-#: view/kateview.cpp:876
+#: view/kateview.cpp:858
 #, kde-format
 msgid "Input Modes"
 msgstr "Ievades režīmi"
 
-#: view/kateview.cpp:885
+#: view/kateview.cpp:867
 #, kde-format
 msgid "Activate/deactivate %1"
 msgstr "Ieslēgt/izslēgt %1"
 
-#: view/kateview.cpp:895
+#: view/kateview.cpp:877
 #, kde-format
 msgid "&End of Line"
 msgstr "Rindas b&eigas"
 
-#: view/kateview.cpp:897
+#: view/kateview.cpp:879
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr "Izvēlieties, kādi rindas beigu simboli jālieto, saglabājot dokumentu"
 
-#: view/kateview.cpp:898
+#: view/kateview.cpp:880
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "&UNIX"
 
-#: view/kateview.cpp:899
+#: view/kateview.cpp:881
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "&Windows/DOS"
 
-#: view/kateview.cpp:900
+#: view/kateview.cpp:882
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "&Macintosh"
 
-#: view/kateview.cpp:905
+#: view/kateview.cpp:887
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "Pievienot &baitu secības marķieri (BOM)"
 
-#: view/kateview.cpp:908
+#: view/kateview.cpp:890
 #, kde-format
 msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
@@ -7329,82 +7329,82 @@ msgstr ""
 "Ieslēgt/izslēgt baitu secības marķiera pievienošanu saglabāšanas brīdī UTF-8/"
 "UTF-16 kodētām datnēm"
 
-#: view/kateview.cpp:912
+#: view/kateview.cpp:894
 #, kde-format
 msgid "E&ncoding"
 msgstr "&Kodējums"
 
-#: view/kateview.cpp:916
+#: view/kateview.cpp:898
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr ""
 "Atrast pirmo vietu, kur atrodams teksts, vai kas atbilst regulārajai "
 "izteiksmei."
 
-#: view/kateview.cpp:920
+#: view/kateview.cpp:902
 #, kde-format
 msgid "Find Selected"
 msgstr "Meklēt izvēlēto"
 
-#: view/kateview.cpp:922
+#: view/kateview.cpp:904
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "Meklē nākamo vietu, kur atrodams izvēlētais teksts."
 
-#: view/kateview.cpp:926
+#: view/kateview.cpp:908
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "Meklēt izvēlēto pretējā virzienā"
 
-#: view/kateview.cpp:928
+#: view/kateview.cpp:910
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "Meklē iepriekšējo vietu, kur atrodams izvēlētais teksts."
 
-#: view/kateview.cpp:932
+#: view/kateview.cpp:914
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr "Atrast un atlasīt nākamo atkārtošanas vietu"
 
-#: view/kateview.cpp:934
+#: view/kateview.cpp:916
 #, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr ""
 "Meklē nākamo vietu, kur atrodams vārds, kas atrodas zem kursora, un to "
 "atlasa."
 
-#: view/kateview.cpp:938
+#: view/kateview.cpp:920
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr "Pašreiz atlasīto vārda atkārtojumu atzīmēt kā izlaistu"
 
-#: view/kateview.cpp:940
+#: view/kateview.cpp:922
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr "Atzīmē atlasīto vārdu kā izlaistu."
 
-#: view/kateview.cpp:944
+#: view/kateview.cpp:926
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr "Atrast un atlasīt visu atrasto tekstu"
 
-#: view/kateview.cpp:946
+#: view/kateview.cpp:928
 #, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr ""
 "Meklē visas vietas, kur atkārtojas zem kursora esošais vārds, un to atlasa."
 
-#: view/kateview.cpp:950
+#: view/kateview.cpp:932
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "Atrast nākamo meklējamā teksta vietu."
 
-#: view/kateview.cpp:954
+#: view/kateview.cpp:936
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "Atrast iepriekšējo meklējamā teksta vietu."
 
-#: view/kateview.cpp:958
+#: view/kateview.cpp:940
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
@@ -7413,86 +7413,86 @@ msgstr ""
 "Atrast teksta fragmentu vai tekstu, kas atbilst regulārai izteiksmei, un "
 "aizvietot to ar citu tekstu."
 
-#: view/kateview.cpp:961
+#: view/kateview.cpp:943
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr "Rindu beigām pievienot kursoru"
 
-#: view/kateview.cpp:963
+#: view/kateview.cpp:945
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
 msgstr "Izveido kursora katras atlasītās rindas beigās."
 
-#: view/kateview.cpp:967
+#: view/kateview.cpp:949
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr "Pievienot navigācijas kursoru zem kursora"
 
-#: view/kateview.cpp:969
+#: view/kateview.cpp:951
 #, kde-format
 msgid "Adds a caret in the line below the current caret."
 msgstr "Pievieno navigācijas kursoru rindā zem pašreizējā navigācijas kursora"
 
-#: view/kateview.cpp:973
+#: view/kateview.cpp:955
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr "Pievienot navigācijas kursoru virs kursora"
 
-#: view/kateview.cpp:975
+#: view/kateview.cpp:957
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr ""
 "Pievienot navigācijas kursoru rindā virs pašreizējā navigācijas kursora."
 
-#: view/kateview.cpp:979
+#: view/kateview.cpp:961
 #, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Pārslēgties kursora pārvietošanas starp lielajiem burtiem vārdos"
 
-#: view/kateview.cpp:980
+#: view/kateview.cpp:962
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 "Pārslēgties starp kursora normālu kustību starp vārdiem un kustību, "
 "ievērojot lielos burtus vārda vidū."
 
-#: view/kateview.cpp:984
+#: view/kateview.cpp:966
 #, kde-format
 msgid "Remove Cursors from Empty Lines"
 msgstr "Noņemt kursorus no tukšām rindām"
 
-#: view/kateview.cpp:985
+#: view/kateview.cpp:967
 #, kde-format
 msgid "Remove cursors from empty lines"
 msgstr "Noņemt kursorus no tukšām rindām"
 
-#: view/kateview.cpp:989
+#: view/kateview.cpp:971
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "Automātiska pareizrakstības pārbaude"
 
-#: view/kateview.cpp:990
+#: view/kateview.cpp:972
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "Ieslēgt/izslēgt automātisku pareizrakstības pārbaudi"
 
-#: view/kateview.cpp:996
+#: view/kateview.cpp:978
 #, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
 msgstr "Mainīt vārdnīcu…"
 
-#: view/kateview.cpp:997
+#: view/kateview.cpp:979
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "Mainīt pareizrakstības pārbaudei izmantoto vārdnīcu."
 
-#: view/kateview.cpp:1001
+#: view/kateview.cpp:983
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "Notīrīt vārdnīcu diapazonus"
 
-#: view/kateview.cpp:1003
+#: view/kateview.cpp:985
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
@@ -7500,12 +7500,12 @@ msgstr ""
 "Izņemt visus atsevišķo vārdnīcu diapazonus, kas tika iestatīti "
 "pareizrakstības pārbaudei."
 
-#: view/kateview.cpp:1009
+#: view/kateview.cpp:991
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "Kopēt kā &HTML"
 
-#: view/kateview.cpp:1010
+#: view/kateview.cpp:992
 #, kde-format
 msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
@@ -7514,13 +7514,13 @@ msgstr ""
 "Kopēt atlasīto kā HTML, izmantojot pašreizējo sintakses izcelšanu un krāsu "
 "shēmu."
 
-#: view/kateview.cpp:1014
+#: view/kateview.cpp:996
 #, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "E&ksportēt kā HTML…"
 
-#: view/kateview.cpp:1016
+#: view/kateview.cpp:998
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7529,42 +7529,42 @@ msgstr ""
 "Šī komanda ļauj eksportēt pašreizējo dokumentu ar visu iekrāsojumu HTML "
 "dokumentā."
 
-#: view/kateview.cpp:1055
+#: view/kateview.cpp:1037
 #, kde-format
 msgid "Move Word Left"
 msgstr "Pārvietot vārdu pa kreisi"
 
-#: view/kateview.cpp:1061
+#: view/kateview.cpp:1043
 #, kde-format
 msgid "Select Character Left"
 msgstr "Atlasīt rakstzīmi pa kreisi"
 
-#: view/kateview.cpp:1067
+#: view/kateview.cpp:1049
 #, kde-format
 msgid "Select Word Left"
 msgstr "Atlasīt vārdu pa kreisi"
 
-#: view/kateview.cpp:1077
+#: view/kateview.cpp:1059
 #, kde-format
 msgid "Move Word Right"
 msgstr "Pārvietot vārdu pa labi"
 
-#: view/kateview.cpp:1083
+#: view/kateview.cpp:1065
 #, kde-format
 msgid "Select Character Right"
 msgstr "Atlasīt rakstzīmi pa labi"
 
-#: view/kateview.cpp:1089
+#: view/kateview.cpp:1071
 #, kde-format
 msgid "Select Word Right"
 msgstr "Atlasīt vārdu pa labi"
 
-#: view/kateview.cpp:1099
+#: view/kateview.cpp:1081
 #, kde-format
 msgid "Start the Marked Selection"
 msgstr "Sākt atzīmētajā atlasē"
 
-#: view/kateview.cpp:1100
+#: view/kateview.cpp:1082
 #, kde-format
 msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
@@ -7573,202 +7573,202 @@ msgstr ""
 "Kopē „Emacs“ stila atlasīšanas režīmu, kurā sākums ir marķēts, bet pēc tam "
 "atlase tiek pastāvīgi atjaunināta."
 
-#: view/kateview.cpp:1105
+#: view/kateview.cpp:1087
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "Iet uz rindas sākumu"
 
-#: view/kateview.cpp:1111
+#: view/kateview.cpp:1093
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "Iet uz dokumenta sākumu"
 
-#: view/kateview.cpp:1117
+#: view/kateview.cpp:1099
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "Atlasīt līdz rindas sākumam"
 
-#: view/kateview.cpp:1127
+#: view/kateview.cpp:1109
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "Atlasīt līdz dokumenta sākumam"
 
-#: view/kateview.cpp:1137
+#: view/kateview.cpp:1119
 #, kde-format
 msgid "Move to End of Line"
 msgstr "Iet uz rindas beigām"
 
-#: view/kateview.cpp:1143
+#: view/kateview.cpp:1125
 #, kde-format
 msgid "Move to End of Document"
 msgstr "Iet uz dokumenta beigām"
 
-#: view/kateview.cpp:1149
+#: view/kateview.cpp:1131
 #, kde-format
 msgid "Select to End of Line"
 msgstr "Atlasīt līdz rindas beigām"
 
-#: view/kateview.cpp:1159
+#: view/kateview.cpp:1141
 #, kde-format
 msgid "Select to End of Document"
 msgstr "Atlasīt līdz dokumenta beigām"
 
-#: view/kateview.cpp:1169
+#: view/kateview.cpp:1151
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "Atlasīt iepriekšējo rindu"
 
-#: view/kateview.cpp:1175
+#: view/kateview.cpp:1157
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "Ritināt rindu augšup"
 
-#: view/kateview.cpp:1184
+#: view/kateview.cpp:1166
 #, kde-format
 msgid "Move to Next Line"
 msgstr "Iet uz nākamo rindu"
 
-#: view/kateview.cpp:1190
+#: view/kateview.cpp:1172
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "Iet uz iepriekšējo rindu"
 
-#: view/kateview.cpp:1196
+#: view/kateview.cpp:1178
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "Pārvietot kursoru pa labi"
 
-#: view/kateview.cpp:1202
+#: view/kateview.cpp:1184
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "Pārvietot kursoru pa kreisi"
 
-#: view/kateview.cpp:1208
+#: view/kateview.cpp:1190
 #, kde-format
 msgid "Select to Next Line"
 msgstr "Atlasīt nākamo rindu"
 
-#: view/kateview.cpp:1214
+#: view/kateview.cpp:1196
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "Ritināt rindu lejup"
 
-#: view/kateview.cpp:1223
+#: view/kateview.cpp:1205
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "Ritināt lapu augšup"
 
-#: view/kateview.cpp:1229
+#: view/kateview.cpp:1211
 #, kde-format
 msgid "Select Page Up"
 msgstr "Atlasīt lapu augšup"
 
-#: view/kateview.cpp:1235
+#: view/kateview.cpp:1217
 #, kde-format
 msgid "Move to Top of View"
 msgstr "Iet uz skata augšu"
 
-#: view/kateview.cpp:1241
+#: view/kateview.cpp:1223
 #, kde-format
 msgid "Select to Top of View"
 msgstr "Izvēlēties līdz skata augšai"
 
-#: view/kateview.cpp:1247
+#: view/kateview.cpp:1229
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "Ritināt lapu lejup"
 
-#: view/kateview.cpp:1253
+#: view/kateview.cpp:1235
 #, kde-format
 msgid "Select Page Down"
 msgstr "Atlasīt lapu lejup"
 
-#: view/kateview.cpp:1259
+#: view/kateview.cpp:1241
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "Iet uz skata apakšu"
 
-#: view/kateview.cpp:1265
+#: view/kateview.cpp:1247
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "Atlasīt līdz skata apakšai"
 
-#: view/kateview.cpp:1271
+#: view/kateview.cpp:1253
 #, kde-format
 msgid "Go to Matching Bracket"
 msgstr "Iet uz atbilstošo iekavu"
 
-#: view/kateview.cpp:1277
+#: view/kateview.cpp:1259
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "Atlasīt līdz atbilstošajai iekavai"
 
-#: view/kateview.cpp:1284
+#: view/kateview.cpp:1266
 #, kde-format
 msgid "Move Sub-Word Right"
 msgstr "Pārvietot apakšvārdu pa labi"
 
-#: view/kateview.cpp:1291
+#: view/kateview.cpp:1273
 #, kde-format
 msgid "Select Sub-Word Right"
 msgstr "Atlasīt apakšvārdu pa labi"
 
-#: view/kateview.cpp:1298
+#: view/kateview.cpp:1280
 #, kde-format
 msgid "Move Sub-Word Left"
 msgstr "Pārvietot apakšvārdu pa kreisi"
 
-#: view/kateview.cpp:1305
+#: view/kateview.cpp:1287
 #, kde-format
 msgid "Select Sub-Word Left"
 msgstr "Atlasīt apakšvārdu pa kreisi"
 
-#: view/kateview.cpp:1315
+#: view/kateview.cpp:1297
 #, kde-format
 msgid "Transpose Characters"
 msgstr "Apmainīt vietām rakstzīmes"
 
-#: view/kateview.cpp:1320
+#: view/kateview.cpp:1302
 #, kde-format
 msgid "Transpose Words"
 msgstr "Apmainīt vietām vārdus"
 
-#: view/kateview.cpp:1325
+#: view/kateview.cpp:1307
 #, kde-format
 msgid "Delete Line"
 msgstr "Dzēst rindu"
 
-#: view/kateview.cpp:1331
+#: view/kateview.cpp:1313
 #, kde-format
 msgid "Delete Word Left"
 msgstr "Dzēst vārdu pa kreisi"
 
-#: view/kateview.cpp:1337
+#: view/kateview.cpp:1319
 #, kde-format
 msgid "Delete Word Right"
 msgstr "Dzēst vārdu pa labi"
 
-#: view/kateview.cpp:1343
+#: view/kateview.cpp:1325
 #, kde-format
 msgid "Delete Next Character"
 msgstr "Dzēst nākamo rakstzīmi"
 
-#: view/kateview.cpp:1349
+#: view/kateview.cpp:1331
 #, kde-format
 msgid "Backspace"
 msgstr "Dzēst iepriekšējo rakstzīmi"
 
-#: view/kateview.cpp:1357
+#: view/kateview.cpp:1339
 #, kde-format
 msgid "Insert Tab Character"
 msgstr "Ievietot tabulācijas rakstzīmi"
 
-#: view/kateview.cpp:1362
+#: view/kateview.cpp:1344
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "Ievietot gudrā jaunā rinda"
 
-#: view/kateview.cpp:1363
+#: view/kateview.cpp:1345
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
@@ -7777,46 +7777,46 @@ msgstr ""
 "Ievieto jaunu rindu, iekļaujot tajā iepriekšējās aktīvās rindas sākuma "
 "rakstzīmes, kas nav burti vai cipari."
 
-#: view/kateview.cpp:1371
+#: view/kateview.cpp:1353
 #, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "Ievietot jaunu rindu bez atkāpes"
 
-#: view/kateview.cpp:1372
+#: view/kateview.cpp:1354
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr "Ievieto jaunu rindu bez atkāpes, neņemot vērā atkāpju iestatījumus."
 
-#: view/kateview.cpp:1380
+#: view/kateview.cpp:1362
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr "Ievieto jaunas rindas rakstzīmi virs pašreizējās rindas"
 
-#: view/kateview.cpp:1381
+#: view/kateview.cpp:1363
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr ""
 "Ievieto jaunu rindu virs pašreizējās rindas, nemainot pašreizējo rindu."
 
-#: view/kateview.cpp:1389
+#: view/kateview.cpp:1371
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr "Ievietot jaunas rindas rakstzīmi pašreizējā rindā"
 
-#: view/kateview.cpp:1390
+#: view/kateview.cpp:1372
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr "Ievieto jaunu rindu zem pašreizējās rindas, nemainot pašreizējo rindu."
 
-#: view/kateview.cpp:1399
+#: view/kateview.cpp:1381
 #, kde-format
 msgid "&Indent"
 msgstr "Pal&ielināt atkāpi"
 
-#: view/kateview.cpp:1401
+#: view/kateview.cpp:1383
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -7827,102 +7827,102 @@ msgstr ""
 "Konfigurācijas logā varat iestatīt, vai lietot tabulatorus vai aizstāt tos "
 "ar atstarpēm."
 
-#: view/kateview.cpp:1408
+#: view/kateview.cpp:1390
 #, kde-format
 msgid "&Unindent"
 msgstr "&Samazināt atkāpi"
 
-#: view/kateview.cpp:1409
+#: view/kateview.cpp:1391
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr "Lietojiet šo, lai samazinātu atkāpi izvēlētajam teksta blokam."
 
-#: view/kateview.cpp:1415
+#: view/kateview.cpp:1397
 #, kde-format
 msgid "Delete Sub-Word Left"
 msgstr "Dzēst apakšvārdu pa kreisi"
 
-#: view/kateview.cpp:1422
+#: view/kateview.cpp:1404
 #, kde-format
 msgid "Delete Sub-Word Right"
 msgstr "Dzēst apakšvārdu pa labi"
 
-#: view/kateview.cpp:1443
+#: view/kateview.cpp:1425
 #, kde-format
 msgid "Fold Toplevel Nodes"
 msgstr "Sakļaut augšējā līmeņa mezglus"
 
-#: view/kateview.cpp:1447
+#: view/kateview.cpp:1429
 #, kde-format
 msgid "Unfold Toplevel Nodes"
 msgstr "Izvērst augšējā līmeņa mezglus"
 
-#: view/kateview.cpp:1451
+#: view/kateview.cpp:1433
 #, kde-format
 msgid "Toggle Current Node"
 msgstr "Pārslēgties starp pašreizējiem mezgliem"
 
-#: view/kateview.cpp:1455
+#: view/kateview.cpp:1437
 #, kde-format
 msgid "Toggle Contained Nodes"
 msgstr "Pārslēgties starp saturošajiem mezgliem"
 
-#: view/kateview.cpp:1464
+#: view/kateview.cpp:1446
 #, kde-format
 msgid "Say current selection or document"
 msgstr "Izrunāt atlasīto fragmentu vai dokumentu"
 
-#: view/kateview.cpp:1474
+#: view/kateview.cpp:1456
 #, kde-format
 msgid "Stop current output"
 msgstr "Apturēt pašreizējo izvadi"
 
-#: view/kateview.cpp:1480
+#: view/kateview.cpp:1462
 #, kde-format
 msgid "Pause current output"
 msgstr "Pauzēt pašreizējo izvadi"
 
-#: view/kateview.cpp:1486
+#: view/kateview.cpp:1468
 #, kde-format
 msgid "Resume current output"
 msgstr "Turpināt pašreizējo izvadi"
 
-#: view/kateview.cpp:1657
+#: view/kateview.cpp:1639
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(R/O) %1"
 
-#: view/kateview.cpp:1845
+#: view/kateview.cpp:1827
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "Izslēgta pārvietošanās starp lielajiem burtiem"
 
-#: view/kateview.cpp:1847
+#: view/kateview.cpp:1829
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "Ieslēgta pārvietošanās starp lielajiem burtiem"
 
-#: view/kateview.cpp:2382
+#: view/kateview.cpp:2364
 #, kde-format
 msgid "Search wrapped"
 msgstr "Meklēšana sākas no sākuma"
 
-#: view/kateview.cpp:3075
+#: view/kateview.cpp:3058
 #, kde-format
 msgid "Open File"
 msgstr "Atvērt datni"
 
-#: view/kateview.cpp:3991
+#: view/kateview.cpp:3974
 #, kde-format
 msgid "Align On"
 msgstr "Līdzināt pie"
 
-#: view/kateview.cpp:3991
+#: view/kateview.cpp:3974
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Līdzināšanas šablons:"
 
-#: view/kateview.cpp:5075
+#: view/kateview.cpp:5058
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Eksportēt datni kā HTML"
