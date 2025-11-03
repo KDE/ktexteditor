@@ -932,12 +932,12 @@ public:
 
     void moveForward()
     {
-        move(1);
+        move(KateViewInternal::right);
     }
 
     void moveBack()
     {
-        move(-1);
+        move(KateViewInternal::left);
     }
 
     void makeValid()
@@ -974,7 +974,7 @@ public:
     }
 
 protected:
-    virtual CalculatingCursor &move(int n) = 0;
+    virtual CalculatingCursor &move(KateViewInternal::Bias bias) = 0;
 
     bool valid()
     {
@@ -1000,7 +1000,7 @@ public:
     {
     }
 
-    CalculatingCursor &move(int n) override
+    CalculatingCursor &move(KateViewInternal::Bias bias) override
     {
         KateLineLayout *thisLine = m_vi->cache()->line(line());
         if (!thisLine || !thisLine->isValid()) {
@@ -1011,7 +1011,7 @@ public:
 
         const bool wrapCursor = view()->wrapCursor();
         int maxColumn = -1;
-        if (n >= 0) {
+        if (bias == KateViewInternal::right) {
             if (column() >= lineLength) {
                 if (wrapCursor) {
                     // do nothing
@@ -1054,7 +1054,7 @@ public:
     {
     }
 
-    CalculatingCursor &move(int n) override
+    CalculatingCursor &move(KateViewInternal::Bias bias) override
     {
         KateLineLayout *thisLine = m_vi->cache()->line(line());
         if (!thisLine || !thisLine->isValid()) {
@@ -1062,7 +1062,7 @@ public:
             return *this;
         }
 
-        if (n >= 0) {
+        if (bias >= KateViewInternal::right) {
             const int lineLength = m_vi->doc()->lineLength(thisLine->line());
             if (column() >= lineLength && line() < doc()->lines() - 1) {
                 // Advance to the beginning of the next line
@@ -1186,7 +1186,7 @@ public:
     {
     }
 
-    CalculatingCursor &move(int n) override
+    CalculatingCursor &move(KateViewInternal::Bias bias) override
     {
         KateLineLayout *thisLine = m_vi->cache()->line(line());
         if (!thisLine || !thisLine->isValid()) {
@@ -1198,7 +1198,7 @@ public:
             return c.isLowSurrogate() || c.isHighSurrogate();
         };
 
-        if (n >= 0) {
+        if (bias == KateViewInternal::right) {
             auto skipCaps = [](QStringView text, int &col) {
                 int count = 0;
                 while (col < text.size() && text.at(col).isUpper()) {
