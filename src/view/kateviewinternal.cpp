@@ -951,15 +951,6 @@ public:
         Q_ASSERT(valid());
     }
 
-    void toEdge(KateViewInternal::Bias bias)
-    {
-        if (bias == KateViewInternal::left) {
-            m_cursor.setColumn(0);
-        } else if (bias == KateViewInternal::right) {
-            m_cursor.setColumn(doc()->lineLength(line()));
-        }
-    }
-
     bool atEdge(KateViewInternal::Bias bias)
     {
         switch (bias) {
@@ -1519,10 +1510,10 @@ void KateViewInternal::wordNext(bool sel, bool subword)
 
 void KateViewInternal::moveEdge(KateViewInternal::Bias bias, bool sel)
 {
-    BoundedCursor c(this, m_cursor);
-    c.toEdge(bias);
-    updateSelection(c, sel);
-    updateCursor(c);
+    const auto c = m_cursor.toCursor();
+    const auto movedPos = bias == left ? KTextEditor::Cursor{c.line(), 0} : KTextEditor::Cursor{c.line(), doc()->lineLength(c.line())};
+    updateSelection(movedPos, sel);
+    updateCursor(movedPos);
 }
 
 KTextEditor::Cursor KateViewInternal::moveCursorToLineStart(KTextEditor::Cursor cursor)
@@ -1536,9 +1527,7 @@ KTextEditor::Cursor KateViewInternal::moveCursorToLineStart(KTextEditor::Cursor 
     }
 
     if (!doc()->config()->smartHome()) {
-        BoundedCursor c(this, cursor);
-        c.toEdge(left);
-        return c;
+        return {cursor.line(), 0};
     }
 
     if (cursor.line() < 0 || cursor.line() >= doc()->lines()) {
@@ -1594,9 +1583,7 @@ KTextEditor::Cursor KateViewInternal::moveCursorToLineEnd(KTextEditor::Cursor cu
     }
 
     if (!doc()->config()->smartHome()) {
-        BoundedCursor c(this, cursor);
-        c.toEdge(right);
-        return c;
+        return {cursor.line(), doc()->lineLength(cursor.line())};
     }
 
     if (cursor.line() < 0 || cursor.line() >= doc()->lines()) {
@@ -1611,9 +1598,7 @@ KTextEditor::Cursor KateViewInternal::moveCursorToLineEnd(KTextEditor::Cursor cu
         c.setColumn(l.lastChar() + 1);
         return c;
     } else {
-        BoundedCursor c(this, cursor);
-        c.toEdge(right);
-        return c;
+        return {cursor.line(), doc()->lineLength(cursor.line())};
     }
 }
 
