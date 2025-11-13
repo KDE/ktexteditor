@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-01 00:42+0000\n"
-"PO-Revision-Date: 2025-07-14 11:54+0300\n"
+"PO-Revision-Date: 2025-11-12 19:39+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -33,7 +33,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -5085,10 +5085,9 @@ msgid "Normal"
 msgstr "Tavallinen"
 
 #: utils/katebookmarks.cpp:49
-#, fuzzy, kde-format
-#| msgid "Set &Bookmark"
+#, kde-format
 msgid "Toggle &Bookmark"
-msgstr "Aseta &kirjanmerkki"
+msgstr "Aseta tai poista &kirjanmerkki"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -5573,10 +5572,9 @@ msgid "Embeddable editor component"
 msgstr "Upotettava muokkainosa"
 
 #: utils/kateglobal.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2022 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2025 The Kate Authors"
-msgstr "© 2000–2022 Katen tekijät"
+msgstr "© 2000–2025 Katen tekijät"
 
 #: utils/kateglobal.cpp:84
 #, kde-format
