@@ -172,12 +172,6 @@ protected:
     friend KateModeMenuListData::ListItem;
     friend KateModeMenuListData::SearchLine;
 
-    /**
-     * Action when displaying the menu.
-     * Override from QWidget.
-     */
-    void showEvent(QShowEvent *event) override;
-
 private:
     void init();
 

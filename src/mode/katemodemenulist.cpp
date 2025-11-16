@@ -53,138 +53,213 @@ void KateModeMenuList::init()
 
 void KateModeMenuList::onAboutToShowMenu()
 {
-    if (m_initialized) {
+    if (!m_initialized) {
+        /*
+         * Fix font size & font style: display the font correctly when changing it from the
+         * KDE Plasma preferences. For example, the font type "Menu" is displayed, but "font()"
+         * and "fontMetrics()" return the font type "General". Therefore, this overwrites the
+         * "General" font. This makes it possible to correctly apply word wrapping on items,
+         * when changing the font or its size.
+         */
+        QFont font = this->font();
+        font.setFamily(font.family());
+        font.setStyle(font.style());
+        font.setStyleName(font.styleName());
+        font.setBold(font.bold());
+        font.setItalic(font.italic());
+        font.setUnderline(font.underline());
+        font.setStrikeOut(font.strikeOut());
+        font.setPointSize(font.pointSize());
+        setFont(font);
+
+        /*
+         * Calculate the size of the list and the checkbox icon (in pixels) according
+         * to the font size. From font 12pt to 26pt increase the list size.
+         */
+        int menuWidth = 266;
+        int menuHeight = 428;
+        const int fontSize = font.pointSize();
+        if (fontSize >= 12) {
+            const int increaseSize = (fontSize - 11) * 10;
+            if (increaseSize >= 150) { // Font size: 26pt
+                menuWidth += 150;
+                menuHeight += 150;
+            } else {
+                menuWidth += increaseSize;
+                menuHeight += increaseSize;
+            }
+
+            if (fontSize >= 22) {
+                m_iconSize = 32;
+            } else if (fontSize >= 18) {
+                m_iconSize = 24;
+            } else if (fontSize >= 14) {
+                m_iconSize = 22;
+            } else if (fontSize >= 12) {
+                m_iconSize = 18;
+            }
+        }
+
+        // Create list and search bar
+        m_list = KateModeMenuListData::Factory::createListView(this);
+        m_searchBar = KateModeMenuListData::Factory::createSearchLine(this);
+
+        // Empty icon for items.
+        QPixmap emptyIconPixmap(m_iconSize, m_iconSize);
+        emptyIconPixmap.fill(Qt::transparent);
+        m_emptyIcon = QIcon(emptyIconPixmap);
+
+        /*
+         * Load list widget, scroll bar and items.
+         */
+        if (overlapScrollBar()) {
+            // The vertical scroll bar will be added in another layout
+            m_scroll = new QScrollBar(Qt::Vertical, this);
+            m_list->setVerticalScrollBar(m_scroll);
+            m_list->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+            m_list->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        } else {
+            m_list->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+            m_list->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        }
+        m_list->setIconSize(QSize(m_iconSize, m_iconSize));
+        m_list->setResizeMode(QListView::Adjust);
+        // Size of the list widget and search bar.
+        setSizeList(menuHeight, menuWidth);
+
+        // Data model (items).
+        // couple model to view to let it be deleted with the view
+        m_model = new QStandardItemModel(0, 0, m_list);
+        loadHighlightingModel();
+
+        /*
+         * Search bar widget.
+         */
+        m_searchBar->setPlaceholderText(i18nc("@info:placeholder", "Search…"));
+        m_searchBar->setToolTip(i18nc("ToolTip of the search bar of modes of syntax highlighting",
+                                      "Search for syntax highlighting modes by language name or file extension (for example, C++ or .cpp)"));
+        m_searchBar->setMaxLength(200);
+
+        m_list->setFocusProxy(m_searchBar);
+
+        /*
+         * Set layouts and widgets.
+         * container (QWidget)
+         * └── layoutContainer (QVBoxLayout)
+         *      ├── m_layoutList (QGridLayout)
+         *      │   ├── m_list (ListView)
+         *      │   ├── layoutScrollBar (QHBoxLayout) --> m_scroll (QScrollBar)
+         *      │   └── m_emptyListMsg (QLabel)
+         *      └── layoutSearchBar (QHBoxLayout) --> m_searchBar (SearchLine)
+         */
+        QWidget *container = new QWidget(this);
+        QVBoxLayout *layoutContainer = new QVBoxLayout(container);
+        m_layoutList = new QGridLayout();
+        QHBoxLayout *layoutSearchBar = new QHBoxLayout();
+
+        m_layoutList->addWidget(m_list, 0, 0, Qt::AlignLeft);
+
+        // Add scroll bar and set margin.
+        // Overlap scroll bar above the list widget.
+        if (overlapScrollBar()) {
+            QHBoxLayout *layoutScrollBar = new QHBoxLayout();
+            layoutScrollBar->addWidget(m_scroll);
+            layoutScrollBar->setContentsMargins(1, 2, 2, 2); // ScrollBar Margin = 2, Also see: KateModeMenuListData::ListView::getContentWidth()
+            m_layoutList->addLayout(layoutScrollBar, 0, 0, Qt::AlignRight);
+        }
+
+        layoutSearchBar->addWidget(m_searchBar);
+        layoutContainer->addLayout(m_layoutList);
+        layoutContainer->addLayout(layoutSearchBar);
+
+        QWidgetAction *widAct = new QWidgetAction(this);
+        widAct->setDefaultWidget(container);
+        addAction(widAct);
+
+        /*
+         * Detect selected item with one click.
+         * This also applies to double-clicks.
+         */
+        connect(m_list, &KateModeMenuListData::ListView::clicked, this, &KateModeMenuList::selectHighlighting);
+
+        m_initialized = true;
+    }
+
+    /*
+     * TODO: Put the menu on the bottom-edge of the window if the status bar is hidden,
+     * to show the menu with keyboard shortcuts. To do this, it's preferable to add a new
+     * function/slot to display the menu, correcting the position. If the trigger button
+     * isn't set or is destroyed, there may be problems detecting Right-to-left layouts.
+     */
+
+    // Set the menu position
+    if (m_pushButton && m_pushButton->isVisible()) {
+        /*
+         * Get vertical position.
+         * NOTE: In KDE Plasma with Wayland, the reference point of the position
+         * is the main window, not the desktop. Therefore, if the window is vertically
+         * smaller than the menu, it will be positioned on the upper edge of the window.
+         */
+        int newMenu_y; // New vertical menu position
+        if (m_positionY == AlignTop) {
+            newMenu_y = m_pushButton->mapToGlobal(QPoint(0, 0)).y() - geometry().height();
+            if (newMenu_y < 0) {
+                newMenu_y = 0;
+            }
+        } else {
+            newMenu_y = pos().y();
+        }
+
+        // Set horizontal position.
+        if (m_positionX == AlignRight) {
+            // New horizontal menu position
+            int newMenu_x = pos().x() - geometry().width() + m_pushButton->geometry().width();
+            // Get position of the right edge of the toggle button
+            const int buttonPositionRight = m_pushButton->mapToGlobal(QPoint(0, 0)).x() + m_pushButton->geometry().width();
+            if (newMenu_x < 0) {
+                newMenu_x = 0;
+            } else if (newMenu_x + geometry().width() < buttonPositionRight) {
+                newMenu_x = buttonPositionRight - geometry().width();
+            }
+            move(newMenu_x, newMenu_y);
+        } else if (m_positionX == AlignLeft) {
+            move(m_pushButton->mapToGlobal(QPoint(0, 0)).x(), newMenu_y);
+        } else if (m_positionY == AlignTop) {
+            // Set vertical position, use the default horizontal position
+            move(pos().x(), newMenu_y);
+        }
+    }
+
+    // Select text from the search bar
+    if (!m_searchBar->text().isEmpty()) {
+        if (m_searchBar->text().trimmed().isEmpty()) {
+            m_searchBar->clear();
+        } else {
+            m_searchBar->selectAll();
+        }
+    }
+
+    // Set focus on the list. The list widget uses focus proxy to the search bar.
+    m_list->setFocus(Qt::ActiveWindowFocusReason);
+
+    KTextEditor::DocumentPrivate *doc = m_doc;
+    if (!doc) {
         return;
     }
-    /*
-     * Fix font size & font style: display the font correctly when changing it from the
-     * KDE Plasma preferences. For example, the font type "Menu" is displayed, but "font()"
-     * and "fontMetrics()" return the font type "General". Therefore, this overwrites the
-     * "General" font. This makes it possible to correctly apply word wrapping on items,
-     * when changing the font or its size.
-     */
-    QFont font = this->font();
-    font.setFamily(font.family());
-    font.setStyle(font.style());
-    font.setStyleName(font.styleName());
-    font.setBold(font.bold());
-    font.setItalic(font.italic());
-    font.setUnderline(font.underline());
-    font.setStrikeOut(font.strikeOut());
-    font.setPointSize(font.pointSize());
-    setFont(font);
 
-    /*
-     * Calculate the size of the list and the checkbox icon (in pixels) according
-     * to the font size. From font 12pt to 26pt increase the list size.
-     */
-    int menuWidth = 266;
-    int menuHeight = 428;
-    const int fontSize = font.pointSize();
-    if (fontSize >= 12) {
-        const int increaseSize = (fontSize - 11) * 10;
-        if (increaseSize >= 150) { // Font size: 26pt
-            menuWidth += 150;
-            menuHeight += 150;
-        } else {
-            menuWidth += increaseSize;
-            menuHeight += increaseSize;
-        }
-
-        if (fontSize >= 22) {
-            m_iconSize = 32;
-        } else if (fontSize >= 18) {
-            m_iconSize = 24;
-        } else if (fontSize >= 14) {
-            m_iconSize = 22;
-        } else if (fontSize >= 12) {
-            m_iconSize = 18;
+    // First show or if an external changed the current syntax highlighting.
+    if (!m_selectedItem || (m_selectedItem->hasMode() && m_selectedItem->getMode()->name != doc->fileType())) {
+        if (!selectHighlightingFromExternal(doc->fileType())) {
+            // Strange case: if the current syntax highlighting does not exist in the list.
+            if (m_selectedItem) {
+                m_selectedItem->setIcon(m_emptyIcon);
+            }
+            if ((m_selectedItem || !m_list->currentItem()) && m_searchBar->text().isEmpty()) {
+                m_list->scrollToFirstItem();
+            }
+            m_selectedItem = nullptr;
         }
     }
-
-    // Create list and search bar
-    m_list = KateModeMenuListData::Factory::createListView(this);
-    m_searchBar = KateModeMenuListData::Factory::createSearchLine(this);
-
-    // Empty icon for items.
-    QPixmap emptyIconPixmap(m_iconSize, m_iconSize);
-    emptyIconPixmap.fill(Qt::transparent);
-    m_emptyIcon = QIcon(emptyIconPixmap);
-
-    /*
-     * Load list widget, scroll bar and items.
-     */
-    if (overlapScrollBar()) {
-        // The vertical scroll bar will be added in another layout
-        m_scroll = new QScrollBar(Qt::Vertical, this);
-        m_list->setVerticalScrollBar(m_scroll);
-        m_list->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        m_list->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    } else {
-        m_list->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        m_list->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    }
-    m_list->setIconSize(QSize(m_iconSize, m_iconSize));
-    m_list->setResizeMode(QListView::Adjust);
-    // Size of the list widget and search bar.
-    setSizeList(menuHeight, menuWidth);
-
-    // Data model (items).
-    // couple model to view to let it be deleted with the view
-    m_model = new QStandardItemModel(0, 0, m_list);
-    loadHighlightingModel();
-
-    /*
-     * Search bar widget.
-     */
-    m_searchBar->setPlaceholderText(i18nc("@info:placeholder", "Search…"));
-    m_searchBar->setToolTip(i18nc("ToolTip of the search bar of modes of syntax highlighting",
-                                  "Search for syntax highlighting modes by language name or file extension (for example, C++ or .cpp)"));
-    m_searchBar->setMaxLength(200);
-
-    m_list->setFocusProxy(m_searchBar);
-
-    /*
-     * Set layouts and widgets.
-     * container (QWidget)
-     * └── layoutContainer (QVBoxLayout)
-     *      ├── m_layoutList (QGridLayout)
-     *      │   ├── m_list (ListView)
-     *      │   ├── layoutScrollBar (QHBoxLayout) --> m_scroll (QScrollBar)
-     *      │   └── m_emptyListMsg (QLabel)
-     *      └── layoutSearchBar (QHBoxLayout) --> m_searchBar (SearchLine)
-     */
-    QWidget *container = new QWidget(this);
-    QVBoxLayout *layoutContainer = new QVBoxLayout(container);
-    m_layoutList = new QGridLayout();
-    QHBoxLayout *layoutSearchBar = new QHBoxLayout();
-
-    m_layoutList->addWidget(m_list, 0, 0, Qt::AlignLeft);
-
-    // Add scroll bar and set margin.
-    // Overlap scroll bar above the list widget.
-    if (overlapScrollBar()) {
-        QHBoxLayout *layoutScrollBar = new QHBoxLayout();
-        layoutScrollBar->addWidget(m_scroll);
-        layoutScrollBar->setContentsMargins(1, 2, 2, 2); // ScrollBar Margin = 2, Also see: KateModeMenuListData::ListView::getContentWidth()
-        m_layoutList->addLayout(layoutScrollBar, 0, 0, Qt::AlignRight);
-    }
-
-    layoutSearchBar->addWidget(m_searchBar);
-    layoutContainer->addLayout(m_layoutList);
-    layoutContainer->addLayout(layoutSearchBar);
-
-    QWidgetAction *widAct = new QWidgetAction(this);
-    widAct->setDefaultWidget(container);
-    addAction(widAct);
-
-    /*
-     * Detect selected item with one click.
-     * This also applies to double-clicks.
-     */
-    connect(m_list, &KateModeMenuListData::ListView::clicked, this, &KateModeMenuList::selectHighlighting);
-
-    m_initialized = true;
 }
 
 void KateModeMenuList::reloadItems()
@@ -391,86 +466,6 @@ void KateModeMenuList::autoScroll()
         m_list->scrollToItem(m_selectedItem->row(), QAbstractItemView::PositionAtCenter);
     } else {
         m_list->scrollToFirstItem();
-    }
-}
-
-void KateModeMenuList::showEvent(QShowEvent *event)
-{
-    Q_UNUSED(event);
-    /*
-     * TODO: Put the menu on the bottom-edge of the window if the status bar is hidden,
-     * to show the menu with keyboard shortcuts. To do this, it's preferable to add a new
-     * function/slot to display the menu, correcting the position. If the trigger button
-     * isn't set or is destroyed, there may be problems detecting Right-to-left layouts.
-     */
-
-    // Set the menu position
-    if (m_pushButton && m_pushButton->isVisible()) {
-        /*
-         * Get vertical position.
-         * NOTE: In KDE Plasma with Wayland, the reference point of the position
-         * is the main window, not the desktop. Therefore, if the window is vertically
-         * smaller than the menu, it will be positioned on the upper edge of the window.
-         */
-        int newMenu_y; // New vertical menu position
-        if (m_positionY == AlignTop) {
-            newMenu_y = m_pushButton->mapToGlobal(QPoint(0, 0)).y() - geometry().height();
-            if (newMenu_y < 0) {
-                newMenu_y = 0;
-            }
-        } else {
-            newMenu_y = pos().y();
-        }
-
-        // Set horizontal position.
-        if (m_positionX == AlignRight) {
-            // New horizontal menu position
-            int newMenu_x = pos().x() - geometry().width() + m_pushButton->geometry().width();
-            // Get position of the right edge of the toggle button
-            const int buttonPositionRight = m_pushButton->mapToGlobal(QPoint(0, 0)).x() + m_pushButton->geometry().width();
-            if (newMenu_x < 0) {
-                newMenu_x = 0;
-            } else if (newMenu_x + geometry().width() < buttonPositionRight) {
-                newMenu_x = buttonPositionRight - geometry().width();
-            }
-            move(newMenu_x, newMenu_y);
-        } else if (m_positionX == AlignLeft) {
-            move(m_pushButton->mapToGlobal(QPoint(0, 0)).x(), newMenu_y);
-        } else if (m_positionY == AlignTop) {
-            // Set vertical position, use the default horizontal position
-            move(pos().x(), newMenu_y);
-        }
-    }
-
-    // Select text from the search bar
-    if (!m_searchBar->text().isEmpty()) {
-        if (m_searchBar->text().trimmed().isEmpty()) {
-            m_searchBar->clear();
-        } else {
-            m_searchBar->selectAll();
-        }
-    }
-
-    // Set focus on the list. The list widget uses focus proxy to the search bar.
-    m_list->setFocus(Qt::ActiveWindowFocusReason);
-
-    KTextEditor::DocumentPrivate *doc = m_doc;
-    if (!doc) {
-        return;
-    }
-
-    // First show or if an external changed the current syntax highlighting.
-    if (!m_selectedItem || (m_selectedItem->hasMode() && m_selectedItem->getMode()->name != doc->fileType())) {
-        if (!selectHighlightingFromExternal(doc->fileType())) {
-            // Strange case: if the current syntax highlighting does not exist in the list.
-            if (m_selectedItem) {
-                m_selectedItem->setIcon(m_emptyIcon);
-            }
-            if ((m_selectedItem || !m_list->currentItem()) && m_searchBar->text().isEmpty()) {
-                m_list->scrollToFirstItem();
-            }
-            m_selectedItem = nullptr;
-        }
     }
 }
 
