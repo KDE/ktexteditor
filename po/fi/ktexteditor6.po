@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-20 00:39+0000\n"
 "PO-Revision-Date: 2025-11-12 19:39+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2548,13 +2548,13 @@ msgstr "Valitse MIME-tyypit"
 msgid "Modes && Filetypes"
 msgstr "Tilat ja tiedostotyypit"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:138
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Etsi…"
 
-#: mode/katemodemenulist.cpp:142
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2565,13 +2565,13 @@ msgstr ""
 "(esim. C++ tai .cpp)Etsi syntaksikorostuksia kielen nimen tai "
 "tiedostopäätteen perusteella (esim. C++ tai .cpp)"
 
-#: mode/katemodemenulist.cpp:565
+#: mode/katemodemenulist.cpp:560
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Ei hakua vastaavia kohteita"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1087
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2580,7 +2580,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Paras osuma"
 
-#: mode/katemodemenulist.cpp:1097
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "

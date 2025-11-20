@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-20 00:39+0000\n"
 "PO-Revision-Date: 2025-02-23 13:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -2536,13 +2536,13 @@ msgstr "Elekti MIME-tipojn"
 msgid "Modes && Filetypes"
 msgstr "Reĝimoj && Dosiertipoj"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:138
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Serĉi…"
 
-#: mode/katemodemenulist.cpp:142
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2552,13 +2552,13 @@ msgstr ""
 "Serĉi sintaksemfazajn reĝimojn laŭ lingvonomo aŭ dosiera etendo (ekzemple C+"
 "+ aŭ .cpp)"
 
-#: mode/katemodemenulist.cpp:565
+#: mode/katemodemenulist.cpp:560
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Neniuj eroj kongruas kun via serĉo"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1087
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2567,7 +2567,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Plej Bona Serĉkongruo"
 
-#: mode/katemodemenulist.cpp:1097
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "

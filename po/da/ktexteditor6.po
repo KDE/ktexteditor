@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-20 00:39+0000\n"
 "PO-Revision-Date: 2021-09-09 21:34+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -2604,7 +2604,7 @@ msgstr "Vælg mimetyper"
 msgid "Modes && Filetypes"
 msgstr "Tilstande og filtyper"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:138
 #, fuzzy, kde-format
 #| msgctxt "Placeholder in search bar"
 #| msgid "Search..."
@@ -2612,7 +2612,7 @@ msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Søg..."
 
-#: mode/katemodemenulist.cpp:142
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2622,13 +2622,13 @@ msgstr ""
 "Søg efter syntaksfremhævning-tilstande efter sprognavn eller filendelse (f."
 "eks. C++ eller .cpp)"
 
-#: mode/katemodemenulist.cpp:565
+#: mode/katemodemenulist.cpp:560
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Ingen elementer matcher din søgning"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1087
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2637,7 +2637,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Bedste søgeresultat"
 
-#: mode/katemodemenulist.cpp:1097
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "

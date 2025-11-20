@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-20 00:39+0000\n"
 "PO-Revision-Date: 2025-09-27 11:48+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2552,13 +2552,13 @@ msgstr "Hautatu MIME motak"
 msgid "Modes && Filetypes"
 msgstr "Moduak eta fitxategi motak"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:138
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Bilatu..."
 
-#: mode/katemodemenulist.cpp:142
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2568,13 +2568,13 @@ msgstr ""
 "Bilatu sintaxia nabarmentzeko moduak lengoaia-izen edo fitxategi-luzapenaren "
 "arabera (adibidez, c++ edo .cpp)"
 
-#: mode/katemodemenulist.cpp:565
+#: mode/katemodemenulist.cpp:560
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Ez dago zure bilaketarekin bat datorren elementurik"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1087
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2583,7 +2583,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Bilaketaren bat-etortze onena"
 
-#: mode/katemodemenulist.cpp:1097
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "

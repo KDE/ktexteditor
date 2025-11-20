@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-20 00:39+0000\n"
 "PO-Revision-Date: 2025-09-29 22:35+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -2584,13 +2584,13 @@ msgstr "Seleccionar los tipos MIME"
 msgid "Modes && Filetypes"
 msgstr "Modos y tipos de archivo"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:138
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Buscar…"
 
-#: mode/katemodemenulist.cpp:142
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2600,13 +2600,13 @@ msgstr ""
 "Buscar modos de resaltado por nombre de lenguaje o extensión de archivo (por "
 "ejemplo, C++ o .cpp)"
 
-#: mode/katemodemenulist.cpp:565
+#: mode/katemodemenulist.cpp:560
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Ningún elemento satisface la búsqueda"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1087
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2615,7 +2615,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Mejor coincidencia de la búsqueda"
 
-#: mode/katemodemenulist.cpp:1097
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "

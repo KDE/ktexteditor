@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-20 00:39+0000\n"
 "PO-Revision-Date: 2023-02-18 21:30+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -2555,7 +2555,7 @@ msgstr "MİME növlərini seçin"
 msgid "Modes && Filetypes"
 msgstr "Faylların Növləri"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:138
 #, fuzzy, kde-format
 #| msgctxt "Placeholder in search bar"
 #| msgid "Search..."
@@ -2563,7 +2563,7 @@ msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Axtarış..."
 
-#: mode/katemodemenulist.cpp:142
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2573,13 +2573,13 @@ msgstr ""
 "Sənədin dilinə və əlavəsinə görə sintaksisi işıqlandırma rejimlərinin "
 "axtarışı (misal üç., C++ və ya cpp)"
 
-#: mode/katemodemenulist.cpp:565
+#: mode/katemodemenulist.cpp:560
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Axtarışınıza uyğun heç nə tapılmadı"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1087
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2588,7 +2588,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Ən uyğun gələn"
 
-#: mode/katemodemenulist.cpp:1097
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "

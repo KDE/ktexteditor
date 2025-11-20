@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-20 00:39+0000\n"
 "PO-Revision-Date: 2023-12-12 19:23+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -2539,7 +2539,7 @@ msgstr "Vyberte typy MIME"
 msgid "Modes && Filetypes"
 msgstr "Módy a typy súborov"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:138
 #, fuzzy, kde-format
 #| msgctxt "Placeholder in search bar"
 #| msgid "Search..."
@@ -2547,7 +2547,7 @@ msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Hľadať..."
 
-#: mode/katemodemenulist.cpp:142
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2557,13 +2557,13 @@ msgstr ""
 "Vyhľadajte režimy zvýraznenia syntaxe podľa názvu jazyka alebo prípony "
 "súboru (napríklad C++ alebo .cpp)"
 
-#: mode/katemodemenulist.cpp:565
+#: mode/katemodemenulist.cpp:560
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Žiadne položky zodpovedajúce vášmu vyhľadávaniu"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1087
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2572,7 +2572,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Najlepšia zhoda hľadania"
 
-#: mode/katemodemenulist.cpp:1097
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-20 00:39+0000\n"
 "PO-Revision-Date: 2002-11-14 16:59SAST\n"
 "Last-Translator: Lwandle Mgidlana <lwandle@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -2431,14 +2431,14 @@ msgstr "Khetha Iindidi ze Mime:"
 msgid "Modes && Filetypes"
 msgstr "Udidi lwe Data"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:138
 #, fuzzy, kde-format
 #| msgid "I-Search:"
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "I-Search:"
 
-#: mode/katemodemenulist.cpp:142
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2446,13 +2446,13 @@ msgid ""
 "example, C++ or .cpp)"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:565
+#: mode/katemodemenulist.cpp:560
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1087
 #, fuzzy, kde-format
 #| msgid "Previous Incremental Search Match"
 msgctxt ""
@@ -2462,7 +2462,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Ulwandiso Oludlulileyo Lokutelekisa Uphendlo"
 
-#: mode/katemodemenulist.cpp:1097
+#: mode/katemodemenulist.cpp:1092
 #, fuzzy, kde-format
 #| msgid "Previous Incremental Search Match"
 msgctxt ""

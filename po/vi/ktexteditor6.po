@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-20 00:39+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -2545,7 +2545,7 @@ msgstr "Chọn kiểu MIME"
 msgid "Modes && Filetypes"
 msgstr "Chế độ && kiểu tệp"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:138
 #, fuzzy, kde-format
 #| msgctxt "Placeholder in search bar"
 #| msgid "Search..."
@@ -2553,7 +2553,7 @@ msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Tìm kiếm..."
 
-#: mode/katemodemenulist.cpp:142
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2563,13 +2563,13 @@ msgstr ""
 "Dùng tên ngôn ngữ hoặc phần mở rộng tệp để tìm các chế độ tô sáng cú pháp "
 "(ví dụ C++ hoặc .cpp)"
 
-#: mode/katemodemenulist.cpp:565
+#: mode/katemodemenulist.cpp:560
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Không mục nào khớp với tìm kiếm"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1087
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2578,7 +2578,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Phần khớp tìm kiếm tốt nhất"
 
-#: mode/katemodemenulist.cpp:1097
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
