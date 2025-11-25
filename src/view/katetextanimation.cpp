@@ -48,6 +48,7 @@ QRectF KateTextAnimation::rectForText()
     const QFontMetricsF fm = m_view->renderer()->currentFontMetrics();
     const int lineHeight = m_view->renderer()->lineHeight();
     QPoint pixelPos = m_view->cursorToCoordinate(m_range.start());
+    pixelPos = m_view->editorWidget()->mapFromParent(pixelPos);
 
     if (pixelPos.x() == -1 || pixelPos.y() == -1) {
         return QRectF();
