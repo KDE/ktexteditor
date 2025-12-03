@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-20 00:39+0000\n"
-"PO-Revision-Date: 2025-10-23 14:21+0000\n"
+"PO-Revision-Date: 2025-12-02 16:21+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -687,19 +687,19 @@ msgstr "Aðgengi:"
 #: dialogs/filetypeconfigwidget.ui:14
 #, kde-format
 msgid "&Filetype:"
-msgstr "&Skrárgerð:"
+msgstr "&Skráargerð:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbFiletypes)
 #: dialogs/filetypeconfigwidget.ui:24
 #, kde-format
 msgid "Select the filetype you want to change."
-msgstr "Veldu skrárgerðina sem þú vilt breyta."
+msgstr "Veldu skráagerðina sem þú vilt breyta."
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, btnNew)
 #: dialogs/filetypeconfigwidget.ui:31
 #, kde-format
 msgid "Create a new file type."
-msgstr "Búa til nýja skrárgerð."
+msgstr "Búa til nýja skráartegund."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnNew)
 #: dialogs/filetypeconfigwidget.ui:34
@@ -711,7 +711,7 @@ msgstr "&Nýtt"
 #: dialogs/filetypeconfigwidget.ui:41
 #, kde-format
 msgid "Delete the current file type."
-msgstr "Eyða núverandi skrárgerð."
+msgstr "Eyða núverandi skráagerð."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
 #: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1131
@@ -736,7 +736,7 @@ msgstr "&Heiti:"
 #, kde-format
 msgid ""
 "The name of the filetype will be the text of the corresponding menu item."
-msgstr "Skrárheitið verður notað sem textinn í samsvarandi valmyndaratriði."
+msgstr "Skráarheitið verður notað sem textinn í samsvarandi valmyndaratriði."
 
 #. i18n: ectx: property (text), widget (QLabel, lblSection)
 #: dialogs/filetypeconfigwidget.ui:89
@@ -748,7 +748,7 @@ msgstr "&Hluti:"
 #: dialogs/filetypeconfigwidget.ui:99
 #, kde-format
 msgid "The section name is used to organize the file types in menus."
-msgstr "Heiti hlutans er notað til að raða skrárgerðunum í valmyndum."
+msgstr "Heiti hlutans er notað til að raða skráagerðunum í valmyndum."
 
 #. i18n: ectx: property (text), widget (QLabel, lblVariables)
 #: dialogs/filetypeconfigwidget.ui:106
@@ -837,7 +837,7 @@ msgid ""
 "Sets priority for this file type. If more than one file type selects the "
 "same file, the one with the highest priority will be used."
 msgstr ""
-"Velur forgang fyrir þessa skrárgerð. Ef fleiri en ein skrárgerð velur sömu "
+"Velur forgang fyrir þessa skráagerð. Ef fleiri en ein skráategund velur sömu "
 "skrána, verður sú með hæsta forganginn notuð."
 
 #. i18n: ectx: property (text), widget (QLabel, lblMode)
@@ -2512,7 +2512,7 @@ msgstr "Eiginleikar fyrir %1"
 #: mode/katemodeconfigpage.cpp:178
 #, kde-format
 msgid "New Filetype"
-msgstr "Ný skrárgerð"
+msgstr "Ný skráategund"
 
 #: mode/katemodeconfigpage.cpp:293
 #, kde-format
@@ -2521,7 +2521,7 @@ msgid ""
 "Please note that this will automatically edit the associated file extensions "
 "as well."
 msgstr ""
-"Veldu Mime-gerðirnar sem þú vilt fyrir þessa skrárgerð.\n"
+"Veldu Mime-gerðirnar sem þú vilt fyrir þessa skráagerð.\n"
 "Athugaðu að þetta mun sjálfkrafa breyta skráarendingunum sem við eiga."
 
 #: mode/katemodeconfigpage.cpp:295
@@ -2532,7 +2532,7 @@ msgstr "Velja Mime-gerðir"
 #: mode/katemodeconfigpage.cpp:306
 #, kde-format
 msgid "Modes && Filetypes"
-msgstr "Snið og skrárgerðir"
+msgstr "Snið og skráagerðir"
 
 #: mode/katemodemenulist.cpp:138
 #, kde-format
@@ -2690,7 +2690,7 @@ msgstr ""
 "tími - stutt snið</li><li><tt>%D</tt>: dagsetning/tími - langt snið</"
 "li><li><tt>%h</tt>: núverandi tími</li><li><tt>%y</tt>: núverandi dagsetning "
 "- stutt snið</li><li><tt>%Y</tt>: núverandi dagsetning - langt snið</"
-"li><li><tt>%f</tt>: skrárheiti</li><li><tt>%U</tt>: full slóð að skjali</"
+"li><li><tt>%f</tt>: skráarheiti</li><li><tt>%U</tt>: full slóð að skjali</"
 "li><li><tt>%p</tt>: síðunúmer</li><li><tt>%P</tt>: heildar síðufjöldi</li></"
 "ul><br />"
 
@@ -2737,7 +2737,7 @@ msgstr "Núverandi dagsetning (langt snið)"
 #: printing/printconfigwidgets.cpp:366
 #, kde-format
 msgid "File Name"
-msgstr "Skrárheiti"
+msgstr "Skráarheiti"
 
 #: printing/printconfigwidgets.cpp:368
 #, kde-format
@@ -3941,13 +3941,13 @@ msgstr "Texti sem kemur í staðinn"
 #: spellcheck/spellcheckbar.cpp:148
 #, kde-format
 msgid "Spell check canceled."
-msgstr "Hætt við stafsetningarkönnun."
+msgstr "Hætt við stafsetningaryfirferð."
 
 #: spellcheck/spellcheckbar.cpp:245
 #, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Stafsetningarkönnun í gangi…"
+msgstr "Stafsetningaryfirferð í gangi…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -3958,7 +3958,7 @@ msgstr "Kanna stafsetningu"
 #: spellcheck/spellcheckbar.cpp:432 spellcheck/spellcheckbar.cpp:435
 #, kde-format
 msgid "Spell check complete."
-msgstr "Stafsetningarkönnun lokið."
+msgstr "Stafsetningaryfirferð lokið."
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
 #. i18n: ectx: property (whatsThis), widget (QLabel, m_unknownWord)
@@ -5619,7 +5619,7 @@ msgstr "Michel Ludwig"
 #: utils/kateglobal.cpp:91
 #, kde-format
 msgid "On-the-fly spell checking"
-msgstr "Stafsetningarkönnun við innslátt"
+msgstr "Stafsetningaryfirferð við innslátt"
 
 #: utils/kateglobal.cpp:92
 #, kde-format
@@ -6007,12 +6007,12 @@ msgstr "Skráarending núverandi skjals."
 #: utils/katevariableexpansionmanager.cpp:102
 #, kde-format
 msgid "File name without path of the current document."
-msgstr "Skrárheiti án slóðar núverandi skjals."
+msgstr "Skráarheiti án slóðar núverandi skjals."
 
 #: utils/katevariableexpansionmanager.cpp:110
 #, kde-format
 msgid "Full path of the current document including the file name."
-msgstr "Full slóð núverandi skjals, þ.m.t. skrárheitið."
+msgstr "Full slóð fyrirliggjandi skjals, þ.m.t. skráarheitið."
 
 #: utils/katevariableexpansionmanager.cpp:118
 #, kde-format
@@ -6022,7 +6022,7 @@ msgstr "Innihald núverandi skjals."
 #: utils/katevariableexpansionmanager.cpp:125
 #, kde-format
 msgid "Full path of the current document excluding the file name."
-msgstr "Full slóð núverandi skjals að frátöldu skrárheiti."
+msgstr "Full slóð fyrirliggjandi skjals að frátöldu skráarheiti."
 
 #: utils/katevariableexpansionmanager.cpp:133
 #, kde-format
@@ -6030,7 +6030,7 @@ msgid ""
 "Full document path including file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
-"Full slóð skjals, þ.m.t. skrárheiti, með skiltáknum slóða kerfisins (öfugt "
+"Full slóð skjals, þ.m.t. skráarheiti, með skiltáknum slóða kerfisins (öfugt "
 "skástrik á Windows)."
 
 #: utils/katevariableexpansionmanager.cpp:141
@@ -6039,7 +6039,7 @@ msgid ""
 "Full document path excluding file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
-"Full slóð skjals, fyrir utan skrárheiti, með skiltáknum slóða kerfisins "
+"Full slóð skjals, fyrir utan skráarheiti, með skiltáknum slóða kerfisins "
 "(öfugt skástrik á Windows)."
 
 #: utils/katevariableexpansionmanager.cpp:149
@@ -6240,7 +6240,7 @@ msgstr "Stilla bakgrunnslitinn fyrir núverandi línu."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
-msgstr "Velja sjálfgefið orðasafn fyrir stafsetningarkönnun."
+msgstr "Velja sjálfgefið orðasafn fyrir stafsetningaryfirferð."
 
 #: variableeditor/variablelineedit.cpp:165
 #, kde-format
@@ -7460,7 +7460,7 @@ msgstr "Sjálfvirk stafsetningarvilluleit"
 #: view/kateview.cpp:972
 #, kde-format
 msgid "Enable/disable automatic spell checking"
-msgstr "Virkja/afvirkja sjálfvirka stafsetningarkönnun"
+msgstr "Virkja/afvirkja sjálfvirka stafsetningaryfirferð"
 
 #: view/kateview.cpp:978
 #, kde-format
@@ -7471,7 +7471,7 @@ msgstr "Skipta um orðasafn..."
 #: view/kateview.cpp:979
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
-msgstr "Skipta um orðasafnið sem er notað við stafsetningarkönnun."
+msgstr "Skipta um hvað orðasafn er notað við stafsetningaryfirferð."
 
 #: view/kateview.cpp:983
 #, kde-format
@@ -7484,7 +7484,7 @@ msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
 msgstr ""
 "Fjarlægja öll aðskilin orðasafnssvið sem voru valin fyrir "
-"stafsetningarkönnun."
+"stafsetningaryfirferð."
 
 #: view/kateview.cpp:991
 #, kde-format
