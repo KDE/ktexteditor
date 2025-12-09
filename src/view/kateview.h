@@ -839,6 +839,9 @@ public:
     // should the cursor be painted during rendering?
     bool isCursorVisible() const;
 
+    // should the bracket match be highlighted during rendering?
+    bool isBracketMatchHighlightActive() const;
+
 private Q_SLOTS:
     void slotDocumentReloaded();
     void slotDocumentAboutToReload();

@@ -572,12 +572,16 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(EnableAccessibility, "Enable Accessibility", QString(), true));
     addConfigEntry(ConfigEntry(CycleThroughBookmarks, "Cycle Through Bookmarks", QString(), true));
 
-    // render line highlight and cursor just if focused
+    // render line highlight ,bracket highlight and cursor just if focused
     addConfigEntry(ConfigEntry(DisableCurrentLineHighlightIfInactive,
                                "Disable current line highlight if inactive",
                                QStringLiteral("disable-current-line-highlight-if-inactive"),
                                false));
     addConfigEntry(ConfigEntry(HideCursorIfInactive, "Hide cursor if inactive", QStringLiteral("hide-cursor-if-inactive"), false));
+    addConfigEntry(ConfigEntry(DisableBracketMatchHighlightIfInactive,
+                               "Disable bracket match highlight if inactive",
+                               QStringLiteral("disable-bracket-match-highlight-if-inactive"),
+                               false));
 
     // Never forget to finalize or the <CommandName> becomes not available
     finalizeConfigEntries();

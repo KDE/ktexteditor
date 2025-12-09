@@ -5296,4 +5296,9 @@ bool KTextEditor::ViewPrivate::isCursorVisible() const
     return hasFocus() || !config()->value(KateViewConfig::HideCursorIfInactive).toBool();
 }
 
+bool KTextEditor::ViewPrivate::isBracketMatchHighlightActive() const
+{
+    return hasFocus() || !config()->value(KateViewConfig::DisableBracketMatchHighlightIfInactive).toBool();
+}
+
 #include "moc_kateview.cpp"

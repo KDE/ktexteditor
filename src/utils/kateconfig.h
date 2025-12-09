@@ -1058,6 +1058,7 @@ public:
         CycleThroughBookmarks,
         DisableCurrentLineHighlightIfInactive,
         HideCursorIfInactive,
+        DisableBracketMatchHighlightIfInactive,
     };
 
 public:

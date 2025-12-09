@@ -254,6 +254,10 @@ class CodeCompletionModel;
  *       \li hide-cursor-if-inactive
  *       \li [bool]
  *       \li hide cursor if the view has no focus (\since 6.20)
+ *    \row
+ *       \li disable-bracket-match-highlight-if-inactive
+ *       \li [bool]
+ *       \li disable bracket match highlight if the view has no focus
  * \endtable
  *
  * You can retrieve the value of a config key using configValue() and set the value
