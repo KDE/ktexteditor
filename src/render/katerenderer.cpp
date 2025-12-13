@@ -462,14 +462,6 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
 
         // calculate attribute, default: normal attribute
         KTextEditor::Attribute::Ptr attribute = kateRange->attribute();
-        if (m_view && !m_view->isBracketMatchHighlightActive()) {
-            if (attribute && attribute->hasProperty(KTextEditor::Attribute::BackgroundBrush)) {
-                // Identify bracket match by its unique background color from the renderer config
-                if (attribute->background().color() == config()->highlightedBracketColor()) {
-                    continue;
-                }
-            }
-        }
         if (anyDynamicHlsActive) {
             // check mouse in
             if (KTextEditor::Attribute::Ptr attributeMouseIn = attribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn)) {

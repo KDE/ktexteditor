@@ -2401,6 +2401,14 @@ void KateViewInternal::moveCursorToSelectionEdge(bool scroll)
 
 void KateViewInternal::updateFoldingMarkersHighlighting()
 {
+    if (m_view && !m_view->isBracketMatchHighlightActive()) {
+        if (m_fmStart->toRange().isValid() || m_fmEnd->toRange().isValid()) {
+            m_fmStart->setRange(KTextEditor::Range::invalid());
+            m_fmEnd->setRange(KTextEditor::Range::invalid());
+        }
+        return;
+    }
+
     auto getStartOffset = [](int direction, int offset, int length) {
         return direction == 1 ? offset - length : offset;
     };
@@ -2698,6 +2706,17 @@ void KateViewInternal::updateBracketMarkAttributes()
 
 void KateViewInternal::updateBracketMarks()
 {
+    if (!m_view->isBracketMatchHighlightActive()) {
+        if (m_bm->toRange().isValid()) {
+            m_bm->setRange(KTextEditor::Range::invalid());
+            m_bmStart->setRange(KTextEditor::Range::invalid());
+            m_bmEnd->setRange(KTextEditor::Range::invalid());
+            m_bmLastFlashPos->setPosition(KTextEditor::Cursor::invalid());
+            hideBracketMatchPreview();
+        }
+        return;
+    }
+
     // add some limit to this, this is really endless on big files without limit
     const int maxLines = 5000;
     const KTextEditor::Range newRange = doc()->findMatchingBracket(m_cursor, maxLines);
@@ -4012,6 +4031,9 @@ void KateViewInternal::focusInEvent(QFocusEvent *)
 
     doc()->setActiveView(m_view);
 
+    updateBracketMarks();
+    updateFoldingMarkersHighlighting();
+
     // this will handle focus stuff in kateview
     view()->slotGotFocus();
 }
@@ -4026,6 +4048,9 @@ void KateViewInternal::focusOutEvent(QFocusEvent *)
     paintCursor();
 
     m_textHintTimer.stop();
+
+    updateBracketMarks();
+    updateFoldingMarkersHighlighting();
 
     view()->slotLostFocus();
 
