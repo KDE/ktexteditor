@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-29 01:34+0000\n"
+"POT-Creation-Date: 2025-11-17 09:00+0000\n"
 "PO-Revision-Date: 2024-05-08 19:30+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -753,8 +753,8 @@ msgid ""
 "The string is a semicolon-separated list of masks."
 msgstr ""
 "Du kan bruka jokerteikn til å velja filer etter filnamn. Typisk bruk av "
-"jokerteikn er ein asterisk og filetternamnet, for eksempel <code>*.txt; *."
-"text</code>. Du kan skilja mønster med semikolon."
+"jokerteikn er ein asterisk og filetternamnet, for eksempel <code>*.txt; "
+"*.text</code>. Du kan skilja mønster med semikolon."
 
 #. i18n: ectx: property (text), widget (QLabel, lblMimeTypes)
 #: dialogs/filetypeconfigwidget.ui:166
@@ -3285,9 +3285,9 @@ msgid ""
 msgstr ""
 "Med ein JavaScript-funksjon som argument, kall funksjonen for lista med "
 "(merkte) linjer og byt ut linja med resultatet av funksjonen.<br>Eksempel "
-"(sjå òg <code>ltrim</code>):<br><code>map 'function(line){return line."
-"replace(/^\\s+/, \"\");}'</code><br>Du kan òg spara nokre tastetrykk ved å "
-"skriva det slik:<br><code>map 'line.replace(/^\\s+/, \"\")'</code>"
+"(sjå òg <code>ltrim</code>):<br><code>map 'function(line){return "
+"line.replace(/^\\s+/, \"\");}'</code><br>Du kan òg spara nokre tastetrykk "
+"ved å skriva det slik:<br><code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
 #: script/data/commands/utils.js:448
 #, kde-format
@@ -5754,8 +5754,7 @@ msgstr ""
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-"gaute@verdsveven.com,korsvoll@skulelinux.no,eirbir@gmail.com,karl@huftis.org"
+msgstr "gaute@verdsveven.com,korsvoll@skulelinux.no,eirbir@gmail.com,karl@huftis.org"
 
 #: utils/kateglobal.cpp:272
 #, kde-format
@@ -7616,8 +7615,8 @@ msgid ""
 msgstr ""
 "<p>Dette er <b>kommandolinja</b> i Katepart.<br />Syntaks: <code><b>kommando "
 "[val]</b></code><br />Skriv <code><b>help list</b></code> for å få ei "
-"oversikt over tilgjengelege kommandoar.<br />Skriv <code><b>help &lt;"
-"kommando&gt;</b></code> for hjelp om ulike kommandoar.</p>"
+"oversikt over tilgjengelege kommandoar.<br />Skriv <code><b>help "
+"&lt;kommando&gt;</b></code> for hjelp om ulike kommandoar.</p>"
 
 #: view/kateviewhelpers.cpp:1256 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format

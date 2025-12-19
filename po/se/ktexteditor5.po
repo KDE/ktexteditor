@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-29 01:34+0000\n"
+"POT-Creation-Date: 2025-11-17 09:00+0000\n"
 "PO-Revision-Date: 2010-08-28 22:06+0200\n"
 "Last-Translator: Børre Gaup <boerre@skolelinux.no>\n"
 "Language-Team: Northern Sami <l10n-no@lister.huftis.org>\n"
@@ -781,8 +781,8 @@ msgid ""
 msgstr ""
 "Dán listtus oainnát olámuttus siskkildanmodusat. Meroštuvvon siskkildanmodus "
 "geavahuvvo buot ođđa dokumeanttaide. Fuomáš ahte maiddái lea vejolaš "
-"meroštit siskkildanmodusa dokumeantavariábeliiguin, modusiiguin dahje ."
-"kateconfig fiillain."
+"meroštit siskkildanmodusa dokumeantavariábeliiguin, modusiiguin "
+"dahje .kateconfig fiillain."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbIndentationMode)
 #: dialogs/indentationconfigwidget.ui:75
@@ -7286,8 +7286,8 @@ msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
 "p>"
 msgstr ""
-"<p>Jus háliidat veahkki dihto gohččuma birra, čále <code>'help &lt;"
-"gohččun&gt;'</code></p>"
+"<p>Jus háliidat veahkki dihto gohččuma birra, čále <code>'help "
+"&lt;gohččun&gt;'</code></p>"
 
 #: view/kateviewhelpers.cpp:1159
 #, kde-format

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-29 01:34+0000\n"
+"POT-Creation-Date: 2025-11-17 09:00+0000\n"
 "PO-Revision-Date: 2015-05-31 21:21+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -787,8 +787,8 @@ msgid ""
 "Sets priority for this file type. If more than one file type selects the "
 "same file, the one with the highest priority will be used."
 msgstr ""
-"Setter prioritet for denne filtypen. Hvis flere filtyper velger ut samme fil,"
-"så vil filtypen med høyest prioritet brukes."
+"Setter prioritet for denne filtypen. Hvis flere filtyper velger ut samme "
+"fil,så vil filtypen med høyest prioritet brukes."
 
 #. i18n: ectx: property (text), widget (QLabel, lblMode)
 #: dialogs/indentationconfigwidget.ui:43
@@ -3183,9 +3183,9 @@ msgid ""
 msgstr ""
 "Gitt en JavaScript-funksjon som argument, kall funksjonen for lista over "
 "(valgte) linjer og erstatt dem med returverdien fra funksjonen.<br> Eksempel "
-"(slå sammen valgte linjer):<br> <code>each 'function(lines){return lines."
-"join(\", \")}'</code><br>For å spare litt skriving kan du oppnå det samme "
-"slik:<br><code>each 'lines.join(\", \")'</code>"
+"(slå sammen valgte linjer):<br> <code>each 'function(lines){return "
+"lines.join(\", \")}'</code><br>For å spare litt skriving kan du oppnå det "
+"samme slik:<br><code>each 'lines.join(\", \")'</code>"
 
 #: script/data/commands/utils.js:444
 #, kde-format
@@ -4753,11 +4753,11 @@ msgid ""
 msgstr ""
 "<p>Denne lista viser kontekstene for gjeldende syntaksmerkingsmodus, og "
 "tilbyr virkemidler for å endre disse. Navnene avhenger av gjeldende "
-"innstillinger. </p><p>For å endre ved bruk av tastaturet, tast<strong>&lt;"
-"mellomrom&gt;</strong>  og velg en egenskap fra sprettoppmenyen. </p><p>For "
-"å endre farger, pek på fargekartet, eller velg farger fra sprettoppmenyen. </"
-"p><p>Du kan slå av fargene for Bakgrunn og Markert Bakgrunn fra "
-"sprettoppmenyen når det passer.</p>"
+"innstillinger. </p><p>For å endre ved bruk av tastaturet, "
+"tast<strong>&lt;mellomrom&gt;</strong>  og velg en egenskap fra "
+"sprettoppmenyen. </p><p>For å endre farger, pek på fargekartet, eller velg "
+"farger fra sprettoppmenyen. </p><p>Du kan slå av fargene for Bakgrunn og "
+"Markert Bakgrunn fra sprettoppmenyen når det passer.</p>"
 
 #: syntax/katethemeconfig.cpp:1024
 #, kde-format
@@ -6897,8 +6897,8 @@ msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
 "bookmarks, for instance."
 msgstr ""
-"Vis/skjul merkene på det loddrette rullefeltet.<br /><br />Merkene viser f."
-"eks. bokmerker."
+"Vis/skjul merkene på det loddrette rullefeltet.<br /><br />Merkene viser "
+"f.eks. bokmerker."
 
 #: view/kateview.cpp:786
 #, kde-format
@@ -7548,8 +7548,8 @@ msgstr ""
 "<p>Dette er Kateparts <b>kommandolinje</b>.<br />Syntaks: <code><b>kommando "
 "[ argumenter ]</b></code><br />En kan få en liste over tilgjengelige "
 "kommandoer ved å taste inn<code><b>help list </b></code><br />Hjelp med "
-"enkeltstående kommandoer kan fås ved å taste inn  <code><b>help &lt;"
-"command&gt;</b></code></p>"
+"enkeltstående kommandoer kan fås ved å taste inn  <code><b>help "
+"&lt;command&gt;</b></code></p>"
 
 #: view/kateviewhelpers.cpp:1256 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
