@@ -351,7 +351,7 @@ KateDocumentConfig::KateDocumentConfig()
     addConfigEntry(ConfigEntry(SwapFileDirectory, "Swap Directory", QString(), QString()));
     addConfigEntry(ConfigEntry(SwapFileSyncInterval, "Swap Sync Interval", QString(), 15));
     addConfigEntry(ConfigEntry(LineLengthLimit, "Line Length Limit", QString(), 10000));
-    addConfigEntry(ConfigEntry(CamelCursor, "Camel Cursor", QString(), true));
+    addConfigEntry(ConfigEntry(CamelCursor, "Camel Cursor", QString(), false));
     addConfigEntry(ConfigEntry(AutoDetectIndent, "Auto Detect Indent", QString(), true));
 
     // Auto save and co.
