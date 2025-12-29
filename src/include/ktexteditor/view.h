@@ -257,7 +257,7 @@ class CodeCompletionModel;
  *    \row
  *       \li disable-bracket-match-highlight-if-inactive
  *       \li [bool]
- *       \li disable bracket match highlight if the view has no focus
+ *       \li disable bracket match and code folding highlight if the view has no focus (\since 6.22)
  * \endtable
  *
  * You can retrieve the value of a config key using configValue() and set the value

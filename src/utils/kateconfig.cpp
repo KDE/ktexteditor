@@ -578,6 +578,7 @@ KateViewConfig::KateViewConfig()
                                QStringLiteral("disable-current-line-highlight-if-inactive"),
                                false));
     addConfigEntry(ConfigEntry(HideCursorIfInactive, "Hide cursor if inactive", QStringLiteral("hide-cursor-if-inactive"), false));
+    // This also disables the code folding region highlighting.
     addConfigEntry(ConfigEntry(DisableBracketMatchHighlightIfInactive,
                                "Disable bracket match highlight if inactive",
                                QStringLiteral("disable-bracket-match-highlight-if-inactive"),
