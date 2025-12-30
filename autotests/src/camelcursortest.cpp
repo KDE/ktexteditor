@@ -35,7 +35,7 @@ void CamelCursorTest::testWordMovementSingleRow_data()
      * NOTE: If you are here to fix a bug, try not to add a new function please.
      * Instead consider adding a row here with the label as your bug-number.
      *
-     * The other test cases are small because if this works, they will work automaitcally
+     * The other test cases are small because if this works, they will work automatically
      * since the core functionality is correct.
      */
 

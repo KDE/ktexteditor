@@ -636,7 +636,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     // Specify that the last was backwards when using '?'
     DoTest("foo foo bar foo foo", "ww?foo\\enter^wwnrX", "foo Xoo bar foo foo");
 
-    // ... and make sure we do  the equivalent with "/"
+    // ... and make sure we do the equivalent with "/"
     BeginTest(QStringLiteral("foo foo bar foo foo"));
     TestPressKey(QStringLiteral("ww?foo\\enter^ww/foo"));
     QCOMPARE(emulatedCommandTypeIndicator()->text(), QStringLiteral("/"));
@@ -2688,7 +2688,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
 
-    // Pressing "n" when there is only a single  change we can make aborts incremental search
+    // Pressing "n" when there is only a single change we can make aborts incremental search
     // and replace.
     BeginTest(QStringLiteral("foo"));
     TestPressKey(QStringLiteral(":s/foo/bar/c\\enter"));
@@ -2697,7 +2697,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     TestPressKey(QStringLiteral("ixyz\\esc"));
     FinishTest("xyzfoo");
 
-    // Pressing "n" when there is only a single  change we can make aborts incremental search
+    // Pressing "n" when there is only a single change we can make aborts incremental search
     // and replace, and shows the no replacements on no lines.
     BeginTest(QStringLiteral("foo"));
     TestPressKey(QStringLiteral(":s/foo/bar/c\\enter"));
@@ -3102,13 +3102,13 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
         }
     }
 
-    // Test that we don't inadvertantly trigger shortcuts in kate_view when typing them in the
+    // Test that we don't inadvertently trigger shortcuts in kate_view when typing them in the
     // emulated command bar.  Requires the above test for shortcuts to be sent and received correctly
     // to pass.
     {
         QVERIFY(mainWindow->isActiveWindow());
         QVERIFY(printAction);
-        FailsIfSlotCalled failsIfActionTriggered(QStringLiteral("The kate_view shortcut should not be triggered by typing it in emulated  command bar!"));
+        FailsIfSlotCalled failsIfActionTriggered(QStringLiteral("The kate_view shortcut should not be triggered by typing it in emulated command bar!"));
         // Don't invoke Print on failure, as this hangs instead of failing.
         // disconnect(printAction, SIGNAL(triggered(bool)), kate_document, SLOT(print()));
         connect(printAction, &QAction::triggered, &failsIfActionTriggered, &FailsIfSlotCalled::slot);

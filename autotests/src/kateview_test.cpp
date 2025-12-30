@@ -650,7 +650,7 @@ void KateViewTest::testFindSelected()
     // cursor jumps to the end of the word
     QCOMPARE(view->cursorPosition(), cursor2);
 
-    // second time we call this it actually jumps to the next occurance
+    // second time we call this it actually jumps to the next occurrence
     view->findSelectedForwards();
     QCOMPARE(view->selectionRange(), range2);
     QCOMPARE(view->cursorPosition(), cursor3);

@@ -212,7 +212,7 @@ void ViewTest::visualLineUpDownTests()
     }
 
     {
-        // Deal with dynamic wrapping and indented blocks - continuations of a line are "invisibly" idented by
+        // Deal with dynamic wrapping and indented blocks - continuations of a line are "invisibly" indented by
         // the same amount as the beginning of the line, and we have to subtract this indentation.
         const QString unindentedFirstLine = QStringLiteral("stickyhelper\n");
         const int numIndentationSpaces = 5;

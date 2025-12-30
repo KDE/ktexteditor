@@ -120,7 +120,7 @@ begin
         100: if e then s1;
 
         333333: if c then
-              begin // CKECK: should indent one level from case value
+              begin // CHECK: should indent one level from case value
                 s3; // CHECK: should be indented another level
                 s4
               end;

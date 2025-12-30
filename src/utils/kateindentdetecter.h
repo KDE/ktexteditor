@@ -12,7 +12,7 @@ class DocumentPrivate;
 };
 
 /**
- * File indentation detecter. Mostly ported from VSCode to here
+ * File indentation detector. Mostly ported from VSCode to here
  */
 class KateIndentDetecter
 {

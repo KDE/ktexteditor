@@ -120,7 +120,7 @@ MACRO(KTEXTEDITOR_INDENT_TEST _testname)
   ADD_TEST (NAME kateindenttest_${_testname} COMMAND kateindenttest ${OFFSCREEN_QPA} ${_testname})
 ENDMACRO(KTEXTEDITOR_INDENT_TEST)
 
-# test different indenters sepearately to have smaller test chunks, that takes LONG
+# test different indenters seperately to have smaller test chunks, that takes LONG
 KTEXTEDITOR_INDENT_TEST ("testPython")
 KTEXTEDITOR_INDENT_TEST ("testJulia")
 KTEXTEDITOR_INDENT_TEST ("testCstyle")

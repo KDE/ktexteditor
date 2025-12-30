@@ -67,7 +67,7 @@ proc_state := proc_header;
 annotate_push( procsym );
 end;
 s1;                   // coding error, a case value should be here
-   { remember we are in the declaraions part }
+   { remember we are in the declarations part }
                         varsym, typesym, constsym, labelsym:
                            proc_state := proc_declarations;
 

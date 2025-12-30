@@ -36,7 +36,7 @@ class KateAutoIndent : public QObject
 {
     Q_OBJECT
     /*
-     * Static methods to list indention modes
+     * Static methods to list indentation modes
      */
 public:
     /**
@@ -107,7 +107,7 @@ private:
     /**
      * Produces a string with the proper indentation characters for its length.
      *
-     * @param length The length of the indention in characters.
+     * @param length The length of the indentation in characters.
      * @param align Length of alignment, ignored if less of equal to length
      * @return A QString representing @p length characters (factoring in tabs and spaces)
      */
@@ -155,7 +155,7 @@ public:
      * Switch indenter
      * Nop if already set to given mode
      * Otherwise switch to given indenter or to "None" if no suitable found...
-     * @param name indention mode wanted
+     * @param name indentation mode wanted
      */
     void setMode(const QString &name);
 
@@ -175,7 +175,7 @@ public:
     }
 
     /**
-     * Update indenter's configuration (indention width, etc.)
+     * Update indenter's configuration (indentation width, etc.)
      * Is called in the updateConfig() of the document and after creation of the indenter...
      */
     void updateConfig();

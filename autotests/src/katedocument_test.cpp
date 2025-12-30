@@ -625,7 +625,7 @@ void KateDocumentTest::testAutoReload()
 
     // Some magic value. You can wait as long as you like after write to file,
     // without to wait before it doesn't work here. It mostly fails with 500,
-    // it tend to work with 600, but is not guarantied to work even with 800
+    // it tend to work with 600, but is not guaranteed to work even with 800
     QTest::qWait(1000);
 
     file.write("\nTest");

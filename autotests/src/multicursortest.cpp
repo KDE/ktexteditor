@@ -820,7 +820,7 @@ void MulticursorTest::testMultiCopyPaste()
         view->copy();
     }
 
-    // Same number of cursors when pasting => each line gets pasted into matching cursor postion
+    // Same number of cursors when pasting => each line gets pasted into matching cursor position
     {
         KTextEditor::DocumentPrivate doc;
         doc.setText(QStringLiteral("\n\n\n\n"));

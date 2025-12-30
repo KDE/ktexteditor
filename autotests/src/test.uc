@@ -101,7 +101,7 @@ function byte BestMode()
 	return 0;
 }
 
-// super desireable for bot waiting to impact jump
+// super desirable for bot waiting to impact jump
 function float GetAIRating()
 {
 	local Bot B;

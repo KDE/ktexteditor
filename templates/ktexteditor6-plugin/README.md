@@ -27,7 +27,7 @@ Start Kate on the commandline, with adapted QT_PLUGIN_PATH:
     export QT_PLUGIN_PATH=$MYKATEPLUGINPATH:$QT_PLUGIN_PATH
     kate --startanon
 
-Go to Settings / Configurate Kate / Application / Plugins
+Go to Settings / Configure Kate / Application / Plugins
 Search and enable your plugin
 
 

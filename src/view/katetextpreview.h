@@ -70,7 +70,7 @@ public:
 
     /**
      * Sets whether folded lines are hidden or not.
-     * By default, folded liens are not visible.
+     * By default, folded lines are not visible.
      */
     void setShowFoldedLines(bool on);
 

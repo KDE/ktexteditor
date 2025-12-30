@@ -124,7 +124,7 @@ protected:
     void clearAllMappings();
     void clearAllMacros();
 
-    // Other auxiliar functions.
+    // Other auxiliary functions.
 
     void ensureKateViewVisible();
 
