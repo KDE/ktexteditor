@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-20 00:39+0000\n"
-"PO-Revision-Date: 2025-12-21 12:16+0300\n"
+"PO-Revision-Date: 2025-12-30 13:35+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.11.80\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -95,7 +95,7 @@ msgstr "Seçim"
 #: data/katepart5ui.rc:53
 #, kde-format
 msgid "Capitalization"
-msgstr "Büyük Harfe Çevir"
+msgstr "Harf Küçüklüğü/Büyüklüğü"
 
 #. i18n: ectx: Menu (view)
 #: data/katepart5ui.rc:73
@@ -2426,8 +2426,8 @@ msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
-"“%1” belgesi değiştirildi.\n"
-"Değişiklikleri kaydetmek mi yok saymak mı istiyorsunuz?"
+"“%1” belgesinde değişiklikler yapıldı.\n"
+"Değişiklikleri kaydetmek mi yoksa atmak mı istiyorsunuz?"
 
 #: document/katedocument.cpp:5947
 #, kde-format
@@ -6866,7 +6866,7 @@ msgstr "Sağdan Sola Metin Yönünü Zorla"
 #: view/kateview.cpp:600
 #, kde-format
 msgid "Uppercase"
-msgstr "Büyük Harf"
+msgstr "BÜYÜK Harf"
 
 #: view/kateview.cpp:603
 #, kde-format
@@ -6874,13 +6874,12 @@ msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
 "cursor if no text is selected."
 msgstr ""
-"Seçimi veya herhangi bir metin seçili değilse imlecin sağındaki karakteri "
-"BÜYÜK harfe dönüştürün."
+"Seçimi veya seçili metin yoksa imlecin sağındaki karakteri BÜYÜK harf yapın."
 
 #: view/kateview.cpp:609
 #, kde-format
 msgid "Lowercase"
-msgstr "Küçük Harf"
+msgstr "küçük Harf"
 
 #: view/kateview.cpp:612
 #, kde-format
@@ -6888,13 +6887,12 @@ msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
 "cursor if no text is selected."
 msgstr ""
-"Seçili metin alanını veya hiç metin seçilmemişse imlecin hemen sağındaki "
-"harfi küçük harfler haline çevir."
+"Seçimi veya seçili metin yoksa imlecin sağındaki karakteri küçük harf yapın."
 
 #: view/kateview.cpp:618
 #, kde-format
 msgid "Capitalize"
-msgstr "Büyük Harf Yap"
+msgstr "Baş Harfleri Büyük Yap"
 
 #: view/kateview.cpp:621
 #, kde-format
@@ -6902,8 +6900,8 @@ msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
 "selected."
 msgstr ""
-"Hiçbir metin seçili değilse seçimi veya imlecin altındaki sözcüğü BÜYÜK "
-"harfle yazın."
+"Seçimi Büyük harfle başlatın veya hiçbir metin seçili değilse imlecin "
+"altındaki sözcüğü Büyük harfle başlatın."
 
 #: view/kateview.cpp:626
 #, kde-format
@@ -7063,7 +7061,7 @@ msgstr "Bu, görüntü yazıtipi büyüklüğünü artırır."
 #: view/kateview.cpp:741
 #, kde-format
 msgid "Shrink Font"
-msgstr "Yazıtipini Puntosunu Azalt"
+msgstr "Yazıtipi Puntosunu Azalt"
 
 #: view/kateview.cpp:743
 #, kde-format
