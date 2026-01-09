@@ -597,6 +597,11 @@ QTextToSpeech *KTextEditor::EditorPrivate::speechEngine(KTextEditor::ViewPrivate
 void KTextEditor::EditorPrivate::speechEngineUserDestoyed()
 {
     Q_ASSERT(m_speechEngine);
+
+    // clear m_speechEngineLastUser early to avoid that it is used in error handling for speechError
+    // that crashes, see bug 514375
+    m_speechEngineLastUser.clear();
+
     m_speechEngine->stop();
 }
 
