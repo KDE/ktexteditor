@@ -572,13 +572,16 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(EnableAccessibility, "Enable Accessibility", QString(), true));
     addConfigEntry(ConfigEntry(CycleThroughBookmarks, "Cycle Through Bookmarks", QString(), true));
 
-    // render line highlight ,bracket highlight and cursor just if focused
+    // disable the line highlighting if the view has no focus?
     addConfigEntry(ConfigEntry(DisableCurrentLineHighlightIfInactive,
                                "Disable current line highlight if inactive",
                                QStringLiteral("disable-current-line-highlight-if-inactive"),
                                false));
+
+    // disable display of the cursor if the view has no focus?
     addConfigEntry(ConfigEntry(HideCursorIfInactive, "Hide cursor if inactive", QStringLiteral("hide-cursor-if-inactive"), false));
-    // This also disables the code folding region highlighting.
+
+    // disable the bracket highlight & code folding region highlighting if the view has no focus?
     addConfigEntry(ConfigEntry(DisableBracketMatchHighlightIfInactive,
                                "Disable bracket match highlight if inactive",
                                QStringLiteral("disable-bracket-match-highlight-if-inactive"),
