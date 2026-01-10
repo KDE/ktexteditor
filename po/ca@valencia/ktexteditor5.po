@@ -1,12 +1,12 @@
 # Translation of ktexteditor5.po to Catalan (Valencian)
-# Copyright (C) 1999-2024 This_file_is_part_of_KDE
+# Copyright (C) 1999-2026 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # SPDX-FileCopyrightText: 1999, 2000, 2001, 2004, 2005, 2006, 2007 Sebastià Pla i Sanz <sps@sastia.com>
 # SPDX-FileCopyrightText: 2002, 2003, 2004, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022 Antoni Bella Pérez <antonibella5@yahoo.com>
 # SPDX-FileCopyrightText: 2004, 2005 Albert Astals Cid <aacid@kde.org>
-# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2026 Josep M. Ferrer <txemaq@gmail.com>
 # SPDX-FileCopyrightText: 2009 Robert Millan <rmh@aybabtu.com>
 # SPDX-FileCopyrightText: 2019 Empar Montoro Martín <montoro_mde@gva.es>
 msgid ""
@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:00+0000\n"
-"PO-Revision-Date: 2024-01-29 20:33+0100\n"
+"PO-Revision-Date: 2026-01-09 11:48+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -1331,7 +1331,7 @@ msgstr ""
 #: swapfile/kateswapdiffcreator.cpp:101 swapfile/kateswapdiffcreator.cpp:135
 #, kde-format
 msgid "Error Creating Diff"
-msgstr "S'ha produït un error en crear «diff»"
+msgstr "S'ha produït un error mentre es creava «diff»"
 
 #: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:142
 #, kde-format
@@ -2002,7 +2002,7 @@ msgstr ""
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
 "Flaix del parèntesi concordant quan el cursor es mou fins al parèntesi "
-"emparellat"
+"aparellat"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:221
@@ -2353,7 +2353,7 @@ msgstr ""
 #: document/katedocument.cpp:2723
 #, kde-format
 msgid "Failed to create backup copy."
-msgstr "No s'ha pogut crear la còpia de seguretat."
+msgstr "Ha fallat mentre es creava la còpia de seguretat."
 
 #: document/katedocument.cpp:2724
 #, kde-format
@@ -3530,12 +3530,12 @@ msgstr "No s'ha definit cap ajuda per a l'ordre «%1» en l'script %2"
 #: script/katescript.cpp:214
 #, kde-format
 msgid "Error loading script %1\n"
-msgstr "S'ha produït un error en carregar l'script %1\n"
+msgstr "S'ha produït un error mentre es carregava l'script %1\n"
 
 #: script/katescript.cpp:215
 #, kde-format
 msgid "Error loading script %1"
-msgstr "S'ha produït un error en carregar l'script %1"
+msgstr "S'ha produït un error mentre es carregava l'script %1"
 
 #: script/katescriptmanager.cpp:311
 #, kde-format
@@ -5393,7 +5393,7 @@ msgstr "No es troba el mode «%1»"
 #: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
-msgstr "No s'ha pogut convertir l'argument «%1» a un nombre enter."
+msgstr "Ha fallat mentre es convertia l'argument «%1» a un nombre enter."
 
 #: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
@@ -5868,9 +5868,7 @@ msgstr "Tothom que ha col·laborat i als que he oblidat de mencionar"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-"SPDX-FileCopyrightText: 2019 Empar Montoro Martín,Sebastià Pla i Sanz,Antoni "
-"Bella"
+msgstr "Empar Montoro Martín,Sebastià Pla i Sanz,Antoni Bella"
 
 #: utils/kateglobal.cpp:153
 #, kde-format
