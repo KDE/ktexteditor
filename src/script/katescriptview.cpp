@@ -7,6 +7,7 @@
 
 #include "katescriptview.h"
 
+#include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "kateview.h"
@@ -96,8 +97,14 @@ QJSValue KateScriptView::virtualCursorPosition()
 
 void KateScriptView::setVirtualCursorPosition(int line, int column)
 {
-    const KTextEditor::Cursor cursor(line, column);
-    m_view->setCursorPositionVisual(cursor);
+    // we need a valid line to convert the tabs
+    if (line >= 0 && line < m_view->doc()->lines()) {
+        // back from virtual columns that expanded tabs to index into the string
+        const Kate::TextLine l = m_view->doc()->kateTextLine(line);
+        const int realColumn = l.fromVirtualColumn(column, m_view->doc()->config()->tabWidth());
+        const KTextEditor::Cursor cursor(line, realColumn);
+        m_view->setCursorPosition(cursor);
+    }
 }
 
 void KateScriptView::setVirtualCursorPosition(const QJSValue &jscursor)
