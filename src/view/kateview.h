@@ -183,8 +183,6 @@ public:
 
     QPoint cursorPositionCoordinates() const override;
 
-    bool setCursorPositionVisual(const KTextEditor::Cursor position);
-
     QScrollBar *verticalScrollBar() const override;
     QScrollBar *horizontalScrollBar() const override;
 
@@ -300,7 +298,7 @@ private:
 
     // Internal
 public:
-    bool setCursorPositionInternal(const KTextEditor::Cursor position, uint tabwidth = 1, bool calledExternally = false);
+    bool setCursorPositionInternal(const KTextEditor::Cursor position, bool calledExternally = false);
 
     //
     // KTextEditor::ConfigInterface

@@ -1696,7 +1696,7 @@ void KTextEditor::ViewPrivate::slotDocumentAboutToReload()
             // Ensure the view jumps not back when user scrolls around
             const int firstVisibleLine = 1 + lastVisibleLine - m_viewInternal->linesDisplayed();
             const int newLine = qBound(firstVisibleLine, currentLine, lastVisibleLine);
-            setCursorPositionVisual(KTextEditor::Cursor(newLine, cursorPosition().column()));
+            setCursorPosition(KTextEditor::Cursor(newLine, cursorPosition().column()));
         }
     } else {
         m_gotoBottomAfterReload = false;
@@ -1843,35 +1843,19 @@ void KTextEditor::ViewPrivate::slotUpdateUndo()
     m_editRedo->setEnabled(doc()->isReadWrite() && doc()->redoCount() > 0);
 }
 
-bool KTextEditor::ViewPrivate::setCursorPositionInternal(const KTextEditor::Cursor position, uint tabwidth, bool calledExternally)
+bool KTextEditor::ViewPrivate::setCursorPositionInternal(const KTextEditor::Cursor position, bool calledExternally)
 {
     if (position.line() < 0 || position.line() >= doc()->lines()) {
         return false;
     }
 
-    Kate::TextLine l = doc()->kateTextLine(position.line());
-    const QString line_str = l.text();
-
-    int x = 0;
-    int z = 0;
-    for (; z < line_str.length() && z < position.column(); z++) {
-        if (line_str[z] == QLatin1Char('\t')) {
-            x += tabwidth - (x % tabwidth);
-        } else {
-            x++;
-        }
+    // if not in block selection mode: upper bound is the line length
+    int column = position.column();
+    if (!blockSelection()) {
+        column = std::min(column, doc()->lineLength(position.line()));
     }
 
-    if (blockSelection()) {
-        if (z < position.column()) {
-            x += position.column() - z;
-        }
-    }
-
-    m_viewInternal->updateCursor(KTextEditor::Cursor(position.line(), x),
-                                 false,
-                                 calledExternally /* force center for external calls, see bug 408418 */,
-                                 calledExternally);
+    m_viewInternal->updateCursor({position.line(), column}, false, calledExternally /* force center for external calls, see bug 408418 */, calledExternally);
 
     return true;
 }
@@ -3751,7 +3735,7 @@ void KTextEditor::ViewPrivate::paste(const QString *textToPaste)
 
 bool KTextEditor::ViewPrivate::setCursorPosition(KTextEditor::Cursor position)
 {
-    return setCursorPositionInternal(position, 1, true);
+    return setCursorPositionInternal(position, true);
 }
 
 KTextEditor::Cursor KTextEditor::ViewPrivate::cursorPosition() const
@@ -3828,11 +3812,6 @@ QRect KTextEditor::ViewPrivate::textAreaRectInternal() const
     const auto topLeft = m_viewInternal->mapTo(this, sourceRect.topLeft());
     const auto bottomRight = m_viewInternal->mapTo(this, sourceRect.bottomRight());
     return {topLeft, bottomRight};
-}
-
-bool KTextEditor::ViewPrivate::setCursorPositionVisual(const KTextEditor::Cursor position)
-{
-    return setCursorPositionInternal(position, doc()->config()->tabWidth(), true);
 }
 
 QScrollBar *KTextEditor::ViewPrivate::verticalScrollBar() const
