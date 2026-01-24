@@ -4,6 +4,8 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
+#include <ranges>
+
 #include "marks.h"
 #include "katedocument.h"
 #include "kateview.h"
@@ -53,13 +55,13 @@ void Marks::readSessionConfig(const KConfigGroup &config)
 
 void Marks::writeSessionConfig(KConfigGroup &config) const
 {
-    if (m_marks.isEmpty()) {
+    if (m_marks.empty()) {
         return;
     }
 
     QStringList l;
     l.reserve(m_marks.size());
-    for (const auto &[key, value] : m_marks.asKeyValueRange()) {
+    for (const auto &[key, value] : m_marks) {
         l << key << QString::number(value->line()) << QString::number(value->column());
     }
     config.writeEntry("ViMarks", l);
@@ -78,14 +80,14 @@ void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor pos)
 
     // if we have already a cursor for this type: adjust it
     bool needToAdjustVisibleMark = true;
-    if (KTextEditor::MovingCursor *oldCursor = m_marks.value(mark)) {
+    if (const auto it = m_marks.find(mark); it != m_marks.end()) {
         // cleanup mark display only if line changes
+        const auto oldCursor = it->second.get();
         needToAdjustVisibleMark = oldCursor->line() != pos.line();
         if (needToAdjustVisibleMark) {
             int number_of_marks = 0;
-            const auto keys = m_marks.keys();
-            for (QChar c : keys) {
-                if (m_marks.value(c)->line() == oldCursor->line()) {
+            for (const auto &[_, value] : m_marks) {
+                if (value->line() == oldCursor->line()) {
                     number_of_marks++;
                 }
             }
@@ -100,7 +102,7 @@ void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor pos)
         // if no old mark of that type, create new one
         const KTextEditor::MovingCursor::InsertBehavior behavior =
             moveoninsert ? KTextEditor::MovingCursor::MoveOnInsert : KTextEditor::MovingCursor::StayOnInsert;
-        m_marks.insert(mark, m_doc->newMovingCursor(pos, behavior));
+        m_marks.emplace(mark, m_doc->newMovingCursor(pos, behavior));
     }
 
     // Showing what mark we set, can be skipped if we did not change the line
@@ -122,9 +124,8 @@ void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor pos)
 
 KTextEditor::Cursor Marks::getMarkPosition(const QChar &mark) const
 {
-    if (m_marks.contains(mark)) {
-        KTextEditor::MovingCursor *c = m_marks.value(mark);
-        return KTextEditor::Cursor(c->line(), c->column());
+    if (const auto it = m_marks.find(mark); it != m_marks.end()) {
+        return KTextEditor::Cursor(it->second->line(), it->second->column());
     }
 
     return KTextEditor::Cursor::invalid();
@@ -139,17 +140,18 @@ void Marks::markChanged(KTextEditor::Document *doc, KTextEditor::Mark mark, KTex
     }
 
     if (action == KTextEditor::Document::MarkRemoved) {
-        const auto keys = m_marks.keys();
-        for (QChar markerChar : keys) {
-            if (m_marks.value(markerChar)->line() == mark.line) {
-                m_marks.remove(markerChar);
+        for (auto it = m_marks.begin(); it != m_marks.end();) {
+            if (it->second->line() == mark.line) {
+                it = m_marks.erase(it);
+            } else {
+                ++it;
             }
         }
     } else if (action == KTextEditor::Document::MarkAdded) {
         bool freeMarkerCharFound = false;
 
         for (const QChar &markerChar : UserMarks) {
-            if (!m_marks.value(markerChar)) {
+            if (m_marks.find(markerChar) == m_marks.end()) {
                 setMark(markerChar, KTextEditor::Cursor(mark.line, 0));
                 freeMarkerCharFound = true;
                 break;
@@ -165,7 +167,7 @@ void Marks::markChanged(KTextEditor::Document *doc, KTextEditor::Mark mark, KTex
 
 void Marks::syncViMarksAndBookmarks()
 {
-    const QHash<int, KTextEditor::Mark *> &marks = m_doc->marks();
+    const auto &marks = m_doc->marks();
 
     //  Each bookmark should have a vi mark on the same line.
     for (auto mark : marks) {
@@ -174,7 +176,7 @@ void Marks::syncViMarksAndBookmarks()
         }
 
         bool thereIsViMarkForThisLine = false;
-        for (auto cursor : std::as_const(m_marks)) {
+        for (const auto &[_, cursor] : m_marks) {
             if (cursor->line() == mark->line) {
                 thereIsViMarkForThisLine = true;
                 break;
@@ -186,7 +188,7 @@ void Marks::syncViMarksAndBookmarks()
         }
 
         for (const QChar &markerChar : UserMarks) {
-            if (!m_marks.value(markerChar)) {
+            if (m_marks.find(markerChar) == m_marks.end()) {
                 setMark(markerChar, KTextEditor::Cursor(mark->line, 0));
                 break;
             }
@@ -194,9 +196,16 @@ void Marks::syncViMarksAndBookmarks()
     }
 
     // For showable vi mark a line should be bookmarked.
-    const auto keys = m_marks.keys();
+    // we modify m_marks inside indirectly, as we add stuff!
+    auto ks = std::views::keys(m_marks);
+    const std::vector<QChar> keys{ks.begin(), ks.end()};
     for (QChar markChar : keys) {
         if (!isShowable(markChar)) {
+            continue;
+        }
+
+        const auto thisMark = m_marks.find(markChar);
+        if (thisMark == m_marks.end()) {
             continue;
         }
 
@@ -206,14 +215,14 @@ void Marks::syncViMarksAndBookmarks()
                 continue;
             }
 
-            if (m_marks.value(markChar)->line() == mark->line) {
+            if (thisMark->second->line() == mark->line) {
                 thereIsKateMarkForThisLine = true;
                 break;
             }
         }
 
         if (!thereIsKateMarkForThisLine) {
-            m_doc->addMark(m_marks.value(markChar)->line(), KTextEditor::Document::markType01);
+            m_doc->addMark(thisMark->second->line(), KTextEditor::Document::markType01);
         }
     }
 }
@@ -221,10 +230,9 @@ void Marks::syncViMarksAndBookmarks()
 QString Marks::getMarksOnTheLine(int line) const
 {
     QString res;
-    const auto keys = m_marks.keys();
-    for (QChar markerChar : keys) {
-        if (m_marks.value(markerChar)->line() == line) {
-            res += markerChar + QLatin1Char(':') + QString::number(m_marks.value(markerChar)->column()) + QLatin1Char(' ');
+    for (const auto &[key, value] : m_marks) {
+        if (value->line() == line) {
+            res += key + QLatin1Char(':') + QString::number(value->column()) + QLatin1Char(' ');
         }
     }
 

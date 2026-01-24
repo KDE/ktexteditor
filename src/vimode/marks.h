@@ -7,16 +7,16 @@
 #ifndef KATE_VIMODE_MARKS_H
 #define KATE_VIMODE_MARKS_H
 
+#include <map>
+#include <memory>
+
 #include <KConfigGroup>
 #include <KTextEditor/Document>
-
-#include <QMap>
 
 namespace KTextEditor
 {
 class DocumentPrivate;
 class Cursor;
-class MovingCursor;
 }
 
 namespace KateVi
@@ -63,7 +63,7 @@ private:
     InputModeManager *m_inputModeManager;
     KTextEditor::DocumentPrivate *m_doc;
 
-    QMap<QChar, KTextEditor::MovingCursor *> m_marks;
+    std::map<QChar, std::unique_ptr<KTextEditor::MovingCursor>> m_marks;
     bool m_settingMark;
 };
 }
