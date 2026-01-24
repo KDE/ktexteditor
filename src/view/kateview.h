@@ -364,7 +364,10 @@ public Q_SLOTS:
 
 public:
     KateCompletionWidget *completionWidget() const;
-    mutable KateCompletionWidget *m_completionWidget;
+
+    // we re-parent this, use a QPointer to be sure we know if that is still alive
+    mutable QPointer<KateCompletionWidget> m_completionWidget;
+
     void sendCompletionExecuted(const KTextEditor::Cursor position, KTextEditor::CodeCompletionModel *model, const QModelIndex &index);
     void sendCompletionAborted();
 

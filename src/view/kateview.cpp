@@ -87,7 +87,6 @@
 
 KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow)
     : KTextEditor::View(this, parent)
-    , m_completionWidget(nullptr)
     , m_annotationModel(nullptr)
     , m_markedSelection(false)
     , m_hasWrap(false)
