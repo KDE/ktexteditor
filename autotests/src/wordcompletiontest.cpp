@@ -36,6 +36,7 @@ void WordCompletionTest::initTestCase()
 
 void WordCompletionTest::cleanupTestCase()
 {
+    delete m_doc;
 }
 
 void WordCompletionTest::init()
