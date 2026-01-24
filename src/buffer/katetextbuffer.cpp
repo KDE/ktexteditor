@@ -594,6 +594,7 @@ void TextBuffer::balanceBlock(int index)
     if (index == 0) {
         // remove the block if its empty
         if (blockToBalance->lines() == 0) {
+            delete blockToBalance;
             m_blocks.erase(m_blocks.begin());
             m_startLines.erase(m_startLines.begin());
             m_blockSizes.erase(m_blockSizes.begin());
