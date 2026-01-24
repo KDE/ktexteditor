@@ -10,6 +10,8 @@
 #include "range_test.h"
 #include "moc_range_test.cpp"
 
+#include <memory>
+
 #include <kateconfig.h>
 #include <katedocument.h>
 #include <kateview.h>
@@ -76,10 +78,9 @@ void RangeTest::testTextRange()
 {
     // test text range
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::MovingRange *complexRange = doc.newMovingRange(KTextEditor::Range());
+    std::unique_ptr<KTextEditor::MovingRange> complexRange{doc.newMovingRange(KTextEditor::Range())};
     KTextEditor::Range range = *complexRange;
     rangeCheck(range);
-    delete complexRange;
 }
 
 void RangeTest::testInsertText()
@@ -87,8 +88,8 @@ void RangeTest::testInsertText()
     KTextEditor::DocumentPrivate doc;
 
     // Multi-line insert
-    KTextEditor::MovingCursor *cursor1 = doc.newMovingCursor(KTextEditor::Cursor(), KTextEditor::MovingCursor::StayOnInsert);
-    KTextEditor::MovingCursor *cursor2 = doc.newMovingCursor(KTextEditor::Cursor(), KTextEditor::MovingCursor::MoveOnInsert);
+    std::unique_ptr<KTextEditor::MovingCursor> cursor1{doc.newMovingCursor(KTextEditor::Cursor(), KTextEditor::MovingCursor::StayOnInsert)};
+    std::unique_ptr<KTextEditor::MovingCursor> cursor2{doc.newMovingCursor(KTextEditor::Cursor(), KTextEditor::MovingCursor::MoveOnInsert)};
 
     doc.insertText(KTextEditor::Cursor(), QLatin1String("Test Text\nMore Test Text"));
     QCOMPARE(doc.documentEnd(), KTextEditor::Cursor(1, 14));
@@ -115,7 +116,7 @@ void RangeTest::testCornerCaseInsertion()
     // lock first revision
     doc.lockRevision(0);
 
-    KTextEditor::MovingRange *rangeEdit = doc.newMovingRange(KTextEditor::Range(0, 0, 0, 0));
+    std::unique_ptr<KTextEditor::MovingRange> rangeEdit{doc.newMovingRange(KTextEditor::Range(0, 0, 0, 0))};
     QCOMPARE(rangeEdit->toRange(), KTextEditor::Range(0, 0, 0, 0));
 
     doc.insertText(KTextEditor::Cursor(0, 0), QLatin1String("\n"));
