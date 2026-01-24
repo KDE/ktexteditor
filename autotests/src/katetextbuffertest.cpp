@@ -6,6 +6,8 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
+#include <memory>
+
 #include "katetextbuffertest.h"
 #include "katebuffer.h"
 #include "katedocument.h"
@@ -142,7 +144,7 @@ void KateTextBufferTest::cursorTest()
     buffer.debugPrint(QStringLiteral("Cursor buffer"));
 
     // construct cursor
-    KTextEditor::MovingCursor *cursor1 = doc.newMovingCursor(KTextEditor::Cursor(0, 0), KTextEditor::MovingCursor::MoveOnInsert);
+    std::unique_ptr<KTextEditor::MovingCursor> cursor1{doc.newMovingCursor(KTextEditor::Cursor(0, 0), KTextEditor::MovingCursor::MoveOnInsert)};
     QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 0));
     // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
 
@@ -606,7 +608,7 @@ void KateTextBufferTest::testBlockSplittingWithMovingRanges()
     KTextEditor::DocumentPrivate doc;
     // Kate::TextBuffer &buffer = doc.buffer();
     doc.setText(QStringLiteral("First line\nSecondLine\nThirdLine"));
-    auto range = doc.newMovingRange(KTextEditor::Range(1, 0, 1, 7));
+    std::unique_ptr<KTextEditor::MovingRange> range{doc.newMovingRange(KTextEditor::Range(1, 0, 1, 7))};
     QCOMPARE(doc.text(range->toRange()), QStringLiteral("SecondL"));
 
     doc.editStart();
