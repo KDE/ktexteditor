@@ -37,13 +37,13 @@ void TemplateHandlerTest::testUndo()
         "    ${index}\n"
         "}");
 
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     // fixed indentation options
-    doc->config()->setTabWidth(8);
-    doc->config()->setIndentationWidth(4);
-    doc->config()->setReplaceTabsDyn(true);
+    doc.config()->setTabWidth(8);
+    doc.config()->setIndentationWidth(4);
+    doc.config()->setReplaceTabsDyn(true);
 
     view->insertTemplate(KTextEditor::Cursor(0, 0), snippet);
 
@@ -52,59 +52,59 @@ void TemplateHandlerTest::testUndo()
         "{\n"
         "    i\n"
         "}");
-    QCOMPARE(doc->text(), result);
+    QCOMPARE(doc.text(), result);
 
-    doc->replaceText(Range(0, 9, 0, 10), QStringLiteral("j"));
+    doc.replaceText(Range(0, 9, 0, 10), QStringLiteral("j"));
 
     const QString result2 = QStringLiteral(
         "for (int j = ; j < ; ++j)\n"
         "{\n"
         "    j\n"
         "}");
-    QCOMPARE(doc->text(), result2);
+    QCOMPARE(doc.text(), result2);
 
-    doc->undo();
+    doc.undo();
 
-    QCOMPARE(doc->text(), result);
+    QCOMPARE(doc.text(), result);
 
-    doc->redo();
+    doc.redo();
 
-    QCOMPARE(doc->text(), result2);
+    QCOMPARE(doc.text(), result2);
 
-    doc->insertText(Cursor(0, 10), QStringLiteral("j"));
-    doc->insertText(Cursor(0, 11), QStringLiteral("j"));
+    doc.insertText(Cursor(0, 10), QStringLiteral("j"));
+    doc.insertText(Cursor(0, 11), QStringLiteral("j"));
 
     const QString result3 = QStringLiteral(
         "for (int jjj = ; jjj < ; ++jjj)\n"
         "{\n"
         "    jjj\n"
         "}");
-    QCOMPARE(doc->text(), result3);
+    QCOMPARE(doc.text(), result3);
 
-    doc->undo();
+    doc.undo();
 
-    QCOMPARE(doc->text(), result);
+    QCOMPARE(doc.text(), result);
 
-    doc->redo();
+    doc.redo();
 
-    QCOMPARE(doc->text(), result3);
+    QCOMPARE(doc.text(), result3);
 
-    doc->undo();
-    QCOMPARE(doc->text(), result);
+    doc.undo();
+    QCOMPARE(doc.text(), result);
 
-    doc->undo();
-    QCOMPARE(doc->text(), QString());
+    doc.undo();
+    QCOMPARE(doc.text(), QString());
 }
 
 void TemplateHandlerTest::testEscapes()
 {
     QFETCH(QString, input);
 
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     view->insertTemplate({0, 0}, input);
-    QTEST(doc->text(), "expectedOutput");
+    QTEST(doc.text(), "expectedOutput");
 }
 
 void TemplateHandlerTest::testEscapes_data()
@@ -133,19 +133,17 @@ void TemplateHandlerTest::testSimpleMirror()
 {
     QFETCH(QString, text);
 
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->insertTemplate({0, 0}, text);
 
-    QCOMPARE(doc->text(), QString(text).replace(QStringLiteral("${foo}"), QStringLiteral("foo")));
+    QCOMPARE(doc.text(), QString(text).replace(QStringLiteral("${foo}"), QStringLiteral("foo")));
 
-    doc->insertText({0, 0}, QStringLiteral("xx"));
-    QCOMPARE(doc->text(), QString(text).replace(QStringLiteral("${foo}"), QStringLiteral("xxfoo")));
+    doc.insertText({0, 0}, QStringLiteral("xx"));
+    QCOMPARE(doc.text(), QString(text).replace(QStringLiteral("${foo}"), QStringLiteral("xxfoo")));
 
-    doc->removeText(KTextEditor::Range({0, 0}, {0, 2}));
-    QCOMPARE(doc->text(), QString(text).replace(QStringLiteral("${foo}"), QStringLiteral("foo")));
-
-    delete doc;
+    doc.removeText(KTextEditor::Range({0, 0}, {0, 2}));
+    QCOMPARE(doc.text(), QString(text).replace(QStringLiteral("${foo}"), QStringLiteral("foo")));
 }
 
 void TemplateHandlerTest::testSimpleMirror_data()
@@ -161,14 +159,12 @@ void TemplateHandlerTest::testAlignC()
     QFETCH(QString, input);
     QFETCH(QString, expected);
 
-    auto doc = new KTextEditor::DocumentPrivate();
-    doc->setHighlightingMode(QStringLiteral("C"));
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    doc.setHighlightingMode(QStringLiteral("C"));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->insertTemplate({0, 0}, input);
 
-    QCOMPARE(doc->text(), expected);
-
-    delete doc;
+    QCOMPARE(doc.text(), expected);
 }
 
 void TemplateHandlerTest::testAlignC_data()
@@ -183,76 +179,74 @@ void TemplateHandlerTest::testAlignC_data()
 
 void TemplateHandlerTest::testAdjacentRanges()
 {
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     auto reset = [&view, &doc](const QString &snippet, const QString &expected) {
         view->selectAll();
         view->keyDelete();
 
         view->insertTemplate({0, 0}, snippet);
-        QCOMPARE(doc->text(), expected);
+        QCOMPARE(doc.text(), expected);
     };
 
     reset(QStringLiteral("${foo} ${foo}"), QStringLiteral("foo foo"));
-    doc->removeText(KTextEditor::Range({0, 3}, {0, 4}));
-    QCOMPARE(doc->text(), QStringLiteral("foofoo"));
-    doc->insertText({0, 1}, QStringLiteral("x"));
-    QCOMPARE(doc->text(), QStringLiteral("fxoofxoo"));
-    doc->insertText({0, 4}, QStringLiteral("y"));
-    QCOMPARE(doc->text(), QStringLiteral("fxooyfxooy"));
-    doc->removeText(KTextEditor::Range({0, 4}, {0, 5}));
-    QCOMPARE(doc->text(), QStringLiteral("fxoofxoo"));
+    doc.removeText(KTextEditor::Range({0, 3}, {0, 4}));
+    QCOMPARE(doc.text(), QStringLiteral("foofoo"));
+    doc.insertText({0, 1}, QStringLiteral("x"));
+    QCOMPARE(doc.text(), QStringLiteral("fxoofxoo"));
+    doc.insertText({0, 4}, QStringLiteral("y"));
+    QCOMPARE(doc.text(), QStringLiteral("fxooyfxooy"));
+    doc.removeText(KTextEditor::Range({0, 4}, {0, 5}));
+    QCOMPARE(doc.text(), QStringLiteral("fxoofxoo"));
 
     reset(QStringLiteral("${foo}${bar}${baz} ${foo}/${bar}/${baz}"), QStringLiteral("foobarbaz foo/bar/baz"));
-    doc->insertText({0, 0}, QStringLiteral("x"));
-    QCOMPARE(doc->text(), QStringLiteral("xfoobarbaz xfoo/bar/baz"));
-    doc->insertText({0, 4}, QStringLiteral("x"));
-    QCOMPARE(doc->text(), QStringLiteral("xfooxbarbaz xfoox/bar/baz"));
-    doc->insertText({0, 8}, QStringLiteral("x"));
-    QCOMPARE(doc->text(), QStringLiteral("xfooxbarxbaz xfoox/barx/baz"));
-    doc->insertText({0, 12}, QStringLiteral("x"));
-    QCOMPARE(doc->text(), QStringLiteral("xfooxbarxbazx xfoox/barx/bazx"));
-    doc->removeText(KTextEditor::Range({0, 4}, {0, 5}));
-    QCOMPARE(doc->text(), QStringLiteral("xfoobarxbazx xfoo/barx/bazx"));
-    doc->insertText({0, 4}, QStringLiteral("y"));
-    QCOMPARE(doc->text(), QStringLiteral("xfooybarxbazx xfooy/barx/bazx"));
-    doc->removeText(KTextEditor::Range({0, 8}, {0, 9}));
-    QCOMPARE(doc->text(), QStringLiteral("xfooybarbazx xfooy/bar/bazx"));
-    doc->insertText({0, 8}, QStringLiteral("y"));
-    QCOMPARE(doc->text(), QStringLiteral("xfooybarybazx xfooy/bary/bazx"));
+    doc.insertText({0, 0}, QStringLiteral("x"));
+    QCOMPARE(doc.text(), QStringLiteral("xfoobarbaz xfoo/bar/baz"));
+    doc.insertText({0, 4}, QStringLiteral("x"));
+    QCOMPARE(doc.text(), QStringLiteral("xfooxbarbaz xfoox/bar/baz"));
+    doc.insertText({0, 8}, QStringLiteral("x"));
+    QCOMPARE(doc.text(), QStringLiteral("xfooxbarxbaz xfoox/barx/baz"));
+    doc.insertText({0, 12}, QStringLiteral("x"));
+    QCOMPARE(doc.text(), QStringLiteral("xfooxbarxbazx xfoox/barx/bazx"));
+    doc.removeText(KTextEditor::Range({0, 4}, {0, 5}));
+    QCOMPARE(doc.text(), QStringLiteral("xfoobarxbazx xfoo/barx/bazx"));
+    doc.insertText({0, 4}, QStringLiteral("y"));
+    QCOMPARE(doc.text(), QStringLiteral("xfooybarxbazx xfooy/barx/bazx"));
+    doc.removeText(KTextEditor::Range({0, 8}, {0, 9}));
+    QCOMPARE(doc.text(), QStringLiteral("xfooybarbazx xfooy/bar/bazx"));
+    doc.insertText({0, 8}, QStringLiteral("y"));
+    QCOMPARE(doc.text(), QStringLiteral("xfooybarybazx xfooy/bary/bazx"));
 
     reset(QStringLiteral("${foo} ${bar} / ${foo} ${bar}"), QStringLiteral("foo bar / foo bar"));
-    doc->removeText(KTextEditor::Range({0, 2}, {0, 5}));
-    QCOMPARE(doc->text(), QStringLiteral("foar / fo ar"));
-    doc->insertText({0, 2}, QStringLiteral("x"));
-    QCOMPARE(doc->text(), QStringLiteral("foxar / fox ar"));
-    doc->insertText({0, 5}, QStringLiteral("x"));
-    QCOMPARE(doc->text(), QStringLiteral("foxarx / fox arx"));
+    doc.removeText(KTextEditor::Range({0, 2}, {0, 5}));
+    QCOMPARE(doc.text(), QStringLiteral("foar / fo ar"));
+    doc.insertText({0, 2}, QStringLiteral("x"));
+    QCOMPARE(doc.text(), QStringLiteral("foxar / fox ar"));
+    doc.insertText({0, 5}, QStringLiteral("x"));
+    QCOMPARE(doc.text(), QStringLiteral("foxarx / fox arx"));
 
     reset(QStringLiteral("${foo} ${bar} / ${foo} ${bar}"), QStringLiteral("foo bar / foo bar"));
-    doc->removeText(KTextEditor::Range({0, 2}, {0, 7}));
-    QCOMPARE(doc->text(), QStringLiteral("fo / fo "));
-    doc->insertText({0, 2}, QStringLiteral("x"));
-    QCOMPARE(doc->text(), QStringLiteral("fox / fox "));
-    doc->insertText({0, 4}, QStringLiteral("x"));
-    QCOMPARE(doc->text(), QStringLiteral("fox x/ fox "));
+    doc.removeText(KTextEditor::Range({0, 2}, {0, 7}));
+    QCOMPARE(doc.text(), QStringLiteral("fo / fo "));
+    doc.insertText({0, 2}, QStringLiteral("x"));
+    QCOMPARE(doc.text(), QStringLiteral("fox / fox "));
+    doc.insertText({0, 4}, QStringLiteral("x"));
+    QCOMPARE(doc.text(), QStringLiteral("fox x/ fox "));
 
     reset(QStringLiteral("${foo}${bar} / ${foo} ${bar}"), QStringLiteral("foobar / foo bar"));
-    doc->insertText({0, 3}, QStringLiteral("1"));
-    doc->insertText({0, 4}, QStringLiteral("2"));
-    QCOMPARE(doc->text(), QStringLiteral("foo12bar / foo12 bar"));
-    doc->insertText({0, 8}, QStringLiteral("x"));
-    doc->insertText({0, 9}, QStringLiteral("y"));
-    QCOMPARE(doc->text(), QStringLiteral("foo12barxy / foo12 barxy"));
-
-    delete doc;
+    doc.insertText({0, 3}, QStringLiteral("1"));
+    doc.insertText({0, 4}, QStringLiteral("2"));
+    QCOMPARE(doc.text(), QStringLiteral("foo12bar / foo12 bar"));
+    doc.insertText({0, 8}, QStringLiteral("x"));
+    doc.insertText({0, 9}, QStringLiteral("y"));
+    QCOMPARE(doc.text(), QStringLiteral("foo12barxy / foo12 barxy"));
 }
 
 void TemplateHandlerTest::testAdjacentRanges2()
 {
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     auto reset = [&view, &doc]() {
         view->selectAll();
@@ -260,7 +254,7 @@ void TemplateHandlerTest::testAdjacentRanges2()
 
         view->insertTemplate({0, 0}, QStringLiteral("${foo}${foo='12345'}${foo}"));
 
-        QCOMPARE(doc->text(), QStringLiteral("123451234512345"));
+        QCOMPARE(doc.text(), QStringLiteral("123451234512345"));
         QCOMPARE(view->cursorPosition().column(), 10);
         QCOMPARE(view->selectionText(), QStringLiteral("12345"));
         QCOMPARE(view->selectionRange().start().column(), 5);
@@ -271,26 +265,26 @@ void TemplateHandlerTest::testAdjacentRanges2()
     view->clearSelection();
     view->setCursorPosition({0, 5});
     QTest::keyClick(view->focusProxy(), 'X');
-    QCOMPARE(doc->text(), QStringLiteral("X12345X12345X12345"));
+    QCOMPARE(doc.text(), QStringLiteral("X12345X12345X12345"));
     QCOMPARE(view->cursorPosition().column(), 7);
 
     reset();
 
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
-    QCOMPARE(doc->text(), QStringLiteral("aaa"));
+    QCOMPARE(doc.text(), QStringLiteral("aaa"));
     QCOMPARE(view->cursorPosition().column(), 2);
 
     // QTest::keyClick(view->focusProxy(), Qt::Key_Backspace);
     view->backspace();
-    QCOMPARE(doc->text(), QStringLiteral(""));
+    QCOMPARE(doc.text(), QStringLiteral(""));
     QCOMPARE(view->cursorPosition().column(), 0);
 
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
-    QCOMPARE(doc->text(), QStringLiteral("aaa"));
+    QCOMPARE(doc.text(), QStringLiteral("aaa"));
     QCOMPARE(view->cursorPosition().column(), 2);
 
     QTest::keyClick(view->focusProxy(), Qt::Key_B);
-    QCOMPARE(doc->text(), QStringLiteral("ababab"));
+    QCOMPARE(doc.text(), QStringLiteral("ababab"));
     QCOMPARE(view->cursorPosition().column(), 4);
 
     reset();
@@ -299,7 +293,7 @@ void TemplateHandlerTest::testAdjacentRanges2()
     view->setCursorPosition({0, 8});
     // QTest::keyClick(view->focusProxy(), Qt::Key_Backspace);
     view->backspace();
-    QCOMPARE(doc->text(), QStringLiteral("124512451245"));
+    QCOMPARE(doc.text(), QStringLiteral("124512451245"));
     QCOMPARE(view->cursorPosition().column(), 6);
 
     reset();
@@ -308,7 +302,7 @@ void TemplateHandlerTest::testAdjacentRanges2()
     view->setCursorPosition({0, 7});
     // QTest::keyClick(view->focusProxy(), Qt::Key_Backspace);
     view->backspace();
-    QCOMPARE(doc->text(), QStringLiteral("124512451245"));
+    QCOMPARE(doc.text(), QStringLiteral("124512451245"));
     QCOMPARE(view->cursorPosition().column(), 6);
 
     reset();
@@ -316,43 +310,39 @@ void TemplateHandlerTest::testAdjacentRanges2()
     view->clearSelection();
     view->setCursorPosition({0, 10});
     QTest::keyClick(view->focusProxy(), 'X');
-    QCOMPARE(doc->text(), QStringLiteral("12345X12345X12345X"));
+    QCOMPARE(doc.text(), QStringLiteral("12345X12345X12345X"));
     QCOMPARE(view->cursorPosition().column(), 12);
-
-    delete doc;
 }
 
 void TemplateHandlerTest::testAdjacentRanges3()
 {
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     view->insertTemplate({0, 0}, QStringLiteral("${foo}${foo='foo'}${foo}"));
 
-    QCOMPARE(doc->text(), QStringLiteral("foofoofoo"));
+    QCOMPARE(doc.text(), QStringLiteral("foofoofoo"));
     QCOMPARE(view->cursorPosition().column(), 6);
     QCOMPARE(view->selectionText(), QStringLiteral("foo"));
     QCOMPARE(view->selectionRange().start().column(), 3);
 
     view->clearSelection();
     view->setCursorPosition({0, 4});
-    QCOMPARE(doc->text(), QStringLiteral("foofoofoo"));
+    QCOMPARE(doc.text(), QStringLiteral("foofoofoo"));
     QCOMPARE(view->cursorPosition().column(), 4);
 
     QTest::keyClick(view->focusProxy(), 'X');
-    QCOMPARE(doc->text(), QStringLiteral("fXoofXoofXoo"));
+    QCOMPARE(doc.text(), QStringLiteral("fXoofXoofXoo"));
     QCOMPARE(view->cursorPosition().column(), 6);
 
     // QTest::keyClick(view->focusProxy(), Qt::Key_Backspace);
     view->backspace();
-    QCOMPARE(doc->text(), QStringLiteral("foofoofoo"));
+    QCOMPARE(doc.text(), QStringLiteral("foofoofoo"));
     QCOMPARE(view->cursorPosition().column(), 4);
 
     QTest::keyClick(view->focusProxy(), 'Z');
-    QCOMPARE(doc->text(), QStringLiteral("fZoofZoofZoo"));
+    QCOMPARE(doc.text(), QStringLiteral("fZoofZoofZoo"));
     QCOMPARE(view->cursorPosition().column(), 6);
-
-    delete doc;
 }
 
 void TemplateHandlerTest::testTab()
@@ -360,8 +350,8 @@ void TemplateHandlerTest::testTab()
     QFETCH(QString, tpl);
     QFETCH(int, cursor);
 
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     view->insertTemplate({0, 0}, tpl);
     view->clearSelection();
@@ -379,9 +369,7 @@ void TemplateHandlerTest::testTab()
     QTEST(view->cursorPosition().column(), "expected_cursor");
 
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
-    QTEST(doc->text(), "expected_edited_result");
-
-    delete doc;
+    QTEST(doc.text(), "expected_edited_result");
 }
 
 void TemplateHandlerTest::testTab_data()
@@ -416,15 +404,15 @@ void TemplateHandlerTest::testTab_data()
 
 void TemplateHandlerTest::testTab2()
 {
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     auto reset = [&view, &doc](const QString &tmpl, const QString &expected) {
         view->selectAll();
         view->keyDelete();
 
         view->insertTemplate({0, 0}, tmpl);
-        QCOMPARE(doc->text(), expected);
+        QCOMPARE(doc.text(), expected);
     };
 
     {
@@ -579,7 +567,7 @@ void TemplateHandlerTest::testTab2()
 
         QTest::keyClick(view->focusProxy(), 'X');
         QCOMPARE(view->cursorPosition().column(), 4);
-        QCOMPARE(doc->text(), QStringLiteral("fooXbaz / foo X baz"));
+        QCOMPARE(doc.text(), QStringLiteral("fooXbaz / foo X baz"));
 
         QTest::keyClick(view->focusProxy(), Qt::Key_Tab, Qt::ShiftModifier);
         QCOMPARE(view->cursorPosition().column(), 3);
@@ -587,23 +575,21 @@ void TemplateHandlerTest::testTab2()
 
         QTest::keyClick(view->focusProxy(), 'X');
         QCOMPARE(view->cursorPosition().column(), 1);
-        QCOMPARE(doc->text(), QStringLiteral("XXbaz / X X baz"));
+        QCOMPARE(doc.text(), QStringLiteral("XXbaz / X X baz"));
     }
-
-    delete doc;
 }
 
 void TemplateHandlerTest::testExit()
 {
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     auto reset = [&view, &doc](const QString &snippet, const QString &expected) {
         view->selectAll();
         view->keyDelete();
 
         view->insertTemplate({0, 0}, snippet);
-        QCOMPARE(doc->text(), expected);
+        QCOMPARE(doc.text(), expected);
     };
 
     auto finish = [&view, &doc](const QString &expected) {
@@ -614,7 +600,7 @@ void TemplateHandlerTest::testExit()
         // go to the first field and verify it's not mirrored any more (i.e. the handler exited)
         view->setCursorPosition({0, 0});
         QTest::keyClick(view->focusProxy(), Qt::Key_A);
-        QCOMPARE(doc->text(), QStringLiteral("a") + expected);
+        QCOMPARE(doc.text(), QStringLiteral("a") + expected);
     };
 
     // Test: insert at ${cursor}
@@ -633,7 +619,7 @@ void TemplateHandlerTest::testExit()
     // - insert an "a" at ${cursor}
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
     // check it was inserted
-    QCOMPARE(doc->text(), QStringLiteral("foo bar a foo"));
+    QCOMPARE(doc.text(), QStringLiteral("foo bar a foo"));
 
     finish(QStringLiteral("foo bar a foo"));
 
@@ -644,7 +630,7 @@ void TemplateHandlerTest::testExit()
     view->setCursorPosition({0, 0});
     view->clearSelection();
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
-    QCOMPARE(doc->text(), QStringLiteral("afoo bar  afoo"));
+    QCOMPARE(doc.text(), QStringLiteral("afoo bar  afoo"));
 
     // - finish editing
     QTest::keyClick(view->focusProxy(), Qt::Key_Escape);
@@ -657,50 +643,44 @@ void TemplateHandlerTest::testExit()
     view->setCursorPosition({0, 0});
     view->clearSelection();
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
-    QCOMPARE(doc->text(), QStringLiteral("afoo bar  afoo"));
+    QCOMPARE(doc.text(), QStringLiteral("afoo bar  afoo"));
 
     // - finish editing
     QTest::keyClick(view->focusProxy(), Qt::Key_Return, Qt::AltModifier);
     finish(QStringLiteral("afoo bar  afoo"));
-
-    delete doc;
 }
 
 void TemplateHandlerTest::testDefaultMirror()
 {
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     view->insertTemplate({0, 0},
                          QStringLiteral("${foo=uppercase(\"hi\")} ${bar=3} ${foo}"),
                          QStringLiteral("function uppercase(x) { return x.toUpperCase(); }"));
-    QCOMPARE(doc->text(), QStringLiteral("HI 3 HI"));
-    doc->insertText({0, 0}, QStringLiteral("xy@"));
-    QCOMPARE(doc->text(), QStringLiteral("xy@HI 3 xy@HI"));
-
-    delete doc;
+    QCOMPARE(doc.text(), QStringLiteral("HI 3 HI"));
+    doc.insertText({0, 0}, QStringLiteral("xy@"));
+    QCOMPARE(doc.text(), QStringLiteral("xy@HI 3 xy@HI"));
 }
 
 void TemplateHandlerTest::testFunctionMirror()
 {
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     view->insertTemplate({0, 0}, QStringLiteral("${foo} hi ${uppercase(foo)}"), QStringLiteral("function uppercase(x) { return x.toUpperCase(); }"));
-    QCOMPARE(doc->text(), QStringLiteral("foo hi FOO"));
-    doc->insertText({0, 0}, QStringLiteral("xy@"));
-    QCOMPARE(doc->text(), QStringLiteral("xy@foo hi XY@FOO"));
-
-    delete doc;
+    QCOMPARE(doc.text(), QStringLiteral("foo hi FOO"));
+    doc.insertText({0, 0}, QStringLiteral("xy@"));
+    QCOMPARE(doc.text(), QStringLiteral("xy@foo hi XY@FOO"));
 }
 
 void TemplateHandlerTest::testAutoSelection()
 {
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     view->insertTemplate({0, 0}, QStringLiteral("${foo} ${bar} ${bar} ${cursor} ${baz}"));
-    QCOMPARE(doc->text(), QStringLiteral("foo bar bar  baz"));
+    QCOMPARE(doc.text(), QStringLiteral("foo bar bar  baz"));
     QCOMPARE(view->selectionText(), QStringLiteral("foo"));
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
@@ -715,7 +695,7 @@ void TemplateHandlerTest::testAutoSelection()
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
     QCOMPARE(view->selectionText(), QStringLiteral("foo"));
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
-    QCOMPARE(doc->text(), QStringLiteral("a bar bar  baz"));
+    QCOMPARE(doc.text(), QStringLiteral("a bar bar  baz"));
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
@@ -729,12 +709,12 @@ void TemplateHandlerTest::testNotEditableFields()
     QFETCH(QString, input);
     QFETCH(int, change_offset);
 
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->insertTemplate({0, 0}, input);
 
-    doc->insertText({0, change_offset}, QStringLiteral("xxx"));
-    QTEST(doc->text(), "expected");
+    doc.insertText({0, change_offset}, QStringLiteral("xxx"));
+    QTEST(doc.text(), "expected");
 }
 
 void TemplateHandlerTest::testNotEditableFields_data()
@@ -748,12 +728,12 @@ void TemplateHandlerTest::testNotEditableFields_data()
 
 void TemplateHandlerTest::testCanRetrieveSelection()
 {
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->insertText(QStringLiteral("hi world"));
     view->setSelection(KTextEditor::Range(0, 1, 0, 4));
     view->insertTemplate({0, 1}, QStringLiteral("xx${foo=sel()}xx"), QStringLiteral("function sel() { return view.selectedText(); }"));
-    QCOMPARE(doc->text(), QStringLiteral("hxxi wxxorld"));
+    QCOMPARE(doc.text(), QStringLiteral("hxxi wxxorld"));
 }
 
 void TemplateHandlerTest::testDefaults_data()
@@ -812,29 +792,27 @@ void TemplateHandlerTest::testDefaults_data()
 
 void TemplateHandlerTest::testDefaults()
 {
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     QFETCH(QString, input);
     QFETCH(QString, function);
 
     view->insertTemplate(KTextEditor::Cursor(0, 0), input, function);
-    QTEST(doc->text(), "expected");
+    QTEST(doc.text(), "expected");
 
     view->selectAll();
     view->keyDelete();
-    QCOMPARE(doc->text(), QString());
-
-    delete doc;
+    QCOMPARE(doc.text(), QString());
 }
 
 void TemplateHandlerTest::testLinesRemoved()
 {
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     view->insertTemplate({0, 0}, QStringLiteral("${foo}\n${bar}\n${bax}\n${baz}"));
-    QCOMPARE(doc->text(), QStringLiteral("foo\nbar\nbax\nbaz"));
+    QCOMPARE(doc.text(), QStringLiteral("foo\nbar\nbax\nbaz"));
     QCOMPARE(view->selectionText(), QStringLiteral("foo"));
 
     view->killLine();
@@ -851,8 +829,8 @@ void TemplateHandlerTest::testLinesRemoved()
 void TemplateHandlerTest::testLinesRemoved2()
 {
     // BUG: 434093
-    auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     view->insertTemplate({0, 0}, QStringLiteral(R"(@book{${bibkey},
   author    = {${author}},
@@ -890,35 +868,35 @@ ${cursor}
 
 void TemplateHandlerTest::testReadOnly()
 {
-    auto doc = new KTextEditor::DocumentPrivate();
-    doc->setReadWrite(false);
+    KTextEditor::DocumentPrivate doc;
+    doc.setReadWrite(false);
 
-    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     bool ok = view->insertTemplate({0, 0}, QStringLiteral("${foo} ${foo}"));
 
     // no text should have been inserted because the document is read-only
     QCOMPARE(ok, false);
-    QCOMPARE(doc->text(), QStringLiteral(""));
+    QCOMPARE(doc.text(), QStringLiteral(""));
 
     // input should have no effect
     view->setCursorPosition({0, 0});
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
-    QCOMPARE(doc->text(), QStringLiteral(""));
+    QCOMPARE(doc.text(), QStringLiteral(""));
 }
 
 void TemplateHandlerTest::testMultipleViews()
 {
-    auto doc = new KTextEditor::DocumentPrivate();
+    KTextEditor::DocumentPrivate doc;
 
-    auto view1 = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    auto view1 = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view1->insertTemplate({0, 0}, QStringLiteral("${foo} ${foo}"));
-    QCOMPARE(doc->text(), QStringLiteral("foo foo"));
+    QCOMPARE(doc.text(), QStringLiteral("foo foo"));
 
-    auto view2 = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    auto view2 = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view2->setCursorPosition({0, 1});
     QTest::keyClick(view2->focusProxy(), 'X');
-    QCOMPARE(doc->text(), QStringLiteral("fXoo fXoo"));
+    QCOMPARE(doc.text(), QStringLiteral("fXoo fXoo"));
 }
 
 #include "moc_templatehandler_test.cpp"
