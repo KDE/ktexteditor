@@ -216,8 +216,8 @@ void MovingRangeTest::testFeedbackInvalidRange()
     RangeFeedback rf;
 
     // allow empty
-    MovingRange *range =
-        doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::InvalidateIfEmpty);
+    std::unique_ptr<MovingRange> range(
+        doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::InvalidateIfEmpty));
     range->setFeedback(&rf);
     rf.verifyReset();
 
@@ -268,7 +268,6 @@ void MovingRangeTest::testFeedbackInvalidRange()
     QVERIFY(!rf.mouseExitedRangeCalled());
     QVERIFY(!rf.caretEnteredRangeCalled());
     QVERIFY(!rf.caretExitedRangeCalled());
-    delete range;
 }
 
 // tests:
@@ -292,9 +291,9 @@ void MovingRangeTest::testFeedbackCaret()
     {
         view->setCursorPosition(Cursor(1, 6));
 
-        MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
-                                                KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
-                                                KTextEditor::MovingRange::InvalidateIfEmpty);
+        std::unique_ptr<MovingRange> range(doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
+                                                              KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
+                                                              KTextEditor::MovingRange::InvalidateIfEmpty));
         rf.reset();
         range->setFeedback(&rf);
         rf.verifyReset();
@@ -333,16 +332,14 @@ void MovingRangeTest::testFeedbackCaret()
         QCOMPARE(view->cursorPosition(), Cursor(0, 1)); // ExpandLeft: now we left it, not before
         QVERIFY(!rf.caretEnteredRangeCalled());
         QVERIFY(rf.caretExitedRangeCalled());
-
-        delete range;
     }
 
     // second test: with DoNotExpand
     {
         view->setCursorPosition(Cursor(1, 6));
 
-        MovingRange *range =
-            doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::InvalidateIfEmpty);
+        std::unique_ptr<MovingRange> range(
+            doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::InvalidateIfEmpty));
         rf.reset();
         range->setFeedback(&rf);
         rf.verifyReset();
@@ -381,8 +378,6 @@ void MovingRangeTest::testFeedbackCaret()
         QCOMPARE(view->cursorPosition(), Cursor(0, 1));
         QVERIFY(!rf.caretEnteredRangeCalled());
         QVERIFY(!rf.caretExitedRangeCalled());
-
-        delete range;
     }
 }
 
@@ -409,9 +404,9 @@ void MovingRangeTest::testFeedbackMouse()
     QVERIFY(!rf.mouseExitedRangeCalled());
 
     // allow empty
-    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
-                                            KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
-                                            KTextEditor::MovingRange::InvalidateIfEmpty);
+    std::unique_ptr<MovingRange> range(doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
+                                                          KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
+                                                          KTextEditor::MovingRange::InvalidateIfEmpty));
     range->setFeedback(&rf);
     rf.verifyReset();
 
@@ -434,7 +429,6 @@ void MovingRangeTest::testFeedbackMouse()
     QTest::qWait(200); // process mouse events. do not move mouse manually
     QVERIFY(!rf.mouseEnteredRangeCalled());
     QVERIFY(rf.mouseExitedRangeCalled());
-    delete range;
 }
 
 void MovingRangeTest::testLineRemoved()
@@ -453,14 +447,12 @@ void MovingRangeTest::testLineRemoved()
     view->show();
     view->resize(200, 100);
     constexpr auto expand = KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight;
-    MovingRange *range = doc.newMovingRange({1, 1, 1, 2}, expand, KTextEditor::MovingRange::InvalidateIfEmpty);
-    MovingRange *range2 = doc.newMovingRange({1, 3, 1, 4}, expand, KTextEditor::MovingRange::InvalidateIfEmpty);
+    std::unique_ptr<MovingRange> range(doc.newMovingRange({1, 1, 1, 2}, expand, KTextEditor::MovingRange::InvalidateIfEmpty));
+    std::unique_ptr<MovingRange> range2(doc.newMovingRange({1, 3, 1, 4}, expand, KTextEditor::MovingRange::InvalidateIfEmpty));
     KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute);
     attr->setForeground(Qt::red);
     range->setAttribute(attr);
     doc.removeLine(1);
-    delete range;
-    delete range2;
 
     // shouldn't crash
     auto r = doc.buffer().rangesForLine(1, view, true);
@@ -477,27 +469,27 @@ void MovingRangeTest::testLineWrapOrUnwrapUpdateRangeForLineCache()
 
     // add range to line 2, it shall be in rangeForLine for the right lines after each update!
     // must be single line range to be in the cache!
-    auto range = doc.newMovingRange({2, 1, 2, 3},
-                                    KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
-                                    KTextEditor::MovingRange::InvalidateIfEmpty);
+    std::unique_ptr<MovingRange> range(doc.newMovingRange({2, 1, 2, 3},
+                                                          KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
+                                                          KTextEditor::MovingRange::InvalidateIfEmpty));
 
     // range shall be in the lookup cache for line 2
     QVERIFY(doc.buffer().rangesForLine(0, nullptr, false).isEmpty());
     QVERIFY(doc.buffer().rangesForLine(1, nullptr, false).isEmpty());
-    QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).contains(range));
+    QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).contains(range.get()));
 
     // wrap line 1 => range should move to line 3
     doc.editWrapLine(1, 1);
     QVERIFY(doc.buffer().rangesForLine(0, nullptr, false).isEmpty());
     QVERIFY(doc.buffer().rangesForLine(1, nullptr, false).isEmpty());
     QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).isEmpty());
-    QVERIFY(doc.buffer().rangesForLine(3, nullptr, false).contains(range));
+    QVERIFY(doc.buffer().rangesForLine(3, nullptr, false).contains(range.get()));
 
     // unwrap line 1 => range should back move to line 2
     doc.editUnWrapLine(1);
     QVERIFY(doc.buffer().rangesForLine(0, nullptr, false).isEmpty());
     QVERIFY(doc.buffer().rangesForLine(1, nullptr, false).isEmpty());
-    QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).contains(range));
+    QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).contains(range.get()));
 }
 
 void MovingRangeTest::testMultiline()
@@ -509,11 +501,11 @@ void MovingRangeTest::testMultiline()
                        "hijk\n"));
 
     // add range to line 1-2
-    auto range = doc.newMovingRange({1, 0, 2, 3},
-                                    KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
-                                    KTextEditor::MovingRange::InvalidateIfEmpty);
-    QVERIFY(doc.buffer().rangesForLine(1, nullptr, false).contains(range));
-    QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).contains(range));
+    std::unique_ptr<MovingRange> range(doc.newMovingRange({1, 0, 2, 3},
+                                                          KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
+                                                          KTextEditor::MovingRange::InvalidateIfEmpty));
+    QVERIFY(doc.buffer().rangesForLine(1, nullptr, false).contains(range.get()));
+    QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).contains(range.get()));
 }
 
 void MovingRangeTest::testMultiblock()
@@ -523,9 +515,9 @@ void MovingRangeTest::testMultiblock()
     QStringList text(200, QStringLiteral("asdf"));
     doc.setText(text);
 
-    auto range = doc.newMovingRange({1, 0, 170, 3},
-                                    KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
-                                    KTextEditor::MovingRange::InvalidateIfEmpty);
+    auto range(doc.newMovingRange({1, 0, 170, 3},
+                                  KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
+                                  KTextEditor::MovingRange::InvalidateIfEmpty));
 
     QVERIFY(doc.buffer().hasMultlineRange(range));
     // check that the range is returned for each line it contains
