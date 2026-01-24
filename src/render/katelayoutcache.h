@@ -20,6 +20,7 @@ class KateLineLayoutMap
 {
 public:
     KateLineLayoutMap(std::pmr::unsynchronized_pool_resource &allocator);
+    ~KateLineLayoutMap();
 
     void clear();
 

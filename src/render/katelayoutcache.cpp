@@ -36,6 +36,16 @@ KateLineLayoutMap::KateLineLayoutMap(std::pmr::unsynchronized_pool_resource &all
 {
 }
 
+KateLineLayoutMap::~KateLineLayoutMap()
+{
+    // ensure the destructors are called
+    // the allocator will die with the cache, but that will not call these
+    // and we leak stuff that got internally allocated
+    for (auto l : m_lineLayouts) {
+        l->~KateLineLayout();
+    }
+}
+
 void KateLineLayoutMap::clear()
 {
     for (auto l : m_lineLayouts) {
