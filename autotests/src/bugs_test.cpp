@@ -135,11 +135,11 @@ void BugTest::testBug286887CtrlShiftLeft()
 void BugTest::bug313759TryCrash()
 {
     // set up document and view
-    KMainWindow *toplevel = new KMainWindow();
-    KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate(true, false, toplevel);
+    KMainWindow toplevel;
+    KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate(true, false, &toplevel, &toplevel);
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
     bool outputWasCustomised = false;
-    TestScriptEnv *env = new TestScriptEnv(doc, outputWasCustomised);
+    TestScriptEnv env(doc, outputWasCustomised);
     const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR "bug313759.txt"));
     doc->openUrl(url);
 
@@ -147,7 +147,7 @@ void BugTest::bug313759TryCrash()
     QFile scriptFile(QLatin1String(JS_DATA_DIR "commands/utils.js"));
     QVERIFY(scriptFile.exists());
     QVERIFY(scriptFile.open(QFile::ReadOnly));
-    QJSValue result = env->engine()->evaluate(QString::fromLatin1(scriptFile.readAll()), scriptFile.fileName());
+    QJSValue result = env.engine()->evaluate(QString::fromLatin1(scriptFile.readAll()), scriptFile.fileName());
     QVERIFY2(!result.isError(), result.toString().toUtf8().constData());
 
     // enable on the fly spell checking
@@ -167,7 +167,7 @@ void BugTest::bug313759TryCrash()
     QString code = stream.readAll();
     sourceFile.close();
     // execute script
-    result = env->engine()->evaluate(code, QLatin1String(TEST_DATA_DIR "bug313759.txt"), 1);
+    result = env.engine()->evaluate(code, QLatin1String(TEST_DATA_DIR "bug313759.txt"), 1);
     QVERIFY2(!result.isError(), result.toString().toUtf8().constData());
 
     doc->editEnd();
