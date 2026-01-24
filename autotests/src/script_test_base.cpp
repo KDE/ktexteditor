@@ -57,6 +57,8 @@ void ScriptTestBase::initTestCase()
 void ScriptTestBase::cleanupTestCase()
 {
     qInstallMessageHandler(m_msgHandler);
+    delete m_env;
+    delete m_toplevel;
 }
 
 void ScriptTestBase::getTestData(const QString &script)
