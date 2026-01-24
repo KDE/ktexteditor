@@ -32,6 +32,11 @@ void IndentTest::initTestCase()
     m_script_dir = QStringLiteral("indentation");
 }
 
+void IndentTest::cleanupTestCase()
+{
+    ScriptTestBase::cleanupTestCase();
+}
+
 void IndentTest::testCstyle_data()
 {
     getTestData(QStringLiteral("cstyle"));

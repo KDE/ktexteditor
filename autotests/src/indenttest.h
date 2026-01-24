@@ -14,6 +14,7 @@ class IndentTest : public ScriptTestBase
     Q_OBJECT
 private Q_SLOTS:
     void initTestCase();
+    void cleanupTestCase();
 
     void testPython_data();
     void testPython();
