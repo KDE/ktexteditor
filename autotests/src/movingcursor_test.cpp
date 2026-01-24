@@ -14,6 +14,8 @@
 #include <QStandardPaths>
 #include <QTest>
 
+#include <memory>
+
 using namespace KTextEditor;
 
 QTEST_MAIN(MovingCursorTest)
@@ -34,9 +36,9 @@ MovingCursorTest::~MovingCursorTest()
 void MovingCursorTest::testMovingCursor()
 {
     KTextEditor::DocumentPrivate doc;
-    MovingCursor *invalid = doc.newMovingCursor(Cursor::invalid());
-    MovingCursor *moveOnInsert = doc.newMovingCursor(Cursor(0, 0), MovingCursor::MoveOnInsert);
-    MovingCursor *stayOnInsert = doc.newMovingCursor(Cursor(0, 0), MovingCursor::StayOnInsert);
+    std::unique_ptr<MovingCursor> invalid{doc.newMovingCursor(Cursor::invalid())};
+    std::unique_ptr<MovingCursor> moveOnInsert{doc.newMovingCursor(Cursor(0, 0), MovingCursor::MoveOnInsert)};
+    std::unique_ptr<MovingCursor> stayOnInsert{doc.newMovingCursor(Cursor(0, 0), MovingCursor::StayOnInsert)};
 
     // verify initial conditions
     QVERIFY(!invalid->isValid());
@@ -111,15 +113,15 @@ void MovingCursorTest::testConvenienceApi()
                        "55555"));
 
     // check start and end of document
-    MovingCursor *startOfDoc = doc.newMovingCursor(Cursor(0, 0));
-    MovingCursor *endOfDoc = doc.newMovingCursor(Cursor(5, 5));
+    std::unique_ptr<MovingCursor> startOfDoc{doc.newMovingCursor(Cursor(0, 0))};
+    std::unique_ptr<MovingCursor> endOfDoc{doc.newMovingCursor(Cursor(5, 5))};
     QVERIFY(startOfDoc->atStartOfDocument());
     QVERIFY(startOfDoc->atStartOfLine());
     QVERIFY(endOfDoc->atEndOfDocument());
     QVERIFY(endOfDoc->atEndOfLine());
 
     // set cursor to (2, 2) and then move to the left two times
-    MovingCursor *moving = doc.newMovingCursor(Cursor(2, 2));
+    std::unique_ptr<MovingCursor> moving{doc.newMovingCursor(Cursor(2, 2))};
     QVERIFY(moving->atEndOfLine()); // at 2, 2
     QVERIFY(moving->move(-1)); // at 2, 1
     QCOMPARE(moving->toCursor(), Cursor(2, 1));
@@ -174,9 +176,9 @@ void MovingCursorTest::testOperators()
     Cursor c04(0, 4);
     Cursor c14(1, 4);
 
-    MovingCursor *m02 = doc.newMovingCursor(Cursor(0, 2));
-    MovingCursor *m04 = doc.newMovingCursor(Cursor(0, 4));
-    MovingCursor *m14 = doc.newMovingCursor(Cursor(1, 4));
+    std::unique_ptr<MovingCursor> m02{doc.newMovingCursor(Cursor(0, 2))};
+    std::unique_ptr<MovingCursor> m04{doc.newMovingCursor(Cursor(0, 4))};
+    std::unique_ptr<MovingCursor> m14{doc.newMovingCursor(Cursor(1, 4))};
 
     // invalid comparison
     QVERIFY(invalid == invalid);
@@ -308,19 +310,19 @@ void MovingCursorTest::testOperators()
 
 void MovingCursorTest::testInvalidMovingCursor()
 {
-    KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate;
+    // will die at end of scope to trigger the bug
+    KTextEditor::DocumentPrivate doc;
 
     // add invalid MovingCursor. Inserts c into KateBuffer::m_invalidCursors
-    MovingCursor *c = doc->newMovingCursor(Cursor(-1, -1));
+    std::unique_ptr<MovingCursor> c{doc.newMovingCursor(Cursor(-1, -1))};
     QVERIFY(Cursor(-1, -1) == *c);
 
     c->setPosition(Cursor(0, 0));
     QVERIFY(Cursor(0, 0) == *c);
 
     // now c should be removed from KateBuffer::m_invalidCursors
-    delete c;
+    c.reset();
 
     // crash in bug https://bugs.kde.org/show_bug.cgi?id=248926
     // if it crashes: c is still in KateBuffer::m_invalidCursors -> double deletion
-    delete doc;
 }
