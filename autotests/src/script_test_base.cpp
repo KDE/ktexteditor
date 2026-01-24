@@ -48,7 +48,7 @@ void ScriptTestBase::initTestCase()
     QStandardPaths::setTestModeEnabled(true);
     m_msgHandler = qInstallMessageHandler(noDebugMessageOutput);
     m_toplevel = new QMainWindow();
-    m_document = new KTextEditor::DocumentPrivate(true, false, m_toplevel);
+    m_document = new KTextEditor::DocumentPrivate(true, false, m_toplevel, m_toplevel);
     m_view = static_cast<KTextEditor::ViewPrivate *>(m_document->widget());
     m_view->config()->setValue(KateViewConfig::AutoBrackets, false);
     m_env = new TestScriptEnv(m_document, m_outputWasCustomised);
