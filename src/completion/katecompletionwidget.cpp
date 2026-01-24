@@ -35,6 +35,8 @@
 #include <QTimer>
 #include <QToolButton>
 
+#include <ranges>
+
 const bool hideAutomaticCompletionOnExactMatch = true;
 
 #define CALLCI(WHAT, WHATELSE, WHAT2, model, FUNC)                                                                                                             \
@@ -196,7 +198,7 @@ void KateCompletionWidget::focusOutEvent(QFocusEvent *)
 void KateCompletionWidget::modelContentChanged()
 {
     ////qCDebug(LOG_KTE)<<">>>>>>>>>>>>>>>>";
-    if (m_completionRanges.isEmpty()) {
+    if (m_completionRanges.empty()) {
         // qCDebug(LOG_KTE) << "content changed, but no completion active";
         abortCompletion();
         return;
@@ -309,9 +311,6 @@ void KateCompletionWidget::startCompletion(KTextEditor::CodeCompletionModel::Inv
 
 void KateCompletionWidget::deleteCompletionRanges()
 {
-    for (const CompletionRange &r : std::as_const(m_completionRanges)) {
-        delete r.range;
-    }
     m_completionRanges.clear();
 }
 
@@ -337,7 +336,7 @@ void KateCompletionWidget::startCompletion(KTextEditor::Range word,
     m_isSuspended = false;
     m_needShow = true;
 
-    if (m_completionRanges.isEmpty()) {
+    if (m_completionRanges.empty()) {
         m_noAutoHide = false; // Re-enable auto-hide on every clean restart of the completion
     }
 
@@ -350,8 +349,8 @@ void KateCompletionWidget::startCompletion(KTextEditor::Range word,
 
     QList<KTextEditor::CodeCompletionModel *> models = (modelsToStart.isEmpty() ? m_sourceModels : modelsToStart);
 
-    for (auto it = m_completionRanges.keyBegin(), end = m_completionRanges.keyEnd(); it != end; ++it) {
-        KTextEditor::CodeCompletionModel *model = *it;
+    for (const auto &it : m_completionRanges) {
+        KTextEditor::CodeCompletionModel *model = it.first;
         if (!models.contains(model)) {
             models << model;
         }
@@ -374,23 +373,15 @@ void KateCompletionWidget::startCompletion(KTextEditor::Range word,
         }
         // qCDebug(LOG_KTE)<<"range is"<<range;
         if (!range.isValid()) {
-            if (m_completionRanges.contains(model)) {
-                KTextEditor::MovingRange *oldRange = m_completionRanges[model].range;
-                // qCDebug(LOG_KTE)<<"removing completion range 1";
-                m_completionRanges.remove(model);
-                delete oldRange;
-            }
+            m_completionRanges.erase(model);
             models.removeAll(model);
             continue;
         }
-        if (m_completionRanges.contains(model)) {
-            if (*m_completionRanges[model].range == range) {
+        if (const auto it = m_completionRanges.find(model); it != m_completionRanges.end()) {
+            if (*it->second.range == range) {
                 continue; // Leave it running as it is
             } else { // delete the range that was used previously
-                KTextEditor::MovingRange *oldRange = m_completionRanges[model].range;
-                // qCDebug(LOG_KTE)<<"removing completion range 2";
-                m_completionRanges.remove(model);
-                delete oldRange;
+                m_completionRanges.erase(model);
             }
         }
 
@@ -425,7 +416,7 @@ void KateCompletionWidget::startCompletion(KTextEditor::Range word,
 
     cursorPositionChanged();
 
-    if (!m_completionRanges.isEmpty()) {
+    if (!m_completionRanges.empty()) {
         connect(this->model(), &KateCompletionModel::layoutChanged, this, &KateCompletionWidget::modelContentChanged);
         connect(this->model(), &KateCompletionModel::modelReset, this, &KateCompletionWidget::modelContentChanged);
         // Now that all models have been notified, check whether the widget should be displayed instantly
@@ -690,7 +681,7 @@ void KateCompletionWidget::updateHeight()
 void KateCompletionWidget::cursorPositionChanged()
 {
     ////qCDebug(LOG_KTE);
-    if (m_completionRanges.isEmpty()) {
+    if (m_completionRanges.empty()) {
         return;
     }
 
@@ -705,7 +696,9 @@ void KateCompletionWidget::cursorPositionChanged()
     disconnect(this->model(), &KateCompletionModel::modelReset, this, &KateCompletionWidget::modelContentChanged);
 
     // Check the models and eventually abort some
-    const QList<KTextEditor::CodeCompletionModel *> checkCompletionRanges = m_completionRanges.keys();
+    // we modify m_completionRanges inside
+    auto ks = std::views::keys(m_completionRanges);
+    const std::vector<KTextEditor::CodeCompletionModel *> checkCompletionRanges{ks.begin(), ks.end()};
     for (auto model : checkCompletionRanges) {
         if (!m_completionRanges.contains(model)) {
             continue;
@@ -747,17 +740,12 @@ void KateCompletionWidget::cursorPositionChanged()
         }
 
         if (abort) {
-            if (m_completionRanges.count() == 1) {
+            if (m_completionRanges.size() == 1) {
                 // last model - abort whole completion
                 abortCompletion();
                 return;
             } else {
-                {
-                    delete m_completionRanges[model].range;
-                    // qCDebug(LOG_KTE)<<"removing completion range 3";
-                    m_completionRanges.remove(model);
-                }
-
+                m_completionRanges.erase(model);
                 _aborted(model, view());
                 m_presentationModel->removeCompletionModel(model);
             }
@@ -789,7 +777,7 @@ void KateCompletionWidget::cursorPositionChanged()
 
 bool KateCompletionWidget::isCompletionActive() const
 {
-    return !m_completionRanges.isEmpty() && ((!isHidden() && isVisible()) || (!m_argumentHintWidget->isHidden() && m_argumentHintWidget->isVisible()));
+    return !m_completionRanges.empty() && ((!isHidden() && isVisible()) || (!m_argumentHintWidget->isHidden() && m_argumentHintWidget->isVisible()));
 }
 
 void KateCompletionWidget::abortCompletion()
@@ -825,8 +813,10 @@ void KateCompletionWidget::clear()
     m_argumentHintModel->clear();
     m_docTip->clearWidgets();
 
-    const auto keys = m_completionRanges.keys();
-    for (KTextEditor::CodeCompletionModel *model : keys) {
+    // we modify m_completionRanges inside
+    auto ks = std::views::keys(m_completionRanges);
+    const std::vector<KTextEditor::CodeCompletionModel *> checkCompletionRanges{ks.begin(), ks.end()};
+    for (auto model : checkCompletionRanges) {
         _aborted(model, view());
     }
 
@@ -1009,29 +999,29 @@ void KateCompletionWidget::showEvent(QShowEvent *event)
 KTextEditor::MovingRange *KateCompletionWidget::completionRange(KTextEditor::CodeCompletionModel *model) const
 {
     if (!model) {
-        if (m_completionRanges.isEmpty()) {
+        if (m_completionRanges.empty()) {
             return nullptr;
         }
 
-        KTextEditor::MovingRange *ret = m_completionRanges.begin()->range;
+        KTextEditor::MovingRange *ret = m_completionRanges.begin()->second.range.get();
 
-        for (const CompletionRange &range : m_completionRanges) {
-            if (range.range->start() > ret->start()) {
-                ret = range.range;
+        for (const auto &it : m_completionRanges) {
+            if (it.second.range->start() > ret->start()) {
+                ret = it.second.range.get();
             }
         }
         return ret;
     }
-    if (m_completionRanges.contains(model)) {
-        return m_completionRanges[model].range;
+    if (const auto it = m_completionRanges.find(model); it != m_completionRanges.end()) {
+        return it->second.range.get();
     } else {
         return nullptr;
     }
 }
 
-QMap<KTextEditor::CodeCompletionModel *, KateCompletionWidget::CompletionRange> KateCompletionWidget::completionRanges() const
+bool KateCompletionWidget::completionRangesContainsModel(KTextEditor::CodeCompletionModel *model) const
 {
-    return m_completionRanges;
+    return m_completionRanges.contains(model);
 }
 
 void KateCompletionWidget::modelReset()

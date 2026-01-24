@@ -95,9 +95,8 @@ public:
     bool m_ignoreBufferSignals = false;
 
     struct CompletionRange {
-        CompletionRange()
-        {
-        }
+        CompletionRange() = default;
+
         explicit CompletionRange(KTextEditor::MovingRange *r)
             : range(r)
         {
@@ -108,13 +107,13 @@ public:
             return range->toRange() == rhs.range->toRange();
         }
 
-        KTextEditor::MovingRange *range = nullptr;
+        std::unique_ptr<KTextEditor::MovingRange> range;
         // Whenever the cursor goes before this position, the completion is stopped, unless it is invalid.
         KTextEditor::Cursor leftBoundary;
     };
 
     KTextEditor::MovingRange *completionRange(KTextEditor::CodeCompletionModel *model = nullptr) const;
-    QMap<KTextEditor::CodeCompletionModel *, CompletionRange> completionRanges() const;
+    bool completionRangesContainsModel(KTextEditor::CodeCompletionModel *model) const;
 
     // Navigation
     void pageDown();
@@ -214,7 +213,7 @@ private:
     QList<KTextEditor::CodeCompletionModel *> m_sourceModels;
     KateCompletionModel *m_presentationModel;
 
-    QMap<KTextEditor::CodeCompletionModel *, CompletionRange> m_completionRanges;
+    std::map<KTextEditor::CodeCompletionModel *, CompletionRange> m_completionRanges;
     QSet<KTextEditor::CodeCompletionModel *> m_waitingForReset;
 
     KTextEditor::Cursor m_lastCursorPosition;

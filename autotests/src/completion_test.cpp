@@ -235,8 +235,8 @@ void CompletionTest::testAbortControllerMultipleModels()
 
     m_view->insertText(QStringLiteral("-"));
     verifyCompletionStarted(m_view);
-    QVERIFY(!m_view->completionWidget()->completionRanges().contains(testModel1));
-    QVERIFY(m_view->completionWidget()->completionRanges().contains(testModel2));
+    QVERIFY(!m_view->completionWidget()->completionRangesContainsModel(testModel1));
+    QVERIFY(m_view->completionWidget()->completionRangesContainsModel(testModel2));
 
     QCOMPARE(countItems(model), 40);
 
