@@ -71,7 +71,7 @@ void KateDocumentTest::testWordWrap()
     const QString secondWrap = QLatin1String(".........1.........2.........3.........4.........5.........6 \n....ooooooooooo....7 ....x....8");
 
     doc.setText(content);
-    MovingCursor *c = doc.newMovingCursor(Cursor(0, 75), MovingCursor::MoveOnInsert);
+    std::unique_ptr<MovingCursor> c{doc.newMovingCursor(Cursor(0, 75), MovingCursor::MoveOnInsert)};
 
     QCOMPARE(doc.text(), content);
     QCOMPARE(c->toCursor(), Cursor(0, 75));
