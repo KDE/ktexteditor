@@ -8,6 +8,8 @@
 #include "variable_test.h"
 #include "moc_variable_test.cpp"
 
+#include <memory>
+
 #include <katedocument.h>
 #include <ktexteditor/document.h>
 #include <ktexteditor/editor.h>
@@ -72,7 +74,7 @@ void VariableTest::testExactMatch()
     QFETCH(QString, expectedText);
 
     auto editor = KTextEditor::Editor::instance();
-    auto doc = editor->createDocument(nullptr);
+    std::unique_ptr<KTextEditor::Document> doc{editor->createDocument(nullptr)};
     auto view = doc->createView(nullptr);
     doc->setText(text);
 
@@ -96,8 +98,6 @@ void VariableTest::testExactMatch()
     QCOMPARE(output, QStringLiteral("Hello ") + expectedText + QLatin1Char(' ') + expectedText + QLatin1Char('!'));
 
     QVERIFY(editor->unregisterVariable(QStringLiteral("Doc:Text")));
-
-    delete doc;
 }
 
 void VariableTest::testPrefixMatch()
@@ -133,7 +133,7 @@ void VariableTest::testPrefixMatch()
 void VariableTest::testRecursiveMatch()
 {
     auto editor = KTextEditor::Editor::instance();
-    auto doc = editor->createDocument(nullptr);
+    std::unique_ptr<KTextEditor::Document> doc{editor->createDocument(nullptr)};
     auto view = doc->createView(nullptr);
     doc->setText(QStringLiteral("Text"));
 
@@ -149,13 +149,12 @@ void VariableTest::testRecursiveMatch()
     QCOMPARE(output, QStringLiteral("Hello Text!"));
 
     QVERIFY(editor->unregisterVariable(name));
-    delete doc;
 }
 
 void VariableTest::testBuiltins()
 {
     auto editor = KTextEditor::Editor::instance();
-    auto doc = editor->createDocument(nullptr);
+    std::unique_ptr<KTextEditor::Document> doc{editor->createDocument(nullptr)};
     doc->openUrl(QUrl::fromLocalFile(QDir::homePath() + QStringLiteral("/kate-v5.tar.gz")));
     doc->setText(QStringLiteral("get an edge in editing\n:-)"));
     auto view = doc->createView(nullptr);
@@ -252,7 +251,7 @@ void VariableTest::testBuiltins()
     QCOMPARE(out, QStringLiteral("2"));
 
     // Document:Variable:<variable>, since KF 5.78
-    qobject_cast<KTextEditor::DocumentPrivate *>(doc)->setVariable(QStringLiteral("cow-sound"), QStringLiteral("moo"));
+    qobject_cast<KTextEditor::DocumentPrivate *>(doc.get())->setVariable(QStringLiteral("cow-sound"), QStringLiteral("moo"));
     out = editor->expandText(QStringLiteral("%{Document:Variable:cow-sound}"), view);
     QCOMPARE(out, QStringLiteral("moo"));
 
