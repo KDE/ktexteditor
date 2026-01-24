@@ -35,7 +35,7 @@ BaseTest::BaseTest()
     kate_document = nullptr;
 
     mainWindow = new QMainWindow;
-    auto centralWidget = new QWidget();
+    auto centralWidget = new QWidget(mainWindow);
     mainWindowLayout = new QVBoxLayout(centralWidget);
     mainWindow->setCentralWidget(centralWidget);
     mainWindow->resize(640, 480);
@@ -68,6 +68,7 @@ BaseTest::BaseTest()
 BaseTest::~BaseTest()
 {
     delete kate_document;
+    delete mainWindow;
 }
 
 void BaseTest::waitForCompletionWidgetToActivate(KTextEditor::ViewPrivate *kate_view)
