@@ -5131,7 +5131,7 @@ msgstr "Normal"
 #: utils/katebookmarks.cpp:49
 #, kde-format
 msgid "Toggle &Bookmark"
-msgstr "Commuta & pone in marcator de libro"
+msgstr "Commuta e pone in marcator de li&bro"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
