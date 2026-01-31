@@ -104,49 +104,54 @@ bool TextLine::matchesAt(int column, const QString &match) const
 
 int TextLine::toVirtualColumn(int column, int tabWidth) const
 {
-    if (column < 0) {
+    // handle invalid stuff and start of line
+    if (column <= 0) {
         return 0;
     }
 
-    int x = 0;
-    const int zmax = qMin(column, m_text.length());
+    // compute virtual column in existing text based on tab seen or not
+    int virtualColumn = 0;
+    const int maximalRealColumn = qMin(column, m_text.length());
     const QChar *unicode = m_text.unicode();
-
-    for (int z = 0; z < zmax; ++z) {
+    for (int z = 0; z < maximalRealColumn; ++z) {
         if (unicode[z] == QLatin1Char('\t')) {
-            x += tabWidth - (x % tabWidth);
+            virtualColumn += tabWidth - (virtualColumn % tabWidth);
         } else {
-            x++;
+            virtualColumn++;
         }
     }
 
-    return x + column - zmax;
+    // add the remaining offset, we might have a column behind the text of the line
+    // we assume for the remaining columns no tabs
+    return virtualColumn + (column - maximalRealColumn);
 }
 
 int TextLine::fromVirtualColumn(int column, int tabWidth) const
 {
-    if (column < 0) {
+    // handle invalid stuff and start of line
+    if (column <= 0) {
         return 0;
     }
 
-    const int zmax = qMin(m_text.length(), column);
+    // compute virtual column in existing text based on tab seen or not
+    int virtualColumn = 0;
+    const int maximalRealColumn = qMin(column, m_text.length());
     const QChar *unicode = m_text.unicode();
-
-    int x = 0;
-    int z = 0;
-    for (; z < zmax; ++z) {
-        int diff = 1;
+    for (int z = 0; z < maximalRealColumn; ++z) {
         if (unicode[z] == QLatin1Char('\t')) {
-            diff = tabWidth - (x % tabWidth);
+            virtualColumn += tabWidth - (virtualColumn % tabWidth);
+        } else {
+            virtualColumn++;
         }
 
-        if (x + diff > column) {
-            break;
-        }
-        x += diff;
+        // if we reached or surpassed our wanted colum, z is the right offset
+        if (virtualColumn > column)
+            return z;
     }
 
-    return z + qMax(column - x, 0);
+    // add the remaining offset, we might have a column behind the text of the line
+    // we assume for the remaining columns no tabs
+    return maximalRealColumn + (column - virtualColumn);
 }
 
 int TextLine::virtualLength(int tabWidth) const
