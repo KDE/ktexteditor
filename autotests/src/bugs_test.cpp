@@ -225,4 +225,43 @@ void BugTest::bug317111TryCrash()
     doc.defStyleNum(0, 10000000);
 }
 
+void BugTest::bug513898TestVirtualColumnComputation()
+{
+    // easy test: line with no tabs
+    Kate::TextLine lineWithOnlySpaces(QStringLiteral("0123456789"));
+
+    // test the invalid cases, shall be 0
+    QCOMPARE(lineWithOnlySpaces.fromVirtualColumn(-1, 8), 0);
+    QCOMPARE(lineWithOnlySpaces.toVirtualColumn(-1, 8), 0);
+
+    // real == virtual colums if no tabs
+    for (int column = 0; column < 32; ++column) {
+        QCOMPARE(lineWithOnlySpaces.fromVirtualColumn(column, 8), column);
+        QCOMPARE(lineWithOnlySpaces.toVirtualColumn(column, 8), column);
+    }
+
+    // line with tabs
+    Kate::TextLine lineWithOneTab(QStringLiteral("01234\t6789"));
+
+    // for virtual column: starting with column 6 we shall have the influence of the tab
+    for (int column = 0; column < 32; ++column) {
+        if (column < 6) {
+            QCOMPARE(lineWithOneTab.toVirtualColumn(column, 8), column);
+        } else {
+            QCOMPARE(lineWithOneTab.toVirtualColumn(column, 8), column + 2);
+        }
+    }
+
+    // for the reverse: if we are inside the tab or behind we should wrap back
+    for (int column = 0; column < 32; ++column) {
+        if (column < 6) {
+            QCOMPARE(lineWithOneTab.fromVirtualColumn(column, 8), column);
+        } else if (column < 8) {
+            QCOMPARE(lineWithOneTab.fromVirtualColumn(column, 8), 5);
+        } else {
+            QCOMPARE(lineWithOneTab.fromVirtualColumn(column, 8), column - 2);
+        }
+    }
+}
+
 #include "moc_bugs_test.cpp"

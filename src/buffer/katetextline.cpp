@@ -104,6 +104,8 @@ bool TextLine::matchesAt(int column, const QString &match) const
 
 int TextLine::toVirtualColumn(int column, int tabWidth) const
 {
+    Q_ASSERT(tabWidth > 0);
+
     // handle invalid stuff and start of line
     if (column <= 0) {
         return 0;
@@ -128,6 +130,8 @@ int TextLine::toVirtualColumn(int column, int tabWidth) const
 
 int TextLine::fromVirtualColumn(int column, int tabWidth) const
 {
+    Q_ASSERT(tabWidth > 0);
+
     // handle invalid stuff and start of line
     if (column <= 0) {
         return 0;

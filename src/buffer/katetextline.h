@@ -7,6 +7,8 @@
 #ifndef KATE_TEXTLINE_H
 #define KATE_TEXTLINE_H
 
+#include <ktexteditor_export.h>
+
 #include <KSyntaxHighlighting/State>
 
 #include <QList>
@@ -18,7 +20,7 @@ namespace Kate
  * Class representing a single text line.
  * For efficiency reasons, not only pure text is stored here, but also additional data.
  */
-class TextLine
+class KTEXTEDITOR_EXPORT TextLine
 {
 public:
     /**

@@ -28,6 +28,7 @@ private Q_SLOTS:
     void bug313759TryCrash();
     void bug313769TryCrash();
     void bug317111TryCrash();
+    void bug513898TestVirtualColumnComputation();
 };
 
 #endif
