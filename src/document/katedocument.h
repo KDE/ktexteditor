@@ -808,7 +808,7 @@ public:
     void transpose(const KTextEditor::Cursor);
     void swapTextRanges(KTextEditor::Range firstWord, KTextEditor::Range secondWord);
     bool multiPaste(KTextEditor::ViewPrivate *view, const QStringList &texts);
-    void paste(KTextEditor::ViewPrivate *view, const QString &text);
+    void paste(KTextEditor::ViewPrivate *view, QString text);
 
 public:
     enum CommentType {

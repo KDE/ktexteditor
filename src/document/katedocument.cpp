@@ -3620,7 +3620,7 @@ bool KTextEditor::DocumentPrivate::multiPaste(KTextEditor::ViewPrivate *view, co
     return true;
 }
 
-void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const QString &text)
+void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, QString text)
 {
     // nop if nothing to paste
     if (text.isEmpty()) {
@@ -3629,10 +3629,13 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
 
     // normalize line endings, to e.g. catch issues with \r\n in paste buffer
     // see bug 410951
-    QString s = text;
-    s.replace(QRegularExpression(QStringLiteral("\r\n?")), QStringLiteral("\n"));
+    // allow unicode separators, too, see
+    // https://code.qt.io/cgit/qt/qtbase.git/commit/src/widgets/widgets?id=25f361a81c0b1a8c1983088e8a807925bda73189
+    static const QRegularExpression lineSeparators(QStringLiteral("\\R"), QRegularExpression::UseUnicodePropertiesOption);
+    text.replace(lineSeparators, QStringLiteral("\n"));
 
-    int lines = s.count(QLatin1Char('\n'));
+    // from here on text is normalized to contain '\n' as line separator
+    int lines = text.count(QLatin1Char('\n'));
     const bool isSingleLine = lines == 0;
 
     m_undoManager->undoSafePoint();
@@ -3653,16 +3656,16 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
         if (view->blockSelection()) {
             pos = rangeOnLine(view->selectionRange(), pos.line()).start();
             if (lines == 0) {
-                s += QLatin1Char('\n');
-                s = s.repeated(view->selectionRange().numberOfLines() + 1);
-                s.chop(1);
+                text += QLatin1Char('\n');
+                text = text.repeated(view->selectionRange().numberOfLines() + 1);
+                text.chop(1);
             }
         }
         view->removeSelectedText();
     }
 
     if (config()->ovr()) {
-        const auto pasteLines = QStringView(s).split(QLatin1Char('\n'));
+        const auto pasteLines = QStringView(text).split(QLatin1Char('\n'));
 
         if (!view->blockSelection()) {
             int endColumn = (pasteLines.count() == 1 ? pos.column() : 0) + pasteLines.last().length();
@@ -3677,7 +3680,7 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
         }
     }
 
-    insertText(pos, s, view->blockSelection());
+    insertText(pos, text, view->blockSelection());
     editEnd();
 
     // move cursor right for block select, as the user is moved right internal
@@ -3696,7 +3699,7 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
     }
 
     if (!view->blockSelection()) {
-        Q_EMIT charactersSemiInteractivelyInserted(pos, s);
+        Q_EMIT charactersSemiInteractivelyInserted(pos, text);
     }
     m_undoManager->undoSafePoint();
 }

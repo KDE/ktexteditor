@@ -920,5 +920,24 @@ void KateViewTest::testSelectedTextFormats()
     }
 }
 
+void KateViewTest::testPasteDifferentLineSeparators()
+{
+    // we shall handle several new line variants in the paste text
+    for (const auto &pasteText : QStringList{QStringLiteral("a\nb\n"),
+                                             QStringLiteral("a\r\nb\r\n"),
+                                             QStringLiteral("a\rb\r"),
+                                             QStringLiteral("a\nb\r"),
+                                             QStringLiteral("a\u2028b\u2028"),
+                                             QStringLiteral("a\u2029b\u2029")}) {
+        KTextEditor::DocumentPrivate doc(false, false);
+        KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+        view->setCursorPosition({0, 0});
+
+        // paste and check result
+        doc.paste(view, pasteText);
+        QCOMPARE(doc.text(), QStringLiteral("a\nb\n"));
+    }
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;
 #include "moc_kateview_test.cpp"

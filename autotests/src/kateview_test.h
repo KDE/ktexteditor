@@ -45,6 +45,7 @@ private Q_SLOTS:
     void testCrashOnPasteInOverwriteMode();
     void testCommandBarSearchReplace();
     void testSelectedTextFormats();
+    void testPasteDifferentLineSeparators();
 };
 
 #endif // KATE_VIEW_TEST_H
