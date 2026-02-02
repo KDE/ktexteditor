@@ -1789,7 +1789,7 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
                            QStringLiteral("tools_indent"),
                            QStringLiteral("tools_unindent"),
                            QStringLiteral("tools_cleanIndent"),
-                           QStringLiteral("tools_formatIndet"),
+                           QStringLiteral("tools_formatIndent"),
                            QStringLiteral("tools_alignOn"),
                            QStringLiteral("tools_comment"),
                            QStringLiteral("tools_uncomment"),
