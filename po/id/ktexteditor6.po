@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-25 00:41+0000\n"
+"POT-Creation-Date: 2026-02-03 00:42+0000\n"
 "PO-Revision-Date: 2022-08-19 20:36+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -2267,12 +2267,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Coba Lagi"
 
-#: document/katedocument.cpp:2255 document/katedocument.cpp:6444
+#: document/katedocument.cpp:2255 document/katedocument.cpp:6447
 #, kde-format
 msgid "&Close"
 msgstr "&Tutup"
 
-#: document/katedocument.cpp:2256 document/katedocument.cpp:6445
+#: document/katedocument.cpp:2256 document/katedocument.cpp:6448
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2411,29 +2411,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "Tutup Meski Demikian"
 
-#: document/katedocument.cpp:4607
+#: document/katedocument.cpp:4610
 #, kde-format
 msgid "Untitled"
 msgstr "Takberjudul"
 
-#: document/katedocument.cpp:4732 document/katedocument.cpp:4963
-#: document/katedocument.cpp:4973 document/katedocument.cpp:5772
-#: document/katedocument.cpp:5959
+#: document/katedocument.cpp:4735 document/katedocument.cpp:4966
+#: document/katedocument.cpp:4976 document/katedocument.cpp:5775
+#: document/katedocument.cpp:5962
 #, kde-format
 msgid "Save File"
 msgstr "Simpan File"
 
-#: document/katedocument.cpp:4735
+#: document/katedocument.cpp:4738
 #, kde-format
 msgid "Save failed"
 msgstr "Gagal menyimpan"
 
-#: document/katedocument.cpp:4984
+#: document/katedocument.cpp:4987
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Simpan Salinan File"
 
-#: document/katedocument.cpp:4996
+#: document/katedocument.cpp:4999
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2446,7 +2446,7 @@ msgstr ""
 "Periksalah bahwa kamu mempunyai akses tulis untuk file ini atau cukupnya "
 "spasi disk yang tersedia."
 
-#: document/katedocument.cpp:5286
+#: document/katedocument.cpp:5289
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2464,7 +2464,7 @@ msgstr ""
 "docs.kde.org/stable5/en/applications/katepart/config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5295
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2482,19 +2482,19 @@ msgstr ""
 "kde.org/stable5/en/applications/katepart/config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5606
+#: document/katedocument.cpp:5609
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "File '%1' telah dimodifikasi oleh program lainnya."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5611
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "File '%1' telah dihapus oleh program lainnya."
 
-#: document/katedocument.cpp:5944
+#: document/katedocument.cpp:5947
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2503,17 +2503,17 @@ msgstr ""
 "Dokumen \"%1\" telah dimodifikasi.\n"
 "Apakah kamu ingin menyimpan perubahanmu atau membuangnya?"
 
-#: document/katedocument.cpp:5947
+#: document/katedocument.cpp:5950
 #, kde-format
 msgid "Close Document"
 msgstr "Tutup Dokumen"
 
-#: document/katedocument.cpp:6058
+#: document/katedocument.cpp:6061
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "File <a href=\"%1\">%2</a> masih dalam pemuatan."
 
-#: document/katedocument.cpp:6063
+#: document/katedocument.cpp:6066
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Gugurkan Pemuatan"
@@ -3690,7 +3690,7 @@ msgstr "Error pemuatan skrip %1"
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr "Muat-ulang semua file JavaScript (pelekuk, perintah skrip baris, dll)."
 
-#: script/katescriptview.cpp:207
+#: script/katescriptview.cpp:214
 #, kde-format
 msgid "Command not found: %1"
 msgstr "Perintah enggak ditemukan: %1"
@@ -8151,29 +8151,29 @@ msgstr ""
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2363
+#: view/kateview.cpp:2347
 #, kde-format
 msgid "Search wrapped"
 msgstr "Cari yang dikemas"
 
-#: view/kateview.cpp:3057
+#: view/kateview.cpp:3041
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Open File"
 msgstr "Simpan File"
 
-#: view/kateview.cpp:3973
+#: view/kateview.cpp:3952
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Sejajar"
 
-#: view/kateview.cpp:3973
+#: view/kateview.cpp:3952
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:5057
+#: view/kateview.cpp:5036
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Ekspor File sebagai HTML"

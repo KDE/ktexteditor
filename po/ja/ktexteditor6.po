@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-25 00:41+0000\n"
+"POT-Creation-Date: 2026-02-03 00:42+0000\n"
 "PO-Revision-Date: 2011-04-24 13:17-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -2284,12 +2284,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2255 document/katedocument.cpp:6444
+#: document/katedocument.cpp:2255 document/katedocument.cpp:6447
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2256 document/katedocument.cpp:6445
+#: document/katedocument.cpp:2256 document/katedocument.cpp:6448
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2433,30 +2433,30 @@ msgstr "本当にこのファイルを閉じますか？データが消失する
 msgid "Close Nevertheless"
 msgstr "それでも閉じる"
 
-#: document/katedocument.cpp:4607
+#: document/katedocument.cpp:4610
 #, kde-format
 msgid "Untitled"
 msgstr "タイトルなし"
 
-#: document/katedocument.cpp:4732 document/katedocument.cpp:4963
-#: document/katedocument.cpp:4973 document/katedocument.cpp:5772
-#: document/katedocument.cpp:5959
+#: document/katedocument.cpp:4735 document/katedocument.cpp:4966
+#: document/katedocument.cpp:4976 document/katedocument.cpp:5775
+#: document/katedocument.cpp:5962
 #, kde-format
 msgid "Save File"
 msgstr "ファイルを保存"
 
-#: document/katedocument.cpp:4735
+#: document/katedocument.cpp:4738
 #, kde-format
 msgid "Save failed"
 msgstr "保存に失敗"
 
-#: document/katedocument.cpp:4984
+#: document/katedocument.cpp:4987
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "ファイルを保存"
 
-#: document/katedocument.cpp:4996
+#: document/katedocument.cpp:4999
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2469,7 +2469,7 @@ msgstr ""
 "このファイルへの書き込みアクセス権限があり、ディスクに十分な空き領域があるこ"
 "とを確認してください。"
 
-#: document/katedocument.cpp:5286
+#: document/katedocument.cpp:5289
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2478,7 +2478,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5295
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2487,19 +2487,19 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5606
+#: document/katedocument.cpp:5609
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "ディスク上のファイル ‘%1’ は他のプログラムによって変更されました。"
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5611
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "ディスク上のファイル ‘%1’ は他のプログラムによって削除されました。"
 
-#: document/katedocument.cpp:5944
+#: document/katedocument.cpp:5947
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2508,17 +2508,17 @@ msgstr ""
 "文書 “%1” は変更されています。\n"
 "変更を保存しますか？それとも破棄しますか？"
 
-#: document/katedocument.cpp:5947
+#: document/katedocument.cpp:5950
 #, kde-format
 msgid "Close Document"
 msgstr "文書を閉じる"
 
-#: document/katedocument.cpp:6058
+#: document/katedocument.cpp:6061
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6063
+#: document/katedocument.cpp:6066
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -3666,7 +3666,7 @@ msgstr "スクリプト ‘%1’ の読み込みエラー"
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""
 
-#: script/katescriptview.cpp:207
+#: script/katescriptview.cpp:214
 #, kde-format
 msgid "Command not found: %1"
 msgstr "コマンドが見つかりません: %1"
@@ -8079,30 +8079,30 @@ msgstr ""
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2363
+#: view/kateview.cpp:2347
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgid "Search wrapped"
 msgstr "検索モード"
 
-#: view/kateview.cpp:3057
+#: view/kateview.cpp:3041
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Open File"
 msgstr "ファイルを保存"
 
-#: view/kateview.cpp:3973
+#: view/kateview.cpp:3952
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "整列(&A)"
 
-#: view/kateview.cpp:3973
+#: view/kateview.cpp:3952
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:5057
+#: view/kateview.cpp:5036
 #, kde-format
 msgid "Export File as HTML"
 msgstr "HTML としてエクスポート"

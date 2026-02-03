@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-25 00:41+0000\n"
+"POT-Creation-Date: 2026-02-03 00:42+0000\n"
 "PO-Revision-Date: 2025-02-23 13:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -2200,12 +2200,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Provi denove"
 
-#: document/katedocument.cpp:2255 document/katedocument.cpp:6444
+#: document/katedocument.cpp:2255 document/katedocument.cpp:6447
 #, kde-format
 msgid "&Close"
 msgstr "&Fermi"
 
-#: document/katedocument.cpp:2256 document/katedocument.cpp:6445
+#: document/katedocument.cpp:2256 document/katedocument.cpp:6448
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2340,29 +2340,29 @@ msgstr "Ĉu vi vere volas fermi ĉi dosieron? Datumoj povus perdiĝi."
 msgid "Close Nevertheless"
 msgstr "Tamen fermi"
 
-#: document/katedocument.cpp:4607
+#: document/katedocument.cpp:4610
 #, kde-format
 msgid "Untitled"
 msgstr "Sentitola"
 
-#: document/katedocument.cpp:4732 document/katedocument.cpp:4963
-#: document/katedocument.cpp:4973 document/katedocument.cpp:5772
-#: document/katedocument.cpp:5959
+#: document/katedocument.cpp:4735 document/katedocument.cpp:4966
+#: document/katedocument.cpp:4976 document/katedocument.cpp:5775
+#: document/katedocument.cpp:5962
 #, kde-format
 msgid "Save File"
 msgstr "Konservi Dosieron"
 
-#: document/katedocument.cpp:4735
+#: document/katedocument.cpp:4738
 #, kde-format
 msgid "Save failed"
 msgstr "Konservado malsukcesis"
 
-#: document/katedocument.cpp:4984
+#: document/katedocument.cpp:4987
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Konservi Kopion de Dosiero"
 
-#: document/katedocument.cpp:4996
+#: document/katedocument.cpp:4999
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2375,7 +2375,7 @@ msgstr ""
 "Kontrolu ke vi havas skribpermeson por ĉi tiu dosiero aŭ ke vi havas sufiĉan "
 "diskospacon."
 
-#: document/katedocument.cpp:5286
+#: document/katedocument.cpp:5289
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2388,7 +2388,7 @@ msgstr ""
 "org/?application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5295
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2401,17 +2401,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5606
+#: document/katedocument.cpp:5609
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "La dosiero '%1' estis modifita sur disko."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5611
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "La dosiero '%1' estis forigita sur disko."
 
-#: document/katedocument.cpp:5944
+#: document/katedocument.cpp:5947
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2420,17 +2420,17 @@ msgstr ""
 "La dokumento \"%1\" estas modifita.\n"
 "Ĉu vi volas konservi viajn ŝanĝojn aŭ forĵeti ilin?"
 
-#: document/katedocument.cpp:5947
+#: document/katedocument.cpp:5950
 #, kde-format
 msgid "Close Document"
 msgstr "Fermi Dokumenton"
 
-#: document/katedocument.cpp:6058
+#: document/katedocument.cpp:6061
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "La dosiero <a href=\"%1\">%2</a> ankoraŭ ŝargiĝas."
 
-#: document/katedocument.cpp:6063
+#: document/katedocument.cpp:6066
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Ĉesigi Ŝ&argon"
@@ -3554,7 +3554,7 @@ msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""
 "Reŝargi ĉiujn JavaScript-dosierojn (deŝoviloj, komandliniaj skriptoj, ktp)."
 
-#: script/katescriptview.cpp:207
+#: script/katescriptview.cpp:214
 #, kde-format
 msgid "Command not found: %1"
 msgstr "Ne trovis komandon: %1"
@@ -7895,27 +7895,27 @@ msgstr "Moviĝo de kamel-uskleco malebligita"
 msgid "Camel case movement enabled"
 msgstr "Moviĝo de kamel-uskleco ebligita"
 
-#: view/kateview.cpp:2363
+#: view/kateview.cpp:2347
 #, kde-format
 msgid "Search wrapped"
 msgstr "Serĉo faldiĝis"
 
-#: view/kateview.cpp:3057
+#: view/kateview.cpp:3041
 #, kde-format
 msgid "Open File"
 msgstr "Malfermi Dosieron"
 
-#: view/kateview.cpp:3973
+#: view/kateview.cpp:3952
 #, kde-format
 msgid "Align On"
 msgstr "Vicigi Sur"
 
-#: view/kateview.cpp:3973
+#: view/kateview.cpp:3952
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Alineado ŝablono:"
 
-#: view/kateview.cpp:5057
+#: view/kateview.cpp:5036
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Eksporti dosieron kiel HTML"

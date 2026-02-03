@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-25 00:41+0000\n"
+"POT-Creation-Date: 2026-02-03 00:42+0000\n"
 "PO-Revision-Date: 2025-09-26 15:11+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -2205,12 +2205,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Повторно опитване"
 
-#: document/katedocument.cpp:2255 document/katedocument.cpp:6444
+#: document/katedocument.cpp:2255 document/katedocument.cpp:6447
 #, kde-format
 msgid "&Close"
 msgstr "&Затваряне"
 
-#: document/katedocument.cpp:2256 document/katedocument.cpp:6445
+#: document/katedocument.cpp:2256 document/katedocument.cpp:6448
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2351,29 +2351,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "Затваряне"
 
-#: document/katedocument.cpp:4607
+#: document/katedocument.cpp:4610
 #, kde-format
 msgid "Untitled"
 msgstr "Неозаглавено"
 
-#: document/katedocument.cpp:4732 document/katedocument.cpp:4963
-#: document/katedocument.cpp:4973 document/katedocument.cpp:5772
-#: document/katedocument.cpp:5959
+#: document/katedocument.cpp:4735 document/katedocument.cpp:4966
+#: document/katedocument.cpp:4976 document/katedocument.cpp:5775
+#: document/katedocument.cpp:5962
 #, kde-format
 msgid "Save File"
 msgstr "Запис на файл"
 
-#: document/katedocument.cpp:4735
+#: document/katedocument.cpp:4738
 #, kde-format
 msgid "Save failed"
 msgstr "Грешка при запис"
 
-#: document/katedocument.cpp:4984
+#: document/katedocument.cpp:4987
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Запазване на копие на файл"
 
-#: document/katedocument.cpp:4996
+#: document/katedocument.cpp:4999
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2386,7 +2386,7 @@ msgstr ""
 "Моля, проверете дали имате права за запис във файла и дали има достатъчно "
 "свободно място на диска."
 
-#: document/katedocument.cpp:5286
+#: document/katedocument.cpp:5289
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2399,7 +2399,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5295
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2412,17 +2412,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5606
+#: document/katedocument.cpp:5609
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Файлът „%1“ е модифициран на диска."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5611
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Файлът „%1“ е изтрит или преместен от диска."
 
-#: document/katedocument.cpp:5944
+#: document/katedocument.cpp:5947
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2433,17 +2433,17 @@ msgstr ""
 "променен.\n"
 "Искате ли да запазите промените си или да ги отхвърлите?"
 
-#: document/katedocument.cpp:5947
+#: document/katedocument.cpp:5950
 #, kde-format
 msgid "Close Document"
 msgstr "Затваряне на документа"
 
-#: document/katedocument.cpp:6058
+#: document/katedocument.cpp:6061
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Файлът <a href=„%1“> %2 </a> все още се зарежда."
 
-#: document/katedocument.cpp:6063
+#: document/katedocument.cpp:6066
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Прекъсване на зареждането"
@@ -3572,7 +3572,7 @@ msgstr ""
 "Презареждане всички JavaScript файлове (индентери, скриптове от командния "
 "ред и т.н.)."
 
-#: script/katescriptview.cpp:207
+#: script/katescriptview.cpp:214
 #, kde-format
 msgid "Command not found: %1"
 msgstr "Командата не е намерена: %1"
@@ -7918,27 +7918,27 @@ msgstr "Деактивирано е camel case предвижване на ку�
 msgid "Camel case movement enabled"
 msgstr "Активирано е camel case предвижване на курсора"
 
-#: view/kateview.cpp:2363
+#: view/kateview.cpp:2347
 #, kde-format
 msgid "Search wrapped"
 msgstr "Търсенето завърши"
 
-#: view/kateview.cpp:3057
+#: view/kateview.cpp:3041
 #, kde-format
 msgid "Open File"
 msgstr "Отваряне на файл"
 
-#: view/kateview.cpp:3973
+#: view/kateview.cpp:3952
 #, kde-format
 msgid "Align On"
 msgstr "Подравняване"
 
-#: view/kateview.cpp:3973
+#: view/kateview.cpp:3952
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Шаблон на подравняване:"
 
-#: view/kateview.cpp:5057
+#: view/kateview.cpp:5036
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Експортиране на файл като HTML"

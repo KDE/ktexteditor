@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-25 00:41+0000\n"
+"POT-Creation-Date: 2026-02-03 00:42+0000\n"
 "PO-Revision-Date: 2019-12-12 21:03+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc-"
@@ -2039,12 +2039,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2255 document/katedocument.cpp:6444
+#: document/katedocument.cpp:2255 document/katedocument.cpp:6447
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2256 document/katedocument.cpp:6445
+#: document/katedocument.cpp:2256 document/katedocument.cpp:6448
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2156,29 +2156,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr ""
 
-#: document/katedocument.cpp:4607
+#: document/katedocument.cpp:4610
 #, kde-format
 msgid "Untitled"
 msgstr "തലക്കെട്ടില്ലാത്ത"
 
-#: document/katedocument.cpp:4732 document/katedocument.cpp:4963
-#: document/katedocument.cpp:4973 document/katedocument.cpp:5772
-#: document/katedocument.cpp:5959
+#: document/katedocument.cpp:4735 document/katedocument.cpp:4966
+#: document/katedocument.cpp:4976 document/katedocument.cpp:5775
+#: document/katedocument.cpp:5962
 #, kde-format
 msgid "Save File"
 msgstr "ഫയല്‍ സൂക്ഷിക്കുക"
 
-#: document/katedocument.cpp:4735
+#: document/katedocument.cpp:4738
 #, kde-format
 msgid "Save failed"
 msgstr "സൂക്ഷിക്കുവാന്‍ സാധ്യമായില്ല"
 
-#: document/katedocument.cpp:4984
+#: document/katedocument.cpp:4987
 #, fuzzy, kde-format
 msgid "Save Copy of File"
 msgstr "ഫയല്‍ സൂക്ഷിക്കുക"
 
-#: document/katedocument.cpp:4996
+#: document/katedocument.cpp:4999
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2187,7 +2187,7 @@ msgid ""
 "available."
 msgstr ""
 
-#: document/katedocument.cpp:5286
+#: document/katedocument.cpp:5289
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2196,7 +2196,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5295
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2205,19 +2205,19 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5606
+#: document/katedocument.cpp:5609
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "ഫയല്‍ '%1' മറ്റൊരു പ്രോഗ്രാം ഉപയോഗിച്ചു് മാറ്റം വരുത്തിയിരിക്കുന്നു."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5611
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "ഫയല്‍ '%1' മറ്റൊരു പ്രോഗ്രാം ഉപയോഗിച്ചു് വെട്ടിമാറ്റിയിരിക്കുന്നു."
 
-#: document/katedocument.cpp:5944
+#: document/katedocument.cpp:5947
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2226,17 +2226,17 @@ msgstr ""
 "രേഖ \"%1\"-ല്‍ മാറ്റം വരുത്തയിരിക്കുന്നു.\n"
 "നിങ്ങള്‍ക്കു് ഈ മാറ്റങ്ങള്‍ സൂക്ഷിക്കണമോ?"
 
-#: document/katedocument.cpp:5947
+#: document/katedocument.cpp:5950
 #, kde-format
 msgid "Close Document"
 msgstr "രേഖ അടയ്ക്കുക"
 
-#: document/katedocument.cpp:6058
+#: document/katedocument.cpp:6061
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6063
+#: document/katedocument.cpp:6066
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -3294,7 +3294,7 @@ msgstr "സ്ക്രിപ്റ്റ് %1 ലഭ്യമാക്കു�
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""
 
-#: script/katescriptview.cpp:207
+#: script/katescriptview.cpp:214
 #, kde-format
 msgid "Command not found: %1"
 msgstr "കമാന്‍ഡ് ലഭ്യമായില്ല: %1"
@@ -7387,27 +7387,27 @@ msgstr ""
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2363
+#: view/kateview.cpp:2347
 #, kde-format
 msgid "Search wrapped"
 msgstr ""
 
-#: view/kateview.cpp:3057
+#: view/kateview.cpp:3041
 #, kde-format
 msgid "Open File"
 msgstr "ഫയല്‍ തുറക്കുക"
 
-#: view/kateview.cpp:3973
+#: view/kateview.cpp:3952
 #, kde-format
 msgid "Align On"
 msgstr ""
 
-#: view/kateview.cpp:3973
+#: view/kateview.cpp:3952
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:5057
+#: view/kateview.cpp:5036
 #, kde-format
 msgid "Export File as HTML"
 msgstr "ഫയല്‍ HTML ആയി ലഭ്യമാക്കുക"
