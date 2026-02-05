@@ -1,13 +1,14 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2026 This file is copyright:
 # This file is distributed under the same license as the ktexteditor package.
 #
-# Xəyyam <xxmn77@gmail.com>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2026 X əyyam
+# SPDX-FileCopyrightText: 2026 Kheyyam <xxmn77@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-03 00:42+0000\n"
-"PO-Revision-Date: 2023-02-18 21:30+0400\n"
+"PO-Revision-Date: 2026-02-05 00:09+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
 "Language: az\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -4780,7 +4781,7 @@ msgstr "<p>Saxlanılmış sətirlərin üçün markerin rəngini təyin edin.</p
 #: syntax/katethemeconfig.cpp:287
 #, kde-format
 msgid "Text Decorations"
-msgstr "Mətnin Çərçivələnməsi"
+msgstr "Mətn tərtibatı"
 
 #: syntax/katethemeconfig.cpp:290
 #, kde-format
@@ -8107,16 +8108,14 @@ msgid "Background Color…"
 msgstr "&Fon Rəngi..."
 
 #: view/screenshotdialog.cpp:179
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Mətnin Çərçivələnməsi"
+msgstr "Əlavə tərtibat üsullarını göstərmək"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Abzas sətirləri&ni göstər"
+msgstr "Pəncərə tərtibatlarını göstərmək"
 
 #: view/screenshotdialog.cpp:185
 #, fuzzy, kde-format
