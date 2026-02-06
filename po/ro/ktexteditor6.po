@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-03 00:42+0000\n"
-"PO-Revision-Date: 2026-01-03 19:08+0000\n"
+"PO-Revision-Date: 2026-02-05 12:04+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -33,7 +33,7 @@ msgstr "Cele mai bune potriviri"
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
 msgid "Language keywords"
-msgstr ""
+msgstr "Cuvinte-cheie ale limbajului"
 
 #: completion/katewordcompletion.cpp:74
 #, kde-format
@@ -466,8 +466,7 @@ msgstr "Utilizați această comandă pentru a deindenta un bloc de text."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
-#, fuzzy, kde-format
-#| msgid "A&uto Word Completion"
+#, kde-format
 msgid "A&uto word completion"
 msgstr "Completare a&utomată cuvinte"
 
@@ -482,6 +481,8 @@ msgstr "Lungime minimă cuvânt de completat:"
 #, kde-format
 msgid "Remove tail of a previous word when completion item chosen from a list"
 msgstr ""
+"Elimină coada unui cuvânt precedent când elementul de completare e ales din "
+"listă"
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
 #: dialogs/completionconfigtab.ui:114
@@ -495,6 +496,7 @@ msgstr "Elimină coada la completare"
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
+"Completarea cuvintelor oferă sugestii bazate pe cuvintele găsite în document"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:134
@@ -509,13 +511,14 @@ msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
 "the document's language."
 msgstr ""
+"Completarea cuvintelor-cheie oferă sugestii bazate pe cuvintele-cheie ce "
+"există în limbajul documentului."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:156
-#, fuzzy, kde-format
-#| msgid "Auto Completion"
+#, kde-format
 msgid "Documentation with completion"
-msgstr "Completare automată"
+msgstr "Documentație cu completare"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/completionconfigtab.ui:165
@@ -524,13 +527,14 @@ msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
 "shown by pressing Alt key."
 msgstr ""
+"Arată documentația alături de caseta completării. Dacă e dezactivată, "
+"documentația poate fi arătată prin apăsarea tastei Alt."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
-#, fuzzy, kde-format
-#| msgid "Word Wrap"
+#, kde-format
 msgid "Word wrap:"
-msgstr "Limitare cuvinte"
+msgstr "Limitarea cuvintelor:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:29
@@ -555,30 +559,24 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:32
 #, kde-format
 msgid "Wrap &words at a fixed column"
-msgstr ""
+msgstr "Limitează cu&vintele la coloană fixă"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:39
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>If this option is checked, a vertical line will be drawn at the word "
-#| "wrap column as defined in the <strong>Editing</strong> properties.</"
-#| "p><p>Note that the word wrap marker is only drawn if you use a fixed "
-#| "pitch font.</p>"
+#, kde-format
 msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"<p>Dacă opțiunea este selectată, va fi desenată o linie verticală la coloana "
-"de limitare a cuvintelor, așa cum a fost definită în proprietățile "
-"<strong>Editare</strong>.</p><p>Observație: marcajul de limitare a "
-"cuvântului va fi desenat numai dacă folosiți un font de lățime fixă.</p>"
+"<p>Dacă opțiunea e activă, va fi desenată o linie verticală la coloana de "
+"limitare a cuvintelor, așa cum a fost definită în proprietățile "
+"<strong>Editare</strong>.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
 #, kde-format
 msgid "&Draw vertical line at the word wrap column"
-msgstr ""
+msgstr "&Desenează linie verticală la coloana de limitare a cuvintelor"
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
@@ -599,10 +597,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblInputMode)
 #: dialogs/editconfigwidget.ui:91
-#, fuzzy, kde-format
-#| msgid "Default indentation mode:"
+#, kde-format
 msgid "Default input mode:"
-msgstr "Regim de &indentare implicit:"
+msgstr "Regim de introducere implicit:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/editconfigwidget.ui:120
@@ -614,7 +611,7 @@ msgstr "Paranteze:"
 #: dialogs/editconfigwidget.ui:127
 #, kde-format
 msgid "Automatically close brackets when opening bracket is typed"
-msgstr ""
+msgstr "Închide parantezele automat la tastarea parantezei de deschidere"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:140
@@ -623,54 +620,52 @@ msgid ""
 "When some text is selected these chars will be added on both its sides in a "
 "way \"Auto Bracket\" do"
 msgstr ""
+"Când e selectat un text, aceste caractere vor fi adăugate de ambele părți "
+"ale textului, după cum ar face „Paranteze automate”"
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:143
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "Enclosing characters:"
-msgstr " caracter"
+msgstr "Caractere mărginitoare:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Roland Pabel"
+#, kde-format
 msgid "Copy and paste:"
-msgstr "Roland Pabel"
+msgstr "Copiere și lipire:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
 #: dialogs/editconfigwidget.ui:173
-#, fuzzy, kde-format
-#| msgid "Move selected lines down."
+#, kde-format
 msgid "Move selected text when dragged"
-msgstr "Mută liniile selectate în jos."
+msgstr "Mută textul ales la tragere"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
 #: dialogs/editconfigwidget.ui:180
-#, fuzzy, kde-format
-#| msgid "Copy/Cut the current line if no selection"
+#, kde-format
 msgid "Copy/cut the current line if invoked without any text selected"
-msgstr "Copiază/taie linia curentă dacă nu-i selecție"
+msgstr "Copiază/taie linia actuală dacă se invocă fără text ales"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkMousePasteAtCursorPosition)
 #: dialogs/editconfigwidget.ui:187
 #, kde-format
 msgid "Don't move the text cursor when pasting by mouse"
-msgstr ""
+msgstr "Nu muta cursorul textual la lipirea cu șoricelul"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:194
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr "I&storic clipboard"
+msgstr "Număr maxim de înregistrări în istoricul clipboard-ului:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:204
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
 msgstr ""
+"Aceasta determină numărul de înregistrări ce vor fi păstrate în istoricul "
+"clipboard-ului"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:226
@@ -679,12 +674,14 @@ msgid ""
 "When you type these characters while text is selected, they will surround "
 "the selected text instead of replacing it."
 msgstr ""
+"Dacă tastați aceste caractere când e ales un text, ele vor înconjura textul "
+"ales în loc de a-l înlocui."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAccessibility)
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "Activează notificările de accesibilitate"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
@@ -927,10 +924,9 @@ msgstr "Tabulatori &și spații"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoDetectIndent)
 #: dialogs/indentationconfigwidget.ui:167
-#, fuzzy, kde-format
-#| msgid "A&utomatic end of line detection"
+#, kde-format
 msgid "Automatically detect file indentation"
-msgstr "Detecție &automată sfârșit de linie"
+msgstr "Detectează automat indentarea fișierului"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
 #: dialogs/indentationconfigwidget.ui:177
@@ -995,16 +991,7 @@ msgstr "Tasta &Backspace în spațiul gol dezindentează"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -1020,9 +1007,9 @@ msgstr ""
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
 "<p>Acțiunea tastei Tab (dacă nu există selecție) <a href=\"Dacă doriți ca "
-"<b>Tab</b> să alinieze linia curentă la blucul de cod curent ca în emacs, "
-"stabiliți <b>Tab</b> ca scurtătură la acțiunea <b>Aliniere</b>.\"><span>Mai "
-"multe ...</span></a></p></body></html>"
+"<b>Tab</b> să alinieze linia curentă la blocul de cod actual ca în Emacs, "
+"stabiliți <b>Tab</b> ca scurtătură la acțiunea <b>Formatează indentarea</b>."
+"\"><span>Mai multe…</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -5486,6 +5473,10 @@ msgid ""
 "form.</p><p>Examples:<ul><li>char <b>234</b></li><li>char <b>0x1234</b></"
 "li></ul></p>"
 msgstr ""
+"<p> char <b>identificator</b> </p><p>Această comandă permite inserarea "
+"literală a caracterelor conform identificatorului numeric al acestora, în "
+"formă zecimală, octală sau hexazecimală.</p><p>Exemple:<ul><li>char <b>234</"
+"b></li><li>char <b>0x1234</b></li></ul></p>"
 
 #: utils/katecmds.cpp:560
 #, kde-format
@@ -5515,48 +5506,67 @@ msgid ""
 "\"AM\" or \"PM\".</td></tr><tr><td>ap</td><td>Use am/pm display. ap will be "
 "replaced by either \"am\" or \"pm\".</td></tr></table></p>"
 msgstr ""
+"<p>dată sau <b>format</b> de dată</p><p>Inserează un șir cu dată/oră după "
+"cum e definit în formatul specificat, sau formatul yyyy-MM-dd hh:mm:ss dacă "
+"nu e specificat niciunul.</p><p>Specificatorii de format posibili sunt:"
+"<table><tr><td>d</td><td>Ziua ca număr fără zerou inițial (1-31).</td></"
+"tr><tr><td>dd</td><td>Ziua ca număr cu zerou inițial (01-31).</td></"
+"tr><tr><td>ddd</td><td>Denumirea localizată abreviată a zilei (ca Lun..Dum)."
+"</td></tr><tr><td>dddd</td><td>Denumirea localizată lungă a zilei (ca Luni.."
+"Duminică).</td></tr><tr><td>M</td><td>Luna ca număr fără zerou inițial "
+"(1-12).</td></tr><tr><td>MM</td><td>Luna ca număr cu zerou inițial (01-12).</"
+"td></tr><tr><td>MMM</td><td>Denumirea localizată abreviată a lunii (ca Ian.."
+"Dec).</td></tr><tr><td>yy</td><td>Anul ca număr din două cifre (00-99).</"
+"td></tr><tr><td>yyyy</td><td>Anul ca număr din patru cifre (1752-8000).</"
+"td></tr><tr><td>h</td><td>Ora fără zerou inițial (0..23 sau 1..12 cu "
+"afișarea AM/PM).</td></tr><tr><td>hh</td><td>Ora cu zerou inițial (00..23 "
+"sau 01..12 cu afișarea AM/PM).</td></tr><tr><td>m</td><td>Minutul fără zerou "
+"inițial (0..59).</td></tr><tr><td>mm</td><td>Minutul cu zerou inițial "
+"(00..59).</td></tr><tr><td>s</td><td>Secunda fără zerou inițial (0..59).</"
+"td></tr><tr><td>ss</td><td>Secunda cu zerou inițial (00..59).</td></"
+"tr><tr><td>z</td><td>Milisecundele fără zerouri inițiale (0..999).</td></"
+"tr><tr><td>zzz</td><td>Milisecundele cu zerouri inițiale (000..999).</td></"
+"tr><tr><td>AP</td><td>Folosește afișarea AM/PM. AP se va înlocui cu „AM” sau "
+"„PM”.</td></tr><tr><td>ap</td><td>Folosește afișarea am/pm. ap se va înlocui "
+"cu „am” sau „pm”.</td></tr></table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgid "Remove Duplicate Lines"
-msgstr "Duplică liniile selectate în sus"
+msgstr "Elimină rândurile duplicate"
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr ""
-"Șterge liniile duplicate din textul selectat sau din întregul document."
+msgstr "Elimină duplicatele și sortează alfabetic textul"
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgid "Sort Selected Text"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "Sortează textul selectat"
+msgstr "Sortează natural textul"
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgid "Sort Selected Text"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
-msgstr "Sortează textul selectat"
+msgstr "Sortează alfabetic textul ales"
 
 #: utils/katecmds.cpp:699
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "Sortează textul selectat sau întregul document."
+msgstr ""
+"<p>sort</p><p>Sortează textul ales sau întregul document dacă nu e nicio "
+"selecție.</p>"
 
 #: utils/katecmds.cpp:703
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
 msgstr ""
-"Șterge liniile duplicate din textul selectat sau din întregul document."
+"<p>uniq</p><p>Șterge liniile duplicate din textul ales sau din întregul "
+"document dacă nu e nicio selecție.</p>"
 
 #: utils/katecmds.cpp:707
 #, kde-format
@@ -5564,23 +5574,21 @@ msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
+"<p>sortuniq</p><p>Sortează textul ales sau întregul document, apoi elimină "
+"toate liniile duplicate.</p>"
 
 #: utils/katecmds.cpp:711
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"Sortează textul selectat sau întregul document în ordine naturală."
-"<br>Următorul exemplu este dat pentru a evidenția diferența față de sortarea "
-"normală:<br>sortează(a10, a1 a2) => a1, a10, a2<br>sortează natural(a10, a1, "
-"a2) => a1, a2, a10"
+"<p>natsort</p><p>Sortează textul selectat sau întregul document în ordine "
+"naturală.<br>Următorul exemplu este dat pentru a evidenția diferența față de "
+"sortarea normală:<br>sort(a10, a1 a2) => a1, a10, a2<br>natsort(a10, a1, a2) "
+"=> a1, a2, a10</p>"
 
 #: utils/kateglobal.cpp:60
 #, kde-format
@@ -5972,10 +5980,9 @@ msgid "Configure"
 msgstr "Configurează"
 
 #: utils/katesedcmd.cpp:268
-#, fuzzy, kde-format
-#| msgid "Text to replace with"
+#, kde-format
 msgid "replace with %1?"
-msgstr "Textul de înlocuire"
+msgstr "înlocuiți cu %1?"
 
 #: utils/katesedcmd.cpp:274
 #, kde-format
@@ -6019,13 +6026,12 @@ msgstr "Filtru"
 #: utils/katevariableexpansionhelpers.cpp:217
 #, kde-format
 msgid "Please select a variable."
-msgstr "Alegeți o variabilă"
+msgstr "Alegeți o variabilă."
 
 #: utils/katevariableexpansionhelpers.cpp:206
-#, fuzzy, kde-format
-#| msgid "Missing argument. Usage: %1 <value>"
+#, kde-format
 msgid "Current value: %1<value>"
-msgstr "Argumentul lipsește. Folosire: %1 <valoare>"
+msgstr "Valoare actuală: %1<valoare>"
 
 #: utils/katevariableexpansionhelpers.cpp:214
 #, kde-format
@@ -6105,101 +6111,94 @@ msgid "Y component in global screen coordinates of the cursor position."
 msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:177
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Text selection of the current document."
-msgstr "Selectează întregul text al documentului curent."
+msgstr "Textul ales din documentul actual."
 
 #: utils/katevariableexpansionmanager.cpp:184
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Start line of selected text of the current document."
-msgstr "Selectează întregul text al documentului curent."
+msgstr "Rândul inițial al textului ales din documentul actual."
 
 #: utils/katevariableexpansionmanager.cpp:191
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Start column of selected text of the current document."
-msgstr "Selectează întregul text al documentului curent."
+msgstr "Coloana inițială a textului ales din documentul actual."
 
 #: utils/katevariableexpansionmanager.cpp:198
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "End line of selected text of the current document."
-msgstr "Selectează întregul text al documentului curent."
+msgstr "Rândul final al textului ales din documentul actual."
 
 #: utils/katevariableexpansionmanager.cpp:205
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "End column of selected text of the current document."
-msgstr "Selectează întregul text al documentului curent."
+msgstr "Coloana finală a textului ales din documentul actual."
 
 #: utils/katevariableexpansionmanager.cpp:212
-#, fuzzy, kde-format
-#| msgid "Remove all bookmarks of the current document."
+#, kde-format
 msgid "Number of rows of the current document."
-msgstr "Șterge toate semnele de carte ale documentului curent."
+msgstr "Numărul de rânduri al documentului actual."
 
 #: utils/katevariableexpansionmanager.cpp:219
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgid "Read a document variable."
-msgstr "Variabilă"
+msgstr "Citește o variabilă a documentului."
 
 #: utils/katevariableexpansionmanager.cpp:227
 #, kde-format
 msgid "The current date in current locale format."
-msgstr ""
+msgstr "Data actuală în format localizat."
 
 #: utils/katevariableexpansionmanager.cpp:234
 #, kde-format
 msgid "The current date (ISO)."
-msgstr ""
+msgstr "Data actuală (ISO)."
 
 #: utils/katevariableexpansionmanager.cpp:241
 #, kde-format
 msgid "The current date (QDate formatstring)."
-msgstr ""
+msgstr "Data actuală (șir de format QDate)."
 
 #: utils/katevariableexpansionmanager.cpp:249
 #, kde-format
 msgid "The current time in current locale format."
-msgstr ""
+msgstr "Ora actuală în format localizat."
 
 #: utils/katevariableexpansionmanager.cpp:256
 #, kde-format
 msgid "The current time (ISO)."
-msgstr ""
+msgstr "Ora actuală (ISO)."
 
 #: utils/katevariableexpansionmanager.cpp:263
 #, kde-format
 msgid "The current time (QTime formatstring)."
-msgstr ""
+msgstr "Ora actuală (șir de format QTime)."
 
 #: utils/katevariableexpansionmanager.cpp:271
 #, kde-format
 msgid "Access to environment variables."
-msgstr ""
+msgstr "Acces la variabile de mediu."
 
 #: utils/katevariableexpansionmanager.cpp:279
 #, kde-format
 msgid "Evaluate simple JavaScript statements."
-msgstr ""
+msgstr "Evaluează sintagme JavaScript simple"
 
 #: utils/katevariableexpansionmanager.cpp:289
 #, kde-format
 msgid "Encode text to make it URL compatible."
-msgstr ""
+msgstr "Codează textul pentru a-l face compatibil cu URL."
 
 #: utils/katevariableexpansionmanager.cpp:297
 #, kde-format
 msgid "Generate a new UUID."
-msgstr ""
+msgstr "Generează un nou UUID."
 
 #: variableeditor/variableeditor.cpp:40
 #, kde-format
 msgid "Kate Handbook."
-msgstr ""
+msgstr "Manualul Kate."
 
 #: variableeditor/variableeditor.cpp:213
 #, kde-format
@@ -6235,11 +6234,10 @@ msgid "Show list of valid variables."
 msgstr "Arată lista de variabile valide."
 
 #: variableeditor/variablelineedit.cpp:115
-#, fuzzy, kde-format
-#| msgid "Select to Matching Bracket"
+#, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
-msgstr "Selectează până la paranteza pereche"
+msgstr "Activează inserarea automată a parantezelor."
 
 #: variableeditor/variablelineedit.cpp:121
 #, kde-format
@@ -6362,11 +6360,10 @@ msgid "Set the auto indentation style."
 msgstr "Alegeți stilul de auto indentare."
 
 #: variableeditor/variablelineedit.cpp:234
-#, fuzzy, kde-format
-#| msgid "Adjust indentation of code &pasted from the clipboard"
+#, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
-msgstr "Ajustează indentarea textului &lipit din clipboard"
+msgstr "Ajustează indentarea textului lipit din clipboard."
 
 #: variableeditor/variablelineedit.cpp:240
 #, kde-format
@@ -6379,36 +6376,37 @@ msgstr "Alegeți adâncimea de indentare pentru fiecare nivel de indentare."
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
 msgstr ""
+"Permite nivel de indentare impar (ce nu e multiplu al lățimii de indentare)."
 
 #: variableeditor/variablelineedit.cpp:250
 #, kde-format
 msgctxt "short translation please"
 msgid "Show line numbers."
-msgstr "Afișează numerele de linie."
+msgstr "Arată numerele de linie."
 
 #: variableeditor/variablelineedit.cpp:255
 #, kde-format
 msgctxt "short translation please"
 msgid "Insert newline at end of file on save."
-msgstr ""
+msgstr "Inserează rând nou la sfârșitul fișierului la salvare."
 
 #: variableeditor/variablelineedit.cpp:260
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
-msgstr ""
+msgstr "Activează regimul de suprascriere în document."
 
 #: variableeditor/variablelineedit.cpp:265
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
-msgstr ""
+msgstr "Activează alegerea persistentă a textului."
 
 #: variableeditor/variablelineedit.cpp:270
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
-msgstr ""
+msgstr "Înlocuiește tabulatorii cu spații la salvarea documentului."
 
 #: variableeditor/variablelineedit.cpp:275
 #, kde-format
@@ -6423,18 +6421,16 @@ msgid "Remove trailing spaces when saving the document."
 msgstr "Elimină spațiile terminale la salvarea documentului."
 
 #: variableeditor/variablelineedit.cpp:285
-#, fuzzy, kde-format
-#| msgid "Show &scrollbar marks"
+#, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
-msgstr "Afișează marcajele &barei de defilare"
+msgstr "Arată mini-harta barei de derulare."
 
 #: variableeditor/variablelineedit.cpp:290
-#, fuzzy, kde-format
-#| msgid "Show &scrollbar marks"
+#, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
-msgstr "Afișează marcajele &barei de defilare"
+msgstr "Afișează previzualizarea barei de derulare."
 
 #: variableeditor/variablelineedit.cpp:301
 #, kde-format
@@ -6446,7 +6442,7 @@ msgstr "Setați schema de culori."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
-msgstr ""
+msgstr "Stabilește culoarea de alegere a textului."
 
 #: variableeditor/variablelineedit.cpp:311
 #, kde-format
@@ -6464,79 +6460,77 @@ msgstr "Activează navigarea acasă inteligentă."
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
-msgstr ""
+msgstr "Apăsarea tastei TAB indentează."
 
 #: variableeditor/variablelineedit.cpp:327
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
-msgstr ""
+msgstr "Stabilește lățimea de afișare a tabulării."
 
 #: variableeditor/variablelineedit.cpp:333
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
 msgstr ""
+"Stabilește numărul pașilor pentru desfacere de memorizat (0 înseamnă "
+"infinit)."
 
 #: variableeditor/variablelineedit.cpp:339
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
-msgstr ""
+msgstr "Stabilește coloana pentru limitarea cuvintelor."
 
 #: variableeditor/variablelineedit.cpp:344
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Set the icon bar color."
+#, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
-msgstr "Alegeți culoarea barei de pictograme."
+msgstr "Stabilește culoarea marcatorului pentru limitarea cuvintelor"
 
 #: variableeditor/variablelineedit.cpp:349
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
-msgstr ""
+msgstr "Activează limitarea cuvintelor în timpul tastării textului."
 
 #: view/katestatusbar.cpp:114
 #, kde-format
 msgid "Current cursor position. Click to go to a specific line."
 msgstr ""
+"Poziția actuală a cursorului. Apăsați pentru a merge la o anumită linie."
 
 #: view/katestatusbar.cpp:127
 #, kde-format
 msgid "Insert mode and VI input mode indicator. Click to change the mode."
 msgstr ""
+"Indicator pentru regimul de inserare și cel de introducere Vi. Apăsați "
+"pentru a schimba regimul."
 
 #: view/katestatusbar.cpp:135
-#, fuzzy, kde-format
-#| msgid "Change Dictionary..."
+#, kde-format
 msgid "Change dictionary"
-msgstr "Schimbare dicționar..."
+msgstr "Schimbă dicționarul"
 
 #: view/katestatusbar.cpp:161 view/katestatusbar.cpp:488
-#, fuzzy, kde-format
-#| msgid "Tab wi&dth:"
+#, kde-format
 msgid "Tab Width"
-msgstr "Lăți&me TAB:"
+msgstr "Lățime Tab"
 
 #: view/katestatusbar.cpp:169 view/katestatusbar.cpp:503
-#, fuzzy, kde-format
-#| msgid "&Indentation width:"
+#, kde-format
 msgid "Indentation Width"
-msgstr "&Lățime indentare:"
+msgstr "Lățimea indentării"
 
 #: view/katestatusbar.cpp:177
-#, fuzzy, kde-format
-#| msgid "&Indentation Mode:"
+#, kde-format
 msgid "Indentation Mode"
-msgstr "Regim de &indentare:"
+msgstr "Regim de indentare"
 
 #: view/katestatusbar.cpp:179
-#, fuzzy, kde-format
-#| msgid "Tabulators &and Spaces"
+#, kde-format
 msgid "Tabulators && Spaces"
-msgstr "Tabulatori &și spații"
+msgstr "Tabulatori și spații"
 
 #: view/katestatusbar.cpp:182
 #, kde-format
@@ -6580,7 +6574,7 @@ msgstr "Evidențierea de sintaxă"
 #: view/katestatusbar.cpp:261
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "Regim compact linie/coloană"
 
 #: view/katestatusbar.cpp:307
 #, kde-format
@@ -6625,7 +6619,7 @@ msgstr "Dimensiune TAB: %1"
 #: view/katestatusbar.cpp:408
 #, kde-format
 msgid "Indent/Tab: %1/%2"
-msgstr ""
+msgstr "Indentare/tabulare: %1/%2"
 
 #: view/katestatusbar.cpp:448 view/katestatusbar.cpp:474
 #, kde-format
@@ -6634,14 +6628,12 @@ msgid "Other…"
 msgstr "Altul…"
 
 #: view/katestatusbar.cpp:476
-#, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Other"
+#, kde-format
 msgid "Other (%1)"
 msgid_plural "Other (%1)"
-msgstr[0] "Altul"
-msgstr[1] "Altul"
-msgstr[2] "Altul"
+msgstr[0] "Altul (%1)"
+msgstr[1] "Altele (%1)"
+msgstr[2] "Altele (%1)"
 
 #: view/katestatusbar.cpp:488
 #, kde-format
@@ -6701,10 +6693,9 @@ msgid "Paste Selection"
 msgstr "Lipește selecția"
 
 #: view/kateview.cpp:461
-#, fuzzy, kde-format
-#| msgid "Paste previously copied or cut clipboard contents"
+#, kde-format
 msgid "Paste previously mouse selection contents"
-msgstr "Lipește conținutul copiat sau tăiat în clipboard mai înainte"
+msgstr "Înlocuiește conținutul precedent al selecției șoricelului"
 
 #: view/kateview.cpp:465
 #, kde-format
@@ -6727,10 +6718,9 @@ msgid "Swap with Clipboard Contents"
 msgstr "Schimbă cu conținutul clipboard-ului"
 
 #: view/kateview.cpp:474
-#, fuzzy, kde-format
-#| msgid "Cut the selected text and move it to the clipboard"
+#, kde-format
 msgid "Swap the selected text with the clipboard contents"
-msgstr "Taie textul selectat și îl mută în clipboard"
+msgstr "Schimbă textul ales cu conținutul clipboard-ului"
 
 #: view/kateview.cpp:477
 #, kde-format
@@ -6800,10 +6790,9 @@ msgid "Convert Indentation to Tabs"
 msgstr "&Indentare"
 
 #: view/kateview.cpp:532
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "&Indentare"
+msgstr "&Formatează indentarea"
 
 #: view/kateview.cpp:533
 #, fuzzy, kde-format
