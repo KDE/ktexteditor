@@ -78,8 +78,8 @@ public:
                              bool bReadOnly = false,
                              QWidget *parentWidget = nullptr,
                              QObject * = nullptr);
-    explicit DocumentPrivate(bool bSingleViewMode = false, bool bReadOnly = false, QWidget *parentWidget = nullptr, QObject * = nullptr)
-        : DocumentPrivate(KPluginMetaData(), bSingleViewMode, bReadOnly, parentWidget)
+    explicit DocumentPrivate(bool bSingleViewMode = false, bool bReadOnly = false, QWidget *parentWidget = nullptr, QObject *parent = nullptr)
+        : DocumentPrivate(KPluginMetaData(), bSingleViewMode, bReadOnly, parentWidget, parent)
     {
     }
     ~DocumentPrivate() override;
