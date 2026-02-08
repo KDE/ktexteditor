@@ -841,8 +841,6 @@ bool TextBuffer::save(const QString &filename)
 
 bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFile)
 {
-    QStringEncoder encoder(m_textCodec.toUtf8().constData(), generateByteOrderMark() ? QStringConverter::Flag::WriteBom : QStringConverter::Flag::Default);
-
     // our loved eol string ;)
     QString eol = QStringLiteral("\n");
     if (endOfLineMode() == eolDos) {
@@ -857,9 +855,23 @@ bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFil
     constexpr auto localStackBufferSize = 64 * 1024;
     constexpr auto eolSpace = 64;
     QVarLengthArray<char, localStackBufferSize> buffer;
-
-    // just dump the lines out ;)
     qsizetype writtenBytesInBuffer = 0;
+
+    // handle BOM if needed, just pre-fill the buffer with it
+    // will be flushed later
+    if (generateByteOrderMark()) {
+        // we need to trick the encoder to write the bom, as for empty files, we want it, too
+        // we write a space character to the buffer with potential BOM and ignore the bytes for the space
+        QStringEncoder encoder(m_textCodec.toUtf8().constData(), QStringConverter::Flag::WriteBom);
+        const auto endForSpaceWithBom = encoder.appendToBuffer(buffer.data() + writtenBytesInBuffer, QStringLiteral(" "));
+        const QByteArray spaceWithoutBom = encoder(QStringLiteral(" "));
+        if (spaceWithoutBom.size() < (endForSpaceWithBom - buffer.data())) {
+            writtenBytesInBuffer = (endForSpaceWithBom - buffer.data()) - spaceWithoutBom.size();
+        }
+    }
+
+    // dump the buffer content in right encoding
+    QStringEncoder encoder(m_textCodec.toUtf8().constData());
     for (int i = 0; i < m_lines; ++i) {
         // ensure we have enough space in buffer for current line, add bit extra for eol
         const auto requiredSpace = encoder.requiredSpace(line(i).text().size()) + eolSpace;
@@ -886,9 +898,6 @@ bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFil
             writtenBytesInBuffer = 0;
         }
     }
-
-    // TODO: this only writes bytes when there is text. This is a fine optimization for most cases, but this makes saving
-    // an empty file with the BOM set impossible (results to an empty file with 0 bytes, no BOM)
 
     // close the file, we might want to read from underlying buffer below
     saveFile.close();
