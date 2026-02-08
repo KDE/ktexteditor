@@ -31,6 +31,7 @@
 #include <QStandardPaths>
 #include <QStringEncoder>
 #include <QTemporaryFile>
+#include <QVarLengthArray>
 
 #if HAVE_KAUTH
 #include "katesecuretextbuffer_p.h"
@@ -850,19 +851,39 @@ bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFil
         eol = QStringLiteral("\r");
     }
 
-    // just dump the lines out ;)
-    for (int i = 0; i < m_lines; ++i) {
-        // dump current line
-        saveFile.write(encoder.encode(line(i).text()));
+    // we intend to work on a local buffer as long as feasible to avoid allocations
+    // 64k should not overflow any stack limit
+    // we flush if buffer is half full to try to avoid heap allocations
+    constexpr auto localStackBufferSize = 64 * 1024;
+    constexpr auto eolSpace = 64;
+    QVarLengthArray<char, localStackBufferSize> buffer;
 
-        // append correct end of line string
-        if ((i + 1) < m_lines) {
-            saveFile.write(encoder.encode(eol));
+    // just dump the lines out ;)
+    qsizetype writtenBytesInBuffer = 0;
+    for (int i = 0; i < m_lines; ++i) {
+        // ensure we have enough space in buffer for current line, add bit extra for eol
+        const auto requiredSpace = encoder.requiredSpace(line(i).text().size()) + eolSpace;
+        if (writtenBytesInBuffer + requiredSpace > buffer.size()) {
+            buffer.resize(writtenBytesInBuffer + requiredSpace);
         }
 
-        // early out on stream errors
-        if (saveFile.error() != QFileDevice::NoError) {
-            return false;
+        // write line and re-compute current written bytes
+        const auto end = encoder.appendToBuffer(buffer.data() + writtenBytesInBuffer, line(i).text());
+        writtenBytesInBuffer = (end - buffer.data());
+
+        // write correctly encoded eol & re-compute current written bytes
+        if ((i + 1) < m_lines) {
+            const auto eolEnd = encoder.appendToBuffer(buffer.data() + writtenBytesInBuffer, eol);
+            writtenBytesInBuffer = (eolEnd - buffer.data());
+        }
+
+        // flush to file if end of file or we have enough in buffer
+        if ((i + 1) == m_lines || writtenBytesInBuffer > (buffer.size() / 2)) {
+            // if we can't write all bytes => error out
+            if (writtenBytesInBuffer > 0 && saveFile.write(buffer.constData(), writtenBytesInBuffer) != writtenBytesInBuffer) {
+                return false;
+            }
+            writtenBytesInBuffer = 0;
         }
     }
 
@@ -893,7 +914,8 @@ TextBuffer::SaveResult TextBuffer::saveBufferUnprivileged(const QString &filenam
     const KCompressionDevice::CompressionType type = KCompressionDevice::compressionTypeForMimeType(m_mimeTypeForFilterDev);
     auto saveFile = std::make_unique<KCompressionDevice>(filename, type);
 
-    if (!saveFile->open(QIODevice::WriteOnly)) {
+    // open unbuffered, we write in large chunks ourself in saveBuffer
+    if (!saveFile->open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
 #ifdef CAN_USE_ERRNO
         if (errno != EACCES) {
             return SaveResult::Failed;
@@ -938,7 +960,8 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
 
     // we are now saving to a temporary buffer with potential compression proxy
     saveFile = std::make_unique<KCompressionDevice>(temporaryBuffer.get(), false, type);
-    if (!saveFile->open(QIODevice::WriteOnly)) {
+    // open unbuffered, we write in large chunks ourself in saveBuffer
+    if (!saveFile->open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
         return false;
     }
 

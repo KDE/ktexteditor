@@ -7,6 +7,8 @@
 #ifndef KATE_TEXTLOADER_H
 #define KATE_TEXTLOADER_H
 
+#include <memory>
+
 #include <QCryptographicHash>
 #include <QFile>
 #include <QMimeDatabase>
@@ -56,22 +58,19 @@ public:
     {
         // try to get mimetype for on the fly decompression, don't rely on filename!
         QFile testMime(filename);
-        if (testMime.open(QIODevice::ReadOnly)) {
+        if (testMime.open(QIODevice::ReadOnly | QIODevice::Unbuffered)) {
             m_fileSize = testMime.size();
         }
         m_mimeType = QMimeDatabase().mimeTypeForFileNameAndData(filename, &testMime).name();
 
-        // construct filter device
-        KCompressionDevice::CompressionType compressionType = KCompressionDevice::compressionTypeForMimeType(m_mimeType);
-        m_file = new KCompressionDevice(filename, compressionType);
-    }
-
-    /**
-     * Destructor
-     */
-    ~TextLoader()
-    {
-        delete m_file;
+        // construct filter device, if needed
+        // we can by-pass that for no-compression case
+        const auto compressionType = KCompressionDevice::compressionTypeForMimeType(m_mimeType);
+        if (compressionType == KCompressionDevice::None) {
+            m_file.reset(new QFile(filename));
+        } else {
+            m_file.reset(new KCompressionDevice(filename, compressionType));
+        }
     }
 
     /**
@@ -104,7 +103,9 @@ public:
             m_file->close();
         }
 
-        return m_file->open(QIODevice::ReadOnly);
+        // open via unbuffered file, we read ourself into a large chunked buffer
+        // might have no effect for compressed files, but at least for the uncompressed common case
+        return m_file->open(QIODevice::ReadOnly | QIODevice::Unbuffered);
     }
 
     /**
@@ -411,7 +412,7 @@ private:
     int m_alreadyScanned = -1;
     TextBuffer::EndOfLineMode m_eol;
     QString m_mimeType;
-    QIODevice *m_file;
+    std::unique_ptr<QIODevice> m_file;
     QByteArray m_buffer;
     QCryptographicHash m_digest;
     QString m_text;
