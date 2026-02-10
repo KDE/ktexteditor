@@ -101,6 +101,9 @@ private Q_SLOTS:
     void testCursorToOffset();
     void testBug329247();
     void testBugTextInsertedRange();
+    void testDocumentName_data();
+    void testDocumentName();
+    void testDocumentDeduplication();
 };
 
 #endif // KATE_DOCUMENT_TEST_H

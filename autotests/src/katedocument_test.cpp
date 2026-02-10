@@ -10,13 +10,17 @@
 
 #include <kateconfig.h>
 #include <katedocument.h>
+#include <kateglobal.h>
 #include <kateview.h>
+
+#include <KLocalizedString>
 
 #include <QRegularExpression>
 #include <QSignalSpy>
 #include <QStandardPaths>
 #include <QTemporaryFile>
 
+#include <memory>
 #include <stdio.h>
 
 /// TODO: is there a FindValgrind cmake command we could use to
@@ -1046,4 +1050,82 @@ void KateDocumentTest::testBugTextInsertedRange()
     doc.insertText(KTextEditor::Cursor(6, 10), QStringLiteral("x\nxxxx"));
     QCOMPARE(doc.text(), QStringLiteral("01234567\n01234567\n\n\n\n\n          x\nxxxx"));
     QVERIFY(doc.lines() == 8);
+}
+
+void KateDocumentTest::testDocumentName_data()
+{
+    QTest::addColumn<QString>("text");
+    QTest::addColumn<QString>("documentName");
+
+    const QString untitled = i18n("Untitled");
+    QTest::newRow("null") << QString() << untitled; // Tests the initial state without ever calling setText.
+    QTest::newRow("empty") << QStringLiteral("") << untitled;
+    QTest::newRow("only spaces") << QStringLiteral("     ") << untitled;
+    QTest::newRow("ntfs disallowed") << QStringLiteral("<>:\"/\\|?*") << untitled;
+
+    QTest::newRow("plain text") << QStringLiteral("Hello, world") << QStringLiteral("Hello, world");
+    QTest::newRow("plain text with excess spaces") << QStringLiteral("   Hello      world    ") << QStringLiteral("Hello world");
+    QTest::newRow("plain text with exclamation mark") << QStringLiteral("Hello, world!") << QStringLiteral("Hello, world!");
+    QTest::newRow("markdown") << QStringLiteral("# Shopping List") << QStringLiteral("Shopping List");
+    QTest::newRow("multi line markdown") << QStringLiteral("# Shopping List\n* Fruits\n* Flour") << QStringLiteral("Shopping List");
+    QTest::newRow("blank before") << QStringLiteral("\n# Shopping List") << untitled;
+
+    const QString lipsum = QStringLiteral("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ");
+    QTest::newRow("excess length") << lipsum.repeated(10) << lipsum.repeated(2).left(100);
+
+    QTest::newRow("gibberish") << QStringLiteral("<:]{%>;") << QStringLiteral("%;"); // C++ santa.
+}
+
+void KateDocumentTest::testDocumentName()
+{
+    QFETCH(QString, text);
+    QFETCH(QString, documentName);
+
+    KTextEditor::DocumentPrivate doc;
+    if (!text.isNull()) {
+        doc.setText(text);
+    }
+    QCOMPARE(doc.documentName(), documentName);
+}
+
+void KateDocumentTest::testDocumentDeduplication()
+{
+    auto *editor = KTextEditor::EditorPrivate::self();
+    const QString untitled = i18n("Untitled");
+    const QString hello = QStringLiteral("Hello");
+
+    KTextEditor::DocumentPrivate untitled1;
+    editor->registerDocument(&untitled1);
+    QCOMPARE(untitled1.documentName(), untitled);
+
+    KTextEditor::DocumentPrivate untitled2;
+    editor->registerDocument(&untitled2);
+    QCOMPARE(untitled2.documentName(), untitled + QLatin1String(" (2)"));
+
+    KTextEditor::DocumentPrivate hello1;
+    editor->registerDocument(&hello1);
+    QCOMPARE(hello1.documentName(), untitled + QLatin1String(" (3)"));
+    hello1.setText(hello);
+    QCOMPARE(hello1.documentName(), hello);
+
+    KTextEditor::DocumentPrivate hello2;
+    editor->registerDocument(&hello2);
+    // 3 again because hello1 got renamed.
+    QCOMPARE(hello2.documentName(), untitled + QLatin1String(" (3)"));
+    hello2.setText(hello);
+    QCOMPARE(hello2.documentName(), hello + QLatin1String(" (2)"));
+
+    KTextEditor::DocumentPrivate fileDoc;
+    editor->registerDocument(&fileDoc);
+    // 3 again because hello2 also got renamed.
+    QCOMPARE(fileDoc.documentName(), untitled + QLatin1String(" (3)"));
+    fileDoc.setUrl(QUrl(QStringLiteral("file:///tmp/test.txt")));
+    QCOMPARE(fileDoc.documentName(), QStringLiteral("test.txt"));
+
+    KTextEditor::DocumentPrivate fileDoc2;
+    editor->registerDocument(&fileDoc2);
+    // 3 again because fileDoc also got renamed.
+    QCOMPARE(fileDoc2.documentName(), untitled + QLatin1String(" (3)"));
+    fileDoc2.setUrl(QUrl(QStringLiteral("file:///elsewhere/test.txt")));
+    QCOMPARE(fileDoc2.documentName(), QStringLiteral("test.txt - elsewhere"));
 }

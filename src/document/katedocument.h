@@ -950,10 +950,7 @@ public:
     KTextEditor::Range findMatchingBracket(const KTextEditor::Cursor start, int maxLines);
 
 public:
-    QString documentName() const override
-    {
-        return m_docName;
-    }
+    QString documentName() const override;
 
 private:
     KTEXTEDITOR_NO_EXPORT

@@ -1028,6 +1028,10 @@ bool KTextEditor::DocumentPrivate::editEnd()
     }
 
     if (m_buffer->editChanged()) {
+        // Only unsaved doc gets title from contents, skip otherwise.
+        if (url().isEmpty()) {
+            updateDocName();
+        }
         setModified(true);
         Q_EMIT textChanged(this);
     }
@@ -1818,6 +1822,10 @@ QUrl KTextEditor::DocumentPrivate::getSaveFileUrl(const QString &dialogTitle)
     dialog.setMimeTypeFilters(mimeFilters);
 
     if (m_isUntitled) {
+        // Pre-fill the suggested file name for new documents.
+        if (!m_docName.isEmpty()) {
+            dialog.selectFile(m_docName);
+        }
         // Kate didn't use to offer any MIME types in the save dialog,
         // keep "All files" as default when saving a new file to not upset diehard Kate users...
         dialog.selectMimeTypeFilter(allFiles);
@@ -4617,21 +4625,52 @@ inline static QString removeNewLines(const QString &str)
     return tmp.replace(QLatin1String("\r\n"), QLatin1String(" ")).replace(QLatin1Char('\r'), QLatin1Char(' ')).replace(QLatin1Char('\n'), QLatin1Char(' '));
 }
 
+QString KTextEditor::DocumentPrivate::documentName() const
+{
+    QString name;
+
+    if (m_docName.isEmpty()) {
+        name.append(i18n("Untitled"));
+    } else {
+        name.append(m_docName);
+    }
+
+    if (m_docNameNumber > 0) {
+        name.append(QLatin1String(" (%1)").arg(QString::number(m_docNameNumber + 1)));
+    }
+
+    return name;
+}
+
 void KTextEditor::DocumentPrivate::updateDocName()
 {
     // if the name is set, and starts with FILENAME, it should not be changed!
-    if (!url().isEmpty() && (m_docName == removeNewLines(url().fileName()) || m_docName.startsWith(removeNewLines(url().fileName()) + QLatin1String(" (")))) {
+    if (!url().isEmpty() && m_docName == removeNewLines(url().fileName())) {
         return;
     }
 
-    int count = -1;
+    const QString oldName = documentName();
 
+    m_docName = removeNewLines(url().fileName());
+    m_isUntitled = m_docName.isEmpty();
+
+    if (m_isUntitled) {
+        // Use the first line of text as a suggested file name, sanitized somewhat.
+        m_docName = line(0).left(100);
+        // Remove characters not allowed in Windows file systems as well as XML and Markdown stuff.
+        // Could be more sophisticated, e.g. drop file name that is just special characters, etc...
+        static const QRegularExpression s_fileNameRegExp(QStringLiteral(R"([<>\[\]\{\}:"/\\|?*#])"));
+        m_docName.remove(s_fileNameRegExp);
+        m_docName = m_docName.simplified();
+    }
+
+    int count = -1;
     std::vector<KTextEditor::DocumentPrivate *> docsWithSameName;
 
     const auto docs = KTextEditor::EditorPrivate::self()->documents();
     for (KTextEditor::Document *kteDoc : docs) {
         auto doc = static_cast<KTextEditor::DocumentPrivate *>(kteDoc);
-        if ((doc != this) && (doc->url().fileName() == url().fileName())) {
+        if (doc != this && doc->m_docName == m_docName) {
             if (doc->m_docNameNumber > count) {
                 count = doc->m_docNameNumber;
             }
@@ -4641,27 +4680,14 @@ void KTextEditor::DocumentPrivate::updateDocName()
 
     m_docNameNumber = count + 1;
 
-    QString oldName = m_docName;
-    m_docName = removeNewLines(url().fileName());
-
-    m_isUntitled = m_docName.isEmpty();
-
     if (!m_isUntitled && !docsWithSameName.empty()) {
         docsWithSameName.push_back(this);
         uniquifyDocNames(docsWithSameName);
         return;
     }
 
-    if (m_isUntitled) {
-        m_docName = i18n("Untitled");
-    }
-
-    if (m_docNameNumber > 0) {
-        m_docName = QString(m_docName + QLatin1String(" (%1)")).arg(m_docNameNumber + 1);
-    }
-
     // avoid to emit this, if name doesn't change!
-    if (oldName != m_docName) {
+    if (oldName != documentName()) {
         Q_EMIT documentNameChanged(this);
     }
 }
@@ -4730,15 +4756,16 @@ void KTextEditor::DocumentPrivate::uniquifyDocNames(const std::vector<KTextEdito
     for (const auto doc : docs) {
         const QString prefix = shortestPrefix(paths, doc);
         const QString fileName = doc->url().fileName();
-        const QString oldName = doc->m_docName;
+        const QString oldName = doc->documentName();
 
         if (!prefix.isEmpty()) {
             doc->m_docName = fileName + QStringLiteral(" - ") + prefix;
         } else {
             doc->m_docName = fileName;
         }
+        doc->m_docNameNumber = 0;
 
-        if (doc->m_docName != oldName) {
+        if (doc->documentName() != oldName) {
             Q_EMIT doc->documentNameChanged(doc);
         }
     }
