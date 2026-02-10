@@ -1781,7 +1781,53 @@ QWidget *KTextEditor::DocumentPrivate::dialogParent()
 
 QUrl KTextEditor::DocumentPrivate::getSaveFileUrl(const QString &dialogTitle)
 {
-    return QFileDialog::getSaveFileUrl(dialogParent(), dialogTitle, startUrlForFileDialog());
+    const QString plainText = QStringLiteral("text/plain");
+    const QString allFiles = QStringLiteral("application/octet-stream");
+
+    const QString currentMimeType = mimeType();
+
+    QFileDialog dialog(dialogParent());
+    dialog.setDirectoryUrl(startUrlForFileDialog());
+    dialog.setWindowTitle(dialogTitle);
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+
+    QStringList canonicalModeMideMimeTypeNames;
+
+    // Keep only the canonical mime type name in the list, QMimeDatabase will return only it.
+    // TODO Check whether modeManager can do this already.
+    QMimeDatabase db;
+    const QStringList modeMimeTypeNames = KTextEditor::EditorPrivate::self()->modeManager()->fileType(fileType()).mimetypes;
+    for (const QString &mimeTypeName : modeMimeTypeNames) {
+        const QMimeType mimeType = db.mimeTypeForName(mimeTypeName);
+        if (!mimeType.isValid() || mimeType.isDefault() || mimeType.name() == plainText || mimeType.name() == currentMimeType) {
+            continue;
+        }
+        if (!canonicalModeMideMimeTypeNames.contains(mimeType.name())) {
+            canonicalModeMideMimeTypeNames.append(mimeType.name());
+        }
+    }
+
+    QStringList mimeFilters;
+    if (currentMimeType != plainText) { // keep plain text last.
+        mimeFilters << currentMimeType;
+    }
+    mimeFilters << canonicalModeMideMimeTypeNames;
+    mimeFilters << plainText;
+    mimeFilters << allFiles;
+
+    dialog.setMimeTypeFilters(mimeFilters);
+
+    if (m_isUntitled) {
+        // Kate didn't use to offer any MIME types in the save dialog,
+        // keep "All files" as default when saving a new file to not upset diehard Kate users...
+        dialog.selectMimeTypeFilter(allFiles);
+    }
+
+    if (dialog.exec()) {
+        return dialog.selectedUrls().first();
+    } else {
+        return QUrl();
+    }
 }
 
 // BEGIN KTextEditor::HighlightingInterface stuff
