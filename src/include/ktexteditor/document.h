@@ -540,6 +540,21 @@ public:
      */
     bool openingError() const;
 
+    /*!
+     * Wrapper around QFileDialog::getSaveFileUrl, will use proper dialogParent
+     * by default and try it's best to find a good directory as start. It also
+     * includes additional MIME types based on the document's format and highlighter.
+     *
+     * \a dialogTitle is the title for the dialog, for example "Save Document As"
+     * \a dialogParent the parent window for the dialog. When nullptr, it will try to
+     * determine a proper parent.
+     *
+     * Returns the URL to save to or an empty URL if aborted.
+     *
+     * \since 6.25
+     */
+    QUrl getSaveFileUrl(const QString &dialogTitle, QWidget *dialogParent = nullptr);
+
     /*
      * SIGNALS
      * Following signals should be emitted by the document if the text content

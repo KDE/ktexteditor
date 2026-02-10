@@ -1779,9 +1779,62 @@ QWidget *KTextEditor::DocumentPrivate::dialogParent()
     return w;
 }
 
-QUrl KTextEditor::DocumentPrivate::getSaveFileUrl(const QString &dialogTitle)
+QUrl KTextEditor::DocumentPrivate::getSaveFileUrl(const QString &dialogTitle, QWidget *parent)
 {
-    return QFileDialog::getSaveFileUrl(dialogParent(), dialogTitle, startUrlForFileDialog());
+    const QString plainText = QStringLiteral("text/plain");
+    const QString allFiles = QStringLiteral("application/octet-stream");
+
+    const QString currentMimeType = mimeType();
+    const QUrl startUrl = startUrlForFileDialog();
+
+    QFileDialog dialog(parent ? parent : dialogParent());
+    dialog.setDirectoryUrl(startUrl.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash));
+    dialog.setWindowTitle(dialogTitle);
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+
+    QStringList canonicalModeMideMimeTypeNames;
+
+    // Keep only the canonical mime type name in the list, QMimeDatabase will return only it.
+    // TODO Check whether modeManager can do this already.
+    QMimeDatabase db;
+    const QStringList modeMimeTypeNames = KTextEditor::EditorPrivate::self()->modeManager()->fileType(fileType()).mimetypes;
+    for (const QString &mimeTypeName : modeMimeTypeNames) {
+        const QMimeType mimeType = db.mimeTypeForName(mimeTypeName);
+        if (!mimeType.isValid() || mimeType.isDefault() || mimeType.name() == plainText || mimeType.name() == currentMimeType) {
+            continue;
+        }
+        if (!canonicalModeMideMimeTypeNames.contains(mimeType.name())) {
+            canonicalModeMideMimeTypeNames.append(mimeType.name());
+        }
+    }
+
+    QStringList mimeFilters;
+    if (currentMimeType != plainText) { // keep plain text last.
+        mimeFilters << currentMimeType;
+    }
+    mimeFilters << canonicalModeMideMimeTypeNames;
+    mimeFilters << plainText;
+    mimeFilters << allFiles;
+
+    dialog.setMimeTypeFilters(mimeFilters);
+
+    // Kate didn't use to offer any MIME types in the save dialog, keep "All files"
+    // as default to not change behavior.
+    // Also, e.g. a file like ".kateproject" is JSON but might not be identified as
+    // such, and using Save As here would result in the file not showing by default.
+    dialog.selectMimeTypeFilter(allFiles);
+
+    if (!startUrl.fileName().isEmpty()) {
+        dialog.selectFile(startUrl.fileName());
+    }
+
+    if (dialog.exec()) {
+        if (const auto urls = dialog.selectedUrls(); !urls.isEmpty()) {
+            return urls.first();
+        }
+    }
+
+    return QUrl();
 }
 
 // BEGIN KTextEditor::HighlightingInterface stuff

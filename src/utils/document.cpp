@@ -82,6 +82,11 @@ bool Document::openingError() const
     return d->m_openingError;
 }
 
+QUrl Document::getSaveFileUrl(const QString &dialogTitle, QWidget *parent)
+{
+    return d->getSaveFileUrl(dialogTitle, parent);
+}
+
 bool KTextEditor::Document::replaceText(Range range, const QString &text, bool block)
 {
     bool success = true;
