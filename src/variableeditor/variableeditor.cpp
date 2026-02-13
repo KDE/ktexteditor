@@ -136,10 +136,10 @@ void VariableEditor::paintEvent(QPaintEvent *event)
         painter.setRenderHint(QPainter::Antialiasing);
 
         QColor cornerColor = palette().color(QPalette::Highlight);
-        cornerColor.setAlphaF(0.2);
+        cornerColor.setAlphaF(0.2f);
 
         QColor midColor = palette().color(QPalette::Highlight);
-        midColor.setAlphaF(0.5);
+        midColor.setAlphaF(0.5f);
 
         QRect highlightRect = rect().adjusted(2, 2, -2, -2);
 

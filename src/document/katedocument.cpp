@@ -2271,7 +2271,7 @@ void KTextEditor::DocumentPrivate::openWithLineLengthLimitOverride()
 {
     // raise line length limit to the next power of 2
     const int longestLine = m_buffer->longestLineLoaded();
-    int newLimit = pow(2, ceil(log2(longestLine)));
+    int newLimit = static_cast<int>(pow(2, ceil(log2(longestLine))));
     if (newLimit <= longestLine) {
         newLimit *= 2;
     }

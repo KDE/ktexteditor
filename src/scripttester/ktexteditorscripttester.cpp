@@ -1105,7 +1105,9 @@ Colors:
      */
 
     QFile output;
-    output.open(stderr, QIODevice::WriteOnly);
+    if (!output.open(stderr, QIODevice::WriteOnly)) {
+        qWarning("Failed to open stderr");
+    }
     ScriptTester scriptTester(&output, query.format, query.paths, query.executionConfig, query.diff, defaultPlaceholder, &engine, &doc, &view);
 
     /*

@@ -513,9 +513,9 @@ int TextBuffer::blockForLine(int line) const
         qFatal("out of range line requested in text buffer (%d out of [0, %d])", line, lines());
     }
 
-    size_t b = line / BufferBlockSize;
-    if (b >= m_blocks.size()) {
-        b = m_blocks.size() - 1;
+    auto b = line / BufferBlockSize;
+    if (size_t(b) >= m_blocks.size()) {
+        b = int(m_blocks.size() - 1);
     }
 
     if (m_startLines[b] <= line && line < m_startLines[b] + m_blocks[b]->lines()) {
@@ -533,7 +533,7 @@ int TextBuffer::blockForLine(int line) const
     if (m_startLines[b] < line || (m_blocks[b]->lines() == 0)) {
         for (size_t i = b + 1; i < m_blocks.size(); ++i) {
             if (m_startLines[i] <= line && line < m_startLines[i] + m_blocks[i]->lines()) {
-                return i;
+                return static_cast<int>(i);
             }
         }
     }
@@ -638,8 +638,9 @@ void TextBuffer::debugPrint(const QString &title) const
     printf("%s (lines: %d)\n", qPrintable(title), m_lines);
 
     // print all blocks
-    for (size_t i = 0; i < m_blocks.size(); ++i) {
-        m_blocks.at(i)->debugPrint(i);
+    for (int i = 0; auto block : m_blocks) {
+        block->debugPrint(i);
+        i++;
     }
 }
 

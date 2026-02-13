@@ -3705,7 +3705,7 @@ void KTextEditor::ViewPrivate::sendCompletionAborted()
 
 void KTextEditor::ViewPrivate::paste(const QString *textToPaste)
 {
-    const int cursorCount = m_secondaryCursors.size() + 1; // 1 primary cursor
+    const int cursorCount = int(m_secondaryCursors.size()) + 1; // 1 primary cursor
     if (!textToPaste && cursorCount > 1) {
         // We still have multiple cursors, but the amount
         // of multicursors doesn't match the entry count in clipboard

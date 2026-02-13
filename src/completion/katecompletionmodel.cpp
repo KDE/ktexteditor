@@ -189,7 +189,7 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
             int c = 0;
             for (const auto &list : m_columnMerges) {
                 if (size_t(index.column()) < c + list.size()) {
-                    c += list.size();
+                    c += static_cast<int>(list.size());
                     continue;
                 } else if (list.size() == 1 && list.front() == CodeCompletionModel::Scope) {
                     return Qt::AlignRight;
@@ -779,10 +779,10 @@ int KateCompletionModel::rowCount(const QModelIndex &parent) const
     if (!parent.isValid()) {
         if (hasGroups()) {
             // qCDebug(LOG_KTE) << "Returning row count for toplevel " << m_rowTable.count();
-            return m_rowTable.size();
+            return static_cast<int>(m_rowTable.size());
         } else {
             // qCDebug(LOG_KTE) << "Returning ungrouped row count for toplevel " << m_ungrouped->filtered.count();
-            return m_ungrouped->filtered.size();
+            return static_cast<int>(m_ungrouped->filtered.size());
         }
     }
 
@@ -799,7 +799,7 @@ int KateCompletionModel::rowCount(const QModelIndex &parent) const
     }
 
     // qCDebug(LOG_KTE) << "Returning row count for group " << g << " as " << g->filtered.count();
-    return g->filtered.size();
+    return static_cast<int>(g->filtered.size());
 }
 
 QModelIndex KateCompletionModel::mapToSource(const QModelIndex &proxyIndex) const
@@ -1025,17 +1025,17 @@ void KateCompletionModel::hideOrShowGroup(Group *g, bool notifyModel)
             int row = 0; // Find row where to insert
             for (size_t a = 0; a < m_rowTable.size(); a++) {
                 if (g->orderBefore(m_rowTable[a])) {
-                    row = a;
+                    row = static_cast<int>(a);
                     break;
                 }
-                row = a + 1;
+                row = static_cast<int>(a + 1);
             }
 
             if (notifyModel) {
                 if (hasGroups()) {
                     beginInsertRows(QModelIndex(), row, row);
                 } else {
-                    beginInsertRows(QModelIndex(), 0, g->filtered.size());
+                    beginInsertRows(QModelIndex(), 0, int(g->filtered.size()));
                 }
             }
             m_rowTable.insert(m_rowTable.begin() + row, g);
@@ -1334,7 +1334,7 @@ uint KateCompletionModel::filteredItemCount() const
 {
     uint ret = 0;
     for (Group *group : m_rowTable) {
-        ret += group->filtered.size();
+        ret += static_cast<uint>(group->filtered.size());
     }
 
     return ret;
@@ -1712,7 +1712,7 @@ void KateCompletionModel::updateBestMatches()
             }
             std::reverse(newFiltered.begin(), newFiltered.end());
 
-            int size = m_ungrouped->filtered.size();
+            int size = static_cast<int>(m_ungrouped->filtered.size());
             for (int a = 0; a < size; ++a) {
                 if (!movedToFront.contains(a)) {
                     newFiltered.push_back(m_ungrouped->filtered[a]);

@@ -334,6 +334,20 @@ set_target_properties(KF6TextEditor
    EXPORT_NAME "TextEditor"
 )
 
+if (WARNINGS_AS_ERRORS)
+    if (MSVC)
+        target_compile_options(KF6TextEditor PRIVATE
+            /WX
+            /wd4996
+        )
+    else()
+        target_compile_options(KF6TextEditor PRIVATE
+            -Werror
+            -Wno-error=deprecated-declarations
+        )
+    endif()
+endif()
+
 add_executable(ktexteditor_script_tester
     scripttester/ktexteditorscripttester.cpp
     scripttester/scripttester.cpp

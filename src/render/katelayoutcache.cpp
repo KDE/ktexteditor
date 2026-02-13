@@ -135,7 +135,7 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor startPos, int ne
 {
     // qCDebug(LOG_KTE) << startPos << " nvlc " << newViewLineCount << " vls " << viewLinesScrolled;
 
-    int oldViewLineCount = m_textLayouts.size();
+    int oldViewLineCount = static_cast<int>(m_textLayouts.size());
     if (newViewLineCount == -1) {
         newViewLineCount = oldViewLineCount;
     }
@@ -173,7 +173,7 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor startPos, int ne
     if (viewLinesScrolled != 0) {
         // loop backwards if we've just scrolled up...
         bool forwards = viewLinesScrolled >= 0 ? true : false;
-        for (int z = forwards ? 0 : m_textLayouts.size() - 1; forwards ? ((size_t)z < m_textLayouts.size()) : (z >= 0); forwards ? z++ : z--) {
+        for (int z = forwards ? 0 : int(m_textLayouts.size()) - 1; forwards ? ((size_t)z < m_textLayouts.size()) : (z >= 0); forwards ? z++ : z--) {
             int oldZ = z + viewLinesScrolled;
             if (oldZ >= 0 && (size_t)oldZ < m_textLayouts.size()) {
                 m_textLayouts[z] = m_textLayouts[oldZ];
@@ -308,7 +308,7 @@ KateTextLayout &KateLayoutCache::viewLine(int _viewLine)
 
 int KateLayoutCache::viewCacheLineCount() const
 {
-    return m_textLayouts.size();
+    return static_cast<int>(m_textLayouts.size());
 }
 
 KTextEditor::Cursor KateLayoutCache::viewCacheStart() const
@@ -367,7 +367,7 @@ int KateLayoutCache::displayViewLine(const KTextEditor::Cursor virtualCursor, bo
         return virtualCursor.line();
     }
 
-    int limit = m_textLayouts.size();
+    int limit = static_cast<int>(m_textLayouts.size());
 
     // Efficient non-word-wrapped path
     if (!m_renderer->view()->dynWordWrap()) {

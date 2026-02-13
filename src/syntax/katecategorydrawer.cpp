@@ -109,7 +109,7 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index, int sortRole, co
     }
 
     QColor outlineColor = option.palette.text().color();
-    outlineColor.setAlphaF(0.35);
+    outlineColor.setAlphaF(0.35f);
 
     // BEGIN: top left corner
     {
@@ -189,7 +189,7 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index, int sortRole, co
         painter->save();
         painter->setFont(font);
         QColor penColor(option.palette.text().color());
-        penColor.setAlphaF(0.6);
+        penColor.setAlphaF(0.6f);
         painter->setPen(penColor);
         painter->drawText(textRect, Qt::AlignLeft | Qt::AlignTop, category);
         painter->restore();

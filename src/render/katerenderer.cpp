@@ -246,16 +246,16 @@ void KateRenderer::paintTabstop(QPainter &paint, qreal x, qreal y) const
     paint.setPen(pen);
 
     int dist = spaceWidth() * 0.3;
-    QPoint points[8];
-    points[0] = QPoint(x - dist, y - dist);
-    points[1] = QPoint(x, y);
-    points[2] = QPoint(x, y);
-    points[3] = QPoint(x - dist, y + dist);
+    QPointF points[8];
+    points[0] = QPointF(x - dist, y - dist);
+    points[1] = QPointF(x, y);
+    points[2] = QPointF(x, y);
+    points[3] = QPointF(x - dist, y + dist);
     x += spaceWidth() / 3.0;
-    points[4] = QPoint(x - dist, y - dist);
-    points[5] = QPoint(x, y);
-    points[6] = QPoint(x, y);
-    points[7] = QPoint(x - dist, y + dist);
+    points[4] = QPointF(x - dist, y - dist);
+    points[5] = QPointF(x, y);
+    points[6] = QPointF(x, y);
+    points[7] = QPointF(x - dist, y + dist);
     paint.drawLines(points, 4);
     paint.setPen(penBackup);
 }
@@ -385,7 +385,7 @@ void KateRenderer::paintIndentMarker(QPainter &paint, uint x, int line)
     const bool onBracket = m_currentBracketX == (int)x;
     if (onBracket && m_currentBracketRange.containsLine(line)) {
         QColor c = view()->theme().textColor(KSyntaxHighlighting::Theme::Normal);
-        c.setAlphaF(0.7);
+        c.setAlphaF(0.7f);
         myPen.setColor(c);
     } else {
         myPen.setColor(config()->indentationLineColor());

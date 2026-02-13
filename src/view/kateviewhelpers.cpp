@@ -1662,7 +1662,7 @@ QSize KateIconBorder::sizeHint() const
 {
     int w = 1; // Must be any value != 0 or we will never painted!
 
-    const int i = m_positionToArea.size();
+    const int i = (int)m_positionToArea.size();
     if (i > 0) {
         w = m_positionToArea.at(i - 1).xPos;
     }

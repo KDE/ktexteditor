@@ -173,7 +173,7 @@ void ArgumentHintWidget::updateGeometry()
         lines += block.layout()->lineCount();
         block = block.next();
     }
-    setFixedHeight((std::max(lines, 1) * fm.height()) + 10 + m_view->document()->documentMargin());
+    setFixedHeight((std::max(lines, 1) * fm.height()) + 10 + static_cast<int>(m_view->document()->documentMargin()));
     // limit the width to between 400 - 600
     int width = std::max(maxWidth, 400);
     width = std::min(width, 600);

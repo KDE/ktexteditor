@@ -432,19 +432,27 @@ void SwapFile::startEditing()
             QDir().mkpath(KateDocumentConfig::global()->swapDirectory());
         }
 
-        m_swapfile.open(QIODevice::WriteOnly);
-        m_swapfile.setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
-        m_stream.setDevice(&m_swapfile);
+        if (m_swapfile.open(QIODevice::WriteOnly)) {
+            m_swapfile.setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+            m_stream.setDevice(&m_swapfile);
 
-        // write file header
-        m_stream << QByteArray(swapFileVersionString);
+            // write file header
+            m_stream << QByteArray(swapFileVersionString);
 
-        // write checksum
-        m_stream << m_document->checksum();
+            // write checksum
+            m_stream << m_document->checksum();
+        } else {
+            qCWarning(LOG_KTE, "Failed to open swap file for writing");
+            return;
+        }
     } else if (m_stream.device() == nullptr) {
-        m_swapfile.open(QIODevice::Append);
-        m_swapfile.setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
-        m_stream.setDevice(&m_swapfile);
+        if (m_swapfile.open(QIODevice::Append)) {
+            m_swapfile.setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+            m_stream.setDevice(&m_swapfile);
+        } else {
+            qCWarning(LOG_KTE, "Failed to open swap file for append");
+            return;
+        }
     }
 
     // format: qint8

@@ -139,11 +139,11 @@ void WordCounter::recalculateLines()
     int wordsCount = 0;
     int charsCount = 0;
     int calculated = 0;
-    size_t i = m_startRecalculationFrom;
+    int i = m_startRecalculationFrom;
     constexpr int MaximumLinesToRecalculate = 100;
 
     // stay in bounds, vector might be empty, even 0 is too large then
-    while (i < m_countByLine.size()) {
+    while (i < (int)m_countByLine.size()) {
         if (m_countByLine[i] == -1) {
             m_countByLine[i] = countWords(m_document->line(i));
             if (++calculated > MaximumLinesToRecalculate) {
@@ -156,11 +156,11 @@ void WordCounter::recalculateLines()
         wordsCount += m_countByLine[i];
         charsCount += m_document->lineLength(i);
 
-        if (++i == m_countByLine.size()) { // array cycle
+        if (++i == (int)m_countByLine.size()) { // array cycle
             i = 0;
         }
 
-        if (i == (size_t)m_startRecalculationFrom) {
+        if (i == m_startRecalculationFrom) {
             break;
         }
     }

@@ -523,7 +523,7 @@ void KateCompletionWidget::updatePosition(bool force)
     int x = p.x();
     int y = p.y();
 
-    y += view()->renderer()->currentFontMetrics().height() + 2;
+    y += static_cast<int>(view()->renderer()->currentFontMetrics().height()) + 2;
 
     const auto windowGeometry = parentWidget()->geometry();
     if (x + width() > windowGeometry.right()) {

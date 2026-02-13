@@ -226,13 +226,14 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         }
     } else {
         // go through all registered commands and put possible matches in m_matchingCommands
-        for (size_t i = 0; i < commands().size(); i++) {
-            if (commands().at(i).matches(m_keys)) {
+        for (int i = 0; const auto &command : commands()) {
+            if (command.matches(m_keys)) {
                 m_matchingCommands.push_back(i);
-                if (commands().at(i).needsMotion() && commands().at(i).pattern().length() == m_keys.size()) {
+                if (command.needsMotion() && command.pattern().length() == m_keys.size()) {
                     m_awaitingMotionOrTextObject.push(m_keys.size());
                 }
             }
+            i++;
         }
     }
 
@@ -255,7 +256,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
             const QString motion = m_keys.mid(checkFrom);
             if (motions().at(i).matches(motion)) {
                 m_lastMotionWasLinewiseInnerBlock = false;
-                m_matchingMotions.push_back(i);
+                m_matchingMotions.push_back(static_cast<int>(i));
 
                 // if it matches exact, we have found the motion command to execute
                 if (motions().at(i).matchesExact(motion)) {

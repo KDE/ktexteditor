@@ -31,6 +31,7 @@ include(ECMQtDeclareLoggingCategory)
 include(ECMDeprecationSettings)
 
 option(ENABLE_PCH "Enable Precompiled Headers support" ON)
+option(WARNINGS_AS_ERRORS "Warnings are errors -Werror" OFF)
 
 if (NOT WIN32 AND NOT HAIKU)
     set(ENABLE_KAUTH_DEFAULT ON)

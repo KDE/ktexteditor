@@ -364,12 +364,12 @@ void KateUndoManager::setActive(bool enabled)
 
 uint KateUndoManager::undoCount() const
 {
-    return undoItems.size();
+    return static_cast<uint>(undoItems.size());
 }
 
 uint KateUndoManager::redoCount() const
 {
-    return redoItems.size();
+    return static_cast<uint>(redoItems.size());
 }
 
 void KateUndoManager::undo()
@@ -532,13 +532,13 @@ void KateUndoManager::updateLineModifications()
 
     // iterate all undo/redo items to find out, which item sets the flag LineSaved
     QBitArray lines(document()->lines(), false);
-    for (int i = undoItems.size() - 1; i >= 0; --i) {
-        undoItems[i].markRedoAsSaved(lines);
+    for (auto it = undoItems.rbegin(); it != undoItems.rend(); ++it) {
+        it->markRedoAsSaved(lines);
     }
 
     lines.fill(false);
-    for (int i = redoItems.size() - 1; i >= 0; --i) {
-        redoItems[i].markUndoAsSaved(lines);
+    for (auto it = redoItems.rbegin(); it != redoItems.rend(); ++it) {
+        it->markUndoAsSaved(lines);
     }
 }
 
