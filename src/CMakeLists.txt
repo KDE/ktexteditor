@@ -1,6 +1,16 @@
 # jscripts for the part
 add_subdirectory( script/data )
 
+if (WARNINGS_AS_ERRORS)
+    if (MSVC)
+        add_compile_options(/WX)
+        add_compile_options(/wd4996)
+    else()
+        add_compile_options(-Werror)
+        add_compile_options(-Wno-error=deprecated-declarations)
+    endif()
+endif()
+
 if(EditorConfig_FOUND)
     SET (CMAKE_REQUIRED_LIBRARIES ${EditorConfig_LIBRARIES})
     set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} ${EditorConfig_LIBRARIES})

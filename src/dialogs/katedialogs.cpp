@@ -1515,7 +1515,10 @@ void KateModOnHdPrompt::slotDiff()
     }
 
     m_diffFile = new QTemporaryFile(QDir::temp().filePath(QLatin1String("XXXXXX.diff")));
-    m_diffFile->open();
+    if (!m_diffFile->open()) {
+        qCWarning(LOG_KTE, "%s Failed to open diff file", Q_FUNC_INFO);
+        return;
+    }
 
     // Start a KProcess that creates a diff
     m_proc = new KProcess(this);
