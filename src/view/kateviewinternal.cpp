@@ -3262,7 +3262,7 @@ void KateViewInternal::keyReleaseEvent(QKeyEvent *e)
         m_shiftKeyPressed = false;
 
         if (m_selChangedByUser) {
-            if (view()->selection()) {
+            if (view()->selection() && QApplication::clipboard()->supportsSelection()) {
                 QApplication::clipboard()->setText(view()->selectionText(), QClipboard::Selection);
             }
 
@@ -3347,7 +3347,7 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
                 }
             }
 
-            if (view()->selection()) {
+            if (view()->selection() && QApplication::clipboard()->supportsSelection()) {
                 QApplication::clipboard()->setText(view()->selectionText(), QClipboard::Selection);
             }
 
@@ -3418,7 +3418,7 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
 
                 // update selection and do potential clipboard update, see bug 443642
                 setSelection(KTextEditor::Range(m_selectAnchor, m_cursor));
-                if (view()->selection()) {
+                if (view()->selection() && QApplication::clipboard()->supportsSelection()) {
                     QApplication::clipboard()->setText(view()->selectionText(), QClipboard::Selection);
                 }
             } else {
@@ -3512,7 +3512,7 @@ void KateViewInternal::mouseDoubleClickEvent(QMouseEvent *e)
 
         // Move cursor to end (or beginning) of selected word
 #ifndef Q_OS_MACOS
-        if (view()->selection()) {
+        if (view()->selection() && QApplication::clipboard()->supportsSelection()) {
             QApplication::clipboard()->setText(view()->selectionText(), QClipboard::Selection);
         }
 #endif
@@ -3555,7 +3555,7 @@ void KateViewInternal::mouseReleaseEvent(QMouseEvent *e)
         //       m_selectionCached.start().setLine( -1 );
 
         if (m_selChangedByUser) {
-            if (view()->selection()) {
+            if (view()->selection() && QApplication::clipboard()->supportsSelection()) {
                 QApplication::clipboard()->setText(view()->selectionText(), QClipboard::Selection);
             }
             moveCursorToSelectionEdge();

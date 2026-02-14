@@ -71,7 +71,9 @@ void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
     } else if (reg == SystemClipboardRegister) {
         QApplication::clipboard()->setText(text, QClipboard::Clipboard);
     } else if (reg == SystemSelectionRegister) {
-        QApplication::clipboard()->setText(text, QClipboard::Selection);
+        if (QApplication::clipboard()->supportsSelection()) {
+            QApplication::clipboard()->setText(text, QClipboard::Selection);
+        }
     } else {
         const QChar lowercase_reg = reg.toLower();
         if (reg != lowercase_reg) {

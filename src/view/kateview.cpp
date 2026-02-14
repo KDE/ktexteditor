@@ -719,7 +719,9 @@ void KTextEditor::ViewPrivate::setupActions()
 
     m_selectAll = ac->addAction(KStandardActions::SelectAll, this, [this] {
         selectAll();
-        qApp->clipboard()->setText(selectionText(), QClipboard::Selection);
+        if (qApp->clipboard()->supportsSelection()) {
+            qApp->clipboard()->setText(selectionText(), QClipboard::Selection);
+        }
     });
     a->setWhatsThis(i18n("Select the entire text of the current document."));
 
