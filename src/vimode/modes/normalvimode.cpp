@@ -187,10 +187,9 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         if (m_keys.size() < 2) {
             return true; // waiting for a register
         } else {
-            QChar r = m_keys[1].toLower();
+            char r = m_keys[1].toLower().toLatin1();
 
-            if ((r >= QLatin1Char('0') && r <= QLatin1Char('9')) || (r >= QLatin1Char('a') && r <= QLatin1Char('z')) || r == QLatin1Char('_')
-                || r == QLatin1Char('-') || r == QLatin1Char('+') || r == QLatin1Char('*') || r == QLatin1Char('#') || r == QLatin1Char('^')) {
+            if ((r >= '0' && r <= '9') || (r >= 'a' && r <= 'z') || r == '_' || r == '-' || r == '+' || r == '*' || r == '#' || r == '^') {
                 m_register = m_keys[1];
                 m_keys.clear();
                 return true;
@@ -2575,10 +2574,9 @@ Range NormalViMode::motionToMatchingItem()
         return Range::invalid();
     }
 
-    const auto bracketChar = l.at(n1);
+    const char bracketChar = l.at(n1).toLatin1();
     // use Kate's built-in matching bracket finder for brackets
-    if (bracketChar == QLatin1Char('(') || bracketChar == QLatin1Char(')') || bracketChar == QLatin1Char('{') || bracketChar == QLatin1Char('}')
-        || bracketChar == QLatin1Char('[') || bracketChar == QLatin1Char(']')) {
+    if (bracketChar == '(' || bracketChar == ')' || bracketChar == '{' || bracketChar == '}' || bracketChar == '[' || bracketChar == ']') {
         // findMatchingBracket requires us to move the cursor to the
         // first bracket, but we don't want the cursor to really move
         // in case this is e.g. a yank, so restore it to its original
@@ -3381,62 +3379,62 @@ Range NormalViMode::textObjectAParagraph()
 
 Range NormalViMode::textObjectAQuoteDouble()
 {
-    return findSurroundingQuotes(QLatin1Char('"'), false);
+    return findSurroundingQuotes('"', false);
 }
 
 Range NormalViMode::textObjectInnerQuoteDouble()
 {
-    return findSurroundingQuotes(QLatin1Char('"'), true);
+    return findSurroundingQuotes('"', true);
 }
 
 Range NormalViMode::textObjectAQuoteSingle()
 {
-    return findSurroundingQuotes(QLatin1Char('\''), false);
+    return findSurroundingQuotes('\'', false);
 }
 
 Range NormalViMode::textObjectInnerQuoteSingle()
 {
-    return findSurroundingQuotes(QLatin1Char('\''), true);
+    return findSurroundingQuotes('\'', true);
 }
 
 Range NormalViMode::textObjectABackQuote()
 {
-    return findSurroundingQuotes(QLatin1Char('`'), false);
+    return findSurroundingQuotes('`', false);
 }
 
 Range NormalViMode::textObjectInnerBackQuote()
 {
-    return findSurroundingQuotes(QLatin1Char('`'), true);
+    return findSurroundingQuotes('`', true);
 }
 
 Range NormalViMode::textObjectAParen()
 {
-    return findSurroundingBrackets(QLatin1Char('('), QLatin1Char(')'), false, QLatin1Char('('), QLatin1Char(')'));
+    return findSurroundingBrackets('(', ')', false, '(', ')');
 }
 
 Range NormalViMode::textObjectInnerParen()
 {
-    return findSurroundingBrackets(QLatin1Char('('), QLatin1Char(')'), true, QLatin1Char('('), QLatin1Char(')'));
+    return findSurroundingBrackets('(', ')', true, '(', ')');
 }
 
 Range NormalViMode::textObjectABracket()
 {
-    return findSurroundingBrackets(QLatin1Char('['), QLatin1Char(']'), false, QLatin1Char('['), QLatin1Char(']'));
+    return findSurroundingBrackets('[', ']', false, '[', ']');
 }
 
 Range NormalViMode::textObjectInnerBracket()
 {
-    return findSurroundingBrackets(QLatin1Char('['), QLatin1Char(']'), true, QLatin1Char('['), QLatin1Char(']'));
+    return findSurroundingBrackets('[', ']', true, '[', ']');
 }
 
 Range NormalViMode::textObjectACurlyBracket()
 {
-    return findSurroundingBrackets(QLatin1Char('{'), QLatin1Char('}'), false, QLatin1Char('{'), QLatin1Char('}'));
+    return findSurroundingBrackets('{', '}', false, '{', '}');
 }
 
 Range NormalViMode::textObjectInnerCurlyBracket()
 {
-    const Range allBetweenCurlyBrackets = findSurroundingBrackets(QLatin1Char('{'), QLatin1Char('}'), true, QLatin1Char('{'), QLatin1Char('}'));
+    const Range allBetweenCurlyBrackets = findSurroundingBrackets('{', '}', true, '{', '}');
     // Emulate the behaviour of vim, which tries to leave the closing bracket on its own line
     // if it was originally on a line different to that of the opening bracket.
     Range innerCurlyBracket(allBetweenCurlyBrackets);
@@ -3478,12 +3476,12 @@ Range NormalViMode::textObjectInnerCurlyBracket()
 
 Range NormalViMode::textObjectAInequalitySign()
 {
-    return findSurroundingBrackets(QLatin1Char('<'), QLatin1Char('>'), false, QLatin1Char('<'), QLatin1Char('>'));
+    return findSurroundingBrackets('<', '>', false, '<', '>');
 }
 
 Range NormalViMode::textObjectInnerInequalitySign()
 {
-    return findSurroundingBrackets(QLatin1Char('<'), QLatin1Char('>'), true, QLatin1Char('<'), QLatin1Char('>'));
+    return findSurroundingBrackets('<', '>', true, '<', '>');
 }
 
 Range NormalViMode::textObjectAComma()
@@ -3765,15 +3763,15 @@ Range NormalViMode::textObjectComma(bool inner) const
     // closest to the cursor that surrounds the cursor.
     Range r(0, 0, m_view->doc()->lines(), m_view->doc()->line(m_view->doc()->lastLine()).length(), InclusiveMotion);
 
-    shrinkRangeAroundCursor(r, findSurroundingQuotes(QLatin1Char(','), inner));
-    shrinkRangeAroundCursor(r, findSurroundingBrackets(QLatin1Char('('), QLatin1Char(')'), inner, QLatin1Char('('), QLatin1Char(')')));
-    shrinkRangeAroundCursor(r, findSurroundingBrackets(QLatin1Char('{'), QLatin1Char('}'), inner, QLatin1Char('{'), QLatin1Char('}')));
-    shrinkRangeAroundCursor(r, findSurroundingBrackets(QLatin1Char(','), QLatin1Char(')'), inner, QLatin1Char('('), QLatin1Char(')')));
-    shrinkRangeAroundCursor(r, findSurroundingBrackets(QLatin1Char(','), QLatin1Char(']'), inner, QLatin1Char('['), QLatin1Char(']')));
-    shrinkRangeAroundCursor(r, findSurroundingBrackets(QLatin1Char(','), QLatin1Char('}'), inner, QLatin1Char('{'), QLatin1Char('}')));
-    shrinkRangeAroundCursor(r, findSurroundingBrackets(QLatin1Char('('), QLatin1Char(','), inner, QLatin1Char('('), QLatin1Char(')')));
-    shrinkRangeAroundCursor(r, findSurroundingBrackets(QLatin1Char('['), QLatin1Char(','), inner, QLatin1Char('['), QLatin1Char(']')));
-    shrinkRangeAroundCursor(r, findSurroundingBrackets(QLatin1Char('{'), QLatin1Char(','), inner, QLatin1Char('{'), QLatin1Char('}')));
+    shrinkRangeAroundCursor(r, findSurroundingQuotes(',', inner));
+    shrinkRangeAroundCursor(r, findSurroundingBrackets('(', ')', inner, '(', ')'));
+    shrinkRangeAroundCursor(r, findSurroundingBrackets('{', '}', inner, '{', '}'));
+    shrinkRangeAroundCursor(r, findSurroundingBrackets(',', ')', inner, '(', ')'));
+    shrinkRangeAroundCursor(r, findSurroundingBrackets(',', ']', inner, '[', ']'));
+    shrinkRangeAroundCursor(r, findSurroundingBrackets(',', '}', inner, '{', '}'));
+    shrinkRangeAroundCursor(r, findSurroundingBrackets('(', ',', inner, '(', ')'));
+    shrinkRangeAroundCursor(r, findSurroundingBrackets('[', ',', inner, '[', ']'));
+    shrinkRangeAroundCursor(r, findSurroundingBrackets('{', ',', inner, '{', '}'));
     return r;
 }
 

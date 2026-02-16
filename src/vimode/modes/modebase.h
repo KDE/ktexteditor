@@ -88,10 +88,10 @@ protected:
     KTextEditor::Cursor findWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
     KTextEditor::Cursor findWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
 
-    Range findSurroundingBrackets(const QChar &c1, const QChar &c2, bool inner, const QChar &nested1, const QChar &nested2) const;
+    Range findSurroundingBrackets(char c1, char c2, bool inner, char nested1, char nested2) const;
 
     Range findSurrounding(const QRegularExpression &c1, const QRegularExpression &c2, bool inner = false) const;
-    Range findSurroundingQuotes(const QChar &c, bool inner = false) const;
+    Range findSurroundingQuotes(char c, bool inner = false) const;
 
     int findLineStartingWitchChar(const QChar &c, int count, bool forward = true) const;
     void updateCursor(const KTextEditor::Cursor c) const;

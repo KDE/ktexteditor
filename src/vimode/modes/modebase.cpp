@@ -565,8 +565,9 @@ Range innerRange(Range range, bool inner)
     return r;
 }
 
-Range ModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
+Range ModeBase::findSurroundingQuotes(char c1, bool inner) const
 {
+    const QChar c = QLatin1Char(c1);
     KTextEditor::Cursor cursor(m_view->cursorPosition());
     Range r;
     r.startLine = cursor.line();
@@ -627,7 +628,7 @@ Range ModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
     return innerRange(r, inner);
 }
 
-Range ModeBase::findSurroundingBrackets(const QChar &c1, const QChar &c2, bool inner, const QChar &nested1, const QChar &nested2) const
+Range ModeBase::findSurroundingBrackets(char c1, char c2, bool inner, char nested1, char nested2) const
 {
     KTextEditor::Cursor cursor(m_view->cursorPosition());
     Range r(cursor, InclusiveMotion);
@@ -639,11 +640,11 @@ Range ModeBase::findSurroundingBrackets(const QChar &c1, const QChar &c2, bool i
     Q_ASSERT(c1 != c2);
 
     const QString &l = m_view->doc()->line(line);
-    if (column < l.size() && l.at(column) == c2) {
+    if (column < l.size() && l.at(column) == QLatin1Char(c2)) {
         r.endLine = line;
         r.endColumn = column;
     } else {
-        if (column < l.size() && l.at(column) == c1) {
+        if (column < l.size() && l.at(column) == QLatin1Char(c1)) {
             column++;
         }
 
@@ -653,9 +654,9 @@ Range ModeBase::findSurroundingBrackets(const QChar &c1, const QChar &c2, bool i
             for (; column < l.size(); column++) {
                 const QChar &c = l.at(column);
 
-                if (c == nested1) {
+                if (c == QLatin1Char(nested1)) {
                     catalan++;
-                } else if (c == nested2) {
+                } else if (c == QLatin1Char(nested2)) {
                     catalan--;
                 }
                 if (!catalan) {
@@ -679,11 +680,11 @@ Range ModeBase::findSurroundingBrackets(const QChar &c1, const QChar &c2, bool i
     line = cursor.line();
     column = cursor.column();
 
-    if (column < l.size() && l.at(column) == c1) {
+    if (column < l.size() && l.at(column) == QLatin1Char(c1)) {
         r.startLine = line;
         r.startColumn = column;
     } else {
-        if (column < l.size() && l.at(column) == c2) {
+        if (column < l.size() && l.at(column) == QLatin1Char(c2)) {
             column--;
         }
 
@@ -693,9 +694,9 @@ Range ModeBase::findSurroundingBrackets(const QChar &c1, const QChar &c2, bool i
             for (; column >= 0; column--) {
                 const QChar &c = l.at(column);
 
-                if (c == nested1) {
+                if (c == QLatin1Char(nested1)) {
                     catalan--;
-                } else if (c == nested2) {
+                } else if (c == QLatin1Char(nested2)) {
                     catalan++;
                 }
                 if (!catalan) {
