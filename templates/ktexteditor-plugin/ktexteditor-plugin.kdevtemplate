@@ -78,6 +78,7 @@ Comment[nn]=Genererer eit C++-basert programtillegg for KTextEditor som kan utf�
 Comment[pl]=Tworzy wtyczkę Co KTextEditor-a, umożliwiającej specjalne operacje na tekście w programach KWrite, Kate, KDevelop itp.
 Comment[pt]=Gera um 'plugin' em C++ do KTextEditor para efectuar operações especiais sobre o texto no KWrite, Kate, KDevelop etc.
 Comment[pt_BR]=Gera um plugin do KTextEditor para executar operações especiais no texto no KWrite, Kate, KDevelop, etc.
+Comment[ro]=Generează o extensie C++ KTextEditor pentru a efectua operații speciale cu text în KWrite, Kate, KDevelop, etc.
 Comment[ru]=Модуль для KTextEditor на языке C++ для добавления новых действий по работе с текстом в KWrite, Kate, KDevelop и другие программы.
 Comment[sk]=Generuje KTextEditor C++ doplnok na vykonanie špeciálnej operácie na texte v KWrite, Kate, KDevelop atď.
 Comment[sl]=Ustvari vstavek C++ za KTextEditor, ki omogoča izvajanje posebnih dejanj na besedilu v KWrite, Kate, KDevelop, itn.
