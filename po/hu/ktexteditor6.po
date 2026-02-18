@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-15 00:40+0000\n"
+"POT-Creation-Date: 2026-02-18 00:41+0000\n"
 "PO-Revision-Date: 2025-09-03 20:51+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -8466,18 +8466,18 @@ msgstr "Jelölés beállítva: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Nincs több karakter a következő könyvjelzőhöz."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3566
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
+#: vimode/modes/normalvimode.cpp:3564
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Semmi sincs ebben a regiszterben: %1"
 
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1688
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "„%1” %2, hexa %3, okta %4"
 
-#: vimode/modes/normalvimode.cpp:2532
+#: vimode/modes/normalvimode.cpp:2531
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Nincs beállítva jelölés: %1"

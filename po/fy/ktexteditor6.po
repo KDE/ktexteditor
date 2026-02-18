@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-15 00:40+0000\n"
+"POT-Creation-Date: 2026-02-18 00:41+0000\n"
 "PO-Revision-Date: 2009-05-22 10:03+0100\n"
 "Last-Translator: Berend Ytsma <berendy@gmail.com>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -8812,18 +8812,18 @@ msgstr "Type %1 markearje"
 msgid "There are no more chars for the next bookmark."
 msgstr "Gean neid e folgjende blêdwizer."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3566
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
+#: vimode/modes/normalvimode.cpp:3564
 #, kde-format
 msgid "Nothing in register %1"
 msgstr ""
 
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1688
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr ""
 
-#: vimode/modes/normalvimode.cpp:2532
+#: vimode/modes/normalvimode.cpp:2531
 #, fuzzy, kde-format
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"

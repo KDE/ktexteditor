@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-15 00:40+0000\n"
+"POT-Creation-Date: 2026-02-18 00:41+0000\n"
 "PO-Revision-Date: 2024-12-29 22:54+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -8319,18 +8319,18 @@ msgstr "चिह्नसमूहः: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "अग्रिमपुस्तकचिह्नस्य कृते अधिकानि chars नास्ति ।"
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3566
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
+#: vimode/modes/normalvimode.cpp:3564
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "रजिस्टर %1 मध्ये किमपि नास्ति"
 
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1688
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2, हेक्स %3, अष्टक %4"
 
-#: vimode/modes/normalvimode.cpp:2532
+#: vimode/modes/normalvimode.cpp:2531
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "न सेट् इति चिह्नं कुर्वन्तु: %1"
