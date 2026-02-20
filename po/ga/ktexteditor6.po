@@ -1,7 +1,7 @@
 # Translation of katepart4.po to Irish
 # Copyright (C) 2002,2003,2004 Free Software Foundation, Inc.
-# Séamus Ó Ciardhuáin <seoc at iolfree.ie>, 2003,2004
 # Kevin Scannell <kscanne@gmail.com>, 2009
+# Séamus Ó Ciardhuáin <seoc at iolfree.ie>, 2003,2004
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
@@ -78,17 +78,15 @@ msgstr ""
 
 #. i18n: ectx: Menu (selection)
 #: data/katepart5ui.rc:46
-#, fuzzy, kde-format
-#| msgid "Selection Only"
+#, kde-format
 msgid "Selection"
-msgstr "Roghnú Amháin"
+msgstr ""
 
 #. i18n: ectx: Menu (capitalization)
 #: data/katepart5ui.rc:53
-#, fuzzy, kde-format
-#| msgid "Capitalize"
+#, kde-format
 msgid "Capitalization"
-msgstr "Cás Uachtair"
+msgstr ""
 
 #. i18n: ectx: Menu (view)
 #: data/katepart5ui.rc:73
@@ -98,10 +96,9 @@ msgstr "&Amharc"
 
 #. i18n: ectx: Menu (view_menu_word_wrap)
 #: data/katepart5ui.rc:78
-#, fuzzy, kde-format
-#| msgid "Static Word Wrap"
+#, kde-format
 msgid "Word Wrap"
-msgstr "Timfhilleadh Focal Statach"
+msgstr ""
 
 #. i18n: ectx: Menu (view_menu_borders)
 #: data/katepart5ui.rc:84 dialogs/katedialogs.cpp:744
@@ -117,10 +114,9 @@ msgstr "Filleadh &Cóid"
 
 #. i18n: ectx: Menu (go)
 #: data/katepart5ui.rc:109
-#, fuzzy, kde-format
-#| msgid "Go"
+#, kde-format
 msgid "&Go"
-msgstr "Téigh"
+msgstr ""
 
 #. i18n: ectx: Menu (tools)
 #: data/katepart5ui.rc:124
@@ -143,10 +139,9 @@ msgstr "Litriú"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:153 data/katepart5ui.rc:184
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Téacs le lorg"
+msgstr ""
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:161
@@ -162,10 +157,9 @@ msgstr "Príomhbharra Uirlisí"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/bordersappearanceconfigwidget.ui:25
-#, fuzzy, kde-format
-#| msgid "Code Folding"
+#, kde-format
 msgid "Code block folding:"
-msgstr "Filleadh Cóid"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:32
@@ -190,10 +184,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
-#, fuzzy, kde-format
-#| msgid "Print the current document."
+#, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr "Priontáil an cháipéis reatha"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:52
@@ -203,17 +196,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:63
-#, fuzzy, kde-format
-#| msgid "Show &Icon Border"
+#, kde-format
 msgid "Show on Hover"
-msgstr "Taispeáin &Teorainn an Deilbhín"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:68
-#, fuzzy, kde-format
-#| msgid "Always"
+#, kde-format
 msgid "Show Always"
-msgstr "I gcónaí"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/bordersappearanceconfigwidget.ui:92
@@ -234,10 +225,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:102
 #: dialogs/bordersappearanceconfigwidget.ui:155
-#, fuzzy, kde-format
-#| msgid "Show &line numbers"
+#, kde-format
 msgid "Show marks"
-msgstr "Taispeáin Uimhreacha na &Línte"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:109
@@ -291,10 +281,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:165
-#, fuzzy, kde-format
-#| msgid "Print the current document."
+#, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr "Priontáil an cháipéis reatha"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:172
@@ -316,17 +305,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:193
-#, fuzzy, kde-format
-#| msgid "Always"
+#, kde-format
 msgid "Always Off"
-msgstr "I gcónaí"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:217
-#, fuzzy, kde-format
-#| msgid "Tab wi&dth:"
+#, kde-format
 msgid "Minimap:"
-msgstr "Leithea&d táb:"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:224
@@ -344,10 +331,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
 #: dialogs/bordersappearanceconfigwidget.ui:250
-#, fuzzy, kde-format
-#| msgid "Tab wi&dth:"
+#, kde-format
 msgid "Minim&ap width:"
-msgstr "Leithea&d táb:"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:263
@@ -385,23 +371,20 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:289
-#, fuzzy, kde-format
-#| msgid "Show &line numbers"
+#, kde-format
 msgid "By line number"
-msgstr "Taispeáin Uimhreacha na &Línte"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/bordersappearanceconfigwidget.ui:296
-#, fuzzy, kde-format
-#| msgid "Sort Bookmarks Menu"
+#, kde-format
 msgid "Sort bookmarks menu:"
-msgstr "Sórtáil an Roghchlár Leabharmharcanna"
+msgstr ""
 
 #: dialogs/clipboardhistorydialog.cpp:264
-#, fuzzy, kde-format
-#| msgid "Select to End of Line"
+#, kde-format
 msgid "Select text to paste."
-msgstr "Roghnaigh go Deireadh na Líne"
+msgstr ""
 
 #: dialogs/clipboardhistorydialog.cpp:296
 #, kde-format
@@ -425,10 +408,9 @@ msgstr "Cum&asaigh comhlánú uathoibríoch"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoSelectFirstEntry)
 #: dialogs/completionconfigtab.ui:42
-#, fuzzy, kde-format
-#| msgid "&Auto completion enabled"
+#, kde-format
 msgid "Auto select &first completion entry"
-msgstr "Cum&asaíodh comhlánú uathoibríoch"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
 #: dialogs/completionconfigtab.ui:49
@@ -447,17 +429,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "Úsáid é seo chun bloc roghnaithe a dhí-eangú."
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
-#, fuzzy, kde-format
-#| msgid "Auto Word Completion"
+#, kde-format
 msgid "A&uto word completion"
-msgstr "Comhlánú Uathoibríoch"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/completionconfigtab.ui:83
@@ -473,10 +453,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
 #: dialogs/completionconfigtab.ui:114
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgid "Remove tail on complete"
-msgstr "&Bain spásanna breise:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:121
@@ -487,10 +466,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:134
-#, fuzzy, kde-format
-#| msgid "Word Completion"
+#, kde-format
 msgid "&Keyword completion"
-msgstr "Comhlánú Focal"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/completionconfigtab.ui:143
@@ -502,10 +480,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:156
-#, fuzzy, kde-format
-#| msgid "Auto Completion"
+#, kde-format
 msgid "Documentation with completion"
-msgstr "Comhlánú Uathoibríoch"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/completionconfigtab.ui:165
@@ -517,10 +494,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
-#, fuzzy, kde-format
-#| msgid "Static Word Wrap"
+#, kde-format
 msgid "Word wrap:"
-msgstr "Timfhilleadh Focal Statach"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:29
@@ -556,10 +532,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
-#, fuzzy, kde-format
-#| msgid "W&rap words at:"
+#, kde-format
 msgid "Wra&p words at:"
-msgstr "&Timfhill focail ag:"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbWordWrap)
 #: dialogs/editconfigwidget.ui:59
@@ -571,17 +546,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblInputMode)
 #: dialogs/editconfigwidget.ui:91
-#, fuzzy, kde-format
-#| msgid "Default indentation mode:"
+#, kde-format
 msgid "Default input mode:"
-msgstr "Mód eangaithe réamhshocraithe:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/editconfigwidget.ui:120
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Brackets:"
-msgstr "Téigh go dtí an Lúibín Comhoiriúnach"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoBrackets)
 #: dialogs/editconfigwidget.ui:127
@@ -599,25 +572,21 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:143
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "Enclosing characters:"
-msgstr " charachtar"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Roland Pabel"
+#, kde-format
 msgid "Copy and paste:"
-msgstr "Roland Pabel"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
 #: dialogs/editconfigwidget.ui:173
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid "Move selected text when dragged"
-msgstr "Roghnaigh an téacs roghnaithe nó an cháipéis iomlán."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
 #: dialogs/editconfigwidget.ui:180
@@ -755,10 +724,9 @@ msgstr "&Aibhsiú:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblIndenter)
 #: dialogs/filetypeconfigwidget.ui:136
-#, fuzzy, kde-format
-#| msgid "&Indentation Mode:"
+#, kde-format
 msgid "&Indentation mode:"
-msgstr "Mód &Eangaithe:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblExtensions)
 #: dialogs/filetypeconfigwidget.ui:149
@@ -881,10 +849,9 @@ msgstr "Táblóirí &agus Spásanna"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoDetectIndent)
 #: dialogs/indentationconfigwidget.ui:167
-#, fuzzy, kde-format
-#| msgid "Automatic Spell Checking"
+#, kde-format
 msgid "Automatically detect file indentation"
-msgstr "Seiceáil Litrithe Uathoibríoch"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
 #: dialogs/indentationconfigwidget.ui:177
@@ -1011,17 +978,11 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgctxt "Wrap words at"
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " charachtar"
-msgstr[1] " charachtar"
-msgstr[2] " charachtar"
-msgstr[3] " gcarachtar"
-msgstr[4] " carachtar"
+msgstr[0] ""
+msgstr[1] ""
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1039,11 +1000,9 @@ msgid "Spellcheck"
 msgstr "Seiceáil an litriú"
 
 #: dialogs/katedialogs.cpp:409 dialogs/katedialogs.cpp:416
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Alert"
+#, kde-format
 msgid "Alt"
-msgstr "Airdeall"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:418
 #, kde-format
@@ -1071,10 +1030,9 @@ msgid "Ctrl + Meta"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:417
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgid "Cmd"
-msgstr "Ordú"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:419
 #, kde-format
@@ -1092,18 +1050,12 @@ msgid "Text Navigation"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:581
-#, fuzzy, kde-format
-#| msgctxt "Wrap words at"
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " charachtar"
-msgstr[1] " charachtar"
-msgstr[2] " charachtar"
-msgstr[3] " gcarachtar"
-msgstr[4] " carachtar"
+msgstr[0] ""
+msgstr[1] ""
 
 #: dialogs/katedialogs.cpp:586
 #, kde-format
@@ -1111,10 +1063,9 @@ msgid "Feature is not active"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:588
-#, fuzzy, kde-format
-#| msgid "Disabled Breakpoint"
+#, kde-format
 msgid "Disable Feature"
-msgstr "Brisphointe Díchumasaithe"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:590
 #, kde-format
@@ -1127,10 +1078,9 @@ msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:594
-#, fuzzy, kde-format
-#| msgid "Non-word character"
+#, kde-format
 msgid "Non letter character"
-msgstr "Carachtar neamhfhocail"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:710
 #, kde-format
@@ -1143,11 +1093,9 @@ msgid "Editing Options"
 msgstr "Roghanna Eagarthóireachta"
 
 #: dialogs/katedialogs.cpp:748
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Stata"
+#, kde-format
 msgid "Statusbar"
-msgstr "Stata"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:750
 #, kde-format
@@ -1226,10 +1174,9 @@ msgid "Dictionary:"
 msgstr "Foclóir:"
 
 #: dialogs/katedialogs.cpp:1456
-#, fuzzy, kde-format
-#| msgid "Enable &auto completion"
+#, kde-format
 msgid "Enable Auto Reload"
-msgstr "Cum&asaigh comhlánú uathoibríoch"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1459
 #, kde-format
@@ -1239,10 +1186,9 @@ msgid ""
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1464
-#, fuzzy, kde-format
-#| msgid "&View Difference"
+#, kde-format
 msgid "View &Difference"
-msgstr "A&mharc ar Dhifríochtaí"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1466
 #, kde-format
@@ -1250,26 +1196,20 @@ msgid "Shows a diff of the changes."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1471
-#, fuzzy, kde-format
-#| msgid "Reloa&d"
+#, kde-format
 msgid "&Reload"
-msgstr "Ath&luchtaigh"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1473
-#, fuzzy, kde-format
-#| msgid ""
-#| "Reload the file from disk. If you have unsaved changes, they will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
-"Athluchtaigh an comhad ón diosca. Má tá athruithe gan sábháil agat, "
-"caillfidh tú iad."
 
 #: dialogs/katedialogs.cpp:1477
-#, fuzzy, kde-format
-#| msgid "&Close"
+#, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
-msgstr "&Dún"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1479
 #, kde-format
@@ -1277,11 +1217,10 @@ msgid "Closes the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1483
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&Sábháil an Comhad Mar..."
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1485
 #, kde-format
@@ -1295,10 +1234,9 @@ msgid "&Ignore"
 msgstr "Déan neamha&ird de"
 
 #: dialogs/katedialogs.cpp:1491
-#, fuzzy, kde-format
-#| msgid "Ignore the changes. You will not be prompted again."
+#, kde-format
 msgid "Ignores the changes on disk without any action."
-msgstr "Déan neamhshuim ar na hathruithe.  Ní thabharfar leid duit arís."
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
@@ -1448,17 +1386,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
 #: dialogs/navigationconfigwidget.ui:184
-#, fuzzy, kde-format
-#| msgid "Go to the previous bookmark."
+#, kde-format
 msgid "Allow to cycle through bookmarks"
-msgstr "Téigh go dtí an leabharmharc roimhe seo."
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:194
-#, fuzzy, kde-format
-#| msgid "From cursor"
+#, kde-format
 msgid "Multicursor"
-msgstr "Ón chúrsóir"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:200
@@ -1538,10 +1474,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:109
-#, fuzzy, kde-format
-#| msgid "New Filetype"
+#, kde-format
 msgid "Swap file mode:"
-msgstr "Cineál Comhaid Nua"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:125
@@ -1557,24 +1492,21 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:138
-#, fuzzy, kde-format
-#| msgid "New Filetype"
+#, kde-format
 msgid "Store swap files in:"
-msgstr "Cineál Comhaid Nua"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:158
-#, fuzzy, kde-format
-#| msgid "New Filetype"
+#, kde-format
 msgid "Save swap files every:"
-msgstr "Cineál Comhaid Nua"
+msgstr ""
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:171
-#, fuzzy, kde-format
-#| msgid "as"
+#, kde-format
 msgid "s"
-msgstr "mar"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblExplanatory)
 #: dialogs/opensaveconfigadvwidget.ui:196
@@ -1585,10 +1517,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
 #: dialogs/opensaveconfigadvwidget.ui:209
-#, fuzzy, kde-format
-#| msgid "Do not use config file"
+#, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr "Ná húsáid comhad cumraíochta"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -1612,10 +1543,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncodingDetection)
 #: dialogs/opensaveconfigwidget.ui:57
-#, fuzzy, kde-format
-#| msgid "&Encoding:"
+#, kde-format
 msgid "&Encoding detection:"
-msgstr "&Ionchódú:"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbEncodingDetection)
 #: dialogs/opensaveconfigwidget.ui:67
@@ -1628,10 +1558,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncodingDetection2)
 #: dialogs/opensaveconfigwidget.ui:74
-#, fuzzy, kde-format
-#| msgid "&Fallback Encoding:"
+#, kde-format
 msgid "&Fallback encoding:"
-msgstr "&Ionchódú Réamhshocraithe:"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbEncodingFallback)
 #: dialogs/opensaveconfigwidget.ui:84
@@ -1770,10 +1699,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbAutoSave)
 #: dialogs/opensaveconfigwidget.ui:239
-#, fuzzy, kde-format
-#| msgid "Enable &auto completion"
+#, kde-format
 msgid "Enable Auto Save (local files only)"
-msgstr "Cum&asaigh comhlánú uathoibríoch"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
@@ -1795,46 +1723,39 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Set the syntax highlighting."
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "Socraigh aibhsiú comhréire."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Use Vi input mode"
+#, kde-format
 msgid "Show input mode"
-msgstr "Úsáid an mód ionchurtha Vi"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change Dictionary..."
+#, kde-format
 msgid "Show active dictionary"
-msgstr "Athraigh an Foclóir..."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "&Show tabulators"
+#, kde-format
 msgid "Show tab setting"
-msgstr "Tai&speáin táblóirí"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show line column"
-msgstr "Taispeáin Uimhreacha na &Línte"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Broken Encoding"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "Ionchódú Briste"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
@@ -1844,10 +1765,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
-#, fuzzy, kde-format
-#| msgid "Editor Plugins"
+#, kde-format
 msgid "Editor font:"
-msgstr "Breiseáin Eagarthóra"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
@@ -1871,10 +1791,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:109
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "At the end of a line"
-msgstr "Deireadh na líne"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:114
@@ -1884,10 +1803,9 @@ msgstr "I gcónaí"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, fuzzy, kde-format
-#| msgid "Whitespace Highlighting"
+#, kde-format
 msgid "Whitespace indicator si&ze:"
-msgstr "Aibhsiú Spáis Bháin"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1897,10 +1815,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "&Show tabulators"
+#, kde-format
 msgid "Show &tab indicators:"
-msgstr "Tai&speáin táblóirí"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:176
@@ -1912,10 +1829,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:202
-#, fuzzy, kde-format
-#| msgid "Bracket highlight:"
+#, kde-format
 msgid "Bracket matching:"
-msgstr "Aibhsiú lúibíní:"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:209
@@ -1949,17 +1865,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid "Print the current document."
+#, kde-format
 msgid "Show preview of matching open bracket"
-msgstr "Priontáil an cháipéis reatha"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:232
-#, fuzzy, kde-format
-#| msgid "Select to Matching Bracket"
+#, kde-format
 msgid "Flash matching brackets"
-msgstr "Roghnaigh téacs go dtí an Lúibín Comhoiriúnach"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:235
@@ -1988,10 +1902,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:271 view/katestatusbar.cpp:258
-#, fuzzy, kde-format
-#| msgid "Not word boundary"
+#, kde-format
 msgid "Show word count"
-msgstr "Ní fóir focal é"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
 #: dialogs/textareaappearanceconfigwidget.ui:278
@@ -2001,17 +1914,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
 #: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:255
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show line count"
-msgstr "Taispeáin Uimhreacha na &Línte"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
-#, fuzzy, kde-format
-#| msgid "Go to Line"
+#, kde-format
 msgid "Fold first line:"
-msgstr "Téigh go Líne"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2025,17 +1936,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
 #: dialogs/textareaappearanceconfigwidget.ui:337
-#, fuzzy, kde-format
-#| msgid "&Dynamic Word Wrap"
+#, kde-format
 msgid "Dynamic Word Wrap:"
-msgstr "Timfhilleadh &Dinimiciúil"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:344
-#, fuzzy, kde-format
-#| msgid "Hide Static &Word Wrap Marker"
+#, kde-format
 msgid "Wrap dynamically at static word wrap marker"
-msgstr "Folaigh Marcóir Thimfhilleadh &Focal Statach"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
 #: dialogs/textareaappearanceconfigwidget.ui:351
@@ -2045,10 +1954,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
 #: dialogs/textareaappearanceconfigwidget.ui:358
-#, fuzzy, kde-format
-#| msgid "Dynamic Word Wrap Indicators"
+#, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr "Táscairí Timfhillte Dinimiciúil"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:368
@@ -2058,17 +1966,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:391
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "I&ndent wrapped lines:"
-msgstr "Airíonna an Eangaithe"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
-#, fuzzy, kde-format
-#| msgid "&Indentation width:"
+#, kde-format
 msgid "&Don't indent lines wider than:"
-msgstr "Le&ithead eangaithe:"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:424
@@ -2091,10 +1997,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show i&ndentation lines:"
-msgstr "Taispeáin lí&nte eangaithe"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:453
@@ -2105,17 +2010,15 @@ msgid ""
 msgstr ""
 
 #: document/katebuffer.cpp:135
-#, fuzzy, kde-format
-#| msgid "New Filetype"
+#, kde-format
 msgctxt "short translation, user created new file"
 msgid "New file"
-msgstr "Cineál Comhaid Nua"
+msgstr ""
 
 #: document/katedocument.cpp:223
-#, fuzzy, kde-format
-#| msgid "Close Document"
+#, kde-format
 msgid "Auto Reload Document"
-msgstr "Dún an Cháipéis"
+msgstr ""
 
 #: document/katedocument.cpp:225
 #, kde-format
@@ -2170,10 +2073,9 @@ msgid "Temporarily raise limit and reload file"
 msgstr ""
 
 #: document/katedocument.cpp:2417
-#, fuzzy, kde-format
-#| msgid "&Close"
+#, kde-format
 msgid "Close"
-msgstr "&Dún"
+msgstr ""
 
 #: document/katedocument.cpp:2444
 #, kde-format
@@ -2271,10 +2173,9 @@ msgid "Save failed"
 msgstr "Theip ar an tsábháil"
 
 #: document/katedocument.cpp:4987
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Save Copy of File"
-msgstr "Sábháil Comhad"
+msgstr ""
 
 #: document/katedocument.cpp:4999
 #, kde-format
@@ -2304,16 +2205,14 @@ msgid ""
 msgstr ""
 
 #: document/katedocument.cpp:5609
-#, fuzzy, kde-format
-#| msgid "The files are identical."
+#, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "Is ionann iad na comhaid seo."
+msgstr ""
 
 #: document/katedocument.cpp:5611
-#, fuzzy, kde-format
-#| msgid "File Was Deleted on Disk"
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "Bhí an Comhad Scriosta ón Diosca"
+msgstr ""
 
 #: document/katedocument.cpp:5947
 #, kde-format
@@ -2350,10 +2249,9 @@ msgid "INSERT"
 msgstr ""
 
 #: inputmode/katenormalinputmodefactory.cpp:29
-#, fuzzy, kde-format
-#| msgid "Normal mode"
+#, kde-format
 msgid "Normal Mode"
-msgstr "Gnáthmhód"
+msgstr ""
 
 #: inputmode/kateviinputmode.cpp:31
 #, kde-format
@@ -2391,10 +2289,9 @@ msgid "vi-mode"
 msgstr ""
 
 #: inputmode/kateviinputmode.cpp:159
-#, fuzzy, kde-format
-#| msgid "E&ncoding"
+#, kde-format
 msgid "recording"
-msgstr "Io&nchódú"
+msgstr ""
 
 #: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:88
 #: vimode/config/configtab.cpp:233
@@ -2441,11 +2338,10 @@ msgid "Modes && Filetypes"
 msgstr "Móid agus Cineálacha Comhaid"
 
 #: mode/katemodemenulist.cpp:138
-#, fuzzy, kde-format
-#| msgid "I-Search:"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "I-Search:"
+msgstr ""
 
 #: mode/katemodemenulist.cpp:140
 #, kde-format
@@ -2462,24 +2358,22 @@ msgid "No items matching your search"
 msgstr ""
 
 #: mode/katemodemenulist.cpp:1087
-#, fuzzy, kde-format
-#| msgid "Best matches"
+#, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
 "translation doesn't have more than 34 characters, since the menu where it's "
 "displayed is small and fixed."
 msgid "Best Search Match"
-msgstr "Torthaí is comhoiriúnaí"
+msgstr ""
 
 #: mode/katemodemenulist.cpp:1092
-#, fuzzy, kde-format
-#| msgid "Best matches"
+#, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
 "translation doesn't have more than 34 characters, since the menu where it's "
 "displayed is small and fixed."
 msgid "Best Search Matches"
-msgstr "Torthaí is comhoiriúnaí"
+msgstr ""
 
 #: printing/printconfigwidgets.cpp:36
 #, kde-format
@@ -2657,16 +2551,14 @@ msgid "L&ayout"
 msgstr "Le&agan Amach"
 
 #: printing/printconfigwidgets.cpp:484
-#, fuzzy, kde-format
-#| msgid "Font & Color Schemas"
+#, kde-format
 msgid "&Color theme:"
-msgstr "Scéimrí Cló agus Datha"
+msgstr ""
 
 #: printing/printconfigwidgets.cpp:494
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "Cló"
+msgstr ""
 
 #: printing/printconfigwidgets.cpp:498
 #, kde-format
@@ -2776,11 +2668,10 @@ msgid "Wrap with Tag"
 msgstr ""
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: script/data/commands/emmet.js:22
 #, kde-format
@@ -2795,39 +2686,34 @@ msgid "Select HTML/XML Tag Contents Outwards"
 msgstr ""
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
-msgstr "Scoránaigh Nóta"
+msgstr ""
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgid "Move to Next Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
-msgstr "Téigh go dtí an chéad líne eile"
+msgstr ""
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgid "Move to Previous Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
-msgstr "Téigh go dtí an líne roimhe seo"
+msgstr ""
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgid "Select to End of Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
-msgstr "Roghnaigh go Deireadh na Líne"
+msgstr ""
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgid "Select to Previous Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
-msgstr "Roghnaigh go dtí an Líne Roimhe Seo"
+msgstr ""
 
 #: script/data/commands/emmet.js:50
 #, kde-format
@@ -2985,68 +2871,58 @@ msgid "Increment number under cursor by 0.1"
 msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
 #: script/data/commands/jumpMatchingIndent.js:21
 #: script/data/commands/jumpMatchingIndent.js:26
 #: script/data/commands/navigation.js:10 script/data/commands/navigation.js:14
-#, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Configuration"
+#, kde-format
 msgctxt "Script command category"
 msgid "Navigation"
-msgstr "Cumraíocht"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:80
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgid "Move cursor to previous matching indent"
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:83
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgid "Move cursor to next matching indent"
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: script/data/commands/navigation.js:9
 #, kde-format
@@ -3055,18 +2931,16 @@ msgid "Go to Next Paragraph"
 msgstr ""
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgid "Move to Previous Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Téigh go dtí an líne roimhe seo"
+msgstr ""
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "&Bain spásanna breise:"
+msgstr ""
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
@@ -3074,46 +2948,40 @@ msgstr "&Bain spásanna breise:"
 #: script/data/commands/utils.js:36 script/data/commands/utils.js:40
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
-#, fuzzy, kde-format
-#| msgid "Editing"
+#, kde-format
 msgctxt "Script command category"
 msgid "Editing"
-msgstr "Eagarthóireacht"
+msgstr ""
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "&Bain spásanna breise:"
+msgstr ""
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "&Bain spásanna breise:"
+msgstr ""
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
-msgstr "Ceangail Línte"
+msgstr ""
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Move Lines Down"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
-msgstr "Bog Línte Síos"
+msgstr ""
 
 #: script/data/commands/utils.js:30
-#, fuzzy, kde-format
-#| msgid "Move Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
-msgstr "Bog Línte Suas"
+msgstr ""
 
 #: script/data/commands/utils.js:35
 #, kde-format
@@ -3128,32 +2996,28 @@ msgid "Duplicate Selected Lines Up"
 msgstr ""
 
 #: script/data/commands/utils.js:43
-#, fuzzy, kde-format
-#| msgid "Print &selected text only"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Priontáil an &téacs roghnaithe amháin"
+msgstr ""
 
 #: script/data/commands/utils.js:47
-#, fuzzy, kde-format
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
-msgstr "Sórtáil Téacs roghnaithe:"
+msgstr ""
 
 #: script/data/commands/utils.js:51
-#, fuzzy, kde-format
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
-msgstr "Sórtáil Téacs roghnaithe:"
+msgstr ""
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: script/data/commands/utils.js:410
 #, kde-format
@@ -3294,42 +3158,34 @@ msgid ""
 msgstr ""
 
 #: script/data/indentation/ada.js:2
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Ada"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "ada"
-msgstr "Ada"
+msgstr ""
 
 #: script/data/indentation/cmake.js:2
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "CMake"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "CMake"
-msgstr "CMake"
+msgstr ""
 
 #: script/data/indentation/cppstyle.js:2
-#, fuzzy, kde-format
-#| msgid "C Style"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "C++/boost Style"
-msgstr "Stíl C"
+msgstr ""
 
 #: script/data/indentation/cstyle.js:2
-#, fuzzy, kde-format
-#| msgid "C Style"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "C Style"
-msgstr "Stíl C"
+msgstr ""
 
 #: script/data/indentation/haskell.js:2
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Haskell"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "Haskell"
-msgstr "Haskell"
+msgstr ""
 
 #: script/data/indentation/julia.js:2
 #, kde-format
@@ -3338,19 +3194,16 @@ msgid "Julia"
 msgstr ""
 
 #: script/data/indentation/latex.js:2
-#, fuzzy, kde-format
-#| msgid "Latest"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "Latex"
-msgstr "Is Déanaí"
+msgstr ""
 
 #: script/data/indentation/lilypond.js:2
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "LilyPond"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "LilyPond"
-msgstr "LilyPond"
+msgstr ""
 
 #: script/data/indentation/lisp.js:2
 #, kde-format
@@ -3359,20 +3212,16 @@ msgid "LISP"
 msgstr ""
 
 #: script/data/indentation/pascal.js:2
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Pascal"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "Pascal"
-msgstr "Pascal"
+msgstr ""
 
 #: script/data/indentation/python.js:2
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Python"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "Python"
-msgstr "Python"
+msgstr ""
 
 #: script/data/indentation/r.js:2
 #, kde-format
@@ -3381,26 +3230,22 @@ msgid "R"
 msgstr ""
 
 #: script/data/indentation/replicode.js:2
-#, fuzzy, kde-format
-#| msgid "&Replace"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "Replicode"
-msgstr "&Ionadaigh"
+msgstr ""
 
 #: script/data/indentation/ruby.js:2
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Ruby"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "Ruby"
-msgstr "Ruby"
+msgstr ""
 
 #: script/data/indentation/xml.js:2
-#, fuzzy, kde-format
-#| msgid "XML Style"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "XML Style"
-msgstr "Stíl XML"
+msgstr ""
 
 #: script/katecommandlinescript.cpp:37
 #, kde-format
@@ -3434,10 +3279,9 @@ msgid "No help specified for command '%1' in script %2"
 msgstr ""
 
 #: script/katescript.cpp:282
-#, fuzzy, kde-format
-#| msgid "Error loading script %1"
+#, kde-format
 msgid "Error loading script %1: %2"
-msgstr "Earráid agus script %1 á luchtú"
+msgstr ""
 
 #: script/katescriptmanager.cpp:319
 #, kde-format
@@ -3455,29 +3299,20 @@ msgid "Add..."
 msgstr "Cuir Leis..."
 
 #: search/katesearchbar.cpp:298
-#, fuzzy, kde-format
-#| msgid "1 replacement has been made"
-#| msgid_plural "%1 replacements have been made"
+#, kde-format
 msgctxt "short translation"
 msgid "1 replacement made"
 msgid_plural "%1 replacements made"
-msgstr[0] "Ionadaíodh 1 teaghrán"
-msgstr[1] "Ionadaíodh %1 theaghrán"
-msgstr[2] "Ionadaíodh %1 theaghrán"
-msgstr[3] "Ionadaíodh %1 dteaghrán"
-msgstr[4] "Ionadaíodh %1 teaghrán"
+msgstr[0] ""
+msgstr[1] ""
 
 #: search/katesearchbar.cpp:300
-#, fuzzy, kde-format
-#| msgid "Not found"
+#, kde-format
 msgctxt "short translation"
 msgid "1 match found"
 msgid_plural "%1 matches found"
-msgstr[0] "Gan aimsiú"
-msgstr[1] "Gan aimsiú"
-msgstr[2] "Gan aimsiú"
-msgstr[3] "Gan aimsiú"
-msgstr[4] "Gan aimsiú"
+msgstr[0] ""
+msgstr[1] ""
 
 #: search/katesearchbar.cpp:374
 #, kde-format
@@ -3495,28 +3330,24 @@ msgid "Not found"
 msgstr "Gan aimsiú"
 
 #: search/katesearchbar.cpp:615
-#, fuzzy, kde-format
-#| msgid "Reached top, continued from bottom"
+#, kde-format
 msgid "Bottom of file reached. Continue from top?"
-msgstr "Ag an mbarr, ag leanúint ón mbun"
+msgstr ""
 
 #: search/katesearchbar.cpp:615
-#, fuzzy, kde-format
-#| msgid "Reached top, continued from bottom"
+#, kde-format
 msgid "Top of file reached. Continue from bottom?"
-msgstr "Ag an mbarr, ag leanúint ón mbun"
+msgstr ""
 
 #: search/katesearchbar.cpp:618
-#, fuzzy, kde-format
-#| msgid "Continue from the end?"
+#, kde-format
 msgid "Continue search?"
-msgstr "Lean ar aghaidh ón deireadh?"
+msgstr ""
 
 #: search/katesearchbar.cpp:920
-#, fuzzy, kde-format
-#| msgid "Search Highlight"
+#, kde-format
 msgid "SearchHighLight"
-msgstr "Aibhsiú i dTorthaí an Chuardaigh"
+msgstr ""
 
 #: search/katesearchbar.cpp:1158
 #, kde-format
@@ -3529,10 +3360,9 @@ msgid "End of line"
 msgstr "Deireadh na líne"
 
 #: search/katesearchbar.cpp:1161
-#, fuzzy, kde-format
-#| msgid "Any single character (excluding line breaks)"
+#, kde-format
 msgid "Match any character excluding new line (by default)"
-msgstr "Aon charactar aonair (seachas bristeacha líne)"
+msgstr ""
 
 #: search/katesearchbar.cpp:1162
 #, kde-format
@@ -3620,10 +3450,9 @@ msgid "Whitespace (excluding line breaks)"
 msgstr "Spás bán (seachas bristeacha líne)"
 
 #: search/katesearchbar.cpp:1207
-#, fuzzy, kde-format
-#| msgid "&Spaces"
+#, kde-format
 msgid "Non-whitespace"
-msgstr "&Spásanna"
+msgstr ""
 
 #: search/katesearchbar.cpp:1208
 #, kde-format
@@ -3656,10 +3485,9 @@ msgid "Group, non-capturing"
 msgstr "Grúpa, gan ghabháil"
 
 #: search/katesearchbar.cpp:1219
-#, fuzzy, kde-format
-#| msgid "Negative lookahead"
+#, kde-format
 msgid "Positive Lookahead"
-msgstr "Réamhfheiceáil dhiúltach"
+msgstr ""
 
 #: search/katesearchbar.cpp:1220
 #, kde-format
@@ -3734,10 +3562,9 @@ msgstr "Léim go dtí an ceann roimhe seo"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, matchCase)
 #: search/searchbarincremental.ui:111 search/searchbarpower.ui:136
-#, fuzzy, kde-format
-#| msgid "Case sensitive"
+#, kde-format
 msgid "Match case sensitive"
-msgstr "Cásíogair"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, mutate)
 #: search/searchbarincremental.ui:146
@@ -3759,10 +3586,9 @@ msgstr "Iona&daigh:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: search/searchbarpower.ui:76
-#, fuzzy, kde-format
-#| msgid "&Mode"
+#, kde-format
 msgid "&Mode:"
-msgstr "&Mód"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, searchMode)
 #: search/searchbarpower.ui:103
@@ -3796,10 +3622,9 @@ msgstr "Slonn ionadaíochta"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, selectionOnly)
 #: search/searchbarpower.ui:149
-#, fuzzy, kde-format
-#| msgid "Search/replace within the current selection only"
+#, kde-format
 msgid "Search in the selection only"
-msgstr "Cuardach/ionadú sa roghnúchán reatha amháin"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, replaceNext)
 #: search/searchbarpower.ui:195
@@ -3851,30 +3676,26 @@ msgid "Text to replace with"
 msgstr "Téacs le cur ina ionad"
 
 #: spellcheck/spellcheckbar.cpp:148
-#, fuzzy, kde-format
-#| msgid "Spellcheck Selection..."
+#, kde-format
 msgid "Spell check canceled."
-msgstr "Seiceáil Litriú an Roghnúcháin..."
+msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgid "Spellcheck Selection..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Seiceáil Litriú an Roghnúcháin..."
+msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
-#, fuzzy, kde-format
-#| msgid "Spelling"
+#, kde-format
 msgctxt "@title:window"
 msgid "Check Spelling"
-msgstr "Litriú"
+msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:432 spellcheck/spellcheckbar.cpp:435
-#, fuzzy, kde-format
-#| msgid "Spellcheck Selection..."
+#, kde-format
 msgid "Spell check complete."
-msgstr "Seiceáil Litriú an Roghnúcháin..."
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
 #. i18n: ectx: property (whatsThis), widget (QLabel, m_unknownWord)
@@ -3897,17 +3718,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: spellcheck/spellcheckbar.ui:33
-#, fuzzy, kde-format
-#| msgid "Unknown Property"
+#, kde-format
 msgid "Unknown word:"
-msgstr "Airí Anaithnid"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QLabel, m_unknownWord)
 #: spellcheck/spellcheckbar.ui:40
-#, fuzzy, kde-format
-#| msgid "Unknown Property"
+#, kde-format
 msgid "Unknown word"
-msgstr "Airí Anaithnid"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, m_unknownWord)
 #: spellcheck/spellcheckbar.ui:49
@@ -3931,10 +3750,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, m_addBtn)
 #: spellcheck/spellcheckbar.ui:75
-#, fuzzy, kde-format
-#| msgid "Add to Dictionary"
+#, kde-format
 msgid "<< Add to Dictionary"
-msgstr "Cuir san Fhoclóir"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel4)
 #: spellcheck/spellcheckbar.ui:89
@@ -3951,10 +3769,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: spellcheck/spellcheckbar.ui:92
-#, fuzzy, kde-format
-#| msgid "Text to replace with"
+#, kde-format
 msgid "Replace with:"
-msgstr "Téacs le cur ina ionad"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, m_suggestBtn)
 #: spellcheck/spellcheckbar.ui:118
@@ -3996,11 +3813,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel5)
 #: spellcheck/spellcheckbar.ui:159
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "E Language"
+#, kde-format
 msgid "&Language:"
-msgstr "Teanga E"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (Sonnet::DictionaryComboBox, m_language)
 #: spellcheck/spellcheckbar.ui:169
@@ -4024,11 +3839,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, m_autoCorrect)
 #: spellcheck/spellcheckbar.ui:200
-#, fuzzy, kde-format
-#| msgctxt "Encodings menu"
-#| msgid "Autodetect"
+#, kde-format
 msgid "Autocorrect"
-msgstr "Braith go hUathoibríoch"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_replaceAllBtn)
 #: spellcheck/spellcheckbar.ui:209
@@ -4042,24 +3855,21 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, m_replaceAllBtn)
 #: spellcheck/spellcheckbar.ui:212
-#, fuzzy, kde-format
-#| msgid "Replace &All"
+#, kde-format
 msgid "R&eplace All"
-msgstr "Ionadaigh &Uile"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipAllBtn)
 #: spellcheck/spellcheckbar.ui:225
-#, fuzzy, kde-format
-#| msgid "&Ignore"
+#, kde-format
 msgid "I&gnore All"
-msgstr "Déan neamha&ird de"
+msgstr ""
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Litriú (ón chúrsóir)..."
+msgstr ""
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4077,22 +3887,16 @@ msgid "Add to Dictionary"
 msgstr "Cuir san Fhoclóir"
 
 #: spellcheck/spellingmenu.cpp:172
-#, fuzzy, kde-format
-#| msgid "Spelling"
+#, kde-format
 msgid "Spelling '%1'"
-msgstr "Litriú"
+msgstr ""
 
 #: swapfile/kateswapdiffcreator.cpp:87
-#, fuzzy, kde-format
-#| msgid ""
-#| "The diff command failed. Please make sure that diff(1) is installed and "
-#| "in your PATH."
+#, kde-format
 msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
 "installed and in your PATH."
 msgstr ""
-"Theip ar an ordú diff. Bí cinnte go bhfuil diff(1) suiteáilte agus go bhfuil "
-"sé i do PATH."
 
 #: swapfile/kateswapdiffcreator.cpp:98
 #, kde-format
@@ -4125,11 +3929,9 @@ msgid "Use default color from the color theme"
 msgstr ""
 
 #: syntax/katehighlightmenu.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "Autoindent mode"
-#| msgid "None"
+#, kde-format
 msgid "None"
-msgstr "Neamhní"
+msgstr ""
 
 #: syntax/katestyletreewidget.cpp:135
 #, kde-format
@@ -4187,44 +3989,38 @@ msgid "S&trikeout"
 msgstr "S&críoblíne"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "Gnáth&dhath..."
+msgstr ""
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "Dath &Roghnaithe..."
+msgstr ""
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "Dath an &Chúlra..."
+msgstr ""
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "Dath Roghnaith&e an Chúlra..."
+msgstr ""
 
 #: syntax/katestyletreewidget.cpp:275
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgid "Unset Normal Color"
-msgstr "Gnáth&dhath..."
+msgstr ""
 
 #: syntax/katestyletreewidget.cpp:278
-#, fuzzy, kde-format
-#| msgid "Unset Selected Background Color"
+#, kde-format
 msgid "Unset Selected Color"
-msgstr "Díshocraigh Dath Roghnaithe an Chúlra"
+msgstr ""
 
 #: syntax/katestyletreewidget.cpp:284
 #, kde-format
@@ -4280,11 +4076,10 @@ msgid "Function"
 msgstr "Feidhm"
 
 #: syntax/katethemeconfig.cpp:53
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Variable"
-msgstr "Athróg"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:55
 #, kde-format
@@ -4293,11 +4088,10 @@ msgid "Control Flow"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:57
-#, fuzzy, kde-format
-#| msgid "Separator"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Operator"
-msgstr "Deighilteoir"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:59
 #, kde-format
@@ -4306,11 +4100,10 @@ msgid "Built-in"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:61
-#, fuzzy, kde-format
-#| msgid "Extensions"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Extension"
-msgstr "Eisínteachtaí"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:63
 #, kde-format
@@ -4331,12 +4124,10 @@ msgid "Character"
 msgstr "Carachtar"
 
 #: syntax/katethemeconfig.cpp:70
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Character"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Special Character"
-msgstr "Carachtar"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:72
 #, kde-format
@@ -4351,11 +4142,10 @@ msgid "Verbatim String"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:76
-#, fuzzy, kde-format
-#| msgid "Filtering"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Special String"
-msgstr "Scagadh"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:78
 #, kde-format
@@ -4388,11 +4178,10 @@ msgid "Floating Point"
 msgstr "Snámhphointe"
 
 #: syntax/katethemeconfig.cpp:89
-#, fuzzy, kde-format
-#| msgid "Constant"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Constant"
-msgstr "Tairiseach"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:92
 #, kde-format
@@ -4401,25 +4190,22 @@ msgid "Comment"
 msgstr "Nóta"
 
 #: syntax/katethemeconfig.cpp:94
-#, fuzzy, kde-format
-#| msgid "Show Documentation"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Documentation"
-msgstr "Taispeáin Doiciméadú"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:96
-#, fuzzy, kde-format
-#| msgid "Indentation"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Annotation"
-msgstr "Eangú"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:98
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Comment Variable"
-msgstr "Athróg"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:101
 #, kde-format
@@ -4428,19 +4214,16 @@ msgid "Region Marker"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:103
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Inform"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Information"
-msgstr "Inform"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:105
-#, fuzzy, kde-format
-#| msgid "Warning"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Warning"
-msgstr "Rabhadh"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:107
 #, kde-format
@@ -4461,10 +4244,9 @@ msgid "Error"
 msgstr "Earráid"
 
 #: syntax/katethemeconfig.cpp:162
-#, fuzzy, kde-format
-#| msgid "Use Default"
+#, kde-format
 msgid "Use Default Colors"
-msgstr "Úsáid an Réamhshocrú"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:182
 #, kde-format
@@ -4556,21 +4338,16 @@ msgstr ""
 "cumasaithe).</p>"
 
 #: syntax/katethemeconfig.cpp:240
-#, fuzzy, kde-format
-#| msgid "Current Line"
+#, kde-format
 msgid "Current Line Number"
-msgstr "Líne Reatha"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:242
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>This color will be used to draw the line numbers (if enabled).</p>"
+#, kde-format
 msgid ""
 "<p>This color will be used to draw the number of the current line (if "
 "enabled).</p>"
 msgstr ""
-"<p>Úsáidfear an dath seo chun na huimhreacha líne a dhearadh (má tá siad "
-"cumasaithe).</p>"
 
 #: syntax/katethemeconfig.cpp:247
 #, kde-format
@@ -4761,11 +4538,10 @@ msgid ""
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:568
-#, fuzzy, kde-format
-#| msgid "Normal Text"
+#, kde-format
 msgctxt "@item:intable"
 msgid "Normal Text & Source Code"
-msgstr "Gnáth-théacs"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:575
 #, kde-format
@@ -4774,18 +4550,16 @@ msgid "Numbers, Types & Constants"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:582
-#, fuzzy, kde-format
-#| msgid "Set of characters"
+#, kde-format
 msgctxt "@item:intable"
 msgid "Strings & Characters"
-msgstr "Tacar carachtar"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:589
-#, fuzzy, kde-format
-#| msgid "Show Documentation"
+#, kde-format
 msgctxt "@item:intable"
 msgid "Comments & Documentation"
-msgstr "Taispeáin Doiciméadú"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:596
 #, kde-format
@@ -4811,50 +4585,42 @@ msgid ""
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1026
-#, fuzzy, kde-format
-#| msgid "Default Text Styles"
+#, kde-format
 msgid "Default Theme"
-msgstr "Stíleanna Réamhshocraithe Téacs"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1027
-#, fuzzy, kde-format
-#| msgid "Choose Editor..."
+#, kde-format
 msgid "Theme Editor"
-msgstr "Roghnaigh Eagarthóir..."
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1045
-#, fuzzy, kde-format
-#| msgid "Selected text:"
+#, kde-format
 msgid "Select theme:"
-msgstr "Téacs roghnaithe:"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1118
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Scheme"
+#, kde-format
 msgid "&Theme:"
-msgstr "Scheme"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "&Sábháil an Comhad Mar..."
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1135
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Easpórtáil..."
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1139
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Iompórtáil..."
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1146
 #, kde-format
@@ -4877,22 +4643,19 @@ msgid "Highlighting Text Styles"
 msgstr "Stíleanna Téacs Aibhsithe"
 
 #: syntax/katethemeconfig.cpp:1177
-#, fuzzy, kde-format
-#| msgid "Importing Color Schema"
+#, kde-format
 msgid "Exporting color theme: %1"
-msgstr "Scéimre Datha á Iompórtáil"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1179 syntax/katethemeconfig.cpp:1200
-#, fuzzy, kde-format
-#| msgid "Close Document"
+#, kde-format
 msgid "Color theme"
-msgstr "Dún an Cháipéis"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1200
-#, fuzzy, kde-format
-#| msgid "Importing Color Schema"
+#, kde-format
 msgid "Importing Color Theme"
-msgstr "Scéimre Datha á Iompórtáil"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1214
 #, kde-format
@@ -4902,10 +4665,9 @@ msgid ""
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1216
-#, fuzzy, kde-format
-#| msgid "Close Nevertheless"
+#, kde-format
 msgid "Import Nevertheless"
-msgstr "Dún Mar Sin Féin"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1304
 #, kde-format
@@ -4918,16 +4680,14 @@ msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1372
-#, fuzzy, kde-format
-#| msgid "Close Nevertheless"
+#, kde-format
 msgid "Delete Nevertheless"
-msgstr "Dún Mar Sin Féin"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1414
-#, fuzzy, kde-format
-#| msgid "Close Document"
+#, kde-format
 msgid "Copy theme"
-msgstr "Dún an Cháipéis"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1415
 #, kde-format
@@ -4942,16 +4702,14 @@ msgid ""
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1428
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Copy Theme"
-msgstr "Dathanna"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1481 syntax/katethemeconfig.cpp:1486
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Color Themes"
-msgstr "Dathanna"
+msgstr ""
 
 #: utils/kateautoindent.cpp:88
 #, kde-format
@@ -4966,10 +4724,9 @@ msgid "Normal"
 msgstr "Gnách"
 
 #: utils/katebookmarks.cpp:49
-#, fuzzy, kde-format
-#| msgid "Clear &Bookmark"
+#, kde-format
 msgid "Toggle &Bookmark"
-msgstr "Glan Lea&bharmharc"
+msgstr ""
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -5296,36 +5053,31 @@ msgid ""
 msgstr ""
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgid "Remove Duplicate Lines"
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgid "Sort Selected Text"
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr "Sórtáil Téacs roghnaithe:"
+msgstr ""
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgid "Sort Selected Text"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "Sórtáil Téacs roghnaithe:"
+msgstr ""
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgid "Sort Selected Text"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
-msgstr "Sórtáil Téacs roghnaithe:"
+msgstr ""
 
 #: utils/katecmds.cpp:699
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "Roghnaigh an téacs roghnaithe nó an cháipéis iomlán."
+msgstr ""
 
 #: utils/katecmds.cpp:703
 #, kde-format
@@ -5361,10 +5113,9 @@ msgid "Embeddable editor component"
 msgstr "Comhpháirt eagarthóireachta inleabaithe"
 
 #: utils/kateglobal.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2005 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2025 The Kate Authors"
-msgstr "© 2000-2005 Údair Kate"
+msgstr ""
 
 #: utils/kateglobal.cpp:84
 #, kde-format
@@ -5588,11 +5339,9 @@ msgid "Gerald Senarclens de Grancy"
 msgstr ""
 
 #: utils/kateglobal.cpp:113
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Quake Script"
+#, kde-format
 msgid "QA and Scripting"
-msgstr "Quake Script"
+msgstr ""
 
 #: utils/kateglobal.cpp:115
 #, kde-format
@@ -5742,10 +5491,9 @@ msgid "Configure"
 msgstr "Cumraigh"
 
 #: utils/katesedcmd.cpp:268
-#, fuzzy, kde-format
-#| msgid "Text to replace with"
+#, kde-format
 msgid "replace with %1?"
-msgstr "Téacs le cur ina ionad"
+msgstr ""
 
 #: utils/katesedcmd.cpp:274
 #, kde-format
@@ -5775,10 +5523,9 @@ msgid "<value>"
 msgstr ""
 
 #: utils/katevariableexpansionhelpers.cpp:161
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert variable"
-msgstr "Ionsáigh Táb"
+msgstr ""
 
 #: utils/katevariableexpansionhelpers.cpp:165
 #, kde-format
@@ -5786,10 +5533,9 @@ msgid "Variables"
 msgstr "Athróga"
 
 #: utils/katevariableexpansionhelpers.cpp:169
-#, fuzzy, kde-format
-#| msgid "Filtering"
+#, kde-format
 msgid "Filter"
-msgstr "Scagadh"
+msgstr ""
 
 #: utils/katevariableexpansionhelpers.cpp:188
 #: utils/katevariableexpansionhelpers.cpp:217
@@ -5798,52 +5544,44 @@ msgid "Please select a variable."
 msgstr ""
 
 #: utils/katevariableexpansionhelpers.cpp:206
-#, fuzzy, kde-format
-#| msgid "Missing argument. Usage: %1 <value>"
+#, kde-format
 msgid "Current value: %1<value>"
-msgstr "Argóint ar iarraidh. Úsáid: %1 <value>"
+msgstr ""
 
 #: utils/katevariableexpansionhelpers.cpp:214
-#, fuzzy, kde-format
-#| msgid "Current line:"
+#, kde-format
 msgid "Current value: %1"
-msgstr "Líne reatha:"
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:86
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "File base name without path and suffix of the current document."
-msgstr "Roghnaigh téacs iomlán na cáipéise reatha."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:94
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "File extension of the current document."
-msgstr "Roghnaigh téacs iomlán na cáipéise reatha."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:102
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "File name without path of the current document."
-msgstr "Roghnaigh téacs iomlán na cáipéise reatha."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:110
-#, fuzzy, kde-format
-#| msgid "Reload the current document from disk."
+#, kde-format
 msgid "Full path of the current document including the file name."
-msgstr "Athluchtaigh an cháipéis reatha ón diosca."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:118
-#, fuzzy, kde-format
-#| msgid "Print the current document."
+#, kde-format
 msgid "Contents of the current document."
-msgstr "Priontáil an cháipéis reatha"
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:125
-#, fuzzy, kde-format
-#| msgid "Reload the current document from disk."
+#, kde-format
 msgid "Full path of the current document excluding the file name."
-msgstr "Athluchtaigh an cháipéis reatha ón diosca."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:133
 #, kde-format
@@ -5883,46 +5621,39 @@ msgid "Y component in global screen coordinates of the cursor position."
 msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:177
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Text selection of the current document."
-msgstr "Roghnaigh téacs iomlán na cáipéise reatha."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:184
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Start line of selected text of the current document."
-msgstr "Roghnaigh téacs iomlán na cáipéise reatha."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:191
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Start column of selected text of the current document."
-msgstr "Roghnaigh téacs iomlán na cáipéise reatha."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:198
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "End line of selected text of the current document."
-msgstr "Roghnaigh téacs iomlán na cáipéise reatha."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:205
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "End column of selected text of the current document."
-msgstr "Roghnaigh téacs iomlán na cáipéise reatha."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:212
-#, fuzzy, kde-format
-#| msgid "Use this to close the current document"
+#, kde-format
 msgid "Number of rows of the current document."
-msgstr "Dún an cháipéis reatha leis seo"
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:219
-#, fuzzy, kde-format
-#| msgid "End of document reached."
+#, kde-format
 msgid "Read a document variable."
-msgstr "Tá deireadh na cáipéise sroichte."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:227
 #, kde-format
@@ -5935,10 +5666,9 @@ msgid "The current date (ISO)."
 msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:241
-#, fuzzy, kde-format
-#| msgid "Current Date (short format)"
+#, kde-format
 msgid "The current date (QDate formatstring)."
-msgstr "An Dáta Inniu (gairid)"
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:249
 #, kde-format
@@ -5991,25 +5721,22 @@ msgid "false"
 msgstr "bréagach"
 
 #: variableeditor/variableeditor.cpp:350
-#, fuzzy, kde-format
-#| msgid "none"
+#, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
-msgstr "neamhní"
+msgstr ""
 
 #: variableeditor/variableeditor.cpp:351
-#, fuzzy, kde-format
-#| msgid "modified"
+#, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
-msgstr "athraithe"
+msgstr ""
 
 #: variableeditor/variableeditor.cpp:352
-#, fuzzy, kde-format
-#| msgid "all"
+#, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
-msgstr "uile"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:42
 #, kde-format
@@ -6017,11 +5744,10 @@ msgid "Show list of valid variables."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:115
-#, fuzzy, kde-format
-#| msgid "Select to Matching Bracket"
+#, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
-msgstr "Roghnaigh téacs go dtí an Lúibín Comhoiriúnach"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:121
 #, kde-format
@@ -6139,11 +5865,10 @@ msgid "Set the auto indentation style."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:234
-#, fuzzy, kde-format
-#| msgid "Adjust indentation of code &pasted from the clipboard"
+#, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
-msgstr "Coigeartaigh eangú cóid a &ghreamaítear ón ghearrthaisce"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:240
 #, kde-format
@@ -6282,64 +6007,54 @@ msgid "Insert mode and VI input mode indicator. Click to change the mode."
 msgstr ""
 
 #: view/katestatusbar.cpp:135
-#, fuzzy, kde-format
-#| msgid "Change Dictionary..."
+#, kde-format
 msgid "Change dictionary"
-msgstr "Athraigh an Foclóir..."
+msgstr ""
 
 #: view/katestatusbar.cpp:161 view/katestatusbar.cpp:488
-#, fuzzy, kde-format
-#| msgid "Tab wi&dth:"
+#, kde-format
 msgid "Tab Width"
-msgstr "Leithea&d táb:"
+msgstr ""
 
 #: view/katestatusbar.cpp:169 view/katestatusbar.cpp:503
-#, fuzzy, kde-format
-#| msgid "&Indentation width:"
+#, kde-format
 msgid "Indentation Width"
-msgstr "Le&ithead eangaithe:"
+msgstr ""
 
 #: view/katestatusbar.cpp:177
-#, fuzzy, kde-format
-#| msgid "&Indentation Mode:"
+#, kde-format
 msgid "Indentation Mode"
-msgstr "Mód &Eangaithe:"
+msgstr ""
 
 #: view/katestatusbar.cpp:179
-#, fuzzy, kde-format
-#| msgid "Tabulators &and Spaces"
+#, kde-format
 msgid "Tabulators && Spaces"
-msgstr "Táblóirí &agus Spásanna"
+msgstr ""
 
 #: view/katestatusbar.cpp:182
-#, fuzzy, kde-format
-#| msgid "&Tabulators"
+#, kde-format
 msgid "Tabulators"
-msgstr "&Táblóirí"
+msgstr ""
 
 #: view/katestatusbar.cpp:185
-#, fuzzy, kde-format
-#| msgid "&Spaces"
+#, kde-format
 msgid "Spaces"
-msgstr "&Spásanna"
+msgstr ""
 
 #: view/katestatusbar.cpp:197
-#, fuzzy, kde-format
-#| msgid "E&ncoding"
+#, kde-format
 msgid "Encoding"
-msgstr "Io&nchódú"
+msgstr ""
 
 #: view/katestatusbar.cpp:200 view/katestatusbar.cpp:201
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "Deireadh na líne"
+msgstr ""
 
 #: view/katestatusbar.cpp:207
-#, fuzzy, kde-format
-#| msgid "&Mode"
+#, kde-format
 msgid "Mode"
-msgstr "&Mód"
+msgstr ""
 
 #: view/katestatusbar.cpp:209 view/kateview.cpp:703
 #, kde-format
@@ -6349,11 +6064,9 @@ msgid ""
 msgstr ""
 
 #: view/katestatusbar.cpp:216
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Set the syntax highlighting."
+#, kde-format
 msgid "Syntax highlighting"
-msgstr "Socraigh aibhsiú comhréire."
+msgstr ""
 
 #: view/katestatusbar.cpp:261
 #, kde-format
@@ -6361,10 +6074,9 @@ msgid "Line/Column compact mode"
 msgstr ""
 
 #: view/katestatusbar.cpp:307
-#, fuzzy, kde-format
-#| msgid " BLOCK "
+#, kde-format
 msgid "[BLOCK] %1"
-msgstr " BLOC "
+msgstr ""
 
 #: view/katestatusbar.cpp:323
 #, kde-format
@@ -6377,16 +6089,14 @@ msgid "%1:%2"
 msgstr ""
 
 #: view/katestatusbar.cpp:329
-#, fuzzy, kde-format
-#| msgid " Line: %1 Col: %2 "
+#, kde-format
 msgid "Line %1 of %2, Column %3"
-msgstr " Líne: %1 Col: %2 "
+msgstr ""
 
 #: view/katestatusbar.cpp:331
-#, fuzzy, kde-format
-#| msgid " Line: %1 Col: %2 "
+#, kde-format
 msgid "Line %1, Column %2"
-msgstr " Líne: %1 Col: %2 "
+msgstr ""
 
 #: view/katestatusbar.cpp:405
 #, kde-format
@@ -6399,10 +6109,9 @@ msgid "Soft Tabs: %1 (%2)"
 msgstr ""
 
 #: view/katestatusbar.cpp:407
-#, fuzzy, kde-format
-#| msgid "Snippet: %1"
+#, kde-format
 msgid "Tab Size: %1"
-msgstr "Blúire: %1"
+msgstr ""
 
 #: view/katestatusbar.cpp:408
 #, kde-format
@@ -6410,22 +6119,17 @@ msgid "Indent/Tab: %1/%2"
 msgstr ""
 
 #: view/katestatusbar.cpp:448 view/katestatusbar.cpp:474
-#, fuzzy, kde-format
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Eile"
+msgstr ""
 
 #: view/katestatusbar.cpp:476
-#, fuzzy, kde-format
-#| msgid "Other"
+#, kde-format
 msgid "Other (%1)"
 msgid_plural "Other (%1)"
-msgstr[0] "Eile"
-msgstr[1] "Eile"
-msgstr[2] "Eile"
-msgstr[3] "Eile"
-msgstr[4] "Eile"
+msgstr[0] ""
+msgstr[1] ""
 
 #: view/katestatusbar.cpp:488
 #, kde-format
@@ -6480,16 +6184,14 @@ msgid "Clipboard &History Paste"
 msgstr ""
 
 #: view/kateview.cpp:459
-#, fuzzy, kde-format
-#| msgid "Automatic Spell Checking"
+#, kde-format
 msgid "Paste Selection"
-msgstr "Seiceáil Litrithe Uathoibríoch"
+msgstr ""
 
 #: view/kateview.cpp:461
-#, fuzzy, kde-format
-#| msgid "Paste previously copied or cut clipboard contents"
+#, kde-format
 msgid "Paste previously mouse selection contents"
-msgstr "Greamaigh ábhar na gearrthaisce a cóipeáladh nó a gearradh roimhe seo"
+msgstr ""
 
 #: view/kateview.cpp:465
 #, kde-format
@@ -6507,22 +6209,19 @@ msgid "Copy the current file name and line number"
 msgstr ""
 
 #: view/kateview.cpp:473
-#, fuzzy, kde-format
-#| msgid "Paste previously copied or cut clipboard contents"
+#, kde-format
 msgid "Swap with Clipboard Contents"
-msgstr "Greamaigh ábhar na gearrthaisce a cóipeáladh nó a gearradh roimhe seo"
+msgstr ""
 
 #: view/kateview.cpp:474
-#, fuzzy, kde-format
-#| msgid "Cut the selected text and move it to the clipboard"
+#, kde-format
 msgid "Swap the selected text with the clipboard contents"
-msgstr "Gearr an téacs roghnaithe agus bog é go dtí an ghearrthaisce"
+msgstr ""
 
 #: view/kateview.cpp:477
-#, fuzzy, kde-format
-#| msgid "Automatic Spell Checking"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Seiceáil Litrithe Uathoibríoch"
+msgstr ""
 
 #: view/kateview.cpp:481
 #, kde-format
@@ -6571,22 +6270,19 @@ msgid ""
 msgstr ""
 
 #: view/kateview.cpp:510
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "Airíonna an Eangaithe"
+msgstr ""
 
 #: view/kateview.cpp:517
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "&Eangú"
+msgstr ""
 
 #: view/kateview.cpp:532
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "&Eangú"
+msgstr ""
 
 #: view/kateview.cpp:533
 #, kde-format
@@ -6596,11 +6292,10 @@ msgid ""
 msgstr ""
 
 #: view/kateview.cpp:537
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "&Ailínigh"
+msgstr ""
 
 #: view/kateview.cpp:539
 #, kde-format
@@ -6630,16 +6325,14 @@ msgid ""
 msgstr ""
 
 #: view/kateview.cpp:558
-#, fuzzy, kde-format
-#| msgid "Move to Previous Line"
+#, kde-format
 msgid "Go to Previous Editing Location"
-msgstr "Téigh go dtí an líne roimhe seo"
+msgstr ""
 
 #: view/kateview.cpp:564
-#, fuzzy, kde-format
-#| msgid "Move to Next Line"
+#, kde-format
 msgid "Go to Next Editing Location"
-msgstr "Téigh go dtí an chéad líne eile"
+msgstr ""
 
 #: view/kateview.cpp:570
 #, kde-format
@@ -6675,10 +6368,9 @@ msgid "&Force RTL Direction"
 msgstr ""
 
 #: view/kateview.cpp:589
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "Maisiúcháin Téacs"
+msgstr ""
 
 #: view/kateview.cpp:599
 #, kde-format
@@ -6734,10 +6426,9 @@ msgid ""
 msgstr ""
 
 #: view/kateview.cpp:636
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgid "Remove Trailing Spaces"
-msgstr "&Bain spásanna breise:"
+msgstr ""
 
 #: view/kateview.cpp:654
 #, kde-format
@@ -6745,10 +6436,9 @@ msgid "Print the current document."
 msgstr "Priontáil an cháipéis reatha"
 
 #: view/kateview.cpp:657
-#, fuzzy, kde-format
-#| msgid "Print the current document."
+#, kde-format
 msgid "Show print preview of current document"
-msgstr "Priontáil an cháipéis reatha"
+msgstr ""
 
 #: view/kateview.cpp:661
 #, kde-format
@@ -6772,17 +6462,15 @@ msgid "Save As with Encodin&g…"
 msgstr ""
 
 #: view/kateview.cpp:675
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "&Sábháil an Comhad Mar..."
+msgstr ""
 
 #: view/kateview.cpp:676
-#, fuzzy, kde-format
-#| msgid "Reload the current document from disk."
+#, kde-format
 msgid "Save a copy of the current document to disk."
-msgstr "Athluchtaigh an cháipéis reatha ón diosca."
+msgstr ""
 
 #: view/kateview.cpp:680
 #, kde-format
@@ -6792,22 +6480,19 @@ msgid ""
 msgstr ""
 
 #: view/kateview.cpp:684
-#, fuzzy, kde-format
-#| msgid "Move to Previous Line"
+#, kde-format
 msgid "Go to Previous Modified Line"
-msgstr "Téigh go dtí an líne roimhe seo"
+msgstr ""
 
 #: view/kateview.cpp:685
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgid "Move upwards to the previous modified line."
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: view/kateview.cpp:690
-#, fuzzy, kde-format
-#| msgid "Move to Next Line"
+#, kde-format
 msgid "Go to Next Modified Line"
-msgstr "Téigh go dtí an chéad líne eile"
+msgstr ""
 
 #: view/kateview.cpp:691
 #, kde-format
@@ -6815,11 +6500,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:695
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "&Cumraigh Eagarthóir..."
+msgstr ""
 
 #: view/kateview.cpp:697
 #, kde-format
@@ -6842,10 +6526,9 @@ msgid "Here you can choose how the current document should be highlighted."
 msgstr "Leis seo, is féidir aibhsiú na cáipéise reatha a chumrú."
 
 #: view/kateview.cpp:711
-#, fuzzy, kde-format
-#| msgid "Font & Color Schemas"
+#, kde-format
 msgid "&Editor Color Theme"
-msgstr "Scéimrí Cló agus Datha"
+msgstr ""
 
 #: view/kateview.cpp:717
 #, kde-format
@@ -6907,10 +6590,9 @@ msgid ""
 msgstr ""
 
 #: view/kateview.cpp:763
-#, fuzzy, kde-format
-#| msgid "Vi Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
-msgstr "Mód Ionchurtha Vi"
+msgstr ""
 
 #: view/kateview.cpp:765
 #, kde-format
@@ -6930,10 +6612,9 @@ msgid ""
 msgstr ""
 
 #: view/kateview.cpp:775
-#, fuzzy, kde-format
-#| msgid "&Spaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "&Spásanna"
+msgstr ""
 
 #: view/kateview.cpp:778
 #, kde-format
@@ -7088,10 +6769,9 @@ msgid "Show/hide the command line on the bottom of the view."
 msgstr "Taispeáin/folaigh líne na n-orduithe ag bun an amhairc."
 
 #: view/kateview.cpp:859
-#, fuzzy, kde-format
-#| msgid "Vi Input Mode"
+#, kde-format
 msgid "Input Modes"
-msgstr "Mód Ionchurtha Vi"
+msgstr ""
 
 #: view/kateview.cpp:868
 #, kde-format
@@ -7109,25 +6789,22 @@ msgid "Choose which line endings should be used, when you save the document"
 msgstr ""
 
 #: view/kateview.cpp:881
-#, fuzzy, kde-format
-#| msgid "UNIX"
+#, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
-msgstr "UNIX"
+msgstr ""
 
 #: view/kateview.cpp:882
-#, fuzzy, kde-format
-#| msgid "DOS/Windows"
+#, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
-msgstr "DOS/Windows"
+msgstr ""
 
 #: view/kateview.cpp:883
-#, fuzzy, kde-format
-#| msgid "Macintosh"
+#, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
-msgstr "Macintosh"
+msgstr ""
 
 #: view/kateview.cpp:888
 #, kde-format
@@ -7234,10 +6911,9 @@ msgid "Add Caret below Cursor"
 msgstr ""
 
 #: view/kateview.cpp:952
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr "Roghnaigh téacs iomlán na cáipéise reatha."
+msgstr ""
 
 #: view/kateview.cpp:956
 #, kde-format
@@ -7250,10 +6926,9 @@ msgid "Adds a caret in the line above the current caret."
 msgstr ""
 
 #: view/kateview.cpp:962
-#, fuzzy, kde-format
-#| msgid "Text Cursor Movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
-msgstr "Gluaiseacht an Chúrsóra Téacs"
+msgstr ""
 
 #: view/kateview.cpp:963
 #, kde-format
@@ -7261,16 +6936,14 @@ msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 
 #: view/kateview.cpp:967
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: view/kateview.cpp:968
-#, fuzzy, kde-format
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgid "Remove cursors from empty lines"
-msgstr "Bog an cúrsóir go dtí an chlib chomhoiriúnach"
+msgstr ""
 
 #: view/kateview.cpp:972
 #, kde-format
@@ -7283,11 +6956,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr ""
 
 #: view/kateview.cpp:979
-#, fuzzy, kde-format
-#| msgid "Change Dictionary..."
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Athraigh an Foclóir..."
+msgstr ""
 
 #: view/kateview.cpp:980
 #, kde-format
@@ -7318,11 +6990,10 @@ msgid ""
 msgstr ""
 
 #: view/kateview.cpp:997
-#, fuzzy, kde-format
-#| msgid "Export File as HTML"
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "Easpórtáil Comhad mar HTML"
+msgstr ""
 
 #: view/kateview.cpp:999
 #, kde-format
@@ -7364,10 +7035,9 @@ msgid "Select Word Right"
 msgstr "Roghnaigh Focal ar Dheis"
 
 #: view/kateview.cpp:1082
-#, fuzzy, kde-format
-#| msgid "Automatic Spell Checking"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "Seiceáil Litrithe Uathoibríoch"
+msgstr ""
 
 #: view/kateview.cpp:1083
 #, kde-format
@@ -7497,10 +7167,9 @@ msgid "Select to Bottom of View"
 msgstr "Roghnaigh go Bun an Amhairc"
 
 #: view/kateview.cpp:1254
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Go to Matching Bracket"
-msgstr "Téigh go dtí an Lúibín Comhoiriúnach"
+msgstr ""
 
 #: view/kateview.cpp:1260
 #, kde-format
@@ -7508,28 +7177,24 @@ msgid "Select to Matching Bracket"
 msgstr "Roghnaigh téacs go dtí an Lúibín Comhoiriúnach"
 
 #: view/kateview.cpp:1267
-#, fuzzy, kde-format
-#| msgid "Move Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Bog Faoi Dheis"
+msgstr ""
 
 #: view/kateview.cpp:1274
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Roghnaigh Focal ar Dheis"
+msgstr ""
 
 #: view/kateview.cpp:1281
-#, fuzzy, kde-format
-#| msgid "Move Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Bog Faoi Chlé"
+msgstr ""
 
 #: view/kateview.cpp:1288
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Roghnaigh Focal ar Clé"
+msgstr ""
 
 #: view/kateview.cpp:1298
 #, kde-format
@@ -7537,10 +7202,9 @@ msgid "Transpose Characters"
 msgstr "Malartaigh Carachtair"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Transpose Characters"
+#, kde-format
 msgid "Transpose Words"
-msgstr "Malartaigh Carachtair"
+msgstr ""
 
 #: view/kateview.cpp:1308
 #, kde-format
@@ -7568,10 +7232,9 @@ msgid "Backspace"
 msgstr "Cúlspás"
 
 #: view/kateview.cpp:1340
-#, fuzzy, kde-format
-#| msgid "I&nsert tab character"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "Io&nsáigh táb"
+msgstr ""
 
 #: view/kateview.cpp:1345
 #, kde-format
@@ -7586,10 +7249,9 @@ msgid ""
 msgstr ""
 
 #: view/kateview.cpp:1354
-#, fuzzy, kde-format
-#| msgid "Insert Smart Newline"
+#, kde-format
 msgid "Insert a Non-Indented Newline"
-msgstr "Ionsáigh Líne Nua Chliste"
+msgstr ""
 
 #: view/kateview.cpp:1355
 #, kde-format
@@ -7643,16 +7305,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Úsáid é seo chun bloc roghnaithe a dhí-eangú."
 
 #: view/kateview.cpp:1398
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Roghnaigh Focal ar Clé"
+msgstr ""
 
 #: view/kateview.cpp:1405
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Roghnaigh Focal ar Dheis"
+msgstr ""
 
 #: view/kateview.cpp:1426
 #, kde-format
@@ -7665,40 +7325,34 @@ msgid "Unfold Toplevel Nodes"
 msgstr ""
 
 #: view/kateview.cpp:1434
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgid "Toggle Current Node"
-msgstr "Scoránaigh Nóta"
+msgstr ""
 
 #: view/kateview.cpp:1438
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgid "Toggle Contained Nodes"
-msgstr "Scoránaigh Nóta"
+msgstr ""
 
 #: view/kateview.cpp:1447
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Roghnaigh téacs iomlán na cáipéise reatha."
+msgstr ""
 
 #: view/kateview.cpp:1457
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "Sábháil an cháipéis reatha"
+msgstr ""
 
 #: view/kateview.cpp:1463
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "Sábháil an cháipéis reatha"
+msgstr ""
 
 #: view/kateview.cpp:1469
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "Sábháil an cháipéis reatha"
+msgstr ""
 
 #: view/kateview.cpp:1640
 #, kde-format
@@ -7716,10 +7370,9 @@ msgid "Camel case movement enabled"
 msgstr ""
 
 #: view/kateview.cpp:2349
-#, fuzzy, kde-format
-#| msgid "Search mode"
+#, kde-format
 msgid "Search wrapped"
-msgstr "Mód cuardaigh"
+msgstr ""
 
 #: view/kateview.cpp:3043
 #, kde-format
@@ -7727,10 +7380,9 @@ msgid "Open File"
 msgstr "Oscail Comhad"
 
 #: view/kateview.cpp:3954
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "&Ailínigh"
+msgstr ""
 
 #: view/kateview.cpp:3954
 #, kde-format
@@ -7818,60 +7470,51 @@ msgid "Disable Annotation Bar"
 msgstr ""
 
 #: view/screenshotdialog.cpp:175
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Oscail/Sábháil"
+msgstr ""
 
 #: view/screenshotdialog.cpp:176
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
+#, kde-format
 msgid "Copy"
-msgstr "&Sábháil an Comhad Mar..."
+msgstr ""
 
 #: view/screenshotdialog.cpp:177
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Dath an &Chúlra..."
+msgstr ""
 
 #: view/screenshotdialog.cpp:179
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Maisiúcháin Téacs"
+msgstr ""
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Taispeáin lí&nte eangaithe"
+msgstr ""
 
 #: view/screenshotdialog.cpp:185
-#, fuzzy, kde-format
-#| msgid "Automatic Spell Checking"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
-msgstr "Seiceáil Litrithe Uathoibríoch"
+msgstr ""
 
 #: view/screenshotdialog.cpp:257
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "Taispeáin Uimhreacha na &Línte"
+msgstr ""
 
 #: view/screenshotdialog.cpp:258
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "Taispeáin Uimhreacha na &Línte"
+msgstr ""
 
 #: view/screenshotdialog.cpp:259
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "Taispeáin Uimhreacha na &Línte"
+msgstr ""
 
 #: view/screenshotdialog.cpp:422
 #, kde-format
@@ -7885,10 +7528,9 @@ msgid "Screenshot saving failed: %1"
 msgstr ""
 
 #: vimode/appcommands.cpp:67
-#, fuzzy, kde-format
-#| msgid "Document written to disk"
+#, kde-format
 msgid "All documents written to disk"
-msgstr "Scríobhadh an cháipéis ar an diosca"
+msgstr ""
 
 #: vimode/appcommands.cpp:70
 #, kde-format
@@ -8022,10 +7664,9 @@ msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr ""
 
 #: vimode/cmds.cpp:52
-#, fuzzy, kde-format
-#| msgid "Missing argument(s). Usage: %1 <from> [<to>]"
+#, kde-format
 msgid "Missing argument. Usage: %1 <from>"
-msgstr "Argóint(í) ar iarraidh. Úsáid: %1 <ó> [<go>]"
+msgstr ""
 
 #: vimode/cmds.cpp:68
 #, kde-format
@@ -8085,10 +7726,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkViRelLineNumbers)
 #: vimode/config/configwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Print line &numbers"
+#, kde-format
 msgid "Display relative line numbers"
-msgstr "Priontáil uimhreacha na &línte"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, groupBox)
 #: vimode/config/configwidget.ui:63
@@ -8145,17 +7785,15 @@ msgstr ""
 
 #. i18n: ectx: attribute (title), widget (QWidget, insertTab)
 #: vimode/config/configwidget.ui:114
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert mode"
-msgstr "Ionsáigh Táb"
+msgstr ""
 
 #. i18n: ectx: attribute (title), widget (QWidget, visualTab)
 #: vimode/config/configwidget.ui:152
-#, fuzzy, kde-format
-#| msgid "Normal mode"
+#, kde-format
 msgid "Visual mode"
-msgstr "Gnáthmhód"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, btnRemoveSelectedRows)
 #: vimode/config/configwidget.ui:195
@@ -8184,16 +7822,14 @@ msgid "Import from vimrc file"
 msgstr ""
 
 #: vimode/marks.cpp:117
-#, fuzzy, kde-format
-#| msgid "Mark not set: %1"
+#, kde-format
 msgid "Mark set: %1"
-msgstr "Marc gan socrú: %1"
+msgstr ""
 
 #: vimode/marks.cpp:163
-#, fuzzy, kde-format
-#| msgid "Go to the next bookmark."
+#, kde-format
 msgid "There are no more chars for the next bookmark."
-msgstr "Téigh go dtí an chéad leabharmharc eile."
+msgstr ""
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
 #: vimode/modes/normalvimode.cpp:3564
@@ -8210,2036 +7846,3 @@ msgstr "'%1' %2,  Heics %3,  Ocht %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marc gan socrú: %1"
-
-#~ msgid "Set &Bookmark"
-#~ msgstr "Socraigh Lea&bharmharc"
-
-#, fuzzy
-#~| msgid "The files are identical."
-#~ msgid "The file '%1' was created on disk."
-#~ msgstr "Is ionann iad na comhaid seo."
-
-#~ msgid ""
-#~ "Use this command to copy the currently selected text as HTML to the "
-#~ "system clipboard."
-#~ msgstr ""
-#~ "Leis an ordú seo, is féidir an téacs roghnaithe a chóipeáil go dtí "
-#~ "gearrthaisce an chórais mar HTML."
-
-#, fuzzy
-#~| msgctxt "Wrap words at"
-#~| msgid " character"
-#~| msgid_plural " characters"
-#~ msgctxt "Wrap words at (value is at 20 or larger)"
-#~ msgid " character"
-#~ msgid_plural " characters"
-#~ msgstr[0] " charachtar"
-#~ msgstr[1] " charachtar"
-#~ msgstr[2] " charachtar"
-#~ msgstr[3] " gcarachtar"
-#~ msgstr[4] " carachtar"
-
-#, fuzzy
-#~| msgid "&Save File As..."
-#~ msgid "Save..."
-#~ msgstr "&Sábháil an Comhad Mar..."
-
-#, fuzzy
-#~| msgid "&Save File As..."
-#~ msgid "&Copy..."
-#~ msgstr "&Sábháil an Comhad Mar..."
-
-#, fuzzy
-#~| msgid "Other"
-#~ msgid "Other..."
-#~ msgstr "Eile"
-
-#, fuzzy
-#~| msgid "&Align"
-#~ msgid "&Align On..."
-#~ msgstr "&Ailínigh"
-
-#~ msgid "Change Dictionary..."
-#~ msgstr "Athraigh an Foclóir..."
-
-#, fuzzy
-#~| msgid "The files are identical."
-#~ msgid "The file %1 does not exist."
-#~ msgstr "Is ionann iad na comhaid seo."
-
-#~ msgid "Error loading script %1\n"
-#~ msgstr "Earráid agus script %1 á luchtú\n"
-
-#~ msgid "Insert Tab"
-#~ msgstr "Ionsáigh Táb"
-
-#~ msgid "Namespaces"
-#~ msgstr "Ainmspásanna"
-
-#~ msgid "Classes"
-#~ msgstr "Aicmí"
-
-#~ msgid "Structs"
-#~ msgstr "Struchtúir"
-
-#~ msgid "Unions"
-#~ msgstr "Aontas"
-
-#~ msgid "Functions"
-#~ msgstr "Feidhmeanna"
-
-#~ msgid "Enumerations"
-#~ msgstr "Cineál Ináirithe"
-
-#, fuzzy
-#~| msgid "Toggle comment"
-#~ msgctxt "Script command name"
-#~ msgid "Toggle comment"
-#~ msgstr "Scoránaigh nóta"
-
-#~ msgid "Choo&se Font..."
-#~ msgstr "&Roghnaigh Cló..."
-
-#, fuzzy
-#~| msgid "E&ncoding"
-#~ msgctxt "Script command category"
-#~ msgid "Quick Coding"
-#~ msgstr "Io&nchódú"
-
-#, fuzzy
-#~| msgid "&Default schema for %1:"
-#~ msgid "&Default theme for %1:"
-#~ msgstr "&Scéimre réamhshocraithe do %1:"
-
-#, fuzzy
-#~| msgid "Automatic Spell Checking"
-#~ msgid "Automatic Selection"
-#~ msgstr "Seiceáil Litrithe Uathoibríoch"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Lua"
-#~ msgctxt "Autoindent mode"
-#~ msgid "Lua"
-#~ msgstr "Lua"
-
-#~ msgid "Show &icon border"
-#~ msgstr "Taispeáin teora&inn an deilbhín"
-
-#~ msgid "&Prefix:"
-#~ msgstr "&Réimír:"
-
-#~ msgid "&Suffix:"
-#~ msgstr "&Iarmhír:"
-
-#, fuzzy
-#~| msgid "Disabled"
-#~ msgid "Disable"
-#~ msgstr "Díchumasaithe"
-
-#~ msgid "Enable static &word wrap"
-#~ msgstr "Cumasaigh &timfhilleadh focal statach"
-
-#, fuzzy
-#~| msgid "Show Static &Word Wrap Marker"
-#~ msgid "Show static word wra&p marker"
-#~ msgstr "Taispeáin Marcóir Thimfhilleadh &Focal Statach"
-
-#, fuzzy
-#~| msgid "Vi Input Mode"
-#~ msgid "Input Mode"
-#~ msgstr "Mód Ionchurtha Vi"
-
-#, fuzzy
-#~| msgid "Select to Matching Bracket"
-#~ msgid "Enable automatic brackets"
-#~ msgstr "Roghnaigh téacs go dtí an Lúibín Comhoiriúnach"
-
-#, fuzzy
-#~| msgid "Cursor && Selection"
-#~ msgid "Chars to enclose selection:"
-#~ msgstr "Cúrsóir agus Roghnú"
-
-#, fuzzy
-#~| msgid "Show static word wra&p marker (if applicable)"
-#~ msgid "D&ynamic word wrap indicators (if applicable):"
-#~ msgstr ""
-#~ "Taispeáin marcóir thimfhilleadh &focal statach (má bhaineann sé leis an "
-#~ "gcás)"
-
-#, fuzzy
-#~| msgid "all"
-#~ msgid "All"
-#~ msgstr "uile"
-
-#, fuzzy
-#~| msgid "Highlighting for Ferite"
-#~ msgid "Highlight marker size:"
-#~ msgstr "Aibhsiú Ferite"
-
-#, fuzzy
-#~| msgid "Highlight all matches"
-#~ msgid "Highlight tabulators"
-#~ msgstr "Aibhsigh gach rud comhoiriúnach"
-
-#~ msgid "Prefix"
-#~ msgstr "Réimír"
-
-#~ msgid "Icon"
-#~ msgstr "Deilbhín"
-
-#~ msgid "Scope"
-#~ msgstr "Scóip"
-
-#~ msgid "Name"
-#~ msgstr "Ainm"
-
-#~ msgid "Arguments"
-#~ msgstr "Argóintí"
-
-#~ msgid "Postfix"
-#~ msgstr "Iarshuite"
-
-#~ msgid "Public"
-#~ msgstr "Poiblí"
-
-#~ msgid "Protected"
-#~ msgstr "Cosanta"
-
-#~ msgid "Private"
-#~ msgstr "Príobháideach"
-
-#~ msgid "Static"
-#~ msgstr "Statach"
-
-#~ msgid "Constant"
-#~ msgstr "Tairiseach"
-
-#~ msgid "Namespace"
-#~ msgstr "Ainmspás"
-
-#~ msgid "Class"
-#~ msgstr "Aicme"
-
-#~ msgid "Struct"
-#~ msgstr "Struchtúr"
-
-# OK --KPS
-#~ msgid "Union"
-#~ msgstr "Aontas"
-
-#~ msgid "Function"
-#~ msgstr "Feidhm"
-
-#~ msgid "Variable"
-#~ msgstr "Athróg"
-
-#~ msgid "Enumeration"
-#~ msgstr "Liosta Áirithe"
-
-#~ msgid "Template"
-#~ msgstr "Teimpléad"
-
-#~ msgid "Virtual"
-#~ msgstr "Fíorúil"
-
-#~ msgid "Override"
-#~ msgstr "Sáraigh"
-
-#~ msgid "Inline"
-#~ msgstr "Inlíne"
-
-#~ msgid "Friend"
-#~ msgstr "Cara"
-
-#~ msgid "Signal"
-#~ msgstr "Comhartha"
-
-#~ msgid "Slot"
-#~ msgstr "Sliotán"
-
-#~ msgid "Local Scope"
-#~ msgstr "Scóip Logánta"
-
-#~ msgid "Namespace Scope"
-#~ msgstr "Scóip an Ainmspáis"
-
-#~ msgid "Global Scope"
-#~ msgstr "Scóip Chomhchoiteann"
-
-#~ msgid "Unknown Property"
-#~ msgstr "Airí Anaithnid"
-
-#~ msgid "Code Completion Configuration"
-#~ msgstr "Cumraíocht Comhlánaithe Cóid"
-
-#~ msgid "Description"
-#~ msgstr "Cur Síos"
-
-#~ msgid "Edit Entry..."
-#~ msgstr "Cuir Iontráil in Eagar..."
-
-#~ msgid "Remove Entry"
-#~ msgstr "Bain Iontráil"
-
-#~ msgid "Add Entry..."
-#~ msgstr "Cuir Iontráil Leis..."
-
-#~ msgid "Further Notes"
-#~ msgstr "Tuilleadh Nótaí"
-
-#~ msgid ""
-#~ "<p>The entries are accessible through the submenu <b>Commands</b> in the "
-#~ "<b>Tools</b> menu. For faster access it is possible to assign "
-#~ "<b>shortcuts</b> in the shortcut configuration page after applying the "
-#~ "changes.</p>"
-#~ msgstr ""
-#~ "<p>Tá na hiontrálacha ar fáil tríd an bhfo-roghchlár <b>Orduithe</b> sa "
-#~ "roghchlár <b>Uirlisí</b>. Chun iad a rochtain níos tapúla, is féidir "
-#~ "<b>aicearraí</b> a shannadh ar leathanach cumraíochta na n-aicearraí tar "
-#~ "éis duit na hathruithe a chur i bhfeidhm.</p>"
-
-#~ msgid "Edit Command"
-#~ msgstr "Cuir Ordú in Eagar"
-
-#~ msgid "&Associated command:"
-#~ msgstr "Ordú a &bhaineann leis:"
-
-#~ msgid "Choose an icon."
-#~ msgstr "Roghnaigh deilbhín."
-
-#~ msgid "<p>This icon will be displayed in the menu and toolbar.</p>"
-#~ msgstr ""
-#~ "<p>Taispeánfar an deilbhín seo sa roghchlár agus sa bharra uirlisí.</p>"
-
-#~ msgid "&Description:"
-#~ msgstr "&Cur Síos:"
-
-#~ msgid "&Category:"
-#~ msgstr "&Catagóir:"
-
-#~ msgid "Sorting"
-#~ msgstr "Sórtáil"
-
-#~ msgid "Alphabetical"
-#~ msgstr "Aibítreach"
-
-#~ msgid "Reverse"
-#~ msgstr "Aisiompaithe"
-
-#~ msgid "Case sensitive"
-#~ msgstr "Cásíogair"
-
-#~ msgid "^"
-#~ msgstr "^"
-
-#~ msgid "\\/"
-#~ msgstr "\\/"
-
-#~ msgid "Filtering"
-#~ msgstr "Scagadh"
-
-#~ msgid "Grouping"
-#~ msgstr "Grúpáil"
-
-#~ msgid "Grouping Method"
-#~ msgstr "Modh Grúpála"
-
-#~ msgid "Columns"
-#~ msgstr "Colúin"
-
-#~ msgid "Merged"
-#~ msgstr "Cumaiscthe"
-
-#, fuzzy
-#~| msgid "(c) 2000-2009 The Kate Authors"
-#~ msgid "(c) 2000-2019 The Kate Authors"
-#~ msgstr "© 2000-2009 Údair Kate"
-
-#~ msgid "Import as new schema:"
-#~ msgstr "Iompórtáil mar scéimre nua:"
-
-#~ msgid "&New..."
-#~ msgstr "&Nua..."
-
-#, fuzzy
-#~| msgid "Replace next match"
-#~ msgid "Replace existing theme %1"
-#~ msgstr "Ionadaigh an chéad rud eile"
-
-#~ msgid "Name for New Schema"
-#~ msgstr "Ainm don Scéimre Nua"
-
-#~ msgid "Name:"
-#~ msgstr "Ainm:"
-
-#~ msgid "New Schema"
-#~ msgstr "Scéimre Nua"
-
-#~ msgid "&Schema:"
-#~ msgstr "&Scéimre:"
-
-#~ msgid "Fonts & Colors"
-#~ msgstr "Clónna agus Dathanna"
-
-#~ msgid "&Schema"
-#~ msgstr "&Scéimre"
-
-#~ msgid "Lookahead"
-#~ msgstr "Réamhfheiceáil"
-
-#~ msgid ""
-#~ "A file named \"%1\" already exists. Are you sure you want to overwrite it?"
-#~ msgstr ""
-#~ "Tá comhad darb ainm \"%1\" ann cheana. An bhfuil tú cinnte gur mian leat "
-#~ "scríobh air?"
-
-#~ msgid "Overwrite File?"
-#~ msgstr "Forscríobh an Comhad?"
-
-#~ msgid "Show static word wra&p marker (if applicable)"
-#~ msgstr ""
-#~ "Taispeáin marcóir thimfhilleadh &focal statach (má bhaineann sé leis an "
-#~ "gcás)"
-
-#~ msgid "Spellcheck Selection..."
-#~ msgstr "Seiceáil Litriú an Roghnúcháin..."
-
-#~ msgid "Check spelling of the selected text"
-#~ msgstr "Seiceáil litriú an téacs roghnaithe"
-
-#~ msgid "&Go to line:"
-#~ msgstr "&Téigh go Líne:"
-
-#~ msgid "What do you want to do?"
-#~ msgstr "Cad ba mhaith leat a dhéanamh?"
-
-#~ msgid "File Was Changed on Disk"
-#~ msgstr "Athraíodh an Comhad ar an Diosca"
-
-#~ msgid "&Reload File"
-#~ msgstr "&Athluchtaigh an Comhad"
-
-#~ msgid "&Ignore Changes"
-#~ msgstr "&Déan Neamhshuim d'Athruithe"
-
-#~ msgid "Download Highlighting Files..."
-#~ msgstr "Íosluchtaigh Comhaid Aibhsithe..."
-
-#~ msgid "Highlight Download"
-#~ msgstr "Íosluchtú Córas Aibhsithe"
-
-#~ msgid "Select the syntax highlighting files you want to update:"
-#~ msgstr "Roghnaigh na comhaid aibhsithe is mian leat nuashonrú:"
-
-#~ msgid "Installed"
-#~ msgstr "Suiteáilte"
-
-#~ msgid "Latest"
-#~ msgstr "Is Déanaí"
-
-#~ msgid "<b>Note:</b> New versions are selected automatically."
-#~ msgstr "<b>Nóta:</b> Tá leaganacha nua roghnaithe go huathoibríoch."
-
-#~ msgid "&Install"
-#~ msgstr "&Suiteáil"
-
-#~ msgid ""
-#~ "The list of highlightings could not be found on / retrieved from the "
-#~ "server"
-#~ msgstr ""
-#~ "Níorbh fhéidir liosta na gcóras aibhsithe a aimsiú nó a fháil ón "
-#~ "bhfreastalaí"
-
-#~ msgctxt "Syntax highlighting"
-#~ msgid "None"
-#~ msgstr "Neamhní"
-
-#~ msgid "Normal Text"
-#~ msgstr "Gnáth-théacs"
-
-#~ msgid "<b>%1</b>: Deprecated syntax. Context %2 has no symbolic name<br />"
-#~ msgstr ""
-#~ "<b>%1</b>: Comhréir i léig. Níl ainm siombalach ag comhthéacs %2<br />"
-
-#~ msgid ""
-#~ "There were warning(s) and/or error(s) while parsing the syntax "
-#~ "highlighting configuration."
-#~ msgstr ""
-#~ "Bhí rabha(i)dh agus/nó earráid(í) ann le linn chumraíocht an aibhsithe "
-#~ "comhréire a pharsáil."
-
-#~ msgid "Kate Syntax Highlighting Parser"
-#~ msgstr "Parsálaí Aibhsithe Comhréire Kate"
-
-#~ msgid "Unable to open %1"
-#~ msgstr "Ní féidir %1 a oscailt"
-
-#~ msgid ""
-#~ "<qt>The error <b>%4</b><br /> has been detected in the file %1 at %2/%3</"
-#~ "qt>"
-#~ msgstr "<qt>Braitheadh earráid <b>%4</b><br /> i gcomhad %1 ag %2/%3</qt>"
-
-#, fuzzy
-#~| msgid "Continue from the end?"
-#~ msgid "Continuing search from top"
-#~ msgstr "Lean ar aghaidh ón deireadh?"
-
-#, fuzzy
-#~| msgid "Continue from the end?"
-#~ msgid "Continuing search from bottom"
-#~ msgstr "Lean ar aghaidh ón deireadh?"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "MS-DOS Batch"
-#~ msgctxt "Language"
-#~ msgid "4DOS BatchToMemory"
-#~ msgstr "Baisc MS-DOS"
-
-#~ msgctxt "Language Section"
-#~ msgid "Scripts"
-#~ msgstr "Scripteanna"
-
-#~ msgctxt "Language"
-#~ msgid "ABAP"
-#~ msgstr "ABAP"
-
-#~ msgctxt "Language Section"
-#~ msgid "Sources"
-#~ msgstr "Foinsí"
-
-#~ msgctxt "Language"
-#~ msgid "ABC"
-#~ msgstr "ABC"
-
-#~ msgctxt "Language Section"
-#~ msgid "Other"
-#~ msgstr "Eile"
-
-#~ msgctxt "Language"
-#~ msgid "ActionScript 2.0"
-#~ msgstr "ActionScript 2.0"
-
-#~ msgctxt "Language"
-#~ msgid "Ada"
-#~ msgstr "Ada"
-
-#~ msgctxt "Language"
-#~ msgid "AHDL"
-#~ msgstr "AHDL"
-
-#~ msgctxt "Language Section"
-#~ msgid "Hardware"
-#~ msgstr "Crua-Earraí"
-
-#~ msgctxt "Language"
-#~ msgid "Alerts"
-#~ msgstr "Alerts"
-
-#~ msgctxt "Language"
-#~ msgid "AMPLE"
-#~ msgstr "AMPLE"
-
-#~ msgctxt "Language"
-#~ msgid "ANS-Forth94"
-#~ msgstr "ANS-Forth94"
-
-#~ msgctxt "Language"
-#~ msgid "ANSI C89"
-#~ msgstr "ANSI C89"
-
-#~ msgctxt "Language"
-#~ msgid "Ansys"
-#~ msgstr "Ansys"
-
-#~ msgctxt "Language Section"
-#~ msgid "Scientific"
-#~ msgstr "Eolaíoch"
-
-#~ msgctxt "Language"
-#~ msgid "Apache Configuration"
-#~ msgstr "Cumraíocht Apache"
-
-#~ msgctxt "Language Section"
-#~ msgid "Configuration"
-#~ msgstr "Cumraíocht"
-
-#~ msgctxt "Language Section"
-#~ msgid "Assembler"
-#~ msgstr "Díolamóir"
-
-#~ msgctxt "Language"
-#~ msgid "AVR Assembler"
-#~ msgstr "Díolamóir AVR"
-
-#~ msgctxt "Language"
-#~ msgid "Motorola DSP56k"
-#~ msgstr "Motorola DSP56k"
-
-#~ msgctxt "Language"
-#~ msgid "Motorola 68k (VASM/Devpac)"
-#~ msgstr "Motorola 68k (VASM/Devpac)"
-
-#~ msgctxt "Language"
-#~ msgid "Asm6502"
-#~ msgstr "Asm6502"
-
-#~ msgctxt "Language"
-#~ msgid "ASN.1"
-#~ msgstr "ASN.1"
-
-#~ msgctxt "Language Section"
-#~ msgid "Markup"
-#~ msgstr "Marcáil"
-
-#~ msgctxt "Language"
-#~ msgid "ASP"
-#~ msgstr "ASP"
-
-#~ msgctxt "Language"
-#~ msgid "Asterisk"
-#~ msgstr "Asterisk"
-
-#~ msgctxt "Language"
-#~ msgid "AWK"
-#~ msgstr "AWK"
-
-#~ msgctxt "Language"
-#~ msgid "Bash"
-#~ msgstr "Bash"
-
-#~ msgctxt "Language"
-#~ msgid "BibTeX"
-#~ msgstr "BibTeX"
-
-#~ msgctxt "Language"
-#~ msgid "B-Method"
-#~ msgstr "B-Method"
-
-#~ msgctxt "Language"
-#~ msgid "Boo"
-#~ msgstr "Boo"
-
-#~ msgctxt "Language"
-#~ msgid "C"
-#~ msgstr "C"
-
-#~ msgctxt "Language"
-#~ msgid "Cg"
-#~ msgstr "Cg"
-
-#~ msgctxt "Language"
-#~ msgid "CGiS"
-#~ msgstr "CGiS"
-
-#~ msgctxt "Language"
-#~ msgid "ChangeLog"
-#~ msgstr "ChangeLog"
-
-#~ msgctxt "Language"
-#~ msgid "Cisco"
-#~ msgstr "Cisco"
-
-#~ msgctxt "Language"
-#~ msgid "Clipper"
-#~ msgstr "Clipper"
-
-#~ msgctxt "Language"
-#~ msgid "Clojure"
-#~ msgstr "Clojure"
-
-#~ msgctxt "Language"
-#~ msgid "CoffeeScript"
-#~ msgstr "CoffeeScript"
-
-#~ msgctxt "Language"
-#~ msgid "ColdFusion"
-#~ msgstr "ColdFusion"
-
-#~ msgctxt "Language"
-#~ msgid "Common Lisp"
-#~ msgstr "Common Lisp"
-
-#~ msgctxt "Language"
-#~ msgid "Component-Pascal"
-#~ msgstr "Component-Pascal"
-
-#~ msgctxt "Language"
-#~ msgid "Crack"
-#~ msgstr "Crack"
-
-#~ msgctxt "Language"
-#~ msgid "C#"
-#~ msgstr "C#"
-
-#~ msgctxt "Language"
-#~ msgid "CSS"
-#~ msgstr "CSS"
-
-#~ msgctxt "Language"
-#~ msgid "CubeScript"
-#~ msgstr "CubeScript"
-
-#~ msgctxt "Language"
-#~ msgid "CUE Sheet"
-#~ msgstr "CUE Sheet"
-
-#~ msgctxt "Language"
-#~ msgid "D"
-#~ msgstr "D"
-
-#~ msgctxt "Language"
-#~ msgid "Debian Changelog"
-#~ msgstr "Debian Changelog"
-
-#~ msgctxt "Language"
-#~ msgid "Debian Control"
-#~ msgstr "Debian Control"
-
-#~ msgctxt "Language"
-#~ msgid ".desktop"
-#~ msgstr ".desktop"
-
-#~ msgctxt "Language"
-#~ msgid "Diff"
-#~ msgstr "Diff"
-
-#~ msgctxt "Language"
-#~ msgid "Django HTML Template"
-#~ msgstr "Teimpléad HTML Django"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Makefile"
-#~ msgctxt "Language"
-#~ msgid "Dockerfile"
-#~ msgstr "Makefile"
-
-#~ msgctxt "Language"
-#~ msgid "MS-DOS Batch"
-#~ msgstr "Baisc MS-DOS"
-
-#~ msgctxt "Language"
-#~ msgid "Doxygen"
-#~ msgstr "Doxygen"
-
-#~ msgctxt "Language"
-#~ msgid "DoxygenLua"
-#~ msgstr "DoxygenLua"
-
-#~ msgctxt "Language"
-#~ msgid "DTD"
-#~ msgstr "DTD"
-
-#~ msgctxt "Language"
-#~ msgid "E Language"
-#~ msgstr "Teanga E"
-
-#~ msgctxt "Language"
-#~ msgid "Eiffel"
-#~ msgstr "Eiffel"
-
-#~ msgctxt "Language"
-#~ msgid "Email"
-#~ msgstr "R-Phost"
-
-#~ msgctxt "Language"
-#~ msgid "Erlang"
-#~ msgstr "Erlang"
-
-#~ msgctxt "Language"
-#~ msgid "Euphoria"
-#~ msgstr "Euphoria"
-
-#~ msgctxt "Language"
-#~ msgid "Intel x86 (FASM)"
-#~ msgstr "Intel x86 (FASM)"
-
-#~ msgctxt "Language"
-#~ msgid "ferite"
-#~ msgstr "ferite"
-
-#~ msgctxt "Language"
-#~ msgid "4GL"
-#~ msgstr "4GL"
-
-#~ msgctxt "Language Section"
-#~ msgid "Database"
-#~ msgstr "Bunachar Sonraí"
-
-#~ msgctxt "Language"
-#~ msgid "4GL-PER"
-#~ msgstr "4GL-PER"
-
-#~ msgctxt "Language"
-#~ msgid "Fortran"
-#~ msgstr "Fortran"
-
-#~ msgctxt "Language"
-#~ msgid "FreeBASIC"
-#~ msgstr "FreeBASIC"
-
-#~ msgctxt "Language"
-#~ msgid "FSharp"
-#~ msgstr "FSharp"
-
-#~ msgctxt "Language"
-#~ msgid "fstab"
-#~ msgstr "fstab"
-
-#~ msgctxt "Language"
-#~ msgid "GAP"
-#~ msgstr "GAP"
-
-#~ msgctxt "Language"
-#~ msgid "GDB Backtrace"
-#~ msgstr "Cúl-Lorg GDB"
-
-#~ msgctxt "Language"
-#~ msgid "GDL"
-#~ msgstr "GDL"
-
-#~ msgctxt "Language"
-#~ msgid "GNU Gettext"
-#~ msgstr "Gettext GNU"
-
-#, fuzzy
-#~| msgid "&Ignore"
-#~ msgctxt "Language"
-#~ msgid "Git Ignore"
-#~ msgstr "Déan neamha&ird de"
-
-#~ msgctxt "Language"
-#~ msgid "GlossTex"
-#~ msgstr "GlossTex"
-
-#~ msgctxt "Language"
-#~ msgid "GLSL"
-#~ msgstr "GLSL"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "D"
-#~ msgctxt "Language Section"
-#~ msgid "3D"
-#~ msgstr "D"
-
-#~ msgctxt "Language"
-#~ msgid "GNU Assembler"
-#~ msgstr "Díolamóir GNU"
-
-#~ msgctxt "Language"
-#~ msgid "Go"
-#~ msgstr "Go"
-
-#~ msgctxt "Language"
-#~ msgid "KDev-PG[-Qt] Grammar"
-#~ msgstr "Graiméar KDev-PG[-Qt]"
-
-#~ msgctxt "Language"
-#~ msgid "Haskell"
-#~ msgstr "Haskell"
-
-#~ msgctxt "Language"
-#~ msgid "Haxe"
-#~ msgstr "Haxe"
-
-#~ msgctxt "Language"
-#~ msgid "HTML"
-#~ msgstr "HTML"
-
-#~ msgctxt "Language"
-#~ msgid "Quake Script"
-#~ msgstr "Quake Script"
-
-#~ msgctxt "Language"
-#~ msgid "IDL"
-#~ msgstr "IDL"
-
-#~ msgctxt "Language"
-#~ msgid "ILERPG"
-#~ msgstr "ILERPG"
-
-#~ msgctxt "Language"
-#~ msgid "Inform"
-#~ msgstr "Inform"
-
-#~ msgctxt "Language"
-#~ msgid "INI Files"
-#~ msgstr "Comhaid INI"
-
-#~ msgctxt "Language"
-#~ msgid "Jam"
-#~ msgstr "Jam"
-
-#~ msgctxt "Language"
-#~ msgid "Java"
-#~ msgstr "Java"
-
-#~ msgctxt "Language"
-#~ msgid "Javadoc"
-#~ msgstr "Javadoc"
-
-#~ msgctxt "Language"
-#~ msgid "JavaScript"
-#~ msgstr "JavaScript"
-
-#~ msgctxt "Language"
-#~ msgid "JSON"
-#~ msgstr "JSON"
-
-#~ msgctxt "Language"
-#~ msgid "JSP"
-#~ msgstr "JSP"
-
-#~ msgctxt "Language"
-#~ msgid "KBasic"
-#~ msgstr "KBasic"
-
-#, fuzzy
-#~| msgid "Configure"
-#~ msgctxt "Language"
-#~ msgid "Kconfig"
-#~ msgstr "Cumraigh"
-
-#~ msgctxt "Language"
-#~ msgid "LaTeX"
-#~ msgstr "LaTeX"
-
-#~ msgctxt "Language"
-#~ msgid "GNU Linker Script"
-#~ msgstr "Script Nascóra GNU"
-
-#~ msgctxt "Language"
-#~ msgid "LDIF"
-#~ msgstr "LDIF"
-
-#~ msgctxt "Language"
-#~ msgid "Lex/Flex"
-#~ msgstr "Lex/Flex"
-
-#~ msgctxt "Language"
-#~ msgid "LilyPond"
-#~ msgstr "LilyPond"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Literate Haskell"
-#~ msgctxt "Language"
-#~ msgid "Literate Curry"
-#~ msgstr "Literate Haskell"
-
-#~ msgctxt "Language"
-#~ msgid "Literate Haskell"
-#~ msgstr "Literate Haskell"
-
-#~ msgctxt "Language"
-#~ msgid "Logtalk"
-#~ msgstr "Logtalk"
-
-#~ msgctxt "Language"
-#~ msgid "LPC"
-#~ msgstr "LPC"
-
-#~ msgctxt "Language"
-#~ msgid "LSL"
-#~ msgstr "LSL"
-
-#~ msgctxt "Language"
-#~ msgid "Lua"
-#~ msgstr "Lua"
-
-#~ msgctxt "Language"
-#~ msgid "M3U"
-#~ msgstr "M3U"
-
-#~ msgctxt "Language"
-#~ msgid "GNU M4"
-#~ msgstr "GNU M4"
-
-#~ msgctxt "Language"
-#~ msgid "MAB-DB"
-#~ msgstr "MAB-DB"
-
-#~ msgctxt "Language"
-#~ msgid "Makefile"
-#~ msgstr "Makefile"
-
-#~ msgctxt "Language"
-#~ msgid "Troff Mandoc"
-#~ msgstr "Troff Mandoc"
-
-#~ msgctxt "Language"
-#~ msgid "Mason"
-#~ msgstr "Mason"
-
-#~ msgctxt "Language"
-#~ msgid "Matlab"
-#~ msgstr "Matlab"
-
-#~ msgctxt "Language"
-#~ msgid "Maxima"
-#~ msgstr "Maxima"
-
-#~ msgctxt "Language"
-#~ msgid "MediaWiki"
-#~ msgstr "MediaWiki"
-
-#~ msgctxt "Language"
-#~ msgid "MEL"
-#~ msgstr "MEL"
-
-#~ msgctxt "Language"
-#~ msgid "mergetag text"
-#~ msgstr "téacs mergetag"
-
-#~ msgctxt "Language"
-#~ msgid "Metapost/Metafont"
-#~ msgstr "Metapost/Metafont"
-
-#~ msgctxt "Language"
-#~ msgid "MIPS Assembler"
-#~ msgstr "Díolamóir MIPS"
-
-#~ msgctxt "Language"
-#~ msgid "Modelica"
-#~ msgstr "Modelica"
-
-#~ msgctxt "Language"
-#~ msgid "Modelines"
-#~ msgstr "Modelines"
-
-#~ msgctxt "Language"
-#~ msgid "Modula-2"
-#~ msgstr "Modula-2"
-
-#~ msgctxt "Language"
-#~ msgid "MonoBasic"
-#~ msgstr "MonoBasic"
-
-#~ msgctxt "Language"
-#~ msgid "Music Publisher"
-#~ msgstr "Music Publisher"
-
-#~ msgctxt "Language"
-#~ msgid "Intel x86 (NASM)"
-#~ msgstr "Intel x86 (NASM)"
-
-#~ msgctxt "Language"
-#~ msgid "Nemerle"
-#~ msgstr "Nemerle"
-
-#~ msgctxt "Language"
-#~ msgid "noweb"
-#~ msgstr "noweb"
-
-#~ msgctxt "Language"
-#~ msgid "Objective-C"
-#~ msgstr "Objective-C"
-
-#~ msgctxt "Language"
-#~ msgid "Objective-C++"
-#~ msgstr "Objective-C++"
-
-#~ msgctxt "Language"
-#~ msgid "Objective Caml"
-#~ msgstr "Objective Caml"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Objective Caml"
-#~ msgctxt "Language"
-#~ msgid "Objective Caml Ocamllex"
-#~ msgstr "Objective Caml"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Objective Caml"
-#~ msgctxt "Language"
-#~ msgid "Objective Caml Ocamlyacc"
-#~ msgstr "Objective Caml"
-
-#~ msgctxt "Language"
-#~ msgid "Octave"
-#~ msgstr "Octave"
-
-#~ msgctxt "Language"
-#~ msgid "OORS"
-#~ msgstr "OORS"
-
-#~ msgctxt "Language"
-#~ msgid "OPAL"
-#~ msgstr "OPAL"
-
-#~ msgctxt "Language"
-#~ msgid "Pango"
-#~ msgstr "Pango"
-
-#~ msgctxt "Language"
-#~ msgid "Pascal"
-#~ msgstr "Pascal"
-
-#~ msgctxt "Language"
-#~ msgid "Perl"
-#~ msgstr "Perl"
-
-#~ msgctxt "Language"
-#~ msgid "PHP/PHP"
-#~ msgstr "PHP/PHP"
-
-#~ msgctxt "Language"
-#~ msgid "PicAsm"
-#~ msgstr "PicAsm"
-
-#~ msgctxt "Language"
-#~ msgid "Pike"
-#~ msgstr "Pike"
-
-#~ msgctxt "Language"
-#~ msgid "PostScript"
-#~ msgstr "PostScript"
-
-#~ msgctxt "Language"
-#~ msgid "POV-Ray"
-#~ msgstr "POV-Ray"
-
-#~ msgctxt "Language"
-#~ msgid "progress"
-#~ msgstr "progress"
-
-#~ msgctxt "Language"
-#~ msgid "PureBasic"
-#~ msgstr "PureBasic"
-
-#~ msgctxt "Language"
-#~ msgid "Python"
-#~ msgstr "Python"
-
-#~ msgctxt "Language"
-#~ msgid "QMake"
-#~ msgstr "QMake"
-
-#~ msgctxt "Language"
-#~ msgid "QML"
-#~ msgstr "QML"
-
-#~ msgctxt "Language"
-#~ msgid "R Script"
-#~ msgstr "R Script"
-
-#~ msgctxt "Language"
-#~ msgid "RapidQ"
-#~ msgstr "RapidQ"
-
-#~ msgctxt "Language"
-#~ msgid "RelaxNG-Compact"
-#~ msgstr "RelaxNG-Compact"
-
-#, fuzzy
-#~| msgid "&Replace"
-#~ msgctxt "Language"
-#~ msgid "Replicode"
-#~ msgstr "&Ionadaigh"
-
-#~ msgctxt "Language"
-#~ msgid "reStructuredText"
-#~ msgstr "reStructuredText"
-
-#~ msgctxt "Language"
-#~ msgid "REXX"
-#~ msgstr "REXX"
-
-#~ msgctxt "Language"
-#~ msgid "Ruby/Rails/RHTML"
-#~ msgstr "Ruby/Rails/RHTML"
-
-#~ msgctxt "Language"
-#~ msgid "RenderMan RIB"
-#~ msgstr "RenderMan RIB"
-
-#~ msgctxt "Language"
-#~ msgid "Roff"
-#~ msgstr "Roff"
-
-#~ msgctxt "Language"
-#~ msgid "RPM Spec"
-#~ msgstr "RPM Spec"
-
-#~ msgctxt "Language"
-#~ msgid "RSI IDL"
-#~ msgstr "RSI IDL"
-
-#, fuzzy
-#~| msgid "File Format"
-#~ msgctxt "Language"
-#~ msgid "Rich Text Format"
-#~ msgstr "Formáid Chomhaid"
-
-#~ msgctxt "Language"
-#~ msgid "Ruby"
-#~ msgstr "Ruby"
-
-#~ msgctxt "Language"
-#~ msgid "Sather"
-#~ msgstr "Sather"
-
-#~ msgctxt "Language"
-#~ msgid "Scala"
-#~ msgstr "Scala"
-
-#~ msgctxt "Language"
-#~ msgid "scilab"
-#~ msgstr "scilab"
-
-#~ msgctxt "Language"
-#~ msgid "sed"
-#~ msgstr "sed"
-
-#~ msgctxt "Language"
-#~ msgid "SGML"
-#~ msgstr "SGML"
-
-#~ msgctxt "Language"
-#~ msgid "Sieve"
-#~ msgstr "Sieve"
-
-#~ msgctxt "Language"
-#~ msgid "SiSU"
-#~ msgstr "SiSU"
-
-#~ msgctxt "Language"
-#~ msgid "SML"
-#~ msgstr "SML"
-
-#~ msgctxt "Language"
-#~ msgid "Spice"
-#~ msgstr "Spice"
-
-#~ msgctxt "Language"
-#~ msgid "SQL (MySQL)"
-#~ msgstr "SQL (MySQL)"
-
-#~ msgctxt "Language"
-#~ msgid "SQL (PostgreSQL)"
-#~ msgstr "SQL (PostgreSQL)"
-
-#~ msgctxt "Language"
-#~ msgid "SQL"
-#~ msgstr "SQL"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "LSL"
-#~ msgctxt "Language"
-#~ msgid "STL"
-#~ msgstr "LSL"
-
-#~ msgctxt "Language"
-#~ msgid "SystemC"
-#~ msgstr "SystemC"
-
-#~ msgctxt "Language"
-#~ msgid "SystemVerilog"
-#~ msgstr "SystemVerilog"
-
-#~ msgctxt "Language"
-#~ msgid "TADS 3"
-#~ msgstr "TADS 3"
-
-#~ msgctxt "Language"
-#~ msgid "Tcl/Tk"
-#~ msgstr "Tcl/Tk"
-
-#~ msgctxt "Language"
-#~ msgid "Tcsh"
-#~ msgstr "Tcsh"
-
-#~ msgctxt "Language"
-#~ msgid "Texinfo"
-#~ msgstr "Texinfo"
-
-#~ msgctxt "Language"
-#~ msgid "Textile"
-#~ msgstr "Textile"
-
-#~ msgctxt "Language"
-#~ msgid "TI Basic"
-#~ msgstr "TI Basic"
-
-#~ msgctxt "Language"
-#~ msgid "txt2tags"
-#~ msgstr "txt2tags"
-
-#~ msgctxt "Language"
-#~ msgid "UnrealScript"
-#~ msgstr "UnrealScript"
-
-#~ msgctxt "Language"
-#~ msgid "Vala"
-#~ msgstr "Vala"
-
-#~ msgctxt "Language"
-#~ msgid "Varnish Configuration Language"
-#~ msgstr "Teanga Chumraíochta Varnish"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Varnish Configuration Language"
-#~ msgctxt "Language"
-#~ msgid "Varnish 4 Configuration Language"
-#~ msgstr "Teanga Chumraíochta Varnish"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Varnish Configuration Language"
-#~ msgctxt "Language"
-#~ msgid "Varnish Test Case language"
-#~ msgstr "Teanga Chumraíochta Varnish"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Varnish Configuration Language"
-#~ msgctxt "Language"
-#~ msgid "Varnish 4 Test Case language"
-#~ msgstr "Teanga Chumraíochta Varnish"
-
-#~ msgctxt "Language"
-#~ msgid "vCard, vCalendar, iCalendar"
-#~ msgstr "vCard, vCalendar, iCalendar"
-
-#~ msgctxt "Language"
-#~ msgid "Velocity"
-#~ msgstr "Velocity"
-
-#~ msgctxt "Language"
-#~ msgid "Vera"
-#~ msgstr "Vera"
-
-#~ msgctxt "Language"
-#~ msgid "Verilog"
-#~ msgstr "Verilog"
-
-#~ msgctxt "Language"
-#~ msgid "VHDL"
-#~ msgstr "VHDL"
-
-#~ msgctxt "Language"
-#~ msgid "VRML"
-#~ msgstr "VRML"
-
-#~ msgctxt "Language"
-#~ msgid "WINE Config"
-#~ msgstr "Cumraíocht WINE"
-
-#~ msgctxt "Language"
-#~ msgid "Wesnoth Markup Language"
-#~ msgstr "Teanga Mharcála Wesnoth"
-
-#~ msgctxt "Language"
-#~ msgid "xHarbour"
-#~ msgstr "xHarbour"
-
-#~ msgctxt "Language"
-#~ msgid "XML"
-#~ msgstr "XML"
-
-#~ msgctxt "Language"
-#~ msgid "XML (Debug)"
-#~ msgstr "XML (Dífhabhtú)"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "PostScript"
-#~ msgctxt "Language"
-#~ msgid "Xonotic Script"
-#~ msgstr "PostScript"
-
-#~ msgctxt "Language"
-#~ msgid "x.org Configuration"
-#~ msgstr "Cumraíocht x.org"
-
-#~ msgctxt "Language"
-#~ msgid "xslt"
-#~ msgstr "xslt"
-
-#~ msgctxt "Language"
-#~ msgid "XUL"
-#~ msgstr "XUL"
-
-#~ msgctxt "Language"
-#~ msgid "yacas"
-#~ msgstr "yacas"
-
-#~ msgctxt "Language"
-#~ msgid "Yacc/Bison"
-#~ msgstr "Yacc/Bison"
-
-#~ msgctxt "Language"
-#~ msgid "YAML"
-#~ msgstr "YAML"
-
-#~ msgctxt "Language"
-#~ msgid "Zonnon"
-#~ msgstr "Zonnon"
-
-#~ msgctxt "Language"
-#~ msgid "Zsh"
-#~ msgstr "Zsh"
-
-#~ msgid "File Changed on Disk"
-#~ msgstr "Athraíodh an Comhad ar an Diosca"
-
-#~ msgid ""
-#~ "Do nothing. Next time you focus the file, or try to save it or close it, "
-#~ "you will be prompted again."
-#~ msgstr ""
-#~ "Ná déan faic. An chéad uair eile a chuirfidh tú fócas ar an gcomhad, nó a "
-#~ "dhéanfaidh tú iarracht é a shábháil nó a dhúnadh, tabharfar leid duit "
-#~ "arís."
-
-#~ msgid "Overwrite the disk file with the editor content."
-#~ msgstr "Forscríobh an comhad ar an diosca leis an ábhar san eagarthóir."
-
-#, fuzzy
-#~| msgid "Besides white space changes, the files are identical."
-#~ msgid "Ignoring amount of white space changed, the files are identical."
-#~ msgstr "Is ionann iad na comhaid, seachas athruithe i spás bán."
-
-#~ msgid "You Are on Your Own"
-#~ msgstr "Tá tú ar do chonlán féin"
-
-#~ msgid "KDE Default"
-#~ msgstr "Réamhshocrú KDE"
-
-#, fuzzy
-#~| msgid "Vi Input Mode"
-#~ msgid "InputMode"
-#~ msgstr "Mód Ionchurtha Vi"
-
-#~ msgid "&Next"
-#~ msgstr "&Ar Aghaidh"
-
-#~ msgid "&Previous"
-#~ msgstr "&Siar"
-
-#~ msgid "&Match case"
-#~ msgstr "&Comhoiriúnaigh an cás"
-
-#~ msgid "Case-sensitive searching"
-#~ msgstr "Cuardach cásíogair"
-
-#~ msgid "Selection &only"
-#~ msgstr "&Roghnú amháin"
-
-#~ msgid "Mo&de:"
-#~ msgstr "Mó&d:"
-
-#, fuzzy
-#~| msgid " character"
-#~| msgid_plural " characters"
-#~ msgctxt "spinbox special value for 1"
-#~ msgid "1 character"
-#~ msgstr " charachtar"
-
-#, fuzzy
-#~| msgid " character"
-#~| msgid_plural " characters"
-#~ msgctxt "suffix for spinbox >1 wrap words at (value is at 20 or larger)"
-#~ msgid " characters"
-#~ msgstr " charachtar"
-
-#, fuzzy
-#~| msgid "&Indentation width:"
-#~ msgid "Indentation width"
-#~ msgstr "Le&ithead eangaithe:"
-
-#~ msgid "Errors!"
-#~ msgstr "Earráidí!"
-
-#~ msgid "Error: %1"
-#~ msgstr "Earráid: %1"
-
-#~ msgid "Unable to find '%1'"
-#~ msgstr "Ní féidir '%1' a aimsiú"
-
-#, fuzzy
-#~| msgid "Auto Word Completion"
-#~ msgid "A&uto Word Completion HI"
-#~ msgstr "Comhlánú Uathoibríoch"
-
-#~ msgid ""
-#~ "When selected, the vi input mode will be enabled when opening a new view. "
-#~ "You can still toggle the vi input mode on/off for a particular view in "
-#~ "the Edit menu."
-#~ msgstr ""
-#~ "Leis an rogha seo, cumasaítear mód ionchurtha VI nuair a osclaítear "
-#~ "amharc nua. Is féidir an mód VI a scoránú d'amharc áirithe ón roghchláir "
-#~ "Eagar."
-
-#~ msgctxt "Language"
-#~ msgid "C++"
-#~ msgstr "C++"
-
-#~ msgid "Text Area Background"
-#~ msgstr "Cúlra an Limistéir Téacs"
-
-#~ msgid "Normal text:"
-#~ msgstr "Gnáth-théacs:"
-
-#~ msgid ""
-#~ "<p>Sets the background color of the selection.</p><p>To set the text "
-#~ "color for selected text, use the \"<b>Configure Highlighting</b>\" dialog."
-#~ "</p>"
-#~ msgstr ""
-#~ "<p>Socraigh dath chúlra an roghnúcháin.</p><p>Chun dath an téacs "
-#~ "roghnaithe a shocrú, úsáid an dialóg \"<b>Cumraigh Aibhsiú</b>\".</p>"
-
-#~ msgid "Additional Elements"
-#~ msgstr "Eilimintí Breise"
-
-#~ msgid "Line numbers:"
-#~ msgstr "Uimhreacha na línte:"
-
-#~ msgid ""
-#~ "<p>This color will be used to draw the line numbers (if enabled) and the "
-#~ "lines in the code-folding pane.</p>"
-#~ msgstr ""
-#~ "<p>Úsáidfear an dath seo chun na huimhreacha líne a dhearadh (má tá siad "
-#~ "cumasaithe) agus na línte sa phána fillte cóid.</p>"
-
-#~ msgid "Word wrap markers:"
-#~ msgstr "Marcóirí timfhillte focal:"
-
-#~ msgid "Tab and space markers:"
-#~ msgstr "Marcóirí táib agus spáis:"
-
-#~ msgid "Na&mespace:"
-#~ msgstr "Ain&mspás:"
-
-#~ msgid "&License:"
-#~ msgstr "&Ceadúnas:"
-
-#~ msgid "&Authors:"
-#~ msgstr "Úd&air:"
-
-#~ msgid "&File types:"
-#~ msgstr "C&aineál Comhaid:"
-
-#, fuzzy
-#~| msgid "&Help"
-#~ msgid "Help"
-#~ msgstr "Cab&hair"
-
-#~ msgid "Edit Snippet %1 in %2"
-#~ msgstr "Cuir Blúire %1 in Eagar i %2"
-
-#~ msgid "Display &Arguments:"
-#~ msgstr "Taispeáin &Argóintí:"
-
-#~ msgid "Display P&ostfix:"
-#~ msgstr "&Iarmhír Thaispeána:"
-
-#~ msgid "Shortcut:"
-#~ msgstr "Aicearra:"
-
-#~ msgid "&Snippet"
-#~ msgstr "&Blúire"
-
-#~ msgid "S&cripts"
-#~ msgstr "S&cripteanna"
-
-#~ msgctxt "Autogenerated repository name for a programming language"
-#~ msgid "%1 snippets"
-#~ msgstr "Blúirí %1"
-
-#~ msgid "<empty snippet>"
-#~ msgstr "<blúire folamh>"
-
-#~ msgid "insert snippet %1"
-#~ msgstr "ionsáigh blúire %1"
-
-#~ msgid "Snippets"
-#~ msgstr "Blúirí"
-
-#, fuzzy
-#~| msgid "<empty repository>"
-#~ msgid "<empty repository>"
-#~ msgstr "<stór folamh>"
-
-#~ msgid ""
-#~ "You have edited a data file not located in your personal data directory; "
-#~ "as such, a renamed clone of the original data file has been created "
-#~ "within your personal data directory."
-#~ msgstr ""
-#~ "Chuir tú comhad sonraí in eagar ach níl sé i do chomhadlann phearsanta; "
-#~ "mar sin, cruthaíodh cóip athainmnithe den bhunchomhad laistigh de do "
-#~ "chomhadlann phearsanta sonraí."
-
-#~ msgid "Output file '%1' could not be opened for writing"
-#~ msgstr "Níorbh fhéidir aschomhad '%1' a oscailt chun scríobh ann"
-
-#, fuzzy
-#~| msgid "<empty repository>"
-#~ msgid "Cannot open snippet repository %1."
-#~ msgstr "<stór folamh>"
-
-#, fuzzy
-#~| msgid "insert snippet %1"
-#~ msgid "Invalid XML snippet file: %1"
-#~ msgstr "ionsáigh blúire %1"
-
-#, fuzzy
-#~| msgid "Filetypes"
-#~ msgid "Applies to all filetypes"
-#~ msgstr "Cineálacha comhaid"
-
-#~ msgid "Publish Repository"
-#~ msgstr "Foilsigh an Stór"
-
-#~ msgid "Add Snippet"
-#~ msgstr "Cuir Blúire Leis"
-
-#~ msgid "Get New Snippets"
-#~ msgstr "Faigh Blúirí Nua"
-
-#~ msgid "Repository: %1"
-#~ msgstr "Stór: %1"
-
-#~ msgid "Extensions Manager"
-#~ msgstr "Bainisteoir Eisínteachtaí"
-
-#~ msgid "OVR"
-#~ msgstr "FOR"
-
-#~ msgid "INS"
-#~ msgstr "IONS"
-
-#~ msgid "Move To..."
-#~ msgstr "Bog Go..."
-
-#~ msgid "Move Up"
-#~ msgstr "Bog Suas"
-
-#~ msgid "Move Down"
-#~ msgstr "Bog Síos"
-
-#~ msgid "Execute"
-#~ msgstr "Rith"
-
-#~ msgid "Show/hide the JavaScript Console on the bottom of the view."
-#~ msgstr "Taispeáin/folaigh an consól JavaScript ag bun an amhairc."
-
-#, fuzzy
-#~| msgid "Always On"
-#~ msgid "Always on"
-#~ msgstr "Ann i gCónaí"
-
-#~ msgid "Sorry, but Kate is not able to replace newlines, yet"
-#~ msgstr "Tá brón orm ach ní féidir le Kate línte nua a ionadú, fós"
-
-#, fuzzy
-#~| msgid "Print the current document."
-#~ msgid "Modify the current snippet"
-#~ msgstr "Priontáil an cháipéis reatha"
-
-#, fuzzy
-#~| msgid "Create a new file type."
-#~ msgid "Create a new repository file"
-#~ msgstr "Cruthaigh cineál nua comhaid."
-
-#, fuzzy
-#~| msgid "Snippets"
-#~ msgid "Kate Snippets"
-#~ msgstr "Blúirí"
-
-#, fuzzy
-#~| msgid ""
-#~| "You have edited a data file not located in your personal data directory; "
-#~| "as such, a renamed clone of the original data file has been created "
-#~| "within your personal data directory."
-#~ msgid ""
-#~ "You have edited a data file not located in your personal data directory, "
-#~ "but a suitable filename could not be generated for storing a clone of the "
-#~ "file within your personal data directory."
-#~ msgstr ""
-#~ "Chuir tú comhad sonraí in eagar ach níl sé i do chomhadlann phearsanta; "
-#~ "mar sin, cruthaíodh cóip athainmnithe den bhunchomhad laistigh de do "
-#~ "chomhadlann phearsanta sonraí."
-
-#, fuzzy
-#~| msgid "Get New Snippets"
-#~ msgid "New Snippet"
-#~ msgstr "Faigh Blúirí Nua"
-
-#, fuzzy
-#~| msgid "Output file '%1' could not be opened for writing"
-#~ msgid "File could not be copied to repository"
-#~ msgstr "Níorbh fhéidir aschomhad '%1' a oscailt chun scríobh ann"
-
-#, fuzzy
-#~| msgid "Repository: %1"
-#~ msgid "Snippet Repository:"
-#~ msgstr "Stór: %1"
-
-#, fuzzy
-#~| msgid "Insert File..."
-#~ msgid "New Snippet File..."
-#~ msgstr "Ionsáigh Comhad..."
-
-#, fuzzy
-#~| msgid "Get New Snippets"
-#~ msgid "Get New Snippets..."
-#~ msgstr "Faigh Blúirí Nua"
-
-#, fuzzy
-#~| msgid "Kate Part"
-#~ msgid "Kate Part Snippets"
-#~ msgstr "Comhpháirt Kate"
-
-#~ msgid "Hide the Vi mode status bar"
-#~ msgstr "Folaigh barra stádais móid VI"
-
-#~ msgid "&Keep highlighting"
-#~ msgstr "&Coinnigh aibhsiú"
-
-#~ msgid "R/O"
-#~ msgstr "L/A"
-
-#~ msgid "Plugins"
-#~ msgstr "Breiseáin"
-
-#~ msgctxt "Language"
-#~ msgid "Prolog"
-#~ msgstr "Prolog"
-
-#~ msgid "&Normal"
-#~ msgstr "G&nách"
-
-#~ msgid "Wrap c&ursor"
-#~ msgstr "Timfhill an &cúrsóir"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Overwrite"
-#~ msgstr "Forscríobh"
-
-#~ msgid "Stop"
-#~ msgstr "Stad"
-
-#~ msgid "Export HlColors..."
-#~ msgstr "Easpórtáil HlColors..."
-
-#~ msgid "Import HlColors..."
-#~ msgstr "Iompórtáil HlColors..."
-
-#~ msgid "Form"
-#~ msgstr "Foirm"
-
-#~ msgid ""
-#~ "A KDE text-editor component could not be found;\n"
-#~ "please check your KDE installation."
-#~ msgstr ""
-#~ "Níor aimsíodh comhpháirt eagarthóra KDE;\n"
-#~ "seiceáil do shuiteáil KDE le do thoil."
-
-#~ msgid "Use this command to create a new document"
-#~ msgstr "Úsáid an t-ordú seo chun cáipéis nua a chruthú"
-
-#~ msgid "Use this command to open an existing document for editing"
-#~ msgstr ""
-#~ "Úsáid an t-ordú seo chun cáipéis atá ann a oscailt agus a chur in eagar"
-
-#~ msgid ""
-#~ "This lists files which you have opened recently, and allows you to easily "
-#~ "open them again."
-#~ msgstr ""
-#~ "Taispeánann sé seo na comhaid a d'oscail tú le déanaí, agus ceadaíonn "
-#~ "duit iad a oscailt arís gan stró."
-
-#~ msgid "&New Window"
-#~ msgstr "Fuinneog &Nua"
-
-#~ msgid "Create another view containing the current document"
-#~ msgstr "Cruthaigh amharc eile leis an cháipéis reatha ann"
-
-#~ msgid "Close the current document view"
-#~ msgstr "Dún an t-amharc reatha cáipéise"
-
-#~ msgid "Use this command to show or hide the view's statusbar"
-#~ msgstr ""
-#~ "Úsáid an t-ordú seo chun barra stádais an amhairc a thaispeáint nó a chur "
-#~ "i bhfolach"
-
-#~ msgid "Sho&w Path"
-#~ msgstr "&Taispeáin Conair"
-
-#~ msgid "Show the complete document path in the window caption"
-#~ msgstr "Taispeáin conair iomlán na cáipéise i bhfotheideal na fuinneoige"
-
-#~ msgid "Configure the application's keyboard shortcut assignments."
-#~ msgstr "Cumraigh aicearraí an fheidhmchláir."
-
-#~ msgid "Configure which items should appear in the toolbar(s)."
-#~ msgstr "Cumraigh na míreanna a thaispeánfar sa bharra/sna barraí uirlisí."
-
-#~ msgid "&About Editor Component"
-#~ msgstr "&Maidir leis an gComhpháirt Eagarthóireachta"
-
-#~ msgid " INS "
-#~ msgstr " IONS "
-
-#~ msgid " LINE "
-#~ msgstr " LÍNE "
-
-#~ msgid "Read the contents of stdin"
-#~ msgstr "Léigh ábhar ón ghnáth-ionchur"
-
-#~ msgid "Set encoding for the file to open"
-#~ msgstr "Socraigh ionchódú an chomhaid atá le hoscailt"
-
-#~ msgid "Navigate to this line"
-#~ msgstr "Téigh go dtí an líne seo"
-
-#~ msgid "Navigate to this column"
-#~ msgstr "Téigh go dtí an colún seo"
-
-#~ msgid "KWrite"
-#~ msgstr "KWrite"
-
-#~ msgid "KWrite - Text Editor"
-#~ msgstr "KWrite - Eagarthóir Téacs"
-
-#~ msgid "Choose Editor Component"
-#~ msgstr "Roghnaigh Comhpháirt Eagarthóireachta"
-
-#~ msgid "Directory containing tests, basedir and output directories."
-#~ msgstr ""
-#~ "Comhadlann ina bhfuil na tástálacha, an bhunchomhadlann, agus comhadlanna "
-#~ "aschurtha."
-
-#~ msgid "Do not suppress debug output"
-#~ msgstr "Ná ceil aschur dífhabhtaithe"
-
-#~ msgid "Regenerate baseline (instead of checking)"
-#~ msgstr "Athghin bonnlíne (in ionad seiceála)"
-
-#~ msgid "Only run a single test. Multiple options allowed."
-#~ msgstr "Rith aon tástáil amháin. Ceadaítear ilroghanna."
-
-#~ msgid "Put output in <directory> instead of <base_dir>/output"
-#~ msgstr "Cuir an t-aschur i <directory> in ionad <base_dir>/output"
-
-#~ msgid ""
-#~ "Directory containing tests, basedir and output directories. Only regarded "
-#~ "if -b is not specified."
-#~ msgstr ""
-#~ "Comhadlann ina bhfuil na tástálacha, an bhunchomhadlann, agus comhadlanna "
-#~ "aschurtha. Déan neamhshuim de seo má thugtar rogha -b."
-
-#~ msgid ""
-#~ "Relative path to testcase, or directory of testcases to be run "
-#~ "(equivalent to -t)."
-#~ msgstr ""
-#~ "Conair choibhneasta an cháis tástála, nó comhadlann le tástálacha le rith "
-#~ "(ar comhbhrí le -t)."
-
-#~ msgid "TestRegression"
-#~ msgstr "TestRegression"
-
-#~ msgid "Error: "
-#~ msgstr "Earráid: "
-
-#~ msgctxt "Encodings menu"
-#~ msgid "Disabled"
-#~ msgstr "Díchumasaithe"
-
-#~ msgid "Binary File Opened"
-#~ msgstr "Osclaíodh Comhad Dénártha"
-
-#~ msgid "Broken UTF-8 File Opened"
-#~ msgstr "Osclaíodh Comhad Briste UTF-8"
-
-#~ msgid "Universal"
-#~ msgstr "Uilíoch"
-
-#~ msgid "&Word Wrap Document"
-#~ msgstr "&Timfhill Línte sa Cháipéis"
-
-#~ msgid "Modify search behavior"
-#~ msgstr "Athraigh oibriú an chuardaigh"
-
-#~ msgid "From &cursor"
-#~ msgstr "Ón &chúrsóir"
-
-#~ msgid "Hi&ghlight all"
-#~ msgstr "Ai&bhsigh uile"
-
-#~ msgid "(c) 2000-2008 The Kate Authors"
-#~ msgstr "© 2000-2008 Údair Kate"
-
-#~ msgid "Developer & Highlight wizard"
-#~ msgstr "Forbróir agus Draoi aibhsithe"
-
-#~ msgid "Unable to read file: '%1'"
-#~ msgstr "Ní féidir an comhad a léamh: '%1'"
-
-#~ msgid "Success"
-#~ msgstr "D'éirigh leis"
-
-#~ msgid "&Overwrite"
-#~ msgstr "F&orscríobh"
-
-#~ msgid "Regular expression\t(Alt+4)"
-#~ msgstr "Slonn ionadaíochta\t(Alt+4)"
-
-#~ msgid "Case Sensitive"
-#~ msgstr "Cásíogair"
-
-#~ msgid "&Dynamic word wrap"
-#~ msgstr "&Timfhilleadh focal dinimiciúil"
-
-#~ msgid "(c) 2000-2007 The Kate Authors"
-#~ msgstr "© 2000-2007 Údair Kate"
-
-#~ msgid "Match case"
-#~ msgstr "Comhoiriúnaigh an cás"
-
-#~ msgid "Selection only   "
-#~ msgstr "San roghnúchán amháin   "
-
-#~ msgid "Shortcuts Configuration"
-#~ msgstr "Cumraíocht na nAicearraí"
-
-#~ msgid "No encoding header"
-#~ msgstr "Gan cheanntásc ionchódaithe"
-
-#~ msgid "The spelling program seems to have crashed."
-#~ msgstr "De réir cosúlachta thuairteáil an litreoir."
-
-#~ msgid "unknown"
-#~ msgstr "anaithnid"
-
-#~ msgid "Setup"
-#~ msgstr "Socrú"
-
-#~ msgid " Static"
-#~ msgstr " Statach"
-
-#~ msgid "Print %1"
-#~ msgstr "Priontáil %1"
-
-#~ msgid "Nowhere"
-#~ msgstr "Níl áit ar bith"
-
-#~ msgid "Current Word Only"
-#~ msgstr "Focal Reatha Amháin"
-
-#~ msgid "NORM"
-#~ msgstr "GNÁTH"
-
-#~ msgid " NORM "
-#~ msgstr " GNÁTH "
-
-#~ msgid "&From cursor"
-#~ msgstr "Ón &chúrsóir"
-
-#~ msgid "&Highlight all"
-#~ msgstr "&Aibhsigh uile"
-
-#~ msgid "Choose File to Insert"
-#~ msgstr "Roghnaigh an comhad le hionsá"
-
-#~ msgid ""
-#~ "Failed to load file:\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Theip ar luchtú an chomhaid:\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "<p>The file <strong>%1</strong> does not exist or is not readable, "
-#~ "aborting."
-#~ msgstr ""
-#~ "<p>Níl an comhad <strong>%1</strong> nó ní féidir é a léamh, ag tobscor."
-
-#~ msgid "<p>Unable to open file <strong>%1</strong>, aborting."
-#~ msgstr "<p>Ní féidir an comhad <strong>%1</strong> a oscailt, ag tobscor."
-
-#~ msgid "<p>File <strong>%1</strong> had no contents."
-#~ msgstr "<p>Bhí an comhad <strong>%1</strong> folamh."
-
-#~ msgid "Data Tools"
-#~ msgstr "Uirlisí Sonraí"
-
-#~ msgid "(not available)"
-#~ msgstr "(gan fáil)"
-
-#~ msgid "&Pattern:"
-#~ msgstr "&Patrún:"
-
-#~ msgid "&Patterns"
-#~ msgstr "&Patrúin"
-
-#~ msgid "Pattern"
-#~ msgstr "Patrún"
-
-#~ msgid "Mime Types"
-#~ msgstr "Cineálacha MIME"
-
-#~ msgid "&Edit..."
-#~ msgstr "&Eagar..."
-
-#~ msgid "Configure..."
-#~ msgstr "Cumraigh..."
-
-#~ msgid "Beginning of document reached."
-#~ msgstr "Tá tús na cáipéise sroichte."
-
-#~ msgid "End of selection reached."
-#~ msgstr "Deireadh na roghnaithe sroichte."
-
-#~ msgid "Beginning of selection reached."
-#~ msgstr "Tús na roghnaithe sroichte."
-
-#~ msgid "Continue from the beginning?"
-#~ msgstr "Lean ar aghaidh ón tús?"
-
-#~ msgid "N&ame:"
-#~ msgstr "&Ainm:"
-
-#~ msgid "Memory Usage"
-#~ msgstr "Úsáid na Cuimhne"
-
-#~ msgid "Configure %1"
-#~ msgstr "Cumraigh %1"
-
-#~ msgid "Do&wnload..."
-#~ msgstr "Thíos&luchtaigh..."
-
-#~ msgid " Col: %1"
-#~ msgstr " Colún: %1"
-
-#~ msgid "Overwrite the file"
-#~ msgstr "Forscríobh an comhad"
-
-#~ msgid "Python Style"
-#~ msgstr "Stíl Python"
-
-#~ msgid "Search Incrementally"
-#~ msgstr "Cuardach Incriminteach"
-
-#~ msgid "From Beginning"
-#~ msgstr "Ón Tús"
-
-#~ msgctxt "Incremental Search"
-#~ msgid "I-Search:"
-#~ msgstr "I-Search:"
-
-#~ msgctxt "Incremental Search in the reverse direction"
-#~ msgid "I-Search Backward:"
-#~ msgstr "I-Search ar gcúl:"
-
-#~ msgid "Failing I-Search Backward:"
-#~ msgstr "I-Search ar gcúl a theip:"
