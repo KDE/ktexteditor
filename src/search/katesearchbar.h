@@ -129,6 +129,9 @@ private Q_SLOTS:
     void updateSelectionOnly();
     void updateIncInitCursor();
 
+    void onContextMenuRequest();
+    void onContextMenuRequest(const QPoint &);
+
     void onPowerPatternChanged(const QString &pattern);
     void onPowerModeChanged(int index);
     void onPowerPatternContextMenuRequest();

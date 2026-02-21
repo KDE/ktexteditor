@@ -1133,6 +1133,14 @@ void KateSearchBar::showExtendedContextMenu(bool forPattern, const QPoint &pos)
         return;
     }
 
+    QAction *clearHistory = contextMenu->addAction(i18n("Clear history"));
+    clearHistory->setIcon(QIcon::fromTheme(QStringLiteral("edit-clear-history")));
+    clearHistory->setEnabled(comboBox->count() > 0);
+    connect(clearHistory, &QAction::triggered, this, [comboBox]() {
+        comboBox->clear();
+        KTextEditor::EditorPrivate::self()->saveSearchReplaceHistoryModels();
+    });
+
     bool extendMenu = false;
     bool regexMode = false;
     switch (m_powerUi->searchMode->currentIndex()) {
@@ -1571,6 +1579,10 @@ void KateSearchBar::enterIncrementalMode()
         m_incUi->pattern->setModel(KTextEditor::EditorPrivate::self()->searchHistoryModel());
         m_incUi->pattern->lineEdit()->setClearButtonEnabled(true);
         m_incUi->pattern->setCompleter(nullptr);
+
+        m_incUi->pattern->setContextMenuPolicy(Qt::CustomContextMenu);
+
+        connect(m_incUi->pattern, &QComboBox::customContextMenuRequested, this, qOverload<const QPoint &>(&KateSearchBar::onContextMenuRequest));
     }
 
     // Restore previous settings
@@ -1730,6 +1742,30 @@ void KateSearchBar::updateIncInitCursor()
 
     // Update init cursor
     m_incInitCursor = m_view->cursorPosition();
+}
+
+void KateSearchBar::onContextMenuRequest(const QPoint &pos)
+{
+    QMenu *const contextMenu = m_incUi->pattern->lineEdit()->createStandardContextMenu();
+
+    if (contextMenu == nullptr) {
+        return;
+    }
+
+    QAction *clearHistory = contextMenu->addAction(i18n("Clear history"));
+    clearHistory->setIcon(QIcon::fromTheme(QStringLiteral("edit-clear-history")));
+    clearHistory->setEnabled(m_incUi->pattern->count() > 0);
+    connect(clearHistory, &QAction::triggered, this, [this]() {
+        m_incUi->pattern->clear();
+        KTextEditor::EditorPrivate::self()->saveSearchReplaceHistoryModels();
+    });
+
+    contextMenu->exec(m_incUi->pattern->mapToGlobal(pos));
+}
+
+void KateSearchBar::onContextMenuRequest()
+{
+    onPowerPatternContextMenuRequest(m_incUi->pattern->mapFromGlobal(QCursor::pos()));
 }
 
 void KateSearchBar::onPowerPatternContextMenuRequest(const QPoint &pos)
