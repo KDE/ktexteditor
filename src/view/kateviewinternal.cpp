@@ -3905,13 +3905,22 @@ void KateViewInternal::resizeEvent(QResizeEvent *e)
         m_oldSize = e->oldSize();
         m_resizeTimer.start(16);
     }
+
+    // just to be safe, call base implementation
+    QWidget::resizeEvent(e);
 }
 
 void KateViewInternal::resizeTimeout()
 {
-    bool expandedHorizontally = width() > m_oldSize.width();
-    bool expandedVertically = height() > m_oldSize.height();
-    bool heightChanged = height() != m_oldSize.height();
+    // nothing to do?
+    const bool sizeChanged = size() != m_oldSize;
+    if (!sizeChanged) {
+        return;
+    }
+
+    const bool expandedHorizontally = width() > m_oldSize.width();
+    const bool expandedVertically = height() > m_oldSize.height();
+    const bool heightChanged = height() != m_oldSize.height();
 
     m_dummy->setFixedSize(m_lineScroll->width(), m_columnScroll->sizeHint().height());
     m_madeVisible = false;
@@ -3926,28 +3935,13 @@ void KateViewInternal::resizeTimeout()
         m_cachedMaxStartPos.setPosition(-1, -1);
     }
 
-    if (view()->dynWordWrap()) {
-        bool dirtied = false;
+    // do a proper update, we just reset everything
+    // we de-bounce the resize to avoid too many events already
+    tagAll();
+    updateView(true);
+    m_leftBorder->update();
 
-        for (int i = 0; i < cache()->viewCacheLineCount(); i++) {
-            // find the first dirty line
-            // the word wrap updateView algorithm is forced to check all lines after a dirty one
-            KateTextLayout viewLine = cache()->viewLine(i);
-
-            if (viewLine.wrap() || viewLine.isRightToLeft() || viewLine.width() > width()) {
-                dirtied = true;
-                viewLine.setDirty();
-                break;
-            }
-        }
-
-        if (dirtied || heightChanged) {
-            updateView(true);
-            m_leftBorder->update();
-        }
-    } else {
-        updateView();
-
+    if (!view()->dynWordWrap()) {
         if (expandedHorizontally && m_startX > 0) {
             scrollColumns(m_startX - (width() - m_oldSize.width()));
         }
