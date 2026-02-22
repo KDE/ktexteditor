@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-18 00:41+0000\n"
+"POT-Creation-Date: 2026-02-22 00:40+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -1334,7 +1334,7 @@ msgstr "&Bỏ qua"
 msgid "Ignores the changes on disk without any action."
 msgstr "Bỏ qua các thay đổi trên đĩa, không có hành động nào."
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1343,18 +1343,18 @@ msgstr ""
 "Lệnh diff thất bại. Vui lòng kiểm tra rằng diff(1) được cài đặt và nằm trong "
 "biến PATH."
 
-#: dialogs/katedialogs.cpp:1559 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1562 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Lỗi tạo phần chênh"
 
-#: dialogs/katedialogs.cpp:1566 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Các tệp giống nhau."
 
-#: dialogs/katedialogs.cpp:1566 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Đầu ra diff"
@@ -3637,187 +3637,193 @@ msgstr "Tiếp tục tìm kiếm?"
 msgid "SearchHighLight"
 msgstr "Tô sáng tìm kiếm"
 
-#: search/katesearchbar.cpp:1158
+#: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
+#, fuzzy, kde-format
+#| msgid "Clear Dictionary Ranges"
+msgid "Clear history"
+msgstr "Xoá hết các khoảng từ điển"
+
+#: search/katesearchbar.cpp:1166
 #, kde-format
 msgid "Beginning of line"
 msgstr "Đầu dòng"
 
-#: search/katesearchbar.cpp:1159
+#: search/katesearchbar.cpp:1167
 #, kde-format
 msgid "End of line"
 msgstr "Cuối dòng"
 
-#: search/katesearchbar.cpp:1161
+#: search/katesearchbar.cpp:1169
 #, kde-format
 msgid "Match any character excluding new line (by default)"
 msgstr "Khớp kí tự bất kì, trừ kí tự dòng mới (mặc định)"
 
-#: search/katesearchbar.cpp:1162
+#: search/katesearchbar.cpp:1170
 #, kde-format
 msgid "One or more occurrences"
 msgstr "Một lần xuất hiện trở lên"
 
-#: search/katesearchbar.cpp:1163
+#: search/katesearchbar.cpp:1171
 #, kde-format
 msgid "Zero or more occurrences"
 msgstr "Không lần xuất hiện trở lên"
 
-#: search/katesearchbar.cpp:1164
+#: search/katesearchbar.cpp:1172
 #, kde-format
 msgid "Zero or one occurrences"
 msgstr "Không hoặc một lần xuất hiện"
 
-#: search/katesearchbar.cpp:1167
+#: search/katesearchbar.cpp:1175
 #, kde-format
 msgid "<a> through <b> occurrences"
 msgstr "<a> đến <b> lần xuất hiện"
 
-#: search/katesearchbar.cpp:1173
+#: search/katesearchbar.cpp:1181
 #, kde-format
 msgid "Group, capturing"
 msgstr "Nhóm, có thu thập"
 
-#: search/katesearchbar.cpp:1174
+#: search/katesearchbar.cpp:1182
 #, kde-format
 msgid "Or"
 msgstr "Hoặc"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1183
 #, kde-format
 msgid "Set of characters"
 msgstr "Tập hợp kí tự"
 
-#: search/katesearchbar.cpp:1176
+#: search/katesearchbar.cpp:1184
 #, kde-format
 msgid "Negative set of characters"
 msgstr "Tập hợp phủ định kí tự"
 
-#: search/katesearchbar.cpp:1180
+#: search/katesearchbar.cpp:1188
 #, kde-format
 msgid "Whole match reference"
 msgstr "Tham chiếu toàn đoạn khớp"
 
-#: search/katesearchbar.cpp:1191
+#: search/katesearchbar.cpp:1199
 #, kde-format
 msgid "Reference"
 msgstr "Tham chiếu"
 
-#: search/katesearchbar.cpp:1198
+#: search/katesearchbar.cpp:1206
 #, kde-format
 msgid "Line break"
 msgstr "Ngắt dòng"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1207
 #, kde-format
 msgid "Tab"
 msgstr "Tab"
 
-#: search/katesearchbar.cpp:1202
+#: search/katesearchbar.cpp:1210
 #, kde-format
 msgid "Word boundary"
 msgstr "Giới hạn từ"
 
-#: search/katesearchbar.cpp:1203
+#: search/katesearchbar.cpp:1211
 #, kde-format
 msgid "Not word boundary"
 msgstr "Không phải giới hạn từ"
 
-#: search/katesearchbar.cpp:1204
+#: search/katesearchbar.cpp:1212
 #, kde-format
 msgid "Digit"
 msgstr "Chữ số"
 
-#: search/katesearchbar.cpp:1205
+#: search/katesearchbar.cpp:1213
 #, kde-format
 msgid "Non-digit"
 msgstr "Phi chữ số"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1214
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr "Khoảng trắng (ngoại trừ ngắt dòng)"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1215
 #, kde-format
 msgid "Non-whitespace"
 msgstr "Phi khoảng trắng"
 
-#: search/katesearchbar.cpp:1208
+#: search/katesearchbar.cpp:1216
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr "Kí tự từ (chữ cái, số, và '_')"
 
-#: search/katesearchbar.cpp:1209
+#: search/katesearchbar.cpp:1217
 #, kde-format
 msgid "Non-word character"
 msgstr "Kí tự phi từ"
 
-#: search/katesearchbar.cpp:1212
+#: search/katesearchbar.cpp:1220
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr "Kí tự bát phân 000 đến 377 (2^8-1)"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1221
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr "Kí tự thập lục phân 0000 đến FFFF (2^16-1)"
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1222
 #, kde-format
 msgid "Backslash"
 msgstr "Dấu gạch chéo ngược"
 
-#: search/katesearchbar.cpp:1218
+#: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Group, non-capturing"
 msgstr "Nhóm, không thu thập"
 
-#: search/katesearchbar.cpp:1219
+#: search/katesearchbar.cpp:1227
 #, kde-format
 msgid "Positive Lookahead"
 msgstr "Nhìn trước khẳng định"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1228
 #, kde-format
 msgid "Negative lookahead"
 msgstr "Nhìn trước phủ định"
 
-#: search/katesearchbar.cpp:1224
+#: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr "Nhìn sau khẳng định độ dài cố định"
 
-#: search/katesearchbar.cpp:1225
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr "Nhìn sau phủ định độ dài cố định"
 
-#: search/katesearchbar.cpp:1230
+#: search/katesearchbar.cpp:1238
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr "Bắt đầu chuyển đổi viết thường"
 
-#: search/katesearchbar.cpp:1231
+#: search/katesearchbar.cpp:1239
 #, kde-format
 msgid "Begin uppercase conversion"
 msgstr "Bắt đầu chuyển đổi viết hoa"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1240
 #, kde-format
 msgid "End case conversion"
 msgstr "Kết thúc chuyển đổi hoa/thường"
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1241
 #, kde-format
 msgid "Lowercase first character conversion"
 msgstr "Chuyển đổi kí tự đầu viết thường"
 
-#: search/katesearchbar.cpp:1234
+#: search/katesearchbar.cpp:1242
 #, kde-format
 msgid "Uppercase first character conversion"
 msgstr "Chuyển đổi kí tự đầu viết hoa"
 
-#: search/katesearchbar.cpp:1235
+#: search/katesearchbar.cpp:1243
 #, kde-format
 msgid "Replacement counter (for Replace All)"
 msgstr "Bộ đếm số thay thế (cho 'Thay thế hết')"
@@ -4245,22 +4251,22 @@ msgstr ""
 msgid "The diff command '%1' could not be started."
 msgstr "Không chạy được lệnh diff '%1'."
 
-#: swapfile/kateswapfile.cpp:634
+#: swapfile/kateswapfile.cpp:642
 #, kde-format
 msgid "The file was not closed properly."
 msgstr "Tệp không được đóng một cách đúng đắn."
 
-#: swapfile/kateswapfile.cpp:637
+#: swapfile/kateswapfile.cpp:645
 #, kde-format
 msgid "View Changes"
 msgstr "Xem các thay đổi"
 
-#: swapfile/kateswapfile.cpp:638
+#: swapfile/kateswapfile.cpp:646
 #, kde-format
 msgid "Recover Data"
 msgstr "Phục hồi dữ liệu"
 
-#: swapfile/kateswapfile.cpp:639
+#: swapfile/kateswapfile.cpp:647
 #, kde-format
 msgid "Discard"
 msgstr "Loại bỏ"
@@ -8511,17 +8517,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Không còn kí tự nào cho dấu nhớ tiếp theo."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3565
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Không có gì trong thanh ghi %1"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  thập lục phân %3,  bát phân %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2532
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Chỉ dấu không được đặt: %1"

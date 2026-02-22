@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-18 00:41+0000\n"
+"POT-Creation-Date: 2026-02-22 00:40+0000\n"
 "PO-Revision-Date: 2011-04-24 13:17-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1408,7 +1408,7 @@ msgstr "無視(&I)"
 msgid "Ignores the changes on disk without any action."
 msgstr "変更を無視します。再度質問されることはありません。"
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1417,18 +1417,18 @@ msgstr ""
 "diff コマンドの起動に失敗しました。diff(1) がインストールされていて、あなた"
 "の PATH に存在することを確認してください。"
 
-#: dialogs/katedialogs.cpp:1559 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1562 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "差分計算中にエラー"
 
-#: dialogs/katedialogs.cpp:1566 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1566 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "diff 出力"
@@ -3733,190 +3733,196 @@ msgstr "大文字と小文字を区別して検索します"
 msgid "SearchHighLight"
 msgstr "スペース強調"
 
-#: search/katesearchbar.cpp:1158
+#: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
+#, fuzzy, kde-format
+#| msgid "Clear Dictionary Ranges"
+msgid "Clear history"
+msgstr "辞書範囲をクリア"
+
+#: search/katesearchbar.cpp:1166
 #, kde-format
 msgid "Beginning of line"
 msgstr "行頭"
 
-#: search/katesearchbar.cpp:1159
+#: search/katesearchbar.cpp:1167
 #, kde-format
 msgid "End of line"
 msgstr "行末"
 
-#: search/katesearchbar.cpp:1161
+#: search/katesearchbar.cpp:1169
 #, fuzzy, kde-format
 #| msgid "Any single character (excluding line breaks)"
 msgid "Match any character excluding new line (by default)"
 msgstr "任意の 1 文字 (改行を除く)"
 
-#: search/katesearchbar.cpp:1162
+#: search/katesearchbar.cpp:1170
 #, kde-format
 msgid "One or more occurrences"
 msgstr "1 回以上の繰り返し"
 
-#: search/katesearchbar.cpp:1163
+#: search/katesearchbar.cpp:1171
 #, kde-format
 msgid "Zero or more occurrences"
 msgstr "0 回以上の繰り返し"
 
-#: search/katesearchbar.cpp:1164
+#: search/katesearchbar.cpp:1172
 #, kde-format
 msgid "Zero or one occurrences"
 msgstr "0 回または 1 回の繰り返し"
 
-#: search/katesearchbar.cpp:1167
+#: search/katesearchbar.cpp:1175
 #, kde-format
 msgid "<a> through <b> occurrences"
 msgstr "a 回から b 回の繰り返し"
 
-#: search/katesearchbar.cpp:1173
+#: search/katesearchbar.cpp:1181
 #, kde-format
 msgid "Group, capturing"
 msgstr "後方参照を伴うグループ化"
 
-#: search/katesearchbar.cpp:1174
+#: search/katesearchbar.cpp:1182
 #, kde-format
 msgid "Or"
 msgstr "または"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1183
 #, kde-format
 msgid "Set of characters"
 msgstr "文字セット"
 
-#: search/katesearchbar.cpp:1176
+#: search/katesearchbar.cpp:1184
 #, kde-format
 msgid "Negative set of characters"
 msgstr "除外する文字セット"
 
-#: search/katesearchbar.cpp:1180
+#: search/katesearchbar.cpp:1188
 #, kde-format
 msgid "Whole match reference"
 msgstr "正規表現全体への後方参照"
 
-#: search/katesearchbar.cpp:1191
+#: search/katesearchbar.cpp:1199
 #, kde-format
 msgid "Reference"
 msgstr "後方参照"
 
-#: search/katesearchbar.cpp:1198
+#: search/katesearchbar.cpp:1206
 #, kde-format
 msgid "Line break"
 msgstr "改行"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1207
 #, kde-format
 msgid "Tab"
 msgstr "タブ"
 
-#: search/katesearchbar.cpp:1202
+#: search/katesearchbar.cpp:1210
 #, kde-format
 msgid "Word boundary"
 msgstr "単語境界"
 
-#: search/katesearchbar.cpp:1203
+#: search/katesearchbar.cpp:1211
 #, kde-format
 msgid "Not word boundary"
 msgstr "単語境界以外"
 
-#: search/katesearchbar.cpp:1204
+#: search/katesearchbar.cpp:1212
 #, kde-format
 msgid "Digit"
 msgstr "数字"
 
-#: search/katesearchbar.cpp:1205
+#: search/katesearchbar.cpp:1213
 #, kde-format
 msgid "Non-digit"
 msgstr "数字以外"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1214
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr "空白文字 (改行を除く)"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1215
 #, fuzzy, kde-format
 #| msgid "&Spaces"
 msgid "Non-whitespace"
 msgstr "スペース(&S)"
 
-#: search/katesearchbar.cpp:1208
+#: search/katesearchbar.cpp:1216
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr "単語構成文字 (英数字とアンダースコア)"
 
-#: search/katesearchbar.cpp:1209
+#: search/katesearchbar.cpp:1217
 #, kde-format
 msgid "Non-word character"
 msgstr "単語構成文字以外"
 
-#: search/katesearchbar.cpp:1212
+#: search/katesearchbar.cpp:1220
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr "八進文字コード 000 から 377 (2^8-1)"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1221
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr "十六進文字コード 0000 から FFFF (2^16-1)"
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1222
 #, kde-format
 msgid "Backslash"
 msgstr "バックスラッシュ"
 
-#: search/katesearchbar.cpp:1218
+#: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Group, non-capturing"
 msgstr "後方参照を伴わないグループ化"
 
-#: search/katesearchbar.cpp:1219
+#: search/katesearchbar.cpp:1227
 #, fuzzy, kde-format
 #| msgid "Negative lookahead"
 msgid "Positive Lookahead"
 msgstr "否定的先読み"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1228
 #, kde-format
 msgid "Negative lookahead"
 msgstr "否定的先読み"
 
-#: search/katesearchbar.cpp:1224
+#: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1225
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1230
+#: search/katesearchbar.cpp:1238
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr "小文字への変換を開始"
 
-#: search/katesearchbar.cpp:1231
+#: search/katesearchbar.cpp:1239
 #, kde-format
 msgid "Begin uppercase conversion"
 msgstr "大文字への変換を開始"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1240
 #, kde-format
 msgid "End case conversion"
 msgstr "大文字/小文字の変換を終了"
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1241
 #, kde-format
 msgid "Lowercase first character conversion"
 msgstr "最初の文字を小文字へ変換"
 
-#: search/katesearchbar.cpp:1234
+#: search/katesearchbar.cpp:1242
 #, kde-format
 msgid "Uppercase first character conversion"
 msgstr "最初の文字を大文字へ変換"
 
-#: search/katesearchbar.cpp:1235
+#: search/katesearchbar.cpp:1243
 #, kde-format
 msgid "Replacement counter (for Replace All)"
 msgstr "置換カウンター (「すべて置換」用)"
@@ -4317,23 +4323,23 @@ msgstr ""
 msgid "The diff command '%1' could not be started."
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:634
+#: swapfile/kateswapfile.cpp:642
 #, kde-format
 msgid "The file was not closed properly."
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:637
+#: swapfile/kateswapfile.cpp:645
 #, kde-format
 msgid "View Changes"
 msgstr "変更を表示"
 
-#: swapfile/kateswapfile.cpp:638
+#: swapfile/kateswapfile.cpp:646
 #, fuzzy, kde-format
 #| msgid "Recover"
 msgid "Recover Data"
 msgstr "復元"
 
-#: swapfile/kateswapfile.cpp:639
+#: swapfile/kateswapfile.cpp:647
 #, kde-format
 msgid "Discard"
 msgstr "破棄"
@@ -8570,17 +8576,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "次のブックマークに移動します。"
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3565
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "レジスタ %1 には何もありません"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  十六進 %3,  八進 %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2532
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "マークが未セット: %1"

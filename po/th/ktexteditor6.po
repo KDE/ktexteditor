@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-18 00:41+0000\n"
+"POT-Creation-Date: 2026-02-22 00:40+0000\n"
 "PO-Revision-Date: 2025-03-03 20:07+0700\n"
 "Last-Translator: Pongsakorn S. <kde@xerusion.me>\n"
 "Language-Team: Thai\n"
@@ -1379,7 +1379,7 @@ msgstr "ไม่&สนใจ"
 msgid "Ignores the changes on disk without any action."
 msgstr "ไม่สนใจความเปลี่ยนแปลง และคุณจะไม่ถูกถามอีก"
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1388,18 +1388,18 @@ msgstr ""
 "คำสั่ง diff ทำงานล้มเหลว โปรดตรวจสอบให้แน่ใจว่า คำสั่ง diff(1) "
 "ได้ถูกติดตั้งและอยู่ในพาธการค้นหาของคุณแล้ว"
 
-#: dialogs/katedialogs.cpp:1559 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1562 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "การหาข้อแตกต่างผิดพลาด"
 
-#: dialogs/katedialogs.cpp:1566 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "คือแฟ้มเดียวกัน"
 
-#: dialogs/katedialogs.cpp:1566 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "ผลส่งออกของข้อแตกต่าง"
@@ -3690,190 +3690,196 @@ msgstr "ค้นหาโดยแยกแยะตัวอักษรพิ
 msgid "SearchHighLight"
 msgstr "การทำตัวเ&น้นส่วนที่เป็นช่องว่าง"
 
-#: search/katesearchbar.cpp:1158
+#: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
+#, fuzzy, kde-format
+#| msgid "Clear Dictionary Ranges"
+msgid "Clear history"
+msgstr "ล้างช่วงของพจนานุกรม"
+
+#: search/katesearchbar.cpp:1166
 #, kde-format
 msgid "Beginning of line"
 msgstr "ตอนต้นบรรทัด"
 
-#: search/katesearchbar.cpp:1159
+#: search/katesearchbar.cpp:1167
 #, kde-format
 msgid "End of line"
 msgstr "รูปแบบการจบบรรทัด"
 
-#: search/katesearchbar.cpp:1161
+#: search/katesearchbar.cpp:1169
 #, fuzzy, kde-format
 #| msgid "Any single character (excluding line breaks)"
 msgid "Match any character excluding new line (by default)"
 msgstr "อักขระเดี่ยวทั่วไป (ไม่รวมอักขระหยุดบรรทัด)"
 
-#: search/katesearchbar.cpp:1162
+#: search/katesearchbar.cpp:1170
 #, kde-format
 msgid "One or more occurrences"
 msgstr "เกิดขึ้นหนึ่งครั้งหรือมากกว่า"
 
-#: search/katesearchbar.cpp:1163
+#: search/katesearchbar.cpp:1171
 #, kde-format
 msgid "Zero or more occurrences"
 msgstr "ไม่เคยเกิดขึ้นหรือเกิดขึ้นมากกว่าศูนย์ครั้ง"
 
-#: search/katesearchbar.cpp:1164
+#: search/katesearchbar.cpp:1172
 #, kde-format
 msgid "Zero or one occurrences"
 msgstr "ไม่เคยเกิดขึ้นหรือเกิดขึ้นหนึ่งครั้ง"
 
-#: search/katesearchbar.cpp:1167
+#: search/katesearchbar.cpp:1175
 #, kde-format
 msgid "<a> through <b> occurrences"
 msgstr "<a>ผ่าน<b>การเกิดขึ้นอีก"
 
-#: search/katesearchbar.cpp:1173
+#: search/katesearchbar.cpp:1181
 #, kde-format
 msgid "Group, capturing"
 msgstr "กลุ่ม, การจับ"
 
-#: search/katesearchbar.cpp:1174
+#: search/katesearchbar.cpp:1182
 #, kde-format
 msgid "Or"
 msgstr "หรือ"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1183
 #, kde-format
 msgid "Set of characters"
 msgstr "ชุดกลุ่มอักขระ"
 
-#: search/katesearchbar.cpp:1176
+#: search/katesearchbar.cpp:1184
 #, kde-format
 msgid "Negative set of characters"
 msgstr "ไปยังชุดกลุ่มอักขระ"
 
-#: search/katesearchbar.cpp:1180
+#: search/katesearchbar.cpp:1188
 #, kde-format
 msgid "Whole match reference"
 msgstr "อ้างอิงตรงกันทุกตัว"
 
-#: search/katesearchbar.cpp:1191
+#: search/katesearchbar.cpp:1199
 #, kde-format
 msgid "Reference"
 msgstr "อ้างอิง"
 
-#: search/katesearchbar.cpp:1198
+#: search/katesearchbar.cpp:1206
 #, kde-format
 msgid "Line break"
 msgstr "ตัวจบบรรทัด"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1207
 #, kde-format
 msgid "Tab"
 msgstr "แท็บ"
 
-#: search/katesearchbar.cpp:1202
+#: search/katesearchbar.cpp:1210
 #, kde-format
 msgid "Word boundary"
 msgstr "ขอบเขตคำ"
 
-#: search/katesearchbar.cpp:1203
+#: search/katesearchbar.cpp:1211
 #, kde-format
 msgid "Not word boundary"
 msgstr "ไม่ใช่ขอบเขตคำ"
 
-#: search/katesearchbar.cpp:1204
+#: search/katesearchbar.cpp:1212
 #, kde-format
 msgid "Digit"
 msgstr "ตัวเลข"
 
-#: search/katesearchbar.cpp:1205
+#: search/katesearchbar.cpp:1213
 #, kde-format
 msgid "Non-digit"
 msgstr "ไม่ใช่ตัวเลข"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1214
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr "ช่องว่าง (ไม่รวมตัวจบบรรทัด)"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1215
 #, fuzzy, kde-format
 #| msgid "&Spaces"
 msgid "Non-whitespace"
 msgstr "อักขระช่&องว่าง"
 
-#: search/katesearchbar.cpp:1208
+#: search/katesearchbar.cpp:1216
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr "คำอักขระ (ตัวอักษรและตัวเลข รวม '_')"
 
-#: search/katesearchbar.cpp:1209
+#: search/katesearchbar.cpp:1217
 #, kde-format
 msgid "Non-word character"
 msgstr "ไม่ใช่คำอักขระ"
 
-#: search/katesearchbar.cpp:1212
+#: search/katesearchbar.cpp:1220
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr "อักขระเลขฐานแปด 000 ถึง 377 (2^8-1)"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1221
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr "อักขระเลขฐานสิบหก 0000 ถึง FFFF (2^16-1)"
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1222
 #, kde-format
 msgid "Backslash"
 msgstr "แบ็คสแลช"
 
-#: search/katesearchbar.cpp:1218
+#: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Group, non-capturing"
 msgstr "กลุ่ม, ไม่มีการจับ"
 
-#: search/katesearchbar.cpp:1219
+#: search/katesearchbar.cpp:1227
 #, fuzzy, kde-format
 #| msgid "Negative lookahead"
 msgid "Positive Lookahead"
 msgstr "ตรงข้ามกับดูล่วงหน้า"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1228
 #, kde-format
 msgid "Negative lookahead"
 msgstr "ตรงข้ามกับดูล่วงหน้า"
 
-#: search/katesearchbar.cpp:1224
+#: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1225
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1230
+#: search/katesearchbar.cpp:1238
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr "เริ่มการแปลงเป็นอักษรตัวพิมพ์เล็ก"
 
-#: search/katesearchbar.cpp:1231
+#: search/katesearchbar.cpp:1239
 #, kde-format
 msgid "Begin uppercase conversion"
 msgstr "เริ่มการแปลงเป็นอักษรตัวพิมพ์ใหญ่"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1240
 #, kde-format
 msgid "End case conversion"
 msgstr "จบการแปลงตัวพิมพ์ของตัวอักษร"
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1241
 #, kde-format
 msgid "Lowercase first character conversion"
 msgstr "แปลงอักษรตัวแรกเป็นอักษรตัวพิมพ์เล็ก"
 
-#: search/katesearchbar.cpp:1234
+#: search/katesearchbar.cpp:1242
 #, kde-format
 msgid "Uppercase first character conversion"
 msgstr "แปลงอักษรตัวแรกเป็นอักษรตัวพิมพ์ใหญ่"
 
-#: search/katesearchbar.cpp:1235
+#: search/katesearchbar.cpp:1243
 #, kde-format
 msgid "Replacement counter (for Replace All)"
 msgstr "ตัวนับการแทนที่ (สำหรับแทนที่ทั้งหมด)"
@@ -4271,23 +4277,23 @@ msgstr ""
 msgid "The diff command '%1' could not be started."
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:634
+#: swapfile/kateswapfile.cpp:642
 #, kde-format
 msgid "The file was not closed properly."
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:637
+#: swapfile/kateswapfile.cpp:645
 #, kde-format
 msgid "View Changes"
 msgstr "ดูสิ่งที่เปลี่ยนแปลง"
 
-#: swapfile/kateswapfile.cpp:638
+#: swapfile/kateswapfile.cpp:646
 #, fuzzy, kde-format
 #| msgid "Recover"
 msgid "Recover Data"
 msgstr "กู้คืนข้อมูล"
 
-#: swapfile/kateswapfile.cpp:639
+#: swapfile/kateswapfile.cpp:647
 #, kde-format
 msgid "Discard"
 msgstr "ละทิ้ง"
@@ -8489,17 +8495,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "ไปยังคั่นหน้าถัดไป"
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3565
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "ไม่มีอะไรในระเบียน %1"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr ""
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2532
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "ยังไม่ได้ทำเครื่องหมาย: %1"

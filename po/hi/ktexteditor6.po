@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-18 00:41+0000\n"
+"POT-Creation-Date: 2026-02-22 00:40+0000\n"
 "PO-Revision-Date: 2024-12-15 19:31+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -1331,7 +1331,7 @@ msgstr " नज़र अंदाज़ करें (&I)"
 msgid "Ignores the changes on disk without any action."
 msgstr "आपकी द्वारा बनायी गई तालिका नहीं खोली जा सकी."
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:131
 #, fuzzy, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1340,18 +1340,18 @@ msgstr ""
 "आईस्पेल चालू नहीं किया जा सका. कृपया सुनिश्चित हों कि आईस्पेल उचित प्रकार कॉन्फ़िगर्ड है "
 "तथा आपके पथ में है."
 
-#: dialogs/katedialogs.cpp:1559 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1562 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "डिफ बनाने में त्रुटि"
 
-#: dialogs/katedialogs.cpp:1566 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1566 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "डिफ आउटपुट"
@@ -3599,191 +3599,196 @@ msgstr "अंत से जारी रखें?"
 msgid "SearchHighLight"
 msgstr "उभार रहे"
 
-#: search/katesearchbar.cpp:1158
+#: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
+#, kde-format
+msgid "Clear history"
+msgstr ""
+
+#: search/katesearchbar.cpp:1166
 #, kde-format
 msgid "Beginning of line"
 msgstr "पंक्ति का आरंभ"
 
-#: search/katesearchbar.cpp:1159
+#: search/katesearchbar.cpp:1167
 #, kde-format
 msgid "End of line"
 msgstr "पंक्ति का अंत"
 
-#: search/katesearchbar.cpp:1161
+#: search/katesearchbar.cpp:1169
 #, fuzzy, kde-format
 msgid "Match any character excluding new line (by default)"
 msgstr "<qt>यह एक अक्षर को मैच करेगा</qt>"
 
-#: search/katesearchbar.cpp:1162
+#: search/katesearchbar.cpp:1170
 #, fuzzy, kde-format
 #| msgid "One or more occurences"
 msgid "One or more occurrences"
 msgstr "एक या अधिक बार"
 
-#: search/katesearchbar.cpp:1163
+#: search/katesearchbar.cpp:1171
 #, fuzzy, kde-format
 msgid "Zero or more occurrences"
 msgstr "दोहराएँ, शून्य या अधिक बार"
 
-#: search/katesearchbar.cpp:1164
+#: search/katesearchbar.cpp:1172
 #, fuzzy, kde-format
 msgid "Zero or one occurrences"
 msgstr "Join one or more Projects"
 
-#: search/katesearchbar.cpp:1167
+#: search/katesearchbar.cpp:1175
 #, fuzzy, kde-format
 msgid "<a> through <b> occurrences"
 msgstr "इससे होकर लपेटें (~W)"
 
-#: search/katesearchbar.cpp:1173
+#: search/katesearchbar.cpp:1181
 #, fuzzy, kde-format
 msgid "Group, capturing"
 msgstr "समूह पाठ"
 
-#: search/katesearchbar.cpp:1174
+#: search/katesearchbar.cpp:1182
 #, kde-format
 msgid "Or"
 msgstr "या"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1183
 #, kde-format
 msgid "Set of characters"
 msgstr "अक्षरों के समूह"
 
-#: search/katesearchbar.cpp:1176
+#: search/katesearchbar.cpp:1184
 #, kde-format
 msgid "Negative set of characters"
 msgstr "अक्षरों के ऋण समूह"
 
-#: search/katesearchbar.cpp:1180
+#: search/katesearchbar.cpp:1188
 #, fuzzy, kde-format
 msgid "Whole match reference"
 msgstr "सिर्फ अंग्रेज़ी के पूरे अक्षरों के जोड़ मिलाएँ"
 
-#: search/katesearchbar.cpp:1191
+#: search/katesearchbar.cpp:1199
 #, kde-format
 msgid "Reference"
 msgstr "संदर्भ"
 
-#: search/katesearchbar.cpp:1198
+#: search/katesearchbar.cpp:1206
 #, kde-format
 msgid "Line break"
 msgstr "पंक्ति ब्रेक"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1207
 #, kde-format
 msgid "Tab"
 msgstr "टैब"
 
-#: search/katesearchbar.cpp:1202
+#: search/katesearchbar.cpp:1210
 #, kde-format
 msgid "Word boundary"
 msgstr "शब्द सीमा"
 
-#: search/katesearchbar.cpp:1203
+#: search/katesearchbar.cpp:1211
 #, kde-format
 msgid "Not word boundary"
 msgstr "नॉट शब्द सीमा"
 
-#: search/katesearchbar.cpp:1204
+#: search/katesearchbar.cpp:1212
 #, kde-format
 msgid "Digit"
 msgstr "डिजिट"
 
-#: search/katesearchbar.cpp:1205
+#: search/katesearchbar.cpp:1213
 #, kde-format
 msgid "Non-digit"
 msgstr "नॉन-डिजिट"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1214
 #, fuzzy, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr "कक्षों में लाइन ब्रेक प्रविष्ट करना"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1215
 #, fuzzy, kde-format
 #| msgid "&Replace"
 msgid "Non-whitespace"
 msgstr "बदलें (&R)"
 
-#: search/katesearchbar.cpp:1208
+#: search/katesearchbar.cpp:1216
 #, fuzzy, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr "जब डबल क्लिक किया जाए, अक्षर जो अल्फान्यूमेरिक से भिन्न हों, शब्द के भाग समझे जाएँ:"
 
-#: search/katesearchbar.cpp:1209
+#: search/katesearchbar.cpp:1217
 #, kde-format
 msgid "Non-word character"
 msgstr "नॉन-वर्ड अक्षर"
 
-#: search/katesearchbar.cpp:1212
+#: search/katesearchbar.cpp:1220
 #, fuzzy, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr "संप्रतीक की लंबरूप केंद्र के लिये पंक्तिकरण"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1221
 #, fuzzy, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr "16 : संवाद में रुकें प्रतीक जोड़ें."
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1222
 #, kde-format
 msgid "Backslash"
 msgstr "बैकस्लैश"
 
-#: search/katesearchbar.cpp:1218
+#: search/katesearchbar.cpp:1226
 #, fuzzy, kde-format
 msgid "Group, non-capturing"
 msgstr "बिना-खण्डन का अंतर (~p)"
 
-#: search/katesearchbar.cpp:1219
+#: search/katesearchbar.cpp:1227
 #, fuzzy, kde-format
 msgid "Positive Lookahead"
 msgstr "नकारात्मक विचलन"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1228
 #, fuzzy, kde-format
 msgid "Negative lookahead"
 msgstr "नकारात्मक विचलन"
 
-#: search/katesearchbar.cpp:1224
+#: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1225
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1230
+#: search/katesearchbar.cpp:1238
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr "लोअरकेस रूपांतरण चालू करें"
 
-#: search/katesearchbar.cpp:1231
+#: search/katesearchbar.cpp:1239
 #, kde-format
 msgid "Begin uppercase conversion"
 msgstr "अपरकेस रूपांतरण चालू करें"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1240
 #, kde-format
 msgid "End case conversion"
 msgstr "केस रूपांतरण बन्द करें"
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1241
 #, fuzzy, kde-format
 #| msgid "Begin lowercase conversion"
 msgid "Lowercase first character conversion"
 msgstr "लोअरकेस रूपांतरण चालू करें"
 
-#: search/katesearchbar.cpp:1234
+#: search/katesearchbar.cpp:1242
 #, fuzzy, kde-format
 #| msgid "Begin uppercase conversion"
 msgid "Uppercase first character conversion"
 msgstr "अपरकेस रूपांतरण चालू करें"
 
-#: search/katesearchbar.cpp:1235
+#: search/katesearchbar.cpp:1243
 #, fuzzy, kde-format
 msgid "Replacement counter (for Replace All)"
 msgstr "सारे अद्वितीय प्रविष्टि को प्रतिस्थापित करें"
@@ -4188,24 +4193,24 @@ msgstr ""
 msgid "The diff command '%1' could not be started."
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:634
+#: swapfile/kateswapfile.cpp:642
 #, kde-format
 msgid "The file was not closed properly."
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:637
+#: swapfile/kateswapfile.cpp:645
 #, fuzzy, kde-format
 #| msgid "&Ignore Changes"
 msgid "View Changes"
 msgstr "परिवर्तनों को नज़र अंदाज़ करें (&I)"
 
-#: swapfile/kateswapfile.cpp:638
+#: swapfile/kateswapfile.cpp:646
 #, fuzzy, kde-format
 #| msgid "Reverse"
 msgid "Recover Data"
 msgstr "विपरीत"
 
-#: swapfile/kateswapfile.cpp:639
+#: swapfile/kateswapfile.cpp:647
 #, fuzzy, kde-format
 #| msgid "Disabled"
 msgid "Discard"
@@ -8414,17 +8419,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "अगले पसंदीदा पर जाएँ"
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3565
 #, kde-format
 msgid "Nothing in register %1"
 msgstr ""
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr ""
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2532
 #, fuzzy, kde-format
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
