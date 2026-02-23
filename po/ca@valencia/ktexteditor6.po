@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-22 00:40+0000\n"
-"PO-Revision-Date: 2026-01-09 11:33+0100\n"
+"PO-Revision-Date: 2026-02-22 09:46+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -3669,10 +3669,9 @@ msgid "SearchHighLight"
 msgstr "RessaltatDeBusca"
 
 #: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
-#, fuzzy, kde-format
-#| msgid "Clear Dictionary Ranges"
+#, kde-format
 msgid "Clear history"
-msgstr "Neteja l'abast dels diccionaris"
+msgstr "Neteja l'historial"
 
 #: search/katesearchbar.cpp:1166
 #, kde-format
