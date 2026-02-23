@@ -450,6 +450,8 @@ void KateViewTest::testScrollPastEndOfDocument()
     view->setCursorPosition({3, 5});
     view->resize(400, 300);
     view->show();
+    // resize() debounces events, wait for timer to finish
+    QTRY_VERIFY_WITH_TIMEOUT(!view->getViewInternal()->m_resizeTimer.isActive(), 100ms);
 
     // enable "[x] Scroll past end of document"
     view->config()->setValue(KateViewConfig::ScrollPastEnd, true);

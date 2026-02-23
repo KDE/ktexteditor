@@ -456,6 +456,9 @@ private:
     QTimer m_cursorTimer;
     QTimer m_textHintTimer;
 
+    QTimer m_resizeTimer;
+    QSize m_oldSize;
+
     static const int s_scrollTime = 30;
     static const int s_scrollMargin = 16;
 
@@ -463,6 +466,7 @@ private Q_SLOTS:
     void scrollTimeout();
     void cursorTimeout();
     void textHintTimeout();
+    void resizeTimeout();
 
     void documentTextInserted(KTextEditor::Document *document, KTextEditor::Range range);
     void documentTextRemoved(KTextEditor::Document *document, KTextEditor::Range range, const QString &oldText);

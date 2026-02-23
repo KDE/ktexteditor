@@ -148,6 +148,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_scrollTimer(this)
     , m_cursorTimer(this)
     , m_textHintTimer(this)
+    , m_resizeTimer(this)
     , m_textHintDelay(500)
     , m_textHintPos(-1, -1)
     , m_imPreeditRange(nullptr)
@@ -279,6 +280,9 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     connect(&m_cursorTimer, &QTimer::timeout, this, &KateViewInternal::cursorTimeout);
 
     connect(&m_textHintTimer, &QTimer::timeout, this, &KateViewInternal::textHintTimeout);
+
+    m_resizeTimer.setSingleShot(true);
+    connect(&m_resizeTimer, &QTimer::timeout, this, &KateViewInternal::resizeTimeout);
 
     // selection changed to set anchor
     connect(m_view, &KTextEditor::ViewPrivate::selectionChanged, this, &KateViewInternal::viewSelectionChanged);
@@ -3895,9 +3899,28 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
 
 void KateViewInternal::resizeEvent(QResizeEvent *e)
 {
-    bool expandedHorizontally = width() > e->oldSize().width();
-    bool expandedVertically = height() > e->oldSize().height();
-    bool heightChanged = height() != e->oldSize().height();
+    // resizing can be very expensive because of the updateView() call
+    // so doing a resize on every event can make it extremely laggy
+    if (!m_resizeTimer.isActive()) {
+        m_oldSize = e->oldSize();
+        m_resizeTimer.start(16);
+    }
+
+    // just to be safe, call base implementation
+    QWidget::resizeEvent(e);
+}
+
+void KateViewInternal::resizeTimeout()
+{
+    // nothing to do?
+    const bool sizeChanged = size() != m_oldSize;
+    if (!sizeChanged) {
+        return;
+    }
+
+    const bool expandedHorizontally = width() > m_oldSize.width();
+    const bool expandedVertically = height() > m_oldSize.height();
+    const bool heightChanged = height() != m_oldSize.height();
 
     m_dummy->setFixedSize(m_lineScroll->width(), m_columnScroll->sizeHint().height());
     m_madeVisible = false;
@@ -3912,34 +3935,19 @@ void KateViewInternal::resizeEvent(QResizeEvent *e)
         m_cachedMaxStartPos.setPosition(-1, -1);
     }
 
-    if (view()->dynWordWrap()) {
-        bool dirtied = false;
+    // do a proper update, we just reset everything
+    // we de-bounce the resize to avoid too many events already
+    tagAll();
+    updateView(true);
+    m_leftBorder->update();
 
-        for (int i = 0; i < cache()->viewCacheLineCount(); i++) {
-            // find the first dirty line
-            // the word wrap updateView algorithm is forced to check all lines after a dirty one
-            KateTextLayout viewLine = cache()->viewLine(i);
-
-            if (viewLine.wrap() || viewLine.isRightToLeft() || viewLine.width() > width()) {
-                dirtied = true;
-                viewLine.setDirty();
-                break;
-            }
-        }
-
-        if (dirtied || heightChanged) {
-            updateView(true);
-            m_leftBorder->update();
-        }
-    } else {
-        updateView();
-
+    if (!view()->dynWordWrap()) {
         if (expandedHorizontally && m_startX > 0) {
-            scrollColumns(m_startX - (width() - e->oldSize().width()));
+            scrollColumns(m_startX - (width() - m_oldSize.width()));
         }
     }
 
-    if (width() < e->oldSize().width() && !view()->wrapCursor()) {
+    if (width() < m_oldSize.width() && !view()->wrapCursor()) {
         // May have to restrain cursor to new smaller width...
         if (m_cursor.column() > doc()->lineLength(m_cursor.line())) {
             KateTextLayout thisLine = currentLayout(m_cursor);
