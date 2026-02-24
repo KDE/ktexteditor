@@ -3538,10 +3538,9 @@ msgid "SearchHighLight"
 msgstr "Zvýraznění hledání"
 
 #: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
-#, fuzzy, kde-format
-#| msgid "Clear Dictionary Ranges"
+#, kde-format
 msgid "Clear history"
-msgstr "Smazat rozsahy slovníku"
+msgstr "Vyprázdnit historii"
 
 #: search/katesearchbar.cpp:1166
 #, kde-format
