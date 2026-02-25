@@ -10,7 +10,7 @@
 # Munzir Taha <munzir@kacst.edu.sa>, 2004.
 # محمد سعد  Mohamed SAAD <metehyi@free.fr>, 2006.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
-# SPDX-FileCopyrightText: 2008, 2024, 2025 zayed <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2008, 2024, 2025, 2026 zayed <zayed.alsaidi@gmail.com>
 # Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2009, 2022, 2023.
 # Safa Alfulaij <safa1996alfulaij@gmail.com>, 2016, 2017.
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-22 00:40+0000\n"
-"PO-Revision-Date: 2025-09-25 11:58+0400\n"
+"PO-Revision-Date: 2026-02-24 22:30+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -3573,10 +3573,9 @@ msgid "SearchHighLight"
 msgstr "إبراز البحث"
 
 #: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
-#, fuzzy, kde-format
-#| msgid "Clear Dictionary Ranges"
+#, kde-format
 msgid "Clear history"
-msgstr "امحُ حدود القاموس"
+msgstr "امحُ التاريخ"
 
 #: search/katesearchbar.cpp:1166
 #, kde-format
