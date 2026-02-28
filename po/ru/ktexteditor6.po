@@ -3,7 +3,7 @@
 # Copyright (C) 2005 KDE Russian translation team.
 #
 # SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2023, 2025 Alexander Yavorsky <kekcuha@gmail.com>
-# SPDX-FileCopyrightText: 2024, 2025 Olesya Gerasimenko <translation-team@basealt.ru>
+# SPDX-FileCopyrightText: 2024, 2025, 2026 Olesya Gerasimenko <translation-team@basealt.ru>
 # Gregory Mokhin <mok@kde.ru>, 2001, 2005.
 # Andrey Cherepanov <skull@kde.ru>, 2001-2009.
 # Leonid Kanter <leon@asplinux.ru>, 2005.
@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-22 00:40+0000\n"
-"PO-Revision-Date: 2025-12-04 10:38+0300\n"
+"PO-Revision-Date: 2026-02-27 11:38+0300\n"
 "Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -3659,10 +3659,9 @@ msgid "SearchHighLight"
 msgstr "Подсветка найденного"
 
 #: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
-#, fuzzy, kde-format
-#| msgid "Clear Dictionary Ranges"
+#, kde-format
 msgid "Clear history"
-msgstr "Один словарь для всего текста"
+msgstr "Очистить журнал"
 
 #: search/katesearchbar.cpp:1166
 #, kde-format

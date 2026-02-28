@@ -3477,7 +3477,7 @@ msgstr "搜索加亮"
 #: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
 #, kde-format
 msgid "Clear history"
-msgstr ""
+msgstr "清除历史记录"
 
 #: search/katesearchbar.cpp:1166
 #, kde-format
