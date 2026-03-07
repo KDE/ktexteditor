@@ -46,6 +46,7 @@ private Q_SLOTS:
     void testCommandBarSearchReplace();
     void testSelectedTextFormats();
     void testPasteDifferentLineSeparators();
+    void testMinimapScrollbarWidth();
 };
 
 #endif // KATE_VIEW_TEST_H

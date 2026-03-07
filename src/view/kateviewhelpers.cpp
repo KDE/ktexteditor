@@ -221,8 +221,14 @@ void KateScrollBar::setShowMiniMap(bool b)
 
     m_showMiniMap = b;
 
-    updateGeometry();
+    updateDummyWidth();
     update();
+}
+
+void KateScrollBar::updateDummyWidth()
+{
+    updateGeometry();
+    m_viewInternal->m_dummy->setFixedSize(sizeHint().width(), m_viewInternal->m_columnScroll->sizeHint().height());
 }
 
 QSize KateScrollBar::sizeHint() const

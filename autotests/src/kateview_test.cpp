@@ -941,5 +941,27 @@ void KateViewTest::testPasteDifferentLineSeparators()
     }
 }
 
+void KateViewTest::testMinimapScrollbarWidth()
+{
+    KTextEditor::DocumentPrivate doc(false, false);
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    view->show();
+    qApp->processEvents();
+
+    // Enable minimap
+    view->config()->setValue(KateViewConfig::ShowScrollBarMiniMap, true);
+    qApp->processEvents();
+
+    int withMinimap = view->getViewInternal()->m_lineScroll->width();
+
+    // Disable minimap
+    view->config()->setValue(KateViewConfig::ShowScrollBarMiniMap, false);
+    qApp->processEvents();
+
+    int withoutMinimap = view->getViewInternal()->m_lineScroll->width();
+
+    QVERIFY(withoutMinimap < withMinimap);
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;
 #include "moc_kateview_test.cpp"
