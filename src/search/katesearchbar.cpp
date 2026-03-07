@@ -32,6 +32,7 @@
 #include <QCompleter>
 #include <QElapsedTimer>
 #include <QKeyEvent>
+#include <QLabel>
 #include <QMenu>
 #include <QRegularExpression>
 #include <QShortcut>
@@ -311,6 +312,66 @@ void KateSearchBar::showResultMessage()
     }
 }
 
+void KateSearchBar::updateMatchCounter(KTextEditor::Range currentMatchRange)
+{
+    // Resolve which counter label is active
+    QLabel *counterLabel = nullptr;
+    if (m_incUi) {
+        counterLabel = m_incUi->matchCounter;
+    } else if (m_powerUi) {
+        counterLabel = m_powerUi->matchCounter;
+    }
+
+    if (!counterLabel) {
+        return;
+    }
+
+    if (!currentMatchRange.isValid() || searchPattern().isEmpty()) {
+        counterLabel->setVisible(false);
+        return;
+    }
+
+    // Scan the entire document to count all matches and find the index of the current one.
+    // We always search forward to produce a stable ordering.
+    const SearchOptions opts = searchOptions(SearchForward);
+    KateMatch match(m_view->doc(), opts);
+    const KTextEditor::Range docRange = m_view->document()->documentRange();
+
+    int total = 0;
+    int current = 0;
+    KTextEditor::Range searchIn(docRange.start(), docRange.end());
+
+    while (searchIn.isValid() && searchIn.start() <= docRange.end()) {
+        match.searchText(searchIn, searchPattern());
+        if (!match.isValid()) {
+            break;
+        }
+        ++total;
+        if (match.range() == currentMatchRange) {
+            current = total;
+        }
+        // Advance past this match to avoid infinite loops on zero-length matches
+        KTextEditor::Cursor nextStart = match.range().end();
+        if (match.range().isEmpty()) {
+            // Zero-length match: advance by one character to avoid infinite loop
+            KTextEditor::DocumentCursor dc(m_view->doc(), nextStart);
+            dc.move(1);
+            nextStart = dc.toCursor();
+        }
+        if (!nextStart.isValid() || nextStart > docRange.end()) {
+            break;
+        }
+        searchIn = KTextEditor::Range(nextStart, docRange.end());
+    }
+
+    if (total == 0) {
+        counterLabel->setVisible(false);
+    } else {
+        counterLabel->setText(i18nc("@info search match position indicator: current match / total matches", "(%1/%2)", current, total));
+        counterLabel->setVisible(true);
+    }
+}
+
 void KateSearchBar::highlightMatch(Range range)
 {
     KTextEditor::MovingRange *const highlight = m_view->doc()->newMovingRange(range, Kate::TextRange::DoNotExpand);
@@ -366,6 +427,9 @@ void KateSearchBar::indicateMatch(MatchResult matchResult)
         case MatchNothing:
             KColorScheme::adjustForeground(foreground, KColorScheme::NormalText, QPalette::WindowText, KColorScheme::Window);
             m_incUi->status->clear();
+            if (matchResult == MatchNothing) {
+                m_incUi->matchCounter->setVisible(false);
+            }
             break;
         case MatchWrappedForward:
         case MatchWrappedBackward:
@@ -379,12 +443,22 @@ void KateSearchBar::indicateMatch(MatchResult matchResult)
         case MatchMismatch:
             KColorScheme::adjustForeground(foreground, KColorScheme::NegativeText, QPalette::WindowText, KColorScheme::Window);
             m_incUi->status->setText(i18n("Not found"));
+            m_incUi->matchCounter->setVisible(false);
             break;
         case MatchNeutral:
             /* do nothing */
             break;
         }
         m_incUi->status->setPalette(foreground);
+    } else if (m_powerUi != nullptr) {
+        switch (matchResult) {
+        case MatchNothing:
+        case MatchMismatch:
+            m_powerUi->matchCounter->setVisible(false);
+            break;
+        default:
+            break;
+        }
     }
 
     lineEdit->setPalette(background);
@@ -441,6 +515,7 @@ void KateSearchBar::onIncPatternChanged(const QString &pattern)
     connect(m_view, &KTextEditor::View::cursorPositionChanged, this, &KateSearchBar::updateIncInitCursor);
 
     indicateMatch(matchResult);
+    updateMatchCounter(match.isValid() ? match.range() : KTextEditor::Range::invalid());
 }
 
 void KateSearchBar::setMatchCase(bool matchCase)
@@ -640,6 +715,7 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
         : searchDirection == SearchForward           ? MatchWrappedForward
                                                      : MatchWrappedBackward;
     indicateMatch(matchResult);
+    updateMatchCounter(match.isValid() ? match.range() : KTextEditor::Range::invalid());
 
     // highlight replacements if applicable
     if (afterReplace.isValid()) {
@@ -1482,11 +1558,15 @@ void KateSearchBar::enterPowerMode()
 
     // move close button to right layout, ensures properly at top for both incremental + advanced mode
     m_powerUi->gridLayout->addWidget(closeButton(), 0, 2, 1, 1);
+
+    // Initial match counter update
+    updateMatchCounter(m_view->selectionRange());
 }
 
 void KateSearchBar::enterIncrementalMode()
 {
     QString initialPattern;
+    KTextEditor::Range initMatchRange = KTextEditor::Range::invalid();
 
     // Guess settings from context: init pattern with current selection
     const bool selected = m_view->selection();
@@ -1495,6 +1575,7 @@ void KateSearchBar::enterIncrementalMode()
         if (selection.onSingleLine()) {
             // ... with current selection
             initialPattern = m_view->selectionText();
+            initMatchRange = selection;
         }
     }
 
@@ -1627,6 +1708,25 @@ void KateSearchBar::enterIncrementalMode()
 
     // move close button to right layout, ensures properly at top for both incremental + advanced mode
     m_incUi->hboxLayout->addWidget(closeButton());
+
+    // Initialize highlights and counter without jumping the cursor.
+    // We avoid onIncPatternChanged here because it searches from the current cursor
+    // and selects the *next* match, displacing the user's active selection.
+    if (!initialPattern.isEmpty()) {
+        indicateMatch(MatchFound);
+
+        if (!initMatchRange.isValid()) {
+            KateMatch match(m_view->doc(), searchOptions());
+            match.searchText(KTextEditor::Range(m_view->cursorPosition(), m_view->document()->documentEnd()), initialPattern);
+            if (!match.isValid()) {
+                match.searchText(m_view->document()->documentRange(), initialPattern);
+            }
+            if (match.isValid()) {
+                initMatchRange = match.range();
+            }
+        }
+    }
+    updateMatchCounter(initMatchRange);
 }
 
 bool KateSearchBar::clearHighlights()

@@ -86,6 +86,19 @@
       </widget>
      </item>
      <item>
+       <widget class="QLabel" name="matchCounter">
+        <property name="visible">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     <item>
       <widget class="QToolButton" name="next">
        <property name="toolTip">
         <string>Jump to next match</string>

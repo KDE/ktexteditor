@@ -190,6 +190,19 @@
         </widget>
        </item>
        <item>
+        <widget class="QLabel" name="matchCounter">
+         <property name="visible">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="replaceNext">
          <property name="toolTip">
           <string>Replace next match</string>

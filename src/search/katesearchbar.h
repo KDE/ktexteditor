@@ -213,6 +213,8 @@ private:
 
     KTEXTEDITOR_NO_EXPORT
     void showResultMessage();
+    KTEXTEDITOR_NO_EXPORT
+    void updateMatchCounter(KTextEditor::Range currentMatchRange);
 
 private:
     KTextEditor::ViewPrivate *const m_view;
@@ -236,6 +238,7 @@ private:
     QString m_replacement;
     uint m_matchCounter = 0;
     bool m_replaceMode = false;
+    int m_currentMatchIndex = -1;
     bool m_cancelFindOrReplace = true;
     bool m_selectionChangedByUndoRedo = false;
     std::vector<KTextEditor::Range> m_highlightRanges;
