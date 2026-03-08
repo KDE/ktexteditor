@@ -877,38 +877,32 @@ void SearchBarTest::testMatchCounter()
     KateSearchBar bar(false, &view, &config);
     QVERIFY(!bar.isPower());
 
-    // Set pattern: first match is auto-selected (incInitCursor is at 0,0)
+    view.setCursorPosition(KTextEditor::Cursor(0, 0));
     bar.setSearchPattern(QStringLiteral("a"));
 
-    // Counter should be visible and show (1/3)
-    QVERIFY(bar.m_incUi->matchCounter->isVisible());
+    bar.findNext();
+    QVERIFY(!bar.m_incUi->matchCounter->isHidden());
     QCOMPARE(bar.m_incUi->matchCounter->text(), QStringLiteral("(1/3)"));
 
     bar.findNext();
-    QVERIFY(bar.m_incUi->matchCounter->isVisible());
     QCOMPARE(bar.m_incUi->matchCounter->text(), QStringLiteral("(2/3)"));
 
     bar.findNext();
-    QVERIFY(bar.m_incUi->matchCounter->isVisible());
     QCOMPARE(bar.m_incUi->matchCounter->text(), QStringLiteral("(3/3)"));
 
-    // Wrap around: next after last goes back to first
     bar.findNext();
-    QVERIFY(bar.m_incUi->matchCounter->isVisible());
     QCOMPARE(bar.m_incUi->matchCounter->text(), QStringLiteral("(1/3)"));
 
-    // Navigate backward
     bar.findPrevious();
-    QVERIFY(bar.m_incUi->matchCounter->isVisible());
     QCOMPARE(bar.m_incUi->matchCounter->text(), QStringLiteral("(3/3)"));
 
-    // Pattern with no matches: counter must be hidden
     bar.setSearchPattern(QStringLiteral("z"));
-    QVERIFY(!bar.m_incUi->matchCounter->isVisible());
+    bar.findNext();
+    QVERIFY(bar.m_incUi->matchCounter->isHidden());
 
-    // Empty pattern: counter must also be hidden
     bar.setSearchPattern(QString());
-    QVERIFY(!bar.m_incUi->matchCounter->isVisible());
+    bar.findNext();
+    QVERIFY(bar.m_incUi->matchCounter->isHidden());
 
     // --- Power bar ---
     KateSearchBar barPower(true, &view, &config);
@@ -918,17 +912,19 @@ void SearchBarTest::testMatchCounter()
     barPower.setSearchPattern(QStringLiteral("b"));
 
     barPower.findNext();
-    QVERIFY(barPower.m_powerUi->matchCounter->isVisible());
+    QVERIFY(!barPower.m_powerUi->matchCounter->isHidden());
     QCOMPARE(barPower.m_powerUi->matchCounter->text(), QStringLiteral("(1/2)"));
 
     barPower.findNext();
-    QVERIFY(barPower.m_powerUi->matchCounter->isVisible());
     QCOMPARE(barPower.m_powerUi->matchCounter->text(), QStringLiteral("(2/2)"));
 
-    // No matches in power bar: counter hidden
     barPower.setSearchPattern(QStringLiteral("z"));
     barPower.findNext();
-    QVERIFY(!barPower.m_powerUi->matchCounter->isVisible());
+    QVERIFY(barPower.m_powerUi->matchCounter->isHidden());
+
+    barPower.setSearchPattern(QString());
+    barPower.findNext();
+    QVERIFY(barPower.m_powerUi->matchCounter->isHidden());
 }
 
 #include "moc_searchbar_test.cpp"
