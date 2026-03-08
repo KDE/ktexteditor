@@ -495,7 +495,7 @@ msgid ""
 msgstr ""
 "<p>在当前行超过由<b>自动换行的位置：</b>选项指定的长度时，会自动开始新一行。"
 "</p><p>这个选项不会对已经存在的行进行折行——对于这个目的请使用<b>工具</b>菜单"
-"中的<b>应用静态文字折行</b>选项。</p><p>如果您想根据当前视图的宽度进行<i>可视"
+"中的<b>应用静态文本折行</b>选项。</p><p>如果您想根据当前视图的宽度进行<i>可视"
 "化的折行</i>，请选择<b>外观</b>配置页中的<b>动态文本折行</b>。</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkStaticWordWrap)
@@ -511,7 +511,7 @@ msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"<p>如果勾选此项，在<strong>编辑</strong>属性中定义的文字折行处会显示一条竖"
+"<p>如果勾选此项，在<strong>编辑</strong>属性中定义的文本折行处会显示一条竖"
 "线。</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
@@ -533,7 +533,7 @@ msgid ""
 "If the Word Wrap option is selected this entry determines the length (in "
 "characters) at which the editor will automatically start a new line."
 msgstr ""
-"如果这个文字折行选项被选中，那么这个条目就会决定每行的长度(以字符计)为多少"
+"如果这个文本折行选项被选中，那么这个条目就会决定每行的长度(以字符计)为多少"
 "时，编辑器就会自动开始新行。"
 
 #. i18n: ectx: property (text), widget (QLabel, lblInputMode)
@@ -1946,7 +1946,7 @@ msgstr "折叠首行"
 #: dialogs/textareaappearanceconfigwidget.ui:316
 #, kde-format
 msgid "Dynamic Word Wrap:"
-msgstr "动态文字换行："
+msgstr "动态文本换行："
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:323
@@ -1964,7 +1964,7 @@ msgstr "动态换行时不遵循单词边界"
 #: dialogs/textareaappearanceconfigwidget.ui:337
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr "动态文字换行标识符(&Y)："
+msgstr "动态文本换行标识符(&Y)："
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:347
@@ -1997,7 +1997,7 @@ msgid ""
 "have vertical alignment applied to subsequent wrapped lines.</p>"
 msgstr ""
 "<p>使动态折行的缩进和第一行一致。这样可以让代码和标记更具有可读性。</p><p>另"
-"外，这还允许您以相对于屏幕的最大宽度的百分比来设置文字折行的宽度，但是这样导"
+"外，这还允许您以相对于屏幕的最大宽度的百分比来设置文本折行的宽度，但是这样导"
 "致的动态折行不再会垂直对齐。例如，设定 50%，对于缩进深度已经超过屏幕宽度 50% "
 "的行来说，折行就不会再和第一行对齐。</p>"
 
@@ -3079,7 +3079,7 @@ msgid ""
 "example to show the difference to the normal sort method:<br>sort(a10, a1, "
 "a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 msgstr ""
-"对选中文本或整个文档按自然序排序。<br>这有一个例子展示它和普通排序的不同："
+"对选中文本或整个文档按自然序排序。<br>这有一个例子展示它和正常排序的不同："
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
 #: script/data/commands/utils.js:428
@@ -3190,7 +3190,7 @@ msgstr "向下复制选中的行。"
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
 "used as URI."
-msgstr "编码在单行选中文字中的特殊字符，让返回的文本您可以被用作 URI。"
+msgstr "编码在单行选中文本中的特殊字符，让返回的文本您可以被用作 URI。"
 
 #: script/data/commands/utils.js:454
 #, kde-format
@@ -4642,7 +4642,7 @@ msgstr ""
 #, kde-format
 msgctxt "@item:intable"
 msgid "Normal Text & Source Code"
-msgstr "普通文本和源代码"
+msgstr "正常文本和源代码"
 
 #: syntax/katethemeconfig.cpp:575
 #, kde-format
@@ -5907,7 +5907,7 @@ msgstr "设置拼写检查的默认词典。"
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
-msgstr "允许对长文本动态文字折行"
+msgstr "允许对长文本动态文本折行"
 
 #: variableeditor/variablelineedit.cpp:172
 #, kde-format
@@ -6262,7 +6262,7 @@ msgstr "缩放：%1%"
 #: view/kateview.cpp:450
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
-msgstr "剪切选中的文字并将其移动到剪贴板"
+msgstr "剪切选中的文本并将其移动到剪贴板"
 
 #: view/kateview.cpp:453
 #, kde-format
@@ -6273,7 +6273,7 @@ msgstr "粘贴先前复制或剪切到剪贴板的内容"
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
-msgstr "使用此命令将当前选定的文字复制到系统剪贴板。"
+msgstr "使用此命令将当前选定的文本复制到系统剪贴板。"
 
 #: view/kateview.cpp:462
 #, kde-format
@@ -6323,7 +6323,7 @@ msgstr "脚本(&S)"
 #: view/kateview.cpp:492
 #, kde-format
 msgid "Apply &Word Wrap"
-msgstr "应用文字换行(&W)"
+msgstr "应用文本换行(&W)"
 
 #: view/kateview.cpp:494
 #, kde-format
@@ -6347,7 +6347,7 @@ msgid ""
 "only spaces).<br /><br />You can configure whether tabs should be honored "
 "and used or replaced with spaces, in the configuration dialog."
 msgstr ""
-"使用此命令清除一块选中文字的缩进(制表符或空格)。<br /><br />在配置对话框中，"
+"使用此命令清除一块选中文本的缩进(制表符或空格)。<br /><br />在配置对话框中，"
 "您可以配置是使用制表符还是使用空格缩进。"
 
 #: view/kateview.cpp:507
@@ -6399,7 +6399,7 @@ msgid ""
 "><br />The characters for single/multiple line comments are defined within "
 "the language's highlighting."
 msgstr ""
-"使用此命令注释掉当前行或者选定的一块文字。<br /><br />单行/多行注释的标记字符"
+"使用此命令注释掉当前行或者选定的一块文本。<br /><br />单行/多行注释的标记字符"
 "在语法高亮设置中定义。"
 
 #: view/kateview.cpp:533
@@ -6424,7 +6424,7 @@ msgid ""
 "text.<br /><br />The characters for single/multiple line comments are "
 "defined within the language's highlighting."
 msgstr ""
-"使用此命令去掉当前行或者选定文字的注释。<br /><br />单行/多行注释的标记字符在"
+"使用此命令去掉当前行或者选定文本的注释。<br /><br />单行/多行注释的标记字符在"
 "语法高亮设置中定义。"
 
 #: view/kateview.cpp:553
@@ -6452,7 +6452,7 @@ msgstr "大写"
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
 "cursor if no text is selected."
-msgstr "将选中区转换成大写。若没有选中文字的话，则转换光标右侧的字符。"
+msgstr "将选中区转换成大写。若没有选中文本的话，则转换光标右侧的字符。"
 
 #: view/kateview.cpp:574
 #, kde-format
@@ -6464,7 +6464,7 @@ msgstr "小写"
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
 "cursor if no text is selected."
-msgstr "将选中区转换成小写。若没有选中文字的话，则转换光标右侧的字符。"
+msgstr "将选中区转换成小写。若没有选中文本的话，则转换光标右侧的字符。"
 
 #: view/kateview.cpp:583
 #, kde-format
@@ -6477,7 +6477,7 @@ msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
 "selected."
 msgstr ""
-"将选中区中全部单词的第一个字母转换成大写。若没有选中文字的话，则转换光标右侧"
+"将选中区中全部单词的第一个字母转换成大写。若没有选中文本的话，则转换光标右侧"
 "的字符。"
 
 #: view/kateview.cpp:591
@@ -6609,7 +6609,7 @@ msgstr "选中当前文档的全部文本。"
 msgid ""
 "If you have selected something within the current document, this will no "
 "longer be selected."
-msgstr "如果您在当前文档中有一些选中的文字，这将使它们不再被选中。"
+msgstr "如果您在当前文档中有一些选中的文本，这将使它们不再被选中。"
 
 #: view/kateview.cpp:692
 #, kde-format
@@ -6673,12 +6673,12 @@ msgstr "覆盖模式(&I)"
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
 "existing text."
-msgstr "让您选择新输入的文字是插入到文档还是覆盖已有文字。"
+msgstr "让您选择新输入的文本是插入到文档还是覆盖已有文本。"
 
 #: view/kateview.cpp:734
 #, kde-format
 msgid "&Dynamic Word Wrap"
-msgstr "动态文字换行(&D)"
+msgstr "动态文本换行(&D)"
 
 #: view/kateview.cpp:738
 #, kde-format
@@ -6691,7 +6691,7 @@ msgstr "如果选中此项，文本行将自动在屏幕视图边界处折到新
 #: view/kateview.cpp:742
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
-msgstr "动态文字换行标识符"
+msgstr "动态文本换行标识符"
 
 #: view/kateview.cpp:744
 #, kde-format
@@ -6716,7 +6716,7 @@ msgstr "总是打开(&A)"
 #: view/kateview.cpp:750
 #, kde-format
 msgid "Static Word Wrap"
-msgstr "静态文字折行"
+msgstr "静态文本折行"
 
 #: view/kateview.cpp:752
 #, kde-format
@@ -6882,7 +6882,7 @@ msgstr "编码(&E)"
 #: view/kateview.cpp:851
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
-msgstr "查找第一个和文字或者正则表达式匹配的文本。"
+msgstr "查找第一个和文本或者正则表达式匹配的文本。"
 
 #: view/kateview.cpp:855
 #, kde-format
@@ -6949,7 +6949,7 @@ msgstr "查找上一个和搜索字串匹配的文本。"
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
 "some given text."
-msgstr "查找一段文本或者正则表达式，并用指定的文字替换它。"
+msgstr "查找一段文本或者正则表达式，并用指定的文本替换它。"
 
 #: view/kateview.cpp:896
 #, kde-format
@@ -7042,7 +7042,7 @@ msgstr "复制为 &HTML"
 msgid ""
 "Use this command to copy the currently selected text as HTML to the system "
 "clipboard."
-msgstr "使用此命令可将当前所选文字作为 HTML 内容复制到系统剪贴板。"
+msgstr "使用此命令可将当前所选文本作为 HTML 内容复制到系统剪贴板。"
 
 #: view/kateview.cpp:949
 #, kde-format
@@ -7266,7 +7266,7 @@ msgstr "智能插入新行"
 msgid ""
 "Insert newline including leading characters of the current line which are "
 "not letters or numbers."
-msgstr "插入新行，并自动加入当前行中开头的非字母或数字文字。"
+msgstr "插入新行，并自动加入当前行中开头的非字母或数字文本。"
 
 #: view/kateview.cpp:1239
 #, kde-format
@@ -7313,7 +7313,7 @@ msgid ""
 "whether tabs should be honored and used or replaced with spaces, in the "
 "configuration dialog."
 msgstr ""
-"使用此命令对选中的一块文字增加缩进。<br /><br />在配置对话框中，您可以配置是"
+"使用此命令对选中的一块文本增加缩进。<br /><br />在配置对话框中，您可以配置是"
 "否使用制表符还是使用空格来进行缩进。"
 
 #: view/kateview.cpp:1276
@@ -7324,7 +7324,7 @@ msgstr "减少缩进(&U)"
 #: view/kateview.cpp:1277
 #, kde-format
 msgid "Use this to unindent a selected block of text."
-msgstr "使用此命令对选中的一块文字减少缩进。"
+msgstr "使用此命令对选中的一块文本减少缩进。"
 
 #: view/kateview.cpp:1295
 #, kde-format
