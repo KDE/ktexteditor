@@ -927,4 +927,35 @@ void SearchBarTest::testMatchCounter()
     QVERIFY(barPower.m_powerUi->matchCounter->isHidden());
 }
 
+void SearchBarTest::testZeroLengthMatchCounter()
+{
+    KTextEditor::DocumentPrivate doc;
+    doc.setText(QStringLiteral("abc"));
+
+    KTextEditor::ViewPrivate view(&doc, nullptr);
+    KateViewConfig config(&view);
+
+    KateSearchBar bar(true, &view, &config);
+    QVERIFY(bar.isPower());
+
+    view.setCursorPosition(KTextEditor::Cursor(0, 0));
+
+    bar.setSearchMode(KateSearchBar::MODE_REGEX);
+
+    bar.setSearchPattern(QStringLiteral("\\b"));
+
+    bar.findNext();
+    QVERIFY(!bar.m_powerUi->matchCounter->isHidden());
+
+    QString first = bar.m_powerUi->matchCounter->text();
+    QVERIFY(!first.isEmpty());
+
+    // Navigate several times to ensure we don't get stuck
+    for (int i = 0; i < 10; ++i) {
+        bar.findNext();
+        QVERIFY(!bar.m_powerUi->matchCounter->isHidden());
+        QVERIFY(!bar.m_powerUi->matchCounter->text().isEmpty());
+    }
+}
+
 #include "moc_searchbar_test.cpp"

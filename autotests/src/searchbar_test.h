@@ -72,6 +72,7 @@ private Q_SLOTS:
     void testReplaceEscapeSequence();
 
     void testMatchCounter();
+    void testZeroLengthMatchCounter();
 };
 
 #endif
