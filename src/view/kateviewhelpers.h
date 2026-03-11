@@ -136,7 +136,7 @@ public:
     inline void setMiniMapAll(bool b)
     {
         m_miniMapAll = b;
-        updateGeometry();
+        updateGeometries();
         update();
     }
 
@@ -147,7 +147,7 @@ public:
     inline void setMiniMapWidth(int width)
     {
         m_miniMapWidth = width;
-        updateGeometry();
+        updateGeometries();
         update();
     }
 
@@ -178,6 +178,7 @@ protected Q_SLOTS:
 
 public Q_SLOTS:
     void updatePixmap();
+    void updateGeometries();
 
 private Q_SLOTS:
     void showTextPreview();

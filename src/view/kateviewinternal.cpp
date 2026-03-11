@@ -235,7 +235,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
 
     // bottom corner box
     m_dummy = new QWidget(m_view);
-    m_dummy->setFixedSize(m_lineScroll->width(), m_columnScroll->sizeHint().height());
+    m_dummy->setFixedSize(m_lineScroll->sizeHint().width(), m_columnScroll->sizeHint().height());
     m_dummy->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
     if (m_view->dynWordWrap()) {
@@ -313,7 +313,7 @@ KateViewInternal::~KateViewInternal()
 
 void KateViewInternal::dynWrapChanged()
 {
-    m_dummy->setFixedSize(m_lineScroll->width(), m_columnScroll->sizeHint().height());
+    m_dummy->setFixedSize(m_lineScroll->sizeHint().width(), m_columnScroll->sizeHint().height());
     if (view()->dynWordWrap()) {
         m_columnScroll->hide();
         m_dummy->hide();
@@ -3922,7 +3922,7 @@ void KateViewInternal::resizeTimeout()
     const bool expandedVertically = height() > m_oldSize.height();
     const bool heightChanged = height() != m_oldSize.height();
 
-    m_dummy->setFixedSize(m_lineScroll->width(), m_columnScroll->sizeHint().height());
+    m_dummy->setFixedSize(m_lineScroll->sizeHint().width(), m_columnScroll->sizeHint().height());
     m_madeVisible = false;
 
     // resize the bracket match preview

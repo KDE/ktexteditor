@@ -13,6 +13,7 @@
 #include <kateconfig.h>
 #include <katedocument.h>
 #include <kateview.h>
+#include <kateviewhelpers.h>
 #include <kateviewinternal.h>
 #include <ktexteditor/editor.h>
 #include <ktexteditor/message.h>
@@ -941,5 +942,21 @@ void KateViewTest::testPasteDifferentLineSeparators()
     }
 }
 
+void KateViewTest::testMinimapScrollbarWidth()
+{
+    KTextEditor::DocumentPrivate doc(false, false);
+    auto *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    view->show();
+
+    view->config()->setValue(KateViewConfig::ShowScrollBarMiniMap, true);
+
+    int withMinimap = 0;
+    QTRY_VERIFY_WITH_TIMEOUT((withMinimap = view->getViewInternal()->m_lineScroll->width()) > 0, 5000);
+
+    view->config()->setValue(KateViewConfig::ShowScrollBarMiniMap, false);
+
+    int withoutMinimap = 0;
+    QTRY_VERIFY_WITH_TIMEOUT((withoutMinimap = view->getViewInternal()->m_lineScroll->width()) < withMinimap, 5000);
+}
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;
 #include "moc_kateview_test.cpp"
