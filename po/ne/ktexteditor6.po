@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-22 00:40+0000\n"
+"POT-Creation-Date: 2026-03-12 00:40+0000\n"
 "PO-Revision-Date: 2007-08-19 14:23+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -5015,7 +5015,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "रङ"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1530
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1536
 #, kde-format
 msgid "Bookmark"
 msgstr "पुस्तकचिनो"
@@ -8213,19 +8213,19 @@ msgstr ""
 msgid "Export File as HTML"
 msgstr "एचटीएमएलका रूपमा फाइल निर्यात गर्नुहोस्"
 
-#: view/kateviewhelpers.cpp:296 view/kateviewhelpers.cpp:345
-#: view/kateviewhelpers.cpp:1006
+#: view/kateviewhelpers.cpp:302 view/kateviewhelpers.cpp:351
+#: view/kateviewhelpers.cpp:1012
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1206
+#: view/kateviewhelpers.cpp:1212
 #, kde-format
 msgid "Available Commands"
 msgstr "उपलब्ध आदेश"
 
-#: view/kateviewhelpers.cpp:1207
+#: view/kateviewhelpers.cpp:1213
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -8233,17 +8233,17 @@ msgid ""
 msgstr ""
 "<p>व्यक्तिगत आदेशमा मद्दतका लागि, <code>'help &lt;command&gt;'</code> गर्नुहोस्</p>"
 
-#: view/kateviewhelpers.cpp:1214
+#: view/kateviewhelpers.cpp:1220
 #, kde-format
 msgid "No help for '%1'"
 msgstr "'%1' का लागि मद्दत छैन"
 
-#: view/kateviewhelpers.cpp:1217
+#: view/kateviewhelpers.cpp:1223
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "त्यस्तो आदेश छैन <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1223
+#: view/kateviewhelpers.cpp:1229
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>This is the Katepart <b>command line</b>.<br>Syntax: <code><b>command "
@@ -8261,37 +8261,37 @@ msgstr ""
 "list</b></code><br>, <code><b>help &lt;command&gt;</b></code></p>प्रविष्ट "
 "गर्नुहोस्"
 
-#: view/kateviewhelpers.cpp:1311 vimode/emulatedcommandbar/commandmode.cpp:211
+#: view/kateviewhelpers.cpp:1317 vimode/emulatedcommandbar/commandmode.cpp:211
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "त्यस्तो आदेश छैन: \"%1\""
 
-#: view/kateviewhelpers.cpp:1314 vimode/emulatedcommandbar/commandmode.cpp:193
+#: view/kateviewhelpers.cpp:1320 vimode/emulatedcommandbar/commandmode.cpp:193
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1324 vimode/emulatedcommandbar/commandmode.cpp:197
+#: view/kateviewhelpers.cpp:1330 vimode/emulatedcommandbar/commandmode.cpp:197
 #, kde-format
 msgid "Success: "
 msgstr "सफलता:"
 
-#: view/kateviewhelpers.cpp:1338 vimode/emulatedcommandbar/commandmode.cpp:206
+#: view/kateviewhelpers.cpp:1344 vimode/emulatedcommandbar/commandmode.cpp:206
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "\"%1\" आदेश असफल भयो ।"
 
-#: view/kateviewhelpers.cpp:2626 view/kateviewhelpers.cpp:2627
+#: view/kateviewhelpers.cpp:2632 view/kateviewhelpers.cpp:2633
 #, kde-format
 msgid "Mark Type %1"
 msgstr "चिनो प्रकार %1"
 
-#: view/kateviewhelpers.cpp:2650
+#: view/kateviewhelpers.cpp:2656
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "पूर्वानिर्धारित चिनो प्रकार सेट गर्नुहोस्"
 
-#: view/kateviewhelpers.cpp:2795
+#: view/kateviewhelpers.cpp:2801
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr ""

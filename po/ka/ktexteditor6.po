@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-22 00:40+0000\n"
+"POT-Creation-Date: 2026-03-12 00:40+0000\n"
 "PO-Revision-Date: 2026-02-22 10:03+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -4790,7 +4790,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "მარკერის ფერები"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1530
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1536
 #, kde-format
 msgid "Bookmark"
 msgstr "სანიშნე"
@@ -7927,19 +7927,19 @@ msgstr "სწორების ნიმუში:"
 msgid "Export File as HTML"
 msgstr "ფაილის გატანა HTML ფორმატში"
 
-#: view/kateviewhelpers.cpp:296 view/kateviewhelpers.cpp:345
-#: view/kateviewhelpers.cpp:1006
+#: view/kateviewhelpers.cpp:302 view/kateviewhelpers.cpp:351
+#: view/kateviewhelpers.cpp:1012
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1206
+#: view/kateviewhelpers.cpp:1212
 #, kde-format
 msgid "Available Commands"
 msgstr "ხელმისაწვდომი ბრძანებები"
 
-#: view/kateviewhelpers.cpp:1207
+#: view/kateviewhelpers.cpp:1213
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7948,17 +7948,17 @@ msgstr ""
 "<p>ინდივიდუალური ბრძანების დახმარებებისათვის გამოიყენეთ <code>'help &lt;"
 "ბრძანება&gt;'</code></p>"
 
-#: view/kateviewhelpers.cpp:1214
+#: view/kateviewhelpers.cpp:1220
 #, kde-format
 msgid "No help for '%1'"
 msgstr "'%1'-სთვის დახმარება ვერ ვიპოვე"
 
-#: view/kateviewhelpers.cpp:1217
+#: view/kateviewhelpers.cpp:1223
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "<b>%1</b> ბრძანება არაა"
 
-#: view/kateviewhelpers.cpp:1223
+#: view/kateviewhelpers.cpp:1229
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7971,37 +7971,37 @@ msgstr ""
 "სიის სანახავად შეიყვანეთ <code><b>help list</b></code><br />სათითაო "
 "ბრძანებებისთვის შეიყვანეთ <code><b>help &lt;ბრძანება&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1311 vimode/emulatedcommandbar/commandmode.cpp:211
+#: view/kateviewhelpers.cpp:1317 vimode/emulatedcommandbar/commandmode.cpp:211
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "უცნობი ბრძანება: \"%1\""
 
-#: view/kateviewhelpers.cpp:1314 vimode/emulatedcommandbar/commandmode.cpp:193
+#: view/kateviewhelpers.cpp:1320 vimode/emulatedcommandbar/commandmode.cpp:193
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "შეცდომა: ბრძანებისთვის \"%1\" დიაპაზონს ვერ მიუთითებთ."
 
-#: view/kateviewhelpers.cpp:1324 vimode/emulatedcommandbar/commandmode.cpp:197
+#: view/kateviewhelpers.cpp:1330 vimode/emulatedcommandbar/commandmode.cpp:197
 #, kde-format
 msgid "Success: "
 msgstr "წარმატება: "
 
-#: view/kateviewhelpers.cpp:1338 vimode/emulatedcommandbar/commandmode.cpp:206
+#: view/kateviewhelpers.cpp:1344 vimode/emulatedcommandbar/commandmode.cpp:206
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "ბრძანება \"%1\" ავარიულად დასრულდა."
 
-#: view/kateviewhelpers.cpp:2626 view/kateviewhelpers.cpp:2627
+#: view/kateviewhelpers.cpp:2632 view/kateviewhelpers.cpp:2633
 #, kde-format
 msgid "Mark Type %1"
 msgstr "ნიშნის ტიპი %1"
 
-#: view/kateviewhelpers.cpp:2650
+#: view/kateviewhelpers.cpp:2656
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "ნაგულისხმევი ნიშნის ტიპის დაყენება"
 
-#: view/kateviewhelpers.cpp:2795
+#: view/kateviewhelpers.cpp:2801
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "ანოტაციის ზოლის გამორთვა"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-22 00:40+0000\n"
+"POT-Creation-Date: 2026-03-12 00:40+0000\n"
 "PO-Revision-Date: 2011-12-15 14:55+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@linuxshop.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -4976,7 +4976,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "رنگها"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1530
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1536
 #, kde-format
 msgid "Bookmark"
 msgstr "چوب الف"
@@ -8153,19 +8153,19 @@ msgstr ""
 msgid "Export File as HTML"
 msgstr "صادرات پرونده به عنوان زنگام"
 
-#: view/kateviewhelpers.cpp:296 view/kateviewhelpers.cpp:345
-#: view/kateviewhelpers.cpp:1006
+#: view/kateviewhelpers.cpp:302 view/kateviewhelpers.cpp:351
+#: view/kateviewhelpers.cpp:1012
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1206
+#: view/kateviewhelpers.cpp:1212
 #, kde-format
 msgid "Available Commands"
 msgstr "فرمانهای موجود"
 
-#: view/kateviewhelpers.cpp:1207
+#: view/kateviewhelpers.cpp:1213
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -8174,17 +8174,17 @@ msgstr ""
 "<p>برای کمک در مورد فرمانهای شخصی، <code>'help &lt;command&gt;'</code> را "
 "اجرا کنید</p>"
 
-#: view/kateviewhelpers.cpp:1214
+#: view/kateviewhelpers.cpp:1220
 #, kde-format
 msgid "No help for '%1'"
 msgstr "بدون کمک برای «%1»"
 
-#: view/kateviewhelpers.cpp:1217
+#: view/kateviewhelpers.cpp:1223
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "چنین فرمانی وجود ندارد <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1223
+#: view/kateviewhelpers.cpp:1229
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -8197,37 +8197,37 @@ msgstr ""
 "کمک</b></code><br /> را وارد کنید. برای کمک در مورد فرمانهای شخصی،<code><b> "
 "help &lt;command&gt;</b></code> را وارد کنید </p>"
 
-#: view/kateviewhelpers.cpp:1311 vimode/emulatedcommandbar/commandmode.cpp:211
+#: view/kateviewhelpers.cpp:1317 vimode/emulatedcommandbar/commandmode.cpp:211
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "بدون چنین فرمانی: »%1«"
 
-#: view/kateviewhelpers.cpp:1314 vimode/emulatedcommandbar/commandmode.cpp:193
+#: view/kateviewhelpers.cpp:1320 vimode/emulatedcommandbar/commandmode.cpp:193
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1324 vimode/emulatedcommandbar/commandmode.cpp:197
+#: view/kateviewhelpers.cpp:1330 vimode/emulatedcommandbar/commandmode.cpp:197
 #, kde-format
 msgid "Success: "
 msgstr "موفقیت: "
 
-#: view/kateviewhelpers.cpp:1338 vimode/emulatedcommandbar/commandmode.cpp:206
+#: view/kateviewhelpers.cpp:1344 vimode/emulatedcommandbar/commandmode.cpp:206
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "خرابی در فرمان »%1«."
 
-#: view/kateviewhelpers.cpp:2626 view/kateviewhelpers.cpp:2627
+#: view/kateviewhelpers.cpp:2632 view/kateviewhelpers.cpp:2633
 #, kde-format
 msgid "Mark Type %1"
 msgstr "نشان‌دار کردن نوع  %1"
 
-#: view/kateviewhelpers.cpp:2650
+#: view/kateviewhelpers.cpp:2656
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "تنظیم نوع نشان پیش‌فرض"
 
-#: view/kateviewhelpers.cpp:2795
+#: view/kateviewhelpers.cpp:2801
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr ""
