@@ -1411,11 +1411,13 @@ void KateViewInternal::wordPrev(bool sel, bool subword)
                 cc.moveBack();
                 return cc;
             } else if (characterAtPreviousColumn(c).isLetterOrNumber()) {
-                while (!c.atEdge(left) && h->isInWord(characterAtPreviousColumn(c)) && characterAtPreviousColumn(c).isLetterOrNumber()) {
+                QChar ch;
+                while (!c.atEdge(left) && (ch = characterAtPreviousColumn(c), h->isInWord(ch) && ch.isLetterOrNumber())) {
                     c.moveBack();
                 }
             } else {
-                while (!c.atEdge(left) && h->isInWord(characterAtPreviousColumn(c)) && !characterAtPreviousColumn(c).isLetterOrNumber()) {
+                QChar ch;
+                while (!c.atEdge(left) && (ch = characterAtPreviousColumn(c), h->isInWord(ch) && !ch.isLetterOrNumber())) {
                     c.moveBack();
                 }
             }
@@ -1474,11 +1476,13 @@ void KateViewInternal::wordNext(bool sel, bool subword)
                 cc.moveForward();
                 return cc;
             } else if (doc()->characterAt(c).isLetterOrNumber()) {
-                while (!c.atEdge(right) && h->isInWord(doc()->characterAt(c)) && doc()->characterAt(c).isLetterOrNumber()) {
+                QChar ch;
+                while (!c.atEdge(right) && (ch = doc()->characterAt(c), h->isInWord(ch) && ch.isLetterOrNumber())) {
                     c.moveForward();
                 }
             } else {
-                while (!c.atEdge(right) && h->isInWord(doc()->characterAt(c)) && !doc()->characterAt(c).isLetterOrNumber()) {
+                QChar ch;
+                while (!c.atEdge(right) && (ch = doc()->characterAt(c), h->isInWord(ch) && !ch.isLetterOrNumber())) {
                     c.moveForward();
                 }
             }
