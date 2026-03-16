@@ -1410,8 +1410,12 @@ void KateViewInternal::wordPrev(bool sel, bool subword)
                 CamelCursor cc(this, cursor);
                 cc.moveBack();
                 return cc;
+            } else if (characterAtPreviousColumn(c).isLetterOrNumber()) {
+                while (!c.atEdge(left) && h->isInWord(characterAtPreviousColumn(c)) && characterAtPreviousColumn(c).isLetterOrNumber()) {
+                    c.moveBack();
+                }
             } else {
-                while (!c.atEdge(left) && h->isInWord(characterAtPreviousColumn(c))) {
+                while (!c.atEdge(left) && h->isInWord(characterAtPreviousColumn(c)) && !characterAtPreviousColumn(c).isLetterOrNumber()) {
                     c.moveBack();
                 }
             }
@@ -1469,8 +1473,12 @@ void KateViewInternal::wordNext(bool sel, bool subword)
                 CamelCursor cc(this, cursor);
                 cc.moveForward();
                 return cc;
+            } else if (doc()->characterAt(c).isLetterOrNumber()) {
+                while (!c.atEdge(right) && h->isInWord(doc()->characterAt(c)) && doc()->characterAt(c).isLetterOrNumber()) {
+                    c.moveForward();
+                }
             } else {
-                while (!c.atEdge(right) && h->isInWord(doc()->characterAt(c))) {
+                while (!c.atEdge(right) && h->isInWord(doc()->characterAt(c)) && !doc()->characterAt(c).isLetterOrNumber()) {
                     c.moveForward();
                 }
             }
