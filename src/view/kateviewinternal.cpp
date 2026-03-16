@@ -1410,14 +1410,10 @@ void KateViewInternal::wordPrev(bool sel, bool subword)
                 CamelCursor cc(this, cursor);
                 cc.moveBack();
                 return cc;
-            } else if (characterAtPreviousColumn(c).isLetterOrNumber()) {
-                QChar ch;
-                while (!c.atEdge(left) && (ch = characterAtPreviousColumn(c), h->isInWord(ch) && ch.isLetterOrNumber())) {
-                    c.moveBack();
-                }
             } else {
+                bool inAlphaNumWord = characterAtPreviousColumn(c).isLetterOrNumber();
                 QChar ch;
-                while (!c.atEdge(left) && (ch = characterAtPreviousColumn(c), h->isInWord(ch) && !ch.isLetterOrNumber())) {
+                while (!c.atEdge(left) && (ch = characterAtPreviousColumn(c), h->isInWord(ch) && ch.isLetterOrNumber() == inAlphaNumWord)) {
                     c.moveBack();
                 }
             }
@@ -1475,14 +1471,10 @@ void KateViewInternal::wordNext(bool sel, bool subword)
                 CamelCursor cc(this, cursor);
                 cc.moveForward();
                 return cc;
-            } else if (doc()->characterAt(c).isLetterOrNumber()) {
-                QChar ch;
-                while (!c.atEdge(right) && (ch = doc()->characterAt(c), h->isInWord(ch) && ch.isLetterOrNumber())) {
-                    c.moveForward();
-                }
             } else {
+                bool inAlphaNumWord = doc()->characterAt(c).isLetterOrNumber();
                 QChar ch;
-                while (!c.atEdge(right) && (ch = doc()->characterAt(c), h->isInWord(ch) && !ch.isLetterOrNumber())) {
+                while (!c.atEdge(right) && (ch = doc()->characterAt(c), h->isInWord(ch) && ch.isLetterOrNumber() == inAlphaNumWord)) {
                     c.moveForward();
                 }
             }
