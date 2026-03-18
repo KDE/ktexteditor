@@ -1380,9 +1380,10 @@ void KateViewInternal::cursorNextChar(bool sel)
     moveChar(KateViewInternal::right, sel);
 }
 
-static bool inWordBlock(KateHighlighting *h, QChar ch, bool inAlphaNumWordBlock)
+static bool inWordBlock(QChar ch, bool inAlphaNumWordBlock)
 {
-    return h->isInWord(ch) && ch.isLetterOrNumber() == inAlphaNumWordBlock;
+    static QChar underscore = QLatin1Char('_');
+    return (ch.isLetterOrNumber() || ch == underscore) == inAlphaNumWordBlock;
 }
 
 void KateViewInternal::wordPrev(bool sel, bool subword)
@@ -1417,7 +1418,7 @@ void KateViewInternal::wordPrev(bool sel, bool subword)
                 return cc;
             } else {
                 bool inAlphaNumWordBlock = characterAtPreviousColumn(c).isLetterOrNumber();
-                while (!c.atEdge(left) && inWordBlock(h, characterAtPreviousColumn(c), inAlphaNumWordBlock)) {
+                while (!c.atEdge(left) && inWordBlock(characterAtPreviousColumn(c), inAlphaNumWordBlock)) {
                     c.moveBack();
                 }
             }
@@ -1477,7 +1478,7 @@ void KateViewInternal::wordNext(bool sel, bool subword)
                 return cc;
             } else {
                 bool inAlphaNumWordBlock = doc()->characterAt(c).isLetterOrNumber();
-                while (!c.atEdge(right) && inWordBlock(h, doc()->characterAt(c), inAlphaNumWordBlock)) {
+                while (!c.atEdge(right) && inWordBlock(doc()->characterAt(c), inAlphaNumWordBlock)) {
                     c.moveForward();
                 }
             }
