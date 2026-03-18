@@ -20,7 +20,7 @@ private Q_SLOTS:
     void testMoveToNextWordSingleLine();
     void testMoveToPrevWordSingleLine();
     void testMoveToWordsMultipleLines();
-    void testNonAlnumBoundary();
+    void testCamelCaseWithoutCamelCursor();
 };
 
 #endif // CURSOR_WORDS_TEST_H

@@ -159,16 +159,20 @@ void CursorWordsTest::testMoveToWordsMultipleLines()
     COMPARE_CHAR_AND_CURSOR(view, Cursor(0, 12), '.');
 }
 
-void CursorWordsTest::testNonAlnumBoundary()
+void CursorWordsTest::testCamelCaseWithoutCamelCursor()
 {
-    // '@' is in-word by default (not a word delimiter) but not alphanumeric.
-    // Non-alphanumeric in-word chars should form their own block during word movement,
-    // even without CamelCursor enabled.
     {
-        auto [doc, view] = createDocAndView(QStringLiteral("foo@bar"), 0, 0);
+        auto [doc, view] = createDocAndView(QStringLiteral("HelloWorld"), 0, 0);
 
         view->wordRight();
-        QCOMPARE(view->cursorPosition(), Cursor(0, 3));
+        QCOMPARE(view->cursorPosition(), Cursor(0, 10));
+
+        view->wordLeft();
+        QCOMPARE(view->cursorPosition(), Cursor(0, 0));
+    }
+
+    {
+        auto [doc, view] = createDocAndView(QStringLiteral("foo_Bar"), 0, 0);
 
         view->wordRight();
         QCOMPARE(view->cursorPosition(), Cursor(0, 4));
@@ -176,35 +180,8 @@ void CursorWordsTest::testNonAlnumBoundary()
         view->wordRight();
         QCOMPARE(view->cursorPosition(), Cursor(0, 7));
 
-        // reverse
         view->wordLeft();
         QCOMPARE(view->cursorPosition(), Cursor(0, 4));
-
-        view->wordLeft();
-        QCOMPARE(view->cursorPosition(), Cursor(0, 3));
-
-        view->wordLeft();
-        QCOMPARE(view->cursorPosition(), Cursor(0, 0));
-    }
-
-    { // group of non-alphanumeric in-word chars
-        auto [doc, view] = createDocAndView(QStringLiteral("foo@@bar"), 0, 0);
-
-        view->wordRight();
-        QCOMPARE(view->cursorPosition(), Cursor(0, 3));
-
-        view->wordRight();
-        QCOMPARE(view->cursorPosition(), Cursor(0, 5));
-
-        view->wordRight();
-        QCOMPARE(view->cursorPosition(), Cursor(0, 8));
-
-        // reverse
-        view->wordLeft();
-        QCOMPARE(view->cursorPosition(), Cursor(0, 5));
-
-        view->wordLeft();
-        QCOMPARE(view->cursorPosition(), Cursor(0, 3));
 
         view->wordLeft();
         QCOMPARE(view->cursorPosition(), Cursor(0, 0));

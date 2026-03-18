@@ -1176,8 +1176,9 @@ public:
 class CamelCursor final : public CalculatingCursor
 {
 public:
-    CamelCursor(KateViewInternal *vi, const KTextEditor::Cursor c)
+    CamelCursor(KateViewInternal *vi, const KTextEditor::Cursor c, bool camelCursor)
         : CalculatingCursor(vi, c)
+        , m_camelCursor(camelCursor)
     {
     }
 
@@ -1213,7 +1214,7 @@ public:
             int col = column();
             const QString text = m_vi->doc()->line(thisLine->line());
 
-            if (col < text.size() && text.at(col).isUpper()) {
+            if (m_camelCursor && col < text.size() && text.at(col).isUpper()) {
                 skipCaps(text, col);
             }
 
@@ -1222,7 +1223,7 @@ public:
                 if (isSurrogate(c)) {
                     col++;
                     continue;
-                } else if (c.isUpper() || !c.isLetterOrNumber()) {
+                } else if ((m_camelCursor && c.isUpper()) || !c.isLetterOrNumber()) {
                     break;
                 }
                 ++col;
@@ -1295,7 +1296,7 @@ public:
                 }
             }
 
-            if (col > 0 && text.at(col).isUpper()) {
+            if (m_camelCursor && col > 0 && text.at(col).isUpper()) {
                 skipCapsRev(text, col);
             }
 
@@ -1304,7 +1305,7 @@ public:
                 if (isSurrogate(c)) {
                     --col;
                     continue;
-                } else if (c.isUpper() || !c.isLetterOrNumber()) {
+                } else if ((m_camelCursor && c.isUpper()) || !c.isLetterOrNumber()) {
                     break;
                 }
                 --col;
@@ -1328,6 +1329,9 @@ public:
         Q_ASSERT(valid());
         return *this;
     }
+
+private:
+    const bool m_camelCursor;
 };
 
 void KateViewInternal::moveChar(KateViewInternal::Bias bias, bool sel)
@@ -1380,12 +1384,6 @@ void KateViewInternal::cursorNextChar(bool sel)
     moveChar(KateViewInternal::right, sel);
 }
 
-static bool inWordBlock(QChar ch, bool inAlphaNumWordBlock)
-{
-    static QChar underscore = QLatin1Char('_');
-    return (ch.isLetterOrNumber() || ch == underscore) == inAlphaNumWordBlock;
-}
-
 void KateViewInternal::wordPrev(bool sel, bool subword)
 {
     auto characterAtPreviousColumn = [this](KTextEditor::Cursor cursor) -> QChar {
@@ -1412,16 +1410,9 @@ void KateViewInternal::wordPrev(bool sel, bool subword)
         if (c.atEdge(left)) {
             c.moveBack();
         } else if (h->isInWord(characterAtPreviousColumn(c))) {
-            if (subword || doc()->config()->camelCursor()) {
-                CamelCursor cc(this, cursor);
-                cc.moveBack();
-                return cc;
-            } else {
-                bool inAlphaNumWordBlock = characterAtPreviousColumn(c).isLetterOrNumber();
-                while (!c.atEdge(left) && inWordBlock(characterAtPreviousColumn(c), inAlphaNumWordBlock)) {
-                    c.moveBack();
-                }
-            }
+            CamelCursor cc(this, cursor, subword || doc()->config()->camelCursor());
+            cc.moveBack();
+            return cc;
         } else {
             while (!c.atEdge(left)
                    && !h->isInWord(characterAtPreviousColumn(c))
@@ -1472,16 +1463,9 @@ void KateViewInternal::wordNext(bool sel, bool subword)
         if (c.atEdge(right)) {
             c.moveForward();
         } else if (h->isInWord(doc()->characterAt(c))) {
-            if (subword || doc()->config()->camelCursor()) {
-                CamelCursor cc(this, cursor);
-                cc.moveForward();
-                return cc;
-            } else {
-                bool inAlphaNumWordBlock = doc()->characterAt(c).isLetterOrNumber();
-                while (!c.atEdge(right) && inWordBlock(doc()->characterAt(c), inAlphaNumWordBlock)) {
-                    c.moveForward();
-                }
-            }
+            CamelCursor cc(this, cursor, subword || doc()->config()->camelCursor());
+            cc.moveForward();
+            return cc;
         } else {
             while (!c.atEdge(right)
                    && !h->isInWord(doc()->characterAt(c))
