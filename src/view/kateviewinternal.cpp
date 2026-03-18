@@ -1380,6 +1380,11 @@ void KateViewInternal::cursorNextChar(bool sel)
     moveChar(KateViewInternal::right, sel);
 }
 
+static bool inWordBlock(KateHighlighting *h, QChar ch, bool inAlphaNumWordBlock)
+{
+    return h->isInWord(ch) && ch.isLetterOrNumber() == inAlphaNumWordBlock;
+}
+
 void KateViewInternal::wordPrev(bool sel, bool subword)
 {
     auto characterAtPreviousColumn = [this](KTextEditor::Cursor cursor) -> QChar {
@@ -1411,9 +1416,8 @@ void KateViewInternal::wordPrev(bool sel, bool subword)
                 cc.moveBack();
                 return cc;
             } else {
-                bool inAlphaNumWord = characterAtPreviousColumn(c).isLetterOrNumber();
-                QChar ch;
-                while (!c.atEdge(left) && (ch = characterAtPreviousColumn(c), h->isInWord(ch) && ch.isLetterOrNumber() == inAlphaNumWord)) {
+                bool inAlphaNumWordBlock = characterAtPreviousColumn(c).isLetterOrNumber();
+                while (!c.atEdge(left) && inWordBlock(h, characterAtPreviousColumn(c), inAlphaNumWordBlock)) {
                     c.moveBack();
                 }
             }
@@ -1472,9 +1476,8 @@ void KateViewInternal::wordNext(bool sel, bool subword)
                 cc.moveForward();
                 return cc;
             } else {
-                bool inAlphaNumWord = doc()->characterAt(c).isLetterOrNumber();
-                QChar ch;
-                while (!c.atEdge(right) && (ch = doc()->characterAt(c), h->isInWord(ch) && ch.isLetterOrNumber() == inAlphaNumWord)) {
+                bool inAlphaNumWordBlock = doc()->characterAt(c).isLetterOrNumber();
+                while (!c.atEdge(right) && inWordBlock(h, doc()->characterAt(c), inAlphaNumWordBlock)) {
                     c.moveForward();
                 }
             }
