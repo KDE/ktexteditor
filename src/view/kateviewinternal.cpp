@@ -1091,12 +1091,16 @@ public:
 };
 
 /**
- * @brief The CamelCursor class
+ * @brief The WordCursor class
  *
- * This class allows for "camel humps" when moving the cursor
+ * This class handles word-boundary movement of the cursor
  * using Ctrl + Left / Right. Similarly, this will also get triggered
  * when you press Ctrl+Shift+Left/Right for selection and Ctrl+Del
  * Ctrl + backspace for deletion.
+ *
+ * When SubWordBehavior::StopAtCamelCaseSubWords is set, the cursor
+ * additionally stops at camel case sub-word boundaries (e.g. "KateView"
+ * is two sub-words: "Kate" and "View").
  *
  * It is absolutely essential that if you move through a word in 'n'
  * jumps, you should be able to move back with exactly same 'n' movements
@@ -1173,12 +1177,17 @@ public:
  *
  * @author Waqar Ahmed <waqar.17a@gmail.com>
  */
-class CamelCursor final : public CalculatingCursor
+enum class SubWordBehavior {
+    StopAtCamelCaseSubWords,
+    None,
+};
+
+class WordCursor final : public CalculatingCursor
 {
 public:
-    CamelCursor(KateViewInternal *vi, const KTextEditor::Cursor c, bool camelCursor)
+    WordCursor(KateViewInternal *vi, const KTextEditor::Cursor c, SubWordBehavior subWordBehavior)
         : CalculatingCursor(vi, c)
-        , m_camelCursor(camelCursor)
+        , m_subWordBehavior(subWordBehavior)
     {
     }
 
@@ -1214,7 +1223,7 @@ public:
             int col = column();
             const QString text = m_vi->doc()->line(thisLine->line());
 
-            if (m_camelCursor && col < text.size() && text.at(col).isUpper()) {
+            if (m_subWordBehavior == SubWordBehavior::StopAtCamelCaseSubWords && col < text.size() && text.at(col).isUpper()) {
                 skipCaps(text, col);
             }
 
@@ -1223,7 +1232,7 @@ public:
                 if (isSurrogate(c)) {
                     col++;
                     continue;
-                } else if ((m_camelCursor && c.isUpper()) || !c.isLetterOrNumber()) {
+                } else if ((m_subWordBehavior == SubWordBehavior::StopAtCamelCaseSubWords && c.isUpper()) || !c.isLetterOrNumber()) {
                     break;
                 }
                 ++col;
@@ -1296,7 +1305,7 @@ public:
                 }
             }
 
-            if (m_camelCursor && col > 0 && text.at(col).isUpper()) {
+            if (m_subWordBehavior == SubWordBehavior::StopAtCamelCaseSubWords && col > 0 && text.at(col).isUpper()) {
                 skipCapsRev(text, col);
             }
 
@@ -1305,7 +1314,7 @@ public:
                 if (isSurrogate(c)) {
                     --col;
                     continue;
-                } else if ((m_camelCursor && c.isUpper()) || !c.isLetterOrNumber()) {
+                } else if ((m_subWordBehavior == SubWordBehavior::StopAtCamelCaseSubWords && c.isUpper()) || !c.isLetterOrNumber()) {
                     break;
                 }
                 --col;
@@ -1331,7 +1340,7 @@ public:
     }
 
 private:
-    const bool m_camelCursor;
+    const SubWordBehavior m_subWordBehavior;
 };
 
 void KateViewInternal::moveChar(KateViewInternal::Bias bias, bool sel)
@@ -1410,7 +1419,7 @@ void KateViewInternal::wordPrev(bool sel, bool subword)
         if (c.atEdge(left)) {
             c.moveBack();
         } else if (h->isInWord(characterAtPreviousColumn(c))) {
-            CamelCursor cc(this, cursor, subword || doc()->config()->camelCursor());
+            WordCursor cc(this, cursor, (subword || doc()->config()->camelCursor()) ? SubWordBehavior::StopAtCamelCaseSubWords : SubWordBehavior::None);
             cc.moveBack();
             return cc;
         } else {
@@ -1463,7 +1472,7 @@ void KateViewInternal::wordNext(bool sel, bool subword)
         if (c.atEdge(right)) {
             c.moveForward();
         } else if (h->isInWord(doc()->characterAt(c))) {
-            CamelCursor cc(this, cursor, subword || doc()->config()->camelCursor());
+            WordCursor cc(this, cursor, (subword || doc()->config()->camelCursor()) ? SubWordBehavior::StopAtCamelCaseSubWords : SubWordBehavior::None);
             cc.moveForward();
             return cc;
         } else {

@@ -71,7 +71,7 @@ class KateViewInternal final : public QWidget
     friend class CalculatingCursor;
     friend class BoundedCursor;
     friend class WrappingCursor;
-    friend class CamelCursor;
+    friend class WordCursor;
     friend class KateAbstractInputMode;
     friend class KateViewTest;
 
