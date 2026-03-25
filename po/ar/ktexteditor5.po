@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:00+0000\n"
-"PO-Revision-Date: 2025-09-25 11:58+0400\n"
+"PO-Revision-Date: 2026-03-24 10:40+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -262,7 +262,7 @@ msgid ""
 "<p>If this option is checked, every new view will show marks on the vertical "
 "scrollbar.</p><p>These marks will show bookmarks, for instance.</p>"
 msgstr ""
-"<p>إن أُشّر هذا الخيار، سيعرض كلّ منظور جديد إشارات على شريط التّمرير الرأسيّ.</"
+"<p>إن أُشّر هذا الخيار، سيعرض كلّ منظور جديد إشارات على شريط التّمرير العمودي.</"
 "p><p>ستعرض هذه الإشارات العلامات مثلًا.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
@@ -272,8 +272,8 @@ msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
 msgstr ""
-"<p>إن أُشّر هذا الخيار، وضع المؤشّر على شريط التّمرير الرأسيّ سيعرض معاينة للنّصّ.</"
-"p>"
+"<p>إن أُشّر هذا الخيار، وضع المؤشّر على شريط التّمرير العمودي سيعرض معاينة للنّصّ."
+"</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:141
@@ -294,7 +294,7 @@ msgid ""
 "If this option is checked, every new view will show a mini map on the "
 "vertical scrollbar."
 msgstr ""
-"إن أُشّر هذا الخيار، سيعرض كلّ منظور جديد خريطة مصغرة على شريط التّمرير الرأسيّ."
+"إن أُشّر هذا الخيار، سيعرض كلّ منظور جديد خريطة مصغرة على شريط التّمرير العمودي."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:174
@@ -310,7 +310,7 @@ msgid ""
 "document on the vertical scrollbar."
 msgstr ""
 "إن أُشّر هذا الخيار، سيعرض كلّ منظور جديد خريطة مصغرة للمستند بالكامل على شريط "
-"التّمرير الرأسيّ."
+"التّمرير العمودي."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:187
@@ -534,14 +534,14 @@ msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"<p>إن أُشّر هذا الخيار، فسيُرسم خطّ رأسيّ عند عمود لفّ الكلمات كما هو محدّد في "
+"<p>إن أُشّر هذا الخيار، فسيُرسم خطّ عمودي عند عمود لفّ الكلمات كما هو محدّد في "
 "خصائص <strong>التّحرير</strong>.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
 #, kde-format
 msgid "&Draw vertical line at the word wrap column"
-msgstr "ارسم خطًا &رأسيًا عند عمود التفاف الكلمات"
+msgstr "ارسم خطًا &عموديًا عند عمود التفاف الكلمات"
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
@@ -1338,7 +1338,7 @@ msgid ""
 "Selects whether the PageUp and PageDown keys should alter the vertical "
 "position of the cursor relative to the top of the view."
 msgstr ""
-"يحدّد فيما إذا كان مفتاحيّ PageUp وPageDown سيغيّران المكان الرأسيّ للمؤشّر نسبة "
+"يحدّد فيما إذا كان مفتاحيّ PageUp وPageDown سيغيّران المكان العمودي للمؤشّر نسبة "
 "إلى أعلى المنظور."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkPagingMovesCursor)
@@ -1942,7 +1942,7 @@ msgstr "شريحة مطابقة الفلاش عندما يتحرك المؤشر 
 msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
 "indent lines."
-msgstr "إن فُعّل هذا، سيعرض المحرّر أسطر رأسيّة تساعد في التّعرف على أسطر الإزاحة."
+msgstr "إن فُعّل هذا، سيعرض المحرّر أسطر عمودية تساعد في التّعرف على أسطر الإزاحة."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:224
@@ -2054,11 +2054,11 @@ msgid ""
 "indentation levels are deeper than 50% of the width of the screen will not "
 "have vertical alignment applied to subsequent wrapped lines.</p>"
 msgstr ""
-"<p>يتيح محاذاة بداية السطور الملتفة ديناميكيًا رأسيًا إلى مستوى الإزاحة للسطر "
+"<p>يتيح محاذاة بداية السطور الملتفة ديناميكيًا عموديًا إلى مستوى الإزاحة للسطر "
 "الأول. يمكن أن يساعد هذا في جعل التعليمات البرمجية والعلامات أكثر قابلية "
 "للقراءة.</p><p>بالإضافة إلى ذلك، يسمح لك هذا بتعيين أقصى عرض للشاشة كنسبة "
-"مئوية، وبعد ذلك لن تكون السطور الملتفة ديناميكيًا محاذية رأسيًا. على سبيل "
-"المثال، عند 50%، لن تطبق المحاذاة الرأسية على السطور الملتفة اللاحقة التي "
+"مئوية، وبعد ذلك لن تكون السطور الملتفة ديناميكيًا محاذية عموديًا. على سبيل "
+"المثال، عند 50%، لن تطبق المحاذاة العمودية على السطور الملتفة اللاحقة التي "
 "تكون مستويات المسافة البادئة فيها أعمق من 50% من عرض الشاشة.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
@@ -4568,7 +4568,7 @@ msgid ""
 "wrapped</dd><dt>Dynamic Word Wrap</dt><dd>An arrow shown to the left of "
 "visually-wrapped lines</dd></dl>"
 msgstr ""
-"<p>يضبط لون علامات لفّ الكلمات:</p><dl><dt>لفّ الكلمات الثابت</dt><dd>خطّ رأسيّ "
+"<p>يضبط لون علامات لفّ الكلمات:</p><dl><dt>لفّ الكلمات الثابت</dt><dd>خطّ عمودي "
 "يعرض العمود الذي سيُلفّ عنده النّصّ</dd><dt>لفّ الكلمات حركيًّا</dt><dd>سهم يُعرض "
 "يسار الأسهم الملفوفة</dd></dl>"
 
@@ -4637,7 +4637,7 @@ msgstr "سطر الإزاحة"
 #: syntax/katethemeconfig.cpp:306
 #, kde-format
 msgid "<p>Sets the color of the vertical indentation lines.</p>"
-msgstr "<p>يضبط لون أسطر الإزاحة الرأسية.</p>"
+msgstr "<p>يضبط لون أسطر الإزاحة العمودية.</p>"
 
 #: syntax/katethemeconfig.cpp:311
 #, kde-format
@@ -6891,7 +6891,7 @@ msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
 "column as defined in the editing properties"
 msgstr ""
-"أظهر/أخفِ علامة لفّ الكلمات، وهي خطّ رأسيّ يُرسم عند عمود لفّ الكلمات كما هو محدّد "
+"أظهر/أخفِ علامة لفّ الكلمات، وهي خطّ عمودي يُرسم عند عمود لفّ الكلمات كما هو محدّد "
 "في خصائص التّحرير."
 
 #: view/kateview.cpp:766
@@ -6942,7 +6942,7 @@ msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
 "bookmarks, for instance."
 msgstr ""
-"اعرض/اخف العلامات من على شريط التمرير الرأسي<br /><br /> تعرض العلامات "
+"اعرض/اخف العلامات من على شريط التمرير العمودي<br /><br /> تعرض العلامات "
 "علامات المفضلة على سبيل المثال."
 
 #: view/kateview.cpp:786
@@ -6956,7 +6956,7 @@ msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
 "shows an overview of the whole document."
 msgstr ""
-"أظهر/أخفِ الخريطة الصّغيرة على شريط التّمرير الأفقيّ.<br /><br />تعرض هذه "
+"أظهر/أخفِ الخريطة الصّغيرة على شريط التّمرير العمودي.<br /><br />تعرض هذه "
 "الخريطة نظرة عامّة على المستند بالكامل."
 
 #. i18n("Show the whole document in the Mini-Map"), this);
@@ -7735,7 +7735,7 @@ msgstr ""
 "<p><b>[v]new &mdash; تقسيم العرض وإنشاء مستند جديد</b></p><p>الاستخدام: "
 "<tt><b>[v]new</b></tt></p><p>تقسيم العرض الحالي وفتح مستند جديد في العرض "
 "الجديد. يمكن استدعاء هذا الأمر بطريقتين:<br /><tt>new</tt> &mdash; تقسيم "
-"العرض أفقيًا وفتح مستند جديد.<br /><tt>vnew</tt> &mdash; تقسيم العرض رأسيًا "
+"العرض أفقيًا وفتح مستند جديد.<br /><tt>vnew</tt> &mdash; تقسيم العرض عموديًا "
 "وفتح مستند جديد.<br /></p>"
 
 #: vimode/appcommands.cpp:270
