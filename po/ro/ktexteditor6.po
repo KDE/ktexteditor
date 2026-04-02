@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-22 00:39+0000\n"
-"PO-Revision-Date: 2026-02-09 16:04+0000\n"
+"PO-Revision-Date: 2026-04-01 15:01+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -1083,15 +1083,12 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "Mărește nivelul de spațiere dacă se află în spațiu alb de &început"
 
 #: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
-#, fuzzy, kde-format
-#| msgctxt "Wrap words at"
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " caracter"
-msgstr[1] " caractere"
-msgstr[2] " de caractere"
+msgstr[0] "%v caracter"
+msgstr[1] "%v caractere"
+msgstr[2] "%v de caractere"
 
 #: dialogs/katedialogs.cpp:210
 #, kde-format
@@ -1159,16 +1156,13 @@ msgid "Text Navigation"
 msgstr "Navigare prin text"
 
 #: dialogs/katedialogs.cpp:581
-#, fuzzy, kde-format
-#| msgctxt "Wrap words at"
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " caracter"
-msgstr[1] " caractere"
-msgstr[2] " de caractere"
+msgstr[0] "%v caracter"
+msgstr[1] "%v caractere"
+msgstr[2] "%v de caractere"
 
 #: dialogs/katedialogs.cpp:586
 #, kde-format
@@ -1206,11 +1200,9 @@ msgid "Editing Options"
 msgstr "Opțiuni editare"
 
 #: dialogs/katedialogs.cpp:748
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Stata"
+#, kde-format
 msgid "Statusbar"
-msgstr "Stata"
+msgstr "Bară de stare"
 
 #: dialogs/katedialogs.cpp:750
 #, kde-format
@@ -1281,7 +1273,7 @@ msgstr "Mergi"
 #: dialogs/katedialogs.cpp:1340
 #, kde-format
 msgid "No valid line number found in clipboard"
-msgstr ""
+msgstr "Nu a fost găsit un număr valid de linie în clipboard"
 
 #: dialogs/katedialogs.cpp:1404
 #, kde-format
@@ -1299,6 +1291,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Reîncarcă și va reîncărca automat fără avertizări despre modificările de pe "
+"disc de acum încolo până închideți fila sau fereastra."
 
 #: dialogs/katedialogs.cpp:1464
 #, kde-format
@@ -1306,10 +1300,9 @@ msgid "View &Difference"
 msgstr "Vezi &diferența"
 
 #: dialogs/katedialogs.cpp:1466
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "Arată diferența modificărilor"
+msgstr "Arată diferența modificărilor."
 
 #: dialogs/katedialogs.cpp:1471
 #, kde-format
@@ -1317,13 +1310,9 @@ msgid "&Reload"
 msgstr "&Reîncarcă"
 
 #: dialogs/katedialogs.cpp:1473
-#, fuzzy, kde-format
-#| msgid ""
-#| "Reload the file from disk. If you have unsaved changes, they will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
-msgstr ""
-"Reîncarcă fișierul de pe disc. Dacă nu ați salvat încă modificările, le veți "
-"pierde."
+msgstr "Reîncarcă fișierul de pe disc. Modificările nesalvate se vor pierde."
 
 #: dialogs/katedialogs.cpp:1477
 #, kde-format
@@ -1334,14 +1323,13 @@ msgstr "În&chide fișierul"
 #: dialogs/katedialogs.cpp:1479
 #, kde-format
 msgid "Closes the file, discarding its content."
-msgstr ""
+msgstr "Închide fișierul, aruncând conținutul acestuia."
 
 #: dialogs/katedialogs.cpp:1483
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&Salvează ca..."
+msgstr "&Salvează ca…"
 
 #: dialogs/katedialogs.cpp:1485
 #, kde-format
@@ -1355,10 +1343,9 @@ msgid "&Ignore"
 msgstr "&Ignoră"
 
 #: dialogs/katedialogs.cpp:1491
-#, fuzzy, kde-format
-#| msgid "Ignore the changes. You will not be prompted again."
+#, kde-format
 msgid "Ignores the changes on disk without any action."
-msgstr "Ignoră modificările. Nu veți mai fi întrebat data viitoare."
+msgstr "Ignoră modificările de pe disc fără vreo acțiune."
 
 #: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
@@ -1430,19 +1417,20 @@ msgstr "&PageUp/PageDown mută cursorul"
 #, kde-format
 msgid "Selects whether cursor jumps full words or breaks at camel case humps."
 msgstr ""
+"Alege dacă cursorul să sară cuvinte întregi sau să separe la majusculele din "
+"interiorul cuvântului."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
 msgid "Enable camel case cursor movement"
-msgstr ""
+msgstr "Activează mișcarea cursorului pe majuscule interne"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
-#, fuzzy, kde-format
-#| msgid "&Autocenter cursor (lines):"
+#, kde-format
 msgid "&Autocenter cursor:"
-msgstr "Centrare &automată cursor (linii):"
+msgstr "Centrează &automat cursorul:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:89
@@ -1507,50 +1495,51 @@ msgid ""
 "When selected, composed characters are removed with their diacritics instead "
 "of only removing the base character. This is useful for Indic locales."
 msgstr ""
+"Când e ales, caracterele compuse sunt eliminate împreună cu diacriticele "
+"acestora în loc de a fi eliminat doar caracterul de bază. E util cu "
+"localizări indiene."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackspaceRemoveComposed)
 #: dialogs/navigationconfigwidget.ui:177
 #, kde-format
 msgid "Backspace key removes character’s base with its diacritics"
-msgstr ""
+msgstr "Tasta Backspace elimină baza caracterului cu diacriticele sale"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
 #: dialogs/navigationconfigwidget.ui:184
-#, fuzzy, kde-format
-#| msgid "Go to the previous bookmark."
+#, kde-format
 msgid "Allow to cycle through bookmarks"
-msgstr "Sare la semnul de carte precedent."
+msgstr "Permite ciclarea prin semnele de carte"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:194
-#, fuzzy, kde-format
-#| msgid "Wrap c&ursor"
+#, kde-format
 msgid "Multicursor"
-msgstr "Limitează &cursorul"
+msgstr "Multicursor"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:200
 #, kde-format
 msgid "Multiple Cursor Modifiers"
-msgstr ""
+msgstr "Modificatori multipli pentru cursor"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadVersionControl)
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr ""
+msgstr "Reîncarcă fișierele din controlul versiunii"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Auto reload files on external changes"
-msgstr ""
+msgstr "Reîncarcă automat fișiere la modificări externe"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48
 #, kde-format
 msgid "Write a backup file on save for:"
-msgstr ""
+msgstr "Scrie fișier de rezervă la salvare pentru:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:55
@@ -1588,7 +1577,7 @@ msgstr "Fișiere &distante"
 #: dialogs/opensaveconfigadvwidget.ui:75
 #, kde-format
 msgid "Prefix for backup files:"
-msgstr ""
+msgstr "Prefix pentru fișiere de rezervă:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
 #: dialogs/opensaveconfigadvwidget.ui:85
@@ -1600,7 +1589,7 @@ msgstr "Introduceți prefixul de atașat la numele copiilor de rezervă."
 #: dialogs/opensaveconfigadvwidget.ui:92
 #, kde-format
 msgid "Suffix for backup files:"
-msgstr ""
+msgstr "Sufix pentru fișiere de rezervă:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
 #: dialogs/opensaveconfigadvwidget.ui:102
@@ -1610,36 +1599,33 @@ msgstr "Introduceți sufixul de atașat la numele copiilor de rezervă."
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:109
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Swap file mode:"
-msgstr "Fișier swap:"
+msgstr "Regim de fișier swap:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:125
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr ""
+msgstr "Activat, stochează în dosarul implicit"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:130
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
-msgstr ""
+msgstr "Activat, stochează în dosar personalizat"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:138
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Store swap files in:"
-msgstr "Fișier swap:"
+msgstr "Stochează fișiere swap în:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:158
-#, fuzzy, kde-format
-#| msgid "Disable swap files syncing"
+#, kde-format
 msgid "Save swap files every:"
-msgstr "Dezactivează sincronizarea fișierelor interschimbabile."
+msgstr "Salvează fișiere swap la fiecare:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:171
@@ -1665,7 +1651,7 @@ msgstr "Nu utiliza fișierul de configurare"
 #: dialogs/opensaveconfigwidget.ui:29
 #, kde-format
 msgid "File Format"
-msgstr "Format fișier"
+msgstr "Format de fișier"
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncoding)
 #: dialogs/opensaveconfigwidget.ui:40
@@ -1711,16 +1697,7 @@ msgstr "Codare de &rezervă:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbEncodingFallback)
 #: dialogs/opensaveconfigwidget.ui:84
-#, fuzzy, kde-format
-#| msgid ""
-#| "This defines the fallback encoding to try for opening files if neither "
-#| "the encoding chosen as standard above, nor the encoding specified in the "
-#| "open/save dialog, nor the encoding specified on command line match the "
-#| "content of the file.  Before this is used, an attempt will be made to "
-#| "determine the encoding to use by looking for a byte order marker at start "
-#| "of file: if one is found, the right unicode encoding will be chosen; "
-#| "otherwise encoding detection will run, if both fail fallback encoding "
-#| "will be tried."
+#, kde-format
 msgid ""
 "This defines the fallback encoding to try for opening files if neither the "
 "encoding chosen as standard above, nor the encoding specified in the open/"
@@ -1736,8 +1713,8 @@ msgstr ""
 "linia de comandă nu se potrivește cu conținutul fișierului. Înainte ca "
 "această codare să fie folosită se va încerca determinarea codării folosite "
 "prin căutarea unui marcaj de ordine a octeților la începutul fișierului: "
-"dacă este găsit un astfel de marcaj codarea unicode adecvată va fi folosită; "
-"altfel se va rula detecția codării iar dacă ambele eșuează se va folosi "
+"dacă este găsit un astfel de marcaj codarea Unicode adecvată va fi folosită; "
+"altfel se va rula detecția codării iar, dacă ambele eșuează, se va folosi "
 "codarea de rezervă."
 
 #. i18n: ectx: property (text), widget (QLabel, lblEOL)
@@ -1783,12 +1760,7 @@ msgstr "Detecție &automată sfârșit de linie"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkEnableBOM)
 #: dialogs/opensaveconfigwidget.ui:132
-#, fuzzy, kde-format
-#| msgid ""
-#| "The byte order mark is a special sequence at the beginning of unicode "
-#| "encoded documents. It helps editors to open text documents with the "
-#| "correct unicode encoding. The byte order mark is not visible in the "
-#| "displayed document."
+#, kde-format
 msgid ""
 "The byte order mark is a special sequence at the beginning of Unicode "
 "encoded documents. It helps editors to open text documents with the correct "
@@ -1796,22 +1768,21 @@ msgid ""
 "document."
 msgstr ""
 "Marcajul de ordine a octeților este o secvență specială la începutul "
-"documentelor codate unicode. El ajută editoarele să deschidă documentele "
-"text folosind codarea unicode adecvată. Marcajul de ordine a octeților nu "
+"documentelor codate cu Unicode. El ajută editoarele să deschidă documentele "
+"text folosind codarea Unicode adecvată. Marcajul de ordine a octeților nu "
 "este vizibil în documentul afișat."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnableBOM)
 #: dialogs/opensaveconfigwidget.ui:135
-#, fuzzy, kde-format
-#| msgid "Enable byte order marker"
+#, kde-format
 msgid "Enable byte order mark (BOM)"
-msgstr "Activează &marcajul de ordine a octeților"
+msgstr "Activează marcajul de ordine a octeților (BOM)"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigwidget.ui:142
 #, kde-format
 msgid "Line length limit:"
-msgstr "Limită pentru lungimea rândului:"
+msgstr "Limită pentru lungimea liniei:"
 
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, lineLengthLimit)
 #: dialogs/opensaveconfigwidget.ui:152
