@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-22 00:39+0000\n"
-"PO-Revision-Date: 2026-02-25 19:14+0100\n"
+"PO-Revision-Date: 2026-04-02 23:53+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -2352,10 +2352,9 @@ msgid "Close Nevertheless"
 msgstr "Затваряне"
 
 #: document/katedocument.cpp:4641
-#, fuzzy, kde-format
-#| msgid "Untitled"
+#, kde-format
 msgid "Untitled (%1)"
-msgstr "Неозаглавено"
+msgstr "Неозаглавено (%1)"
 
 #: document/katedocument.cpp:4643
 #, kde-format
