@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-22 00:39+0000\n"
-"PO-Revision-Date: 2026-03-23 17:12+0100\n"
+"PO-Revision-Date: 2026-04-06 19:10+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1937,7 +1937,7 @@ msgid ""
 "of 1.0 means that the default height will be used."
 msgstr ""
 "Iste valor essera multiplicate con le altessa de linea predefinite del font. "
-"Un valor de 1.0 significa que essara usate le altessa predefinite."
+"Un valor de 1.0 significa que essera usate le altessa predefinite."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:93
