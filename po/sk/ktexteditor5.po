@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:00+0000\n"
-"PO-Revision-Date: 2023-03-12 10:19+0100\n"
+"PO-Revision-Date: 2026-04-10 12:00+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
@@ -61,7 +61,7 @@ msgstr "&Súbor"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Export/Print"
-msgstr ""
+msgstr "Export/Tlač"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -1770,7 +1770,7 @@ msgstr "Povoliť automatické ukladanie (iba lokálne súbory)"
 #: dialogs/opensaveconfigwidget.ui:254
 #, kde-format
 msgid "Auto save document when focus leaves the editor"
-msgstr ""
+msgstr "Automaticky uložiť dokument, keď fokus opustí editor"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
@@ -1881,7 +1881,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:148
 #, kde-format
 msgid "Show focus frame around editor"
-msgstr ""
+msgstr "Zobraziť rámček fokusu okolo editora"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:178
@@ -2059,7 +2059,7 @@ msgstr "Nastavenie odsadzovania"
 #: dialogs/textareaappearanceconfigwidget.ui:384
 #, kde-format
 msgid "Don't indent lines wider than:"
-msgstr ""
+msgstr "Neodsadzovať riadky širšie ako:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:400
