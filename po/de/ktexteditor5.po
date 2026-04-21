@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:00+0000\n"
-"PO-Revision-Date: 2026-01-23 00:12+0100\n"
+"PO-Revision-Date: 2026-04-19 21:33+0200\n"
 "Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -4286,7 +4286,7 @@ msgstr "Hintergrund"
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Background Selected"
-msgstr "Hintergrund wenn ausgewählt"
+msgstr "Hintergrund (wenn ausgewählt)"
 
 #: syntax/katestyletreewidget.cpp:134
 #, kde-format
@@ -4567,7 +4567,7 @@ msgstr "Fehler"
 #: syntax/katethemeconfig.cpp:162
 #, kde-format
 msgid "Use Default Colors"
-msgstr "Standardfarben benutzen"
+msgstr "Standardfarben verwenden"
 
 #: syntax/katethemeconfig.cpp:182
 #, kde-format
@@ -4687,7 +4687,7 @@ msgid ""
 "icon borders, if both are enabled.</p>"
 msgstr ""
 "<p>Diese Farbe wird für die Linie zwischen Zeilennummern und Symbolrand "
-"verwendet, wenn beides eingeschaltet ist.</p>"
+"verwendet, wenn beides aktiviert ist.</p>"
 
 #: syntax/katethemeconfig.cpp:254
 #, kde-format
@@ -6193,7 +6193,7 @@ msgstr "Rücktaste im führenden Leerbereich verringert Einrückungsebene."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable block selection mode."
-msgstr "Blockauswahlmodus einschalten."
+msgstr "Blockauswahlmodus aktivieren."
 
 #: variableeditor/variablelineedit.cpp:144
 #, kde-format
@@ -7103,8 +7103,8 @@ msgid ""
 "column as defined in the editing properties"
 msgstr ""
 "Markierung für Zeilenumbruch anzeigen/ausblenden. Dabei handelt es sich um "
-"eine senkrechte Linie, die in den Einstellungen für den Editor eingeschaltet "
-"werden kann und die Position des statischen Zeilenumbruchs darstellt."
+"eine senkrechte Linie, die in den Editor-Einstellungen aktiviert werden kann "
+"und die Position des statischen Zeilenumbruchs darstellt."
 
 #: view/kateview.cpp:766
 #, kde-format
