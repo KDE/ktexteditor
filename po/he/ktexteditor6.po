@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-22 00:39+0000\n"
-"PO-Revision-Date: 2026-03-22 10:23+0200\n"
+"PO-Revision-Date: 2026-04-21 14:10+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -3186,7 +3186,7 @@ msgstr "קידוד הטקסט הנבחר לכתובות מלאות (URI)"
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
-msgstr "פענוח הטקסט הנבחר מכתובות מלאות (URI)"
+msgstr "פיענוח הטקסט הנבחר מכתובות מלאות (URI)"
 
 #: script/data/commands/utils.js:55
 #, kde-format
