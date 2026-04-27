@@ -362,7 +362,7 @@ msgstr "Podľa dátumu vytvorenia"
 #: dialogs/bordersappearanceconfigwidget.ui:262
 #, kde-format
 msgid "The bookmarks will be ordered by the line numbers they are placed at."
-msgstr "Záložky budú usporiadané podľa čisla riadku kde sú umiestnené."
+msgstr "Záložky budú usporiadané podľa čísla riadku, kde sú umiestnené."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:265
@@ -884,7 +884,7 @@ msgid ""
 "If this option is disabled, changing the indentation level aligns a line to "
 "a multiple of the width specified in <b>Indentation width</b>."
 msgstr ""
-"Ak je táto možnosť vypnutá, zmena veľkosti odsadenia od čiary do rôzdnej "
+"Ak je táto možnosť vypnutá, zmena veľkosti odsadenia od čiary do rôznej "
 "šírky bude špecifikovaná v <b>Šírke odsadenia</b>."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkKeepExtraSpaces)
@@ -1020,7 +1020,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:299
 #, kde-format
 msgid "Increase indentation level if in l&eading blank space"
-msgstr "Zvýšiť odsadednie ak nasleduje prázne miesto"
+msgstr "Zvýšiť odsadenie ak nasleduje prázdne miesto"
 
 #: dialogs/katedialogs.cpp:183 dialogs/katedialogs.cpp:185
 #, kde-format
@@ -1895,7 +1895,7 @@ msgstr "Párovanie zátvoriek:"
 msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
 "highlighted."
-msgstr "Ak je povoelné, vzdialenosť medzi vybranými blkokmi bude vysvietená."
+msgstr "Ak je povolené, vzdialenosť medzi vybranými blokmi bude vysvietená."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:188
@@ -2275,7 +2275,7 @@ msgid ""
 "the file is successfully written."
 msgstr ""
 "Dokument sa nepodarilo uložiť, pretože nie je možný zápis do %1.\n"
-"Overte, že máte dostatočné práva pre zápis tohto súboru a že je k dispozícií "
+"Overte, že máte dostatočné práva pre zápis tohto súboru a že je k dispozícii "
 "dostatok miesta na disku.\n"
 "Pôvodný súbor môže byť stratený alebo poškodený. Neukončujte aplikáciu, kým "
 "sa súbor úspešne nezapíše."
@@ -2708,7 +2708,7 @@ msgstr "Aktuálny čas"
 #: printing/printconfigwidgets.cpp:362
 #, kde-format
 msgid "Current Date (short format)"
-msgstr "Aktuálny dátum (skrátky formát)"
+msgstr "Aktuálny dátum (krátky formát)"
 
 #: printing/printconfigwidgets.cpp:364
 #, kde-format
@@ -2801,8 +2801,8 @@ msgid ""
 "the contents of each page. The Header and Footer will be separated from the "
 "contents with a line as well.</p>"
 msgstr ""
-"<p>Ak je povolené, rámec dafinovaný nižšie v vlastnostiach bude kreslený "
-"okolo celého obsahu na každej stránke. Záhlavie a päta stránky bude odelená "
+"<p>Ak je povolené, rámec definovaný nižšie vo vlastnostiach bude kreslený "
+"okolo celého obsahu na každej stránke. Záhlavie a päta stránky bude oddelená "
 "od obsahu čiarou.</p>"
 
 #: printing/printconfigwidgets.cpp:555
@@ -3737,7 +3737,7 @@ msgstr "Text na hľadanie"
 #: search/searchbarincremental.ui:91 search/searchbarpower.ui:175
 #, kde-format
 msgid "Jump to next match"
-msgstr "Prejsť na ďaľšiu zhodu"
+msgstr "Prejsť na ďalšiu zhodu"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, findPrev)
 #. i18n: ectx: property (toolTip), widget (QToolButton, prev)
@@ -4690,7 +4690,7 @@ msgid ""
 "at a <b>(</b>, the matching <b>)</b> will be highlighted with this color.</p>"
 msgstr ""
 "<p>Nastaví farbu zodpovedajúcej zátvorky. To znamená, že ak umiestníte "
-"kurzor na <b>(</b>, zodpovedajúca <b>)</b> bude zvýraznena touto farbou.</p>"
+"kurzor na <b>(</b>, zodpovedajúca <b>)</b> bude zvýraznená touto farbou.</p>"
 
 #: syntax/katethemeconfig.cpp:322
 #, kde-format
