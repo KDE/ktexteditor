@@ -3813,7 +3813,7 @@ msgstr "Text na hľadanie"
 #: search/searchbarincremental.ui:91 search/searchbarpower.ui:175
 #, kde-format
 msgid "Jump to next match"
-msgstr "Prejsť na ďaľšiu zhodu"
+msgstr "Prejsť na ďalšiu zhodu"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, findPrev)
 #. i18n: ectx: property (toolTip), widget (QToolButton, prev)
@@ -7329,7 +7329,7 @@ msgstr "Nájsť označené"
 #: view/kateview.cpp:905
 #, kde-format
 msgid "Finds next occurrence of selected text."
-msgstr "Nájsť ďaľšie výskyty v označenom texte."
+msgstr "Nájsť ďalšie výskyty v označenom texte."
 
 #: view/kateview.cpp:909
 #, kde-format
