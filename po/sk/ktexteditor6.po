@@ -454,7 +454,7 @@ msgstr ""
 #: dialogs/completionconfigtab.ui:59
 #, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "Použite toto pre zrušenie odsadenia vybraného bloku textu."
+msgstr "Použite klávesu Enter na vloženie vybraného doplnenia."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -1488,7 +1488,7 @@ msgstr "Tlačidlo Backspace odstraňuje základ znaku aj s diakritikou"
 #: dialogs/navigationconfigwidget.ui:184
 #, kde-format
 msgid "Allow to cycle through bookmarks"
-msgstr "Prejsť na predchádzajúcu záložku."
+msgstr "Umožniť prechádzanie záložkami"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:194
@@ -1512,7 +1512,7 @@ msgstr "Automatické opätovné načítanie súborov v správe verzií"
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Auto reload files on external changes"
-msgstr "Automatické opätovné načítanie súborov v správe verzií"
+msgstr "Automatické opätovné načítanie súborov pri externých zmenách"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -2045,13 +2045,13 @@ msgstr "Zobraziť počet slov"
 #: dialogs/textareaappearanceconfigwidget.ui:278
 #, kde-format
 msgid "Show/hide line count in status bar"
-msgstr "Zobraziť/skryť počet slov v stavovom riadku"
+msgstr "Zobraziť/skryť počet riadkov v stavovom riadku"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
 #: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:255
 #, kde-format
 msgid "Show line count"
-msgstr "Zobraziť čí&sla riadkov"
+msgstr "Zobraziť počet riadkov"
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
@@ -3109,13 +3109,13 @@ msgstr "Presunúť kurzor na ďalšie zodpovedajúce odsadenie"
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Presunúť kurzor na ďalšie zodpovedajúce odsadenie"
+msgstr "Presunúť kurzor na ďalší prázdny riadok"
 
 #: script/data/commands/jumpMatchingIndent.js:24
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Presunúť kurzor na predošlé zodpovedajúce odsadenie"
+msgstr "Presunúť kurzor na predchádzajúci prázdny riadok"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3130,12 +3130,12 @@ msgstr "Presunúť kurzor na ďalšie zodpovedajúce odsadenie"
 #: script/data/commands/jumpMatchingIndent.js:85
 #, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Presunúť kurzor na ďalšie zodpovedajúce odsadenie"
+msgstr "Presunúť kurzor na ďalší prázdny riadok"
 
 #: script/data/commands/jumpMatchingIndent.js:87
 #, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Presunúť kurzor na predošlé zodpovedajúce odsadenie"
+msgstr "Presunúť kurzor na predchádzajúci prázdny riadok"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
@@ -3147,7 +3147,7 @@ msgstr "Prejsť na nasledujúci odsek"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Prejsť na predošlý editačný bod"
+msgstr "Prejsť na predchádzajúci odstavec"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3212,7 +3212,7 @@ msgstr "Duplikovať vybrané riadky hore"
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Duplikovať vybrané riadky hore"
+msgstr "Duplikovať vybraný text"
 
 #: script/data/commands/utils.js:47
 #, kde-format
@@ -4510,7 +4510,7 @@ msgstr "Dokumentácia"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Annotation"
-msgstr "Poznámka"
+msgstr "Anotácia"
 
 #: syntax/katethemeconfig.cpp:98
 #, kde-format
@@ -4658,7 +4658,8 @@ msgstr "Číslo aktuálneho riadku"
 msgid ""
 "<p>This color will be used to draw the number of the current line (if "
 "enabled).</p>"
-msgstr "<p>Táto farba sa použije pre čísla riadkov (ak sú zapnuté).</p>"
+msgstr ""
+"<p>Táto farba sa použije pre číslo aktuálneho riadku (ak je zapnuté).</p>"
 
 #: syntax/katethemeconfig.cpp:247
 #, kde-format
@@ -5371,7 +5372,7 @@ msgstr "Zvýrazňovanie '%1' neexistuje"
 #: utils/katecmds.cpp:333
 #, kde-format
 msgid "No such mode '%1'"
-msgstr "Neexistujúci príkaz: \"%1\""
+msgstr "Neexistujúci režim: „%1“"
 
 #: utils/katecmds.cpp:346
 #, kde-format
@@ -5489,7 +5490,7 @@ msgstr "Odstrániť duplikáty a abecedne zoradiť vybraný text"
 #: utils/katecmds.cpp:623
 #, kde-format
 msgid "Sort Text Naturally"
-msgstr "Zoradiť vybraný text podľa abecedy"
+msgstr "Triediť text prirodzene"
 
 #: utils/katecmds.cpp:624
 #, kde-format
@@ -6715,12 +6716,12 @@ msgstr ""
 #: view/kateview.cpp:510
 #, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "Nastavenie odsadzovania"
+msgstr "Konvertovať odsadenie na medzery"
 
 #: view/kateview.cpp:517
 #, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "&Formátovať odsadenie"
+msgstr "Konvertovať odsadenie na tabulátory"
 
 #: view/kateview.cpp:532
 #, kde-format
@@ -7088,7 +7089,7 @@ msgstr ""
 #: view/kateview.cpp:775
 #, kde-format
 msgid "Show Whitespace"
-msgstr "Medzery"
+msgstr "Zobraziť biele znaky"
 
 #: view/kateview.cpp:778
 #, kde-format
@@ -7096,9 +7097,8 @@ msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"Ak je táto voľba povolená, riadky textu budú zalamované na okraji "
-"zobrazenia. <br /><br />Toto je iba možnosť zobrazenia, čo znamená, že "
-"dokument sa nezmení."
+"Ak je táto voľba povolená, biele znaky v tomto dokumente budú viditeľné.<br /"
+"><br />Toto je iba možnosť zobrazenia, čo znamená, že dokument sa nezmení."
 
 #: view/kateview.cpp:782
 #, kde-format
@@ -7340,7 +7340,7 @@ msgstr "Nájsť označené dozadu"
 #: view/kateview.cpp:911
 #, kde-format
 msgid "Finds previous occurrence of selected text."
-msgstr "Nájsť predchádzajúci výskyt hľadanej frázy."
+msgstr "Nájsť predchádzajúci výskyt vybraného textu."
 
 #: view/kateview.cpp:915
 #, kde-format
@@ -7539,7 +7539,7 @@ msgstr "Vyber slovo napravo"
 #: view/kateview.cpp:1082
 #, kde-format
 msgid "Start the Marked Selection"
-msgstr "Vložiť výber"
+msgstr "Spustiť označený výber"
 
 #: view/kateview.cpp:1083
 #, kde-format
@@ -7683,22 +7683,22 @@ msgstr "Výber po zodpovedajúcu zátvorku"
 #: view/kateview.cpp:1267
 #, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Presuň slovo doprava"
+msgstr "Presuň čiastkové slovo doprava"
 
 #: view/kateview.cpp:1274
 #, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Vyber slovo napravo"
+msgstr "Vyber čiastkové slovo napravo"
 
 #: view/kateview.cpp:1281
 #, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Presuň slovo naľavo"
+msgstr "Presuň čiastkové slovo naľavo"
 
 #: view/kateview.cpp:1288
 #, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Vyber slovo naľavo"
+msgstr "Vyber čiastkové slovo naľavo"
 
 #: view/kateview.cpp:1298
 #, kde-format
@@ -7816,12 +7816,12 @@ msgstr "Použite toto pre zrušenie odsadenia vybraného bloku textu."
 #: view/kateview.cpp:1398
 #, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Zmazať slovo vľavo"
+msgstr "Zmazať čiastkové slovo vľavo"
 
 #: view/kateview.cpp:1405
 #, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Zmazať slovo vpravo"
+msgstr "Zmazať čiastkové slovo vpravo"
 
 #: view/kateview.cpp:1426
 #, kde-format
@@ -7846,22 +7846,22 @@ msgstr "Prepnúť obsiahnuté uzly"
 #: view/kateview.cpp:1447
 #, kde-format
 msgid "Say current selection or document"
-msgstr "Výber textu aktuálneho dokumentu."
+msgstr "Prečítať aktuálny výber alebo dokument"
 
 #: view/kateview.cpp:1457
 #, kde-format
 msgid "Stop current output"
-msgstr "Uložiť aktuálny dokument"
+msgstr "Zastaviť aktuálny výstup"
 
 #: view/kateview.cpp:1463
 #, kde-format
 msgid "Pause current output"
-msgstr "Uložiť aktuálny dokument"
+msgstr "Pozastaviť aktuálny výstup"
 
 #: view/kateview.cpp:1469
 #, kde-format
 msgid "Resume current output"
-msgstr "Uložiť aktuálny dokument"
+msgstr "Pokračovať v aktuálnom výstupe"
 
 #: view/kateview.cpp:1640
 #, kde-format
