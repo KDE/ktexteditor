@@ -292,7 +292,13 @@ void ModeConfigPage::showMTDlg()
     QString text =
         i18n("Select the MimeTypes you want for this file type.\nPlease note that this will automatically edit the associated file extensions as well.");
     QStringList list = ui->edtMimeTypes->text().split(QRegularExpression(QStringLiteral("\\s*;\\s*")), Qt::SkipEmptyParts);
-    KMimeTypeChooserDialog d(i18n("Select Mime Types"), text, list, QStringLiteral("text"), this);
+    KMimeTypeChooserDialog d(i18n("Select Mime Types"),
+                             text,
+                             list,
+                             QStringLiteral("text"),
+                             {},
+                             KMimeTypeChooser::Comments | KMimeTypeChooser::Patterns | KMimeTypeChooser::EditButton,
+                             this);
     if (d.exec() == QDialog::Accepted) {
         // do some checking, warn user if mime types or patterns are removed.
         // if the lists are empty, and the fields not, warn.
