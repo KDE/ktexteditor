@@ -9,6 +9,7 @@
 #include <KTextEditor/View>
 
 #include <QApplication>
+#include <QLabel>
 #include <QMainWindow>
 #include <QToolBar>
 
@@ -41,6 +42,15 @@ int main(int argc, char *argv[])
     QToolBar tb(&m);
     tb.addAction(QStringLiteral("Config..."), &m, [e, &m] {
         e->configDialog(&m);
+    });
+
+    auto label = new QLabel();
+    label->setTextFormat(Qt::RichText);
+    label->setText(QStringLiteral("<b>File</b>: %1").arg(doc->documentName()));
+    tb.addWidget(label);
+
+    QObject::connect(doc, &KTextEditor::Document::documentNameChanged, label, [label](KTextEditor::Document *doc) {
+        label->setText(QStringLiteral("<b>File</b>: %1").arg(doc->documentName()));
     });
 
     m.addToolBar(&tb);

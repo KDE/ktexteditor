@@ -1408,6 +1408,11 @@ private:
      */
     bool m_openingError = false;
 
+    /**
+     * Use first line of document for document name
+     */
+    bool m_useFirstLineAsDocName = true;
+
 public:
     /**
      * reads the line length limit from config, if it is not overridden

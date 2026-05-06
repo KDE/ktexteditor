@@ -1028,7 +1028,7 @@ bool KTextEditor::DocumentPrivate::editEnd()
     }
 
     if (m_buffer->editChanged()) {
-        if (m_buffer->editTagStart() == 0 && url().isEmpty()) {
+        if (m_useFirstLineAsDocName && m_buffer->editTagStart() == 0 && url().isEmpty()) {
             updateDocName();
         }
         setModified(true);
@@ -5176,6 +5176,8 @@ void KTextEditor::DocumentPrivate::updateConfig()
             }
         }
     }
+
+    m_useFirstLineAsDocName = config()->value(KateDocumentConfig::UseFirstLineAsDocName).toBool();
 
     Q_EMIT configChanged(this);
 }

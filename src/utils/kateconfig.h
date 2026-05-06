@@ -547,7 +547,12 @@ public:
         /**
          * Should we use editorconfig
          */
-        UseEditorConfig
+        UseEditorConfig,
+
+        /**
+         * Should we use the first line of doc to infer the document name
+         */
+        UseFirstLineAsDocName,
     };
 
 public:

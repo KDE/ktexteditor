@@ -365,6 +365,7 @@ KateDocumentConfig::KateDocumentConfig()
         ConfigEntry(AutoReloadOnExternalChanges, "Auto Reload If Any External Changes Occurs", QStringLiteral("auto-reload-on-external-changes"), false));
     // .editorconfig
     addConfigEntry(ConfigEntry(UseEditorConfig, "Use Editor Config", QString(), true));
+    addConfigEntry(ConfigEntry(UseFirstLineAsDocName, "Use First Line As Doc Name", QString(), true));
 
     // finalize the entries, e.g. hashes them
     finalizeConfigEntries();

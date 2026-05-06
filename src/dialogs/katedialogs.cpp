@@ -1013,6 +1013,7 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     observeChanges(uiadv->kurlSwapDirectory);
     observeChanges(uiadv->spbSwapFileSync);
     observeChanges(uiadv->chkEditorConfig);
+    observeChanges(uiadv->chkUseFirstLineAsDocName);
 
     internalLayout->addWidget(newWidget);
     internalLayout2->addWidget(newWidget2);
@@ -1120,6 +1121,7 @@ void KateSaveConfigTab::apply()
     KateDocumentConfig::global()->setValue(KateDocumentConfig::AutoReloadIfStateIsInVersionControl, uiadv->chkAutoReloadVersionControl->isChecked());
     KateDocumentConfig::global()->setValue(KateDocumentConfig::AutoReloadOnExternalChanges, uiadv->chkAutoReloadOnExternalChanges->isChecked());
     KateDocumentConfig::global()->setValue(KateDocumentConfig::UseEditorConfig, uiadv->chkEditorConfig->isChecked());
+    KateDocumentConfig::global()->setValue(KateDocumentConfig::UseFirstLineAsDocName, uiadv->chkUseFirstLineAsDocName->isChecked());
 
     KateDocumentConfig::global()->configEnd();
     KateGlobalConfig::global()->configEnd();
@@ -1191,6 +1193,7 @@ void KateSaveConfigTab::reload()
     uiadv->chkAutoReloadVersionControl->setChecked(KateDocumentConfig::global()->value(KateDocumentConfig::AutoReloadIfStateIsInVersionControl).toBool());
     uiadv->chkAutoReloadOnExternalChanges->setChecked(KateDocumentConfig::global()->value(KateDocumentConfig::AutoReloadOnExternalChanges).toBool());
     uiadv->chkEditorConfig->setChecked(KateDocumentConfig::global()->value(KateDocumentConfig::UseEditorConfig).toBool());
+    uiadv->chkUseFirstLineAsDocName->setChecked(KateDocumentConfig::global()->value(KateDocumentConfig::UseFirstLineAsDocName).toBool());
 }
 
 void KateSaveConfigTab::reset()
