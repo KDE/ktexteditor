@@ -1753,7 +1753,7 @@ void KateIconBorder::dropEvent(QDropEvent *event)
 
 void KateIconBorder::paintEvent(QPaintEvent *e)
 {
-    paintBorder(e->rect().x(), e->rect().y(), e->rect().width(), e->rect().height());
+    paintBorder(e->rect().top(), e->rect().bottom());
 }
 
 static void paintTriangle(QPainter &painter, QColor c, int xOffset, int yOffset, int width, int height, bool open)
@@ -2015,11 +2015,11 @@ void KateAnnotationGroupPositionState::nextLine(KTextEditor::StyleOptionAnnotati
     m_isSameAnnotationGroupsSinceLast = isSameAnnotationGroupsSinceThis;
 }
 
-void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
+void KateIconBorder::paintBorder(uint firstY, uint lastY)
 {
     const uint h = m_view->renderer()->lineHeight();
-    const uint startz = (y / h);
-    const uint endz = qMin(startz + 1 + (height / h), static_cast<uint>(m_viewInternal->cache()->viewCacheLineCount()));
+    const uint startz = firstY / h;
+    const uint endz = qMin(lastY / h + 1, static_cast<uint>(m_viewInternal->cache()->viewCacheLineCount()));
     const uint currentLine = m_view->cursorPosition().line();
 
     // center the folding boxes

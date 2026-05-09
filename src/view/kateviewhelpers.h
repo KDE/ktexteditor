@@ -332,7 +332,7 @@ private:
     void dragMoveEvent(QDragMoveEvent *event) override;
     void dropEvent(QDropEvent *event) override;
     void paintEvent(QPaintEvent *) override;
-    void paintBorder(int x, int y, int width, int height);
+    void paintBorder(uint firstY, uint lastY);
 
     void mousePressEvent(QMouseEvent *) override;
     void mouseMoveEvent(QMouseEvent *) override;
