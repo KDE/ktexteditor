@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-04 00:39+0000\n"
+"POT-Creation-Date: 2026-05-09 00:40+0000\n"
 "PO-Revision-Date: 2026-03-23 14:20+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -422,7 +422,7 @@ msgstr "Nessuna voce nella cronologia degli appunti"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1021
+#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1022
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1234,12 +1234,12 @@ msgstr ""
 "sistema. La disabilitazione dei file di swap può causare perdite di dati in "
 "caso di crash del sistema."
 
-#: dialogs/katedialogs.cpp:1022
+#: dialogs/katedialogs.cpp:1023
 #, kde-format
 msgid "Advanced"
 msgstr "Avanzate"
 
-#: dialogs/katedialogs.cpp:1087
+#: dialogs/katedialogs.cpp:1088
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1247,52 +1247,52 @@ msgstr ""
 "Non hai indicato un suffisso o prefisso per le copie di sicurezza. Verrà "
 "usato il suffisso predefinito: «~»"
 
-#: dialogs/katedialogs.cpp:1087
+#: dialogs/katedialogs.cpp:1088
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Nessun suffisso o prefisso per le copie di sicurezza"
 
-#: dialogs/katedialogs.cpp:1220
+#: dialogs/katedialogs.cpp:1223
 #, kde-format
 msgid "Open/Save"
 msgstr "Apri e salva"
 
-#: dialogs/katedialogs.cpp:1225
+#: dialogs/katedialogs.cpp:1228
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Apertura e salvataggio dei file"
 
-#: dialogs/katedialogs.cpp:1248
+#: dialogs/katedialogs.cpp:1251
 #, kde-format
 msgid "&Line:"
 msgstr "&Riga:"
 
-#: dialogs/katedialogs.cpp:1249
+#: dialogs/katedialogs.cpp:1252
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Vai al numero di riga dagli appunti"
 
-#: dialogs/katedialogs.cpp:1260
+#: dialogs/katedialogs.cpp:1263
 #, kde-format
 msgid "Go to"
 msgstr "Vai a"
 
-#: dialogs/katedialogs.cpp:1340
+#: dialogs/katedialogs.cpp:1343
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "Nessun numero di riga valido è stato trovato negli appunti"
 
-#: dialogs/katedialogs.cpp:1404
+#: dialogs/katedialogs.cpp:1407
 #, kde-format
 msgid "Dictionary:"
 msgstr "Dizionario:"
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Abilita aggiornamento automatico"
 
-#: dialogs/katedialogs.cpp:1459
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1301,60 +1301,60 @@ msgstr ""
 "Ricarica e ricaricherà automaticamente senza avvisi sulle modifiche al disco "
 "da ora fino a quando non chiuderai la scheda o la finestra."
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1467
 #, kde-format
 msgid "View &Difference"
 msgstr "Visualizza &differenze"
 
-#: dialogs/katedialogs.cpp:1466
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Mostra un diff delle modifiche."
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "&Reload"
 msgstr "&Ricarica"
 
-#: dialogs/katedialogs.cpp:1473
+#: dialogs/katedialogs.cpp:1476
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Ricarica il file dal disco. Le modifiche non salvate saranno perse."
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Chiudi file"
 
-#: dialogs/katedialogs.cpp:1479
+#: dialogs/katedialogs.cpp:1482
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Chiude il file, scartando il suo contenuto."
 
-#: dialogs/katedialogs.cpp:1483
+#: dialogs/katedialogs.cpp:1486
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "&Salva come…"
 
-#: dialogs/katedialogs.cpp:1485
+#: dialogs/katedialogs.cpp:1488
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Ti permette di scegliere una posizione e salvare di nuovo il file."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1490 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1493 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Ignora"
 
-#: dialogs/katedialogs.cpp:1491
+#: dialogs/katedialogs.cpp:1494
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignora le modifiche le modifiche su disco senza alcuna azione."
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1563 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1363,18 +1363,18 @@ msgstr ""
 "Impossibile eseguire il comando diff. Per favore assicurati che diff(1) sia "
 "installato e accessibile dal tuo percorso PATH."
 
-#: dialogs/katedialogs.cpp:1562 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1565 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Errore durante la creazione di una differenza"
 
-#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "I file sono identici."
 
-#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Risultato di diff"
@@ -1655,6 +1655,13 @@ msgstr ""
 #, kde-format
 msgid "Honor settings in .editorconfig file"
 msgstr "Rispetta le impostazioni nel file .editorconfig"
+
+#. i18n: ectx: property (text), widget (QCheckBox, chkUseFirstLineAsDocName)
+#: dialogs/opensaveconfigadvwidget.ui:229
+#, fuzzy, kde-format
+#| msgid "Use this to close the current document"
+msgid "Use first line of untitled documents for document name"
+msgstr "Usalo per chiudere il documento attuale"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -2234,12 +2241,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Riprova"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6532
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6534
 #, kde-format
 msgid "&Close"
 msgstr "&Chiudi"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6533
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6535
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2391,8 +2398,8 @@ msgid "Untitled"
 msgstr "Senza nome"
 
 #: document/katedocument.cpp:4820 document/katedocument.cpp:5051
-#: document/katedocument.cpp:5061 document/katedocument.cpp:5860
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:5061 document/katedocument.cpp:5862
+#: document/katedocument.cpp:6049
 #, kde-format
 msgid "Save File"
 msgstr "Salva il file"
@@ -2421,7 +2428,7 @@ msgstr ""
 "Controlla di avere accesso in scrittura al file e che lo spazio su disco sia "
 "sufficiente."
 
-#: document/katedocument.cpp:5374
+#: document/katedocument.cpp:5376
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2434,7 +2441,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5380
+#: document/katedocument.cpp:5382
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2447,17 +2454,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5694
+#: document/katedocument.cpp:5696
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Il file «%1» è stato modificato su disco."
 
-#: document/katedocument.cpp:5696
+#: document/katedocument.cpp:5698
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Il file «%1» è stato eliminato o spostato su disco."
 
-#: document/katedocument.cpp:6032
+#: document/katedocument.cpp:6034
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2466,17 +2473,17 @@ msgstr ""
 "Il documento «%1» è stato modificato.\n"
 "Vuoi salvare o scartare le tue modifiche?"
 
-#: document/katedocument.cpp:6035
+#: document/katedocument.cpp:6037
 #, kde-format
 msgid "Close Document"
 msgstr "Chiudi documento"
 
-#: document/katedocument.cpp:6146
+#: document/katedocument.cpp:6148
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Il file <a href=\"%1\">%2</a> è ancora in caricamento."
 
-#: document/katedocument.cpp:6151
+#: document/katedocument.cpp:6153
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Interrompi caricamento"
@@ -11169,9 +11176,6 @@ msgstr "Segno non impostato: %1"
 #~ msgstr ""
 #~ "Impossibile trovare un componente di editor di testi per KDE;\n"
 #~ "controlla la tua installazione di KDE."
-
-#~ msgid "Use this to close the current document"
-#~ msgstr "Usalo per chiudere il documento attuale"
 
 #~ msgid "Use this command to create a new document"
 #~ msgstr "Usa questo comando per creare un nuovo documento"
