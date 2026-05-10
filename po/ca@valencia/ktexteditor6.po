@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:40+0000\n"
-"PO-Revision-Date: 2026-03-22 09:20+0100\n"
+"PO-Revision-Date: 2026-05-09 12:13+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1668,6 +1668,7 @@ msgstr "Respecta els paràmetres del fitxer «.editorconfig»"
 #, kde-format
 msgid "Use first line of untitled documents for document name"
 msgstr ""
+"Utilitza la primera línia dels documents sense títol com a nom del document"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -4124,7 +4125,7 @@ msgid ""
 msgstr ""
 "<qt>\n"
 "<p>Si la paraula desconeguda està mal escrita, heu de teclejar la correcció "
-"de l'error ortogràfic ací o triar-la des en la llista a continuació.</p>\n"
+"de l'error ortogràfic ací o triar-la des de la llista a continuació.</p>\n"
 "<p>Llavors podeu clicar damunt <b>Substituïx</b> si voleu corregir només "
 "este cas de la paraula o <b>Substituïx-ho tot</b> si voleu corregir totes "
 "les ocurrències.</p>\n"
@@ -5201,12 +5202,12 @@ msgstr "&Punts"
 #: utils/katebookmarks.cpp:192
 #, kde-format
 msgid "&Next: %1 - \"%2\""
-msgstr "&Següent: %1 - «%2»"
+msgstr "&Següent: %1 – «%2»"
 
 #: utils/katebookmarks.cpp:198
 #, kde-format
 msgid "&Previous: %1 - \"%2\""
-msgstr "&Anterior: %1 - «%2»"
+msgstr "&Anterior: %1 – «%2»"
 
 #: utils/katecmds.cpp:53
 #, kde-format

@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:40+0000\n"
-"PO-Revision-Date: 2026-03-22 08:01+0100\n"
+"PO-Revision-Date: 2026-05-09 07:58+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1646,7 +1646,7 @@ msgstr "Nastavitve spoštovanja v datoteki .editorconfig"
 #: dialogs/opensaveconfigadvwidget.ui:229
 #, kde-format
 msgid "Use first line of untitled documents for document name"
-msgstr ""
+msgstr "Uporabi prvo vrstico neimenovanih dokumentov za ime dokumenta"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29

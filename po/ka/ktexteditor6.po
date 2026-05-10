@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:40+0000\n"
-"PO-Revision-Date: 2026-03-23 03:08+0100\n"
+"PO-Revision-Date: 2026-05-09 06:29+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1631,7 +1631,7 @@ msgstr "ფაილში .editorconfig არსებული პარა�
 #: dialogs/opensaveconfigadvwidget.ui:229
 #, kde-format
 msgid "Use first line of untitled documents for document name"
-msgstr ""
+msgstr "უსახელო დოკუმენტების პირველი ხაზის გამოყენება დოკუმენტის სახელისთვის"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29

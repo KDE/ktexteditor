@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:40+0000\n"
-"PO-Revision-Date: 2026-03-22 23:03+0200\n"
+"PO-Revision-Date: 2026-05-09 13:18+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1657,6 +1657,8 @@ msgstr "Брати до уваги параметри з файла .editorconfi
 #, kde-format
 msgid "Use first line of untitled documents for document name"
 msgstr ""
+"Скористатися для визначення назви документа першим рядком документів без "
+"назви"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
