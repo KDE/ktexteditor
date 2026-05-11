@@ -8,13 +8,13 @@
 # ஸ்ரீராமதாஸ் <shriramadhas@gmail.com>, 2007.
 # ஆமாச்சு <amachu@ubuntu.com>, 2007.
 # amachu <amachu@amachu.com>, 2010.
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025, 2026 Kishore G <kishore96@gmail.com>
+# SPDX-FileCopyrightText: 2021-2026 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:40+0000\n"
-"PO-Revision-Date: 2026-02-01 13:28+0530\n"
+"PO-Revision-Date: 2026-05-10 16:02+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -536,14 +536,7 @@ msgstr "வரிமடிப்பு:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:29
-#, fuzzy, kde-format
-#| msgid ""
-#| "Automatically start a new line of text when the current line exceeds the "
-#| "length specified by the <b>Wrap words at:</b> option.<p>This option does "
-#| "not wrap existing lines of text - use the <b>Apply Static Word Wrap</b> "
-#| "option in the <b>Tools</b> menu for that purpose.<p>If you want lines to "
-#| "be <i>visually wrapped</i> instead, according to the width of the view, "
-#| "enable <b>Dynamic Word Wrap</b> in the <b>View Defaults</b> config page."
+#, kde-format
 msgid ""
 "<p>Automatically start a new line of text when the current line exceeds the "
 "length specified by the <b>Wrap words at:</b> option.</p><p>This option does "
@@ -552,12 +545,6 @@ msgid ""
 "be <i>visually wrapped</i> instead, according to the width of the view, "
 "enable <b>Dynamic Word Wrap</b> in the <b>Appearance</b> config page.</p>"
 msgstr ""
-"<b>வார்த்தை முடிவு:</b> விருப்பத்தில் குறிப்பிடப்பட்டுள்ள எண்ணிக்கையை விட தற்போதைய வரி "
-"நீட்டித்தால் தானே அடுத்த வரியில் தொடங்கும்.<p>இந்த விருப்பம் இருக்கும் வரியை மடிப்பு "
-"செய்யாது- <b>நிலையான வார்த்தை மடிப்பு அமைவை</b>கருவிகள் </b> பட்டியலிலிருந்து "
-"பயன்படுத்தவும்.<p>நீங்கள் வரிகள் மடிந்ததை <i>காட்ட வேண்டுமானால்</i> அதை தவிர, பார்வை "
-"அகலத்தின் படி <b>இயங்குநிலை வார்த்தை மடிப்பை/b> <b>முன்னிருப்பு பார்வையின்</b>கட்டமைப்பு "
-"பக்கத்தில் செயல்படுத்தவும்."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:32
@@ -567,18 +554,11 @@ msgstr "&வரிகளை குறிப்பிட்ட நெடுவர
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:39
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>If this option is checked, a vertical line will be drawn at the word "
-#| "wrap column as defined in the <strong>Editing</strong> properties.<p>Note "
-#| "that the word wrap marker is only drawn if you use a fixed pitch font."
+#, kde-format
 msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"இந்த விருப்பம் தேர்வு செய்யப்பட்டிருந்தால், தொகுக்கும் பண்பிற்கேற்ப வார்த்தை மடிப்பு இடத்தில் "
-"ஒரு கோடு வரையப்படும். <p> நிலை இடைவெளி எழுத்துரு பயன்படுத்தினால் மட்டுமே வார்த்தை "
-"மடிப்பு குறிப்பான் வரையப்படும்."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
@@ -1613,10 +1593,9 @@ msgstr ".editorconfig கோப்பிலுள்ள அமைப்புக
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkUseFirstLineAsDocName)
 #: dialogs/opensaveconfigadvwidget.ui:229
-#, fuzzy, kde-format
-#| msgid "Use this to close the current document"
+#, kde-format
 msgid "Use first line of untitled documents for document name"
-msgstr "தற்போதia ஆவணத்தை மூட இதனைப் பயன்படுத்துக"
+msgstr "தலைப்பில்லாத ஆவணங்களுக்கு அவற்றின் முதல் வரியைக் கொண்டு பெயரிடு"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -2298,10 +2277,9 @@ msgid "Close Nevertheless"
 msgstr "இருப்பினும் மூடு"
 
 #: document/katedocument.cpp:4641
-#, fuzzy, kde-format
-#| msgid "Untitled"
+#, kde-format
 msgid "Untitled (%1)"
-msgstr "தலைப்பில்லாதது"
+msgstr "தலைப்பில்லாதது (%1)"
 
 #: document/katedocument.cpp:4643
 #, kde-format
@@ -2545,7 +2523,7 @@ msgstr "வரி &எண்களை அச்சிடு"
 #: printing/printconfigwidgets.cpp:43
 #, kde-format
 msgid "Print &legend"
-msgstr ""
+msgstr "விளக்க அட்டவணையை அச்சிடு"
 
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
@@ -2567,6 +2545,8 @@ msgid ""
 "<p>Print a box displaying typographical conventions for the document type, "
 "as defined by the syntax highlighting being used.</p>"
 msgstr ""
+"<p>செயலிலுள்ள ஆவணவகைக்கு பயன்படுத்தப்படும் எழுத்துருக்கள், நிறங்கள் போன்றவற்றை (அதாவது "
+"முன்னிலைப்படுத்தபடுபவற்றை) விளக்கும் அட்டவணையை அச்சிடும்.</p>"
 
 #: printing/printconfigwidgets.cpp:116
 #, kde-format
