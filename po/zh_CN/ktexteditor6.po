@@ -1568,7 +1568,7 @@ msgstr "遵循 .editorconfig 配置文件中的设置"
 #: dialogs/opensaveconfigadvwidget.ui:229
 #, kde-format
 msgid "Use first line of untitled documents for document name"
-msgstr ""
+msgstr "使用无标题文档的第一行作为文档名称"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29

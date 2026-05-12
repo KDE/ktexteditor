@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:40+0000\n"
-"PO-Revision-Date: 2026-04-06 19:10+0200\n"
+"PO-Revision-Date: 2026-05-11 11:23+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -1646,10 +1646,9 @@ msgstr "Preferentias de honor in file .editorconfig"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkUseFirstLineAsDocName)
 #: dialogs/opensaveconfigadvwidget.ui:229
-#, fuzzy, kde-format
-#| msgid "Use this to close the current document"
+#, kde-format
 msgid "Use first line of untitled documents for document name"
-msgstr "Tu usa isto pro clauder le documento currente"
+msgstr "Usa prime rango del documento sin titulo como nomine del documento"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
