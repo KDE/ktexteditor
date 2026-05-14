@@ -1628,7 +1628,7 @@ msgstr "Rešpektovať nastavenia v súbore .editorconfig"
 #: dialogs/opensaveconfigadvwidget.ui:229
 #, kde-format
 msgid "Use first line of untitled documents for document name"
-msgstr ""
+msgstr "Použiť prvý riadok nepomenovaných dokumentov ako názov dokumentu"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
