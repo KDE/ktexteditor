@@ -3808,6 +3808,36 @@ int KTextEditor::ViewPrivate::lastDisplayedLineInternal(LineType lineType) const
     }
 }
 
+int KTextEditor::ViewPrivate::visibleToRealLineInternal(int visibleLine) const
+{
+    const int total = textFolding().visibleLines();
+    if (visibleLine < 0 || visibleLine >= total) {
+        return -1;
+    }
+    return textFolding().visibleLineToLine(visibleLine);
+}
+
+int KTextEditor::ViewPrivate::realToVisibleLineInternal(int realLine) const
+{
+    if (realLine < 0 || realLine >= m_doc->lines()) {
+        return -1;
+    }
+    return textFolding().lineToVisibleLine(realLine);
+}
+
+int KTextEditor::ViewPrivate::visibleLinesInternal() const
+{
+    return textFolding().visibleLines();
+}
+
+bool KTextEditor::ViewPrivate::isLineVisibleInternal(int realLine) const
+{
+    if (realLine < 0 || realLine >= m_doc->lines()) {
+        return false;
+    }
+    return textFolding().isLineVisible(realLine);
+}
+
 QRect KTextEditor::ViewPrivate::textAreaRectInternal() const
 {
     const auto sourceRect = m_viewInternal->rect();

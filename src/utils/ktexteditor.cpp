@@ -428,6 +428,26 @@ int View::lastDisplayedLine(LineType lineType) const
     return d->lastDisplayedLineInternal(lineType);
 }
 
+int View::visibleToRealLine(int visibleLine) const
+{
+    return d->visibleToRealLineInternal(visibleLine);
+}
+
+int View::realToVisibleLine(int realLine) const
+{
+    return d->realToVisibleLineInternal(realLine);
+}
+
+int View::visibleLines() const
+{
+    return d->visibleLinesInternal();
+}
+
+bool View::isLineVisible(int realLine) const
+{
+    return d->isLineVisibleInternal(realLine);
+}
+
 QRect View::textAreaRect() const
 {
     return d->textAreaRectInternal();

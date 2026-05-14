@@ -829,6 +829,11 @@ public:
         return m_textFolding;
     }
 
+    const Kate::TextFolding &textFolding() const
+    {
+        return m_textFolding;
+    }
+
 public:
     void slotTextInserted(KTextEditor::View *view, const KTextEditor::Cursor position, const QString &text);
 
@@ -1252,6 +1257,14 @@ public:
     int firstDisplayedLineInternal(LineType lineType) const;
 
     int lastDisplayedLineInternal(LineType lineType) const;
+    
+    int visibleToRealLineInternal(int visibleLine) const;
+
+    int realToVisibleLineInternal(int realLine) const;
+
+    int visibleLinesInternal() const;
+
+    bool isLineVisibleInternal(int realLine) const;
 
     QRect textAreaRectInternal() const;
 

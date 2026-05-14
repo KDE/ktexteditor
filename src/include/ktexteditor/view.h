@@ -1119,6 +1119,73 @@ public:
     int lastDisplayedLine(LineType lineType = RealLine) const;
 
     /*!
+     * Convert a visible line number to a real line number.
+     *
+     * Visible line numbers are a contiguous sequence from 0 to
+     * visibleLines() - 1 that skips all lines hidden inside a folded region.
+     *
+     * \note A line that is "visible" means it is not in a folded region.
+     * It may still be scrolled outside the current viewport, i.e. not "displayed".
+     * Use firstDisplayedLine() and lastDisplayedLine() to query what is
+     * currently displayed on screen.
+     *
+     * \param visibleLine the visible line number to convert (0-indexed)
+     * \return the corresponding real line number, or -1 if \a visibleLine
+     * is out of range (i.e. >= visibleLines()).
+     *
+     * \see realToVisibleLine()
+     * \see visibleLines()
+     * \since 6.27
+     */
+    int visibleToRealLine(int visibleLine) const;
+
+    /*!
+     * Convert a real line number to a visible line number.
+     *
+     * \note If the line is hidden inside a folded region, returns the visible line
+     * number of the last visible line before the fold. To test whether a lilne is
+     * visible, use isLineVisible() instead.
+     *
+     * \param realLine the real line number to convert (0-indexed)
+     * \return the corresponding visible line number, or -1 if \a realLine
+     * is out of range.
+     *
+     * \see visibleToRealLine()
+     * \see visibleLines()
+     * \see isLineVisible()
+     * \since 6.27
+     */
+    int realToVisibleLine(int realLine) const;
+
+    /*!
+     * Returns the total number of visible lines, i.e. the number of lines in
+     * the document that are not hidden inside a folded region.
+     *
+     * This is the upper bound for visibleToRealLine() and valid visible line
+     * numbers are in the range [0, visibleLines() - 1].
+     *
+     * \return number of visible (non-folded) lines
+     *
+     * \see visibleToRealLine()
+     * \see realToVisibleLine()
+     * \since 6.27
+     */
+    int visibleLines() const;
+
+    /*!
+     * Returns whether the given \a realLine is currently visible, i.e. not
+     * hidden inside a folded region.
+     *
+     * \param realLine the real line number to query (0-indexed)
+     * \return \c true if the line is visible, \c false if it is hidden inside
+     * a fold or if \a realLine is out of range
+     *
+     * \see realToVisibleLine()
+     * \since 6.27
+     */
+    bool isLineVisible(int realLine) const;
+
+    /*!
      * Get the view's text area rectangle excluding border, scrollbars, etc.
      *
      * Returns the view's text area rectangle
