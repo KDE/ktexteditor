@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-09 00:40+0000\n"
-"PO-Revision-Date: 2026-05-09 07:16+0300\n"
+"POT-Creation-Date: 2026-05-15 00:41+0000\n"
+"PO-Revision-Date: 2026-05-14 20:56+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -7795,17 +7795,17 @@ msgstr "החיפוש גלש"
 msgid "Open File"
 msgstr "פתיחת קובץ"
 
-#: view/kateview.cpp:3954
+#: view/kateview.cpp:3984
 #, kde-format
 msgid "Align On"
 msgstr "יישור פעיל"
 
-#: view/kateview.cpp:3954
+#: view/kateview.cpp:3984
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "תבנית יישור:"
 
-#: view/kateview.cpp:5038
+#: view/kateview.cpp:5068
 #, kde-format
 msgid "Export File as HTML"
 msgstr "ייצוא קובץ בתור HTML"
@@ -7852,7 +7852,7 @@ msgstr ""
 "<p>זוהי <b>שורת הפקודות</b> של רכיב Kate.<br />תחביר: <code><b>command "
 "[ arguments ]‎</b></code> כאשר command הוא הפקודה ו־arguments הארגומנטים.<br /"
 ">כדי לקבל רשימה של כל הפקודות הזמינות, נא להקליד <code><b>help list</b></"
-"code><br />כדי לקבל עזרה לגבי פקודה מסויימת, נא להקליד <code><b>help &lt;"
+"code><br />כדי לקבל עזרה לגבי פקודה מסוימת, נא להקליד <code><b>help &lt;"
 "command&gt;</b></code></p>"
 
 #: view/kateviewhelpers.cpp:1317 vimode/emulatedcommandbar/commandmode.cpp:211
