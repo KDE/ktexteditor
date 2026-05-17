@@ -688,7 +688,7 @@ function getInputExpression(info, compInfo, opname, getProgram, useExpectedResul
  * @return String
  */
 function getMessage(msgOrInfo) {
-    return typeof msgOrInfo === 'string' ? msgOrInfo : msgOrInfo?.msg;
+    return typeof msgOrInfo === 'string' ? msgOrInfo : (msgOrInfo?.msg || '');
 }
 
 const OUTPUT_IS_OK = (1 << 0);
