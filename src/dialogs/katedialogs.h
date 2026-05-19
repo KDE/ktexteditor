@@ -25,7 +25,6 @@
 
 #include <QColor>
 #include <QDialog>
-#include <QTabWidget>
 #include <QTreeWidget>
 
 class ModeConfigPage;

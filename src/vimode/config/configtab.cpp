@@ -31,6 +31,10 @@ ConfigTab::ConfigTab(QWidget *parent, Mappings *mappings)
     ui = new Ui::ConfigWidget();
     ui->setupUi(newWidget);
 
+    // ensure modern config tab style
+    ui->tabMappingModes->setDocumentMode(true);
+    ui->tabMappingModes->tabBar()->setExpanding(true);
+
     // Make the header take all the width in equal parts.
     ui->tblNormalModeMappings->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tblInsertModeMappings->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);

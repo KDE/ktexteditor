@@ -1019,6 +1019,7 @@ KateThemeConfigPage::KateThemeConfigPage(QWidget *parent)
 
     QTabWidget *tabWidget = new QTabWidget(this);
     tabWidget->setDocumentMode(true);
+    tabWidget->tabBar()->setExpanding(true);
     layout->addWidget(tabWidget);
 
     auto *themeEditor = new QWidget(this);
@@ -1151,6 +1152,8 @@ void KateThemeConfigPage::layoutThemeEditorTab(QWidget *tab)
 
     // tabs
     QTabWidget *tabWidget = new QTabWidget(this);
+    tabWidget->setDocumentMode(true);
+    tabWidget->tabBar()->setExpanding(true);
     layout->addWidget(tabWidget);
 
     m_colorTab = new KateThemeConfigColorTab();

@@ -75,6 +75,7 @@
 #include <QSpinBox>
 #include <QStringList>
 #include <QTabBar>
+#include <QTabWidget>
 #include <QTemporaryFile>
 #include <QTextStream>
 #include <QToolButton>
@@ -623,6 +624,7 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     layout->setContentsMargins(0, 0, 0, 0);
     QTabWidget *tabWidget = new QTabWidget(this);
     tabWidget->setDocumentMode(true);
+    tabWidget->tabBar()->setExpanding(true);
 
     // add all tabs
     tabWidget->insertTab(0, editConfigTab, editConfigTab->name());
@@ -732,6 +734,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     QLayout *layout = new QVBoxLayout(this);
     QTabWidget *tabWidget = new QTabWidget(this);
     tabWidget->setDocumentMode(true);
+    tabWidget->tabBar()->setExpanding(true);
     layout->addWidget(tabWidget);
     layout->setContentsMargins(0, 0, 0, 0);
 
@@ -966,6 +969,7 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     layout->setContentsMargins(0, 0, 0, 0);
     QTabWidget *tabWidget = new QTabWidget(this);
     tabWidget->setDocumentMode(true);
+    tabWidget->tabBar()->setExpanding(true);
 
     QWidget *tmpWidget = new QWidget(tabWidget);
     QVBoxLayout *internalLayout = new QVBoxLayout(tmpWidget);
