@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-15 00:41+0000\n"
+"POT-Creation-Date: 2026-05-21 00:41+0000\n"
 "PO-Revision-Date: 2009-01-19 13:14+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <maithili.sf.net>\n"
@@ -113,7 +113,7 @@ msgid "Word Wrap"
 msgstr "स्थिर शब्द रैप"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:84 dialogs/katedialogs.cpp:744
+#: data/katepart5ui.rc:84 dialogs/katedialogs.cpp:747
 #, kde-format
 msgid "Borders"
 msgstr "किनार"
@@ -339,7 +339,7 @@ msgid "Scro&llbars visibility:"
 msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:752
+#: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:755
 #, kde-format
 msgid "Always On"
 msgstr "हमेशा चालू"
@@ -456,8 +456,8 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1022
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:609
+#: dialogs/katedialogs.cpp:743 dialogs/katedialogs.cpp:1026
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -746,7 +746,7 @@ msgid "Delete the current file type."
 msgstr "वर्तमान फाइल प्रकार मेटाबू."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1131
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1132
 #, kde-format
 msgid "&Delete"
 msgstr "मेटाबू (&D)"
@@ -1058,7 +1058,7 @@ msgstr ""
 msgid "Increase indentation level if in l&eading blank space"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
+#: dialogs/katedialogs.cpp:185 dialogs/katedialogs.cpp:187
 #, fuzzy, kde-format
 #| msgid " characters"
 msgid "%v character"
@@ -1066,78 +1066,78 @@ msgid_plural "%v characters"
 msgstr[0] "अक्षर"
 msgstr[1] "अक्षर"
 
-#: dialogs/katedialogs.cpp:210
+#: dialogs/katedialogs.cpp:211
 #, kde-format
 msgid "Indentation"
 msgstr "इंडेन्टेशन"
 
-#: dialogs/katedialogs.cpp:294
+#: dialogs/katedialogs.cpp:295
 #, kde-format
 msgid "Auto Completion"
 msgstr "स्वतः पूर्णता"
 
-#: dialogs/katedialogs.cpp:361
+#: dialogs/katedialogs.cpp:362
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
 msgid "Spellcheck"
 msgstr "वर्तनी जाँच चयन..."
 
-#: dialogs/katedialogs.cpp:409 dialogs/katedialogs.cpp:416
+#: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:417
 #, fuzzy, kde-format
 #| msgctxt "@item:intable Text context"
 #| msgid "Alert"
 msgid "Alt"
 msgstr "चेतावनी"
 
-#: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:418
+#: dialogs/katedialogs.cpp:411 dialogs/katedialogs.cpp:419
 #, kde-format
 msgid "Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:412 dialogs/katedialogs.cpp:420
+#: dialogs/katedialogs.cpp:413 dialogs/katedialogs.cpp:421
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Meta + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:414
+#: dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:417
+#: dialogs/katedialogs.cpp:418
 #, fuzzy, kde-format
 #| msgid "Command"
 msgid "Cmd"
 msgstr "कमांड"
 
-#: dialogs/katedialogs.cpp:419
+#: dialogs/katedialogs.cpp:420
 #, kde-format
 msgid "Cmd + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:421
+#: dialogs/katedialogs.cpp:422
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:479
+#: dialogs/katedialogs.cpp:480
 #, fuzzy, kde-format
 #| msgctxt "Language Section"
 #| msgid "Configuration"
 msgid "Text Navigation"
 msgstr "बिन्यास"
 
-#: dialogs/katedialogs.cpp:581
+#: dialogs/katedialogs.cpp:582
 #, fuzzy, kde-format
 #| msgid " characters"
 msgctxt "Wrap words at (value is at 20 or larger)"
@@ -1146,66 +1146,66 @@ msgid_plural "%v characters"
 msgstr[0] "अक्षर"
 msgstr[1] "अक्षर"
 
-#: dialogs/katedialogs.cpp:586
+#: dialogs/katedialogs.cpp:587
 #, kde-format
 msgid "Feature is not active"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:588
+#: dialogs/katedialogs.cpp:589
 #, fuzzy, kde-format
 #| msgid "Disabled Breakpoint"
 msgid "Disable Feature"
 msgstr "अक्षम ब्रेकपाइन्ट"
 
-#: dialogs/katedialogs.cpp:590
+#: dialogs/katedialogs.cpp:591
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:592
+#: dialogs/katedialogs.cpp:593
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:594
+#: dialogs/katedialogs.cpp:595
 #, fuzzy, kde-format
 #| msgid "Non-word character"
 msgid "Non letter character"
 msgstr "नॉन-वर्ड अक्षर"
 
-#: dialogs/katedialogs.cpp:710
+#: dialogs/katedialogs.cpp:712
 #, kde-format
 msgid "Editing"
 msgstr "संपादन"
 
-#: dialogs/katedialogs.cpp:715
+#: dialogs/katedialogs.cpp:717
 #, kde-format
 msgid "Editing Options"
 msgstr "संपादन विकल्प"
 
-#: dialogs/katedialogs.cpp:748
+#: dialogs/katedialogs.cpp:751
 #, fuzzy, kde-format
 #| msgctxt "Language"
 #| msgid "Stata"
 msgid "Statusbar"
 msgstr "Stata"
 
-#: dialogs/katedialogs.cpp:750
+#: dialogs/katedialogs.cpp:753
 #, kde-format
 msgid "Off"
 msgstr "बन्न"
 
-#: dialogs/katedialogs.cpp:751
+#: dialogs/katedialogs.cpp:754
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "पंक्ति क्रमांक अनुसरण करू"
 
-#: dialogs/katedialogs.cpp:942 dialogs/katedialogs.cpp:947
+#: dialogs/katedialogs.cpp:945 dialogs/katedialogs.cpp:950
 #, kde-format
 msgid "Appearance"
 msgstr "प्रकटन"
 
-#: dialogs/katedialogs.cpp:982
+#: dialogs/katedialogs.cpp:986
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1213,12 +1213,12 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1023
+#: dialogs/katedialogs.cpp:1027
 #, kde-format
 msgid "Advanced"
 msgstr "उन्नत"
 
-#: dialogs/katedialogs.cpp:1088
+#: dialogs/katedialogs.cpp:1092
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1226,136 +1226,136 @@ msgstr ""
 "अहाँ कोनो बैकअप प्रत्यय अथवा उपसर्ग नहि देने छी. मूलभूत उपसर्ग इस्तेमाल कएल जाए रहल अछि. "
 "'~'"
 
-#: dialogs/katedialogs.cpp:1088
+#: dialogs/katedialogs.cpp:1092
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "कोनो बैकअप प्रत्यय अथवा उपसर्ग नहि"
 
-#: dialogs/katedialogs.cpp:1223
+#: dialogs/katedialogs.cpp:1227
 #, kde-format
 msgid "Open/Save"
 msgstr "खोलू/सहेजू"
 
-#: dialogs/katedialogs.cpp:1228
+#: dialogs/katedialogs.cpp:1232
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "फाइल खोलनाइ आ सहेजनाइ"
 
-#: dialogs/katedialogs.cpp:1251
+#: dialogs/katedialogs.cpp:1255
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1252
+#: dialogs/katedialogs.cpp:1256
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1263
+#: dialogs/katedialogs.cpp:1267
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1343
+#: dialogs/katedialogs.cpp:1347
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1407
+#: dialogs/katedialogs.cpp:1411
 #, fuzzy, kde-format
 #| msgid "&Section:"
 msgid "Dictionary:"
 msgstr "खण्ड: (&S)"
 
-#: dialogs/katedialogs.cpp:1459
+#: dialogs/katedialogs.cpp:1463
 #, fuzzy, kde-format
 #| msgid "Auto Completion"
 msgid "Enable Auto Reload"
 msgstr "स्वतः पूर्णता"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1466
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1467
+#: dialogs/katedialogs.cpp:1471
 #, fuzzy, kde-format
 #| msgid "&View Difference"
 msgid "View &Difference"
 msgstr "भिन्नता देखू (&V)"
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1473
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1478
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "फिनु सँ लोड करू (&d)"
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1480
+#: dialogs/katedialogs.cpp:1484
 #, fuzzy, kde-format
 #| msgid "&Reload File"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "फाइल फिनु सँ लोड करू (&R)"
 
-#: dialogs/katedialogs.cpp:1482
+#: dialogs/katedialogs.cpp:1486
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1486
+#: dialogs/katedialogs.cpp:1490
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "फाइल एहिना सहेजू... (&S)"
 
-#: dialogs/katedialogs.cpp:1488
+#: dialogs/katedialogs.cpp:1492
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "अहाँक एकटा स्थान चुनू आओर फाइलकेँ फिनु सँ सहेजू"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1493 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1497 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "अनदेखा करू (&I)"
 
-#: dialogs/katedialogs.cpp:1494
+#: dialogs/katedialogs.cpp:1498
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1563 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
 "your PATH."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1565 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "डिफ बनाबै मे त्रुटि"
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1576 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1576 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "डिफ आउटपुट"
@@ -2269,8 +2269,8 @@ msgstr ""
 "दुनू बदलत. ओतए किछु डाटा नुकसान भए सकैत अछि."
 
 #: document/katedocument.cpp:2517 document/katedocument.cpp:2533
-#: document/katedocument.cpp:2853 syntax/katethemeconfig.cpp:1215
-#: syntax/katethemeconfig.cpp:1371
+#: document/katedocument.cpp:2853 syntax/katethemeconfig.cpp:1218
+#: syntax/katethemeconfig.cpp:1374
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "संभावित डाटा नुकसान"
@@ -2490,7 +2490,7 @@ msgid "recording"
 msgstr "एनकोडिंग (&n)"
 
 #: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:88
-#: vimode/config/configtab.cpp:233
+#: vimode/config/configtab.cpp:237
 #, kde-format
 msgid "Vi Input Mode"
 msgstr "Vi इनमुट मोड"
@@ -4981,146 +4981,146 @@ msgid ""
 "context menu when appropriate.</p>"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1026
+#: syntax/katethemeconfig.cpp:1027
 #, fuzzy, kde-format
 #| msgid "Normal Text Styles"
 msgid "Default Theme"
 msgstr "सामान्य पाठ शैली"
 
-#: syntax/katethemeconfig.cpp:1027
+#: syntax/katethemeconfig.cpp:1028
 #, fuzzy, kde-format
 #| msgid "Choose Editor..."
 msgid "Theme Editor"
 msgstr "संपादक चुनू..."
 
-#: syntax/katethemeconfig.cpp:1045
+#: syntax/katethemeconfig.cpp:1046
 #, fuzzy, kde-format
 #| msgid "Selected text:"
 msgid "Select theme:"
 msgstr "चुनल गेल पाठ:"
 
-#: syntax/katethemeconfig.cpp:1118
+#: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgctxt "Language"
 #| msgid "Scheme"
 msgid "&Theme:"
 msgstr "योजना"
 
-#: syntax/katethemeconfig.cpp:1127
+#: syntax/katethemeconfig.cpp:1128
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgctxt "@action:button"
 msgid "&Copy…"
 msgstr "फाइल एहिना सहेजू... (&S)"
 
-#: syntax/katethemeconfig.cpp:1135
+#: syntax/katethemeconfig.cpp:1136
 #, fuzzy, kde-format
 #| msgid "E&xport as HTML..."
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "एचटीएमएल रूपेँ निर्यात करू... (&x)"
 
-#: syntax/katethemeconfig.cpp:1139
+#: syntax/katethemeconfig.cpp:1140
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "सामान्य रंग (&C)"
 
-#: syntax/katethemeconfig.cpp:1146
+#: syntax/katethemeconfig.cpp:1147
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1157
+#: syntax/katethemeconfig.cpp:1160
 #, kde-format
 msgid "Colors"
 msgstr "रँग"
 
-#: syntax/katethemeconfig.cpp:1161
+#: syntax/katethemeconfig.cpp:1164
 #, fuzzy, kde-format
 #| msgid "Normal Text Styles"
 msgid "Default Text Styles"
 msgstr "सामान्य पाठ शैली"
 
-#: syntax/katethemeconfig.cpp:1165
+#: syntax/katethemeconfig.cpp:1168
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "पाठ शैलियाँ आलोकित कए रहल अछि"
 
-#: syntax/katethemeconfig.cpp:1177
+#: syntax/katethemeconfig.cpp:1180
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgid "Exporting color theme: %1"
 msgstr "फौन्ट आ रंग प्रसंग"
 
-#: syntax/katethemeconfig.cpp:1179 syntax/katethemeconfig.cpp:1200
+#: syntax/katethemeconfig.cpp:1182 syntax/katethemeconfig.cpp:1203
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Color theme"
 msgstr "रँग"
 
-#: syntax/katethemeconfig.cpp:1200
+#: syntax/katethemeconfig.cpp:1203
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgid "Importing Color Theme"
 msgstr "फौन्ट आ रंग प्रसंग"
 
-#: syntax/katethemeconfig.cpp:1214
+#: syntax/katethemeconfig.cpp:1217
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1216
+#: syntax/katethemeconfig.cpp:1219
 #, fuzzy, kde-format
 #| msgid "Close Nevertheless"
 msgid "Import Nevertheless"
 msgstr "कहिनो बन्न करू"
 
-#: syntax/katethemeconfig.cpp:1304
+#: syntax/katethemeconfig.cpp:1307
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgid "Follow System Color Scheme"
 msgstr "फौन्ट आ रंग प्रसंग"
 
-#: syntax/katethemeconfig.cpp:1370
+#: syntax/katethemeconfig.cpp:1373
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1372
+#: syntax/katethemeconfig.cpp:1375
 #, fuzzy, kde-format
 #| msgid "Close Nevertheless"
 msgid "Delete Nevertheless"
 msgstr "कहिनो बन्न करू"
 
-#: syntax/katethemeconfig.cpp:1414
+#: syntax/katethemeconfig.cpp:1417
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Copy theme"
 msgstr "रँग"
 
-#: syntax/katethemeconfig.cpp:1415
+#: syntax/katethemeconfig.cpp:1418
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1427
+#: syntax/katethemeconfig.cpp:1430
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1428
+#: syntax/katethemeconfig.cpp:1431
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Copy Theme"
 msgstr "रँग"
 
-#: syntax/katethemeconfig.cpp:1481 syntax/katethemeconfig.cpp:1486
+#: syntax/katethemeconfig.cpp:1484 syntax/katethemeconfig.cpp:1489
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Color Themes"
@@ -8277,13 +8277,13 @@ msgstr "छूटल आर्गुमेंट. उपयोग: %1 <value>"
 msgid "Wrong arguments"
 msgstr "आर्गुमेंट्स"
 
-#: vimode/config/configtab.cpp:201
+#: vimode/config/configtab.cpp:205
 #, fuzzy, kde-format
 #| msgid "Unable to open %1"
 msgid "Unable to open the config file for reading."
 msgstr "%1 खोलबा मे अक्षम"
 
-#: vimode/config/configtab.cpp:201
+#: vimode/config/configtab.cpp:205
 #, fuzzy, kde-format
 #| msgid "Unable to open %1"
 msgid "Unable to open file"

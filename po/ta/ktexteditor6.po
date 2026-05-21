@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-15 00:41+0000\n"
+"POT-Creation-Date: 2026-05-21 00:41+0000\n"
 "PO-Revision-Date: 2026-05-10 16:02+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -108,7 +108,7 @@ msgid "Word Wrap"
 msgstr "வரிமடிப்பு"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:84 dialogs/katedialogs.cpp:744
+#: data/katepart5ui.rc:84 dialogs/katedialogs.cpp:747
 #, kde-format
 msgid "Borders"
 msgstr "விளிம்புகள்"
@@ -315,7 +315,7 @@ msgid "Scro&llbars visibility:"
 msgstr "&உருள்பட்டைகள் காட்டப்படுவது:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:752
+#: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:755
 #, kde-format
 msgid "Always On"
 msgstr "எப்போதும் இயக்கு"
@@ -422,8 +422,8 @@ msgstr "பிடிப்புப்பலகை வரலாற்றில�
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:608
-#: dialogs/katedialogs.cpp:740 dialogs/katedialogs.cpp:1022
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:609
+#: dialogs/katedialogs.cpp:743 dialogs/katedialogs.cpp:1026
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -707,7 +707,7 @@ msgid "Delete the current file type."
 msgstr "தற்போதைய கோப்பு வகையை அகற்றுக.சேமி "
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1131
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1132
 #, kde-format
 msgid "&Delete"
 msgstr "&நீக்கு"
@@ -1028,79 +1028,79 @@ msgstr ""
 msgid "Increase indentation level if in l&eading blank space"
 msgstr "முதல் &காலியிடத்தில் இருந்தால் முன்னிடைவெளியை அதிகப்படுத்து"
 
-#: dialogs/katedialogs.cpp:184 dialogs/katedialogs.cpp:186
+#: dialogs/katedialogs.cpp:185 dialogs/katedialogs.cpp:187
 #, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
 msgstr[0] "%v எழுத்து"
 msgstr[1] "%v எழுத்துகள்"
 
-#: dialogs/katedialogs.cpp:210
+#: dialogs/katedialogs.cpp:211
 #, kde-format
 msgid "Indentation"
 msgstr "முன்னிடைவெளி"
 
-#: dialogs/katedialogs.cpp:294
+#: dialogs/katedialogs.cpp:295
 #, kde-format
 msgid "Auto Completion"
 msgstr "தானியக்க சொல் நிறைவு"
 
-#: dialogs/katedialogs.cpp:361
+#: dialogs/katedialogs.cpp:362
 #, kde-format
 msgid "Spellcheck"
 msgstr "சொல் திருத்தி"
 
-#: dialogs/katedialogs.cpp:409 dialogs/katedialogs.cpp:416
+#: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:417
 #, kde-format
 msgid "Alt"
 msgstr "Alt"
 
-#: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:418
+#: dialogs/katedialogs.cpp:411 dialogs/katedialogs.cpp:419
 #, kde-format
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Meta"
 msgstr "Meta"
 
-#: dialogs/katedialogs.cpp:412 dialogs/katedialogs.cpp:420
+#: dialogs/katedialogs.cpp:413 dialogs/katedialogs.cpp:421
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr "Ctrl + Alt"
 
-#: dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Meta + Alt"
 msgstr "Meta + Alt"
 
-#: dialogs/katedialogs.cpp:414
+#: dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr "Ctrl + Meta"
 
-#: dialogs/katedialogs.cpp:417
+#: dialogs/katedialogs.cpp:418
 #, kde-format
 msgid "Cmd"
 msgstr "Cmd"
 
-#: dialogs/katedialogs.cpp:419
+#: dialogs/katedialogs.cpp:420
 #, kde-format
 msgid "Cmd + Alt"
 msgstr "Cmd + Alt"
 
-#: dialogs/katedialogs.cpp:421
+#: dialogs/katedialogs.cpp:422
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr "Cmd + Ctrl"
 
-#: dialogs/katedialogs.cpp:479
+#: dialogs/katedialogs.cpp:480
 #, kde-format
 msgid "Text Navigation"
 msgstr "உரை உலாவல்"
 
-#: dialogs/katedialogs.cpp:581
+#: dialogs/katedialogs.cpp:582
 #, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
@@ -1108,62 +1108,62 @@ msgid_plural "%v characters"
 msgstr[0] "%v எழுத்து"
 msgstr[1] "%v எழுத்துகள்"
 
-#: dialogs/katedialogs.cpp:586
+#: dialogs/katedialogs.cpp:587
 #, kde-format
 msgid "Feature is not active"
 msgstr "இவ்வம்சம் செயலிலில்லை"
 
-#: dialogs/katedialogs.cpp:588
+#: dialogs/katedialogs.cpp:589
 #, kde-format
 msgid "Disable Feature"
 msgstr "அம்சத்தை முடக்கு"
 
-#: dialogs/katedialogs.cpp:590
+#: dialogs/katedialogs.cpp:591
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr "மார்க்குடவுனை பயன்படுத்தம்போது வசதியாக இருக்கலாம்"
 
-#: dialogs/katedialogs.cpp:592
+#: dialogs/katedialogs.cpp:593
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:594
+#: dialogs/katedialogs.cpp:595
 #, kde-format
 msgid "Non letter character"
 msgstr "எழுத்தில்லா குறி"
 
-#: dialogs/katedialogs.cpp:710
+#: dialogs/katedialogs.cpp:712
 #, kde-format
 msgid "Editing"
 msgstr "திருத்துவது"
 
-#: dialogs/katedialogs.cpp:715
+#: dialogs/katedialogs.cpp:717
 #, kde-format
 msgid "Editing Options"
 msgstr "திருத்த விருப்பங்கள்"
 
-#: dialogs/katedialogs.cpp:748
+#: dialogs/katedialogs.cpp:751
 #, kde-format
 msgid "Statusbar"
 msgstr "நிலைப்பட்டை"
 
-#: dialogs/katedialogs.cpp:750
+#: dialogs/katedialogs.cpp:753
 #, kde-format
 msgid "Off"
 msgstr "முடக்கு"
 
-#: dialogs/katedialogs.cpp:751
+#: dialogs/katedialogs.cpp:754
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "வரி எண்களுக்கு பின்"
 
-#: dialogs/katedialogs.cpp:942 dialogs/katedialogs.cpp:947
+#: dialogs/katedialogs.cpp:945 dialogs/katedialogs.cpp:950
 #, kde-format
 msgid "Appearance"
 msgstr "தோற்றம்"
 
-#: dialogs/katedialogs.cpp:982
+#: dialogs/katedialogs.cpp:986
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1174,12 +1174,12 @@ msgstr ""
 "உங்கள் தரவை %1 மீட்டெடுக்க இப்படிப்பட்ட கோப்புகள் உதவும். Swap கோப்புகளை முடக்கினால், "
 "சேமிக்கப்படா தரவுகளை கணினி முறிவின்போது இழக்க நேரிடலாம்."
 
-#: dialogs/katedialogs.cpp:1023
+#: dialogs/katedialogs.cpp:1027
 #, kde-format
 msgid "Advanced"
 msgstr "மேம்பட்டவை"
 
-#: dialogs/katedialogs.cpp:1088
+#: dialogs/katedialogs.cpp:1092
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1187,52 +1187,52 @@ msgstr ""
 "காப்புநகலுக்கான முன்னொட்டையோ பின்னொட்டையோ நீங்கள் அமைக்கவில்லை. இயல்பிருப்பு பின்னொட்டான "
 "'~' பயன்படுத்தப்படும்."
 
-#: dialogs/katedialogs.cpp:1088
+#: dialogs/katedialogs.cpp:1092
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "காப்புநகலுக்கான முன்னொட்டோ பின்னொட்டோ இல்லை"
 
-#: dialogs/katedialogs.cpp:1223
+#: dialogs/katedialogs.cpp:1227
 #, kde-format
 msgid "Open/Save"
 msgstr "திறப்பது/சேமிப்பது"
 
-#: dialogs/katedialogs.cpp:1228
+#: dialogs/katedialogs.cpp:1232
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "கோப்புத் திறப்பும் & சேமிப்பும்"
 
-#: dialogs/katedialogs.cpp:1251
+#: dialogs/katedialogs.cpp:1255
 #, kde-format
 msgid "&Line:"
 msgstr "&வரி:"
 
-#: dialogs/katedialogs.cpp:1252
+#: dialogs/katedialogs.cpp:1256
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "பிடிப்புப்பலகையிலுள்ள வரியெண்ணுக்கு செல்"
 
-#: dialogs/katedialogs.cpp:1263
+#: dialogs/katedialogs.cpp:1267
 #, kde-format
 msgid "Go to"
 msgstr "இதற்கு செல்"
 
-#: dialogs/katedialogs.cpp:1343
+#: dialogs/katedialogs.cpp:1347
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "முறையான வரியெண் பிடிப்புப்பலகையில் கண்டுபிடிக்கப்படவில்லை"
 
-#: dialogs/katedialogs.cpp:1407
+#: dialogs/katedialogs.cpp:1411
 #, kde-format
 msgid "Dictionary:"
 msgstr "அகரமுதலி:"
 
-#: dialogs/katedialogs.cpp:1459
+#: dialogs/katedialogs.cpp:1463
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "தானாக மீளேற்று"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1466
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1241,60 +1241,60 @@ msgstr ""
 "இக்கீற்றையோ சாளரத்தையோ அடுத்த‍து மூடும்வரை வட்டில் மாற்றங்கள் ஏற்பட்டால் கேட்காமலேயே தானாக "
 "மீளேற்றும்."
 
-#: dialogs/katedialogs.cpp:1467
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "View &Difference"
 msgstr "&வித்தியாசங்களை காட்டு"
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1473
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "மாற்றங்களை காட்டும் (diff முறையில்)."
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1478
 #, kde-format
 msgid "&Reload"
 msgstr "&மீளேற்று"
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "வட்டிலிருந்து கோப்பை மீளேற்றும். சேமிக்கப்படா மாற்றங்களை இழப்பீர்கள்."
 
-#: dialogs/katedialogs.cpp:1480
+#: dialogs/katedialogs.cpp:1484
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&கோப்பை மூடு"
 
-#: dialogs/katedialogs.cpp:1482
+#: dialogs/katedialogs.cpp:1486
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "கோப்பின் உள்ளடக்கத்தை சேமிக்காமல் அதை மூடும்."
 
-#: dialogs/katedialogs.cpp:1486
+#: dialogs/katedialogs.cpp:1490
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "வேறு &பெயரில் சேமி…"
 
-#: dialogs/katedialogs.cpp:1488
+#: dialogs/katedialogs.cpp:1492
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "வேறொரு இடத்தில் கோப்பை நீங்கள் மறுபடியும் சேமிக்க உதவும்."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1493 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1497 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&பொருட்படுத்தாதே"
 
-#: dialogs/katedialogs.cpp:1494
+#: dialogs/katedialogs.cpp:1498
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "எதுவும் செய்யாது, வட்டிலுள்ள மாற்றங்களை பொருட்படுத்தாது."
 
-#: dialogs/katedialogs.cpp:1563 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1567 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1303,18 +1303,18 @@ msgstr ""
 "diff கட்டளை தோல்வியடைந்த‍து. diff(1) நிறுவப்பட்டுள்ளதா எனவும் உங்கள் PATH-இல் உள்ளதா "
 "எனவும் சரிபாருங்கள்."
 
-#: dialogs/katedialogs.cpp:1565 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "வித்தியாசங்களை கண்டுபிடிப்பதில் சிக்கல்"
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1576 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "கோப்புகளுக்கு இடையில் எந்த வித்தியாசமும் இல்லை."
 
-#: dialogs/katedialogs.cpp:1572 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1576 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff வெளியீடு"
@@ -2214,8 +2214,8 @@ msgstr ""
 "அதன் பதிப்பும் மாறுபடுகின்றன. தரவிழப்பு நேரிடலாம்."
 
 #: document/katedocument.cpp:2517 document/katedocument.cpp:2533
-#: document/katedocument.cpp:2853 syntax/katethemeconfig.cpp:1215
-#: syntax/katethemeconfig.cpp:1371
+#: document/katedocument.cpp:2853 syntax/katethemeconfig.cpp:1218
+#: syntax/katethemeconfig.cpp:1374
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "தரவிழப்பு நேரிடலாம்"
@@ -2424,7 +2424,7 @@ msgid "recording"
 msgstr "பதிவு செய்கிறது"
 
 #: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:88
-#: vimode/config/configtab.cpp:233
+#: vimode/config/configtab.cpp:237
 #, kde-format
 msgid "Vi Input Mode"
 msgstr "Vi பயன்முறை"
@@ -4878,82 +4878,82 @@ msgstr ""
 "p><p>You can unset the Background and Selected Background colors from the "
 "context menu when appropriate.</p>"
 
-#: syntax/katethemeconfig.cpp:1026
+#: syntax/katethemeconfig.cpp:1027
 #, kde-format
 msgid "Default Theme"
 msgstr "இயல்பிருப்பு தோற்றத்திட்டம்"
 
-#: syntax/katethemeconfig.cpp:1027
+#: syntax/katethemeconfig.cpp:1028
 #, kde-format
 msgid "Theme Editor"
 msgstr "தோற்றத்திட்ட திருத்தி"
 
-#: syntax/katethemeconfig.cpp:1045
+#: syntax/katethemeconfig.cpp:1046
 #, kde-format
 msgid "Select theme:"
 msgstr "தோற்றத்திட்டத்தை தேர்ந்தெடு:"
 
-#: syntax/katethemeconfig.cpp:1118
+#: syntax/katethemeconfig.cpp:1119
 #, kde-format
 msgid "&Theme:"
 msgstr "தோற்றத்திட்டம்:"
 
-#: syntax/katethemeconfig.cpp:1127
+#: syntax/katethemeconfig.cpp:1128
 #, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
 msgstr "&நகலெடு…"
 
-#: syntax/katethemeconfig.cpp:1135
+#: syntax/katethemeconfig.cpp:1136
 #, kde-format
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "ஏற்றுமதி செய்…"
 
-#: syntax/katethemeconfig.cpp:1139
+#: syntax/katethemeconfig.cpp:1140
 #, kde-format
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "இறக்குமதி செய்…"
 
-#: syntax/katethemeconfig.cpp:1146
+#: syntax/katethemeconfig.cpp:1147
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1157
+#: syntax/katethemeconfig.cpp:1160
 #, kde-format
 msgid "Colors"
 msgstr "நிறங்கள்"
 
-#: syntax/katethemeconfig.cpp:1161
+#: syntax/katethemeconfig.cpp:1164
 #, fuzzy, kde-format
 #| msgid "Normal Text Styles"
 msgid "Default Text Styles"
 msgstr "சாதாரண உரை தோற்றங்கள்"
 
-#: syntax/katethemeconfig.cpp:1165
+#: syntax/katethemeconfig.cpp:1168
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "முன்னிலைப்படுத்தப்பட்ட உரை தோற்றங்கள்"
 
-#: syntax/katethemeconfig.cpp:1177
+#: syntax/katethemeconfig.cpp:1180
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgid "Exporting color theme: %1"
 msgstr "எழுத்துரு & நிறதிட்டமுறை."
 
-#: syntax/katethemeconfig.cpp:1179 syntax/katethemeconfig.cpp:1200
+#: syntax/katethemeconfig.cpp:1182 syntax/katethemeconfig.cpp:1203
 #, kde-format
 msgid "Color theme"
 msgstr "நிறத்திட்டம்"
 
-#: syntax/katethemeconfig.cpp:1200
+#: syntax/katethemeconfig.cpp:1203
 #, kde-format
 msgid "Importing Color Theme"
 msgstr "நிறத்திட்டத்தை இறக்குமதி செய்வது"
 
-#: syntax/katethemeconfig.cpp:1214
+#: syntax/katethemeconfig.cpp:1217
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
@@ -4962,37 +4962,37 @@ msgstr ""
 "இறக்குமதி செய்வது, ஏற்கனவேயுள்ள \"%1\" எனும் கோப்பை மேலெழுதும். இச்செயலை திரும்பப்பெற "
 "முடியாது."
 
-#: syntax/katethemeconfig.cpp:1216
+#: syntax/katethemeconfig.cpp:1219
 #, kde-format
 msgid "Import Nevertheless"
 msgstr "இருப்பினும் இறக்குமதி செய்"
 
-#: syntax/katethemeconfig.cpp:1304
+#: syntax/katethemeconfig.cpp:1307
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "கணினியின் பொதுவான நிறத்திட்டத்தைப் பயன்படுத்து"
 
-#: syntax/katethemeconfig.cpp:1370
+#: syntax/katethemeconfig.cpp:1373
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "\"%1\" எனும் நிறத்திட்டதை நீக்க வேண்டுமா? இச்செயலை திரும்பப்பெற முடியாது."
 
-#: syntax/katethemeconfig.cpp:1372
+#: syntax/katethemeconfig.cpp:1375
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "இருப்பினும் நீக்கு"
 
-#: syntax/katethemeconfig.cpp:1414
+#: syntax/katethemeconfig.cpp:1417
 #, kde-format
 msgid "Copy theme"
 msgstr "நிறத்திட்டத்தை நகலெடு"
 
-#: syntax/katethemeconfig.cpp:1415
+#: syntax/katethemeconfig.cpp:1418
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "\"%1\" எனும் நிறத்திட்டத்தின் நகலுக்கான பெயர்:"
 
-#: syntax/katethemeconfig.cpp:1427
+#: syntax/katethemeconfig.cpp:1430
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
@@ -5000,12 +5000,12 @@ msgid ""
 msgstr ""
 "<p>\"%1\" என்ற நிறத்திட்டம் ஏற்கனவே உள்ளது.</p><p>வேறு பெயரைத் தேர்ந்தெடுக்கவும்.</p>"
 
-#: syntax/katethemeconfig.cpp:1428
+#: syntax/katethemeconfig.cpp:1431
 #, kde-format
 msgid "Copy Theme"
 msgstr "திட்டத்தை நகலெடு"
 
-#: syntax/katethemeconfig.cpp:1481 syntax/katethemeconfig.cpp:1486
+#: syntax/katethemeconfig.cpp:1484 syntax/katethemeconfig.cpp:1489
 #, kde-format
 msgid "Color Themes"
 msgstr "நிறத்திட்டங்கள்"
@@ -8190,13 +8190,13 @@ msgstr "விடப்பட்ட மதிப்பு. பயன்பாட
 msgid "Wrong arguments"
 msgstr ""
 
-#: vimode/config/configtab.cpp:201
+#: vimode/config/configtab.cpp:205
 #, fuzzy, kde-format
 #| msgid "Unable to open %1"
 msgid "Unable to open the config file for reading."
 msgstr "%1 இனைத் திறக்க முடியவில்லை"
 
-#: vimode/config/configtab.cpp:201
+#: vimode/config/configtab.cpp:205
 #, fuzzy, kde-format
 #| msgid "Unable to open %1"
 msgid "Unable to open file"
