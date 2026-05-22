@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-21 00:41+0000\n"
-"PO-Revision-Date: 2026-03-24 10:40+0400\n"
+"PO-Revision-Date: 2026-05-21 11:03+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1613,10 +1613,9 @@ msgstr "إعدادات الشرف في ملف .editorconfig"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkUseFirstLineAsDocName)
 #: dialogs/opensaveconfigadvwidget.ui:229
-#, fuzzy, kde-format
-#| msgid "Use this to close the current document"
+#, kde-format
 msgid "Use first line of untitled documents for document name"
-msgstr "استعمل هذا لغلق الوثيقة الحالية"
+msgstr "استخدام السطر الأول من المستندات غير المترجمة لاسم المستند"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
