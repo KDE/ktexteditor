@@ -3,14 +3,14 @@
 # Sae-keun Kim <segni@susekorea.net>, 2001.
 # Louis JANG <louis@mizi.com>, 2001.
 # KIM KyungHeon <tody@teoal.net>, 2001, 2002, 2003, 2004.
-# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Shinjo Park <kde@peremen.name>
 # JungHee Lee <daemul72@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-21 00:41+0000\n"
-"PO-Revision-Date: 2025-10-12 13:39+0200\n"
+"PO-Revision-Date: 2026-05-25 21:38+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -1597,7 +1597,7 @@ msgstr ".editorconfig 파일의 설정 존중"
 #: dialogs/opensaveconfigadvwidget.ui:229
 #, kde-format
 msgid "Use first line of untitled documents for document name"
-msgstr ""
+msgstr "제목 없는 문서의 첫 번째 줄을 문서 이름으로 사용"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -2292,10 +2292,9 @@ msgid "Close Nevertheless"
 msgstr "그래도 닫기"
 
 #: document/katedocument.cpp:4641
-#, fuzzy, kde-format
-#| msgid "Untitled"
+#, kde-format
 msgid "Untitled (%1)"
-msgstr "제목 없음"
+msgstr "제목 없음(%1)"
 
 #: document/katedocument.cpp:4643
 #, kde-format
@@ -3555,10 +3554,9 @@ msgid "SearchHighLight"
 msgstr "검색 항목 강조"
 
 #: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
-#, fuzzy, kde-format
-#| msgid "Clear Dictionary Ranges"
+#, kde-format
 msgid "Clear history"
-msgstr "사전 범위 지우기"
+msgstr "과거 기록 비우기"
 
 #: search/katesearchbar.cpp:1166
 #, kde-format
