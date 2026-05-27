@@ -1447,7 +1447,9 @@ bool NormalViMode::commandUndo()
         if (mapped) {
             doc()->editEnd();
         }
-        doc()->undo();
+        for (int i = 0; i < getCount() && doc()->undoCount() > 0; i++) {
+            doc()->undo();
+        }
         if (mapped) {
             doc()->editStart();
         }
@@ -1469,7 +1471,9 @@ bool NormalViMode::commandRedo()
         if (mapped) {
             doc()->editEnd();
         }
-        doc()->redo();
+        for (int i = 0; i < getCount() && doc()->redoCount() > 0; i++) {
+            doc()->redo();
+        }
         if (mapped) {
             doc()->editStart();
         }

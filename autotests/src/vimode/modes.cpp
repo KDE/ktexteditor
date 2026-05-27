@@ -153,6 +153,14 @@ void ModesTest::NormalMotionsTests()
     // Testing "'"
     DoTest("foo\nbar\nbaz", "lmaj'arx", "xoo\nbar\nbaz");
 
+    // Testing undo/redo for different counts
+    DoTest("foo", "Abar\\esc.u", "foobar");
+    DoTest("foo", "Abar\\esc.uU", "foobarbar");
+    DoTest("foo", "Abar\\esc.2u", "foo");
+    DoTest("foo", "Abar\\esc.2u2U", "foobarbar");
+    DoTest("foo", "Abar\\esc..4u2U", "foobarbar");
+    DoTest("foo", "Abar\\esc..2u4U", "foobarbarbar");
+
     // Testing "%"
     DoTest("foo{\n}\n", "$d%", "foo\n");
     DoTest("FOO{\nBAR}BAZ", "lllgu%", "FOO{\nbar}BAZ");
