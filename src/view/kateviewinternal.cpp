@@ -1098,9 +1098,9 @@ public:
  * when you press Ctrl+Shift+Left/Right for selection and Ctrl+Del
  * Ctrl + backspace for deletion.
  *
- * When SubWordBehavior::StopAtCamelCaseSubWords is set, the cursor
- * additionally stops at camel case sub-word boundaries (e.g. "KateView"
- * is two sub-words: "Kate" and "View").
+ * When SubWordBehavior::StopAtSubWords is set, the cursor additionally
+ * stops at camelCase and snake_case sub-word boundaries (e.g. "KateView"
+ * is two sub-words: "Kate" and "View", and similarly for "kate_view").
  *
  * It is absolutely essential that if you move through a word in 'n'
  * jumps, you should be able to move back with exactly same 'n' movements
@@ -1120,9 +1120,10 @@ public:
  * |   |   |
  * KateViewInternal
  *
- * In addition to simple camel case, this class also handles snake_case
- * capitalized snake, and mixtures of Camel + snake/underscore, for example
- * m_someMember. If a word has underscores in it, for example:
+ * In addition to camelCase and snake_case, StopAtSubWords also handles
+ * capitalized snake, and mixtures of Camel + snake, for example m_someMember.
+ *
+ * If a word has underscores in it, for example:
  *
  * snake_case_word
  *
@@ -1178,7 +1179,7 @@ public:
  * @author Waqar Ahmed <waqar.17a@gmail.com>
  */
 enum class SubWordBehavior {
-    StopAtCamelCaseSubWords,
+    StopAtSubWords,
     None,
 };
 
@@ -1202,6 +1203,10 @@ public:
         auto isSurrogate = [](QChar c) {
             return c.isLowSurrogate() || c.isHighSurrogate();
         };
+        const bool stopAtSubWords = m_subWordBehavior == SubWordBehavior::StopAtSubWords;
+        const auto isWordChar = [stopAtSubWords](QChar c) {
+            return c.isLetterOrNumber() || (!stopAtSubWords && c == QLatin1Char('_'));
+        };
 
         if (bias == KateViewInternal::right) {
             auto skipCaps = [](QStringView text, int &col) {
@@ -1223,7 +1228,7 @@ public:
             int col = column();
             const QString text = m_vi->doc()->line(thisLine->line());
 
-            if (m_subWordBehavior == SubWordBehavior::StopAtCamelCaseSubWords && col < text.size() && text.at(col).isUpper()) {
+            if (stopAtSubWords && col < text.size() && text.at(col).isUpper()) {
                 skipCaps(text, col);
             }
 
@@ -1232,14 +1237,14 @@ public:
                 if (isSurrogate(c)) {
                     col++;
                     continue;
-                } else if ((m_subWordBehavior == SubWordBehavior::StopAtCamelCaseSubWords && c.isUpper()) || !c.isLetterOrNumber()) {
+                } else if ((stopAtSubWords && c.isUpper()) || !isWordChar(c)) {
                     break;
                 }
                 ++col;
             }
 
             // eat any '_' that are after the word BEFORE any space happens
-            if (col < text.size() && text.at(col) == QLatin1Char('_')) {
+            if (stopAtSubWords && col < text.size() && text.at(col) == QLatin1Char('_')) {
                 while (col < text.size() && text.at(col) == QLatin1Char('_')) {
                     ++col;
                 }
@@ -1299,13 +1304,13 @@ public:
             }
 
             // Skip Underscores
-            if (col > 0 && text.at(col) == QLatin1Char('_')) {
+            if (stopAtSubWords && col > 0 && text.at(col) == QLatin1Char('_')) {
                 while (col > 0 && text.at(col) == QLatin1Char('_')) {
                     --col;
                 }
             }
 
-            if (m_subWordBehavior == SubWordBehavior::StopAtCamelCaseSubWords && col > 0 && text.at(col).isUpper()) {
+            if (stopAtSubWords && col > 0 && text.at(col).isUpper()) {
                 skipCapsRev(text, col);
             }
 
@@ -1314,13 +1319,13 @@ public:
                 if (isSurrogate(c)) {
                     --col;
                     continue;
-                } else if ((m_subWordBehavior == SubWordBehavior::StopAtCamelCaseSubWords && c.isUpper()) || !c.isLetterOrNumber()) {
+                } else if ((stopAtSubWords && c.isUpper()) || !isWordChar(c)) {
                     break;
                 }
                 --col;
             }
 
-            if (col >= 0 && !text.at(col).isLetterOrNumber() && !isSurrogate(text.at(col))) {
+            if (col >= 0 && !isWordChar(text.at(col)) && !isSurrogate(text.at(col))) {
                 ++col;
             }
 
@@ -1419,7 +1424,7 @@ void KateViewInternal::wordPrev(bool sel, bool subword)
         if (c.atEdge(left)) {
             c.moveBack();
         } else if (h->isInWord(characterAtPreviousColumn(c))) {
-            WordCursor cc(this, cursor, (subword || doc()->config()->camelCursor()) ? SubWordBehavior::StopAtCamelCaseSubWords : SubWordBehavior::None);
+            WordCursor cc(this, cursor, (subword || doc()->config()->camelCursor()) ? SubWordBehavior::StopAtSubWords : SubWordBehavior::None);
             cc.moveBack();
             return cc;
         } else {
@@ -1472,7 +1477,7 @@ void KateViewInternal::wordNext(bool sel, bool subword)
         if (c.atEdge(right)) {
             c.moveForward();
         } else if (h->isInWord(doc()->characterAt(c))) {
-            WordCursor cc(this, cursor, (subword || doc()->config()->camelCursor()) ? SubWordBehavior::StopAtCamelCaseSubWords : SubWordBehavior::None);
+            WordCursor cc(this, cursor, (subword || doc()->config()->camelCursor()) ? SubWordBehavior::StopAtSubWords : SubWordBehavior::None);
             cc.moveForward();
             return cc;
         } else {

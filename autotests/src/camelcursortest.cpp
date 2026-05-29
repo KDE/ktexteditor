@@ -283,6 +283,22 @@ void CamelCursorTest::testDirectActions()
     view->actionCollection()->action(QStringLiteral("subword_left"))->triggered();
     QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(0, 0));
 
+    doc->setText(QStringLiteral("foo_Bar"));
+    view->setCursorPosition({0, 0});
+    view->actionCollection()->action(QStringLiteral("subword_right"))->triggered();
+    QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(0, 4));
+
+    view->actionCollection()->action(QStringLiteral("subword_right"))->triggered();
+    QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(0, 7));
+
+    view->actionCollection()->action(QStringLiteral("subword_left"))->triggered();
+    QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(0, 4));
+
+    view->actionCollection()->action(QStringLiteral("subword_left"))->triggered();
+    QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(0, 0));
+
+    doc->setText(QStringLiteral("HelloWorld"));
+    view->setCursorPosition({0, 0});
     view->actionCollection()->action(QStringLiteral("select_subword_right"))->triggered();
     QCOMPARE(view->selectionRange(), KTextEditor::Range(0, 0, 0, 5));
     view->clearSelection();

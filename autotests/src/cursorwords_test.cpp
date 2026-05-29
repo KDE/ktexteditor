@@ -175,13 +175,7 @@ void CursorWordsTest::testCamelCaseWithoutCamelCursor()
         auto [doc, view] = createDocAndView(QStringLiteral("foo_Bar"), 0, 0);
 
         view->wordRight();
-        QCOMPARE(view->cursorPosition(), Cursor(0, 4));
-
-        view->wordRight();
         QCOMPARE(view->cursorPosition(), Cursor(0, 7));
-
-        view->wordLeft();
-        QCOMPARE(view->cursorPosition(), Cursor(0, 4));
 
         view->wordLeft();
         QCOMPARE(view->cursorPosition(), Cursor(0, 0));
