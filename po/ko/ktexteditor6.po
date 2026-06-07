@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-21 00:41+0000\n"
-"PO-Revision-Date: 2026-05-25 21:38+0200\n"
+"PO-Revision-Date: 2026-05-26 21:32+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -1131,7 +1131,7 @@ msgstr "기능 비활성화"
 #: dialogs/katedialogs.cpp:591
 #, kde-format
 msgid "May be handy with Markdown"
-msgstr "Markdown 형식을 편집할 때 편리할 수 있습니다"
+msgstr "마크다운 형식을 편집할 때 편리할 수 있습니다"
 
 #: dialogs/katedialogs.cpp:593
 #, kde-format
