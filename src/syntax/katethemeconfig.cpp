@@ -1087,7 +1087,7 @@ int main(uint64_t magicArgument)
 })sample";
 
     m_doc->setText(QString::fromUtf8(code));
-    m_doc->setHighlightingMode(QStringLiteral("C++"));
+    m_doc->updateFileType(QStringLiteral("C++"));
     m_themePreview = new KTextEditor::ViewPrivate(m_doc, this);
 
     layout->addWidget(m_themePreview);
