@@ -52,10 +52,10 @@
       <item>
        <widget class="QCheckBox" name="chkCamelCursor">
         <property name="whatsThis">
-         <string>Selects whether cursor jumps full words or breaks at camel case humps.</string>
+         <string>Selects whether cursor stops at camel case humps and underscores within a word.</string>
         </property>
         <property name="text">
-         <string>Enable camel case cursor movement</string>
+         <string>Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word</string>
         </property>
        </widget>
       </item>
