@@ -1304,12 +1304,14 @@ void KateThemeConfigPage::refillCombos(const QString &schemaName, const QString 
     // reinitialize combo boxes
     schemaCombo->clear();
     defaultSchemaCombo->clear();
-    defaultSchemaCombo->addItem(i18n("Follow System Color Scheme"), QString());
+    defaultSchemaCombo->addItem(KateHlManager::self()->repository().themeForPalette(qGuiApp->palette()).previewIcon(),
+                                i18n("Follow System Color Scheme"),
+                                QString());
     defaultSchemaCombo->insertSeparator(1);
     const auto themes = KateHlManager::self()->sortedThemes();
     for (const auto &theme : themes) {
-        schemaCombo->addItem(theme.translatedName(), theme.name());
-        defaultSchemaCombo->addItem(theme.translatedName(), theme.name());
+        schemaCombo->addItem(theme.previewIcon(), theme.translatedName(), theme.name());
+        defaultSchemaCombo->addItem(theme.previewIcon(), theme.translatedName(), theme.name());
     }
 
     // set the correct indexes again, fallback to always existing default theme
