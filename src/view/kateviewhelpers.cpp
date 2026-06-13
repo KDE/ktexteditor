@@ -3166,32 +3166,28 @@ void KateViewSchemaAction::updateMenu(KTextEditor::ViewPrivate *view)
 
 void KateViewSchemaAction::slotAboutToShow()
 {
-    KTextEditor::ViewPrivate *view = m_view;
-
-    const auto themes = KateHlManager::self()->sortedThemes();
-
     if (!m_group) {
         m_group = new QActionGroup(menu());
         m_group->setExclusive(true);
     }
 
-    for (int z = 0; z < themes.count(); z++) {
-        QString hlName = themes[z].translatedName();
-
+    const auto themes = KateHlManager::self()->sortedThemes();
+    for (const auto &theme : themes) {
+        const QString hlName = theme.translatedName();
         if (!names.contains(hlName)) {
             names << hlName;
-            QAction *a = menu()->addAction(hlName, this, &KateViewSchemaAction::setSchema);
-            a->setData(themes[z].name());
+            QAction *a = menu()->addAction(theme.previewIcon(), hlName, this, &KateViewSchemaAction::setSchema);
+            a->setData(theme.name());
             a->setCheckable(true);
             a->setActionGroup(m_group);
         }
     }
 
-    if (!view) {
+    if (!m_view) {
         return;
     }
 
-    QString id = view->rendererConfig()->schema();
+    const QString id = m_view->rendererConfig()->schema();
     const auto menuActions = menu()->actions();
     for (QAction *a : menuActions) {
         a->setChecked(a->data().toString() == id);
@@ -3201,16 +3197,13 @@ void KateViewSchemaAction::slotAboutToShow()
 void KateViewSchemaAction::setSchema()
 {
     QAction *action = qobject_cast<QAction *>(sender());
-
     if (!action) {
         return;
     }
-    QString mode = action->data().toString();
 
-    KTextEditor::ViewPrivate *view = m_view;
-
-    if (view) {
-        view->rendererConfig()->setSchema(mode);
+    if (m_view) {
+        const QString mode = action->data().toString();
+        m_view->rendererConfig()->setSchema(mode);
     }
 }
 // END SCHEMA ACTION
