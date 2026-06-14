@@ -28,10 +28,10 @@ QString viModeToString(KateVi::ViMode mode)
     QString modeStr;
     switch (mode) {
     case KateVi::InsertMode:
-        modeStr = i18n("VI: INSERT MODE");
+        modeStr = i18nc("The INSERT mode of VI", "VI: INSERT");
         break;
     case KateVi::NormalMode:
-        modeStr = i18n("VI: NORMAL MODE");
+        modeStr = i18nc("The NORMAL mode of VI", "VI: NORMAL");
         break;
     case KateVi::VisualMode:
         modeStr = i18n("VI: VISUAL");
