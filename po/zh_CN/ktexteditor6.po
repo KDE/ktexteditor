@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-21 00:41+0000\n"
+"POT-Creation-Date: 2026-06-14 00:40+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -2182,7 +2182,7 @@ msgstr ""
 
 #: document/katedocument.cpp:2517 document/katedocument.cpp:2533
 #: document/katedocument.cpp:2853 syntax/katethemeconfig.cpp:1218
-#: syntax/katethemeconfig.cpp:1374
+#: syntax/katethemeconfig.cpp:1376
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "数据可能丢失"
@@ -4862,44 +4862,44 @@ msgstr "导入将覆盖现有主题文件“%1”。此操作无法撤销。"
 msgid "Import Nevertheless"
 msgstr "仍然导入"
 
-#: syntax/katethemeconfig.cpp:1307
+#: syntax/katethemeconfig.cpp:1308
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "跟随系统配色方案"
 
-#: syntax/katethemeconfig.cpp:1373
+#: syntax/katethemeconfig.cpp:1375
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "您确定要删除主题“%1”吗？此操作无法撤销。"
 
-#: syntax/katethemeconfig.cpp:1375
+#: syntax/katethemeconfig.cpp:1377
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "仍然删除"
 
-#: syntax/katethemeconfig.cpp:1417
+#: syntax/katethemeconfig.cpp:1419
 #, kde-format
 msgid "Copy theme"
 msgstr "复制主题"
 
-#: syntax/katethemeconfig.cpp:1418
+#: syntax/katethemeconfig.cpp:1420
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "颜色主题“%1”的副本名称："
 
-#: syntax/katethemeconfig.cpp:1430
+#: syntax/katethemeconfig.cpp:1432
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr "<p>主题“%1”已存在。</p><p>请选择不同的主题名称。</p>"
 
-#: syntax/katethemeconfig.cpp:1431
+#: syntax/katethemeconfig.cpp:1433
 #, kde-format
 msgid "Copy Theme"
 msgstr "复制主题"
 
-#: syntax/katethemeconfig.cpp:1484 syntax/katethemeconfig.cpp:1489
+#: syntax/katethemeconfig.cpp:1486 syntax/katethemeconfig.cpp:1491
 #, kde-format
 msgid "Color Themes"
 msgstr "颜色主题"
@@ -8164,17 +8164,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "下个书签没有字符。"
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3565
+#: vimode/modes/normalvimode.cpp:3569
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "未能注册于 %1"
 
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1693
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "“%1” %2，十六进制 %3，八进制 %4"
 
-#: vimode/modes/normalvimode.cpp:2532
+#: vimode/modes/normalvimode.cpp:2536
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "标记未设置：%1"

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-21 00:41+0000\n"
+"POT-Creation-Date: 2026-06-14 00:40+0000\n"
 "PO-Revision-Date: 2024-09-22 18:40+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2396,7 +2396,7 @@ msgstr ""
 
 #: document/katedocument.cpp:2517 document/katedocument.cpp:2533
 #: document/katedocument.cpp:2853 syntax/katethemeconfig.cpp:1218
-#: syntax/katethemeconfig.cpp:1374
+#: syntax/katethemeconfig.cpp:1376
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Πιθανή απώλεια δεδομένων"
@@ -5214,36 +5214,36 @@ msgstr "Θέλετε πράγματι να διαγράψετε το τμήμα 
 msgid "Import Nevertheless"
 msgstr "Κλείσιμο όπως και να 'χει"
 
-#: syntax/katethemeconfig.cpp:1307
+#: syntax/katethemeconfig.cpp:1308
 #, fuzzy, kde-format
 #| msgid "Use KDE Color Scheme"
 msgid "Follow System Color Scheme"
 msgstr "Χρήση χρωματικού σχήματος KDE"
 
-#: syntax/katethemeconfig.cpp:1373
+#: syntax/katethemeconfig.cpp:1375
 #, fuzzy, kde-format
 #| msgid "Do you really want to delete the snippet \"%1\"?"
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "Θέλετε πράγματι να διαγράψετε το τμήμα κώδικα \"%1\";"
 
-#: syntax/katethemeconfig.cpp:1375
+#: syntax/katethemeconfig.cpp:1377
 #, fuzzy, kde-format
 #| msgid "Close Nevertheless"
 msgid "Delete Nevertheless"
 msgstr "Κλείσιμο όπως και να 'χει"
 
-#: syntax/katethemeconfig.cpp:1417
+#: syntax/katethemeconfig.cpp:1419
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Copy theme"
 msgstr "Χρώματα"
 
-#: syntax/katethemeconfig.cpp:1418
+#: syntax/katethemeconfig.cpp:1420
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1430
+#: syntax/katethemeconfig.cpp:1432
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The schema %1 already exists.</p><p>Please choose a different schema "
@@ -5254,13 +5254,13 @@ msgid ""
 msgstr ""
 "<p>Το σχήμα %1 ήδη υπάρχει.</p><p>Επιλέξτε ένα άλλο όνομα σχήματος.</p>"
 
-#: syntax/katethemeconfig.cpp:1431
+#: syntax/katethemeconfig.cpp:1433
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Copy Theme"
 msgstr "Χρώματα"
 
-#: syntax/katethemeconfig.cpp:1484 syntax/katethemeconfig.cpp:1489
+#: syntax/katethemeconfig.cpp:1486 syntax/katethemeconfig.cpp:1491
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Color Themes"
@@ -8760,17 +8760,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Δεν υπάρχουν άλλοι χαρακτήρες για τον επόμενο σελιδοδείκτη."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3565
+#: vimode/modes/normalvimode.cpp:3569
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Δεν υπάρχει τίποτα στον καταχωρητή %1"
 
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1693
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Δεκαεξαδικό %3,  Οκταδικό %4"
 
-#: vimode/modes/normalvimode.cpp:2532
+#: vimode/modes/normalvimode.cpp:2536
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Μη καθορισμένος δείκτης: %1 "

@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-21 00:41+0000\n"
+"POT-Creation-Date: 2026-06-14 00:40+0000\n"
 "PO-Revision-Date: 2026-04-03 19:30+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -2313,7 +2313,7 @@ msgstr ""
 
 #: document/katedocument.cpp:2517 document/katedocument.cpp:2533
 #: document/katedocument.cpp:2853 syntax/katethemeconfig.cpp:1218
-#: syntax/katethemeconfig.cpp:1374
+#: syntax/katethemeconfig.cpp:1376
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Возможна потеря данных"
@@ -5066,44 +5066,44 @@ msgstr ""
 msgid "Import Nevertheless"
 msgstr "Импортировать"
 
-#: syntax/katethemeconfig.cpp:1307
+#: syntax/katethemeconfig.cpp:1308
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "Использовать системную цветовую схему"
 
-#: syntax/katethemeconfig.cpp:1373
+#: syntax/katethemeconfig.cpp:1375
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "Удалить схему «%1»? Это необратимое действие."
 
-#: syntax/katethemeconfig.cpp:1375
+#: syntax/katethemeconfig.cpp:1377
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "Удалить"
 
-#: syntax/katethemeconfig.cpp:1417
+#: syntax/katethemeconfig.cpp:1419
 #, kde-format
 msgid "Copy theme"
 msgstr "Копировать схему"
 
-#: syntax/katethemeconfig.cpp:1418
+#: syntax/katethemeconfig.cpp:1420
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "Название копии цветовой схемы «%1»:"
 
-#: syntax/katethemeconfig.cpp:1430
+#: syntax/katethemeconfig.cpp:1432
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr "<p>Схема с именем «%1» уже существует.</p> <p>Выберите другое имя.</p>"
 
-#: syntax/katethemeconfig.cpp:1431
+#: syntax/katethemeconfig.cpp:1433
 #, kde-format
 msgid "Copy Theme"
 msgstr "Копировать схему"
 
-#: syntax/katethemeconfig.cpp:1484 syntax/katethemeconfig.cpp:1489
+#: syntax/katethemeconfig.cpp:1486 syntax/katethemeconfig.cpp:1491
 #, kde-format
 msgid "Color Themes"
 msgstr "Цветовые схемы"
@@ -8499,18 +8499,18 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Нет свободной буквы для следующей закладки."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3565
+#: vimode/modes/normalvimode.cpp:3569
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "В регистре %1 ничего нет"
 
 # well-spelled: шестн, восм
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1693
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "«%1» %2,  шестн. %3,  восм. %4"
 
-#: vimode/modes/normalvimode.cpp:2532
+#: vimode/modes/normalvimode.cpp:2536
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Отметка не установлена: %1"

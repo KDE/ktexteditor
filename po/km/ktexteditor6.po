@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-21 00:41+0000\n"
+"POT-Creation-Date: 2026-06-14 00:40+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -2359,7 +2359,7 @@ msgstr ""
 
 #: document/katedocument.cpp:2517 document/katedocument.cpp:2533
 #: document/katedocument.cpp:2853 syntax/katethemeconfig.cpp:1218
-#: syntax/katethemeconfig.cpp:1374
+#: syntax/katethemeconfig.cpp:1376
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "អាច​បណ្ដាល​ឲ្យ​បាត់​ទិន្នន័យ"
@@ -5199,36 +5199,36 @@ msgstr "តើ​អ្នក​ប្រាកដ​ជា​ចង់​លុ
 msgid "Import Nevertheless"
 msgstr "បិទ ទោះ​យ៉ាងណា​ក៏ដោយ"
 
-#: syntax/katethemeconfig.cpp:1307
+#: syntax/katethemeconfig.cpp:1308
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgid "Follow System Color Scheme"
 msgstr "ឌីយ៉ា​ក្រាម​ពណ៌ និង​​ពុម្ពអក្សរ"
 
-#: syntax/katethemeconfig.cpp:1373
+#: syntax/katethemeconfig.cpp:1375
 #, fuzzy, kde-format
 #| msgid "Do you really want to delete the snippet \"%1\"?"
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "តើ​អ្នក​ប្រាកដ​ជា​ចង់​លុប \"%1\" ឬ ?"
 
-#: syntax/katethemeconfig.cpp:1375
+#: syntax/katethemeconfig.cpp:1377
 #, fuzzy, kde-format
 #| msgid "Close Nevertheless"
 msgid "Delete Nevertheless"
 msgstr "បិទ ទោះ​យ៉ាងណា​ក៏ដោយ"
 
-#: syntax/katethemeconfig.cpp:1417
+#: syntax/katethemeconfig.cpp:1419
 #, fuzzy, kde-format
 #| msgid "Use KDE Color Scheme"
 msgid "Copy theme"
 msgstr "ប្រើ​ពណ៌​ចម្រុះ​របស់​ KDE"
 
-#: syntax/katethemeconfig.cpp:1418
+#: syntax/katethemeconfig.cpp:1420
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1430
+#: syntax/katethemeconfig.cpp:1432
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The schema %1 already exists.</p><p>Please choose a different schema "
@@ -5238,13 +5238,13 @@ msgid ""
 "name.</p>"
 msgstr "<p>ឌី​ដ្យាក្រាម %1 មាន​រួច​ហើយ ។</p><p>សូម​ជ្រើស​ឈ្មោះ​ឌី​ដ្យាក្រាម​ផ្សេង​ទៀត ។</p>"
 
-#: syntax/katethemeconfig.cpp:1431
+#: syntax/katethemeconfig.cpp:1433
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Copy Theme"
 msgstr "ពណ៌"
 
-#: syntax/katethemeconfig.cpp:1484 syntax/katethemeconfig.cpp:1489
+#: syntax/katethemeconfig.cpp:1486 syntax/katethemeconfig.cpp:1491
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Color Themes"
@@ -8644,17 +8644,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "ទៅ​កាន់​ចំណាំ​បន្ទាប់"
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3565
+#: vimode/modes/normalvimode.cpp:3569
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "គ្មាន​អ្វី​នៅ​ក្នុង​បញ្ជី %1 ទេ"
 
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1693
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  គោល​ដប់​ប្រាំមួយ %3  គោល​ប្រាំបី %4"
 
-#: vimode/modes/normalvimode.cpp:2532
+#: vimode/modes/normalvimode.cpp:2536
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "សញ្ញា​សម្គាល់​មិន​បានកំណត់ ៖ %1"

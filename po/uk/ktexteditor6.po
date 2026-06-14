@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-21 00:41+0000\n"
+"POT-Creation-Date: 2026-06-14 00:40+0000\n"
 "PO-Revision-Date: 2026-05-09 13:18+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -2311,7 +2311,7 @@ msgstr ""
 
 #: document/katedocument.cpp:2517 document/katedocument.cpp:2533
 #: document/katedocument.cpp:2853 syntax/katethemeconfig.cpp:1218
-#: syntax/katethemeconfig.cpp:1374
+#: syntax/katethemeconfig.cpp:1376
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Можлива втрата даних"
@@ -5081,33 +5081,33 @@ msgstr ""
 msgid "Import Nevertheless"
 msgstr "Імпортувати, незважаючи на це"
 
-#: syntax/katethemeconfig.cpp:1307
+#: syntax/katethemeconfig.cpp:1308
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "Використати схему кольорів системи"
 
-#: syntax/katethemeconfig.cpp:1373
+#: syntax/katethemeconfig.cpp:1375
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
 "Хочете вилучити тему «%1». Результати цієї дії не можна буде скасувати."
 
-#: syntax/katethemeconfig.cpp:1375
+#: syntax/katethemeconfig.cpp:1377
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "Вилучити, незважаючи на це"
 
-#: syntax/katethemeconfig.cpp:1417
+#: syntax/katethemeconfig.cpp:1419
 #, kde-format
 msgid "Copy theme"
 msgstr "Копіювати тему"
 
-#: syntax/katethemeconfig.cpp:1418
+#: syntax/katethemeconfig.cpp:1420
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "Назва копії теми кольорів «%1»:"
 
-#: syntax/katethemeconfig.cpp:1430
+#: syntax/katethemeconfig.cpp:1432
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
@@ -5116,12 +5116,12 @@ msgstr ""
 "<p>Тема з назвою %1 вже існує.</p><p>Будь ласка, виберіть іншу назву теми.</"
 "p>"
 
-#: syntax/katethemeconfig.cpp:1431
+#: syntax/katethemeconfig.cpp:1433
 #, kde-format
 msgid "Copy Theme"
 msgstr "Копіювання теми"
 
-#: syntax/katethemeconfig.cpp:1484 syntax/katethemeconfig.cpp:1489
+#: syntax/katethemeconfig.cpp:1486 syntax/katethemeconfig.cpp:1491
 #, kde-format
 msgid "Color Themes"
 msgstr "Теми кольорів"
@@ -8544,17 +8544,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Для наступної закладки немає символів."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3565
+#: vimode/modes/normalvimode.cpp:3569
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Регістр %1 порожній"
 
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1693
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "«%1» %2,  Шістн. %3,  Вісімк. %4"
 
-#: vimode/modes/normalvimode.cpp:2532
+#: vimode/modes/normalvimode.cpp:2536
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Позначку не встановлено: %1"
