@@ -1344,7 +1344,7 @@ msgstr " 行"
 #: dialogs/navigationconfigwidget.ui:120
 #, kde-format
 msgid "Misc"
-msgstr "杂项"
+msgstr "其他​​"
 
 #. i18n: ectx: property (text), widget (QLabel, lblTextSelectionMode)
 #: dialogs/navigationconfigwidget.ui:128
@@ -4666,7 +4666,7 @@ msgstr "注释和文档"
 #, kde-format
 msgctxt "@item:intable"
 msgid "Miscellaneous"
-msgstr "杂项"
+msgstr "其他"
 
 #: syntax/katethemeconfig.cpp:704
 #, kde-format
