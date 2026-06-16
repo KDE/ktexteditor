@@ -20,6 +20,14 @@
 #define META_MODIFIER Qt::MetaModifier
 #endif
 
+#ifdef Q_OS_WINDOWS
+// On windows we don't get Qt::GroupSwitchModifier for AltGr,
+// but the combination of Ctrl + Alt modifiers
+#define ALTGR_MODIFIER (Qt::ControlModifier | Qt::AltModifier)
+#else
+#define ALTGR_MODIFIER Qt::GroupSwitchModifier
+#endif
+
 namespace KateVi
 {
 /**
