@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1341,15 +1341,20 @@ msgstr "&PageUp/PageDown 移动光标"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr "选择光标是否跳过完整的单词抑或在驼峰式大小写的大写处停止。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
-msgstr "启用驼峰式大小写光标移动"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2356,13 +2361,17 @@ msgid "Normal Mode"
 msgstr "普通模式"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
+#, fuzzy, kde-format
+#| msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr "VI：插入模式"
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
+#, fuzzy, kde-format
+#| msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr "VI：普通模式"
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8178,3 +8187,6 @@ msgstr "“%1” %2，十六进制 %3，八进制 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "标记未设置：%1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr "启用驼峰式大小写光标移动"

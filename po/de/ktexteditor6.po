@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2026-04-19 21:33+0200\n"
 "Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1431,8 +1431,12 @@ msgstr "&Bild auf/ab versetzt Cursor"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr ""
 "Legt fest, ob der Cursor über ganze Wörter springt oder auch an groß "
 "geschrieben Buchstaben innerhalb eines Wortes anhält."
@@ -1440,8 +1444,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
-msgstr "Cursor-Bewegung mit Binnenmajuskeln (Camel Case) aktivieren"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2513,13 +2518,17 @@ msgid "Normal Mode"
 msgstr "Normaler Modus"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
+#, fuzzy, kde-format
+#| msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr "VI: INSERT MODE"
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
+#, fuzzy, kde-format
+#| msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr "VI: NORMAL MODE"
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8618,6 +8627,9 @@ msgstr "'%1' %2,  Hex %3,  Oktal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Markierung nicht gesetzt: %1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr "Cursor-Bewegung mit Binnenmajuskeln (Camel Case) aktivieren"
 
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "Die Datei „%1“ wurde auf dem Speichermedium erstellt."

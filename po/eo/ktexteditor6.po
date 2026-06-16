@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2025-02-23 13:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -1399,16 +1399,21 @@ msgstr "&PaĝoSupren/PaĝoSuben movas la kursoron"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr ""
 "Elektas ĉu kursoro saltas plenajn vortojn aŭ haltas ĉe miksusklaj transiĝoj."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
-msgstr "Ebligi movon de la kursoro laŭ usklaj limoj"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2463,13 +2468,17 @@ msgid "Normal Mode"
 msgstr "Normala Reĝimo"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
+#, fuzzy, kde-format
+#| msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr "VI: INSERT MODE"
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
+#, fuzzy, kde-format
+#| msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr "VI: NORMAL MODE"
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8462,6 +8471,9 @@ msgstr "'%1' %2, Hex %3, Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marko ne agordita: %1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr "Ebligi movon de la kursoro laŭ usklaj limoj"
 
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "La dosiero '%1' estis kreita sur disko."

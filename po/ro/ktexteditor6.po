@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2026-04-01 15:01+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -1414,8 +1414,12 @@ msgstr "&PageUp/PageDown mută cursorul"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr ""
 "Alege dacă cursorul să sară cuvinte întregi sau să separe la majusculele din "
 "interiorul cuvântului."
@@ -1423,8 +1427,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
-msgstr "Activează mișcarea cursorului pe majuscule interne"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2469,13 +2474,17 @@ msgid "Normal Mode"
 msgstr "Regim normal"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
+#, fuzzy, kde-format
+#| msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr "VI: REGIM INSERȚIE"
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
+#, fuzzy, kde-format
+#| msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr "VI: REGIM NORMAL"
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8474,6 +8483,9 @@ msgstr "„%1” %2,  Hexa. %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Semn nestabilit: %1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr "Activează mișcarea cursorului pe majuscule interne"
 
 #, fuzzy
 #~| msgid "The file '%1' was created by another program."

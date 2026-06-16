@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2024-12-29 22:54+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -1384,16 +1384,21 @@ msgstr "&PageUp/PageDown कर्सरं चालयति"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr ""
 "कर्सरः पूर्णशब्दान् कूर्दति वा camel case humps इत्यत्र भङ्गयति वा इति चयनं करोति ।"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
-msgstr "उष्ट्रस्य प्रकरणस्य कर्सरस्य गतिं सक्षमं कुर्वन्तु"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2432,13 +2437,17 @@ msgid "Normal Mode"
 msgstr "सामान्य मोड"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
+#, fuzzy, kde-format
+#| msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr "VI: INSERT MODE इति"
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
+#, fuzzy, kde-format
+#| msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr "VI: NORMAL MODE इति"
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8352,6 +8361,9 @@ msgstr "'%1' %2, हेक्स %3, अष्टक %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "न सेट् इति चिह्नं कुर्वन्तु: %1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr "उष्ट्रस्य प्रकरणस्य कर्सरस्य गतिं सक्षमं कुर्वन्तु"
 
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "'%1' इति सञ्चिका डिस्कमध्ये निर्मितवती ।"

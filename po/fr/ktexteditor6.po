@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2026-05-10 18:41+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -1541,8 +1541,12 @@ msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr ""
 "Définit si le curseur saute sur des mots complets ou s'arrête sur les creux "
 "façon bosses de chameaux."
@@ -1550,9 +1554,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
-"Activer le déplacement du curseur sur les creux façon bosses de chameaux"
 
 # | msgid "Autocenter cursor (lines):"
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
@@ -2680,13 +2684,17 @@ msgid "Normal Mode"
 msgstr "Mode normal"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
+#, fuzzy, kde-format
+#| msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr "VI : MODE INSERTION"
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
+#, fuzzy, kde-format
+#| msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr "VI : MODE NORMAL"
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8912,6 +8920,10 @@ msgstr "« %1 » %2, Hex %3, Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marqueur non défini : %1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr ""
+#~ "Activer le déplacement du curseur sur les creux façon bosses de chameaux"
 
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "Le fichier « %1 » a été créé sur le disque."

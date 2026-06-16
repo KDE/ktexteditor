@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2026-04-03 19:30+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -1424,8 +1424,12 @@ msgstr "Клави&ши PageUp и PageDown перемещают курсор"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr ""
 "Будет ли курсор перескакивать через полные слова или останавливаться на "
 "заглавных буквах горбатого регистра."
@@ -1433,8 +1437,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
-msgstr "Включить перемещение курсора по горбатому регистру"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2491,13 +2496,17 @@ msgid "Normal Mode"
 msgstr "Обычный режим"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
+#, fuzzy, kde-format
+#| msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr "VI: РЕЖИМ ВСТАВКИ"
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
+#, fuzzy, kde-format
+#| msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr "VI: ОБЫЧНЫЙ РЕЖИМ"
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8514,6 +8523,9 @@ msgstr "«%1» %2,  шестн. %3,  восм. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Отметка не установлена: %1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr "Включить перемещение курсора по горбатому регистру"
 
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "Файл «%1» был создан на диске."

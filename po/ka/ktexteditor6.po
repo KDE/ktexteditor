@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2026-05-09 06:29+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1396,15 +1396,20 @@ msgstr "&PageUp/PageDown კურსორს ამოძრავებს"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr "ირჩევს, კურსორი ახტება მთელ რიცხვებს თუ ჩერდება camelCase-ის კუზებზე."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
-msgstr "კურსორის camelCase-ით გაადადგილება"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2456,13 +2461,17 @@ msgid "Normal Mode"
 msgstr "ნორმალური რეჟიმი"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
+#, fuzzy, kde-format
+#| msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr "VI: ჩასმის რეჟიმი"
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
+#, fuzzy, kde-format
+#| msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr "VI: ნორმალური რეჟიმი"
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8464,6 +8473,9 @@ msgstr "'%1' %2,  თექვსმ %3,  რვაობითი %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "ნიშანი დასმული არაა: %1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr "კურსორის camelCase-ით გაადადგილება"
 
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "ფაილი '%1' დისკზე შეიქმნა."

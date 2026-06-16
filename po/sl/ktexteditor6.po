@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2026-05-09 07:58+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1409,8 +1409,12 @@ msgstr "&PageUp/PageDown premakne kazalko"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr ""
 "Izbere, ali kazalec skače po polnih besedah ali se ustavi pri vsaki veliki "
 "začetnici, tudi sredi sestavljenih besed."
@@ -1418,8 +1422,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
-msgstr "Omogoči pomikanje kazalca po velikih začetnicah sestavljenih besed"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2476,13 +2481,17 @@ msgid "Normal Mode"
 msgstr "Običajen način"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
+#, fuzzy, kde-format
+#| msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr "VI: NAČIN VSTAVLJANJA"
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
+#, fuzzy, kde-format
+#| msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr "VI: OBIČAJEN NAČIN"
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8476,6 +8485,9 @@ msgstr "»%1« %2,  Šestn. %3,  Osm. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Oznaka ni nastavljena: %1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr "Omogoči pomikanje kazalca po velikih začetnicah sestavljenih besed"
 
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "Datoteka »%1« je bila ustvarjena na disku."

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2026-05-10 16:02+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -1360,8 +1360,12 @@ msgstr "&PageUp/PageDown இடஞ்சுட்டியை நகர்த்
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr ""
 "அடுத்த சொல்லுக்கு தாவும்போது, camel case-இல் சேர்த்து எழுதப்பட்டுள்ள சொற்களை தனித்தனி "
 "சொற்களாக கருத வேண்டுமா என்பதைத் தீர்மானிக்கும்."
@@ -1369,8 +1373,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
-msgstr "Camel case முறையில் இடஞ்சுட்டியை நகர்த்து"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2384,13 +2389,16 @@ msgid "Normal Mode"
 msgstr "சாதாரண பயன்முறை"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "INSERT"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
+msgstr "நுழை"
 
 #: inputmode/kateviinputmode.cpp:34
 #, kde-format
-msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr ""
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8356,6 +8364,9 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "குறி வகை%1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr "Camel case முறையில் இடஞ்சுட்டியை நகர்த்து"
 
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "'%1' எனும் கோப்பு வட்டில் உருவாக்கப்பட்டுள்ளது."

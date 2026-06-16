@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2026-05-15 19:14+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1410,8 +1410,12 @@ msgstr "&Sayfa Yukarı/Sayfa Aşağı imleci hareket ettirir"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr ""
 "İmlecin tam sözcük atlaması yapıp yapmayacağına ve deve biçiminde hörgüçte "
 "durup durmayacağını seçer."
@@ -1419,8 +1423,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
-msgstr "Deve biçimi imleç hareketini etkinleştir"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2471,13 +2476,17 @@ msgid "Normal Mode"
 msgstr "Normal Kip"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
+#, fuzzy, kde-format
+#| msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr "Vİ: EKLE KİPİ"
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
+#, fuzzy, kde-format
+#| msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr "Vİ: NORMAL KİP"
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8477,6 +8486,9 @@ msgstr "“%1” %2, Altılık %3, Sekizlik %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İm ayarlanmadı: %1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr "Deve biçimi imleç hareketini etkinleştir"
 
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "“%1” dosyası diskte oluşturuldu."

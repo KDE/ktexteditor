@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2026-05-10 18:15+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1416,8 +1416,12 @@ msgstr "&PageUp/PageDown beweegt de cursor"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr ""
 "Selecteert of cursor over volledige woorden springt of breekt hobbels van "
 "hoofdletters."
@@ -1425,8 +1429,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
-msgstr "Cursorbeweging bij hoofdletters inschakelen"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2499,13 +2504,17 @@ msgid "Normal Mode"
 msgstr "Normale modus"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
+#, fuzzy, kde-format
+#| msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr "VI: INVOEGMETHODE"
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
+#, fuzzy, kde-format
+#| msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr "VI: NORMALE MODUS"
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8573,6 +8582,9 @@ msgstr "'%1' %2,  Hex %3,  Octaal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Markering niet ingesteld: %1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr "Cursorbeweging bij hoofdletters inschakelen"
 
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "Het bestand '%1' is aangemaakt op de schijf."

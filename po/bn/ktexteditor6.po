@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2005-01-04 11:33-0600\n"
 "Last-Translator: Deepayan Sarkar <deepayan@bengalinux.org>\n"
 "Language-Team: Bengali <kde-translation@bengalinux.org>\n"
@@ -1317,13 +1317,16 @@ msgstr "PageUp PageDown চাল কার্সার"
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
 #, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
@@ -2323,13 +2326,16 @@ msgstr "স্বাভাবিক লেখা"
 
 #: inputmode/kateviinputmode.cpp:31
 #, kde-format
-msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr ""
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid " NORM "
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
+msgstr " NORM "
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format
@@ -9859,9 +9865,6 @@ msgstr "ধরন ১"
 
 #, fuzzy
 #~ msgid "NORM"
-#~ msgstr " NORM "
-
-#~ msgid " NORM "
 #~ msgstr " NORM "
 
 #, fuzzy

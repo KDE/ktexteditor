@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -1400,16 +1400,21 @@ msgstr "&PageUp/PageDown di chuyển con trỏ"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr ""
 "Lựa chọn việc con trỏ nhảy qua cả từ hay dừng ở các bướu trong kiểu lạc đà."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
-msgstr "Bật cách di chuyển con trỏ trong kiểu lạc đà"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2471,13 +2476,17 @@ msgid "Normal Mode"
 msgstr "Chế độ thường"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
+#, fuzzy, kde-format
+#| msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr "VI: CHẾ ĐỘ CHÈN"
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
+#, fuzzy, kde-format
+#| msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr "VI: CHẾ ĐỘ THƯỜNG"
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8543,6 +8552,9 @@ msgstr "'%1' %2,  thập lục phân %3,  bát phân %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Chỉ dấu không được đặt: %1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr "Bật cách di chuyển con trỏ trong kiểu lạc đà"
 
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "Tệp '%1' đã được tạo trên đĩa."

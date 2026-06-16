@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:40+0000\n"
+"POT-Creation-Date: 2026-06-16 00:40+0000\n"
 "PO-Revision-Date: 2026-06-01 12:36+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -1404,8 +1404,12 @@ msgstr "&PageUp/PageDown færir bendilinn"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, kde-format
-msgid "Selects whether cursor jumps full words or breaks at camel case humps."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Selects whether cursor jumps full words or breaks at camel case humps."
+msgid ""
+"Selects whether cursor stops at camel case humps and underscores within a "
+"word."
 msgstr ""
 "Velur hvort bendillinn hoppar yfir heil orð eða stoppar á hástaf inni í orði "
 "(camel case)."
@@ -1413,8 +1417,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
-msgid "Enable camel case cursor movement"
-msgstr "Virkja að bendill stoppi á hástaf inni í orði"
+msgid ""
+"Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2463,13 +2468,17 @@ msgid "Normal Mode"
 msgstr "Venjulegt snið"
 
 #: inputmode/kateviinputmode.cpp:31
-#, kde-format
-msgid "VI: INSERT MODE"
+#, fuzzy, kde-format
+#| msgid "VI: INSERT MODE"
+msgctxt "The INSERT mode of VI"
+msgid "VI: INSERT"
 msgstr "VI: INSERT MODE"
 
 #: inputmode/kateviinputmode.cpp:34
-#, kde-format
-msgid "VI: NORMAL MODE"
+#, fuzzy, kde-format
+#| msgid "VI: NORMAL MODE"
+msgctxt "The NORMAL mode of VI"
+msgid "VI: NORMAL"
 msgstr "VI: NORMAL MODE"
 
 #: inputmode/kateviinputmode.cpp:37
@@ -8459,6 +8468,9 @@ msgstr "'%1' %2,  hex %3,  áttundakerfis %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Merki ekki stillt: %1"
+
+#~ msgid "Enable camel case cursor movement"
+#~ msgstr "Virkja að bendill stoppi á hástaf inni í orði"
 
 #~ msgid "The file '%1' was created on disk."
 #~ msgstr "Skráin '%1' var búin til á diskinum."
