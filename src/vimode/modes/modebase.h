@@ -100,7 +100,8 @@ protected:
 
     Range swapRangeColumns(const Range &r) const;
 
-    void addToNumberUnderCursor(int count);
+    void addToNumber(int count, bool isCumulative = false);
+    QString calculateNumberIncrement(const QString &numberAsString, int amount);
 
     Range goLineUp();
     Range goLineDown();

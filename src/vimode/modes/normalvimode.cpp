@@ -1730,14 +1730,28 @@ bool NormalViMode::commandAlignLines()
 
 bool NormalViMode::commandAddToNumber()
 {
-    addToNumberUnderCursor(getCount());
+    addToNumber(getCount(), false);
 
     return true;
 }
 
 bool NormalViMode::commandSubtractFromNumber()
 {
-    addToNumberUnderCursor(-getCount());
+    addToNumber(-getCount(), false);
+
+    return true;
+}
+
+bool NormalViMode::commandAddToNumberCumulative()
+{
+    addToNumber(getCount(), true);
+
+    return true;
+}
+
+bool NormalViMode::commandSubtractFromNumberCumulative()
+{
+    addToNumber(-getCount(), true);
 
     return true;
 }

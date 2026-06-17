@@ -29,6 +29,7 @@
 #include <QRegularExpression>
 #include <QString>
 
+using namespace Qt::StringLiterals;
 using namespace KateVi;
 
 // TODO: the "previous word/WORD [end]" methods should be optimized. now they're being called in a
@@ -1141,47 +1142,90 @@ Range ModeBase::swapRangeColumns(const Range &r) const
     return swapped;
 }
 
-void ModeBase::addToNumberUnderCursor(int count)
+void ModeBase::addToNumber(int count, bool isCumulative)
 {
-    KTextEditor::Cursor c(m_view->cursorPosition());
-    QString line = getLine();
+    auto op = [](ViMode mode) -> std::optional<OperationMode> {
+        switch (mode) {
+        case ViMode::NormalMode:
+            return std::nullopt;
+        case ViMode::VisualMode:
+            return CharWise;
+        case ViMode::VisualLineMode:
+            return LineWise;
+        case ViMode::VisualBlockMode:
+            return Block;
+        default: // No addition command on insert modes
+            Q_UNREACHABLE();
+        }
+    };
 
-    if (line.isEmpty()) {
-        return;
+    const auto visualOpMode = op(m_viInputModeManager->getCurrentViMode());
+
+    const KTextEditor::Cursor c(m_view->cursorPosition());
+    m_commandRange.normalize();
+    Range searchRange = m_commandRange;
+    if (!visualOpMode) {
+        // Normal mode: The number may be under the cursor
+        // Match against the whole line and filter later
+        searchRange = Range(c.line(), 0, c.line(), doc()->lineLength(c.line()), InclusiveMotion);
     }
 
-    const int cursorColumn = c.column();
-    const int cursorLine = c.line();
-    const KTextEditor::Cursor prevWordStart = findPrevWordStart(cursorLine, cursorColumn);
-    int wordStartPos = prevWordStart.column();
-    if (prevWordStart.line() < cursorLine) {
-        // The previous word starts on the previous line: ignore.
-        wordStartPos = 0;
-    }
-    if (wordStartPos > 0 && line.at(wordStartPos - 1) == QLatin1Char('-')) {
-        wordStartPos--;
-    }
+    const QString searchText = getRange(searchRange, visualOpMode.value_or(CharWise));
+    const auto searchLines = QStringView(searchText).split('\n'_L1);
+    const int vStartColumn = doc()->toVirtualColumn(searchRange.toEditorRange().start());
 
-    int numberStartPos = -1;
-    QString numberAsString;
-    static const QRegularExpression numberRegex(QStringLiteral("0x[0-9a-fA-F]+|\\-?\\d+"));
-    auto numberMatchIter = numberRegex.globalMatch(line, wordStartPos);
-    while (numberMatchIter.hasNext()) {
-        const auto numberMatch = numberMatchIter.next();
-        const bool numberEndedBeforeCursor = (numberMatch.capturedStart() + numberMatch.capturedLength() <= cursorColumn);
-        if (!numberEndedBeforeCursor) {
-            // This is the first number-like string under or after the cursor - this'll do!
-            numberStartPos = numberMatch.capturedStart();
-            numberAsString = numberMatch.captured();
+    static const QRegularExpression numberRegex(u"0x[0-9a-fA-F]+|\\-?\\d+"_s);
+    QList<KTextEditor::Range> matchRanges;
+    for (int iLine = 0; iLine < searchLines.length(); ++iLine) {
+        auto numberMatchIter = numberRegex.globalMatchView(searchLines.at(iLine));
+        while (numberMatchIter.hasNext()) {
+            const auto numberMatch = numberMatchIter.next();
+            if (!visualOpMode && numberMatch.capturedEnd() <= c.column()) {
+                // Normal mode: this number ended before the cursor position
+                continue;
+            }
+            const int currentLine = searchRange.startLine + iLine;
+            const int startColumn = (visualOpMode == CharWise && iLine > 0) ? 0 : doc()->fromVirtualColumn({currentLine, vStartColumn});
+            matchRanges << KTextEditor::Range(currentLine, startColumn + numberMatch.capturedStart(), currentLine, startColumn + numberMatch.capturedEnd());
+            break; // Vim behavior: Just one operation per line
+        }
+        // Charwise visual mode: only match the first number found in the range
+        if (visualOpMode == CharWise && !matchRanges.isEmpty()) {
             break;
         }
     }
 
-    if (numberStartPos == -1) {
-        // None found.
+    if (matchRanges.isEmpty()) {
         return;
     }
 
+    // Replace all the old number strings with the new ones.
+    // Single edit operation
+    doc()->editStart();
+    int amount = count;
+    for (const auto &numberRange : std::as_const(matchRanges)) {
+        const QString updatedNumberText = calculateNumberIncrement(doc()->text(numberRange), amount);
+        if (updatedNumberText.isEmpty()) {
+            continue;
+        }
+        doc()->replaceText(numberRange, updatedNumberText);
+
+        if (isCumulative) {
+            amount += count;
+        }
+    }
+    doc()->editEnd();
+
+    // In normal mode, move the cursor to the end of the number.
+    // Otherwise, we will leave visual mode as usual
+    if (!visualOpMode) {
+        const auto endPostion = matchRanges.first().end();
+        updateCursor({endPostion.line(), endPostion.column() - 1});
+    }
+}
+
+QString ModeBase::calculateNumberIncrement(const QString &numberAsString, int amount)
+{
     bool parsedNumberSuccessfully = false;
     int base = numberAsString.startsWith(QLatin1String("0x")) ? 16 : 10;
     if (base != 16 && numberAsString.startsWith(QLatin1Char('0')) && numberAsString.length() > 1) {
@@ -1195,8 +1239,7 @@ void ModeBase::addToNumberUnderCursor(int count)
     const int originalNumber = numberAsString.toInt(&parsedNumberSuccessfully, base);
 
     if (!parsedNumberSuccessfully) {
-        // conversion to int failed. give up.
-        return;
+        return {};
     }
 
     QString basePrefix;
@@ -1208,20 +1251,14 @@ void ModeBase::addToNumberUnderCursor(int count)
 
     const int withoutBaseLength = numberAsString.length() - basePrefix.length();
 
-    const int newNumber = originalNumber + count;
+    const int newNumber = originalNumber + amount;
 
     // Create the new text string to be inserted. Prepend with “0x” if in base 16, and "0" if base 8.
     // For non-decimal numbers, try to keep the length of the number the same (including leading 0's).
     const QString newNumberPadded =
         (base == 10) ? QStringLiteral("%1").arg(newNumber, 0, base) : QStringLiteral("%1").arg(newNumber, withoutBaseLength, base, QLatin1Char('0'));
-    const QString newNumberText = basePrefix + newNumberPadded;
 
-    // Replace the old number string with the new.
-    doc()->editStart();
-    doc()->removeText(KTextEditor::Range(cursorLine, numberStartPos, cursorLine, numberStartPos + numberAsString.length()));
-    doc()->insertText(KTextEditor::Cursor(cursorLine, numberStartPos), newNumberText);
-    doc()->editEnd();
-    updateCursor(KTextEditor::Cursor(m_view->cursorPosition().line(), numberStartPos + newNumberText.length() - 1));
+    return basePrefix + newNumberPadded;
 }
 
 KTextEditor::Cursor ModeBase::cursorPosAtEndOfPaste(const KTextEditor::Cursor pasteLocation, const QString &pastedText, bool isBlock)

@@ -1582,6 +1582,45 @@ void ModesTest::VisualExternalTests()
     QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)KateVi::NormalMode);
 }
 
+void ModesTest::VisualControlTests()
+{
+    // Ctrl+A / Ctrl+X Charwise visual mode
+    DoTest("100 200\n100 200", "wvje\\ctrl-a", "100 201\n100 200");
+    DoTest("100 200\n100 200", "wvjeg\\ctrl-a", "100 201\n100 200");
+    DoTest("100 200\n100 200", "wvje15\\ctrl-a", "100 215\n100 200");
+    DoTest("100 200\n100 200", "evje\\ctrl-x", "10-1 200\n100 200");
+    DoTest("aaa bbb 300\n100 200", "wvje\\ctrl-x", "aaa bbb 299\n100 200");
+    DoTest("aaa bbb\n100 200", "wvje\\ctrl-x", "aaa bbb\n99 200");
+    DoTest("aaa bbb\n100 200", "wvjbl\\ctrl-x", "aaa bbb\n90 200");
+    DoTest("100 0x200\n100 200", "wvje10\\ctrl-a", "100 0x20a\n100 200");
+    DoTest("100 0x200\n100 200", "wllvje10\\ctrl-a", "100 0x210\n100 200");
+
+    // Ctrl+A / Ctrl+X Visual line mode
+    DoTest("100 200\n100 200", "Vj\\ctrl-a", "101 200\n101 200");
+    DoTest("100 200\naaa 200", "Vj\\ctrl-a", "101 200\naaa 201");
+    DoTest("100 200\n0x100 0x200\n0100 0200", "V2j10\\ctrl-a", "110 200\n0x10a 0x200\n0112 0200");
+
+    DoTest("100 200\n100 200", "Vjg\\ctrl-a", "101 200\n102 200");
+    DoTest("100 200\n100 200", "Vj10g\\ctrl-a", "110 200\n120 200");
+    DoTest("100 200\naaa 200", "Vj110g\\ctrl-x", "-10 200\naaa -20");
+    DoTest("100 200\naaa bbb\n100 200", "V2j10g\\ctrl-a", "110 200\naaa bbb\n120 200");
+
+    // Ctrl+A / Ctrl+X Visual block mode
+    DoTest("100 200\n100 200", "w\\ctrl-vj$\\ctrl-a", "100 201\n100 201");
+    DoTest("100 200\n100 200", "e\\ctrl-vj$\\ctrl-x", "10-1 200\n10-1 200");
+    DoTest("100 200\n100 200", "w\\ctrl-vjeh\\ctrl-a", "100 210\n100 210");
+    DoTest("100   200\n0x100 0x200\n0100  0200 ", "w\\ctrl-v$2j10\\ctrl-a", "100   210\n0x100 0x20a\n0100  0212 ");
+    DoTest(" 100   200\n0x100 0x200\n0100  0200 ", "2w\\ctrl-v$2j10\\ctrl-a", " 100   210\n0x100 0x210\n0100  0210 ");
+    DoTest("100\t\t200\n0x100\t        0x200\n0100                0200 ",
+           "w\\ctrl-v$2j10\\ctrl-a",
+           "100\t\t210\n0x100\t        0x20a\n0100                0212 ");
+
+    DoTest("100 200\n100 200", "w\\ctrl-vj$g\\ctrl-a", "100 201\n100 202");
+    DoTest("100 200\n100 200", "e\\ctrl-vj$g\\ctrl-x", "10-1 200\n10-2 200");
+    DoTest("100 200\n100 200", "w\\ctrl-vjehg\\ctrl-a", "100 210\n100 220");
+    DoTest("100   200\n0x100 0x200\n0100  0200 ", "w\\ctrl-v2j\\ctrl-a", "100   300\n0x100 1x200\n0100  1200 ");
+}
+
 // END: Visual mode.
 
 // BEGIN: Command mode.

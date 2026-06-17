@@ -29,6 +29,7 @@ private Q_SLOTS:
     void VisualMotionsTests();
     void VisualCommandsTests();
     void VisualExternalTests();
+    void VisualControlTests();
 
     // Command mode.
     void CommandTests();

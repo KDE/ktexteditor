@@ -142,6 +142,8 @@ public:
 
     bool commandAddToNumber();
     bool commandSubtractFromNumber();
+    bool commandAddToNumberCumulative();
+    bool commandSubtractFromNumberCumulative();
 
     bool commandPrependToBlock();
     bool commandAppendToBlock();
