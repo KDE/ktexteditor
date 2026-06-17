@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-16 00:40+0000\n"
-"PO-Revision-Date: 2026-05-15 19:14+0300\n"
+"PO-Revision-Date: 2026-06-16 19:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.11.70\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -1410,15 +1410,13 @@ msgstr "&Sayfa Yukarı/Sayfa Aşağı imleci hareket ettirir"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
-"İmlecin tam sözcük atlaması yapıp yapmayacağına ve deve biçiminde hörgüçte "
-"durup durmayacağını seçer."
+"İmlecin sözcük içindeki deveBiçimi çıkıntılarında ve alt çizgilerde durup "
+"durmayacağını seçer."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1426,6 +1424,8 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"İmleci sözcük sözcük hareket ettirirken “deveBiçimi” ve “yılan_biçimi” alt "
+"sözcüklerde dur"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2476,18 +2476,16 @@ msgid "Normal Mode"
 msgstr "Normal Kip"
 
 #: inputmode/kateviinputmode.cpp:31
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "Vİ: EKLE KİPİ"
+msgstr "Vİ: EKLE"
 
 #: inputmode/kateviinputmode.cpp:34
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "Vİ: NORMAL KİP"
+msgstr "Vİ: NORMAL"
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-16 00:40+0000\n"
-"PO-Revision-Date: 2026-05-09 06:29+0200\n"
+"PO-Revision-Date: 2026-06-16 07:15+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1396,13 +1396,13 @@ msgstr "&PageUp/PageDown კურსორს ამოძრავებს"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
-msgstr "ირჩევს, კურსორი ახტება მთელ რიცხვებს თუ ჩერდება camelCase-ის კუზებზე."
+msgstr ""
+"ირჩევს, გაჩერდება, თუ არა კურსორი camelCase-ის კუზებთან და ქვედა ტირეებთან "
+"სიტყვის შიგნით."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1410,6 +1410,8 @@ msgstr "ირჩევს, კურსორი ახტება მთე�
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"გაჩერება 'camelCase' და 'snake_case' ქვესიტყვებთან კურსორის სიტყვის სიდიდით "
+"გადაადგილებისას"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2461,18 +2463,16 @@ msgid "Normal Mode"
 msgstr "ნორმალური რეჟიმი"
 
 #: inputmode/kateviinputmode.cpp:31
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "VI: ჩასმის რეჟიმი"
+msgstr "VI: ჩასმა"
 
 #: inputmode/kateviinputmode.cpp:34
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "VI: ნორმალური რეჟიმი"
+msgstr "VI: ნორმალური"
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format

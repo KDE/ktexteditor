@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-16 00:40+0000\n"
-"PO-Revision-Date: 2026-06-07 09:39+0200\n"
+"PO-Revision-Date: 2026-06-16 09:00+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1426,15 +1426,13 @@ msgstr "«&Av Pàg»/«Re Pàg» mouen el cursor"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
-"Tria si el cursor salta paraules completes o es para a les gepes de les "
-"majúscules per parts."
+"Tria si el cursor es para a les gepes de les majúscules per parts i guions "
+"baixos en una paraula."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1442,6 +1440,9 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"Es para a les subparaules de les gepes de les majúscules per parts "
+"(«camelCase») i els guions baixos («snake_case») en moure el cursor per "
+"paraules"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2509,18 +2510,16 @@ msgid "Normal Mode"
 msgstr "Mode normal"
 
 #: inputmode/kateviinputmode.cpp:31
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "VI: MODE INSERCIÓ"
+msgstr "VI: INSERCIÓ"
 
 #: inputmode/kateviinputmode.cpp:34
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "VI: MODE NORMAL"
+msgstr "VI: NORMAL"
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format
@@ -8584,6 +8583,3 @@ msgstr "«%1» %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no establida: %1"
-
-#~ msgid "Enable camel case cursor movement"
-#~ msgstr "Activa el moviment del cursor a les majúscules per parts"

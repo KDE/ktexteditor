@@ -2,18 +2,18 @@
 # Copyright (C) 2001-2026 This file is copyright:
 # This file is distributed under the same license as the ktexteditor package.
 #
-# SPDX-FileCopyrightText: 2001, 2002, 2003, 2004, 2005, 2007 Pablo de Vicente <pablo.devicente@gmail.com>
-# SPDX-FileCopyrightText: 2006, 2007 Jaime Robles <jaime@kde.org>
-# SPDX-FileCopyrightText: 2006, 2007 Enrique Matias Sanchez (aka Quique) <cronopios@gmail.com>
+# SPDX-FileCopyrightText: 2001-2005, 2007 Pablo de Vicente <pablo.devicente@gmail.com>
+# SPDX-FileCopyrightText: 2006-2007 Jaime Robles <jaime@kde.org>
+# SPDX-FileCopyrightText: 2006-2007 Enrique Matias Sanchez (aka Quique) <cronopios@gmail.com>
 # SPDX-FileCopyrightText: 2007-2010, 2012-2026 Eloy Cuadra <ecuadra@eloihr.net>
-# SPDX-FileCopyrightText: 2011, 2012, 2013 Cristina Yenyxe González García <the.blue.valkyrie@gmail.com>
-# SPDX-FileCopyrightText: 2013, 2014 Rocio Gallego <traducciones@rociogallego.com>
+# SPDX-FileCopyrightText: 2011-2013 Cristina Yenyxe González García <the.blue.valkyrie@gmail.com>
+# SPDX-FileCopyrightText: 2013-2014 Rocio Gallego <traducciones@rociogallego.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-16 00:40+0000\n"
-"PO-Revision-Date: 2026-05-09 16:59+0100\n"
+"PO-Revision-Date: 2026-06-16 15:45+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Lokalize 26.04.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:147
@@ -1427,15 +1427,13 @@ msgstr "Re&Pág/AvPág mueve el cursor"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
-"Selecciona si el cursor salta palabras completas o se interrumpe en los "
-"cambios a mayúscula."
+"Selecciona si el cursor se detiene en los cambios a mayúscula y subrayados "
+"de las palabras."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1443,6 +1441,8 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"Detenerse en «cambios a mayúscula» y «subrayados» al mover el cursor por "
+"palabra"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2515,18 +2515,16 @@ msgid "Normal Mode"
 msgstr "Modo normal"
 
 #: inputmode/kateviinputmode.cpp:31
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "VI: MODO INSERTAR"
+msgstr "VI: INSERTAR"
 
 #: inputmode/kateviinputmode.cpp:34
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "VI: MODO NORMAL"
+msgstr "VI: NORMAL"
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format
@@ -8593,6 +8591,3 @@ msgstr "«%1» %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no fijada: %1"
-
-#~ msgid "Enable camel case cursor movement"
-#~ msgstr "Activar el movimiento del cursor en los cambios a mayúscula"

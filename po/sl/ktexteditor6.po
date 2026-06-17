@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-16 00:40+0000\n"
-"PO-Revision-Date: 2026-05-09 07:58+0200\n"
+"PO-Revision-Date: 2026-06-16 06:19+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1409,15 +1409,13 @@ msgstr "&PageUp/PageDown premakne kazalko"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
-"Izbere, ali kazalec skače po polnih besedah ali se ustavi pri vsaki veliki "
-"začetnici, tudi sredi sestavljenih besed."
+"Izbere, ali se kazalec ustavi na grbah med velikimi in malimi črkami ter "
+"podčrtajih znotraj besede."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1425,6 +1423,8 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"Pri premikanju kazalca za besedo se ustavi pri podbesedah ​​velikih in malih "
+"črk kot 'grbe' in 'kače'"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2481,18 +2481,16 @@ msgid "Normal Mode"
 msgstr "Običajen način"
 
 #: inputmode/kateviinputmode.cpp:31
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "VI: NAČIN VSTAVLJANJA"
+msgstr "VI: VSTAVI"
 
 #: inputmode/kateviinputmode.cpp:34
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "VI: OBIČAJEN NAČIN"
+msgstr "VI: OBIČAJNO"
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format
