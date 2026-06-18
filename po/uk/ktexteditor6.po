@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-16 00:40+0000\n"
-"PO-Revision-Date: 2026-05-09 13:18+0300\n"
+"PO-Revision-Date: 2026-06-17 10:57+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1420,15 +1420,13 @@ msgstr "PageUp/PageDown &пересувають курсор"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
-"Визначає, перестрибуватиме курсор через цілі слова чи зупинятиметься на "
-"частинах написаного літерами різних регістрів слова."
+"Визначає, чи зупинятиметься курсор на частинах слів змінного регістру та "
+"слів із підкреслюваннями при перестрибуванні на слово."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1436,6 +1434,8 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"Зупинятися на підсловах «змінногоРегістру» та «словах_з_підкресленнями» при "
+"пересуванні курсора на слово"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2495,18 +2495,16 @@ msgid "Normal Mode"
 msgstr "Звичайний режим"
 
 #: inputmode/kateviinputmode.cpp:31
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "VI: РЕЖИМ ВСТАВКИ"
+msgstr "VI: ВСТАВКА"
 
 #: inputmode/kateviinputmode.cpp:34
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "VI: ЗВИЧАЙНИЙ РЕЖИМ"
+msgstr "VI: ЗВИЧАЙНИЙ"
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format

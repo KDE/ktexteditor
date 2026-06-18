@@ -1341,13 +1341,11 @@ msgstr "&PageUp/PageDown 移动光标"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
-msgstr "选择光标是否跳过完整的单词抑或在驼峰式大小写的大写处停止。"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -2361,18 +2359,16 @@ msgid "Normal Mode"
 msgstr "普通模式"
 
 #: inputmode/kateviinputmode.cpp:31
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "VI：插入模式"
+msgstr ""
 
 #: inputmode/kateviinputmode.cpp:34
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "VI：普通模式"
+msgstr ""
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format
@@ -8187,6 +8183,3 @@ msgstr "“%1” %2，十六进制 %3，八进制 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "标记未设置：%1"
-
-#~ msgid "Enable camel case cursor movement"
-#~ msgstr "启用驼峰式大小写光标移动"

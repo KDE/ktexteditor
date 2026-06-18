@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-16 00:40+0000\n"
-"PO-Revision-Date: 2026-05-28 20:49+0200\n"
+"PO-Revision-Date: 2026-06-17 16:05+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 26.04.1\n"
+"X-Generator: Lokalize 26.04.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:147
@@ -1404,15 +1404,13 @@ msgstr "П&реместване на курсора при натискане н
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
-"Избира дали курсорът прескача пълни думи или спира при camel case (слети "
-"думи с различен регистър на първа буква) ."
+"Избира дали курсорът да спира при главни букви в camelCase думи и долни "
+"черти в рамките на една дума"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1420,6 +1418,8 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"Спиране при поддуми с 'camelCase' и 'snake_case' при преместване на курсора "
+"по думи"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2481,18 +2481,16 @@ msgid "Normal Mode"
 msgstr "Нормален режим"
 
 #: inputmode/kateviinputmode.cpp:31
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "VI: INSERT MODE"
+msgstr "VI: INSERT"
 
 #: inputmode/kateviinputmode.cpp:34
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "VI: NORMAL MODE"
+msgstr "VI: NORMAL"
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format
@@ -8497,6 +8495,3 @@ msgstr "„%1“ %2,  Десетична %3,  Осмична %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Маркирането не е зададено: %1"
-
-#~ msgid "Enable camel case cursor movement"
-#~ msgstr "Активиране на camel case предвижване на курсора"
