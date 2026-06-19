@@ -2353,17 +2353,17 @@ msgstr "VI：可视模式"
 #: inputmode/kateviinputmode.cpp:38
 #, kde-format
 msgid "VI: VISUAL BLOCK"
-msgstr "VI：可视区块"
+msgstr "VI：可视模式 (块)"
 
 #: inputmode/kateviinputmode.cpp:41
 #, kde-format
 msgid "VI: VISUAL LINE"
-msgstr "VI：可视行"
+msgstr "VI：可视模式 (行)"
 
 #: inputmode/kateviinputmode.cpp:44
 #, kde-format
 msgid "VI: REPLACE"
-msgstr "VI：替换"
+msgstr "VI：替换模式"
 
 #: inputmode/kateviinputmode.cpp:144
 #, kde-format
