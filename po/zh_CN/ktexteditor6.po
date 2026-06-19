@@ -1345,14 +1345,14 @@ msgstr "&PageUp/PageDown 移动光标"
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
-msgstr ""
+msgstr "选择光标是否在单词内的驼峰式大小写和下划线处停止。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
-msgstr ""
+msgstr "在按单词移动光标时，遇到 camelCase 和 snake_case 子词时停止"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2362,13 +2362,13 @@ msgstr "普通模式"
 #, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr ""
+msgstr "VI：插入模式"
 
 #: inputmode/kateviinputmode.cpp:34
 #, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr ""
+msgstr "VI：普通模式"
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format
@@ -2378,17 +2378,17 @@ msgstr "VI：可视模式"
 #: inputmode/kateviinputmode.cpp:40
 #, kde-format
 msgid "VI: VISUAL BLOCK"
-msgstr "VI：可视区块"
+msgstr "VI：可视模式 (块)"
 
 #: inputmode/kateviinputmode.cpp:43
 #, kde-format
 msgid "VI: VISUAL LINE"
-msgstr "VI：可视行"
+msgstr "VI：可视模式 (行)"
 
 #: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
-msgstr "VI：替换"
+msgstr "VI：替换模式"
 
 #: inputmode/kateviinputmode.cpp:146
 #, kde-format
