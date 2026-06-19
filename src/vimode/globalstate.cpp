@@ -20,7 +20,7 @@ GlobalState::GlobalState()
 {
     m_macros = new Macros();
     m_mappings = new Mappings();
-    m_registers = new Registers();
+    m_registers = new Registers(this);
     m_searchHistory = new History();
     m_replaceHistory = new History();
     m_commandHistory = new History();

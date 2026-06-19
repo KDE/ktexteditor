@@ -6,6 +6,7 @@
 */
 
 #include "modes.h"
+#include "emulatedcommandbarsetupandteardown.h"
 #include <inputmode/kateviinputmode.h>
 #include <katebuffer.h>
 #include <kateconfig.h>
@@ -849,6 +850,22 @@ void ModesTest::NormalCommandsTests()
     DoTest("foo bar", "ea baz\\esc$\".p", "foo baz bar baz");
     DoTest("foo bar", "ea baz\\escwhD\".p", "foo baz baz"); // ". != .
     DoTest("foo bar", "ea baz\\esc\".Y$\".p", "foo baz bar baz");
+
+    {
+        // To interact back and forth with the command bar
+        EmulatedCommandBarSetUpAndTearDown emulatedCommandBarSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
+
+        // Testing search register ("/)
+        DoTest("foo", "/bar\\enter$\"/p", "foobar");
+        DoTest("foo", "/baz\\esc$\"/p", "foobaz"); // Dismiss on Esc
+        DoTest("foo", "?bat\\enter$\"/p", "foobat"); // Reverse search
+        DoTest("foo", "\"/Y$\"/p", "foobat"); // Read-only
+
+        // Testing command register (":)
+        DoTest("foo", ":bar\\enter$\":p", "foobar");
+        DoTest("foo", ":baz\\esc$\":p", "foobaz"); // Dismiss on Esc
+        DoTest("foo", "\":Y$\":p", "foobaz"); // Read-only
+    }
 
     // Testing "Ctrl-o" and "Ctrl-i"
     DoTest("abc\ndef\nghi", "Gx\\ctrl-ox", "bc\ndef\nhi");

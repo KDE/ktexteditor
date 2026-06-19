@@ -5,6 +5,8 @@
 */
 
 #include "registers.h"
+#include "globalstate.h"
+#include "history.h"
 #include "katepartdebug.h"
 
 #include <KConfigGroup>
@@ -125,6 +127,14 @@ Registers::Register Registers::getRegister(const QChar &reg) const
         return Register(QApplication::clipboard()->text(QClipboard::Clipboard), CharWise);
     } else if (_reg == SystemSelectionRegister) {
         return Register(QApplication::clipboard()->text(QClipboard::Selection), CharWise);
+    } else if (_reg == SearchRegister) {
+        if (!m_global->searchHistory()->isEmpty()) {
+            return Register(m_global->searchHistory()->items().last(), CharWise);
+        }
+    } else if (_reg == CommandRegister) {
+        if (!m_global->commandHistory()->isEmpty()) {
+            return Register(m_global->commandHistory()->items().last(), CharWise);
+        }
     } else {
         const QChar lowercase_reg = _reg.toLower();
         auto it = m_registers.find(lowercase_reg);

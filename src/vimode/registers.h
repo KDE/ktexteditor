@@ -30,6 +30,8 @@ constexpr QChar SystemSelectionRegister = '*'_L1;
 constexpr QChar SystemClipboardRegister = '+'_L1;
 constexpr QChar UnnamedRegister = '"'_L1;
 constexpr QChar InsertStoppedRegister = '.'_L1;
+constexpr QChar SearchRegister = '/'_L1;
+constexpr QChar CommandRegister = ':'_L1;
 
 constexpr auto SpecialRegisters = std::array{BlackHoleRegister,
                                              SmallDeleteRegister,
@@ -38,13 +40,20 @@ constexpr auto SpecialRegisters = std::array{BlackHoleRegister,
                                              SystemSelectionRegister,
                                              SystemClipboardRegister,
                                              UnnamedRegister,
-                                             InsertStoppedRegister};
+                                             InsertStoppedRegister,
+                                             SearchRegister,
+                                             CommandRegister};
 
-constexpr auto ReadOnlyRegisters = std::array{BlackHoleRegister, InsertStoppedRegister};
+constexpr auto ReadOnlyRegisters = std::array{BlackHoleRegister, InsertStoppedRegister, SearchRegister, CommandRegister};
+
+class GlobalState;
 
 class Registers
 {
 public:
+    Registers(GlobalState *global)
+        : m_global(global) { };
+
     void writeConfig(KConfigGroup &config) const;
     void readConfig(const KConfigGroup &config);
 
@@ -70,6 +79,7 @@ private:
     QList<Register> m_numbered;
     std::map<QChar, Register> m_registers;
     QChar m_default;
+    GlobalState *m_global;
 };
 
 }
