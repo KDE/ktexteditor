@@ -14,20 +14,31 @@
 #include <QString>
 #include <map>
 
+using namespace Qt::StringLiterals;
+
 class KConfigGroup;
 
 namespace KateVi
 {
-const QChar BlackHoleRegister = QLatin1Char('_');
-const QChar SmallDeleteRegister = QLatin1Char('-');
-const QChar ZeroRegister = QLatin1Char('0');
-const QChar PrependNumberedRegister = QLatin1Char('!');
-const QChar FirstNumberedRegister = QLatin1Char('1');
-const QChar LastNumberedRegister = QLatin1Char('9');
-const QChar SystemSelectionRegister = QLatin1Char('*');
-const QChar SystemClipboardRegister = QLatin1Char('+');
-const QChar UnnamedRegister = QLatin1Char('"');
-const QChar InsertStoppedRegister = QLatin1Char('^');
+constexpr QChar BlackHoleRegister = '_'_L1;
+constexpr QChar SmallDeleteRegister = '-'_L1;
+constexpr QChar ZeroRegister = '0'_L1;
+constexpr QChar PrependNumberedRegister = '!'_L1;
+constexpr QChar FirstNumberedRegister = '1'_L1;
+constexpr QChar LastNumberedRegister = '9'_L1;
+constexpr QChar SystemSelectionRegister = '*'_L1;
+constexpr QChar SystemClipboardRegister = '+'_L1;
+constexpr QChar UnnamedRegister = '"'_L1;
+constexpr QChar InsertStoppedRegister = '^'_L1;
+
+constexpr auto SpecialRegisters = std::array{BlackHoleRegister,
+                                             SmallDeleteRegister,
+                                             ZeroRegister,
+                                             PrependNumberedRegister,
+                                             SystemSelectionRegister,
+                                             SystemClipboardRegister,
+                                             UnnamedRegister,
+                                             InsertStoppedRegister};
 
 class Registers
 {
@@ -40,6 +51,8 @@ public:
     void set(const QChar &reg, const QString &text, OperationMode flag = CharWise);
     QString getContent(const QChar &reg) const;
     OperationMode getFlag(const QChar &reg) const;
+
+    static bool isValidRegister(const QChar &reg);
 
 private:
     struct Register {

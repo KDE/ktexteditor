@@ -25,6 +25,7 @@
 #include <vimode/macrorecorder.h>
 #include <vimode/marks.h>
 #include <vimode/modes/insertvimode.h>
+#include <vimode/registers.h>
 
 #include <KLocalizedString>
 
@@ -461,10 +462,7 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
         key = key.toLower();
         m_waitingRegister = false;
 
-        // is it register ?
-        // TODO: add registers such as '/'. See :h <c-r>
-        if ((key >= QLatin1Char('0') && key <= QLatin1Char('9')) || (key >= QLatin1Char('a') && key <= QLatin1Char('z')) || key == QLatin1Char('_')
-            || key == QLatin1Char('-') || key == QLatin1Char('+') || key == QLatin1Char('*') || key == QLatin1Char('"')) {
+        if (Registers::isValidRegister(key)) {
             m_register = key;
         } else {
             return false;

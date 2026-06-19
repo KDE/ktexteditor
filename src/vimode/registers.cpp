@@ -12,6 +12,7 @@
 #include <QApplication>
 #include <QClipboard>
 
+using namespace Qt::StringLiterals;
 using namespace KateVi;
 
 void Registers::readConfig(const KConfigGroup &config)
@@ -55,6 +56,13 @@ void Registers::writeConfig(KConfigGroup &config) const
     config.writeEntry("ViRegisterFlags", flags);
 }
 
+bool Registers::isValidRegister(const QChar &reg)
+{
+    return charInList(reg, SpecialRegisters)
+        || charInRange(reg, FirstNumberedRegister, LastNumberedRegister)
+        || charInRange(reg.toLower(), 'a'_L1, 'z'_L1);
+}
+
 void Registers::setInsertStopped(const QString &text)
 {
     set(InsertStoppedRegister, text);
@@ -66,7 +74,7 @@ void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
         return;
     }
 
-    if (reg == PrependNumberedRegister || (reg >= FirstNumberedRegister && reg <= LastNumberedRegister)) { // "kill ring" registers
+    if (reg == PrependNumberedRegister || charInRange(reg, FirstNumberedRegister, LastNumberedRegister)) { // "kill ring" registers
         setNumberedRegister(reg, text, flag);
     } else if (reg == SystemClipboardRegister) {
         QApplication::clipboard()->setText(text, QClipboard::Clipboard);
@@ -83,7 +91,7 @@ void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
         }
     }
 
-    if (reg == ZeroRegister || reg == PrependNumberedRegister || reg == SmallDeleteRegister) {
+    if (charInList(reg, std::array{ZeroRegister, PrependNumberedRegister, SmallDeleteRegister})) {
         m_default = reg;
     }
 }
@@ -100,24 +108,21 @@ OperationMode Registers::getFlag(const QChar &reg) const
 
 Registers::Register Registers::getRegister(const QChar &reg) const
 {
-    Register regPair;
     QChar _reg = (reg != UnnamedRegister ? reg : m_default);
 
-    if (_reg >= FirstNumberedRegister && _reg <= LastNumberedRegister) {
-        int index = _reg.digitValue() - 1;
+    if (charInRange(_reg, FirstNumberedRegister, LastNumberedRegister)) {
+        const int index = _reg.digitValue() - 1;
         if (m_numbered.size() > index) {
-            regPair = m_numbered.at(index);
+            return m_numbered.at(index);
         }
     } else if (_reg == PrependNumberedRegister) {
         if (!m_numbered.isEmpty()) {
-            regPair = m_numbered.front();
+            return m_numbered.front();
         }
     } else if (_reg == SystemClipboardRegister) {
-        QString regContent = QApplication::clipboard()->text(QClipboard::Clipboard);
-        regPair = Register(regContent, CharWise);
+        return Register(QApplication::clipboard()->text(QClipboard::Clipboard), CharWise);
     } else if (_reg == SystemSelectionRegister) {
-        QString regContent = QApplication::clipboard()->text(QClipboard::Selection);
-        regPair = Register(regContent, CharWise);
+        return Register(QApplication::clipboard()->text(QClipboard::Selection), CharWise);
     } else {
         const QChar lowercase_reg = _reg.toLower();
         auto it = m_registers.find(lowercase_reg);
@@ -126,12 +131,12 @@ Registers::Register Registers::getRegister(const QChar &reg) const
         }
     }
 
-    return regPair;
+    return {};
 }
 
 void Registers::setNumberedRegister(const QChar &reg, const QString &text, OperationMode flag)
 {
-    int index = reg.digitValue() - 1;
+    const int index = reg.digitValue() - 1;
     if (reg == PrependNumberedRegister || index > m_numbered.size()) {
         if (m_numbered.size() == 9) {
             m_numbered.removeLast();

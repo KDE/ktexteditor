@@ -187,9 +187,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         if (m_keys.size() < 2) {
             return true; // waiting for a register
         } else {
-            char r = m_keys[1].toLower().toLatin1();
-
-            if ((r >= '0' && r <= '9') || (r >= 'a' && r <= 'z') || r == '_' || r == '-' || r == '+' || r == '*' || r == '#' || r == '^') {
+            if (Registers::isValidRegister(m_keys[1])) {
                 m_register = m_keys[1];
                 m_keys.clear();
                 return true;
