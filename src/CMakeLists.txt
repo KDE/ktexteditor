@@ -408,3 +408,20 @@ ecm_qt_install_logging_categories(
 )
 
 ecm_generate_qdoc(KF6TextEditor ktexteditor.qdocconf)
+
+ecm_add_installed_library_check(KF6TextEditor
+    PACKAGE_NAME "KF6TextEditor"
+    PACKAGE_VERSION ${KTEXTEDITOR_VERSION}
+    PACKAGE_TARGET_NAMESPACE "KF6::"
+)
+
+ecm_installed_library_check_include_strings(KF6TextEditor
+    HEADERS ${KTextEditor_CamelCase_HEADERS}
+    PREFIX KTextEditor
+)
+
+ecm_installed_library_check_version_preprocessor_macros(KF6TextEditor
+    PREFIX KTEXTEDITOR
+    VERSION ${KTEXTEDITOR_VERSION}
+    SILENT
+)

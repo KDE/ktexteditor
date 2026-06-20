@@ -29,6 +29,7 @@ include(KDEPackageAppTemplates)
 include(GenerateExportHeader)
 include(ECMQtDeclareLoggingCategory)
 include(ECMDeprecationSettings)
+include(ECMInstalledLibraryCheck)
 
 option(ENABLE_PCH "Enable Precompiled Headers support" ON)
 option(WARNINGS_AS_ERRORS "Warnings are errors -Werror" OFF)
