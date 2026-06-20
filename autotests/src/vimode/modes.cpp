@@ -845,6 +845,11 @@ void ModesTest::NormalCommandsTests()
     // Do nothing if the count is too high.
     DoTest("foobar", "l6r.", "foobar");
 
+    // Testing instert register (".)
+    DoTest("foo bar", "ea baz\\esc$\".p", "foo baz bar baz");
+    DoTest("foo bar", "ea baz\\escwhD\".p", "foo baz baz"); // ". != .
+    DoTest("foo bar", "ea baz\\esc\".Y$\".p", "foo baz bar baz");
+
     // Testing "Ctrl-o" and "Ctrl-i"
     DoTest("abc\ndef\nghi", "Gx\\ctrl-ox", "bc\ndef\nhi");
     DoTest("{\n}", "%\\ctrl-ox", "\n}");

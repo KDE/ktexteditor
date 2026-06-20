@@ -3868,7 +3868,7 @@ bool NormalViMode::waitingForRegisterOrCharToSearch()
     return (ch == QLatin1Char('f') || ch == QLatin1Char('t') || ch == QLatin1Char('F')
             || ch == QLatin1Char('T')
             // c/d prefix unapplicable for the following cases.
-            || (keysSize == 1 && (ch == QLatin1Char('r') || ch == QLatin1Char('q') || ch == QLatin1Char('@'))));
+            || (keysSize == 1 && (ch == QLatin1Char('r') || ch == QLatin1Char('q') || ch == QLatin1Char('@') || ch == QLatin1Char('\"'))));
 }
 
 void NormalViMode::textInserted(KTextEditor::Document *document, KTextEditor::Range range)

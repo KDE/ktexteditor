@@ -29,7 +29,7 @@ constexpr QChar LastNumberedRegister = '9'_L1;
 constexpr QChar SystemSelectionRegister = '*'_L1;
 constexpr QChar SystemClipboardRegister = '+'_L1;
 constexpr QChar UnnamedRegister = '"'_L1;
-constexpr QChar InsertStoppedRegister = '^'_L1;
+constexpr QChar InsertStoppedRegister = '.'_L1;
 
 constexpr auto SpecialRegisters = std::array{BlackHoleRegister,
                                              SmallDeleteRegister,
@@ -39,6 +39,8 @@ constexpr auto SpecialRegisters = std::array{BlackHoleRegister,
                                              SystemClipboardRegister,
                                              UnnamedRegister,
                                              InsertStoppedRegister};
+
+constexpr auto ReadOnlyRegisters = std::array{BlackHoleRegister, InsertStoppedRegister};
 
 class Registers
 {

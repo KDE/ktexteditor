@@ -71,7 +71,7 @@ void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor pos)
 {
     // move on insert is type based, this allows to reuse cursors!
     // reuse is important for editing intensive things like replace-all
-    const bool moveoninsert = _mark != BeginEditYanked;
+    const bool moveoninsert = _mark != BeginEditYanked && _mark != InsertStopped;
 
     m_settingMark = true;
 

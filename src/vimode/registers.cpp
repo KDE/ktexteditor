@@ -65,12 +65,14 @@ bool Registers::isValidRegister(const QChar &reg)
 
 void Registers::setInsertStopped(const QString &text)
 {
-    set(InsertStoppedRegister, text);
+    // Setter for a special read-only register
+    // Not using `set()` to prevent users from manual overriding it
+    m_registers.insert_or_assign(InsertStoppedRegister, Register(text, CharWise));
 }
 
 void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
 {
-    if (reg == BlackHoleRegister) {
+    if (charInList(reg, ReadOnlyRegisters)) {
         return;
     }
 

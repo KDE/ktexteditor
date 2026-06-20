@@ -321,7 +321,7 @@ void InputModeManager::viEnterNormalMode()
     bool moveCursorLeft = (m_currentViMode == ViMode::InsertMode || m_currentViMode == ViMode::ReplaceMode) && m_viewInternal->cursorPosition().column() > 0;
 
     if (!m_lastChangeRecorder->isReplaying() && (m_currentViMode == ViMode::InsertMode || m_currentViMode == ViMode::ReplaceMode)) {
-        // '^ is the insert mark and "^ is the insert register,
+        // '^ is the insert mark and ". is the insert register,
         // which holds the last inserted text
         KTextEditor::Range r(m_view->cursorPosition(), m_marks->getInsertStopped());
 
