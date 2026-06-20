@@ -13,6 +13,7 @@ ecm_generate_headers(KTextEditor_CamelCase_HEADERS
 
 # export headers to parent scope
 set (KTEXTEDITOR_PUBLIC_HEADERS ${KTEXTEDITOR_PUBLIC_HEADERS} PARENT_SCOPE)
+set (KTextEditor_CamelCase_HEADERS ${KTextEditor_CamelCase_HEADERS} PARENT_SCOPE)
 
 # install the public header files
 install (FILES ${KTEXTEDITOR_PUBLIC_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor/ktexteditor COMPONENT Devel)
