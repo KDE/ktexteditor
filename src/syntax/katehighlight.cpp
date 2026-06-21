@@ -98,11 +98,24 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
             }
         }
 
+        // we always want to have the invalid format as id 0
+        // otherwise we will do strange stuff and ignore formatting or fall back to a bad format
+        // in most places in KTE code, 0 means 'normal' or 'invalid'
+        // see bug 517160
+        if (m_formats.empty()) {
+            Q_ASSERT(m_formatsIdToIndex.empty());
+            Q_ASSERT(m_propertiesForFormat.empty());
+            m_formats.resize(1);
+            m_formatsIdToIndex.insert(std::make_pair(m_formats.back().id(), 0));
+            m_propertiesForFormat.push_back(&m_properties[0]);
+        }
+
         // collect formats
         const auto formats = includedDefinition.formats();
         for (const auto &format : formats) {
             // register format id => internal attributes, we want no clashs
             const auto nextId = m_formats.size();
+            Q_ASSERT(nextId > 0);
             m_formatsIdToIndex.insert(std::make_pair(format.id(), int(nextId)));
             m_formats.push_back(format);
             m_propertiesForFormat.push_back(&properties);

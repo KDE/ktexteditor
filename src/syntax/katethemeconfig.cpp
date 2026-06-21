@@ -830,8 +830,12 @@ void KateThemeConfigHighlightTab::schemaChanged(const QString &schema)
 
     // create unified stuff
     auto attributes = KateHlManager::self()->getHl(m_hl)->attributesForDefinition(m_schema);
-    auto formats = KateHlManager::self()->getHl(m_hl)->formats();
-    auto defaults = defaultsForHighlighting(formats, *l);
+    auto defaults = defaultsForHighlighting(KateHlManager::self()->getHl(m_hl)->formats(), *l);
+
+    // we skip the first attribute, that is by design an invalid one
+    // see constructor of KateHighlighting
+    attributes.pop_front();
+    defaults.pop_front();
 
     for (int i = 0; i < attributes.size(); ++i) {
         // All stylenames have their language mode prefixed, e.g. HTML:Comment
