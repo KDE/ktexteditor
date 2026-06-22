@@ -966,7 +966,7 @@ static void drawCursor(const QTextLayout &layout, QPainter *p, const QPointF &po
 
     const QPointF position = pos + layout.position();
     const qreal x = position.x() + l.cursorToX(cursorPosition);
-    const qreal y = l.lineNumber() * height;
+    const qreal y = position.y() + (l.lineNumber() * l.height());
     p->fillRect(QRectF(x, y, (qreal)width, (qreal)height), p->pen().brush());
     p->setCompositionMode(origCompositionMode);
 }
@@ -975,6 +975,7 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range,
 {
     if (range->includesCursor(cursor)) {
         int caretWidth;
+        int caretHeight;
         int lineWidth = 2;
         QColor color;
         const int lineLength = range->layout().text().length();
@@ -1023,17 +1024,22 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range,
         switch (style) {
         case KTextEditor::caretStyles::Line:
             paint.setPen(QPen(color, caretWidth));
+            caretHeight = lineHeight();
             break;
         case KTextEditor::caretStyles::Block:
             // use a gray caret so it's possible to see the character
             color.setAlpha(128);
             paint.setPen(QPen(color, caretWidth));
+            caretHeight = lineHeight();
             break;
         case KTextEditor::caretStyles::Underline:
+            paint.setPen(QPen(color, caretWidth));
+            caretHeight = round(abs(line.descent()) * 0.9);
             break;
         case KTextEditor::caretStyles::Half:
             color.setAlpha(128);
             paint.setPen(QPen(color, caretWidth));
+            caretHeight = round(lineHeight() / 2.0);
             break;
         }
 
@@ -1052,13 +1058,13 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range,
                     }
                 }
             }
-            drawCursor(range->layout(), &paint, QPoint(-xStart - width, 0), cursor.column(), caretWidth, lineHeight());
+            drawCursor(range->layout(), &paint, QPoint(-xStart - width, lineHeight() - caretHeight), cursor.column(), caretWidth, caretHeight);
         } else {
             // Off the end of the line... must be block mode. Draw the caret ourselves.
             const KateTextLayout &lastLine = range->viewLine(range->viewLineCount() - 1);
             int x = cursorToX(lastLine, KTextEditor::Cursor(range->line(), cursor.column()), true);
             if ((x >= xStart) && (x <= xEnd)) {
-                paint.fillRect(x - xStart, (int)lastLine.lineLayout().y(), caretWidth, lineHeight(), color);
+                paint.fillRect(x - xStart, (int)lastLine.lineLayout().y() + lineHeight() - caretHeight, caretWidth, caretHeight, color);
             }
         }
 
