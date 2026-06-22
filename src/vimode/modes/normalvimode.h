@@ -56,6 +56,7 @@ public:
     bool commandEnterVisualBlockMode();
     bool commandReselectVisual();
     bool commandToOtherEnd();
+    bool commandToOtherEndColumn();
 
     bool commandEnterReplaceMode();
 

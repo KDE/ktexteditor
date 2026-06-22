@@ -1257,7 +1257,7 @@ public:
     int firstDisplayedLineInternal(LineType lineType) const;
 
     int lastDisplayedLineInternal(LineType lineType) const;
-    
+
     int visibleToRealLineInternal(int visibleLine) const;
 
     int realToVisibleLineInternal(int realLine) const;

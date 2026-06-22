@@ -185,10 +185,17 @@ void VisualViMode::setVisualModeType(ViMode mode)
     m_mode = mode;
 }
 
-void VisualViMode::switchStartEnd()
+void VisualViMode::switchStartEnd(bool swapOnlyColumn)
 {
-    KTextEditor::Cursor c = m_start;
-    m_start = m_view->cursorPosition();
+    KTextEditor::Cursor c = m_view->cursorPosition();
+
+    c.setColumn(m_start.column());
+    m_start.setColumn(m_view->cursorPosition().column());
+
+    if (!swapOnlyColumn || m_mode != ViMode::VisualBlockMode) {
+        c.setLine(m_start.line());
+        m_start.setLine(m_view->cursorPosition().line());
+    }
 
     updateCursor(c);
 
@@ -277,6 +284,7 @@ const std::vector<Command> &VisualViMode::commands()
         ADDCMD("V", commandEnterVisualLineMode, SHOULD_NOT_RESET),
         ADDCMD("<c-v>", commandEnterVisualBlockMode, SHOULD_NOT_RESET),
         ADDCMD("o", commandToOtherEnd, SHOULD_NOT_RESET | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDCMD("O", commandToOtherEndColumn, SHOULD_NOT_RESET | CAN_LAND_INSIDE_FOLDING_RANGE),
         ADDCMD("=", commandAlignLines, SHOULD_NOT_RESET),
         ADDCMD("~", commandChangeCase, IS_CHANGE),
         ADDCMD("I", commandPrependToBlock, IS_CHANGE),

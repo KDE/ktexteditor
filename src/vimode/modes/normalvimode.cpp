@@ -635,6 +635,16 @@ bool NormalViMode::commandToOtherEnd()
     return false;
 }
 
+bool NormalViMode::commandToOtherEndColumn()
+{
+    if (m_viInputModeManager->isAnyVisualMode()) {
+        m_viInputModeManager->getViVisualMode()->switchStartEnd(true);
+        return true;
+    }
+
+    return false;
+}
+
 bool NormalViMode::commandEnterReplaceMode()
 {
     m_stickyColumn = -1;

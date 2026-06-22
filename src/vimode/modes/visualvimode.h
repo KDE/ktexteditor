@@ -34,7 +34,7 @@ public:
         return m_mode == VisualBlockMode;
     }
 
-    void switchStartEnd();
+    void switchStartEnd(bool swapOnlyColumn = false);
     void reset() override;
     void setVisualModeType(const ViMode mode);
     void saveRangeMarks();
