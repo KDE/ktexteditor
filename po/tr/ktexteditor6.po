@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-16 00:40+0000\n"
+"POT-Creation-Date: 2026-06-23 00:41+0000\n"
 "PO-Revision-Date: 2026-06-16 19:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -8469,18 +8469,18 @@ msgstr "İm ayarlandı: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Sonraki yer imi için daha fazla karakter yok."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3569
+#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "%1 yazmacında bir şey yok"
 
-#: vimode/modes/normalvimode.cpp:1693
+#: vimode/modes/normalvimode.cpp:1691
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "“%1” %2, Altılık %3, Sekizlik %4"
 
-#: vimode/modes/normalvimode.cpp:2536
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İm ayarlanmadı: %1"
