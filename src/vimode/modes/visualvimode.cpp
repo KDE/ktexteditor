@@ -229,8 +229,6 @@ void VisualViMode::updateSelection()
     // Set range for commands
     m_start = (m_view->cursorPosition() == r.start()) ? r.end() : r.start();
     m_commandRange = Range(r.start(), r.end(), m_commandRange.motionType);
-    // The end of the range seems to be one space forward of where it should be.
-    m_commandRange.endColumn--;
 }
 
 #define ADDCMD(STR, FUNC, FLGS) Command(QStringLiteral(STR), &NormalViMode::FUNC, FLGS)

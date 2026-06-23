@@ -207,9 +207,9 @@ void KeysTest::MappingTests()
     vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("gA"), QStringLiteral("%"), Mappings::NonRecursive);
     BeginTest(QStringLiteral("foo bar xyz()"));
     TestPressKey(QStringLiteral("gAr."));
-    kate_view->setSelection(Range(0, 1, 0, 4)); // Actually selects "oo " (i.e. without the "b").
+    kate_view->setSelection(Range(0, 1, 0, 4));
     TestPressKey(QStringLiteral("d"));
-    FinishTest("fbar xyz(.");
+    FinishTest("far xyz(.");
 
     // Regression tests for BUG:260655
     clearAllMappings();

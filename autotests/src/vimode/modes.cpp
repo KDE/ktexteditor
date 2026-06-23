@@ -1431,10 +1431,10 @@ void ModesTest::VisualExternalTests()
     // one of the ktexteditor api's) switches us into Visual Mode.
     BeginTest(QStringLiteral("foo bar"));
 
-    // Actually selects "oo " (i.e. without the "b").
+    // Selects "oo b"
     kate_view->setSelection(Range(0, 1, 0, 4));
     TestPressKey(QStringLiteral("d"));
-    FinishTest("fbar");
+    FinishTest("far");
 
     // Always return to normal mode when undoing/redoing.
     BeginTest(QLatin1String(""));
