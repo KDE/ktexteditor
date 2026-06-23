@@ -226,8 +226,13 @@ void VisualViMode::updateSelection()
         commandEnterVisualMode();
     }
 
+    // We get here when the mouse selection changes, but before the cursor
+    // position has been updated. Compare with the last selection range
+    // to correctly assess the direction of the selection (BUG #454417)
+    m_start = (m_view->cursorPosition() == m_lastMouseSelection.start()) ? r.end() : r.start();
+    m_lastMouseSelection = r;
+
     // Set range for commands
-    m_start = (m_view->cursorPosition() == r.start()) ? r.end() : r.start();
     m_commandRange = Range(r.start(), r.end(), m_commandRange.motionType);
 }
 

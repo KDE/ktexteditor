@@ -102,6 +102,7 @@ public:
 private:
     KTextEditor::Cursor m_start;
     ViMode m_mode, m_lastVisualMode;
+    KTextEditor::Range m_lastMouseSelection;
 };
 }
 
