@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-23 00:41+0000\n"
-"PO-Revision-Date: 2026-05-14 20:56+0300\n"
+"PO-Revision-Date: 2026-06-18 08:41+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -1384,14 +1384,11 @@ msgstr "PageUp/PageDown מ&זיזים את הסמן"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
-msgstr ""
-"בחירה האם סמן יקפוץ מילים שלמות או ייקטע בדבשות של הגדלת אותיות פותחות."
+msgstr "בחירה האם הסמן יעצור על אותיות גדולות וקווים תחתיים בתוך מילה."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1399,6 +1396,7 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"לעצור על תת־מילות ‚camelCase’ ו־‚snake_case’ כשעוברים עם הסמן על פי מילה"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2422,18 +2420,16 @@ msgid "Normal Mode"
 msgstr "מצב רגיל"
 
 #: inputmode/kateviinputmode.cpp:31
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "‏VI: מצב הוספה"
+msgstr "‏VI: הוספה"
 
 #: inputmode/kateviinputmode.cpp:34
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "‏‎VI: מצב רגיל"
+msgstr "‏‎VI: רגיל"
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format
