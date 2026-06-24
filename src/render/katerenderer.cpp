@@ -973,103 +973,89 @@ static void drawCursor(const QTextLayout &layout, QPainter *p, const QPointF &po
 
 void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range, QPainter &paint, int xStart, int xEnd)
 {
-    if (range->includesCursor(cursor)) {
-        int caretWidth;
-        int caretHeight;
-        int lineWidth = 2;
-        QColor color;
-        const int lineLength = range->layout().text().length();
-        QTextLine line = range->layout().lineForTextPosition(qMin(cursor.column(), lineLength));
-
-        // Determine the caret's style
-        KTextEditor::caretStyles style = caretStyle();
-
-        // Make the caret the desired width
-        if (style == KTextEditor::caretStyles::Line) {
-            caretWidth = lineWidth;
-        } else if (line.isValid() && cursor.column() < lineLength) {
-            caretWidth = int(line.cursorToX(cursor.column() + 1) - line.cursorToX(cursor.column()));
-            if (caretWidth < 0) {
-                caretWidth = -caretWidth;
-            }
-        } else {
-            caretWidth = spaceWidth();
-        }
-
-        // Determine the color
-        if (m_caretOverrideColor.isValid()) {
-            // Could actually use the real highlighting system for this...
-            // would be slower, but more accurate for corner cases
-            color = m_caretOverrideColor;
-        } else {
-            // search for the FormatRange that includes the cursor
-            const auto formatRanges = range->layout().formats();
-            for (const QTextLayout::FormatRange &r : formatRanges) {
-                if ((r.start <= cursor.column()) && ((r.start + r.length) > cursor.column())) {
-                    // check for Qt::NoBrush, as the returned color is black() and no invalid QColor
-                    QBrush foregroundBrush = r.format.foreground();
-                    if (foregroundBrush != Qt::NoBrush) {
-                        color = r.format.foreground().color();
-                    }
-                    break;
-                }
-            }
-            // still no color found, fall back to default style
-            if (!color.isValid()) {
-                color = attribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color();
-            }
-        }
-
-        paint.save();
-        switch (style) {
-        case KTextEditor::caretStyles::Line:
-            paint.setPen(QPen(color, caretWidth));
-            caretHeight = lineHeight();
-            break;
-        case KTextEditor::caretStyles::Block:
-            // use a gray caret so it's possible to see the character
-            color.setAlpha(128);
-            paint.setPen(QPen(color, caretWidth));
-            caretHeight = lineHeight();
-            break;
-        case KTextEditor::caretStyles::Underline:
-            paint.setPen(QPen(color, caretWidth));
-            caretHeight = round(abs(line.descent()) * 0.9);
-            break;
-        case KTextEditor::caretStyles::Half:
-            color.setAlpha(128);
-            paint.setPen(QPen(color, caretWidth));
-            caretHeight = round(lineHeight() / 2.0);
-            break;
-        }
-
-        if (cursor.column() <= lineLength) {
-            // Ensure correct cursor placement for RTL text
-            if (range->layout().textOption().textDirection() == Qt::RightToLeft) {
-                xStart += caretWidth;
-            }
-            qreal width = 0;
-            if (cursor.column() < lineLength) {
-                const auto inlineNotes = m_view->inlineNotes(range->line());
-                for (const auto &inlineNoteData : inlineNotes) {
-                    KTextEditor::InlineNote inlineNote(inlineNoteData);
-                    if (inlineNote.position().column() == cursor.column()) {
-                        width = inlineNote.width() + (caretStyle() == KTextEditor::caretStyles::Line ? 2.0 : 0.0);
-                    }
-                }
-            }
-            drawCursor(range->layout(), &paint, QPoint(-xStart - width, lineHeight() - caretHeight), cursor.column(), caretWidth, caretHeight);
-        } else {
-            // Off the end of the line... must be block mode. Draw the caret ourselves.
-            const KateTextLayout &lastLine = range->viewLine(range->viewLineCount() - 1);
-            int x = cursorToX(lastLine, KTextEditor::Cursor(range->line(), cursor.column()), true);
-            if ((x >= xStart) && (x <= xEnd)) {
-                paint.fillRect(x - xStart, (int)lastLine.lineLayout().y() + lineHeight() - caretHeight, caretWidth, caretHeight, color);
-            }
-        }
-
-        paint.restore();
+    if (!range->includesCursor(cursor)) {
+        return;
     }
+
+    const int lineLength = range->layout().text().length();
+    const QTextLine line = range->layout().lineForTextPosition(qMin(cursor.column(), lineLength));
+
+    // Determine the color
+    QColor color = m_caretOverrideColor;
+    if (!color.isValid()) {
+        // search for the FormatRange that includes the cursor
+        const auto formatRanges = range->layout().formats();
+        for (const QTextLayout::FormatRange &r : formatRanges) {
+            if ((r.start <= cursor.column()) && ((r.start + r.length) > cursor.column())) {
+                // check for Qt::NoBrush, as the returned color is black() and no invalid QColor
+                QBrush foregroundBrush = r.format.foreground();
+                if (foregroundBrush != Qt::NoBrush) {
+                    color = foregroundBrush.color();
+                }
+                break;
+            }
+        }
+    }
+    if (!color.isValid()) {
+        // still no color found, fall back to default style
+        color = attribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color();
+    };
+
+    // Default caret width and heights (character-wide block)
+    int caretWidth = spaceWidth();
+    if (line.isValid() && cursor.column() < lineLength) {
+        caretWidth = abs(int(line.cursorToX(cursor.column() + 1) - line.cursorToX(cursor.column())));
+    }
+    int caretHeight = lineHeight();
+
+    // Specific caret properties
+    switch (caretStyle()) {
+    case KTextEditor::caretStyles::Line:
+        caretWidth = 2;
+        break;
+    case KTextEditor::caretStyles::Block:
+        // use a gray caret so it's possible to see the character
+        color.setAlpha(128);
+        break;
+    case KTextEditor::caretStyles::Underline:
+        caretHeight = round(abs(line.descent()) * 0.9);
+        break;
+    case KTextEditor::caretStyles::Half:
+        color.setAlpha(128);
+        caretHeight = round(lineHeight() / 2.0);
+        break;
+    }
+
+    // Draw
+    paint.save();
+    paint.setPen(QPen(color, caretWidth));
+
+    if (cursor.column() <= lineLength) {
+        // Ensure correct cursor placement for RTL text
+        if (range->layout().textOption().textDirection() == Qt::RightToLeft) {
+            xStart += caretWidth;
+        }
+        qreal width = 0;
+        if (cursor.column() < lineLength) {
+            const auto inlineNotes = m_view->inlineNotes(range->line());
+            for (const auto &inlineNoteData : inlineNotes) {
+                KTextEditor::InlineNote inlineNote(inlineNoteData);
+                if (inlineNote.position().column() == cursor.column()) {
+                    width = inlineNote.width() + (caretStyle() == KTextEditor::caretStyles::Line ? 2.0 : 0.0);
+                }
+            }
+        }
+        drawCursor(range->layout(), &paint, QPoint(-xStart - width, lineHeight() - caretHeight), cursor.column(), caretWidth, caretHeight);
+    } else {
+        // Off the end of the line... must be block mode. Draw the caret ourselves.
+        const KateTextLayout &lastLine = range->viewLine(range->viewLineCount() - 1);
+        int x = cursorToX(lastLine, KTextEditor::Cursor(range->line(), cursor.column()), true);
+        if ((x >= xStart) && (x <= xEnd)) {
+            paint.fillRect(x - xStart, (int)lastLine.lineLayout().y() + lineHeight() - caretHeight, caretWidth, caretHeight, color);
+        }
+    }
+
+    paint.restore();
 }
 
 uint KateRenderer::fontHeight() const
