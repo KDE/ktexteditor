@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-23 00:41+0000\n"
-"PO-Revision-Date: 2026-06-01 12:36+0000\n"
+"PO-Revision-Date: 2026-06-24 17:52+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -1404,14 +1404,12 @@ msgstr "&PageUp/PageDown færir bendilinn"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
-"Velur hvort bendillinn hoppar yfir heil orð eða stoppar á hástaf inni í orði "
+"Velur hvort bendillinn stoppar á undirstrikum eða hástöfum inni í orði "
 "(camel case)."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
@@ -1420,6 +1418,8 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"Stöðva á 'camelCase' og 'snake_case' undirorðum þegar bendill er færður um "
+"orð"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2468,18 +2468,16 @@ msgid "Normal Mode"
 msgstr "Venjulegt snið"
 
 #: inputmode/kateviinputmode.cpp:31
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "VI: INSERT MODE"
+msgstr "VI: INSERT"
 
 #: inputmode/kateviinputmode.cpp:34
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "VI: NORMAL MODE"
+msgstr "VI: NORMAL"
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format
