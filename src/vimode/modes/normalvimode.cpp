@@ -41,6 +41,7 @@
 #include <QApplication>
 
 using namespace KateVi;
+using namespace Qt::StringLiterals;
 
 NormalViMode::NormalViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
     : ModeBase()
@@ -3569,7 +3570,15 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
     }
 
     if (getCount() > 1) {
-        textToInsert = textToInsert.repeated(getCount()); // FIXME: does this make sense for blocks?
+        if (m != Block || !isTextMultiLine) {
+            textToInsert = textToInsert.repeated(getCount());
+        } else {
+            QStringList lines = textToInsert.split('\n'_L1);
+            for (auto &line : lines) {
+                line = line.repeated(getCount());
+            }
+            textToInsert = lines.join('\n'_L1);
+        }
     }
 
     if (m == LineWise) {

@@ -1411,6 +1411,10 @@ void ModesTest::VisualCommandsTests()
         QCOMPARE(range.end().column(), 3);
     }
 
+    // proper pasting a text block
+    DoTest("aaaa\nbbbb\ncccc\ndddd", "lj\\ctrl-vljygg2lp", "aaabba\nbbbccb\ncccc\ndddd");
+    DoTest("aaaa\nbbbb\ncccc\ndddd", "lj\\ctrl-vljygg2l2p", "aaabbbba\nbbbccccb\ncccc\ndddd");
+
     // proper selection in block mode after switching to cmdline
     {
         BeginTest(QStringLiteral("aaaa\nbbbb\ncccc\ndddd"));
