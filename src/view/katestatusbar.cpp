@@ -302,8 +302,9 @@ void KateStatusBar::selectionChanged()
 void KateStatusBar::viewModeChanged()
 {
     // prepend BLOCK for block selection mode
+    // unless on Vi input mode (it is redundant)
     QString text = m_view->viewModeHuman();
-    if (m_view->blockSelection()) {
+    if (m_view->blockSelection() && m_view->viewInputMode() != KTextEditor::View::ViInputMode) {
         text = i18n("[BLOCK] %1", text);
     }
 
