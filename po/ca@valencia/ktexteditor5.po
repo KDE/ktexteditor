@@ -4045,7 +4045,7 @@ msgid ""
 msgstr ""
 "<qt>\n"
 "<p>Si la paraula desconeguda està mal escrita, heu de teclejar la correcció "
-"de l'error ortogràfic ací o triar-la des en la llista a continuació.</p>\n"
+"de l'error ortogràfic ací o triar-la des de la llista a continuació.</p>\n"
 "<p>Llavors podeu clicar damunt <b>Substituïx</b> si voleu corregir només "
 "este cas de la paraula o <b>Substituïx-ho tot</b> si voleu corregir totes "
 "les ocurrències.</p>\n"
@@ -5114,12 +5114,12 @@ msgstr "&Punts"
 #: utils/katebookmarks.cpp:191
 #, kde-format
 msgid "&Next: %1 - \"%2\""
-msgstr "&Següent: %1 - «%2»"
+msgstr "&Següent: %1 – «%2»"
 
 #: utils/katebookmarks.cpp:197
 #, kde-format
 msgid "&Previous: %1 - \"%2\""
-msgstr "&Anterior: %1 - «%2»"
+msgstr "&Anterior: %1 – «%2»"
 
 #: utils/katecmds.cpp:53
 #, kde-format
