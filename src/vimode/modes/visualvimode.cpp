@@ -274,6 +274,7 @@ const std::vector<Command> &VisualViMode::commands()
         ADDCMD("ga", commandPrintCharacterCode, SHOULD_NOT_RESET),
         ADDCMD("v", commandEnterVisualMode, SHOULD_NOT_RESET),
         ADDCMD("V", commandEnterVisualLineMode, SHOULD_NOT_RESET),
+        ADDCMD("<c-v>", commandEnterVisualBlockMode, SHOULD_NOT_RESET),
         ADDCMD("o", commandToOtherEnd, SHOULD_NOT_RESET | CAN_LAND_INSIDE_FOLDING_RANGE),
         ADDCMD("=", commandAlignLines, SHOULD_NOT_RESET),
         ADDCMD("~", commandChangeCase, IS_CHANGE),
