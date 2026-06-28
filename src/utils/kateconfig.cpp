@@ -569,7 +569,7 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(ShowStatusbarTabSettings, "Show Statusbar Tab Settings", QString(), true));
     addConfigEntry(ConfigEntry(ShowStatusbarFileEncoding, "Show File Encoding", QString(), true));
     addConfigEntry(ConfigEntry(StatusbarLineColumnCompact, "Statusbar Line Column Compact Mode", QString(), true));
-    addConfigEntry(ConfigEntry(ShowStatusbarEOL, "Shoe Line Ending Type in Statusbar", QString(), false));
+    addConfigEntry(ConfigEntry(ShowStatusbarEOL, "Show Line Ending Type in Statusbar", QString(), false));
     addConfigEntry(ConfigEntry(EnableAccessibility, "Enable Accessibility", QString(), true));
     addConfigEntry(ConfigEntry(CycleThroughBookmarks, "Cycle Through Bookmarks", QString(), true));
 
