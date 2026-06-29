@@ -575,24 +575,19 @@ bool NormalViMode::commandEnterInsertModeLast()
     return startInsertMode();
 }
 
+bool NormalViMode::commandEnterVisualMode()
+{
+    return startVisualMode(ViMode::VisualMode);
+}
+
 bool NormalViMode::commandEnterVisualLineMode()
 {
-    if (m_viInputModeManager->getCurrentViMode() == VisualLineMode) {
-        reset();
-        return true;
-    }
-
-    return startVisualLineMode();
+    return startVisualMode(ViMode::VisualLineMode);
 }
 
 bool NormalViMode::commandEnterVisualBlockMode()
 {
-    if (m_viInputModeManager->getCurrentViMode() == VisualBlockMode) {
-        reset();
-        return true;
-    }
-
-    return startVisualBlockMode();
+    return startVisualMode(ViMode::VisualBlockMode);
 }
 
 bool NormalViMode::commandReselectVisual()
@@ -628,16 +623,6 @@ bool NormalViMode::commandReselectVisual()
     }
 
     return false;
-}
-
-bool NormalViMode::commandEnterVisualMode()
-{
-    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode) {
-        reset();
-        return true;
-    }
-
-    return startVisualMode();
 }
 
 bool NormalViMode::commandToOtherEnd()

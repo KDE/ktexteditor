@@ -1045,44 +1045,21 @@ bool ModeBase::startReplaceMode()
     return true;
 }
 
-bool ModeBase::startVisualMode()
+bool ModeBase::startVisualMode(ViMode mode)
 {
-    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode) {
-        m_viInputModeManager->getViVisualMode()->setVisualModeType(ViMode::VisualMode);
-        m_viInputModeManager->changeViMode(ViMode::VisualMode);
-    } else if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualBlockMode) {
-        m_viInputModeManager->getViVisualMode()->setVisualModeType(ViMode::VisualMode);
-        m_viInputModeManager->changeViMode(ViMode::VisualMode);
-    } else {
-        m_viInputModeManager->viEnterVisualMode();
+    Q_ASSERT(mode == ViMode::VisualMode || mode == ViMode::VisualLineMode || mode == ViMode::VisualBlockMode);
+
+    if (m_viInputModeManager->getCurrentViMode() == mode) {
+        // Using a mode switch command from within that mode: reset back to normal
+        m_viInputModeManager->getViVisualMode()->reset();
+        return true;
     }
 
-    Q_EMIT m_view->viewModeChanged(m_view, m_view->viewMode());
-
-    return true;
-}
-
-bool ModeBase::startVisualBlockMode()
-{
-    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode) {
-        m_viInputModeManager->getViVisualMode()->setVisualModeType(ViMode::VisualBlockMode);
-        m_viInputModeManager->changeViMode(ViMode::VisualBlockMode);
+    if (m_viInputModeManager->isAnyVisualMode()) {
+        m_viInputModeManager->changeViMode(mode);
+        m_viInputModeManager->getViVisualMode()->setVisualModeType(mode);
     } else {
-        m_viInputModeManager->viEnterVisualMode(ViMode::VisualBlockMode);
-    }
-
-    Q_EMIT m_view->viewModeChanged(m_view, m_view->viewMode());
-
-    return true;
-}
-
-bool ModeBase::startVisualLineMode()
-{
-    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode) {
-        m_viInputModeManager->getViVisualMode()->setVisualModeType(ViMode::VisualLineMode);
-        m_viInputModeManager->changeViMode(ViMode::VisualLineMode);
-    } else {
-        m_viInputModeManager->viEnterVisualMode(ViMode::VisualLineMode);
+        m_viInputModeManager->viEnterVisualMode(mode);
     }
 
     Q_EMIT m_view->viewModeChanged(m_view, m_view->viewMode());

@@ -115,10 +115,8 @@ protected:
 
     bool startNormalMode();
     bool startInsertMode();
-    bool startVisualMode();
-    bool startVisualLineMode();
-    bool startVisualBlockMode();
     bool startReplaceMode();
+    bool startVisualMode(ViMode mode);
 
     QChar getChosenRegister(const QChar &defaultReg) const;
     QString getRegisterContent(const QChar &reg);
