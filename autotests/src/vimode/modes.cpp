@@ -1117,6 +1117,11 @@ void ModesTest::InsertKeysTests()
     DoTest("bar\nbaz", "vj\"byjlla\\ctrl-rboo", "bar\nbazbar\nboo");
     DoTest("Hello", "0yei\\ctrl-r\"", "HelloHello");
 
+    // Ctrl-A
+    DoTest("foo", "Abar\\escabaz\\ctrl-a", "foobarbazbar");
+    DoTest("foo", "A\\enterbar\\escabaz\\ctrl-a", "foo\nbarbaz\nbar");
+    DoTest("foo", "A\\enterbar\\escabaz\\ctrl-a\\ctrl-a", "foo\nbarbaz\nbar\nbar");
+
     // Ctrl-O
     DoTest("foo bar baz", "3li\\ctrl-od2w", "foobaz");
     DoTest("foo bar baz", "3li\\ctrl-od2w\\ctrl-w", "baz");

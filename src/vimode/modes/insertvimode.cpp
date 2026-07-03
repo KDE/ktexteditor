@@ -392,6 +392,10 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
                     m_viInputModeManager->completionReplayer()->replay();
                 }
                 return true;
+            case Qt::Key_A:
+                m_register = InsertStoppedRegister;
+                commandInsertContentOfRegister();
+                return true;
             case Qt::Key_C:
                 leaveInsertMode(true);
                 return true;
