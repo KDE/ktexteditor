@@ -1058,6 +1058,7 @@ bool ModeBase::startVisualMode(ViMode mode)
     if (m_viInputModeManager->isAnyVisualMode()) {
         m_viInputModeManager->changeViMode(mode);
         m_viInputModeManager->getViVisualMode()->setVisualModeType(mode);
+        m_viInputModeManager->getViVisualMode()->updateViewSelection();
     } else {
         m_viInputModeManager->viEnterVisualMode(mode);
     }

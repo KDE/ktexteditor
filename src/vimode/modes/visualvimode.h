@@ -98,6 +98,10 @@ public:
      * via mouse selection.
      */
     void updateSelection();
+    /**
+     * Updates the selection of the view when an internal change happens
+     */
+    void updateViewSelection();
 
 private:
     KTextEditor::Cursor m_start;

@@ -1427,10 +1427,31 @@ void ModesTest::VisualCommandsTests()
     }
 
     // BUG #328277 - make sure kate doesn't crash
-    BeginTest(QStringLiteral("aaa\nbbb"));
-    TestPressKey(QStringLiteral("Vj>u>."));
-    QCOMPARE(kate_view->renderer()->caretStyle(), KTextEditor::caretStyles::Block);
-    FinishTest("aaa\nbbb");
+    {
+        BeginTest(QStringLiteral("aaa\nbbb"));
+        TestPressKey(QStringLiteral("Vj>u>."));
+        QCOMPARE(kate_view->renderer()->caretStyle(), KTextEditor::caretStyles::Block);
+        FinishTest("aaa\nbbb");
+    }
+
+    // Switch between different visual modes
+    {
+        BeginTest(QStringLiteral("aaaa\nbbbb\ncccc\ndddd"));
+        TestPressKey(QStringLiteral("3lv2j2h")); // Start charwise Visual mode
+        QCOMPARE(kate_view->selectionText(), QStringLiteral("a\nbbbb\ncc"));
+        QCOMPARE(kate_view->blockSelection(), false);
+        TestPressKey(QStringLiteral("V")); // Visual Line
+        QCOMPARE(kate_view->selectionText(), QStringLiteral("aaaa\nbbbb\ncccc"));
+        QCOMPARE(kate_view->blockSelection(), false);
+        TestPressKey(QStringLiteral("\\ctrl-v")); // Visual Block
+        QCOMPARE(kate_view->selectionText(), QStringLiteral("aaa\nbbb\nccc"));
+        QCOMPARE(kate_view->blockSelection(), true);
+        TestPressKey(QStringLiteral("v")); // Back to Visual
+        QCOMPARE(kate_view->selectionText(), QStringLiteral("a\nbbbb\ncc"));
+        QCOMPARE(kate_view->blockSelection(), false);
+        TestPressKey(QStringLiteral("v")); // Press "v" again. Exit visual mode
+        QCOMPARE(kate_view->selectionText(), QString());
+    }
 }
 
 void ModesTest::VisualExternalTests()

@@ -29,6 +29,8 @@ VisualViMode::VisualViMode(InputModeManager *viInputModeManager, KTextEditor::Vi
 
 void VisualViMode::selectInclusive(const KTextEditor::Cursor c1, const KTextEditor::Cursor c2)
 {
+    m_view->setBlockSelection(false);
+
     if (c1 >= c2) {
         m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1, c2.line(), c2.column()));
     } else {
@@ -53,6 +55,7 @@ void VisualViMode::selectLines(KTextEditor::Range range)
     int eline = qMax(range.start().line(), range.end().line());
     int ecol = m_view->doc()->lineLength(eline) + 1;
 
+    m_view->setBlockSelection(false);
     m_view->setSelection(KTextEditor::Range(KTextEditor::Cursor(sline, 0), KTextEditor::Cursor(eline, ecol)));
 }
 
@@ -87,27 +90,24 @@ void VisualViMode::goToPos(const Range &r)
     // Setting range for a command
     m_commandRange = Range(m_start, c, m_commandRange.motionType);
 
-    // If visual mode is blockwise
+    updateViewSelection();
+}
+
+void VisualViMode::updateViewSelection()
+{
+    KTextEditor::Cursor c = m_view->cursorPosition();
+
     if (isVisualBlock()) {
         selectBlockInclusive(m_start, c);
-
         // Need to correct command range to make it inclusive.
-        if ((c.line() < m_start.line() && c.column() > m_start.column()) || (c.line() > m_start.line() && c.column() < m_start.column())) {
+        if ((c.line() < m_start.line()) != (c.column() < m_start.column())) {
             qSwap(m_commandRange.endColumn, m_commandRange.startColumn);
         }
-        return;
-    } else {
-        m_view->setBlockSelection(false);
-    }
-
-    // If visual mode is linewise
-    if (isVisualLine()) {
+    } else if (isVisualLine()) {
         selectLines(KTextEditor::Range(m_start, c));
-        return;
+    } else { // If visual mode is charwise
+        selectInclusive(m_start, c);
     }
-
-    // If visual mode is charwise
-    selectInclusive(m_start, c);
 }
 
 void VisualViMode::reset()
@@ -176,6 +176,7 @@ void VisualViMode::init()
     }
 
     m_commandRange = Range(m_start, m_start, m_commandRange.motionType);
+    updateViewSelection();
 }
 
 void VisualViMode::setVisualModeType(ViMode mode)
