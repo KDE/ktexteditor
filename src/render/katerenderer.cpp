@@ -393,14 +393,7 @@ void KateRenderer::paintIndentMarker(QPainter &paint, uint x, int line)
     }
 
     paint.setPen(myPen);
-
-    QPainter::RenderHints renderHints = paint.renderHints();
-    paint.setRenderHints(renderHints, false);
-
     paint.drawLine(x + 2, 0, x + 2, lineHeight());
-
-    paint.setRenderHints(renderHints, true);
-
     paint.setPen(penBackup);
 }
 
@@ -906,11 +899,9 @@ void KateRenderer::paintTextLine(QPainter &paint,
 
     // show word wrap marker if desirable
     if ((!isPrinterFriendly()) && config()->wordWrapMarker()) {
-        const QPainter::RenderHints backupRenderHints = paint.renderHints();
         paint.setPen(config()->wordWrapMarkerColor());
         int _x = qreal(m_doc->config()->wordWrapAt()) * fm.horizontalAdvance(QLatin1Char('x')) - xStart;
         paint.drawLine(_x, 0, _x, lineHeight());
-        paint.setRenderHints(backupRenderHints);
     }
 
     // Draw inline notes

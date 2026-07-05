@@ -2038,7 +2038,6 @@ void KateIconBorder::paintBorder(uint firstY, uint lastY)
     }
 
     QPainter p(this);
-    p.setRenderHints(QPainter::TextAntialiasing);
     p.setFont(m_view->renderer()->currentFont()); // for line numbers
 
     KTextEditor::AnnotationModel *model = m_view->annotationModel() ? m_view->annotationModel() : m_doc->annotationModel();

@@ -3827,12 +3827,6 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
 
     QPainter paint(this);
 
-    // THIS IS ULTRA EVIL AND ADDS STRANGE RENDERING ARTIFACTS WITH SCALING!!!!
-    // SEE BUG https://bugreports.qt.io/browse/QTBUG-66036
-    // paint.setRenderHints(QPainter::TextAntialiasing);
-
-    paint.save();
-
     renderer()->setCaretStyle(m_currentInputMode->caretStyle());
     renderer()->setShowTabs(doc()->config()->showTabs());
     renderer()->setShowSpaces(doc()->config()->showSpaces());
@@ -3895,8 +3889,6 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
         // translate to next line
         paint.translate(0, h);
     }
-
-    paint.restore();
 
     if (m_textAnimation) {
         m_textAnimation->draw(paint);
