@@ -76,8 +76,7 @@ void KateTextAnimation::nextFrame(qreal value)
     if (pixelPos.x() != -1 && pixelPos.y() != -1) {
         // compute center of animation with rendere font metrics
         const QPointF center =
-            QRectF(pixelPos.x(), pixelPos.y(), m_view->renderer()->currentFontMetrics().boundingRect(m_text).width(), m_view->renderer()->lineHeight())
-                .center();
+            QRectF(pixelPos.x(), pixelPos.y(), m_view->renderer()->currentFontMetrics().horizontalAdvance(m_text), m_view->renderer()->lineHeight()).center();
 
         // scale font with animation
         m_drawFont = m_view->renderer()->currentFont();
@@ -85,7 +84,10 @@ void KateTextAnimation::nextFrame(qreal value)
         m_drawFont.setPointSizeF(m_drawFont.pointSizeF() * (1.0 + 0.5 * m_value));
 
         // compute new rect size depending on new font metrics
-        m_drawRect = QFontMetricsF(m_drawFont).boundingRect(m_text);
+        // use horizontalAdvance for width to have better rendering that is not that tight
+        QFontMetricsF fm(m_drawFont);
+        m_drawRect = fm.boundingRect(m_text);
+        m_drawRect.setWidth(fm.horizontalAdvance(m_text));
 
         // move new rect to old center
         m_drawRect.moveCenter(center);
