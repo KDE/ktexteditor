@@ -53,6 +53,11 @@ void KateTextAnimation::draw(QPainter &painter)
         return;
     }
 
+    // nothing if no rect yet
+    if (m_drawRect.isNull()) {
+        return;
+    }
+
     // fill & paint text
     painter.fillRect(m_drawRect, m_attribute->background());
     painter.setPen(m_attribute->foreground().color());
