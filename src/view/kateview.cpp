@@ -2435,6 +2435,9 @@ void KTextEditor::ViewPrivate::updateConfig()
         return;
     }
 
+    // if the config changed that should abort completion
+    abortCompletion();
+
     m_toggleShowSpace->setChecked(doc()->config()->showSpaces() != KateDocumentConfig::WhitespaceRendering::None);
 
     // dyn. word wrap & markers
@@ -2537,6 +2540,9 @@ void KTextEditor::ViewPrivate::updateDocumentConfig()
         return;
     }
 
+    // if the config changed that should abort completion
+    abortCompletion();
+
     m_updatingDocumentConfig = true;
 
     m_setEndOfLine->setCurrentItem(doc()->config()->eol());
@@ -2563,6 +2569,9 @@ void KTextEditor::ViewPrivate::updateRendererConfig()
     if (m_startingUp) {
         return;
     }
+
+    // if the config changed that should abort completion
+    abortCompletion();
 
     m_toggleWWMarker->setChecked(m_renderer->config()->wordWrapMarker());
 
@@ -3655,7 +3664,9 @@ void KTextEditor::ViewPrivate::startCompletion(const Range &word,
 
 void KTextEditor::ViewPrivate::abortCompletion()
 {
-    completionWidget()->abortCompletion();
+    if (m_completionWidget) {
+        m_completionWidget->abortCompletion();
+    }
 }
 
 void KTextEditor::ViewPrivate::forceCompletion()
