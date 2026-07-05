@@ -41,10 +41,6 @@ public:
     void nextFrame(qreal value);
 
 private:
-    // calculate rect for the text to highlight, given the current animation progress
-    QRectF rectForText();
-
-private:
     KTextEditor::Range m_range;
     QString m_text;
     KTextEditor::Attribute::Ptr m_attribute;
@@ -52,6 +48,9 @@ private:
     KTextEditor::ViewPrivate *m_view;
     QTimeLine *m_timeLine;
     qreal m_value;
+    QFont m_drawFont;
+    QRectF m_drawRect;
+    QRectF m_unitedRectForViewUpdate;
 };
 
 #endif // KATE_TEXT_ANIMATION_H

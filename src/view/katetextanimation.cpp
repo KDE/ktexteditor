@@ -36,30 +36,12 @@ KateTextAnimation::KateTextAnimation(KTextEditor::Range range, KTextEditor::Attr
 
 KateTextAnimation::~KateTextAnimation()
 {
-    // if still running, we need to update the view a last time to avoid artifacts
+    // stop the animation, if still running
     if (m_timeLine->state() == QTimeLine::Running) {
         m_timeLine->stop();
+
+        // remove all artifacts
         nextFrame(0.0);
-    }
-}
-
-QRectF KateTextAnimation::rectForText()
-{
-    const QFontMetricsF fm = m_view->renderer()->currentFontMetrics();
-    const int lineHeight = m_view->renderer()->lineHeight();
-    QPoint pixelPos = m_view->cursorToCoordinate(m_range.start());
-    pixelPos = m_view->editorWidget()->mapFromParent(pixelPos);
-
-    if (pixelPos.x() == -1 || pixelPos.y() == -1) {
-        return QRectF();
-    } else {
-        QRectF rect(pixelPos.x(), pixelPos.y(), fm.boundingRect(m_view->document()->text(m_range)).width(), lineHeight);
-        const QPointF center = rect.center();
-        const qreal factor = 1.0 + 0.5 * m_value;
-        rect.setWidth(rect.width() * factor);
-        rect.setHeight(rect.height() * factor);
-        rect.moveCenter(center);
-        return rect;
     }
 }
 
@@ -71,34 +53,42 @@ void KateTextAnimation::draw(QPainter &painter)
         return;
     }
 
-    // get current rect and fill background
-    QRectF rect = rectForText();
-    painter.fillRect(rect, m_attribute->background());
-
-    // scale font with animation
-    QFont f = m_view->renderer()->currentFont();
-    f.setBold(m_attribute->fontBold());
-    f.setPointSizeF(f.pointSizeF() * (1.0 + 0.5 * m_value));
-    painter.setFont(f);
-
+    // fill & paint text
+    painter.fillRect(m_drawRect, m_attribute->background());
     painter.setPen(m_attribute->foreground().color());
-    // finally draw contents on the view
-    painter.drawText(rect, m_text);
+    painter.setFont(m_drawFont);
+    painter.drawText(m_drawRect, m_text);
 }
 
 void KateTextAnimation::nextFrame(qreal value)
 {
-    // cache previous rect for update
-    const QRectF prevRect = rectForText();
-
     m_value = value;
 
-    // next rect is used to draw the text
-    const QRectF nextRect = rectForText();
+    // update rect for draw
 
-    // due to rounding errors, increase the rect 1px to avoid artifacts
-    const QRect updateRect = nextRect.united(prevRect).adjusted(-1, -1, 1, 1).toRect();
+    // not on screen, avoid work
+    const QPoint pixelPos = m_view->editorWidget()->mapFromParent(m_view->cursorToCoordinate(m_range.start()));
+    if (pixelPos.x() != -1 && pixelPos.y() != -1) {
+        // compute center of animation with rendere font metrics
+        const QPointF center =
+            QRectF(pixelPos.x(), pixelPos.y(), m_view->renderer()->currentFontMetrics().boundingRect(m_text).width(), m_view->renderer()->lineHeight())
+                .center();
 
-    // request repaint
-    m_view->editorWidget()->update(updateRect);
+        // scale font with animation
+        m_drawFont = m_view->renderer()->currentFont();
+        m_drawFont.setBold(m_attribute->fontBold());
+        m_drawFont.setPointSizeF(m_drawFont.pointSizeF() * (1.0 + 0.5 * m_value));
+
+        // compute new rect size depending on new font metrics
+        m_drawRect = QFontMetricsF(m_drawFont).boundingRect(m_text);
+
+        // move new rect to old center
+        m_drawRect.moveCenter(center);
+
+        // ensure we will cleanup the right rect
+        m_unitedRectForViewUpdate = m_unitedRectForViewUpdate.united(m_drawRect);
+    }
+
+    // trigger repaint, ensure we align to full pixels for the request
+    m_view->editorWidget()->update(m_unitedRectForViewUpdate.toAlignedRect());
 }

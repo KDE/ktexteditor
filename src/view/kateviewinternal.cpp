@@ -3827,6 +3827,9 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
 
     QPainter paint(this);
 
+    // save for the text animation
+    paint.save();
+
     renderer()->setCaretStyle(m_currentInputMode->caretStyle());
     renderer()->setShowTabs(doc()->config()->showTabs());
     renderer()->setShowSpaces(doc()->config()->showSpaces());
@@ -3889,6 +3892,9 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
         // translate to next line
         paint.translate(0, h);
     }
+
+    // restore for the text animation
+    paint.restore();
 
     if (m_textAnimation) {
         m_textAnimation->draw(paint);
