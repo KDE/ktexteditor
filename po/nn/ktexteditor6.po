@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-05 00:40+0000\n"
-"PO-Revision-Date: 2024-09-22 16:37+0200\n"
+"PO-Revision-Date: 2026-07-05 16:35+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 26.04.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
@@ -8093,6 +8093,7 @@ msgstr ""
 "p><p>Bruk: <tt><b>vs[plit]</b></tt></p><p>Resultatet er to visingar av same "
 "dokument.</p>"
 
+# skip-rule: bokmålsord
 #: vimode/appcommands.cpp:254
 #, kde-format
 msgid ""
@@ -8127,6 +8128,7 @@ msgid ""
 "useful to re-edit the current file, when it was modified on disk.</p>"
 msgstr ""
 
+# skip-rule: bokmålsord
 #: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
@@ -8175,6 +8177,7 @@ msgstr ""
 "b></tt></p><p>Går til det <b>f</b>ørste dokumentet (<b>b</b>ufferen) i "
 "dokumentlista.</p>"
 
+# skip-rule: bokmålsord
 #: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""

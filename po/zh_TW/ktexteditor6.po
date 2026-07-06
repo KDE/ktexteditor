@@ -17,14 +17,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-05 00:40+0000\n"
-"PO-Revision-Date: 2026-06-17 13:02+0900\n"
+"PO-Revision-Date: 2026-07-06 08:18+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 26.07.70\n"
+"X-Generator: Lokalize 26.04.3\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: completion/katecompletionmodel.cpp:147
@@ -1340,13 +1340,13 @@ msgstr "PageUp PageDown 移動游標(&P)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
-msgstr "選取游標跳動時要將 CamelCase 視為整個單詞還是要理解大小寫分詞。"
+msgstr ""
+"選取游標移動時要將 CamelCase 或 snake_case 視為一個詞，還是要理解其大小寫或底"
+"線分詞。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -2360,23 +2360,21 @@ msgid "Normal Mode"
 msgstr "正常模式"
 
 #: inputmode/kateviinputmode.cpp:31
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "VI：插入模式"
+msgstr "VI：插入"
 
 #: inputmode/kateviinputmode.cpp:34
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "VI：正常模式"
+msgstr "VI：正常"
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format
 msgid "VI: VISUAL"
-msgstr "VI：視覺模式"
+msgstr "VI：視覺"
 
 #: inputmode/kateviinputmode.cpp:40
 #, kde-format
@@ -2386,12 +2384,12 @@ msgstr "VI：視覺區塊"
 #: inputmode/kateviinputmode.cpp:43
 #, kde-format
 msgid "VI: VISUAL LINE"
-msgstr "VI：視覺行模式"
+msgstr "VI：視覺行"
 
 #: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
-msgstr "VI：取代模式"
+msgstr "VI：取代"
 
 #: inputmode/kateviinputmode.cpp:146
 #, kde-format
