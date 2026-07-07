@@ -1406,7 +1406,7 @@ void KateSearchBar::enterPowerMode()
 
         // Icons
         // Gnome does not seem to have all icons we want, so we use fall-back icons for those that are missing.
-        QIcon mutateIcon = QIcon::fromTheme(QStringLiteral("games-config-options"), QIcon::fromTheme(QStringLiteral("preferences-system")));
+        QIcon mutateIcon = QIcon::fromTheme(QStringLiteral("configure"), QIcon::fromTheme(QStringLiteral("preferences-system")));
         QIcon matchCaseIcon = QIcon::fromTheme(QStringLiteral("format-text-superscript"), QIcon::fromTheme(QStringLiteral("format-text-bold")));
         m_powerUi->mutate->setIcon(mutateIcon);
         m_powerUi->mutate->setChecked(true);
@@ -1557,7 +1557,7 @@ void KateSearchBar::enterIncrementalMode()
 
         // Icons
         // Gnome does not seem to have all icons we want, so we use fall-back icons for those that are missing.
-        QIcon mutateIcon = QIcon::fromTheme(QStringLiteral("games-config-options"), QIcon::fromTheme(QStringLiteral("preferences-system")));
+        QIcon mutateIcon = QIcon::fromTheme(QStringLiteral("configure"), QIcon::fromTheme(QStringLiteral("preferences-system")));
         QIcon matchCaseIcon = QIcon::fromTheme(QStringLiteral("format-text-superscript"), QIcon::fromTheme(QStringLiteral("format-text-bold")));
         m_incUi->mutate->setIcon(mutateIcon);
         m_incUi->next->setIcon(QIcon::fromTheme(QStringLiteral("go-down-search")));
