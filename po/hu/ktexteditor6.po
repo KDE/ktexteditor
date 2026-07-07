@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-05 00:40+0000\n"
+"POT-Creation-Date: 2026-07-07 00:39+0000\n"
 "PO-Revision-Date: 2025-09-03 20:51+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -7961,22 +7961,22 @@ msgstr "CamelCase áthelyezés bekapcsolva"
 msgid "Search wrapped"
 msgstr "Körkörös keresés"
 
-#: view/kateview.cpp:3043
+#: view/kateview.cpp:3052
 #, kde-format
 msgid "Open File"
 msgstr "Fájl megnyitása"
 
-#: view/kateview.cpp:3984
+#: view/kateview.cpp:3995
 #, kde-format
 msgid "Align On"
 msgstr "Igazítás ehhez"
 
-#: view/kateview.cpp:3984
+#: view/kateview.cpp:3995
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Igazítási minta:"
 
-#: view/kateview.cpp:5068
+#: view/kateview.cpp:5079
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportálás HTML formátumban"
@@ -8046,17 +8046,17 @@ msgstr "Siker: "
 msgid "Command \"%1\" failed."
 msgstr "A(z) \"%1\" parancs nem sikerült."
 
-#: view/kateviewhelpers.cpp:2632 view/kateviewhelpers.cpp:2633
+#: view/kateviewhelpers.cpp:2631 view/kateviewhelpers.cpp:2632
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Jelölési típus: %1"
 
-#: view/kateviewhelpers.cpp:2656
+#: view/kateviewhelpers.cpp:2655
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Az alapértelmezett jeltípus beállítása"
 
-#: view/kateviewhelpers.cpp:2801
+#: view/kateviewhelpers.cpp:2800
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "A megjegyzéssáv letiltása"

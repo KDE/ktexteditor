@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-05 00:40+0000\n"
+"POT-Creation-Date: 2026-07-07 00:39+0000\n"
 "PO-Revision-Date: 2026-06-16 06:16-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -8027,22 +8027,22 @@ msgstr "Movimento de Camel Case ativado"
 msgid "Search wrapped"
 msgstr "Pesquisa voltou ao início"
 
-#: view/kateview.cpp:3043
+#: view/kateview.cpp:3052
 #, kde-format
 msgid "Open File"
 msgstr "Abrir arquivo"
 
-#: view/kateview.cpp:3984
+#: view/kateview.cpp:3995
 #, kde-format
 msgid "Align On"
 msgstr "Alinhar em"
 
-#: view/kateview.cpp:3984
+#: view/kateview.cpp:3995
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Padrão de alinhamento:"
 
-#: view/kateview.cpp:5068
+#: view/kateview.cpp:5079
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportar arquivo como HTML"
@@ -8111,17 +8111,17 @@ msgstr "Sucesso: "
 msgid "Command \"%1\" failed."
 msgstr "O comando \"%1\" falhou."
 
-#: view/kateviewhelpers.cpp:2632 view/kateviewhelpers.cpp:2633
+#: view/kateviewhelpers.cpp:2631 view/kateviewhelpers.cpp:2632
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Tipo de marca %1"
 
-#: view/kateviewhelpers.cpp:2656
+#: view/kateviewhelpers.cpp:2655
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Configurar tipo de marca padrão"
 
-#: view/kateviewhelpers.cpp:2801
+#: view/kateviewhelpers.cpp:2800
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Desativar a barra de anotações"

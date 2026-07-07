@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-05 00:40+0000\n"
+"POT-Creation-Date: 2026-07-07 00:39+0000\n"
 "PO-Revision-Date: 2026-06-16 19:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -7939,22 +7939,22 @@ msgstr "Deve biçimli hareket etkin"
 msgid "Search wrapped"
 msgstr "Kaydırılmış ara"
 
-#: view/kateview.cpp:3043
+#: view/kateview.cpp:3052
 #, kde-format
 msgid "Open File"
 msgstr "Dosya Aç"
 
-#: view/kateview.cpp:3984
+#: view/kateview.cpp:3995
 #, kde-format
 msgid "Align On"
 msgstr "Şuna Göre Hizala"
 
-#: view/kateview.cpp:3984
+#: view/kateview.cpp:3995
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Hizalama dizgisi:"
 
-#: view/kateview.cpp:5068
+#: view/kateview.cpp:5079
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Dosyayı HTML Olarak Dışa Aktar"
@@ -8023,17 +8023,17 @@ msgstr "Başarılı: "
 msgid "Command \"%1\" failed."
 msgstr "“%1” komutu başarısız oldu"
 
-#: view/kateviewhelpers.cpp:2632 view/kateviewhelpers.cpp:2633
+#: view/kateviewhelpers.cpp:2631 view/kateviewhelpers.cpp:2632
 #, kde-format
 msgid "Mark Type %1"
 msgstr "%1 İm Türü"
 
-#: view/kateviewhelpers.cpp:2656
+#: view/kateviewhelpers.cpp:2655
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Öntanımlı İm Türünü Ayarla"
 
-#: view/kateviewhelpers.cpp:2801
+#: view/kateviewhelpers.cpp:2800
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Bilgi Notu Çubuğunu Devre Dışı Bırak"

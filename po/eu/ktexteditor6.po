@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-05 00:40+0000\n"
+"POT-Creation-Date: 2026-07-07 00:39+0000\n"
 "PO-Revision-Date: 2026-07-04 23:32+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -7985,22 +7985,22 @@ msgstr "Gamelu-kaxa mugimendua gaituta"
 msgid "Search wrapped"
 msgstr "Bilaketa zirkularra"
 
-#: view/kateview.cpp:3043
+#: view/kateview.cpp:3052
 #, kde-format
 msgid "Open File"
 msgstr "Ireki fitxategia"
 
-#: view/kateview.cpp:3984
+#: view/kateview.cpp:3995
 #, kde-format
 msgid "Align On"
 msgstr "Lerrokatu hemen"
 
-#: view/kateview.cpp:3984
+#: view/kateview.cpp:3995
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Lerrokatze eredua:"
 
-#: view/kateview.cpp:5068
+#: view/kateview.cpp:5079
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Esportatu fitxategia HTML gisa"
@@ -8070,17 +8070,17 @@ msgstr "Arrakastatsua:"
 msgid "Command \"%1\" failed."
 msgstr "\"%1\" komandoak huts egin du."
 
-#: view/kateviewhelpers.cpp:2632 view/kateviewhelpers.cpp:2633
+#: view/kateviewhelpers.cpp:2631 view/kateviewhelpers.cpp:2632
 #, kde-format
 msgid "Mark Type %1"
 msgstr "%1 motako marka"
 
-#: view/kateviewhelpers.cpp:2656
+#: view/kateviewhelpers.cpp:2655
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Ezarri marka mota lehenetsia"
 
-#: view/kateviewhelpers.cpp:2801
+#: view/kateviewhelpers.cpp:2800
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Desgaitu oharpen-barra"

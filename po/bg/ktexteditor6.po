@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-05 00:40+0000\n"
+"POT-Creation-Date: 2026-07-07 00:39+0000\n"
 "PO-Revision-Date: 2026-06-17 16:05+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -7947,22 +7947,22 @@ msgstr "Активирано е camel case предвижване на курс�
 msgid "Search wrapped"
 msgstr "Търсенето завърши"
 
-#: view/kateview.cpp:3043
+#: view/kateview.cpp:3052
 #, kde-format
 msgid "Open File"
 msgstr "Отваряне на файл"
 
-#: view/kateview.cpp:3984
+#: view/kateview.cpp:3995
 #, kde-format
 msgid "Align On"
 msgstr "Подравняване"
 
-#: view/kateview.cpp:3984
+#: view/kateview.cpp:3995
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Шаблон на подравняване:"
 
-#: view/kateview.cpp:5068
+#: view/kateview.cpp:5079
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Експортиране на файл като HTML"
@@ -8031,17 +8031,17 @@ msgstr "Успех: "
 msgid "Command \"%1\" failed."
 msgstr "Неуспешна команда „%1“."
 
-#: view/kateviewhelpers.cpp:2632 view/kateviewhelpers.cpp:2633
+#: view/kateviewhelpers.cpp:2631 view/kateviewhelpers.cpp:2632
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Маркиране на тип %1"
 
-#: view/kateviewhelpers.cpp:2656
+#: view/kateviewhelpers.cpp:2655
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Стил по подразбиране"
 
-#: view/kateviewhelpers.cpp:2801
+#: view/kateviewhelpers.cpp:2800
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Деактивиране на лентата с пояснения"

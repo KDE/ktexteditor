@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-05 00:40+0000\n"
+"POT-Creation-Date: 2026-07-07 00:39+0000\n"
 "PO-Revision-Date: 2025-12-08 12:25+0700\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <kde-i18n-doc@kde.org>\n"
@@ -7691,22 +7691,22 @@ msgstr "ການເຄື່ອນທີ່ແບບ Camel case ຖືກເປ
 msgid "Search wrapped"
 msgstr "ການຄົ້ນຫາວົນກັບມາທີ່ເດີມ"
 
-#: view/kateview.cpp:3043
+#: view/kateview.cpp:3052
 #, kde-format
 msgid "Open File"
 msgstr "ເປີດໄຟລ໌"
 
-#: view/kateview.cpp:3984
+#: view/kateview.cpp:3995
 #, kde-format
 msgid "Align On"
 msgstr "ຈັດລຽງຢູ່ທີ່"
 
-#: view/kateview.cpp:3984
+#: view/kateview.cpp:3995
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "ຮູບແບບການຈັດລຽງ:"
 
-#: view/kateview.cpp:5068
+#: view/kateview.cpp:5079
 #, kde-format
 msgid "Export File as HTML"
 msgstr "ສົ່ງອອກໄຟລ໌ເປັນ HTML"
@@ -7774,17 +7774,17 @@ msgstr "ສຳເລັດ: "
 msgid "Command \"%1\" failed."
 msgstr "ຄຳສັ່ງ \"%1\" ລົ້ມເຫຼວ."
 
-#: view/kateviewhelpers.cpp:2632 view/kateviewhelpers.cpp:2633
+#: view/kateviewhelpers.cpp:2631 view/kateviewhelpers.cpp:2632
 #, kde-format
 msgid "Mark Type %1"
 msgstr "ປະເພດເຄື່ອງໝາຍ %1"
 
-#: view/kateviewhelpers.cpp:2656
+#: view/kateviewhelpers.cpp:2655
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "ຕັ້ງຄ່າປະເພດເຄື່ອງໝາຍເລີ່ມຕົ້ນ"
 
-#: view/kateviewhelpers.cpp:2801
+#: view/kateviewhelpers.cpp:2800
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "ປິດໃຊ້ງານແຖບຄຳອະທິບາຍປະກອບ"
