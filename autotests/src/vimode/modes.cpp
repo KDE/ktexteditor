@@ -1113,6 +1113,7 @@ void ModesTest::InsertKeysTests()
     DoTest("barbaz", "\"ay3li\\ctrl-ra", "barbarbaz");
     DoTest("barbaz", "\"ay3li\\ctrl-raX", "barXbarbaz");
     DoTest("bar\nbaz", "\"byylli\\ctrl-rb", "bar\nbar\nbaz");
+    DoTest("bar\nbaz", "vj\"byjlla\\ctrl-rboo", "bar\nbazbar\nboo");
     DoTest("Hello", "0yei\\ctrl-r\"", "HelloHello");
 
     // Ctrl-O

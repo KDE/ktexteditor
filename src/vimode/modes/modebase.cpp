@@ -1235,6 +1235,20 @@ void ModeBase::addToNumberUnderCursor(int count)
     updateCursor(KTextEditor::Cursor(m_view->cursorPosition().line(), numberStartPos + newNumberText.length() - 1));
 }
 
+KTextEditor::Cursor ModeBase::cursorPosAtEndOfPaste(const KTextEditor::Cursor pasteLocation, const QString &pastedText, bool isBlock)
+{
+    KTextEditor::Cursor cAfter = pasteLocation;
+    const int lineCount = pastedText.count(QLatin1Char('\n')) + 1;
+    if (lineCount == 1) {
+        cAfter.setColumn(cAfter.column() + pastedText.length());
+    } else {
+        const int lastLineLength = pastedText.size() - (pastedText.lastIndexOf(QLatin1Char('\n')) + 1);
+        cAfter.setColumn((isBlock ? cAfter.column() : 0) + lastLineLength);
+        cAfter.setLine(cAfter.line() + lineCount - 1);
+    }
+    return cAfter;
+}
+
 void ModeBase::switchView(Direction direction)
 {
     std::vector<KTextEditor::ViewPrivate *> visible_views;

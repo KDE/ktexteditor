@@ -270,7 +270,7 @@ bool InsertViMode::commandInsertContentOfRegister()
         cAfter.setLine(cAfter.line() + 1);
         cAfter.setColumn(0);
     } else {
-        cAfter.setColumn(cAfter.column() + textToInsert.length());
+        cAfter = cursorPosAtEndOfPaste(c, textToInsert, m == Block);
     }
 
     doc()->insertText(c, textToInsert, m == Block);

@@ -3645,20 +3645,6 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
     return true;
 }
 
-KTextEditor::Cursor NormalViMode::cursorPosAtEndOfPaste(const KTextEditor::Cursor pasteLocation, const QString &pastedText, bool isBlock)
-{
-    KTextEditor::Cursor cAfter = pasteLocation;
-    const int lineCount = pastedText.count(QLatin1Char('\n')) + 1;
-    if (lineCount == 1) {
-        cAfter.setColumn(cAfter.column() + pastedText.length());
-    } else {
-        const int lastLineLength = pastedText.size() - (pastedText.lastIndexOf(QLatin1Char('\n')) + 1);
-        cAfter.setColumn((isBlock ? cAfter.column() : 0) + lastLineLength);
-        cAfter.setLine(cAfter.line() + lineCount - 1);
-    }
-    return cAfter;
-}
-
 void NormalViMode::joinLines(unsigned int from, unsigned int to) const
 {
     // make sure we don't try to join lines past the document end
