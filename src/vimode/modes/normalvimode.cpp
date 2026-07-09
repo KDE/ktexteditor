@@ -3622,7 +3622,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
         }
         const bool leaveCursorAtStartOfPaste = isTextMultiLine && !isgPaste;
         if (!leaveCursorAtStartOfPaste) {
-            cursorAfterPaste = cursorPosAtEndOfPaste(pasteAt, textToInsert);
+            cursorAfterPaste = cursorPosAtEndOfPaste(pasteAt, textToInsert, m == Block);
             if (!isgPaste) {
                 cursorAfterPaste.setColumn(cursorAfterPaste.column() - 1);
             }
@@ -3645,7 +3645,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
     return true;
 }
 
-KTextEditor::Cursor NormalViMode::cursorPosAtEndOfPaste(const KTextEditor::Cursor pasteLocation, const QString &pastedText)
+KTextEditor::Cursor NormalViMode::cursorPosAtEndOfPaste(const KTextEditor::Cursor pasteLocation, const QString &pastedText, bool isBlock)
 {
     KTextEditor::Cursor cAfter = pasteLocation;
     const int lineCount = pastedText.count(QLatin1Char('\n')) + 1;
@@ -3653,7 +3653,7 @@ KTextEditor::Cursor NormalViMode::cursorPosAtEndOfPaste(const KTextEditor::Curso
         cAfter.setColumn(cAfter.column() + pastedText.length());
     } else {
         const int lastLineLength = pastedText.size() - (pastedText.lastIndexOf(QLatin1Char('\n')) + 1);
-        cAfter.setColumn(lastLineLength);
+        cAfter.setColumn((isBlock ? cAfter.column() : 0) + lastLineLength);
         cAfter.setLine(cAfter.line() + lineCount - 1);
     }
     return cAfter;

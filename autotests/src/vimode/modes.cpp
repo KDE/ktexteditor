@@ -1414,6 +1414,8 @@ void ModesTest::VisualCommandsTests()
     // proper pasting a text block
     DoTest("aaaa\nbbbb\ncccc\ndddd", "lj\\ctrl-vljygg2lp", "aaabba\nbbbccb\ncccc\ndddd");
     DoTest("aaaa\nbbbb\ncccc\ndddd", "lj\\ctrl-vljygg2l2p", "aaabbbba\nbbbccccb\ncccc\ndddd");
+    // paste twice to check the cursor moved correctly after the paste (gp)
+    DoTest("foo\nbar", "\\ctrl-vejyejgpgp", "foo\nbarfoo\n   barfoo\n      bar");
 
     // proper selection in block mode after switching to cmdline
     {

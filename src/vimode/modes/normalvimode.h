@@ -342,7 +342,7 @@ protected:
         AfterCurrentPosition
     };
     bool paste(NormalViMode::PasteLocation pasteLocation, bool isgPaste, bool isIndentedPaste);
-    static KTextEditor::Cursor cursorPosAtEndOfPaste(const KTextEditor::Cursor pasteLocation, const QString &pastedText);
+    static KTextEditor::Cursor cursorPosAtEndOfPaste(const KTextEditor::Cursor pasteLocation, const QString &pastedText, bool isBlock);
 
     // set sticky column to a ridiculously high value so that the cursor will stick to EOL,
     // but only if it's a regular motion
