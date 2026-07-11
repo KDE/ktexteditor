@@ -263,6 +263,8 @@ void InputModeManager::changeViMode(ViMode newMode)
 {
     m_previousViMode = m_currentViMode;
     m_currentViMode = newMode;
+
+    m_view->setBlockSelection(newMode == ViMode::VisualBlockMode);
 }
 
 ViMode InputModeManager::getCurrentViMode() const
