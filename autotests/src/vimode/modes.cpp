@@ -1463,6 +1463,16 @@ void ModesTest::VisualCommandsTests()
         TestPressKey(QStringLiteral("v")); // Press "v" again. Exit visual mode
         QCOMPARE(kate_view->selectionText(), QString());
     }
+
+    // Check synchornization of block selection with block visual mode
+    {
+        BeginTest(QStringLiteral("aaaa\nbbbb\ncccc\ndddd"));
+        QCOMPARE(kate_view->blockSelection(), false);
+        TestPressKey(QStringLiteral("\\ctrl-v"));
+        QCOMPARE(kate_view->blockSelection(), true);
+        TestPressKey(QStringLiteral("\\ctrl-v"));
+        QCOMPARE(kate_view->blockSelection(), false);
+    }
 }
 
 void ModesTest::VisualExternalTests()
@@ -1517,6 +1527,24 @@ void ModesTest::VisualExternalTests()
     QCOMPARE(kate_document->text(kate_view->selectionRange()), QStringLiteral("oo b"));
     TestPressKey(QStringLiteral("d"));
     QCOMPARE(kate_document->text(), QStringLiteral("far"));
+
+    // Test switching from normal input mode with an active block selection
+    // It should get into Vi Visual Block Mode and keep the selected range
+    kate_view->setInputMode(View::NormalInputMode);
+    kate_document->setText(QStringLiteral("abcd\nefgh"));
+    kate_view->setBlockSelection(true);
+    kate_view->setSelection(Range(Cursor(0, 1), Cursor(1, 3)));
+    QCOMPARE(kate_document->text(kate_view->selectionRange(), true), QStringLiteral("bc\nfg"));
+    kate_view->setInputMode(View::ViInputMode);
+    QVERIFY(kate_view->currentInputMode()->viewInputMode() == View::ViInputMode);
+    vi_input_mode = static_cast<KateViInputMode *>(kate_view->currentInputMode());
+    vi_input_mode_manager = vi_input_mode->viInputModeManager();
+    QCOMPARE(kate_view->blockSelection(), true);
+    QTRY_COMPARE(vi_input_mode_manager->getCurrentViMode(), KateVi::VisualBlockMode);
+    TestPressKey(QStringLiteral("l"));
+    QCOMPARE(kate_document->text(kate_view->selectionRange(), true), QStringLiteral("bcd\nfgh"));
+    TestPressKey(QStringLiteral("d"));
+    QCOMPARE(kate_document->text(), QStringLiteral("a\ne"));
 
     // Test returning to correct mode when selecting ranges with mouse
     BeginTest(QStringLiteral("foo bar\nbar baz"));

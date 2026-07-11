@@ -29,8 +29,6 @@ VisualViMode::VisualViMode(InputModeManager *viInputModeManager, KTextEditor::Vi
 
 void VisualViMode::selectInclusive(const KTextEditor::Cursor c1, const KTextEditor::Cursor c2)
 {
-    m_view->setBlockSelection(false);
-
     if (c1 >= c2) {
         m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1, c2.line(), c2.column()));
     } else {
@@ -40,8 +38,6 @@ void VisualViMode::selectInclusive(const KTextEditor::Cursor c1, const KTextEdit
 
 void VisualViMode::selectBlockInclusive(const KTextEditor::Cursor c1, const KTextEditor::Cursor c2)
 {
-    m_view->setBlockSelection(true);
-
     if (c1.column() >= c2.column()) {
         m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1, c2.line(), c2.column()));
     } else {
@@ -55,7 +51,6 @@ void VisualViMode::selectLines(KTextEditor::Range range)
     int eline = qMax(range.start().line(), range.end().line());
     int ecol = m_view->doc()->lineLength(eline) + 1;
 
-    m_view->setBlockSelection(false);
     m_view->setSelection(KTextEditor::Range(KTextEditor::Cursor(sline, 0), KTextEditor::Cursor(eline, ecol)));
 }
 
@@ -217,9 +212,6 @@ void VisualViMode::updateSelection()
         return;
     }
 
-    // If we are there it's already not VisualBlock mode.
-    m_view->setBlockSelection(false);
-
     // If not valid going back to normal mode
     KTextEditor::Range r = m_view->selectionRange();
     if (!r.isValid()) {
@@ -229,8 +221,8 @@ void VisualViMode::updateSelection()
         return;
     }
 
-    // If already not in visual mode, it's time to go there.
-    if (m_viInputModeManager->getCurrentViMode() != ViMode::VisualMode) {
+    // If already not in any visual mode, it's time to go there.
+    if (!m_viInputModeManager->isAnyVisualMode()) {
         commandEnterVisualMode();
     }
 

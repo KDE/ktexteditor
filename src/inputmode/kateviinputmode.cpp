@@ -70,8 +70,10 @@ void KateViInputMode::activate()
     reset(); // TODO: is this necessary? (well, not anymore I guess)
 
     if (view()->selection()) {
-        m_viModeManager->changeViMode(KateVi::VisualMode);
+        const KateVi::ViMode mode = view()->blockSelection() ? KateVi::VisualBlockMode : KateVi::VisualMode;
+        m_viModeManager->changeViMode(mode);
         view()->setCursorPosition(KTextEditor::Cursor(view()->selectionRange().end().line(), view()->selectionRange().end().column() - 1));
+        m_viModeManager->m_viVisualMode->setVisualModeType(mode);
         m_viModeManager->m_viVisualMode->updateSelection();
     }
     viewInternal()->iconBorder()->setRelLineNumbersOn(m_relLineNumbers);
