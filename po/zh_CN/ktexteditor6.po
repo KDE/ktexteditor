@@ -4385,7 +4385,7 @@ msgstr "文档"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Annotation"
-msgstr "注释"
+msgstr "注解"
 
 #: syntax/katethemeconfig.cpp:98
 #, kde-format
@@ -4415,7 +4415,7 @@ msgstr "警告"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Alert"
-msgstr "警告"
+msgstr "提醒"
 
 #: syntax/katethemeconfig.cpp:110
 #, kde-format
