@@ -1022,6 +1022,24 @@ void ModesTest::NormalControlTests()
     // Regression test.
     DoTest("1w3", "l\\ctrl-a", "1w4");
 
+    // Non-decimal bases are unsigned and operation overflows wrap around 0
+    DoTest("0xffffffffffffffff", "\\ctrl-a", "0x0000000000000000");
+    DoTest("0x0", "\\ctrl-x", "0xffffffffffffffff");
+    DoTest("00", "\\ctrl-x", "01777777777777777777777");
+    DoTest("0xfffffffffffffffa", "10\\ctrl-a", "0x0000000000000004");
+    DoTest("0xfffffffffffffffa", "10\\ctrl-a6\\ctrl-x", "0xfffffffffffffffe");
+    // Decimal numbers can be parsed as signed or unsigned long
+    DoTest("0", "\\ctrl-x", "-1");
+    DoTest("18446744073709551615", "\\ctrl-a", "0");
+    // Test parsing overflow: max integer and no operation applied
+    DoTest("123456789012345678901", "\\ctrl-a", "18446744073709551615");
+    DoTest("0x123456789abcdef0f", "5\\ctrl-a", "0x0ffffffffffffffff");
+    // Hexadecimal uppercase if any character is uppercase (including prefix)
+    DoTest("0X0", "\\ctrl-x", "0XFFFFFFFFFFFFFFFF");
+    DoTest("0X0009", "\\ctrl-a", "0X000A");
+    DoTest("0x000A", "\\ctrl-a", "0x000B");
+    DoTest("0x00aB", "\\ctrl-a", "0x00AC");
+
     // Test "Ctrl-a/x" on a blank document/ blank line.
     DoTest("", "\\ctrl-a", "");
     DoTest("", "\\ctrl-x", "");

@@ -1174,7 +1174,7 @@ void ModeBase::addToNumber(int count, bool isCumulative)
     const auto searchLines = QStringView(searchText).split('\n'_L1);
     const int vStartColumn = doc()->toVirtualColumn(searchRange.toEditorRange().start());
 
-    static const QRegularExpression numberRegex(u"0x[0-9a-fA-F]+|\\-?\\d+"_s);
+    static const QRegularExpression numberRegex(u"0[xX][0-9a-fA-F]+|\\-?\\d+"_s);
     QList<KTextEditor::Range> matchRanges;
     for (int iLine = 0; iLine < searchLines.length(); ++iLine) {
         auto numberMatchIter = numberRegex.globalMatchView(searchLines.at(iLine));
@@ -1205,9 +1205,6 @@ void ModeBase::addToNumber(int count, bool isCumulative)
     int amount = count;
     for (const auto &numberRange : std::as_const(matchRanges)) {
         const QString updatedNumberText = calculateNumberIncrement(doc()->text(numberRange), amount);
-        if (updatedNumberText.isEmpty()) {
-            continue;
-        }
         doc()->replaceText(numberRange, updatedNumberText);
 
         if (isCumulative) {
@@ -1224,41 +1221,57 @@ void ModeBase::addToNumber(int count, bool isCumulative)
     }
 }
 
+// Operate on a found number string, adding `amount` to the number,
+// according to the defined rules to match vim behavior
+// https://vimhelp.org/change.txt.html#CTRL-A
 QString ModeBase::calculateNumberIncrement(const QString &numberAsString, int amount)
 {
     bool parsedNumberSuccessfully = false;
-    int base = numberAsString.startsWith(QLatin1String("0x")) ? 16 : 10;
-    if (base != 16 && numberAsString.startsWith(QLatin1Char('0')) && numberAsString.length() > 1) {
-        // If a non-hex number with a leading 0 can be parsed as octal, then assume
-        // it is octal.
-        numberAsString.toInt(&parsedNumberSuccessfully, 8);
+    int base = numberAsString.toLower().startsWith("0x"_L1) ? 16 : 10;
+    // Check for octal numbers: leading 0s and can be parsed as octal
+    if (base == 10 && numberAsString.startsWith('0'_L1) && numberAsString.length() > 1) {
+        std::ignore = numberAsString.toULongLong(&parsedNumberSuccessfully, 8);
         if (parsedNumberSuccessfully) {
             base = 8;
         }
     }
-    const int originalNumber = numberAsString.toInt(&parsedNumberSuccessfully, base);
 
-    if (!parsedNumberSuccessfully) {
-        return {};
+    // Only base 10 (decimal) has to handle signed integers
+    // Try it or fallback to unsigned if that fails
+    if (base == 10) {
+        const int64_t number = numberAsString.toLongLong(&parsedNumberSuccessfully, 10);
+        if (parsedNumberSuccessfully) {
+            // Do not pad with leading 0s, so the result cannot get confused
+            // with an octal number (vim behavior)
+            return QString::number(number + amount, 10);
+        }
     }
 
-    QString basePrefix;
-    if (base == 16) {
-        basePrefix = QStringLiteral("0x");
-    } else if (base == 8) {
-        basePrefix = QStringLiteral("0");
+    // Parse as unsigned integer (ensure 64bits on all platforms)
+    uint64_t number = numberAsString.toULongLong(&parsedNumberSuccessfully, base);
+    if (parsedNumberSuccessfully) {
+        number += amount;
+    } else {
+        // There is an overflow: set the maximum value
+        number = std::numeric_limits<uint64_t>::max();
     }
 
-    const int withoutBaseLength = numberAsString.length() - basePrefix.length();
+    // Return the formatted and padded number according to the rules
+    if (base == 10) {
+        return QString::number(number, 10); // Non-padded decimal
+    }
 
-    const int newNumber = originalNumber + amount;
+    // Keep the original upper or lower-cased base prefix
+    const int basePrefixLength = (base == 10) ? 0 : (base == 8) ? 1 : 2;
+    const auto basePrefix = numberAsString.mid(0, basePrefixLength);
 
-    // Create the new text string to be inserted. Prepend with “0x” if in base 16, and "0" if base 8.
-    // For non-decimal numbers, try to keep the length of the number the same (including leading 0's).
-    const QString newNumberPadded =
-        (base == 10) ? QStringLiteral("%1").arg(newNumber, 0, base) : QStringLiteral("%1").arg(newNumber, withoutBaseLength, base, QLatin1Char('0'));
+    QString paddedNumber = u"%1"_s.arg(number, numberAsString.length() - basePrefixLength, base, '0'_L1);
+    // Check for upper-cased hexadecimals
+    if (base == 16 && numberAsString != numberAsString.toLower()) {
+        paddedNumber = paddedNumber.toUpper();
+    }
 
-    return basePrefix + newNumberPadded;
+    return basePrefix + paddedNumber;
 }
 
 KTextEditor::Cursor ModeBase::cursorPosAtEndOfPaste(const KTextEditor::Cursor pasteLocation, const QString &pastedText, bool isBlock)
