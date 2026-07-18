@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-07 00:39+0000\n"
-"PO-Revision-Date: 2026-05-11 11:23+0200\n"
+"PO-Revision-Date: 2026-07-17 12:15+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1412,14 +1412,13 @@ msgstr "&PaginaInAlto/PaginaBasso move cursor"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
-"Selige si  cursor salta parolas complete o rumpe al gibbos de \"camel cse\"."
+"Selige si le cursor se arresta al protuberantias de \"camel case\" e tractos "
+"de sublineamento intra un parola."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1427,6 +1426,8 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"Stoppa al subparolas 'camelCase' e 'snake_case' quando on move le cursor per "
+"parola."
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2505,18 +2506,16 @@ msgid "Normal Mode"
 msgstr "Modo normal"
 
 #: inputmode/kateviinputmode.cpp:31
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "VI: INSERT MODO"
+msgstr "VI: INSERT"
 
 #: inputmode/kateviinputmode.cpp:34
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "VI: NORMAL MODO"
+msgstr "VI: NORMAL"
 
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format
