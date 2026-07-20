@@ -1174,7 +1174,7 @@ void ModeBase::addToNumber(int count, bool isCumulative)
     const auto searchLines = QStringView(searchText).split('\n'_L1);
     const int vStartColumn = doc()->toVirtualColumn(searchRange.toEditorRange().start());
 
-    static const QRegularExpression numberRegex(u"0[xX][0-9a-fA-F]+|\\-?\\d+"_s);
+    static const QRegularExpression numberRegex(u"0[xX][0-9a-fA-F]+|0[bB][01]+|\\-?\\d+"_s);
     QList<KTextEditor::Range> matchRanges;
     for (int iLine = 0; iLine < searchLines.length(); ++iLine) {
         auto numberMatchIter = numberRegex.globalMatchView(searchLines.at(iLine));
@@ -1227,7 +1227,9 @@ void ModeBase::addToNumber(int count, bool isCumulative)
 QString ModeBase::calculateNumberIncrement(const QString &numberAsString, int amount)
 {
     bool parsedNumberSuccessfully = false;
-    int base = numberAsString.toLower().startsWith("0x"_L1) ? 16 : 10;
+    int base = numberAsString.toLower().startsWith("0x"_L1) ? 16 // hexadecimal
+        : numberAsString.toLower().startsWith("0b"_L1)      ? 2 // binary
+                                                            : 10; // decimal (or octal)
     // Check for octal numbers: leading 0s and can be parsed as octal
     if (base == 10 && numberAsString.startsWith('0'_L1) && numberAsString.length() > 1) {
         std::ignore = numberAsString.toULongLong(&parsedNumberSuccessfully, 8);

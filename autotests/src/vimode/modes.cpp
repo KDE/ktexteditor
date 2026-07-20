@@ -988,6 +988,7 @@ void ModesTest::NormalControlTests()
     DoTest("1", "\\ctrl-x\\ctrl-x\\ctrl-x\\ctrl-x", "-3");
     DoTest("0xabcdef", "1000000\\ctrl-x", "0x9c8baf");
     DoTest("0x0000f", "\\ctrl-x", "0x0000e");
+    DoTest("0b00111", "\\ctrl-x", "0b00110");
     // Octal numbers should retain leading 0's.
     DoTest("00010", "\\ctrl-x", "00007");
 
@@ -997,6 +998,7 @@ void ModesTest::NormalControlTests()
     DoTest("-1", "1\\ctrl-a", "0");
     DoTest("-1", "l1\\ctrl-a", "0");
     DoTest("0x0000f", "\\ctrl-a", "0x00010");
+    DoTest("0b00111", "\\ctrl-a", "0b01000");
     // Decimal with leading 0's - increment, and strip leading 0's, like Vim.
     DoTest("0000193", "\\ctrl-a", "194");
     // If a number begins with 0, parse it as octal if we can. The resulting number should retain the
@@ -1021,10 +1023,13 @@ void ModesTest::NormalControlTests()
     DoTest(" a a    a\n  1", "jll\\ctrl-a", " a a    a\n  2");
     // Regression test.
     DoTest("1w3", "l\\ctrl-a", "1w4");
+    // Possible conflict between hex and bin: it should pick hex
+    DoTest("aa0x0b0001", "e2\\ctrl-x", "aa0x0affff");
 
     // Non-decimal bases are unsigned and operation overflows wrap around 0
     DoTest("0xffffffffffffffff", "\\ctrl-a", "0x0000000000000000");
     DoTest("0x0", "\\ctrl-x", "0xffffffffffffffff");
+    DoTest("0b0", "\\ctrl-x", "0b1111111111111111111111111111111111111111111111111111111111111111");
     DoTest("00", "\\ctrl-x", "01777777777777777777777");
     DoTest("0xfffffffffffffffa", "10\\ctrl-a", "0x0000000000000004");
     DoTest("0xfffffffffffffffa", "10\\ctrl-a6\\ctrl-x", "0xfffffffffffffffe");
@@ -1039,6 +1044,7 @@ void ModesTest::NormalControlTests()
     DoTest("0X0009", "\\ctrl-a", "0X000A");
     DoTest("0x000A", "\\ctrl-a", "0x000B");
     DoTest("0x00aB", "\\ctrl-a", "0x00AC");
+    DoTest("0B0101", "\\ctrl-a", "0B0110");
 
     // Test "Ctrl-a/x" on a blank document/ blank line.
     DoTest("", "\\ctrl-a", "");
@@ -1612,6 +1618,7 @@ void ModesTest::VisualControlTests()
     DoTest("aaa bbb\n100 200", "wvjbl\\ctrl-x", "aaa bbb\n90 200");
     DoTest("100 0x200\n100 200", "wvje10\\ctrl-a", "100 0x20a\n100 200");
     DoTest("100 0x200\n100 200", "wllvje10\\ctrl-a", "100 0x210\n100 200");
+    DoTest("0x0b0001", "llve\\ctrl-a", "0x0b0010"); // Range just selects binary
 
     // Ctrl+A / Ctrl+X Visual line mode
     DoTest("100 200\n100 200", "Vj\\ctrl-a", "101 200\n101 200");
