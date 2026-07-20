@@ -18,6 +18,7 @@
 #include <QMainWindow>
 #include <QTest>
 
+using namespace Qt::StringLiterals;
 using namespace KTextEditor;
 
 QTEST_MAIN(ModesTest)
@@ -1549,6 +1550,13 @@ void ModesTest::CommandTests()
     DoTest("1\n2\n3\n4", "2j\\:.,.-1d\\", "1\n4");
     DoTest("1\n2\n3\n4", "\\:.+200-100-100+20-5-5-5-5+.-.,$-1+1-2+2-3+3-4+4-5+5-6+6-7+7-1000+1000+0-0-$+$-.+.-1d\\", "4");
     DoTest("1\n2\n3\n4", "majmbjmcjmdgg\\:'a+'b+'d-'c,.d\\", "");
+
+    // Test date command
+    const QDateTime now = QDateTime::currentDateTime();
+    // Remove minutes and seconds after inserting the default format
+    // to highly reduce the probability of time-based test failures
+    DoTest("", "\\:date\\2F:D", now.toString(u"yyyy-MM-dd hh"_s).toLatin1().data());
+    DoTest("", "\\:date dd.MM.yyyy\\", now.toString(u"dd.MM.yyyy"_s).toLatin1().data());
 }
 
 void ModesTest::CommandSedTests()
