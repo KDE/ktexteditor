@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-07 00:39+0000\n"
+"POT-Creation-Date: 2026-07-21 00:40+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -8181,22 +8181,22 @@ msgstr ""
 "<code><b>help list</b></code><br />ចំពោះ​ជំនួយ​អំពី​ពាក្យ​បញ្ជី​នីមួយៗ សូម​បញ្ចូល <code><b>help "
 "&lt;ពាក្យ​បញ្ជា&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1317 vimode/emulatedcommandbar/commandmode.cpp:211
+#: view/kateviewhelpers.cpp:1317 vimode/emulatedcommandbar/commandmode.cpp:212
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "គ្មាន​ពាក្យ​បញ្ជា​បែប​នេះទេ ៖ \"%1\""
 
-#: view/kateviewhelpers.cpp:1320 vimode/emulatedcommandbar/commandmode.cpp:193
+#: view/kateviewhelpers.cpp:1320 vimode/emulatedcommandbar/commandmode.cpp:194
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "កំហុស ៖ គ្មាន​ជួរ​បាន​អនុញ្ញាត​សម្រាប់​ពាក្យ​បញ្ជា \"%1\" ។"
 
-#: view/kateviewhelpers.cpp:1330 vimode/emulatedcommandbar/commandmode.cpp:197
+#: view/kateviewhelpers.cpp:1330 vimode/emulatedcommandbar/commandmode.cpp:198
 #, kde-format
 msgid "Success: "
 msgstr "ជោគជ័យ ៖ "
 
-#: view/kateviewhelpers.cpp:1344 vimode/emulatedcommandbar/commandmode.cpp:206
+#: view/kateviewhelpers.cpp:1344 vimode/emulatedcommandbar/commandmode.cpp:207
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "ពាក្យ​បញ្ជា \"%1\" បាន​បរាជ័យ ។"
@@ -8651,17 +8651,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "ទៅ​កាន់​ចំណាំ​បន្ទាប់"
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3568
+#: vimode/modes/normalvimode.cpp:3563
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "គ្មាន​អ្វី​នៅ​ក្នុង​បញ្ជី %1 ទេ"
 
-#: vimode/modes/normalvimode.cpp:1692
+#: vimode/modes/normalvimode.cpp:1687
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  គោល​ដប់​ប្រាំមួយ %3  គោល​ប្រាំបី %4"
 
-#: vimode/modes/normalvimode.cpp:2535
+#: vimode/modes/normalvimode.cpp:2530
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "សញ្ញា​សម្គាល់​មិន​បានកំណត់ ៖ %1"

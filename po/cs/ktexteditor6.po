@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-07 00:39+0000\n"
+"POT-Creation-Date: 2026-07-21 00:40+0000\n"
 "PO-Revision-Date: 2024-10-08 14:47+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -7767,22 +7767,22 @@ msgstr ""
 "<code><b>help list</b></code><br />Pro nápovědu k jednotlivým příkazům "
 "zadejte <code><b>help &lt;příkaz&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1317 vimode/emulatedcommandbar/commandmode.cpp:211
+#: view/kateviewhelpers.cpp:1317 vimode/emulatedcommandbar/commandmode.cpp:212
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Takový příkaz neexistuje: \"%1\""
 
-#: view/kateviewhelpers.cpp:1320 vimode/emulatedcommandbar/commandmode.cpp:193
+#: view/kateviewhelpers.cpp:1320 vimode/emulatedcommandbar/commandmode.cpp:194
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Chyba: Příkaz \"%1\" nedovoluje zadat žádný rozsah."
 
-#: view/kateviewhelpers.cpp:1330 vimode/emulatedcommandbar/commandmode.cpp:197
+#: view/kateviewhelpers.cpp:1330 vimode/emulatedcommandbar/commandmode.cpp:198
 #, kde-format
 msgid "Success: "
 msgstr "Úspěch: "
 
-#: view/kateviewhelpers.cpp:1344 vimode/emulatedcommandbar/commandmode.cpp:206
+#: view/kateviewhelpers.cpp:1344 vimode/emulatedcommandbar/commandmode.cpp:207
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Příkaz \"%1\" selhal."
@@ -8207,17 +8207,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Pro následující záložku nejsou žádné další znaky."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3568
+#: vimode/modes/normalvimode.cpp:3563
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Prázdný registr %1"
 
-#: vimode/modes/normalvimode.cpp:1692
+#: vimode/modes/normalvimode.cpp:1687
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  šestnáctkově %3,  osmičkově %4"
 
-#: vimode/modes/normalvimode.cpp:2535
+#: vimode/modes/normalvimode.cpp:2530
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Značka nenastavena: %1"

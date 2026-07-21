@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-07 00:39+0000\n"
+"POT-Creation-Date: 2026-07-21 00:40+0000\n"
 "PO-Revision-Date: 2026-07-17 12:15+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
@@ -8079,22 +8079,22 @@ msgstr ""
 "disponibile, tu inserta <code><b>help list</b></code><br /> Pro adjuta super "
 "commandos individual, inserta <code><b>help &lt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1317 vimode/emulatedcommandbar/commandmode.cpp:211
+#: view/kateviewhelpers.cpp:1317 vimode/emulatedcommandbar/commandmode.cpp:212
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Necun tal commando: \"%1\""
 
-#: view/kateviewhelpers.cpp:1320 vimode/emulatedcommandbar/commandmode.cpp:193
+#: view/kateviewhelpers.cpp:1320 vimode/emulatedcommandbar/commandmode.cpp:194
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Error: necun extension permittite pro commando \"%1\"."
 
-#: view/kateviewhelpers.cpp:1330 vimode/emulatedcommandbar/commandmode.cpp:197
+#: view/kateviewhelpers.cpp:1330 vimode/emulatedcommandbar/commandmode.cpp:198
 #, kde-format
 msgid "Success: "
 msgstr "Successo:"
 
-#: view/kateviewhelpers.cpp:1344 vimode/emulatedcommandbar/commandmode.cpp:206
+#: view/kateviewhelpers.cpp:1344 vimode/emulatedcommandbar/commandmode.cpp:207
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Commando \"%1\" falleva."
@@ -8549,17 +8549,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Il non ha plus characteres pro le proxime marcator de libro"
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3568
+#: vimode/modes/normalvimode.cpp:3563
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Nihil in register %1"
 
-#: vimode/modes/normalvimode.cpp:1692
+#: vimode/modes/normalvimode.cpp:1687
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Hex %3,  Octal %4"
 
-#: vimode/modes/normalvimode.cpp:2535
+#: vimode/modes/normalvimode.cpp:2530
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca non fixate: %1"
