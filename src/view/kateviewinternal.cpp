@@ -4141,7 +4141,8 @@ void KateViewInternal::doDrag()
     }
 
     // Create a pixmap this selection and set it, if not null
-    const qreal dpr = devicePixelRatioF();
+    // Use highest screen device pixel ratio as drag could be moved to any screen
+    const qreal dpr = qApp->devicePixelRatio();
     if (QPixmap pixmap(w * dpr, h * dpr); !pixmap.isNull()) {
         pixmap.setDevicePixelRatio(dpr);
         pixmap.fill(Qt::transparent);
