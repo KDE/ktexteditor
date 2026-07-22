@@ -4165,7 +4165,7 @@ void KateViewInternal::doDrag()
      */
     const int y = lineToY(view()->m_textFolding.lineToVisibleLine(startLine));
     const QPoint pos = mapFromGlobal(QCursor::pos()) - QPoint(x, y);
-    m_dragInfo.dragObject->setHotSpot(pos);
+    m_dragInfo.dragObject->setHotSpot(pos * scale);
     m_dragInfo.dragObject->setMimeData(mimeData.release());
     m_dragInfo.dragObject->exec(Qt::MoveAction | Qt::CopyAction);
 }
