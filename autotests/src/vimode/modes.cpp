@@ -1361,6 +1361,10 @@ void ModesTest::VisualCommandsTests()
     DoTest("foo\nbar\nbaz", "V>>V<<", "foo\nbar\nbaz");
     DoTest("    foo\n    bar\n    baz", "V2j<<", "  foo\n  bar\n  baz");
 
+    // Testing block prepend (BUG #488801 - also with tabs)
+    DoTest("foo\nbar\nbaz", "l\\ctrl-v2jIr\\esc", "froo\nbrar\nbraz");
+    DoTest("\t\tfoo\n        \tbar\n                baz", "wl\\ctrl-v2jIr\\esc", "\t\tfroo\n        \tbrar\n                braz");
+
     // Testing block append
     DoTest("averyverylongline\nshortline\nshorter\n", "jjV$kkAb\\esc", "averyverylonglineb\nshortlineb\nshorterb\n");
     DoTest("averyverylongline\nshortline\n", "V$jAb\\esc", "averyverylonglineb\nshortlineb\n");

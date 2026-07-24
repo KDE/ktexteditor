@@ -489,6 +489,7 @@ void InsertViMode::leaveInsertMode(bool force)
             // make sure cursor haven't been moved
             if (m_blockRange.startLine == m_view->cursorPosition().line()) {
                 int start;
+                int vStart;
                 int len;
                 QString added;
                 KTextEditor::Cursor c;
@@ -506,8 +507,11 @@ void InsertViMode::leaveInsertMode(bool force)
                     added = getLine().mid(start, len);
 
                     c = KTextEditor::Cursor(m_blockRange.startLine, start);
+                    vStart = doc()->toVirtualColumn(c);
+
                     for (int i = m_blockRange.startLine + 1; i <= m_blockRange.endLine; i++) {
                         c.setLine(i);
+                        c.setColumn(doc()->fromVirtualColumn(i, vStart));
                         doc()->insertText(c, added);
                     }
                     break;
