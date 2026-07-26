@@ -36,6 +36,7 @@
 #include "spellcheck/spellingmenu.h"
 
 #include <KCursor>
+#include <KDragUtils>
 #include <KSyntaxHighlighting/FoldingRegion>
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/documentcursor.h>
@@ -4119,7 +4120,6 @@ void KateViewInternal::doDrag()
             h += renderer()->lineHeight() * cache()->viewLineCount(l);
         }
     }
-    qreal scale = h > m_view->height() / 2 ? 0.75 : 1.0;
 
     // Calculate start x pos on start line
     int sX = 0;
@@ -4140,21 +4140,6 @@ void KateViewInternal::doDrag()
         view()->clearHighlights();
     }
 
-    // Create a pixmap this selection and set it, if not null
-    // Use highest screen device pixel ratio as drag could be moved to any screen
-    const qreal dpr = qApp->devicePixelRatio();
-    if (QPixmap pixmap(w * dpr, h * dpr); !pixmap.isNull()) {
-        pixmap.setDevicePixelRatio(dpr);
-        pixmap.fill(Qt::transparent);
-        renderer()->paintSelection(&pixmap, startLine, sX, endLine, eX, cache()->viewWidth(), scale);
-        m_dragInfo.dragObject->setPixmap(pixmap);
-    }
-
-    // Tell the view to restore the highlights
-    if (view()->selection()) {
-        Q_EMIT view()->selectionChanged(view());
-    }
-
     // Calculate position where pixmap will appear when user
     // starts dragging
     const int x = 0;
@@ -4166,7 +4151,46 @@ void KateViewInternal::doDrag()
      */
     const int y = lineToY(view()->m_textFolding.lineToVisibleLine(startLine));
     const QPoint pos = mapFromGlobal(QCursor::pos()) - QPoint(x, y);
-    m_dragInfo.dragObject->setHotSpot(pos * scale);
+
+    const QSize displaySize(w, h);
+
+    auto painting = [this, displaySize, startLine, sX, endLine, eX](QPaintDevice *paintDevice, QSize pixmapSize) -> bool {
+        // prepare transparent background
+        QPainter transparentBackgroundPainter(paintDevice);
+        transparentBackgroundPainter.setCompositionMode(QPainter::CompositionMode_Source);
+        transparentBackgroundPainter.fillRect(QRect(QPoint(0, 0), pixmapSize), QColor(0, 0, 0, 0));
+        transparentBackgroundPainter.end();
+
+        // TODO: KateRenderer::paintSelection(..., qreal scale) does not scale proportinally,
+        // so the effective scaling is unknown, for a given bounded size the scale cannot be estimated simply.
+        // So for now render to own separate pixmap and scale it as needed.
+        if (pixmapSize != displaySize) {
+            const qreal dpr = paintDevice->devicePixelRatio();
+            if (QPixmap pixmap(displaySize * dpr); !pixmap.isNull()) {
+                pixmap.setDevicePixelRatio(dpr);
+                pixmap.fill(Qt::transparent);
+                renderer()->paintSelection(&pixmap, startLine, sX, endLine, eX, cache()->viewWidth(), 1.0);
+                // map onto target paint device
+                QPainter painter(paintDevice);
+                painter.setRenderHint(QPainter::SmoothPixmapTransform);
+                const QRect paintRect(QPoint(0, 0), pixmapSize);
+                painter.drawPixmap(paintRect, pixmap);
+                return true;
+            }
+            return false;
+        }
+        // render text
+        renderer()->paintSelection(paintDevice, startLine, sX, endLine, eX, cache()->viewWidth(), 1.0);
+        return true;
+    };
+
+    KDragUtils::setDragPixmap(m_dragInfo.dragObject, painting, displaySize, pos, KDragUtils::DragObjectType::Selection);
+
+    // Tell the view to restore the highlights
+    if (view()->selection()) {
+        Q_EMIT view()->selectionChanged(view());
+    }
+
     m_dragInfo.dragObject->setMimeData(mimeData.release());
     m_dragInfo.dragObject->exec(Qt::MoveAction | Qt::CopyAction);
 }

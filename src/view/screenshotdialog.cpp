@@ -36,6 +36,7 @@
 #include <QVBoxLayout>
 
 #include <KConfigGroup>
+#include <KDragUtils>
 #include <KLocalizedString>
 #include <KSyntaxHighlighting/Theme>
 
@@ -115,10 +116,9 @@ public:
 
         auto *drag = new QDrag(this);
         drag->setMimeData(mimeData);
-
-        // 256x256, following size used by spectacle 24.05
-        drag->setPixmap(pixmap.scaled(256, 256, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-
+        const QSize displaySize = m_screenshot->geometry().adjusted(-6, -6, 6, 6).size();
+        const QPoint offset = m_dragStartCandidatePos - m_screenshot->pos() - QPoint(-6, -6);
+        KDragUtils::setDragPixmap(drag, pixmap, displaySize, offset, KDragUtils::DragObjectType::CompleteObject);
         drag->exec(Qt::CopyAction);
     }
 
