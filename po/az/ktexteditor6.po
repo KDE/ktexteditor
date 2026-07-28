@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-21 00:40+0000\n"
+"POT-Creation-Date: 2026-07-28 00:41+0000\n"
 "PO-Revision-Date: 2026-02-05 00:09+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -2520,12 +2520,12 @@ msgstr "VI: SƏTİRLƏRİN SEÇİMİ"
 msgid "VI: REPLACE"
 msgstr "VI: ƏVƏZLƏMƏ REJİMİ"
 
-#: inputmode/kateviinputmode.cpp:146
+#: inputmode/kateviinputmode.cpp:148
 #, kde-format
 msgid "vi-mode"
 msgstr "vi rejimi"
 
-#: inputmode/kateviinputmode.cpp:159
+#: inputmode/kateviinputmode.cpp:161
 #, kde-format
 msgid "recording"
 msgstr "yazma"
@@ -6538,12 +6538,12 @@ msgstr ""
 msgid "Change dictionary"
 msgstr "Lüğəti dəyişmək"
 
-#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:488
+#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:489
 #, kde-format
 msgid "Tab Width"
 msgstr "Tab eni"
 
-#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:503
+#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:504
 #, kde-format
 msgid "Indentation Width"
 msgstr "Abzas eni"
@@ -6602,52 +6602,52 @@ msgstr "Sintaksis işıqlanması"
 msgid "Line/Column compact mode"
 msgstr "Sətir/Sütun yığcam rejimi"
 
-#: view/katestatusbar.cpp:307
+#: view/katestatusbar.cpp:308
 #, kde-format
 msgid "[BLOCK] %1"
 msgstr "[BLOCK] %1"
 
-#: view/katestatusbar.cpp:323
+#: view/katestatusbar.cpp:324
 #, kde-format
 msgid "%1/%2:%3"
 msgstr "%1/%2:%3"
 
-#: view/katestatusbar.cpp:325
+#: view/katestatusbar.cpp:326
 #, kde-format
 msgid "%1:%2"
 msgstr "%1:%2"
 
-#: view/katestatusbar.cpp:329
+#: view/katestatusbar.cpp:330
 #, kde-format
 msgid "Line %1 of %2, Column %3"
 msgstr "%2 sətiridən %1, Sütun %3"
 
-#: view/katestatusbar.cpp:331
+#: view/katestatusbar.cpp:332
 #, kde-format
 msgid "Line %1, Column %2"
 msgstr "Sətir %1, Sütun %2"
 
-#: view/katestatusbar.cpp:405
+#: view/katestatusbar.cpp:406
 #, kde-format
 msgid "Soft Tabs: %1"
 msgstr "Abzaslar: %1"
 
-#: view/katestatusbar.cpp:406
+#: view/katestatusbar.cpp:407
 #, kde-format
 msgid "Soft Tabs: %1 (%2)"
 msgstr "Abzaslar: %1 (%2)"
 
-#: view/katestatusbar.cpp:407
+#: view/katestatusbar.cpp:408
 #, kde-format
 msgid "Tab Size: %1"
 msgstr "Tab ölçüsü: %1"
 
-#: view/katestatusbar.cpp:408
+#: view/katestatusbar.cpp:409
 #, kde-format
 msgid "Indent/Tab: %1/%2"
 msgstr "Abzas/Tab: %1/%2"
 
-#: view/katestatusbar.cpp:448 view/katestatusbar.cpp:474
+#: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
 #| msgctxt "@item:intable Text context"
 #| msgid "Others"
@@ -6655,24 +6655,24 @@ msgctxt "@item:inmenu"
 msgid "Other…"
 msgstr "Digəriləri"
 
-#: view/katestatusbar.cpp:476
+#: view/katestatusbar.cpp:477
 #, kde-format
 msgid "Other (%1)"
 msgid_plural "Other (%1)"
 msgstr[0] "Digər (%1)"
 msgstr[1] "Digər (%1)"
 
-#: view/katestatusbar.cpp:488
+#: view/katestatusbar.cpp:489
 #, kde-format
 msgid "Please specify the wanted tab width:"
 msgstr "İstədiyiniz Tab enini göstərin:"
 
-#: view/katestatusbar.cpp:504
+#: view/katestatusbar.cpp:505
 #, kde-format
 msgid "Please specify the wanted indentation width:"
 msgstr "İstədiyiniz Abzas enini göstərin:"
 
-#: view/katestatusbar.cpp:567
+#: view/katestatusbar.cpp:568
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6680,13 +6680,13 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr "Sözlər %1/%2, Simvollar %3/%4"
 
-#: view/katestatusbar.cpp:573
+#: view/katestatusbar.cpp:574
 #, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
 msgstr "Sözlər %1, Simvollar %2"
 
-#: view/katestatusbar.cpp:588
+#: view/katestatusbar.cpp:589
 #, kde-format
 msgid "Zoom: %1%"
 msgstr "Miqyas: %1%"
@@ -8552,17 +8552,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Növbəti əlfəcin üçün artıq simvol yoxdur."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3563
+#: vimode/modes/normalvimode.cpp:3562
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "%1 qeydində heç nə yoxdur"
 
-#: vimode/modes/normalvimode.cpp:1687
+#: vimode/modes/normalvimode.cpp:1686
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Hex %3,  Octal %4"
 
-#: vimode/modes/normalvimode.cpp:2530
+#: vimode/modes/normalvimode.cpp:2529
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İşarələnməyib: %1"

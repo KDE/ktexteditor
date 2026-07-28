@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-21 00:40+0000\n"
+"POT-Creation-Date: 2026-07-28 00:41+0000\n"
 "PO-Revision-Date: 2021-09-09 21:34+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -2570,12 +2570,12 @@ msgstr "Vi: VISUEL LINJE"
 msgid "VI: REPLACE"
 msgstr "VI: ERSTAT"
 
-#: inputmode/kateviinputmode.cpp:146
+#: inputmode/kateviinputmode.cpp:148
 #, kde-format
 msgid "vi-mode"
 msgstr "vi-tilstand"
 
-#: inputmode/kateviinputmode.cpp:159
+#: inputmode/kateviinputmode.cpp:161
 #, kde-format
 msgid "recording"
 msgstr "optagelse"
@@ -6667,12 +6667,12 @@ msgstr ""
 msgid "Change dictionary"
 msgstr "Skift ordbog"
 
-#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:488
+#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:489
 #, kde-format
 msgid "Tab Width"
 msgstr "Tabulatorbredde"
 
-#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:503
+#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:504
 #, kde-format
 msgid "Indentation Width"
 msgstr "Indrykningsbredde"
@@ -6733,52 +6733,52 @@ msgstr "Syntaksfremhævning"
 msgid "Line/Column compact mode"
 msgstr ""
 
-#: view/katestatusbar.cpp:307
+#: view/katestatusbar.cpp:308
 #, kde-format
 msgid "[BLOCK] %1"
 msgstr "[BLOK] %1"
 
-#: view/katestatusbar.cpp:323
+#: view/katestatusbar.cpp:324
 #, kde-format
 msgid "%1/%2:%3"
 msgstr ""
 
-#: view/katestatusbar.cpp:325
+#: view/katestatusbar.cpp:326
 #, kde-format
 msgid "%1:%2"
 msgstr ""
 
-#: view/katestatusbar.cpp:329
+#: view/katestatusbar.cpp:330
 #, kde-format
 msgid "Line %1 of %2, Column %3"
 msgstr "Linje %1 af %2, kolonne %3"
 
-#: view/katestatusbar.cpp:331
+#: view/katestatusbar.cpp:332
 #, kde-format
 msgid "Line %1, Column %2"
 msgstr "Linje %1, kolonne %2"
 
-#: view/katestatusbar.cpp:405
+#: view/katestatusbar.cpp:406
 #, kde-format
 msgid "Soft Tabs: %1"
 msgstr "Bløde tabulatorer: %1"
 
-#: view/katestatusbar.cpp:406
+#: view/katestatusbar.cpp:407
 #, kde-format
 msgid "Soft Tabs: %1 (%2)"
 msgstr "Bløde tabulatorer: %1 (%2)"
 
-#: view/katestatusbar.cpp:407
+#: view/katestatusbar.cpp:408
 #, kde-format
 msgid "Tab Size: %1"
 msgstr "Tabulator-størrelse: %1"
 
-#: view/katestatusbar.cpp:408
+#: view/katestatusbar.cpp:409
 #, kde-format
 msgid "Indent/Tab: %1/%2"
 msgstr "Indrykning/Tab: %1/%2"
 
-#: view/katestatusbar.cpp:448 view/katestatusbar.cpp:474
+#: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
 #| msgctxt "Language Section"
 #| msgid "Other"
@@ -6786,24 +6786,24 @@ msgctxt "@item:inmenu"
 msgid "Other…"
 msgstr "Andet"
 
-#: view/katestatusbar.cpp:476
+#: view/katestatusbar.cpp:477
 #, kde-format
 msgid "Other (%1)"
 msgid_plural "Other (%1)"
 msgstr[0] "Andet (%1)"
 msgstr[1] "Andet (%1)"
 
-#: view/katestatusbar.cpp:488
+#: view/katestatusbar.cpp:489
 #, kde-format
 msgid "Please specify the wanted tab width:"
 msgstr "Angiv den ønskede tabulatorbredde:"
 
-#: view/katestatusbar.cpp:504
+#: view/katestatusbar.cpp:505
 #, kde-format
 msgid "Please specify the wanted indentation width:"
 msgstr "Angiv den ønskede indrykningsbredde:"
 
-#: view/katestatusbar.cpp:567
+#: view/katestatusbar.cpp:568
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6811,7 +6811,7 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr "Ord %1/%2, tegn %3/%4"
 
-#: view/katestatusbar.cpp:573
+#: view/katestatusbar.cpp:574
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
@@ -6821,7 +6821,7 @@ msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
 msgstr "Ord %1/%2, tegn %3/%4"
 
-#: view/katestatusbar.cpp:588
+#: view/katestatusbar.cpp:589
 #, kde-format
 msgid "Zoom: %1%"
 msgstr "Zoom: %1%"
@@ -8708,17 +8708,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Der er ikke flere tegn til det næste bogmærke."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3563
+#: vimode/modes/normalvimode.cpp:3562
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Intet i registret %1"
 
-#: vimode/modes/normalvimode.cpp:1687
+#: vimode/modes/normalvimode.cpp:1686
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "\"%1\" %2,  hex %3,  oktalt %4"
 
-#: vimode/modes/normalvimode.cpp:2530
+#: vimode/modes/normalvimode.cpp:2529
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Mærke ikke sat: %1"

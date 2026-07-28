@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-21 00:40+0000\n"
+"POT-Creation-Date: 2026-07-28 00:41+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -2603,12 +2603,12 @@ msgid "VI: REPLACE"
 msgstr "⁠Ви: ЗАМЈЕНА"
 
 # >> @item
-#: inputmode/kateviinputmode.cpp:146
+#: inputmode/kateviinputmode.cpp:148
 #, kde-format
 msgid "vi-mode"
 msgstr "Вијев режим"
 
-#: inputmode/kateviinputmode.cpp:159
+#: inputmode/kateviinputmode.cpp:161
 #, kde-format
 msgid "recording"
 msgstr "снимање"
@@ -6812,12 +6812,12 @@ msgstr "Показатељ режима уметања и Вијевог реж�
 msgid "Change dictionary"
 msgstr "Промијени рјечник..."
 
-#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:488
+#: view/katestatusbar.cpp:161 view/katestatusbar.cpp:489
 #, kde-format
 msgid "Tab Width"
 msgstr "Ширина табулатора"
 
-#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:503
+#: view/katestatusbar.cpp:169 view/katestatusbar.cpp:504
 #, kde-format
 msgid "Indentation Width"
 msgstr "Дубина увлачења"
@@ -6881,54 +6881,54 @@ msgstr "Истицање синтаксе"
 msgid "Line/Column compact mode"
 msgstr ""
 
-#: view/katestatusbar.cpp:307
+#: view/katestatusbar.cpp:308
 #, fuzzy, kde-format
 #| msgid "<em>[BLOCK]</em> %1"
 msgid "[BLOCK] %1"
 msgstr "<em>[БЛОК]</em> %1"
 
-#: view/katestatusbar.cpp:323
+#: view/katestatusbar.cpp:324
 #, kde-format
 msgid "%1/%2:%3"
 msgstr ""
 
-#: view/katestatusbar.cpp:325
+#: view/katestatusbar.cpp:326
 #, kde-format
 msgid "%1:%2"
 msgstr ""
 
-#: view/katestatusbar.cpp:329
+#: view/katestatusbar.cpp:330
 #, fuzzy, kde-format
 #| msgid "Line %1, Column %2"
 msgid "Line %1 of %2, Column %3"
 msgstr "ред %1, колона %2"
 
-#: view/katestatusbar.cpp:331
+#: view/katestatusbar.cpp:332
 #, kde-format
 msgid "Line %1, Column %2"
 msgstr "ред %1, колона %2"
 
-#: view/katestatusbar.cpp:405
+#: view/katestatusbar.cpp:406
 #, kde-format
 msgid "Soft Tabs: %1"
 msgstr "Меки табулатори: %1"
 
-#: view/katestatusbar.cpp:406
+#: view/katestatusbar.cpp:407
 #, kde-format
 msgid "Soft Tabs: %1 (%2)"
 msgstr "Меки табулатори: %1 (%2)"
 
-#: view/katestatusbar.cpp:407
+#: view/katestatusbar.cpp:408
 #, kde-format
 msgid "Tab Size: %1"
 msgstr "Величина табулатора: %1"
 
-#: view/katestatusbar.cpp:408
+#: view/katestatusbar.cpp:409
 #, kde-format
 msgid "Indent/Tab: %1/%2"
 msgstr "Увлачење/табулатор: %1/%2"
 
-#: view/katestatusbar.cpp:448 view/katestatusbar.cpp:474
+#: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
 #| msgctxt "@item:intable Text context"
 #| msgid "Others"
@@ -6936,7 +6936,7 @@ msgctxt "@item:inmenu"
 msgid "Other…"
 msgstr "друго"
 
-#: view/katestatusbar.cpp:476
+#: view/katestatusbar.cpp:477
 #, kde-format
 msgid "Other (%1)"
 msgid_plural "Other (%1)"
@@ -6945,18 +6945,18 @@ msgstr[1] "Други (%1)"
 msgstr[2] "Други (%1)"
 msgstr[3] "Други (%1)"
 
-#: view/katestatusbar.cpp:488
+#: view/katestatusbar.cpp:489
 #, kde-format
 msgid "Please specify the wanted tab width:"
 msgstr "Задајте жељену ширину табулатора:"
 
-#: view/katestatusbar.cpp:504
+#: view/katestatusbar.cpp:505
 #, kde-format
 msgid "Please specify the wanted indentation width:"
 msgstr "Задајте жељену дубину увлачења:"
 
 # >> @info:status
-#: view/katestatusbar.cpp:567
+#: view/katestatusbar.cpp:568
 #, fuzzy, kde-format
 #| msgid "Words %1/%2, Chars %3/%4"
 msgctxt ""
@@ -6966,14 +6966,14 @@ msgid "Words %1/%2, Chars %3/%4"
 msgstr "речи %1/%2, знакова %3/%4"
 
 # >> @info:status
-#: view/katestatusbar.cpp:573
+#: view/katestatusbar.cpp:574
 #, fuzzy, kde-format
 #| msgid "Words %1/%2, Chars %3/%4"
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
 msgstr "речи %1/%2, знакова %3/%4"
 
-#: view/katestatusbar.cpp:588
+#: view/katestatusbar.cpp:589
 #, kde-format
 msgid "Zoom: %1%"
 msgstr ""
@@ -8859,18 +8859,18 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Нема више знакова за сљедећи обиљеживач."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3563
+#: vimode/modes/normalvimode.cpp:3562
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Ничег у регистру %1"
 
 # well-spelled: хекс, окт
-#: vimode/modes/normalvimode.cpp:1687
+#: vimode/modes/normalvimode.cpp:1686
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  хекс %3, окт %4"
 
-#: vimode/modes/normalvimode.cpp:2530
+#: vimode/modes/normalvimode.cpp:2529
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Обиљежје није постављено: %1"
