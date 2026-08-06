@@ -4753,7 +4753,8 @@ msgid ""
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:264
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Code Folding"
 msgid "Code Folding"
 msgstr "Sklapanje koda"
 
@@ -6508,8 +6509,7 @@ msgid "Tabulators && Spaces"
 msgstr "Tabulatori"
 
 #: view/katestatusbar.cpp:182
-#, fuzzy, kde-format
-#| msgid "Tabulators"
+#, kde-format
 msgid "Tabulators"
 msgstr "Tabulatori"
 
@@ -7995,7 +7995,8 @@ msgid "Search wrapped"
 msgstr "&Traži"
 
 #: view/kateview.cpp:3052
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Open File"
 msgid "Open File"
 msgstr "Otvori datoteku"
 
@@ -8011,9 +8012,9 @@ msgid "Alignment pattern:"
 msgstr ""
 
 #: view/kateview.cpp:5079
-#, fuzzy, kde-format
+#, kde-format
 msgid "Export File as HTML"
-msgstr "Izvezi datoteku kao "
+msgstr "Izvezi datoteku kao HTML"
 
 #: view/kateviewhelpers.cpp:302 view/kateviewhelpers.cpp:351
 #: view/kateviewhelpers.cpp:1012
