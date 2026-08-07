@@ -54,6 +54,7 @@ Comment[az]=KWrite, Kate, KDevelop və s. proqramlarında mətnlər üzərində 
 Comment[bg]=Генерира KTextEditor C++ плъгин за извършване на специални текстови операции в KWrite, Kate, KDevelop и др.
 Comment[ca]=Genera un connector en C++ del KTextEditor per a portar a terme operacions especials amb el text al KWrite, Kate, KDevelop, etc.
 Comment[ca@valencia]=Genera un connector en C++ de KTextEditor per a portar a terme operacions especials amb el text a KWrite, Kate, KDevelop, etc.
+Comment[cs]=Vytvoří modul KTextEditor v jazyce C++, který umožňuje provádět speciální operace s textem v aplikacích KWrite, Kate, KDevelop atd.
 Comment[da]=Genererer en skabelon til et KTextEditor C++-plugin til at udføre særlige handlinger på tekst i KWrite, Kate, KDevelop osv.
 Comment[de]=Erstellt ein C++-KTextEditor-Module zur Ausführung spezieller Aufgaben an Texten in KWrite, Kate, KDevelop usw.
 Comment[el]=Παράγει ένα πρόσθετο KTextEditor C++ για την εκτέλεση ειδικών λειτουργιών σε κείμενο για τα KWrite, Kate, KDevelop κλπ.
