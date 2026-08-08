@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-28 00:41+0000\n"
-"PO-Revision-Date: 2026-08-06 23:01+0200\n"
+"PO-Revision-Date: 2026-08-07 21:04+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -163,7 +163,7 @@ msgstr "Hlavní panel nástrojů"
 #: dialogs/bordersappearanceconfigwidget.ui:25
 #, kde-format
 msgid "Code block folding:"
-msgstr "Skládání bloků kódu"
+msgstr "Skládání bloků kódu:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:32
@@ -285,8 +285,9 @@ msgid ""
 "<p>If this option is checked, every new view will show marks on the vertical "
 "scrollbar.</p><p>These marks will show bookmarks, for instance.</p>"
 msgstr ""
-"<p>Je-li zvolena tato volba, pak v každém novém pohledu bude svislý posuvník "
-"zobrazovat značky.</p><p>Tyto značky reprezentují například záložky.</p>"
+"<p>Je-li tato možnost zaškrtnuta, pak v každém novém pohledu bude svislý "
+"posuvník zobrazovat značky.</p><p>Tyto značky reprezentují například záložky."
+"</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:162
@@ -295,6 +296,8 @@ msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
 msgstr ""
+"<p>Je-li tato možnost zaškrtnuta, při najetí myší na svislý posuvník se "
+"zobrazí náhled textu.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:165
@@ -449,6 +452,9 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Stisknutím klávesy Enter se do editoru vloží text vybrané položky z nabídky "
+"doplňování. Pokud je tato funkce deaktivována, lze k vyvolání doplňování i "
+"nadále použít klávesu Tab nebo dvojité kliknutí."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
@@ -473,12 +479,14 @@ msgstr "Minimální délka doplňovaného slova:"
 #, kde-format
 msgid "Remove tail of a previous word when completion item chosen from a list"
 msgstr ""
+"Při výběru položky pro doplnění ze seznamu odstranit koncovku předchozího "
+"slova"
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
 #: dialogs/completionconfigtab.ui:114
 #, kde-format
 msgid "Remove tail on complete"
-msgstr ""
+msgstr "Po dokončení odstranit konec"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:121
@@ -557,12 +565,15 @@ msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
+"<p>Je-li tato možnost zaškrtnuta, v místě sloupce pro zalomení řádků, jak je "
+"definováno ve vlastnostech <strong>Úpravy</strong>, se nakreslí svislá čára."
+"</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
 #, kde-format
 msgid "&Draw vertical line at the word wrap column"
-msgstr "Na&kreslit svislou čáru v místě slupce pro zalomení slova"
+msgstr "Na&kreslit svislou čáru v místě sloupce pro zalomení slova"
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
@@ -605,6 +616,8 @@ msgid ""
 "When some text is selected these chars will be added on both its sides in a "
 "way \"Auto Bracket\" do"
 msgstr ""
+"Pokud je vybrán nějaký text, budou se tyto znaky přidávat na obou jeho "
+"stranách stejným způsobem jako u funkce \"Automatické závorky\""
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:143
@@ -648,7 +661,7 @@ msgstr "Max záznamů v historii schránky:"
 #: dialogs/editconfigwidget.ui:204
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
-msgstr ""
+msgstr "Tím se určuje počet položek, které se mají uchovat v historii schránky"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:226
@@ -664,13 +677,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "Zapnout oznámení o přístupnosti"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr "Zpřístupnění:"
+msgstr "Přístupnost:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -918,7 +931,7 @@ msgid ""
 "a multiple of the width specified in <b>Indentation width</b>."
 msgstr ""
 "Pokud je volba zakázána, změna úrovně odsazení zarovná řádek na násobek "
-"šířky zadané v poli <b>Šířka odsazení</b>"
+"šířky zadané v poli <b>Šířka odsazení</b>."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkKeepExtraSpaces)
 #: dialogs/indentationconfigwidget.ui:186
@@ -1115,12 +1128,12 @@ msgstr "Cmd"
 #: dialogs/katedialogs.cpp:420
 #, kde-format
 msgid "Cmd + Alt"
-msgstr ""
+msgstr "Cmd + Alt"
 
 #: dialogs/katedialogs.cpp:422
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr ""
+msgstr "Cmd + Ctrl"
 
 #: dialogs/katedialogs.cpp:480
 #, kde-format
@@ -1149,17 +1162,18 @@ msgstr "Zakázat vlastnost"
 #: dialogs/katedialogs.cpp:591
 #, kde-format
 msgid "May be handy with Markdown"
-msgstr ""
+msgstr "Může se hodit při práci s Markdownem"
 
 #: dialogs/katedialogs.cpp:593
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
+"Zrcadlové znaky, podobné, ale ne zcela shodné s automatickými závorkami"
 
 #: dialogs/katedialogs.cpp:595
 #, kde-format
 msgid "Non letter character"
-msgstr ""
+msgstr "Nealfabetický znak"
 
 #: dialogs/katedialogs.cpp:712
 #, kde-format
@@ -1198,6 +1212,9 @@ msgid ""
 "your work in the case of a system crash. Disabling swap files may cause data "
 "loss in case of a system crash."
 msgstr ""
+"%1 zálohuje neuložené soubory do \"swap souborů\". Swap soubory umožňují "
+"programu %1 obnovit vaši práci v případě selhání systému. Vypnutí swap "
+"souborů může v případě selhání systému vést ke ztrátě dat."
 
 #: dialogs/katedialogs.cpp:1027
 #, kde-format
@@ -1235,7 +1252,7 @@ msgstr "Čá&ra:"
 #: dialogs/katedialogs.cpp:1256
 #, kde-format
 msgid "Go to line number from clipboard"
-msgstr ""
+msgstr "Přejít na číslo řádku ze schránky"
 
 #: dialogs/katedialogs.cpp:1267
 #, kde-format
@@ -1245,7 +1262,7 @@ msgstr "Přejít na"
 #: dialogs/katedialogs.cpp:1347
 #, kde-format
 msgid "No valid line number found in clipboard"
-msgstr ""
+msgstr "Ve schránce nebylo nalezeno žádné platné číslo řádku"
 
 #: dialogs/katedialogs.cpp:1411
 #, kde-format
@@ -1263,6 +1280,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Stránka se od této chvíle bude automaticky znovu načítat bez upozornění na "
+"změny na disku, a to až do okamžiku, kdy zavřete kartu nebo okno."
 
 #: dialogs/katedialogs.cpp:1471
 #, kde-format
@@ -1272,7 +1291,7 @@ msgstr "Zobrazit roz&díl"
 #: dialogs/katedialogs.cpp:1473
 #, kde-format
 msgid "Shows a diff of the changes."
-msgstr ""
+msgstr "Zobrazí porovnání změn."
 
 #: dialogs/katedialogs.cpp:1478
 #, kde-format
@@ -1293,7 +1312,7 @@ msgstr "&Zavřít soubor"
 #: dialogs/katedialogs.cpp:1486
 #, kde-format
 msgid "Closes the file, discarding its content."
-msgstr ""
+msgstr "Zavře soubor a vymaže jeho obsah."
 
 #: dialogs/katedialogs.cpp:1490
 #, kde-format
@@ -1388,6 +1407,8 @@ msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
+"Určuje, zda se kurzor zastaví na velkých písmenech ve slovních spojeních a "
+"na podtržítkách uvnitř slova."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1395,6 +1416,8 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"Při posunu kurzoru po slovech se zastavovat na dílčích slovech typu "
+"'camelCase' a 'snake_case'"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -1464,18 +1487,21 @@ msgid ""
 "When selected, composed characters are removed with their diacritics instead "
 "of only removing the base character. This is useful for Indic locales."
 msgstr ""
+"Po výběru této možnosti se zadané znaky odstraní včetně diakritických "
+"znamének, nikoli pouze základní znak. Tato funkce je užitečná pro indické "
+"jazykové prostředí."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackspaceRemoveComposed)
 #: dialogs/navigationconfigwidget.ui:177
 #, kde-format
 msgid "Backspace key removes character’s base with its diacritics"
-msgstr ""
+msgstr "Klávesa Backspace odstraní základ znaku včetně diakritiky"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
 #: dialogs/navigationconfigwidget.ui:184
 #, kde-format
 msgid "Allow to cycle through bookmarks"
-msgstr ""
+msgstr "Umožnit přepínání mezi záložkami"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:194
@@ -1499,7 +1525,7 @@ msgstr "Automaticky opětovně načíst soubory ve správě verzí"
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Auto reload files on external changes"
-msgstr ""
+msgstr "Automatické načtení souborů při změnách na externím úložišti"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -1601,6 +1627,8 @@ msgstr "s"
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr ""
+"Tento řetězec se nachází v souboru katedialogs.cpp v konstruktoru "
+"KateSaveConfigTab."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
 #: dialogs/opensaveconfigadvwidget.ui:209
@@ -1612,7 +1640,7 @@ msgstr "Dodržet nastavení v souboru .editorconfig"
 #: dialogs/opensaveconfigadvwidget.ui:229
 #, kde-format
 msgid "Use first line of untitled documents for document name"
-msgstr ""
+msgstr "Jako název dokumentu použít první řádek dokumentů bez názvu"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -1651,7 +1679,7 @@ msgid ""
 "in the open/save dialog, nor the encoding specified on command line match "
 "the content of the file, this detection will be run."
 msgstr ""
-"Pokud obsahu souboru neodpovídá kódování zadané jako standardní, ani v "
+"pokud obsahu souboru neodpovídá kódování zadané jako standardní, ani v "
 "dialogu otevřít/uložit soubor nebo zadanému jako parametr příkazové řádky, "
 "bude použita tato detekce."
 
@@ -1765,6 +1793,8 @@ msgid ""
 "Depending on the choice, trailing spaces are removed when saving a document, "
 "either in the entire document or only of modified lines."
 msgstr ""
+"V závislosti na zvolené možnosti se při ukládání dokumentu odstraní mezery "
+"na konci řádků, a to buď v celém dokumentu, nebo pouze v upravených řádcích."
 
 #. i18n: ectx: property (text), widget (QLabel, lblRemoveTrailingSpaces)
 #: dialogs/opensaveconfigwidget.ui:179
@@ -1902,7 +1932,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:93
 #, kde-format
 msgid "Show whitespace indicators:"
-msgstr "Zobrazit ukazatele mezer"
+msgstr "Zobrazit ukazatele mezer:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:109
@@ -1967,6 +1997,8 @@ msgstr "Zvýraznit rozsah mezi zvolenými závorkami"
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr ""
+"Zobrazit odpovídající otevřenou závorku a přilehlé řádky, aby byl zřejmý "
+"kontext"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:222
@@ -1977,6 +2009,10 @@ msgid ""
 "bracket, especially in long function/class declarations and deeply nested if "
 "blocks"
 msgstr ""
+"Je-li tato funkce zapnutá, zobrazí se náhled řádků v blízkosti odpovídající "
+"otevřené závorky. To může pomoci při rychlém určení kontextu zavírací "
+"závorky, zejména v dlouhých deklaracích funkcí či tříd a v hluboce vnořených "
+"blocích if"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:225
@@ -1996,6 +2032,7 @@ msgstr "Zvýraznit odpovídající závorky"
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
 msgstr ""
+"Je-li tato funkce zapnutá, párové závorky se pro lepší viditelnost animují."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:238
@@ -2038,7 +2075,7 @@ msgstr "Zobrazit počet řádek"
 #: dialogs/textareaappearanceconfigwidget.ui:304
 #, kde-format
 msgid "Fold first line:"
-msgstr "Skládat první řádek:"
+msgstr "Sbalit první řádek:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2049,6 +2086,10 @@ msgid ""
 "helpful to hide license headers which are commonly placed at the\n"
 "beginning of a file."
 msgstr ""
+"Je-li toto nastavení zapnuto, editor automaticky sbalí\n"
+"bloky komentářů, které začínají na prvním řádku dokumentu. To je\n"
+"užitečné pro skrytí licenčních záhlaví, která se obvykle umisťují na\n"
+"začátek souboru."
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
 #: dialogs/textareaappearanceconfigwidget.ui:337
@@ -2148,7 +2189,7 @@ msgstr "Automaticky znovu načíst dokument"
 #: document/katedocument.cpp:225
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
-msgstr ""
+msgstr "Automatické obnovení dokumentu po jeho změně na disku"
 
 #: document/katedocument.cpp:2307
 #, kde-format
@@ -2205,7 +2246,7 @@ msgstr ""
 #: document/katedocument.cpp:2475
 #, kde-format
 msgid "Temporarily raise limit and reload file"
-msgstr ""
+msgstr "Dočasně zvýšit limit a znovu načíst soubor"
 
 #: document/katedocument.cpp:2478
 #, kde-format
@@ -2352,6 +2393,10 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
+"Používá se zastaralý modeline 'remove-trailing-space'. Nahraďte jej prosím "
+"výrazem 'remove-trailing-spaces modified;', viz https://docs.kde.org/?"
+"application=katepart&branch=stable5&path=config-variables.html#variable-"
+"remove-trailing-spaces"
 
 #: document/katedocument.cpp:5382
 #, kde-format
@@ -2361,11 +2406,15 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
+"Používá se zastaralý modeline 'replace-trailing-space-save'. Nahraďte jej "
+"prosím výrazem 'remove-trailing-spaces all;', viz https://docs.kde.org/?"
+"application=katepart&branch=stable5&path=config-variables.html#variable-"
+"remove-trailing-spaces"
 
 #: document/katedocument.cpp:5696
 #, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr ""
+msgstr "Soubor '%1' byl změněn na disku."
 
 #: document/katedocument.cpp:5698
 #, kde-format
@@ -2389,12 +2438,12 @@ msgstr "Uzavřít dokument"
 #: document/katedocument.cpp:6148
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
-msgstr ""
+msgstr "Soubor <a href=\"%1\">%2</a> se stále načítá."
 
 #: document/katedocument.cpp:6153
 #, kde-format
 msgid "&Abort Loading"
-msgstr ""
+msgstr "&Zastavit načítání"
 
 #: inputmode/katenormalinputmode.cpp:74
 #, kde-format
@@ -2446,7 +2495,7 @@ msgstr "VI: NAHRAZOVÁNÍ"
 #: inputmode/kateviinputmode.cpp:148
 #, kde-format
 msgid "vi-mode"
-msgstr "Režim Vi"
+msgstr "režim Vi"
 
 #: inputmode/kateviinputmode.cpp:161
 #, kde-format
@@ -2512,6 +2561,8 @@ msgid ""
 "Search for syntax highlighting modes by language name or file extension (for "
 "example, C++ or .cpp)"
 msgstr ""
+"Hledat režimy zvýraznění syntaxe podle názvu jazyka nebo přípony souboru "
+"(například C++ nebo .cpp)"
 
 #: mode/katemodemenulist.cpp:560
 #, kde-format
@@ -2555,7 +2606,7 @@ msgstr "Tisknout vysvět&livky"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Netisknout složený kód"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -2671,7 +2722,7 @@ msgstr "Přidat zástupný symbol..."
 #: printing/printconfigwidgets.cpp:354
 #, kde-format
 msgid "Current User Name"
-msgstr "Jméno současného uživatele:"
+msgstr "Jméno současného uživatele"
 
 #: printing/printconfigwidgets.cpp:356
 #, kde-format
@@ -2806,7 +2857,7 @@ msgstr "Barva čáry použité pro rám"
 #: printing/printpainter.cpp:269
 #, kde-format
 msgid "(Selection of) "
-msgstr "(Výběr z)"
+msgstr "(Výběr z) "
 
 #: printing/printpainter.cpp:522
 #, kde-format
@@ -2837,7 +2888,7 @@ msgstr "Rozbalit zkratku"
 #, kde-format
 msgctxt "Script command category"
 msgid "Emmet"
-msgstr ""
+msgstr "Emmet"
 
 #: script/data/commands/emmet.js:13
 #, kde-format
@@ -2855,13 +2906,13 @@ msgstr "Přesunout kurzor na odpovídající značku"
 #, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
-msgstr ""
+msgstr "Vybrat obsah HTML/XML tagů směrem dovnitř"
 
 #: script/data/commands/emmet.js:26
 #, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
-msgstr ""
+msgstr "Vybrat obsah HTML/XML tagů směrem ven"
 
 #: script/data/commands/emmet.js:30
 #, kde-format
@@ -2873,25 +2924,25 @@ msgstr "Přepnout komentář"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
-msgstr ""
+msgstr "Přejít na další bod úprav"
 
 #: script/data/commands/emmet.js:38
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
-msgstr ""
+msgstr "Přejít na předchozí bod úprav"
 
 #: script/data/commands/emmet.js:42
 #, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
-msgstr ""
+msgstr "Vybrat další bod úprav"
 
 #: script/data/commands/emmet.js:46
 #, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
-msgstr ""
+msgstr "Vybrat předchozí bod úprav"
 
 #: script/data/commands/emmet.js:50
 #, kde-format
@@ -2909,43 +2960,43 @@ msgstr "Rozdělit nebo spojit značku"
 #, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
-msgstr ""
+msgstr "Vypočítat jednoduchý matematický výraz"
 
 #: script/data/commands/emmet.js:62
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
-msgstr ""
+msgstr "Snížit číslo o 1"
 
 #: script/data/commands/emmet.js:66
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
-msgstr ""
+msgstr "Snížit číslo o 10"
 
 #: script/data/commands/emmet.js:70
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
-msgstr ""
+msgstr "Snížit číslo o 0,1"
 
 #: script/data/commands/emmet.js:74
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
-msgstr ""
+msgstr "Zvýšit číslo o 1"
 
 #: script/data/commands/emmet.js:78
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
-msgstr ""
+msgstr "Zvýšit číslo o 10"
 
 #: script/data/commands/emmet.js:82
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
-msgstr ""
+msgstr "Zvýšit číslo o 0,1"
 
 #: script/data/commands/emmet.js:96
 #, kde-format
@@ -2953,6 +3004,8 @@ msgid ""
 "Expands the abbreviation using Emmet expressions; see http://code.google.com/"
 "p/zen-coding/wiki/ZenHTMLSelectorsEn"
 msgstr ""
+"Rozšířit zkrácení pomocí výrazů Emmet; viz http://code.google.com/p/zen-"
+"coding/wiki/ZenHTMLSelectorsEn"
 
 #: script/data/commands/emmet.js:97
 #, kde-format
@@ -2960,48 +3013,53 @@ msgid ""
 "Wraps the selected text in XML tags constructed from the provided Emmet "
 "expression (defaults to div)."
 msgstr ""
+"Zabalit vybraný text do XML značek vytvořených na základě zadaného výrazu "
+"Emmet (výchozí hodnota je div)."
 
 #: script/data/commands/emmet.js:98
 #, kde-format
 msgid "Moves the caret to the current tag's pair"
-msgstr ""
+msgstr "Přesune kurzor na pár aktuální značky"
 
 #: script/data/commands/emmet.js:99
 #, kde-format
 msgid ""
 "Select contents of HTML/XML tag, moving inward on continuous invocations"
 msgstr ""
+"Vybrat obsah HTML/XML značky a při opakovaném volání postupovat směrem "
+"dovnitř"
 
 #: script/data/commands/emmet.js:100
 #, kde-format
 msgid ""
 "Select contents of HTML/XML tag, moving outwards on continuous invocations"
 msgstr ""
+"Vybrat obsah HTML/XML značky a při opakovaném volání postupovat směrem ven"
 
 #: script/data/commands/emmet.js:101
 #, kde-format
 msgid "Move to the next edit point (tag or empty attribute)."
-msgstr ""
+msgstr "Přejít na další editační bod (značku nebo prázdný atribut)."
 
 #: script/data/commands/emmet.js:102
 #, kde-format
 msgid "Move to the previous edit point (tag or empty attribute)."
-msgstr ""
+msgstr "Přejít na předchozí editační bod (značku nebo prázdný atribut)."
 
 #: script/data/commands/emmet.js:103
 #, kde-format
 msgid "Select next edit point (tag or empty attribute)."
-msgstr ""
+msgstr "Vybrat další editační bod (značku nebo prázdný atribut)."
 
 #: script/data/commands/emmet.js:104
 #, kde-format
 msgid "Select previous edit point (tag or empty attribute)."
-msgstr ""
+msgstr "Vybrat předchozí editační bod (značku nebo prázdný atribut)."
 
 #: script/data/commands/emmet.js:105
 #, kde-format
 msgid "Toggle comment of current tag or CSS selector"
-msgstr ""
+msgstr "Zobrazit/skrýt komentář k aktuální značce nebo selektoru CSS"
 
 #: script/data/commands/emmet.js:106
 #, kde-format
@@ -3016,43 +3074,43 @@ msgstr "Rozdělí nebo sloučí značku"
 #: script/data/commands/emmet.js:108
 #, kde-format
 msgid "Evaluates a simple math expression"
-msgstr ""
+msgstr "Vypočítá jednoduchý matematický výraz"
 
 #: script/data/commands/emmet.js:109
 #, kde-format
 msgid "Decrement number under cursor by 1"
-msgstr ""
+msgstr "Snížit hodnotu čísla pod kurzorem o 1"
 
 #: script/data/commands/emmet.js:110
 #, kde-format
 msgid "Decrement number under cursor by 10"
-msgstr ""
+msgstr "Snížit hodnotu čísla pod kurzorem o 10"
 
 #: script/data/commands/emmet.js:111
 #, kde-format
 msgid "Decrement number under cursor by 0.1"
-msgstr ""
+msgstr "Snížit hodnotu čísla pod kurzorem o 0,1"
 
 #: script/data/commands/emmet.js:112
 #, kde-format
 msgid "Increment number under cursor by 1"
-msgstr ""
+msgstr "Zvýšit hodnotu čísla pod kurzorem o 1"
 
 #: script/data/commands/emmet.js:113
 #, kde-format
 msgid "Increment number under cursor by 10"
-msgstr ""
+msgstr "Zvýšit hodnotu čísla pod kurzorem o 10"
 
 #: script/data/commands/emmet.js:114
 #, kde-format
 msgid "Increment number under cursor by 0.1"
-msgstr ""
+msgstr "Zvýšit hodnotu čísla pod kurzorem o 0,1"
 
 #: script/data/commands/jumpMatchingIndent.js:9
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
-msgstr ""
+msgstr "Přesunout kurzor na předchozí shodné odsazení"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
@@ -3068,39 +3126,39 @@ msgstr "Procházení"
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
-msgstr "Přejít na následující odpovídající odsazení"
+msgstr "Přesunout kurzor na další shodné odsazení"
 
 #: script/data/commands/jumpMatchingIndent.js:19
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr ""
+msgstr "Přesunout kurzor na další prázdný řádek"
 
 #: script/data/commands/jumpMatchingIndent.js:24
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr ""
+msgstr "Přesunout kurzor na předchozí prázdný řádek"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
 msgid "Move cursor to previous matching indent"
-msgstr "Přesunout kurzor na předchozí odpovídající odsazení"
+msgstr "Přesunout kurzor na předchozí shodné odsazení"
 
 #: script/data/commands/jumpMatchingIndent.js:83
 #, kde-format
 msgid "Move cursor to next matching indent"
-msgstr "Přejít na následující odpovídající odsazení"
+msgstr "Přesunout kurzor na další shodné odsazení"
 
 #: script/data/commands/jumpMatchingIndent.js:85
 #, kde-format
 msgid "Move cursor to next blank line"
-msgstr ""
+msgstr "Přesunout kurzor na další prázdný řádek"
 
 #: script/data/commands/jumpMatchingIndent.js:87
 #, kde-format
 msgid "Move cursor to previous blank line"
-msgstr ""
+msgstr "Přesunout kurzor na předchozí prázdný řádek"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
@@ -3200,7 +3258,7 @@ msgstr "Odstranit prázdné řádky"
 #: script/data/commands/utils.js:410
 #, kde-format
 msgid "Sort the selected text or whole document."
-msgstr "Setřídit vybraný text nebo celý dokument."
+msgstr "Seřadit vybraný text nebo celý dokument."
 
 #: script/data/commands/utils.js:412
 #, kde-format
@@ -3272,6 +3330,15 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
+"Tento příkaz zarovná řádky ve vybraném bloku nebo v celém dokumentu podle "
+"sloupce určeného regulárním výrazem zadaným jako argument.<br><br>Pokud "
+"zadáte prázdný vzor, provede se ve výchozím nastavení zarovnání podle "
+"prvního neprázdného znaku.<br>Pokud vzor obsahuje zachycenou část, provede "
+"se odsazení podle zachycené shody.<br><br><i>Příklady</i>:<br>'<code>alignon "
+"-</code>' vloží mezery před první znak '-' v každém řádku, aby byly všechny "
+"řádky zarovnány do stejného sloupce.<br>'<code>alignon :\\s+(.)</code>' "
+"vloží mezery před první neprázdný znak, který se vyskytuje za dvojtečkou, "
+"aby byly všechny řádky zarovnány do stejného sloupce."
 
 #: script/data/commands/utils.js:434
 #, kde-format
@@ -3335,11 +3402,13 @@ msgid ""
 "Encode special chars in a single line selection, so the result text can be "
 "used as URI."
 msgstr ""
+"Zakódovat speciální znaky ve výběru na jednom řádku, aby bylo možné výsledný "
+"text použít jako URI."
 
 #: script/data/commands/utils.js:448
 #, kde-format
 msgid "Reverse action of URI encode."
-msgstr ""
+msgstr "Zpětná akce kódování URI."
 
 #: script/data/commands/utils.js:450
 #, kde-format
@@ -3347,6 +3416,9 @@ msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
+"Vybrat text od aktuální pozice kurzoru až po první výskyt zadaného "
+"argumentu, který se nachází za touto pozicí (nebo ve výchozím nastavení až "
+"po konec aktuálního řádku)."
 
 #: script/data/commands/utils.js:452
 #, kde-format
@@ -3355,6 +3427,9 @@ msgid ""
 "the given argument before it (or the beginning of the current line by "
 "default)."
 msgstr ""
+"Vybrat text zpětně od aktuální pozice kurzoru až k poslednímu výskytu "
+"zadaného argumentu před touto pozicí (ve výchozím nastavení až k začátku "
+"aktuálního řádku)."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -3482,7 +3557,7 @@ msgstr "Nápověda pro příkaz '%1' není ve skriptu %2 obsažena"
 #: script/katescript.cpp:282
 #, kde-format
 msgid "Error loading script %1: %2"
-msgstr ""
+msgstr "Chyba při načítání skriptu %1: %2"
 
 #: script/katescriptmanager.cpp:319
 #, kde-format
@@ -3662,7 +3737,7 @@ msgstr "Mezery (kromě zalomení řádků)"
 #: search/katesearchbar.cpp:1215
 #, kde-format
 msgid "Non-whitespace"
-msgstr ""
+msgstr "Znaky jiné než mezery"
 
 #: search/katesearchbar.cpp:1216
 #, kde-format
@@ -3707,12 +3782,12 @@ msgstr "Záporný dopředný výrok"
 #: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "Fixed-length positive lookbehind"
-msgstr ""
+msgstr "Pozitivní zpětný pohled s pevnou délkou"
 
 #: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Fixed-length negative lookbehind"
-msgstr ""
+msgstr "Negativní zpětný pohled s pevnou délkou"
 
 #: search/katesearchbar.cpp:1238
 #, kde-format
@@ -4125,7 +4200,7 @@ msgstr "I&gnorovat vše"
 #, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Kontrola pravopisu (od kurzoru)..."
+msgstr "Kontrola pravopisu (od kurzoru)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4153,11 +4228,13 @@ msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
 "installed and in your PATH."
 msgstr ""
+"Příkaz diff nebyl nalezen. Ujistěte se prosím, že je nainstalován příkaz "
+"diff(1) a že je v proměnné PATH."
 
 #: swapfile/kateswapdiffcreator.cpp:98
 #, kde-format
 msgid "The diff command '%1' could not be started."
-msgstr ""
+msgstr "Příkaz diff '%1' se nepodařilo spustit."
 
 #: swapfile/kateswapfile.cpp:642
 #, kde-format
@@ -4272,12 +4349,12 @@ msgstr "Barva &pozadí výběru…"
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
 msgid "Unset Normal Color"
-msgstr ""
+msgstr "Zrušit normální barvu"
 
 #: syntax/katestyletreewidget.cpp:278
 #, kde-format
 msgid "Unset Selected Color"
-msgstr ""
+msgstr "Zrušit vybranou barvu"
 
 #: syntax/katestyletreewidget.cpp:284
 #, kde-format
@@ -4342,7 +4419,7 @@ msgstr "Proměnná"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Control Flow"
-msgstr ""
+msgstr "Řízení toku"
 
 #: syntax/katethemeconfig.cpp:57
 #, kde-format
@@ -4396,7 +4473,7 @@ msgstr "Řetězec"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Verbatim String"
-msgstr ""
+msgstr "Doslovný řetězec"
 
 #: syntax/katethemeconfig.cpp:76
 #, kde-format
@@ -4408,7 +4485,7 @@ msgstr "Speciální řetězec"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Imports, Modules, Includes"
-msgstr ""
+msgstr "Importy, moduly, zahrnutí"
 
 #: syntax/katethemeconfig.cpp:81
 #, kde-format
@@ -4621,6 +4698,8 @@ msgid ""
 "<p>This color will be used to draw the line between line numbers and the "
 "icon borders, if both are enabled.</p>"
 msgstr ""
+"<p>Tato barva se použije k vykreslení čáry mezi čísly řádků a okraji ikon, "
+"pokud jsou povoleny obě tyto funkce.</p>"
 
 #: syntax/katethemeconfig.cpp:254
 #, kde-format
@@ -4927,7 +5006,7 @@ msgstr "Zvýrazněné styly textu"
 #: syntax/katethemeconfig.cpp:1180
 #, kde-format
 msgid "Exporting color theme: %1"
-msgstr ""
+msgstr "Export barevného motivu: %1"
 
 #: syntax/katethemeconfig.cpp:1182 syntax/katethemeconfig.cpp:1203
 #, kde-format
@@ -4945,6 +5024,8 @@ msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
+"Importem dojde k přepsání stávajícího souboru šablony \"%1\". Tento úkon "
+"nelze vrátit zpět."
 
 #: syntax/katethemeconfig.cpp:1219
 #, kde-format
@@ -4959,7 +5040,7 @@ msgstr "Následovat barevné schéma systému"
 #: syntax/katethemeconfig.cpp:1375
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
-msgstr ""
+msgstr "Opravdu chcete odstranit motiv \"%1\"? Tuto akci nelze vrátit zpět."
 
 #: syntax/katethemeconfig.cpp:1377
 #, kde-format
@@ -4974,7 +5055,7 @@ msgstr "Kopírovat motiv"
 #: syntax/katethemeconfig.cpp:1420
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
-msgstr ""
+msgstr "Název kopie barevného motivu \"%1\":"
 
 #: syntax/katethemeconfig.cpp:1432
 #, kde-format
@@ -4982,6 +5063,7 @@ msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr ""
+"<p>Motiv \"%1\" již existuje.</p><p>Zvolte prosím jiný název motivu.</p>"
 
 #: syntax/katethemeconfig.cpp:1433
 #, kde-format
@@ -5008,7 +5090,7 @@ msgstr "Normální"
 #: utils/katebookmarks.cpp:49
 #, kde-format
 msgid "Toggle &Bookmark"
-msgstr ""
+msgstr "Přepnout &záložku"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -5065,12 +5147,13 @@ msgstr "&Předchozí: %1 - \"%2\""
 #: utils/katecmds.cpp:53
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
-msgstr ""
+msgstr "<p>indent</p><p>Odsadí vybrané řádky nebo aktuální řádek</p>"
 
 #: utils/katecmds.cpp:58
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr ""
+"<p>unindent</p><p>Zruší odsazení vybraných řádků nebo aktuálního řádku.</p>"
 
 #: utils/katecmds.cpp:63
 #, kde-format
@@ -5078,6 +5161,8 @@ msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
 "current line according to the indentation settings in the document. </p>"
 msgstr ""
+"<p>cleanindent</p><p>Vymaže odsazení vybraných řádků nebo aktuálního řádku "
+"podle nastavení odsazení v dokumentu. </p>"
 
 #: utils/katecmds.cpp:68
 #, kde-format
@@ -5086,6 +5171,9 @@ msgid ""
 "lines or current line a comment according to the text format as defined by "
 "the syntax highlight definition for the document.</p>"
 msgstr ""
+"<p>comment</p><p>Vloží značky komentáře, aby se výběr, vybrané řádky nebo "
+"aktuální řádek staly komentářem v souladu s formátem textu definovaným v "
+"nastavení zvýraznění syntaxe pro daný dokument.</p>"
 
 #: utils/katecmds.cpp:74
 #, kde-format
@@ -5760,13 +5848,13 @@ msgstr "Všem přispěvatelům o kterých jsem se zapomněl zmínit"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Lukáš Tinkl, Miroslav Flídr,Klára Cihlářová"
+msgstr "Lukáš Tinkl,Miroslav Flídr,Klára Cihlářová,Libor Filípek"
 
 #: utils/kateglobal.cpp:131
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "lukas@kde.org, flidr@kky.zcu.cz,koty@seznam.cz"
+msgstr "lukas@kde.org,flidr@kky.zcu.cz,koty@seznam.cz,libor.filipek@gmail.com"
 
 #: utils/kateglobal.cpp:255
 #, kde-format
@@ -6026,7 +6114,7 @@ msgstr "Zobrazit seznam platných proměnných."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
-msgstr "Povolit automatické vkládání závorek"
+msgstr "Povolit automatické vkládání závorek."
 
 #: variableeditor/variablelineedit.cpp:121
 #, kde-format
@@ -6207,7 +6295,7 @@ msgstr "Odstranit koncové mezery při ukládání dokumentu."
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
-msgstr "Zobrazovat minimapu posuvníku"
+msgstr "Zobrazovat minimapu posuvníku."
 
 #: variableeditor/variablelineedit.cpp:290
 #, kde-format
@@ -6372,7 +6460,7 @@ msgstr "%1:%2"
 #: view/katestatusbar.cpp:330
 #, kde-format
 msgid "Line %1 of %2, Column %3"
-msgstr "Řádek %1 z %2, Sloupec %3 "
+msgstr "Řádek %1 z %2, Sloupec %3"
 
 #: view/katestatusbar.cpp:332
 #, kde-format
@@ -6558,12 +6646,12 @@ msgstr ""
 #: view/kateview.cpp:510
 #, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "Převést odsazení na mezery."
+msgstr "Převést odsazení na mezery"
 
 #: view/kateview.cpp:517
 #, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "Převést odsazení na Tabulátory."
+msgstr "Převést odsazení na tabulátory"
 
 #: view/kateview.cpp:532
 #, kde-format
