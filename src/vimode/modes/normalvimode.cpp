@@ -636,12 +636,13 @@ bool NormalViMode::commandToOtherEnd()
 
 bool NormalViMode::commandToOtherEndColumn()
 {
-    if (m_viInputModeManager->isAnyVisualMode()) {
-        m_viInputModeManager->getViVisualMode()->switchStartEnd(true);
+    // This command variant only applies to visual block mode
+    if (m_viInputModeManager->getCurrentViMode() == VisualBlockMode) {
+        m_viInputModeManager->getViVisualMode()->switchStartEndColumn();
         return true;
     }
 
-    return false;
+    return commandToOtherEnd();
 }
 
 bool NormalViMode::commandEnterReplaceMode()

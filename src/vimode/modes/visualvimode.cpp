@@ -180,19 +180,21 @@ void VisualViMode::setVisualModeType(ViMode mode)
     m_mode = mode;
 }
 
-void VisualViMode::switchStartEnd(bool swapOnlyColumn)
+void VisualViMode::switchStartEnd()
 {
-    KTextEditor::Cursor c = m_view->cursorPosition();
-
-    c.setColumn(m_start.column());
-    m_start.setColumn(m_view->cursorPosition().column());
-
-    if (!swapOnlyColumn || m_mode != ViMode::VisualBlockMode) {
-        c.setLine(m_start.line());
-        m_start.setLine(m_view->cursorPosition().line());
-    }
+    KTextEditor::Cursor c = m_start;
+    m_start = m_view->cursorPosition();
 
     updateCursor(c);
+
+    m_stickyColumn = -1;
+}
+
+void VisualViMode::switchStartEndColumn()
+{
+    Range r = swapRangeColumns(Range(m_start, m_view->cursorPosition(), InclusiveMotion));
+    m_start = KTextEditor::Cursor(r.start());
+    updateCursor(r.end());
 
     m_stickyColumn = -1;
 }

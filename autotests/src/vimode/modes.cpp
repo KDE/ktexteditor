@@ -1328,11 +1328,13 @@ void ModesTest::VisualCommandsTests()
     DoTest("foo\nbar", "jvllokld", "f");
     DoTest("12\n12", "\\ctrl-vjlold", "1\n1");
     DoTest("123\n456\n789", "\\ctrl-v2j2lojld", "123\n4\n7");
+    DoTest("\t\t123\n\t        456\n                789", "w\\ctrl-v2j2lojld", "\t\t123\n\t        4\n                7");
 
     // Testing "O"
     DoTest("foobar", "lv2lO2ld", "fooar");
     DoTest("foo\nbar", "jvllOkld", "f");
     DoTest("123\n456\n789", "\\ctrl-v2j2lOkld", "1\n4\n789");
+    DoTest("\t\t123\n\t        456\n                789", "w\\ctrl-v2j2lOkld", "\t\t1\n\t        4\n                789");
 
     // Testing "~"
     DoTest("foobar", "lv2l~", "fOOBar");
