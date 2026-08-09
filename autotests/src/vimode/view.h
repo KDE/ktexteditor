@@ -27,6 +27,7 @@ private Q_SLOTS:
 
 private:
     QList<Kate::TextRange *> rangesOnFirstLine();
+    QList<Kate::TextRange *> rangesOnFirstLines(int numLines);
 };
 
 #endif /* VIEW_TEST_H */

@@ -53,6 +53,24 @@ void ViewTest::yankHighlightingTests()
     }
     FinishTest("foom bar xyz");
 
+    // A yank range block get converted into per-line ranges
+    BeginTest(QStringLiteral("\t\tfoo\n                bar\n\t        xyz"));
+    TestPressKey(QStringLiteral("w\\ctrl-ve2jY"));
+    {
+        const QList<Kate::TextRange *> rangesAfterYank = rangesOnFirstLines(3);
+        qDebug() << "Ranges after yank:" << rangesAfterYank;
+        QCOMPARE(rangesAfterYank.size(), rangesInitial.size() + 3);
+        const auto expectedColumn = std::array<int, 3>{2, 16, 9};
+        for (int line = 0; line < 3; line++) {
+            QCOMPARE(rangesAfterYank.at(line)->attribute()->background().color(), yankHighlightColour);
+            QCOMPARE(rangesAfterYank.at(line)->start().line(), line);
+            QCOMPARE(rangesAfterYank.at(line)->start().column(), expectedColumn[line]);
+            QCOMPARE(rangesAfterYank.at(line)->end().line(), line);
+            QCOMPARE(rangesAfterYank.at(line)->end().column(), expectedColumn[line] + 3);
+        }
+    }
+    FinishTest("\t\tfoo\n                bar\n\t        xyz");
+
     // Unhighlight on keypress.
     DoTest("foo bar xyz", "yiww", "foo bar xyz");
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
@@ -365,6 +383,15 @@ void ViewTest::clipboardTests()
 QList<Kate::TextRange *> ViewTest::rangesOnFirstLine()
 {
     return kate_document->buffer().rangesForLine(0, kate_view, true);
+}
+
+QList<Kate::TextRange *> ViewTest::rangesOnFirstLines(int numLines)
+{
+    QList<Kate::TextRange *> ranges;
+    for (int i = 0; i < numLines; ++i) {
+        ranges << kate_document->buffer().rangesForLine(i, kate_view, true);
+    }
+    return ranges;
 }
 
 #include "moc_view.cpp"

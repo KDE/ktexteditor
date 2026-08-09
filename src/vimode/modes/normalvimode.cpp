@@ -1188,7 +1188,7 @@ bool NormalViMode::commandYankLine()
     }
 
     Range yankRange(linenum, 0, linenum + getCount() - 1, getLine(linenum + getCount() - 1).length(), InclusiveMotion);
-    highlightYank(yankRange);
+    highlightYank(yankRange, LineWise);
 
     QChar chosen_register = getChosenRegister(ZeroRegister);
     fillRegister(chosen_register, lines, LineWise);
@@ -1230,7 +1230,7 @@ bool NormalViMode::commandYankToEOL()
 
     const QString &yankedText = getRange(m_commandRange, m);
     m_commandRange.motionType = motion;
-    highlightYank(m_commandRange);
+    highlightYank(m_commandRange, m);
 
     QChar chosen_register = getChosenRegister(ZeroRegister);
     fillRegister(chosen_register, yankedText, m);
@@ -3789,8 +3789,10 @@ void NormalViMode::highlightYank(const Range &range, const OperationMode mode)
     // current MovingRange doesn't support block mode selection so split the
     // block range into per-line ranges
     if (mode == Block) {
+        const int vStartColumn = doc()->toVirtualColumn(range.startLine, range.startColumn);
+        const int vEndColumn = doc()->toVirtualColumn(range.endLine, range.endColumn);
         for (int i = range.startLine; i <= range.endLine; i++) {
-            addHighlightYank(KTextEditor::Range(i, range.startColumn, i, range.endColumn));
+            addHighlightYank(KTextEditor::Range(i, doc()->fromVirtualColumn(i, vStartColumn), i, doc()->fromVirtualColumn(i, vEndColumn)));
         }
     } else {
         addHighlightYank(KTextEditor::Range(range.startLine, range.startColumn, range.endLine, range.endColumn));
