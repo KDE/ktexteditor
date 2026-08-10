@@ -98,6 +98,8 @@ protected:
     static const QChar getCharAtVirtualColumn(const QString &line, int virtualColumn, int tabWidht);
     static KTextEditor::Cursor cursorPosAtEndOfPaste(const KTextEditor::Cursor pasteLocation, const QString &pastedText, bool isBlock);
 
+    Range swapRangeColumns(const Range &r) const;
+
     void addToNumberUnderCursor(int count);
 
     Range goLineUp();

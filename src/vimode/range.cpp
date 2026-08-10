@@ -72,6 +72,16 @@ KTextEditor::Range Range::toEditorRange() const
     return KTextEditor::Range(startLine, startColumn, endLine, endColumn);
 }
 
+KTextEditor::Cursor Range::start() const
+{
+    return KTextEditor::Cursor(startLine, startColumn);
+}
+
+KTextEditor::Cursor Range::end() const
+{
+    return KTextEditor::Cursor(endLine, endColumn);
+}
+
 Range Range::invalid()
 {
     Range r;

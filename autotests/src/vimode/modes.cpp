@@ -1252,6 +1252,10 @@ void ModesTest::VisualMotionsTests()
     // ctrl-left and ctrl-right
     DoTest("foo bar xyz", "v\\ctrl-\\rightd", "ar xyz");
     DoTest("foo bar xyz", "$v\\ctrl-\\leftd", "foo bar ");
+
+    // Block motions on lines with tabs
+    DoTest("\t        foo\n\t\tbar\n                xyz", "wl\\ctrl-ve2jd", "\t        f\n\t\tb\n                x");
+    DoTest("\t        foo\n\t\tbar\n                xyz", "wl2j\\ctrl-ve2kd", "\t        f\n\t\tb\n                x");
 }
 
 void ModesTest::VisualCommandsTests()

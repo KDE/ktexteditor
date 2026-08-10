@@ -1130,6 +1130,17 @@ const QChar ModeBase::getCharAtVirtualColumn(const QString &line, int virtualCol
     return QChar::Null;
 }
 
+Range ModeBase::swapRangeColumns(const Range &r) const
+{
+    const int vStartColumn = doc()->toVirtualColumn(r.start());
+    const int vEndColumn = doc()->toVirtualColumn(r.end());
+
+    Range swapped = r;
+    swapped.startColumn = doc()->fromVirtualColumn(r.startLine, vEndColumn);
+    swapped.endColumn = doc()->fromVirtualColumn(r.endLine, vStartColumn);
+    return swapped;
+}
+
 void ModeBase::addToNumberUnderCursor(int count)
 {
     KTextEditor::Cursor c(m_view->cursorPosition());

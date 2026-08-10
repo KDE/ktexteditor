@@ -50,6 +50,18 @@ public:
     KTextEditor::Range toEditorRange() const;
 
     /**
+     * @returns a cursor with the start corner of the range
+     *
+     */
+    KTextEditor::Cursor start() const;
+
+    /**
+     * @returns a cursor with the end corner of the range
+     *
+     */
+    KTextEditor::Cursor end() const;
+
+    /**
      * Writes this KateViRange to the debug output in a nicely formatted way.
      */
     friend QDebug operator<<(QDebug s, const Range &range);

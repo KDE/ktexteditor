@@ -38,7 +38,7 @@ void VisualViMode::selectInclusive(const KTextEditor::Cursor c1, const KTextEdit
 
 void VisualViMode::selectBlockInclusive(const KTextEditor::Cursor c1, const KTextEditor::Cursor c2)
 {
-    if (c1.column() >= c2.column()) {
+    if (doc()->toVirtualColumn(c1) >= doc()->toVirtualColumn(c2)) {
         m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1, c2.line(), c2.column()));
     } else {
         m_view->setSelection(KTextEditor::Range(c1.line(), c1.column(), c2.line(), c2.column() + 1));
@@ -95,8 +95,8 @@ void VisualViMode::updateViewSelection()
     if (isVisualBlock()) {
         selectBlockInclusive(m_start, c);
         // Need to correct command range to make it inclusive.
-        if ((c.line() < m_start.line()) != (c.column() < m_start.column())) {
-            qSwap(m_commandRange.endColumn, m_commandRange.startColumn);
+        if ((c.line() < m_start.line()) != (doc()->toVirtualColumn(c) < doc()->toVirtualColumn(m_start))) {
+            m_commandRange = swapRangeColumns(m_commandRange);
         }
     } else if (isVisualLine()) {
         selectLines(KTextEditor::Range(m_start, c));
