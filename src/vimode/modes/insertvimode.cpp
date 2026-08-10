@@ -483,60 +483,12 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
 void InsertViMode::leaveInsertMode(bool force)
 {
     m_view->abortCompletion();
+
     if (!force) {
-        if (m_blockInsert != None) { // block append/prepend
-
-            // make sure cursor haven't been moved
-            if (m_blockRange.startLine == m_view->cursorPosition().line()) {
-                int start;
-                int vStart;
-                int len;
-                QString added;
-                KTextEditor::Cursor c;
-
-                switch (m_blockInsert) {
-                case Append:
-                case Prepend:
-                    if (m_blockInsert == Append) {
-                        start = m_blockRange.endColumn + 1;
-                    } else {
-                        start = m_blockRange.startColumn;
-                    }
-
-                    len = m_view->cursorPosition().column() - start;
-                    added = getLine().mid(start, len);
-
-                    c = KTextEditor::Cursor(m_blockRange.startLine, start);
-                    vStart = doc()->toVirtualColumn(c);
-
-                    for (int i = m_blockRange.startLine + 1; i <= m_blockRange.endLine; i++) {
-                        c.setLine(i);
-                        c.setColumn(doc()->fromVirtualColumn(i, vStart));
-                        doc()->insertText(c, added);
-                    }
-                    break;
-                case AppendEOL:
-                    start = m_eolPos;
-                    len = m_view->cursorPosition().column() - start;
-                    added = getLine().mid(start, len);
-
-                    c = KTextEditor::Cursor(m_blockRange.startLine, start);
-                    for (int i = m_blockRange.startLine + 1; i <= m_blockRange.endLine; i++) {
-                        c.setLine(i);
-                        c.setColumn(doc()->lineLength(i));
-                        doc()->insertText(c, added);
-                    }
-                    break;
-                default:
-                    error(QStringLiteral("not supported"));
-                }
-            }
-
-            m_blockInsert = None;
-        } else {
-            const QString added = doc()->text(KTextEditor::Range(m_viInputModeManager->marks()->getStartEditYanked(), m_view->cursorPosition()));
-
+        if (m_blockInsert == None) {
+            // Check for count repeating insert
             if (m_count > 1) {
+                const QString added = doc()->text(KTextEditor::Range(m_viInputModeManager->marks()->getStartEditYanked(), m_view->cursorPosition()));
                 for (unsigned int i = 0; i < m_count - 1; i++) {
                     if (m_countedRepeatsBeginOnNewLine) {
                         doc()->newLine(m_view);
@@ -544,9 +496,27 @@ void InsertViMode::leaveInsertMode(bool force)
                     doc()->insertText(m_view->cursorPosition(), added);
                 }
             }
+        } else if (m_blockRange.startLine == m_view->cursorPosition().line()) {
+            // Block insert. Make sure cursor hasn't been moved
+            const int start = (m_blockInsert == Prepend) ? m_blockRange.startColumn //
+                : (m_blockInsert == Append)              ? m_blockRange.endColumn + 1
+                                                         : m_eolPos; // AppendEOL
+            const QString added = getLine().mid(start, m_view->cursorPosition().column() - start);
+
+            KTextEditor::Cursor c = KTextEditor::Cursor(m_blockRange.startLine, start);
+            const int vStart = doc()->toVirtualColumn(c);
+
+            for (int i = m_blockRange.startLine + 1; i <= m_blockRange.endLine; i++) {
+                c.setLine(i);
+                c.setColumn(m_blockInsert == AppendEOL ? doc()->lineLength(i) : doc()->fromVirtualColumn(i, vStart));
+                doc()->insertText(c, added);
+            }
         }
     }
+
+    m_blockInsert = None;
     m_countedRepeatsBeginOnNewLine = false;
+
     startNormalMode();
 }
 
