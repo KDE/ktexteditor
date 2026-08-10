@@ -1762,6 +1762,7 @@ bool NormalViMode::commandAppendToBlock()
     KTextEditor::Cursor c(m_view->cursorPosition());
 
     m_commandRange.normalize();
+
     if (m_stickyColumn == (unsigned int)KateVi::EOL) { // append to EOL
         // move cursor to end of first line
         c.setLine(m_commandRange.startLine);
@@ -1771,8 +1772,9 @@ bool NormalViMode::commandAppendToBlock()
     } else {
         m_viInputModeManager->getViInsertMode()->setBlockAppendMode(m_commandRange, Append);
         // move cursor to top right corner of selection
-        c.setColumn(m_commandRange.endColumn + 1);
-        c.setLine(m_commandRange.startLine);
+        Range r = swapRangeColumns(m_commandRange);
+        c.setLine(r.startLine);
+        c.setColumn(r.startColumn + 1);
         updateCursor(c);
     }
 

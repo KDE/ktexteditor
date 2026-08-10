@@ -498,9 +498,10 @@ void InsertViMode::leaveInsertMode(bool force)
             }
         } else if (m_blockRange.startLine == m_view->cursorPosition().line()) {
             // Block insert. Make sure cursor hasn't been moved
-            const int start = (m_blockInsert == Prepend) ? m_blockRange.startColumn //
-                : (m_blockInsert == Append)              ? m_blockRange.endColumn + 1
-                                                         : m_eolPos; // AppendEOL
+            const int start = (m_blockInsert == AppendEOL) ? m_eolPos
+                : (m_blockInsert == Prepend) ? m_blockRange.startColumn
+                : doc()->fromVirtualColumn(m_blockRange.startLine, doc()->toVirtualColumn(m_blockRange.end())) + 1;
+
             const QString added = getLine().mid(start, m_view->cursorPosition().column() - start);
 
             KTextEditor::Cursor c = KTextEditor::Cursor(m_blockRange.startLine, start);

@@ -1372,6 +1372,10 @@ void ModesTest::VisualCommandsTests()
     DoTest("\t\tfoo\n        \tbar\n                baz", "wl\\ctrl-v2jIr\\esc", "\t\tfroo\n        \tbrar\n                braz");
 
     // Testing block append
+    DoTest("1234\n5678\n9012", "l\\ctrl-vl2jAxyz\\esc", "123xyz4\n567xyz8\n901xyz2");
+    DoTest("\t\t1234\n\t        5678\n                9012", "wl\\ctrl-vl2jAxyz\\esc", "\t\t123xyz4\n\t        567xyz8\n                901xyz2");
+
+    // Testing block append at end of line ($)
     DoTest("averyverylongline\nshortline\nshorter\n", "jjV$kkAb\\esc", "averyverylonglineb\nshortlineb\nshorterb\n");
     DoTest("averyverylongline\nshortline\n", "V$jAb\\esc", "averyverylonglineb\nshortlineb\n");
 
