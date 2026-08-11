@@ -1037,9 +1037,7 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "Povećaj razinu uvlačenja odlomka ukoliko mu prethodi prazni prostor"
 
 #: dialogs/katedialogs.cpp:183 dialogs/katedialogs.cpp:185
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid " character"
 msgid_plural " characters"
 msgstr[0] " znak"
@@ -4638,7 +4636,8 @@ msgid ""
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:264
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Code Folding"
 msgid "Code Folding"
 msgstr "Sklapanje koda"
 
@@ -6328,8 +6327,7 @@ msgid "Tabulators && Spaces"
 msgstr "Tabulatori"
 
 #: view/katestatusbar.cpp:181
-#, fuzzy, kde-format
-#| msgid "Tabulators"
+#, kde-format
 msgid "Tabulators"
 msgstr "Tabulatori"
 
@@ -7330,9 +7328,9 @@ msgstr ""
 "odlagalište.  "
 
 #: view/kateview.cpp:949
-#, fuzzy, kde-format
+#, kde-format
 msgid "E&xport as HTML..."
-msgstr "Izvezi datoteku kao "
+msgstr "&Izvoz u HTML…"
 
 #: view/kateview.cpp:951
 #, fuzzy, kde-format
@@ -7678,9 +7676,9 @@ msgid "Alignment pattern:"
 msgstr ""
 
 #: view/kateview.cpp:4750
-#, fuzzy, kde-format
+#, kde-format
 msgid "Export File as HTML"
-msgstr "Izvezi datoteku kao "
+msgstr "Izvezi datoteku kao HTML"
 
 #: view/kateviewhelpers.cpp:303 view/kateviewhelpers.cpp:346
 #: view/kateviewhelpers.cpp:982
