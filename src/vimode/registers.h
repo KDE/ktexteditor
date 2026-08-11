@@ -32,6 +32,8 @@ constexpr QChar UnnamedRegister = '"'_L1;
 constexpr QChar InsertStoppedRegister = '.'_L1;
 constexpr QChar SearchRegister = '/'_L1;
 constexpr QChar CommandRegister = ':'_L1;
+constexpr QChar FileNameRegister = '%'_L1;
+constexpr QChar LastFileNameRegister = '#'_L1;
 
 constexpr auto SpecialRegisters = std::array{BlackHoleRegister,
                                              SmallDeleteRegister,
@@ -42,9 +44,12 @@ constexpr auto SpecialRegisters = std::array{BlackHoleRegister,
                                              UnnamedRegister,
                                              InsertStoppedRegister,
                                              SearchRegister,
-                                             CommandRegister};
+                                             CommandRegister,
+                                             FileNameRegister,
+                                             LastFileNameRegister};
 
-constexpr auto ReadOnlyRegisters = std::array{BlackHoleRegister, InsertStoppedRegister, SearchRegister, CommandRegister};
+constexpr auto ReadOnlyRegisters =
+    std::array{BlackHoleRegister, InsertStoppedRegister, SearchRegister, CommandRegister, FileNameRegister, LastFileNameRegister};
 
 class GlobalState;
 

@@ -135,6 +135,15 @@ Registers::Register Registers::getRegister(const QChar &reg) const
         if (!m_global->commandHistory()->isEmpty()) {
             return Register(m_global->commandHistory()->items().last(), CharWise);
         }
+    } else if (_reg == FileNameRegister) {
+        if (!m_global->filenameHistory()->isEmpty()) {
+            return Register(m_global->filenameHistory()->items().last(), CharWise);
+        }
+    } else if (_reg == LastFileNameRegister) {
+        const QStringList &filenames = m_global->filenameHistory()->items();
+        if (filenames.count() >= 2) {
+            return Register(filenames.at(filenames.count() - 2), CharWise);
+        }
     } else {
         const QChar lowercase_reg = _reg.toLower();
         auto it = m_registers.find(lowercase_reg);

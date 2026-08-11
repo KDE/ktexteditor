@@ -24,6 +24,7 @@ GlobalState::GlobalState()
     m_searchHistory = new History();
     m_replaceHistory = new History();
     m_commandHistory = new History();
+    m_filenameHistory = new History();
 
     readConfig(config().data());
 }
@@ -39,6 +40,7 @@ GlobalState::~GlobalState()
     delete m_macros;
     delete m_mappings;
     delete m_registers;
+    delete m_filenameHistory;
 }
 
 void GlobalState::writeConfig(KConfig *configFile) const

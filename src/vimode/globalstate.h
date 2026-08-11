@@ -55,6 +55,10 @@ public:
     {
         return m_replaceHistory;
     }
+    inline History *filenameHistory() const
+    {
+        return m_filenameHistory;
+    }
 
 private:
     static KSharedConfigPtr config();
@@ -67,6 +71,7 @@ private:
     History *m_searchHistory;
     History *m_commandHistory;
     History *m_replaceHistory;
+    History *m_filenameHistory;
 };
 }
 

@@ -11,6 +11,8 @@
 #include "kateview.h"
 #include "kateviewinternal.h"
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
+#include <vimode/globalstate.h>
+#include <vimode/history.h>
 #include <vimode/macrorecorder.h>
 #include <vimode/marks.h>
 #include <vimode/modes/replacevimode.h>
@@ -171,7 +173,15 @@ QString KateViInputMode::viewModeHuman() const
 
 void KateViInputMode::gotFocus()
 {
-    // nothing to do
+    // Store the last visited files in the filename history
+    const QString fileName = view()->doc()->url().fileName();
+    KateVi::History *history = m_viModeManager->globalState()->filenameHistory();
+
+    if (!history->isEmpty() && fileName == history->items().last()) {
+        return;
+    }
+
+    history->append(fileName);
 }
 
 void KateViInputMode::lostFocus()
