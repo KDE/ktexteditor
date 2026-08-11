@@ -7995,8 +7995,7 @@ msgid "Search wrapped"
 msgstr "&Traži"
 
 #: view/kateview.cpp:3052
-#, fuzzy, kde-format
-#| msgid "Open File"
+#, kde-format
 msgid "Open File"
 msgstr "Otvori datoteku"
 
