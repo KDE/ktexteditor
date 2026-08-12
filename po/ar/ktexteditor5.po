@@ -635,7 +635,7 @@ msgid ""
 "When you type these characters while text is selected, they will surround "
 "the selected text instead of replacing it."
 msgstr ""
-"عندما تكتب هذه الأحرف أثناء تحديد النص، فإنها ستحيط بالنص المحدد بدلاً من "
+"عندما تكتب هذه الأحرف أثناء تحديد النص، فإنها ستحيط بالنص المحدد بدلًا من "
 "استبداله."
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
@@ -961,7 +961,7 @@ msgid ""
 "are inserted; otherwise, a single tabulator is inserted."
 msgstr ""
 "إذا حُدد هذا الخيار، يدرج مفتاح <b>Tab</b> دائمًا مسافة بيضاء حتى يصل إلى موضع "
-"علامة الجدولة التالي. إذا مُكّن الخيار <b>إدراج مسافات بدلاً من علامات الجدولة</"
+"علامة الجدولة التالي. إذا مُكّن الخيار <b>إدراج مسافات بدلًا من علامات الجدولة</"
 "b> في القسم <b>التحرير</b>، ستدرج المسافات؛ وإلا ستدرج علامة جدولة واحدة."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabAdvances)
@@ -1007,7 +1007,7 @@ msgstr ""
 "أول حرف غير مسافة في السطر، أو إذا كان هناك تحديد، سيزاح السطر الحالي بعدد "
 "مواضع الأحرف المحددة في <b>عرض الإزاحة</b>.<p> إذا كانت نقطة الإدراج تقع بعد "
 "أول حرف غير مسافة في السطر ولم يكن هناك تحديد، ستدرج مسافة بيضاء حتى يصل إلى "
-"موضع علامة الجدولة التالية: إذا مُكن الخيار <b>إدراج مسافات بدلاً من علامات "
+"موضع علامة الجدولة التالية: إذا مُكن الخيار <b>إدراج مسافات بدلًا من علامات "
 "الجدولة</b> في القسم <b>التحرير</b> ستدرج المسافات؛ وإلا سيدرج علامة جدولة "
 "واحدة."
 
@@ -6434,7 +6434,7 @@ msgstr "ألصق المحدد"
 #: view/kateview.cpp:469
 #, kde-format
 msgid "Paste previously mouse selection contents"
-msgstr "ألصق محتويات تحديد الفأرة سابقاً"
+msgstr "ألصق محتويات تحديد الفأرة سابقًا"
 
 #: view/kateview.cpp:473
 #, kde-format
@@ -7078,12 +7078,12 @@ msgstr "يبحث عن التواجد التالي للكلمة تحت المؤش
 #: view/kateview.cpp:873
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr "ضع علامة على الحدث المحدد حالياً على أنك تجاوزته"
+msgstr "ضع علامة على الحدث المحدد حاليًا على أنك تجاوزته"
 
 #: view/kateview.cpp:875
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr "يضع علامة على الكلمة المحددة حالياً ككلمة متخطاة."
+msgstr "يضع علامة على الكلمة المحددة حاليًا ككلمة متخطاة."
 
 #: view/kateview.cpp:879
 #, kde-format
