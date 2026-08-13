@@ -8,7 +8,8 @@
 #include <ktexteditor/range.h>
 #include <vimode/range.h>
 
-using namespace KateVi;
+namespace KateVi
+{
 
 Range::Range()
     : Range(-1, -1, -1, -1, InclusiveMotion)
@@ -88,3 +89,5 @@ QDebug operator<<(QDebug s, const Range &range)
       << " (" << (range.motionType == InclusiveMotion ? "Inclusive" : "Exclusive") << ") (jump: " << (range.jump ? "true" : "false") << ")";
     return s;
 }
+
+} // namespace KateVi
