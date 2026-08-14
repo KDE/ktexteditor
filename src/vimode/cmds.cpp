@@ -148,7 +148,7 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd, QString &msg, 
         } else if (args.count() == 1) {
             QChar r = args.at(0).at(0);
             int line;
-            if ((r >= QLatin1Char('a') && r <= QLatin1Char('z')) || r == QLatin1Char('_') || r == QLatin1Char('+') || r == QLatin1Char('*')) {
+            if (Marks::isUserMark(r)) {
                 if (range.isValid()) {
                     line = qMax(range.end().line(), range.start().line());
                 } else {

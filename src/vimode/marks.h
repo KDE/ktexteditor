@@ -50,9 +50,10 @@ public:
 
     QString getMarksOnTheLine(int line) const;
 
+    static bool isUserMark(const QChar &mark);
+
 private:
     void syncViMarksAndBookmarks();
-    static bool isShowable(const QChar &mark);
 
     void setMark(const QChar &mark, const KTextEditor::Cursor pos);
 

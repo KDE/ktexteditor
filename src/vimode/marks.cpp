@@ -24,14 +24,9 @@ const QChar LastChange = QLatin1Char('.');
 const QChar InsertStopped = QLatin1Char('^');
 const QChar SelectionBegin = QLatin1Char('<');
 const QChar SelectionEnd = QLatin1Char('>');
-const QChar FirstUserMark = QLatin1Char('a');
-const QChar LastUserMark = QLatin1Char('z');
 const QChar BeforeJump = QLatin1Char('\'');
 const QChar BeforeJumpAlter = QLatin1Char('`');
-const QChar UserMarks[] = {QLatin1Char('a'), QLatin1Char('b'), QLatin1Char('c'), QLatin1Char('d'), QLatin1Char('e'), QLatin1Char('f'), QLatin1Char('g'),
-                           QLatin1Char('h'), QLatin1Char('i'), QLatin1Char('j'), QLatin1Char('k'), QLatin1Char('l'), QLatin1Char('m'), QLatin1Char('n'),
-                           QLatin1Char('o'), QLatin1Char('p'), QLatin1Char('q'), QLatin1Char('r'), QLatin1Char('s'), QLatin1Char('t'), QLatin1Char('u'),
-                           QLatin1Char('v'), QLatin1Char('w'), QLatin1Char('x'), QLatin1Char('y'), QLatin1Char('z')};
+const QString UserMarks = QStringLiteral("abcdefghijklmnopqrstuvwxyz");
 }
 
 Marks::Marks(InputModeManager *imm)
@@ -106,7 +101,7 @@ void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor pos)
     }
 
     // Showing what mark we set, can be skipped if we did not change the line
-    if (isShowable(mark)) {
+    if (isUserMark(mark)) {
         if (needToAdjustVisibleMark && !(m_doc->mark(pos.line()) & KTextEditor::Document::markType01)) {
             m_doc->addMark(pos.line(), KTextEditor::Document::markType01);
         }
@@ -200,7 +195,7 @@ void Marks::syncViMarksAndBookmarks()
     auto ks = std::views::keys(m_marks);
     const std::vector<QChar> keys{ks.begin(), ks.end()};
     for (QChar markChar : keys) {
-        if (!isShowable(markChar)) {
+        if (!isUserMark(markChar)) {
             continue;
         }
 
@@ -239,9 +234,9 @@ QString Marks::getMarksOnTheLine(int line) const
     return res;
 }
 
-bool Marks::isShowable(const QChar &mark)
+bool Marks::isUserMark(const QChar &mark)
 {
-    return FirstUserMark <= mark && mark <= LastUserMark;
+    return charInList(mark, UserMarks);
 }
 
 void Marks::setStartEditYanked(const KTextEditor::Cursor pos)
@@ -276,7 +271,7 @@ void Marks::setSelectionFinish(const KTextEditor::Cursor pos)
 
 void Marks::setUserMark(const QChar &mark, const KTextEditor::Cursor pos)
 {
-    Q_ASSERT(FirstUserMark <= mark && mark <= LastUserMark);
+    Q_ASSERT(charInList(mark, UserMarks));
     setMark(mark, pos);
 }
 

@@ -1485,9 +1485,11 @@ bool NormalViMode::commandSetMark()
     KTextEditor::Cursor c(m_view->cursorPosition());
 
     QChar mark = m_keys.at(m_keys.size() - 1);
-    m_viInputModeManager->marks()->setUserMark(mark, c);
-
-    return true;
+    if (Marks::isUserMark(mark)) {
+        m_viInputModeManager->marks()->setUserMark(mark, c);
+        return true;
+    }
+    return false;
 }
 
 bool NormalViMode::commandIndentLine()
