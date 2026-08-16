@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-28 00:41+0000\n"
+"POT-Creation-Date: 2026-08-16 00:40+0000\n"
 "PO-Revision-Date: 2026-06-16 09:00+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2509,44 +2509,44 @@ msgstr "Inserix"
 msgid "Normal Mode"
 msgstr "Mode normal"
 
-#: inputmode/kateviinputmode.cpp:31
+#: inputmode/kateviinputmode.cpp:33
 #, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
 msgstr "VI: INSERCIÓ"
 
-#: inputmode/kateviinputmode.cpp:34
+#: inputmode/kateviinputmode.cpp:36
 #, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
 msgstr "VI: NORMAL"
 
-#: inputmode/kateviinputmode.cpp:37
+#: inputmode/kateviinputmode.cpp:39
 #, kde-format
 msgid "VI: VISUAL"
 msgstr "VI: VISUAL"
 
-#: inputmode/kateviinputmode.cpp:40
+#: inputmode/kateviinputmode.cpp:42
 #, kde-format
 msgid "VI: VISUAL BLOCK"
 msgstr "VI: BLOC VISUAL"
 
-#: inputmode/kateviinputmode.cpp:43
+#: inputmode/kateviinputmode.cpp:45
 #, kde-format
 msgid "VI: VISUAL LINE"
 msgstr "VI: LÍNIA VISUAL"
 
-#: inputmode/kateviinputmode.cpp:46
+#: inputmode/kateviinputmode.cpp:48
 #, kde-format
 msgid "VI: REPLACE"
 msgstr "VI: SUBSTITUCIÓ"
 
-#: inputmode/kateviinputmode.cpp:148
+#: inputmode/kateviinputmode.cpp:150
 #, kde-format
 msgid "vi-mode"
 msgstr "Mode de Vi"
 
-#: inputmode/kateviinputmode.cpp:161
+#: inputmode/kateviinputmode.cpp:163
 #, kde-format
 msgid "recording"
 msgstr "gravació"
@@ -8558,28 +8558,28 @@ msgstr ""
 msgid "Import from vimrc file"
 msgstr "Importa des d'un fitxer «vimrc»"
 
-#: vimode/marks.cpp:117
+#: vimode/marks.cpp:112
 #, kde-format
 msgid "Mark set: %1"
 msgstr "Marca establida: %1"
 
-#: vimode/marks.cpp:163
+#: vimode/marks.cpp:158
 #, kde-format
 msgid "There are no more chars for the next bookmark."
 msgstr "No hi ha més caràcters per al punt següent."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3562
+#: vimode/modes/normalvimode.cpp:3564
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "No hi ha res al registre %1"
 
-#: vimode/modes/normalvimode.cpp:1686
+#: vimode/modes/normalvimode.cpp:1688
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "«%1» %2,  Hex %3,  Octal %4"
 
-#: vimode/modes/normalvimode.cpp:2529
+#: vimode/modes/normalvimode.cpp:2531
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no establida: %1"

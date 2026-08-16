@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-28 00:41+0000\n"
+"POT-Creation-Date: 2026-08-16 00:40+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -2475,46 +2475,46 @@ msgstr "CHÈN"
 msgid "Normal Mode"
 msgstr "Chế độ thường"
 
-#: inputmode/kateviinputmode.cpp:31
+#: inputmode/kateviinputmode.cpp:33
 #, fuzzy, kde-format
 #| msgid "VI: INSERT MODE"
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
 msgstr "VI: CHẾ ĐỘ CHÈN"
 
-#: inputmode/kateviinputmode.cpp:34
+#: inputmode/kateviinputmode.cpp:36
 #, fuzzy, kde-format
 #| msgid "VI: NORMAL MODE"
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
 msgstr "VI: CHẾ ĐỘ THƯỜNG"
 
-#: inputmode/kateviinputmode.cpp:37
+#: inputmode/kateviinputmode.cpp:39
 #, kde-format
 msgid "VI: VISUAL"
 msgstr "VI: TRỰC QUAN"
 
-#: inputmode/kateviinputmode.cpp:40
+#: inputmode/kateviinputmode.cpp:42
 #, kde-format
 msgid "VI: VISUAL BLOCK"
 msgstr "VI: TRỰC QUAN KHỐI"
 
-#: inputmode/kateviinputmode.cpp:43
+#: inputmode/kateviinputmode.cpp:45
 #, kde-format
 msgid "VI: VISUAL LINE"
 msgstr "VI: TRỰC QUAN DÒNG"
 
-#: inputmode/kateviinputmode.cpp:46
+#: inputmode/kateviinputmode.cpp:48
 #, kde-format
 msgid "VI: REPLACE"
 msgstr "VI: THAY THẾ"
 
-#: inputmode/kateviinputmode.cpp:148
+#: inputmode/kateviinputmode.cpp:150
 #, kde-format
 msgid "vi-mode"
 msgstr "chế-độ-vi"
 
-#: inputmode/kateviinputmode.cpp:161
+#: inputmode/kateviinputmode.cpp:163
 #, kde-format
 msgid "recording"
 msgstr "đang ghi"
@@ -8527,28 +8527,28 @@ msgstr ""
 msgid "Import from vimrc file"
 msgstr "Nhập khẩu từ tệp vimrc"
 
-#: vimode/marks.cpp:117
+#: vimode/marks.cpp:112
 #, kde-format
 msgid "Mark set: %1"
 msgstr "Chỉ dấu đã đặt: %1"
 
-#: vimode/marks.cpp:163
+#: vimode/marks.cpp:158
 #, kde-format
 msgid "There are no more chars for the next bookmark."
 msgstr "Không còn kí tự nào cho dấu nhớ tiếp theo."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3562
+#: vimode/modes/normalvimode.cpp:3564
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Không có gì trong thanh ghi %1"
 
-#: vimode/modes/normalvimode.cpp:1686
+#: vimode/modes/normalvimode.cpp:1688
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  thập lục phân %3,  bát phân %4"
 
-#: vimode/modes/normalvimode.cpp:2529
+#: vimode/modes/normalvimode.cpp:2531
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Chỉ dấu không được đặt: %1"

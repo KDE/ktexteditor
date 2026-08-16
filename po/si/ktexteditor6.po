@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-28 00:41+0000\n"
+"POT-Creation-Date: 2026-08-16 00:40+0000\n"
 "PO-Revision-Date: 2011-07-24 15:43+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -2554,46 +2554,46 @@ msgstr ""
 msgid "Normal Mode"
 msgstr "සාමාන්‍යය ආකාරය"
 
-#: inputmode/kateviinputmode.cpp:31
+#: inputmode/kateviinputmode.cpp:33
 #, fuzzy, kde-format
 #| msgid "VI: INSERT MODE"
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
 msgstr "VI: ඇතුළු කිරීමේ ආකාරය"
 
-#: inputmode/kateviinputmode.cpp:34
+#: inputmode/kateviinputmode.cpp:36
 #, fuzzy, kde-format
 #| msgid "VI: NORMAL MODE"
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
 msgstr "VI: සාමාන්‍යය ආකාරය"
 
-#: inputmode/kateviinputmode.cpp:37
+#: inputmode/kateviinputmode.cpp:39
 #, kde-format
 msgid "VI: VISUAL"
 msgstr "VI: දෘශ්‍ය"
 
-#: inputmode/kateviinputmode.cpp:40
+#: inputmode/kateviinputmode.cpp:42
 #, kde-format
 msgid "VI: VISUAL BLOCK"
 msgstr "VI: දෘශ්‍ය කට්ටය"
 
-#: inputmode/kateviinputmode.cpp:43
+#: inputmode/kateviinputmode.cpp:45
 #, kde-format
 msgid "VI: VISUAL LINE"
 msgstr "VI: දෘශ්‍ය රේඛාව"
 
-#: inputmode/kateviinputmode.cpp:46
+#: inputmode/kateviinputmode.cpp:48
 #, kde-format
 msgid "VI: REPLACE"
 msgstr "VI: ප්‍රතිස්ථාපනය කරන්න"
 
-#: inputmode/kateviinputmode.cpp:148
+#: inputmode/kateviinputmode.cpp:150
 #, kde-format
 msgid "vi-mode"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:161
+#: inputmode/kateviinputmode.cpp:163
 #, fuzzy, kde-format
 #| msgid "E&ncoding"
 msgid "recording"
@@ -8586,30 +8586,30 @@ msgstr ""
 msgid "Import from vimrc file"
 msgstr "vimrc ගොනුවෙන් ආයාත කරන්න"
 
-#: vimode/marks.cpp:117
+#: vimode/marks.cpp:112
 #, fuzzy, kde-format
 #| msgid "Mark not set: %1"
 msgid "Mark set: %1"
 msgstr "නොයෙදූ ලකුණ: %1"
 
-#: vimode/marks.cpp:163
+#: vimode/marks.cpp:158
 #, fuzzy, kde-format
 #| msgid "Go to the next bookmark."
 msgid "There are no more chars for the next bookmark."
 msgstr "ඊළඟ පිටු සළකුණට යන්න."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3562
+#: vimode/modes/normalvimode.cpp:3564
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "%1 නාමලේඛනයේ කිසිවක් නැත"
 
-#: vimode/modes/normalvimode.cpp:1686
+#: vimode/modes/normalvimode.cpp:1688
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  16 පාදයේ %3,  8 පාදයේ %4"
 
-#: vimode/modes/normalvimode.cpp:2529
+#: vimode/modes/normalvimode.cpp:2531
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "නොයෙදූ ලකුණ: %1"
