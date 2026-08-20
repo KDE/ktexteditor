@@ -62,7 +62,7 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
         if (!match.captured(1).isEmpty()) { // [a]ll
             const auto docs = app->documents();
             for (KTextEditor::Document *doc : docs) {
-                doc->save();
+                doc->documentSave();
             }
             msg = i18n("All documents written to disk");
         } else {
