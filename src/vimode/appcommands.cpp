@@ -60,14 +60,24 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
     QRegularExpressionMatch match;
     if ((match = re_write.match(command)).hasMatch()) { // TODO: handle writing to specific file
         if (!match.captured(1).isEmpty()) { // [a]ll
+            bool allSaved = true;
+            bool someSaved = false;
             const auto docs = app->documents();
             for (KTextEditor::Document *doc : docs) {
-                doc->documentSave();
+                const bool saved = doc->documentSave();
+                allSaved &= saved;
+                someSaved |= saved;
             }
-            msg = i18n("All documents written to disk");
+            if (allSaved) {
+                msg = i18n("All documents written to disk");
+            } else if (someSaved) {
+                msg = i18n("Only some documents were written to disk");
+            }
         } else {
-            view->document()->documentSave();
-            msg = i18n("Document written to disk");
+            const bool saved = view->document()->documentSave();
+            if (saved) {
+                msg = i18n("Document written to disk");
+            }
         }
     }
     // Other buffer commands are implemented by the KateFileTree plugin
