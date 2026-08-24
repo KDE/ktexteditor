@@ -4808,8 +4808,8 @@ void KateViewInternal::flashChar(const KTextEditor::Cursor pos, KTextEditor::Att
 
 void KateViewInternal::showBracketMatchPreview()
 {
-    // only show when main window is active
-    if (window() && !window()->isActiveWindow()) {
+    // only show when main window is active and the view is visible
+    if ((window() && !window()->isActiveWindow()) || !isVisible()) {
         return;
     }
 
