@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2026-08-10 14:13+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -7981,17 +7981,23 @@ msgstr "فشل حفظ لقطة الشاشة"
 msgid "Screenshot saving failed: %1"
 msgstr "فشل حفظ لقطة الشاشة: %1"
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "كُتبت كلّ المستندات إلى القرص"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "كُتبت كلّ المستندات إلى القرص"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "كُتب المستند إلى القرص"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -8006,7 +8012,7 @@ msgstr ""
 "><tt>wa</tt> &mdash; كتابة جميع المستندات على القرص.</p><p>إذا لم يكن هناك "
 "اسم ملف مرتبط بالمستند، فسيعرض مربع حوار ملف.</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -8030,7 +8036,7 @@ msgstr ""
 "فإن التطبيق يخرج. إذا لم يكن هناك اسم ملف مرتبط بالمستند وكان يجب كتابته على "
 "القرص، فسيعرض مربع حوار الملف.</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -8050,7 +8056,7 @@ msgstr ""
 "مرتبط بالمستند ويجب كتابته على القرص، فسيُعرض مربع حوار ملف.</p><p>على عكس "
 "أوامر \"w\"، يكتب هذا الأمر المستند فقط إذا عُدل.</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8061,7 +8067,7 @@ msgstr ""
 "p><p>الاستخدام: <tt><b>sp[lit]</b></tt></p><p>النتيجة هي عرضين على نفس "
 "المستند.</p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8072,7 +8078,7 @@ msgstr ""
 "p><p>الاستخدام: <tt><b>vs[plit]</b></tt></p><p>النتيجة هي عرضين على نفس "
 "المستند.</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -8081,7 +8087,7 @@ msgstr ""
 "<p><b>clo[se]&mdash; إغلاق العرض الحالي</b></p><p>الاستخدام: <tt><b>clo[se]</"
 "b></tt></p><p>بعد تنفيذه، سيغلق العرض الحالي.</p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -8097,7 +8103,7 @@ msgstr ""
 "العرض أفقيًا وفتح مستند جديد.<br /><tt>vnew</tt> &mdash; تقسيم العرض عموديًا "
 "وفتح مستند جديد.<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
@@ -8108,7 +8114,7 @@ msgstr ""
 "<tt><b>e[dit]</b></tt></p><p>يبدأ <b>تحرير</b>المستند الحالي مرة أخرى. وهذا "
 "مفيد لإعادة تحرير الملف الحالي، عندما يُعدل على القرص.</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8117,7 +8123,7 @@ msgstr ""
 "<p><b>b,buffer - تحرير المستند N من قائمة المستندات</b></p><p>الاستخدام: "
 "<tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8130,7 +8136,7 @@ msgstr ""
 "(\"<b>b</b>uffer\") في قائمة المستندات. </p><p> <b>[N]</b> يكون مبدئيًا "
 "واحدًا. </p><p>يلتف حول بداية قائمة المستندات.</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8143,7 +8149,7 @@ msgstr ""
 "(\"<b>b</b>uffer\") في قائمة المستندات.<b>[N]</b> يكون مبدئيًا واحدًا. </"
 "p><p>يلتف حول نهاية قائمة المستندات.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8154,7 +8160,7 @@ msgstr ""
 "b></tt></p><p>ينتقل إلى المستند <b>f</b>irst (\"<b>b</b>uffer\") في قائمة "
 "المستندات.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8165,7 +8171,7 @@ msgstr ""
 "b></tt></p><p>ينتقل إلى المستند الأخير (\"<b>b</b>uffer\") في قائمة "
 "المستندات.</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>قائمة المخازن المؤقتة الحالية<p>"
@@ -8346,17 +8352,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "لا يوجد المزيد من الأحرف للإشارة المرجعية التالية."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "لا شيء في السجل %1"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2،  السّت عشري %3،  الثّمانيّ %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "لم تعين العلامة: %1"

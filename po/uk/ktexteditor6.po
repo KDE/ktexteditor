@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2026-06-17 10:57+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -8169,17 +8169,23 @@ msgstr "Не вдалося зберегти знімок"
 msgid "Screenshot saving failed: %1"
 msgstr "Не вдалося зберегти знімок: %1"
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "Усі документи записано на диск"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "Усі документи записано на диск"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "Документ записано на диск"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -8195,7 +8201,7 @@ msgstr ""
 "p><p>Якщо з документом не пов’язано жодної назви файла, буде відкрито "
 "діалогове вікно з запитом щодо назви.</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -8222,7 +8228,7 @@ msgstr ""
 "файла, а документ слід зберегти на диск, програма відкриє діалогове вікно з "
 "запитом щодо назви файла.</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -8245,7 +8251,7 @@ msgstr ""
 "відміну від команд «w» запис відбувається, лише якщо до тексту було внесено "
 "зміни.</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8256,7 +8262,7 @@ msgstr ""
 "панелі.</b></p><p>Користування: <tt><b>sp[lit]</b></tt></p><p>У результаті "
 "буде показано дві панелі з одним і тим самим документом.</p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8267,7 +8273,7 @@ msgstr ""
 "p><p>Використання: <tt><b>vs[plit]</b></tt></p><p>У результаті буде створено "
 "дві панелі перегляду одного документа.</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -8277,7 +8283,7 @@ msgstr ""
 "p><p>Користування: <tt><b>clo[se]</b></tt></p><p>У результаті виконання "
 "команди поточну панель перегляду буде закрито.</p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -8295,7 +8301,7 @@ msgstr ""
 "поділяє панель перегляду вертикально і відкриває підпанель нового документа."
 "<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
@@ -8307,7 +8313,7 @@ msgstr ""
 "документа у сховищі файлів. Корисно під час редагування файла, якщо до нього "
 "було внесено зміни на диску.</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8316,7 +8322,7 @@ msgstr ""
 "<p><b>b,buffer — редагування N-го документа у списку документів.</b></"
 "p><p>Використання: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8329,7 +8335,7 @@ msgstr ""
 "(«буфера») у списку документів. </p><p> Типовим значенням <b>[N]</b> є "
 "одиниця.</p><p>Перехід списком здійснюватиметься циклічно.</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8342,7 +8348,7 @@ msgstr ""
 "документа («буфера») у списку документів. Типовим значенням <b>[N]</b> є "
 "одиниця.</p><p>Перехід списком здійснюватиметься циклічно.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8353,7 +8359,7 @@ msgstr ""
 "b></tt></p><p>Перейти до першого документа («буфера») у списку документів.</"
 "p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8364,7 +8370,7 @@ msgstr ""
 "b></tt></p><p>Перейти до останнього документа («буфера») у списку документів."
 "</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>показати список поточних буферів<p>"
@@ -8551,17 +8557,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Для наступної закладки немає символів."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Регістр %1 порожній"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "«%1» %2,  Шістн. %3,  Вісімк. %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Позначку не встановлено: %1"

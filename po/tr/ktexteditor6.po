@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2026-06-16 19:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -8096,17 +8096,23 @@ msgstr "Ekran Görüntüsü Kaydedilemedi"
 msgid "Screenshot saving failed: %1"
 msgstr "Ekran görüntüsü kaydedilemedi: %1"
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "Tüm belgeler diske yazıldı"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "Tüm belgeler diske yazıldı"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "Belge diske yazıldı"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -8121,7 +8127,7 @@ msgstr ""
 "&mdash; tüm belgeleri diske yazar.</p><p>Eğer belge ile ilişkilendirilmiş "
 "bir dosya adı yoksa bir dosya iletişim penceresi gösterilecektir.</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -8146,7 +8152,7 @@ msgstr ""
 "ilişkilendirilmiş bir dosya adı yoksa ve diske yazılması gerekiyorsa bir "
 "dosya iletişim penceresi gösterilecektir.</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -8167,7 +8173,7 @@ msgstr ""
 "gerekiyorsa bir dosya iletişim penceresi gösterilir.</p><p>“w” komutlarından "
 "farklı olarak, bu komut belgeyi yalnızca değiştirilmişse kaydeder.</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8178,7 +8184,7 @@ msgstr ""
 "<tt><b>sp[lit]</b></tt></p><p>Bu aynı belgenin iki görünümü ile sonuçlanır.</"
 "p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8189,7 +8195,7 @@ msgstr ""
 "p><p>Kullanım: <tt><b>vs[plit]</b></tt></p><p>Aynı belgenin iki görünümüne "
 "neden olur.</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -8199,7 +8205,7 @@ msgstr ""
 "<tt><b>clo[se]</b></tt></p><p>Yürütüldükten sonra geçerli görünüm "
 "kapatılacaktır.</p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -8215,7 +8221,7 @@ msgstr ""
 "&mdash; görünümü yatay olarak böler ve yeni bir belge açar.<br /> <tt>vnew</"
 "tt> &mdash; görünümü dikey olarak böler ve yeni bir belge açar.<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
@@ -8227,7 +8233,7 @@ msgstr ""
 "başlatır. Bu, geçerli dosyayı diskte değiştirilmişse yeniden düzenlerken "
 "yararlıdır.</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8236,7 +8242,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Belge listesindeki belge N’i düzenle</b></"
 "p><p>Kullanım: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8249,7 +8255,7 @@ msgstr ""
 "önceki belgeye (“<b>b</b>uffer” (arabellek)) gider. </p><p> <b>[N]</b> "
 "öntanımlı olarak birdir. </p><p>Belge listesinin başından sürer.</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8262,7 +8268,7 @@ msgstr ""
 "belgeye (“<b>b</b>uffer” (arabellek)) gider. <b>[N]</b> öntanımlı olarak "
 "birdir. </p><p>Belge listesinin sonundan sürer.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8273,7 +8279,7 @@ msgstr ""
 "tt></p><p>Belge listesindeki (<b>f</b>irst) ilk belgeye (“<b>b</"
 "b>uffer” (arabellek)) gider.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8284,7 +8290,7 @@ msgstr ""
 "tt></p><p>Belge listesindeki (<b>l</b>ast) son belgeye (“<b>b</"
 "b>uffer” (arabellek)) gider.</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>geçerli arabellekleri listele<p>"
@@ -8470,17 +8476,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Sonraki yer imi için daha fazla karakter yok."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "%1 yazmacında bir şey yok"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "“%1” %2, Altılık %3, Sekizlik %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İm ayarlanmadı: %1"

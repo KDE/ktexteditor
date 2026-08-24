@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2026-07-29 11:48+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
@@ -8172,17 +8172,23 @@ msgstr "Il falleva a salveguardar captura de schermo"
 msgid "Screenshot saving failed: %1"
 msgstr "Il falleva a salveguardar captura de schermo: %1"
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "Omne documentos scribite sur disco"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "Omne documentos scribite sur disco"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "Documento scribite a disco"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -8198,7 +8204,7 @@ msgstr ""
 "sur disco.</p><p> Si nulle nomine de file es associate con le documento, un "
 "dialogo de file essera monstrate.</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -8224,7 +8230,7 @@ msgstr ""
 "associate con le documento e il debera esser scribite sur disco, un file de "
 "dialogo essera monstrate. </p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -8246,7 +8252,7 @@ msgstr ""
 "monstrate.</p><p>Differentemente del commandos 'w', iste commando  solmente "
 "scribe le documento si il es possibile.</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8257,7 +8263,7 @@ msgstr ""
 "p><p>Usage: <tt><b>sp[lit]</b></tt></p><p> Le exito es duo vistas sur le "
 "mesme documento</p>."
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8268,7 +8274,7 @@ msgstr ""
 "p><p>Usage: <tt><b>vs[plit]</b></tt></p><p> Le exito es duo vistas sur le "
 "mesme documento</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -8278,7 +8284,7 @@ msgstr ""
 "<tt><b>clo[se]]</b></tt></p><p> Le exito es que le vista currente essera "
 "claudite.</p>."
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -8295,7 +8301,7 @@ msgstr ""
 "documento. <br /> <tt>vnew</tt> &mdash; divide le vista verticalmente e "
 "aperi un nove documento.<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
@@ -8307,7 +8313,7 @@ msgstr ""
 "currente. Isto es utile pro editar de nove le file currente, quando il ha "
 "essite modificate sur disco.</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8316,7 +8322,7 @@ msgstr ""
 "<p><b>b.buffer &mdash; Modifica le  N-ie documento ex le lista de documento "
 "</b></p><p>Usage: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8329,7 +8335,7 @@ msgstr ""
 "(\"<b>b</b>uffer\") in lista de documento.</p><p><b>[N]</b> per definition "
 "es uno. </p><p>Inveloppa al initio del lista de documento.</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8342,7 +8348,7 @@ msgstr ""
 "\") in lista de documento.<b>[N]</b> per definition es uno. </p><p>Inveloppa "
 "al fin del lista de documento.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8353,7 +8359,7 @@ msgstr ""
 "tt></p><p>Va al <b>f</b>irst (prime) documento (\"<b>b</b>uffer\")) in lista "
 "de documento.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8364,7 +8370,7 @@ msgstr ""
 "tt></p><p>Va al <b>l</b>ast (ultime) documento (\"<b>b</b>uffer\")) in lista "
 "de documento.</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>lista buffers (tampones) currente<p>"
@@ -8549,17 +8555,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Il non ha plus characteres pro le proxime marcator de libro"
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Nihil in register %1"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Hex %3,  Octal %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca non fixate: %1"

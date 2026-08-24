@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -8487,17 +8487,23 @@ msgstr ""
 msgid "Screenshot saving failed: %1"
 msgstr ""
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "Svi dokumenti upisani na disk"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "Svi dokumenti upisani na disk"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "Dokument upisan na disk"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -8512,7 +8518,7 @@ msgstr ""
 "<tt>wa</tt> — upisuje sve dokumente na disk.</p><p>Ako dokument nije povezan "
 "sa imenom fajla, pojaviće se fajl dijalog.</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -8536,7 +8542,7 @@ msgstr ""
 "zatvoreni prikaz bio poslednji program se napušta. Ako dokument nije povezan "
 "sa imenom fajla a treba ga upisati na disk, pojaviće se fajl dijalog.</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -8557,7 +8563,7 @@ msgstr ""
 "pojaviće se fajl dijalog.</p><p>Za razliku od <tt>w</tt>-naredbi, ove "
 "upisuju dokument samo ako je bio izmenjen.</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8567,7 +8573,7 @@ msgstr ""
 "<p><b><tt>sp,split</tt> — podela tekućeg prikaza na dva</b></p><p>Upotreba: "
 "<tt><b>sp[lit]</b></tt></p><p>Rezultat je dva prikaza istog dokumenta.</p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8578,7 +8584,7 @@ msgstr ""
 "p><p>Upotreba: <tt><b>vs[plit]</b></tt></p><p>Rezultat je dva prikaza istog "
 "dokumenta.</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -8588,7 +8594,7 @@ msgstr ""
 "<tt><b>clo[se]</b></tt></p><p>Po izvršenju, tekući prikaz će biti zatvoren.</"
 "p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -8604,7 +8610,7 @@ msgstr ""
 "<tt>new</tt> — deli prikaz vodoravno i otvara novi dokument;<br /> <tt>vnew</"
 "tt> — deli prikaz uspravno i otvara novi dokument.<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: "
@@ -8620,7 +8626,7 @@ msgstr ""
 "p><p>Upotreba: <tt><b>e[dit]</b></tt></p><p>Ponovo započinje uređivanje "
 "dokumenta. Korisno u slučaju gde drugi program izmeni fajl.</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8629,7 +8635,7 @@ msgstr ""
 "<p><b><tt>b,buffer</tt> — uređivanje n‑tog dokumenta sa spiska</b></"
 "p><p>Upotreba: <tt><b>b[uffer] [n]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8642,7 +8648,7 @@ msgstr ""
 "(„bafer“) u spisku dokumenata. <b>[n]</b> je podrazumevano 1.</p><p>Omotava "
 "oko početka spiska dokumenata.</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8655,7 +8661,7 @@ msgstr ""
 "dokument („bafer“) u spisku dokumenata. <b>[n]</b> je podrazumevano 1.</"
 "p><p>Omotava oko kraja spiska dokumenata.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8666,7 +8672,7 @@ msgstr ""
 "<tt><b>bf[irst]</b></tt></p><p>Prelazi na prvi dokument („bafer“) u spisku "
 "dokumenata.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8677,7 +8683,7 @@ msgstr ""
 "<tt><b>bl[ast]</b></tt></p><p>Prelazi na poslednji dokument („bafer“) u "
 "spisku dokumenata.</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b><tt>ls</tt> — nabrajanje dokumenata</b></p>"
@@ -8862,18 +8868,18 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Nema više znakova za sledeći obeleživač."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Ničeg u registru %1"
 
 # well-spelled: хекс, окт
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  heks %3, okt %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Obeležje nije postavljeno: %1"

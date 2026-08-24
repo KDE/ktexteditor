@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2024-09-22 18:40+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -8380,17 +8380,23 @@ msgstr ""
 msgid "Screenshot saving failed: %1"
 msgstr ""
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "Όλα τα έγγραφα γράφτηκαν στον δίσκο"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "Όλα τα έγγραφα γράφτηκαν στον δίσκο"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "Έγγραφο αποθηκευμένο στο δίσκο"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -8406,7 +8412,7 @@ msgstr ""
 "δίσκο.</p><p>Αν κανένα όνομα αρχείου δεν συνοδεύει το έγγραφο, θα "
 "παρουσιαστεί ένα παράθυρο διαλόγου για αρχεία.</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -8432,7 +8438,7 @@ msgstr ""
 "οριστεί όνομα αρχείου για το έγγραφο και αυτό πρέπει να αποθηκευθεί στον "
 "δίσκο, θα εμφανιστεί ένα πλαίσιο διαλόγου.</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -8454,7 +8460,7 @@ msgstr ""
 "εμφανιστεί ένα πλαίσιο διαλόγου.</p><p>Αντίθετα με τις εντολές 'w', η εντολή "
 "αυτή γράφει μόνο το έγγραφο αν αυτό έχει τροποποιηθεί.</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8465,7 +8471,7 @@ msgstr ""
 "p><p>Χρήση: <tt><b>sp[lit]</b></tt></p><p>Το αποτέλεσμα είναι δύο προβολές "
 "του ίδιου εγγράφου.</p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8476,7 +8482,7 @@ msgstr ""
 "b></p><p>Χρήση: <tt><b>vs[plit]</b></tt></p><p>Το αποτέλεσμα είναι δύο "
 "προβολές του ίδιου εγγράφου.</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -8486,7 +8492,7 @@ msgstr ""
 "<tt><b>clo[se]</b></tt></p><p>Μετά την εκτέλεση, η τρέχουσα προβολή θα "
 "κλείσει.</p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -8503,7 +8509,7 @@ msgstr ""
 "ανοίγει νέο έγγραφο.<br /> <tt>vnew</tt> &mdash; διαχωρίζει την προβολή "
 "κατακόρυφα και ανοίγει νέο έγγραφο.<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: "
@@ -8520,7 +8526,7 @@ msgstr ""
 "του τρέχοντος εγγράφου. Αυτό είναι χρήσιμο, όταν το τρέχον έγγραφο έχει "
 "τροποποιηθεί από άλλο πρόγραμμα.</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8529,7 +8535,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Επεξεργασία του εγγράφου N από τη λίστα εγγράφων</b></"
 "p><p>Χρήση: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8543,7 +8549,7 @@ msgstr ""
 "τιμή του <b>[N]</b> είναι ένα. </p><p>Αναδιπλώνεται γύρω από την αρχή της "
 "λίστας με τα έγγραφα.</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8557,7 +8563,7 @@ msgstr ""
 "b> είναι ένα. </p><p>Αναδιπλώνεται γύρω από το τέλος της λίστας με τα "
 "έγγραφα.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8568,7 +8574,7 @@ msgstr ""
 "tt></p><p>Πηγαίνει στο πρώτο (<b>f</b>irst) έγγραφο (\"<b>b</b>uffer\") της "
 "λίστας εγγράφων.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8579,7 +8585,7 @@ msgstr ""
 "b></tt></p><p>Πηγαίνει στο τελευταίο (<b>l</b>ast) έγγραφο (\"<b>b</b>uffer"
 "\") της λίστας εγγράφων.</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr ""
@@ -8767,17 +8773,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Δεν υπάρχουν άλλοι χαρακτήρες για τον επόμενο σελιδοδείκτη."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Δεν υπάρχει τίποτα στον καταχωρητή %1"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Δεκαεξαδικό %3,  Οκταδικό %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Μη καθορισμένος δείκτης: %1 "

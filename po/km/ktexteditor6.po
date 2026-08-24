@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -8283,18 +8283,24 @@ msgstr ""
 msgid "Screenshot saving failed: %1"
 msgstr ""
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, fuzzy, kde-format
 #| msgid "Document written to disk"
 msgid "All documents written to disk"
 msgstr "បាន​សរសេរ​ឯកសារ​ទៅ​ថាស"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "Document written to disk"
+msgid "Only some documents were written to disk"
+msgstr "បាន​សរសេរ​ឯកសារ​ទៅ​ថាស"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "បាន​សរសេរ​ឯកសារ​ទៅ​ថាស"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: "
@@ -8316,7 +8322,7 @@ msgstr ""
 "ទាំងអស់​ទៅ​កាន់​ថាស ។</p><p>ប្រសិនបើ​គ្មាន​ឈ្មោះ​ឯកសារ​ភ្ជាប់​ជាមួយ​ឯកសារ​ទេ​នោះ ប្រអប់​ឯកសារ​នឹង​ត្រូវ​បាន​"
 "បង្ហាញ ។</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: "
@@ -8343,7 +8349,7 @@ msgstr ""
 "ទាំងអស់​ទៅ​កាន់​ថាស ។</p><p>ប្រសិនបើ​គ្មាន​ឈ្មោះ​ឯកសារ​ភ្ជាប់​ជាមួយ​ឯកសារ​ទេ​នោះ ប្រអប់​ឯកសារ​នឹង​ត្រូវ​បាន​"
 "បង្ហាញ ។</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: "
@@ -8368,7 +8374,7 @@ msgstr ""
 "ទាំងអស់​ទៅ​កាន់​ថាស ។</p><p>ប្រសិនបើ​គ្មាន​ឈ្មោះ​ឯកសារ​ភ្ជាប់​ជាមួយ​ឯកសារ​ទេ​នោះ ប្រអប់​ឯកសារ​នឹង​ត្រូវ​បាន​"
 "បង្ហាញ ។</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8376,7 +8382,7 @@ msgid ""
 "same document.</p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8384,14 +8390,14 @@ msgid ""
 "same document.</p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
 "b></tt></p><p>After executing it, the current view will be closed.</p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: "
@@ -8414,7 +8420,7 @@ msgstr ""
 "ទាំងអស់​ទៅ​កាន់​ថាស ។</p><p>ប្រសិនបើ​គ្មាន​ឈ្មោះ​ឯកសារ​ភ្ជាប់​ជាមួយ​ឯកសារ​ទេ​នោះ ប្រអប់​ឯកសារ​នឹង​ត្រូវ​បាន​"
 "បង្ហាញ ។</p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
@@ -8422,14 +8428,14 @@ msgid ""
 "useful to re-edit the current file, when it was modified on disk.</p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
 "p><p>Usage: <tt><b>b[uffer] [N]</b></tt></p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8438,7 +8444,7 @@ msgid ""
 "around the start of the document list.</p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8447,7 +8453,7 @@ msgid ""
 "p><p>Wraps around the end of the document list.</p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8455,7 +8461,7 @@ msgid ""
 "list.</p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8463,7 +8469,7 @@ msgid ""
 "list.</p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr ""
@@ -8651,17 +8657,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "ទៅ​កាន់​ចំណាំ​បន្ទាប់"
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "គ្មាន​អ្វី​នៅ​ក្នុង​បញ្ជី %1 ទេ"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  គោល​ដប់​ប្រាំមួយ %3  គោល​ប្រាំបី %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "សញ្ញា​សម្គាល់​មិន​បានកំណត់ ៖ %1"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2026-05-26 21:32+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -7933,17 +7933,23 @@ msgstr "스크린샷 저장 실패"
 msgid "Screenshot saving failed: %1"
 msgstr "스크린샷 저장 실패: %1"
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "모든 문서 디스크에 저장됨"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "모든 문서 디스크에 저장됨"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "디스크에 문서 저장됨"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -7958,7 +7964,7 @@ msgstr ""
 "&mdash; 모든 문서를 디스크에 저장합니다.</p> <p>파일 이름이 입력되지 않은 경"
 "우에는 파일 대화 상자를 표시합니다.</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -7981,7 +7987,7 @@ msgstr ""
 "냅니다.</p> <p>모든 명령에서 닫히는 보기가 마지막 보기라면 앱을 끝냅니다. 저"
 "장할 파일 이름이 지정되어 있지 않으면 파일 대화 상자를 표시합니다.</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -8001,7 +8007,7 @@ msgstr ""
 "저장할 경우에는 파일 대화 상자를 표시합니다.</p> <p>'w' 명령과는 다르게 수정"
 "된 경우에만 문서를 저장합니다.</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8012,7 +8018,7 @@ msgstr ""
 "<tt><b>sp[lit]</b></tt></p><p>명령을 실행하면 같은 문서를 보기 두 개로 엽니"
 "다.</p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8023,7 +8029,7 @@ msgstr ""
 "법: <tt><b>vs[plit]</b></tt></p><p>명령을 실행하면 같은 문서를 보기 두 개로 "
 "엽니다.</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -8033,7 +8039,7 @@ msgstr ""
 "<tt><b>clo[se]</b></tt></p><p>이 명령을 실행하면 현재 문서 보기를 닫습니다.</"
 "p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -8049,7 +8055,7 @@ msgstr ""
 "재 보기를 수평으로 나누고 새 문서를 엽니다.<br /> <tt>vnew</tt> &mdash; 현재 "
 "보기를 수직으로 나누고 새 문서를 엽니다.<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
@@ -8060,7 +8066,7 @@ msgstr ""
 "<tt><b>e[dit]</b></tt></p><p>현재 문서를 다시 편집(<b>e</b>dit)하기 시작합니"
 "다. 디스크에서 파일을 수정된 등 현재 문서를 다시 불러올 때 유용합니다.</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8069,7 +8075,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; 문서 목록의 N번째 문서를 편집합니다</b></p><p>사용 방"
 "법: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8082,7 +8088,7 @@ msgstr ""
 "(\"<b>b</b>uffer\")로 갑니다. <b>[N]</b>의 기본값은 1입니다.</p><p>문서 목록"
 "의 처음으로 가면 끝부터 다시 시작합니다.</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8095,7 +8101,7 @@ msgstr ""
 "다. <b>[N]</b>의 기본값은 1입니다.</p><p>문서 목록의 끝으로 가면 처음부터 다"
 "시 시작합니다.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8105,7 +8111,7 @@ msgstr ""
 "<p><b>bf,bfirst &mdash; 첫 문서</b></p><p>사용 방법: <tt><b>bf[irst]</b></"
 "tt></p> <p>맨 첫 번째 (<b>f</b>irst) 문서(\"<b>b</b>uffer\")로 갑니다.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8115,7 +8121,7 @@ msgstr ""
 "<p><b>bl,blast &mdash; 마지막 문서</b></p><p>사용 방법: <tt><b>bl[ast]</b></"
 "tt></p> <p>맨 마지막 (<b>l</b>ast) 문서(\"<b>b</b>uffer\")로 갑니다.</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>현재 버퍼를 표시합니다<p>"
@@ -8296,17 +8302,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "다음 책갈피에 더 이상 글자가 없습니다."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "레지스터 %1이(가) 비어 있음"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  16진수 %3,  8진수 %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "표시가 설정되지 않음: %1"

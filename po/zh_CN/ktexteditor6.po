@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -7814,17 +7814,23 @@ msgstr "截图保存失败"
 msgid "Screenshot saving failed: %1"
 msgstr "截图保存失败：%1"
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "所有写入磁盘的文档"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "所有写入磁盘的文档"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "写入磁盘的文档"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -7838,7 +7844,7 @@ msgstr ""
 "文档写入磁盘<br /> <tt>wa</tt> &mdash; 将所有文档写入磁盘。</p><p>如果文件未"
 "命名，将会显示文件对话框。</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -7860,7 +7866,7 @@ msgstr ""
 "磁盘并退出。</p><p>在所有方式中，如果关闭的是最后一个视图，那么程序退出。如果"
 "文件未命名，将会显示文件对话框。</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -7879,7 +7885,7 @@ msgstr ""
 "文件未命名并且它应当被写回磁盘，将会显示文件对话框。</p><p>和“w”命令不同的"
 "是，这个命令只会写入那些修改过的文档。</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -7889,7 +7895,7 @@ msgstr ""
 "<p><b>sp,split&mdash; 横向分割当前视图</b></p><p>用法：<tt><b>sp[lit]</b></"
 "tt></p><p>分割的两个视图打开相同的文档。</p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -7899,7 +7905,7 @@ msgstr ""
 "<p><b>vs,vsplit&mdash; 纵向分割当前视图</b></p><p>用法：<tt><b>vs[plit]</b></"
 "tt></p><p>分割的两个视图打开相同的文档。</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -7908,7 +7914,7 @@ msgstr ""
 "<p><b>clo[se]&mdash; 关闭当前视图</b></p><p>使用：<tt><b>clo[se]</b></tt></"
 "p><p>执行后，当前视图将被关闭。</p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -7923,7 +7929,7 @@ msgstr ""
 "用：<br /> <tt>new</tt> &mdash; 横向分割视图并打开新文档。<br /> <tt>vnew</"
 "tt> &mdash; 纵向分割视图并打开新文档。<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
@@ -7934,7 +7940,7 @@ msgstr ""
 "p><p>重新开始编辑当前文档。当文件在存储设备中被其他程序修改时，您可以使用此功"
 "能重新编辑当前文件。</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -7943,7 +7949,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; 编辑文档列表中的文档 N</b></p><p>用法："
 "<tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -7955,7 +7961,7 @@ msgstr ""
 "[N]</b></tt></p><p>切换到文档列表中上面第<b>[N]</b>个文档(\"<b>b</b>uffer"
 "\") 。<b>[N]</b> 默认为1。</p><p>如遇到文档列表头部则循环计数。</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -7967,7 +7973,7 @@ msgstr ""
 "b></tt></p><p>切换到文档列表中下面第<b>[N]</b>个文档(\"<b>b</b>uffer\") 。"
 "<b>[N]</b> 默认为1。</p><p>如遇到文档列表尾部则循环计数。</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -7978,7 +7984,7 @@ msgstr ""
 "b></tt></p><p>切换到文档列表中第一个(<b>f</b>irst)文档(\"<b>b</b>uffer\")。</"
 "p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -7989,7 +7995,7 @@ msgstr ""
 "b></tt></p><p>切换到文档列表中最后一个(<b>l</b>ast)文档(\"<b>b</b>uffer\")。"
 "</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>列出当前缓冲区<p>"
@@ -8169,17 +8175,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "下个书签没有字符。"
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "未能注册于 %1"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "“%1” %2，十六进制 %3，八进制 %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "标记未设置：%1"

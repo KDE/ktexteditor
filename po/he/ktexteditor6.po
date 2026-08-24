@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2026-06-18 08:41+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -7953,17 +7953,23 @@ msgstr "שמירת צילום המסך נכשלה"
 msgid "Screenshot saving failed: %1"
 msgstr "שמירת צילום המסך נכשלה: %1"
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "כל המסמכים נכתבו לכונן"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "כל המסמכים נכתבו לכונן"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "המסמך נכתב לכונן"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -7978,7 +7984,7 @@ msgstr ""
 "לכתוב את כל המסמכים לכונן.</p><p>אם לא משויך למסמך שם קובץ, תיפתח חלונית "
 "קבצים.</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -8001,7 +8007,7 @@ msgstr ""
 "ולצאת לאחר מכן.</p><p>בכל המקרים, אם התצוגה שנסגרת היא האחרונה, היישום "
 "ייסגר. אם לא נבחר שם קובץ למסמך ויש לכתוב אותו לכונן, תופיע חלונית קבצים.</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -8021,7 +8027,7 @@ msgstr ""
 "שם לקובץ ועליו להיכתב לכונן, תופיע חלונית. </p><p>שלא כמו בפקודות ‚w’, "
 "הפקודה הזאת כותבת את המסמך רק אם הוא השתנה.</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8031,7 +8037,7 @@ msgstr ""
 "<p><b>sp,split&mdash; פיצול אופקי של התצוגה הנוכחית לשתיים</b></p><p>שימוש: "
 "<tt><b>sp[lit]</b></tt></p><p>תוצגנה שתי תצוגות של אותו המסמך.</p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8041,7 +8047,7 @@ msgstr ""
 "<p><b>vs,vsplit&mdash; פיצול אנכי של התצוגה הנוכחית לשתיים</b></p><p>שימוש: "
 "<tt><b>vs[plit]</b></tt></p><p>תוצגנה שתי תצוגות של אותו המסמך.</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -8050,7 +8056,7 @@ msgstr ""
 "<p><b>clo[se]&mdash; סגירת התצוגה הנוכחית</b></p><p>שימוש: <tt><b>clo[se]</"
 "b></tt></p><p>לאחר הפעלת הפקודה, התצוגה הנוכחית תיסגר.</p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -8066,7 +8072,7 @@ msgstr ""
 "התצוגה אופקית ופתיחת מסמך חדשה.<br /> <tt>vnew</tt> &mdash; פיצול התצוגה "
 "אנכית ופתיחת מסמך חדש.<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
@@ -8077,7 +8083,7 @@ msgstr ""
 "<tt><b>e[dit]</b></tt></p><p>התחלת עריכת (<b>e</b>diting) המסמך הנוכחי שוב. "
 "שימושי לעריכת הקובץ הנוכחי מחדש, כשהוא משתנה בכונן.</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8086,7 +8092,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; עריכת המסמך N מרשימת המסמכים</b></p><p>שימוש: "
 "<tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8099,7 +8105,7 @@ msgstr ""
 "</p><p> ברירת המחדל של <b>[N]</b> היא אחד. </p><p>חוזר חזרה לתחילת רשימת "
 "המסמכים.</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8112,7 +8118,7 @@ msgstr ""
 "ברשימת המסמכים.<b>[N]</b> מתורגם לאחד אוטומטית. </p><p>גולש מעבר לסוף רשימת "
 "המסמכים.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8123,7 +8129,7 @@ msgstr ""
 "b></tt></p><p>עובר למסמך הראשון (<b>f</b>irst) „חוצץ” (<b>b</b>uffer) ברשימת "
 "המסמכים.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8134,7 +8140,7 @@ msgstr ""
 "b></tt></p><p>עובר למסמך <b>l</b> (last) האחרון („<b>b</b> (buffer) חוצץ”) "
 "ברשימת המסמכים.</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>הצגת החוצצים הנוכחיים<p>"
@@ -8315,17 +8321,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "אין תווים נוספים לסימנייה הבאה."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "אין כלום באוגר %1"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "‚%1’ %2,  הקס %3,  אוקטאלי %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "הסימון לא נקבע: %1"

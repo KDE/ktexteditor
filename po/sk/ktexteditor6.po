@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2023-12-12 19:23+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -8053,17 +8053,23 @@ msgstr "Uloženie snímky obrazovky zlyhalo"
 msgid "Screenshot saving failed: %1"
 msgstr "Uloženie snímky obrazovky zlyhalo: %1"
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "Všetky dokument zapísané na disk"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "Všetky dokument zapísané na disk"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "Dokument zapísaný na disk"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -8079,7 +8085,7 @@ msgstr ""
 "je žiadny názov súboru asociovaný s dokumentom, otvorí sa súborový dialóg.</"
 "p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -8104,7 +8110,7 @@ msgstr ""
 "je žiadny názov súboru asociovaný s dokumentom a mal by byť zapísaný na "
 "disk, otvorí sa súborový dialóg.</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -8125,7 +8131,7 @@ msgstr ""
 "mal by byť zapísaný na disk, zobrazí sa súborový dialóg.</p><p>Na rozdiel od "
 "príkazov 'w', tento príkaz iba zapíše dokument, ktorý je zmenený.</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8136,7 +8142,7 @@ msgstr ""
 "p><p>Použitie: <tt><b>sp[lit]</b></tt></p><p>Výsledok sú dva pohľady na "
 "rovnaký dokument.</p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8147,7 +8153,7 @@ msgstr ""
 "p><p>Použitie: <tt><b>vs[plit]</b></tt></p><p>Výsledok sú dva pohľady na "
 "rovnaký dokument.</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -8157,7 +8163,7 @@ msgstr ""
 "<tt><b>zatvoriť</b></tt></p> <p>Po vykonaní bude aktuálny pohľad zatvorený.</"
 "p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -8174,7 +8180,7 @@ msgstr ""
 "dokument.<br /> <tt>vnový</tt> &mdash; rozdelí pohľad zvislo a otvorí nový "
 "dokument.<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
@@ -8186,7 +8192,7 @@ msgstr ""
 "znova. Toto je užitočné pri novom editovaní aktuálneho súboru, ak bol "
 "zmenený na disku.</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8195,7 +8201,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Upraviť dokument N zo zoznamu dokumentov</b></"
 "p><p>Použitie: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8208,7 +8214,7 @@ msgstr ""
 "dokument (\"<b>b</b>uffer\") v zozname dokumentov. </p><p> <b>[N]</b> je "
 "predvolene 1. </p><p>Obaľuje okolo začiatku zoznamu dokumentov.</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8221,7 +8227,7 @@ msgstr ""
 "(\"<b>b</b>uffer\") v zozname dokumentov.<b>[N]</b> je predvolene 1. </"
 "p><p>Obaľuje okolo konca zoznamu dokumentov.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8232,7 +8238,7 @@ msgstr ""
 "b></tt></p><p>Prejde na prvý dokument (\"<b>b</b>uffer\") v zozname "
 "dokumentov.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8243,7 +8249,7 @@ msgstr ""
 "b></tt></p><p>Prejde na pos<b>l</b>edný dokument (\"<b>b</b>uffer\") v "
 "zozname dokumentov.</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>vypísať aktuálne zásobníky<p>"
@@ -8428,17 +8434,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Nie sú žiadne ďalšie znaky pre ďalšiu záložku."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Nič v registri %1"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Hex %3,  Octal %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Značka nenastavená: %1"

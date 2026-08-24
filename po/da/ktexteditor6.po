@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2021-09-09 21:34+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -8328,17 +8328,23 @@ msgstr ""
 msgid "Screenshot saving failed: %1"
 msgstr ""
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "Alle dokumenter skrevet til disk"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "Alle dokumenter skrevet til disk"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "Dokument skrevet til disk"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -8353,7 +8359,7 @@ msgstr ""
 "<tt>wa</tt> &mdash; skriver alle dokumenter til disk.</p><p>Hvis intet "
 "filnavn er knyttet til dokumentet, vil en fildialog blive vist.</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -8379,7 +8385,7 @@ msgstr ""
 "knyttet til dokumentet og det skal skrives til disk, vil en fildialog blive "
 "vist.</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -8401,7 +8407,7 @@ msgstr ""
 "p><p>Modsat \"w\"-kommandoerne skriver denne kommando kun dokumentet hvis "
 "det er blevet ændret.</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8412,7 +8418,7 @@ msgstr ""
 "p><p>Brug: <tt><b>sp[lit]</b></tt></p><p>Resultatet er to tekstvinduer i "
 "sammedokument.</p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8423,7 +8429,7 @@ msgstr ""
 "p><p>Brug: <tt><b>vs[plit]</b></tt></p><p>Resultatet er to tekstvinduer i "
 "sammedokument.</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -8433,7 +8439,7 @@ msgstr ""
 "<tt><b>clo[se]</b></tt></p><p>Efter kørsel vil det aktuelle tekstvindue "
 "blive lukket.</p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -8450,7 +8456,7 @@ msgstr ""
 "dokument.<br /> <tt>vnew</tt> &mdash; opdeler tekstvinduet lodret og åbner "
 "et nyt dokument.<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: "
@@ -8467,7 +8473,7 @@ msgstr ""
 "dokument. Dette er nyttigt til at gen-redigere den aktuelle fil, når den er "
 "blevet ændret af et andet program.</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8476,7 +8482,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Redigér dokument N fra dokumentlisten</b></p><p>Brug: "
 "<tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8489,7 +8495,7 @@ msgstr ""
 "i dokumentlisten. </p><p> <b>[N]</b> er 1 som standard. </p><p>Fortsætter "
 "nedefra ved starten af dokumentlisten.</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8502,7 +8508,7 @@ msgstr ""
 "(\"<b>b</b>uffer\") i dokumentlisten.<b>[N]</b> er 1 som standard. </"
 "p><p>Fortsætter fra oven ved slutningen af dokumentlisten.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8513,7 +8519,7 @@ msgstr ""
 "tt></p><p>Går til det <b>f</b>ørste dokument (\"<b>b</b>uffer\") i "
 "dokumentlisten.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8524,7 +8530,7 @@ msgstr ""
 "tt></p><p>Går til det <b>S</b>idste dokument (\"<b>b</b>uffer\") i "
 "dokumentlisten.</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>oplist aktuelle buffere<p>"
@@ -8708,17 +8714,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Der er ikke flere tegn til det næste bogmærke."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Intet i registret %1"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "\"%1\" %2,  hex %3,  oktalt %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Mærke ikke sat: %1"

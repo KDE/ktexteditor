@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2024-12-29 22:54+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -7983,17 +7983,23 @@ msgstr "स्क्रीनशॉट् रक्षणं विफलम् 
 msgid "Screenshot saving failed: %1"
 msgstr "स्क्रीनशॉट् रक्षणं विफलम्: %1"
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "डिस्कमध्ये लिखिताः सर्वे दस्तावेजाः"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "डिस्कमध्ये लिखिताः सर्वे दस्तावेजाः"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "डिस्कं प्रति लिखितं दस्तावेजम्"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -8008,7 +8014,7 @@ msgstr ""
 "tt> — सर्वाणि दस्तावेजानि डिस्क मध्ये लिखति ।</p><p> यदि दस्तावेजेन सह कोऽपि "
 "सञ्चिकानाम सम्बद्धः नास्ति तर्हि सञ्चिकासंवादः दर्शितः भविष्यति ।</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -8032,7 +8038,7 @@ msgstr ""
 "निर्गच्छति । यदि दस्तावेजेन सह कोऽपि सञ्चिकानाम सम्बद्धः नास्ति तथा च तत् डिस्क मध्ये "
 "लिखितव्यं तर्हि सञ्चिकासंवादः दर्शितः भविष्यति ।</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -8053,7 +8059,7 @@ msgstr ""
 "p><p> &#39;w&#39; आदेशानां विपरीतम् अयं आदेशः केवलं दस्तावेजं लिखति यदि सः परिवर्तितः "
 "अस्ति ।</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8063,7 +8069,7 @@ msgstr ""
 "<p><b>sp,split— वर्तमानदृश्यं क्षैतिजरूपेण द्विधा विभजन्तु</b></p><p> प्रयोगः "
 "<tt><b>sp[lit] ।</b></tt></p><p> परिणामः एकस्मिन् दस्तावेजे द्वौ दृश्यौ भवतः ।</p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8073,7 +8079,7 @@ msgstr ""
 "<p><b>vs,vsplit— वर्तमानदृश्यं लंबवतरूपेण द्वयोः विभाजनं कुर्वन्तु</b></p><p> प्रयोगः "
 "<tt><b>vs[plit] .</b></tt></p><p> परिणामः एकस्मिन् दस्तावेजे द्वौ दृश्यौ भवतः ।</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -8082,7 +8088,7 @@ msgstr ""
 "<p><b>clo[se]— वर्तमानदृश्यं पिधाय</b></p><p> प्रयोगः <tt><b>निमील[से] ।</b></tt></"
 "p><p> तस्य निष्पादनस्य अनन्तरं वर्तमानदृश्यं पिहितं भविष्यति ।</p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -8097,7 +8103,7 @@ msgstr ""
 "आह्वयितुं शक्यते ।<br /> <tt>new</tt> — दृश्यं क्षैतिजरूपेण विभज्य नूतनं दस्तावेजं उद्घाटयति ।"
 "<br /> <tt>vnew</tt> — दृश्यं लम्बवत् विभज्य नूतनं दस्तावेजं उद्घाटयति ।<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
@@ -8108,7 +8114,7 @@ msgstr ""
 "[ सम्पादयतु ] ।</b></tt></p><p> पुनः वर्तमानदस्तावेजस्य <b>e</b> diting आरभते । एतत् "
 "वर्तमानसञ्चिकां पुनः सम्पादयितुं उपयोगी भवति, यदा सा डिस्कमध्ये परिवर्तिता आसीत् ।</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8117,7 +8123,7 @@ msgstr ""
 "<p><b>b,buffer — दस्तावेजसूचिकातः N दस्तावेजं सम्पादयन्तु</b></p><p> प्रयोगः "
 "<tt><b>b[uffer] [N] ।</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8130,7 +8136,7 @@ msgstr ""
 "गच्छति ।</p><p> <b>[N]</b> एकं पूर्वनिर्धारितं भवति ।</p><p> दस्तावेजसूचिकायाः आरम्भं "
 "परितः वेष्टयति ।</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8143,7 +8149,7 @@ msgstr ""
 "(&quot; <b>b</b> uffer&quot;) गच्छति । <b>[N]</b> एकं पूर्वनिर्धारितं भवति ।</"
 "p><p> दस्तावेजसूचिकायाः अन्ते परितः वेष्टयति ।</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8154,7 +8160,7 @@ msgstr ""
 "tt></p><p> दस्तावेजसूचौ <b>प्रथमदस्तावेजं</b> (&quot; <b>b</b> uffer&quot;) गच्छति ।"
 "</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8165,7 +8171,7 @@ msgstr ""
 "p><p> दस्तावेजसूचौ <b>l</b> ast document (&quot; <b>b</b> uffer&quot;) प्रति "
 "गच्छति ।</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p> वर्तमान बफरं सूचीबद्धं कुर्वन्तु<p>"
@@ -8347,17 +8353,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "अग्रिमपुस्तकचिह्नस्य कृते अधिकानि chars नास्ति ।"
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "रजिस्टर %1 मध्ये किमपि नास्ति"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2, हेक्स %3, अष्टक %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "न सेट् इति चिह्नं कुर्वन्तु: %1"

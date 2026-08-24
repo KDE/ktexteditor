@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2026-06-24 17:52+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -8079,17 +8079,23 @@ msgstr "Mistókst að vista skjámynd"
 msgid "Screenshot saving failed: %1"
 msgstr "Mistókst að vista skjámynd: %1"
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "Öll skjöl skrifuð á disk"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "Öll skjöl skrifuð á disk"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "Skjal skrifað á disk"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -8104,7 +8110,7 @@ msgstr ""
 "disk<br /> <tt>wa</tt> &mdash; skrifar öll skjöl á disk.</p><p>Ef skjalið er "
 "ekki með neitt heiti birtist skráagluggi.</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -8129,7 +8135,7 @@ msgstr ""
 "síðasti ritilsglugginn. Ef skjalið hefur ekki enn fengið heiti og það þarf "
 "að skrifa það á disk birtist skráagluggi.</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -8150,7 +8156,7 @@ msgstr ""
 "að skrifa það á disk birtist skráagluggi.</p><p>Ólíkt 'w'-skipuninni skrifar "
 "þessi skipun skjalið eingöngu ef því hefur verið breytt.</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8161,7 +8167,7 @@ msgstr ""
 "p><p>Notkun: <tt><b>sp[lit]</b></tt></p><p>Útkoman eru tveir "
 "ritilsgluggarmeð sama skjalinu.</p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8172,7 +8178,7 @@ msgstr ""
 "b></p><p>Notkun: <tt><b>vs[plit]</b></tt></p><p>Útkoman er tveir "
 "ritilsgluggar með sama skjalinu.</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -8182,7 +8188,7 @@ msgstr ""
 "<tt><b>clo[se]</b></tt></p><p>Eftir að skipunin er gefin verður núverandi "
 "ritilsglugga lokað.</p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -8199,7 +8205,7 @@ msgstr ""
 "skjal.<br /> <tt>vnew</tt> &mdash; klýfur ritilsgluggann lóðrétt og opnar "
 "nýtt skjal.<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
@@ -8211,7 +8217,7 @@ msgstr ""
 "gagnlegt til að breyta aftur núverandi skjali þegar því var breytt á diski.</"
 "p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8220,7 +8226,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Breyta skjali N úr skjalalistanum</b></p><p>Notkun: "
 "<tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8233,7 +8239,7 @@ msgstr ""
 "skjalalistanum. </p><p> <b>[N]</b> er sjálfgefið einn. </p><p>Heldur áfram "
 "hringinn þegar komið er á byrjun skjalalistans.</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8246,7 +8252,7 @@ msgstr ""
 "\") í skjalalistanum.<b>[N]</b> er sjálfgefið einn. </p><p>Heldur áfram "
 "hringinn þegar komið er að enda skjalalistans.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8257,7 +8263,7 @@ msgstr ""
 "tt></p><p>Fer á <b>f</b>yrsta skjalið (\"<b>b</b>uffer\") í skjalalistanum.</"
 "p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8268,7 +8274,7 @@ msgstr ""
 "tt></p><p>Fer á síðasta (e. '<b>l</b>ast') skjalið (\"<b>b</b>uffer\") í "
 "skjalalistanum.</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>telja upp núverandi biðminni<p>"
@@ -8452,17 +8458,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Ekki eru fleiri stafir fyrir næsta bókamerki."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Ekkert í registrinu %1"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  hex %3,  áttundakerfis %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Merki ekki stillt: %1"

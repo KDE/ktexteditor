@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2025-12-08 12:25+0700\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <kde-i18n-doc@kde.org>\n"
@@ -7847,17 +7847,23 @@ msgstr "ການບັນທຶກຮູບໜ້າຈໍລົ້ມເຫຼ
 msgid "Screenshot saving failed: %1"
 msgstr "ການບັນທຶກຮູບໜ້າຈໍລົ້ມເຫຼວ: %1"
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "ເອກະສານທັງໝົດຖືກຂຽນລົງດິດແລ້ວ"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "ເອກະສານທັງໝົດຖືກຂຽນລົງດິດແລ້ວ"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "ເອກະສານຖືກຂຽນລົງດິດແລ້ວ"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -7871,7 +7877,7 @@ msgstr ""
 "ຂຽນເອກະສານປັດຈຸບັນລົງດິດ<br /> <tt>wa</tt> &mdash; ຂຽນເອກະສານທັງໝົດລົງດິດ.</"
 "p><p>ຖ້າບໍ່ມີຊື່ໄຟລ໌ກ່ຽວຂ້ອງກັບເອກະສານ, ກ່ອງໂຕ້ຕອບໄຟລ໌ຈະຖືກສະແດງ.</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -7894,7 +7900,7 @@ msgstr ""
 "ແອັບພລິເຄຊັນຈະອອກ. ຖ້າບໍ່ມີຊື່ໄຟລ໌ກ່ຽວຂ້ອງກັບເອກະສານ ແລະ ມັນຄວນຈະຖືກຂຽນລົງດິດ, "
 "ກ່ອງໂຕ້ຕອບໄຟລ໌ຈະຖືກສະແດງ.</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -7914,7 +7920,7 @@ msgstr ""
 "ກ່ອງໂຕ້ຕອບໄຟລ໌ຈະຖືກສະແດງ.</p><p>ຕ່າງຈາກຄຳສັ່ງ 'w', "
 "ຄຳສັ່ງນີ້ຈະຂຽນເອກະສານສະເພາະກໍລະນີທີ່ມີການແກ້ໄຂເທົ່ານັ້ນ.</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -7924,7 +7930,7 @@ msgstr ""
 "<p><b>sp,split&mdash; ແຍກມຸມມອງປັດຈຸບັນຕາມແນວນອນເປັນສອງສ່ວນ</b></p><p>ວິທີໃຊ້: "
 "<tt><b>sp[lit]</b></tt></p><p>ຜົນທີ່ໄດ້ແມ່ນສອງມຸມມອງໃນເອກະສານດຽວກັນ.</p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -7934,7 +7940,7 @@ msgstr ""
 "<p><b>vs,vsplit&mdash; ແຍກມຸມມອງປັດຈຸບັນຕາມແນວຕັ້ງເປັນສອງສ່ວນ</b></p><p>ວິທີໃຊ້: "
 "<tt><b>vs[plit]</b></tt></p><p>ຜົນທີ່ໄດ້ແມ່ນສອງມຸມມອງໃນເອກະສານດຽວກັນ.</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -7943,7 +7949,7 @@ msgstr ""
 "<p><b>clo[se]&mdash; ປິດມຸມມອງປັດຈຸບັນ</b></p><p>ວິທີໃຊ້: <tt><b>clo[se]</b></tt></"
 "p><p>ຫຼັງຈາກປະຕິບັດ, ມຸມມອງປັດຈຸບັນຈະຖືກປິດ.</p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -7959,7 +7965,7 @@ msgstr ""
 "ເປີດເອກະສານໃໝ່.<br /> <tt>vnew</tt> &mdash; ແຍກມຸມມອງຕາມແນວຕັ້ງ ແລະ ເປີດເອກະສານໃໝ່."
 "<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
@@ -7970,7 +7976,7 @@ msgstr ""
 "tt></p><p>ເລີ່ມ <b>e</b>diting ເອກະສານປັດຈຸບັນອີກຄັ້ງ. "
 "ສິ່ງນີ້ມີປະໂຫຍດໃນການແກ້ໄຂໄຟລ໌ປັດຈຸບັນຄືນໃໝ່, ເມື່ອມັນຖືກແກ້ໄຂໃນດິດ.</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -7979,7 +7985,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; ແກ້ໄຂເອກະສານ N ຈາກລາຍການເອກະສານ</b></p><p>ວິທີໃຊ້: "
 "<tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -7992,7 +7998,7 @@ msgstr ""
 "ໃນລາຍການເອກະສານ. </p><p> <b>[N]</b> ເລີ່ມຕົ້ນແມ່ນໜຶ່ງ. </"
 "p><p>ວົນກັບໄປຫາຈຸດເລີ່ມຕົ້ນຂອງລາຍການເອກະສານ.</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8005,7 +8011,7 @@ msgstr ""
 "ໃນລາຍການເອກະສານ.<b>[N]</b> ເລີ່ມຕົ້ນແມ່ນໜຶ່ງ. </p><p>ວົນກັບໄປຫາຈຸດສິ້ນສຸດຂອງລາຍການເອກະສານ."
 "</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8015,7 +8021,7 @@ msgstr ""
 "<p><b>bf,bfirst &mdash; ເອກະສານທຳອິດ</b></p><p>ວິທີໃຊ້: <tt><b>bf[irst]</b></"
 "tt></p><p>ໄປຍັງເອກະສານ <b>f</b>irst (\"<b>b</b>uffer\") ໃນລາຍການເອກະສານ.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8025,7 +8031,7 @@ msgstr ""
 "<p><b>bl,blast &mdash; ເອກະສານສຸດທ້າຍ</b></p><p>ວິທີໃຊ້: <tt><b>bl[ast]</b></tt></"
 "p><p>ໄປຍັງເອກະສານ <b>l</b>ast (\"<b>b</b>uffer\") ໃນລາຍການເອກະສານ.</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>ລາຍການ buffer ປັດຈຸບັນ<p>"
@@ -8205,17 +8211,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "ບໍ່ມີຕົວອັກສອນເພີ່ມເຕີມສຳລັບຂັ້ນໜ້າຖັດໄປ."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "ບໍ່ມີຫຍັງໃນ register %1"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Hex %3,  Octal %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "ເຄື່ອງໝາຍບໍ່ໄດ້ຕັ້ງຄ່າ: %1"

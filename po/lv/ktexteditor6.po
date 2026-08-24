@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-16 00:40+0000\n"
+"POT-Creation-Date: 2026-08-24 00:41+0000\n"
 "PO-Revision-Date: 2025-11-11 18:47+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -8089,17 +8089,23 @@ msgstr "Neizdevās saglabāt ekrānattēlu"
 msgid "Screenshot saving failed: %1"
 msgstr "Neizdevās saglabāt ekrānattēlu: %1"
 
-#: vimode/appcommands.cpp:67
+#: vimode/appcommands.cpp:72
 #, kde-format
 msgid "All documents written to disk"
 msgstr "Visi dokumenti ir saglabāti diskā"
 
-#: vimode/appcommands.cpp:70
+#: vimode/appcommands.cpp:74
+#, fuzzy, kde-format
+#| msgid "All documents written to disk"
+msgid "Only some documents were written to disk"
+msgstr "Visi dokumenti ir saglabāti diskā"
+
+#: vimode/appcommands.cpp:79
 #, kde-format
 msgid "Document written to disk"
 msgstr "Dokuments ir saglabāts diskā"
 
-#: vimode/appcommands.cpp:202
+#: vimode/appcommands.cpp:212
 #, kde-format
 msgid ""
 "<p><b>w/wa &mdash; write document(s) to disk</b></p><p>Usage: <tt><b>w[a]</"
@@ -8115,7 +8121,7 @@ msgstr ""
 "dokumentus diskā.</p><p>Ja dokumentam vēl nav piešķirts nekāds nosaukums, "
 "bet to saglabājat diskā, programma atvērs lodziņu ar vaicājumu.</p>"
 
-#: vimode/appcommands.cpp:213
+#: vimode/appcommands.cpp:223
 #, kde-format
 msgid ""
 "<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p><p>Usage: <tt><b>[w]q[a]</"
@@ -8140,7 +8146,7 @@ msgstr ""
 "izslēdzas. Ja dokumentam vēl nav piešķirts nekāds nosaukums, bet to "
 "saglabājat diskā, programma atvērs lodziņu ar vaicājumu.</p>"
 
-#: vimode/appcommands.cpp:228
+#: vimode/appcommands.cpp:238
 #, kde-format
 msgid ""
 "<p><b>x/xa &mdash; write and quit</b></p><p>Usage: <tt><b>x[a]</b></tt></"
@@ -8161,7 +8167,7 @@ msgstr ""
 "programma atvērs lodziņu ar vaicājumu.</p><p>Atšķirībā no „w“ komandām šī "
 "komanda saglabā (raksta) dokumentu tikai tad, ja tas ir mainīts.</p>"
 
-#: vimode/appcommands.cpp:242
+#: vimode/appcommands.cpp:252
 #, kde-format
 msgid ""
 "<p><b>sp,split&mdash; Split horizontally the current view into two</b></"
@@ -8172,7 +8178,7 @@ msgstr ""
 "p><p>Lietošana: <tt><b>sp[lit]</b></tt></p><p>Rezultātā atveras divi viena "
 "un tā paša dokumenta skati.</p>"
 
-#: vimode/appcommands.cpp:248
+#: vimode/appcommands.cpp:258
 #, kde-format
 msgid ""
 "<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></"
@@ -8183,7 +8189,7 @@ msgstr ""
 "p><p>Usage: <tt><b>vs[plit]</b></tt></p><p>Rezultātā atceras divi viena un "
 "tā paša dokumenta skati.</p>"
 
-#: vimode/appcommands.cpp:254
+#: vimode/appcommands.cpp:264
 #, kde-format
 msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
@@ -8192,7 +8198,7 @@ msgstr ""
 "<p><b>clo[se]&mdash; aizver pašreizējo skatu</b></p><p>Lietošana: "
 "<tt><b>clo[se]</b></tt></p><p>pēc palaišanas aizveras pašreizējais skats.</p>"
 
-#: vimode/appcommands.cpp:260
+#: vimode/appcommands.cpp:270
 #, kde-format
 msgid ""
 "<p><b>[v]new &mdash; split view and create new document</b></p><p>Usage: "
@@ -8209,7 +8215,7 @@ msgstr ""
 "dokumentu.<br /> <tt>vnew</tt> &mdash; sadala skatu vertikāli un atver jaunu "
 "dokumentu.<br /></p>"
 
-#: vimode/appcommands.cpp:270
+#: vimode/appcommands.cpp:280
 #, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
@@ -8221,7 +8227,7 @@ msgstr ""
 "dokumenti. Noderīgi, lai pārrediģētu pašreizējo datni, ja tā ir mainīta "
 "diskā.</p>"
 
-#: vimode/appcommands.cpp:518
+#: vimode/appcommands.cpp:528
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8230,7 +8236,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; rediģē dokumentu N no dokumentu saraksta</b></"
 "p><p>Lietošana: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:523
+#: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8243,7 +8249,7 @@ msgstr ""
 "dokumentu („<b>b</b>uferis“) dokumentu sarakstā. </p><p> <b>[N]</b> "
 "noklusējums ir viens. </p><p>Sāk dokumentu sarakstu no sākuma.</p>"
 
-#: vimode/appcommands.cpp:531
+#: vimode/appcommands.cpp:541
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8256,7 +8262,7 @@ msgstr ""
 "(„<b>b</b>uferi“) dokumentu sarakstā.<b>[N]</b> noklusējums ir viens. </"
 "p><p>Sāk dokumentu sarakstu no sākuma.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:549
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8267,7 +8273,7 @@ msgstr ""
 "<tt><b>bf[irst]</b></tt></p><p>Iet uz pirmo („<b>f</b>irst“) dokumentu "
 "(„<b>b</b>uferi“) dokumentu sarakstā.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:555
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8278,7 +8284,7 @@ msgstr ""
 "<tt><b>bl[ast]</b></tt></p><p>Iet uz pēdējo („<b>l</b>ast“) dokumentu "
 "(„<b>b</b>uferis“) dokumentu sarakstā.</p>"
 
-#: vimode/appcommands.cpp:551
+#: vimode/appcommands.cpp:561
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>uzskaita buferus<p>"
@@ -8463,17 +8469,17 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Nākamajai grāmatzīmei vairs nav rakstzīmju."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3564
+#: vimode/modes/normalvimode.cpp:3567
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Reģistrs „%1“ neko nesatur"
 
-#: vimode/modes/normalvimode.cpp:1688
+#: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "„%1“ %2,  Heks %3,  Oktāli %4"
 
-#: vimode/modes/normalvimode.cpp:2531
+#: vimode/modes/normalvimode.cpp:2534
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marķējums nav pievienots: %1"
