@@ -1994,6 +1994,29 @@ Range NormalViMode::motionRight()
     return r;
 }
 
+Range NormalViMode::motionBackspace()
+{
+    KTextEditor::Cursor c(m_view->cursorPosition());
+
+    for (int count = getCount(); count > 0; count--) {
+        if (c.column() >= count) {
+            c.setColumn(c.column() - count);
+            break;
+        }
+        if (c.line() == 0) {
+            c = {0, 0};
+            break;
+        }
+        // Move to the end of the previous line with the remaining count
+        count -= c.column();
+        c.setLine(c.line() - 1);
+        c.setColumn(qMax(0, doc()->lineLength(c.line()) - 1));
+    }
+
+    m_stickyColumn = -1;
+    return Range(c, ExclusiveMotion);
+}
+
 Range NormalViMode::motionPageDown()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
@@ -4071,7 +4094,7 @@ const std::vector<Motion> &NormalViMode::motions()
         // regular motions
         ADDMOTION("h", motionLeft, 0),
         ADDMOTION("<left>", motionLeft, 0),
-        ADDMOTION("<backspace>", motionLeft, 0),
+        ADDMOTION("<backspace>", motionBackspace, 0),
         ADDMOTION("j", motionDown, 0),
         ADDMOTION("<down>", motionDown, 0),
         ADDMOTION("<enter>", motionDownToFirstNonBlank, 0),

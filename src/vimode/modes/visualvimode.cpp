@@ -303,7 +303,7 @@ const std::vector<Motion> &VisualViMode::motions()
         // regular motions
         ADDMOTION("h", motionLeft, 0),
         ADDMOTION("<left>", motionLeft, 0),
-        ADDMOTION("<backspace>", motionLeft, 0),
+        ADDMOTION("<backspace>", motionBackspace, 0),
         ADDMOTION("j", motionDown, 0),
         ADDMOTION("<down>", motionDown, 0),
         ADDMOTION("k", motionUp, 0),

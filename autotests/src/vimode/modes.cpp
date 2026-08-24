@@ -49,6 +49,13 @@ void ModesTest::NormalMotionsTests()
     DoTest("bar\nbara", "lljx", "bar\nbaa");
     DoTest("0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0\n1\n2\n3\n4\n5\n", "13jx", "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0\n1\n2\n\n4\n5\n");
 
+    // Testing backspace motion
+    DoTest("bar", "ll\\backspacex", "br");
+    DoTest("bar", "10l10\\backspacex", "ar");
+    DoTest("foo\nbar\nbaz", "2j\\backspacex", "foo\nba\nbaz");
+    DoTest("foo\nbar\nbaz", "2jl5\\backspacex", "fo\nbar\nbaz");
+    DoTest("foo\nbar\nbaz", "2jl20\\backspacex", "oo\nbar\nbaz");
+
     // Testing "k"
     DoTest("bar\nbar", "jx", "bar\nar");
     DoTest("bar\nbar\nbar", "jj100kx", "ar\nbar\nbar");
@@ -1195,6 +1202,7 @@ void ModesTest::VisualMotionsTests()
     DoTest("\n", "vjcX", "X");
     DoTest("foobar", "vlllx", "ar");
     DoTest("foo\nbar", "Vd", "bar");
+    DoTest("foo\nbar", "jv\\backspacex", "foar");
     DoTest("Hello.\nWorld", "2lvjcX", "HeXld");
     DoTest("Three. Different. Sentences.\n\n", "vapcX", "X");
     DoTest("1234\n1234\n1234", "l\\ctrl-vljjd", "14\n14\n14");

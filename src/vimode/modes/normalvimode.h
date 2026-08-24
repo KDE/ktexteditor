@@ -183,6 +183,7 @@ public:
     Range motionRight();
     Range motionDown();
     Range motionUp();
+    Range motionBackspace();
 
     Range motionPageDown();
     Range motionPageUp();
