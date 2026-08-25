@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-24 00:41+0000\n"
-"PO-Revision-Date: 2026-06-16 07:15+0200\n"
+"PO-Revision-Date: 2026-08-24 06:21+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -8090,10 +8090,9 @@ msgid "All documents written to disk"
 msgstr "ყველა დოკუმენტი ჩაწერილია"
 
 #: vimode/appcommands.cpp:74
-#, fuzzy, kde-format
-#| msgid "All documents written to disk"
+#, kde-format
 msgid "Only some documents were written to disk"
-msgstr "ყველა დოკუმენტი ჩაწერილია"
+msgstr "დისკზე ჩაწერილია, მხოლოდ, რამდენიმე დოკუმენტი"
 
 #: vimode/appcommands.cpp:79
 #, kde-format

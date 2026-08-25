@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-24 00:41+0000\n"
-"PO-Revision-Date: 2026-06-16 19:19+0300\n"
+"PO-Revision-Date: 2026-08-24 20:20+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -8102,10 +8102,9 @@ msgid "All documents written to disk"
 msgstr "Tüm belgeler diske yazıldı"
 
 #: vimode/appcommands.cpp:74
-#, fuzzy, kde-format
-#| msgid "All documents written to disk"
+#, kde-format
 msgid "Only some documents were written to disk"
-msgstr "Tüm belgeler diske yazıldı"
+msgstr "Yalnızca bazı belgeler diske yazıldı"
 
 #: vimode/appcommands.cpp:79
 #, kde-format

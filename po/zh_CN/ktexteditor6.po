@@ -7820,10 +7820,9 @@ msgid "All documents written to disk"
 msgstr "所有写入磁盘的文档"
 
 #: vimode/appcommands.cpp:74
-#, fuzzy, kde-format
-#| msgid "All documents written to disk"
+#, kde-format
 msgid "Only some documents were written to disk"
-msgstr "所有写入磁盘的文档"
+msgstr ""
 
 #: vimode/appcommands.cpp:79
 #, kde-format
