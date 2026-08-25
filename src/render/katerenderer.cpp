@@ -1158,6 +1158,11 @@ void KateRenderer::updateFontHeight()
         qreal diff = std::abs(oldFontHeight - newFontHeight);
         m_fontAscent += (diff / 2);
     }
+
+    // Cache whether the font supports alternative ligatures ("calt")
+    const QRawFont raw = QRawFont::fromFont(m_font);
+    const QByteArray table = raw.fontTable("GSUB");
+    m_fontSupportsCalt = table.contains("calt");
 }
 
 void KateRenderer::updateMarkerSize()
@@ -1251,6 +1256,18 @@ void KateRenderer::layoutLine(Kate::TextLine textLine, KateLineLayout *lineLayou
                 text_char_format.setFontLetterSpacingType(QFont::AbsoluteSpacing);
                 decorations.append(QTextLayout::FormatRange{.start = column - 1, .length = 1, .format = text_char_format});
             }
+        }
+
+        // Disable font alternative ligatures under the cursor (ex. "Code" fonts)
+        const auto cursor = m_view->cursorPosition();
+        if (m_fontSupportsCalt && lineLayout->line() == cursor.line()) {
+            QTextCharFormat noLigatures;
+            QFont font = m_font;
+            font.setFeature("calt", 0);
+            noLigatures.setFont(font);
+
+            // Range extends 1 column to the left and right of the cursor
+            decorations.append({.start = qMax(0, cursor.column() - 1), .length = 2, .format = noLigatures});
         }
     }
     l.setFormats(decorations);

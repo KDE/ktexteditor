@@ -448,6 +448,7 @@ private:
     int m_indentWidth;
     int m_fontHeight;
     float m_fontAscent;
+    bool m_fontSupportsCalt = false;
 
     // if we are at bracket, this will have the X for the opener
     int m_currentBracketX = -1;
