@@ -10,20 +10,21 @@
 # SPDX-FileCopyrightText: 2011 Torbjörn Klatt <torbjoern.k@googlemail.com>
 # SPDX-FileCopyrightText: 2022 Frank Steinmetzger <dev-kde@felsenfleischer.de>
 # SPDX-FileCopyrightText: 2025-2026 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
+# SPDX-FileCopyrightText: 2026 Philipp Kiemle <l10n.daphipz@fastmail.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-24 00:41+0000\n"
-"PO-Revision-Date: 2026-04-19 21:33+0200\n"
-"Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
+"PO-Revision-Date: 2026-08-25 23:52+0200\n"
+"Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -1431,15 +1432,13 @@ msgstr "&Bild auf/ab versetzt Cursor"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
-"Legt fest, ob der Cursor über ganze Wörter springt oder auch an groß "
-"geschrieben Buchstaben innerhalb eines Wortes anhält."
+"Legt fest, ob der Cursor auch an groß geschrieben Buchstaben und "
+"Unterstrichen innerhalb eines Wortes anhält."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1447,6 +1446,8 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"Bei „camelCase“- und „snake_case“-Teilwörtern anhalten, wenn der Cursor "
+"wortweise bewegt wird"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -1674,10 +1675,9 @@ msgstr "Einstellungen in .editorconfig-Datei berücksichtigen"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkUseFirstLineAsDocName)
 #: dialogs/opensaveconfigadvwidget.ui:229
-#, fuzzy, kde-format
-#| msgid "Use this to close the current document"
+#, kde-format
 msgid "Use first line of untitled documents for document name"
-msgstr "Das aktive Dokument schließen"
+msgstr "Die erste Zeile unbenannter Dokumente als Dokumentnamen verwenden"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -2518,18 +2518,16 @@ msgid "Normal Mode"
 msgstr "Normaler Modus"
 
 #: inputmode/kateviinputmode.cpp:33
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "VI: INSERT MODE"
+msgstr "VI: INSERT"
 
 #: inputmode/kateviinputmode.cpp:36
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "VI: NORMAL MODE"
+msgstr "VI: NORMAL"
 
 #: inputmode/kateviinputmode.cpp:39
 #, kde-format
@@ -3409,7 +3407,7 @@ msgstr ""
 "einer Spalte aus, welche durch einen regulären Ausdruck als Argument "
 "angegeben wird.<br><br>Wenn Sie ein leeres Muster angeben, wird "
 "standardmäßig am ersten nicht-leeren Zeichen ausgerichtet.<br>Wenn das "
-"Muster eine Übereinstimmung hat, dann wird an dieser ausgerichtet."
+"Muster eine Übereinstimmung hat, wird an dieser ausgerichtet."
 "<br><br><i>Beispiele</i>:<br>„<code>alignon -</code>“ fügt Leerzeichen vor "
 "dem ersten „-“ in jeder Zeile ein, um diese an derselben Spalte auszurichten."
 "<br>„<code>alignon :\\s+(.)</code>“ fügt Leerzeichen vor dem ersten nicht "
@@ -5304,10 +5302,10 @@ msgid ""
 "p><p>Possible true values: 1 on true<br/>possible false values: 0 off false</"
 "p>"
 msgstr ""
-"<p>set-indent-pasted-text <b>Aktivierung</b></p><p>Wenn eingeschaltet, wird "
-"aus der Zwischenablage eingefügter Text nach den aktuellen "
-"Einrückungsrichtlinien eingerückt.</p><p>Mögliche Werte zum Einschalten: 1 "
-"on true<br/>Mögliche Werte zum Ausschalten: 0 off false</p>"
+"<p>set-indent-pasted-text <b>Aktivierung</b></p><p>Wenn aktiviert, wird aus "
+"der Zwischenablage eingefügter Text nach den aktuellen "
+"Einrückungsrichtlinien eingerückt.</p><p>Mögliche Werte zum aktivieren: 1 on "
+"true<br/>Mögliche Werte zum deaktivieren: 0 off false</p>"
 
 #: utils/katecmds.cpp:91
 #, kde-format
@@ -5330,9 +5328,9 @@ msgid ""
 "spaces as you type.</p><p>Possible true values: 1 on true<br/>possible false "
 "values: 0 off false</p>"
 msgstr ""
-"<p>set-replace-tab <b>Aktivierung</b></p><p>Wenn eingeschaltet, werden "
+"<p>set-replace-tab <b>Aktivierung</b></p><p>Wenn aktiviert, werden "
 "Tabulatorzeichen bei der Eingabe durch Leerzeichen ersetzt.</p><p>Mögliche "
-"Werte zum Einschalten: 1 on true<br/>Mögliche Werte zum Ausschalten: 0 off "
+"Werte zum aktivieren: 1 on true<br/>Mögliche Werte zum deaktivieren: 0 off "
 "false</p>"
 
 #: utils/katecmds.cpp:107
@@ -5342,10 +5340,10 @@ msgid ""
 "whitespace will be visualized by a small dot.</p><p>Possible true values: 1 "
 "on true<br/>possible false values: 0 off false</p>"
 msgstr ""
-"<p>set-show-tabs <b>Aktivierung</b></p><p>Wenn eingeschaltet, werden "
+"<p>set-show-tabs <b>Aktivierung</b></p><p>Wenn aktiviert, werden "
 "Tabulatorzeichen und vorangestellte Leerzeichen durch kleine Punkte "
-"dargestellt.</p><p>Mögliche Werte zum Einschalten: 1 on true<br/>Mögliche "
-"Werte zum Ausschalten: 0 off false</p>"
+"dargestellt.</p><p>Mögliche Werte zum aktivieren: 1 on true<br/>Mögliche "
+"Werte zum deaktivieren: 0 off false</p>"
 
 #: utils/katecmds.cpp:114
 #, kde-format
@@ -5390,8 +5388,8 @@ msgid ""
 "p>"
 msgstr ""
 "<p>set-auto-indent <b>Aktivierung</b></p><p>Aktiviert oder deaktiviert die "
-"automatische Einrückung.</p><p>Mögliche Werte zum Einschalten: 1 on true<br/"
-">Mögliche Werte zum Ausschalten: 0 off false</p>"
+"automatische Einrückung.</p><p>Mögliche Werte zum aktivieren: 1 on true<br/"
+">Mögliche Werte zum deaktivieren: 0 off false</p>"
 
 #: utils/katecmds.cpp:142
 #, kde-format
@@ -5401,8 +5399,8 @@ msgid ""
 "values: 0 off false</p>"
 msgstr ""
 "<p>set-line-numbers <b>Aktivierung</b></p><p>Schaltet die Zeilennummerierung "
-"ein und aus.</p><p>Mögliche Werte zum Einschalten: 1 on true<br/>Mögliche "
-"Werte zum Ausschalten: 0 off false</p>"
+"ein und aus.</p><p>Mögliche Werte zum aktivieren: 1 on true<br/>Mögliche "
+"Werte zum deaktivieren: 0 off false</p>"
 
 #: utils/katecmds.cpp:149
 #, kde-format
@@ -5413,7 +5411,7 @@ msgid ""
 msgstr ""
 "<p>set-folding-markers <b>Aktivierung</b></p><p>Schaltet die Markierungen "
 "für die Quelltextausblendung ein und aus.</p><p>Mögliche Werte zum "
-"Einschalten: 1 on true<br/>Mögliche Werte zum Ausschalten: 0 off false</p>"
+"aktivieren: 1 on true<br/>Mögliche Werte zum deaktivieren: 0 off false</p>"
 
 #: utils/katecmds.cpp:156
 #, kde-format
@@ -5423,8 +5421,8 @@ msgid ""
 "off false</p>"
 msgstr ""
 "<p>set-icon-border <b>Aktivierung</b></p><p>Schaltet die Anzeige des "
-"Symbolrandes ein und aus.</p><p>Mögliche Werte zum Einschalten: 1 on true<br/"
-">Mögliche Werte zum Ausschalten: 0 off false</p>"
+"Symbolrandes ein und aus.</p><p>Mögliche Werte zum aktivieren: 1 on true<br/"
+">Mögliche Werte zum deaktivieren: 0 off false</p>"
 
 #: utils/katecmds.cpp:163
 #, kde-format
@@ -5435,7 +5433,7 @@ msgid ""
 msgstr ""
 "<p>set-word-wrap <b>Aktivierung</b></p><p>Schaltet dynamischen Zeilenumbruch "
 "entsprechend dem Wert von <b>Aktivierung</b> ein oder aus.</p><p>Mögliche "
-"Werte zum Einschalten: 1 on true<br/>Mögliche Werte zum Ausschalten: 0 off "
+"Werte zum aktivieren: 1 on true<br/>Mögliche Werte zum deaktivieren: 0 off "
 "false</p>"
 
 #: utils/katecmds.cpp:170
@@ -5456,10 +5454,10 @@ msgid ""
 "replaced with whitespace whenever the document is saved.</p><p> possible "
 "true values: 1 on true<br/>possible false values: 0 off false</p>"
 msgstr ""
-"<p>set-replace-tabs-save <b>Aktivierung</b></p><p>Wenn eingeschaltet, werden "
+"<p>set-replace-tabs-save <b>Aktivierung</b></p><p>Wenn aktiviert, werden "
 "Tabulatorzeichen durch Leerzeichen ersetzt, wenn das Dokument gespeichert "
-"wird.</p><p>Mögliche Werte zum Einschalten: 1 on true<br/>Mögliche Werte zum "
-"Ausschalten: 0 off false</p>"
+"wird.</p><p>Mögliche Werte zum aktivieren: 1 on true<br/>Mögliche Werte zum "
+"deaktivieren: 0 off false</p>"
 
 #: utils/katecmds.cpp:182
 #, kde-format
@@ -5489,9 +5487,9 @@ msgid ""
 "visualized by a vertical dotted line.</p><p> possible true values: 1 on "
 "true<br/>possible false values: 0 off false</p>"
 msgstr ""
-"<p>set-show-indent <b>Aktivierung</b></p><p>Wenn eingeschaltet, wird die "
+"<p>set-show-indent <b>Aktivierung</b></p><p>Wenn aktiviert, wird die "
 "Einrückung durch eine punktierte Linie dargestellt.</p><p>Mögliche Werte zum "
-"Einschalten: 1 on true<br/>Mögliche Werte zum Ausschalten: 0 off false</p>"
+"aktivieren: 1 on true<br/>Mögliche Werte zum deaktivieren: 0 off false</p>"
 
 #: utils/katecmds.cpp:199
 #, kde-format
@@ -5597,28 +5595,28 @@ msgstr ""
 "Zeichenfolge ein, entweder wie durch „Format“ festgelegt oder im Format "
 "„yyyy-MM-dd hh:mm:ss“, wenn die Formatangabe fehlt.</p><p>Mögliche "
 "Formatangaben sind:<table><tr><td>d</td><td>Der Tag als Zahl ohne "
-"vorangestellte Null (1-31).</td></tr><tr><td>dd</td><td>Der Tag als Zahl mit "
-"vorangestellter Null (01-31).</td></tr><tr><td>ddd</td><td>Die übersetzte "
-"Abkürzung für die Bezeichnung des Tages (z. B. „Mo“…„So“).</td></"
+"vorangestellte Null (1–31).</td></tr><tr><td>dd</td><td>Der Tag als Zahl mit "
+"vorangestellter Null (01–31).</td></tr><tr><td>ddd</td><td>Die übersetzte "
+"Abkürzung für die Bezeichnung des Tages (z. B. „Mo“..„So“).</td></"
 "tr><tr><td>dddd</td><td>Der ausgeschriebene übersetzte Bezeichnung des Tages "
-"(z. B. „Montag“…„Sonntag“).</td></tr><tr><td>M</td><td>Der Monat als Zahl "
-"ohne vorangestellte Null (1-12).</td></tr><tr><td>MM</td><td>Der Monat als "
-"Zahl mit vorangestellter Null (01-12).</td></tr><tr><td>MMM</td><td>Die "
-"übersetzte Abkürzung für die Bezeichnung des Monats (z. B. „Jan“…„Dez“).</"
-"td></tr><tr><td>yy</td><td>Das Jahr als zweistellige Zahl (00-99).</td></"
-"tr><tr><td>yyyy</td><td>Das Jahr als vierstellige Zahl (1752-8000).</td></"
-"tr><tr><td>h</td><td>Die Stunde ohne vorangestellte Null (0…23 oder 1…12 für "
-"AM/PM-Anzeige).</td></tr><tr><td>hh</td><td>Die Stunde mit vorangestellter "
-"Null (00…23 oder 01…12 für AM/PM-Anzeige).</td></tr><tr><td>m</td><td>Die "
-"Minute ohne vorangestellte Null (0…59).</td></tr><tr><td>mm</td><td>Die "
-"Minute mit vorangestellter Null (00…59).</td></tr><tr><td>s</td><td>Die "
-"Sekunde ohne vorangestellte Null (0…59).</td></tr><tr><td>ss</td><td>Die "
-"Sekunde mit vorangestellter Null (0…59).</td></tr><tr><td>z</td><td>Die "
-"Millisekunden ohne vorangestellte Nullen (0…999).</td></tr><tr><td>zzz</"
-"td><td>Die Millisekunden ohne vorangestellte Nullen (000…999).</td></"
-"tr><tr><td>AP</td><td>AM/PM-Anzeige verwenden. AP wird durch „AM“ oder „PM“ "
-"ersetzt.</td></tr><tr><td>ap</td><td>am/pm-Anzeige verwenden. ap wird durch "
-"„am“ oder „pm“ ersetzt.</td></tr></table></p>"
+"(z. B. „Montag“..„Sonntag“).</td></tr><tr><td>M</td><td>Der Monat als Zahl "
+"ohne vorangestellte Null (1–12).</td></tr><tr><td>MM</td><td>Der Monat als "
+"Zahl mit vorangestellter Null (01–12).</td></tr><tr><td>MMM</td><td>Die "
+"übersetzte Abkürzung für die Bezeichnung des Monats (z. B. „Jan“..„Dez“).</"
+"td></tr><tr><td>yy</td><td>Das Jahr als zweistellige Zahl (00–99).</td></"
+"tr><tr><td>yyyy</td><td>Das Jahr als vierstellige Zahl (1752–8000).</td></"
+"tr><tr><td>h</td><td>Die Stunde ohne vorangestellte Null (0..23 oder 1..12 "
+"für AM/PM-Anzeige).</td></tr><tr><td>hh</td><td>Die Stunde mit "
+"vorangestellter Null (00..23 oder 01..12 für AM/PM-Anzeige).</td></"
+"tr><tr><td>m</td><td>Die Minute ohne vorangestellte Null (0..59).</td></"
+"tr><tr><td>mm</td><td>Die Minute mit vorangestellter Null (00..59).</td></"
+"tr><tr><td>s</td><td>Die Sekunde ohne vorangestellte Null (0..59).</td></"
+"tr><tr><td>ss</td><td>Die Sekunde mit vorangestellter Null (0..59).</td></"
+"tr><tr><td>z</td><td>Die Millisekunden ohne vorangestellte Nullen (0..999).</"
+"td></tr><tr><td>zzz</td><td>Die Millisekunden ohne vorangestellte Nullen "
+"(000..999).</td></tr><tr><td>AP</td><td>AM/PM-Anzeige verwenden. AP wird "
+"durch „AM“ oder „PM“ ersetzt.</td></tr><tr><td>ap</td><td>am/pm-Anzeige "
+"verwenden. ap wird durch „am“ oder „pm“ ersetzt.</td></tr></table></p>"
 
 #: utils/katecmds.cpp:621
 #, kde-format
@@ -6925,9 +6923,9 @@ msgstr ""
 "anhand eines regulären Ausdrucks aus, den einzugeben Sie gebeten werden.<br /"
 "><br />Wenn Sie ein leeres Muster angeben, wird standardmäßig am ersten "
 "nicht leeren Zeichen ausgerichtet.<br />Wenn das Muster eine Übereinstimmung "
-"hat, dann wird an dieser ausgerichtet.<br /><br /><i>Beispiele</i>:<br />Mit "
-"„-“ werden Leerzeichen vor dem ersten „-“ in jeder Zeile eingefügt, um diese "
-"an derselben Spalte auszurichten.<br />Mit „:\\s+(.)“ werden Leerzeichen vor "
+"hat, wird an dieser ausgerichtet.<br /><br /><i>Beispiele</i>:<br />Mit „-“ "
+"werden Leerzeichen vor dem ersten „-“ in jeder Zeile eingefügt, um diese an "
+"derselben Spalte auszurichten.<br />Mit „:\\s+(.)“ werden Leerzeichen vor "
 "dem ersten nicht leeren Zeichen eingefügt, das auf einen Doppelpunkt folgt, "
 "um die Zeilen an dessen Spalte auszurichten."
 
@@ -8234,10 +8232,9 @@ msgid "All documents written to disk"
 msgstr "Alle Dokumente wurden gespeichert"
 
 #: vimode/appcommands.cpp:74
-#, fuzzy, kde-format
-#| msgid "All documents written to disk"
+#, kde-format
 msgid "Only some documents were written to disk"
-msgstr "Alle Dokumente wurden gespeichert"
+msgstr "Nur ein paar Dokumente wurden gespeichert"
 
 #: vimode/appcommands.cpp:79
 #, kde-format
