@@ -9,6 +9,8 @@
 
 #include "katetextline.h"
 
+#include <vector>
+
 #include <QList>
 
 #include <ktexteditor/cursor.h>
