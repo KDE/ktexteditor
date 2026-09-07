@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-24 00:41+0000\n"
-"PO-Revision-Date: 2026-08-29 08:48+0200\n"
+"PO-Revision-Date: 2026-09-06 17:28+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1953,7 +1953,7 @@ msgstr "Lletra de l'editor:"
 #: dialogs/textareaappearanceconfigwidget.ui:48
 #, kde-format
 msgid "&Line Height Multiplier:"
-msgstr "Multiplicador de l'alçada de les &línies:"
+msgstr "Multiplicador de l'altura de les &línies:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:58
@@ -1962,8 +1962,8 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
-"Aquest valor es multiplicarà per l'alçada predeterminada de les línies de la "
-"lletra. Un valor d'1,0 vol dir que s'emprarà l'alçada predeterminada."
+"Aquest valor es multiplicarà per l'altura predeterminada de les línies de la "
+"lletra. Un valor d'1,0 vol dir que s'emprarà l'altura predeterminada."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:93
