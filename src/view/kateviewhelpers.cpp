@@ -2019,7 +2019,8 @@ void KateIconBorder::paintBorder(uint firstY, uint lastY)
 {
     const uint h = m_view->renderer()->lineHeight();
     const uint startz = firstY / h;
-    const uint endz = qMin(lastY / h + 1, static_cast<uint>(m_viewInternal->cache()->viewCacheLineCount()));
+    const uint endz = lastY / h + 1;
+    const uint cacheLineCount = static_cast<uint>(m_viewInternal->cache()->viewCacheLineCount());
     const uint currentLine = m_view->cursorPosition().line();
 
     // center the folding boxes
@@ -2050,8 +2051,9 @@ void KateIconBorder::paintBorder(uint firstY, uint lastY)
     const QColor backgroundColor = m_view->rendererConfig()->backgroundColor(); // Of the edit area
     const QColor currentLineHighlight = m_view->rendererConfig()->highlightedLineColor(); // Of the edit area
 
+    const auto drawendz = qMin(endz, cacheLineCount);
     // Paint the border in chunks line by line
-    for (uint z = startz; z < endz; z++) {
+    for (uint z = startz; z < drawendz; z++) {
         // Painting coordinates, lineHeight * lineNumber
         const uint y = h * z;
 
@@ -2265,6 +2267,18 @@ void KateIconBorder::paintBorder(uint firstY, uint lastY)
             // we still keep painting to not have strange flicker
             QTimer::singleShot(0, this, &KateIconBorder::delayedUpdateOfSizeWithRepaint);
         }
+    }
+
+    // Fill in the blank area at the end since the view resizes are delayed
+    // and the new lines at the bottom might not be there yet.
+    if (cacheLineCount < endz) {
+        const uint y = cacheLineCount * h;
+        p.fillRect(0, y, w, lastY - y + 1, iconBarColor);
+        p.fillRect(w - 2 * m_separatorWidth, y, w, lastY - y + 1, backgroundColor);
+
+        p.setPen(m_view->rendererConfig()->separatorColor());
+        p.setBrush(m_view->rendererConfig()->separatorColor());
+        p.drawLine(w - 2 * m_separatorWidth, y, w - 2 * m_separatorWidth, lastY + 1);
     }
 }
 
