@@ -1546,7 +1546,7 @@ msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
-"Définit si le curseur s’arrête au niveau des bossages et des traits de "
+"Définit si le curseur s'arrête au niveau des bossages et des traits de "
 "soulignement dans un mot."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
