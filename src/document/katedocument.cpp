@@ -2601,7 +2601,8 @@ bool KTextEditor::DocumentPrivate::saveFile()
                            i18n("The document could not be saved, as it was not possible to write to %1.\nCheck that you have write access to this file or "
                                 "that enough disk space is available.\nThe original file may be lost or damaged. "
                                 "Don't quit the application until the file is successfully written.",
-                                this->url().toDisplayString(QUrl::PreferLocalFile)));
+                                this->url().toDisplayString(QUrl::PreferLocalFile))
+                               .toHtmlEscaped());
         return false;
     }
 
