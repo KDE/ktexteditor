@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-24 00:41+0000\n"
-"PO-Revision-Date: 2026-06-17 16:05+0200\n"
+"PO-Revision-Date: 2026-09-09 14:06+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 26.04.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -8110,10 +8110,9 @@ msgid "All documents written to disk"
 msgstr "Всички документи, записани на диск"
 
 #: vimode/appcommands.cpp:74
-#, fuzzy, kde-format
-#| msgid "All documents written to disk"
+#, kde-format
 msgid "Only some documents were written to disk"
-msgstr "Всички документи, записани на диск"
+msgstr "Само някои документи бяха записани на диска"
 
 #: vimode/appcommands.cpp:79
 #, kde-format
