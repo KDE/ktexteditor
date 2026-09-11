@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-24 00:41+0000\n"
+"POT-Creation-Date: 2026-09-11 00:41+0000\n"
 "PO-Revision-Date: 2024-11-16 12:54+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -2207,12 +2207,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Try Again"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6534
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6535
 #, kde-format
 msgid "&Close"
 msgstr "&Close"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6535
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6536
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2284,7 +2284,7 @@ msgstr ""
 "disk were changed. There could be some data lost."
 
 #: document/katedocument.cpp:2517 document/katedocument.cpp:2533
-#: document/katedocument.cpp:2853 syntax/katethemeconfig.cpp:1218
+#: document/katedocument.cpp:2854 syntax/katethemeconfig.cpp:1218
 #: syntax/katethemeconfig.cpp:1376
 #, kde-format
 msgid "Possible Data Loss"
@@ -2314,7 +2314,7 @@ msgstr ""
 "The original file may be lost or damaged. Don't quit the application until "
 "the file is successfully written."
 
-#: document/katedocument.cpp:2722
+#: document/katedocument.cpp:2723
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2327,56 +2327,56 @@ msgstr ""
 "that the media you write to is full or the directory of the file is read-"
 "only for you."
 
-#: document/katedocument.cpp:2726
+#: document/katedocument.cpp:2727
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Failed to create backup copy."
 
-#: document/katedocument.cpp:2727
+#: document/katedocument.cpp:2728
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Try to Save Nevertheless"
 
-#: document/katedocument.cpp:2852
+#: document/katedocument.cpp:2853
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Do you really want to continue to close this file? Data loss may occur."
 
-#: document/katedocument.cpp:2854
+#: document/katedocument.cpp:2855
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Close Nevertheless"
 
-#: document/katedocument.cpp:4641
+#: document/katedocument.cpp:4642
 #, fuzzy, kde-format
 #| msgid "Untitled"
 msgid "Untitled (%1)"
 msgstr "Untitled"
 
-#: document/katedocument.cpp:4643
+#: document/katedocument.cpp:4644
 #, kde-format
 msgid "Untitled"
 msgstr "Untitled"
 
-#: document/katedocument.cpp:4820 document/katedocument.cpp:5051
-#: document/katedocument.cpp:5061 document/katedocument.cpp:5862
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:4821 document/katedocument.cpp:5052
+#: document/katedocument.cpp:5062 document/katedocument.cpp:5863
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "Save File"
 msgstr "Save File"
 
-#: document/katedocument.cpp:4823
+#: document/katedocument.cpp:4824
 #, kde-format
 msgid "Save failed"
 msgstr "Save failed"
 
-#: document/katedocument.cpp:5072
+#: document/katedocument.cpp:5073
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Save Copy of File"
 
-#: document/katedocument.cpp:5084
+#: document/katedocument.cpp:5085
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2389,7 +2389,7 @@ msgstr ""
 "Check that you have write access to this file or that enough disk space is "
 "available."
 
-#: document/katedocument.cpp:5376
+#: document/katedocument.cpp:5377
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2402,7 +2402,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5382
+#: document/katedocument.cpp:5383
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2415,17 +2415,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5696
+#: document/katedocument.cpp:5697
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "The file '%1' was modified on disk."
 
-#: document/katedocument.cpp:5698
+#: document/katedocument.cpp:5699
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "The file '%1' was deleted or moved on disk."
 
-#: document/katedocument.cpp:6034
+#: document/katedocument.cpp:6035
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2434,17 +2434,17 @@ msgstr ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 
-#: document/katedocument.cpp:6037
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "Close Document"
 msgstr "Close Document"
 
-#: document/katedocument.cpp:6148
+#: document/katedocument.cpp:6149
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "The file <a href=\"%1\">%2</a> is still loading."
 
-#: document/katedocument.cpp:6153
+#: document/katedocument.cpp:6154
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Abort Loading"
@@ -8012,17 +8012,17 @@ msgstr "Success: "
 msgid "Command \"%1\" failed."
 msgstr "Command \"%1\" failed."
 
-#: view/kateviewhelpers.cpp:2631 view/kateviewhelpers.cpp:2632
+#: view/kateviewhelpers.cpp:2645 view/kateviewhelpers.cpp:2646
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Mark Type %1"
 
-#: view/kateviewhelpers.cpp:2655
+#: view/kateviewhelpers.cpp:2669
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Set Default Mark Type"
 
-#: view/kateviewhelpers.cpp:2800
+#: view/kateviewhelpers.cpp:2814
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Disable Annotation Bar"
@@ -8464,7 +8464,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "There are no more chars for the next bookmark."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3567
+#: vimode/modes/normalvimode.cpp:3590
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Nothing in register %1"
@@ -8474,7 +8474,7 @@ msgstr "Nothing in register %1"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Hex %3,  Octal %4"
 
-#: vimode/modes/normalvimode.cpp:2534
+#: vimode/modes/normalvimode.cpp:2557
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Mark not set: %1"

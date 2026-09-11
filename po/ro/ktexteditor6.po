@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-24 00:41+0000\n"
+"POT-Creation-Date: 2026-09-11 00:41+0000\n"
 "PO-Revision-Date: 2026-04-01 15:01+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -2223,12 +2223,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Reîncearcă"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6534
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6535
 #, kde-format
 msgid "&Close"
 msgstr "În&chide"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6535
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6536
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2301,7 +2301,7 @@ msgstr ""
 "sunt modificate. S-ar putea să apară pierderi de date."
 
 #: document/katedocument.cpp:2517 document/katedocument.cpp:2533
-#: document/katedocument.cpp:2853 syntax/katethemeconfig.cpp:1218
+#: document/katedocument.cpp:2854 syntax/katethemeconfig.cpp:1218
 #: syntax/katethemeconfig.cpp:1376
 #, kde-format
 msgid "Possible Data Loss"
@@ -2331,7 +2331,7 @@ msgstr ""
 "Fișierul original ar putea fi pierdut sau deteriorat. Nu închideți aplicația "
 "până nu a fost scris corect fișierul."
 
-#: document/katedocument.cpp:2722
+#: document/katedocument.cpp:2723
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2345,55 +2345,55 @@ msgstr ""
 "că suportul pe care încercați să scrieți este plin sau dosarul în care se "
 "găsește fișierul nu aveți drept de scriere."
 
-#: document/katedocument.cpp:2726
+#: document/katedocument.cpp:2727
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Eșec la crearea copiei de siguranță."
 
-#: document/katedocument.cpp:2727
+#: document/katedocument.cpp:2728
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Oricum încearcă să salvezi"
 
-#: document/katedocument.cpp:2852
+#: document/katedocument.cpp:2853
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "Sigur doriți să închideți acest fișier? Ați putea pierde date."
 
-#: document/katedocument.cpp:2854
+#: document/katedocument.cpp:2855
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Închide oricum"
 
-#: document/katedocument.cpp:4641
+#: document/katedocument.cpp:4642
 #, fuzzy, kde-format
 #| msgid "Untitled"
 msgid "Untitled (%1)"
 msgstr "Fără titlu"
 
-#: document/katedocument.cpp:4643
+#: document/katedocument.cpp:4644
 #, kde-format
 msgid "Untitled"
 msgstr "Fără titlu"
 
-#: document/katedocument.cpp:4820 document/katedocument.cpp:5051
-#: document/katedocument.cpp:5061 document/katedocument.cpp:5862
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:4821 document/katedocument.cpp:5052
+#: document/katedocument.cpp:5062 document/katedocument.cpp:5863
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "Save File"
 msgstr "Salvare fișier"
 
-#: document/katedocument.cpp:4823
+#: document/katedocument.cpp:4824
 #, kde-format
 msgid "Save failed"
 msgstr "Salvarea a eșuat"
 
-#: document/katedocument.cpp:5072
+#: document/katedocument.cpp:5073
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Salvează copia fișierului"
 
-#: document/katedocument.cpp:5084
+#: document/katedocument.cpp:5085
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2406,7 +2406,7 @@ msgstr ""
 "Verificați dacă aveți permisiuni de scriere pentru acest fișier sau dacă "
 "aveți suficient spațiu pe disc."
 
-#: document/katedocument.cpp:5376
+#: document/katedocument.cpp:5377
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2415,7 +2415,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5382
+#: document/katedocument.cpp:5383
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2424,17 +2424,17 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5696
+#: document/katedocument.cpp:5697
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Fișierul „%1” a fost modificat pe disc."
 
-#: document/katedocument.cpp:5698
+#: document/katedocument.cpp:5699
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Fișierul „%1” a fost șters sau mutat de pe disc."
 
-#: document/katedocument.cpp:6034
+#: document/katedocument.cpp:6035
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2443,17 +2443,17 @@ msgstr ""
 "Documentul „%1” a fost modificat.\n"
 "Doriți să salvați modificările sau să le aruncați?"
 
-#: document/katedocument.cpp:6037
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "Close Document"
 msgstr "Închide documentul"
 
-#: document/katedocument.cpp:6148
+#: document/katedocument.cpp:6149
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Fișierul <a href=\"%1\">%2</a> încă se încarcă."
 
-#: document/katedocument.cpp:6153
+#: document/katedocument.cpp:6154
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Abandonează încărcarea"
@@ -8075,17 +8075,17 @@ msgstr "Succes: "
 msgid "Command \"%1\" failed."
 msgstr "Comanda „%1” a eșuat."
 
-#: view/kateviewhelpers.cpp:2631 view/kateviewhelpers.cpp:2632
+#: view/kateviewhelpers.cpp:2645 view/kateviewhelpers.cpp:2646
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Tip de marcare %1"
 
-#: view/kateviewhelpers.cpp:2655
+#: view/kateviewhelpers.cpp:2669
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Stabilește stilul implicit de marcare"
 
-#: view/kateviewhelpers.cpp:2800
+#: view/kateviewhelpers.cpp:2814
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Dezactivează bara de adnotare"
@@ -8475,7 +8475,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Sare la următorul semnul de carte."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3567
+#: vimode/modes/normalvimode.cpp:3590
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Nimic în registrul %1"
@@ -8485,7 +8485,7 @@ msgstr "Nimic în registrul %1"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "„%1” %2,  Hexa. %3,  Octal %4"
 
-#: vimode/modes/normalvimode.cpp:2534
+#: vimode/modes/normalvimode.cpp:2557
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Semn nestabilit: %1"

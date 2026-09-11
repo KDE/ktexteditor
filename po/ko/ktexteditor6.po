@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-24 00:41+0000\n"
+"POT-Creation-Date: 2026-09-11 00:41+0000\n"
 "PO-Revision-Date: 2026-05-26 21:32+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2157,12 +2157,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "다시 시도"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6534
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6535
 #, kde-format
 msgid "&Close"
 msgstr "닫기(&C)"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6535
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6536
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2233,7 +2233,7 @@ msgstr ""
 "경되었습니다. 데이터 손실이 발생할 수 있습니다."
 
 #: document/katedocument.cpp:2517 document/katedocument.cpp:2533
-#: document/katedocument.cpp:2853 syntax/katethemeconfig.cpp:1218
+#: document/katedocument.cpp:2854 syntax/katethemeconfig.cpp:1218
 #: syntax/katethemeconfig.cpp:1376
 #, kde-format
 msgid "Possible Data Loss"
@@ -2263,7 +2263,7 @@ msgstr ""
 "원본 파일이 손상되었거나 삭제되었을 수도 있습니다. 파일을 기록하기 전에 앱을 "
 "닫지 마십시오."
 
-#: document/katedocument.cpp:2722
+#: document/katedocument.cpp:2723
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2276,54 +2276,54 @@ msgstr ""
 "는 쓰려고 하는 미디어가 가득 찼거나 파일이 있는 디렉터리를 읽을 수만 있는 경"
 "우입니다."
 
-#: document/katedocument.cpp:2726
+#: document/katedocument.cpp:2727
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "백업 복사본을 만들 수 없습니다."
 
-#: document/katedocument.cpp:2727
+#: document/katedocument.cpp:2728
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "그래도 저장 시도하기"
 
-#: document/katedocument.cpp:2852
+#: document/katedocument.cpp:2853
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "그래도 이 파일을 닫으시겠습니까? 데이터 손실이 있을 수 있습니다."
 
-#: document/katedocument.cpp:2854
+#: document/katedocument.cpp:2855
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "그래도 닫기"
 
-#: document/katedocument.cpp:4641
+#: document/katedocument.cpp:4642
 #, kde-format
 msgid "Untitled (%1)"
 msgstr "제목 없음(%1)"
 
-#: document/katedocument.cpp:4643
+#: document/katedocument.cpp:4644
 #, kde-format
 msgid "Untitled"
 msgstr "제목 없음"
 
-#: document/katedocument.cpp:4820 document/katedocument.cpp:5051
-#: document/katedocument.cpp:5061 document/katedocument.cpp:5862
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:4821 document/katedocument.cpp:5052
+#: document/katedocument.cpp:5062 document/katedocument.cpp:5863
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "Save File"
 msgstr "파일 저장"
 
-#: document/katedocument.cpp:4823
+#: document/katedocument.cpp:4824
 #, kde-format
 msgid "Save failed"
 msgstr "저장 실패"
 
-#: document/katedocument.cpp:5072
+#: document/katedocument.cpp:5073
 #, kde-format
 msgid "Save Copy of File"
 msgstr "파일 복사본 저장"
 
-#: document/katedocument.cpp:5084
+#: document/katedocument.cpp:5085
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2335,7 +2335,7 @@ msgstr ""
 "\n"
 "이 파일에 쓸 수 있는 권한이 있거나 디스크 공간이 충분한지 확인하십시오."
 
-#: document/katedocument.cpp:5376
+#: document/katedocument.cpp:5377
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2348,7 +2348,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5382
+#: document/katedocument.cpp:5383
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2361,17 +2361,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5696
+#: document/katedocument.cpp:5697
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "파일 '%1'이(가) 디스크에서 수정되었습니다."
 
-#: document/katedocument.cpp:5698
+#: document/katedocument.cpp:5699
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "파일 '%1'이(가) 디스크에서 삭제나 이동되었습니다."
 
-#: document/katedocument.cpp:6034
+#: document/katedocument.cpp:6035
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2382,17 +2382,17 @@ msgstr ""
 "다.\n"
 "변경 사항을 저장하거나 무시하시겠습니까?"
 
-#: document/katedocument.cpp:6037
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "Close Document"
 msgstr "문서 닫기"
 
-#: document/katedocument.cpp:6148
+#: document/katedocument.cpp:6149
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "파일 <a href=\"%1\">%2</a>을(를) 불러오고 있습니다."
 
-#: document/katedocument.cpp:6153
+#: document/katedocument.cpp:6154
 #, kde-format
 msgid "&Abort Loading"
 msgstr "불러오기 중단(&A)"
@@ -7860,17 +7860,17 @@ msgstr "성공: "
 msgid "Command \"%1\" failed."
 msgstr "명령 \"%1\"을 실행하는 데 실패했습니다."
 
-#: view/kateviewhelpers.cpp:2631 view/kateviewhelpers.cpp:2632
+#: view/kateviewhelpers.cpp:2645 view/kateviewhelpers.cpp:2646
 #, kde-format
 msgid "Mark Type %1"
 msgstr "형식 %1 표시"
 
-#: view/kateviewhelpers.cpp:2655
+#: view/kateviewhelpers.cpp:2669
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "기본 표시 형식 선택"
 
-#: view/kateviewhelpers.cpp:2800
+#: view/kateviewhelpers.cpp:2814
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "주석 표시줄 끄기"
@@ -8302,7 +8302,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "다음 책갈피에 더 이상 글자가 없습니다."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3567
+#: vimode/modes/normalvimode.cpp:3590
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "레지스터 %1이(가) 비어 있음"
@@ -8312,7 +8312,7 @@ msgstr "레지스터 %1이(가) 비어 있음"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  16진수 %3,  8진수 %4"
 
-#: vimode/modes/normalvimode.cpp:2534
+#: vimode/modes/normalvimode.cpp:2557
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "표시가 설정되지 않음: %1"

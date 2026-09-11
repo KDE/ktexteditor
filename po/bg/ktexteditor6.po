@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-24 00:41+0000\n"
+"POT-Creation-Date: 2026-09-11 00:41+0000\n"
 "PO-Revision-Date: 2026-09-09 14:06+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -2217,12 +2217,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Повторно опитване"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6534
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6535
 #, kde-format
 msgid "&Close"
 msgstr "&Затваряне"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6535
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6536
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2297,7 +2297,7 @@ msgstr ""
 "операция може да загубите данни."
 
 #: document/katedocument.cpp:2517 document/katedocument.cpp:2533
-#: document/katedocument.cpp:2853 syntax/katethemeconfig.cpp:1218
+#: document/katedocument.cpp:2854 syntax/katethemeconfig.cpp:1218
 #: syntax/katethemeconfig.cpp:1376
 #, kde-format
 msgid "Possible Data Loss"
@@ -2328,7 +2328,7 @@ msgstr ""
 "Оригиналният файл може да бъде загубен или повреден. Не излизайте от "
 "приложението, докато файлът не е успешно записан."
 
-#: document/katedocument.cpp:2722
+#: document/katedocument.cpp:2723
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2341,56 +2341,56 @@ msgstr ""
 "Причината може да бъде, че носителят, на който пишете, е пълен или "
 "директорията на файла е само за четене."
 
-#: document/katedocument.cpp:2726
+#: document/katedocument.cpp:2727
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Създаването на резервно копие е неуспешно."
 
-#: document/katedocument.cpp:2727
+#: document/katedocument.cpp:2728
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Запис въпреки това"
 
-#: document/katedocument.cpp:2852
+#: document/katedocument.cpp:2853
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Сигурни ли сте, че искате файлът да бъде затворен? При тази операция може да "
 "загубите данни."
 
-#: document/katedocument.cpp:2854
+#: document/katedocument.cpp:2855
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Затваряне"
 
-#: document/katedocument.cpp:4641
+#: document/katedocument.cpp:4642
 #, kde-format
 msgid "Untitled (%1)"
 msgstr "Неозаглавено (%1)"
 
-#: document/katedocument.cpp:4643
+#: document/katedocument.cpp:4644
 #, kde-format
 msgid "Untitled"
 msgstr "Неозаглавено"
 
-#: document/katedocument.cpp:4820 document/katedocument.cpp:5051
-#: document/katedocument.cpp:5061 document/katedocument.cpp:5862
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:4821 document/katedocument.cpp:5052
+#: document/katedocument.cpp:5062 document/katedocument.cpp:5863
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "Save File"
 msgstr "Запис на файл"
 
-#: document/katedocument.cpp:4823
+#: document/katedocument.cpp:4824
 #, kde-format
 msgid "Save failed"
 msgstr "Грешка при запис"
 
-#: document/katedocument.cpp:5072
+#: document/katedocument.cpp:5073
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Запазване на копие на файл"
 
-#: document/katedocument.cpp:5084
+#: document/katedocument.cpp:5085
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2403,7 +2403,7 @@ msgstr ""
 "Моля, проверете дали имате права за запис във файла и дали има достатъчно "
 "свободно място на диска."
 
-#: document/katedocument.cpp:5376
+#: document/katedocument.cpp:5377
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2416,7 +2416,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5382
+#: document/katedocument.cpp:5383
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2429,17 +2429,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5696
+#: document/katedocument.cpp:5697
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Файлът „%1“ е модифициран на диска."
 
-#: document/katedocument.cpp:5698
+#: document/katedocument.cpp:5699
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Файлът „%1“ е изтрит или преместен от диска."
 
-#: document/katedocument.cpp:6034
+#: document/katedocument.cpp:6035
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2450,17 +2450,17 @@ msgstr ""
 "променен.\n"
 "Искате ли да запазите промените си или да ги отхвърлите?"
 
-#: document/katedocument.cpp:6037
+#: document/katedocument.cpp:6038
 #, kde-format
 msgid "Close Document"
 msgstr "Затваряне на документа"
 
-#: document/katedocument.cpp:6148
+#: document/katedocument.cpp:6149
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Файлът <a href=„%1“> %2 </a> все още се зарежда."
 
-#: document/katedocument.cpp:6153
+#: document/katedocument.cpp:6154
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Прекъсване на зареждането"
@@ -8031,17 +8031,17 @@ msgstr "Успех: "
 msgid "Command \"%1\" failed."
 msgstr "Неуспешна команда „%1“."
 
-#: view/kateviewhelpers.cpp:2631 view/kateviewhelpers.cpp:2632
+#: view/kateviewhelpers.cpp:2645 view/kateviewhelpers.cpp:2646
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Маркиране на тип %1"
 
-#: view/kateviewhelpers.cpp:2655
+#: view/kateviewhelpers.cpp:2669
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Стил по подразбиране"
 
-#: view/kateviewhelpers.cpp:2800
+#: view/kateviewhelpers.cpp:2814
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Деактивиране на лентата с пояснения"
@@ -8486,7 +8486,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Няма повече символи за следващата отметка."
 
 #: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3567
+#: vimode/modes/normalvimode.cpp:3590
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Няма запис в регистъра %1"
@@ -8496,7 +8496,7 @@ msgstr "Няма запис в регистъра %1"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "„%1“ %2,  Десетична %3,  Осмична %4"
 
-#: vimode/modes/normalvimode.cpp:2534
+#: vimode/modes/normalvimode.cpp:2557
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Маркирането не е зададено: %1"
