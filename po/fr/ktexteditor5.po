@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:00+0000\n"
-"PO-Revision-Date: 2026-05-03 12:05+0200\n"
+"PO-Revision-Date: 2026-08-25 15:27+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -4659,19 +4659,19 @@ msgstr "Caractère spécial"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "String"
-msgstr "Chaîne"
+msgstr "Chaine"
 
 #: syntax/katethemeconfig.cpp:74
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Verbatim String"
-msgstr "Chaîne verbatim"
+msgstr "Chaine verbatim"
 
 #: syntax/katethemeconfig.cpp:76
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Special String"
-msgstr "Chaîne spéciale"
+msgstr "Chaine spéciale"
 
 #: syntax/katethemeconfig.cpp:78
 #, kde-format
@@ -5122,7 +5122,7 @@ msgstr "Nombres, Types & Constantes"
 #, kde-format
 msgctxt "@item:intable"
 msgid "Strings & Characters"
-msgstr "Chaînes & caractères"
+msgstr "Chaines & caractères"
 
 #: syntax/katethemeconfig.cpp:589
 #, kde-format
@@ -6335,7 +6335,7 @@ msgstr "La date actuelle (ISO)."
 #: utils/katevariableexpansionmanager.cpp:188
 #, kde-format
 msgid "The current date (QDate formatstring)."
-msgstr "La date actuelle (Chaîne formatée QDate)."
+msgstr "La date actuelle (Chaine formatée QDate)."
 
 #: utils/katevariableexpansionmanager.cpp:196
 #, kde-format
@@ -6350,7 +6350,7 @@ msgstr "Le temps actuel (ISO)."
 #: utils/katevariableexpansionmanager.cpp:210
 #, kde-format
 msgid "The current time (QTime formatstring)."
-msgstr "Le temps actuel (Chaîne formatée QTime)."
+msgstr "Le temps actuel (Chaine formatée QTime)."
 
 #: utils/katevariableexpansionmanager.cpp:218
 #, kde-format
