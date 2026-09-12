@@ -4891,16 +4891,21 @@ void KTextEditor::DocumentPrivate::delayAutoReload()
 
 void KTextEditor::DocumentPrivate::onModOnHdAutoReload()
 {
+    bool toggledAutoReload = false;
     if (m_modOnHdHandler) {
         delete m_modOnHdHandler;
         autoReloadToggled(true);
+
+        // ensure we do some initial reload if we just enabled it in the prompt
+        // see bug 524241
+        toggledAutoReload = true;
     }
 
     if (!isAutoReload()) {
         return;
     }
 
-    if (m_modOnHd && !m_reloading && !m_autoReloadThrottle.isActive()) {
+    if (m_modOnHd && !m_reloading && (toggledAutoReload || !m_autoReloadThrottle.isActive())) {
         m_modOnHd = false;
         m_prevModOnHdReason = OnDiskUnmodified;
         Q_EMIT modifiedOnDisk(this, false, OnDiskUnmodified);
