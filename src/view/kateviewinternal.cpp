@@ -4505,14 +4505,18 @@ void KateViewInternal::editEnd(int editTagLineStart, int editTagLineEnd, bool ta
 
     updateView(true);
 
-    if (editOldCursor != m_cursor.toCursor() || m_view == doc()->activeView()) {
-        // Only scroll the view to the cursor if the insertion happens at the cursor.
-        // This might not be the case for e.g. collaborative editing, when a remote user
-        // inserts text at a position not at the caret.
-        if (m_cursor.line() >= editTagLineStart && m_cursor.line() <= editTagLineEnd) {
-            m_madeVisible = false;
-            updateCursor(m_cursor, true);
-        }
+    // Only scroll the view to the cursor if the insertion happens at the cursor.
+    // This might not be the case for e.g. collaborative editing, when a remote user
+    // inserts text at a position not at the caret.
+    if ((editOldCursor != m_cursor.toCursor() || m_view == doc()->activeView()) && m_cursor.line() >= editTagLineStart && m_cursor.line() <= editTagLineEnd) {
+        m_madeVisible = false;
+        updateCursor(m_cursor, true);
+    }
+
+    // keep cursor consistent with m_displayCursor in any case!
+    // see bug 525170
+    else {
+        updateCursor(m_cursor, false, false, false, false);
     }
 
     // selection changed?
