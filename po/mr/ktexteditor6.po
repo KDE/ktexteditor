@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-11 00:41+0000\n"
+"POT-Creation-Date: 2026-09-13 00:41+0000\n"
 "PO-Revision-Date: 2014-10-28 14:28+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -97,58 +97,58 @@ msgid "&View"
 msgstr "दृश्य (&V)"
 
 #. i18n: ectx: Menu (view_menu_word_wrap)
-#: data/katepart5ui.rc:78
+#: data/katepart5ui.rc:79
 #, kde-format
 msgid "Word Wrap"
 msgstr "शब्द गुंडाळणे"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:84 dialogs/katedialogs.cpp:747
+#: data/katepart5ui.rc:85 dialogs/katedialogs.cpp:747
 #, kde-format
 msgid "Borders"
 msgstr "किनारे"
 
 #. i18n: ectx: Menu (codefolding)
-#: data/katepart5ui.rc:92
+#: data/katepart5ui.rc:93
 #, kde-format
 msgid "&Code Folding"
 msgstr "कोड फोल्डिंग (&C)"
 
 #. i18n: ectx: Menu (go)
-#: data/katepart5ui.rc:109
+#: data/katepart5ui.rc:110
 #, fuzzy, kde-format
 #| msgid "Go"
 msgid "&Go"
 msgstr "जा"
 
 #. i18n: ectx: Menu (tools)
-#: data/katepart5ui.rc:124
+#: data/katepart5ui.rc:125
 #, kde-format
 msgid "&Tools"
 msgstr "साधने (&T)"
 
 #. i18n: ectx: Menu (wordcompletion)
-#: data/katepart5ui.rc:138
+#: data/katepart5ui.rc:139
 #, kde-format
 msgid "Word Completion"
 msgstr "शब्द पूर्णत्व"
 
 #. i18n: ectx: Menu (spelling)
-#: data/katepart5ui.rc:144 spellcheck/spellingmenu.cpp:71
+#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:71
 #: spellcheck/spellingmenu.cpp:195
 #, kde-format
 msgid "Spelling"
 msgstr "वर्णलेखन"
 
 #. i18n: ectx: Menu (speech)
-#: data/katepart5ui.rc:153 data/katepart5ui.rc:184
+#: data/katepart5ui.rc:154 data/katepart5ui.rc:184
 #, fuzzy, kde-format
 #| msgid "Text to search for"
 msgid "Text to Speech"
 msgstr "शोधावयाचा मजकूर"
 
 #. i18n: ectx: Menu (settings)
-#: data/katepart5ui.rc:161
+#: data/katepart5ui.rc:162
 #, kde-format
 msgid "&Settings"
 msgstr "संयोजना (&S)"
@@ -2123,12 +2123,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6535
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6540
 #, kde-format
 msgid "&Close"
 msgstr "बंद करा (&C)"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6536
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6541
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2252,9 +2252,9 @@ msgstr "शिर्षकहीन"
 msgid "Untitled"
 msgstr "शिर्षकहीन"
 
-#: document/katedocument.cpp:4821 document/katedocument.cpp:5052
-#: document/katedocument.cpp:5062 document/katedocument.cpp:5863
-#: document/katedocument.cpp:6050
+#: document/katedocument.cpp:4821 document/katedocument.cpp:5057
+#: document/katedocument.cpp:5067 document/katedocument.cpp:5868
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "Save File"
 msgstr "फाईल साठवा"
@@ -2264,12 +2264,12 @@ msgstr "फाईल साठवा"
 msgid "Save failed"
 msgstr "साठवणे अपयशी"
 
-#: document/katedocument.cpp:5073
+#: document/katedocument.cpp:5078
 #, kde-format
 msgid "Save Copy of File"
 msgstr "फाईलची प्रत साठवा"
 
-#: document/katedocument.cpp:5085
+#: document/katedocument.cpp:5090
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2278,7 +2278,7 @@ msgid ""
 "available."
 msgstr ""
 
-#: document/katedocument.cpp:5377
+#: document/katedocument.cpp:5382
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2287,7 +2287,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5383
+#: document/katedocument.cpp:5388
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2296,17 +2296,17 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5697
+#: document/katedocument.cpp:5702
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5699
+#: document/katedocument.cpp:5704
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr ""
 
-#: document/katedocument.cpp:6035
+#: document/katedocument.cpp:6040
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2315,17 +2315,17 @@ msgstr ""
 "दस्तऐवज \"%1\" संपादित केले गेले आहे.\n"
 "तुम्हाला बदल साठवायचे किंवा वगळायचे?"
 
-#: document/katedocument.cpp:6038
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "Close Document"
 msgstr "दस्तऐवज बंद करा"
 
-#: document/katedocument.cpp:6149
+#: document/katedocument.cpp:6154
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6154
+#: document/katedocument.cpp:6159
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -8073,8 +8073,8 @@ msgstr ""
 msgid "There are no more chars for the next bookmark."
 msgstr "पुढील ओळखचिन्हाकरिता अक्षरे नाहीत."
 
-#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3590
+#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:795
+#: vimode/modes/normalvimode.cpp:3604
 #, kde-format
 msgid "Nothing in register %1"
 msgstr ""
@@ -8084,7 +8084,7 @@ msgstr ""
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr ""
 
-#: vimode/modes/normalvimode.cpp:2557
+#: vimode/modes/normalvimode.cpp:2571
 #, kde-format
 msgid "Mark not set: %1"
 msgstr ""

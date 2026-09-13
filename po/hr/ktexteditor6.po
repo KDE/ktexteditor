@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-11 00:41+0000\n"
+"POT-Creation-Date: 2026-09-13 00:41+0000\n"
 "PO-Revision-Date: 2010-06-06 14:00+0200\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -105,59 +105,59 @@ msgid "&View"
 msgstr "&Prikaz"
 
 #. i18n: ectx: Menu (view_menu_word_wrap)
-#: data/katepart5ui.rc:78
+#: data/katepart5ui.rc:79
 #, fuzzy, kde-format
 #| msgid "Static Word Wrap"
 msgid "Word Wrap"
 msgstr "Statičko prijelom"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:84 dialogs/katedialogs.cpp:747
+#: data/katepart5ui.rc:85 dialogs/katedialogs.cpp:747
 #, kde-format
 msgid "Borders"
 msgstr "Rubovi"
 
 #. i18n: ectx: Menu (codefolding)
-#: data/katepart5ui.rc:92
+#: data/katepart5ui.rc:93
 #, kde-format
 msgid "&Code Folding"
 msgstr "&Preklapanje koda"
 
 #. i18n: ectx: Menu (go)
-#: data/katepart5ui.rc:109
+#: data/katepart5ui.rc:110
 #, fuzzy, kde-format
 #| msgid "Go"
 msgid "&Go"
 msgstr "Kreni"
 
 #. i18n: ectx: Menu (tools)
-#: data/katepart5ui.rc:124
+#: data/katepart5ui.rc:125
 #, kde-format
 msgid "&Tools"
 msgstr "&Alati"
 
 #. i18n: ectx: Menu (wordcompletion)
-#: data/katepart5ui.rc:138
+#: data/katepart5ui.rc:139
 #, kde-format
 msgid "Word Completion"
 msgstr "Dovršavanje riječi"
 
 #. i18n: ectx: Menu (spelling)
-#: data/katepart5ui.rc:144 spellcheck/spellingmenu.cpp:71
+#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:71
 #: spellcheck/spellingmenu.cpp:195
 #, kde-format
 msgid "Spelling"
 msgstr "Pravopis"
 
 #. i18n: ectx: Menu (speech)
-#: data/katepart5ui.rc:153 data/katepart5ui.rc:184
+#: data/katepart5ui.rc:154 data/katepart5ui.rc:184
 #, fuzzy, kde-format
 #| msgid "Text to replace with"
 msgid "Text to Speech"
 msgstr "Zamijeni tekst sa"
 
 #. i18n: ectx: Menu (settings)
-#: data/katepart5ui.rc:161
+#: data/katepart5ui.rc:162
 #, kde-format
 msgid "&Settings"
 msgstr "&Postavke"
@@ -2226,12 +2226,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6535
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6540
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6536
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6541
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2366,9 +2366,9 @@ msgstr "Neograničeno"
 msgid "Untitled"
 msgstr "Neograničeno"
 
-#: document/katedocument.cpp:4821 document/katedocument.cpp:5052
-#: document/katedocument.cpp:5062 document/katedocument.cpp:5863
-#: document/katedocument.cpp:6050
+#: document/katedocument.cpp:4821 document/katedocument.cpp:5057
+#: document/katedocument.cpp:5067 document/katedocument.cpp:5868
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "Save File"
 msgstr "Spremi datoteku"
@@ -2378,13 +2378,13 @@ msgstr "Spremi datoteku"
 msgid "Save failed"
 msgstr "Spremanje nije uspjelo"
 
-#: document/katedocument.cpp:5073
+#: document/katedocument.cpp:5078
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "Spremi datoteku"
 
-#: document/katedocument.cpp:5085
+#: document/katedocument.cpp:5090
 #, fuzzy, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2397,7 +2397,7 @@ msgstr ""
 "Provjerite da li imate pravo upisa u ovaj fajl ili da li ima dovoljno "
 "praznog prostora na disku."
 
-#: document/katedocument.cpp:5377
+#: document/katedocument.cpp:5382
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2406,7 +2406,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5383
+#: document/katedocument.cpp:5388
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2415,21 +2415,21 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5697
+#: document/katedocument.cpp:5702
 #, fuzzy, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
 "Datoteka %1 je izmjenjena (obrisana) na disku od strane drugog programa!\n"
 "\n"
 
-#: document/katedocument.cpp:5699
+#: document/katedocument.cpp:5704
 #, fuzzy, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr ""
 "Datoteka %1 je izmjenjena (obrisana) na disku od strane drugog programa!\n"
 "\n"
 
-#: document/katedocument.cpp:6035
+#: document/katedocument.cpp:6040
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2438,18 +2438,18 @@ msgstr ""
 "Datoteka \"%1\" je izmijenjena.\n"
 "Želite li sačuvati ili odbaciti promjene?"
 
-#: document/katedocument.cpp:6038
+#: document/katedocument.cpp:6043
 #, fuzzy, kde-format
 #| msgid "&Word Wrap Document"
 msgid "Close Document"
 msgstr "&dokument s prijelomom teksta"
 
-#: document/katedocument.cpp:6149
+#: document/katedocument.cpp:6154
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6154
+#: document/katedocument.cpp:6159
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -8480,8 +8480,8 @@ msgstr "Oznaka nije postavljena: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Kreće na slijedeću oznaku."
 
-#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3590
+#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:795
+#: vimode/modes/normalvimode.cpp:3604
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Ništa nema u zapisniku %1"
@@ -8491,7 +8491,7 @@ msgstr "Ništa nema u zapisniku %1"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Heksa %3,  Okta %4"
 
-#: vimode/modes/normalvimode.cpp:2557
+#: vimode/modes/normalvimode.cpp:2571
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Oznaka nije postavljena: %1"

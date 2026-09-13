@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-11 00:41+0000\n"
+"POT-Creation-Date: 2026-09-13 00:41+0000\n"
 "PO-Revision-Date: 2026-07-04 23:32+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -102,56 +102,56 @@ msgid "&View"
 msgstr "&Ikuspegia"
 
 #. i18n: ectx: Menu (view_menu_word_wrap)
-#: data/katepart5ui.rc:78
+#: data/katepart5ui.rc:79
 #, kde-format
 msgid "Word Wrap"
 msgstr "Itzulbira"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:84 dialogs/katedialogs.cpp:747
+#: data/katepart5ui.rc:85 dialogs/katedialogs.cpp:747
 #, kde-format
 msgid "Borders"
 msgstr "Ertzak"
 
 #. i18n: ectx: Menu (codefolding)
-#: data/katepart5ui.rc:92
+#: data/katepart5ui.rc:93
 #, kde-format
 msgid "&Code Folding"
 msgstr "&Kodea tolestea"
 
 #. i18n: ectx: Menu (go)
-#: data/katepart5ui.rc:109
+#: data/katepart5ui.rc:110
 #, kde-format
 msgid "&Go"
 msgstr "&Joan"
 
 #. i18n: ectx: Menu (tools)
-#: data/katepart5ui.rc:124
+#: data/katepart5ui.rc:125
 #, kde-format
 msgid "&Tools"
 msgstr "&Tresnak"
 
 #. i18n: ectx: Menu (wordcompletion)
-#: data/katepart5ui.rc:138
+#: data/katepart5ui.rc:139
 #, kde-format
 msgid "Word Completion"
 msgstr "Hitz osatzea"
 
 #. i18n: ectx: Menu (spelling)
-#: data/katepart5ui.rc:144 spellcheck/spellingmenu.cpp:71
+#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:71
 #: spellcheck/spellingmenu.cpp:195
 #, kde-format
 msgid "Spelling"
 msgstr "Ortografia"
 
 #. i18n: ectx: Menu (speech)
-#: data/katepart5ui.rc:153 data/katepart5ui.rc:184
+#: data/katepart5ui.rc:154 data/katepart5ui.rc:184
 #, kde-format
 msgid "Text to Speech"
 msgstr "Testutik hizketara"
 
 #. i18n: ectx: Menu (settings)
-#: data/katepart5ui.rc:161
+#: data/katepart5ui.rc:162
 #, kde-format
 msgid "&Settings"
 msgstr "&Ezarpenak"
@@ -2227,12 +2227,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Berriz saiatu"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6535
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6540
 #, kde-format
 msgid "&Close"
 msgstr "&Itxi"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6536
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6541
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2378,9 +2378,9 @@ msgstr "Izengabea (%1)"
 msgid "Untitled"
 msgstr "Titulu gabea"
 
-#: document/katedocument.cpp:4821 document/katedocument.cpp:5052
-#: document/katedocument.cpp:5062 document/katedocument.cpp:5863
-#: document/katedocument.cpp:6050
+#: document/katedocument.cpp:4821 document/katedocument.cpp:5057
+#: document/katedocument.cpp:5067 document/katedocument.cpp:5868
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "Save File"
 msgstr "Gorde fitxategia"
@@ -2390,12 +2390,12 @@ msgstr "Gorde fitxategia"
 msgid "Save failed"
 msgstr "Gordetzeak huts egin du"
 
-#: document/katedocument.cpp:5073
+#: document/katedocument.cpp:5078
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Gorde fitxategiaren kopia"
 
-#: document/katedocument.cpp:5085
+#: document/katedocument.cpp:5090
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2408,7 +2408,7 @@ msgstr ""
 "Egiaztatu fitxategian idazteko baimena duzula, edo diskoan nahikoa leku "
 "dagoela."
 
-#: document/katedocument.cpp:5377
+#: document/katedocument.cpp:5382
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2421,7 +2421,7 @@ msgstr ""
 "https://docs.kde.org/?application=katepart&branch=stable5&path=config-"
 "variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5383
+#: document/katedocument.cpp:5388
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2434,17 +2434,17 @@ msgstr ""
 "docs.kde.org/?application=katepart&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5697
+#: document/katedocument.cpp:5702
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "'%1' fitxategia diskoan aldatu da."
 
-#: document/katedocument.cpp:5699
+#: document/katedocument.cpp:5704
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "'%1' fitxategia diskotik ezabatu da edo mugitu egin da."
 
-#: document/katedocument.cpp:6035
+#: document/katedocument.cpp:6040
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2453,17 +2453,17 @@ msgstr ""
 "\"%1\" dokumentua aldatu egin da.\n"
 "Aldaketak gorde edo baztertu nahi dituzu?"
 
-#: document/katedocument.cpp:6038
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "Close Document"
 msgstr "Itxi dokumentua"
 
-#: document/katedocument.cpp:6149
+#: document/katedocument.cpp:6154
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2</a> fitxategia oraindik zamatzen ari da."
 
-#: document/katedocument.cpp:6154
+#: document/katedocument.cpp:6159
 #, kde-format
 msgid "&Abort Loading"
 msgstr "G&alarazi zamatzea"
@@ -8526,8 +8526,8 @@ msgstr "Marka ezarri: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Ez dago hurrengo laster-markarako karaktere gehiago."
 
-#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3590
+#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:795
+#: vimode/modes/normalvimode.cpp:3604
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Ezer ez %1 erregistroan"
@@ -8537,7 +8537,7 @@ msgstr "Ezer ez %1 erregistroan"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Hamas. %3,  Zortz. %4"
 
-#: vimode/modes/normalvimode.cpp:2557
+#: vimode/modes/normalvimode.cpp:2571
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marka ezarri gabe: %1"

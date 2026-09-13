@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-11 00:41+0000\n"
+"POT-Creation-Date: 2026-09-13 00:41+0000\n"
 "PO-Revision-Date: 2025-11-11 18:47+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -102,56 +102,56 @@ msgid "&View"
 msgstr "&Skats"
 
 #. i18n: ectx: Menu (view_menu_word_wrap)
-#: data/katepart5ui.rc:78
+#: data/katepart5ui.rc:79
 #, kde-format
 msgid "Word Wrap"
 msgstr "Vārdu aplaušana"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:84 dialogs/katedialogs.cpp:747
+#: data/katepart5ui.rc:85 dialogs/katedialogs.cpp:747
 #, kde-format
 msgid "Borders"
 msgstr "Malas"
 
 #. i18n: ectx: Menu (codefolding)
-#: data/katepart5ui.rc:92
+#: data/katepart5ui.rc:93
 #, kde-format
 msgid "&Code Folding"
 msgstr "&Koda sakļaušana"
 
 #. i18n: ectx: Menu (go)
-#: data/katepart5ui.rc:109
+#: data/katepart5ui.rc:110
 #, kde-format
 msgid "&Go"
 msgstr "&Iet"
 
 #. i18n: ectx: Menu (tools)
-#: data/katepart5ui.rc:124
+#: data/katepart5ui.rc:125
 #, kde-format
 msgid "&Tools"
 msgstr "&Rīki"
 
 #. i18n: ectx: Menu (wordcompletion)
-#: data/katepart5ui.rc:138
+#: data/katepart5ui.rc:139
 #, kde-format
 msgid "Word Completion"
 msgstr "Vārdu pabeigšana"
 
 #. i18n: ectx: Menu (spelling)
-#: data/katepart5ui.rc:144 spellcheck/spellingmenu.cpp:71
+#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:71
 #: spellcheck/spellingmenu.cpp:195
 #, kde-format
 msgid "Spelling"
 msgstr "Pareizrakstība"
 
 #. i18n: ectx: Menu (speech)
-#: data/katepart5ui.rc:153 data/katepart5ui.rc:184
+#: data/katepart5ui.rc:154 data/katepart5ui.rc:184
 #, kde-format
 msgid "Text to Speech"
 msgstr "Teksta izrunāšana"
 
 #. i18n: ectx: Menu (settings)
-#: data/katepart5ui.rc:161
+#: data/katepart5ui.rc:162
 #, kde-format
 msgid "&Settings"
 msgstr "Ie&statījumi"
@@ -2207,12 +2207,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Mēģināt vēlreiz"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6535
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6540
 #, kde-format
 msgid "&Close"
 msgstr "&Aizvērt"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6536
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6541
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2359,9 +2359,9 @@ msgstr "Nenosaukts"
 msgid "Untitled"
 msgstr "Nenosaukts"
 
-#: document/katedocument.cpp:4821 document/katedocument.cpp:5052
-#: document/katedocument.cpp:5062 document/katedocument.cpp:5863
-#: document/katedocument.cpp:6050
+#: document/katedocument.cpp:4821 document/katedocument.cpp:5057
+#: document/katedocument.cpp:5067 document/katedocument.cpp:5868
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "Save File"
 msgstr "Saglabāt datni"
@@ -2371,12 +2371,12 @@ msgstr "Saglabāt datni"
 msgid "Save failed"
 msgstr "Saglabāšana neizdevās"
 
-#: document/katedocument.cpp:5073
+#: document/katedocument.cpp:5078
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Saglabāt datnes kopiju"
 
-#: document/katedocument.cpp:5085
+#: document/katedocument.cpp:5090
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2389,7 +2389,7 @@ msgstr ""
 "Pārbaudiet, vai jums ir rakstīšanas atļauja šai datnei un vai diskā pietiek "
 "brīvas vietas."
 
-#: document/katedocument.cpp:5377
+#: document/katedocument.cpp:5382
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2402,7 +2402,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5383
+#: document/katedocument.cpp:5388
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2415,17 +2415,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5697
+#: document/katedocument.cpp:5702
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Datni „%1“ izmainīja cita programma."
 
-#: document/katedocument.cpp:5699
+#: document/katedocument.cpp:5704
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Datni „%1“ diskā izdzēsa vai pārvietoja cita programma."
 
-#: document/katedocument.cpp:6035
+#: document/katedocument.cpp:6040
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2434,17 +2434,17 @@ msgstr ""
 "Dokuments „%1“ ir mainīts.\n"
 "Vai vēlaties to saglabāt vai izmest?"
 
-#: document/katedocument.cpp:6038
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "Close Document"
 msgstr "Aizvērt dokumentu"
 
-#: document/katedocument.cpp:6149
+#: document/katedocument.cpp:6154
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Datne „<a href=\"%1\">%2</a>“ joprojām tiek ielādēta."
 
-#: document/katedocument.cpp:6154
+#: document/katedocument.cpp:6159
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Pārtr&aukt ielādi"
@@ -8468,8 +8468,8 @@ msgstr "Marķējums ievietots: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Nākamajai grāmatzīmei vairs nav rakstzīmju."
 
-#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3590
+#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:795
+#: vimode/modes/normalvimode.cpp:3604
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Reģistrs „%1“ neko nesatur"
@@ -8479,7 +8479,7 @@ msgstr "Reģistrs „%1“ neko nesatur"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "„%1“ %2,  Heks %3,  Oktāli %4"
 
-#: vimode/modes/normalvimode.cpp:2557
+#: vimode/modes/normalvimode.cpp:2571
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marķējums nav pievienots: %1"

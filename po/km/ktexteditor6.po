@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-11 00:41+0000\n"
+"POT-Creation-Date: 2026-09-13 00:41+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -98,59 +98,59 @@ msgid "&View"
 msgstr "មើល"
 
 #. i18n: ectx: Menu (view_menu_word_wrap)
-#: data/katepart5ui.rc:78
+#: data/katepart5ui.rc:79
 #, fuzzy, kde-format
 #| msgid "Static Word Wrap"
 msgid "Word Wrap"
 msgstr "ការ​រុំ​ពាក្យឋិតិវន្ត"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:84 dialogs/katedialogs.cpp:747
+#: data/katepart5ui.rc:85 dialogs/katedialogs.cpp:747
 #, kde-format
 msgid "Borders"
 msgstr "ស៊ុម"
 
 #. i18n: ectx: Menu (codefolding)
-#: data/katepart5ui.rc:92
+#: data/katepart5ui.rc:93
 #, kde-format
 msgid "&Code Folding"
 msgstr "ផ្នត់​កូដ"
 
 #. i18n: ectx: Menu (go)
-#: data/katepart5ui.rc:109
+#: data/katepart5ui.rc:110
 #, fuzzy, kde-format
 #| msgid "Go"
 msgid "&Go"
 msgstr "ទៅ"
 
 #. i18n: ectx: Menu (tools)
-#: data/katepart5ui.rc:124
+#: data/katepart5ui.rc:125
 #, kde-format
 msgid "&Tools"
 msgstr "ឧបករណ៍"
 
 #. i18n: ectx: Menu (wordcompletion)
-#: data/katepart5ui.rc:138
+#: data/katepart5ui.rc:139
 #, kde-format
 msgid "Word Completion"
 msgstr "ការ​បំពេញ​ពាក្យ"
 
 #. i18n: ectx: Menu (spelling)
-#: data/katepart5ui.rc:144 spellcheck/spellingmenu.cpp:71
+#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:71
 #: spellcheck/spellingmenu.cpp:195
 #, kde-format
 msgid "Spelling"
 msgstr "អក្ខរាវិរុទ្ធ"
 
 #. i18n: ectx: Menu (speech)
-#: data/katepart5ui.rc:153 data/katepart5ui.rc:184
+#: data/katepart5ui.rc:154 data/katepart5ui.rc:184
 #, fuzzy, kde-format
 #| msgid "Text to search for"
 msgid "Text to Speech"
 msgstr "អត្ថបទ​ដែល​ត្រូវ​ស្វែងរក​សម្រាប់"
 
 #. i18n: ectx: Menu (settings)
-#: data/katepart5ui.rc:161
+#: data/katepart5ui.rc:162
 #, kde-format
 msgid "&Settings"
 msgstr "ការ​កំណត់"
@@ -2276,12 +2276,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6535
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6540
 #, kde-format
 msgid "&Close"
 msgstr "បិទ"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6536
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6541
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2440,9 +2440,9 @@ msgstr "គ្មាន​ចំណង​ជើង"
 msgid "Untitled"
 msgstr "គ្មាន​ចំណង​ជើង"
 
-#: document/katedocument.cpp:4821 document/katedocument.cpp:5052
-#: document/katedocument.cpp:5062 document/katedocument.cpp:5863
-#: document/katedocument.cpp:6050
+#: document/katedocument.cpp:4821 document/katedocument.cpp:5057
+#: document/katedocument.cpp:5067 document/katedocument.cpp:5868
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "Save File"
 msgstr "រក្សាទុក​ឯកសារ"
@@ -2452,13 +2452,13 @@ msgstr "រក្សាទុក​ឯកសារ"
 msgid "Save failed"
 msgstr "បាន​បរាជ័យ​ក្នុង​ការ​រក្សាទុក"
 
-#: document/katedocument.cpp:5073
+#: document/katedocument.cpp:5078
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "រក្សាទុក​ឯកសារ"
 
-#: document/katedocument.cpp:5085
+#: document/katedocument.cpp:5090
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2470,7 +2470,7 @@ msgstr ""
 "\n"
 "ពិនិត្យ​មើល​ថា អ្នក​មាន​សិទ្ធិ​សរសេរ​ទៅ​ឯកសារ​នេះ ឬ​មាន​ទំហំ​ថាស​គ្រប់​គ្រាន់ ។"
 
-#: document/katedocument.cpp:5377
+#: document/katedocument.cpp:5382
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2486,7 +2486,7 @@ msgstr ""
 "នៅ​ខាងក្រោម​​ដែល​បាន​កែប្រែ​ចេញ;', មើល http://docs.kde.org/stable/en/kde-baseapps/"
 "kate/config-variables.html#variable-យក​​ចន្លោះ​មិន​ឃើញ​​នៅ​ខាង​ក្រោយ​ចេញ"
 
-#: document/katedocument.cpp:5383
+#: document/katedocument.cpp:5388
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2502,19 +2502,19 @@ msgstr ""
 "ចន្លោះ​​មិន​ឃើញ​នៅ​ខាង​ក្រោយ​ចេញ​ទាំងអស់;', មើល http://docs.kde.org/stable/en/kde-"
 "baseapps/kate/config-variables.html#variable-​យក​ចន្លោះ​មិន​ឃើញ​​នៅ​ខាងក្រោយ​ចេញ"
 
-#: document/katedocument.cpp:5697
+#: document/katedocument.cpp:5702
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "ឯកសារ '%1' ត្រូវ​បាន​កែប្រែ​ដោយ​កម្មវិធី​ផ្សេងទៀត ។"
 
-#: document/katedocument.cpp:5699
+#: document/katedocument.cpp:5704
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "ឯកសារ '%1' ត្រូវ​បាន​លុប​ដោយ​កម្មវិធី​ផ្សេងទៀត ។"
 
-#: document/katedocument.cpp:6035
+#: document/katedocument.cpp:6040
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2523,18 +2523,18 @@ msgstr ""
 "ឯកសារ \"%1\" ត្រូវ​បាន​កែប្រែ ។\n"
 "តើ​អ្នក​ចង់​រក្សាទុក​ការ​ផ្លាស់ប្ដូរ ឬ​បោះបង់​ពួកវា ?"
 
-#: document/katedocument.cpp:6038
+#: document/katedocument.cpp:6043
 #, kde-format
 msgid "Close Document"
 msgstr "បិទ​ឯកសារ"
 
-#: document/katedocument.cpp:6149
+#: document/katedocument.cpp:6154
 #, fuzzy, kde-format
 #| msgid "The file %1 is still loading."
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "ឯកសារ %1 នៅ​តែ​កំពុង​ផ្ទុក ។"
 
-#: document/katedocument.cpp:6154
+#: document/katedocument.cpp:6159
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -8656,8 +8656,8 @@ msgstr "សញ្ញា​សម្គាល់​មិន​បានកំណ
 msgid "There are no more chars for the next bookmark."
 msgstr "ទៅ​កាន់​ចំណាំ​បន្ទាប់"
 
-#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
-#: vimode/modes/normalvimode.cpp:3590
+#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:795
+#: vimode/modes/normalvimode.cpp:3604
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "គ្មាន​អ្វី​នៅ​ក្នុង​បញ្ជី %1 ទេ"
@@ -8667,7 +8667,7 @@ msgstr "គ្មាន​អ្វី​នៅ​ក្នុង​បញ្ជ
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  គោល​ដប់​ប្រាំមួយ %3  គោល​ប្រាំបី %4"
 
-#: vimode/modes/normalvimode.cpp:2557
+#: vimode/modes/normalvimode.cpp:2571
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "សញ្ញា​សម្គាល់​មិន​បានកំណត់ ៖ %1"
