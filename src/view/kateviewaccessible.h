@@ -220,23 +220,21 @@ public:
             return t;
         } break;
         case QAccessible::TextBoundaryType::WordBoundary: {
-            QString t = doc->wordAt(c);
-            *startOffset = offset;
-            *endOffset = offset + t.size();
-            return t;
-        } break;
-        case QAccessible::TextBoundaryType::LineBoundary:
-        case QAccessible::TextBoundaryType::ParagraphBoundary: {
-            const QString line = doc->line(c.line());
-            if (line.isEmpty()) {
+            const KTextEditor::Range wordRange = doc->wordRangeAt(c);
+            if (!wordRange.isValid()) {
                 *startOffset = offset;
                 *endOffset = offset;
                 return {};
             }
-            const int start = positionFromCursor(view(), KTextEditor::Cursor(c.line(), 0));
-            *startOffset = start;
-            *endOffset = offset + line.size();
-            return line;
+            *startOffset = positionFromCursor(view(), wordRange.start());
+            *endOffset = positionFromCursor(view(), wordRange.end());
+            return doc->text(wordRange);
+        } break;
+        case QAccessible::TextBoundaryType::LineBoundary:
+        case QAccessible::TextBoundaryType::ParagraphBoundary: {
+            *startOffset = positionFromCursor(view(), KTextEditor::Cursor(c.line(), 0));
+            *endOffset = c.line() + 1 < doc->lines() ? positionFromCursor(view(), KTextEditor::Cursor(c.line() + 1, 0)) : characterCount();
+            return text(*startOffset, *endOffset);
         } break;
         case QAccessible::TextBoundaryType::SentenceBoundary: {
             const QString line = doc->line(c.line());
