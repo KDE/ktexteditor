@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-13 00:41+0000\n"
-"PO-Revision-Date: 2026-07-29 11:48+0200\n"
+"PO-Revision-Date: 2026-09-14 17:28+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -8178,10 +8178,9 @@ msgid "All documents written to disk"
 msgstr "Omne documentos scribite sur disco"
 
 #: vimode/appcommands.cpp:74
-#, fuzzy, kde-format
-#| msgid "All documents written to disk"
+#, kde-format
 msgid "Only some documents were written to disk"
-msgstr "Omne documentos scribite sur disco"
+msgstr "Solmente alcun documentos esseva scribite sur disco"
 
 #: vimode/appcommands.cpp:79
 #, kde-format
