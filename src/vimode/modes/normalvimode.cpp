@@ -125,7 +125,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
     if ((keyCode >= Qt::Key_0 && keyCode <= Qt::Key_9 && lastChar != QLatin1Char('"')) // key 0-9
         && (m_countTemp != 0 || keyCode != Qt::Key_0) // first digit can't be 0
         && (!waitingForRegisterOrCharToSearch) // Not in the middle of "find char" motions or replacing char.
-        && (e->modifiers() | Qt::ShiftModifier) == Qt::ShiftModifier) {
+        && (e->modifiers() & ~(Qt::ShiftModifier | Qt::KeypadModifier)) == Qt::NoModifier) {
         m_countTemp *= 10;
         m_countTemp += keyCode - Qt::Key_0;
         return true;

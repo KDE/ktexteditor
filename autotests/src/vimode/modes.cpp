@@ -1383,6 +1383,13 @@ void ModesTest::VisualCommandsTests()
     DoTest("a", "r\\keypad-9", "9");
     DoTest("foo\nbar", "l\\ctrl-vjr\\keypad-9", "f9o\nb9r");
 
+    // Testing numpad digits as count with NumLock on
+    DoTest("foobar\nbaz", "ll\\keypad-0\\keypad-3x", "bar\nbaz");
+    DoTest("foobar\nbaz", "ll\\keypad-03x", "bar\nbaz");
+    DoTest("foobar\nbaz", "ll\\keypad-0\\keypad-2x.", "ar\nbaz");
+    DoTest("foo\nbar\nbaz", "V\\keypad-2jd", "");
+    DoTest("", "i\\keypad-5\\esc.", "55");
+
     // Testing "gq"
     DoTest("foo\nbar\nbaz", "Vgq", "foo\nbar\nbaz");
     DoTest("foo\nbar\nbaz", "Vjgq", "foo bar\nbaz");
