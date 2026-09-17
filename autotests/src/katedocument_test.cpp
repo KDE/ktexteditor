@@ -142,7 +142,7 @@ void KateDocumentTest::testMovingInterfaceSignals()
     QCOMPARE(aboutToInvalidateSpy.count(), 0);
 
     QTemporaryFile f;
-    f.open();
+    QVERIFY(f.open());
     doc->openUrl(QUrl::fromLocalFile(f.fileName()));
     QCOMPARE(doc->revision(), qint64(2));
     // TODO: gets emitted once in closeFile and once in openFile - is that OK?
@@ -477,7 +477,7 @@ void KateDocumentTest::testDigest()
     // we will write the test file here to avoid that any line ending conversion for git will break it
     const QByteArray fileDigest = "aa22605da164a4e4e55f4c9738cfe1e53d4467f9";
     QTemporaryFile file(QStringLiteral("testDigest"));
-    file.open();
+    QVERIFY(file.open());
     file.write("974d9ab0860c755a4f5686b3b6b429e1efd48a96\ntest\ntest\n\r\n\r\n\r\n");
     file.flush();
 
@@ -615,7 +615,7 @@ void KateDocumentTest::testAutoReload()
 #endif
 
     QTemporaryFile file(QStringLiteral("AutoReloadTestFile"));
-    file.open();
+    QVERIFY(file.open());
     file.write("Hello");
     file.flush();
 
@@ -811,7 +811,7 @@ void KateDocumentTest::testKeepUndoOverReload()
 
     // save it to some local temporary file, for later reload
     QTemporaryFile tmpFile;
-    tmpFile.open();
+    QVERIFY(tmpFile.open());
     QVERIFY(doc.saveAs(QUrl::fromLocalFile(tmpFile.fileName())));
 
     // first: try if normal reload works

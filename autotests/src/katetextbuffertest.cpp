@@ -440,7 +440,7 @@ void KateTextBufferTest::saveFileInUnwritableFolder()
     buffer.finishEditing();
     buffer.save(file_path);
 
-    f.open(QIODevice::ReadOnly);
+    QVERIFY(f.open(QIODevice::ReadOnly));
     QCOMPARE(f.readAll(), QByteArray("ABC"));
     f.close();
 
@@ -665,7 +665,7 @@ void KateTextBufferTest::saveFileWithElevatedPrivileges()
     qDebug() << buffer.text();
     buffer.save(file_path);
 
-    f.open(QIODevice::ReadOnly);
+    QVERIFY(f.open(QIODevice::ReadOnly));
     QCOMPARE(f.readAll(), QByteArray("ABC"));
     f.close();
 

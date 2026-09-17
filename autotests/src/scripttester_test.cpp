@@ -28,7 +28,7 @@ struct CompareData {
 
 static void compareOutput(const QString &suffixFile, QJSEngine &engine, KTextEditor::ScriptTester &scriptTester, QBuffer &buffer, CompareData d)
 {
-    buffer.open(QBuffer::WriteOnly);
+    QVERIFY(buffer.open(QBuffer::WriteOnly));
 
     auto toString = [](const QJSValue &value) -> QString {
         if (!value.isError()) {

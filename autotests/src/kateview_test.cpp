@@ -165,7 +165,7 @@ void KateViewTest::testCursorToCoordinates()
 void KateViewTest::testReloadMultipleViews()
 {
     QTemporaryFile file(QStringLiteral("XXXXXX.cpp"));
-    file.open();
+    QVERIFY(file.open());
     QTextStream stream(&file);
     const QString line = QStringLiteral("const char* foo = \"asdf\"\n");
     for (int i = 0; i < 200; ++i) {
@@ -191,7 +191,7 @@ void KateViewTest::testTabCursorOnReload()
 {
     // testcase for https://bugs.kde.org/show_bug.cgi?id=258480
     QTemporaryFile file(QStringLiteral("XXXXXX.cpp"));
-    file.open();
+    QVERIFY(file.open());
     QTextStream stream(&file);
     stream << "\tfoo\n";
     file.close();
@@ -247,7 +247,7 @@ void KateViewTest::testSelection()
     // => actual: selection from A to C
 
     QTemporaryFile file(QStringLiteral("XXXXXX.txt"));
-    file.open();
+    QVERIFY(file.open());
     QTextStream stream(&file);
     stream << "A\n"
            << "B\n"
@@ -475,7 +475,7 @@ void KateViewTest::testScrollPastEndOfDocument()
 void KateViewTest::testFoldFirstLine()
 {
     QTemporaryFile file(QStringLiteral("XXXXXX.cpp"));
-    file.open();
+    QVERIFY(file.open());
     QTextStream stream(&file);
     stream << "/**\n"
            << " * foo\n"

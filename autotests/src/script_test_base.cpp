@@ -30,6 +30,8 @@
 #include "script_test_base.h"
 #include "testutils.h"
 
+using namespace Qt::StringLiterals;
+
 const QString testDataPath(QLatin1String(TEST_DATA_DIR));
 
 QtMessageHandler ScriptTestBase::m_msgHandler = nullptr;
@@ -96,8 +98,13 @@ inline QByteArray filesDiff(const QString &refFile, const QString &outFile)
      */
     QFile ref(refFile);
     QFile out(outFile);
-    ref.open(QIODevice::ReadOnly | QIODevice::Text);
-    out.open(QIODevice::ReadOnly | QIODevice::Text);
+    if (!ref.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        return u"Could not open file %1"_s.arg(refFile).toUtf8();
+    }
+    if (!out.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        return u"Could not open file %1"_s.arg(outFile).toUtf8();
+    }
+
     QTextStream refIn(&ref);
     QTextStream outIn(&out);
     const QString refContent = refIn.readAll();
