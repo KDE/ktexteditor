@@ -601,7 +601,6 @@ msgstr ""
 "При включении переноса по строкам здесь указывается число колонок, "
 "составляющих ширину страницы."
 
-# BUGME: please add colon at the end --aspotashev
 #. i18n: ectx: property (text), widget (QLabel, lblInputMode)
 #: dialogs/editconfigwidget.ui:91
 #, kde-format
