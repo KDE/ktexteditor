@@ -1017,7 +1017,6 @@ void KateScrollBar::sliderChange(SliderChange change)
     }
 }
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
 void KateScrollBar::contextMenuEvent(QContextMenuEvent *e)
 {
     QMenu *menu = createStandardContextMenu(e->pos());
@@ -1037,7 +1036,6 @@ void KateScrollBar::contextMenuEvent(QContextMenuEvent *e)
 
     menu->popup(e->globalPos());
 }
-#endif
 
 void KateScrollBar::marksChanged()
 {
