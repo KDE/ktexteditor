@@ -31,13 +31,6 @@ using namespace Qt::Literals::StringLiterals;
 namespace
 {
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 10, 0)
-constexpr QStringView operator""_sv(const char16_t *str, size_t size) noexcept
-{
-    return QStringView(str, size);
-}
-#endif
-
 using ScriptTester = KTextEditor::ScriptTester;
 using TextFormat = ScriptTester::DocumentTextFormat;
 using TestFormatOption = ScriptTester::TestFormatOption;
