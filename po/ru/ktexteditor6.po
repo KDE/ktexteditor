@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-13 00:41+0000\n"
+"POT-Creation-Date: 2026-10-03 00:41+0000\n"
 "PO-Revision-Date: 2026-08-31 13:32+0300\n"
 "Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -4846,7 +4846,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Маркеры"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1536
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1534
 #, kde-format
 msgid "Bookmark"
 msgstr "Закладка"
@@ -7996,12 +7996,12 @@ msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>—<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1212
+#: view/kateviewhelpers.cpp:1210
 #, kde-format
 msgid "Available Commands"
 msgstr "Доступные команды"
 
-#: view/kateviewhelpers.cpp:1213
+#: view/kateviewhelpers.cpp:1211
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -8010,17 +8010,17 @@ msgstr ""
 "<p>Для справки по отдельным командам введите <code>help &lt;имя-команды&gt;</"
 "code></p>"
 
-#: view/kateviewhelpers.cpp:1220
+#: view/kateviewhelpers.cpp:1218
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Справка по «%1» отсутствует"
 
-#: view/kateviewhelpers.cpp:1223
+#: view/kateviewhelpers.cpp:1221
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Команда <b>%1</b> не существует"
 
-#: view/kateviewhelpers.cpp:1229
+#: view/kateviewhelpers.cpp:1227
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -8033,37 +8033,37 @@ msgstr ""
 "list</b></code><br/>Для справки по отдельным командам введите <code><b>help "
 "&lt;имя-команды&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1317 vimode/emulatedcommandbar/commandmode.cpp:212
+#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:212
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Команда «%1» не существует"
 
-#: view/kateviewhelpers.cpp:1320 vimode/emulatedcommandbar/commandmode.cpp:194
+#: view/kateviewhelpers.cpp:1318 vimode/emulatedcommandbar/commandmode.cpp:194
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Ошибка: нельзя указывать диапазон для команды «%1»."
 
-#: view/kateviewhelpers.cpp:1330 vimode/emulatedcommandbar/commandmode.cpp:198
+#: view/kateviewhelpers.cpp:1328 vimode/emulatedcommandbar/commandmode.cpp:198
 #, kde-format
 msgid "Success: "
 msgstr "Успешно: "
 
-#: view/kateviewhelpers.cpp:1344 vimode/emulatedcommandbar/commandmode.cpp:207
+#: view/kateviewhelpers.cpp:1342 vimode/emulatedcommandbar/commandmode.cpp:207
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Команда «%1» не выполнена."
 
-#: view/kateviewhelpers.cpp:2645 view/kateviewhelpers.cpp:2646
+#: view/kateviewhelpers.cpp:2643 view/kateviewhelpers.cpp:2644
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Тип закладки %1"
 
-#: view/kateviewhelpers.cpp:2669
+#: view/kateviewhelpers.cpp:2667
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Установить тип пометки по умолчанию"
 
-#: view/kateviewhelpers.cpp:2814
+#: view/kateviewhelpers.cpp:2812
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Убрать столбец аннотации"

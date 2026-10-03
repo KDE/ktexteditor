@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-13 00:41+0000\n"
+"POT-Creation-Date: 2026-10-03 00:41+0000\n"
 "PO-Revision-Date: 2025-09-03 20:51+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -4834,7 +4834,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Jelölőszínek"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1536
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1534
 #, kde-format
 msgid "Bookmark"
 msgstr "Könyvjelző"
@@ -7988,12 +7988,12 @@ msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1212
+#: view/kateviewhelpers.cpp:1210
 #, kde-format
 msgid "Available Commands"
 msgstr "A rendelkezésre álló parancsok"
 
-#: view/kateviewhelpers.cpp:1213
+#: view/kateviewhelpers.cpp:1211
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -8002,17 +8002,17 @@ msgstr ""
 "<p>Az egyes parancsokhoz segítség kérhető így: <code>„help &lt;parancs&gt;”</"
 "code></p>"
 
-#: view/kateviewhelpers.cpp:1220
+#: view/kateviewhelpers.cpp:1218
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Nincs segítség ehhez: „%1”"
 
-#: view/kateviewhelpers.cpp:1223
+#: view/kateviewhelpers.cpp:1221
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Nincs ilyen parancs: <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1229
+#: view/kateviewhelpers.cpp:1227
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -8026,37 +8026,37 @@ msgstr ""
 "parancsokról a <code><b>help &lt;parancs&gt;</b></code> utasítással kérhető "
 "leírás.</p>"
 
-#: view/kateviewhelpers.cpp:1317 vimode/emulatedcommandbar/commandmode.cpp:212
+#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:212
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Nincs ilyen parancs: \"%1\""
 
-#: view/kateviewhelpers.cpp:1320 vimode/emulatedcommandbar/commandmode.cpp:194
+#: view/kateviewhelpers.cpp:1318 vimode/emulatedcommandbar/commandmode.cpp:194
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Hiba: Nem adható meg tartomány ennél a parancsnál: \"%1\"."
 
-#: view/kateviewhelpers.cpp:1330 vimode/emulatedcommandbar/commandmode.cpp:198
+#: view/kateviewhelpers.cpp:1328 vimode/emulatedcommandbar/commandmode.cpp:198
 #, kde-format
 msgid "Success: "
 msgstr "Siker: "
 
-#: view/kateviewhelpers.cpp:1344 vimode/emulatedcommandbar/commandmode.cpp:207
+#: view/kateviewhelpers.cpp:1342 vimode/emulatedcommandbar/commandmode.cpp:207
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "A(z) \"%1\" parancs nem sikerült."
 
-#: view/kateviewhelpers.cpp:2645 view/kateviewhelpers.cpp:2646
+#: view/kateviewhelpers.cpp:2643 view/kateviewhelpers.cpp:2644
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Jelölési típus: %1"
 
-#: view/kateviewhelpers.cpp:2669
+#: view/kateviewhelpers.cpp:2667
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Az alapértelmezett jeltípus beállítása"
 
-#: view/kateviewhelpers.cpp:2814
+#: view/kateviewhelpers.cpp:2812
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "A megjegyzéssáv letiltása"

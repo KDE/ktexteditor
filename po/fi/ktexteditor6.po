@@ -10,7 +10,7 @@
 # Teemu Rytilahti <tpr@d5k.net>, 2008.
 # Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2008.
 # Teemu Rytilahti <teemu.rytilahti@d5k.net>, 2008, 2012.
-# SPDX-FileCopyrightText: 2009, 2010, 2011, 2012, 2014, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2009, 2010, 2011, 2012, 2014, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Tommi Nieminen <translator@legisign.org>
 # Jorma Karvonen <karvonen.jorma@gmail.com>, 2010, 2012.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019, 2022.
 # Jiri Grönroos <jiri.gronroos+kde@iki.fi>, 2012.
@@ -24,8 +24,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-13 00:41+0000\n"
-"PO-Revision-Date: 2025-11-12 19:39+0200\n"
+"POT-Creation-Date: 2026-10-03 00:41+0000\n"
+"PO-Revision-Date: 2026-09-09 15:46+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -1417,15 +1417,13 @@ msgstr "&PageUp ja PageDown liikuttavat kohdistinta"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
-"Valitsee, loikkaako kohdistin kokonaisia sanoja vai siirtykö pien- ja "
-"suuraakkosten taitekohtiin."
+"Valitsee, pysähtyykö kohdistin pien- ja suuraakkosten taitekohtiin ja "
+"alaviivoihin."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1433,6 +1431,8 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"Pysähdy \"sekaAakkosSanojen” alisanoihin liikutettaessa kohdistinta "
+"sanoittain"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -1660,7 +1660,7 @@ msgstr "Noudata .editorconfig-tiedoston asetuksia"
 #: dialogs/opensaveconfigadvwidget.ui:229
 #, kde-format
 msgid "Use first line of untitled documents for document name"
-msgstr ""
+msgstr "Käytä tiedoston nimeksi nimettömän tiedoston ensiriviä"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -2364,10 +2364,9 @@ msgid "Close Nevertheless"
 msgstr "Sulje silti"
 
 #: document/katedocument.cpp:4642
-#, fuzzy, kde-format
-#| msgid "Untitled"
+#, kde-format
 msgid "Untitled (%1)"
-msgstr "Nimetön"
+msgstr "Nimetön (%1)"
 
 #: document/katedocument.cpp:4644
 #, kde-format
@@ -2480,18 +2479,16 @@ msgid "Normal Mode"
 msgstr "Normaalitila"
 
 #: inputmode/kateviinputmode.cpp:33
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "VI: LISÄYSTILA"
+msgstr "VI: LISÄYS"
 
 #: inputmode/kateviinputmode.cpp:36
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "VI: NORMAALITILA"
+msgstr "VI: NORMAALI"
 
 #: inputmode/kateviinputmode.cpp:39
 #, kde-format
@@ -3654,10 +3651,9 @@ msgid "SearchHighLight"
 msgstr "Haun korostus"
 
 #: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
-#, fuzzy, kde-format
-#| msgid "Clear Dictionary Ranges"
+#, kde-format
 msgid "Clear history"
-msgstr "Tyhjennä sanaston alueet"
+msgstr "Tyhjennä historia"
 
 #: search/katesearchbar.cpp:1166
 #, kde-format
@@ -4833,7 +4829,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Merkkien värit"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1536
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1534
 #, kde-format
 msgid "Bookmark"
 msgstr "Kirjanmerkki"
@@ -7962,12 +7958,12 @@ msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1212
+#: view/kateviewhelpers.cpp:1210
 #, kde-format
 msgid "Available Commands"
 msgstr "Käytettävissä olevat komennot"
 
-#: view/kateviewhelpers.cpp:1213
+#: view/kateviewhelpers.cpp:1211
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7976,17 +7972,17 @@ msgstr ""
 "<p>Yksittäisestä komennosta saa lisätietoa komennolla <code>help &lt;"
 "komento&gt;</code></p>"
 
-#: view/kateviewhelpers.cpp:1220
+#: view/kateviewhelpers.cpp:1218
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Ei ohjetta aiheeseen ”%1”"
 
-#: view/kateviewhelpers.cpp:1223
+#: view/kateviewhelpers.cpp:1221
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Komentoa <b>%1</b> ei ole"
 
-#: view/kateviewhelpers.cpp:1229
+#: view/kateviewhelpers.cpp:1227
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7999,37 +7995,37 @@ msgstr ""
 "<code><b>help list</b></code><br />Saat lisätietoja yksittäisistä "
 "komennoista komennolla <code><b>help &lt;command&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1317 vimode/emulatedcommandbar/commandmode.cpp:212
+#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:212
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Ei komentoa: ”%1”"
 
-#: view/kateviewhelpers.cpp:1320 vimode/emulatedcommandbar/commandmode.cpp:194
+#: view/kateviewhelpers.cpp:1318 vimode/emulatedcommandbar/commandmode.cpp:194
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Virhe: Komennolle ”%1” ei sallita lukualuetta."
 
-#: view/kateviewhelpers.cpp:1330 vimode/emulatedcommandbar/commandmode.cpp:198
+#: view/kateviewhelpers.cpp:1328 vimode/emulatedcommandbar/commandmode.cpp:198
 #, kde-format
 msgid "Success: "
 msgstr "Onnistui: "
 
-#: view/kateviewhelpers.cpp:1344 vimode/emulatedcommandbar/commandmode.cpp:207
+#: view/kateviewhelpers.cpp:1342 vimode/emulatedcommandbar/commandmode.cpp:207
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Komento ”%1” epäonnistui."
 
-#: view/kateviewhelpers.cpp:2645 view/kateviewhelpers.cpp:2646
+#: view/kateviewhelpers.cpp:2643 view/kateviewhelpers.cpp:2644
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Merkin tyyppi %1"
 
-#: view/kateviewhelpers.cpp:2669
+#: view/kateviewhelpers.cpp:2667
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Aseta oletustyyppi"
 
-#: view/kateviewhelpers.cpp:2814
+#: view/kateviewhelpers.cpp:2812
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Piilota merkintäpalkki"
@@ -8098,10 +8094,9 @@ msgid "All documents written to disk"
 msgstr "Kaikki tiedostot kirjoitettu levylle"
 
 #: vimode/appcommands.cpp:74
-#, fuzzy, kde-format
-#| msgid "All documents written to disk"
+#, kde-format
 msgid "Only some documents were written to disk"
-msgstr "Kaikki tiedostot kirjoitettu levylle"
+msgstr "Vain jotkin tiedostot kirjoitettu levylle"
 
 #: vimode/appcommands.cpp:79
 #, kde-format
