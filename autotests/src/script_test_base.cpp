@@ -60,6 +60,8 @@ void ScriptTestBase::cleanupTestCase()
 {
     qInstallMessageHandler(m_msgHandler);
     delete m_env;
+    delete m_view;
+    delete m_document;
     delete m_toplevel;
 }
 
