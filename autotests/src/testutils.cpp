@@ -33,7 +33,6 @@ TestScriptEnv::TestScriptEnv(KTextEditor::ViewPrivate *view, bool &cflag)
     , m_output(nullptr)
 {
     m_engine = new QJSEngine(this);
-    KTextEditor::DocumentPrivate *part = view->doc();
 
     // export read & require function and add the require guard object
     QJSValue functions = m_engine->newQObject(new Kate::ScriptHelper(m_engine));
