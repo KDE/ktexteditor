@@ -9,7 +9,6 @@
 #include "moc_katedocument_test.cpp"
 
 #include <kateconfig.h>
-#include <katedocument.h>
 #include <kateglobal.h>
 #include <kateview.h>
 
@@ -1095,7 +1094,6 @@ void KateDocumentTest::testDocumentName()
 
 void KateDocumentTest::testDocumentDeduplication()
 {
-    auto *editor = KTextEditor::EditorPrivate::self();
     const QString untitled = i18n("Untitled");
     const QString hello = QStringLiteral("Hello");
     const QString untitledHello = i18n("Untitled (%1)", hello);

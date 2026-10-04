@@ -10,7 +10,7 @@
 
 #include <QTest>
 
-#include <ktexteditor/movingrange.h>
+#include <katedocument.h>
 
 class MovingRangeInvalidator : public QObject
 {
