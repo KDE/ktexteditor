@@ -27,6 +27,7 @@ CamelCursorTest::CamelCursorTest(QObject *parent)
 
 CamelCursorTest::~CamelCursorTest()
 {
+    delete view;
     delete doc;
 }
 
