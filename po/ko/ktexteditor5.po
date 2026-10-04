@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:00+0000\n"
-"PO-Revision-Date: 2026-05-26 21:32+0200\n"
+"PO-Revision-Date: 2026-10-03 20:41+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -1331,8 +1331,8 @@ msgstr "Page Up/Page Down 키로 커서 움직이기(&P)"
 #, kde-format
 msgid "Selects whether cursor jumps full words or breaks at camel case humps."
 msgstr ""
-"커서를 건너뛸 때 단어 단위 또는 캐멀케이스의 대소문자 전환을 건너뛸지 선택합"
-"니다."
+"전체 단어 단위 또는 캐멀케이스의 대소문자 전환점에서 커서를 정지할지 선택합니"
+"다."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
