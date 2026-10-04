@@ -424,6 +424,7 @@ void KateTextBufferTest::saveFileInUnwritableFolder()
     QVERIFY(f.flush());
     f.close();
 
+    const auto oldPermissions = QFile::permissions(folder_name);
     QFile::setPermissions(folder_name, QFile::ExeOwner);
 
     KTextEditor::DocumentPrivate doc;
@@ -444,7 +445,8 @@ void KateTextBufferTest::saveFileInUnwritableFolder()
     QCOMPARE(f.readAll(), QByteArray("ABC"));
     f.close();
 
-    QFile::setPermissions(folder_name, QFile::WriteOwner | QFile::ExeOwner);
+    // ensure cleanup can work
+    QFile::setPermissions(folder_name, oldPermissions);
     QVERIFY(f.remove());
     QVERIFY(dir.remove());
 }
