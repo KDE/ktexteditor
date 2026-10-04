@@ -18,7 +18,6 @@ namespace KTextEditor
 {
 class ViewPrivate;
 }
-class QMainWindow;
 
 class ScriptTestBase : public QObject
 {
@@ -37,7 +36,6 @@ protected:
 
     TestScriptEnv *m_env;
     KTextEditor::DocumentPrivate *m_document;
-    QMainWindow *m_toplevel;
     bool m_outputWasCustomised;
     QStringList m_commands;
     KTextEditor::ViewPrivate *m_view;

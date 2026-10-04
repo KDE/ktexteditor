@@ -20,12 +20,9 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QJSEngine>
-#include <QMainWindow>
 #include <QProcess>
 #include <QStandardPaths>
 #include <QTest>
-
-#include <iostream>
 
 #include "script_test_base.h"
 #include "testutils.h"
@@ -49,11 +46,10 @@ void ScriptTestBase::initTestCase()
 {
     QStandardPaths::setTestModeEnabled(true);
     m_msgHandler = qInstallMessageHandler(noDebugMessageOutput);
-    m_toplevel = new QMainWindow();
-    m_document = new KTextEditor::DocumentPrivate(true, false, m_toplevel, m_toplevel);
-    m_view = static_cast<KTextEditor::ViewPrivate *>(m_document->widget());
+    m_document = new KTextEditor::DocumentPrivate(false, false);
+    m_view = static_cast<KTextEditor::ViewPrivate *>(m_document->createView(nullptr));
     m_view->config()->setValue(KateViewConfig::AutoBrackets, false);
-    m_env = new TestScriptEnv(m_document, m_outputWasCustomised);
+    m_env = new TestScriptEnv(m_view, m_outputWasCustomised);
 }
 
 void ScriptTestBase::cleanupTestCase()
@@ -62,7 +58,6 @@ void ScriptTestBase::cleanupTestCase()
     delete m_env;
     delete m_view;
     delete m_document;
-    delete m_toplevel;
 }
 
 void ScriptTestBase::getTestData(const QString &script)
@@ -162,7 +157,7 @@ void ScriptTestBase::runTest(const ExpectedFailures &failures)
 
     QFETCH(QString, testcase);
 
-    m_toplevel->resize(800, 600); // restore size
+    m_view->resize(800, 600); // restore size
 
     // load page
     QUrl url;

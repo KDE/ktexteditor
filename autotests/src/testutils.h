@@ -32,7 +32,7 @@ class KateDocumentObject;
 class TestScriptEnv : public QObject
 {
 public:
-    explicit TestScriptEnv(KTextEditor::DocumentPrivate *part, bool &cflag);
+    explicit TestScriptEnv(KTextEditor::ViewPrivate *view, bool &cflag);
     ~TestScriptEnv() override;
 
     QJSEngine *engine() const

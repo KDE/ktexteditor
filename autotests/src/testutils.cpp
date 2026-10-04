@@ -26,13 +26,14 @@
 
 // BEGIN TestScriptEnv
 
-TestScriptEnv::TestScriptEnv(KTextEditor::DocumentPrivate *part, bool &cflag)
+TestScriptEnv::TestScriptEnv(KTextEditor::ViewPrivate *view, bool &cflag)
     : m_engine(nullptr)
     , m_viewObj(nullptr)
     , m_docObj(nullptr)
     , m_output(nullptr)
 {
     m_engine = new QJSEngine(this);
+    KTextEditor::DocumentPrivate *part = view->doc();
 
     // export read & require function and add the require guard object
     QJSValue functions = m_engine->newQObject(new Kate::ScriptHelper(m_engine));
@@ -49,8 +50,6 @@ TestScriptEnv::TestScriptEnv(KTextEditor::DocumentPrivate *part, bool &cflag)
     m_engine->globalObject().setProperty(QStringLiteral("i18nc"), functions.property(QStringLiteral("_i18nc")));
     m_engine->globalObject().setProperty(QStringLiteral("i18np"), functions.property(QStringLiteral("_i18np")));
     m_engine->globalObject().setProperty(QStringLiteral("i18ncp"), functions.property(QStringLiteral("_i18ncp")));
-
-    KTextEditor::ViewPrivate *view = qobject_cast<KTextEditor::ViewPrivate *>(part->widget());
 
     m_viewObj = new KateViewObject(m_engine, view);
     QJSValue sv = m_engine->newQObject(m_viewObj);
