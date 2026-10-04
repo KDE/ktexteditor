@@ -666,7 +666,7 @@ void KTextEditor::ViewPrivate::setupActions()
     a = ac->addAction(KStandardActions::SaveAs, m_doc, &KTextEditor::DocumentPrivate::documentSaveAs);
     a->setWhatsThis(i18n("Save the current document to disk, with a name of your choice."));
 
-    a = new KateViewEncodingAction(m_doc, this, i18nc("@action", "Save As with Encodin&g…"), this, true /* special mode for save as */);
+    a = new KateViewEncodingAction(this, i18nc("@action", "Save As with Encodin&g…"), true /* special mode for save as */);
     a->setIcon(QIcon::fromTheme(QStringLiteral("document-save-as")));
     ac->addAction(QStringLiteral("file_save_as_with_encoding"), a);
 
@@ -892,7 +892,7 @@ void KTextEditor::ViewPrivate::setupActions()
     connect(m_addBom, &KToggleAction::triggered, this, &KTextEditor::ViewPrivate::setAddBom);
 
     // encoding menu
-    m_encodingAction = new KateViewEncodingAction(m_doc, this, i18n("E&ncoding"), this);
+    m_encodingAction = new KateViewEncodingAction(this, i18n("E&ncoding"));
     ac->addAction(QStringLiteral("set_encoding"), m_encodingAction);
 
     a = ac->addAction(KStandardActions::Find, this, &KTextEditor::ViewPrivate::find);

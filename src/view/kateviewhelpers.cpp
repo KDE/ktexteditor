@@ -2875,115 +2875,60 @@ void KateIconBorder::displayRangeChanged()
 
 // END KateIconBorder
 
-// BEGIN KateViewEncodingAction
-// According to https://www.iana.org/assignments/ianacharset-mib/ianacharset-mib
-// the default/unknown mib value is 2.
-#define MIB_DEFAULT 2
-
-bool lessThanAction(KSelectAction *a, KSelectAction *b)
-{
-    return a->text() < b->text();
-}
-
-void KateViewEncodingAction::init()
-{
-    QList<KSelectAction *> actions;
-
-    setToolBarMode(MenuMode);
-
-    int i;
-    const auto encodingsByScript = KCharsets::charsets()->encodingsByScript();
-    actions.reserve(encodingsByScript.size());
-    for (const QStringList &encodingsForScript : encodingsByScript) {
-        KSelectAction *tmp = new KSelectAction(encodingsForScript.at(0), this);
-
-        for (i = 1; i < encodingsForScript.size(); ++i) {
-            tmp->addAction(encodingsForScript.at(i));
-        }
-        connect(tmp, &KSelectAction::actionTriggered, this, [this](QAction *action) {
-            subActionTriggered(action);
-        });
-        // tmp->setCheckable(true);
-        actions << tmp;
-    }
-    std::sort(actions.begin(), actions.end(), lessThanAction);
-    for (KSelectAction *action : std::as_const(actions)) {
-        addAction(action);
-    }
-}
-
-void KateViewEncodingAction::subActionTriggered(QAction *action)
-{
-    if (currentSubAction == action) {
-        return;
-    }
-    currentSubAction = action;
-    Q_EMIT textTriggered(action->text());
-}
-
-KateViewEncodingAction::KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc,
-                                               KTextEditor::ViewPrivate *_view,
-                                               const QString &text,
-                                               QObject *parent,
-                                               bool saveAsMode)
-    : KSelectAction(text, parent)
-    , doc(_doc)
-    , view(_view)
+KateViewEncodingAction::KateViewEncodingAction(KTextEditor::ViewPrivate *view, const QString &text, bool saveAsMode)
+    : KActionMenu(text, view)
+    , m_view(view)
     , m_saveAsMode(saveAsMode)
 {
-    init();
-
     connect(menu(), &QMenu::aboutToShow, this, &KateViewEncodingAction::slotAboutToShow);
-    connect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);
 }
 
 void KateViewEncodingAction::slotAboutToShow()
 {
-    setCurrentCodec(doc->config()->encoding());
+    // cleanup if not newly created
+    menu()->clear();
+
+    // create all needed sub-menus
+    std::vector<QMenu *> menus;
+    auto group = new QActionGroup(menu());
+    const auto encodingsByScript = KCharsets::charsets()->encodingsByScript();
+    menus.reserve(encodingsByScript.size());
+    for (const QStringList &encodingsForScript : encodingsByScript) {
+        auto tmp = new QMenu(encodingsForScript.at(0), menu());
+        for (int i = 1; i < encodingsForScript.size(); ++i) {
+            auto encoding = encodingsForScript.at(i);
+            auto a = tmp->addAction(encoding);
+            group->addAction(a);
+            a->setCheckable(true);
+            a->setChecked(encoding == m_view->doc()->encoding());
+            connect(a, &QAction::triggered, this, [this, encoding]() {
+                setEncoding(encoding);
+            });
+        }
+        menus.push_back(tmp);
+    }
+
+    // add menus sorted
+    std::sort(menus.begin(), menus.end(), [](QMenu *a, QMenu *b) {
+        return a->title() < b->title();
+    });
+    for (auto action : menus) {
+        menu()->addMenu(action);
+    }
 }
 
 void KateViewEncodingAction::setEncoding(const QString &e)
 {
     // in save as mode => trigger saveAs
     if (m_saveAsMode) {
-        doc->documentSaveAsWithEncoding(e);
+        m_view->doc()->documentSaveAsWithEncoding(e);
         return;
     }
 
     // else switch encoding
-    doc->userSetEncodingForNextReload();
-    doc->setEncoding(e);
-    view->reloadFile();
-}
-
-bool KateViewEncodingAction::setCurrentCodec(const QString &codec)
-{
-    disconnect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);
-
-    int i;
-    int j;
-    for (i = 0; i < actions().size(); ++i) {
-        if (actions().at(i)->menu()) {
-            for (j = 0; j < actions().at(i)->menu()->actions().size(); ++j) {
-                if (!j && !actions().at(i)->menu()->actions().at(j)->data().isNull()) {
-                    continue;
-                }
-                if (actions().at(i)->menu()->actions().at(j)->isSeparator()) {
-                    continue;
-                }
-
-                if (codec == actions().at(i)->menu()->actions().at(j)->text()) {
-                    currentSubAction = actions().at(i)->menu()->actions().at(j);
-                    currentSubAction->setChecked(true);
-                } else {
-                    actions().at(i)->menu()->actions().at(j)->setChecked(false);
-                }
-            }
-        }
-    }
-
-    connect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);
-    return true;
+    m_view->doc()->userSetEncodingForNextReload();
+    m_view->doc()->setEncoding(e);
+    m_view->reloadFile();
 }
 
 // END KateViewEncodingAction
