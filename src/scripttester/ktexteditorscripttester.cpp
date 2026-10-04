@@ -1082,7 +1082,7 @@ Colors:
      * KTextEditor objects
      */
 
-    KTextEditor::DocumentPrivate doc(true, false);
+    KTextEditor::DocumentPrivate doc(false, false);
     KTextEditor::ViewPrivate view(&doc, nullptr);
 
     QJSEngine engine;
