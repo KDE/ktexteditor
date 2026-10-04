@@ -67,6 +67,7 @@ BaseTest::BaseTest()
 
 BaseTest::~BaseTest()
 {
+    delete kate_view;
     delete kate_document;
     delete mainWindow;
 }
