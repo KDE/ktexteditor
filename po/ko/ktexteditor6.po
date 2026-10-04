@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-03 00:41+0000\n"
-"PO-Revision-Date: 2026-05-26 21:32+0200\n"
+"PO-Revision-Date: 2026-10-03 20:41+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -1368,14 +1368,12 @@ msgstr "Page Up/Page Down 키로 커서 움직이기(&P)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Selects whether cursor jumps full words or breaks at camel case humps."
+#, kde-format
 msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
-"커서를 건너뛸 때 단어 단위 또는 캐멀케이스의 대소문자 전환을 건너뛸지 선택합"
+"캐멀케이스의 대소문자 전환점이나 단어 내부의 밑줄에서 커서를 정지할지 선택합"
 "니다."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
@@ -1384,6 +1382,8 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"단어 단위로 커서를 이동할 때 'camelCase'나 'snake_case'로 구성된 단어 단위로 "
+"커서 이동"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -2413,18 +2413,16 @@ msgid "Normal Mode"
 msgstr "일반 모드"
 
 #: inputmode/kateviinputmode.cpp:33
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
-msgstr "VI: 삽입 모드"
+msgstr "VI: 삽입"
 
 #: inputmode/kateviinputmode.cpp:36
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
-msgstr "VI: 일반 모드"
+msgstr "VI: 일반"
 
 #: inputmode/kateviinputmode.cpp:39
 #, kde-format
@@ -7939,10 +7937,9 @@ msgid "All documents written to disk"
 msgstr "모든 문서 디스크에 저장됨"
 
 #: vimode/appcommands.cpp:74
-#, fuzzy, kde-format
-#| msgid "All documents written to disk"
+#, kde-format
 msgid "Only some documents were written to disk"
-msgstr "모든 문서 디스크에 저장됨"
+msgstr "일부 문서만 디스크에 저장됨"
 
 #: vimode/appcommands.cpp:79
 #, kde-format
