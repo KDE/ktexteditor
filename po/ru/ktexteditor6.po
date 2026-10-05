@@ -171,7 +171,7 @@ msgstr "&Настройка"
 #: data/katepart5ui.rc:192
 #, kde-format
 msgid "Main Toolbar"
-msgstr "Панель инструментов"
+msgstr "Основная панель инструментов"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/bordersappearanceconfigwidget.ui:25
@@ -190,7 +190,7 @@ msgstr "Для всех новых окон будет показана поло
 #: dialogs/bordersappearanceconfigwidget.ui:35
 #, kde-format
 msgid "Show arrows to collapse code blocks"
-msgstr "Показать стрелки для сворачивания блоков кода"
+msgstr "Показывать стрелки для сворачивания блоков кода"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
@@ -206,7 +206,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:45
 #, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr "Предварительный просмотр свёрнутых блоков при наведении указателя мыши"
+msgstr "Показывать содержимое свёрнутых блоков при наведении указателя мыши"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:52
@@ -249,7 +249,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:155
 #, kde-format
 msgid "Show marks"
-msgstr "Показывать метки"
+msgstr "Показывать полосу отметок"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:109
@@ -303,16 +303,14 @@ msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
 msgstr ""
-"<p>При наведении указателя мыши на вертикальную полосу прокруткиво "
+"<p>При наведении указателя мыши на вертикальную полосу прокрутки во "
 "всплывающем окне будет показан соответствующий участок текста.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:165
 #, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr ""
-"Предварительный просмотр &текста при наведении указателя мыши на полосу "
-"прокрутки"
+msgstr "Показывать &текст при наведении указателя мыши на полосу прокрутки"
 
 #. i18n: ectx: property (text), widget (QLabel, lblShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:172
@@ -358,7 +356,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:227
 #, kde-format
 msgid "Show minimap"
-msgstr "Показать мини-карту"
+msgstr "Показывать мини-карту"
 
 #. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
 #: dialogs/bordersappearanceconfigwidget.ui:250
@@ -433,7 +431,7 @@ msgstr "В журнале буфера обмена нет записей"
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
-msgstr "Главное"
+msgstr "Общие"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoCompletionEnabled)
 #: dialogs/completionconfigtab.ui:35
@@ -445,7 +443,7 @@ msgstr "Включить &автодополнение"
 #: dialogs/completionconfigtab.ui:42
 #, kde-format
 msgid "Auto select &first completion entry"
-msgstr "Автоматическое выделение &первой записи автодополнения"
+msgstr "Автоматически выделять &первый вариант автодополнения"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
 #: dialogs/completionconfigtab.ui:49
@@ -535,8 +533,8 @@ msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
 "shown by pressing Alt key."
 msgstr ""
-"Показать документацию рядом с полем автодополнения. Если отключено, "
-"документацию возможно отобразить нажатием клавиши Alt."
+"Показывать документацию рядом с полем автодополнения. Если отключено, "
+"документацию можно показать нажатием клавиши Alt."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
@@ -555,13 +553,13 @@ msgid ""
 "be <i>visually wrapped</i> instead, according to the width of the view, "
 "enable <b>Dynamic Word Wrap</b> in the <b>Appearance</b> config page.</p>"
 msgstr ""
-"<p>Автоматически переносить текст на новую строку, когда строки превышает "
-"значение параметра <b>Переносить после</b>.</p><p>При этом уже существующие "
-"строки не будут переноситься. Чтобы применить перенос и к ним также, "
-"выберите в меню «Сервис» пункт «Выполнить перенос строк».</p><p>Если вы "
-"хотите, чтобы строки просто <i>выглядели перенесёнными</i> и визуально "
-"вписывались в окно, установите режим <b>Динамический перенос строк</b> в "
-"меню <b>Вид</b>.</p>"
+"<p>Автоматически переносить текст на новую строку, когда длина строки "
+"превышает значение параметра <b>Переносить после</b>.</p><p>При этом уже "
+"существующие строки не будут переноситься. Чтобы применить перенос и к ним "
+"также, выберите в меню «Сервис» пункт «Выполнить перенос строк».</p><p>Если "
+"вы хотите, чтобы строки просто <i>выглядели перенесёнными</i> и визуально "
+"вписывались в окно, установите режим <b>Динамический перенос строк</b> на "
+"странице <b>Внешний вид</b>.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:32
@@ -576,14 +574,14 @@ msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"<p>В колонке переноса строк будет показана вертикальная линия (согласно "
+"<p>В столбце переноса строк будет показана вертикальная линия (согласно "
 "параметру в разделе <strong>Редактирование</strong>).</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
 #, kde-format
 msgid "&Draw vertical line at the word wrap column"
-msgstr "&Вставлять вертикальную линию в столбце переноса слов"
+msgstr "&Рисовать вертикальную линию в столбце переноса"
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
@@ -598,8 +596,8 @@ msgid ""
 "If the Word Wrap option is selected this entry determines the length (in "
 "characters) at which the editor will automatically start a new line."
 msgstr ""
-"При включении переноса по строкам здесь указывается число колонок, "
-"составляющих ширину страницы."
+"При включённом переносе строк здесь указывается длина строки (в символах), "
+"после которой редактор автоматически начнёт новую строку."
 
 #. i18n: ectx: property (text), widget (QLabel, lblInputMode)
 #: dialogs/editconfigwidget.ui:91
@@ -617,7 +615,7 @@ msgstr "Скобки:"
 #: dialogs/editconfigwidget.ui:127
 #, kde-format
 msgid "Automatically close brackets when opening bracket is typed"
-msgstr "Автоматически закрывать скобки при печати открытой скобки"
+msgstr "Автоматически закрывать скобки при печати открывающей скобки"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:140
@@ -634,7 +632,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:143
 #, kde-format
 msgid "Enclosing characters:"
-msgstr "Заключающие символы:"
+msgstr "Обрамляющие символы:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:166
@@ -652,13 +650,13 @@ msgstr "Перемещать выделенный текст при перета
 #: dialogs/editconfigwidget.ui:180
 #, kde-format
 msgid "Copy/cut the current line if invoked without any text selected"
-msgstr "Выреза́ть или копировать текущую строку, если текст не выделен"
+msgstr "Вырезать или копировать текущую строку, если текст не выделен"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkMousePasteAtCursorPosition)
 #: dialogs/editconfigwidget.ui:187
 #, kde-format
 msgid "Don't move the text cursor when pasting by mouse"
-msgstr "Не перемещать текстовый указатель при вставке мышью"
+msgstr "Не перемещать текстовый курсор при вставке мышью"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:194
@@ -850,8 +848,8 @@ msgid ""
 "Sets priority for this file type. If more than one file type selects the "
 "same file, the one with the highest priority will be used."
 msgstr ""
-"Установить приоритет типа файлов. При открытии файлов этого типа будут "
-"применены параметры типа с самым высоким приоритетом."
+"Приоритет типа файлов. Если один и тот же файл соответствует нескольким "
+"типам, будет использован тип с наивысшим приоритетом."
 
 #. i18n: ectx: property (text), widget (QLabel, lblMode)
 #: dialogs/indentationconfigwidget.ui:43
@@ -941,8 +939,8 @@ msgid ""
 "If this option is disabled, changing the indentation level aligns a line to "
 "a multiple of the width specified in <b>Indentation width</b>."
 msgstr ""
-"Если параметр отключён, изменение отступа выравнивает строку согласно "
-"параметру <b>Ширина табуляции</b>."
+"Если параметр отключён, изменение отступа выравнивает строку по значению, "
+"кратному параметру <b>Ширина отступа</b>."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkKeepExtraSpaces)
 #: dialogs/indentationconfigwidget.ui:186
@@ -1010,8 +1008,8 @@ msgstr ""
 "<p>Действие при нажатии клавиши Tab (если ничего не выделено) <a href="
 "\"Чтобы по нажатию клавиши <b>Tab</b> выполнялось выравнивание текста в "
 "текущем блоке кода как в Emacs, укажите для действия <b>Сервис</b>—"
-"<b>Форматированный отступ</b> клавишу <b>Tab</b>.\"><span>Подробнее...</"
-"span></a></p></body></html>"
+"<b>Форматированный отступ</b> клавишу <b>Tab</b>.\"><span>Подробнее…</span></"
+"a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1022,7 +1020,7 @@ msgid ""
 "instead of tabulators</b> in the section <b>Editing</b> is enabled, spaces "
 "are inserted; otherwise, a single tabulator is inserted."
 msgstr ""
-"Если флажок установлен, при нажатии клавиши <b>Tab</b> будут вставлено "
+"Если флажок установлен, при нажатии клавиши <b>Tab</b> будет вставлено "
 "необходимое количество пробелов или символ табуляции до следующей позиции "
 "табуляции. Если флажок <b>Отступы пробелами вместо символов табуляции</b> в "
 "разделе <b>Редактирование</b> установлен, будут вставлены пробелы. В "
@@ -1032,7 +1030,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:279
 #, kde-format
 msgid "Always advance to the &next tab position"
-msgstr "Всегда добавлять &табуляцию (либо эквивалентное количество пробелов)"
+msgstr "Всегда переходить к сле&дующей позиции табуляции"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabIndents)
 #: dialogs/indentationconfigwidget.ui:286
@@ -1067,16 +1065,16 @@ msgid ""
 "inserted."
 msgstr ""
 "Если параметр включён, клавиша <b>Tab</b> может или увеличить отступ строки "
-"или перенести текст на следующую позицию табуляции.<p>Если текущая позиция "
-"курсора находится до первого непробельного символа строки, отступ строки "
-"будет увеличен на <b>ширину табуляции</b>. В другом случае будут вставлены "
+"или перенести текст на следующую позицию табуляции.<p>Если курсор находится "
+"до первого непробельного символа строки или есть выделение, отступ строки "
+"будет увеличен на <b>ширину отступа</b>. В другом случае будут вставлены "
 "пробелы или один символ табуляции до следующей позиции табуляции."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabSmart)
 #: dialogs/indentationconfigwidget.ui:299
 #, kde-format
 msgid "Increase indentation level if in l&eading blank space"
-msgstr "Ув&еличивать уровень отступа если курсор стоит в начале строки"
+msgstr "Ув&еличивать уровень отступа, если курсор стоит в начале строки"
 
 # Tab width, indent width. --aspotashev
 #: dialogs/katedialogs.cpp:185 dialogs/katedialogs.cpp:187
@@ -1101,7 +1099,7 @@ msgstr "Автодополнение"
 #: dialogs/katedialogs.cpp:362
 #, kde-format
 msgid "Spellcheck"
-msgstr "Проверка правописания"
+msgstr "Проверка орфографии"
 
 #: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:417
 #, kde-format
@@ -1228,9 +1226,9 @@ msgid ""
 "your work in the case of a system crash. Disabling swap files may cause data "
 "loss in case of a system crash."
 msgstr ""
-"%1 создаёт резервную копию несохранённых файлов в «файлы подкачки». Файлы "
-"подкачки позволяют %1 восстановить работу в случае сбоя системы. Отключение "
-"файлов подкачки может привести к потере данных в случае сбоя системы."
+"%1 сохраняет несохранённые изменения во временных файлах (swap-файлах). Они "
+"позволяют %1 восстановить работу в случае сбоя системы. Отключение временных "
+"файлов может привести к потере данных в случае сбоя системы."
 
 #: dialogs/katedialogs.cpp:1027
 #, kde-format
@@ -1288,7 +1286,7 @@ msgstr "Словарь:"
 #: dialogs/katedialogs.cpp:1463
 #, kde-format
 msgid "Enable Auto Reload"
-msgstr "Загружать документ при его изменении"
+msgstr "Включить автоматическую перезагрузку"
 
 #: dialogs/katedialogs.cpp:1466
 #, kde-format
@@ -1296,9 +1294,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
-"В случае внешнего изменения файла, он автоматически будет загружен без "
-"запроса дополнительного подтверждения. Такое поведение будет действовать до "
-"закрытия вкладки."
+"Файл будет перезагружен и далее будет автоматически перезагружаться при "
+"внешних изменениях без запроса подтверждения — до закрытия вкладки или окна."
 
 #: dialogs/katedialogs.cpp:1471
 #, kde-format
@@ -1319,8 +1316,8 @@ msgstr "&Перезагрузить файл"
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
-"Открыть файл с диска. Если у вас есть несохранённые изменения, они будут "
-"потеряны."
+"Заново загрузить файл с диска. Если у вас есть несохранённые изменения, они "
+"будут потеряны."
 
 #: dialogs/katedialogs.cpp:1484
 #, kde-format
@@ -1362,7 +1359,7 @@ msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
 "your PATH."
 msgstr ""
-"Ошибка вызова команды «diff». Проверьте, установлена ли программа diff (1) и "
+"Ошибка вызова команды «diff». Проверьте, установлена ли программа diff(1) и "
 "доступна ли она в пути, определённом переменной PATH."
 
 #: dialogs/katedialogs.cpp:1569 swapfile/kateswapdiffcreator.cpp:89
@@ -1541,14 +1538,14 @@ msgstr "Модификаторы мультикурсора"
 #, kde-format
 msgid "Auto reload files in version control"
 msgstr ""
-"Автоматическая перезагрузка файлов, контролируемых системой управления "
+"Автоматически перезагружать файлы, контролируемые системой управления "
 "версиями"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Auto reload files on external changes"
-msgstr "Автоматическая перезагрузка файлов при их внешнем изменении"
+msgstr "Автоматически перезагружать файлы при их внешнем изменении"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -1588,7 +1585,7 @@ msgstr "Для &удалённых файлов"
 #: dialogs/opensaveconfigadvwidget.ui:75
 #, kde-format
 msgid "Prefix for backup files:"
-msgstr "Префикс названия резервных файлов:"
+msgstr "Префикс имён резервных копий:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
 #: dialogs/opensaveconfigadvwidget.ui:85
@@ -1600,7 +1597,7 @@ msgstr "Введите префикс, добавляемый к именам ф
 #: dialogs/opensaveconfigadvwidget.ui:92
 #, kde-format
 msgid "Suffix for backup files:"
-msgstr "Суффикс названий резервного файла:"
+msgstr "Суффикс имён резервных копий:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
 #: dialogs/opensaveconfigadvwidget.ui:102
@@ -1612,31 +1609,31 @@ msgstr "Введите суффикс, добавляемый к именам ф
 #: dialogs/opensaveconfigadvwidget.ui:109
 #, kde-format
 msgid "Swap file mode:"
-msgstr "Режим файла подкачки:"
+msgstr "Режим временных файлов:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:125
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr "Включено, хранить в каталоге по умолчанию"
+msgstr "Включено, сохранять в папке по умолчанию"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:130
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
-msgstr "Включено, хранить в другом каталоге"
+msgstr "Включено, сохранять в выбранной папке"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:138
 #, kde-format
 msgid "Store swap files in:"
-msgstr "Хранить файлы подкачки в:"
+msgstr "Сохранять временные файлы в:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:158
 #, kde-format
 msgid "Save swap files every:"
-msgstr "Сохранять файлы подкачки каждые:"
+msgstr "Сохранять временные файлы каждые:"
 
 # BUGME: ->seconds + add plurals --aspotashev
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
@@ -1766,7 +1763,7 @@ msgid ""
 "The first found end of line type will be used for the whole file."
 msgstr ""
 "Включите этот параметр для автоматического определения символов конца "
-"строки. Первый перенос строки задаст правила определения конца строк."
+"строки. Для всего файла будет использован первый найденный тип конца строки."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDetectEOL)
 #: dialogs/opensaveconfigwidget.ui:125
@@ -1989,7 +1986,7 @@ msgstr "Параметр задаёт размер символа выделен
 #: dialogs/textareaappearanceconfigwidget.ui:166
 #, kde-format
 msgid "Show &tab indicators:"
-msgstr "Показывать индикаторы &вкладок:"
+msgstr "Показывать индикаторы &табуляции:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:176
@@ -2025,8 +2022,8 @@ msgstr "Выделять пространство между скобками"
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr ""
-"Показывать соответсвующую открытую скобку и строки, прилегающие к ней, для "
-"контекста"
+"Показывать соответствующую открывающую скобку и строки, прилегающие к ней, "
+"для контекста"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:222
@@ -2037,22 +2034,22 @@ msgid ""
 "bracket, especially in long function/class declarations and deeply nested if "
 "blocks"
 msgstr ""
-"Если эта функция включена, будет отображаться просмотр строк рядом с "
-"соответствующей открытой скобкой. Это помогает в быстром определении "
-"контекста закрывающей скобки, особенно в длинных объявлениях функций, "
-"классов и в глубоко вложенных блоках «если»"
+"Если эта функция включена, будут показываться строки рядом с соответствующей "
+"открывающей скобкой. Это помогает в быстром определении контекста "
+"закрывающей скобки, особенно в длинных объявлениях функций, классов и в "
+"глубоко вложенных блоках «если»"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:225
 #, kde-format
 msgid "Show preview of matching open bracket"
-msgstr "Показывать просмотр открывающей/закрывающей скобки"
+msgstr "Показывать строки рядом с парной открывающей скобкой"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:232
 #, kde-format
 msgid "Flash matching brackets"
-msgstr "Сделать парные скобки мигающими"
+msgstr "Мигать парными скобками"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:235
@@ -2067,9 +2064,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:238
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
-msgstr ""
-"Сделать парные скобки мигающими, когда указатель мыши перемещается к другой "
-"скобке в паре"
+msgstr "Мигать парной скобкой при перемещении курсора к другой скобке пары"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/textareaappearanceconfigwidget.ui:261
@@ -2089,7 +2084,7 @@ msgstr "Показать/скрыть счётчик слов и символо�
 #: dialogs/textareaappearanceconfigwidget.ui:271 view/katestatusbar.cpp:258
 #, kde-format
 msgid "Show word count"
-msgstr "Показать счётчик слов и символов"
+msgstr "Показывать счётчик слов и символов"
 
 # BUGME: should be "word and character count" --aspotashev
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
@@ -2102,7 +2097,7 @@ msgstr "Показать/скрыть счётчик строк в строке 
 #: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:255
 #, kde-format
 msgid "Show line count"
-msgstr "Показать счётчик строк"
+msgstr "Показывать счётчик строк"
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
@@ -2121,7 +2116,7 @@ msgid ""
 msgstr ""
 "Если включено, редактор автоматически свернёт блоки комментариев,\n"
 "начинающиеся на первой строке документа. Это полезно для скрытия\n"
-"уведомлений о лицензии, которое обычно пишут в комментарии в начале\n"
+"уведомлений о лицензии, которые обычно пишут в комментарии в начале\n"
 "файла с исходным кодом."
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
@@ -2146,7 +2141,7 @@ msgstr "Игнорировать границы слов для динамиче
 #: dialogs/textareaappearanceconfigwidget.ui:358
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr "Маркеры д&инамического переноса строк"
+msgstr "Маркеры д&инамического переноса строк:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:368
@@ -2274,7 +2269,7 @@ msgstr ""
 "Файл %1 был открыт, но он содержит строки длиннее %2 символов (указано в "
 "параметре «Ограничение на длину строки»). <br />Самая длинная строка "
 "содержит %3 символов.<br/>Эти строки были разбиты на более короткие, и был "
-"установлен режим «только чтение», так как сохранение может повредить файл."
+"установлен режим «только чтение», так как сохранение изменит его содержимое."
 
 #: document/katedocument.cpp:2475
 #, kde-format
@@ -2292,19 +2287,19 @@ msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
 "data in the file on disk."
 msgstr ""
-"Вы действительно хотите сохранить не изменённый файл? Вы можете потерять "
+"Вы действительно хотите сохранить неизменённый файл? Вы можете потерять "
 "изменения, внесённые в файл другой программой."
 
 #: document/katedocument.cpp:2506
 #, kde-format
 msgid "Trying to Save Unmodified File"
-msgstr "Попытка сохранения не изменённого файла"
+msgstr "Попытка сохранения неизменённого файла"
 
 #: document/katedocument.cpp:2507 document/katedocument.cpp:2518
 #: document/katedocument.cpp:2534
 #, kde-format
 msgid "Save Nevertheless"
-msgstr "Продолжить"
+msgstr "Всё равно сохранить"
 
 #: document/katedocument.cpp:2516
 #, kde-format
@@ -2329,9 +2324,7 @@ msgid ""
 "document. Do you really want to save it? There could be some data lost."
 msgstr ""
 "Некоторые символы не могут быть представлены в указанной кодировке. Вы "
-"действительно хотите сохранить документ? Некоторые данные могут быть "
-"утеряны. Если вы не уверены, какую кодировку использовать, выберите UTF-8 "
-"или UTF-16."
+"действительно хотите сохранить документ? Некоторые данные могут быть утеряны."
 
 #: document/katedocument.cpp:2601
 #, kde-format
@@ -2378,7 +2371,7 @@ msgstr "Закрыть этот файл? Возможна потеря данн
 #: document/katedocument.cpp:2855
 #, kde-format
 msgid "Close Nevertheless"
-msgstr "Не сохранять"
+msgstr "Всё равно закрыть"
 
 #: document/katedocument.cpp:4642
 #, kde-format
@@ -2440,7 +2433,7 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
-"Использование устаревшего режиме «replace-trailing-space-save». Замените его "
+"Использование устаревшего режима «replace-trailing-space-save». Замените его "
 "на «remove-trailing-spaces all;», подробнее: https://docs.kde.org/?"
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
@@ -2571,7 +2564,7 @@ msgid ""
 "Please note that this will automatically edit the associated file extensions "
 "as well."
 msgstr ""
-"Выберите типы MIME для этого файла.\n"
+"Выберите типы MIME для этого типа файлов.\n"
 "Соответствующие изменения будут автоматически внесены в список расширений "
 "файлов."
 
@@ -2583,7 +2576,7 @@ msgstr "Выбор типов MIME"
 #: mode/katemodeconfigpage.cpp:312
 #, kde-format
 msgid "Modes && Filetypes"
-msgstr "Типы файлов"
+msgstr "Режимы и типы файлов"
 
 #: mode/katemodemenulist.cpp:138
 #, kde-format
@@ -2598,7 +2591,7 @@ msgid ""
 "Search for syntax highlighting modes by language name or file extension (for "
 "example, C++ or .cpp)"
 msgstr ""
-"Поиск режимов подсветки синтаксиса по названиям языков и расширениями файлов "
+"Поиск режимов подсветки синтаксиса по названиям языков и расширениям файлов "
 "(например, C++ или .cpp)"
 
 #: mode/katemodemenulist.cpp:560
@@ -2753,7 +2746,7 @@ msgstr "<p>Формат нижнего колонтитула. Можно исп
 #: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
-msgstr "Добавить заполнитель..."
+msgstr "Добавить заполнитель…"
 
 #: printing/printconfigwidgets.cpp:354
 #, kde-format
@@ -2861,7 +2854,7 @@ msgid ""
 "<p>If enabled, the background color of the editor will be used.</p><p>This "
 "may be useful if your color theme is designed for a dark background.</p>"
 msgstr ""
-"<p>При включении этого флажка, будет использован цвет фона редактора.</p> "
+"<p>При включении этого флажка будет использован цвет фона редактора.</p> "
 "<p>Это может быть полезно, если вы используете тёмный фон редактора.</p>"
 
 #: printing/printconfigwidgets.cpp:552
@@ -2872,8 +2865,7 @@ msgid ""
 "contents with a line as well.</p>"
 msgstr ""
 "<p>При включении этого флажка вокруг текста на каждой странице будет "
-"нарисована рамка. Колонтитулы будут отделены от содержимого одной строкой.</"
-"p>"
+"нарисована рамка. Колонтитулы будут отделены от содержимого линией.</p>"
 
 #: printing/printconfigwidgets.cpp:555
 #, kde-format
@@ -2883,7 +2875,7 @@ msgstr "Ширина рамки"
 #: printing/printconfigwidgets.cpp:556
 #, kde-format
 msgid "The margin inside boxes, in pixels"
-msgstr "Размер в точках отступа текста от рамки"
+msgstr "Отступ текста от рамки в пикселях"
 
 #: printing/printconfigwidgets.cpp:557
 #, kde-format
@@ -3238,7 +3230,7 @@ msgstr "Удалить пробелы в начале"
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "Удалить пробелы в конце  и начале"
+msgstr "Удалить пробелы в конце и начале"
 
 #: script/data/commands/utils.js:21
 #, kde-format
@@ -3435,12 +3427,12 @@ msgstr ""
 #: script/data/commands/utils.js:440
 #, kde-format
 msgid "Duplicates the selected lines up."
-msgstr "Скопировать выделенные строки выше."
+msgstr "Продублировать выделенные строки выше."
 
 #: script/data/commands/utils.js:442
 #, kde-format
 msgid "Duplicates the selected lines down."
-msgstr "Скопировать выделенные строки ниже."
+msgstr "Продублировать выделенные строки ниже."
 
 #: script/data/commands/utils.js:446
 #, kde-format
@@ -3462,7 +3454,7 @@ msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
-"Выбор текста по направлению вперёд от текущей позиции курсора до первого "
+"Выделение текста по направлению вперёд от текущей позиции курсора до первого "
 "вхождения указанного аргумента (или конца текущей строки по умолчанию)."
 
 #: script/data/commands/utils.js:452
@@ -3472,8 +3464,9 @@ msgid ""
 "the given argument before it (or the beginning of the current line by "
 "default)."
 msgstr ""
-"Выбор текста по направлению назад от текущей позиции курсора до последнего "
-"вхождения указанного аргумента (или начала текущей строки по умолчанию)."
+"Выделение текста по направлению назад от текущей позиции курсора до "
+"последнего вхождения указанного аргумента (или начала текущей строки по "
+"умолчанию)."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -3618,7 +3611,7 @@ msgstr "Команда не найдена: %1"
 #: search/katesearchbar.cpp:73
 #, kde-format
 msgid "Add..."
-msgstr "Добавить..."
+msgstr "Добавить…"
 
 #: search/katesearchbar.cpp:298
 #, kde-format
@@ -3627,7 +3620,7 @@ msgid "1 replacement made"
 msgid_plural "%1 replacements made"
 msgstr[0] "Произведена %1 замена"
 msgstr[1] "Произведены %1 замены"
-msgstr[2] "Произведены %1 замен"
+msgstr[2] "Произведено %1 замен"
 msgstr[3] "Произведена %1 замена"
 
 #: search/katesearchbar.cpp:300
@@ -3637,7 +3630,7 @@ msgid "1 match found"
 msgid_plural "%1 matches found"
 msgstr[0] "Найдено %1 совпадение"
 msgstr[1] "Найдены %1 совпадения"
-msgstr[2] "Найдены %1 совпадений"
+msgstr[2] "Найдено %1 совпадений"
 msgstr[3] "Найдено %1 совпадение"
 
 #: search/katesearchbar.cpp:374
@@ -3779,7 +3772,7 @@ msgstr "Не цифра"
 #: search/katesearchbar.cpp:1214
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
-msgstr "Пробельный символ"
+msgstr "Пробельный символ (кроме переносов строк)"
 
 #: search/katesearchbar.cpp:1215
 #, kde-format
@@ -3821,22 +3814,22 @@ msgstr "Группа без обратной ссылки"
 #: search/katesearchbar.cpp:1227
 #, kde-format
 msgid "Positive Lookahead"
-msgstr "Подтверждающий поиск по отрицанию"
+msgstr "Позитивная опережающая проверка"
 
 #: search/katesearchbar.cpp:1228
 #, kde-format
 msgid "Negative lookahead"
-msgstr "Упреждающий поиск по отрицанию"
+msgstr "Негативная опережающая проверка"
 
 #: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "Fixed-length positive lookbehind"
-msgstr "Подтверждающий просмотр фиксированной длины"
+msgstr "Позитивная ретроспективная проверка фиксированной длины"
 
 #: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Fixed-length negative lookbehind"
-msgstr "Отрицающий просмотр фиксированной длины"
+msgstr "Негативная ретроспективная проверка фиксированной длины"
 
 #: search/katesearchbar.cpp:1238
 #, kde-format
@@ -3904,7 +3897,7 @@ msgstr "С учётом регистра"
 #: search/searchbarincremental.ui:146
 #, kde-format
 msgid "Switch to power search and replace bar"
-msgstr "Перейти к расширенному диалогу поиска и замены"
+msgstr "Перейти к расширенной панели поиска и замены"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: search/searchbarpower.ui:50
@@ -4001,7 +3994,7 @@ msgstr "Отмена"
 #: search/searchbarpower.ui:268
 #, kde-format
 msgid "Switch to incremental search bar"
-msgstr "Показать расширенную панель поиска"
+msgstr "Перейти к панели пошагового поиска"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, replacement)
 #: search/searchbarpower.ui:314
@@ -4117,7 +4110,7 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>Введите здесь правильный вариант написания слова или выберите го из "
+"<p>Введите здесь правильный вариант написания слова или выберите его из "
 "списка.</p>\n"
 "<p>Затем нажмите <b>Заменить</b> либо <b>Заменить все</b>.</p>\n"
 "</qt>"
@@ -4266,7 +4259,7 @@ msgstr "Добавить в словарь"
 #: spellcheck/spellingmenu.cpp:172
 #, kde-format
 msgid "Spelling '%1'"
-msgstr "Правописание «%1»"
+msgstr "Орфография «%1»"
 
 #: swapfile/kateswapdiffcreator.cpp:87
 #, kde-format
@@ -4274,8 +4267,8 @@ msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
 "installed and in your PATH."
 msgstr ""
-"Не удаётся найти команду «diff». Проверьте, установлена ли программа diff "
-"(1) и доступна ли она в пути, определённом переменной PATH."
+"Не удаётся найти команду «diff». Проверьте, установлена ли программа diff(1) "
+"и доступна ли она в пути, определённом переменной PATH."
 
 #: swapfile/kateswapdiffcreator.cpp:98
 #, kde-format
@@ -4305,7 +4298,7 @@ msgstr "Отклонить"
 #: syntax/katecolortreewidget.cpp:34 syntax/katecolortreewidget.cpp:61
 #, kde-format
 msgid "Use default color from the color theme"
-msgstr "Использовать по умолчанию цвета из цветовой схемы"
+msgstr "Использовать цвет по умолчанию из цветовой схемы"
 
 #: syntax/katehighlightmenu.cpp:39
 #, kde-format
@@ -4394,22 +4387,22 @@ msgstr "Цвет фона в&ыделенного текста…"
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
 msgid "Unset Normal Color"
-msgstr "Цвет обычного текста по умолчанию"
+msgstr "Сбросить цвет обычного текста"
 
 #: syntax/katestyletreewidget.cpp:278
 #, kde-format
 msgid "Unset Selected Color"
-msgstr "Цвет выделенного текста по умолчанию"
+msgstr "Сбросить цвет выделенного текста"
 
 #: syntax/katestyletreewidget.cpp:284
 #, kde-format
 msgid "Unset Background Color"
-msgstr "Цвет фона по умолчанию"
+msgstr "Сбросить цвет фона"
 
 #: syntax/katestyletreewidget.cpp:289
 #, kde-format
 msgid "Unset Selected Background Color"
-msgstr "Цвет фона выделенного текста по умолчанию"
+msgstr "Сбросить цвет фона выделенного текста"
 
 #: syntax/katestyletreewidget.cpp:295
 #, kde-format
@@ -4519,7 +4512,7 @@ msgstr "Строка"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Verbatim String"
-msgstr "Текстовая строка"
+msgstr "Неформатированная строка"
 
 #: syntax/katethemeconfig.cpp:76
 #, kde-format
@@ -4657,8 +4650,7 @@ msgid ""
 "</p>"
 msgstr ""
 "<p>Цвет фона выделенного фрагмента текста. </p><p>Для установки цвета текста "
-"выделенного фрагмента используйте диалог &quot;<b>Настройка подсветки</"
-"b>&quot;.</p>"
+"выделенного фрагмента используйте диалог «<b>Настройка подсветки</b>».</p>"
 
 #: syntax/katethemeconfig.cpp:200
 #, kde-format
@@ -4695,7 +4687,7 @@ msgstr "<p>Цвет фона текста, заменённого через п�
 #: syntax/katethemeconfig.cpp:223
 #, kde-format
 msgid "Icon Border"
-msgstr "Полоса закладок"
+msgstr "Полоса отметок"
 
 #: syntax/katethemeconfig.cpp:226
 #, kde-format
@@ -4727,7 +4719,7 @@ msgstr "Номер текущей строки"
 msgid ""
 "<p>This color will be used to draw the number of the current line (if "
 "enabled).</p>"
-msgstr "<p>Цвет номера текущей строки (есть включён показ номеров строк).</p>"
+msgstr "<p>Цвет номера текущей строки (если включён показ номеров строк).</p>"
 
 #: syntax/katethemeconfig.cpp:247
 #, kde-format
@@ -4740,7 +4732,7 @@ msgid ""
 "<p>This color will be used to draw the line between line numbers and the "
 "icon borders, if both are enabled.</p>"
 msgstr ""
-"<p>Цвет линии между номерами строк и полосой закладок, если они включены.</p>"
+"<p>Цвет линии между номерами строк и полосой отметок, если они включены.</p>"
 
 #: syntax/katethemeconfig.cpp:254
 #, kde-format
@@ -4793,7 +4785,7 @@ msgstr "<p>Цвет отметок сохранённых строк.</p>"
 #: syntax/katethemeconfig.cpp:287
 #, kde-format
 msgid "Text Decorations"
-msgstr "Обрамление текста"
+msgstr "Оформление текста"
 
 #: syntax/katethemeconfig.cpp:290
 #, kde-format
@@ -4819,7 +4811,7 @@ msgstr "<p>Цвет маркеров табуляции.</p>"
 #: syntax/katethemeconfig.cpp:304
 #, kde-format
 msgid "Indentation Line"
-msgstr "Отступы"
+msgstr "Линии отступов"
 
 #: syntax/katethemeconfig.cpp:306
 #, kde-format
@@ -4887,7 +4879,7 @@ msgid ""
 "<p>Sets the background color of mark type.</p><p><b>Note</b>: The marker "
 "color is displayed lightly because of transparency.</p>"
 msgstr ""
-"<p>Цвет фона выделенного маркера.</p><p><b>Примечание</b>: маркер "
+"<p>Цвет фона отметки этого типа.</p><p><b>Примечание</b>: маркер "
 "показывается более бледным цветом, поскольку является полупрозрачным "
 "элементом.</p>"
 
@@ -4928,8 +4920,8 @@ msgstr ""
 "<p>Этот список показывает стили текущей цветовой темы подсветки и позволяет "
 "изменять их. Имя стиля зависит от выбранного стиля.</p><p>Для редактирования "
 "цветов щёлкните по кнопке с цветом или выберите цвет.</p><p>Восстановить "
-"значения цвета фона и цвета выделенного фона по умолчанию можно в диалоге "
-"выбора цвета.</p>"
+"значения цвета фона и цвета выделенного фона по умолчанию можно в "
+"контекстном меню.</p>"
 
 #: syntax/katethemeconfig.cpp:568
 #, kde-format
@@ -5070,7 +5062,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:1219
 #, kde-format
 msgid "Import Nevertheless"
-msgstr "Импортировать"
+msgstr "Всё равно импортировать"
 
 #: syntax/katethemeconfig.cpp:1308
 #, kde-format
@@ -5085,7 +5077,7 @@ msgstr "Удалить схему «%1»? Это необратимое дейс
 #: syntax/katethemeconfig.cpp:1377
 #, kde-format
 msgid "Delete Nevertheless"
-msgstr "Удалить"
+msgstr "Всё равно удалить"
 
 #: syntax/katethemeconfig.cpp:1419
 #, kde-format
@@ -5343,9 +5335,9 @@ msgid ""
 "folding markers pane.</p><p> possible true values: 1 on true<br/>possible "
 "false values: 0 off false</p>"
 msgstr ""
-"<p>set-folding-markers <b>enable</b></p><p>Включает полосу сворачивания "
-"блоков кода.</p><p>Для включения можно указать значения 1, on или true,<br/> "
-"для выключения — 0, off или false.</p>"
+"<p>set-folding-markers <b>1/0</b></p><p>Включает полосу сворачивания блоков "
+"кода.</p><p>Для включения можно указать значения 1, on или true,<br/> для "
+"выключения — 0, off или false.</p>"
 
 #: utils/katecmds.cpp:156
 #, kde-format
@@ -5354,7 +5346,7 @@ msgid ""
 "border.</p><p> possible true values: 1 on true<br/>possible false values: 0 "
 "off false</p>"
 msgstr ""
-"<p>set-icon-border <b>enable</b></p><p>Включает полосу отметок.</p><p>Для "
+"<p>set-icon-border <b>1/0</b></p><p>Включает полосу отметок.</p><p>Для "
 "включения можно указать значения 1, on или true,<br/>для выключения — 0, off "
 "или false.</p>"
 
@@ -6046,12 +6038,12 @@ msgstr "Выберите переменную."
 #: utils/katevariableexpansionhelpers.cpp:206
 #, kde-format
 msgid "Current value: %1<value>"
-msgstr "Текущая значение: %1<значение>"
+msgstr "Текущее значение: %1<значение>"
 
 #: utils/katevariableexpansionhelpers.cpp:214
 #, kde-format
 msgid "Current value: %1"
-msgstr "Текущая значение: %1"
+msgstr "Текущее значение: %1"
 
 #: utils/katevariableexpansionmanager.cpp:86
 #, kde-format
@@ -6358,7 +6350,7 @@ msgstr "Подсветка синтаксиса."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
-msgstr "Цвет фона полосы закладок."
+msgstr "Цвет фона полосы отметок."
 
 #: variableeditor/variablelineedit.cpp:224
 #, kde-format
@@ -6478,7 +6470,7 @@ msgstr "Добавление отступов нажатием Tab."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
-msgstr "Ширина отступа."
+msgstr "Ширина табуляции."
 
 #: variableeditor/variablelineedit.cpp:333
 #, kde-format
@@ -6504,21 +6496,20 @@ msgstr "Цвет маркера переноса строк."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
-msgstr "Статичный перенос строк."
+msgstr "Статический перенос строк."
 
 #: view/katestatusbar.cpp:114
 #, kde-format
 msgid "Current cursor position. Click to go to a specific line."
 msgstr ""
-"Текущая позиция курсора. Двойным щелчком мышью открывается диалог перехода к "
-"выбранной строке."
+"Текущая позиция курсора. Щелчок открывает диалог перехода к выбранной строке."
 
 #: view/katestatusbar.cpp:127
 #, kde-format
 msgid "Insert mode and VI input mode indicator. Click to change the mode."
 msgstr ""
 "Индикатор режима вставки и режима Vi. Режим переключается щелчком левой "
-"кнопкой миши."
+"кнопкой мыши."
 
 #: view/katestatusbar.cpp:135
 #, kde-format
@@ -6697,7 +6688,7 @@ msgstr "Копирование выделенного фрагмента тек�
 #: view/kateview.cpp:454
 #, kde-format
 msgid "Clipboard &History Paste"
-msgstr "Вставка из журнала буфера обмена"
+msgstr "Вставка из &журнала буфера обмена"
 
 #: view/kateview.cpp:459
 #, kde-format
@@ -6727,12 +6718,12 @@ msgstr "Копировать имя файла и номер строки"
 #: view/kateview.cpp:473
 #, kde-format
 msgid "Swap with Clipboard Contents"
-msgstr "Вставить с заменой буфера обмена"
+msgstr "Обменять с содержимым буфера обмена"
 
 #: view/kateview.cpp:474
 #, kde-format
 msgid "Swap the selected text with the clipboard contents"
-msgstr "Вставить с заменой буфера обмена выделением"
+msgstr "Поменять местами выделенный текст и содержимое буфера обмена"
 
 #: view/kateview.cpp:477
 #, kde-format
@@ -6747,12 +6738,12 @@ msgstr "Сохранить текущий документ"
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Revert the most recent editing actions"
-msgstr "Возвратить часто используемые команды редактирования"
+msgstr "Отменить последние действия редактирования"
 
 #: view/kateview.cpp:487
 #, kde-format
 msgid "Revert the most recent undo operation"
-msgstr "Возвратить часто используемые команды отмены"
+msgstr "Повторить последнее отменённое действие"
 
 #: view/kateview.cpp:491
 #, kde-format
@@ -6800,7 +6791,7 @@ msgstr "Преобразовать отступы в пробелы"
 #: view/kateview.cpp:517
 #, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "Преобразовать отступы во вкладки"
+msgstr "Преобразовать отступы в символы табуляции"
 
 #: view/kateview.cpp:532
 #, kde-format
@@ -6840,10 +6831,10 @@ msgstr ""
 "указать.<br /><br />Если указать пустой образец, выравнивание по умолчанию "
 "выполняется по первому непустому символу.<br />Если в образце есть блок "
 "захвата, выравнивание будет выполнено по захваченному совпадению.<br /><br /"
-"><i>Примеры</i>:<br« />С «-» будут вставлены пробелы перед первым «-» в "
-"каждой строке, чтобы выровнять их все по одной и той же позиции.<br« />С «:"
-"\\s+(.)» будут вставлены пробелы перед первым непустым символом, который "
-"идёт после двоеточия, чтобы выровнять их все по одной и той же позиции."
+"><i>Примеры</i>:<br />С «-» будут вставлены пробелы перед первым «-» в "
+"каждой строке, чтобы выровнять их все по одной и той же позиции.<br />С «:\\s"
+"+(.)» будут вставлены пробелы перед первым непустым символом, который идёт "
+"после двоеточия, чтобы выровнять их все по одной и той же позиции."
 
 #: view/kateview.cpp:550
 #, kde-format
@@ -6952,7 +6943,7 @@ msgid ""
 "selected."
 msgstr ""
 "Преобразовать выделение (или слово, на котором находится курсор, если текст "
-"не выделен) в регистр как предложениях (первая буква слова — заглавная, "
+"не выделен) в регистр как в предложениях (первая буква слова — заглавная, "
 "остальные — в нижнем регистре)."
 
 #: view/kateview.cpp:625
@@ -7226,7 +7217,7 @@ msgstr "Статический перенос строк"
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
 "defined in the editing properties."
-msgstr "Перенос строк по достижению длины, заданной в параметрах."
+msgstr "Перенос строк по достижении длины, заданной в параметрах."
 
 #: view/kateview.cpp:807
 #, kde-format
@@ -7259,7 +7250,7 @@ msgstr ""
 #: view/kateview.cpp:819
 #, kde-format
 msgid "Show &Icon Border"
-msgstr "Полоса &закладок"
+msgstr "Полоса &отметок"
 
 #: view/kateview.cpp:821
 #, kde-format
@@ -7360,19 +7351,19 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
-msgstr "UNIX"
+msgstr "&UNIX"
 
 #: view/kateview.cpp:882
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
-msgstr "Windows/DOS"
+msgstr "&Windows/DOS"
 
 #: view/kateview.cpp:883
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
-msgstr "Макинтош"
+msgstr "&Macintosh"
 
 #: view/kateview.cpp:888
 #, kde-format
@@ -7756,7 +7747,7 @@ msgstr "Перейти к парной скобке"
 #: view/kateview.cpp:1260
 #, kde-format
 msgid "Select to Matching Bracket"
-msgstr "Выделить до открывающей/закрывающей скобки"
+msgstr "Выделить до парной скобки"
 
 #: view/kateview.cpp:1267
 #, kde-format
@@ -7884,8 +7875,8 @@ msgid ""
 "configuration dialog."
 msgstr ""
 "Сдвигает строки выделенного фрагмента текста вправо.<br/> <br/>Вы можете "
-"настроить на сколько символов будет осуществлён отступ и будут ли "
-"использован символ табуляции или пробелы в диалоге настройки."
+"настроить на сколько символов будет осуществлён отступ и будет ли "
+"использоваться символ табуляции или пробелы в диалоге настройки."
 
 #: view/kateview.cpp:1391
 #, kde-format
@@ -7977,7 +7968,7 @@ msgstr "Открыть файл"
 #: view/kateview.cpp:3995
 #, kde-format
 msgid "Align On"
-msgstr "В&ыровнять по"
+msgstr "Выровнять по"
 
 #: view/kateview.cpp:3995
 #, kde-format
@@ -8056,12 +8047,12 @@ msgstr "Команда «%1» не выполнена."
 #: view/kateviewhelpers.cpp:2643 view/kateviewhelpers.cpp:2644
 #, kde-format
 msgid "Mark Type %1"
-msgstr "Тип закладки %1"
+msgstr "Тип отметки %1"
 
 #: view/kateviewhelpers.cpp:2667
 #, kde-format
 msgid "Set Default Mark Type"
-msgstr "Установить тип пометки по умолчанию"
+msgstr "Установить тип отметки по умолчанию"
 
 #: view/kateviewhelpers.cpp:2812
 #, kde-format
@@ -8200,7 +8191,7 @@ msgstr ""
 "tt> &mdash; закрыть все документы, по сути выход из приложения.</p><p>Во "
 "всех случаях после закрытия последнего документа приложение завершается. "
 "Если для документа ещё не задано имя файла и он должен быть сохранён, будет "
-"открыт файловый диалог.</p><p>В отличии от команды «w» эта сохраняет "
+"открыт файловый диалог.</p><p>В отличие от команды «w» эта сохраняет "
 "документ, только если он был изменён.</p>"
 
 #: vimode/appcommands.cpp:252
@@ -8263,7 +8254,7 @@ msgstr ""
 "<p><b>e[dit] &mdash; обновить текущий документ.</b></p><p>Использование: "
 "<tt><b>e[dit]</b></tt></p><p>Открыть документ заново и начать его "
 "редактирование. Это может быть удобно для повторной правки файла, "
-"изменённого на диске.<b>"
+"изменённого на диске.</p>"
 
 #: vimode/appcommands.cpp:528
 #, kde-format
@@ -8284,8 +8275,8 @@ msgid ""
 msgstr ""
 "<p><b>bp,bprev &mdash; предыдущий документ</b></p><p>Использование: "
 "<tt><b>bp[revious] [N]</b></tt></p><p>Перейти к предыдущему <b>[N]</b>-ному "
-"документу (\"буферу\") в списке документов. <b>[N]</b> по умолчанию равно 1."
-"</p><p>Возможен переход через начало списка к концу.</p>"
+"документу («буферу») в списке документов. <b>[N]</b> по умолчанию равно 1.</"
+"p><p>Возможен переход через начало списка к концу.</p>"
 
 #: vimode/appcommands.cpp:541
 #, kde-format
@@ -8297,7 +8288,7 @@ msgid ""
 msgstr ""
 "<p><b>bn,bnext &mdash; переход к следующему документу</b></"
 "p><p>Использование: <tt><b>bn[ext] [N]</b></tt></p><p>Перейти к следующему "
-"<b>[N]</b>-ному документу (\"буферу\") в списке документов. <b>[N]</b> по "
+"<b>[N]</b>-ному документу («буферу») в списке документов. <b>[N]</b> по "
 "умолчанию равно 1. </p><p>Возможен переход через конец списка к началу.</p>"
 
 #: vimode/appcommands.cpp:549
@@ -8308,7 +8299,7 @@ msgid ""
 "list.</p>"
 msgstr ""
 "<p><b>bf,bfirst &mdash; первый документ</b></p><p>Использование: "
-"<tt><b>bf[irst]</b></tt></p><p>Перейти к первому документу (\"буферу\") в "
+"<tt><b>bf[irst]</b></tt></p><p>Перейти к первому документу («буферу») в "
 "списке.</p>"
 
 #: vimode/appcommands.cpp:555
@@ -8319,7 +8310,7 @@ msgid ""
 "list.</p>"
 msgstr ""
 "<p><b>bl,blast &mdash; последний документ</b></p><p>Использование: "
-"<tt><b>bl[ast]</b></tt></p><p>Перейти к последнему документу (\"буферу\") в "
+"<tt><b>bl[ast]</b></tt></p><p>Перейти к последнему документу («буферу») в "
 "списке документов.</p>"
 
 # BUGME: add &mdash; between "ls" and "list ..." --aspotashev
@@ -8371,7 +8362,7 @@ msgid ""
 "example: Ctrl+R will redo, and override the standard action (showing the "
 "search and replace dialog)."
 msgstr ""
-"При включении этого параметра, вместо встроенных команд редактирования Kate "
+"При включении этого параметра вместо встроенных команд редактирования Kate "
 "будут использованы команды vi. Например, комбинация клавиш Ctrl+R будет "
 "назначена на отмену изменения, а не вызовет диалог поиска и замены."
 
@@ -8395,7 +8386,7 @@ msgstr ""
 #: vimode/config/configwidget.ui:48
 #, kde-format
 msgid "Display relative line numbers"
-msgstr "Показать относительные номера строк"
+msgstr "Показывать относительные номера строк"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, groupBox)
 #: vimode/config/configwidget.ui:63
@@ -8490,14 +8481,14 @@ msgid ""
 "Read a vimrc file and attempt to import mappings specified with the "
 "\"[n]noremap\" command."
 msgstr ""
-"Импортировать комбинации клавиш, заданные в файле vimrc через команду «[n] "
-"noremap»."
+"Импортировать комбинации клавиш, заданные в файле vimrc через команду "
+"«[n]noremap»."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnImportNormal)
 #: vimode/config/configwidget.ui:212
 #, kde-format
 msgid "Import from vimrc file"
-msgstr "Импорт из файла vimrc..."
+msgstr "Импорт из файла vimrc"
 
 #: vimode/marks.cpp:112
 #, kde-format
@@ -8519,7 +8510,7 @@ msgstr "В регистре %1 ничего нет"
 #: vimode/modes/normalvimode.cpp:1689
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
-msgstr "«%1» %2,  шестн. %3,  восм. %4"
+msgstr "«%1» %2,  шестн. %3,  восьм. %4"
 
 #: vimode/modes/normalvimode.cpp:2571
 #, kde-format
