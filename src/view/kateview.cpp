@@ -5132,37 +5132,31 @@ void KTextEditor::ViewPrivate::createHighlights()
     // clear existing highlighting ranges, otherwise we stack over and over the same ones eventually
     m_rangesForHighlights.clear();
 
-    KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
-    attr->setBackground(Qt::yellow);
-
     // set correct highlight color from Kate's color schema
-    QColor fgColor = defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color();
-    QColor bgColor = rendererConfig()->searchHighlightColor();
+    const auto fgColor = defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color();
+    const auto bgColor = rendererConfig()->searchHighlightColor();
+    KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
     attr->setForeground(fgColor);
     attr->setBackground(bgColor);
 
     KTextEditor::Cursor start(visibleRange().start());
-    KTextEditor::Range searchRange;
-
-
-    QList<KTextEditor::Range> matches;
-    do {
-        searchRange.setRange(start, visibleRange().end());
-
-        matches = doc()->searchText(searchRange, m_currentTextForHighlights, {});
-
-        if (matches.first().isValid()) {
-            if (matches.first() != selectionRange()) {
-                std::unique_ptr<KTextEditor::MovingRange> mr(doc()->newMovingRange(matches.first()));
-                mr->setZDepth(-90000.0); // Set the z-depth to slightly worse than the selection
-                mr->setAttribute(attr);
-                mr->setView(this);
-                mr->setAttributeOnlyForViews(true);
-                m_rangesForHighlights.push_back(std::move(mr));
-            }
-            start = matches.first().end();
+    while (true) {
+        const auto matches = doc()->searchText(KTextEditor::Range{start, visibleRange().end()}, m_currentTextForHighlights, {});
+        if (!matches.first().isValid()) {
+            break;
         }
-    } while (matches.first().isValid());
+
+        if (matches.first() != selectionRange()) {
+            std::unique_ptr<KTextEditor::MovingRange> mr(doc()->newMovingRange(matches.first()));
+            mr->setZDepth(-90000.0); // Set the z-depth to slightly worse than the selection
+            mr->setAttribute(attr);
+            mr->setView(this);
+            mr->setAttributeOnlyForViews(true);
+            m_rangesForHighlights.push_back(std::move(mr));
+        }
+
+        start = matches.first().end();
+    }
 }
 
 KateAbstractInputMode *KTextEditor::ViewPrivate::currentInputMode() const
