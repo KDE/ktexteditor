@@ -527,7 +527,7 @@ public:
     uint mark(int line) override;
     const QHash<int, KTextEditor::Mark *> &marks() override;
     QString markDescription(Document::MarkTypes) const override;
-    virtual QColor markColor(Document::MarkTypes) const;
+    QColor markColor(Document::MarkTypes) const;
     uint editableMarks() const override;
     QIcon markIcon(Document::MarkTypes markType) const override;
 
@@ -570,7 +570,7 @@ public:
      * @return value of the variable @p name
      * @see setVariable()
      */
-    virtual QString variable(const QString &name) const;
+    QString variable(const QString &name) const;
 
     /**
      * Set the variable @p name to @p value. Setting and changing a variable
@@ -584,7 +584,7 @@ public:
      * @param value the value to be set
      * @see variable()
      */
-    virtual void setVariable(const QString &name, const QString &value);
+    void setVariable(const QString &name, const QString &value);
 
 private:
     std::map<QString, QString> m_storedVariables;
@@ -953,7 +953,7 @@ public:
     /**
      * @return whether the document is modified on disk since last saved
      */
-    bool isModifiedOnDisc()
+    bool isModifiedOnDisc() const
     {
         return m_modOnHd;
     }
@@ -967,7 +967,7 @@ public Q_SLOTS:
      * Ask the user what to do, if the file has been modified on disk.
      * Reimplemented from KTextEditor::Document.
      */
-    virtual void slotModifiedOnDisk(KTextEditor::View *v = nullptr);
+    void slotModifiedOnDisk(KTextEditor::View *v = nullptr);
 
     /**
      * Reloads the current document from disk if possible
