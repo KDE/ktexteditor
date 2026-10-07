@@ -3,13 +3,14 @@
 # Toplica Tanaskovic <toptan@kde.org.yu>, 2003, 2004, 2005.
 # Chusslove Illich <caslav.ilic@gmx.net>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017.
 # Dalibor Djuric <daliborddjuric@gmail.com>, 2010, 2011.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-03 00:41+0000\n"
-"PO-Revision-Date: 2017-12-31 22:42+0100\n"
-"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"PO-Revision-Date: 2026-10-06 08:03+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +68,7 @@ msgstr "&Фајл"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "&Print/Export"
-msgstr ""
+msgstr "&Штампање/извоз"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -83,17 +84,15 @@ msgstr "Нађи варијанте"
 
 #. i18n: ectx: Menu (selection)
 #: data/katepart5ui.rc:46
-#, fuzzy, kde-format
-#| msgid "&Section:"
+#, kde-format
 msgid "Selection"
-msgstr "&Одељак:"
+msgstr "Избор"
 
 #. i18n: ectx: Menu (capitalization)
 #: data/katepart5ui.rc:53
-#, fuzzy, kde-format
-#| msgid "Capitalize"
+#, kde-format
 msgid "Capitalization"
-msgstr "Велико прво слово"
+msgstr "Величина слова"
 
 #. i18n: ectx: Menu (view)
 #: data/katepart5ui.rc:73
@@ -123,7 +122,7 @@ msgstr "&Сажимање кода"
 #: data/katepart5ui.rc:110
 #, kde-format
 msgid "&Go"
-msgstr ""
+msgstr "Кре&тање"
 
 #. i18n: ectx: Menu (tools)
 #: data/katepart5ui.rc:125
@@ -147,10 +146,9 @@ msgstr "Правопис"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:154 data/katepart5ui.rc:184
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Текст који треба потражити"
+msgstr "Текст‑у‑говор"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:162
@@ -167,10 +165,9 @@ msgstr "Главна трака"
 # >> @item color scheme item name
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/bordersappearanceconfigwidget.ui:25
-#, fuzzy, kde-format
-#| msgid "Code Folding"
+#, kde-format
 msgid "Code block folding:"
-msgstr "сажимање кода"
+msgstr "Сажимање блокова кода:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:32
@@ -184,7 +181,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:35
 #, kde-format
 msgid "Show arrows to collapse code blocks"
-msgstr ""
+msgstr "Прикажи стрелице за сажимање блокова кода"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
@@ -198,37 +195,33 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
-#, fuzzy, kde-format
-#| msgid "Show preview of folded code"
+#, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr "Прикажи преглед сажетог кода"
+msgstr "Прикажи преглед сажетих блокова при лебдењу"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:52
-#, fuzzy, kde-format
-#| msgid "Scro&llbars visibility:"
+#, kde-format
 msgid "Folding arrows visibility:"
-msgstr "&Видљивост клизачких трака:"
+msgstr "Видљивост стрелица за сажимање:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:63
-#, fuzzy, kde-format
-#| msgid "Show &icon border"
+#, kde-format
 msgid "Show on Hover"
-msgstr "Појас &иконица"
+msgstr "при лебдењу"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:68
-#, fuzzy, kde-format
-#| msgid "Always"
+#, kde-format
 msgid "Show Always"
-msgstr "Увек"
+msgstr "увек"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/bordersappearanceconfigwidget.ui:92
 #, kde-format
 msgid "Left side:"
-msgstr ""
+msgstr "Лева страна:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIconBorder)
 #: dialogs/bordersappearanceconfigwidget.ui:99
@@ -246,10 +239,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:102
 #: dialogs/bordersappearanceconfigwidget.ui:155
-#, fuzzy, kde-format
-#| msgid "Show &scrollbar marks"
+#, kde-format
 msgid "Show marks"
-msgstr "&Зарези у клизачкој траци"
+msgstr "Прикажи ознаке"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:109
@@ -279,17 +271,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
 #: dialogs/bordersappearanceconfigwidget.ui:122
-#, fuzzy, kde-format
-#| msgid "Highlight range between selected brackets"
+#, kde-format
 msgid "Highlight changed and unsaved lines"
-msgstr "Истакни опсег између изабраних заграда"
+msgstr "Истакни измењене и несачуване редове"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Show &scrollbar marks"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "&Зарези у клизачкој траци"
+msgstr "Клизачке траке:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -314,10 +304,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:165
-#, fuzzy, kde-format
-#| msgid "Show text &preview on scrollbar"
+#, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr "&Преглед текста на клизачкој траци"
+msgstr "Прикажи преглед при лебдењу над клизачком траком"
 
 #. i18n: ectx: property (text), widget (QLabel, lblShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:172
@@ -348,10 +337,9 @@ msgstr "увек искључене"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:217
-#, fuzzy, kde-format
-#| msgid "Minim&ap width:"
+#, kde-format
 msgid "Minimap:"
-msgstr "&Ширина мини‑мапе:"
+msgstr "Мини‑мапа:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:224
@@ -365,10 +353,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:227
-#, fuzzy, kde-format
-#| msgid "Show scrollbar mini-map"
+#, kde-format
 msgid "Show minimap"
-msgstr "Мини‑мапа у клизачкој траци"
+msgstr "Прикажи мини‑мапу"
 
 #. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
 #: dialogs/bordersappearanceconfigwidget.ui:250
@@ -406,7 +393,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:279
 #, kde-format
 msgid "By date created"
-msgstr ""
+msgstr "по датуму стварања"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:286
@@ -417,30 +404,25 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:289
-#, fuzzy, kde-format
-#| msgid "Show &line numbers"
+#, kde-format
 msgid "By line number"
-msgstr "&Бројеви редова"
+msgstr "по броју реда"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/bordersappearanceconfigwidget.ui:296
-#, fuzzy, kde-format
-#| msgid "Sort Bookmarks Menu"
+#, kde-format
 msgid "Sort bookmarks menu:"
-msgstr "Ређај обележиваче у менију"
+msgstr "Ређај обележиваче у менију:"
 
 #: dialogs/clipboardhistorydialog.cpp:264
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgid "Select text to paste."
-msgstr "Изабери следећу тачку уређивања"
+msgstr "Изаберите текст за налепљивање."
 
 #: dialogs/clipboardhistorydialog.cpp:296
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "No entries in clipboard history"
-msgstr "&Историјат клипборда"
+msgstr "Нема уноса у историјату клипборда"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -461,13 +443,13 @@ msgstr "&Самодопуна"
 #: dialogs/completionconfigtab.ui:42
 #, kde-format
 msgid "Auto select &first completion entry"
-msgstr ""
+msgstr "Аутоматски изабери &прву ставку допуне"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Кружи кроз списак допуна тастерима Tab / Shift+Tab"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:56
@@ -477,18 +459,18 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Притисак на Enter умеће текст изабране ставке допуне у уређивач. Ако је "
+"искључено, допуна се и даље може покренути тастером Tab‑ом или двокликом."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "Извуците изабрани блок текста."
+msgstr "Умећи изабрану допуну тастером Enter‑ом"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
-#, fuzzy, kde-format
-#| msgid "A&uto Word Completion"
+#, kde-format
 msgid "A&uto word completion"
 msgstr "&Самодопуна речи"
 
@@ -512,15 +494,10 @@ msgstr "Уклони реп при допуни"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:121
-#, fuzzy, kde-format
-#| msgid ""
-#| "Keyword completion provides suggestions based on the keywords which exist "
-#| "in the document's language."
+#, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
-msgstr ""
-"Допуна кључних речи даје предлоге на основу кључних речи дефинисаних у "
-"језику документа."
+msgstr "Допуна речи даје предлоге на основу речи нађених у документу"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:134
@@ -540,11 +517,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:156
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Documentation"
+#, kde-format
 msgid "Documentation with completion"
-msgstr "документација"
+msgstr "Документација уз допуну"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/completionconfigtab.ui:165
@@ -553,13 +528,14 @@ msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
 "shown by pressing Alt key."
 msgstr ""
+"Прикажи документацију поред оквира допуне. Ако је искључено, документација "
+"се може приказати притиском на тастер Alt."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
-#, fuzzy, kde-format
-#| msgid "Word Wrap"
+#, kde-format
 msgid "Word wrap:"
-msgstr "Преламање текста"
+msgstr "Преламање текста:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:29
@@ -583,33 +559,25 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:32
 #, kde-format
 msgid "Wrap &words at a fixed column"
-msgstr ""
+msgstr "Преламај &речи на сталној колони"
 
 # skip-rule: t-line
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:39
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>If this option is checked, a vertical line will be drawn at the word "
-#| "wrap column as defined in the <strong>Editing</strong> properties.</"
-#| "p><p>Note that the word wrap marker is only drawn if you use a fixed "
-#| "pitch font.</p>"
+#, kde-format
 msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"<qt><p>Ако је ово укључено, биће исцртана усправна линија на колони "
-"преламања текста, одређеној у одељку <i>Уређивање</i>.</p><p>Ова линија се "
-"црта само када се користи фонт фиксне ширине.</p></qt>"
+"<p>Ако је ово укључено, биће исцртана усправна линија на колони преламања "
+"текста, задатој у својствима <strong>уређивања</strong>.</p>"
 
 # >> @item:inlistbox
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Set the word wrap column."
+#, kde-format
 msgid "&Draw vertical line at the word wrap column"
-msgstr "колона прелома реда"
+msgstr "&Исцртај усправну линију на колони преламања"
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
@@ -635,16 +603,15 @@ msgstr "Подразумевани режим уноса:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/editconfigwidget.ui:120
-#, fuzzy, kde-format
-#| msgid "Auto Brackets"
+#, kde-format
 msgid "Brackets:"
-msgstr "Аутоматске заграде"
+msgstr "Заграде:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoBrackets)
 #: dialogs/editconfigwidget.ui:127
 #, kde-format
 msgid "Automatically close brackets when opening bracket is typed"
-msgstr ""
+msgstr "Аутоматски затвори заграду када се откуца отворена"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:140
@@ -653,54 +620,50 @@ msgid ""
 "When some text is selected these chars will be added on both its sides in a "
 "way \"Auto Bracket\" do"
 msgstr ""
+"Када је изабран неки текст, ови знакови се додају са обе његове стране, као "
+"што то чине аутоматске заграде"
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:143
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "Enclosing characters:"
-msgstr " знак"
+msgstr "Обухватни знакови:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Copy and Paste"
+#, kde-format
 msgid "Copy and paste:"
-msgstr "Копирање и налепљивање"
+msgstr "Копирање и налепљивање:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
 #: dialogs/editconfigwidget.ui:173
-#, fuzzy, kde-format
-#| msgid "Move selected lines down."
+#, kde-format
 msgid "Move selected text when dragged"
-msgstr "Помера изабране редове надоле."
+msgstr "Премести изабрани текст при превлачењу"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
 #: dialogs/editconfigwidget.ui:180
-#, fuzzy, kde-format
-#| msgid "Copy/Cut the current line if no selection"
+#, kde-format
 msgid "Copy/cut the current line if invoked without any text selected"
-msgstr "Копирај/исеци текући ред ако нема избора"
+msgstr "Копирај/исеци текући ред ако ништа није изабрано"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkMousePasteAtCursorPosition)
 #: dialogs/editconfigwidget.ui:187
 #, kde-format
 msgid "Don't move the text cursor when pasting by mouse"
-msgstr ""
+msgstr "Не померај курсор текста при налепљивању мишем"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:194
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr "&Историјат клипборда"
+msgstr "Највише уноса у историјату клипборда:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:204
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
-msgstr ""
+msgstr "Одређује број уноса који се чувају у историјату клипборда"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:226
@@ -709,18 +672,20 @@ msgid ""
 "When you type these characters while text is selected, they will surround "
 "the selected text instead of replacing it."
 msgstr ""
+"Када откуцате ове знакове док је текст изабран, они ће окружити изабрани "
+"текст уместо да га замене."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAccessibility)
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "Укључи обавештења приступачности"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "Приступачност:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -953,10 +918,9 @@ msgstr "табулатора &и размака"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoDetectIndent)
 #: dialogs/indentationconfigwidget.ui:167
-#, fuzzy, kde-format
-#| msgid "A&utomatic end of line detection"
+#, kde-format
 msgid "Automatically detect file indentation"
-msgstr "&Аутоматско откривање краја реда"
+msgstr "Аутоматски откриј увлачење фајла"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
 #: dialogs/indentationconfigwidget.ui:177
@@ -1023,16 +987,7 @@ msgstr "Тастер Backspace на &водећем размаку извлач�
 # rewrite-msgid: /action/effect/
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -1043,9 +998,14 @@ msgid ""
 "<b>Tab</b> a shortcut to the action <b>Format Indentation</b>."
 "\"><span>More ...</span></a></p></body></html>"
 msgstr ""
-"<html><p>Дејство тастера Tab (ако нема избора) <a href=\"Ако желите да "
-"поравна ред у тренутном блоку кôда као у Емаксу, поставите Tab као пречицу "
-"на радњу „Поравнај“.\">Више...</a></p></html>"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body>\n"
+"<p>Дејство тастера Tab (ако нема избора) <a href=\"Ако желите да тастер "
+"<b>Tab</b> поравна текући ред у текућем блоку кода као у Емаксу, учините "
+"<b>Tab</b> пречицом за радњу <b>Форматирај увлачење</b>.\"><span>Више ...</"
+"span></a></p></body></html>"
 
 # >! ui: Insert spaces instead of tabulators --> ?
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
@@ -1117,15 +1077,13 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "Повећај ниво увлачења &при водећој празнини"
 
 #: dialogs/katedialogs.cpp:185 dialogs/katedialogs.cpp:187
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " знак"
-msgstr[1] " знака"
-msgstr[2] " знакова"
-msgstr[3] " знак"
+msgstr[0] "%v знак"
+msgstr[1] "%v знака"
+msgstr[2] "%v знакова"
+msgstr[3] "%v знак"
 
 #: dialogs/katedialogs.cpp:211
 #, kde-format
@@ -1144,52 +1102,49 @@ msgid "Spellcheck"
 msgstr "Провера правописа"
 
 #: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:417
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Alert"
+#, kde-format
 msgid "Alt"
-msgstr "упозорење"
+msgstr "Alt"
 
 #: dialogs/katedialogs.cpp:411 dialogs/katedialogs.cpp:419
 #, kde-format
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Meta"
-msgstr ""
+msgstr "Meta"
 
 #: dialogs/katedialogs.cpp:413 dialogs/katedialogs.cpp:421
 #, kde-format
 msgid "Ctrl + Alt"
-msgstr ""
+msgstr "Ctrl + Alt"
 
 #: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Meta + Alt"
-msgstr ""
+msgstr "Meta + Alt"
 
 #: dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Meta"
-msgstr ""
+msgstr "Ctrl + Meta"
 
 #: dialogs/katedialogs.cpp:418
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgid "Cmd"
-msgstr "наредба"
+msgstr "Cmd"
 
 #: dialogs/katedialogs.cpp:420
 #, kde-format
 msgid "Cmd + Alt"
-msgstr ""
+msgstr "Cmd + Alt"
 
 #: dialogs/katedialogs.cpp:422
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr ""
+msgstr "Cmd + Ctrl"
 
 #: dialogs/katedialogs.cpp:480
 #, kde-format
@@ -1197,44 +1152,40 @@ msgid "Text Navigation"
 msgstr "Кретање кроз текст"
 
 #: dialogs/katedialogs.cpp:582
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid "%v character"
 msgid_plural "%v characters"
-msgstr[0] " знак"
-msgstr[1] " знака"
-msgstr[2] " знакова"
-msgstr[3] " знак"
+msgstr[0] "%v знак"
+msgstr[1] "%v знака"
+msgstr[2] "%v знакова"
+msgstr[3] "%v знак"
 
 #: dialogs/katedialogs.cpp:587
 #, kde-format
 msgid "Feature is not active"
-msgstr ""
+msgstr "Могућност није активна"
 
 # >> @item color scheme item name
 #: dialogs/katedialogs.cpp:589
-#, fuzzy, kde-format
-#| msgid "Disabled Breakpoint"
+#, kde-format
 msgid "Disable Feature"
-msgstr "искључена преломна тачка"
+msgstr "Искључи могућност"
 
 #: dialogs/katedialogs.cpp:591
 #, kde-format
 msgid "May be handy with Markdown"
-msgstr ""
+msgstr "Може бити згодно уз маркдаун"
 
 #: dialogs/katedialogs.cpp:593
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
-msgstr ""
+msgstr "Пресликани знакови, слично али не потпуно као аутоматске заграде"
 
 #: dialogs/katedialogs.cpp:595
-#, fuzzy, kde-format
-#| msgid "Non-word character"
+#, kde-format
 msgid "Non letter character"
-msgstr "није знак речи"
+msgstr "Знакови који нису слова"
 
 #: dialogs/katedialogs.cpp:712
 #, kde-format
@@ -1249,7 +1200,7 @@ msgstr "Уређивачке опције"
 #: dialogs/katedialogs.cpp:751
 #, kde-format
 msgid "Statusbar"
-msgstr ""
+msgstr "Трака стања"
 
 # >> Wrap indicators
 #: dialogs/katedialogs.cpp:753
@@ -1275,6 +1226,10 @@ msgid ""
 "your work in the case of a system crash. Disabling swap files may cause data "
 "loss in case of a system crash."
 msgstr ""
+"%1 чува резерве несачуваних фајлова у „разменским фајловима“. Разменски "
+"фајлови омогућавају да %1 поврати ваш рад у случају пада система. "
+"Искључивање разменских фајлова може довести до губитка података у случају "
+"пада система."
 
 #: dialogs/katedialogs.cpp:1027
 #, kde-format
@@ -1307,22 +1262,22 @@ msgstr "Отварање и уписивање фајлова"
 #: dialogs/katedialogs.cpp:1255
 #, kde-format
 msgid "&Line:"
-msgstr ""
+msgstr "&Ред:"
 
 #: dialogs/katedialogs.cpp:1256
 #, kde-format
 msgid "Go to line number from clipboard"
-msgstr ""
+msgstr "Иди на број реда из клипборда"
 
 #: dialogs/katedialogs.cpp:1267
 #, kde-format
 msgid "Go to"
-msgstr ""
+msgstr "Иди на"
 
 #: dialogs/katedialogs.cpp:1347
 #, kde-format
 msgid "No valid line number found in clipboard"
-msgstr ""
+msgstr "У клипборду није нађен исправан број реда"
 
 #: dialogs/katedialogs.cpp:1411
 #, kde-format
@@ -1330,10 +1285,9 @@ msgid "Dictionary:"
 msgstr "Речник:"
 
 #: dialogs/katedialogs.cpp:1463
-#, fuzzy, kde-format
-#| msgid "Enable &auto completion"
+#, kde-format
 msgid "Enable Auto Reload"
-msgstr "&Самодопуна"
+msgstr "Укључи аутоматско поновно учитавање"
 
 #: dialogs/katedialogs.cpp:1466
 #, kde-format
@@ -1341,6 +1295,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Поново учитава, и од сада ће аутоматски поново учитавати без упозорења о "
+"изменама на диску, све док не затворите језичак или прозор."
 
 #: dialogs/katedialogs.cpp:1471
 #, kde-format
@@ -1348,8 +1304,7 @@ msgid "View &Difference"
 msgstr "Прикажи &разлику"
 
 #: dialogs/katedialogs.cpp:1473
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Приказује разлику измена."
 
@@ -1359,29 +1314,26 @@ msgid "&Reload"
 msgstr "&Учитај поново"
 
 #: dialogs/katedialogs.cpp:1480
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Учитава поново фајл са диска. Несачуване измене ће бити изгубљене."
 
 #: dialogs/katedialogs.cpp:1484
-#, fuzzy, kde-format
-#| msgid "&Close"
+#, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
-msgstr "&Затвори"
+msgstr "&Затвори фајл"
 
 #: dialogs/katedialogs.cpp:1486
 #, kde-format
 msgid "Closes the file, discarding its content."
-msgstr ""
+msgstr "Затвара фајл, одбацујући његов садржај."
 
 #: dialogs/katedialogs.cpp:1490
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&Сачувај као..."
+msgstr "&Сачувај као…"
 
 #: dialogs/katedialogs.cpp:1492
 #, kde-format
@@ -1470,6 +1422,8 @@ msgid ""
 "Selects whether cursor stops at camel case humps and underscores within a "
 "word."
 msgstr ""
+"Бира да ли се курсор зауставља на грбама camelCase записа и на подвлакама "
+"унутар речи."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1477,6 +1431,8 @@ msgstr ""
 msgid ""
 "Stop at 'camelCase' and 'snake_case' subwords when moving the cursor by word"
 msgstr ""
+"Заустављај се на подречима „camelCase“ и „snake_case“ при кретању курсора по "
+"речима"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -1558,40 +1514,39 @@ msgstr "Тастер Backspace уклања и основу и дијакрит�
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbCycleBookmarks)
 #: dialogs/navigationconfigwidget.ui:184
-#, fuzzy, kde-format
-#| msgid "Go to the previous bookmark."
+#, kde-format
 msgid "Allow to cycle through bookmarks"
-msgstr "Иди на претходни обележивач."
+msgstr "Дозволи кружење кроз обележиваче"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:194
 #, kde-format
 msgid "Multicursor"
-msgstr ""
+msgstr "Вишеструки курсори"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:200
 #, kde-format
 msgid "Multiple Cursor Modifiers"
-msgstr ""
+msgstr "Модификатори за вишеструке курсоре"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadVersionControl)
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr ""
+msgstr "Аутоматски поново учитавај фајлове под контролом верзија"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadOnExternalChanges)
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Auto reload files on external changes"
-msgstr ""
+msgstr "Аутоматски поново учитавај фајлове при спољашњим изменама"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:48
 #, kde-format
 msgid "Write a backup file on save for:"
-msgstr ""
+msgstr "Прави резервни фајл при уписивању за:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:55
@@ -1627,7 +1582,7 @@ msgstr "&Удаљени фајлови"
 #: dialogs/opensaveconfigadvwidget.ui:75
 #, kde-format
 msgid "Prefix for backup files:"
-msgstr ""
+msgstr "Префикс резервних фајлова:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
 #: dialogs/opensaveconfigadvwidget.ui:85
@@ -1639,7 +1594,7 @@ msgstr "Унесите префикс за имена резервних фај�
 #: dialogs/opensaveconfigadvwidget.ui:92
 #, kde-format
 msgid "Suffix for backup files:"
-msgstr ""
+msgstr "Суфикс резервних фајлова:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
 #: dialogs/opensaveconfigadvwidget.ui:102
@@ -1649,36 +1604,33 @@ msgstr "Унесите суфикс за имена резервних фајл�
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:109
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Swap file mode:"
-msgstr "Разменски фајл:"
+msgstr "Режим разменског фајла:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:125
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr ""
+msgstr "укључено, у подразумеваној фасцикли"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:130
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
-msgstr ""
+msgstr "укључено, у посебној фасцикли"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:138
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Store swap files in:"
-msgstr "Разменски фајл:"
+msgstr "Разменске фајлове чувај у:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:158
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Save swap files every:"
-msgstr "Разменски фајл:"
+msgstr "Уписуј разменске фајлове сваких:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:171
@@ -1692,18 +1644,19 @@ msgstr "s"
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr ""
+"Ова ниска се налази у katedialogs.cpp, у конструктору KateSaveConfigTab."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEditorConfig)
 #: dialogs/opensaveconfigadvwidget.ui:209
 #, kde-format
 msgid "Honor settings in .editorconfig file"
-msgstr ""
+msgstr "Поштуј поставке уређивача из фајла .editorconfig"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkUseFirstLineAsDocName)
 #: dialogs/opensaveconfigadvwidget.ui:229
 #, kde-format
 msgid "Use first line of untitled documents for document name"
-msgstr ""
+msgstr "Користи први ред неименованих докумената као име документа"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -1872,7 +1825,7 @@ msgstr "Уклони &пратеће размаке:"
 #: dialogs/textareaappearanceconfigwidget.ui:104
 #, kde-format
 msgid "Never"
-msgstr "нигде"
+msgstr "никад"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbRemoveTrailingSpaces)
 #: dialogs/opensaveconfigwidget.ui:198
@@ -1905,88 +1858,81 @@ msgstr "Додај нови ред на крај фајла при уписив�
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbAutoSave)
 #: dialogs/opensaveconfigwidget.ui:239
-#, fuzzy, kde-format
-#| msgid "Enable &auto completion"
+#, kde-format
 msgid "Enable Auto Save (local files only)"
-msgstr "&Самодопуна"
+msgstr "Укључи аутоматско уписивање (само локални фајлови)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
 #, kde-format
 msgid "Auto save document when the active document is losing focus"
-msgstr ""
+msgstr "Аутоматски сачувај документ када активни документ губи фокус"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
 #, kde-format
 msgid "Auto save interval:"
-msgstr ""
+msgstr "Период аутоматског уписивања:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbAutoSaveInterval)
 #: dialogs/opensaveconfigwidget.ui:273
 #, kde-format
 msgid " seconds"
-msgstr ""
+msgstr " секунди"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgid "Syntax highlighting"
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "Истицање синтаксе"
+msgstr "Прикажи режим истицања"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Show &icon border"
+#, kde-format
 msgid "Show input mode"
-msgstr "Појас &иконица"
+msgstr "Прикажи режим уноса"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change Dictionary..."
+#, kde-format
 msgid "Show active dictionary"
-msgstr "Промени речник..."
+msgstr "Прикажи активни речник"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
 #, kde-format
 msgid "Show tab setting"
-msgstr ""
+msgstr "Прикажи поставку табулатора"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show &line numbers"
+#, kde-format
 msgid "Show line column"
-msgstr "&Бројеви редова"
+msgstr "Прикажи ред и колону"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Show &line numbers"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "&Бројеви редова"
+msgstr "Прикажи кодирање фајла"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "Прикажи тип краја реда"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
 #, kde-format
 msgid "Editor font:"
-msgstr ""
+msgstr "Фонт уређивача:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Line length limit:"
+#, kde-format
 msgid "&Line Height Multiplier:"
-msgstr "Ограничење дужине реда:"
+msgstr "&Множилац висине реда:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:58
@@ -1995,21 +1941,21 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
+"Подразумевана висина реда фонта множи се овом вредношћу. Вредност 1,0 значи "
+"да се користи подразумевана висина."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:93
 #, kde-format
 msgid "Show whitespace indicators:"
-msgstr ""
+msgstr "Прикажи показатеље празнина:"
 
 # >> @item:inlistbox
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:109
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Sets the end of line mode."
+#, kde-format
 msgid "At the end of a line"
-msgstr "режим краја реда"
+msgstr "на крају реда"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:114
@@ -2019,10 +1965,9 @@ msgstr "Увек"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, fuzzy, kde-format
-#| msgid "Whitespace Highlighting"
+#, kde-format
 msgid "Whitespace indicator si&ze:"
-msgstr "Истицање празнина"
+msgstr "&Величина показатеља празнина:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -2032,10 +1977,9 @@ msgstr "Величина видљивог маркера истицања."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Show line modification markers"
+#, kde-format
 msgid "Show &tab indicators:"
-msgstr "Маркери измењених редова"
+msgstr "Прикажи показатеље &табулатора:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:176
@@ -2048,10 +1992,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:202
-#, fuzzy, kde-format
-#| msgid "Animate bracket matching"
+#, kde-format
 msgid "Bracket matching:"
-msgstr "Анимирај парњачке заграде"
+msgstr "Упаривање заграда:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:209
@@ -2072,7 +2015,7 @@ msgstr "Истакни опсег између изабраних заграда
 #: dialogs/textareaappearanceconfigwidget.ui:219
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
-msgstr ""
+msgstr "Прикажи парњачку отворену заграду и суседне редове ради контекста"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:222
@@ -2083,13 +2026,15 @@ msgid ""
 "bracket, especially in long function/class declarations and deeply nested if "
 "blocks"
 msgstr ""
+"Ако је ово укључено, приказује се преглед редова око парњачке отворене "
+"заграде. То помаже да се брзо одреди контекст затворене заграде, нарочито у "
+"дугачким декларацијама функција и класа и у дубоко угнежђеним if блоковима"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid "Show preview of folded code"
+#, kde-format
 msgid "Show preview of matching open bracket"
-msgstr "Прикажи преглед сажетог кода"
+msgstr "Прикажи преглед парњачке отворене заграде"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:232
@@ -2108,47 +2053,43 @@ msgstr "Ако је укључено, упарене заграде се ани�
 #: dialogs/textareaappearanceconfigwidget.ui:238
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
-msgstr ""
+msgstr "Анимирај парњачку заграду када курсор пређе на другу заграду из пара"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/textareaappearanceconfigwidget.ui:261
 #, kde-format
 msgid "Counts:"
-msgstr ""
+msgstr "Бројање:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:268
 #, kde-format
 msgid "Show/hide word count in status bar"
-msgstr "Да ли приказати број речи у траци стања."
+msgstr "Прикажи/сакриј број речи у траци стања"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:271 view/katestatusbar.cpp:258
-#, fuzzy, kde-format
-#| msgid "Show Word Count"
+#, kde-format
 msgid "Show word count"
-msgstr "Број речи"
+msgstr "Прикажи број речи"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
 #: dialogs/textareaappearanceconfigwidget.ui:278
-#, fuzzy, kde-format
-#| msgid "Show/hide word count in status bar"
+#, kde-format
 msgid "Show/hide line count in status bar"
-msgstr "Да ли приказати број речи у траци стања."
+msgstr "Прикажи/сакриј број редова у траци стања"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
 #: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:255
-#, fuzzy, kde-format
-#| msgid "Show &line numbers"
+#, kde-format
 msgid "Show line count"
-msgstr "&Бројеви редова"
+msgstr "Прикажи број редова"
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
-#, fuzzy, kde-format
-#| msgid "Fold first line"
+#, kde-format
 msgid "Fold first line:"
-msgstr "Сажми на првом реду"
+msgstr "Сажми на првом реду:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2165,30 +2106,27 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
 #: dialogs/textareaappearanceconfigwidget.ui:337
-#, fuzzy, kde-format
-#| msgid "&Dynamic Word Wrap"
+#, kde-format
 msgid "Dynamic Word Wrap:"
-msgstr "&Динамички прелом"
+msgstr "Динамички прелом:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:344
-#, fuzzy, kde-format
-#| msgid "Enable static &word wrap"
+#, kde-format
 msgid "Wrap dynamically at static word wrap marker"
-msgstr "Укључи &статичко преламање текста"
+msgstr "Динамички преламај на граничнику статичког прелома"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
 #: dialogs/textareaappearanceconfigwidget.ui:351
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
-msgstr ""
+msgstr "Занемари границе речи при динамичком преламању"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
 #: dialogs/textareaappearanceconfigwidget.ui:358
-#, fuzzy, kde-format
-#| msgid "Dynamic Word Wrap Indicators"
+#, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr "Показатељи динамичког прелома"
+msgstr "Показатељи &динамичког прелома:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:368
@@ -2198,17 +2136,15 @@ msgstr "Изаберите када треба приказивати показ
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:391
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "I&ndent wrapped lines:"
-msgstr "Својства увлачења"
+msgstr "Увлачи &преломљене редове:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
-#, fuzzy, kde-format
-#| msgid "&Indentation width:"
+#, kde-format
 msgid "&Don't indent lines wider than:"
-msgstr "&Дубина увлачења:"
+msgstr "&Не увлачи редове шире од:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:424
@@ -2238,10 +2174,9 @@ msgstr "% од ширине приказа"
 # skip-rule: t-line
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show i&ndentation lines:"
-msgstr "Прикажи линије &увлачења"
+msgstr "Прикажи линије &увлачења:"
 
 # skip-rule: t-line
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
@@ -2262,15 +2197,14 @@ msgstr "Нови фајл"
 
 # >> @title:window
 #: document/katedocument.cpp:223
-#, fuzzy, kde-format
-#| msgid "Close Document"
+#, kde-format
 msgid "Auto Reload Document"
-msgstr "Затварање документа"
+msgstr "Аутоматски поново учитај документ"
 
 #: document/katedocument.cpp:225
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
-msgstr ""
+msgstr "Аутоматски поново учитај документ када се измени на диску"
 
 #: document/katedocument.cpp:2307
 #, kde-format
@@ -2293,8 +2227,7 @@ msgid "&Close"
 msgstr "&Затвори"
 
 #: document/katedocument.cpp:2317 document/katedocument.cpp:6541
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Затвори поруку"
@@ -2384,12 +2317,7 @@ msgstr ""
 "Желите ли заиста да га сачувате? Може доћи до губитка података."
 
 #: document/katedocument.cpp:2601
-#, fuzzy, kde-format
-#| msgid ""
-#| "The document could not be saved, as it was not possible to write to %1.\n"
-#| "\n"
-#| "Check that you have write access to this file or that enough disk space "
-#| "is available."
+#, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
 "Check that you have write access to this file or that enough disk space is "
@@ -2397,10 +2325,11 @@ msgid ""
 "The original file may be lost or damaged. Don't quit the application until "
 "the file is successfully written."
 msgstr ""
-"Документ није могао бити сачуван, пошто се не може писати у ‘%1’.\n"
-"\n"
-"Проверите да ли имате дозволу уписа за овај фајл, или да ли има довољно "
-"слободног простора на диску."
+"Документ не може да се сачува, пошто се не може писати у „%1“.\n"
+"Проверите да ли имате дозволу писања за овај фајл и да ли има довољно "
+"слободног простора на диску.\n"
+"Изворни фајл може бити изгубљен или оштећен. Не напуштајте програм док се "
+"фајл успешно не упише."
 
 #: document/katedocument.cpp:2723
 #, kde-format
@@ -2437,10 +2366,9 @@ msgid "Close Nevertheless"
 msgstr "Ипак затвори"
 
 #: document/katedocument.cpp:4642
-#, fuzzy, kde-format
-#| msgid "Untitled"
+#, kde-format
 msgid "Untitled (%1)"
-msgstr "Неименовано"
+msgstr "Неименовано (%1)"
 
 #: document/katedocument.cpp:4644
 #, kde-format
@@ -2482,11 +2410,7 @@ msgstr ""
 # literal-segment: remove-trailing-space
 # literal-segment: remove-trailing-spaces
 #: document/katedocument.cpp:5382
-#, fuzzy, kde-format
-#| msgid ""
-#| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
-#| "'remove-trailing-spaces modified;', see http://docs.kde.org/stable/en/"
-#| "applications/kate/config-variables.html#variable-remove-trailing-spaces"
+#, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
 "'remove-trailing-spaces modified;', see https://docs.kde.org/?"
@@ -2494,17 +2418,14 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 "Користи се превазиђена режимска линија „remove-trailing-space“. Замените је "
-"са „remove-trailing-spaces modified;“, погледајте http://docs.kde.org/stable/"
-"en/applications/kate/config-variables.html#variable-remove-trailing-spaces."
+"са „remove-trailing-spaces modified;“, погледајте https://docs.kde.org/?"
+"application=katepart&branch=stable5&path=config-variables.html#variable-"
+"remove-trailing-spaces"
 
 # literal-segment: replace-trailing-space-save
 # literal-segment: remove-trailing-spaces
 #: document/katedocument.cpp:5388
-#, fuzzy, kde-format
-#| msgid ""
-#| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
-#| "with 'remove-trailing-spaces all;', see http://docs.kde.org/stable/en/"
-#| "applications/kate/config-variables.html#variable-remove-trailing-spaces"
+#, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
 "'remove-trailing-spaces all;', see https://docs.kde.org/?"
@@ -2512,21 +2433,19 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 "Користи се превазиђена режимска линија „replace-trailing-space-save“. "
-"Замените је са „remove-trailing-spaces all;“, погледајте http://docs.kde.org/"
-"stable/en/applications/kate/config-variables.html#variable-remove-trailing-"
-"spaces."
+"Замените је са „remove-trailing-spaces all;“, погледајте https://docs.kde."
+"org/?application=katepart&branch=stable5&path=config-variables.html#variable-"
+"remove-trailing-spaces"
 
 #: document/katedocument.cpp:5702
-#, fuzzy, kde-format
-#| msgid "The file '%1' was modified by another program."
+#, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "Неки други програм је изменио фајл ‘%1’."
+msgstr "Фајл „%1“ је измењен на диску."
 
 #: document/katedocument.cpp:5704
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted by another program."
+#, kde-format
 msgid "The file '%1' was deleted or moved on disk."
-msgstr "Неки други програм је обрисао фајл ‘%1’."
+msgstr "Фајл „%1“ је обрисан или премештен на диску."
 
 #: document/katedocument.cpp:6040
 #, kde-format
@@ -2569,15 +2488,13 @@ msgid "Normal Mode"
 msgstr "Нормални режим"
 
 #: inputmode/kateviinputmode.cpp:33
-#, fuzzy, kde-format
-#| msgid "VI: INSERT MODE"
+#, kde-format
 msgctxt "The INSERT mode of VI"
 msgid "VI: INSERT"
 msgstr "⁠Ви: УМЕТАЊЕ"
 
 #: inputmode/kateviinputmode.cpp:36
-#, fuzzy, kde-format
-#| msgid "VI: NORMAL MODE"
+#, kde-format
 msgctxt "The NORMAL mode of VI"
 msgid "VI: NORMAL"
 msgstr "⁠Ви: НОРМАЛНО"
@@ -2662,11 +2579,10 @@ msgid "Modes && Filetypes"
 msgstr "Режими и типови фајлова"
 
 #: mode/katemodemenulist.cpp:138
-#, fuzzy, kde-format
-#| msgid "Search mode"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "Режим тражења"
+msgstr "Тражи…"
 
 #: mode/katemodemenulist.cpp:140
 #, kde-format
@@ -2675,32 +2591,32 @@ msgid ""
 "Search for syntax highlighting modes by language name or file extension (for "
 "example, C++ or .cpp)"
 msgstr ""
+"Тражи режиме истицања синтаксе по имену језика или наставку фајла (на "
+"пример, Ц++ или .cpp)"
 
 #: mode/katemodemenulist.cpp:560
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
-msgstr ""
+msgstr "Претрага не поклапа ниједну ставку"
 
 #: mode/katemodemenulist.cpp:1087
-#, fuzzy, kde-format
-#| msgid "Best matches"
+#, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
 "translation doesn't have more than 34 characters, since the menu where it's "
 "displayed is small and fixed."
 msgid "Best Search Match"
-msgstr "Најближа поклапања"
+msgstr "Најбоље поклапање"
 
 #: mode/katemodemenulist.cpp:1092
-#, fuzzy, kde-format
-#| msgid "Best matches"
+#, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
 "translation doesn't have more than 34 characters, since the menu where it's "
 "displayed is small and fixed."
 msgid "Best Search Matches"
-msgstr "Најближа поклапања"
+msgstr "Најбоља поклапања"
 
 #: printing/printconfigwidgets.cpp:36
 #, kde-format
@@ -2720,7 +2636,7 @@ msgstr "Штампај &легенду"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Не штампај сажети код"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -2842,13 +2758,13 @@ msgstr "тренутно корисничко име"
 #: printing/printconfigwidgets.cpp:356
 #, kde-format
 msgid "Complete Date/Time (short format)"
-msgstr "пуни датум-време (кратко)"
+msgstr "пуни датум‑време (кратко)"
 
 # >> @item:inmenu
 #: printing/printconfigwidgets.cpp:358
 #, kde-format
 msgid "Complete Date/Time (long format)"
-msgstr "пуни датум-време (дугачко)"
+msgstr "пуни датум‑време (дугачко)"
 
 # >> @item:inmenu
 #: printing/printconfigwidgets.cpp:360
@@ -2898,16 +2814,14 @@ msgid "L&ayout"
 msgstr "&Распоред"
 
 #: printing/printconfigwidgets.cpp:484
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "&Color theme:"
-msgstr "КДЕ‑ова шема боја"
+msgstr "Т&ема боја:"
 
 #: printing/printconfigwidgets.cpp:494
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "Фонт"
+msgstr "Фонт:"
 
 #: printing/printconfigwidgets.cpp:498
 #, kde-format
@@ -2940,23 +2854,18 @@ msgid "Co&lor:"
 msgstr "&Боја:"
 
 #: printing/printconfigwidgets.cpp:547
-#, fuzzy, kde-format
-#| msgid "Select the color scheme to use for the print."
+#, kde-format
 msgid "Select the color theme to use for the print."
-msgstr "Изаберите шему боја за штампање."
+msgstr "Изаберите тему боја за штампање."
 
 #: printing/printconfigwidgets.cpp:549
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>If enabled, the background color of the editor will be used.</"
-#| "p><p>This may be useful if your color scheme is designed for a dark "
-#| "background.</p>"
+#, kde-format
 msgid ""
 "<p>If enabled, the background color of the editor will be used.</p><p>This "
 "may be useful if your color theme is designed for a dark background.</p>"
 msgstr ""
-"<p>Ако је укључено, користиће се боја позадине уређивача. Може добро доћи "
-"ако је шема боја пројектована за тамну позадину.</p>"
+"<p>Ако је укључено, користиће се боја позадине уређивача.</p><p>Може добро "
+"доћи ако је тема боја пројектована за тамну позадину.</p>"
 
 # skip-rule: t-line
 #: printing/printconfigwidgets.cpp:552
@@ -3022,144 +2931,109 @@ msgid "Emmet"
 msgstr "Емет"
 
 #: script/data/commands/emmet.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Wrap with tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
 msgstr "Омотај ознаком"
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
-msgstr "Курсор на парњачку заграду"
+msgstr "Курсор на парњачку ознаку"
 
 #: script/data/commands/emmet.js:22
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents inwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
-msgstr "Изабери садржај ХТМЛ/ИксМЛ ознаке изнутра"
+msgstr "Изабери садржај ХТМЛ/ИксМЛ ознаке крећући се унутра"
 
 #: script/data/commands/emmet.js:26
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents outwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
-msgstr "Изабери садржај ХТМЛ/ИксМЛ ознаке споља"
+msgstr "Изабери садржај ХТМЛ/ИксМЛ ознаке крећући се напоље"
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
 msgstr "Закоментариши/откоментариши"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
 msgstr "Иди на следећу тачку уређивања"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
 msgstr "Иди на претходну тачку уређивања"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
 msgstr "Изабери следећу тачку уређивања"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
 msgstr "Изабери претходну тачку уређивања"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Delete tag under cursor"
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
 msgstr "Обриши ознаку под курсором"
 
 #: script/data/commands/emmet.js:54
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Split or join a tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
 msgstr "Подели или споји ознаку"
 
 #: script/data/commands/emmet.js:58
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Evaluate a simple math expression"
+#, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
 msgstr "Израчунај једноставан математички израз"
 
 #: script/data/commands/emmet.js:62
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
 msgstr "Смањи број за 1"
 
 #: script/data/commands/emmet.js:66
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
 msgstr "Смањи број за 10"
 
 #: script/data/commands/emmet.js:70
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
 msgstr "Смањи број за 0,1"
 
 #: script/data/commands/emmet.js:74
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
 msgstr "Повећај број за 1"
 
 #: script/data/commands/emmet.js:78
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
 msgstr "Повећај број за 10"
 
 #: script/data/commands/emmet.js:82
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
 msgstr "Повећај број за 0,1"
@@ -3272,9 +3146,7 @@ msgid "Increment number under cursor by 0.1"
 msgstr "Увећава број под курсором за 0,1."
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
 msgstr "Курсор на претходно једнако увлачење"
@@ -3290,28 +3162,22 @@ msgid "Navigation"
 msgstr "Кретање"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "Курсор на следеће једнако увлачење"
 
 #: script/data/commands/jumpMatchingIndent.js:19
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Blank Line"
-msgstr "Курсор на следеће једнако увлачење"
+msgstr "Курсор на следећи празан ред"
 
 #: script/data/commands/jumpMatchingIndent.js:24
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Blank Line"
-msgstr "Курсор на претходно једнако увлачење"
+msgstr "Курсор на претходни празан ред"
 
 #: script/data/commands/jumpMatchingIndent.js:80
 #, kde-format
@@ -3324,37 +3190,32 @@ msgid "Move cursor to next matching indent"
 msgstr "Курсор на следеће једнако увлачење"
 
 #: script/data/commands/jumpMatchingIndent.js:85
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Move cursor to next blank line"
-msgstr "Курсор на следеће једнако увлачење"
+msgstr "Курсор на следећи празан ред"
 
 #: script/data/commands/jumpMatchingIndent.js:87
-#, fuzzy, kde-format
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgid "Move cursor to previous blank line"
-msgstr "Курсор на претходно једнако увлачење"
+msgstr "Курсор на претходни празан ред"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Иди на следећи пасус"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Иди на претходну тачку уређивања"
+msgstr "Иди на претходни пасус"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "Уклони &пратеће размаке:"
+msgstr "Уклони пратеће размаке"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
@@ -3368,22 +3229,19 @@ msgid "Editing"
 msgstr "Уређивање"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "Уклони &пратеће размаке:"
+msgstr "Уклони водеће размаке"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "Уклони &пратеће размаке:"
+msgstr "Уклони пратеће и водеће размаке"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Споји редове"
@@ -3413,12 +3271,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Удвостручи изабране редове горе"
 
 #: script/data/commands/utils.js:43
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Удвостручи изабране редове горе"
+msgstr "Дуплирај изабрани текст"
 
 #: script/data/commands/utils.js:47
 #, kde-format
@@ -3433,11 +3289,10 @@ msgid "URI-decode Selected Text"
 msgstr "УРИ‑декодирај изабрани текст"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgid "Remove Entry"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Уклони ставку"
+msgstr "Уклони празне редове"
 
 #: script/data/commands/utils.js:410
 #, kde-format
@@ -3514,6 +3369,14 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
+"Ова наредба поравнава редове у изабраном блоку или целом документу на колону "
+"задату регуларним изразом који се даје као аргумент.<br><br>Ако дате празан "
+"образац, подразумевано се поравнава на први знак који није празнина.<br>Ако "
+"образац има хватање, увлачи се до ухваћеног поклапања.<br><br><i>Примери</i>:"
+"<br>„<code>alignon -</code>“ умеће размаке пре прве „-“ у сваком реду, тако "
+"да их све поравна на исту колону.<br>„<code>alignon :\\s+(.)</code>“ умеће "
+"размаке пре првог знака који није празнина а налази се после двотачке, тако "
+"да их све поравна на исту колону."
 
 # skip-rule: t-save
 # rewrite-msgid: /callback/function/
@@ -3597,6 +3460,8 @@ msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
+"Бира текст унапред од текућег положаја курсора до прве појаве датог "
+"аргумента после њега (или подразумевано до краја текућег реда)."
 
 #: script/data/commands/utils.js:452
 #, kde-format
@@ -3605,6 +3470,8 @@ msgid ""
 "the given argument before it (or the beginning of the current line by "
 "default)."
 msgstr ""
+"Бира текст уназад од текућег положаја курсора до последње појаве датог "
+"аргумента пре њега (или подразумевано до почетка текућег реда)."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -3640,7 +3507,7 @@ msgstr "хаскел"
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Julia"
-msgstr ""
+msgstr "јулија"
 
 #: script/data/indentation/latex.js:2
 #, kde-format
@@ -3676,7 +3543,7 @@ msgstr "питон"
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "R"
-msgstr ""
+msgstr "Р"
 
 #: script/data/indentation/replicode.js:2
 #, kde-format
@@ -3729,10 +3596,9 @@ msgid "No help specified for command '%1' in script %2"
 msgstr "Помоћ није дефинисана за наредбу „%1“ у скрипти ‘%2’"
 
 #: script/katescript.cpp:282
-#, fuzzy, kde-format
-#| msgid "Error loading script %1"
+#, kde-format
 msgid "Error loading script %1: %2"
-msgstr "Грешка при учитавању скрипте ‘%1’"
+msgstr "Грешка при учитавању скрипте %1: %2"
 
 # >> @info
 #: script/katescriptmanager.cpp:319
@@ -3808,10 +3674,9 @@ msgid "SearchHighLight"
 msgstr "Истицање претраге"
 
 #: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
-#, fuzzy, kde-format
-#| msgid "Clear Dictionary Ranges"
+#, kde-format
 msgid "Clear history"
-msgstr "Очисти речничке опсеге"
+msgstr "Очисти историјат"
 
 #: search/katesearchbar.cpp:1166
 #, kde-format
@@ -3824,10 +3689,9 @@ msgid "End of line"
 msgstr "крај реда"
 
 #: search/katesearchbar.cpp:1169
-#, fuzzy, kde-format
-#| msgid "Any single character (excluding line breaks)"
+#, kde-format
 msgid "Match any character excluding new line (by default)"
-msgstr "било који знак (осим прелома реда)"
+msgstr "било који знак осим прелома реда (подразумевано)"
 
 #: search/katesearchbar.cpp:1170
 #, kde-format
@@ -3916,10 +3780,9 @@ msgstr "празнина (осим прелома реда)"
 
 # >> @item:inmenu Indentation Mode
 #: search/katesearchbar.cpp:1215
-#, fuzzy, kde-format
-#| msgid "Spaces"
+#, kde-format
 msgid "Non-whitespace"
-msgstr "размаци"
+msgstr "није празнина"
 
 #: search/katesearchbar.cpp:1216
 #, kde-format
@@ -3952,10 +3815,9 @@ msgid "Group, non-capturing"
 msgstr "група, незахватна"
 
 #: search/katesearchbar.cpp:1227
-#, fuzzy, kde-format
-#| msgid "Negative lookahead"
+#, kde-format
 msgid "Positive Lookahead"
-msgstr "негативни предувид"
+msgstr "позитивни предувид"
 
 #: search/katesearchbar.cpp:1228
 #, kde-format
@@ -3965,12 +3827,12 @@ msgstr "негативни предувид"
 #: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "Fixed-length positive lookbehind"
-msgstr ""
+msgstr "позитивни поглед уназад фиксне дужине"
 
 #: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Fixed-length negative lookbehind"
-msgstr ""
+msgstr "негативни поглед уназад фиксне дужине"
 
 #: search/katesearchbar.cpp:1238
 #, kde-format
@@ -4045,7 +3907,7 @@ msgstr "Пребаци на траку напредне претраге и за
 #: search/searchbarpower.ui:50
 #, kde-format
 msgid "Fin&d:"
-msgstr ""
+msgstr "&Нађи:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: search/searchbarpower.ui:63
@@ -4134,7 +3996,7 @@ msgstr "Нађи &све"
 #: search/searchbarpower.ui:257
 #, kde-format
 msgid "Cancel"
-msgstr ""
+msgstr "Одустани"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, mutate)
 #: search/searchbarpower.ui:268
@@ -4154,12 +4016,10 @@ msgid "Spell check canceled."
 msgstr "Провера правописа отказана."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Провера правописа у току..."
+msgstr "Провера правописа у току…"
 
 # >> @title:menu
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4373,11 +4233,10 @@ msgid "I&gnore All"
 msgstr "И&гнориши све"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Правопис (од курсора)..."
+msgstr "Правопис (од курсора)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4396,27 +4255,23 @@ msgstr "Додај у речник"
 
 # >> @title:menu
 #: spellcheck/spellingmenu.cpp:172
-#, fuzzy, kde-format
-#| msgid "Spelling"
+#, kde-format
 msgid "Spelling '%1'"
-msgstr "Правопис"
+msgstr "Правопис „%1“"
 
 #: swapfile/kateswapdiffcreator.cpp:87
-#, fuzzy, kde-format
-#| msgid ""
-#| "The diff command failed. Please make sure that diff(1) is installed and "
-#| "in your PATH."
+#, kde-format
 msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
 "installed and in your PATH."
 msgstr ""
-"Наредба diff није успела. Уверите се да је diff(1) инсталирана и да се "
+"Наредба diff није нађена. Уверите се да је diff(1) инсталирана и да се "
 "налази у путањи."
 
 #: swapfile/kateswapdiffcreator.cpp:98
 #, kde-format
 msgid "The diff command '%1' could not be started."
-msgstr ""
+msgstr "Не могу да покренем наредбу diff „%1“."
 
 #: swapfile/kateswapfile.cpp:642
 #, kde-format
@@ -4439,15 +4294,12 @@ msgid "Discard"
 msgstr "Одбаци"
 
 #: syntax/katecolortreewidget.cpp:34 syntax/katecolortreewidget.cpp:61
-#, fuzzy, kde-format
-#| msgid "Use default color from the KDE color scheme"
+#, kde-format
 msgid "Use default color from the color theme"
-msgstr "Подразумевана боја из КДЕ‑ове шеме боја"
+msgstr "Подразумевана боја из теме боја"
 
 #: syntax/katehighlightmenu.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "Autoindent mode"
-#| msgid "None"
+#, kde-format
 msgid "None"
 msgstr "никакво"
 
@@ -4507,32 +4359,28 @@ msgid "S&trikeout"
 msgstr "Пре&цртан"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "Боја &обичног..."
+msgstr "Боја &обичног…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "Боја &изабраног..."
+msgstr "Боја &изабраног…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "Боја &позадине..."
+msgstr "Боја &позадине…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "Боја по&задине изабраног..."
+msgstr "Боја по&задине изабраног…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4767,10 +4615,9 @@ msgstr "грешка"
 
 # >> @item:inlistbox Identation mode
 #: syntax/katethemeconfig.cpp:162
-#, fuzzy, kde-format
-#| msgid "Use Default"
+#, kde-format
 msgid "Use Default Colors"
-msgstr "подразумевани"
+msgstr "Користи подразумеване боје"
 
 # >> @item color scheme item category
 #: syntax/katethemeconfig.cpp:182
@@ -5099,13 +4946,7 @@ msgid "Not Editable Placeholder"
 msgstr "неуредиви местодржач"
 
 #: syntax/katethemeconfig.cpp:501
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>This list displays the default styles for the current schema and "
-#| "offers the means to edit them. The style name reflects the current style "
-#| "settings.</p><p>To edit the colors, click the colored squares, or select "
-#| "the color to edit from the popup menu.</p><p>You can unset the Background "
-#| "and Selected Background colors from the popup menu when appropriate.</p>"
+#, kde-format
 msgid ""
 "<p>This list displays the default styles for the current color theme and "
 "offers the means to edit them. The style name reflects the current style "
@@ -5113,8 +4954,8 @@ msgid ""
 "color to edit from the popup menu.</p><p>You can unset the Background and "
 "Selected Background colors from the popup menu when appropriate.</p>"
 msgstr ""
-"<p>Ово је списак подразумеваних стилова за текућу шему, и пружа начине за "
-"њихово уређивање. Име стила одражава тренутне поставке стила.</p><p>За "
+"<p>Ово је списак подразумеваних стилова за текућу тему боја, и пружа начине "
+"за њихово уређивање. Име стила одражава тренутне поставке стила.</p><p>За "
 "уређивање боје, кликните на обојени правоугаоник, или изаберите неку боју из "
 "искачућег менија.</p><p>Боје позадине и позадине изабраног можете поништити "
 "у искачућем менију када је то потребно.</p>"
@@ -5174,53 +5015,47 @@ msgstr ""
 "потребно.</p>"
 
 #: syntax/katethemeconfig.cpp:1027
-#, fuzzy, kde-format
-#| msgid "Default Text Styles"
+#, kde-format
 msgid "Default Theme"
-msgstr "Подразумевани стилови текста"
+msgstr "Подразумевана тема"
 
 #: syntax/katethemeconfig.cpp:1028
 #, kde-format
 msgid "Theme Editor"
-msgstr ""
+msgstr "Уређивач тема"
 
 #: syntax/katethemeconfig.cpp:1046
-#, fuzzy, kde-format
-#| msgctxt "@title:column Text style"
-#| msgid "Selected"
+#, kde-format
 msgid "Select theme:"
-msgstr "изабран"
+msgstr "Изаберите тему:"
 
 #: syntax/katethemeconfig.cpp:1119
 #, kde-format
 msgid "&Theme:"
-msgstr ""
+msgstr "&Тема:"
 
 #: syntax/katethemeconfig.cpp:1128
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Сачувај &копију као..."
+msgstr "&Копирај…"
 
 #: syntax/katethemeconfig.cpp:1136
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Извези..."
+msgstr "Извези…"
 
 #: syntax/katethemeconfig.cpp:1140
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Увези..."
+msgstr "Увези…"
 
 #: syntax/katethemeconfig.cpp:1147
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
-msgstr ""
+msgstr "Уграђена тема само‑за‑читање. Да бисте је изменили, копирајте је."
 
 #: syntax/katethemeconfig.cpp:1160
 #, kde-format
@@ -5239,23 +5074,20 @@ msgstr "Стилови истицања текста"
 
 # >> @title:window
 #: syntax/katethemeconfig.cpp:1180
-#, fuzzy, kde-format
-#| msgid "Exporting color schema: %1"
+#, kde-format
 msgid "Exporting color theme: %1"
-msgstr "Извоз шеме боја: %1"
+msgstr "Извоз теме боја: %1"
 
 #: syntax/katethemeconfig.cpp:1182 syntax/katethemeconfig.cpp:1203
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "Color theme"
-msgstr "КДЕ‑ова шема боја"
+msgstr "Тема боја"
 
 # >> @title:window
 #: syntax/katethemeconfig.cpp:1203
-#, fuzzy, kde-format
-#| msgid "Importing Color Schema"
+#, kde-format
 msgid "Importing Color Theme"
-msgstr "Увоз шеме боја"
+msgstr "Увоз теме боја"
 
 #: syntax/katethemeconfig.cpp:1217
 #, kde-format
@@ -5263,60 +5095,54 @@ msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
+"Увоз ће пребрисати постојећи фајл теме „%1“. Ово не може да се опозове."
 
 #: syntax/katethemeconfig.cpp:1219
-#, fuzzy, kde-format
-#| msgid "Close Nevertheless"
+#, kde-format
 msgid "Import Nevertheless"
-msgstr "Ипак затвори"
+msgstr "Ипак увези"
 
 #: syntax/katethemeconfig.cpp:1308
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "Follow System Color Scheme"
-msgstr "КДЕ‑ова шема боја"
+msgstr "Прати системску шему боја"
 
 #: syntax/katethemeconfig.cpp:1375
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
-msgstr ""
+msgstr "Желите ли заиста да обришете тему „%1“? Ово не може да се опозове."
 
 #: syntax/katethemeconfig.cpp:1377
-#, fuzzy, kde-format
-#| msgid "Close Nevertheless"
+#, kde-format
 msgid "Delete Nevertheless"
-msgstr "Ипак затвори"
+msgstr "Ипак обриши"
 
 #: syntax/katethemeconfig.cpp:1419
 #, kde-format
 msgid "Copy theme"
-msgstr ""
+msgstr "Копирање теме"
 
 #: syntax/katethemeconfig.cpp:1420
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
-msgstr ""
+msgstr "Име копије теме боја „%1“:"
 
 #: syntax/katethemeconfig.cpp:1432
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The schema %1 already exists.</p><p>Please choose a different schema "
-#| "name.</p>"
+#, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
-msgstr "<p>Шема %1 већ постоји.</p><p>Задајте неко друго име за ову шему.</p>"
+msgstr "<p>Тема „%1“ већ постоји.</p><p>Изаберите друго име теме.</p>"
 
 #: syntax/katethemeconfig.cpp:1433
 #, kde-format
 msgid "Copy Theme"
-msgstr ""
+msgstr "Копирање теме"
 
 #: syntax/katethemeconfig.cpp:1486 syntax/katethemeconfig.cpp:1491
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Color Themes"
-msgstr "Боје"
+msgstr "Теме боја"
 
 #: utils/kateautoindent.cpp:88
 #, kde-format
@@ -5331,10 +5157,9 @@ msgid "Normal"
 msgstr "обично"
 
 #: utils/katebookmarks.cpp:49
-#, fuzzy, kde-format
-#| msgid "Set &Bookmark"
+#, kde-format
 msgid "Toggle &Bookmark"
-msgstr "Постави &обележивач"
+msgstr "Укључи/искључи &обележивач"
 
 #: utils/katebookmarks.cpp:53
 #, kde-format
@@ -5764,47 +5589,41 @@ msgstr ""
 "са pm.</td></tr></table></p>"
 
 #: utils/katecmds.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgid "Remove Duplicate Lines"
-msgstr "Удвостручи изабране редове горе"
+msgstr "Уклони дуплиране редове"
 
 #: utils/katecmds.cpp:622
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
-msgstr "Уклања дуплиране редове из изабраног текста или целог документа."
+msgstr "Уклони дупликате и поређај текст азбучно"
 
 #: utils/katecmds.cpp:623
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgid "Sort Text Naturally"
-msgstr "Сортирај изабрани текст"
+msgstr "Поређај текст природно"
 
 #: utils/katecmds.cpp:624
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgid "Sort Selected Text Alphabetically"
-msgstr "Сортирај изабрани текст"
+msgstr "Поређај изабрани текст азбучно"
 
 #: utils/katecmds.cpp:699
-#, fuzzy, kde-format
-#| msgid "Sort the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
-msgstr "Сортира изабрани текст или цео документ."
+msgstr ""
+"<p>sort</p><p>Ређа изабрани текст, или цео документ ако нема избора</p>"
 
 #: utils/katecmds.cpp:703
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
 "document if there is no selection.</p>"
-msgstr "Уклања дуплиране редове из изабраног текста или целог документа."
+msgstr ""
+"<p>uniq</p><p>Уклања дуплиране редове из изабраног текста, или из целог "
+"документа ако нема избора.</p>"
 
 #: utils/katecmds.cpp:707
 #, kde-format
@@ -5812,22 +5631,21 @@ msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
+"<p>sortuniq</p><p>Ређа изабрани текст или цео документ, а затим уклања све "
+"дуплиране редове.</p>"
 
 #: utils/katecmds.cpp:711
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sort the selected text or whole document in natural order.<br>Here is an "
-#| "example to show the difference to the normal sort method:<br>sort(a10, "
-#| "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
+#, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
 "<br>Here is an example to show the difference to the normal sort method:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
 "p>"
 msgstr ""
-"Ређа изабрани текст или цео документ природним редоследом.<br />Ево примера "
-"који показује разлику у односу на уобичајени метод:<br /><code>sort(a10, a1, "
-"a2) → a1, a10, a2</code><br /><code>natsort(a10, a1, a2) → a1, a2, a10</code>"
+"<p>natsort</p><p>Ређа изабрани текст или цео документ природним редоследом."
+"<br>Ево примера који показује разлику у односу на уобичајени метод:"
+"<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</"
+"p>"
 
 #: utils/kateglobal.cpp:60
 #, kde-format
@@ -5840,10 +5658,9 @@ msgid "Embeddable editor component"
 msgstr "Угнездива уређивачка компонента"
 
 #: utils/kateglobal.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2017 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2025 The Kate Authors"
-msgstr "© 2000–2017, аутори Кејт"
+msgstr "© 2000–2025, аутори Кејт"
 
 #: utils/kateglobal.cpp:84
 #, kde-format
@@ -6205,13 +6022,13 @@ msgstr "сви који су допринели, а ја заборавих да
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Топлица Танасковић,Часлав Илић"
+msgstr "Топлица Танасковић,Часлав Илић,Немања Хиршл"
 
 #: utils/kateglobal.cpp:131
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "toptan@kde.org.yu,caslav.ilic@gmx.net"
+msgstr "toptan@kde.org.yu,caslav.ilic@gmx.net,nemhirsl@gmail.com"
 
 #: utils/kateglobal.cpp:255
 #, kde-format
@@ -6246,13 +6063,12 @@ msgstr[3] "у једном реду"
 #: utils/katevariableexpansionhelpers.cpp:77
 #, kde-format
 msgid "<value>"
-msgstr ""
+msgstr "<value>"
 
 #: utils/katevariableexpansionhelpers.cpp:161
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert variable"
-msgstr "Уметни табулатор"
+msgstr "Уметни променљиву"
 
 #: utils/katevariableexpansionhelpers.cpp:165
 #, kde-format
@@ -6260,65 +6076,56 @@ msgid "Variables"
 msgstr "Променљиве"
 
 #: utils/katevariableexpansionhelpers.cpp:169
-#, fuzzy, kde-format
-#| msgid "Filtering"
+#, kde-format
 msgid "Filter"
-msgstr "Филтрирање"
+msgstr "Филтер"
 
 #: utils/katevariableexpansionhelpers.cpp:188
 #: utils/katevariableexpansionhelpers.cpp:217
 #, kde-format
 msgid "Please select a variable."
-msgstr ""
+msgstr "Изаберите променљиву."
 
 #: utils/katevariableexpansionhelpers.cpp:206
-#, fuzzy, kde-format
-#| msgid "Missing argument. Usage: %1 <value>"
+#, kde-format
 msgid "Current value: %1<value>"
-msgstr "Недостаје аргумент. Употреба: %1 <vrednost>"
+msgstr "Тренутна вредност: %1<value>"
 
 # >> @item:inmenu
 #: utils/katevariableexpansionhelpers.cpp:214
-#, fuzzy, kde-format
-#| msgid "Current Time"
+#, kde-format
 msgid "Current value: %1"
-msgstr "тренутно време"
+msgstr "Тренутна вредност: %1"
 
 #: utils/katevariableexpansionmanager.cpp:86
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "File base name without path and suffix of the current document."
-msgstr "Изабери целокупан текст у документу."
+msgstr "Основно име фајла текућег документа, без путање и наставка."
 
 #: utils/katevariableexpansionmanager.cpp:94
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "File extension of the current document."
-msgstr "Изабери целокупан текст у документу."
+msgstr "Наставак фајла текућег документа."
 
 #: utils/katevariableexpansionmanager.cpp:102
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "File name without path of the current document."
-msgstr "Изабери целокупан текст у документу."
+msgstr "Име фајла текућег документа, без путање."
 
 #: utils/katevariableexpansionmanager.cpp:110
-#, fuzzy, kde-format
-#| msgid "Save a copy of the current document to disk."
+#, kde-format
 msgid "Full path of the current document including the file name."
-msgstr "Сачувај копију текућег документа на диск"
+msgstr "Пуна путања текућег документа, укључујући име фајла."
 
 #: utils/katevariableexpansionmanager.cpp:118
-#, fuzzy, kde-format
-#| msgid "Print the current document."
+#, kde-format
 msgid "Contents of the current document."
-msgstr "Штампај текући документ"
+msgstr "Садржај текућег документа."
 
 #: utils/katevariableexpansionmanager.cpp:125
-#, fuzzy, kde-format
-#| msgid "Save a copy of the current document to disk."
+#, kde-format
 msgid "Full path of the current document excluding the file name."
-msgstr "Сачувај копију текућег документа на диск"
+msgstr "Пуна путања текућег документа, без имена фајла."
 
 #: utils/katevariableexpansionmanager.cpp:133
 #, kde-format
@@ -6326,6 +6133,8 @@ msgid ""
 "Full document path including file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
+"Пуна путања документа, укључујући име фајла, са природним раздвајачем путање "
+"(контра‑коса црта на Виндоузу)."
 
 #: utils/katevariableexpansionmanager.cpp:141
 #, kde-format
@@ -6333,126 +6142,117 @@ msgid ""
 "Full document path excluding file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
+"Пуна путања документа, без имена фајла, са природним раздвајачем путање "
+"(контра‑коса црта на Виндоузу)."
 
 #: utils/katevariableexpansionmanager.cpp:149
 #, kde-format
 msgid ""
 "Line number of the text cursor position in current document (starts with 0)."
-msgstr ""
+msgstr "Број реда положаја курсора у текућем документу (почиње од 0)."
 
 #: utils/katevariableexpansionmanager.cpp:156
 #, kde-format
 msgid ""
 "Column number of the text cursor position in current document (starts with "
 "0)."
-msgstr ""
+msgstr "Број колоне положаја курсора у текућем документу (почиње од 0)."
 
 #: utils/katevariableexpansionmanager.cpp:163
 #, kde-format
 msgid "X component in global screen coordinates of the cursor position."
-msgstr ""
+msgstr "Компонента X положаја курсора у глобалним координатама екрана."
 
 #: utils/katevariableexpansionmanager.cpp:170
 #, kde-format
 msgid "Y component in global screen coordinates of the cursor position."
-msgstr ""
+msgstr "Компонента Y положаја курсора у глобалним координатама екрана."
 
 #: utils/katevariableexpansionmanager.cpp:177
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Text selection of the current document."
-msgstr "Изабери целокупан текст у документу."
+msgstr "Изабрани текст текућег документа."
 
 #: utils/katevariableexpansionmanager.cpp:184
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Start line of selected text of the current document."
-msgstr "Изабери целокупан текст у документу."
+msgstr "Почетни ред изабраног текста у текућем документу."
 
 #: utils/katevariableexpansionmanager.cpp:191
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Start column of selected text of the current document."
-msgstr "Изабери целокупан текст у документу."
+msgstr "Почетна колона изабраног текста у текућем документу."
 
 #: utils/katevariableexpansionmanager.cpp:198
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "End line of selected text of the current document."
-msgstr "Изабери целокупан текст у документу."
+msgstr "Крајњи ред изабраног текста у текућем документу."
 
 #: utils/katevariableexpansionmanager.cpp:205
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "End column of selected text of the current document."
-msgstr "Изабери целокупан текст у документу."
+msgstr "Крајња колона изабраног текста у текућем документу."
 
 #: utils/katevariableexpansionmanager.cpp:212
-#, fuzzy, kde-format
-#| msgid "Remove all bookmarks of the current document."
+#, kde-format
 msgid "Number of rows of the current document."
-msgstr "Уклони све обележиваче из текућег документа."
+msgstr "Број редова текућег документа."
 
 #: utils/katevariableexpansionmanager.cpp:219
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Comment Variable"
+#, kde-format
 msgid "Read a document variable."
-msgstr "променљива коментара"
+msgstr "Чита променљиву документа."
 
 #: utils/katevariableexpansionmanager.cpp:227
 #, kde-format
 msgid "The current date in current locale format."
-msgstr ""
+msgstr "Тренутни датум у формату текућег локалитета."
 
 #: utils/katevariableexpansionmanager.cpp:234
 #, kde-format
 msgid "The current date (ISO)."
-msgstr ""
+msgstr "Тренутни датум (ИСО)."
 
 # >> @item:inmenu
 #: utils/katevariableexpansionmanager.cpp:241
-#, fuzzy, kde-format
-#| msgid "Current Date (short format)"
+#, kde-format
 msgid "The current date (QDate formatstring)."
-msgstr "тренутни датум (кратко)"
+msgstr "Тренутни датум (форматска ниска QDate)."
 
 #: utils/katevariableexpansionmanager.cpp:249
 #, kde-format
 msgid "The current time in current locale format."
-msgstr ""
+msgstr "Тренутно време у формату текућег локалитета."
 
 #: utils/katevariableexpansionmanager.cpp:256
 #, kde-format
 msgid "The current time (ISO)."
-msgstr ""
+msgstr "Тренутно време (ИСО)."
 
 #: utils/katevariableexpansionmanager.cpp:263
 #, kde-format
 msgid "The current time (QTime formatstring)."
-msgstr ""
+msgstr "Тренутно време (форматска ниска QTime)."
 
 #: utils/katevariableexpansionmanager.cpp:271
 #, kde-format
 msgid "Access to environment variables."
-msgstr ""
+msgstr "Приступ променљивама окружења."
 
 #: utils/katevariableexpansionmanager.cpp:279
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Evaluate a simple math expression"
+#, kde-format
 msgid "Evaluate simple JavaScript statements."
-msgstr "Израчунај једноставан математички израз"
+msgstr "Извршава једноставне исказе у јаваскрипту."
 
 #: utils/katevariableexpansionmanager.cpp:289
 #, kde-format
 msgid "Encode text to make it URL compatible."
-msgstr ""
+msgstr "Кодира текст тако да буде сагласан са УРЛ‑ом."
 
 #: utils/katevariableexpansionmanager.cpp:297
 #, kde-format
 msgid "Generate a new UUID."
-msgstr ""
+msgstr "Генерише нови УУИД."
 
 #: variableeditor/variableeditor.cpp:40
 #, kde-format
@@ -6482,9 +6282,7 @@ msgid "modified"
 msgstr "измењени"
 
 #: variableeditor/variableeditor.cpp:352
-#, fuzzy, kde-format
-#| msgctxt "value for variale remove-trailing-spaces"
-#| msgid "all"
+#, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
 msgstr "свуда"
@@ -6577,7 +6375,7 @@ msgstr "режим краја реда"
 msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
-msgstr ""
+msgstr "Enter умеће изабрану ставку самодопуне."
 
 # >> @item:inlistbox
 #: variableeditor/variablelineedit.cpp:182
@@ -6791,22 +6589,20 @@ msgid "Enable word wrap while typing text."
 msgstr "преламање редова током куцања текста"
 
 #: view/katestatusbar.cpp:114
-#, fuzzy, kde-format
-#| msgid "Current cursor position. Doubleclick to go to specific line."
+#, kde-format
 msgid "Current cursor position. Click to go to a specific line."
-msgstr "Тренутни положај курсора. Двокликом скачете на дати ред."
+msgstr "Тренутни положај курсора. Кликните да одете на задати ред."
 
 #: view/katestatusbar.cpp:127
-#, fuzzy, kde-format
-#| msgid "Insert mode and VI input mode indicator"
+#, kde-format
 msgid "Insert mode and VI input mode indicator. Click to change the mode."
-msgstr "Показатељ режима уметања и Вијевог режима уноса"
+msgstr ""
+"Показатељ режима уметања и Вијевог режима уноса. Кликните да промените режим."
 
 #: view/katestatusbar.cpp:135
-#, fuzzy, kde-format
-#| msgid "Change Dictionary..."
+#, kde-format
 msgid "Change dictionary"
-msgstr "Промени речник..."
+msgstr "Промени речник"
 
 #: view/katestatusbar.cpp:161 view/katestatusbar.cpp:489
 #, kde-format
@@ -6847,16 +6643,14 @@ msgid "Encoding"
 msgstr "Кодирање"
 
 #: view/katestatusbar.cpp:200 view/katestatusbar.cpp:201
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "крај реда"
+msgstr "Тип краја реда"
 
 #: view/katestatusbar.cpp:207
-#, fuzzy, kde-format
-#| msgid "&Mode"
+#, kde-format
 msgid "Mode"
-msgstr "&Режим"
+msgstr "Режим"
 
 #: view/katestatusbar.cpp:209 view/kateview.cpp:703
 #, kde-format
@@ -6875,29 +6669,27 @@ msgstr "Истицање синтаксе"
 #: view/katestatusbar.cpp:261
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "Сажети режим реда/колоне"
 
 #: view/katestatusbar.cpp:308
-#, fuzzy, kde-format
-#| msgid "<em>[BLOCK]</em> %1"
+#, kde-format
 msgid "[BLOCK] %1"
-msgstr "<em>[БЛОК]</em> %1"
+msgstr "[БЛОК] %1"
 
 #: view/katestatusbar.cpp:324
 #, kde-format
 msgid "%1/%2:%3"
-msgstr ""
+msgstr "%1/%2:%3"
 
 #: view/katestatusbar.cpp:326
 #, kde-format
 msgid "%1:%2"
-msgstr ""
+msgstr "%1:%2"
 
 #: view/katestatusbar.cpp:330
-#, fuzzy, kde-format
-#| msgid "Line %1, Column %2"
+#, kde-format
 msgid "Line %1 of %2, Column %3"
-msgstr "ред %1, колона %2"
+msgstr "ред %1 од %2, колона %3"
 
 #: view/katestatusbar.cpp:332
 #, kde-format
@@ -6925,12 +6717,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Увлачење/табулатор: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Others"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "друго"
+msgstr "Други…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6953,8 +6743,7 @@ msgstr "Задајте жељену дубину увлачења:"
 
 # >> @info:status
 #: view/katestatusbar.cpp:568
-#, fuzzy, kde-format
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
 "chars count."
@@ -6963,16 +6752,15 @@ msgstr "речи %1/%2, знакова %3/%4"
 
 # >> @info:status
 #: view/katestatusbar.cpp:574
-#, fuzzy, kde-format
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr "речи %1/%2, знакова %3/%4"
+msgstr "речи %1, знакова %2"
 
 #: view/katestatusbar.cpp:589
 #, kde-format
 msgid "Zoom: %1%"
-msgstr ""
+msgstr "Увеличање: %1%"
 
 #: view/kateview.cpp:440
 #, kde-format
@@ -6991,55 +6779,49 @@ msgid ""
 msgstr "Копирајте тренутно изабрани текст у системски клипборд."
 
 #: view/kateview.cpp:454
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Clipboard &History Paste"
-msgstr "&Историјат клипборда"
+msgstr "Налепи из ис&торијата клипборда"
 
 #: view/kateview.cpp:459
-#, fuzzy, kde-format
-#| msgid "Language Selection"
+#, kde-format
 msgid "Paste Selection"
-msgstr "Избор језика"
+msgstr "Налепи избор"
 
 #: view/kateview.cpp:461
-#, fuzzy, kde-format
-#| msgid "Paste previously copied or cut clipboard contents"
+#, kde-format
 msgid "Paste previously mouse selection contents"
-msgstr "Налепи претходно копирани или исечени садржај клипборда"
+msgstr "Налепи садржај претходног избора мишем"
 
 #: view/kateview.cpp:465
 #, kde-format
 msgid "Paste From File"
-msgstr ""
+msgstr "Налепи из фајла"
 
 #: view/kateview.cpp:469
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "Опције разменског фајла"
+msgstr "Копирај локацију фајла"
 
 #: view/kateview.cpp:470
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Копирај име текућег фајла и број реда"
 
 #: view/kateview.cpp:473
 #, kde-format
 msgid "Swap with Clipboard Contents"
-msgstr ""
+msgstr "Размени са садржајем клипборда"
 
 #: view/kateview.cpp:474
-#, fuzzy, kde-format
-#| msgid "Cut the selected text and move it to the clipboard"
+#, kde-format
 msgid "Swap the selected text with the clipboard contents"
-msgstr "Исеци изабрани текст и смести га у клипборд"
+msgstr "Размени изабрани текст са садржајем клипборда"
 
 #: view/kateview.cpp:477
-#, fuzzy, kde-format
-#| msgid "Language Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Избор језика"
+msgstr "Направи снимак избора"
 
 #: view/kateview.cpp:481
 #, kde-format
@@ -7073,11 +6855,15 @@ msgid ""
 "paragraph, to fit the 'Wrap words at' setting in the configuration dialog."
 "<br /><br />This is a static word wrap, meaning the document is changed."
 msgstr ""
+"<html>Преломите текући ред, или преформатирајте изабране редове као пасус, "
+"тако да одговарају поставци „Преламај речи на сталној колони“ у дијалогу за "
+"подешавање.<br /><br />Ово је статичко преламање, што значи да се документ "
+"мења.</html>"
 
 #: view/kateview.cpp:503
 #, kde-format
 msgid "&Clean Indentation"
-msgstr "&Очисти увлачање"
+msgstr "&Очисти увлачење"
 
 #: view/kateview.cpp:505
 #, kde-format
@@ -7091,39 +6877,33 @@ msgstr ""
 "поштовати и користити табулаторе, или их смењивати размацима.</html>"
 
 #: view/kateview.cpp:510
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "Својства увлачења"
+msgstr "Претвори увлачење у размаке"
 
 #: view/kateview.cpp:517
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "&Увлачење"
+msgstr "Претвори увлачење у табулаторе"
 
 #: view/kateview.cpp:532
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "&Увлачење"
+msgstr "&Форматирај увлачење"
 
 #: view/kateview.cpp:533
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
-msgstr "Поравнајте текући ред или блок текста на одговарајући ниво увлачења."
+msgstr ""
+"Аутоматски увуците текући ред или блок текста на одговарајући ниво увлачења."
 
 #: view/kateview.cpp:537
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "&Поравнај"
+msgstr "Пора&внај по…"
 
 #: view/kateview.cpp:539
 #, kde-format
@@ -7138,6 +6918,14 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"Ова наредба поравнава редове у изабраном блоку или целом документу на колону "
+"задату регуларним изразом који ће бити затражен од вас.<br /><br />Ако дате "
+"празан образац, подразумевано се поравнава на први знак који није празнина."
+"<br />Ако образац има хватање, увлачи се до ухваћеног поклапања.<br /><br /"
+"><i>Примери</i>:<br />Са „-“ умеће размаке пре прве „-“ у сваком реду, тако "
+"да их све поравна на исту колону.<br />Са „:\\s+(.)“ умеће размаке пре првог "
+"знака који није празнина а налази се после двотачке, тако да их све поравна "
+"на исту колону."
 
 #: view/kateview.cpp:550
 #, kde-format
@@ -7156,16 +6944,14 @@ msgstr ""
 "правилима за истицање језика.</html>"
 
 #: view/kateview.cpp:558
-#, fuzzy, kde-format
-#| msgid "Go to previous editing line"
+#, kde-format
 msgid "Go to Previous Editing Location"
-msgstr "Иди на претходни ред уређивања"
+msgstr "Иди на претходну локацију уређивања"
 
 #: view/kateview.cpp:564
-#, fuzzy, kde-format
-#| msgid "Go to next editing line"
+#, kde-format
 msgid "Go to Next Editing Location"
-msgstr "Иди на следећи ред уређивања"
+msgstr "Иди на следећу локацију уређивања"
 
 #: view/kateview.cpp:570
 #, kde-format
@@ -7201,14 +6987,13 @@ msgstr "Закључај/откључај уписивање у документ
 #: view/kateview.cpp:588
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "&Наметни смер здесна улево"
 
 # >> @item color scheme item category
 #: view/kateview.cpp:589
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "декорације текста"
+msgstr "Наметни смер текста здесна улево"
 
 #: view/kateview.cpp:599
 #, kde-format
@@ -7271,10 +7056,9 @@ msgstr ""
 "Ручно позовите допуњавање наредби, обично путем пречице везане уз ову радњу."
 
 #: view/kateview.cpp:636
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgid "Remove Trailing Spaces"
-msgstr "Уклони &пратеће размаке:"
+msgstr "Уклони пратеће размаке"
 
 #: view/kateview.cpp:654
 #, kde-format
@@ -7302,18 +7086,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Сачувај текући документ на диск, под изабраним именом"
 
 #: view/kateview.cpp:669
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encodin&g…"
-msgstr "Сачувај са кодирањем..."
+msgstr "Сачувај са коди&рањем…"
 
 #: view/kateview.cpp:675
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save Cop&y As…"
-msgstr "Сачувај &копију као..."
+msgstr "Сачувај &копију као…"
 
 #: view/kateview.cpp:676
 #, kde-format
@@ -7329,10 +7111,9 @@ msgstr ""
 "Отвара дијалог у коме можете изабрати ред у који желите да курсор пређе."
 
 #: view/kateview.cpp:684
-#, fuzzy, kde-format
-#| msgid "Move to Previous Modified Line"
+#, kde-format
 msgid "Go to Previous Modified Line"
-msgstr "Помери на претходни измењени ред"
+msgstr "Иди на претходни измењени ред"
 
 #: view/kateview.cpp:685
 #, kde-format
@@ -7340,22 +7121,20 @@ msgid "Move upwards to the previous modified line."
 msgstr "Кретање нагоре на претходни измењени ред."
 
 #: view/kateview.cpp:690
-#, fuzzy, kde-format
-#| msgid "Move to Next Modified Line"
+#, kde-format
 msgid "Go to Next Modified Line"
-msgstr "Помери на следећи измењени ред"
+msgstr "Иди на следећи измењени ред"
 
 #: view/kateview.cpp:691
 #, kde-format
 msgid "Move downwards to the next modified line."
-msgstr "Кретање надоле на претходни измењени ред."
+msgstr "Кретање надоле на следећи измењени ред."
 
 #: view/kateview.cpp:695
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "Подеси &уређивач..."
+msgstr "Подеси &уређивач…"
 
 #: view/kateview.cpp:697
 #, kde-format
@@ -7378,10 +7157,9 @@ msgid "Here you can choose how the current document should be highlighted."
 msgstr "Овде можете изабрати како ће истицати текст у текућем документу."
 
 #: view/kateview.cpp:711
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "&Editor Color Theme"
-msgstr "КДЕ‑ова шема боја"
+msgstr "&Тема боја уређивача"
 
 #: view/kateview.cpp:717
 #, kde-format
@@ -7424,13 +7202,12 @@ msgstr "Ово смањује величину фонта на екрану."
 #: view/kateview.cpp:751
 #, kde-format
 msgid "Reset Font Size"
-msgstr ""
+msgstr "Ресетуј величину фонта"
 
 #: view/kateview.cpp:753
-#, fuzzy, kde-format
-#| msgid "This increases the display font size."
+#, kde-format
 msgid "This resets the display font size."
-msgstr "Ово повећава величину фонта на екрану."
+msgstr "Ово ресетује величину фонта на екрану."
 
 #: view/kateview.cpp:756
 #, kde-format
@@ -7446,8 +7223,7 @@ msgstr ""
 "Пребацујте између нормалног (на основу редова) и блоковског избора текста."
 
 #: view/kateview.cpp:763
-#, fuzzy, kde-format
-#| msgid "Switch to Next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Пребаци на следећи режим уноса"
 
@@ -7472,22 +7248,19 @@ msgstr ""
 
 # >> @item:inmenu Indentation Mode
 #: view/kateview.cpp:775
-#, fuzzy, kde-format
-#| msgid "Spaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "размаци"
+msgstr "Прикажи празнине"
 
 #: view/kateview.cpp:778
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"Ако је ова опција укључена, редови текста ће бити преламани на ивици приказа "
-"на екрану."
+"<html>Ако је ова опција укључена, празнине у овом документу ће бити видљиве."
+"<br /><br />Ово је само опција приказа, што значи да се документ неће мењати."
+"</html>"
 
 #: view/kateview.cpp:782
 #, kde-format
@@ -7495,17 +7268,15 @@ msgid "&Dynamic Word Wrap"
 msgstr "&Динамички прелом"
 
 #: view/kateview.cpp:786
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
 "will not be changed."
 msgstr ""
-"Ако је ова опција укључена, редови текста ће бити преламани на ивици приказа "
-"на екрану."
+"<html>Ако је ова опција укључена, редови текста ће бити преламани на ивици "
+"приказа на екрану.<br /><br />Ово је само опција приказа, што значи да се "
+"документ неће мењати.</html>"
 
 #: view/kateview.cpp:790
 #, kde-format
@@ -7538,16 +7309,13 @@ msgid "Static Word Wrap"
 msgstr "Статичко преламање текста"
 
 #: view/kateview.cpp:800
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
 "defined in the editing properties."
 msgstr ""
-"Ако је ова опција укључена, редови текста ће бити преламани на ивици приказа "
-"на екрану."
+"Ако је ова опција укључена, редови текста ће бити преламани на колони "
+"задатој у својствима уређивања."
 
 # >> @action:inmenu
 #: view/kateview.cpp:807
@@ -7746,34 +7514,32 @@ msgstr "Налази претходну појаву изабраног текс
 #: view/kateview.cpp:915
 #, kde-format
 msgid "Find and Select Next Occurrence"
-msgstr ""
+msgstr "Нађи и изабери следећу појаву"
 
 #: view/kateview.cpp:917
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
-msgstr "Налази следећу појаву изабраног текста."
+msgstr "Налази следећу појаву речи под курсором и додаје је избору."
 
 #: view/kateview.cpp:921
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr ""
+msgstr "Означи тренутно изабрану појаву као прескочену"
 
 #: view/kateview.cpp:923
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr ""
+msgstr "Означава тренутно изабрану реч као прескочену."
 
 #: view/kateview.cpp:927
 #, kde-format
 msgid "Find and Select All Occurrences"
-msgstr ""
+msgstr "Нађи и изабери све појаве"
 
 #: view/kateview.cpp:929
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
-msgstr "Налази следећу појаву изабраног текста."
+msgstr "Налази све појаве речи под курсором и бира их."
 
 #: view/kateview.cpp:933
 #, kde-format
@@ -7797,55 +7563,54 @@ msgstr ""
 #: view/kateview.cpp:944
 #, kde-format
 msgid "Add Cursors to Line Ends"
-msgstr ""
+msgstr "Додај курсоре на крајеве редова"
 
 #: view/kateview.cpp:946
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
-msgstr ""
+msgstr "Прави курсор на крају сваког реда у избору."
 
 #: view/kateview.cpp:950
 #, kde-format
 msgid "Add Caret below Cursor"
-msgstr ""
+msgstr "Додај курсор испод текућег"
 
 #: view/kateview.cpp:952
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr "Изабери целокупан текст у документу."
+msgstr "Додаје курсор у реду испод текућег курсора."
 
 #: view/kateview.cpp:956
 #, kde-format
 msgid "Add Caret above Cursor"
-msgstr ""
+msgstr "Додај курсор изнад текућег"
 
 #: view/kateview.cpp:958
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
-msgstr ""
+msgstr "Додаје курсор у реду изнад текућег курсора."
 
 #: view/kateview.cpp:962
-#, fuzzy, kde-format
-#| msgid "Text Cursor Movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
-msgstr "Померање курсора"
+msgstr "Укључи/искључи кретање курсора по camelCase подречима"
 
 #: view/kateview.cpp:963
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
+"Укључи/искључи кретање курсора по camelCase подречима уместо обичног кретања "
+"по речима."
 
 #: view/kateview.cpp:967
 #, kde-format
 msgid "Remove Cursors from Empty Lines"
-msgstr ""
+msgstr "Уклони курсоре са празних редова"
 
 #: view/kateview.cpp:968
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove cursors from empty lines"
-msgstr "Курсор на следеће једнако увлачење"
+msgstr "Уклони курсоре са празних редова"
 
 #: view/kateview.cpp:972
 #, kde-format
@@ -7859,11 +7624,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Да ли аутоматски проверавати правопис."
 
 #: view/kateview.cpp:979
-#, fuzzy, kde-format
-#| msgid "Change Dictionary..."
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Промени речник..."
+msgstr "Промени речник…"
 
 #: view/kateview.cpp:980
 #, kde-format
@@ -7893,13 +7657,14 @@ msgid ""
 "Copy the selection as HTML, formatted using the current syntax highlighting "
 "and color scheme settings."
 msgstr ""
+"Копирај избор као ХТМЛ, форматиран према тренутним поставкама истицања "
+"синтаксе и шеме боја."
 
 #: view/kateview.cpp:997
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "И&звези као ХТМЛ..."
+msgstr "И&звези као ХТМЛ…"
 
 #: view/kateview.cpp:999
 #, kde-format
@@ -7939,11 +7704,11 @@ msgstr "Изабери знак десно"
 msgid "Select Word Right"
 msgstr "Изабери реч десно"
 
+# >> @item:inlistbox
 #: view/kateview.cpp:1082
-#, fuzzy, kde-format
-#| msgid "Language Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "Избор језика"
+msgstr "Започни означени избор"
 
 #: view/kateview.cpp:1083
 #, kde-format
@@ -7951,6 +7716,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Опонаша режим избора као у Емаксу, где се означи почетак, а затим се избор "
+"непрекидно ажурира."
 
 #: view/kateview.cpp:1088
 #, kde-format
@@ -8073,8 +7840,7 @@ msgid "Select to Bottom of View"
 msgstr "Изабери до дна приказа"
 
 #: view/kateview.cpp:1254
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Go to Matching Bracket"
 msgstr "Иди на парњачку заграду"
 
@@ -8084,28 +7850,24 @@ msgid "Select to Matching Bracket"
 msgstr "Изабери до парњачке заграде"
 
 #: view/kateview.cpp:1267
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Sub-Word Right"
-msgstr "Помери реч десно"
+msgstr "Помери подреч десно"
 
 #: view/kateview.cpp:1274
-#, fuzzy, kde-format
-#| msgid "Select Word Right"
+#, kde-format
 msgid "Select Sub-Word Right"
-msgstr "Изабери реч десно"
+msgstr "Изабери подреч десно"
 
 #: view/kateview.cpp:1281
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Sub-Word Left"
-msgstr "Помери реч лево"
+msgstr "Помери подреч лево"
 
 #: view/kateview.cpp:1288
-#, fuzzy, kde-format
-#| msgid "Select Word Left"
+#, kde-format
 msgid "Select Sub-Word Left"
-msgstr "Изабери реч лево"
+msgstr "Изабери подреч лево"
 
 #: view/kateview.cpp:1298
 #, kde-format
@@ -8113,10 +7875,9 @@ msgid "Transpose Characters"
 msgstr "Преметни знакове"
 
 #: view/kateview.cpp:1303
-#, fuzzy, kde-format
-#| msgid "Transpose Characters"
+#, kde-format
 msgid "Transpose Words"
-msgstr "Преметни знакове"
+msgstr "Преметни речи"
 
 #: view/kateview.cpp:1308
 #, kde-format
@@ -8144,8 +7905,7 @@ msgid "Backspace"
 msgstr "Назад"
 
 #: view/kateview.cpp:1340
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
 msgstr "Уметни табулатор"
 
@@ -8164,38 +7924,37 @@ msgstr ""
 "бројеви."
 
 #: view/kateview.cpp:1354
-#, fuzzy, kde-format
-#| msgid "Insert Smart Newline"
+#, kde-format
 msgid "Insert a Non-Indented Newline"
-msgstr "Уметни паметно нови ред"
+msgstr "Уметни неувучени нови ред"
 
 #: view/kateview.cpp:1355
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
-msgstr ""
+msgstr "Умеће нови ред без увлачења, без обзира на поставке увлачења."
 
 #: view/kateview.cpp:1363
 #, kde-format
 msgid "Insert a Newline Above Current Line"
-msgstr ""
+msgstr "Уметни нови ред изнад текућег"
 
 #: view/kateview.cpp:1364
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
-msgstr ""
+msgstr "Умеће нови ред изнад текућег, без измене текућег реда."
 
 #: view/kateview.cpp:1372
 #, kde-format
 msgid "Insert a Newline Below Current Line"
-msgstr ""
+msgstr "Уметни нови ред испод текућег"
 
 #: view/kateview.cpp:1373
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
-msgstr ""
+msgstr "Умеће нови ред испод текућег, без измене текућег реда."
 
 #: view/kateview.cpp:1382
 #, kde-format
@@ -8224,16 +7983,14 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Извуците изабрани блок текста."
 
 #: view/kateview.cpp:1398
-#, fuzzy, kde-format
-#| msgid "Delete Word Left"
+#, kde-format
 msgid "Delete Sub-Word Left"
-msgstr "Обриши реч лево"
+msgstr "Обриши подреч лево"
 
 #: view/kateview.cpp:1405
-#, fuzzy, kde-format
-#| msgid "Delete Word Right"
+#, kde-format
 msgid "Delete Sub-Word Right"
-msgstr "Обриши реч десно"
+msgstr "Обриши подреч десно"
 
 #: view/kateview.cpp:1426
 #, kde-format
@@ -8246,40 +8003,34 @@ msgid "Unfold Toplevel Nodes"
 msgstr "Развиј чворове на врху"
 
 #: view/kateview.cpp:1434
-#, fuzzy, kde-format
-#| msgid "Fold Current Node"
+#, kde-format
 msgid "Toggle Current Node"
-msgstr "Сажми текући чвор"
+msgstr "Укључи/искључи сажимање текућег чвора"
 
 #: view/kateview.cpp:1438
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgid "Toggle Contained Nodes"
-msgstr "Закоментариши/откоментариши"
+msgstr "Укључи/искључи сажимање садржаних чворова"
 
 #: view/kateview.cpp:1447
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Изабери целокупан текст у документу."
+msgstr "Изговори текући избор или документ"
 
 #: view/kateview.cpp:1457
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "Сачувај текући документ"
+msgstr "Заустави текући изговор"
 
 #: view/kateview.cpp:1463
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "Сачувај текући документ"
+msgstr "Паузирај текући изговор"
 
 #: view/kateview.cpp:1469
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "Сачувај текући документ"
+msgstr "Настави текући изговор"
 
 # well-spelled: СЗЧ
 #: view/kateview.cpp:1640
@@ -8290,36 +8041,33 @@ msgstr "(СЗЧ) %1"
 #: view/kateview.cpp:1828
 #, kde-format
 msgid "Camel case movement disabled"
-msgstr ""
+msgstr "Кретање по camelCase подречима искључено"
 
 #: view/kateview.cpp:1830
 #, kde-format
 msgid "Camel case movement enabled"
-msgstr ""
+msgstr "Кретање по camelCase подречима укључено"
 
 #: view/kateview.cpp:2349
-#, fuzzy, kde-format
-#| msgid "Search mode"
+#, kde-format
 msgid "Search wrapped"
-msgstr "Режим тражења"
+msgstr "Претрага је обишла документ"
 
 # >> @title:window
 #: view/kateview.cpp:3052
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Open File"
-msgstr "Уписивање фајла"
+msgstr "Отварање фајла"
 
 #: view/kateview.cpp:3995
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "&Поравнај"
+msgstr "Поравнање по"
 
 #: view/kateview.cpp:3995
 #, kde-format
 msgid "Alignment pattern:"
-msgstr ""
+msgstr "Образац поравнања:"
 
 # >> @title:window
 #: view/kateview.cpp:5079
@@ -8408,76 +8156,67 @@ msgstr "Искључи траку тумачења"
 
 # rewrite-msgid: |Open/Save|File actions|
 #: view/screenshotdialog.cpp:175
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Радње с фајлом"
+msgstr "Сачувај"
 
 #: view/screenshotdialog.cpp:176
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgid "Copy"
-msgstr "Сачувај &копију као..."
+msgstr "Копирај"
 
 #: view/screenshotdialog.cpp:177
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Боја &позадине..."
+msgstr "Боја позадине…"
 
 # >> @item color scheme item category
 #: view/screenshotdialog.cpp:179
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "декорације текста"
+msgstr "Прикажи додатне декорације"
 
 # skip-rule: t-line
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Прикажи линије &увлачења"
+msgstr "Прикажи декорације прозора"
 
 #: view/screenshotdialog.cpp:185
-#, fuzzy, kde-format
-#| msgid "Language Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
-msgstr "Избор језика"
+msgstr "Снимак избора"
 
 # >> @action:inmenu
 #: view/screenshotdialog.cpp:257
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "&Бројеви редова"
+msgstr "Не приказуј бројеве редова"
 
 # >> @action:inmenu
 #: view/screenshotdialog.cpp:258
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "&Бројеви редова"
+msgstr "Прикажи бројеве редова од 1"
 
 # >> @action:inmenu
 #: view/screenshotdialog.cpp:259
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "&Бројеви редова"
+msgstr "Прикажи стварне бројеве редова"
 
 #: view/screenshotdialog.cpp:422
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "Неуспешно уписивање снимка"
 
 #: view/screenshotdialog.cpp:422
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "Не могу да сачувам снимак: %1"
 
 #: vimode/appcommands.cpp:72
 #, kde-format
@@ -8485,10 +8224,9 @@ msgid "All documents written to disk"
 msgstr "Сви документи уписани на диск"
 
 #: vimode/appcommands.cpp:74
-#, fuzzy, kde-format
-#| msgid "All documents written to disk"
+#, kde-format
 msgid "Only some documents were written to disk"
-msgstr "Сви документи уписани на диск"
+msgstr "Само неки документи су уписани на диск"
 
 #: vimode/appcommands.cpp:79
 #, kde-format
@@ -8582,7 +8320,7 @@ msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
 "b></tt></p><p>After executing it, the current view will be closed.</p>"
 msgstr ""
-"<p><b><tt>clo[se]t</tt> — затварање текућег приказа</b></p><p>Употреба: "
+"<p><b><tt>clo[se]</tt> — затварање текућег приказа</b></p><p>Употреба: "
 "<tt><b>clo[se]</b></tt></p><p>По извршењу, текући приказ ће бити затворен.</"
 "p>"
 
@@ -8603,20 +8341,16 @@ msgstr ""
 "tt> — дели приказ усправно и отвара нови документ.<br /></p>"
 
 #: vimode/appcommands.cpp:280
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: "
-#| "<tt><b>e[dit]</b></tt></p><p>Starts <b>e</b>diting the current document "
-#| "again. This is useful to re-edit the current file, when it has been "
-#| "changed by another program.</p>"
+#, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
 "b></tt></p><p>Starts <b>e</b>diting the current document again. This is "
 "useful to re-edit the current file, when it was modified on disk.</p>"
 msgstr ""
-"<p><b><tt>e[dit]</tt> — поновно учитавање текућег документа</b></"
-"p><p>Употреба: <tt><b>e[dit]</b></tt></p><p>Поново започиње уређивање "
-"документа. Корисно у случају где други програм измени фајл.</p>"
+"<p><b>e[dit] — поновно учитавање текућег документа</b></p><p>Употреба: "
+"<tt><b>e[dit]</b></tt></p><p>Поново започиње уређивање (<b>e</b>dit) текућег "
+"документа. Корисно је за поновно уређивање текућег фајла када је измењен на "
+"диску.</p>"
 
 #: vimode/appcommands.cpp:528
 #, kde-format
@@ -8875,559 +8609,3 @@ msgstr "'%1' %2,  хекс %3, окт %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Обележје није постављено: %1"
-
-#, fuzzy
-#~| msgid "The file '%1' was created by another program."
-#~ msgid "The file '%1' was created on disk."
-#~ msgstr "Неки други програм је направио фајл ‘%1’."
-
-#~ msgid ""
-#~ "Use this command to copy the currently selected text as HTML to the "
-#~ "system clipboard."
-#~ msgstr "Копирајте тренутно изабрани текст као ХТМЛ у системски клипборд."
-
-#~ msgctxt "Wrap words at (value is at 20 or larger)"
-#~ msgid " character"
-#~ msgid_plural " characters"
-#~ msgstr[0] " знак"
-#~ msgstr[1] " знака"
-#~ msgstr[2] " знакова"
-#~ msgstr[3] " знак"
-
-#, fuzzy
-#~| msgid "&Save As..."
-#~ msgid "Save..."
-#~ msgstr "&Сачувај као..."
-
-#, fuzzy
-#~| msgid "Save &Copy As..."
-#~ msgid "&Copy..."
-#~ msgstr "Сачувај &копију као..."
-
-#~ msgid "Other..."
-#~ msgstr "други..."
-
-#, fuzzy
-#~| msgid "&Align"
-#~ msgid "&Align On..."
-#~ msgstr "&Поравнај"
-
-#~ msgid "Change Dictionary..."
-#~ msgstr "Промени речник..."
-
-#~ msgid "The file %1 does not exist."
-#~ msgstr "Фајл ‘%1’ не постоји."
-
-#~ msgid ""
-#~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
-#~ "\n"
-#~ "Check if you have read access to this file."
-#~ msgstr ""
-#~ "Фајл ‘%1’ није могао бити учитан, пошто се не може читати.\n"
-#~ "\n"
-#~ "Проверите да ли имате дозволу читања за овај фајл."
-
-#~ msgid ""
-#~ "The file %1 was opened with %2 encoding but contained invalid characters. "
-#~ "It is set to read-only mode, as saving might destroy its content. Either "
-#~ "reopen the file with the correct encoding chosen or enable the read-write "
-#~ "mode again in the tools menu to be able to edit it."
-#~ msgstr ""
-#~ "Фајл ‘%1’ отворен је са кодирањем %2, али садржи неисправне знаке. "
-#~ "Постављен је режим само‑за‑читање, јер би садржај могао бити оштећен "
-#~ "уписивањем. Или поново отворите фајл са тачним кодирањем, или ручно "
-#~ "укључите режим читања-писања у менију алатки ако ипак желите да га "
-#~ "уређујете."
-
-#~ msgid ""
-#~ "The file %1 was opened and contained lines longer than the configured "
-#~ "Line Length Limit (%2 characters).<br/>The longest of those lines was %3 "
-#~ "characters long<br/>Those lines were wrapped and the document is set to "
-#~ "read-only mode, as saving will modify its content."
-#~ msgstr ""
-#~ "Отворен је фајл %1 који садржи редове дуже од подешеног ограничења дужине "
-#~ "(%2 знакова). Најдужи међу њима има %3 знакова. Такви редови су "
-#~ "преломљени и документ је постављен на само‑за‑читање, пошто би уписивање "
-#~ "изменило садржај фајла.|/|Отворен је фајл %1 који садржи редове дуже од "
-#~ "подешеног ограничења дужине (%2 $[множ ^2 знака знака знакова]). Најдужи "
-#~ "међу њима има %3 $[множ ^3 знак знака знакова]. Такви редови су "
-#~ "преломљени и документ је постављен на само‑за‑читање, пошто би уписивање "
-#~ "изменило садржај фајла."
-
-#~ msgid "Error loading script %1\n"
-#~ msgstr "Грешка при учитавању скрипте ‘%1’\n"
-
-#~ msgid "Code Completion Configuration"
-#~ msgstr "Постава допуњавања кôда"
-
-#~ msgid "Namespaces"
-#~ msgstr "Именски простори"
-
-#~ msgid "Classes"
-#~ msgstr "Класе"
-
-#~ msgid "Structs"
-#~ msgstr "Структуре"
-
-#~ msgid "Unions"
-#~ msgstr "Уније"
-
-#~ msgid "Functions"
-#~ msgstr "Функције"
-
-#~ msgid "Enumerations"
-#~ msgstr "Набрајачи"
-
-#~ msgid "Prefix"
-#~ msgstr "Префикс"
-
-#~ msgid "Icon"
-#~ msgstr "Иконица"
-
-#~ msgid "Scope"
-#~ msgstr "Досег"
-
-#~ msgid "Name"
-#~ msgstr "име"
-
-#~ msgid "Arguments"
-#~ msgstr "Аргументи"
-
-#~ msgid "Postfix"
-#~ msgstr "Постфикс"
-
-#~ msgid "Public"
-#~ msgstr "Јавно"
-
-#~ msgid "Protected"
-#~ msgstr "Заштићено"
-
-#~ msgid "Private"
-#~ msgstr "Приватно"
-
-#~ msgid "Static"
-#~ msgstr "Статичко"
-
-#~ msgid "Constant"
-#~ msgstr "Константно"
-
-#~ msgid "Namespace"
-#~ msgstr "Именски простор"
-
-#~ msgid "Class"
-#~ msgstr "Класа"
-
-#~ msgid "Struct"
-#~ msgstr "Структура"
-
-#~ msgid "Union"
-#~ msgstr "Унија"
-
-#~ msgid "Function"
-#~ msgstr "Функција"
-
-#~ msgid "Variable"
-#~ msgstr "Променљива"
-
-#~ msgid "Enumeration"
-#~ msgstr "Набрајач"
-
-#~ msgid "Template"
-#~ msgstr "Шаблон"
-
-#~ msgid "Virtual"
-#~ msgstr "Виртуелно"
-
-#~ msgid "Override"
-#~ msgstr "Потискивање"
-
-#~ msgid "Inline"
-#~ msgstr "Уткано"
-
-#~ msgid "Friend"
-#~ msgstr "Пријатељ"
-
-#~ msgid "Signal"
-#~ msgstr "Сигнал"
-
-#~ msgid "Slot"
-#~ msgstr "Слот"
-
-#~ msgid "Local Scope"
-#~ msgstr "Локални досег"
-
-#~ msgid "Namespace Scope"
-#~ msgstr "Именскопросторни досег"
-
-#~ msgid "Global Scope"
-#~ msgstr "Глобални досег"
-
-#~ msgid "Unknown Property"
-#~ msgstr "Непознато својство"
-
-#~ msgid "Go To"
-#~ msgstr "Иди на"
-
-# >> @action:inmenu
-#~ msgid "Show &folding markers"
-#~ msgstr "&Ручке за сажимање"
-
-#~ msgid ""
-#~ "Choose how the bookmarks should be ordered in the <b>Bookmarks</b> menu."
-#~ msgstr "Изаберите како ће обележивачи бити ређани у менију."
-
-#~ msgid "B&y creation"
-#~ msgstr "по &настанку"
-
-#~ msgid "By posi&tion"
-#~ msgstr "по &положају"
-
-#~ msgid "Description"
-#~ msgstr "опис"
-
-#~ msgid "Edit Entry..."
-#~ msgstr "Уреди ставку..."
-
-#~ msgid "Add Entry..."
-#~ msgstr "Додај ставку..."
-
-#~ msgid "Further Notes"
-#~ msgstr "Још напомена"
-
-#~ msgid ""
-#~ "<p>The entries are accessible through the submenu <b>Commands</b> in the "
-#~ "<b>Tools</b> menu. For faster access it is possible to assign "
-#~ "<b>shortcuts</b> in the shortcut configuration page after applying the "
-#~ "changes.</p>"
-#~ msgstr ""
-#~ "<qt><p>Ставке су доступне кроз подмени <i>Наредбе</i> менија <i>Алатке</"
-#~ "i>. Пошто се измене примене, могуће је доделити пречице за бржи приступ, "
-#~ "на страници поставе пречица.</p></qt>"
-
-#~ msgid "Edit Command"
-#~ msgstr "Уреди наредбу"
-
-#~ msgid "&Associated command:"
-#~ msgstr "&Придружена наредба:"
-
-#~ msgid "Choose an icon."
-#~ msgstr "Изаберите иконицу."
-
-#~ msgid "<p>This icon will be displayed in the menu and toolbar.</p>"
-#~ msgstr "<p>Ова ће иконица бити приказана у менију и траци алатки.</p>"
-
-#~ msgid "&Description:"
-#~ msgstr "&Опис:"
-
-#~ msgid "&Category:"
-#~ msgstr "&Категорија:"
-
-#~ msgid "Sorting"
-#~ msgstr "Ређање"
-
-#~ msgid "Alphabetical"
-#~ msgstr "По алфабету"
-
-#~ msgid "Reverse"
-#~ msgstr "Обрнуто"
-
-#~ msgid "Case sensitive"
-#~ msgstr "Разликуј величину слова"
-
-#~ msgid "Inheritance depth"
-#~ msgstr "Дубина наслеђивања"
-
-#~ msgid "Order of Groupings (select a grouping method to configure):"
-#~ msgstr "Редослед груписања (изаберите метод груписања да га подесите):"
-
-#~ msgid "^"
-#~ msgstr "^"
-
-#~ msgid "\\/"
-#~ msgstr "\\/"
-
-#~ msgid "Filtering"
-#~ msgstr "Филтрирање"
-
-#~ msgid "Suitable context matches only"
-#~ msgstr "Само погодна контекстна поклапања"
-
-#~ msgid "Hide completions with the following attributes:"
-#~ msgstr "Сакриј допуне са следећим атрибутима:"
-
-#~ msgid "Maximum inheritance depth:"
-#~ msgstr "Највећа дубина наслеђивања:"
-
-#~ msgid "Infinity"
-#~ msgstr "бесконачно"
-
-#~ msgid "Grouping"
-#~ msgstr "Груписање"
-
-#~ msgid "Grouping Method"
-#~ msgstr "Метод груписања"
-
-#~ msgid "Scope type (local, namespace, global)"
-#~ msgstr "Тип досега (локални, именски простор, глобални)"
-
-#~ msgid "Scope (eg. per class)"
-#~ msgstr "Досег (нпр. по класи)"
-
-#~ msgid "Access type (public etc.)"
-#~ msgstr "Тип приступа (јавни, итд.)"
-
-#~ msgid "Item type (function etc.)"
-#~ msgstr "Тип ставке (функција, итд.)"
-
-#~ msgid "Access Grouping Properties"
-#~ msgstr "Својства груписања приступа"
-
-#~ msgid "Include const in grouping"
-#~ msgstr "Укључи конст. у груписање"
-
-#~ msgid "Include static in grouping"
-#~ msgstr "Укључи статичке у груписање"
-
-#~ msgid "Include signals and slots in grouping"
-#~ msgstr "Укључи сигнале и слотове у груписање"
-
-#~ msgid "Item Grouping properties"
-#~ msgstr "Својства груписања ставки"
-
-#~ msgid "Include templates in grouping"
-#~ msgstr "Укључи шаблоне у груписање"
-
-#~ msgid "Column Merging"
-#~ msgstr "Стапање колона"
-
-#~ msgid "Columns"
-#~ msgstr "Колоне"
-
-#~ msgid "Merged"
-#~ msgstr "стопљене"
-
-#~ msgid "Shown"
-#~ msgstr "приказане"
-
-#~ msgid "Enable static &word wrap"
-#~ msgstr "Укључи &статичко преламање текста"
-
-# >> @action:inmenu
-#, fuzzy
-#~| msgid "Show Static &Word Wrap Marker"
-#~ msgid "Show static word wra&p marker"
-#~ msgstr "&Граничник статичког прелома"
-
-#~ msgid "Input Mode"
-#~ msgstr "Режим уноса"
-
-#~ msgid "Enable automatic brackets"
-#~ msgstr "Укључи аутоматске заграде"
-
-#~ msgid ""
-#~ "<p>Backing up on save will cause Kate to copy the disk file to '&lt;"
-#~ "prefix&gt;&lt;filename&gt;&lt;suffix&gt;' before saving changes.<p>The "
-#~ "suffix defaults to <strong>~</strong> and prefix is empty by default."
-#~ msgstr ""
-#~ "<qt><p>Када задате да се фајл сачува, Кејт ће прво његов претходни "
-#~ "садржај копирати у резервни фајл по имену <tt>&lt;prefiks&gt;&lt;ime&gt;"
-#~ "&lt;sufiks&gt;</tt>, па га тек онда пребрисати новим садржајем.</"
-#~ "p><p>Подразумевано је префикс празан, а суфикс је <tt>~</tt>.</p></qt>"
-
-#~ msgid "Backup on Save"
-#~ msgstr "Резерва при уписивању"
-
-#~ msgid "&Prefix:"
-#~ msgstr "&Префикс:"
-
-#~ msgid "&Suffix:"
-#~ msgstr "&Суфикс:"
-
-#~ msgid "Disable"
-#~ msgstr "искључено"
-
-#~ msgid "Enable"
-#~ msgstr "укључено"
-
-#~ msgid "Alternative Directory"
-#~ msgstr "алтернативна фасцикла"
-
-#~ msgid "Directory:"
-#~ msgstr "Фасцикла:"
-
-# rewrite-msgid: /swp/swap/
-#~ msgid "Directory for swp files"
-#~ msgstr "Фасцикла за разменске фајлове"
-
-#~ msgid "Sync every:"
-#~ msgstr "Синхронизуј на:"
-
-#~ msgid ""
-#~ "Be aware, that disabling the swap file synchronization may lead to data "
-#~ "loss in case of a system crash."
-#~ msgstr ""
-#~ "Пазите, без синхронизације разменског фајла може доћи до губитка података "
-#~ "у случају пада система."
-
-#~ msgid ""
-#~ "If this option is checked, the text lines will be wrapped at the view "
-#~ "border on the screen."
-#~ msgstr ""
-#~ "Ако је ова опција укључена, редови текста ће бити преламани на ивици "
-#~ "приказа на екрану."
-
-#, fuzzy
-#~| msgid "Dynamic &word wrap indicators (if applicable):"
-#~ msgid "D&ynamic word wrap indicators (if applicable):"
-#~ msgstr "&Показатељи динамичког преламања (када има смисла):"
-
-#, fuzzy
-#~| msgid "Align dynamically wrapped lines to indentation depth:"
-#~ msgid "&Align dynamically wrapped lines to indentation depth:"
-#~ msgstr "Поравнај динамички преломљене редове на дубину увлачења:"
-
-#, fuzzy
-#~| msgctxt "value for variale remove-trailing-spaces"
-#~| msgid "all"
-#~ msgid "All"
-#~ msgstr "свуда"
-
-#~ msgid "Highlight marker size:"
-#~ msgstr "Величина маркера истицања:"
-
-#, fuzzy
-#~| msgid "&Highlight tabulators"
-#~ msgid "Highlight tabulators"
-#~ msgstr "&Истакни табулаторе"
-
-#~ msgid "Choo&se Font..."
-#~ msgstr "&Изаберите фонт..."
-
-#~ msgid "%1, %2pt"
-#~ msgstr "%1, %2 pt"
-
-#~ msgid "&Schema:"
-#~ msgstr "&Шема:"
-
-#~ msgid "How do you want to import the schema?"
-#~ msgstr "Како желите да увезете шему?"
-
-#~ msgid "Replace current schema?"
-#~ msgstr "Замени текућу шему"
-
-#~ msgid "Replace existing schema %1"
-#~ msgstr "Замени постојећу шему %1"
-
-#~ msgid "Import as new schema:"
-#~ msgstr "Увези као нову шему:"
-
-#~ msgid "Loading all highlightings for schema"
-#~ msgstr "Учитавам сва истицања за шему"
-
-# >> @title:window
-#~ msgid "Importing colors for single highlighting"
-#~ msgstr "Увоз боја за једно истицање"
-
-#~ msgid "Kate color schema"
-#~ msgstr "Кејтина шема боја"
-
-#~ msgid "File is not a single highlighting color file"
-#~ msgstr "Фајл није у формату боја за једно истицање"
-
-#~ msgid "Fileformat error"
-#~ msgstr "Грешка формата фајла"
-
-#~ msgid "The selected file contains colors for a non existing highlighting:%1"
-#~ msgstr "Изабрани фајл садржи боје за непостојеће истицање: %1"
-
-#~ msgid "Import failure"
-#~ msgstr "Неуспех увоза"
-
-#~ msgid "Colors have been imported for highlighting: %1"
-#~ msgstr "Боје су увезене за истицање: %1"
-
-#~ msgid "Import has finished"
-#~ msgstr "Увоз довршен"
-
-# >> @title:window
-#~ msgid "Exporting colors for single highlighting: %1"
-#~ msgstr "Извоз боја за једно истицање: %1"
-
-#~ msgid "&New..."
-#~ msgstr "&Нова..."
-
-# >> %1 is an application name
-#~ msgid "&Default schema for %1:"
-#~ msgstr "&Подразумевана шема за %1:|/|&Подразумевана шема за $[аку %1]:"
-
-#~ msgid "Exporting schema"
-#~ msgstr "Извозим шему"
-
-#~ msgid "The file does not contain a full color schema."
-#~ msgstr "Фајл не садржи потпуну шему боја."
-
-#~ msgid "Name unspecified"
-#~ msgstr "Име није наведено"
-
-#~ msgid "Importing schema"
-#~ msgstr "Увозим шему"
-
-#~ msgid "Name for New Schema"
-#~ msgstr "Име за нову шему"
-
-#~ msgid "Name:"
-#~ msgstr "Име:"
-
-#~ msgid "New Schema"
-#~ msgstr "Нова шема"
-
-#~ msgid "Fonts & Colors"
-#~ msgstr "Фонтови и боје"
-
-#~ msgid "Font & Color Schemas"
-#~ msgstr "Фонтови и шеме боја"
-
-#~ msgctxt "Script command name"
-#~ msgid "Expand abbreviation"
-#~ msgstr "Прошири скраћеницу"
-
-#~ msgctxt "Script command name"
-#~ msgid "Toggle comment"
-#~ msgstr "Закоментариши/откоментариши"
-
-#~ msgctxt "Script command category"
-#~ msgid "Quick Coding"
-#~ msgstr "Брзо кодирање"
-
-#~ msgid "Expand Quick Coding Abbreviation"
-#~ msgstr "Прошири скраћеницу брзог кодирања"
-
-#~ msgctxt "Autoindent mode"
-#~ msgid "Lua"
-#~ msgstr "луа"
-
-#~ msgid "Non-whitespace (excluding line breaks)"
-#~ msgstr "није празнина (осим прелома реда)"
-
-#~ msgid "Lookahead"
-#~ msgstr "предувид"
-
-#~ msgid ""
-#~ "Meaning of current icon: Document was not modified since it was loaded"
-#~ msgstr "Значење тренутне иконице: документ није мењан пошто је учитан."
-
-#~ msgid "Meaning of current icon: Document was modified since it was loaded"
-#~ msgstr "Значење тренутне иконице: документ је измењен откако је учитан."
-
-#~ msgid ""
-#~ "Meaning of current icon: Document was modified or deleted by another "
-#~ "program"
-#~ msgstr "Значење тренутне иконице: неки други програм је изменио документ."
-
-#, fuzzy
-#~| msgid "Meaning of current icon: Document was modified since it was loaded"
-#~ msgid "Meaning of current icon: Document is in read-only mode"
-#~ msgstr "Значење тренутне иконице: документ је измењен откако је учитан."
-
-#~ msgid "&Schema"
-#~ msgstr "&Шема"
