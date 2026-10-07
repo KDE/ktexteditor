@@ -5149,7 +5149,7 @@ void KTextEditor::ViewPrivate::createHighlights()
     do {
         searchRange.setRange(start, visibleRange().end());
 
-        matches = doc()->searchText(searchRange, m_currentTextForHighlights);
+        matches = doc()->searchText(searchRange, m_currentTextForHighlights, {});
 
         if (matches.first().isValid()) {
             if (matches.first() != selectionRange()) {
