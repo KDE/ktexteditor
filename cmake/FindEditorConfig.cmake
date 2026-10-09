@@ -25,8 +25,6 @@ if(EditorConfig_INCLUDE_DIRS)
     find_library(EditorConfig_LIBRARIES NAMES editorconfig)
     include(FindPackageHandleStandardArgs)
     find_package_handle_standard_args(EditorConfig
-        FOUND_VAR
-            EditorConfig_FOUND
         REQUIRED_VARS
             EditorConfig_LIBRARIES
             EditorConfig_INCLUDE_DIRS
