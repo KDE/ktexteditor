@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-03 00:41+0000\n"
-"PO-Revision-Date: 2026-10-08 19:05+0300\n"
+"PO-Revision-Date: 2026-10-12 12:01+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2645,27 +2645,27 @@ msgstr ""
 #: printing/printconfigwidgets.cpp:116
 #, kde-format
 msgid "Hea&der && Footer"
-msgstr "&Üstbilgi ve Altbilgi"
+msgstr "&Üst Bilgi ve Alt Bilgi"
 
 #: printing/printconfigwidgets.cpp:123
 #, kde-format
 msgid "Pr&int header"
-msgstr "Ü&stbilgiyi yazdır"
+msgstr "Ü&st bilgiyi yazdır"
 
 #: printing/printconfigwidgets.cpp:125
 #, kde-format
 msgid "Pri&nt footer"
-msgstr "&Altbilgiyi yazdır"
+msgstr "&Alt bilgiyi yazdır"
 
 #: printing/printconfigwidgets.cpp:131
 #, kde-format
 msgid "Header/footer font:"
-msgstr "Üstbilgi/Altbilgi yazıtipi:"
+msgstr "Üst bilgi/Alt bilgi yazıtipi:"
 
 #: printing/printconfigwidgets.cpp:137
 #, kde-format
 msgid "Header Properties"
-msgstr "Üstbilgi Özellikleri"
+msgstr "Üst Bilgi Özellikleri"
 
 #: printing/printconfigwidgets.cpp:141
 #, kde-format
@@ -2690,7 +2690,7 @@ msgstr "&Arka Plan"
 #: printing/printconfigwidgets.cpp:181
 #, kde-format
 msgid "Footer Properties"
-msgstr "Altbilgi Özellikleri"
+msgstr "Alt Bilgi Özellikleri"
 
 #: printing/printconfigwidgets.cpp:186
 #, kde-format
@@ -2706,7 +2706,7 @@ msgstr "&Arka Plan"
 #, kde-format
 msgid "<p>Format of the page header. The following tags are supported:</p>"
 msgstr ""
-"<p>Sayfa üstbilgisini biçimlendirir. Aşağıdaki künyeler desteklenir:</p>"
+"<p>Sayfa üst bilgisini biçimlendirir. Aşağıdaki künyeler desteklenir:</p>"
 
 #: printing/printconfigwidgets.cpp:252
 #, kde-format
@@ -2729,7 +2729,7 @@ msgstr ""
 #, kde-format
 msgid "<p>Format of the page footer. The following tags are supported:</p>"
 msgstr ""
-"<p>Sayfa altbilgisini biçimlendirir. Aşağıdaki künyeler desteklenir:</p>"
+"<p>Sayfa alt bilgisini biçimlendirir. Aşağıdaki künyeler desteklenir:</p>"
 
 #: printing/printconfigwidgets.cpp:352
 #, kde-format
@@ -2854,7 +2854,7 @@ msgid ""
 "contents with a line as well.</p>"
 msgstr ""
 "<p>Etkinleştirilirse her sayfanın içeriğinin çevresine aşağıdaki "
-"özelliklerde tanımlandığı gibi bir kutu çizilecektir. Üstbilgi ve Altbilgi "
+"özelliklerde tanımlandığı gibi bir kutu çizilecektir. Üst Bilgi ve Alt Bilgi "
 "de içerikten bir çizgi ile ayrılacaktır.</p>"
 
 #: printing/printconfigwidgets.cpp:555
