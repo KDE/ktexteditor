@@ -4818,7 +4818,7 @@ void KTextEditor::DocumentPrivate::slotModifiedOnDisk(KTextEditor::View * /*v*/)
 void KTextEditor::DocumentPrivate::onModOnHdSaveAs()
 {
     m_modOnHd = false;
-    const QUrl res = getSaveFileUrl(i18n("Save File"));
+    const QUrl res = getSaveAsUrl();
     if (!res.isEmpty()) {
         if (!saveAs(res)) {
             KMessageBox::error(dialogParent(), i18n("Save failed"));
@@ -5079,10 +5079,19 @@ bool KTextEditor::DocumentPrivate::closeOtherDocumentForSaveUrl(const QUrl &save
     return application->closeDocument(other);
 }
 
-bool KTextEditor::DocumentPrivate::documentSaveAs()
+QUrl KTextEditor::DocumentPrivate::getSaveAsUrl()
 {
     const QUrl saveUrl = getSaveFileUrl(i18n("Save File"));
     if (saveUrl.isEmpty() || !closeOtherDocumentForSaveUrl(saveUrl)) {
+        return {};
+    }
+    return saveUrl;
+}
+
+bool KTextEditor::DocumentPrivate::documentSaveAs()
+{
+    const QUrl saveUrl = getSaveAsUrl();
+    if (saveUrl.isEmpty()) {
         return false;
     }
 
@@ -5091,8 +5100,8 @@ bool KTextEditor::DocumentPrivate::documentSaveAs()
 
 bool KTextEditor::DocumentPrivate::documentSaveAsWithEncoding(const QString &encoding)
 {
-    const QUrl saveUrl = getSaveFileUrl(i18n("Save File"));
-    if (saveUrl.isEmpty() || !closeOtherDocumentForSaveUrl(saveUrl)) {
+    const QUrl saveUrl = getSaveAsUrl();
+    if (saveUrl.isEmpty()) {
         return false;
     }
 
@@ -5892,7 +5901,7 @@ void KTextEditor::DocumentPrivate::slotQueryClose_save(bool *handled, bool *abor
     *handled = true;
     *abortClosing = true;
     if (url().isEmpty()) {
-        const QUrl res = getSaveFileUrl(i18n("Save File"));
+        const QUrl res = getSaveAsUrl();
         if (res.isEmpty()) {
             *abortClosing = true;
             return;
@@ -6079,7 +6088,7 @@ bool KTextEditor::DocumentPrivate::queryClose()
         sigQueryClose(&handled, &abortClose);
         if (!handled) {
             if (url().isEmpty()) {
-                const QUrl url = getSaveFileUrl(i18n("Save File"));
+                const QUrl url = getSaveAsUrl();
                 if (url.isEmpty()) {
                     return false;
                 }
