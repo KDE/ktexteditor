@@ -994,6 +994,13 @@ public:
      */
     bool closeOtherDocumentForSaveUrl(const QUrl &saveUrl);
 
+    /**
+     * Ask the user for the url to save this document as, the document will get that url.
+     * Unlike getSaveFileUrl() this ensures no other document has that url, see closeOtherDocumentForSaveUrl().
+     * @return the url or an empty url if the user cancelled
+     */
+    QUrl getSaveAsUrl();
+
 private:
     // helper to handle the embedded notification for externally modified files
     QPointer<KateModOnHdPrompt> m_modOnHdHandler;
