@@ -6253,6 +6253,12 @@ bool KTextEditor::DocumentPrivate::saveAs(const QUrl &url)
         return false;
     }
 
+    auto application = KTextEditor::EditorPrivate::self()->application();
+    KTextEditor::Document *other = application ? application->findUrl(url) : nullptr;
+    if (other && other != this) {
+        return false;
+    }
+
     // no double save/load
     if (m_documentState != DocumentIdle) {
         return false;
