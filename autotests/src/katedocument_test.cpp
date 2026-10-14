@@ -15,11 +15,18 @@
 #include <KLazyLocalizedString>
 #include <KLocalizedString>
 
+#include <KTextEditor/Application>
+
+#include <QApplication>
+#include <QDialog>
+#include <QPushButton>
 #include <QRegularExpression>
+#include <QScopeGuard>
 #include <QSignalSpy>
 #include <QStandardPaths>
 #include <QTemporaryDir>
 #include <QTemporaryFile>
+#include <QTimer>
 
 #include <memory>
 #include <stdio.h>
@@ -1165,4 +1172,74 @@ void KateDocumentTest::testAutoReloadClearsUndoHistory()
     QCOMPARE(doc.redoCount(), 0u);
     doc.undo();
     QCOMPARE(doc.lines(), 11);
+}
+
+// answer the next modal dialog: press the button with the given text, or cancel
+static void answerNextDialog(QObject *context, const QString &buttonText)
+{
+    auto timer = new QTimer(context);
+    timer->setInterval(10);
+    QObject::connect(timer, &QTimer::timeout, context, [timer, buttonText] {
+        auto dialog = qobject_cast<QDialog *>(QApplication::activeModalWidget());
+        if (!dialog) {
+            return;
+        }
+        timer->deleteLater();
+        if (buttonText.isEmpty()) {
+            dialog->reject();
+            return;
+        }
+        const auto buttons = dialog->findChildren<QPushButton *>();
+        for (auto button : buttons) {
+            if (button->text().remove(u'&') == QString(buttonText).remove(u'&')) {
+                button->click();
+                return;
+            }
+        }
+        dialog->reject();
+    });
+    timer->start();
+}
+
+// Saving a document as a file that is open in another document would leave two documents
+// for the same file, saving one of them overwrites the other: the user has to close the
+// other document first, cancelling must not save.
+void KateDocumentTest::testSaveAsOntoFileOpenInOtherDocument()
+{
+    FakeApplication fakeApplication;
+    KTextEditor::Application application(&fakeApplication);
+    KTextEditor::EditorPrivate::self()->setApplication(&application);
+    auto restore = qScopeGuard([] {
+        KTextEditor::EditorPrivate::self()->setApplication(nullptr);
+    });
+
+    QTemporaryFile file;
+    QVERIFY(file.open());
+    file.write("original\n");
+    file.close();
+    const QUrl url = QUrl::fromLocalFile(file.fileName());
+
+    KTextEditor::DocumentPrivate other;
+    QVERIFY(other.openUrl(url));
+    fakeApplication.openDocuments = {&other};
+
+    KTextEditor::DocumentPrivate doc;
+    doc.setText(QStringLiteral("snippet"));
+
+    // a file nobody has open: no question
+    QVERIFY(doc.closeOtherDocumentForSaveUrl(QUrl::fromLocalFile(file.fileName() + QStringLiteral(".new"))));
+
+    // the user cancels: don't save, the other document stays
+    answerNextDialog(this, QString());
+    QVERIFY(!doc.closeOtherDocumentForSaveUrl(url));
+    QVERIFY(fakeApplication.closedDocuments.isEmpty());
+
+    // the user agrees: the other document gets closed first
+    answerNextDialog(this, i18n("Close Other && Save"));
+    QVERIFY(doc.closeOtherDocumentForSaveUrl(url));
+    QCOMPARE(fakeApplication.closedDocuments, QList<KTextEditor::Document *>{&other});
+
+    // saving a document under its own url: no question
+    fakeApplication.openDocuments = {&doc};
+    QVERIFY(doc.closeOtherDocumentForSaveUrl(doc.url()));
 }

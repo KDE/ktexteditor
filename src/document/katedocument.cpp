@@ -5052,10 +5052,37 @@ bool KTextEditor::DocumentPrivate::documentSave()
     return save();
 }
 
+bool KTextEditor::DocumentPrivate::closeOtherDocumentForSaveUrl(const QUrl &saveUrl)
+{
+    // the application knows the other documents, none set => nothing to check
+    auto application = KTextEditor::EditorPrivate::self()->application();
+    KTextEditor::Document *other = application ? application->findUrl(saveUrl) : nullptr;
+    if (!other || other == this) {
+        return true;
+    }
+
+    // saving would leave two documents for the same file, saving one of them overwrites the other
+    const auto answer = KMessageBox::warningContinueCancel(dialogParent(),
+                                                           i18n("The file %1 is already open in another document.\n\n"
+                                                                "Saving this document there would leave two documents for the same file, "
+                                                                "saving one of them would overwrite the changes of the other one.\n\n"
+                                                                "Close the other document and save?",
+                                                                saveUrl.toDisplayString(QUrl::PreferLocalFile)),
+                                                           i18n("File Already Open"),
+                                                           KGuiItem(i18n("Close Other && Save"), QStringLiteral("document-save")),
+                                                           KStandardGuiItem::cancel());
+    if (answer != KMessageBox::Continue) {
+        return false;
+    }
+
+    // closing might ask to save the other document, the user might cancel that
+    return application->closeDocument(other);
+}
+
 bool KTextEditor::DocumentPrivate::documentSaveAs()
 {
     const QUrl saveUrl = getSaveFileUrl(i18n("Save File"));
-    if (saveUrl.isEmpty()) {
+    if (saveUrl.isEmpty() || !closeOtherDocumentForSaveUrl(saveUrl)) {
         return false;
     }
 
@@ -5065,7 +5092,7 @@ bool KTextEditor::DocumentPrivate::documentSaveAs()
 bool KTextEditor::DocumentPrivate::documentSaveAsWithEncoding(const QString &encoding)
 {
     const QUrl saveUrl = getSaveFileUrl(i18n("Save File"));
-    if (saveUrl.isEmpty()) {
+    if (saveUrl.isEmpty() || !closeOtherDocumentForSaveUrl(saveUrl)) {
         return false;
     }
 
