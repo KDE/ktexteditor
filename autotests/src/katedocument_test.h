@@ -59,6 +59,35 @@ public Q_SLOTS:
     }
 };
 
+/**
+ * Stands in for the hosting application, e.g. Kate: knows the open documents
+ * and remembers which ones got closed.
+ */
+class FakeApplication : public QObject
+{
+    Q_OBJECT
+public:
+    QList<KTextEditor::Document *> openDocuments;
+    QList<KTextEditor::Document *> closedDocuments;
+
+    Q_INVOKABLE KTextEditor::Document *findUrl(const QUrl &url)
+    {
+        for (auto doc : std::as_const(openDocuments)) {
+            if (doc->url() == url) {
+                return doc;
+            }
+        }
+        return nullptr;
+    }
+
+    Q_INVOKABLE bool closeDocument(KTextEditor::Document *document)
+    {
+        closedDocuments.push_back(document);
+        openDocuments.removeAll(document);
+        return true;
+    }
+};
+
 class KateDocumentTest : public QObject
 {
     Q_OBJECT
@@ -104,6 +133,7 @@ private Q_SLOTS:
     void testDocumentName_data();
     void testDocumentName();
     void testDocumentDeduplication();
+    void testSaveAsOntoFileOpenInOtherDocument();
 };
 
 #endif // KATE_DOCUMENT_TEST_H

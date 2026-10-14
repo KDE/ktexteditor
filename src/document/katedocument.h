@@ -985,6 +985,15 @@ public:
     bool saveAs(const QUrl &url) override;
     QUrl getSaveFileUrl(const QString &dialogTitle, QWidget *dialogParent = nullptr);
 
+    /**
+     * Saving this document as @p saveUrl would leave two documents for the same file if
+     * another open document of the application has that url already. Ask the user to
+     * close that document first.
+     * @return true if saving as @p saveUrl can go on, false if the user cancelled or the
+     *         other document could not be closed
+     */
+    bool closeOtherDocumentForSaveUrl(const QUrl &saveUrl);
+
 private:
     // helper to handle the embedded notification for externally modified files
     QPointer<KateModOnHdPrompt> m_modOnHdHandler;
