@@ -589,11 +589,14 @@ void KateCompletionModel::createGroups()
 
     // debugStats();
 
-    for (Group *g : m_rowTable) {
+    // iterate copies, hideOrShowGroup() moves groups between m_rowTable and m_emptyGroups
+    const auto rowTable = m_rowTable;
+    for (Group *g : rowTable) {
         hideOrShowGroup(g);
     }
 
-    for (Group *g : m_emptyGroups) {
+    const auto emptyGroups = m_emptyGroups;
+    for (Group *g : emptyGroups) {
         hideOrShowGroup(g);
     }
 
@@ -1654,7 +1657,9 @@ void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
 
     filter.filter(m_ungrouped, onlyFiltered);
 
-    for (Group *group : m_rowTable) {
+    // iterate a copy, filtering can move groups out of m_rowTable
+    const auto rowTable = m_rowTable;
+    for (Group *group : rowTable) {
         filter.filter(group, onlyFiltered);
     }
 }
