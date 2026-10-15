@@ -104,6 +104,7 @@ private Q_SLOTS:
     void testDocumentName_data();
     void testDocumentName();
     void testDocumentDeduplication();
+    void testAutoReloadClearsUndoHistory();
 };
 
 #endif // KATE_DOCUMENT_TEST_H

@@ -5631,11 +5631,19 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
         // we have a config option to disable this
 
         if (m_modOnHd && !isModified() && QFile::exists(url().toLocalFile())) {
-            if (config()->value(KateDocumentConfig::AutoReloadOnExternalChanges).toBool()) {
+            // our checksum is already the one of the new file, documentReload() would restore
+            // the undo history of the old content, clear it, bug 523615
+            auto reload = [this] {
                 m_modOnHd = false;
                 m_modOnHdReason = OnDiskUnmodified;
                 m_prevModOnHdReason = OnDiskUnmodified;
+                m_undoManager->clearUndo();
+                m_undoManager->clearRedo();
                 documentReload();
+            };
+
+            if (config()->value(KateDocumentConfig::AutoReloadOnExternalChanges).toBool()) {
+                reload();
             } else if (config()->value(KateDocumentConfig::AutoReloadIfStateIsInVersionControl).toBool()) {
                 // we only want to use git from PATH, cache this
                 static const QString fullGitPath = QStandardPaths::findExecutable(QStringLiteral("git"));
@@ -5649,10 +5657,7 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
                         if (git.waitForFinished()) {
                             if (git.exitCode() == 0) {
                                 // this hash exists still in git => just reload
-                                m_modOnHd = false;
-                                m_modOnHdReason = OnDiskUnmodified;
-                                m_prevModOnHdReason = OnDiskUnmodified;
-                                documentReload();
+                                reload();
                             }
                         }
                     }

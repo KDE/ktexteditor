@@ -18,6 +18,7 @@
 #include <QRegularExpression>
 #include <QSignalSpy>
 #include <QStandardPaths>
+#include <QTemporaryDir>
 #include <QTemporaryFile>
 
 #include <memory>
@@ -1126,4 +1127,42 @@ void KateDocumentTest::testDocumentDeduplication()
     QCOMPARE(fileDoc2.documentName(), untitled + QLatin1String(" (3)"));
     fileDoc2.setUrl(QUrl(QStringLiteral("file:///elsewhere/test.txt")));
     QCOMPARE(fileDoc2.documentName(), QStringLiteral("test.txt - elsewhere"));
+}
+
+void KateDocumentTest::testAutoReloadClearsUndoHistory()
+{
+    // An auto reload after an external change must clear the undo history of the
+    // old content, undoing it on the new content crashed, bug 523615
+    QTemporaryDir dir;
+    QVERIFY(dir.isValid());
+    const QString path = dir.filePath(QStringLiteral("file.txt"));
+    auto writeLines = [&path](int count) {
+        QFile f(path);
+        QVERIFY(f.open(QFile::WriteOnly | QFile::Truncate));
+        for (int i = 0; i < count; ++i) {
+            f.write("line " + QByteArray::number(i) + "\n");
+        }
+    };
+    writeLines(200);
+
+    KTextEditor::DocumentPrivate doc;
+    doc.config()->setValue(KateDocumentConfig::AutoReloadOnExternalChanges, true);
+    QVERIFY(doc.openUrl(QUrl::fromLocalFile(path)));
+    QCOMPARE(doc.lines(), 201);
+
+    // edit near the end and save, the document is unmodified but has undo history
+    doc.insertText(KTextEditor::Cursor(188, 0), QStringLiteral("edit "));
+    QVERIFY(doc.documentSave());
+    QVERIFY(!doc.isModified());
+    QCOMPARE(doc.undoCount(), 1u);
+
+    // a shorter file is written externally, the document auto reloads it
+    QTest::qWait(1100); // ensure a different modification time
+    writeLines(10);
+    QTRY_COMPARE_WITH_TIMEOUT(doc.lines(), 11, 10000);
+
+    QCOMPARE(doc.undoCount(), 0u);
+    QCOMPARE(doc.redoCount(), 0u);
+    doc.undo();
+    QCOMPARE(doc.lines(), 11);
 }
