@@ -26,3 +26,6 @@ Options:
  cmake-options: '-DWARNINGS_AS_ERRORS=ON'
  enable-lsan: True
  run-installed-library-check-on: ['@all']
+
+ # tests with ASAN on FreeBSD are very slow
+ per-test-timeout: 120
