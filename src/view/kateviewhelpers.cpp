@@ -514,7 +514,8 @@ void KateScrollBar::getCharColorRanges(const QList<Kate::TextLine::Attribute> &a
                 int startCol = range->start().column();
                 int endCol = range->end().column();
                 ranges << ColumnRangeWithColor{.penIndex = getPen(color), .startColumn = startCol, .endColumn = endCol};
-                i = endCol;
+                // the range can end far behind the line end, e.g. at INT_MAX, don't overflow i
+                i = std::min(endCol, int(text.size()));
                 break;
             }
         }

@@ -18,6 +18,7 @@
 #include <ktexteditor/editor.h>
 #include <ktexteditor/message.h>
 #include <ktexteditor/movingcursor.h>
+#include <ktexteditor/movingrange.h>
 
 #include <KLineEdit>
 #include <QScrollBar>
@@ -958,5 +959,27 @@ void KateViewTest::testMinimapScrollbarWidth()
     int withoutMinimap = 0;
     QTRY_VERIFY_WITH_TIMEOUT((withoutMinimap = view->getViewInternal()->m_lineScroll->width()) < withMinimap, 5000);
 }
+
+void KateViewTest::testMinimapWithRangeEndingBehindLineEnd()
+{
+    // A decoration can end far behind the line end, e.g. language servers use
+    // character 2147483647 for "until the end of the line". Drawing the minimap
+    // must not overflow the column.
+    KTextEditor::DocumentPrivate doc(false, false);
+    doc.setText(QStringLiteral("hello world\nsecond line\n"));
+    auto *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    view->config()->setValue(KateViewConfig::ShowScrollBarMiniMap, true);
+    view->show();
+
+    KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute);
+    attr->setForeground(Qt::red);
+    std::unique_ptr<KTextEditor::MovingRange> range(doc.newMovingRange({0, 0, 0, std::numeric_limits<int>::max()}));
+    range->setAttribute(attr);
+
+    auto *scrollBar = view->getViewInternal()->m_lineScroll;
+    QTRY_VERIFY_WITH_TIMEOUT(scrollBar->isVisible(), 5000);
+    QVERIFY(QMetaObject::invokeMethod(scrollBar, "updatePixmap"));
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;
 #include "moc_kateview_test.cpp"
