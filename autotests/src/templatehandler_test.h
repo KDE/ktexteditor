@@ -56,6 +56,7 @@ private Q_SLOTS:
 
     void testAlignC();
     void testAlignC_data();
+    void testIndentedInsert();
 
     void testDefaults();
     void testDefaults_data();

@@ -177,6 +177,55 @@ void TemplateHandlerTest::testAlignC_data()
     QTest::newRow("complex") << QStringLiteral("/**\n* @brief: ${...}\n* \n*/") << QStringLiteral("/**\n * @brief: ...\n * \n */");
 }
 
+void TemplateHandlerTest::testIndentedInsert()
+{
+    KTextEditor::DocumentPrivate doc;
+    doc.setHighlightingMode(QStringLiteral("C++"));
+    doc.config()->setIndentationMode(QStringLiteral("cstyle"));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+
+    // Indented context inside a function
+    doc.setText(QStringLiteral("void func()\n{\n    for\n}\n"));
+
+    // User selected completion item for "for"
+    const KTextEditor::Range wordRange(KTextEditor::Cursor(2, 4), KTextEditor::Cursor(2, 7));
+    view->setSelection(wordRange);
+
+    const KTextEditor::Cursor insertPos(2, 4);
+    view->setCursorPosition(insertPos);
+
+    const QString templateString = QStringLiteral(
+        "for (int ${i} = ${}; ${i} < ${}; ++${i})\n"
+        "{\n"
+        "${i}\n"
+        "}");
+
+    view->insertTemplate(insertPos, templateString);
+
+    const QString expectedInserted = QStringLiteral(
+        "void func()\n"
+        "{\n"
+        "    for (int i = ; i < ; ++i)\n"
+        "    {\n"
+        "        i\n"
+        "    }\n"
+        "}\n");
+    QCOMPARE(doc.text(), expectedInserted);
+
+    // Simulate typing 'j' in the first editable field at (2, 13, 2, 14)
+    doc.replaceText(Range(2, 13, 2, 14), QStringLiteral("j"));
+
+    const QString expectedReplaced = QStringLiteral(
+        "void func()\n"
+        "{\n"
+        "    for (int j = ; j < ; ++j)\n"
+        "    {\n"
+        "        j\n"
+        "    }\n"
+        "}\n");
+    QCOMPARE(doc.text(), expectedReplaced);
+}
+
 void TemplateHandlerTest::testAdjacentRanges()
 {
     KTextEditor::DocumentPrivate doc;

@@ -219,6 +219,7 @@ private:
         bool touched = false;
         // true if this field was removed e.g., because the line that contained it was removed
         bool removed = false;
+        bool isEmptyField = false;
 
         bool operator==(const TemplateField &other) const
         {

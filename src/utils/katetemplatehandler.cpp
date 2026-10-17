@@ -70,8 +70,17 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     // before initialization, restore selection (if any) so user scripts can retrieve it
     m_view->setSelection(selection->toRange());
     initializeTemplate();
+
+    // Check before removal: selection is a MovingRange and will collapse to empty once its text is deleted
+    const bool hadSelection = !selection->isEmpty();
     // then delete the selected text (if any); it was replaced by the template
     doc()->removeText(selection->toRange());
+
+    if (hadSelection) {
+        for (auto &field : m_fields) {
+            field.staticRange = field.range->toRange();
+        }
+    }
 
     const bool have_editable_field = std::any_of(m_fields.constBegin(), m_fields.constEnd(), [](const TemplateField &field) {
         return (field.kind == TemplateField::Editable);
@@ -314,12 +323,12 @@ Attribute::Ptr getAttribute(QColor color, int alpha = 230)
 
 void KateTemplateHandler::parseFields(const QString &templateText)
 {
-    // matches any field, i.e. the three forms ${foo}, ${foo=expr}, ${func()}
-    static const QRegularExpression field(QStringLiteral(R"((?<!\\)(?<slash>(?:\\\\)*)\${(?<body>[^}]+)})"), QRegularExpression::UseUnicodePropertiesOption);
+    // matches any field, including empty fields: ${}, ${foo}, ${foo=expr}, ${func()}
+    static const QRegularExpression field(QStringLiteral(R"((?<!\\)(?<slash>(?:\\\\)*)\${(?<body>[^}]*)})"), QRegularExpression::UseUnicodePropertiesOption);
     // matches the "foo=expr" form within a match of the above expression
     static const QRegularExpression defaultField(QStringLiteral(R"(\w+=([^}]*))"), QRegularExpression::UseUnicodePropertiesOption);
-    // this only captures escaped fields, i.e. \\${foo} etc.
-    static const QRegularExpression escapedField(QStringLiteral(R"((?<!\\)(?<slash>\\(?:\\\\)*)\${[^}]+})"), QRegularExpression::UseUnicodePropertiesOption);
+    // this only captures escaped fields, i.e. \\${foo}, \\${} etc.
+    static const QRegularExpression escapedField(QStringLiteral(R"((?<!\\)(?<slash>\\(?:\\\\)*)\${[^}]*})"), QRegularExpression::UseUnicodePropertiesOption);
 
     static const QString slash = QStringLiteral("slash");
     static const QString body = QStringLiteral("body");
@@ -367,13 +376,14 @@ void KateTemplateHandler::parseFields(const QString &templateText)
         const QString contents = match.captured(body);
 
         TemplateField f;
-        f.id = nextId;
-        nextId++;
+        f.id = nextId++;
         f.range.reset(createMovingRangeForMatch(match));
         f.identifier = contents;
         f.kind = TemplateField::Editable;
 
-        if (defaultMatch.hasMatch()) {
+        if (contents.isEmpty()) {
+            f.isEmptyField = true;
+        } else if (defaultMatch.hasMatch()) {
             // the field has a default value, i.e. ${foo=3}
             f.defaultValue = defaultMatch.captured(1);
             f.identifier = QStringView(contents).left(contents.indexOf(QLatin1Char('='))).trimmed().toString();
@@ -389,7 +399,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
         auto &storedField = m_fields.last();
         auto index = m_fields.count() - 1;
 
-        if (f.kind != TemplateField::FinalCursorPosition && f.kind != TemplateField::FunctionCall) {
+        if (f.kind != TemplateField::FinalCursorPosition && f.kind != TemplateField::FunctionCall && !f.isEmptyField) {
             if (mainFields.contains(f.identifier)) {
                 auto &other = m_fields[mainFields[f.identifier]];
 
@@ -456,8 +466,9 @@ void KateTemplateHandler::setupDefaultValues()
         }
 
         if (field.defaultValue.isEmpty() && field.kind != TemplateField::FinalCursorPosition) {
-            // field has no default value specified; use its identifier
-            field.defaultValue = field.identifier;
+            if (!field.isEmptyField) {
+                field.defaultValue = field.identifier;
+            }
         } else {
             // field has a default value; evaluate it with the JS engine
             //
