@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-03 00:41+0000\n"
+"POT-Creation-Date: 2026-10-18 00:45+0000\n"
 "PO-Revision-Date: 2024-12-29 22:54+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -2181,12 +2181,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "पुनः प्रयासं कुर्वन्तु"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6540
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6587
 #, kde-format
 msgid "&Close"
 msgstr "&पिधानं करोतु"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6541
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6588
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2332,24 +2332,43 @@ msgstr "अनामिका"
 msgid "Untitled"
 msgstr "अनामिका"
 
-#: document/katedocument.cpp:4821 document/katedocument.cpp:5057
-#: document/katedocument.cpp:5067 document/katedocument.cpp:5868
-#: document/katedocument.cpp:6055
-#, kde-format
-msgid "Save File"
-msgstr "सञ्चिकां रक्षतु"
-
 #: document/katedocument.cpp:4824
 #, kde-format
 msgid "Save failed"
 msgstr "रक्षणं विफलम् अभवत्"
 
-#: document/katedocument.cpp:5078
+#: document/katedocument.cpp:5066
+#, kde-format
+msgid ""
+"The file %1 is already open in another document.\n"
+"\n"
+"Saving this document there would leave two documents for the same file, "
+"saving one of them would overwrite the changes of the other one.\n"
+"\n"
+"Close the other document and save?"
+msgstr ""
+
+#: document/katedocument.cpp:5071
+#, kde-format
+msgid "File Already Open"
+msgstr ""
+
+#: document/katedocument.cpp:5072
+#, kde-format
+msgid "Close Other && Save"
+msgstr ""
+
+#: document/katedocument.cpp:5084
+#, kde-format
+msgid "Save File"
+msgstr "सञ्चिकां रक्षतु"
+
+#: document/katedocument.cpp:5114
 #, kde-format
 msgid "Save Copy of File"
 msgstr "सञ्चिकायाः प्रतिलिपिं रक्षन्तु"
 
-#: document/katedocument.cpp:5090
+#: document/katedocument.cpp:5126
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2361,7 +2380,7 @@ msgstr ""
 "\n"
 "भवतः अस्याः सञ्चिकायाः लेखनप्रवेशः अस्ति वा पर्याप्तं डिस्कस्थानं उपलब्धं वा इति पश्यन्तु ।"
 
-#: document/katedocument.cpp:5382
+#: document/katedocument.cpp:5418
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2374,7 +2393,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces पश्यन्तु"
 
-#: document/katedocument.cpp:5388
+#: document/katedocument.cpp:5424
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2387,17 +2406,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces पश्यन्तु"
 
-#: document/katedocument.cpp:5702
+#: document/katedocument.cpp:5743
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "'%1' इति सञ्चिका डिस्कमध्ये परिवर्तिता आसीत् ।"
 
-#: document/katedocument.cpp:5704
+#: document/katedocument.cpp:5745
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "'%1' इति सञ्चिका विलोपिता अथवा डिस्कमध्ये स्थानान्तरिता ।"
 
-#: document/katedocument.cpp:6040
+#: document/katedocument.cpp:6081
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2406,17 +2425,17 @@ msgstr ""
 "\"%1\" इति दस्तावेजं परिवर्तितम् अस्ति ।\n"
 "किं भवन्तः स्वपरिवर्तनानि रक्षितुं इच्छन्ति वा परित्यक्तुं इच्छन्ति वा?"
 
-#: document/katedocument.cpp:6043
+#: document/katedocument.cpp:6084
 #, kde-format
 msgid "Close Document"
 msgstr "दस्तावेजं बन्दं कुर्वन्तु"
 
-#: document/katedocument.cpp:6154
+#: document/katedocument.cpp:6195
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2 इति</a> सञ्चिका अद्यापि लोड् भवति ।"
 
-#: document/katedocument.cpp:6159
+#: document/katedocument.cpp:6200
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&लोडिंग निरस्त करो"

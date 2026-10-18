@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-03 00:41+0000\n"
+"POT-Creation-Date: 2026-10-18 00:45+0000\n"
 "PO-Revision-Date: 2026-10-06 08:03+0200\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -2221,12 +2221,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Покушај поново"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6540
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6587
 #, kde-format
 msgid "&Close"
 msgstr "&Затвори"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6541
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6588
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2375,26 +2375,45 @@ msgstr "Неименовано (%1)"
 msgid "Untitled"
 msgstr "Неименовано"
 
-# >> @title:window
-#: document/katedocument.cpp:4821 document/katedocument.cpp:5057
-#: document/katedocument.cpp:5067 document/katedocument.cpp:5868
-#: document/katedocument.cpp:6055
-#, kde-format
-msgid "Save File"
-msgstr "Уписивање фајла"
-
 #: document/katedocument.cpp:4824
 #, kde-format
 msgid "Save failed"
 msgstr "Уписивање није успјело"
 
+#: document/katedocument.cpp:5066
+#, kde-format
+msgid ""
+"The file %1 is already open in another document.\n"
+"\n"
+"Saving this document there would leave two documents for the same file, "
+"saving one of them would overwrite the changes of the other one.\n"
+"\n"
+"Close the other document and save?"
+msgstr ""
+
+#: document/katedocument.cpp:5071
+#, kde-format
+msgid "File Already Open"
+msgstr ""
+
+#: document/katedocument.cpp:5072
+#, kde-format
+msgid "Close Other && Save"
+msgstr ""
+
 # >> @title:window
-#: document/katedocument.cpp:5078
+#: document/katedocument.cpp:5084
+#, kde-format
+msgid "Save File"
+msgstr "Уписивање фајла"
+
+# >> @title:window
+#: document/katedocument.cpp:5114
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Уписивање копије фајла"
 
-#: document/katedocument.cpp:5090
+#: document/katedocument.cpp:5126
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2409,7 +2428,7 @@ msgstr ""
 
 # literal-segment: remove-trailing-space
 # literal-segment: remove-trailing-spaces
-#: document/katedocument.cpp:5382
+#: document/katedocument.cpp:5418
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2424,7 +2443,7 @@ msgstr ""
 
 # literal-segment: replace-trailing-space-save
 # literal-segment: remove-trailing-spaces
-#: document/katedocument.cpp:5388
+#: document/katedocument.cpp:5424
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2437,17 +2456,17 @@ msgstr ""
 "org/?application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5702
+#: document/katedocument.cpp:5743
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Фајл „%1“ је измијењен на диску."
 
-#: document/katedocument.cpp:5704
+#: document/katedocument.cpp:5745
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "Фајл „%1“ је обрисан или премјештен на диску."
 
-#: document/katedocument.cpp:6040
+#: document/katedocument.cpp:6081
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2457,17 +2476,17 @@ msgstr ""
 "Желите ли да измјене сачувате или одбаците?"
 
 # >> @title:window
-#: document/katedocument.cpp:6043
+#: document/katedocument.cpp:6084
 #, kde-format
 msgid "Close Document"
 msgstr "Затварање документа"
 
-#: document/katedocument.cpp:6154
+#: document/katedocument.cpp:6195
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Фајл <a href=\"%1\">%2</a> још се учитава."
 
-#: document/katedocument.cpp:6159
+#: document/katedocument.cpp:6200
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Обустави учитавање"
