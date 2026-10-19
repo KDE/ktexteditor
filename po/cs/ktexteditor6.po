@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-18 00:45+0000\n"
-"PO-Revision-Date: 2026-08-24 19:55+0200\n"
+"POT-Creation-Date: 2026-10-19 00:43+0000\n"
+"PO-Revision-Date: 2026-10-18 10:59+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -2371,16 +2371,22 @@ msgid ""
 "\n"
 "Close the other document and save?"
 msgstr ""
+"Soubor %1 je již otevřen v jiném dokumentu.\n"
+"\n"
+"Uložením tohoto dokumentu by vznikly dva dokumenty pro stejný soubor; "
+"uložení jednoho z nich by přepsalo změny v druhém.\n"
+"\n"
+"Chcete zavřít druhý dokument a uložit?"
 
 #: document/katedocument.cpp:5071
 #, kde-format
 msgid "File Already Open"
-msgstr ""
+msgstr "Soubor je již otevřen"
 
 #: document/katedocument.cpp:5072
 #, kde-format
 msgid "Close Other && Save"
-msgstr ""
+msgstr "Zavřít ostatní a uložit"
 
 #: document/katedocument.cpp:5084
 #, kde-format
@@ -4825,7 +4831,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Barvy značkovačů"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1534
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1535
 #, kde-format
 msgid "Bookmark"
 msgstr "Záložka"
@@ -7969,18 +7975,18 @@ msgid "Export File as HTML"
 msgstr "Exportovat soubor do HTML"
 
 #: view/kateviewhelpers.cpp:302 view/kateviewhelpers.cpp:351
-#: view/kateviewhelpers.cpp:1012
+#: view/kateviewhelpers.cpp:1013
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1210
+#: view/kateviewhelpers.cpp:1211
 #, kde-format
 msgid "Available Commands"
 msgstr "Dostupné příkazy"
 
-#: view/kateviewhelpers.cpp:1211
+#: view/kateviewhelpers.cpp:1212
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7989,17 +7995,17 @@ msgstr ""
 "<p>Nápovědu k jednotlivým příkazům získáte provedením <code>'help &lt;"
 "příkaz&gt;'</code></p>"
 
-#: view/kateviewhelpers.cpp:1218
+#: view/kateviewhelpers.cpp:1219
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Pro '%1' není nápověda"
 
-#: view/kateviewhelpers.cpp:1221
+#: view/kateviewhelpers.cpp:1222
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Takový příkaz neexistuje: <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1227
+#: view/kateviewhelpers.cpp:1228
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -8012,37 +8018,37 @@ msgstr ""
 "<code><b>help list</b></code><br />Pro nápovědu k jednotlivým příkazům "
 "zadejte <code><b>help &lt;příkaz&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:212
+#: view/kateviewhelpers.cpp:1316 vimode/emulatedcommandbar/commandmode.cpp:212
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Takový příkaz neexistuje: \"%1\""
 
-#: view/kateviewhelpers.cpp:1318 vimode/emulatedcommandbar/commandmode.cpp:194
+#: view/kateviewhelpers.cpp:1319 vimode/emulatedcommandbar/commandmode.cpp:194
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Chyba: Příkaz \"%1\" nedovoluje zadat žádný rozsah."
 
-#: view/kateviewhelpers.cpp:1328 vimode/emulatedcommandbar/commandmode.cpp:198
+#: view/kateviewhelpers.cpp:1329 vimode/emulatedcommandbar/commandmode.cpp:198
 #, kde-format
 msgid "Success: "
 msgstr "Úspěch: "
 
-#: view/kateviewhelpers.cpp:1342 vimode/emulatedcommandbar/commandmode.cpp:207
+#: view/kateviewhelpers.cpp:1343 vimode/emulatedcommandbar/commandmode.cpp:207
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Příkaz \"%1\" selhal."
 
-#: view/kateviewhelpers.cpp:2643 view/kateviewhelpers.cpp:2644
+#: view/kateviewhelpers.cpp:2644 view/kateviewhelpers.cpp:2645
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Značka typu %1"
 
-#: view/kateviewhelpers.cpp:2667
+#: view/kateviewhelpers.cpp:2668
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Nastavit výchozí typ značky"
 
-#: view/kateviewhelpers.cpp:2812
+#: view/kateviewhelpers.cpp:2813
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Zakázat panel poznámek"

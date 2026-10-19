@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-18 00:45+0000\n"
+"POT-Creation-Date: 2026-10-19 00:43+0000\n"
 "PO-Revision-Date: 2009-01-08 12:55+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -4955,7 +4955,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Бои"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1534
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1535
 #, kde-format
 msgid "Bookmark"
 msgstr "Обележувач"
@@ -8133,18 +8133,18 @@ msgid "Export File as HTML"
 msgstr "Изнеси датотека како HTML"
 
 #: view/kateviewhelpers.cpp:302 view/kateviewhelpers.cpp:351
-#: view/kateviewhelpers.cpp:1012
+#: view/kateviewhelpers.cpp:1013
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1210
+#: view/kateviewhelpers.cpp:1211
 #, kde-format
 msgid "Available Commands"
 msgstr "Достапни команди"
 
-#: view/kateviewhelpers.cpp:1211
+#: view/kateviewhelpers.cpp:1212
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -8153,17 +8153,17 @@ msgstr ""
 "<p>За помош за индивидуалните команди напишете <code>„help &lt;command&gt;“</"
 "code></p>"
 
-#: view/kateviewhelpers.cpp:1218
+#: view/kateviewhelpers.cpp:1219
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Нема помош за „%1“"
 
-#: view/kateviewhelpers.cpp:1221
+#: view/kateviewhelpers.cpp:1222
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Нема таква команда <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1227
+#: view/kateviewhelpers.cpp:1228
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -8176,37 +8176,37 @@ msgstr ""
 "внесете <code><b>help list</b></code><br />За листа на индивидуални команди "
 "внесете <code><b>help &lt;command&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:212
+#: view/kateviewhelpers.cpp:1316 vimode/emulatedcommandbar/commandmode.cpp:212
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Нема таква команда: „%1“"
 
-#: view/kateviewhelpers.cpp:1318 vimode/emulatedcommandbar/commandmode.cpp:194
+#: view/kateviewhelpers.cpp:1319 vimode/emulatedcommandbar/commandmode.cpp:194
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1328 vimode/emulatedcommandbar/commandmode.cpp:198
+#: view/kateviewhelpers.cpp:1329 vimode/emulatedcommandbar/commandmode.cpp:198
 #, kde-format
 msgid "Success: "
 msgstr "Успех:"
 
-#: view/kateviewhelpers.cpp:1342 vimode/emulatedcommandbar/commandmode.cpp:207
+#: view/kateviewhelpers.cpp:1343 vimode/emulatedcommandbar/commandmode.cpp:207
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Командата „%1“ не успеа."
 
-#: view/kateviewhelpers.cpp:2643 view/kateviewhelpers.cpp:2644
+#: view/kateviewhelpers.cpp:2644 view/kateviewhelpers.cpp:2645
 #, kde-format
 msgid "Mark Type %1"
 msgstr "%1"
 
-#: view/kateviewhelpers.cpp:2667
+#: view/kateviewhelpers.cpp:2668
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Постави почетен тип за обележување"
 
-#: view/kateviewhelpers.cpp:2812
+#: view/kateviewhelpers.cpp:2813
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr ""

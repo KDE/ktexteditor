@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-18 00:45+0000\n"
-"PO-Revision-Date: 2026-08-24 07:30-0300\n"
+"POT-Creation-Date: 2026-10-19 00:43+0000\n"
+"PO-Revision-Date: 2026-10-18 10:05-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -2421,16 +2421,23 @@ msgid ""
 "\n"
 "Close the other document and save?"
 msgstr ""
+"O arquivo %1 já está aberto em outro documento.\n"
+"\n"
+"Salvar este documento nesse local resultaria em dois documentos referentes "
+"ao mesmo arquivo; salvar um deles substituiria as alterações feitas no "
+"outro.\n"
+"\n"
+"Deseja fechar o outro documento e salvar?"
 
 #: document/katedocument.cpp:5071
 #, kde-format
 msgid "File Already Open"
-msgstr ""
+msgstr "Arquivo já aberto"
 
 #: document/katedocument.cpp:5072
 #, kde-format
 msgid "Close Other && Save"
-msgstr ""
+msgstr "Fechar o outro && salvar"
 
 #: document/katedocument.cpp:5084
 #, kde-format
@@ -4906,7 +4913,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Cores dos marcadores"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1534
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1535
 #, kde-format
 msgid "Bookmark"
 msgstr "Favoritos"
@@ -8067,18 +8074,18 @@ msgid "Export File as HTML"
 msgstr "Exportar arquivo como HTML"
 
 #: view/kateviewhelpers.cpp:302 view/kateviewhelpers.cpp:351
-#: view/kateviewhelpers.cpp:1012
+#: view/kateviewhelpers.cpp:1013
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1210
+#: view/kateviewhelpers.cpp:1211
 #, kde-format
 msgid "Available Commands"
 msgstr "Comandos disponíveis"
 
-#: view/kateviewhelpers.cpp:1211
+#: view/kateviewhelpers.cpp:1212
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -8087,17 +8094,17 @@ msgstr ""
 "<p>Para ajuda em comandos individuais, execute <code>'help &lt;comando&gt;'</"
 "code></p>"
 
-#: view/kateviewhelpers.cpp:1218
+#: view/kateviewhelpers.cpp:1219
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Nenhuma ajuda para '%1'"
 
-#: view/kateviewhelpers.cpp:1221
+#: view/kateviewhelpers.cpp:1222
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Não existe o comando <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1227
+#: view/kateviewhelpers.cpp:1228
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -8110,37 +8117,37 @@ msgstr ""
 "comandos disponíveis, digite <code><b>help list</b></code><br />Para ajuda "
 "em comandos individuais, digite <code><b>help &lt;comando&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:212
+#: view/kateviewhelpers.cpp:1316 vimode/emulatedcommandbar/commandmode.cpp:212
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Não existe o comando: \"%1\""
 
-#: view/kateviewhelpers.cpp:1318 vimode/emulatedcommandbar/commandmode.cpp:194
+#: view/kateviewhelpers.cpp:1319 vimode/emulatedcommandbar/commandmode.cpp:194
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Erro: Não é permitido intervalo para o comando \"%1\"."
 
-#: view/kateviewhelpers.cpp:1328 vimode/emulatedcommandbar/commandmode.cpp:198
+#: view/kateviewhelpers.cpp:1329 vimode/emulatedcommandbar/commandmode.cpp:198
 #, kde-format
 msgid "Success: "
 msgstr "Sucesso: "
 
-#: view/kateviewhelpers.cpp:1342 vimode/emulatedcommandbar/commandmode.cpp:207
+#: view/kateviewhelpers.cpp:1343 vimode/emulatedcommandbar/commandmode.cpp:207
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "O comando \"%1\" falhou."
 
-#: view/kateviewhelpers.cpp:2643 view/kateviewhelpers.cpp:2644
+#: view/kateviewhelpers.cpp:2644 view/kateviewhelpers.cpp:2645
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Tipo de marca %1"
 
-#: view/kateviewhelpers.cpp:2667
+#: view/kateviewhelpers.cpp:2668
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Configurar tipo de marca padrão"
 
-#: view/kateviewhelpers.cpp:2812
+#: view/kateviewhelpers.cpp:2813
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Desativar a barra de anotações"

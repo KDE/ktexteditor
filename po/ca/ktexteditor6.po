@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-18 00:45+0000\n"
-"PO-Revision-Date: 2026-09-06 17:28+0200\n"
+"POT-Creation-Date: 2026-10-19 00:43+0000\n"
+"PO-Revision-Date: 2026-10-18 15:16+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -2419,16 +2419,22 @@ msgid ""
 "\n"
 "Close the other document and save?"
 msgstr ""
+"El fitxer %1 ja està obert en un altre document.\n"
+"\n"
+"Si deseu aquest document deixaria dos documents per al mateix fitxer, i "
+"desar un d'ells sobreescriuria els canvis de l'altre.\n"
+"\n"
+"Voleu tancar l'altre document i desar-lo?"
 
 #: document/katedocument.cpp:5071
 #, kde-format
 msgid "File Already Open"
-msgstr ""
+msgstr "El fitxer ja està obert"
 
 #: document/katedocument.cpp:5072
 #, kde-format
 msgid "Close Other && Save"
-msgstr ""
+msgstr "Tanca l'altre i desa"
 
 #: document/katedocument.cpp:5084
 #, kde-format
@@ -4898,7 +4904,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Colors dels marcadors"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1534
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1535
 #, kde-format
 msgid "Bookmark"
 msgstr "Punt"
@@ -8075,18 +8081,18 @@ msgid "Export File as HTML"
 msgstr "Exporta el fitxer com a HTML"
 
 #: view/kateviewhelpers.cpp:302 view/kateviewhelpers.cpp:351
-#: view/kateviewhelpers.cpp:1012
+#: view/kateviewhelpers.cpp:1013
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1210
+#: view/kateviewhelpers.cpp:1211
 #, kde-format
 msgid "Available Commands"
 msgstr "Ordres disponibles"
 
-#: view/kateviewhelpers.cpp:1211
+#: view/kateviewhelpers.cpp:1212
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -8095,17 +8101,17 @@ msgstr ""
 "<p>Per a obtenir ajuda quant a les ordres individuals, feu <code>«help &lt;"
 "ordre&gt;»</code></p>"
 
-#: view/kateviewhelpers.cpp:1218
+#: view/kateviewhelpers.cpp:1219
 #, kde-format
 msgid "No help for '%1'"
 msgstr "No hi ha ajuda per a «%1»"
 
-#: view/kateviewhelpers.cpp:1221
+#: view/kateviewhelpers.cpp:1222
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "No es troba l'ordre: <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1227
+#: view/kateviewhelpers.cpp:1228
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -8119,37 +8125,37 @@ msgstr ""
 "obtenir ajuda sobre les ordres individuals, introduïu <code><b>help &lt;"
 "ordre&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:212
+#: view/kateviewhelpers.cpp:1316 vimode/emulatedcommandbar/commandmode.cpp:212
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "No es troba l'ordre: «%1»"
 
-#: view/kateviewhelpers.cpp:1318 vimode/emulatedcommandbar/commandmode.cpp:194
+#: view/kateviewhelpers.cpp:1319 vimode/emulatedcommandbar/commandmode.cpp:194
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Error: no es permet l'abast per a l'ordre «%1»."
 
-#: view/kateviewhelpers.cpp:1328 vimode/emulatedcommandbar/commandmode.cpp:198
+#: view/kateviewhelpers.cpp:1329 vimode/emulatedcommandbar/commandmode.cpp:198
 #, kde-format
 msgid "Success: "
 msgstr "Encert: "
 
-#: view/kateviewhelpers.cpp:1342 vimode/emulatedcommandbar/commandmode.cpp:207
+#: view/kateviewhelpers.cpp:1343 vimode/emulatedcommandbar/commandmode.cpp:207
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "L'ordre «%1» ha fallat."
 
-#: view/kateviewhelpers.cpp:2643 view/kateviewhelpers.cpp:2644
+#: view/kateviewhelpers.cpp:2644 view/kateviewhelpers.cpp:2645
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Tipus de marca %1"
 
-#: view/kateviewhelpers.cpp:2667
+#: view/kateviewhelpers.cpp:2668
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Defineix el tipus de marca per omissió"
 
-#: view/kateviewhelpers.cpp:2812
+#: view/kateviewhelpers.cpp:2813
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Desactiva la barra d'anotacions"

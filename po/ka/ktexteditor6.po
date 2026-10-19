@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-18 00:45+0000\n"
-"PO-Revision-Date: 2026-08-24 06:21+0200\n"
+"POT-Creation-Date: 2026-10-19 00:43+0000\n"
+"PO-Revision-Date: 2026-10-18 04:02+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 
 #: completion/katecompletionmodel.cpp:147
 #, kde-format
@@ -2372,16 +2372,22 @@ msgid ""
 "\n"
 "Close the other document and save?"
 msgstr ""
+"ფაილი %1 უკვე გახსნილია სხვა დოკუმენტში.\n"
+"\n"
+"დოკუმენტის იქ შენახვას შეუძლია, იგივე ფაილისთვის ორი დოკუმენტი შექმნას და "
+"ერთში შეტანილი ცვლილებები მეორეს თავზე გადააწერს.\n"
+"\n"
+"დახურეთ სხვა დოკუმენტი და შეინახეთ ის?"
 
 #: document/katedocument.cpp:5071
 #, kde-format
 msgid "File Already Open"
-msgstr ""
+msgstr "ფაილი უკვე ღიაა"
 
 #: document/katedocument.cpp:5072
 #, kde-format
 msgid "Close Other && Save"
-msgstr ""
+msgstr "სხვის დახურვა და შენახვა"
 
 #: document/katedocument.cpp:5084
 #, kde-format
@@ -4829,7 +4835,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "მარკერის ფერები"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1534
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1535
 #, kde-format
 msgid "Bookmark"
 msgstr "სანიშნე"
@@ -7967,18 +7973,18 @@ msgid "Export File as HTML"
 msgstr "ფაილის გატანა HTML ფორმატში"
 
 #: view/kateviewhelpers.cpp:302 view/kateviewhelpers.cpp:351
-#: view/kateviewhelpers.cpp:1012
+#: view/kateviewhelpers.cpp:1013
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1210
+#: view/kateviewhelpers.cpp:1211
 #, kde-format
 msgid "Available Commands"
 msgstr "ხელმისაწვდომი ბრძანებები"
 
-#: view/kateviewhelpers.cpp:1211
+#: view/kateviewhelpers.cpp:1212
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7987,17 +7993,17 @@ msgstr ""
 "<p>ინდივიდუალური ბრძანების დახმარებებისათვის გამოიყენეთ <code>'help &lt;"
 "ბრძანება&gt;'</code></p>"
 
-#: view/kateviewhelpers.cpp:1218
+#: view/kateviewhelpers.cpp:1219
 #, kde-format
 msgid "No help for '%1'"
 msgstr "'%1'-სთვის დახმარება ვერ ვიპოვე"
 
-#: view/kateviewhelpers.cpp:1221
+#: view/kateviewhelpers.cpp:1222
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "<b>%1</b> ბრძანება არაა"
 
-#: view/kateviewhelpers.cpp:1227
+#: view/kateviewhelpers.cpp:1228
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -8010,37 +8016,37 @@ msgstr ""
 "სიის სანახავად შეიყვანეთ <code><b>help list</b></code><br />სათითაო "
 "ბრძანებებისთვის შეიყვანეთ <code><b>help &lt;ბრძანება&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1315 vimode/emulatedcommandbar/commandmode.cpp:212
+#: view/kateviewhelpers.cpp:1316 vimode/emulatedcommandbar/commandmode.cpp:212
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "უცნობი ბრძანება: \"%1\""
 
-#: view/kateviewhelpers.cpp:1318 vimode/emulatedcommandbar/commandmode.cpp:194
+#: view/kateviewhelpers.cpp:1319 vimode/emulatedcommandbar/commandmode.cpp:194
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "შეცდომა: ბრძანებისთვის \"%1\" დიაპაზონს ვერ მიუთითებთ."
 
-#: view/kateviewhelpers.cpp:1328 vimode/emulatedcommandbar/commandmode.cpp:198
+#: view/kateviewhelpers.cpp:1329 vimode/emulatedcommandbar/commandmode.cpp:198
 #, kde-format
 msgid "Success: "
 msgstr "წარმატება: "
 
-#: view/kateviewhelpers.cpp:1342 vimode/emulatedcommandbar/commandmode.cpp:207
+#: view/kateviewhelpers.cpp:1343 vimode/emulatedcommandbar/commandmode.cpp:207
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "ბრძანება \"%1\" ავარიულად დასრულდა."
 
-#: view/kateviewhelpers.cpp:2643 view/kateviewhelpers.cpp:2644
+#: view/kateviewhelpers.cpp:2644 view/kateviewhelpers.cpp:2645
 #, kde-format
 msgid "Mark Type %1"
 msgstr "ნიშნის ტიპი %1"
 
-#: view/kateviewhelpers.cpp:2667
+#: view/kateviewhelpers.cpp:2668
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "ნაგულისხმევი ნიშნის ტიპის დაყენება"
 
-#: view/kateviewhelpers.cpp:2812
+#: view/kateviewhelpers.cpp:2813
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "ანოტაციის ზოლის გამორთვა"
