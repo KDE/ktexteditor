@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-19 00:43+0000\n"
-"PO-Revision-Date: 2026-09-06 17:28+0200\n"
+"PO-Revision-Date: 2026-10-18 15:16+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -2196,9 +2196,9 @@ msgstr ""
 "més llegible el codi i els marcadors.</p><p>De manera addicional, açò us "
 "permet indicar una amplària màxima de la pantalla, en percentatge, després "
 "del qual les línies ajustades dinàmicament no s'alinearan verticalment. Per "
-"exemple, al 50%, les línies que tinguen un nivell de sagnat superior al 50% "
-"de l'amplària de la pantalla no se'ls aplicarà l'ajust vertical a les línies "
-"ajustades subsegüents.</p>"
+"exemple, al 50 %, les línies que tinguen un nivell de sagnat superior al "
+"50 % de l'amplària de la pantalla no se'ls aplicarà l'ajust vertical a les "
+"línies ajustades subsegüents.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:427
@@ -2420,16 +2420,22 @@ msgid ""
 "\n"
 "Close the other document and save?"
 msgstr ""
+"El fitxer %1 ja es troba obert en un altre document.\n"
+"\n"
+"Si guardeu este document deixaria dos documents per al mateix fitxer, i "
+"guardar un d'ells sobreescriuria els canvis de l'altre.\n"
+"\n"
+"Voleu tancar l'altre document i guardar-lo?"
 
 #: document/katedocument.cpp:5071
 #, kde-format
 msgid "File Already Open"
-msgstr ""
+msgstr "El fitxer ja es troba obert"
 
 #: document/katedocument.cpp:5072
 #, kde-format
 msgid "Close Other && Save"
-msgstr ""
+msgstr "Tanca l'altre i guarda"
 
 #: document/katedocument.cpp:5084
 #, kde-format
@@ -4434,22 +4440,22 @@ msgstr "Color de fons s&eleccionat…"
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
 msgid "Unset Normal Color"
-msgstr "Trau l'assignació del color normal"
+msgstr "Trau l'assignació el color normal"
 
 #: syntax/katestyletreewidget.cpp:278
 #, kde-format
 msgid "Unset Selected Color"
-msgstr "Trau l'assignació del color seleccionat"
+msgstr "Trau l'assignació el color seleccionat"
 
 #: syntax/katestyletreewidget.cpp:284
 #, kde-format
 msgid "Unset Background Color"
-msgstr "Trau l'assignació del color de fons"
+msgstr "Trau l'assignació el color de fons"
 
 #: syntax/katestyletreewidget.cpp:289
 #, kde-format
 msgid "Unset Selected Background Color"
-msgstr "Trau l'assignació del color de fons seleccionat"
+msgstr "Trau l'assignació el color de fons seleccionat"
 
 #: syntax/katestyletreewidget.cpp:295
 #, kde-format
