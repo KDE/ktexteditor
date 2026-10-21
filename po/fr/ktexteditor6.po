@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-19 00:43+0000\n"
-"PO-Revision-Date: 2026-08-25 15:27+0200\n"
+"PO-Revision-Date: 2026-10-19 08:50+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -36,7 +36,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.1\n"
 "X-Text-Markup: kde4\n"
 
 #: completion/katecompletionmodel.cpp:147
@@ -2589,16 +2589,23 @@ msgid ""
 "\n"
 "Close the other document and save?"
 msgstr ""
+"Le fichier %1 est déjà ouvert dans un autre document.\n"
+"\n"
+"L'enregistrement de ce document là laisserait deux documents pour le même "
+"fichier. L’enregistrement de l’un d’eux écraserait les modifications de "
+"l’autre.\n"
+"\n"
+"Voulez-vous vraiment fermer l’autre document et enregistrer ?"
 
 #: document/katedocument.cpp:5071
 #, kde-format
 msgid "File Already Open"
-msgstr ""
+msgstr "Fichier déjà ouvert"
 
 #: document/katedocument.cpp:5072
 #, kde-format
 msgid "Close Other && Save"
-msgstr ""
+msgstr "Fermer les autres && Enregistrer"
 
 #: document/katedocument.cpp:5084
 #, kde-format
