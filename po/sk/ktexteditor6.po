@@ -2364,16 +2364,22 @@ msgid ""
 "\n"
 "Close the other document and save?"
 msgstr ""
+"Súbor %1 je už otvorený v inom dokumente.\n"
+"\n"
+"Uložením tohto dokumentu tam by vznikli dva dokumenty pre ten istý súbor a "
+"uloženie jedného z nich by prepísalo zmeny druhého.\n"
+"\n"
+"Zavrieť druhý dokument a uložiť?"
 
 #: document/katedocument.cpp:5071
 #, kde-format
 msgid "File Already Open"
-msgstr ""
+msgstr "Súbor je už otvorený"
 
 #: document/katedocument.cpp:5072
 #, kde-format
 msgid "Close Other && Save"
-msgstr ""
+msgstr "Zavrieť druhý a uložiť"
 
 #: document/katedocument.cpp:5084
 #, kde-format
