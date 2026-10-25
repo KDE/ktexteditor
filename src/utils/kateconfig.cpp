@@ -408,7 +408,7 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
         if (onTheFlyChecking) {
             Sonnet::Speller speller;
             speller.setLanguage(Sonnet::Speller().defaultLanguage());
-            speller.isMisspelled(QStringLiteral("dummy to trigger dictionary load"));
+            std::ignore = speller.isMisspelled(QStringLiteral("dummy to trigger dictionary load"));
             Sonnet::GuessLanguage languageGuesser;
             languageGuesser.identify(QStringLiteral("dummy to trigger identify"));
         }
