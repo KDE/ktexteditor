@@ -160,6 +160,11 @@ void VisualViMode::saveRangeMarks()
 
 void VisualViMode::init()
 {
+    // Prevents overriding the visible selection range when entering
+    // from click and drag or double click
+    if (m_view->selectionRange().isValid()) {
+        return;
+    }
     // when using "gv" we already have a start position
     if (!m_start.isValid()) {
         m_start = m_view->cursorPosition();
