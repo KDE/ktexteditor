@@ -198,9 +198,6 @@ private:
     void clear();
 
     KTEXTEDITOR_NO_EXPORT
-    void completionRangeChanged(KTextEditor::CodeCompletionModel *, const KTextEditor::Range &word);
-
-    KTEXTEDITOR_NO_EXPORT
     QString tailString() const;
 
     KTEXTEDITOR_NO_EXPORT

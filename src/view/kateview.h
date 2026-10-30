@@ -776,7 +776,6 @@ public:
     bool lineNumbersOn();
     bool scrollBarMarks();
     bool scrollBarMiniMap();
-    bool scrollBarMiniMapAll();
     int dynWrapIndicators();
     bool foldingMarkersOn();
     bool forceRTLDirection() const;

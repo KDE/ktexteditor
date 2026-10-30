@@ -135,7 +135,6 @@ private:
     void fillSuggestions(const QStringList &suggs);
     void initConnections();
     void initGui();
-    void continueChecking();
 
 private:
     class Private;
