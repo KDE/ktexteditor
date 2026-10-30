@@ -31,7 +31,6 @@ public:
     QList<KTextEditor::Command *> commands() const;
     QStringList commandList() const;
 
-    QStringList cmds();
     void appendHistory(const QString &cmd);
     const QString fromHistory(int i) const;
     uint historyLength() const
