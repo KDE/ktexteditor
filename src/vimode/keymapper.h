@@ -16,7 +16,6 @@ class QTimer;
 namespace KTextEditor
 {
 class DocumentPrivate;
-class ViewPrivate;
 }
 
 namespace KateVi

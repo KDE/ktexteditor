@@ -25,13 +25,8 @@ class QPainter;
 
 class KateRenderer;
 
-namespace Kate
-{
-class TextFolding;
-}
 namespace KTextEditor
 {
-class Range;
 }
 
 namespace KatePrinter

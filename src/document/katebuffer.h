@@ -15,7 +15,6 @@
 
 #include <QObject>
 
-class KateLineInfo;
 namespace KTextEditor
 {
 class DocumentPrivate;

@@ -11,9 +11,6 @@
 #include <QStyledItemDelegate>
 #include <QTextLayout>
 
-class KateCompletionWidget;
-class KateCompletionModel;
-
 class KateCompletionDelegate : public QStyledItemDelegate
 {
 public:

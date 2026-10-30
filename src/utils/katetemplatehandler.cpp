@@ -19,7 +19,6 @@
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "katepartdebug.h"
 #include "kateregexpsearch.h"
 #include "katetemplatehandler.h"
 #include "kateundomanager.h"

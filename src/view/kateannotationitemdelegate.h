@@ -9,12 +9,6 @@
 
 #include <ktexteditor/abstractannotationitemdelegate.h>
 
-namespace KTextEditor
-{
-class ViewPrivate;
-}
-class KateViewInternal;
-
 class KateAnnotationItemDelegate : public KTextEditor::AbstractAnnotationItemDelegate
 {
 public:

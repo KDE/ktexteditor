@@ -21,7 +21,6 @@ class QKeyEvent;
 
 namespace KateVi
 {
-class Motion;
 
 /**
  * Commands for the vi insert mode

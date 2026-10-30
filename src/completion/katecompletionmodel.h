@@ -25,8 +25,6 @@ namespace KTextEditor
 {
 class ViewPrivate;
 }
-class QWidget;
-class QTextEdit;
 class QTimer;
 class HierarchicalModelHandler;
 

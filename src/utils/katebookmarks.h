@@ -15,7 +15,6 @@ namespace KTextEditor
 class ViewPrivate;
 }
 
-class KToggleAction;
 class KActionCollection;
 class QMenu;
 class QAction;

@@ -18,8 +18,6 @@
 
 #include <QTest>
 
-#include "testutils.h"
-
 QTEST_MAIN(IndentTest)
 
 #define FAILURE(test, comment) Failure((test), (comment))

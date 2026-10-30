@@ -12,8 +12,6 @@
 #include "ontheflycheck.h"
 #include "spellcheck/spellcheck.h"
 
-#include "katepartdebug.h"
-
 #include <QActionGroup>
 #include <QMenu>
 

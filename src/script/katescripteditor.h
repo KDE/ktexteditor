@@ -12,12 +12,6 @@
 
 #include <ktexteditor_export.h>
 
-namespace KTextEditor
-{
-class ViewPrivate;
-}
-class QJSEngine;
-
 /**
  * This class wraps the global editor instance KateGlobal, exposing some
  * helper methods such as the clipboard history etc.

@@ -11,7 +11,6 @@
 #include "kateautoindent.h"
 #include "katecmd.h"
 #include "katedocument.h"
-#include "katepartdebug.h"
 #include "katerenderer.h"
 #include "katesyntaxmanager.h"
 #include "kateview.h"

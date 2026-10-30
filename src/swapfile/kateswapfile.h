@@ -16,7 +16,6 @@
 class QTimer;
 namespace KTextEditor
 {
-class ViewPrivate;
 class DocumentPrivate;
 class Message;
 class Range;

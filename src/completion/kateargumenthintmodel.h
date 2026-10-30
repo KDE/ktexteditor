@@ -10,8 +10,6 @@
 #include "katecompletionmodel.h"
 #include <QAbstractListModel>
 
-class KateCompletionWidget;
-
 class KateArgumentHintModel : public QAbstractListModel
 {
     Q_OBJECT

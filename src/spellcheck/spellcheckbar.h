@@ -10,9 +10,6 @@
 
 #include "kateviewhelpers.h"
 
-class QListWidgetItem;
-class QModelIndex;
-
 namespace Sonnet
 {
 class BackgroundChecker;

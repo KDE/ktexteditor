@@ -19,8 +19,6 @@ namespace KTextEditor
 {
 class ViewPrivate;
 }
-class RegressionTest;
-class KCmdLineArgs;
 class OutputObject;
 class KateViewObject;
 class KateDocumentObject;

@@ -20,7 +20,6 @@ namespace KTextEditor
 class ViewPrivate;
 }
 
-class QAction;
 class KActionCollection;
 
 namespace Sonnet

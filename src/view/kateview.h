@@ -43,7 +43,6 @@ class KateSpellCheckDialog;
 class KateCompletionWidget;
 class KateViewInternal;
 class KateViewBar;
-class KateTextPreview;
 class KateGotoBar;
 class KateDictionaryBar;
 class KateSpellingMenu;

@@ -6,7 +6,6 @@
 
 #include "kateconfig.h"
 #include "katedocument.h"
-#include "katepartdebug.h"
 #include "kateview.h"
 #include "scripttester_p.h"
 

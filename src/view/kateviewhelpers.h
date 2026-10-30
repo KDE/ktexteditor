@@ -40,11 +40,9 @@ class StyleOptionAnnotationItem;
 }
 
 class KateViewInternal;
-class KateTextLayout;
 
 #define MAXFOLDINGCOLORS 16
 
-class KateLineInfo;
 class KateTextPreview;
 
 namespace Kate

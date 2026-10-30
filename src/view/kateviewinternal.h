@@ -37,14 +37,8 @@ class Attribute;
 typedef QExplicitlySharedDataPointer<Attribute> AttributePtr;
 }
 
-namespace KSyntaxHighlighting
-{
-class FoldingRegion;
-}
-
 class KateIconBorder;
 class KateScrollBar;
-class KateAnnotationItemDelegate;
 class KateAnnotationGroupPositionState;
 class KateTextLayout;
 class KateTextAnimation;

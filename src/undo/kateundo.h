@@ -19,11 +19,6 @@
 #include <ktexteditor/range.h>
 
 class KateUndoManager;
-namespace KTextEditor
-{
-class DocumentPrivate;
-}
-
 class UndoItem
 {
 public:

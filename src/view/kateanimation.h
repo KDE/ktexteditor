@@ -10,8 +10,6 @@
 #include <QObject>
 #include <QPointer>
 
-class QTimer;
-
 class KMessageWidget;
 class KateFadeEffect;
 /**

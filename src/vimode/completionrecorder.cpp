@@ -5,7 +5,6 @@
 */
 
 #include "completionrecorder.h"
-#include "katepartdebug.h"
 #include "lastchangerecorder.h"
 #include "macrorecorder.h"
 #include "vimode/definitions.h"

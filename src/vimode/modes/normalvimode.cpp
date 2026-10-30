@@ -23,7 +23,6 @@
 #include <ktexteditor/attribute.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/globalstate.h>
-#include <vimode/history.h>
 #include <vimode/inputmodemanager.h>
 #include <vimode/keymapper.h>
 #include <vimode/keyparser.h>

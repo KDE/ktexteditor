@@ -6,8 +6,6 @@
 
 #include "katemessagewidget.h"
 
-#include "katepartdebug.h"
-
 #include <KTextEditor/Message>
 
 #include <KMessageWidget>

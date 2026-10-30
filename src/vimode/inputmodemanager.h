@@ -26,10 +26,6 @@ class QKeyEvent;
 namespace KTextEditor
 {
 class ViewPrivate;
-class DocumentPrivate;
-class MovingCursor;
-class Mark;
-class MarkInterface;
 }
 
 namespace KateVi

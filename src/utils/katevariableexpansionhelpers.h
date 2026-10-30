@@ -21,7 +21,6 @@ class TextEditButton;
 
 namespace KTextEditor
 {
-class View;
 class Variable;
 }
 

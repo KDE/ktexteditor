@@ -9,7 +9,6 @@
 
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "katepartdebug.h"
 #include "katerenderer.h"
 #include "katesyntaxmanager.h"
 #include "kateview.h"

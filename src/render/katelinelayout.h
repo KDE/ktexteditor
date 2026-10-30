@@ -12,16 +12,11 @@
 
 #include <ktexteditor/cursor.h>
 
-namespace KTextEditor
-{
-class DocumentPrivate;
-}
 namespace Kate
 {
 class TextFolding;
 }
 class KateTextLayout;
-class KateRenderer;
 
 class KateLineLayout
 {

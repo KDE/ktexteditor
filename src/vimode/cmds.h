@@ -15,10 +15,6 @@
 
 #include <QStringList>
 
-namespace KTextEditor
-{
-class DocumentPrivate;
-}
 class KCompletion;
 
 namespace KateVi

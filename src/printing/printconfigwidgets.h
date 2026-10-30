@@ -16,7 +16,6 @@ class KColorButton;
 class KFontRequester;
 
 class QCheckBox;
-class QLabel;
 class QLineEdit;
 class QComboBox;
 class QSpinBox;

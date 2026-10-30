@@ -12,8 +12,6 @@
 #include <editorconfig/editorconfig.h>
 #include <editorconfig/editorconfig_handle.h>
 
-class KateDocumentConfig;
-
 namespace KTextEditor
 {
 class DocumentPrivate;

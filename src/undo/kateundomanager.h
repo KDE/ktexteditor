@@ -20,7 +20,6 @@ namespace KTextEditor
 {
 class DocumentPrivate;
 }
-class KateUndo;
 class KateUndoGroup;
 
 namespace KTextEditor

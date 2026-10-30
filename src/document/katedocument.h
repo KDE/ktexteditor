@@ -23,16 +23,8 @@
 
 class KJob;
 class KateTemplateHandler;
-namespace KTextEditor
-{
-class Plugin;
-class Attribute;
-class TemplateScript;
-}
-
 namespace KIO
 {
-class TransferJob;
 }
 
 namespace Kate

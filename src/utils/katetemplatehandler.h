@@ -19,14 +19,12 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>
 
-class QDebug;
 class KateUndoManager;
 
 namespace KTextEditor
 {
 class DocumentPrivate;
 class ViewPrivate;
-class MovingCursor;
 class MovingRange;
 class View;
 }

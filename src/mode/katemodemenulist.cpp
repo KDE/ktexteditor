@@ -9,7 +9,6 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katemodemanager.h"
-#include "katepartdebug.h"
 
 #include <QAbstractItemView>
 #include <QApplication>

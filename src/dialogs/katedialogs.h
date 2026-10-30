@@ -41,13 +41,6 @@ namespace KTextEditor
 class Message;
 }
 
-namespace KIO
-{
-class Job;
-class TransferJob;
-}
-
-class KShortcutsEditor;
 class QSpinBox;
 class KProcess;
 
@@ -56,7 +49,6 @@ class QLabel;
 class QCheckBox;
 class QKeyEvent;
 class QTemporaryFile;
-class QTableWidget;
 
 namespace Ui
 {

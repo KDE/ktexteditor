@@ -16,7 +16,6 @@
 
 #include "ui_filetypeconfigwidget.h"
 
-#include "katepartdebug.h"
 #include <KMimeTypeChooser>
 
 #include <QCheckBox>

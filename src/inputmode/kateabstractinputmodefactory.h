@@ -10,7 +10,6 @@
 class KateAbstractInputMode;
 class KateViewInternal;
 
-class KConfig;
 class KateConfigPage;
 
 #include "ktexteditor/view.h"

@@ -16,7 +16,6 @@
 
 namespace KTextEditor
 {
-class DocumentPrivate;
 class ViewPrivate;
 }
 class QTimeLine;

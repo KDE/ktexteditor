@@ -12,7 +12,6 @@
 #include "mappings.h"
 #include <vimode/inputmodemanager.h>
 #include <vimode/keymapper.h>
-#include <vimode/keyparser.h>
 
 #include <QTimer>
 

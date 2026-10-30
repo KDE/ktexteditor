@@ -34,8 +34,6 @@ namespace KTextEditor
 class EditorPrivate;
 }
 
-class KConfig;
-
 /**
  * Base Class for the Kate Config Classes
  * Current childs are KateDocumentConfig/KateDocumentConfig/KateDocumentConfig
