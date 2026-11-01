@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-19 00:43+0000\n"
+"POT-Creation-Date: 2026-11-01 00:51+0000\n"
 "PO-Revision-Date: 2026-08-26 08:36+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -146,8 +146,8 @@ msgid "Word Completion"
 msgstr "השלמת מילים אוטומטית"
 
 #. i18n: ectx: Menu (spelling)
-#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:71
-#: spellcheck/spellingmenu.cpp:195
+#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:69
+#: spellcheck/spellingmenu.cpp:193
 #, kde-format
 msgid "Spelling"
 msgstr "איות"
@@ -710,7 +710,7 @@ msgid "&Delete"
 msgstr "מ&חיקה"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
-#: dialogs/filetypeconfigwidget.ui:66 mode/katemodeconfigpage.cpp:272
+#: dialogs/filetypeconfigwidget.ui:66 mode/katemodeconfigpage.cpp:271
 #, kde-format
 msgid "Properties"
 msgstr "מאפיינים"
@@ -1441,7 +1441,7 @@ msgstr "מצב בחירת טקסט:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbTextSelectionMode)
 #: dialogs/navigationconfigwidget.ui:139 inputmode/katenormalinputmode.cpp:64
-#: mode/katemodemanager.cpp:162
+#: mode/katemodemanager.cpp:161
 #, kde-format
 msgid "Normal"
 msgstr "רגיל"
@@ -2486,27 +2486,27 @@ msgstr "מקליט"
 msgid "Vi Input Mode"
 msgstr "מצב קלט של VI"
 
-#: mode/katemodeconfigpage.cpp:46
+#: mode/katemodeconfigpage.cpp:45
 #, kde-format
 msgid "<Unchanged>"
 msgstr "<ללא שינויים>"
 
-#: mode/katemodeconfigpage.cpp:58
+#: mode/katemodeconfigpage.cpp:57
 #, kde-format
 msgid "Use Default"
 msgstr "להשתמש בברירת המחדל"
 
-#: mode/katemodeconfigpage.cpp:99 mode/katemodeconfigpage.cpp:241
+#: mode/katemodeconfigpage.cpp:98 mode/katemodeconfigpage.cpp:240
 #, kde-format
 msgid "Properties of %1"
 msgstr "מאפייני %1"
 
-#: mode/katemodeconfigpage.cpp:178
+#: mode/katemodeconfigpage.cpp:177
 #, kde-format
 msgid "New Filetype"
 msgstr "סוג קובץ חדש"
 
-#: mode/katemodeconfigpage.cpp:293
+#: mode/katemodeconfigpage.cpp:292
 #, kde-format
 msgid ""
 "Select the MimeTypes you want for this file type.\n"
@@ -2516,23 +2516,23 @@ msgstr ""
 "נא לבחור את סוגי התוכן לשיוך לסוג קובץ זה.\n"
 "נא לשים לב כי אפשרות זו תביא גם לעריכה אוטומטית של סיומות הקבצים המשוייכים."
 
-#: mode/katemodeconfigpage.cpp:295
+#: mode/katemodeconfigpage.cpp:294
 #, kde-format
 msgid "Select Mime Types"
 msgstr "בחירת סוגי תוכן"
 
-#: mode/katemodeconfigpage.cpp:312
+#: mode/katemodeconfigpage.cpp:311
 #, kde-format
 msgid "Modes && Filetypes"
 msgstr "מצבים וסוגי קבצים"
 
-#: mode/katemodemenulist.cpp:138
+#: mode/katemodemenulist.cpp:137
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "חיפוש…"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:139
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2540,13 +2540,13 @@ msgid ""
 "example, C++ or .cpp)"
 msgstr "חיפוש מצבי הדגשת תחביר לפי שם השפה או סיומת קובץ (למשל: C++‎ או ‎.cpp)"
 
-#: mode/katemodemenulist.cpp:560
+#: mode/katemodemenulist.cpp:559
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "אין פריטים שעונים לחיפוש שלך"
 
-#: mode/katemodemenulist.cpp:1087
+#: mode/katemodemenulist.cpp:1086
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2555,7 +2555,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "תוצאת החיפוש הטובה ביותר"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1091
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -3500,7 +3500,7 @@ msgid "Bad quoting in call: %1. Please escape single quotes with a backslash."
 msgstr ""
 "ציטוט שגוי בקריאה: %1. נא למלט סימני ציטוט כפולים בלוכסן הפוך (\" -> ‎\\‎\"‎)."
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -4170,17 +4170,17 @@ msgstr "איות (ממיקום הסמן)…"
 msgid "Check the document's spelling from the cursor and forward"
 msgstr "בדיקת איות במסמך החל ממיקום הסמן ואילך"
 
-#: spellcheck/spellingmenu.cpp:76
+#: spellcheck/spellingmenu.cpp:74
 #, kde-format
 msgid "Ignore Word"
 msgstr "התעלמות ממילה"
 
-#: spellcheck/spellingmenu.cpp:79
+#: spellcheck/spellingmenu.cpp:77
 #, kde-format
 msgid "Add to Dictionary"
 msgstr "הוספה למילון"
 
-#: spellcheck/spellingmenu.cpp:172
+#: spellcheck/spellingmenu.cpp:170
 #, kde-format
 msgid "Spelling '%1'"
 msgstr "איות ‚%1’"
@@ -5089,17 +5089,17 @@ msgstr "ה&באה: %1 - „%2”"
 msgid "&Previous: %1 - \"%2\""
 msgstr "ה&קודמת: %1 - „%2”"
 
-#: utils/katecmds.cpp:53
+#: utils/katecmds.cpp:52
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>indent</p><p>מזיח את השורות הנבחרות או את השורה הנוכחית</p>"
 
-#: utils/katecmds.cpp:58
+#: utils/katecmds.cpp:57
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr "<p>unindent</p><p>הקטנת ההזחה בשורות הנבחרות או בשורה הנוכחית.</p>"
 
-#: utils/katecmds.cpp:63
+#: utils/katecmds.cpp:62
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5108,7 +5108,7 @@ msgstr ""
 "<p>cleanindent</p><p>הסרת ההזחה בשורות הנבחרות או בשורה הנוכחית לפי הגדרות "
 "ההזחה של המסמך.</p>"
 
-#: utils/katecmds.cpp:68
+#: utils/katecmds.cpp:67
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5118,7 +5118,7 @@ msgstr ""
 "<p>comment</p><p>הוספת סמני הערות כדי להפוך את הבחירה או את השורות הנבחרות "
 "להערה לפי תצורת הטקסט שמוגדרת בהגדרות הדגשת התחביר למסמך.</p>"
 
-#: utils/katecmds.cpp:74
+#: utils/katecmds.cpp:73
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5128,7 +5128,7 @@ msgstr ""
 "<p>uncomment</p><p>הסרת סמני הערות מהבחירה או השורות הנבחרות או השורה "
 "הנוכחית בהתאם לעיצוב הטקסט שפי שמוגדר על ידי הגדרת הדגשת התחביר למסמך.</p>"
 
-#: utils/katecmds.cpp:80
+#: utils/katecmds.cpp:79
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
@@ -5136,7 +5136,7 @@ msgid ""
 msgstr ""
 "<p>goto <b>מספר שורה</b></p><p>הפקודה הזאת מנווטת למספר שורה מסוים.</p>"
 
-#: utils/katecmds.cpp:85
+#: utils/katecmds.cpp:84
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5148,12 +5148,12 @@ msgstr ""
 "מלוח הגזירים מוזח לפי המזיח הנוכחי.</p><p>ערכי חיוב אפשריים: 1 on true<br/"
 ">ערכי שלילה אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:91
+#: utils/katecmds.cpp:90
 #, kde-format
 msgid "Deletes the current line."
 msgstr "מחיקת השורה הנוכחית."
 
-#: utils/katecmds.cpp:95
+#: utils/katecmds.cpp:94
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5161,7 +5161,7 @@ msgid ""
 msgstr ""
 "<p>set-tab-width <b>רוחב</b></p><p>הגדרת רוחב הטאב למספר <b>רוחב</b></p>"
 
-#: utils/katecmds.cpp:100
+#: utils/katecmds.cpp:99
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5172,7 +5172,7 @@ msgstr ""
 "ברווחים בזמן ההקלדה.</p><p>ערכים חיוביים אפשריים: 1 on true<br/>ערכים "
 "שליליים אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:107
+#: utils/katecmds.cpp:106
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5183,7 +5183,7 @@ msgstr ""
 "על ידי נקודה קטנה.</p><p>ערכים חיוביים אפשריים: 1 on true<br/>ערכים שליליים "
 "אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:114
+#: utils/katecmds.cpp:113
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5197,7 +5197,7 @@ msgstr ""
 "פותחים.</li><li><b>modified</b>: להסיר רווחים פותחים רק בשורות שהשתנו.</"
 "li><li><b>all</b>: להסיר רווחים פותחים במסמך כולו.</li></ul></p>"
 
-#: utils/katecmds.cpp:125
+#: utils/katecmds.cpp:124
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5206,7 +5206,7 @@ msgstr ""
 "<p>set-indent-width <b>רוחב</b></p>‏<p>הגדרת רוחב ההזחה למספר <b>רוחב</b>. "
 "ייעשה בזה שימוש רק בעת הזחה עם רווחים.</p>"
 
-#: utils/katecmds.cpp:130
+#: utils/katecmds.cpp:129
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5215,7 +5215,7 @@ msgstr ""
 "<p>set-indent-mode <b>מצב</b>‎</p><p>משתנה המצב הוא ערך כפי שמופיעבתפריט כלים "
 "- הזחה</p>"
 
-#: utils/katecmds.cpp:135
+#: utils/katecmds.cpp:134
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5225,7 +5225,7 @@ msgstr ""
 "<p>set-auto-indent <b>enable</b></p><p>הפעלת או השבתת הזחה אוטומטית.</"
 "p><p>ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:142
+#: utils/katecmds.cpp:141
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5235,7 +5235,7 @@ msgstr ""
 "<p>set-line-numbers <b>enable</b></p><p>הגדרת חשיפת לוח מספרי השורות.</p><p> "
 "ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:149
+#: utils/katecmds.cpp:148
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5245,7 +5245,7 @@ msgstr ""
 "<p>set-folding-markers <b>enable</b></p><p>הגדרת חשיפת לוח סמני הקיפול.</"
 "p><p>ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:156
+#: utils/katecmds.cpp:155
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5255,7 +5255,7 @@ msgstr ""
 "<p>set-icon-border <b>enable</b></p><p>הגדרת חשיפת מסגרות הסמלים.</p><p> "
 "ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:163
+#: utils/katecmds.cpp:162
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5266,7 +5266,7 @@ msgstr ""
 "<b>enable</b></p><p> ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 "
 "off false</p>"
 
-#: utils/katecmds.cpp:170
+#: utils/katecmds.cpp:169
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5276,7 +5276,7 @@ msgstr ""
 "<p>set-word-wrap-column <b>עובי</b>‎</p><p>הגדרת עובי הקו לגלישהקשיחה לכדי "
 "<b>עובי</b>. שימושי אם הטקסט שלך גולש אוטומטית.</p>"
 
-#: utils/katecmds.cpp:175
+#: utils/katecmds.cpp:174
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5287,7 +5287,7 @@ msgstr ""
 "תוחלפנה ברווחים עם כל שמירה של המסמך.</p><p> ערכים חיוביים אפשריים: 1 on "
 "true<br/>ערכים שליליים אפשריים: 0 off false</p>"
 
-#: utils/katecmds.cpp:182
+#: utils/katecmds.cpp:181
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5299,13 +5299,13 @@ msgstr ""
 "הארגומנט חייב להיות שם הדגשה תקף, כפי שמופיע בתפריט כלים ← הדגשה. הפקודה "
 "הזאת מספקת רשימת השלמה אוטומטית לארגומנט שלה.</p>"
 
-#: utils/katecmds.cpp:188
+#: utils/katecmds.cpp:187
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
 "<p>set-mode <b>mode</b></p><p>מגדיר את המצב כפי שמופיע תחת כלים - מצב</p>"
 
-#: utils/katecmds.cpp:193
+#: utils/katecmds.cpp:192
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5316,52 +5316,52 @@ msgstr ""
 "מקווקוו.</p><p> ערכים חיוביים אפשריים: 1 on true<br/>ערכים שליליים אפשריים: "
 "0 off false</p>"
 
-#: utils/katecmds.cpp:199
+#: utils/katecmds.cpp:198
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr "<p>פתיחת חלונית ההדפסה כדי להדפיס את המסמך הנוכחי.</p>"
 
-#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
+#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "חסר ארגומנט. שימוש: ‎%1 <ערך>"
 
-#: utils/katecmds.cpp:327
+#: utils/katecmds.cpp:326
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "אין הדגשת תחביר כזו ‚%1’"
 
-#: utils/katecmds.cpp:333
+#: utils/katecmds.cpp:332
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "אין מצב כזה ‚%1’"
 
-#: utils/katecmds.cpp:346
+#: utils/katecmds.cpp:345
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "המרת הארגומנט ‚%1’ למספר שלם נכשלה."
 
-#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
+#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "הרוחב חייב להיות לפחות 1."
 
-#: utils/katecmds.cpp:360
+#: utils/katecmds.cpp:359
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "העמודה חייבת להיות לפחות 1."
 
-#: utils/katecmds.cpp:390
+#: utils/katecmds.cpp:389
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "שימוש: ‎%1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:417
+#: utils/katecmds.cpp:416
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "ארגומנט שגוי: ‚%1’. שימוש: ‎%2 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:421
+#: utils/katecmds.cpp:420
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
@@ -5369,12 +5369,12 @@ msgstr ""
 "אופן שימוש: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|"
 "all"
 
-#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "הפקודה ‚%1’ לא מוכרת"
 
-#: utils/katecmds.cpp:493
+#: utils/katecmds.cpp:492
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5386,7 +5386,7 @@ msgstr ""
 "המספרי שלהם בצורה העשרונית, האוקטלית או ההקסדצימלית. </p><p>למשל:"
 "<ul><li>char <b>234</b></li><li>char <b>0x1234</b></li></ul></p>"
 
-#: utils/katecmds.cpp:560
+#: utils/katecmds.cpp:559
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5436,34 +5436,34 @@ msgstr ""
 "tr><tr><td>ap</td><td>להשתמש בתצוגת am/pm.‏ ap יוחלף ב־„am” או ב־„pm”.</td></"
 "tr></table></p>"
 
-#: utils/katecmds.cpp:621
+#: utils/katecmds.cpp:620
 #, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "הסרת שורות כפולות"
 
-#: utils/katecmds.cpp:622
+#: utils/katecmds.cpp:621
 #, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
 msgstr "הסרת כפילויות ומיון הטקסט לפי האלפבית"
 
-#: utils/katecmds.cpp:623
+#: utils/katecmds.cpp:622
 #, kde-format
 msgid "Sort Text Naturally"
 msgstr "מיון הטקסט באופן טבעי"
 
-#: utils/katecmds.cpp:624
+#: utils/katecmds.cpp:623
 #, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "מיון הטקסט הנבחר לפי האלפבית"
 
-#: utils/katecmds.cpp:699
+#: utils/katecmds.cpp:698
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
 msgstr "<p>sort</p><p>מיון הטקסט הנבחר או את כל המסמך אם כלום לא נבחר.</p>"
 
-#: utils/katecmds.cpp:703
+#: utils/katecmds.cpp:702
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5472,7 +5472,7 @@ msgstr ""
 "<p>uniq</p><p>הסרת שורות כפולות מהטקסט הנבחר או מכל המסמך אם כלום לא נבחר.</"
 "p>"
 
-#: utils/katecmds.cpp:707
+#: utils/katecmds.cpp:706
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
@@ -5481,7 +5481,7 @@ msgstr ""
 "<p>sortuniq</p><p>מיון הטקסט הנבחר או את כל המסמך ואז להסיר את השורות "
 "הכפולות.</p>"
 
-#: utils/katecmds.cpp:711
+#: utils/katecmds.cpp:710
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
@@ -8338,18 +8338,18 @@ msgstr "הוגדר סימון: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "אין תווים נוספים לסימנייה הבאה."
 
-#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:795
-#: vimode/modes/normalvimode.cpp:3604
+#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
+#: vimode/modes/normalvimode.cpp:3603
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "אין כלום באוגר %1"
 
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1688
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "‚%1’ %2,  הקס %3,  אוקטאלי %4"
 
-#: vimode/modes/normalvimode.cpp:2571
+#: vimode/modes/normalvimode.cpp:2570
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "הסימון לא נקבע: %1"

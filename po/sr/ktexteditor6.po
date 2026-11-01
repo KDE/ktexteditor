@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-19 00:43+0000\n"
+"POT-Creation-Date: 2026-11-01 00:51+0000\n"
 "PO-Revision-Date: 2026-10-06 08:03+0200\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -138,8 +138,8 @@ msgstr "Допуна речи"
 
 # >> @title:menu
 #. i18n: ectx: Menu (spelling)
-#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:71
-#: spellcheck/spellingmenu.cpp:195
+#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:69
+#: spellcheck/spellingmenu.cpp:193
 #, kde-format
 msgid "Spelling"
 msgstr "Правопис"
@@ -724,7 +724,7 @@ msgid "&Delete"
 msgstr "&Обриши"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
-#: dialogs/filetypeconfigwidget.ui:66 mode/katemodeconfigpage.cpp:272
+#: dialogs/filetypeconfigwidget.ui:66 mode/katemodeconfigpage.cpp:271
 #, kde-format
 msgid "Properties"
 msgstr "Својства"
@@ -1479,7 +1479,7 @@ msgstr "Режим избора текста:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbTextSelectionMode)
 #: dialogs/navigationconfigwidget.ui:139 inputmode/katenormalinputmode.cpp:64
-#: mode/katemodemanager.cpp:162
+#: mode/katemodemanager.cpp:161
 #, kde-format
 msgid "Normal"
 msgstr "обичан"
@@ -2555,28 +2555,28 @@ msgstr "снимање"
 msgid "Vi Input Mode"
 msgstr "Вијев режим уноса"
 
-#: mode/katemodeconfigpage.cpp:46
+#: mode/katemodeconfigpage.cpp:45
 #, kde-format
 msgid "<Unchanged>"
 msgstr "(неизмењено)"
 
 # >> @item:inlistbox Identation mode
-#: mode/katemodeconfigpage.cpp:58
+#: mode/katemodeconfigpage.cpp:57
 #, kde-format
 msgid "Use Default"
 msgstr "подразумевани"
 
-#: mode/katemodeconfigpage.cpp:99 mode/katemodeconfigpage.cpp:241
+#: mode/katemodeconfigpage.cpp:98 mode/katemodeconfigpage.cpp:240
 #, kde-format
 msgid "Properties of %1"
 msgstr "Својства типа %1"
 
-#: mode/katemodeconfigpage.cpp:178
+#: mode/katemodeconfigpage.cpp:177
 #, kde-format
 msgid "New Filetype"
 msgstr "Нови тип фајла"
 
-#: mode/katemodeconfigpage.cpp:293
+#: mode/katemodeconfigpage.cpp:292
 #, kde-format
 msgid ""
 "Select the MimeTypes you want for this file type.\n"
@@ -2587,23 +2587,23 @@ msgstr ""
 "Имајте на уму да ће ово аутоматски изменити и придружене наставке имена "
 "фајлова."
 
-#: mode/katemodeconfigpage.cpp:295
+#: mode/katemodeconfigpage.cpp:294
 #, kde-format
 msgid "Select Mime Types"
 msgstr "Изаберите МИМЕ типове"
 
-#: mode/katemodeconfigpage.cpp:312
+#: mode/katemodeconfigpage.cpp:311
 #, kde-format
 msgid "Modes && Filetypes"
 msgstr "Режими и типови фајлова"
 
-#: mode/katemodemenulist.cpp:138
+#: mode/katemodemenulist.cpp:137
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Тражи…"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:139
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2613,13 +2613,13 @@ msgstr ""
 "Тражи режиме истицања синтаксе по имену језика или наставку фајла (на "
 "пример, Ц++ или .cpp)"
 
-#: mode/katemodemenulist.cpp:560
+#: mode/katemodemenulist.cpp:559
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Претрага не поклапа ниједну ставку"
 
-#: mode/katemodemenulist.cpp:1087
+#: mode/katemodemenulist.cpp:1086
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2628,7 +2628,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Најбоље поклапање"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1091
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -3598,7 +3598,7 @@ msgid "Bad quoting in call: %1. Please escape single quotes with a backslash."
 msgstr ""
 "Лоше навођење у позиву: %1. Избегните једноструке наводнике контракрозом."
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -4262,18 +4262,18 @@ msgstr "Правопис (од курсора)…"
 msgid "Check the document's spelling from the cursor and forward"
 msgstr "Провери правопис документа од курсора унапред"
 
-#: spellcheck/spellingmenu.cpp:76
+#: spellcheck/spellingmenu.cpp:74
 #, kde-format
 msgid "Ignore Word"
 msgstr "Игнориши реч"
 
-#: spellcheck/spellingmenu.cpp:79
+#: spellcheck/spellingmenu.cpp:77
 #, kde-format
 msgid "Add to Dictionary"
 msgstr "Додај у речник"
 
 # >> @title:menu
-#: spellcheck/spellingmenu.cpp:172
+#: spellcheck/spellingmenu.cpp:170
 #, kde-format
 msgid "Spelling '%1'"
 msgstr "Правопис „%1“"
@@ -5230,17 +5230,17 @@ msgstr "&Следећи: %1 — „%2“"
 msgid "&Previous: %1 - \"%2\""
 msgstr "&Претходни: %1 - „%2“"
 
-#: utils/katecmds.cpp:53
+#: utils/katecmds.cpp:52
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p><tt>indent</tt></p><p>Увлачи изабране редове или текући ред.</p>"
 
-#: utils/katecmds.cpp:58
+#: utils/katecmds.cpp:57
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr "<p><tt>unindent</tt></p><p>Извлачи изабране редове или текући ред.</p>"
 
-#: utils/katecmds.cpp:63
+#: utils/katecmds.cpp:62
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5249,7 +5249,7 @@ msgstr ""
 "<p><tt>cleanindent</tt></p><p>Уклања увлачење изабраних редова или текућег "
 "реда, према поставкама увлачења у документу.</p>"
 
-#: utils/katecmds.cpp:68
+#: utils/katecmds.cpp:67
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5260,7 +5260,7 @@ msgstr ""
 "изабрани редови или текући ред учинили коментаром, према формату текста "
 "дефинисаном истицањем синтаксе у документу.</p>"
 
-#: utils/katecmds.cpp:74
+#: utils/katecmds.cpp:73
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5271,7 +5271,7 @@ msgstr ""
 "редова или текућег реда, према формату текста дефинисаном истицањем синтаксе "
 "у документу.</p>"
 
-#: utils/katecmds.cpp:80
+#: utils/katecmds.cpp:79
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
@@ -5280,7 +5280,7 @@ msgstr ""
 "<p><tt>goto <b>број‑реда</b></tt></p><p>Ова наредба прелази на задати број "
 "реда.</p>"
 
-#: utils/katecmds.cpp:85
+#: utils/katecmds.cpp:84
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5293,12 +5293,12 @@ msgstr ""
 "p><p>Могуће вредности тачног: <tt>1, on, true</tt>;<br/>могуће вредности "
 "нетачног: <tt>0, off, false</tt>.</p>"
 
-#: utils/katecmds.cpp:91
+#: utils/katecmds.cpp:90
 #, kde-format
 msgid "Deletes the current line."
 msgstr "Брише текући ред."
 
-#: utils/katecmds.cpp:95
+#: utils/katecmds.cpp:94
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5307,7 +5307,7 @@ msgstr ""
 "<p><tt>set-tab-width <b>ширина</b></tt></p><p>Поставља ширину табулатора на "
 "задати број.</p>"
 
-#: utils/katecmds.cpp:100
+#: utils/katecmds.cpp:99
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5320,7 +5320,7 @@ msgstr ""
 "</p>"
 
 # rewrite-msgid: /trailing whitespace/trailing spaces/
-#: utils/katecmds.cpp:107
+#: utils/katecmds.cpp:106
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5332,7 +5332,7 @@ msgstr ""
 "тачног: <tt>1, on, true</tt>;<br/>могуће вредности нетачног: <tt>0, off, "
 "false</tt>.</p>"
 
-#: utils/katecmds.cpp:114
+#: utils/katecmds.cpp:113
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5348,7 +5348,7 @@ msgstr ""
 "</li><li><tt>all</tt>: уклањање пратећих размака из целог документа.</li></"
 "ul>"
 
-#: utils/katecmds.cpp:125
+#: utils/katecmds.cpp:124
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5358,7 +5358,7 @@ msgstr ""
 "задати број. Важи само за увлачење размацима.</p>"
 
 # rewrite-msgid: /parameter/argument/
-#: utils/katecmds.cpp:130
+#: utils/katecmds.cpp:129
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5367,7 +5367,7 @@ msgstr ""
 "<p><tt>set-indent-mode <b>режим</b></tt></p><p>Аргумент режима је једна од "
 "вредности из менија <i>Алатке→Увлачење</i>.</p>"
 
-#: utils/katecmds.cpp:135
+#: utils/katecmds.cpp:134
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5378,7 +5378,7 @@ msgstr ""
 "аутоматско увлачење.</p><p>Могуће вредности тачног: <tt>1, on, true</tt>;<br/"
 ">могуће вредности нетачног: <tt>0, off, false</tt>.</p>"
 
-#: utils/katecmds.cpp:142
+#: utils/katecmds.cpp:141
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5389,7 +5389,7 @@ msgstr ""
 "са бројевима редова.</p><p>Могуће вредности тачног: <tt>1, on, true</tt>;<br/"
 ">могуће вредности нетачног: <tt>0, off, false</tt>.</p>"
 
-#: utils/katecmds.cpp:149
+#: utils/katecmds.cpp:148
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5401,7 +5401,7 @@ msgstr ""
 "tt>;<br/>могуће вредности нетачног: <tt>0, off, false</tt>.</p>"
 
 # literal-segment: set-icon-border
-#: utils/katecmds.cpp:156
+#: utils/katecmds.cpp:155
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5412,7 +5412,7 @@ msgstr ""
 "иконица.</p><p>Могуће вредности тачног: <tt>1, on, true</tt>;<br/>могуће "
 "вредности нетачног: <tt>0, off, false</tt>.</p>"
 
-#: utils/katecmds.cpp:163
+#: utils/katecmds.cpp:162
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5424,7 +5424,7 @@ msgstr ""
 "<br/>могуће вредности нетачног: <tt>0, off, false</tt>.</p>"
 
 # literal-segment: set-word-wrap-column
-#: utils/katecmds.cpp:170
+#: utils/katecmds.cpp:169
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5436,7 +5436,7 @@ msgstr ""
 "текста.</p>"
 
 # rewrite-msgid: /with whitespace/with spaces/
-#: utils/katecmds.cpp:175
+#: utils/katecmds.cpp:174
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5448,7 +5448,7 @@ msgstr ""
 "вредности тачног: <tt>1, on, true</tt>;<br/>могуће вредности нетачног: "
 "<tt>0, off, false</tt>.</p>"
 
-#: utils/katecmds.cpp:182
+#: utils/katecmds.cpp:181
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5461,7 +5461,7 @@ msgstr ""
 "менију <i>Алатке→Истицање</i>. Ова наредба пружа листу самодопуне за "
 "аргумент.</p>"
 
-#: utils/katecmds.cpp:188
+#: utils/katecmds.cpp:187
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
@@ -5469,7 +5469,7 @@ msgstr ""
 "<i>Алатке→Режим</i>.</p>"
 
 # skip-rule: t-line
-#: utils/katecmds.cpp:193
+#: utils/katecmds.cpp:192
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5481,53 +5481,53 @@ msgstr ""
 "<tt>1, on, true</tt>;<br/>могуће вредности нетачног: <tt>0, off, false</tt>."
 "</p>"
 
-#: utils/katecmds.cpp:199
+#: utils/katecmds.cpp:198
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr "<p>Отвара дијалог за штампање текућег документа.</p>"
 
-#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
+#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "Недостаје аргумент. Употреба: %1 <vrednost>"
 
-#: utils/katecmds.cpp:327
+#: utils/katecmds.cpp:326
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "Истицање „%1“ не постоји"
 
-#: utils/katecmds.cpp:333
+#: utils/katecmds.cpp:332
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "Режим „%1“ не постоји"
 
-#: utils/katecmds.cpp:346
+#: utils/katecmds.cpp:345
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "Не могу да претворим аргумент %1 у целобројни."
 
-#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
+#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "Ширина мора бити бар 1."
 
-#: utils/katecmds.cpp:360
+#: utils/katecmds.cpp:359
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "Колона мора бити бар 1."
 
-#: utils/katecmds.cpp:390
+#: utils/katecmds.cpp:389
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "Употреба: %1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:417
+#: utils/katecmds.cpp:416
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "Лош аргумент „%1“. Употреба: %2 on|off|1|0|true|false"
 
 # literal-segment: set-remove-trailing-spaces
-#: utils/katecmds.cpp:421
+#: utils/katecmds.cpp:420
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
@@ -5535,12 +5535,12 @@ msgstr ""
 "Употреба: „set-remove-trailing-spaces 0|-|none“ или „1|+|mod|modified“ или "
 "„2|*|all“"
 
-#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "Непозната наредба „%1“"
 
-#: utils/katecmds.cpp:493
+#: utils/katecmds.cpp:492
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5553,7 +5553,7 @@ msgstr ""
 "хексадекадном облику.</p><p>Примери:</p><ul><li><tt>char 234</tt></"
 "li><li><tt>char 0x1234</tt></li></ul>"
 
-#: utils/katecmds.cpp:560
+#: utils/katecmds.cpp:559
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5607,27 +5607,27 @@ msgstr ""
 "td><td>Дванаесточасовни приказ. <tt>AP</tt> ће бити замењено или са am или "
 "са pm.</td></tr></table></p>"
 
-#: utils/katecmds.cpp:621
+#: utils/katecmds.cpp:620
 #, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "Уклони дуплиране редове"
 
-#: utils/katecmds.cpp:622
+#: utils/katecmds.cpp:621
 #, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
 msgstr "Уклони дупликате и поређај текст азбучно"
 
-#: utils/katecmds.cpp:623
+#: utils/katecmds.cpp:622
 #, kde-format
 msgid "Sort Text Naturally"
 msgstr "Поређај текст природно"
 
-#: utils/katecmds.cpp:624
+#: utils/katecmds.cpp:623
 #, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "Поређај изабрани текст азбучно"
 
-#: utils/katecmds.cpp:699
+#: utils/katecmds.cpp:698
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
@@ -5635,7 +5635,7 @@ msgid ""
 msgstr ""
 "<p>sort</p><p>Ређа изабрани текст, или цео документ ако нема избора</p>"
 
-#: utils/katecmds.cpp:703
+#: utils/katecmds.cpp:702
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5644,7 +5644,7 @@ msgstr ""
 "<p>uniq</p><p>Уклања дуплиране редове из изабраног текста, или из целог "
 "документа ако нема избора.</p>"
 
-#: utils/katecmds.cpp:707
+#: utils/katecmds.cpp:706
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
@@ -5653,7 +5653,7 @@ msgstr ""
 "<p>sortuniq</p><p>Ређа изабрани текст или цео документ, а затим уклања све "
 "дуплиране редове.</p>"
 
-#: utils/katecmds.cpp:711
+#: utils/katecmds.cpp:710
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
@@ -8612,19 +8612,19 @@ msgstr "Обележје постављено: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Нема више знакова за следећи обележивач."
 
-#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:795
-#: vimode/modes/normalvimode.cpp:3604
+#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
+#: vimode/modes/normalvimode.cpp:3603
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Ничег у регистру %1"
 
 # well-spelled: хекс, окт
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1688
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  хекс %3, окт %4"
 
-#: vimode/modes/normalvimode.cpp:2571
+#: vimode/modes/normalvimode.cpp:2570
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Обележје није постављено: %1"

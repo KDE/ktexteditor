@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-19 00:43+0000\n"
+"POT-Creation-Date: 2026-11-01 00:51+0000\n"
 "PO-Revision-Date: 2025-06-19 09:42+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -137,8 +137,8 @@ msgid "Word Completion"
 msgstr "Completación de palabras"
 
 #. i18n: ectx: Menu (spelling)
-#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:71
-#: spellcheck/spellingmenu.cpp:195
+#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:69
+#: spellcheck/spellingmenu.cpp:193
 #, kde-format
 msgid "Spelling"
 msgstr "Ortografía"
@@ -722,7 +722,7 @@ msgid "&Delete"
 msgstr "&Eliminar"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
-#: dialogs/filetypeconfigwidget.ui:66 mode/katemodeconfigpage.cpp:272
+#: dialogs/filetypeconfigwidget.ui:66 mode/katemodeconfigpage.cpp:271
 #, kde-format
 msgid "Properties"
 msgstr "Propiedades"
@@ -1474,7 +1474,7 @@ msgstr "Modo de selección de texto:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbTextSelectionMode)
 #: dialogs/navigationconfigwidget.ui:139 inputmode/katenormalinputmode.cpp:64
-#: mode/katemodemanager.cpp:162
+#: mode/katemodemanager.cpp:161
 #, kde-format
 msgid "Normal"
 msgstr "Normal"
@@ -2564,27 +2564,27 @@ msgstr "gravando"
 msgid "Vi Input Mode"
 msgstr "Modo de entrada de Vi"
 
-#: mode/katemodeconfigpage.cpp:46
+#: mode/katemodeconfigpage.cpp:45
 #, kde-format
 msgid "<Unchanged>"
 msgstr "<Sen cambiar>"
 
-#: mode/katemodeconfigpage.cpp:58
+#: mode/katemodeconfigpage.cpp:57
 #, kde-format
 msgid "Use Default"
 msgstr "Usar o predeterminado"
 
-#: mode/katemodeconfigpage.cpp:99 mode/katemodeconfigpage.cpp:241
+#: mode/katemodeconfigpage.cpp:98 mode/katemodeconfigpage.cpp:240
 #, kde-format
 msgid "Properties of %1"
 msgstr "Propiedades de %1"
 
-#: mode/katemodeconfigpage.cpp:178
+#: mode/katemodeconfigpage.cpp:177
 #, kde-format
 msgid "New Filetype"
 msgstr "Novo tipo de ficheiro"
 
-#: mode/katemodeconfigpage.cpp:293
+#: mode/katemodeconfigpage.cpp:292
 #, kde-format
 msgid ""
 "Select the MimeTypes you want for this file type.\n"
@@ -2595,23 +2595,23 @@ msgstr ""
 "Recorde que isto tamén editará automaticamente as extensións de ficheiro "
 "asociadas."
 
-#: mode/katemodeconfigpage.cpp:295
+#: mode/katemodeconfigpage.cpp:294
 #, kde-format
 msgid "Select Mime Types"
 msgstr "Escoller os tipos MIME"
 
-#: mode/katemodeconfigpage.cpp:312
+#: mode/katemodeconfigpage.cpp:311
 #, kde-format
 msgid "Modes && Filetypes"
 msgstr "Modos e tipos de ficheiro"
 
-#: mode/katemodemenulist.cpp:138
+#: mode/katemodemenulist.cpp:137
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Buscar…"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:139
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2621,13 +2621,13 @@ msgstr ""
 "Buscar modos de realce de sintaxe por nome de linguaxe ou extensión de "
 "ficheiro (por exemplo: C++ ou .cpp)."
 
-#: mode/katemodemenulist.cpp:560
+#: mode/katemodemenulist.cpp:559
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Ningún elemento coincide coa busca"
 
-#: mode/katemodemenulist.cpp:1087
+#: mode/katemodemenulist.cpp:1086
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2636,7 +2636,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Mellor coincidencia da busca"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1091
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -3602,7 +3602,7 @@ msgstr ""
 "As comiñas da chamada son incorrectas: %1. As comiñas simples escápanse coa "
 "barra invertida."
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -4273,17 +4273,17 @@ msgstr "Corrección ortográfica (desde o cursor)…"
 msgid "Check the document's spelling from the cursor and forward"
 msgstr "Comprobar a ortografía do documento desde o cursor cara adiante"
 
-#: spellcheck/spellingmenu.cpp:76
+#: spellcheck/spellingmenu.cpp:74
 #, kde-format
 msgid "Ignore Word"
 msgstr "Ignorar esta palabra"
 
-#: spellcheck/spellingmenu.cpp:79
+#: spellcheck/spellingmenu.cpp:77
 #, kde-format
 msgid "Add to Dictionary"
 msgstr "Engadir ao dicionario"
 
-#: spellcheck/spellingmenu.cpp:172
+#: spellcheck/spellingmenu.cpp:170
 #, kde-format
 msgid "Spelling '%1'"
 msgstr "Ortografía de «%1»"
@@ -5209,19 +5209,19 @@ msgstr "&Seguinte: %1 — «%2»"
 msgid "&Previous: %1 - \"%2\""
 msgstr "&Anterior: %1 — «%2»"
 
-#: utils/katecmds.cpp:53
+#: utils/katecmds.cpp:52
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>sangrar</p><p>Sangra as liñas escollidas ou a liña actual</p>"
 
-#: utils/katecmds.cpp:58
+#: utils/katecmds.cpp:57
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr ""
 "<p>quitar sangrado</p><p>Quita sangrado das liñas escollidas ou da liña "
 "actual.</p>"
 
-#: utils/katecmds.cpp:63
+#: utils/katecmds.cpp:62
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5230,7 +5230,7 @@ msgstr ""
 "<p>limpar o sangrado</p><p>Retira todo o sangrado das liñas escollidas ou da "
 "liña actual, segundo a configuración do sangrado no documento.</p>"
 
-#: utils/katecmds.cpp:68
+#: utils/katecmds.cpp:67
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5241,7 +5241,7 @@ msgstr ""
 "ou as liñas escollidas ou a liña actual nun comentario segundo o formato de "
 "texto definido na definición de realzado de sintaxe do documento.</p>"
 
-#: utils/katecmds.cpp:74
+#: utils/katecmds.cpp:73
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5252,7 +5252,7 @@ msgstr ""
 "escollidas ou da liña actual segundo o formato do texto definido no realzado "
 "de sintaxe do documento.</p>"
 
-#: utils/katecmds.cpp:80
+#: utils/katecmds.cpp:79
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
@@ -5261,7 +5261,7 @@ msgstr ""
 "<p>goto <b>número de liña</b></p><p>Esta orde vai á liña co número indicado."
 "</p>"
 
-#: utils/katecmds.cpp:85
+#: utils/katecmds.cpp:84
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5274,12 +5274,12 @@ msgstr ""
 "p><p>Valores para activalo: 1 on true<br/>Valores para desactivalo: 0 off "
 "false</p>"
 
-#: utils/katecmds.cpp:91
+#: utils/katecmds.cpp:90
 #, kde-format
 msgid "Deletes the current line."
 msgstr "Elimina a liña actual."
 
-#: utils/katecmds.cpp:95
+#: utils/katecmds.cpp:94
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5288,7 +5288,7 @@ msgstr ""
 "<p>set-tab-width <b>anchura</b></p><p>Define a anchura da tabulación co "
 "valor <b>anchura</b></p>"
 
-#: utils/katecmds.cpp:100
+#: utils/katecmds.cpp:99
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5300,7 +5300,7 @@ msgstr ""
 "valores para activalo son: 1 on true<br/>Os valores para desactivalo son: 0 "
 "off false</p>"
 
-#: utils/katecmds.cpp:107
+#: utils/katecmds.cpp:106
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5312,7 +5312,7 @@ msgstr ""
 "</p> <p>Valores para activalo: 1 on true<br/>Valores para desactivalo: 0 off "
 "false</p>"
 
-#: utils/katecmds.cpp:114
+#: utils/katecmds.cpp:113
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5328,7 +5328,7 @@ msgstr ""
 "</li><li><b>todos</b>: retira os espazos finais de todo o documento.</li></"
 "ul></p>"
 
-#: utils/katecmds.cpp:125
+#: utils/katecmds.cpp:124
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5337,7 +5337,7 @@ msgstr ""
 "<p>set-indent-width <b>anchura</b></p><p>Define a anchura do sangrado co "
 "valor <b>anchura</b>. Só se usa se está a sangrar con espazos.</p>"
 
-#: utils/katecmds.cpp:130
+#: utils/katecmds.cpp:129
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5346,7 +5346,7 @@ msgstr ""
 "<p>set-indent-mode <b>modo</b></p><p>O parámetro é un valor dos que se "
 "amosan no menú «Utilidades → Sangrado».</p>"
 
-#: utils/katecmds.cpp:135
+#: utils/katecmds.cpp:134
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5357,7 +5357,7 @@ msgstr ""
 "p><p>Valores para activalo: 1 on true<br/>Valores para desactivalo: 0 off "
 "false</p>"
 
-#: utils/katecmds.cpp:142
+#: utils/katecmds.cpp:141
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5368,7 +5368,7 @@ msgstr ""
 "números de liña.</p><p>Valores para activalo: 1 on true<br/>Valores para "
 "desactivalo: 0 off false</p>"
 
-#: utils/katecmds.cpp:149
+#: utils/katecmds.cpp:148
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5379,7 +5379,7 @@ msgstr ""
 "cos marcadores de pregado.</p><p>Valores para activalo: 1 on true<br/"
 ">Valores para desactivalo: 0 off false</p>"
 
-#: utils/katecmds.cpp:156
+#: utils/katecmds.cpp:155
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5390,7 +5390,7 @@ msgstr ""
 "iconas.</p><p>Valores para activalo: 1 on true<br/>Valores para desactivalo: "
 "0 off false</p>"
 
-#: utils/katecmds.cpp:163
+#: utils/katecmds.cpp:162
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5401,7 +5401,7 @@ msgstr ""
 "segundo o valor de <b>activar</b></p><p>Valores para activalo: 1 on true<br/"
 ">Valores para desactivalo: 0 off false</p>"
 
-#: utils/katecmds.cpp:170
+#: utils/katecmds.cpp:169
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5412,7 +5412,7 @@ msgstr ""
 "división fixa das liñas no valor <b>anchura</b>. Úsase se está a dividir "
 "automaticamente as liñas.</p>"
 
-#: utils/katecmds.cpp:175
+#: utils/katecmds.cpp:174
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5424,7 +5424,7 @@ msgstr ""
 "documento.</p><p>Valores para activalo: 1 on true<br/>Valores para "
 "desactivalo: 0 off false</p>"
 
-#: utils/katecmds.cpp:182
+#: utils/katecmds.cpp:181
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5437,14 +5437,14 @@ msgstr ""
 "se amosa no menú «Utilidades → Realzado». Esta orde fornece unha lista de "
 "completado automático do argumento.</p>"
 
-#: utils/katecmds.cpp:188
+#: utils/katecmds.cpp:187
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
 "<p>set-mode <b>modo</b></p><p>Define o modo para un valor como os de "
 "Utilidades → Modo</p>"
 
-#: utils/katecmds.cpp:193
+#: utils/katecmds.cpp:192
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5455,65 +5455,65 @@ msgstr ""
 "hase visualizar cunha liña vertical a puntos.</p><p>Valores para activalo: 1 "
 "on true<br/>Valores para desactivalo: 0 off false</p>"
 
-#: utils/katecmds.cpp:199
+#: utils/katecmds.cpp:198
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr "<p>Abre o diálogo de impresión para imprimir o documento actual.</p>"
 
-#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
+#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "Faltan argumentos. Uso: %1 <valor>"
 
-#: utils/katecmds.cpp:327
+#: utils/katecmds.cpp:326
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "Non hai o realce «%1»"
 
-#: utils/katecmds.cpp:333
+#: utils/katecmds.cpp:332
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "Non hai o modo «%1»"
 
-#: utils/katecmds.cpp:346
+#: utils/katecmds.cpp:345
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "Non foi posíbel converter o argumento «%1» en enteiro."
 
-#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
+#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "A anchura debe ser como mínimo 1."
 
-#: utils/katecmds.cpp:360
+#: utils/katecmds.cpp:359
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "A columna debe ser como mínimo 1."
 
-#: utils/katecmds.cpp:390
+#: utils/katecmds.cpp:389
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "Uso: %1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:417
+#: utils/katecmds.cpp:416
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "Argumento incorrecto «%1». Uso: %2 on|off|1|0|true|false"
 
 # skip-rule: trasno-modify, trasno-remove
-#: utils/katecmds.cpp:421
+#: utils/katecmds.cpp:420
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
 msgstr ""
 "Uso: set-remove-trailing-spaces 0|-|none ou 1|+|mod|modified ou 2|*|all"
 
-#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "Orde «%1» descoñecida"
 
-#: utils/katecmds.cpp:493
+#: utils/katecmds.cpp:492
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5526,7 +5526,7 @@ msgstr ""
 "p><p>Exemplos:<ul><li>char <b>234</b></li><li>char <b>0x1234</b></li></ul></"
 "p>"
 
-#: utils/katecmds.cpp:560
+#: utils/katecmds.cpp:559
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5577,27 +5577,27 @@ msgstr ""
 "hase substituír por «AM» ou «PM».</td></tr><tr><td>ap</td><td>Usar am/pm. ap "
 "hase substituír por ««am» ou «pm».</td></tr></table></p>"
 
-#: utils/katecmds.cpp:621
+#: utils/katecmds.cpp:620
 #, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "Retirar as liñas duplicadas"
 
-#: utils/katecmds.cpp:622
+#: utils/katecmds.cpp:621
 #, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
 msgstr "Retirar as liñas duplicadas e ordenar o texto alfabeticamente."
 
-#: utils/katecmds.cpp:623
+#: utils/katecmds.cpp:622
 #, kde-format
 msgid "Sort Text Naturally"
 msgstr "Ordenar o texto de maneira natural"
 
-#: utils/katecmds.cpp:624
+#: utils/katecmds.cpp:623
 #, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "Ordenar o texto escollido alfabeticamente"
 
-#: utils/katecmds.cpp:699
+#: utils/katecmds.cpp:698
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
@@ -5606,7 +5606,7 @@ msgstr ""
 "<p>sort</p><p>Ordenar o texto escollido ou o documento completo se non hai "
 "selección.</p>"
 
-#: utils/katecmds.cpp:703
+#: utils/katecmds.cpp:702
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5615,7 +5615,7 @@ msgstr ""
 "<p>uniq</p><p>Retirar as liñas duplicadas do texto escollido ou do documento "
 "completo se non hai selección.</p>"
 
-#: utils/katecmds.cpp:707
+#: utils/katecmds.cpp:706
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
@@ -5624,7 +5624,7 @@ msgstr ""
 "<p>sortuniq</p><p>Ordenar o texto escollido ou o documento completo e a "
 "continuación eliminar as liñas duplicadas.</p>"
 
-#: utils/katecmds.cpp:711
+#: utils/katecmds.cpp:710
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
@@ -8539,18 +8539,18 @@ msgstr "Marca definida: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Non hai máis caracteres para o marcador seguinte."
 
-#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:795
-#: vimode/modes/normalvimode.cpp:3604
+#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
+#: vimode/modes/normalvimode.cpp:3603
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Non hai nada no rexistro %1"
 
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1688
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "«%1» %2, Hex %3, Octal %4"
 
-#: vimode/modes/normalvimode.cpp:2571
+#: vimode/modes/normalvimode.cpp:2570
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca non definida: %1"

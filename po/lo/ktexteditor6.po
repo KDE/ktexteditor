@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-19 00:43+0000\n"
+"POT-Creation-Date: 2026-11-01 00:51+0000\n"
 "PO-Revision-Date: 2025-12-08 12:25+0700\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <kde-i18n-doc@kde.org>\n"
@@ -133,8 +133,8 @@ msgid "Word Completion"
 msgstr "ການເຕີມຄຳ"
 
 #. i18n: ectx: Menu (spelling)
-#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:71
-#: spellcheck/spellingmenu.cpp:195
+#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:69
+#: spellcheck/spellingmenu.cpp:193
 #, kde-format
 msgid "Spelling"
 msgstr "ການສະກົດຄຳ"
@@ -688,7 +688,7 @@ msgid "&Delete"
 msgstr "&ລຶບ"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
-#: dialogs/filetypeconfigwidget.ui:66 mode/katemodeconfigpage.cpp:272
+#: dialogs/filetypeconfigwidget.ui:66 mode/katemodeconfigpage.cpp:271
 #, kde-format
 msgid "Properties"
 msgstr "ຄຸນສົມບັດ"
@@ -1405,7 +1405,7 @@ msgstr "ໂໝດການເລືອກຂໍ້ຄວາມ:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbTextSelectionMode)
 #: dialogs/navigationconfigwidget.ui:139 inputmode/katenormalinputmode.cpp:64
-#: mode/katemodemanager.cpp:162
+#: mode/katemodemanager.cpp:161
 #, kde-format
 msgid "Normal"
 msgstr "ປົກກະຕິ"
@@ -2445,27 +2445,27 @@ msgstr "ກຳລັງບັນທຶກ"
 msgid "Vi Input Mode"
 msgstr "ໂໝດປ້ອນຂໍ້ມູນ Vi"
 
-#: mode/katemodeconfigpage.cpp:46
+#: mode/katemodeconfigpage.cpp:45
 #, kde-format
 msgid "<Unchanged>"
 msgstr "<ບໍ່ປ່ຽນແປງ>"
 
-#: mode/katemodeconfigpage.cpp:58
+#: mode/katemodeconfigpage.cpp:57
 #, kde-format
 msgid "Use Default"
 msgstr "ໃຊ້ຄ່າເລີ່ມຕົ້ນ"
 
-#: mode/katemodeconfigpage.cpp:99 mode/katemodeconfigpage.cpp:241
+#: mode/katemodeconfigpage.cpp:98 mode/katemodeconfigpage.cpp:240
 #, kde-format
 msgid "Properties of %1"
 msgstr "ຄຸນສົມບັດຂອງ %1"
 
-#: mode/katemodeconfigpage.cpp:178
+#: mode/katemodeconfigpage.cpp:177
 #, kde-format
 msgid "New Filetype"
 msgstr "ປະເພດແຟ້ມໃໝ່"
 
-#: mode/katemodeconfigpage.cpp:293
+#: mode/katemodeconfigpage.cpp:292
 #, kde-format
 msgid ""
 "Select the MimeTypes you want for this file type.\n"
@@ -2475,23 +2475,23 @@ msgstr ""
 "ເລືອກ MimeTypes ທີ່ທ່ານຕ້ອງການສຳລັບປະເພດແຟ້ມນີ້.\n"
 "ກະລຸນາຮັບຊາບວ່າສິ່ງນີ້ຈະແກ້ໄຂນາມສະກຸນແຟ້ມທີ່ກ່ຽວຂ້ອງໂດຍອັດຕະໂນມັດເຊັ່ນກັນ."
 
-#: mode/katemodeconfigpage.cpp:295
+#: mode/katemodeconfigpage.cpp:294
 #, kde-format
 msgid "Select Mime Types"
 msgstr "ເລືອກປະເພດ Mime"
 
-#: mode/katemodeconfigpage.cpp:312
+#: mode/katemodeconfigpage.cpp:311
 #, kde-format
 msgid "Modes && Filetypes"
 msgstr "ໂໝດ && ປະເພດແຟ້ມ"
 
-#: mode/katemodemenulist.cpp:138
+#: mode/katemodemenulist.cpp:137
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "ຄົ້ນຫາ..."
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:139
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2499,13 +2499,13 @@ msgid ""
 "example, C++ or .cpp)"
 msgstr "ຄົ້ນຫາໂໝດເນັ້ນສີໄວຍາກອນຕາມຊື່ພາສາ ຫຼື ນາມສະກຸນແຟ້ມ (ຕົວຢ່າງ, C++ ຫຼື .cpp)"
 
-#: mode/katemodemenulist.cpp:560
+#: mode/katemodemenulist.cpp:559
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "ບໍ່ມີລາຍການທີ່ກົງກັບການຄົ້ນຫາຂອງທ່ານ"
 
-#: mode/katemodemenulist.cpp:1087
+#: mode/katemodemenulist.cpp:1086
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2514,7 +2514,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "ຜົນການຄົ້ນຫາທີ່ກົງທີ່ສຸດ"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1091
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -3454,7 +3454,7 @@ msgstr ""
 "ການໃສ່ເຄື່ອງໝາຍວັກຕອນບໍ່ຖືກຕ້ອງໃນການເອີ້ນ: %1. ກະລຸນາ escape single quotes ດ້ວຍ "
 "backslash."
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -4112,17 +4112,17 @@ msgstr "ການສະກົດຄຳ (ຈາກເຄີເຊີ)..."
 msgid "Check the document's spelling from the cursor and forward"
 msgstr "ກວດການສະກົດຄຳຂອງເອກະສານຈາກເຄີເຊີແລະຕໍ່ໄປ"
 
-#: spellcheck/spellingmenu.cpp:76
+#: spellcheck/spellingmenu.cpp:74
 #, kde-format
 msgid "Ignore Word"
 msgstr "ຂ້າມຄຳສັບ"
 
-#: spellcheck/spellingmenu.cpp:79
+#: spellcheck/spellingmenu.cpp:77
 #, kde-format
 msgid "Add to Dictionary"
 msgstr "ເພີ່ມເຂົ້າວັດຈະນານຸກົມ"
 
-#: spellcheck/spellingmenu.cpp:172
+#: spellcheck/spellingmenu.cpp:170
 #, kde-format
 msgid "Spelling '%1'"
 msgstr "ການສະກົດຄຳ '%1'"
@@ -5025,17 +5025,17 @@ msgstr "&ຖັດໄປ: %1 - \"%2\""
 msgid "&Previous: %1 - \"%2\""
 msgstr "&ກ່ອນໜ້າ: %1 - \"%2\""
 
-#: utils/katecmds.cpp:53
+#: utils/katecmds.cpp:52
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>indent</p><p>ຫຍໍ້ໜ້າແຖວທີ່ເລືອກ ຫຼື ແຖວປັດຈຸບັນເຂົ້າ</p>"
 
-#: utils/katecmds.cpp:58
+#: utils/katecmds.cpp:57
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr "<p>unindent</p><p>ຫຍໍ້ໜ້າແຖວທີ່ເລືອກ ຫຼື ແຖວປັດຈຸບັນອອກ.</p>"
 
-#: utils/katecmds.cpp:63
+#: utils/katecmds.cpp:62
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5044,7 +5044,7 @@ msgstr ""
 "<p>cleanindent</p><p>ລ້າງການຫຍໍ້ໜ້າຂອງແຖວທີ່ເລືອກ ຫຼື ແຖວປັດຈຸບັນ "
 "ຕາມການຕັ້ງຄ່າການຫຍໍ້ໜ້າໃນເອກະສານ. </p>"
 
-#: utils/katecmds.cpp:68
+#: utils/katecmds.cpp:67
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5054,7 +5054,7 @@ msgstr ""
 "<p>comment</p><p>ແຊກເຄື່ອງໝາຍໝາຍເຫດ ເພື່ອເຮັດໃຫ້ສ່ວນທີ່ເລືອກ ຫຼື ແຖວທີ່ເລືອກ ຫຼື ແຖວປັດຈຸບັນ "
 "ກາຍເປັນໝາຍເຫດ ຕາມຮູບແບບຂໍ້ຄວາມທີ່ກຳນົດໄວ້ໂດຍນິຍາມການເນັ້ນສີໄວຍາກອນສຳລັບເອກະສານ.</p>"
 
-#: utils/katecmds.cpp:74
+#: utils/katecmds.cpp:73
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5064,14 +5064,14 @@ msgstr ""
 "<p>uncomment</p><p>ເອົາເຄື່ອງໝາຍໝາຍເຫດອອກຈາກສ່ວນທີ່ເລືອກ ຫຼື ແຖວທີ່ເລືອກ ຫຼື ແຖວປັດຈຸບັນ "
 "ຕາມຮູບແບບຂໍ້ຄວາມທີ່ກຳນົດໄວ້ໂດຍນິຍາມການເນັ້ນສີໄວຍາກອນສຳລັບເອກະສານ.</p>"
 
-#: utils/katecmds.cpp:80
+#: utils/katecmds.cpp:79
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
 "line number.</p>"
 msgstr "<p>goto <b>ເລກແຖວ</b></p><p>ຄຳສັ່ງນີ້ຈະພາໄປຍັງເລກແຖວທີ່ລະບຸ.</p>"
 
-#: utils/katecmds.cpp:85
+#: utils/katecmds.cpp:84
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5083,12 +5083,12 @@ msgstr ""
 "ການຫຍໍ້ໜ້າຂອງຂໍ້ຄວາມທີ່ວາງຈາກຄລິບບອດຈະຖືກປັບ ໂດຍໃຊ້ຕົວຈັດການຫຍໍ້ໜ້າປັດຈຸບັນ.</p><p>ຄ່າທີ່ເປັນຈິງ: 1 "
 "on true<br/>ຄ່າທີ່ເປັນເທັດ: 0 off false</p>"
 
-#: utils/katecmds.cpp:91
+#: utils/katecmds.cpp:90
 #, kde-format
 msgid "Deletes the current line."
 msgstr "ລຶບແຖວປັດຈຸບັນ."
 
-#: utils/katecmds.cpp:95
+#: utils/katecmds.cpp:94
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5097,7 +5097,7 @@ msgstr ""
 "<p>set-tab-width <b>width</b></p><p>ຕັ້ງຄ່າຄວາມກວ້າງຂອງແຖບ (Tab) ເປັນຈຳນວນ "
 "<b>width</b></p>"
 
-#: utils/katecmds.cpp:100
+#: utils/katecmds.cpp:99
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5108,7 +5108,7 @@ msgstr ""
 "ຈະຖືກແທນທີ່ດ້ວຍຍະຫວ່າງໃນຂະນະທີ່ທ່ານພິມ.</p><p>ຄ່າທີ່ເປັນຈິງ: 1 on true<br/>ຄ່າທີ່ເປັນເທັດ: 0 "
 "off false</p>"
 
-#: utils/katecmds.cpp:107
+#: utils/katecmds.cpp:106
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5119,7 +5119,7 @@ msgstr ""
 "ຍະຫວ່າງທ້າຍແຖວ ຈະຖືກສະແດງດ້ວຍຈຸດນ້ອຍໆ.</p><p>ຄ່າທີ່ເປັນຈິງ: 1 on true<br/>ຄ່າທີ່ເປັນເທັດ: 0 "
 "off false</p>"
 
-#: utils/katecmds.cpp:114
+#: utils/katecmds.cpp:113
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5133,7 +5133,7 @@ msgstr ""
 "li><li><b>modified</b>: ລຶບຍະຫວ່າງທ້າຍແຖວສະເພາະແຖວທີ່ມີການແກ້ໄຂ.</li><li><b>all</"
 "b>: ລຶບຍະຫວ່າງທ້າຍແຖວໃນເອກະສານທັງໝົດ.</li></ul></p>"
 
-#: utils/katecmds.cpp:125
+#: utils/katecmds.cpp:124
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5142,7 +5142,7 @@ msgstr ""
 "<p>set-indent-width <b>width</b></p><p>ຕັ້ງຄ່າຄວາມກວ້າງຂອງການຫຍໍ້ໜ້າເປັນຈຳນວນ "
 "<b>width</b>. ໃຊ້ສະເພາະກໍລະນີທີ່ທ່ານຫຍໍ້ໜ້າດ້ວຍຍະຫວ່າງ.</p>"
 
-#: utils/katecmds.cpp:130
+#: utils/katecmds.cpp:129
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5151,7 +5151,7 @@ msgstr ""
 "<p>set-indent-mode <b>mode</b></p><p>ພາຣາມິເຕີ mode ແມ່ນຄ່າຕາມທີ່ເຫັນໃນ ເມນູ ເຄື່ອງມື - "
 "ການຫຍໍ້ໜ້າ</p>"
 
-#: utils/katecmds.cpp:135
+#: utils/katecmds.cpp:134
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5161,7 +5161,7 @@ msgstr ""
 "<p>set-auto-indent <b>enable</b></p><p>ເປີດ ຫຼື ປິດ ການຫຍໍ້ໜ້າອັດຕະໂນມັດ.</"
 "p><p>ຄ່າທີ່ເປັນຈິງ: 1 on true<br/>ຄ່າທີ່ເປັນເທັດ: 0 off false</p>"
 
-#: utils/katecmds.cpp:142
+#: utils/katecmds.cpp:141
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5171,7 +5171,7 @@ msgstr ""
 "<p>set-line-numbers <b>enable</b></p><p>ຕັ້ງຄ່າການສະແດງຜົນຂອງແຖບເລກແຖວ.</p><p> "
 "ຄ່າທີ່ເປັນຈິງ: 1 on true<br/>ຄ່າທີ່ເປັນເທັດ: 0 off false</p>"
 
-#: utils/katecmds.cpp:149
+#: utils/katecmds.cpp:148
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5181,7 +5181,7 @@ msgstr ""
 "<p>set-folding-markers <b>enable</b></p><p>ຕັ້ງຄ່າການສະແດງຜົນຂອງແຖບເຄື່ອງໝາຍການຫຍໍ້."
 "</p><p> ຄ່າທີ່ເປັນຈິງ: 1 on true<br/>ຄ່າທີ່ເປັນເທັດ: 0 off false</p>"
 
-#: utils/katecmds.cpp:156
+#: utils/katecmds.cpp:155
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5191,7 +5191,7 @@ msgstr ""
 "<p>set-icon-border <b>enable</b></p><p>ຕັ້ງຄ່າການສະແດງຜົນຂອງຂອບໄອຄອນ.</p><p> "
 "ຄ່າທີ່ເປັນຈິງ: 1 on true<br/>ຄ່າທີ່ເປັນເທັດ: 0 off false</p>"
 
-#: utils/katecmds.cpp:163
+#: utils/katecmds.cpp:162
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5201,7 +5201,7 @@ msgstr ""
 "<p>set-word-wrap <b>enable</b></p><p>ເປີດໃຊ້ງານການຕັດຄຳແບບໄດນາມິກ ຕາມຄ່າ "
 "<b>enable</b></p><p> ຄ່າທີ່ເປັນຈິງ: 1 on true<br/>ຄ່າທີ່ເປັນເທັດ: 0 off false</p>"
 
-#: utils/katecmds.cpp:170
+#: utils/katecmds.cpp:169
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5212,7 +5212,7 @@ msgstr ""
 "p><p>ຕັ້ງຄ່າຄວາມກວ້າງຂອງແຖວສຳລັບການຕັດຄຳແບບແຂງ (Hard Wrap) ເປັນ <b>width</b>. "
 "ສິ່ງນີ້ໃຊ້ໃນກໍລະນີທີ່ທ່ານຕ້ອງການໃຫ້ຂໍ້ຄວາມຖືກຕັດໂດຍອັດຕະໂນມັດ.</p>"
 
-#: utils/katecmds.cpp:175
+#: utils/katecmds.cpp:174
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5223,7 +5223,7 @@ msgstr ""
 "ຈະຖືກແທນທີ່ດ້ວຍຍະຫວ່າງ ເມື່ອໃດກໍຕາມທີ່ເອກະສານຖືກບັນທຶກ.</p><p> ຄ່າທີ່ເປັນຈິງ: 1 on true<br/"
 ">ຄ່າທີ່ເປັນເທັດ: 0 off false</p>"
 
-#: utils/katecmds.cpp:182
+#: utils/katecmds.cpp:181
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5235,12 +5235,12 @@ msgstr ""
 "ອາກິວເມັນຕ້ອງເປັນຊື່ການເນັ້ນສີທີ່ຖືກຕ້ອງ, ຕາມທີ່ເຫັນໃນເມນູ ເຄື່ອງມື → ການເນັ້ນສີ. "
 "ຄຳສັ່ງນີ້ມີລາຍການເຕີມເຕັມຄຳອັດຕະໂນມັດສຳລັບອາກິວເມັນຂອງມັນ.</p>"
 
-#: utils/katecmds.cpp:188
+#: utils/katecmds.cpp:187
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr "<p>set-mode <b>mode</b></p><p>ຕັ້ງຄ່າໂໝດຕາມທີ່ເຫັນໃນ ເຄື່ອງມື - ໂໝດ</p>"
 
-#: utils/katecmds.cpp:193
+#: utils/katecmds.cpp:192
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5251,63 +5251,63 @@ msgstr ""
 "ການຫຍໍ້ໜ້າຈະຖືກສະແດງໃຫ້ເຫັນດ້ວຍເສັ້ນຈຸດແນວຕັ້ງ.</p><p> ຄ່າທີ່ເປັນຈິງ: 1 on true<br/"
 ">ຄ່າທີ່ເປັນເທັດ: 0 off false</p>"
 
-#: utils/katecmds.cpp:199
+#: utils/katecmds.cpp:198
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr "<p>ເປີດກ່ອງໂຕ້ຕອບການພິມ ເພື່ອພິມເອກະສານປັດຈຸບັນ.</p>"
 
-#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
+#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "ອາກິວເມັນຂາດຫາຍໄປ. ວິທີໃຊ້: %1 <value>"
 
-#: utils/katecmds.cpp:327
+#: utils/katecmds.cpp:326
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "ບໍ່ມີການເນັ້ນສີ '%1'"
 
-#: utils/katecmds.cpp:333
+#: utils/katecmds.cpp:332
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "ບໍ່ມີໂໝດ '%1'"
 
-#: utils/katecmds.cpp:346
+#: utils/katecmds.cpp:345
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "ລົ້ມເຫຼວໃນການແປງອາກິວເມັນ '%1' ເປັນເລກຈຳນວນຖ້ວນ."
 
-#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
+#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "ຄວາມກວ້າງຕ້ອງມີຢ່າງໜ້ອຍ 1."
 
-#: utils/katecmds.cpp:360
+#: utils/katecmds.cpp:359
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "ຖັນຕ້ອງມີຢ່າງໜ້ອຍ 1."
 
-#: utils/katecmds.cpp:390
+#: utils/katecmds.cpp:389
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "ວິທີໃຊ້: %1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:417
+#: utils/katecmds.cpp:416
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "ອາກິວເມັນ '%1' ບໍ່ຖືກຕ້ອງ. ວິທີໃຊ້: %2 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:421
+#: utils/katecmds.cpp:420
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
 msgstr "ວິທີໃຊ້: set-remove-trailing-spaces 0|-|none ຫຼື 1|+|mod|modified ຫຼື 2|*|all"
 
-#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "ບໍ່ຮູ້ຈັກຄຳສັ່ງ '%1'"
 
-#: utils/katecmds.cpp:493
+#: utils/katecmds.cpp:492
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5319,7 +5319,7 @@ msgstr ""
 "ໂດຍໃຊ້ລະຫັດຕົວເລກຂອງພວກມັນ, ໃນຮູບແບບເລກຖານສິບ, ຖານແປດ ຫຼື ຖານສິບຫົກ.</p><p>ຕົວຢ່າງ:"
 "<ul><li>char <b>234</b></li><li>char <b>0x1234</b></li></ul></p>"
 
-#: utils/katecmds.cpp:560
+#: utils/katecmds.cpp:559
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5368,34 +5368,34 @@ msgstr ""
 "tr><tr><td>ap</td><td>ໃຊ້ການສະແດງຜົນແບບ am/pm. ap ຈະຖືກແທນທີ່ດ້ວຍ \"am\" ຫຼື \"pm\"."
 "</td></tr></table></p>"
 
-#: utils/katecmds.cpp:621
+#: utils/katecmds.cpp:620
 #, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "ລຶບແຖວຊ້ຳກັນ"
 
-#: utils/katecmds.cpp:622
+#: utils/katecmds.cpp:621
 #, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
 msgstr "ລຶບແຖວຊ້ຳກັນ ແລະ ລຽງຂໍ້ຄວາມຕາມຕົວອັກສອນ"
 
-#: utils/katecmds.cpp:623
+#: utils/katecmds.cpp:622
 #, kde-format
 msgid "Sort Text Naturally"
 msgstr "ລຽງຂໍ້ຄວາມແບບທຳມະຊາດ"
 
-#: utils/katecmds.cpp:624
+#: utils/katecmds.cpp:623
 #, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "ລຽງຂໍ້ຄວາມທີ່ເລືອກຕາມຕົວອັກສອນ"
 
-#: utils/katecmds.cpp:699
+#: utils/katecmds.cpp:698
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
 "selection</p>"
 msgstr "<p>sort</p><p>ລຽງຂໍ້ຄວາມທີ່ເລືອກ ຫຼື ທັງໝົດເອກະສານ ຖ້າບໍ່ມີການເລືອກ</p>"
 
-#: utils/katecmds.cpp:703
+#: utils/katecmds.cpp:702
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5403,7 +5403,7 @@ msgid ""
 msgstr ""
 "<p>uniq</p><p>ລຶບແຖວທີ່ຊ້ຳກັນອອກຈາກຂໍ້ຄວາມທີ່ເລືອກ ຫຼື ທັງໝົດເອກະສານ ຖ້າບໍ່ມີການເລືອກ.</p>"
 
-#: utils/katecmds.cpp:707
+#: utils/katecmds.cpp:706
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
@@ -5411,7 +5411,7 @@ msgid ""
 msgstr ""
 "<p>sortuniq</p><p>ລຽງຂໍ້ຄວາມທີ່ເລືອກ ຫຼື ທັງໝົດເອກະສານ ແລ້ວລຶບແຖວທີ່ຊ້ຳກັນອອກທັງໝົດ.</p>"
 
-#: utils/katecmds.cpp:711
+#: utils/katecmds.cpp:710
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
@@ -8229,18 +8229,18 @@ msgstr "ຕັ້ງຄ່າເຄື່ອງໝາຍ: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "ບໍ່ມີຕົວອັກສອນເພີ່ມເຕີມສຳລັບຂັ້ນໜ້າຖັດໄປ."
 
-#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:795
-#: vimode/modes/normalvimode.cpp:3604
+#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
+#: vimode/modes/normalvimode.cpp:3603
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "ບໍ່ມີຫຍັງໃນ register %1"
 
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1688
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Hex %3,  Octal %4"
 
-#: vimode/modes/normalvimode.cpp:2571
+#: vimode/modes/normalvimode.cpp:2570
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "ເຄື່ອງໝາຍບໍ່ໄດ້ຕັ້ງຄ່າ: %1"

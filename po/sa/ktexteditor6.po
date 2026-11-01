@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-19 00:43+0000\n"
+"POT-Creation-Date: 2026-11-01 00:51+0000\n"
 "PO-Revision-Date: 2024-12-29 22:54+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -133,8 +133,8 @@ msgid "Word Completion"
 msgstr "शब्द समाप्ति"
 
 #. i18n: ectx: Menu (spelling)
-#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:71
-#: spellcheck/spellingmenu.cpp:195
+#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:69
+#: spellcheck/spellingmenu.cpp:193
 #, kde-format
 msgid "Spelling"
 msgstr "वर्तनी"
@@ -710,7 +710,7 @@ msgid "&Delete"
 msgstr "&लुप्"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
-#: dialogs/filetypeconfigwidget.ui:66 mode/katemodeconfigpage.cpp:272
+#: dialogs/filetypeconfigwidget.ui:66 mode/katemodeconfigpage.cpp:271
 #, kde-format
 msgid "Properties"
 msgstr "गुणाः"
@@ -1443,7 +1443,7 @@ msgstr "पाठचयनविधिः :"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbTextSelectionMode)
 #: dialogs/navigationconfigwidget.ui:139 inputmode/katenormalinputmode.cpp:64
-#: mode/katemodemanager.cpp:162
+#: mode/katemodemanager.cpp:161
 #, kde-format
 msgid "Normal"
 msgstr "सामान्य"
@@ -2505,27 +2505,27 @@ msgstr "अभिलेखनम्"
 msgid "Vi Input Mode"
 msgstr "Vi इनपुट मोड"
 
-#: mode/katemodeconfigpage.cpp:46
+#: mode/katemodeconfigpage.cpp:45
 #, kde-format
 msgid "<Unchanged>"
 msgstr "<अपरिवर्तितः>"
 
-#: mode/katemodeconfigpage.cpp:58
+#: mode/katemodeconfigpage.cpp:57
 #, kde-format
 msgid "Use Default"
 msgstr "Default इत्यस्य उपयोगं कुर्वन्तु"
 
-#: mode/katemodeconfigpage.cpp:99 mode/katemodeconfigpage.cpp:241
+#: mode/katemodeconfigpage.cpp:98 mode/katemodeconfigpage.cpp:240
 #, kde-format
 msgid "Properties of %1"
 msgstr "%1 इत्यस्य गुणाः"
 
-#: mode/katemodeconfigpage.cpp:178
+#: mode/katemodeconfigpage.cpp:177
 #, kde-format
 msgid "New Filetype"
 msgstr "नवीनः सञ्चिकाप्रकारः"
 
-#: mode/katemodeconfigpage.cpp:293
+#: mode/katemodeconfigpage.cpp:292
 #, kde-format
 msgid ""
 "Select the MimeTypes you want for this file type.\n"
@@ -2535,23 +2535,23 @@ msgstr ""
 "अस्य सञ्चिकाप्रकारस्य कृते इच्छितं MimeTypes चिनोतु ।\n"
 "कृपया ज्ञातव्यं यत् एतेन स्वयमेव सम्बद्धाः सञ्चिकाविस्तारः अपि सम्पादिताः भविष्यन्ति ।"
 
-#: mode/katemodeconfigpage.cpp:295
+#: mode/katemodeconfigpage.cpp:294
 #, kde-format
 msgid "Select Mime Types"
 msgstr "Mime Types इति चिनोतु"
 
-#: mode/katemodeconfigpage.cpp:312
+#: mode/katemodeconfigpage.cpp:311
 #, kde-format
 msgid "Modes && Filetypes"
 msgstr "मोड्स && सञ्चिकाप्रकार"
 
-#: mode/katemodemenulist.cpp:138
+#: mode/katemodemenulist.cpp:137
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "अन्वेषण…"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:139
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2561,13 +2561,13 @@ msgstr ""
 "भाषानाम्ना अथवा सञ्चिकाविस्तारेण (उदाहरणार्थं, C++ अथवा .cpp) "
 "वाक्यविन्यासप्रकाशनविधानानि अन्वेष्टुम् ।"
 
-#: mode/katemodemenulist.cpp:560
+#: mode/katemodemenulist.cpp:559
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "भवतः अन्वेषणेन सह सङ्गताः वस्तूनि न सन्ति"
 
-#: mode/katemodemenulist.cpp:1087
+#: mode/katemodemenulist.cpp:1086
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2576,7 +2576,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "सर्वोत्तम अन्वेषणमेलनम्"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1091
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -3525,7 +3525,7 @@ msgstr "%1 आह्वयितुं त्रुटिः"
 msgid "Bad quoting in call: %1. Please escape single quotes with a backslash."
 msgstr "आह्वाने दुष्टं उद्धरणम्: %1. कृपया बैकस्लैश इत्यनेन एकल उद्धरणं पलायनं कुर्वन्तु।"
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -4176,17 +4176,17 @@ msgstr "वर्तनी (कर्सरतः)..."
 msgid "Check the document's spelling from the cursor and forward"
 msgstr "कर्सरतः अग्रे च दस्तावेजस्य वर्तनीं पश्यन्तु"
 
-#: spellcheck/spellingmenu.cpp:76
+#: spellcheck/spellingmenu.cpp:74
 #, kde-format
 msgid "Ignore Word"
 msgstr "शब्दस्य अवहेलना कुर्वन्तु"
 
-#: spellcheck/spellingmenu.cpp:79
+#: spellcheck/spellingmenu.cpp:77
 #, kde-format
 msgid "Add to Dictionary"
 msgstr "शब्दकोशे योजयतु"
 
-#: spellcheck/spellingmenu.cpp:172
+#: spellcheck/spellingmenu.cpp:170
 #, kde-format
 msgid "Spelling '%1'"
 msgstr "वर्तनी '%1'."
@@ -5101,17 +5101,17 @@ msgstr "&अनन्तरम् : %1 - \"%2\" ."
 msgid "&Previous: %1 - \"%2\""
 msgstr "&पूर्व: %1 - \"%2\"।"
 
-#: utils/katecmds.cpp:53
+#: utils/katecmds.cpp:52
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>indent</p><p> चयनितपङ्क्तयः वर्तमानरेखां वा इन्डेण्ट् करोति</p>"
 
-#: utils/katecmds.cpp:58
+#: utils/katecmds.cpp:57
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr "<p>अनिन्दितम्</p><p> चयनितपङ्क्तयः वर्तमानरेखा वा अनइण्डेन्ट् करोति ।</p>"
 
-#: utils/katecmds.cpp:63
+#: utils/katecmds.cpp:62
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5120,7 +5120,7 @@ msgstr ""
 "<p>cleanindent इति</p><p> दस्तावेजे इण्डेन्टेशनसेटिंग्स् अनुसारं चयनितपङ्क्तयः अथवा "
 "वर्तमानरेखायाः इण्डेन्टेशनं स्वच्छं करोति ।</p>"
 
-#: utils/katecmds.cpp:68
+#: utils/katecmds.cpp:67
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5131,7 +5131,7 @@ msgstr ""
 "वाक्यविन्यासप्रकाशपरिभाषाद्वारा परिभाषितस्य पाठस्वरूपस्य अनुसारं टिप्पणीं कर्तुं "
 "टिप्पणीचिह्नानि सम्मिलितं करोति</p>"
 
-#: utils/katecmds.cpp:74
+#: utils/katecmds.cpp:73
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5142,7 +5142,7 @@ msgstr ""
 "पाठस्वरूपस्य अनुसारं चयनात् अथवा चयनितपङ्क्तयः अथवा वर्तमानपङ्क्तितः टिप्पणीचिह्नानि "
 "निष्कासयति ।</p>"
 
-#: utils/katecmds.cpp:80
+#: utils/katecmds.cpp:79
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
@@ -5150,7 +5150,7 @@ msgid ""
 msgstr ""
 "<p>goto <b>रेखासङ्ख्या</b></p><p> एषः आदेशः निर्दिष्टपङ्क्तिसङ्ख्यां प्रति गच्छति ।</p>"
 
-#: utils/katecmds.cpp:85
+#: utils/katecmds.cpp:84
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5162,12 +5162,12 @@ msgstr ""
 "चिपचिपस्य पाठस्य इण्डेन्टेशनं वर्तमान इन्डेण्टर् इत्यस्य उपयोगेन समायोजितं भवति ।</p><p> "
 "सम्भाव्यसत्यमूल्यानि : सत्ये १<br/> सम्भाव्य मिथ्यामूल्यानि: 0 off false</p>"
 
-#: utils/katecmds.cpp:91
+#: utils/katecmds.cpp:90
 #, kde-format
 msgid "Deletes the current line."
 msgstr "वर्तमानपङ्क्तिं विलोपयति ।"
 
-#: utils/katecmds.cpp:95
+#: utils/katecmds.cpp:94
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5176,7 +5176,7 @@ msgstr ""
 "<p>set-tab-width <b>चौड़ाई</b></p><p> ट्याब् विस्तारं <b>संख्याविस्तारं</b> प्रति सेट् "
 "करोति</p>"
 
-#: utils/katecmds.cpp:100
+#: utils/katecmds.cpp:99
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5187,7 +5187,7 @@ msgstr ""
 "यथा यथा टङ्कयन्ति तथा रिक्तस्थानानि प्रतिस्थाप्यन्ते ।</p><p> सम्भाव्यसत्यमूल्यानि : सत्ये "
 "१<br/> सम्भाव्य मिथ्यामूल्यानि: 0 off false</p>"
 
-#: utils/katecmds.cpp:107
+#: utils/katecmds.cpp:106
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5198,7 +5198,7 @@ msgstr ""
 "अनुवर्तमानं श्वेतस्थानं च लघुबिन्दुना दृश्यन्ते ।</p><p> सम्भाव्यसत्यमूल्यानि : सत्ये १<br/> "
 "सम्भाव्य मिथ्यामूल्यानि: 0 off false</p>"
 
-#: utils/katecmds.cpp:114
+#: utils/katecmds.cpp:113
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5213,7 +5213,7 @@ msgstr ""
 "रेखानां पश्चात्स्थानानि निष्कासयन्तु।</li><li> <b>all</b> : सम्पूर्णे दस्तावेजे "
 "अनुवर्तीस्थानानि निष्कासयन्तु।</li></ul></p>"
 
-#: utils/katecmds.cpp:125
+#: utils/katecmds.cpp:124
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5222,7 +5222,7 @@ msgstr ""
 "<p>सेट्-इण्डेन्ट-विड्थ <b>चौड़ाई</b></p><p> इण्डेन्टेशनविस्तारं <b>संख्याविस्तारेण</b> सेट् "
 "करोति | यदि भवान् रिक्तस्थानैः सह इन्डेण्ट् करोति तर्हि एव उपयुज्यते ।</p>"
 
-#: utils/katecmds.cpp:130
+#: utils/katecmds.cpp:129
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5231,7 +5231,7 @@ msgstr ""
 "<p>सेट्-इण्डेन्ट्-मोड <b>मोड</b></p><p> मोड पैरामीटर् एकं मूल्यं यथा Tools - Indentation "
 "मेन्यू मध्ये दृश्यते</p>"
 
-#: utils/katecmds.cpp:135
+#: utils/katecmds.cpp:134
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5241,7 +5241,7 @@ msgstr ""
 "<p>सेट्-स्वयं-इण्डेन्ट् <b>सक्षमम्</b></p><p> स्वयम्-इण्डेन्टेशनं सक्षमं वा अक्षमं वा ।</p><p> "
 "सम्भाव्य सत्यमूल्यानि: सत्ये १<br/> सम्भाव्य मिथ्यामूल्यानि: 0 off false</p>"
 
-#: utils/katecmds.cpp:142
+#: utils/katecmds.cpp:141
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5251,7 +5251,7 @@ msgstr ""
 "<p>set-line-numbers <b>सक्षमम्</b></p><p> रेखासङ्ख्याफलकस्य दृश्यतां सेट् करोति ।</"
 "p><p> सम्भाव्य सत्यमूल्यानि: सत्ये १<br/> सम्भाव्य मिथ्यामूल्यानि: 0 off false</p>"
 
-#: utils/katecmds.cpp:149
+#: utils/katecmds.cpp:148
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5261,7 +5261,7 @@ msgstr ""
 "<p>set-folding-markers <b>सक्षमं कुर्वन्ति</b></p><p> तन्तुचिह्नफलकस्य दृश्यतां सेट् करोति "
 "।</p><p> सम्भाव्य सत्यमूल्यानि: सत्ये १<br/> सम्भाव्य मिथ्यामूल्यानि: 0 off false</p>"
 
-#: utils/katecmds.cpp:156
+#: utils/katecmds.cpp:155
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5271,7 +5271,7 @@ msgstr ""
 "<p>सेट्-चिह्न-सीमा <b>सक्षमम्</b></p><p> चिह्नसीमायाः दृश्यतां सेट् करोति ।</p><p> "
 "सम्भाव्य सत्यमूल्यानि: सत्ये १<br/> सम्भाव्य मिथ्यामूल्यानि: 0 off false</p>"
 
-#: utils/katecmds.cpp:163
+#: utils/katecmds.cpp:162
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5282,7 +5282,7 @@ msgstr ""
 "सक्षमं करोति</p><p> सम्भाव्य सत्यमूल्यानि: सत्ये १<br/> सम्भाव्य मिथ्यामूल्यानि: 0 off "
 "false</p>"
 
-#: utils/katecmds.cpp:170
+#: utils/katecmds.cpp:169
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5292,7 +5292,7 @@ msgstr ""
 "<p>सेट्-शब्द-लपेट-स्तम्भ- <b>विस्तारः</b></p><p> कठिनवेष्टनस्य कृते रेखाविस्तारं <b>विस्तारं</"
 "b> प्रति सेट् करोति | यदि भवान् स्वस्य पाठं स्वयमेव वेष्टयति तर्हि एतत् उपयुज्यते ।</p>"
 
-#: utils/katecmds.cpp:175
+#: utils/katecmds.cpp:174
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5303,7 +5303,7 @@ msgstr ""
 "रक्षितं भवति तदा ट्याब्स् श्वेतस्थानेन प्रतिस्थापिताः भविष्यन्ति ।</p><p> सम्भाव्य "
 "सत्यमूल्यानि: सत्ये १<br/> सम्भाव्य मिथ्यामूल्यानि: 0 off false</p>"
 
-#: utils/katecmds.cpp:182
+#: utils/katecmds.cpp:181
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5315,13 +5315,13 @@ msgstr ""
 "करोति । तर्कः वैधं हाइलाइट् नाम भवितुमर्हति, यथा Tools → Highlighting मेन्यू मध्ये दृश्यते "
 "। एषः आदेशः स्वस्य तर्कस्य कृते स्वतःसमाप्तिसूचीं प्रदाति ।</p>"
 
-#: utils/katecmds.cpp:188
+#: utils/katecmds.cpp:187
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
 "<p>सेट्-मोड <b>मोड्</b></p><p> Tools - Mode इत्यत्र यथा दृश्यते तथा मोड् सेट् करोति</p>"
 
-#: utils/katecmds.cpp:193
+#: utils/katecmds.cpp:192
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5332,64 +5332,64 @@ msgstr ""
 "लम्बबिन्दुरेखाद्वारा दृश्यमानं भविष्यति ।</p><p> सम्भाव्य सत्यमूल्यानि: सत्ये १<br/> सम्भाव्य "
 "मिथ्यामूल्यानि: 0 off false</p>"
 
-#: utils/katecmds.cpp:199
+#: utils/katecmds.cpp:198
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr "<p>वर्तमानदस्तावेजं मुद्रयितुं Print संवादं उद्घाटयन्तु ।</p>"
 
-#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
+#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "तर्कः लुप्तः । उपयोगः : %1 <मूल्यम्>"
 
-#: utils/katecmds.cpp:327
+#: utils/katecmds.cpp:326
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "'%1' इत्यस्य एतादृशं प्रकाशनं नास्ति ।"
 
-#: utils/katecmds.cpp:333
+#: utils/katecmds.cpp:332
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "न तादृशः मोडः '%1'."
 
-#: utils/katecmds.cpp:346
+#: utils/katecmds.cpp:345
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "'%1' इति तर्कं पूर्णाङ्के परिवर्तयितुं असफलम् ।"
 
-#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
+#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "विस्तारः न्यूनातिन्यूनं १ भवितुमर्हति।"
 
-#: utils/katecmds.cpp:360
+#: utils/katecmds.cpp:359
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "स्तम्भः न्यूनातिन्यूनं १ भवितुमर्हति।"
 
-#: utils/katecmds.cpp:390
+#: utils/katecmds.cpp:389
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "उपयोगः : %1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:417
+#: utils/katecmds.cpp:416
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "दुष्टः तर्कः '%1' । उपयोगः : %2 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:421
+#: utils/katecmds.cpp:420
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
 msgstr ""
 "उपयोगः: set-remove-trailing-spaces 0|-|कोऽपि वा 1|+|mod|संशोधितं वा 2|*|सर्वम्"
 
-#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "अज्ञात आदेशः '%1'।"
 
-#: utils/katecmds.cpp:493
+#: utils/katecmds.cpp:492
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5401,7 +5401,7 @@ msgstr ""
 "दशमलवरूपेण, अष्टकं वा षट्दशमलवरूपेण वा सम्मिलितुं शक्नोति ।</p><p> उदाहरणानि : १."
 "<ul><li> चर् <b>२३४</b></li><li> चार <b>०x१२३४</b></li></ul></p>"
 
-#: utils/katecmds.cpp:560
+#: utils/katecmds.cpp:559
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5454,27 +5454,27 @@ msgstr ""
 "प्रदर्शनस्य उपयोगं कुर्वन्तु। ap इत्यस्य स्थाने &quot;am&quot; अथवा &quot;pm&quot; इति "
 "एकं स्थापनं भविष्यति ।</td></tr></table></p>"
 
-#: utils/katecmds.cpp:621
+#: utils/katecmds.cpp:620
 #, kde-format
 msgid "Remove Duplicate Lines"
 msgstr "डुप्लिकेट रेखाः निष्कासयन्तु"
 
-#: utils/katecmds.cpp:622
+#: utils/katecmds.cpp:621
 #, kde-format
 msgid "Remove Duplicates and Sort Text Alphabetically"
 msgstr "डुप्लिकेट्स् निष्कास्य पाठं वर्णमालानुसारं क्रमयन्तु"
 
-#: utils/katecmds.cpp:623
+#: utils/katecmds.cpp:622
 #, kde-format
 msgid "Sort Text Naturally"
 msgstr "पाठं स्वाभाविकतया क्रमयन्तु"
 
-#: utils/katecmds.cpp:624
+#: utils/katecmds.cpp:623
 #, kde-format
 msgid "Sort Selected Text Alphabetically"
 msgstr "चयनितं पाठं वर्णमालानुसारं क्रमयन्तु"
 
-#: utils/katecmds.cpp:699
+#: utils/katecmds.cpp:698
 #, kde-format
 msgid ""
 "<p>sort</p><p>Sort the selected text or whole document if there is no "
@@ -5482,7 +5482,7 @@ msgid ""
 msgstr ""
 "<p>प्रकारं</p><p> यदि चयनं नास्ति तर्हि चयनितं पाठं सम्पूर्णं वा दस्तावेजं क्रमयन्तु</p>"
 
-#: utils/katecmds.cpp:703
+#: utils/katecmds.cpp:702
 #, kde-format
 msgid ""
 "<p>uniq</p><p>Remove duplicate lines from the selected text or whole "
@@ -5491,7 +5491,7 @@ msgstr ""
 "<p>uniq</p><p> यदि चयनं नास्ति तर्हि चयनितपाठात् अथवा सम्पूर्णदस्तावेजात् "
 "द्वितीयकपङ्क्तयः निष्कासयन्तु ।</p>"
 
-#: utils/katecmds.cpp:707
+#: utils/katecmds.cpp:706
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
@@ -5500,7 +5500,7 @@ msgstr ""
 "<p>सोर्टुनिक्</p><p> चयनितं पाठं वा सम्पूर्णं दस्तावेजं क्रमेण स्थापयन्तु ततः सर्वाणि "
 "द्वितीयकपङ्क्तयः निष्कासयन्तु ।</p>"
 
-#: utils/katecmds.cpp:711
+#: utils/katecmds.cpp:710
 #, kde-format
 msgid ""
 "<p>natsort</p><p>Sort the selected text or whole document in natural order."
@@ -8371,18 +8371,18 @@ msgstr "चिह्नसमूहः: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "अग्रिमपुस्तकचिह्नस्य कृते अधिकानि chars नास्ति ।"
 
-#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:795
-#: vimode/modes/normalvimode.cpp:3604
+#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
+#: vimode/modes/normalvimode.cpp:3603
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "रजिस्टर %1 मध्ये किमपि नास्ति"
 
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1688
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2, हेक्स %3, अष्टक %4"
 
-#: vimode/modes/normalvimode.cpp:2571
+#: vimode/modes/normalvimode.cpp:2570
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "न सेट् इति चिह्नं कुर्वन्तु: %1"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-19 00:43+0000\n"
+"POT-Creation-Date: 2026-11-01 00:51+0000\n"
 "PO-Revision-Date: 2014-09-18 23:44+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -137,8 +137,8 @@ msgid "Word Completion"
 msgstr "Woortkompletteren"
 
 #. i18n: ectx: Menu (spelling)
-#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:71
-#: spellcheck/spellingmenu.cpp:195
+#: data/katepart5ui.rc:145 spellcheck/spellingmenu.cpp:69
+#: spellcheck/spellingmenu.cpp:193
 #, kde-format
 msgid "Spelling"
 msgstr "Klookschriever"
@@ -760,7 +760,7 @@ msgid "&Delete"
 msgstr "&Wegdoon"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
-#: dialogs/filetypeconfigwidget.ui:66 mode/katemodeconfigpage.cpp:272
+#: dialogs/filetypeconfigwidget.ui:66 mode/katemodeconfigpage.cpp:271
 #, kde-format
 msgid "Properties"
 msgstr "Egenschappen"
@@ -1525,7 +1525,7 @@ msgstr "Text-Utsöökmetood:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbTextSelectionMode)
 #: dialogs/navigationconfigwidget.ui:139 inputmode/katenormalinputmode.cpp:64
-#: mode/katemodemanager.cpp:162
+#: mode/katemodemanager.cpp:161
 #, kde-format
 msgid "Normal"
 msgstr "Normaal"
@@ -2656,27 +2656,27 @@ msgstr "Opnehmen"
 msgid "Vi Input Mode"
 msgstr "VI-Ingaavmetood"
 
-#: mode/katemodeconfigpage.cpp:46
+#: mode/katemodeconfigpage.cpp:45
 #, kde-format
 msgid "<Unchanged>"
 msgstr "<Nich ännert>"
 
-#: mode/katemodeconfigpage.cpp:58
+#: mode/katemodeconfigpage.cpp:57
 #, kde-format
 msgid "Use Default"
 msgstr "Standard bruken"
 
-#: mode/katemodeconfigpage.cpp:99 mode/katemodeconfigpage.cpp:241
+#: mode/katemodeconfigpage.cpp:98 mode/katemodeconfigpage.cpp:240
 #, kde-format
 msgid "Properties of %1"
 msgstr "Egenschappen vun %1"
 
-#: mode/katemodeconfigpage.cpp:178
+#: mode/katemodeconfigpage.cpp:177
 #, kde-format
 msgid "New Filetype"
 msgstr "Nieg Dateityp"
 
-#: mode/katemodeconfigpage.cpp:293
+#: mode/katemodeconfigpage.cpp:292
 #, kde-format
 msgid ""
 "Select the MimeTypes you want for this file type.\n"
@@ -2686,24 +2686,24 @@ msgstr ""
 "Söök de MIME-Typen för disse Oort Dateien ut.\n"
 "Bitte beacht, dat automaatsch ok de toornten Dateiverwiedern ännert warrt."
 
-#: mode/katemodeconfigpage.cpp:295
+#: mode/katemodeconfigpage.cpp:294
 #, kde-format
 msgid "Select Mime Types"
 msgstr "MIME-Typen utsöken"
 
-#: mode/katemodeconfigpage.cpp:312
+#: mode/katemodeconfigpage.cpp:311
 #, kde-format
 msgid "Modes && Filetypes"
 msgstr "Bedrieforden un Dateitypen"
 
-#: mode/katemodemenulist.cpp:138
+#: mode/katemodemenulist.cpp:137
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Söökmetood"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:139
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2711,13 +2711,13 @@ msgid ""
 "example, C++ or .cpp)"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:560
+#: mode/katemodemenulist.cpp:559
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:1087
+#: mode/katemodemenulist.cpp:1086
 #, fuzzy, kde-format
 #| msgid "Best matches"
 msgctxt ""
@@ -2727,7 +2727,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Best Drepers"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1091
 #, fuzzy, kde-format
 #| msgid "Best matches"
 msgctxt ""
@@ -3744,7 +3744,7 @@ msgid "Bad quoting in call: %1. Please escape single quotes with a backslash."
 msgstr ""
 "Leeg Zitaat in Oproop: %1. Bitte Enkelgoosfööt mit en Torüchstreek schulen."
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -4428,17 +4428,17 @@ msgstr "Schriefwies (vun den Blinker af)"
 msgid "Check the document's spelling from the cursor and forward"
 msgstr "Dokment vun den Blinker af op Schrieffehlers pröven"
 
-#: spellcheck/spellingmenu.cpp:76
+#: spellcheck/spellingmenu.cpp:74
 #, kde-format
 msgid "Ignore Word"
 msgstr "Woort övergahn"
 
-#: spellcheck/spellingmenu.cpp:79
+#: spellcheck/spellingmenu.cpp:77
 #, kde-format
 msgid "Add to Dictionary"
 msgstr "Na Wöörbook tofögen"
 
-#: spellcheck/spellingmenu.cpp:172
+#: spellcheck/spellingmenu.cpp:170
 #, fuzzy, kde-format
 #| msgid "Spelling"
 msgid "Spelling '%1'"
@@ -5400,18 +5400,18 @@ msgstr "&Nakamen: %1 - \"%2\""
 msgid "&Previous: %1 - \"%2\""
 msgstr "&Verleden: %1 - \"%2\""
 
-#: utils/katecmds.cpp:53
+#: utils/katecmds.cpp:52
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>indent</p><p>rückt de utsöchten Regen oder de aktuelle Reeg in</p>"
 
-#: utils/katecmds.cpp:58
+#: utils/katecmds.cpp:57
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr ""
 "<p>unindent</p><p>rückt de utsöchten Regen oder de aktuelle Reeg ut</p>"
 
-#: utils/katecmds.cpp:63
+#: utils/katecmds.cpp:62
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5420,7 +5420,7 @@ msgstr ""
 "<p>cleanindent</p><p>Kloort de Inrücken vun de utsöchten Regen oder de "
 "aktuelle Reeg na de Instellen binnen dat Dokment op.</p>"
 
-#: utils/katecmds.cpp:68
+#: utils/katecmds.cpp:67
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5431,7 +5431,7 @@ msgstr ""
 "utsöchten Regen en Kommentar na de Fastleggen binnen de Syntaxmarkeren-Regel "
 "vun't aktuelle Dokment.</p>"
 
-#: utils/katecmds.cpp:74
+#: utils/katecmds.cpp:73
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5442,7 +5442,7 @@ msgstr ""
 "Syntaxmarkeren-Regel vun't aktuelle Dokment vun de aktuelle Reeg oder de "
 "utsöchten Regen weg.</p>"
 
-#: utils/katecmds.cpp:80
+#: utils/katecmds.cpp:79
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
@@ -5450,7 +5450,7 @@ msgid ""
 msgstr ""
 "<p>goto <b>reegnummer</b></p> <p>Disse Befehl geiht na de angeven Reeg.</p>"
 
-#: utils/katecmds.cpp:85
+#: utils/katecmds.cpp:84
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5463,12 +5463,12 @@ msgstr ""
 "Inrückregeln topasst.</p> <p>Mööglich Weerten för An: 1 on wohr<br/> "
 "mööglich Weerten för Ut: 0 off falsch</p>"
 
-#: utils/katecmds.cpp:91
+#: utils/katecmds.cpp:90
 #, kde-format
 msgid "Deletes the current line."
 msgstr "Maakt de aktuelle Datei weg."
 
-#: utils/katecmds.cpp:95
+#: utils/katecmds.cpp:94
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5477,7 +5477,7 @@ msgstr ""
 "<p>set-tab-width <b>breed</b></p> <p>Sett de Tabulaterbreed op <b>breed</b> "
 "Tekens.</p>"
 
-#: utils/katecmds.cpp:100
+#: utils/katecmds.cpp:99
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5488,7 +5488,7 @@ msgstr ""
 "Ingeven mit Freetekens utwesselt.</p> <p>Mööglich Weerten för An: 1 on "
 "wohr<br/> mööglich Weerten för Ut: 0 off falsch</p>"
 
-#: utils/katecmds.cpp:107
+#: utils/katecmds.cpp:106
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5499,7 +5499,7 @@ msgstr ""
 "achterankamen Freetekens mit en lütt Punkt wiest.</p> <p>Mööglich Weerten "
 "för An: 1 on wohr<br/> mööglich Weerten för Ut: 0 off falsch</p>"
 
-#: utils/katecmds.cpp:114
+#: utils/katecmds.cpp:113
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5515,7 +5515,7 @@ msgstr ""
 "wegmaken.</li> <li><b>all</b>: achterankamen Freetekens binnen dat hele "
 "Dokment wegmaken.</li> </ul> </p>"
 
-#: utils/katecmds.cpp:125
+#: utils/katecmds.cpp:124
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5524,7 +5524,7 @@ msgstr ""
 "<p>set-indent-width <b>breed</b></p> <p>Sett de Inrückbreed op <b>breed</b> "
 "Tekens. Warrt bloots bruukt, wenn Du mit Freetekens inrücken deist.</p>"
 
-#: utils/katecmds.cpp:130
+#: utils/katecmds.cpp:129
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5533,7 +5533,7 @@ msgstr ""
 "<p>set-indent-mode <b>oort</b></p> <p>De Oort is en Parameter as binnen dat "
 "Menü Warktüüch - Inrücken.</p>"
 
-#: utils/katecmds.cpp:135
+#: utils/katecmds.cpp:134
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5544,7 +5544,7 @@ msgstr ""
 "</p> <p>Mööglich Weerten för An: 1 on wohr<br/> mööglich Weerten för Ut: 0 "
 "off falsch</p>"
 
-#: utils/katecmds.cpp:142
+#: utils/katecmds.cpp:141
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5555,7 +5555,7 @@ msgstr ""
 "Reegnummernbalken fast.</p> <p>Mööglich Weerten för An: 1 on wohr<br/> "
 "mööglich Weerten för Ut: 0 off falsch</p>"
 
-#: utils/katecmds.cpp:149
+#: utils/katecmds.cpp:148
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5566,7 +5566,7 @@ msgstr ""
 "Fooldmarkenbalken fast.</p> <p>Mööglich Weerten för An: 1 on wohr<br/> "
 "mööglich Weerten för Ut: 0 off falsch</p>"
 
-#: utils/katecmds.cpp:156
+#: utils/katecmds.cpp:155
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5577,7 +5577,7 @@ msgstr ""
 "Lüttbildrand fast</p> <p>Mööglich Weerten för An: 1 on wohr<br/> mööglich "
 "Weerten för Ut: 0 off falsch</p>"
 
-#: utils/katecmds.cpp:163
+#: utils/katecmds.cpp:162
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5588,7 +5588,7 @@ msgstr ""
 "p> <p>Mööglich Weerten för An: 1 on wohr<br/> mööglich Weerten för Ut: 0 off "
 "falsch</p>"
 
-#: utils/katecmds.cpp:170
+#: utils/katecmds.cpp:169
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5599,7 +5599,7 @@ msgstr ""
 "Reegümbröök op <b>Breed</b>. Warrt bruukt, wenn Du automaatsch Reegümbrook "
 "anmaakt hest.</p>"
 
-#: utils/katecmds.cpp:175
+#: utils/katecmds.cpp:174
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5610,7 +5610,7 @@ msgstr ""
 "bi't Sekern mit Freetekens utwesselt.</p> <p>Mööglich Weerten för An: 1 on "
 "wohr<br/> mööglich Weerten för Ut: 0 off falsch</p>"
 
-#: utils/katecmds.cpp:182
+#: utils/katecmds.cpp:181
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5623,14 +5623,14 @@ msgstr ""
 "wesen, as Du binnen dat Menü Warktüüch - Rutheven. Disse Befehl stellt en "
 "Autokompletteerlist för't Argument praat.</p>"
 
-#: utils/katecmds.cpp:188
+#: utils/katecmds.cpp:187
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
 "<p>set-mode <b>oort</b></p> <p>Sett de Bedriefoort as binnen dat Menü "
 "Warktüüch - Bedriefoort.</p>"
 
-#: utils/katecmds.cpp:193
+#: utils/katecmds.cpp:192
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5641,65 +5641,65 @@ msgstr ""
 "pielrecht punkteert Lienwiest</p> <p>Mööglich Weerten för An: 1 on wohr<br/> "
 "mööglich Weerten för Ut: 0 off falsch</p>"
 
-#: utils/katecmds.cpp:199
+#: utils/katecmds.cpp:198
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr ""
 "<p>Maakt den Druckdialoog op un lett Di dat aktuelle Dokment drucken.</p>"
 
-#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
+#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "Argument fehlt. Bruuk: %1 <Weert>"
 
-#: utils/katecmds.cpp:327
+#: utils/katecmds.cpp:326
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "Syntaxmarkeren \"%1\" is nich begäng"
 
-#: utils/katecmds.cpp:333
+#: utils/katecmds.cpp:332
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "Bedriefoort \"%1\" is nich begäng"
 
-#: utils/katecmds.cpp:346
+#: utils/katecmds.cpp:345
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "Dat Argument \"%1\" lett sik nich na en Heeltall ümwanneln."
 
-#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
+#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "Breed mutt tominnst 1 wesen."
 
-#: utils/katecmds.cpp:360
+#: utils/katecmds.cpp:359
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "Striep mutt tominnst 1 wesen."
 
-#: utils/katecmds.cpp:390
+#: utils/katecmds.cpp:389
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "Bruuk: %1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:417
+#: utils/katecmds.cpp:416
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "Argument \"%1\" gellt nich. Bruuk: %2 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:421
+#: utils/katecmds.cpp:420
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
 msgstr ""
 "Bruuk: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
 
-#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "Befehl \"%1\" is nich begäng"
 
-#: utils/katecmds.cpp:493
+#: utils/katecmds.cpp:492
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5712,7 +5712,7 @@ msgstr ""
 "angeven kannst.</p> <p>Bispillen:<ul><li>char <b>234</b></li><li>char "
 "<b>0x1234</b></li></ul></p>"
 
-#: utils/katecmds.cpp:560
+#: utils/katecmds.cpp:559
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5764,35 +5764,35 @@ msgstr ""
 "\"PM\" insett.</td></tr><tr><td>ap</td><td>Vör-/Namiddag-Wieser bruken. För "
 "ap warrt \"am\" oder \"pm\" insett.</td></tr></table></p>"
 
-#: utils/katecmds.cpp:621
+#: utils/katecmds.cpp:620
 #, fuzzy, kde-format
 #| msgctxt "Script command name"
 #| msgid "Duplicate Selected Lines Up"
 msgid "Remove Duplicate Lines"
 msgstr "Utsöchte Regen na baven koperen"
 
-#: utils/katecmds.cpp:622
+#: utils/katecmds.cpp:621
 #, fuzzy, kde-format
 #| msgid "Remove duplicate lines from the selected text or whole document."
 msgid "Remove Duplicates and Sort Text Alphabetically"
 msgstr ""
 "Dubbelte Regen ut den markeerten Text oder ut dat hele Dokment wegmaken"
 
-#: utils/katecmds.cpp:623
+#: utils/katecmds.cpp:622
 #, fuzzy, kde-format
 #| msgctxt "Script command name"
 #| msgid "Sort Selected Text"
 msgid "Sort Text Naturally"
 msgstr "Utsöcht Text sorteren"
 
-#: utils/katecmds.cpp:624
+#: utils/katecmds.cpp:623
 #, fuzzy, kde-format
 #| msgctxt "Script command name"
 #| msgid "Sort Selected Text"
 msgid "Sort Selected Text Alphabetically"
 msgstr "Utsöcht Text sorteren"
 
-#: utils/katecmds.cpp:699
+#: utils/katecmds.cpp:698
 #, fuzzy, kde-format
 #| msgid "Sort the selected text or whole document."
 msgid ""
@@ -5800,7 +5800,7 @@ msgid ""
 "selection</p>"
 msgstr "Den markeerten Text oder dat hele Dokment sorteren"
 
-#: utils/katecmds.cpp:703
+#: utils/katecmds.cpp:702
 #, fuzzy, kde-format
 #| msgid "Remove duplicate lines from the selected text or whole document."
 msgid ""
@@ -5809,14 +5809,14 @@ msgid ""
 msgstr ""
 "Dubbelte Regen ut den markeerten Text oder ut dat hele Dokment wegmaken"
 
-#: utils/katecmds.cpp:707
+#: utils/katecmds.cpp:706
 #, kde-format
 msgid ""
 "<p>sortuniq</p><p>Sort the selected text or whole document and then remove "
 "all duplicate lines.</p>"
 msgstr ""
 
-#: utils/katecmds.cpp:711
+#: utils/katecmds.cpp:710
 #, fuzzy, kde-format
 #| msgid ""
 #| "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -8812,18 +8812,18 @@ msgstr "Mark fastleggt: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "För't nakamen Leesteken gifft dat keen Bookstaav mehr."
 
-#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:795
-#: vimode/modes/normalvimode.cpp:3604
+#: vimode/modes/insertvimode.cpp:261 vimode/modes/modebase.cpp:794
+#: vimode/modes/normalvimode.cpp:3603
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Nix binnen Register %1"
 
-#: vimode/modes/normalvimode.cpp:1689
+#: vimode/modes/normalvimode.cpp:1688
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "\"%1\" %2,  Hex %3,  Oktaal %4"
 
-#: vimode/modes/normalvimode.cpp:2571
+#: vimode/modes/normalvimode.cpp:2570
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Mark nich fastleggt: %1"
