@@ -300,9 +300,10 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     setAutoDeleteWidget(false);
     setAutoDeletePart(false);
 
-    // clean up remaining views
-    qDeleteAll(m_views);
-    m_views.clear();
+    // clean up remaining views, each view removes itself from m_views on deletion
+    while (!m_views.isEmpty()) {
+        delete m_views.constLast();
+    }
 
     // clean up marks
     for (auto &mark : std::as_const(m_marks)) {

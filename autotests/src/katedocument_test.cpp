@@ -19,6 +19,7 @@
 
 #include <QApplication>
 #include <QDialog>
+#include <QPointer>
 #include <QPushButton>
 #include <QRegularExpression>
 #include <QScopeGuard>
@@ -1242,4 +1243,20 @@ void KateDocumentTest::testSaveAsOntoFileOpenInOtherDocument()
     // saving a document under its own url: no question
     fakeApplication.openDocuments = {&doc};
     QVERIFY(doc.closeOtherDocumentForSaveUrl(doc.url()));
+}
+
+void KateDocumentTest::testDeleteDocumentWithViews()
+{
+    // deleting a document must delete each of its views exactly once
+    auto doc = new KTextEditor::DocumentPrivate;
+    QList<QPointer<KTextEditor::View>> views;
+    for (int i = 0; i < 3; ++i) {
+        views.push_back(doc->createView(nullptr));
+    }
+
+    delete doc;
+
+    for (const auto &view : std::as_const(views)) {
+        QVERIFY(!view);
+    }
 }
