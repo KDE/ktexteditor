@@ -4832,7 +4832,8 @@ void KateViewInternal::showBracketMatchPreview()
 
     const int previewLine = openBracketCursor.line();
     KateRenderer *const renderer_ = renderer();
-    KateLineLayout *lineLayout(new KateLineLayout());
+    // only needed to compute the preview width and line
+    auto lineLayout = std::make_unique<KateLineLayout>();
     lineLayout->setLine(renderer_->folding(), previewLine, -1);
 
     // If the opening bracket is on its own line, start preview at the line above it instead (where the context is likely to be)
@@ -4842,7 +4843,7 @@ void KateViewInternal::showBracketMatchPreview()
     }
     Kate::TextLine textLine = doc()->kateTextLine(lineLayout->line());
 
-    renderer_->layoutLine(textLine, lineLayout, -1 /* no wrap */, false /* no layout cache */);
+    renderer_->layoutLine(textLine, lineLayout.get(), -1 /* no wrap */, false /* no layout cache */);
     const int lineWidth =
         qBound(m_view->width() / 5, int(lineLayout->width() + renderer_->spaceWidth() * 2), m_view->width() - m_leftBorder->width() - m_lineScroll->width());
     m_bmPreview->resize(lineWidth, renderer_->lineHeight() * 2);
