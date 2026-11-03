@@ -113,4 +113,21 @@ void ScriptDocumentTest::testRfind()
     QCOMPARE(cursor, result);
 }
 
+void ScriptDocumentTest::testAnchorOutOfRange()
+{
+    m_doc->setText(QStringLiteral("(foo\nbar"));
+
+    // scripts can pass any position, search from the closest valid one
+    QCOMPARE(m_scriptDoc->anchor(KTextEditor::Cursor(0, 500), QLatin1Char('(')), KTextEditor::Cursor(0, 0));
+    QCOMPARE(m_scriptDoc->anchor(KTextEditor::Cursor(10, 3), QLatin1Char('(')), KTextEditor::Cursor(0, 0));
+    QCOMPARE(m_scriptDoc->anchor(KTextEditor::Cursor(-1, 3), QLatin1Char('(')), KTextEditor::Cursor::invalid());
+}
+
+void ScriptDocumentTest::testNextNonSpaceColumnNegativeColumn()
+{
+    m_doc->setText(QStringLiteral("  x"));
+
+    QCOMPARE(m_scriptDoc->nextNonSpaceColumn(0, -1), 2);
+}
+
 #include "moc_scriptdocument_test.cpp"

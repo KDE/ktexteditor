@@ -262,6 +262,16 @@ KTextEditor::Cursor KateScriptDocument::anchorInternal(int line, int column, QCh
         return KTextEditor::Cursor::invalid();
     }
 
+    // scripts can pass any position, search from the closest valid one
+    if (line < 0) {
+        return KTextEditor::Cursor::invalid();
+    }
+    if (line >= m_document->lines()) {
+        line = m_document->lines() - 1;
+        column = m_document->lineLength(line);
+    }
+    column = qBound(0, column, m_document->lineLength(line));
+
     auto *highlighter = m_document->highlight();
     auto isCodePos = [highlighter](const Kate::TextLine &currentLine, int i) {
         const KSyntaxHighlighting::Theme::TextStyle ds = highlighter->defaultStyleForAttribute(currentLine.attribute(i));
@@ -644,7 +654,8 @@ int KateScriptDocument::prevNonSpaceColumn(const QJSValue &jscursor)
 int KateScriptDocument::nextNonSpaceColumn(int line, int column)
 {
     Kate::TextLine textLine = m_document->plainKateTextLine(line);
-    return textLine.nextNonSpaceChar(column);
+    // nextNonSpaceChar() requires a non-negative column
+    return textLine.nextNonSpaceChar(std::max(column, 0));
 }
 
 int KateScriptDocument::nextNonSpaceColumn(const QJSValue &jscursor)

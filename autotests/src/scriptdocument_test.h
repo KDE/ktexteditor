@@ -38,6 +38,8 @@ private Q_SLOTS:
 
     void testRfind_data();
     void testRfind();
+    void testAnchorOutOfRange();
+    void testNextNonSpaceColumnNegativeColumn();
 
 private:
     KTextEditor::DocumentPrivate *m_doc = nullptr;
