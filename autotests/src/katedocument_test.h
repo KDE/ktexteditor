@@ -136,6 +136,7 @@ private Q_SLOTS:
     void testAutoReloadClearsUndoHistory();
     void testSaveAsOntoFileOpenInOtherDocument();
     void testDeleteDocumentWithViews();
+    void testMarksAfterJoiningLines();
 };
 
 #endif // KATE_DOCUMENT_TEST_H

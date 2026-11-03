@@ -1482,18 +1482,19 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
         m_buffer->unwrapLine(line + 1);
     }
 
+    // merge the mark of the joined line into the mark of the next line, that one moves up to this line below
+    // do this before iterating the marks, modifying m_marks while iterating it skips or repeats marks
+    if (KTextEditor::Mark *nextLineMark = m_marks.value(line + 1)) {
+        if (KTextEditor::Mark *lineMark = m_marks.take(line)) {
+            nextLineMark->type |= lineMark->type;
+            delete lineMark;
+        }
+    }
+
     QVarLengthArray<KTextEditor::Mark *, 8> list;
     for (const auto &mark : std::as_const(m_marks)) {
         if (mark->line >= line + 1) {
             list.push_back(mark);
-        }
-
-        if (mark->line == line + 1) {
-            auto m = m_marks.take(line);
-            if (m) {
-                mark->type |= m->type;
-                delete m;
-            }
         }
     }
 

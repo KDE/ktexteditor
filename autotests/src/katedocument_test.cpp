@@ -19,6 +19,7 @@
 
 #include <QApplication>
 #include <QDialog>
+#include <QHashSeed>
 #include <QPointer>
 #include <QPushButton>
 #include <QRegularExpression>
@@ -1258,5 +1259,37 @@ void KateDocumentTest::testDeleteDocumentWithViews()
 
     for (const auto &view : std::as_const(views)) {
         QVERIFY(!view);
+    }
+}
+
+void KateDocumentTest::testMarksAfterJoiningLines()
+{
+    // a mark on every line, joining two lines merges their marks and moves all marks below up by one line
+    // marks are kept in a QHash, use a fixed seed so the result doesn't depend on the bucket layout of this run
+    QHashSeed::setDeterministicGlobalSeed();
+    const auto resetSeed = qScopeGuard([] {
+        QHashSeed::resetRandomGlobalSeed();
+    });
+    KTextEditor::DocumentPrivate doc;
+    constexpr int lineCount = 2000;
+    QStringList lines;
+    for (int i = 0; i < lineCount; ++i) {
+        lines.push_back(QStringLiteral("line %1").arg(i));
+    }
+    doc.setText(lines.join(QLatin1Char('\n')));
+    for (int i = 0; i < lineCount; ++i) {
+        doc.addMark(i, KTextEditor::Document::markType01);
+    }
+
+    for (int joined = 0; joined < lineCount - 100; ++joined) {
+        const int line = joined % (doc.lines() - 1);
+        doc.removeText(KTextEditor::Range(line, doc.lineLength(line), line + 1, 0));
+
+        const auto &marks = doc.marks();
+        QCOMPARE(marks.size(), doc.lines());
+        for (auto it = marks.cbegin(); it != marks.cend(); ++it) {
+            QCOMPARE(it.value()->line, it.key());
+            QVERIFY(it.key() >= 0 && it.key() < doc.lines());
+        }
     }
 }
