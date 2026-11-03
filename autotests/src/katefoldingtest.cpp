@@ -178,4 +178,31 @@ void KateFoldingTest::testUnfoldingInImportFoldingRanges()
     QCOMPARE(textFolding.debugDump(), QLatin1String("tree  - folded "));
 }
 
+void KateFoldingTest::testEditRemovesNestedFoldedRange()
+{
+    DocumentPrivate doc;
+    doc.setText(QStringLiteral("class A {\n  void f() {\n    x;\n  }\n};\n"));
+
+    const std::unique_ptr<ViewPrivate> view{static_cast<ViewPrivate *>(doc.createView(nullptr))};
+    view->show();
+    view->resize(400, 300);
+
+    auto &textFolding = view->textFolding();
+    const auto flags = Kate::TextFolding::Persistent | Kate::TextFolding::Folded;
+    const qint64 innerId = textFolding.newFoldingRange(Range(1, 10, 3, 3), flags);
+    const qint64 outerId = textFolding.newFoldingRange(Range(0, 9, 4, 1), flags);
+    QVERIFY(innerId >= 0 && outerId >= 0);
+
+    // persistent ranges stay in the tree when unfolded, the inner one is now a folded range with an unfolded parent
+    QVERIFY(textFolding.unfoldRange(outerId));
+    QCOMPARE(textFolding.foldingRangesForParentRange(outerId).size(), 1);
+
+    // the start line of the inner range is no folding start, editing it removes the inner range
+    doc.removeText(Range(1, 10, 1, 11));
+    QVERIFY(!textFolding.foldingRange(innerId).isValid());
+
+    // the parent must no longer reference the removed range
+    QCOMPARE(textFolding.foldingRangesForParentRange(outerId).size(), 0);
+}
+
 #include "moc_katefoldingtest.cpp"

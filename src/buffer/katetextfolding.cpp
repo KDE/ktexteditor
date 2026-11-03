@@ -454,10 +454,20 @@ void TextFolding::editEnd(int startLine, int endLine, std::function<bool(int)> i
             continue;
         }
 
-        // else kill it
-        m_foldingRanges.removeOne(*foldIt);
-        m_idToFoldingRange.remove((*foldIt)->id);
-        delete *foldIt;
+        // else kill it, remove it from the vector it lives in, it might be nested in a not folded range
+        FoldingRange *range = *foldIt;
+        FoldingRange::Vector &parentVector = range->parent ? range->parent->nestedRanges : m_foldingRanges;
+        parentVector.removeOne(range);
+
+        // the nested ranges are deleted together with the range, forget all their ids
+        FoldingRange::Vector rangesToForget{range};
+        while (!rangesToForget.isEmpty()) {
+            FoldingRange *rangeToForget = rangesToForget.takeLast();
+            m_idToFoldingRange.remove(rangeToForget->id);
+            rangesToForget.append(rangeToForget->nestedRanges);
+        }
+
+        delete range;
         foldIt = m_foldedFoldingRanges.erase(foldIt);
         anyUpdate = true;
     }
