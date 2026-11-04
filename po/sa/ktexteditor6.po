@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-01 00:51+0000\n"
+"POT-Creation-Date: 2026-11-04 00:59+0000\n"
 "PO-Revision-Date: 2024-12-29 22:54+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -2166,7 +2166,7 @@ msgstr "स्वतः दस्तावेजं पुनः लोडं �
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "यदा दस्तावेजं डिस्क-मध्ये परिवर्तितं तदा स्वयमेव पुनः लोड् कुर्वन्तु"
 
-#: document/katedocument.cpp:2307
+#: document/katedocument.cpp:2309
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2175,24 +2175,24 @@ msgstr ""
 "%1 सञ्चिकां लोड् कर्तुं न शक्यते, यतः तस्मात् पठितुं न शक्यते स्म ।<br /> अस्याः सञ्चिकायाः "
 "पठनप्रवेशः अस्ति वा इति पश्यन्तु ।"
 
-#: document/katedocument.cpp:2312
+#: document/katedocument.cpp:2314
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "पुनः प्रयासं कुर्वन्तु"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6587
+#: document/katedocument.cpp:2318 document/katedocument.cpp:6589
 #, kde-format
 msgid "&Close"
 msgstr "&पिधानं करोतु"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6588
+#: document/katedocument.cpp:2319 document/katedocument.cpp:6590
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "सन्देशं बन्दं कुर्वन्तु"
 
-#: document/katedocument.cpp:2449
+#: document/katedocument.cpp:2451
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2205,7 +2205,7 @@ msgstr ""
 "एन्कोडिंग् चयनितेन सह सञ्चिकां पुनः उद्घाटयन्तु अथवा सम्पादयितुं समर्थाः भवितुम् tools मेन्यू "
 "मध्ये पुनः पठन-लेखन-विधिं सक्षमं कुर्वन्तु ।"
 
-#: document/katedocument.cpp:2468
+#: document/katedocument.cpp:2470
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2218,17 +2218,17 @@ msgstr ""
 "वेष्टिताः आसन् तथा च दस्तावेजं केवलं पठनीयविधाने सेट् भवति, यतः रक्षणेन तस्य सामग्रीं "
 "परिवर्तयिष्यति ।"
 
-#: document/katedocument.cpp:2475
+#: document/katedocument.cpp:2477
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "अस्थायीरूपेण सीमां वर्धयित्वा सञ्चिकां पुनः लोड् कुर्वन्तु"
 
-#: document/katedocument.cpp:2478
+#: document/katedocument.cpp:2480
 #, kde-format
 msgid "Close"
 msgstr "पिधानं करोतु"
 
-#: document/katedocument.cpp:2505
+#: document/katedocument.cpp:2507
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2237,18 +2237,18 @@ msgstr ""
 "किं भवान् वास्तवमेव एतां अपरिवर्तितां सञ्चिकां रक्षितुं इच्छति? डिस्क-मध्ये सञ्चिकायां "
 "परिवर्तितं दत्तांशं भवन्तः अधिलिखितुं शक्नुवन्ति स्म ।"
 
-#: document/katedocument.cpp:2506
+#: document/katedocument.cpp:2508
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "अपरिवर्तितसञ्चिकां रक्षितुं प्रयतते"
 
-#: document/katedocument.cpp:2507 document/katedocument.cpp:2518
-#: document/katedocument.cpp:2534
+#: document/katedocument.cpp:2509 document/katedocument.cpp:2520
+#: document/katedocument.cpp:2536
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "रक्षन्तु तथापि"
 
-#: document/katedocument.cpp:2516
+#: document/katedocument.cpp:2518
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2257,14 +2257,14 @@ msgstr ""
 "किं भवान् वास्तवमेव एतां सञ्चिकां रक्षितुं इच्छति ? भवतः मुक्तसञ्चिका, डिस्कस्थसञ्चिका च "
 "परिवर्तिता । तत्र केचन दत्तांशाः नष्टाः भवितुम् अर्हन्ति ।"
 
-#: document/katedocument.cpp:2517 document/katedocument.cpp:2533
-#: document/katedocument.cpp:2854 syntax/katethemeconfig.cpp:1218
+#: document/katedocument.cpp:2519 document/katedocument.cpp:2535
+#: document/katedocument.cpp:2856 syntax/katethemeconfig.cpp:1218
 #: syntax/katethemeconfig.cpp:1376
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "सम्भाव्यदत्तांशहानिः"
 
-#: document/katedocument.cpp:2531
+#: document/katedocument.cpp:2533
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2273,7 +2273,7 @@ msgstr ""
 "चयनितं एन्कोडिंग् अस्मिन् दस्तावेजे प्रत्येकं Unicode वर्णं एन्कोड् कर्तुं न शक्नोति । किं भवन्तः "
 "तत् रक्षितुम् इच्छन्ति ? तत्र केचन दत्तांशाः नष्टाः भवितुम् अर्हन्ति ।"
 
-#: document/katedocument.cpp:2601
+#: document/katedocument.cpp:2603
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2287,7 +2287,7 @@ msgstr ""
 "मूलसञ्चिका नष्टा वा क्षतिग्रस्ता वा भवितुम् अर्हति । यावत् सञ्चिका सफलतया न लिखिता तावत् "
 "अनुप्रयोगात् न त्यजन्तु।"
 
-#: document/katedocument.cpp:2723
+#: document/katedocument.cpp:2725
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2300,44 +2300,44 @@ msgstr ""
 "भवितुम् अर्हति यत् भवता यस्मिन् माध्यमे लिखितं तत् पूर्णम् अस्ति अथवा सञ्चिकायाः निर्देशिका "
 "भवतः कृते केवलं पठनीयः अस्ति ।"
 
-#: document/katedocument.cpp:2727
+#: document/katedocument.cpp:2729
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "बैकअप प्रतिलिपिं निर्मातुं असफलम्।"
 
-#: document/katedocument.cpp:2728
+#: document/katedocument.cpp:2730
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "तथापि रक्षितुं प्रयतस्व"
 
-#: document/katedocument.cpp:2853
+#: document/katedocument.cpp:2855
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "किं भवान् वास्तवमेव एतां सञ्चिकां निरन्तरं पिधातुम् इच्छति? दत्तांशहानिः भवितुम् अर्हति ।"
 
-#: document/katedocument.cpp:2855
+#: document/katedocument.cpp:2857
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Close तथापि"
 
-#: document/katedocument.cpp:4642
+#: document/katedocument.cpp:4644
 #, fuzzy, kde-format
 #| msgid "Untitled"
 msgid "Untitled (%1)"
 msgstr "अनामिका"
 
-#: document/katedocument.cpp:4644
+#: document/katedocument.cpp:4646
 #, kde-format
 msgid "Untitled"
 msgstr "अनामिका"
 
-#: document/katedocument.cpp:4824
+#: document/katedocument.cpp:4826
 #, kde-format
 msgid "Save failed"
 msgstr "रक्षणं विफलम् अभवत्"
 
-#: document/katedocument.cpp:5066
+#: document/katedocument.cpp:5068
 #, kde-format
 msgid ""
 "The file %1 is already open in another document.\n"
@@ -2348,27 +2348,27 @@ msgid ""
 "Close the other document and save?"
 msgstr ""
 
-#: document/katedocument.cpp:5071
+#: document/katedocument.cpp:5073
 #, kde-format
 msgid "File Already Open"
 msgstr ""
 
-#: document/katedocument.cpp:5072
+#: document/katedocument.cpp:5074
 #, kde-format
 msgid "Close Other && Save"
 msgstr ""
 
-#: document/katedocument.cpp:5084
+#: document/katedocument.cpp:5086
 #, kde-format
 msgid "Save File"
 msgstr "सञ्चिकां रक्षतु"
 
-#: document/katedocument.cpp:5114
+#: document/katedocument.cpp:5116
 #, kde-format
 msgid "Save Copy of File"
 msgstr "सञ्चिकायाः प्रतिलिपिं रक्षन्तु"
 
-#: document/katedocument.cpp:5126
+#: document/katedocument.cpp:5128
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2380,7 +2380,7 @@ msgstr ""
 "\n"
 "भवतः अस्याः सञ्चिकायाः लेखनप्रवेशः अस्ति वा पर्याप्तं डिस्कस्थानं उपलब्धं वा इति पश्यन्तु ।"
 
-#: document/katedocument.cpp:5418
+#: document/katedocument.cpp:5420
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2393,7 +2393,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces पश्यन्तु"
 
-#: document/katedocument.cpp:5424
+#: document/katedocument.cpp:5426
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2406,17 +2406,17 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces पश्यन्तु"
 
-#: document/katedocument.cpp:5743
+#: document/katedocument.cpp:5745
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "'%1' इति सञ्चिका डिस्कमध्ये परिवर्तिता आसीत् ।"
 
-#: document/katedocument.cpp:5745
+#: document/katedocument.cpp:5747
 #, kde-format
 msgid "The file '%1' was deleted or moved on disk."
 msgstr "'%1' इति सञ्चिका विलोपिता अथवा डिस्कमध्ये स्थानान्तरिता ।"
 
-#: document/katedocument.cpp:6081
+#: document/katedocument.cpp:6083
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2425,17 +2425,17 @@ msgstr ""
 "\"%1\" इति दस्तावेजं परिवर्तितम् अस्ति ।\n"
 "किं भवन्तः स्वपरिवर्तनानि रक्षितुं इच्छन्ति वा परित्यक्तुं इच्छन्ति वा?"
 
-#: document/katedocument.cpp:6084
+#: document/katedocument.cpp:6086
 #, kde-format
 msgid "Close Document"
 msgstr "दस्तावेजं बन्दं कुर्वन्तु"
 
-#: document/katedocument.cpp:6195
+#: document/katedocument.cpp:6197
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2 इति</a> सञ्चिका अद्यापि लोड् भवति ।"
 
-#: document/katedocument.cpp:6200
+#: document/katedocument.cpp:6202
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&लोडिंग निरस्त करो"
