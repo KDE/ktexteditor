@@ -43,7 +43,8 @@ void DocTip::clearWidgets()
 
 void DocTip::setText(const QString &s)
 {
-    m_textView->setPlainText(s);
+    // allow to guess if rich text or not
+    m_textView->setText(s);
     if (m_stack.currentWidget() != m_textView) {
         m_stack.removeWidget(m_stack.currentWidget());
         m_stack.addWidget(m_textView);
