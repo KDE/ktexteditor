@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:00+0000\n"
-"PO-Revision-Date: 2025-03-15 09:28+0200\n"
+"PO-Revision-Date: 2026-09-09 15:46+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -607,8 +607,7 @@ msgid ""
 "way \"Auto Bracket\" do"
 msgstr ""
 "Kun tekstiä on valittu, nämä merkit lisätään sen molemmin puolen "
-"automaattisulutuksen tapaanKun tekstiä on valittu, nämä merkit lisätään sen "
-"molemmin puolen automaattisulutuksen tapaan"
+"automaattisulutuksen tapaan"
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:140
@@ -1144,9 +1143,7 @@ msgstr "Voi olla kätevä Markdownissa"
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
-"Peilikuvamerkit, samankaltainen muttei täysin sama kuin "
-"automaattisulutusPeilikuvamerkit, samankaltainen muttei täysin sama kuin "
-"automaattisulutus"
+"Peilikuvamerkit, samankaltainen muttei täysin sama kuin automaattisulutus"
 
 #: dialogs/katedialogs.cpp:585
 #, kde-format
@@ -2556,8 +2553,7 @@ msgid ""
 "example, C++ or .cpp)"
 msgstr ""
 "Etsi syntaksikorostuksia kielen nimen tai tiedostopäätteen perusteella "
-"(esim. C++ tai .cpp)Etsi syntaksikorostuksia kielen nimen tai "
-"tiedostopäätteen perusteella (esim. C++ tai .cpp)"
+"(esim. C++ tai .cpp)"
 
 #: mode/katemodemenulist.cpp:566
 #, kde-format
