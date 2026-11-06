@@ -631,8 +631,7 @@ msgid ""
 "way \"Auto Bracket\" do"
 msgstr ""
 "Kun tekstiä on valittu, nämä merkit lisätään sen molemmin puolen "
-"automaattisulutuksen tapaanKun tekstiä on valittu, nämä merkit lisätään sen "
-"molemmin puolen automaattisulutuksen tapaan"
+"automaattisulutuksen tapaan"
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:143
@@ -1180,9 +1179,7 @@ msgstr "Voi olla kätevä Markdownissa"
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
-"Peilikuvamerkit, samankaltainen muttei täysin sama kuin "
-"automaattisulutusPeilikuvamerkit, samankaltainen muttei täysin sama kuin "
-"automaattisulutus"
+"Peilikuvamerkit, samankaltainen muttei täysin sama kuin automaattisulutus"
 
 #: dialogs/katedialogs.cpp:595
 #, kde-format
@@ -2599,8 +2596,7 @@ msgid ""
 "example, C++ or .cpp)"
 msgstr ""
 "Etsi syntaksikorostuksia kielen nimen tai tiedostopäätteen perusteella "
-"(esim. C++ tai .cpp)Etsi syntaksikorostuksia kielen nimen tai "
-"tiedostopäätteen perusteella (esim. C++ tai .cpp)"
+"(esim. C++ tai .cpp)"
 
 #: mode/katemodemenulist.cpp:559
 #, kde-format
