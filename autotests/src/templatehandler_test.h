@@ -71,6 +71,7 @@ private Q_SLOTS:
     void testAdjacentRanges();
     void testAdjacentRanges2();
     void testAdjacentRanges3();
+    void testAdjacentDefaultsBug430513();
 
     void testTab();
     void testTab_data();

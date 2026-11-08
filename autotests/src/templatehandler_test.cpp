@@ -394,6 +394,33 @@ void TemplateHandlerTest::testAdjacentRanges3()
     QCOMPARE(view->cursorPosition().column(), 6);
 }
 
+void TemplateHandlerTest::testAdjacentDefaultsBug430513()
+{
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+
+    view->insertTemplate({0, 0}, QStringLiteral(R"(Test${foo="foo"}${bar="bar"}. ${cursor})"));
+
+    QCOMPARE(doc.text(), QStringLiteral("Testfoobar. "));
+    QCOMPARE(view->selectionText(), QStringLiteral("foo"));
+
+    // Type "X" to replace "foo"
+    QTest::keyClick(view->focusProxy(), 'X');
+    QCOMPARE(doc.text(), QStringLiteral("TestXbar. "));
+
+    // Tab to next field ("bar")
+    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QCOMPARE(view->selectionText(), QStringLiteral("bar"));
+
+    // Type "Y" to replace "bar"
+    QTest::keyClick(view->focusProxy(), 'Y');
+    QCOMPARE(doc.text(), QStringLiteral("TestXY. "));
+
+    // Tab to final cursor position
+    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QCOMPARE(view->cursorPosition(), Cursor(0, 8));
+}
+
 void TemplateHandlerTest::testTab()
 {
     QFETCH(QString, tpl);
@@ -837,6 +864,7 @@ void TemplateHandlerTest::testDefaults_data()
                                                    << QStringLiteral("volatile SyntaxError: access volatile through the fields map") << S();
     QTest::newRow("field_name_global") << QStringLiteral("${document='myfield'} ${foo=document.encoding()} ${bar=fields.document}")
                                        << QStringLiteral("myfield UTF-8 myfield") << uppercase;
+    QTest::newRow("adjacent_defaults_bug430513") << QStringLiteral(R"(${foo="foo"}${bar="bar"})") << QStringLiteral("foobar") << S();
 }
 
 void TemplateHandlerTest::testDefaults()
