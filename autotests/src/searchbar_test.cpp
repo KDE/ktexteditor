@@ -18,8 +18,10 @@
 #include <kateview.h>
 #include <ktexteditor/movingrange.h>
 
+#include <QLineEdit>
 #include <QStringListModel>
 #include <QTest>
+#include <QVBoxLayout>
 
 QTEST_MAIN(SearchBarTest)
 
@@ -863,6 +865,55 @@ void SearchBarTest::testReplaceEscapeSequence()
 
     QCOMPARE(doc.text(), textAfter);
     QCOMPARE(view.cursorPosition(), cursorAfter);
+}
+
+// Ctrl+F while the search bar is already shown must not move the focus out of the bar.
+// It did for a moment, which made the focus end up in another view of the host
+// application (the next widget in the focus chain), bug 528326
+void SearchBarTest::testFindAgainKeepsFocus()
+{
+    QWidget window;
+    auto layout = new QVBoxLayout(&window);
+
+    KTextEditor::DocumentPrivate doc;
+    doc.setText(QStringLiteral("a a a b b"));
+    auto view = new KTextEditor::ViewPrivate(&doc, &window);
+    layout->addWidget(view);
+
+    window.show();
+    QVERIFY(QTest::qWaitForWindowActive(&window));
+
+    view->setFocus();
+    QTRY_VERIFY(view->hasFocus());
+    view->find();
+    auto searchBar = view->findChild<KateSearchBar *>();
+    QVERIFY(searchBar);
+    QVERIFY(searchBar->isVisible());
+    QTRY_VERIFY(searchBar->isAncestorOf(QApplication::focusWidget()));
+
+    // created after the search bar => next in the focus chain
+    auto other = new QLineEdit(&window);
+    layout->addWidget(other);
+    other->show();
+
+    int otherFocusIn = 0;
+    connect(qApp, &QApplication::focusChanged, this, [&otherFocusIn, other](QWidget *, QWidget *now) {
+        if (now == other) {
+            ++otherFocusIn;
+        }
+    });
+
+    // find again from the search bar and from the view
+    view->find();
+    QCOMPARE(otherFocusIn, 0);
+    QVERIFY(searchBar->isAncestorOf(QApplication::focusWidget()));
+
+    view->setFocus();
+    QTRY_VERIFY(view->hasFocus());
+    view->find();
+    QCOMPARE(otherFocusIn, 0);
+    QVERIFY(searchBar->isVisible());
+    QVERIFY(searchBar->isAncestorOf(QApplication::focusWidget()));
 }
 
 #include "moc_searchbar_test.cpp"

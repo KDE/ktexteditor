@@ -3039,7 +3039,12 @@ void KateViewBar::showBarWidget(KateViewBarWidget *barWidget)
     }
 
     // raise correct widget
-    m_stack->addWidget(barWidget);
+    // don't re-add a widget that is already there, the layout would hide it for a moment
+    // and if it has the focus, Qt moves the focus to the next widget, e.g. in another
+    // view of the host application, bug 528326
+    if (!hasBarWidget(barWidget)) {
+        m_stack->addWidget(barWidget);
+    }
     m_stack->setCurrentWidget(barWidget);
     barWidget->show();
     barWidget->setFocus(Qt::ShortcutFocusReason);
