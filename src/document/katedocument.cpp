@@ -2657,7 +2657,7 @@ bool KTextEditor::DocumentPrivate::createBackupFile()
             // could be a mounted remote filesystem (e.g. nfs, sshfs, cifs)
             // we have the early out above to skip this, if we want no backup, which is the default
             KMountPoint::Ptr mountPoint = KMountPoint::currentMountPoints().findByDevice(u.toLocalFile());
-            slowOrRemoteFile = (mountPoint && mountPoint->probablySlow());
+            slowOrRemoteFile = (mountPoint && mountPoint->isOnRemoteStorage());
         }
         needBackup = (!slowOrRemoteFile && backupLocalFiles) || (slowOrRemoteFile && backupRemoteFiles);
     }
