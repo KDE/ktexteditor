@@ -10,6 +10,7 @@
 // #include <ktexteditor_export.h>
 
 #include <QFlags>
+#include <utility>
 
 namespace KTextEditor
 {
@@ -89,7 +90,7 @@ public:
      * @param line line to query starting folding ranges
      * @return vector of id's + flags
      */
-    virtual QList<QPair<qint64, FoldingRangeFlags>> foldingRangesStartingOnLine(int line) const = 0;
+    virtual QList<std::pair<qint64, FoldingRangeFlags>> foldingRangesStartingOnLine(int line) const = 0;
 
     /**
      * Check whether on this line starts a folding range

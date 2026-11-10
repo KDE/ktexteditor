@@ -127,8 +127,8 @@ QString KateSpellCheckManager::decodeCharacters(KTextEditor::DocumentPrivate *do
                 decToEncCurrentOffset = decToEncCurrentOffset - (isNullChar ? 0 : 1) + matchingPrefix.length();
                 encToDecCurrentOffset = encToDecCurrentOffset - matchingPrefix.length() + (isNullChar ? 0 : 1);
                 newI += (isNullChar ? 0 : 1);
-                decToEncOffsetList.push_back(QPair<int, int>(newI, decToEncCurrentOffset));
-                encToDecOffsetList.push_back(QPair<int, int>(i, encToDecCurrentOffset));
+                decToEncOffsetList.push_back(std::pair<int, int>(newI, decToEncCurrentOffset));
+                encToDecOffsetList.push_back(std::pair<int, int>(i, encToDecCurrentOffset));
                 continue;
             }
             ++col;

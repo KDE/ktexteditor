@@ -10,7 +10,6 @@
 
 #include <QList>
 #include <QObject>
-#include <QPair>
 #include <QSet>
 #include <QString>
 #include <map>

@@ -15,6 +15,8 @@
 
 #include <QObject>
 
+#include <utility>
+
 namespace KTextEditor
 {
 class ViewPrivate;
@@ -90,7 +92,7 @@ private:
     KTextEditor::Range m_currentSpellCheckRange;
     KTextEditor::MovingRange *m_globalSpellCheckRange;
 
-    QList<QPair<int, int>> m_currentDecToEncOffsetList;
+    QList<std::pair<int, int>> m_currentDecToEncOffsetList;
 
     QList<KateSpellCheckManager::RangeAndDictionary> m_languagesInSpellCheckRange;
     QList<KateSpellCheckManager::RangeAndDictionary>::iterator m_currentLanguageRangeIterator;

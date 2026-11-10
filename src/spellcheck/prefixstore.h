@@ -9,7 +9,6 @@
 
 #include <QHash>
 #include <QList>
-#include <QPair>
 #include <QSet>
 #include <QString>
 

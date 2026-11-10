@@ -9,12 +9,13 @@
 
 #include <QList>
 #include <QObject>
-#include <QPair>
 #include <QString>
 
 #include <ktexteditor/document.h>
 #include <sonnet/backgroundchecker.h>
 #include <sonnet/speller.h>
+
+#include <utility>
 
 namespace KTextEditor
 {
@@ -39,7 +40,7 @@ public:
      **/
     static QList<KTextEditor::Range> rangeDifference(KTextEditor::Range r1, KTextEditor::Range r2);
 
-    typedef QList<QPair<int, int>> OffsetList;
+    typedef QList<std::pair<int, int>> OffsetList;
     static int computePositionWrtOffsets(const OffsetList &offsetList, int pos);
     static QString
     decodeCharacters(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range, OffsetList &decToEncOffsetList, OffsetList &encToDecOffsetList);

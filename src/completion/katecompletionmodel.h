@@ -10,7 +10,6 @@
 
 #include <QAbstractProxyModel>
 #include <QList>
-#include <QPair>
 
 #include <ktexteditor/codecompletionmodel.h>
 

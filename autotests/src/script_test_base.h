@@ -6,7 +6,6 @@
 #define SCRIPT_TEST_H
 
 #include <QObject>
-#include <QPair>
 #include <QStringList>
 
 class TestScriptEnv;
