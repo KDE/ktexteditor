@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 04:37+0000\n"
-"PO-Revision-Date: 2026-10-08 19:16+0300\n"
+"PO-Revision-Date: 2026-11-10 21:42+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -3372,7 +3372,7 @@ msgstr "CMake"
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "C++/boost Style"
-msgstr "C++/boost Biçemi"
+msgstr "C++/boost Stili"
 
 #: script/data/indentation/cstyle.js:2
 #, kde-format
@@ -4227,7 +4227,7 @@ msgstr "Seçili Arka Plan"
 #: syntax/katestyletreewidget.cpp:134
 #, kde-format
 msgid "Use Default Style"
-msgstr "Öntanımlı Biçemi Kullan"
+msgstr "Öntanımlı Stili Kullan"
 
 #: syntax/katestyletreewidget.cpp:231
 #, kde-format
@@ -4292,7 +4292,7 @@ msgstr "Seçili Arka Plan Rengi Ayarını Kaldır"
 #: syntax/katestyletreewidget.cpp:288
 #, kde-format
 msgid "Use &Default Style"
-msgstr "&Öntanımlı Biçemi Kullan"
+msgstr "&Öntanımlı Stili Kullan"
 
 #: syntax/katestyletreewidget.cpp:401
 #, kde-format
@@ -4306,13 +4306,13 @@ msgid ""
 "\"Use Default Style\" will be automatically unset when you change any style "
 "properties."
 msgstr ""
-"\"Öntanımlı Biçemi Kullan\" seçeneği değiştirmiş olduğunuz biçim "
+"\"Öntanımlı Stili Kullan\" seçeneği değiştirmiş olduğunuz biçim "
 "özelliklerini otomatik olarak yürürlükten kaldıracaktır."
 
 #: syntax/katestyletreewidget.cpp:636
 #, kde-format
 msgid "Kate Styles"
-msgstr "Kate Biçemleri"
+msgstr "Kate Stilleri"
 
 #: syntax/katethemeconfig.cpp:47
 #, kde-format
@@ -4812,8 +4812,8 @@ msgid ""
 "color to edit from the popup menu.</p><p>You can unset the Background and "
 "Selected Background colors from the popup menu when appropriate.</p>"
 msgstr ""
-"<p>Bu liste, mevcut renk teması için öntanımlı biçemleri gösterir ve "
-"düzenlemeniz için seçenekler sağlar. Biçem adı, güncel biçim ayarlarını "
+"<p>Bu liste, mevcut renk teması için öntanımlı stilleri gösterir ve "
+"düzenlemeniz için seçenekler sağlar. Stil adı, güncel biçim ayarlarını "
 "yansıtır.</p><p>Renkleri düzenlemek için, renkli dikdörtgen kutulara "
 "tıklayın veya açılır menüden seçin.</p><p>Açılır menüden, Arka Plan ve "
 "Seçilen Alan Arka Planı renklerinin ayarlarını kaldırabilirsiniz.</p>"
@@ -4865,7 +4865,7 @@ msgid ""
 "context menu when appropriate.</p>"
 msgstr ""
 "<p>Bu liste, mevcut sözdizim renklendirme kipinin kapsamını gösterir ve "
-"düzenlemeniz için seçenekler sağlar. Bağlam adı, güncel biçem ayarlarını "
+"düzenlemeniz için seçenekler sağlar. Bağlam adı, güncel stil ayarlarını "
 "yansıtır.</p><p>Düğme takımını kullanarak düzenleme yapmak için <strong>&lt;"
 "BOŞLUK DÜĞMESİ&gt;</strong> 'ne basın ve açılır menüden bir özellik seçin.</"
 "p><p>Renkleri düzenlemek için, renkli dikdörtgen kutulara tıklayın veya "
@@ -4920,12 +4920,12 @@ msgstr "Renkler"
 #: syntax/katethemeconfig.cpp:1151
 #, kde-format
 msgid "Default Text Styles"
-msgstr "Öntanımlı Metin Biçemleri"
+msgstr "Öntanımlı Metin Stilleri"
 
 #: syntax/katethemeconfig.cpp:1155
 #, kde-format
 msgid "Highlighting Text Styles"
-msgstr "Renklendirilmiş Metin Biçemleri"
+msgstr "Renklendirilmiş Metin Stilleri"
 
 #: syntax/katethemeconfig.cpp:1167
 #, kde-format
@@ -6186,7 +6186,7 @@ msgstr "Düzenleyici görünümünde simge kenarlığını etkinleştir."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
-msgstr "Otomatik girintileme biçemini ayarla."
+msgstr "Otomatik girintileme stilini ayarla."
 
 #: variableeditor/variablelineedit.cpp:229
 #, kde-format
