@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 02:53+0000\n"
-"PO-Revision-Date: 2026-10-18 19:06+0200\n"
+"PO-Revision-Date: 2026-11-11 23:00+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -2177,8 +2177,8 @@ msgstr ""
 "выравниваться по вертикали по отступу первой строки. Это способствует "
 "улучшению читабельности кода и разметки.</p><p>Дополнительно это позволяет "
 "задавать максимальную ширину экрана в процентах, после которой динамически "
-"перенесённые строки не будут выравниваться по вертикали. Например, при 50% "
-"строки, чья глубина отступа превышает 50% ширины экрана, не будут более "
+"перенесённые строки не будут выравниваться по вертикали. Например, при 50 % "
+"строки, чья глубина отступа превышает 50 % ширины экрана, не будут более "
 "выравниваться по вертикали.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
@@ -6692,7 +6692,7 @@ msgstr "Слова: %1, символы: %2"
 #: view/katestatusbar.cpp:589
 #, kde-format
 msgid "Zoom: %1%"
-msgstr "Масштаб: %1%"
+msgstr "Масштаб: %1 %"
 
 #: view/kateview.cpp:440
 #, kde-format
