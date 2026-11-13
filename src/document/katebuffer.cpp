@@ -309,7 +309,7 @@ void KateBuffer::setHighlight(int hlMode)
         m_doc->bufferHlChanged();
 
         // try to set indentation
-        if (!h->indentation().isEmpty()) {
+        if (!m_doc->m_indenterSetByUser && !h->indentation().isEmpty()) {
             m_doc->config()->setIndentationMode(h->indentation());
         }
     }
