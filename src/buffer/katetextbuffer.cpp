@@ -513,33 +513,16 @@ int TextBuffer::blockForLine(int line) const
         qFatal("out of range line requested in text buffer (%d out of [0, %d])", line, lines());
     }
 
-    auto b = line / BufferBlockSize;
-    if (size_t(b) >= m_blocks.size()) {
-        b = int(m_blocks.size() - 1);
+    // do fast binary search
+    auto upper = std::upper_bound(m_startLines.begin(), m_startLines.end(), line);
+
+    // if we found no start line larger than our line, use the last block
+    if (upper == m_startLines.end()) {
+        return static_cast<int>(m_startLines.size()) - 1;
     }
 
-    if (m_startLines[b] <= line && line < m_startLines[b] + m_blocks[b]->lines()) {
-        return b;
-    }
-
-    if (m_startLines[b] > line) {
-        for (int i = b - 1; i >= 0; --i) {
-            if (m_startLines[i] <= line && line < m_startLines[i] + m_blocks[i]->lines()) {
-                return i;
-            }
-        }
-    }
-
-    if (m_startLines[b] < line || (m_blocks[b]->lines() == 0)) {
-        for (size_t i = b + 1; i < m_blocks.size(); ++i) {
-            if (m_startLines[i] <= line && line < m_startLines[i] + m_blocks[i]->lines()) {
-                return static_cast<int>(i);
-            }
-        }
-    }
-
-    qFatal("line requested in text buffer (%d out of [0, %d[), no block found", line, lines());
-    return -1;
+    // else, we just skip one block back from the block we found
+    return std::distance(m_startLines.begin(), upper - 1);
 }
 
 void TextBuffer::fixStartLines(int startBlock, int value)
