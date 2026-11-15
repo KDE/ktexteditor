@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 02:53+0000\n"
-"PO-Revision-Date: 2026-10-06 08:03+0200\n"
+"PO-Revision-Date: 2026-11-14 16:15+0100\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr@ijekavian\n"
@@ -2390,16 +2390,22 @@ msgid ""
 "\n"
 "Close the other document and save?"
 msgstr ""
+"Фајл %1 је већ отворен у другом документу.\n"
+"\n"
+"Ако овај документ сачувате тамо, за исти фајл би постојала два документа, а "
+"уписивање једног пребрисало би измјене другог.\n"
+"\n"
+"Затворити други документ и сачувати?"
 
 #: document/katedocument.cpp:5073
 #, kde-format
 msgid "File Already Open"
-msgstr ""
+msgstr "Фајл је већ отворен"
 
 #: document/katedocument.cpp:5074
 #, kde-format
 msgid "Close Other && Save"
-msgstr ""
+msgstr "Затвори други и сачувај"
 
 # >> @title:window
 #: document/katedocument.cpp:5086
