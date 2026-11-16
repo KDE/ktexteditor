@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 02:53+0000\n"
-"PO-Revision-Date: 2026-11-10 21:39+0300\n"
+"PO-Revision-Date: 2026-11-15 19:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1919,7 +1919,7 @@ msgstr "Satır sonu türünü göster"
 #: dialogs/textareaappearanceconfigwidget.ui:28
 #, kde-format
 msgid "Editor font:"
-msgstr "Düzenleyici yazıtipi:"
+msgstr "Düzenleyici yazı tipi:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
@@ -1934,7 +1934,7 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
-"Bu değer, yazıtipinin öntanımlı satır yüksekliğiyle çarpılacaktır. 1,0 "
+"Bu değer, yazı tipinin öntanımlı satır yüksekliğiyle çarpılacaktır. 1,0 "
 "değeri, öntanımlı yüksekliğin kullanılacağı anlamına gelir."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -2685,7 +2685,7 @@ msgstr "&Alt bilgiyi yazdır"
 #: printing/printconfigwidgets.cpp:131
 #, kde-format
 msgid "Header/footer font:"
-msgstr "Üst bilgi/Alt bilgi yazıtipi:"
+msgstr "Üst bilgi/Alt bilgi yazı tipi:"
 
 #: printing/printconfigwidgets.cpp:137
 #, kde-format
@@ -2824,7 +2824,7 @@ msgstr "&Renk teması:"
 #: printing/printconfigwidgets.cpp:494
 #, kde-format
 msgid "Font:"
-msgstr "Yazıtipi:"
+msgstr "Yazı tipi:"
 
 #: printing/printconfigwidgets.cpp:498
 #, kde-format
@@ -6345,13 +6345,13 @@ msgstr "Düzenleyici kenarlığında katlama önizlemesini etkinleştirin."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
-msgstr "Belgenin yazıtipi boyutunu nokta türünden ayarlayın."
+msgstr "Belgenin yazı tipi boyutunu nokta türünden ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:198
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the font of the document."
-msgstr "Belgenin yazıtipini ayarlayın."
+msgstr "Belgenin yazı tipini ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:214
 #, kde-format
@@ -7099,32 +7099,32 @@ msgstr ""
 #: view/kateview.cpp:733
 #, kde-format
 msgid "Enlarge Font"
-msgstr "Yazıtipi Puntosunu Artır"
+msgstr "Yazı Tipi Puntosunu Artır"
 
 #: view/kateview.cpp:735
 #, kde-format
 msgid "This increases the display font size."
-msgstr "Bu, görüntü yazıtipi büyüklüğünü artırır."
+msgstr "Bu, görüntü yazı tipi büyüklüğünü artırır."
 
 #: view/kateview.cpp:742
 #, kde-format
 msgid "Shrink Font"
-msgstr "Yazıtipi Puntosunu Azalt"
+msgstr "Yazı Tipi Puntosunu Azalt"
 
 #: view/kateview.cpp:744
 #, kde-format
 msgid "This decreases the display font size."
-msgstr "Bu, görüntü yazıtipi büyüklüğünü azaltır."
+msgstr "Bu, görüntü yazı tipi büyüklüğünü azaltır."
 
 #: view/kateview.cpp:751
 #, kde-format
 msgid "Reset Font Size"
-msgstr "Yazıtipi Puntosunu Sıfırla"
+msgstr "Yazı Tipi Puntosunu Sıfırla"
 
 #: view/kateview.cpp:753
 #, kde-format
 msgid "This resets the display font size."
-msgstr "Bu, yazıtipi büyüklüğünü öntanımlı değerine sıfırlar."
+msgstr "Bu, yazı tipi büyüklüğünü öntanımlı değerine sıfırlar."
 
 #: view/kateview.cpp:756
 #, kde-format
