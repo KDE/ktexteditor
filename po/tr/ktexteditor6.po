@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 02:53+0000\n"
-"PO-Revision-Date: 2026-11-15 19:31+0300\n"
+"PO-Revision-Date: 2026-11-16 18:35+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -192,13 +192,13 @@ msgid ""
 "in a popup."
 msgstr ""
 "İşaretlenirse katlanmış bir bölgenin üzerine gelindiğinde, katlanmış metnin "
-"bir önizlemesi açılır pencerede gösterilir."
+"bir ön izlemesi açılır pencerede gösterilir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
 #, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr "Üzerine gelindiğinde katlanmış kodun önizlemesini göster"
+msgstr "Üzerine gelindiğinde katlanmış kodun ön izlemesini göster"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:52
@@ -300,13 +300,13 @@ msgid ""
 "a preview of the text.</p>"
 msgstr ""
 "<p>Bu seçenek işaretlenirse dikey sarma çubuğunun üzerine gelindiğinde "
-"metnin önizlemesi gösterilir.</p>"
+"metnin ön izlemesi gösterilir.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:165
 #, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr "Sarma çubuğu üzerine gelindiğinde önizleme göster"
+msgstr "Sarma çubuğu üzerine gelindiğinde ön izleme göster"
 
 #. i18n: ectx: property (text), widget (QLabel, lblShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:172
@@ -2020,7 +2020,7 @@ msgid ""
 "bracket, especially in long function/class declarations and deeply nested if "
 "blocks"
 msgstr ""
-"Bu etkinleştirilirse eşleşen açık bir ayracın yanında satır önizlemesi "
+"Bu etkinleştirilirse eşleşen açık bir ayracın yanında satır ön izlemesi "
 "gösterilir. Bu, bir kapatan ayracın bağlamını tez anlamaya yardımcı olur; "
 "özellikle uzun işlev/sınıf beyanlarında ve derince iç içe geçmiş if "
 "bloklarında yararlıdır"
@@ -2029,7 +2029,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:225
 #, kde-format
 msgid "Show preview of matching open bracket"
-msgstr "Eşleşen açık ayraç önizlemesini göster"
+msgstr "Eşleşen açık ayraç ön izlemesini göster"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:232
@@ -6339,7 +6339,7 @@ msgstr "Düzenleyici kenarlığında katlama imlerini etkinleştirin."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
-msgstr "Düzenleyici kenarlığında katlama önizlemesini etkinleştirin."
+msgstr "Düzenleyici kenarlığında katlama ön izlemesini etkinleştirin."
 
 #: variableeditor/variablelineedit.cpp:193
 #, kde-format
@@ -6447,7 +6447,7 @@ msgstr "Sarma çubuğu mini haritasını gösterin."
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
-msgstr "Sarma çubuğu önizlemesini göster."
+msgstr "Sarma çubuğu ön izlemesini göster."
 
 #: variableeditor/variablelineedit.cpp:301
 #, kde-format
@@ -6983,7 +6983,7 @@ msgstr "Çalışılan belgeyi yazdır."
 #: view/kateview.cpp:657
 #, kde-format
 msgid "Show print preview of current document"
-msgstr "Geçerli belgenin yazdırma önizlemesini göster"
+msgstr "Geçerli belgenin yazdırma ön izlemesini göster"
 
 #: view/kateview.cpp:661
 #, kde-format
