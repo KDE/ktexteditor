@@ -230,6 +230,11 @@ KateSearchBar::~KateSearchBar()
 
 void KateSearchBar::closed()
 {
+    if (!m_cancelFindOrReplace) {
+        m_cancelFindOrReplace = true;
+        m_highlightRanges.clear();
+    }
+
     // remove search from the view bar, because it vertically bloats up the
     // stacked layout in KateViewBar.
     if (viewBar()) {

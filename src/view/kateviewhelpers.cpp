@@ -3093,6 +3093,19 @@ bool KateViewBar::barWidgetVisible() const
     return current && current->isVisible();
 }
 
+bool KateViewBar::event(QEvent *event)
+{
+    if (event->type() == QEvent::ShortcutOverride) {
+        auto *ke = static_cast<QKeyEvent *>(event);
+        if (ke->key() == Qt::Key_Escape && ke->modifiers() == Qt::NoModifier && barWidgetVisible()) {
+            hideCurrentBarWidget();
+            ke->accept();
+            return true;
+        }
+    }
+    return QWidget::event(event);
+}
+
 void KateViewBar::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_Escape) {

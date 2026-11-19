@@ -916,4 +916,35 @@ void SearchBarTest::testFindAgainKeepsFocus()
     QVERIFY(searchBar->isAncestorOf(QApplication::focusWidget()));
 }
 
+void SearchBarTest::testEscapeClearsSearchHighlights()
+{
+    KTextEditor::DocumentPrivate doc;
+    KTextEditor::ViewPrivate view(&doc, nullptr);
+    view.resize(400, 300);
+    view.show();
+
+    doc.setText(QStringLiteral("foo bar foo\nfoo\n"));
+
+    view.find();
+    auto searchBar = view.findChild<KateSearchBar *>();
+    QVERIFY(searchBar);
+    searchBar->enterPowerMode();
+    QVERIFY(searchBar->isVisible());
+
+    searchBar->setSearchPattern(QStringLiteral("foo"));
+    searchBar->findAll();
+    QCOMPARE(searchBar->m_hlRanges.size(), 3);
+
+    QWidget *target = searchBar->focusWidget() ? searchBar->focusWidget() : searchBar;
+    QKeyEvent shortcutOverride(QEvent::ShortcutOverride, Qt::Key_Escape, Qt::NoModifier);
+    QCoreApplication::sendEvent(target, &shortcutOverride);
+    if (!shortcutOverride.isAccepted()) {
+        QKeyEvent keyPress(QEvent::KeyPress, Qt::Key_Escape, Qt::NoModifier);
+        QCoreApplication::sendEvent(target, &keyPress);
+    }
+
+    QVERIFY(!searchBar->isVisible());
+    QVERIFY(searchBar->m_hlRanges.isEmpty());
+}
+
 #include "moc_searchbar_test.cpp"

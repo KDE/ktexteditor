@@ -538,6 +538,7 @@ public Q_SLOTS:
     void hideCurrentBarWidget();
 
 protected:
+    bool event(QEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
     void hideEvent(QHideEvent *event) override;
 

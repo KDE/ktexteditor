@@ -72,6 +72,8 @@ private Q_SLOTS:
     void testReplaceEscapeSequence();
 
     void testFindAgainKeepsFocus();
+
+    void testEscapeClearsSearchHighlights();
 };
 
 #endif
