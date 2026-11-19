@@ -21,6 +21,7 @@
 
 // the list of views
 #include <QList>
+#include <QSet>
 
 class KConfigGroup;
 
