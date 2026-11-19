@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 04:37+0000\n"
-"PO-Revision-Date: 2026-11-10 21:42+0300\n"
+"PO-Revision-Date: 2026-11-18 18:15+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -188,13 +188,13 @@ msgid ""
 "in a popup."
 msgstr ""
 "İmlenirse katlanmış bir bölgenin üzerine gelmek, açılan pencerede katlanmış "
-"metnin önizlemesini gösterir."
+"metnin ön izlemesini gösterir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
 #, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr "Üzerine gelindiğinde katlanmış kodun önizlemesini göster"
+msgstr "Üzerine gelindiğinde katlanmış kodun ön izlemesini göster"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/bordersappearanceconfigwidget.ui:68
@@ -278,13 +278,13 @@ msgid ""
 "a preview of the text.</p>"
 msgstr ""
 "<p>Bu seçenek imlendiğinde, dikey sarma çubuğunun üzerine gelmek, metnin bir "
-"önizlemesini gösterir.</p>"
+"ön izlemesini gösterir.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:141
 #, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr "Sarma çubuğu üzerine gelindiğinde önizlemeyi göster"
+msgstr "Sarma çubuğu üzerine gelindiğinde ön izlemeyi göster"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:164
@@ -1850,7 +1850,7 @@ msgstr "Satır sonu türünü göster"
 #: dialogs/textareaappearanceconfigwidget.ui:28
 #, kde-format
 msgid "Editor font:"
-msgstr "Düzenleyici yazıtipi:"
+msgstr "Düzenleyici yazı tipi:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:64
@@ -1940,7 +1940,7 @@ msgid ""
 "bracket, especially in long function/class declarations and deeply nested if "
 "blocks"
 msgstr ""
-"Bu etkinleştirilmişse eşleşen açık bir ayracın yanında satır önizlemesi "
+"Bu etkinleştirilmişse eşleşen açık bir ayracın yanında satır ön izlemesi "
 "gösterilir. Bu, bir kapatan ayracın bağlamını hızlıca anlamaya yardımcı "
 "olur; özellikle uzun işlev/sınıf beyanlarında ve derince iç içe geçmiş if "
 "bloklarında yararlıdır."
@@ -1949,7 +1949,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:201
 #, kde-format
 msgid "Show preview of matching open bracket"
-msgstr "Eşleşen açık ayraç önizlemesini göster"
+msgstr "Eşleşen açık ayraç ön izlemesini göster"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:208
@@ -2112,7 +2112,7 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
-"Bu değer, yazıtipinin öntanımlı satır yüksekliğiyle çarpılacaktır. 1.0 "
+"Bu değer, yazı tipinin öntanımlı satır yüksekliğiyle çarpılacaktır. 1.0 "
 "değeri, öntanımlı yüksekliğin kullanılacağı anlamına gelir."
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
@@ -6150,19 +6150,19 @@ msgstr "Düzenleyici kenarlığında katlama işaretlerini etkinleştir."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
-msgstr "Düzenleyici kenarlığında katlama önizlemeyi etkinleştir."
+msgstr "Düzenleyici kenarlığında katlama ön izlemeyi etkinleştir."
 
 #: variableeditor/variablelineedit.cpp:188
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
-msgstr "Belgenin yazıtipi boyutunu nokta türünden ayarla."
+msgstr "Belgenin yazı tipi boyutunu nokta türünden ayarla."
 
 #: variableeditor/variablelineedit.cpp:193
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the font of the document."
-msgstr "Belgenin yazıtipini ayarla."
+msgstr "Belgenin yazı tipini ayarla."
 
 #: variableeditor/variablelineedit.cpp:209
 #, kde-format
@@ -6258,7 +6258,7 @@ msgstr "Sarma çubuğu küçük haritasını göster."
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
-msgstr "Sarma çubuğu önizlemesini göster."
+msgstr "Sarma çubuğu ön izlemesini göster."
 
 #: variableeditor/variablelineedit.cpp:296
 #, kde-format
@@ -6748,7 +6748,7 @@ msgstr "Çalışılan belgeyi yazdır."
 #: view/kateview.cpp:617
 #, kde-format
 msgid "Show print preview of current document"
-msgstr "Mevcut belgenin yazdırma önizlemesini göster"
+msgstr "Mevcut belgenin yazdırma ön izlemesini göster"
 
 #: view/kateview.cpp:621
 #, kde-format
@@ -6886,7 +6886,7 @@ msgstr "Yazıtipi Boyutunu Sıfırla"
 #: view/kateview.cpp:712
 #, kde-format
 msgid "This resets the display font size."
-msgstr "Bu, yazıtipi boyutunu artırır."
+msgstr "Bu, yazı tipi boyutunu artırır."
 
 #: view/kateview.cpp:715
 #, kde-format
