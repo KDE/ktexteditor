@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-08 02:53+0000\n"
+"POT-Creation-Date: 2026-11-20 01:05+0000\n"
 "PO-Revision-Date: 2009-05-22 10:03+0100\n"
 "Last-Translator: Berend Ytsma <berendy@gmail.com>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -3889,7 +3889,7 @@ msgstr "Kommando net fûn: %1"
 msgid "Add..."
 msgstr "Taheakje"
 
-#: search/katesearchbar.cpp:298
+#: search/katesearchbar.cpp:303
 #, fuzzy, kde-format
 #| msgctxt "%2 is the translation of the next message"
 #| msgid "1 replacement done on %2"
@@ -3900,7 +3900,7 @@ msgid_plural "%1 replacements made"
 msgstr[0] "1 ferfanging dien op %2"
 msgstr[1] "1 ferfanging dien op %2"
 
-#: search/katesearchbar.cpp:300
+#: search/katesearchbar.cpp:305
 #, fuzzy, kde-format
 #| msgid "Not found"
 msgctxt "short translation"
@@ -3909,235 +3909,235 @@ msgid_plural "%1 matches found"
 msgstr[0] "Net fûn"
 msgstr[1] "Net fûn"
 
-#: search/katesearchbar.cpp:374
+#: search/katesearchbar.cpp:379
 #, fuzzy, kde-format
 #| msgid "Reached bottom, continued from top"
 msgid "Reached top, continued from bottom"
 msgstr "It ein berik, giet fierder fanôf it begjin"
 
-#: search/katesearchbar.cpp:376
+#: search/katesearchbar.cpp:381
 #, kde-format
 msgid "Reached bottom, continued from top"
 msgstr "It ein berik, giet fierder fanôf it begjin"
 
-#: search/katesearchbar.cpp:381
+#: search/katesearchbar.cpp:386
 #, kde-format
 msgid "Not found"
 msgstr "Net fûn"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, fuzzy, kde-format
 #| msgid "Reached bottom, continued from top"
 msgid "Bottom of file reached. Continue from top?"
 msgstr "It ein berik, giet fierder fanôf it begjin"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, fuzzy, kde-format
 #| msgid "Reached bottom, continued from top"
 msgid "Top of file reached. Continue from bottom?"
 msgstr "It ein berik, giet fierder fanôf it begjin"
 
-#: search/katesearchbar.cpp:618
+#: search/katesearchbar.cpp:623
 #, fuzzy, kde-format
 #| msgid "Case-sensitive searching"
 msgid "Continue search?"
 msgstr "Haadlettergefoelich sykje"
 
-#: search/katesearchbar.cpp:920
+#: search/katesearchbar.cpp:925
 #, fuzzy, kde-format
 #| msgid "&Highlighting"
 msgid "SearchHighLight"
 msgstr "Markea&rring"
 
-#: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
+#: search/katesearchbar.cpp:1141 search/katesearchbar.cpp:1760
 #, kde-format
 msgid "Clear history"
 msgstr ""
 
-#: search/katesearchbar.cpp:1166
+#: search/katesearchbar.cpp:1171
 #, kde-format
 msgid "Beginning of line"
 msgstr "Begjin fan 'e rigel"
 
-#: search/katesearchbar.cpp:1167
+#: search/katesearchbar.cpp:1172
 #, kde-format
 msgid "End of line"
 msgstr "Ein fan rigel"
 
-#: search/katesearchbar.cpp:1169
+#: search/katesearchbar.cpp:1174
 #, kde-format
 msgid "Match any character excluding new line (by default)"
 msgstr ""
 
-#: search/katesearchbar.cpp:1170
+#: search/katesearchbar.cpp:1175
 #, kde-format
 msgid "One or more occurrences"
 msgstr "Ien of mear oerienkomsten"
 
-#: search/katesearchbar.cpp:1171
+#: search/katesearchbar.cpp:1176
 #, kde-format
 msgid "Zero or more occurrences"
 msgstr "Gjint of mear oerienkomsten"
 
-#: search/katesearchbar.cpp:1172
+#: search/katesearchbar.cpp:1177
 #, kde-format
 msgid "Zero or one occurrences"
 msgstr "Gjint of ien oerienkomst"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1180
 #, kde-format
 msgid "<a> through <b> occurrences"
 msgstr "<a> troch <b> oerienkomsten"
 
-#: search/katesearchbar.cpp:1181
+#: search/katesearchbar.cpp:1186
 #, kde-format
 msgid "Group, capturing"
 msgstr "Groep, fêstlizze"
 
-#: search/katesearchbar.cpp:1182
+#: search/katesearchbar.cpp:1187
 #, kde-format
 msgid "Or"
 msgstr "Of"
 
-#: search/katesearchbar.cpp:1183
+#: search/katesearchbar.cpp:1188
 #, kde-format
 msgid "Set of characters"
 msgstr "Tekenset"
 
-#: search/katesearchbar.cpp:1184
+#: search/katesearchbar.cpp:1189
 #, kde-format
 msgid "Negative set of characters"
 msgstr "Negative tekenset"
 
-#: search/katesearchbar.cpp:1188
+#: search/katesearchbar.cpp:1193
 #, kde-format
 msgid "Whole match reference"
 msgstr "Folslein oerienkommende referinsje"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1204
 #, kde-format
 msgid "Reference"
 msgstr "Referinsje"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1211
 #, kde-format
 msgid "Line break"
 msgstr "Einrigelteken"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1212
 #, kde-format
 msgid "Tab"
 msgstr "Tab"
 
-#: search/katesearchbar.cpp:1210
+#: search/katesearchbar.cpp:1215
 #, kde-format
 msgid "Word boundary"
 msgstr "Wurdgrins"
 
-#: search/katesearchbar.cpp:1211
+#: search/katesearchbar.cpp:1216
 #, kde-format
 msgid "Not word boundary"
 msgstr "Net wurdgrins"
 
-#: search/katesearchbar.cpp:1212
+#: search/katesearchbar.cpp:1217
 #, kde-format
 msgid "Digit"
 msgstr "Sifer"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1218
 #, kde-format
 msgid "Non-digit"
 msgstr "Gjin sifer"
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1219
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr ""
 
-#: search/katesearchbar.cpp:1215
+#: search/katesearchbar.cpp:1220
 #, fuzzy, kde-format
 #| msgid "&Replace"
 msgid "Non-whitespace"
 msgstr "Fe&rfange:"
 
-#: search/katesearchbar.cpp:1216
+#: search/katesearchbar.cpp:1221
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr ""
 
-#: search/katesearchbar.cpp:1217
+#: search/katesearchbar.cpp:1222
 #, kde-format
 msgid "Non-word character"
 msgstr "Net wurdteken"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr ""
 
-#: search/katesearchbar.cpp:1221
+#: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr ""
 
-#: search/katesearchbar.cpp:1222
+#: search/katesearchbar.cpp:1227
 #, kde-format
 msgid "Backslash"
 msgstr "Backslash"
 
-#: search/katesearchbar.cpp:1226
+#: search/katesearchbar.cpp:1231
 #, kde-format
 msgid "Group, non-capturing"
 msgstr "Groep, net fêstlizze"
 
-#: search/katesearchbar.cpp:1227
+#: search/katesearchbar.cpp:1232
 #, fuzzy, kde-format
 #| msgid "Negative lookahead"
 msgid "Positive Lookahead"
 msgstr "Negative foarútsjoch"
 
-#: search/katesearchbar.cpp:1228
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Negative lookahead"
 msgstr "Negative foarútsjoch"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1237
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1238
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1238
+#: search/katesearchbar.cpp:1243
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr ""
 
-#: search/katesearchbar.cpp:1239
+#: search/katesearchbar.cpp:1244
 #, kde-format
 msgid "Begin uppercase conversion"
 msgstr "Begjin omsette nei haadletter"
 
-#: search/katesearchbar.cpp:1240
+#: search/katesearchbar.cpp:1245
 #, kde-format
 msgid "End case conversion"
 msgstr "Ein omsetting"
 
-#: search/katesearchbar.cpp:1241
+#: search/katesearchbar.cpp:1246
 #, kde-format
 msgid "Lowercase first character conversion"
 msgstr ""
 
-#: search/katesearchbar.cpp:1242
+#: search/katesearchbar.cpp:1247
 #, fuzzy, kde-format
 #| msgid "Begin uppercase conversion"
 msgid "Uppercase first character conversion"
 msgstr "Begjin omsette nei haadletter"
 
-#: search/katesearchbar.cpp:1243
+#: search/katesearchbar.cpp:1248
 #, kde-format
 msgid "Replacement counter (for Replace All)"
 msgstr ""

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-08 02:53+0000\n"
+"POT-Creation-Date: 2026-11-20 01:05+0000\n"
 "PO-Revision-Date: 2025-06-19 09:42+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -3640,7 +3640,7 @@ msgstr "Non se atopou a orde: %1"
 msgid "Add..."
 msgstr "Engadir…"
 
-#: search/katesearchbar.cpp:298
+#: search/katesearchbar.cpp:303
 #, kde-format
 msgctxt "short translation"
 msgid "1 replacement made"
@@ -3648,7 +3648,7 @@ msgid_plural "%1 replacements made"
 msgstr[0] "Fíxose unha substitución"
 msgstr[1] "Fixéronse %1 substitucións"
 
-#: search/katesearchbar.cpp:300
+#: search/katesearchbar.cpp:305
 #, kde-format
 msgctxt "short translation"
 msgid "1 match found"
@@ -3656,228 +3656,228 @@ msgid_plural "%1 matches found"
 msgstr[0] "Atopouse unha coincidencia"
 msgstr[1] "Atopáronse %1 coincidencias"
 
-#: search/katesearchbar.cpp:374
+#: search/katesearchbar.cpp:379
 #, kde-format
 msgid "Reached top, continued from bottom"
 msgstr "Acadouse o principio; continúase polo final"
 
-#: search/katesearchbar.cpp:376
+#: search/katesearchbar.cpp:381
 #, kde-format
 msgid "Reached bottom, continued from top"
 msgstr "Acadouse o final; continúase polo principio"
 
-#: search/katesearchbar.cpp:381
+#: search/katesearchbar.cpp:386
 #, kde-format
 msgid "Not found"
 msgstr "Non se atopou"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, kde-format
 msgid "Bottom of file reached. Continue from top?"
 msgstr "Acadouse a fin do ficheiro. Quere continuar desde o inicio?"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, kde-format
 msgid "Top of file reached. Continue from bottom?"
 msgstr "Acadouse o inicio do ficheiro. Quere continuar desde o fin?"
 
-#: search/katesearchbar.cpp:618
+#: search/katesearchbar.cpp:623
 #, kde-format
 msgid "Continue search?"
 msgstr "Quere continuar a busca?"
 
-#: search/katesearchbar.cpp:920
+#: search/katesearchbar.cpp:925
 #, kde-format
 msgid "SearchHighLight"
 msgstr "SearchHighLight"
 
-#: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
+#: search/katesearchbar.cpp:1141 search/katesearchbar.cpp:1760
 #, fuzzy, kde-format
 #| msgid "Clear Dictionary Ranges"
 msgid "Clear history"
 msgstr "Limpar os intervalos do dicionario"
 
-#: search/katesearchbar.cpp:1166
+#: search/katesearchbar.cpp:1171
 #, kde-format
 msgid "Beginning of line"
 msgstr "Comezo da liña"
 
-#: search/katesearchbar.cpp:1167
+#: search/katesearchbar.cpp:1172
 #, kde-format
 msgid "End of line"
 msgstr "Final da liña"
 
-#: search/katesearchbar.cpp:1169
+#: search/katesearchbar.cpp:1174
 #, kde-format
 msgid "Match any character excluding new line (by default)"
 msgstr "Calquera carácter menos salto de liña (predeterminado)"
 
-#: search/katesearchbar.cpp:1170
+#: search/katesearchbar.cpp:1175
 #, kde-format
 msgid "One or more occurrences"
 msgstr "Unha ou máis aparicións"
 
-#: search/katesearchbar.cpp:1171
+#: search/katesearchbar.cpp:1176
 #, kde-format
 msgid "Zero or more occurrences"
 msgstr "Cero ou máis aparicións"
 
-#: search/katesearchbar.cpp:1172
+#: search/katesearchbar.cpp:1177
 #, kde-format
 msgid "Zero or one occurrences"
 msgstr "Cero ou unha aparicións"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1180
 #, kde-format
 msgid "<a> through <b> occurrences"
 msgstr "<a> ao través <b> das aparicións"
 
-#: search/katesearchbar.cpp:1181
+#: search/katesearchbar.cpp:1186
 #, kde-format
 msgid "Group, capturing"
 msgstr "Agrupamento, capturando"
 
-#: search/katesearchbar.cpp:1182
+#: search/katesearchbar.cpp:1187
 #, kde-format
 msgid "Or"
 msgstr "Ou"
 
-#: search/katesearchbar.cpp:1183
+#: search/katesearchbar.cpp:1188
 #, kde-format
 msgid "Set of characters"
 msgstr "Conxunto de caracteres"
 
-#: search/katesearchbar.cpp:1184
+#: search/katesearchbar.cpp:1189
 #, kde-format
 msgid "Negative set of characters"
 msgstr "Negación do conxunto de caracteres"
 
-#: search/katesearchbar.cpp:1188
+#: search/katesearchbar.cpp:1193
 #, kde-format
 msgid "Whole match reference"
 msgstr "Referencia a concordancia completa"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1204
 #, kde-format
 msgid "Reference"
 msgstr "Referencia"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1211
 #, kde-format
 msgid "Line break"
 msgstr "Salto de liña"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1212
 #, kde-format
 msgid "Tab"
 msgstr "Tabulación"
 
-#: search/katesearchbar.cpp:1210
+#: search/katesearchbar.cpp:1215
 #, kde-format
 msgid "Word boundary"
 msgstr "Limiar de palabra"
 
-#: search/katesearchbar.cpp:1211
+#: search/katesearchbar.cpp:1216
 #, kde-format
 msgid "Not word boundary"
 msgstr "Non limiar de palabra"
 
-#: search/katesearchbar.cpp:1212
+#: search/katesearchbar.cpp:1217
 #, kde-format
 msgid "Digit"
 msgstr "Díxito"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1218
 #, kde-format
 msgid "Non-digit"
 msgstr "Non díxito"
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1219
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr "Espazo en branco (excluíndo os saltos de liña)"
 
-#: search/katesearchbar.cpp:1215
+#: search/katesearchbar.cpp:1220
 #, kde-format
 msgid "Non-whitespace"
 msgstr "Non espazo en branco"
 
-#: search/katesearchbar.cpp:1216
+#: search/katesearchbar.cpp:1221
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr "Caracteres de palabra (alfanuméricos máis o «_»)"
 
-#: search/katesearchbar.cpp:1217
+#: search/katesearchbar.cpp:1222
 #, kde-format
 msgid "Non-word character"
 msgstr "Caracteres que non sexan de palabra"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr "Carácter octal do 000 ao 377 (2^8-1)"
 
-#: search/katesearchbar.cpp:1221
+#: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr "Carácter hexadecimal do 0000 ao FFFF (2^16-1)"
 
-#: search/katesearchbar.cpp:1222
+#: search/katesearchbar.cpp:1227
 #, kde-format
 msgid "Backslash"
 msgstr "Barra invertida"
 
-#: search/katesearchbar.cpp:1226
+#: search/katesearchbar.cpp:1231
 #, kde-format
 msgid "Group, non-capturing"
 msgstr "Agrupamento, non capturando"
 
-#: search/katesearchbar.cpp:1227
+#: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "Positive Lookahead"
 msgstr "Comprobación de continuación positiva"
 
-#: search/katesearchbar.cpp:1228
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Negative lookahead"
 msgstr "Comprobación de continuación negativa"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1237
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr "Comprobación de precedencia positiva de lonxitude fixa"
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1238
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr "Comprobación de precedencia negativa de lonxitude fixa"
 
-#: search/katesearchbar.cpp:1238
+#: search/katesearchbar.cpp:1243
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr "Comezar a conversión en minúsculas"
 
-#: search/katesearchbar.cpp:1239
+#: search/katesearchbar.cpp:1244
 #, kde-format
 msgid "Begin uppercase conversion"
 msgstr "Comezar a conversión en maiúsculas"
 
-#: search/katesearchbar.cpp:1240
+#: search/katesearchbar.cpp:1245
 #, kde-format
 msgid "End case conversion"
 msgstr "Fin da conversión en maiúsculas/minúsculas"
 
-#: search/katesearchbar.cpp:1241
+#: search/katesearchbar.cpp:1246
 #, kde-format
 msgid "Lowercase first character conversion"
 msgstr "Conversión do primeiro carácter en minúscula"
 
-#: search/katesearchbar.cpp:1242
+#: search/katesearchbar.cpp:1247
 #, kde-format
 msgid "Uppercase first character conversion"
 msgstr "Conversión do primeiro carácter en maiúscula"
 
-#: search/katesearchbar.cpp:1243
+#: search/katesearchbar.cpp:1248
 #, kde-format
 msgid "Replacement counter (for Replace All)"
 msgstr "Contador de substitucións (para Substituílas todas)"

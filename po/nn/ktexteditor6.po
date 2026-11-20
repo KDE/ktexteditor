@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-08 02:53+0000\n"
+"POT-Creation-Date: 2026-11-20 01:05+0000\n"
 "PO-Revision-Date: 2026-09-25 17:24+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
@@ -3577,7 +3577,7 @@ msgstr "Fann ikkje kommandoen: %1"
 msgid "Add..."
 msgstr "Legg til …"
 
-#: search/katesearchbar.cpp:298
+#: search/katesearchbar.cpp:303
 #, kde-format
 msgctxt "short translation"
 msgid "1 replacement made"
@@ -3585,7 +3585,7 @@ msgid_plural "%1 replacements made"
 msgstr[0] "1 utbyting vart gjord"
 msgstr[1] "%1 utbytingar vart gjorde"
 
-#: search/katesearchbar.cpp:300
+#: search/katesearchbar.cpp:305
 #, kde-format
 msgctxt "short translation"
 msgid "1 match found"
@@ -3593,228 +3593,228 @@ msgid_plural "%1 matches found"
 msgstr[0] "Fann 1 treff"
 msgstr[1] "Fann %1 treff"
 
-#: search/katesearchbar.cpp:374
+#: search/katesearchbar.cpp:379
 #, kde-format
 msgid "Reached top, continued from bottom"
 msgstr "Nådde toppen, og held fram frå botnen."
 
-#: search/katesearchbar.cpp:376
+#: search/katesearchbar.cpp:381
 #, kde-format
 msgid "Reached bottom, continued from top"
 msgstr "Nådde botnen, og held fram frå toppen"
 
-#: search/katesearchbar.cpp:381
+#: search/katesearchbar.cpp:386
 #, kde-format
 msgid "Not found"
 msgstr "Ikkje funnen"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, kde-format
 msgid "Bottom of file reached. Continue from top?"
 msgstr "Nådde botnen av fila. Vil du halda fram frå toppen?"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, kde-format
 msgid "Top of file reached. Continue from bottom?"
 msgstr "Nådde toppen av fila. Vil du halda fram frå botnen?"
 
-#: search/katesearchbar.cpp:618
+#: search/katesearchbar.cpp:623
 #, kde-format
 msgid "Continue search?"
 msgstr "Vil du søkja vidare?"
 
-#: search/katesearchbar.cpp:920
+#: search/katesearchbar.cpp:925
 #, kde-format
 msgid "SearchHighLight"
 msgstr "SøkFramHeving"
 
-#: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
+#: search/katesearchbar.cpp:1141 search/katesearchbar.cpp:1760
 #, fuzzy, kde-format
 #| msgid "Clear Dictionary Ranges"
 msgid "Clear history"
 msgstr "Tøm ordlisteområde"
 
-#: search/katesearchbar.cpp:1166
+#: search/katesearchbar.cpp:1171
 #, kde-format
 msgid "Beginning of line"
 msgstr "Starten på linja"
 
-#: search/katesearchbar.cpp:1167
+#: search/katesearchbar.cpp:1172
 #, kde-format
 msgid "End of line"
 msgstr "Slutten på linja"
 
-#: search/katesearchbar.cpp:1169
+#: search/katesearchbar.cpp:1174
 #, kde-format
 msgid "Match any character excluding new line (by default)"
 msgstr "Gje treff på alle teikn utanom linjeskift (som standard)"
 
-#: search/katesearchbar.cpp:1170
+#: search/katesearchbar.cpp:1175
 #, kde-format
 msgid "One or more occurrences"
 msgstr "Éin eller fleire førekomstar"
 
-#: search/katesearchbar.cpp:1171
+#: search/katesearchbar.cpp:1176
 #, kde-format
 msgid "Zero or more occurrences"
 msgstr "Null eller fleire førekomstar"
 
-#: search/katesearchbar.cpp:1172
+#: search/katesearchbar.cpp:1177
 #, kde-format
 msgid "Zero or one occurrences"
 msgstr "Null eller éin førekomstar"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1180
 #, kde-format
 msgid "<a> through <b> occurrences"
 msgstr "Frå <a> til og med <b> førekomstar"
 
-#: search/katesearchbar.cpp:1181
+#: search/katesearchbar.cpp:1186
 #, kde-format
 msgid "Group, capturing"
 msgstr "Gruppe (hugsa)"
 
-#: search/katesearchbar.cpp:1182
+#: search/katesearchbar.cpp:1187
 #, kde-format
 msgid "Or"
 msgstr "Eller"
 
-#: search/katesearchbar.cpp:1183
+#: search/katesearchbar.cpp:1188
 #, kde-format
 msgid "Set of characters"
 msgstr "Teiknmengd"
 
-#: search/katesearchbar.cpp:1184
+#: search/katesearchbar.cpp:1189
 #, kde-format
 msgid "Negative set of characters"
 msgstr "Negativ teiknmengd"
 
-#: search/katesearchbar.cpp:1188
+#: search/katesearchbar.cpp:1193
 #, kde-format
 msgid "Whole match reference"
 msgstr "Referanse til heile funnet"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1204
 #, kde-format
 msgid "Reference"
 msgstr "Referanse"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1211
 #, kde-format
 msgid "Line break"
 msgstr "Linjeskift"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1212
 #, kde-format
 msgid "Tab"
 msgstr "Tabulator"
 
-#: search/katesearchbar.cpp:1210
+#: search/katesearchbar.cpp:1215
 #, kde-format
 msgid "Word boundary"
 msgstr "Ordgrense"
 
-#: search/katesearchbar.cpp:1211
+#: search/katesearchbar.cpp:1216
 #, kde-format
 msgid "Not word boundary"
 msgstr "Ikkje ordgrense"
 
-#: search/katesearchbar.cpp:1212
+#: search/katesearchbar.cpp:1217
 #, kde-format
 msgid "Digit"
 msgstr "Siffer"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1218
 #, kde-format
 msgid "Non-digit"
 msgstr "Ikkje-siffer"
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1219
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr "Blankteikn (ikkje linjeskift)"
 
-#: search/katesearchbar.cpp:1215
+#: search/katesearchbar.cpp:1220
 #, kde-format
 msgid "Non-whitespace"
 msgstr "Ikkje-blankteikn"
 
-#: search/katesearchbar.cpp:1216
+#: search/katesearchbar.cpp:1221
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr "Ordteikn (bokstavar, tal og «_»)"
 
-#: search/katesearchbar.cpp:1217
+#: search/katesearchbar.cpp:1222
 #, kde-format
 msgid "Non-word character"
 msgstr "Ikkje-ordteikn"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr "Oktalteikn 000 til 377 (2⁸ − 1)"
 
-#: search/katesearchbar.cpp:1221
+#: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr "Heksteikn 0000 til FFFF (2¹⁶ − 1)"
 
-#: search/katesearchbar.cpp:1222
+#: search/katesearchbar.cpp:1227
 #, kde-format
 msgid "Backslash"
 msgstr "Omvend skråstrek"
 
-#: search/katesearchbar.cpp:1226
+#: search/katesearchbar.cpp:1231
 #, kde-format
 msgid "Group, non-capturing"
 msgstr "Gruppe (ikkje hugsa)"
 
-#: search/katesearchbar.cpp:1227
+#: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "Positive Lookahead"
 msgstr "Positivt framoversøk"
 
-#: search/katesearchbar.cpp:1228
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Negative lookahead"
 msgstr "Negativt framoversøk"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1237
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr "Positivt bakoversøk av fast lengd"
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1238
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr "Negativt bakoversøk av fast lengd"
 
-#: search/katesearchbar.cpp:1238
+#: search/katesearchbar.cpp:1243
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr "Start omgjering til små bokstavar"
 
-#: search/katesearchbar.cpp:1239
+#: search/katesearchbar.cpp:1244
 #, kde-format
 msgid "Begin uppercase conversion"
 msgstr "Start omgjering til store bokstavar"
 
-#: search/katesearchbar.cpp:1240
+#: search/katesearchbar.cpp:1245
 #, kde-format
 msgid "End case conversion"
 msgstr "Slutt omgjering store/små bokstavar"
 
-#: search/katesearchbar.cpp:1241
+#: search/katesearchbar.cpp:1246
 #, kde-format
 msgid "Lowercase first character conversion"
 msgstr "Gjer om første teikn til liten bokstav"
 
-#: search/katesearchbar.cpp:1242
+#: search/katesearchbar.cpp:1247
 #, kde-format
 msgid "Uppercase first character conversion"
 msgstr "Gjer om første teikn til stor bokstav"
 
-#: search/katesearchbar.cpp:1243
+#: search/katesearchbar.cpp:1248
 #, kde-format
 msgid "Replacement counter (for Replace All)"
 msgstr "Utbytingsteljar (for «Byt ut alle»)"

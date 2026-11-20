@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-08 02:53+0000\n"
+"POT-Creation-Date: 2026-11-20 01:05+0000\n"
 "PO-Revision-Date: 2026-10-18 06:38+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -3620,7 +3620,7 @@ msgstr "Ni bilo mogoče najti ukaza: %1"
 msgid "Add..."
 msgstr "Dodaj …"
 
-#: search/katesearchbar.cpp:298
+#: search/katesearchbar.cpp:303
 #, kde-format
 msgctxt "short translation"
 msgid "1 replacement made"
@@ -3630,7 +3630,7 @@ msgstr[1] "Opravljena %1 zamenjava"
 msgstr[2] "Opravljeni %1 zamenjavi"
 msgstr[3] "Opravljene %1 zamenjave"
 
-#: search/katesearchbar.cpp:300
+#: search/katesearchbar.cpp:305
 #, kde-format
 msgctxt "short translation"
 msgid "1 match found"
@@ -3640,227 +3640,227 @@ msgstr[1] "Najdeno %1 ujemanje"
 msgstr[2] "Najdeni %1 ujemanji"
 msgstr[3] "Najdena %1 ujemanja"
 
-#: search/katesearchbar.cpp:374
+#: search/katesearchbar.cpp:379
 #, kde-format
 msgid "Reached top, continued from bottom"
 msgstr "Dosežen vrh, nadaljevano z dna"
 
-#: search/katesearchbar.cpp:376
+#: search/katesearchbar.cpp:381
 #, kde-format
 msgid "Reached bottom, continued from top"
 msgstr "Doseženo dno, nadaljevano z vrha"
 
-#: search/katesearchbar.cpp:381
+#: search/katesearchbar.cpp:386
 #, kde-format
 msgid "Not found"
 msgstr "Ni najden"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, kde-format
 msgid "Bottom of file reached. Continue from top?"
 msgstr "Dosežen je bil konec datoteke. Nadaljujem na začetku?"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, kde-format
 msgid "Top of file reached. Continue from bottom?"
 msgstr "Dosežen je bil vrh datoteke. Nadaljujem na dnu?"
 
-#: search/katesearchbar.cpp:618
+#: search/katesearchbar.cpp:623
 #, kde-format
 msgid "Continue search?"
 msgstr "Nadaljujem iskanje?"
 
-#: search/katesearchbar.cpp:920
+#: search/katesearchbar.cpp:925
 #, kde-format
 msgid "SearchHighLight"
 msgstr "Poudari najdeno"
 
-#: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
+#: search/katesearchbar.cpp:1141 search/katesearchbar.cpp:1760
 #, kde-format
 msgid "Clear history"
 msgstr "Počisti zgodovino"
 
-#: search/katesearchbar.cpp:1166
+#: search/katesearchbar.cpp:1171
 #, kde-format
 msgid "Beginning of line"
 msgstr "Začetek vrstice"
 
-#: search/katesearchbar.cpp:1167
+#: search/katesearchbar.cpp:1172
 #, kde-format
 msgid "End of line"
 msgstr "Konec vrstice"
 
-#: search/katesearchbar.cpp:1169
+#: search/katesearchbar.cpp:1174
 #, kde-format
 msgid "Match any character excluding new line (by default)"
 msgstr "Ujemi se s katerim koli znakom razen nove vrstice (privzeto)"
 
-#: search/katesearchbar.cpp:1170
+#: search/katesearchbar.cpp:1175
 #, kde-format
 msgid "One or more occurrences"
 msgstr "Ena ali več pojavitev"
 
-#: search/katesearchbar.cpp:1171
+#: search/katesearchbar.cpp:1176
 #, kde-format
 msgid "Zero or more occurrences"
 msgstr "Nič ali več pojavitev"
 
-#: search/katesearchbar.cpp:1172
+#: search/katesearchbar.cpp:1177
 #, kde-format
 msgid "Zero or one occurrences"
 msgstr "Nič ali ena pojavitev"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1180
 #, kde-format
 msgid "<a> through <b> occurrences"
 msgstr "Od <a> do <b> pojavitev"
 
-#: search/katesearchbar.cpp:1181
+#: search/katesearchbar.cpp:1186
 #, kde-format
 msgid "Group, capturing"
 msgstr "Skupina, zajemanje"
 
-#: search/katesearchbar.cpp:1182
+#: search/katesearchbar.cpp:1187
 #, kde-format
 msgid "Or"
 msgstr "Ali"
 
-#: search/katesearchbar.cpp:1183
+#: search/katesearchbar.cpp:1188
 #, kde-format
 msgid "Set of characters"
 msgstr "Nabor znakov"
 
-#: search/katesearchbar.cpp:1184
+#: search/katesearchbar.cpp:1189
 #, kde-format
 msgid "Negative set of characters"
 msgstr "Negativni nabor znakov"
 
-#: search/katesearchbar.cpp:1188
+#: search/katesearchbar.cpp:1193
 #, kde-format
 msgid "Whole match reference"
 msgstr "Referenca polnega ujemanja"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1204
 #, kde-format
 msgid "Reference"
 msgstr "Referenca"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1211
 #, kde-format
 msgid "Line break"
 msgstr "Prelom vrstice"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1212
 #, kde-format
 msgid "Tab"
 msgstr "Tabulator"
 
-#: search/katesearchbar.cpp:1210
+#: search/katesearchbar.cpp:1215
 #, kde-format
 msgid "Word boundary"
 msgstr "Meja besede"
 
-#: search/katesearchbar.cpp:1211
+#: search/katesearchbar.cpp:1216
 #, kde-format
 msgid "Not word boundary"
 msgstr "Ni meja besede"
 
-#: search/katesearchbar.cpp:1212
+#: search/katesearchbar.cpp:1217
 #, kde-format
 msgid "Digit"
 msgstr "Števka"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1218
 #, kde-format
 msgid "Non-digit"
 msgstr "Ne-števka"
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1219
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr "Presledni znaki (razen preloma vrstic)"
 
-#: search/katesearchbar.cpp:1215
+#: search/katesearchbar.cpp:1220
 #, kde-format
 msgid "Non-whitespace"
 msgstr "Ne-presledni znaki"
 
-#: search/katesearchbar.cpp:1216
+#: search/katesearchbar.cpp:1221
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr "Besedni znak (alfanumerični in »_«)"
 
-#: search/katesearchbar.cpp:1217
+#: search/katesearchbar.cpp:1222
 #, kde-format
 msgid "Non-word character"
 msgstr "Nebesedni znak"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr "Osmiški znak 000 do 377 (2^8-1)"
 
-#: search/katesearchbar.cpp:1221
+#: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr "Šestnajstiški znak 0000 do FFFF (2^16-1)"
 
-#: search/katesearchbar.cpp:1222
+#: search/katesearchbar.cpp:1227
 #, kde-format
 msgid "Backslash"
 msgstr "Nasprotna poševnica"
 
-#: search/katesearchbar.cpp:1226
+#: search/katesearchbar.cpp:1231
 #, kde-format
 msgid "Group, non-capturing"
 msgstr "Skupina, brez zajemanja"
 
-#: search/katesearchbar.cpp:1227
+#: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "Positive Lookahead"
 msgstr "Pozitivni pogled naprej"
 
-#: search/katesearchbar.cpp:1228
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Negative lookahead"
 msgstr "Negativni pogled naprej"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1237
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr "Pozitivni pogled nazaj fiksne dolžine"
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1238
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr "Negativni pogled nazaj fiksne dolžine"
 
-#: search/katesearchbar.cpp:1238
+#: search/katesearchbar.cpp:1243
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr "Prični pretvorbo v male črke"
 
-#: search/katesearchbar.cpp:1239
+#: search/katesearchbar.cpp:1244
 #, kde-format
 msgid "Begin uppercase conversion"
 msgstr "Prični pretvorbo v velike črke"
 
-#: search/katesearchbar.cpp:1240
+#: search/katesearchbar.cpp:1245
 #, kde-format
 msgid "End case conversion"
 msgstr "Konec pretvorbe velikosti črk"
 
-#: search/katesearchbar.cpp:1241
+#: search/katesearchbar.cpp:1246
 #, kde-format
 msgid "Lowercase first character conversion"
 msgstr "Pretvorba prvega znaka v malega"
 
-#: search/katesearchbar.cpp:1242
+#: search/katesearchbar.cpp:1247
 #, kde-format
 msgid "Uppercase first character conversion"
 msgstr "Pretvorba prvega znaka v velikega"
 
-#: search/katesearchbar.cpp:1243
+#: search/katesearchbar.cpp:1248
 #, kde-format
 msgid "Replacement counter (for Replace All)"
 msgstr "Števec zamenjav (za Zamenjaj vse)"

@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-08 02:53+0000\n"
+"POT-Creation-Date: 2026-11-20 01:05+0000\n"
 "PO-Revision-Date: 2026-11-03 20:31+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -3543,7 +3543,7 @@ msgstr "הפקודה לא נמצאה: %1"
 msgid "Add..."
 msgstr "הוספה…"
 
-#: search/katesearchbar.cpp:298
+#: search/katesearchbar.cpp:303
 #, kde-format
 msgctxt "short translation"
 msgid "1 replacement made"
@@ -3553,7 +3553,7 @@ msgstr[1] "בוצעו שתי החלפות"
 msgstr[2] "בוצעו %1 החלפות"
 msgstr[3] "בוצעו %1 החלפות"
 
-#: search/katesearchbar.cpp:300
+#: search/katesearchbar.cpp:305
 #, kde-format
 msgctxt "short translation"
 msgid "1 match found"
@@ -3563,227 +3563,227 @@ msgstr[1] "נמצאו שתי תוצאות"
 msgstr[2] "נמצאו %1 תוצאות"
 msgstr[3] "נמצאו %1 תוצאות"
 
-#: search/katesearchbar.cpp:374
+#: search/katesearchbar.cpp:379
 #, kde-format
 msgid "Reached top, continued from bottom"
 msgstr "הגיע להתחלה, ממשיך מהסוף"
 
-#: search/katesearchbar.cpp:376
+#: search/katesearchbar.cpp:381
 #, kde-format
 msgid "Reached bottom, continued from top"
 msgstr "הגיע לסוף, ממשיך מההתחלה"
 
-#: search/katesearchbar.cpp:381
+#: search/katesearchbar.cpp:386
 #, kde-format
 msgid "Not found"
 msgstr "לא נמצא"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, kde-format
 msgid "Bottom of file reached. Continue from top?"
 msgstr "הגעת לסוף הקובץ. להתחיל מההתחלה?"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, kde-format
 msgid "Top of file reached. Continue from bottom?"
 msgstr "הגעת לתחילת הקובץ. להמשיך מהסוף?"
 
-#: search/katesearchbar.cpp:618
+#: search/katesearchbar.cpp:623
 #, kde-format
 msgid "Continue search?"
 msgstr "להמשיך את החיפוש?"
 
-#: search/katesearchbar.cpp:920
+#: search/katesearchbar.cpp:925
 #, kde-format
 msgid "SearchHighLight"
 msgstr "הדגשת חיפוש"
 
-#: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
+#: search/katesearchbar.cpp:1141 search/katesearchbar.cpp:1760
 #, kde-format
 msgid "Clear history"
 msgstr "פינוי ההיסטוריה"
 
-#: search/katesearchbar.cpp:1166
+#: search/katesearchbar.cpp:1171
 #, kde-format
 msgid "Beginning of line"
 msgstr "תחילת השורה"
 
-#: search/katesearchbar.cpp:1167
+#: search/katesearchbar.cpp:1172
 #, kde-format
 msgid "End of line"
 msgstr "סוף השורה"
 
-#: search/katesearchbar.cpp:1169
+#: search/katesearchbar.cpp:1174
 #, kde-format
 msgid "Match any character excluding new line (by default)"
 msgstr "לכידת כל תו שהוא למעט שורה חדשה (כברירת מחדל)"
 
-#: search/katesearchbar.cpp:1170
+#: search/katesearchbar.cpp:1175
 #, kde-format
 msgid "One or more occurrences"
 msgstr "מופע אחד או יותר"
 
-#: search/katesearchbar.cpp:1171
+#: search/katesearchbar.cpp:1176
 #, kde-format
 msgid "Zero or more occurrences"
 msgstr "אפס מופעים או יותר"
 
-#: search/katesearchbar.cpp:1172
+#: search/katesearchbar.cpp:1177
 #, kde-format
 msgid "Zero or one occurrences"
 msgstr "אפס או מופע אחד"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1180
 #, kde-format
 msgid "<a> through <b> occurrences"
 msgstr "<a> עד <b> מופעים"
 
-#: search/katesearchbar.cpp:1181
+#: search/katesearchbar.cpp:1186
 #, kde-format
 msgid "Group, capturing"
 msgstr "קבוצה, עם לכידה"
 
-#: search/katesearchbar.cpp:1182
+#: search/katesearchbar.cpp:1187
 #, kde-format
 msgid "Or"
 msgstr "או"
 
-#: search/katesearchbar.cpp:1183
+#: search/katesearchbar.cpp:1188
 #, kde-format
 msgid "Set of characters"
 msgstr "קבוצת תווים"
 
-#: search/katesearchbar.cpp:1184
+#: search/katesearchbar.cpp:1189
 #, kde-format
 msgid "Negative set of characters"
 msgstr "קבוצה שלילית של תווים"
 
-#: search/katesearchbar.cpp:1188
+#: search/katesearchbar.cpp:1193
 #, kde-format
 msgid "Whole match reference"
 msgstr "ייחוס של התאמה מלאה"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1204
 #, kde-format
 msgid "Reference"
 msgstr "ייחוס"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1211
 #, kde-format
 msgid "Line break"
 msgstr "מעבר שורה"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1212
 #, kde-format
 msgid "Tab"
 msgstr "טאב"
 
-#: search/katesearchbar.cpp:1210
+#: search/katesearchbar.cpp:1215
 #, kde-format
 msgid "Word boundary"
 msgstr "גבול מילה"
 
-#: search/katesearchbar.cpp:1211
+#: search/katesearchbar.cpp:1216
 #, kde-format
 msgid "Not word boundary"
 msgstr "לא גבול מילה"
 
-#: search/katesearchbar.cpp:1212
+#: search/katesearchbar.cpp:1217
 #, kde-format
 msgid "Digit"
 msgstr "סיפרה"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1218
 #, kde-format
 msgid "Non-digit"
 msgstr "לא־סיפרה"
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1219
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr "רווחים (לא כולל מעברי שורה)"
 
-#: search/katesearchbar.cpp:1215
+#: search/katesearchbar.cpp:1220
 #, kde-format
 msgid "Non-whitespace"
 msgstr "לא רווח"
 
-#: search/katesearchbar.cpp:1216
+#: search/katesearchbar.cpp:1221
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr "תווי מילים (אותיות, והתו „_”)"
 
-#: search/katesearchbar.cpp:1217
+#: search/katesearchbar.cpp:1222
 #, kde-format
 msgid "Non-word character"
 msgstr "תו שאינו חלק ממילה"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr "תו אוקטאלי 000 עד 377‏ (‪2^8-1‬)‏"
 
-#: search/katesearchbar.cpp:1221
+#: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr "תו הקסדצימלי 0000 עד FFFF‏ (‪2^16-1‬)‏"
 
-#: search/katesearchbar.cpp:1222
+#: search/katesearchbar.cpp:1227
 #, kde-format
 msgid "Backslash"
 msgstr "לוכסן הפוך"
 
-#: search/katesearchbar.cpp:1226
+#: search/katesearchbar.cpp:1231
 #, kde-format
 msgid "Group, non-capturing"
 msgstr "קבוצה, ללא לכידה"
 
-#: search/katesearchbar.cpp:1227
+#: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "Positive Lookahead"
 msgstr "איתור חיובי קדימה"
 
-#: search/katesearchbar.cpp:1228
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Negative lookahead"
 msgstr "איתור שלילי קדימה"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1237
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr "חיפוש חיובי אחורה באורך אחיד"
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1238
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr "חיפוש שלילי אחורה באורך אחיד"
 
-#: search/katesearchbar.cpp:1238
+#: search/katesearchbar.cpp:1243
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr "התחלת המרה לאותיות רגילות"
 
-#: search/katesearchbar.cpp:1239
+#: search/katesearchbar.cpp:1244
 #, kde-format
 msgid "Begin uppercase conversion"
 msgstr "התחלת המרה לרישיות"
 
-#: search/katesearchbar.cpp:1240
+#: search/katesearchbar.cpp:1245
 #, kde-format
 msgid "End case conversion"
 msgstr "סוף המרת סוג אות"
 
-#: search/katesearchbar.cpp:1241
+#: search/katesearchbar.cpp:1246
 #, kde-format
 msgid "Lowercase first character conversion"
 msgstr "המרת תו ראשון לאות קטנה"
 
-#: search/katesearchbar.cpp:1242
+#: search/katesearchbar.cpp:1247
 #, kde-format
 msgid "Uppercase first character conversion"
 msgstr "המרת תו ראשון לאות גדולה"
 
-#: search/katesearchbar.cpp:1243
+#: search/katesearchbar.cpp:1248
 #, kde-format
 msgid "Replacement counter (for Replace All)"
 msgstr "מונה החלפות (להחלפה של הכול)"

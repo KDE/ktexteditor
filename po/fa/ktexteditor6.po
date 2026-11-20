@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-08 02:53+0000\n"
+"POT-Creation-Date: 2026-11-20 01:05+0000\n"
 "PO-Revision-Date: 2011-12-15 14:55+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@linuxshop.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -3728,7 +3728,7 @@ msgstr "فرمان یافت نشد: %1"
 msgid "Add..."
 msgstr "افزودن..."
 
-#: search/katesearchbar.cpp:298
+#: search/katesearchbar.cpp:303
 #, fuzzy, kde-format
 #| msgid "1 replacement done"
 #| msgid_plural "%1 replacements done"
@@ -3738,7 +3738,7 @@ msgid_plural "%1 replacements made"
 msgstr[0] "%1 جایگزینی انجام شد"
 msgstr[1] ""
 
-#: search/katesearchbar.cpp:300
+#: search/katesearchbar.cpp:305
 #, fuzzy, kde-format
 #| msgid "Not found"
 msgctxt "short translation"
@@ -3747,241 +3747,241 @@ msgid_plural "%1 matches found"
 msgstr[0] "یافت نشد"
 msgstr[1] ""
 
-#: search/katesearchbar.cpp:374
+#: search/katesearchbar.cpp:379
 #, fuzzy, kde-format
 #| msgid "Reached bottom, continued from top"
 msgid "Reached top, continued from bottom"
 msgstr "به انتها رسیدیم، ادامه‌یافته از ابتدا"
 
-#: search/katesearchbar.cpp:376
+#: search/katesearchbar.cpp:381
 #, kde-format
 msgid "Reached bottom, continued from top"
 msgstr "به انتها رسیدیم، ادامه‌یافته از ابتدا"
 
-#: search/katesearchbar.cpp:381
+#: search/katesearchbar.cpp:386
 #, kde-format
 msgid "Not found"
 msgstr "یافت نشد"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, fuzzy, kde-format
 #| msgid "Reached bottom, continued from top"
 msgid "Bottom of file reached. Continue from top?"
 msgstr "به انتها رسیدیم، ادامه‌یافته از ابتدا"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, fuzzy, kde-format
 #| msgid "Reached bottom, continued from top"
 msgid "Top of file reached. Continue from bottom?"
 msgstr "به انتها رسیدیم، ادامه‌یافته از ابتدا"
 
-#: search/katesearchbar.cpp:618
+#: search/katesearchbar.cpp:623
 #, fuzzy, kde-format
 #| msgid "Case-sensitive searching"
 msgid "Continue search?"
 msgstr "جستجوی حساس به حالت"
 
-#: search/katesearchbar.cpp:920
+#: search/katesearchbar.cpp:925
 #, fuzzy, kde-format
 #| msgid "&Highlighting"
 msgid "SearchHighLight"
 msgstr "&مشخص کردن‌"
 
-#: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
+#: search/katesearchbar.cpp:1141 search/katesearchbar.cpp:1760
 #, kde-format
 msgid "Clear history"
 msgstr ""
 
-#: search/katesearchbar.cpp:1166
+#: search/katesearchbar.cpp:1171
 #, kde-format
 msgid "Beginning of line"
 msgstr "ابتدای خط"
 
-#: search/katesearchbar.cpp:1167
+#: search/katesearchbar.cpp:1172
 #, kde-format
 msgid "End of line"
 msgstr "انتهای خط"
 
-#: search/katesearchbar.cpp:1169
+#: search/katesearchbar.cpp:1174
 #, fuzzy, kde-format
 #| msgid "Any single character (excluding line breaks)"
 msgid "Match any character excluding new line (by default)"
 msgstr "هر تک‌حرفی (به جز شکست خط)"
 
-#: search/katesearchbar.cpp:1170
+#: search/katesearchbar.cpp:1175
 #, fuzzy, kde-format
 #| msgid "One or more occurences"
 msgid "One or more occurrences"
 msgstr "یک یا بیشتر رخداد"
 
-#: search/katesearchbar.cpp:1171
+#: search/katesearchbar.cpp:1176
 #, fuzzy, kde-format
 #| msgid "Zero or more occurences"
 msgid "Zero or more occurrences"
 msgstr "صفر یا بیشتر رخداد"
 
-#: search/katesearchbar.cpp:1172
+#: search/katesearchbar.cpp:1177
 #, fuzzy, kde-format
 #| msgid "Zero or one occurences"
 msgid "Zero or one occurrences"
 msgstr "صفر یا یک رخداد"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1180
 #, fuzzy, kde-format
 #| msgid "<a> through <b> occurences"
 msgid "<a> through <b> occurrences"
 msgstr "از <a> تا <b> رخداد"
 
-#: search/katesearchbar.cpp:1181
+#: search/katesearchbar.cpp:1186
 #, kde-format
 msgid "Group, capturing"
 msgstr "گروه، گیراندازی"
 
-#: search/katesearchbar.cpp:1182
+#: search/katesearchbar.cpp:1187
 #, kde-format
 msgid "Or"
 msgstr "یا"
 
-#: search/katesearchbar.cpp:1183
+#: search/katesearchbar.cpp:1188
 #, kde-format
 msgid "Set of characters"
 msgstr "مجموعه نویسه‌ها"
 
-#: search/katesearchbar.cpp:1184
+#: search/katesearchbar.cpp:1189
 #, kde-format
 msgid "Negative set of characters"
 msgstr "منفی مجموعه نویسه‌ها"
 
-#: search/katesearchbar.cpp:1188
+#: search/katesearchbar.cpp:1193
 #, kde-format
 msgid "Whole match reference"
 msgstr "ارجاع تمام تطبیق"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1204
 #, kde-format
 msgid "Reference"
 msgstr "ارجاع"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1211
 #, kde-format
 msgid "Line break"
 msgstr "شکستن خط"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1212
 #, kde-format
 msgid "Tab"
 msgstr "جهش"
 
-#: search/katesearchbar.cpp:1210
+#: search/katesearchbar.cpp:1215
 #, kde-format
 msgid "Word boundary"
 msgstr "مرز کلمه"
 
-#: search/katesearchbar.cpp:1211
+#: search/katesearchbar.cpp:1216
 #, kde-format
 msgid "Not word boundary"
 msgstr "غیر از مرز کلمه"
 
-#: search/katesearchbar.cpp:1212
+#: search/katesearchbar.cpp:1217
 #, kde-format
 msgid "Digit"
 msgstr "رقم"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1218
 #, kde-format
 msgid "Non-digit"
 msgstr "غیر از رقم"
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1219
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr "سفیدفضا (به جز شکست خط)"
 
-#: search/katesearchbar.cpp:1215
+#: search/katesearchbar.cpp:1220
 #, fuzzy, kde-format
 #| msgid "Replace"
 msgid "Non-whitespace"
 msgstr "جایگزینی"
 
-#: search/katesearchbar.cpp:1216
+#: search/katesearchbar.cpp:1221
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr "نویسهٔ کلمه (حروف‌ارقامی به اضافهٔ «_»)"
 
-#: search/katesearchbar.cpp:1217
+#: search/katesearchbar.cpp:1222
 #, kde-format
 msgid "Non-word character"
 msgstr " نویسهٔ غیرکلمه"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr "نویسهٔ هشت‌هشتی 000 تا 377 (۱-۸^۲)"
 
-#: search/katesearchbar.cpp:1221
+#: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr "نویسهٔ شانزده‌شانزدهی 0000 تا FFFF ‏(۱-۱۶^۲)"
 
-#: search/katesearchbar.cpp:1222
+#: search/katesearchbar.cpp:1227
 #, kde-format
 msgid "Backslash"
 msgstr "ممیز وارونه"
 
-#: search/katesearchbar.cpp:1226
+#: search/katesearchbar.cpp:1231
 #, kde-format
 msgid "Group, non-capturing"
 msgstr "گروه، بدون گرفتن"
 
-#: search/katesearchbar.cpp:1227
+#: search/katesearchbar.cpp:1232
 #, fuzzy, kde-format
 #| msgid "Negative lookahead"
 msgid "Positive Lookahead"
 msgstr "پیش‌بینی منفی"
 
-#: search/katesearchbar.cpp:1228
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Negative lookahead"
 msgstr "پیش‌بینی منفی"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1237
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1238
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1238
+#: search/katesearchbar.cpp:1243
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr "تبدیل کوچک‌سازِ ابتدا"
 
-#: search/katesearchbar.cpp:1239
+#: search/katesearchbar.cpp:1244
 #, kde-format
 msgid "Begin uppercase conversion"
 msgstr "تبدیل بزرگ‌سازِ ابتدا"
 
-#: search/katesearchbar.cpp:1240
+#: search/katesearchbar.cpp:1245
 #, kde-format
 msgid "End case conversion"
 msgstr "تبدیل کوچکی‌بزرگی انتها"
 
-#: search/katesearchbar.cpp:1241
+#: search/katesearchbar.cpp:1246
 #, fuzzy, kde-format
 #| msgid "Begin lowercase conversion"
 msgid "Lowercase first character conversion"
 msgstr "تبدیل کوچک‌سازِ ابتدا"
 
-#: search/katesearchbar.cpp:1242
+#: search/katesearchbar.cpp:1247
 #, fuzzy, kde-format
 #| msgid "Begin uppercase conversion"
 msgid "Uppercase first character conversion"
 msgstr "تبدیل بزرگ‌سازِ ابتدا"
 
-#: search/katesearchbar.cpp:1243
+#: search/katesearchbar.cpp:1248
 #, fuzzy, kde-format
 #| msgid "Replacement counter (for Replace all)"
 msgid "Replacement counter (for Replace All)"

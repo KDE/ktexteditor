@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-08 02:53+0000\n"
+"POT-Creation-Date: 2026-11-20 01:05+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -3752,7 +3752,7 @@ msgstr "ពាក្យ​បញ្ជា​រក​មិនឃើញ ៖ %1"
 msgid "Add..."
 msgstr "បន្ថែម..."
 
-#: search/katesearchbar.cpp:298
+#: search/katesearchbar.cpp:303
 #, fuzzy, kde-format
 #| msgid "1 replacement has been made"
 #| msgid_plural "%1 replacements have been made"
@@ -3761,7 +3761,7 @@ msgid "1 replacement made"
 msgid_plural "%1 replacements made"
 msgstr[0] "បាន​ជំនួស %1"
 
-#: search/katesearchbar.cpp:300
+#: search/katesearchbar.cpp:305
 #, fuzzy, kde-format
 #| msgid "1 match found"
 #| msgid_plural "%1 matches found"
@@ -3770,235 +3770,235 @@ msgid "1 match found"
 msgid_plural "%1 matches found"
 msgstr[0] "រកឃើញ​កា​រផ្គូផ្គង %1"
 
-#: search/katesearchbar.cpp:374
+#: search/katesearchbar.cpp:379
 #, kde-format
 msgid "Reached top, continued from bottom"
 msgstr "បាន​រក​ដល់​ផ្នែក​ខាង​លើ​ហើយ បន្ត​ពី​ក្រោម​ទៀត"
 
-#: search/katesearchbar.cpp:376
+#: search/katesearchbar.cpp:381
 #, kde-format
 msgid "Reached bottom, continued from top"
 msgstr "បាន​រក​ដល់​ក្រោម​ហើយ បន្ត​រក​ពី​លើ​មកវិញ"
 
-#: search/katesearchbar.cpp:381
+#: search/katesearchbar.cpp:386
 #, kde-format
 msgid "Not found"
 msgstr "រក​មិនឃើញ"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, fuzzy, kde-format
 #| msgid "Reached top, continued from bottom"
 msgid "Bottom of file reached. Continue from top?"
 msgstr "បាន​រក​ដល់​ផ្នែក​ខាង​លើ​ហើយ បន្ត​ពី​ក្រោម​ទៀត"
 
-#: search/katesearchbar.cpp:615
+#: search/katesearchbar.cpp:620
 #, fuzzy, kde-format
 #| msgid "Reached top, continued from bottom"
 msgid "Top of file reached. Continue from bottom?"
 msgstr "បាន​រក​ដល់​ផ្នែក​ខាង​លើ​ហើយ បន្ត​ពី​ក្រោម​ទៀត"
 
-#: search/katesearchbar.cpp:618
+#: search/katesearchbar.cpp:623
 #, fuzzy, kde-format
 #| msgid "Case-sensitive searching"
 msgid "Continue search?"
 msgstr "ការ​ស្វែងរក​ដោយ​ប្រកាន់​តួ​អក្សរ​តូច​ធំ"
 
-#: search/katesearchbar.cpp:920
+#: search/katesearchbar.cpp:925
 #, fuzzy, kde-format
 #| msgid "Search Highlight"
 msgid "SearchHighLight"
 msgstr "ស្វែងរក​ផ្នែក​សំខាន់"
 
-#: search/katesearchbar.cpp:1136 search/katesearchbar.cpp:1755
+#: search/katesearchbar.cpp:1141 search/katesearchbar.cpp:1760
 #, fuzzy, kde-format
 #| msgid "Clear Dictionary Ranges"
 msgid "Clear history"
 msgstr "ជម្រះ​ជួរ​វចនានុក្រម"
 
-#: search/katesearchbar.cpp:1166
+#: search/katesearchbar.cpp:1171
 #, kde-format
 msgid "Beginning of line"
 msgstr "ដើម​បន្ទាត់"
 
-#: search/katesearchbar.cpp:1167
+#: search/katesearchbar.cpp:1172
 #, kde-format
 msgid "End of line"
 msgstr "ចុង​បន្ទាត់"
 
-#: search/katesearchbar.cpp:1169
+#: search/katesearchbar.cpp:1174
 #, fuzzy, kde-format
 #| msgid "Any single character (excluding line breaks)"
 msgid "Match any character excluding new line (by default)"
 msgstr "តួ​អក្សរ​ទោល​ណាមួយ (ដោយ​មិន​រួម​បញ្ចូល​ការ​ចុះ​បន្ទាត់)"
 
-#: search/katesearchbar.cpp:1170
+#: search/katesearchbar.cpp:1175
 #, kde-format
 msgid "One or more occurrences"
 msgstr "កា​រកើតឡើង​មួយ ឬ​ច្រើន"
 
-#: search/katesearchbar.cpp:1171
+#: search/katesearchbar.cpp:1176
 #, kde-format
 msgid "Zero or more occurrences"
 msgstr "ការ​កើតឡើង​សូន្យ ឬ​ច្រើន"
 
-#: search/katesearchbar.cpp:1172
+#: search/katesearchbar.cpp:1177
 #, kde-format
 msgid "Zero or one occurrences"
 msgstr "កា​រកើត​ឡើង​សូន្យ ឬ​មួយ"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1180
 #, kde-format
 msgid "<a> through <b> occurrences"
 msgstr "<a> តាមរយៈ <b> ការ​កើត​ឡើង"
 
-#: search/katesearchbar.cpp:1181
+#: search/katesearchbar.cpp:1186
 #, kde-format
 msgid "Group, capturing"
 msgstr "ក្រុម ការ​ចាប់យក"
 
-#: search/katesearchbar.cpp:1182
+#: search/katesearchbar.cpp:1187
 #, kde-format
 msgid "Or"
 msgstr "ឬ"
 
-#: search/katesearchbar.cpp:1183
+#: search/katesearchbar.cpp:1188
 #, kde-format
 msgid "Set of characters"
 msgstr "សំណុំ​តួអក្សរ"
 
-#: search/katesearchbar.cpp:1184
+#: search/katesearchbar.cpp:1189
 #, kde-format
 msgid "Negative set of characters"
 msgstr "សំណុំ​តួអក្សរ​អវិជ្ជមាន"
 
-#: search/katesearchbar.cpp:1188
+#: search/katesearchbar.cpp:1193
 #, kde-format
 msgid "Whole match reference"
 msgstr "សេចក្ដី​យោង​ការ​ផ្គូផ្គង​ទាំងមូល"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1204
 #, kde-format
 msgid "Reference"
 msgstr "សេចក្ដី​យោង"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1211
 #, kde-format
 msgid "Line break"
 msgstr "ចុះ​បន្ទាត់"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1212
 #, kde-format
 msgid "Tab"
 msgstr "ថេប"
 
-#: search/katesearchbar.cpp:1210
+#: search/katesearchbar.cpp:1215
 #, kde-format
 msgid "Word boundary"
 msgstr "ព្រំដែន​ពាក្យ"
 
-#: search/katesearchbar.cpp:1211
+#: search/katesearchbar.cpp:1216
 #, kde-format
 msgid "Not word boundary"
 msgstr "មិន​មែន​ព្រំដែន​ពាក្យ"
 
-#: search/katesearchbar.cpp:1212
+#: search/katesearchbar.cpp:1217
 #, kde-format
 msgid "Digit"
 msgstr "តួ​លេខ"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1218
 #, kde-format
 msgid "Non-digit"
 msgstr "មិនមែន​តួ​លេខ"
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1219
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr "ចន្លោះ​មិនឃើញ (ដោយ​មិនរួម​បញ្ចូល​ការ​ចុះ​បន្ទាត់)"
 
-#: search/katesearchbar.cpp:1215
+#: search/katesearchbar.cpp:1220
 #, fuzzy, kde-format
 #| msgid "&Spaces"
 msgid "Non-whitespace"
 msgstr "ចន្លោះ"
 
-#: search/katesearchbar.cpp:1216
+#: search/katesearchbar.cpp:1221
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr "តួអក្សរ​ពាក្យ (អក្សរ​ក្រម​លេខ បូក​នឹង '_')"
 
-#: search/katesearchbar.cpp:1217
+#: search/katesearchbar.cpp:1222
 #, kde-format
 msgid "Non-word character"
 msgstr "មិនមែន​តួអក្សរ​ពាក្យ"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr "តួអក្សរ​គោល​ប្រាំបី 000 ដល់ 377 (2^8-1)​"
 
-#: search/katesearchbar.cpp:1221
+#: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr "តួអក្សរ​គោល​ដប់ប្រាំមួយ 0000 ដល់ FFFF (2^16-1)"
 
-#: search/katesearchbar.cpp:1222
+#: search/katesearchbar.cpp:1227
 #, kde-format
 msgid "Backslash"
 msgstr "សញ្ញ \"\""
 
-#: search/katesearchbar.cpp:1226
+#: search/katesearchbar.cpp:1231
 #, kde-format
 msgid "Group, non-capturing"
 msgstr "ក្រុម មិន​មែន​ការ​ចាប់យក"
 
-#: search/katesearchbar.cpp:1227
+#: search/katesearchbar.cpp:1232
 #, fuzzy, kde-format
 #| msgid "Negative lookahead"
 msgid "Positive Lookahead"
 msgstr "ការ​គ្រោង​ទុក​អវិជ្ជមាន"
 
-#: search/katesearchbar.cpp:1228
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Negative lookahead"
 msgstr "ការ​គ្រោង​ទុក​អវិជ្ជមាន"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1237
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1238
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1238
+#: search/katesearchbar.cpp:1243
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr "ចាប់ផ្ដើម​ការ​បម្លែង​តួអក្សរ​តូច"
 
-#: search/katesearchbar.cpp:1239
+#: search/katesearchbar.cpp:1244
 #, kde-format
 msgid "Begin uppercase conversion"
 msgstr "ចាប់ផ្ដើម​ការ​បម្លែង​តួអក្សរ​ធំ"
 
-#: search/katesearchbar.cpp:1240
+#: search/katesearchbar.cpp:1245
 #, kde-format
 msgid "End case conversion"
 msgstr "បញ្ចប់​ការ​បម្លែង​តួអក្សរ"
 
-#: search/katesearchbar.cpp:1241
+#: search/katesearchbar.cpp:1246
 #, kde-format
 msgid "Lowercase first character conversion"
 msgstr "ការ​បម្លែង​តួអក្សរ​ដំបូង​ជា​អក្សរ​តូច"
 
-#: search/katesearchbar.cpp:1242
+#: search/katesearchbar.cpp:1247
 #, kde-format
 msgid "Uppercase first character conversion"
 msgstr "ការ​បម្លែង​តួអក្សរ​ដំបូង​ជា​អក្សរ​ធំ"
 
-#: search/katesearchbar.cpp:1243
+#: search/katesearchbar.cpp:1248
 #, kde-format
 msgid "Replacement counter (for Replace All)"
 msgstr "ចំនួន​ជំនួស (សម្រាប់​ការ​ជំនួស​ទាំងអស់)"
