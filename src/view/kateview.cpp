@@ -5090,7 +5090,6 @@ void KTextEditor::ViewPrivate::clearHighlights()
 
 void KTextEditor::ViewPrivate::selectionChangedForHighlights()
 {
-    QString text;
     // If there are multiple selections it is pointless to create highlights
     if (!m_secondaryCursors.empty()) {
         for (const auto &cursor : m_secondaryCursors) {
@@ -5101,6 +5100,7 @@ void KTextEditor::ViewPrivate::selectionChangedForHighlights()
     }
 
     // if text of selection is still the same, abort
+    QString text;
     if (selection() && selectionRange().onSingleLine()) {
         text = selectionText();
         if (text == m_currentTextForHighlights) {
@@ -5109,8 +5109,10 @@ void KTextEditor::ViewPrivate::selectionChangedForHighlights()
     }
 
     // text changed: remove all highlights + create new ones
-    // (do not call clearHighlights(), since this also resets the m_currentTextForHighlights
-    m_rangesForHighlights.clear();
+    // set new text as highlight text, even if we later ignore it
+    // otherwise we might not re-highlight stuff after we de-highlighted it - bug 529222
+    clearHighlights();
+    m_currentTextForHighlights = text;
 
     // do not highlight single characters or strings with leading/trailing spaces
     if (text.length() < 2 || text.at(0).isSpace() || text.at(text.length() - 1).isSpace()) {
@@ -5118,7 +5120,6 @@ void KTextEditor::ViewPrivate::selectionChangedForHighlights()
     }
 
     // trigger creation of ranges for current view range
-    m_currentTextForHighlights = text;
     createHighlights();
 }
 
