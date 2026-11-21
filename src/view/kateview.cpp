@@ -5114,8 +5114,8 @@ void KTextEditor::ViewPrivate::selectionChangedForHighlights()
     clearHighlights();
     m_currentTextForHighlights = text;
 
-    // do not highlight single characters or strings with leading/trailing spaces
-    if (text.length() < 2 || text.at(0).isSpace() || text.at(text.length() - 1).isSpace()) {
+    // just do not highlight pure spaces, follow other editors like Codium
+    if (text.trimmed().isEmpty()) {
         return;
     }
 
