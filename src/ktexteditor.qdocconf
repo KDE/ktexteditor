@@ -11,7 +11,7 @@ sourcedirs = .
 
 navigation.landingpage = "KTextEditor"
 
-depends = \
+depends += \
     kde \
     qtcore \
     qtwidgets \
