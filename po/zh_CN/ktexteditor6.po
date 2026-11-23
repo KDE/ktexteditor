@@ -2269,16 +2269,22 @@ msgid ""
 "\n"
 "Close the other document and save?"
 msgstr ""
+"文件 %1 已在另一个文档中打开。\n"
+"\n"
+"在另一个文档中保存此文档会导致两个文档共用同一文件，保存其中一个文档会覆盖另"
+"一个文档的修改。\n"
+"\n"
+"关闭另一个文档并保存吗？"
 
 #: document/katedocument.cpp:5073
 #, kde-format
 msgid "File Already Open"
-msgstr ""
+msgstr "文件己打开"
 
 #: document/katedocument.cpp:5074
 #, kde-format
 msgid "Close Other && Save"
-msgstr ""
+msgstr "关闭其他文档并保存"
 
 #: document/katedocument.cpp:5086
 #, kde-format
