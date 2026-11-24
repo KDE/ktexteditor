@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-20 01:05+0000\n"
-"PO-Revision-Date: 2026-11-18 19:21+0300\n"
+"PO-Revision-Date: 2026-11-23 18:16+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -600,7 +600,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:91
 #, kde-format
 msgid "Default input mode:"
-msgstr "Öntanımlı giriş kipi:"
+msgstr "Varsayılan giriş kipi:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/editconfigwidget.ui:120
@@ -851,7 +851,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:43
 #, kde-format
 msgid "Default indentation mode:"
-msgstr "Ö&ntanımlı girintileme kipi:"
+msgstr "&Varsayılan girintileme kipi:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbMode)
 #: dialogs/indentationconfigwidget.ui:53
@@ -1234,8 +1234,8 @@ msgstr "Gelişmiş"
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
-"Dosya yedekleme için bir sonek belirlemediniz. Öntanımlı sonek kullanılıyor: "
-"“~”"
+"Dosya yedekleme için bir sonek belirlemediniz. Varsayılan sonek "
+"kullanılıyor: “~”"
 
 #: dialogs/katedialogs.cpp:1092
 #, kde-format
@@ -1604,7 +1604,7 @@ msgstr "Takas dosyası kipi:"
 #: dialogs/opensaveconfigadvwidget.ui:125
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr "Etkin, Öntanımlı Dizinde Depola"
+msgstr "Etkin, Varsayılan Dizinde Depola"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:130
@@ -1934,8 +1934,8 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
-"Bu değer, yazı tipinin öntanımlı satır yüksekliğiyle çarpılacaktır. 1,0 "
-"değeri, öntanımlı yüksekliğin kullanılacağı anlamına gelir."
+"Bu değer, yazı tipinin varsayılan satır yüksekliğiyle çarpılacaktır. 1,0 "
+"değeri, varsayılan yüksekliğin kullanılacağı anlamına gelir."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:93
@@ -2556,7 +2556,7 @@ msgstr "<Değiştirilmemiş>"
 #: mode/katemodeconfigpage.cpp:57
 #, kde-format
 msgid "Use Default"
-msgstr "Öntanımlıyı Kullan"
+msgstr "Varsayılanı Kullan"
 
 #: mode/katemodeconfigpage.cpp:98 mode/katemodeconfigpage.cpp:240
 #, kde-format
@@ -3057,7 +3057,7 @@ msgid ""
 "expression (defaults to div)."
 msgstr ""
 "Emmet ifadelerinden yapılan XML künyelerindeki seçili metinleri kaydırır "
-"(öntanımlı div)."
+"(varsayılan div)."
 
 #: script/data/commands/emmet.js:98
 #, kde-format
@@ -3374,7 +3374,7 @@ msgid ""
 msgstr ""
 "Bu komut, seçili bloktaki veya belgenin tamamındaki satırları, argüman "
 "olarak verilen düzenli bir ifadeyle verilen sütunda hizalar.<br><br>Boş bir "
-"dizgi verirseniz öntanımlı olarak ilk boş olmayan karaktere hizalanır."
+"dizgi verirseniz varsayılan olarak ilk boş olmayan karaktere hizalanır."
 "<br>Dizginin bir yakalaması varsa yakalanan eşleşmeye girintili olacaktır."
 "<br><br><i>Örnekler</i>:<br>“<code>alignon -</code>”, tümünü aynı sütuna "
 "hizalamak için her satırdaki ilk “-” öncesi boşluklar ekleyecektir."
@@ -3459,7 +3459,7 @@ msgid ""
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
 "Geçerli imleç konumundan, verilen argümanın kendisinden sonraki ilk geçtiği "
-"yere (veya öntanımlı olarak geçerli satırın sonuna kadar) ileriye doğru "
+"yere (veya varsayılan olarak geçerli satırın sonuna kadar) ileriye doğru "
 "metni seçin."
 
 #: script/data/commands/utils.js:452
@@ -3470,8 +3470,8 @@ msgid ""
 "default)."
 msgstr ""
 "Geçerli imleç konumundan, verilen argümanın kendisinden önceki ilk geçtiği "
-"yere (veya öntanımlı olarak geçerli satırın başına kadar) geriye doğru metni "
-"seçin."
+"yere (veya varsayılan olarak geçerli satırın başına kadar) geriye doğru "
+"metni seçin."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -3687,7 +3687,7 @@ msgstr "Satır sonu"
 #: search/katesearchbar.cpp:1174
 #, kde-format
 msgid "Match any character excluding new line (by default)"
-msgstr "Yenisatır hariç tutularak herhangi bir karakterle eşleş (öntanımlı)"
+msgstr "Yenisatır hariç tutularak herhangi bir karakterle eşleş (varsayılan)"
 
 #: search/katesearchbar.cpp:1175
 #, kde-format
@@ -4304,7 +4304,7 @@ msgstr "At"
 #: syntax/katecolortreewidget.cpp:34 syntax/katecolortreewidget.cpp:61
 #, kde-format
 msgid "Use default color from the color theme"
-msgstr "Renk temasından öntanımlı rengi kullan"
+msgstr "Renk temasından varsayılan rengi kullan"
 
 #: syntax/katehighlightmenu.cpp:39
 #, kde-format
@@ -4344,7 +4344,7 @@ msgstr "Seçili Arka Plan"
 #: syntax/katestyletreewidget.cpp:139
 #, kde-format
 msgid "Use Default Style"
-msgstr "Öntanımlı Stili Kullan"
+msgstr "Varsayılan Stili Kullan"
 
 #: syntax/katestyletreewidget.cpp:238
 #, kde-format
@@ -4413,7 +4413,7 @@ msgstr "Seçili Arka Plan Rengi Ayarını Kaldır"
 #: syntax/katestyletreewidget.cpp:295
 #, kde-format
 msgid "Use &Default Style"
-msgstr "Ö&ntanımlı Stili Kullan"
+msgstr "&Varsayılan Stili Kullan"
 
 #: syntax/katestyletreewidget.cpp:408
 #, kde-format
@@ -4427,7 +4427,7 @@ msgid ""
 "\"Use Default Style\" will be automatically unset when you change any style "
 "properties."
 msgstr ""
-"“Öntanımlı stili kullan” seçeneği, değiştirmiş olduğunuz stil özelliklerini "
+"“Varsayılan stili kullan” seçeneği, değiştirmiş olduğunuz stil özelliklerini "
 "kendiliğinden yürürlükten kaldıracaktır."
 
 #: syntax/katestyletreewidget.cpp:643
@@ -4624,7 +4624,7 @@ msgstr "Hata"
 #: syntax/katethemeconfig.cpp:162
 #, kde-format
 msgid "Use Default Colors"
-msgstr "Öntanımlı Renkleri Kullan"
+msgstr "Varsayılan Renkleri Kullan"
 
 #: syntax/katethemeconfig.cpp:182
 #, kde-format
@@ -4933,7 +4933,7 @@ msgid ""
 "color to edit from the popup menu.</p><p>You can unset the Background and "
 "Selected Background colors from the popup menu when appropriate.</p>"
 msgstr ""
-"<p>Bu liste, geçerli renk teması için öntanımlı stilleri gösterir ve "
+"<p>Bu liste, geçerli renk teması için varsayılan stilleri gösterir ve "
 "düzenlemeniz için seçenekler sağlar. Stil adı, güncel biçim ayarlarını "
 "yansıtır.</p><p>Renkleri düzenlemek için renkli dikdörtgen kutulara tıklayın "
 "veya açılır menüden seçin.</p><p>Açılır menüden, Arka Plan ve Seçilen Alan "
@@ -4996,7 +4996,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:1027
 #, kde-format
 msgid "Default Theme"
-msgstr "Öntanımlı Tema"
+msgstr "Varsayılan Tema"
 
 #: syntax/katethemeconfig.cpp:1028
 #, kde-format
@@ -5044,7 +5044,7 @@ msgstr "Renkler"
 #: syntax/katethemeconfig.cpp:1164
 #, kde-format
 msgid "Default Text Styles"
-msgstr "Öntanımlı Metin Stilleri"
+msgstr "Varsayılan Metin Stilleri"
 
 #: syntax/katethemeconfig.cpp:1168
 #, kde-format
@@ -6307,7 +6307,7 @@ msgstr "Geçerli satırın arka plan rengini ayarlayın."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
-msgstr "Yazım denetimi için kullanılan öntanımlı sözlüğü ayarlayın."
+msgstr "Yazım denetimi için kullanılan varsayılan sözlüğü ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:165
 #, kde-format
@@ -6837,7 +6837,7 @@ msgid ""
 msgstr ""
 "Bu komut, seçili bloktaki veya belgenin tamamındaki satırları, size "
 "sorulacak düzenli bir ifadeyle verilen sütunda hizalar.<br /><br />Boş bir "
-"dizgi verirseniz öntanımlı olarak ilk boş olmayan karaktere hizalanır.<br /"
+"dizgi verirseniz varsayılan olarak ilk boş olmayan karaktere hizalanır.<br /"
 ">Dizginin bir yakalaması varsa yakalanan eşleşmeye girintili olacaktır.<br /"
 "><br /><i>Örnekler</i>:<br />'-', tümünü aynı sütuna hizalamak için her "
 "satırdaki ilk '-' öncesi boşluklar ekleyecektir.<br />':\\s+(.)', tümünü "
@@ -7124,7 +7124,7 @@ msgstr "Yazı Tipi Puntosunu Sıfırla"
 #: view/kateview.cpp:753
 #, kde-format
 msgid "This resets the display font size."
-msgstr "Bu, yazı tipi büyüklüğünü öntanımlı değerine sıfırlar."
+msgstr "Bu, yazı tipi büyüklüğünü varsayılan değerine sıfırlar."
 
 #: view/kateview.cpp:756
 #, kde-format
@@ -8056,7 +8056,7 @@ msgstr "%1 İm Türü"
 #: view/kateviewhelpers.cpp:2668
 #, kde-format
 msgid "Set Default Mark Type"
-msgstr "Öntanımlı İm Türünü Ayarla"
+msgstr "Varsayılan İm Türünü Ayarla"
 
 #: view/kateviewhelpers.cpp:2813
 #, kde-format
@@ -8277,7 +8277,7 @@ msgstr ""
 "<p><b>bp,bprev &mdash; önceki arabellek</b></p><p>Kullanım: "
 "<tt><b>bp[revious] [N]</b></tt></p><p>Belge listesindeki <b>[N]</b>’inci "
 "önceki belgeye (“<b>b</b>uffer” (arabellek)) gider. </p><p> <b>[N]</b> "
-"öntanımlı olarak birdir. </p><p>Belge listesinin başından sürer.</p>"
+"varsayılan olarak birdir. </p><p>Belge listesinin başından sürer.</p>"
 
 #: vimode/appcommands.cpp:541
 #, kde-format
@@ -8289,7 +8289,7 @@ msgid ""
 msgstr ""
 "<p><b>bp,bprev &mdash; sonraki belgeye geç</b></p><p>Kullanım: "
 "<tt><b>bn[ext] [N]</b></tt></p><p>Belge listesindeki <b>[N]</b>’inci sonraki "
-"belgeye (“<b>b</b>uffer” (arabellek)) gider. <b>[N]</b> öntanımlı olarak "
+"belgeye (“<b>b</b>uffer” (arabellek)) gider. <b>[N]</b> varsayılan olarak "
 "birdir. </p><p>Belge listesinin sonundan sürer.</p>"
 
 #: vimode/appcommands.cpp:549
