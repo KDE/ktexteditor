@@ -12,6 +12,8 @@
 #include <katebuffer.h>
 #include <kateconfig.h>
 #include <katedocument.h>
+#include <katelinelayout.h>
+#include <katerenderer.h>
 #include <kateview.h>
 #include <kateviewhelpers.h>
 #include <kateviewinternal.h>
@@ -21,6 +23,7 @@
 #include <ktexteditor/movingrange.h>
 
 #include <KLineEdit>
+#include <QPainter>
 #include <QScrollBar>
 #include <QSignalSpy>
 #include <QStandardPaths>
@@ -979,6 +982,48 @@ void KateViewTest::testMinimapWithRangeEndingBehindLineEnd()
     auto *scrollBar = view->getViewInternal()->m_lineScroll;
     QTRY_VERIFY_WITH_TIMEOUT(scrollBar->isVisible(), 5000);
     QVERIFY(QMetaObject::invokeMethod(scrollBar, "updatePixmap"));
+}
+
+void KateViewTest::testSelectionOnIndentedWrappedLine()
+{
+    // BUG: 525617
+    // With dynamic word wrap, the wrapped parts of an indented line are shifted
+    // to align with the indentation. The selection must still cover them completely.
+    KTextEditor::DocumentPrivate doc(false, false);
+    doc.setText(QStringLiteral("        ") + QStringLiteral("aaaa ").repeated(20));
+    auto *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    view->config()->setDynWordWrap(true);
+    view->config()->setValue(KateViewConfig::DynWordWrapAlignIndent, 80);
+    view->selectAll();
+
+    KateRenderer *renderer = view->renderer();
+    const int maxWidth = renderer->currentFontMetrics().horizontalAdvance(QStringLiteral("        aaaa aaaa aaaa "));
+    KateLineLayout lineLayout;
+    lineLayout.setLine(renderer->folding(), 0);
+    renderer->layoutLine(doc.kateTextLine(0), &lineLayout, maxWidth);
+    const QTextLayout &layout = lineLayout.layout();
+    QVERIFY(layout.lineCount() >= 3);
+
+    const int lineHeight = renderer->lineHeight();
+    QImage image(maxWidth, lineHeight * layout.lineCount(), QImage::Format_ARGB32);
+    image.fill(Qt::transparent);
+    {
+        QPainter painter(&image);
+        renderer->paintTextLine(painter, &lineLayout, 0, maxWidth);
+    }
+
+    // check every wrapped line except the last one, which ends at the selection end
+    const QRgb selectionColor = renderer->config()->selectionColor().rgba();
+    for (int i = 1; i < layout.lineCount() - 1; ++i) {
+        const QTextLine line = layout.lineAt(i);
+        QVERIFY(line.x() > 0);
+        const int lastX = int(line.x() + line.naturalTextWidth()) - 1;
+        bool selected = false;
+        for (int y = i * lineHeight; y < (i + 1) * lineHeight && !selected; ++y) {
+            selected = image.pixel(lastX, y) == selectionColor;
+        }
+        QVERIFY2(selected, qPrintable(QStringLiteral("wrapped line %1 not selected up to its end").arg(i)));
+    }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

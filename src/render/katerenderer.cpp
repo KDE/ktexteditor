@@ -603,7 +603,10 @@ void KateRenderer::paintTextBackground(QPainter &paint, KateLineLayout *layout, 
             for (int l = startViewLine; l <= endViewLine; ++l) {
                 auto kateLayout = layout->viewLine(l);
                 int sx = 0;
-                int width = rtl ? kateLayout.lineLayout().width() : kateLayout.lineLayout().naturalTextWidth();
+                // The line may be shifted, e.g. by dynamic wrap indent or an inline note at column 0.
+                // cursorToX() includes that shift, so include it in the LTR width as well
+                const QTextLine line = kateLayout.lineLayout();
+                int width = rtl ? line.width() : line.x() + line.naturalTextWidth();
 
                 if (l == startViewLine) {
                     if (rtl) {

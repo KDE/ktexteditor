@@ -48,6 +48,7 @@ private Q_SLOTS:
     void testPasteDifferentLineSeparators();
     void testMinimapScrollbarWidth();
     void testMinimapWithRangeEndingBehindLineEnd();
+    void testSelectionOnIndentedWrappedLine();
 };
 
 #endif // KATE_VIEW_TEST_H

@@ -14,6 +14,7 @@
 
 #include "kateconfig.h"
 #include "ktexteditor/range.h"
+#include <ktexteditor_export.h>
 
 #include <QFlags>
 #include <QFont>
@@ -52,7 +53,7 @@ enum class caretStyles {
  * (used for the views and printing)
  *
  **/
-class KateRenderer
+class KTEXTEDITOR_EXPORT KateRenderer
 {
 public:
     /**

@@ -11,6 +11,7 @@
 #include <QTextLayout>
 
 #include <ktexteditor/cursor.h>
+#include <ktexteditor_export.h>
 
 namespace Kate
 {
@@ -18,7 +19,7 @@ class TextFolding;
 }
 class KateTextLayout;
 
-class KateLineLayout
+class KTEXTEDITOR_EXPORT KateLineLayout
 {
 public:
     explicit KateLineLayout();
