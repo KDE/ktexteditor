@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-20 01:05+0000\n"
-"PO-Revision-Date: 2026-10-18 15:16+0200\n"
+"PO-Revision-Date: 2026-11-20 19:44+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -106,7 +106,7 @@ msgstr "Vi&sualitza"
 #: data/katepart5ui.rc:79
 #, kde-format
 msgid "Word Wrap"
-msgstr "Ajust de les paraules"
+msgstr "Ajusteu les paraules"
 
 #. i18n: ectx: Menu (view_menu_borders)
 #: data/katepart5ui.rc:85 dialogs/katedialogs.cpp:747
@@ -538,7 +538,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:22
 #, kde-format
 msgid "Word wrap:"
-msgstr "Ajust de les paraules:"
+msgstr "Ajusteu les paraules:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:29
@@ -1743,7 +1743,7 @@ msgstr ""
 "temptativa per a determinar la codificació que s'utilitzarà buscant una "
 "marca d'ordre de bytes al començament del fitxer: si es troba, se "
 "seleccionarà la codificació Unicode correcta, altrament s'executarà la "
-"detecció de la codificació, i si les dues fallen, s'intentarà amb la "
+"detecció de la codificació, i si totes dues fallen, s'intentarà amb la "
 "codificació alternativa."
 
 #. i18n: ectx: property (text), widget (QLabel, lblEOL)
