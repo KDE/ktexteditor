@@ -31,6 +31,7 @@ enum CustomProperties {
     AttributeName = AttributeInternalProperty,
     AttributeDefaultStyleIndex,
     Spellchecking,
+    Hyperlink,
     /// Defined to allow 3rd party code to create their own custom attributes - you may use values at or above this property.
     AttributeUserProperty = 0x110000
 };

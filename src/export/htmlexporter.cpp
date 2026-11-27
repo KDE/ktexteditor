@@ -105,6 +105,11 @@ void HTMLExporter::exportText(const QString &text, const KTextEditor::Attribute:
         m_output << "<i>";
     }
 
+    const bool isHyperlink = attrib->hyperlink();
+    if (isHyperlink) {
+        m_output << "<a href=\"" << text.trimmed().toHtmlEscaped() << "\">";
+    }
+
     bool writeForeground = attrib->hasProperty(QTextCharFormat::ForegroundBrush)
         && (!m_defaultAttribute || attrib->foreground().color() != m_defaultAttribute->foreground().color());
     bool writeBackground = attrib->hasProperty(QTextCharFormat::BackgroundBrush)
@@ -127,6 +132,9 @@ void HTMLExporter::exportText(const QString &text, const KTextEditor::Attribute:
     }
     if (attrib->fontBold()) {
         m_output << "</b>";
+    }
+    if (isHyperlink) {
+        m_output << "</a>";
     }
     m_output.flush();
 }

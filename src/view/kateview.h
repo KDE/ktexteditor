@@ -855,6 +855,8 @@ private Q_SLOTS:
     void slotConfigDialog();
     void exportHtmlToClipboard();
     void exportHtmlToFile();
+    void openLink();
+    void copyLink();
 
 public Q_SLOTS:
     void slotFoldToplevelNodes();
@@ -875,6 +877,12 @@ private:
     void setupCodeFolding();
     KTEXTEDITOR_NO_EXPORT
     void setupSpeechActions();
+    KTEXTEDITOR_NO_EXPORT
+    QString hyperlinkAt(const KTextEditor::Cursor &cursor) const;
+    KTEXTEDITOR_NO_EXPORT
+    void updateHyperlinkActions();
+    KTEXTEDITOR_NO_EXPORT
+    void openHyperlink(const QString &hyperlink);
 
     std::vector<QAction *> m_editActions;
     QAction *m_editUndo;
@@ -902,6 +910,9 @@ private:
     QAction *m_cut;
     QAction *m_copy;
     QAction *m_copyHtmlAction;
+    QAction *m_openLinkAction;
+    QAction *m_copyLinkAction;
+    QString m_currentHyperlink;
     QAction *m_paste;
     QAction *m_clipboardHistory;
     // always nullptr if paste selection isn't supported

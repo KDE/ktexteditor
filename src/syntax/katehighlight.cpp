@@ -359,6 +359,9 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(con
         if (format.spellCheck()) {
             newAttribute->setSkipSpellChecking(true);
         }
+        if (format.isHyperlink()) {
+            newAttribute->setProperty(Hyperlink, true);
+        }
         array.append(newAttribute);
     }
     return array;

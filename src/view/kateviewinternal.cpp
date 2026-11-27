@@ -3143,6 +3143,10 @@ static bool isAcceptableInput(const QKeyEvent *e)
 void KateViewInternal::keyPressEvent(QKeyEvent *e)
 {
     m_shiftKeyPressed = e->modifiers() & Qt::ShiftModifier;
+
+    if (e->key() == Qt::Key_Control && m_mouse.isValid() && !view()->hyperlinkAt(m_mouse).isEmpty()) {
+        setCursor(Qt::PointingHandCursor);
+    }
     if (e->key() == Qt::Key_Left && e->modifiers() == Qt::AltModifier) {
         view()->emitNavigateLeft();
         e->setAccepted(true);
@@ -3268,6 +3272,10 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
 
 void KateViewInternal::keyReleaseEvent(QKeyEvent *e)
 {
+    if (e->key() == Qt::Key_Control && cursor().shape() == Qt::PointingHandCursor) {
+        setCursor(m_mouseCursor);
+    }
+
     if (m_shiftKeyPressed && (e->modifiers() & Qt::ShiftModifier) == 0) {
         m_shiftKeyPressed = false;
 
@@ -3331,6 +3339,16 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
     case Qt::LeftButton:
 
         m_selChangedByUser = false;
+
+        if (e->modifiers() == Qt::ControlModifier) {
+            const auto pos = cursorForPoint(e->pos());
+            const QString link = view()->hyperlinkAt(pos);
+            if (!link.isEmpty()) {
+                view()->openHyperlink(link);
+                e->accept();
+                return;
+            }
+        }
 
         if (!view()->isMulticursorNotAllowed() && e->modifiers() == view()->config()->multiCursorModifiers()) {
             auto pos = cursorForPoint(e->pos());
@@ -3656,6 +3674,11 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
     }
 
     if (e->buttons() == Qt::NoButton) {
+        if (e->modifiers().testFlag(Qt::ControlModifier) && !view()->hyperlinkAt(newPosition).isEmpty()) {
+            setCursor(Qt::PointingHandCursor);
+        } else if (cursor().shape() == Qt::PointingHandCursor) {
+            setCursor(m_mouseCursor);
+        }
         auto noteData = inlineNoteAt(e->globalPosition().toPoint());
         auto focusChanged = false;
         if (noteData.m_position.isValid()) {

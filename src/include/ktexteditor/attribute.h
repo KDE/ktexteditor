@@ -133,6 +133,16 @@ public:
     void setSkipSpellChecking(bool skipspellchecking);
 
     /*!
+     * Returns whether this is a hyperlink
+     */
+    bool hyperlink() const;
+
+    /*!
+     * Set whether this is a hyperlink
+     */
+    void setHyperlink(bool hyperlink);
+
+    /*!
      * Find out if the font weight is set to QFont::Bold.
      *
      * Returns \c true if the font weight is exactly QFont::Bold, otherwise \c false

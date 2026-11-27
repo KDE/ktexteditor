@@ -116,6 +116,16 @@ void Attribute::setSkipSpellChecking(bool skipspellchecking)
     setProperty(Spellchecking, QVariant(skipspellchecking));
 }
 
+bool Attribute::hyperlink() const
+{
+    return boolProperty(Hyperlink);
+}
+
+void Attribute::setHyperlink(bool hyperlink)
+{
+    setProperty(Hyperlink, hyperlink);
+}
+
 QBrush Attribute::outline() const
 {
     if (hasProperty(Outline)) {

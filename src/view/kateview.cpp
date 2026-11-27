@@ -59,6 +59,8 @@
 #include <KConfig>
 #include <KConfigGroup>
 #include <KCursor>
+#include <KIO/JobUiDelegateFactory>
+#include <KIO/OpenUrlJob>
 #include <KMessageBox>
 #include <KSelectAction>
 #include <KStandardActions>
@@ -80,6 +82,7 @@
 #include <QRegularExpression>
 #include <QTextToSpeech>
 #include <QToolTip>
+#include <QUrl>
 
 // #define VIEW_RANGE_DEBUG
 
@@ -991,6 +994,18 @@ void KTextEditor::ViewPrivate::setupActions()
     m_copyHtmlAction->setIcon(QIcon::fromTheme(QStringLiteral("edit-copy")));
     m_copyHtmlAction->setText(i18n("Copy as &HTML"));
     m_copyHtmlAction->setWhatsThis(i18n("Copy the selection as HTML, formatted using the current syntax highlighting and color scheme settings."));
+
+    m_openLinkAction = ac->addAction(QStringLiteral("edit_open_link"), this, SLOT(openLink()));
+    m_openLinkAction->setIcon(QIcon::fromTheme(QStringLiteral("link")));
+    m_openLinkAction->setText(i18n("&Open Link"));
+    m_openLinkAction->setWhatsThis(i18n("Open the hyperlink under the cursor."));
+    m_openLinkAction->setEnabled(false);
+
+    m_copyLinkAction = ac->addAction(QStringLiteral("edit_copy_link"), this, SLOT(copyLink()));
+    m_copyLinkAction->setIcon(QIcon::fromTheme(QStringLiteral("edit-copy-path")));
+    m_copyLinkAction->setText(i18n("Copy &Link Address"));
+    m_copyLinkAction->setWhatsThis(i18n("Copy the hyperlink address under the cursor."));
+    m_copyLinkAction->setEnabled(false);
 
     a = ac->addAction(QStringLiteral("file_export_html"), this, SLOT(exportHtmlToFile()));
     a->setIcon(QIcon::fromTheme(QStringLiteral("document-export")));
@@ -4637,6 +4652,7 @@ void KTextEditor::ViewPrivate::aboutToShowContextMenu()
     QMenu *menu = qobject_cast<QMenu *>(sender());
 
     if (menu) {
+        updateHyperlinkActions();
         Q_EMIT contextMenuAboutToShow(this, menu);
     }
 }
@@ -5062,6 +5078,70 @@ void KTextEditor::ViewPrivate::applyFoldingState()
 {
     m_textFolding.importFoldingRanges(m_savedFoldingState);
     m_savedFoldingState = QJsonDocument();
+}
+
+QString KTextEditor::ViewPrivate::hyperlinkAt(const KTextEditor::Cursor &cursor) const
+{
+    if (cursor.line() < 0 || cursor.column() < 0) {
+        return {};
+    }
+
+    const Kate::TextLine tl = m_doc->plainKateTextLine(cursor.line());
+
+    auto *highlight = doc()->highlight();
+    if (!highlight) {
+        return {};
+    }
+
+    const auto &formats = highlight->formats();
+    for (const auto &attr : tl.attributesList()) {
+        if (cursor.column() < attr.offset) {
+            break;
+        }
+        if (cursor.column() >= attr.offset + attr.length) {
+            continue;
+        }
+        if (attr.attributeValue >= 0 && static_cast<size_t>(attr.attributeValue) < formats.size() && formats[attr.attributeValue].isHyperlink()) {
+            return tl.text().mid(attr.offset, attr.length).trimmed();
+        }
+        return {};
+    }
+
+    return {};
+}
+
+void KTextEditor::ViewPrivate::updateHyperlinkActions()
+{
+    m_currentHyperlink = hyperlinkAt(cursorPosition());
+    const bool hasLink = !m_currentHyperlink.isEmpty();
+    m_openLinkAction->setEnabled(hasLink);
+    m_copyLinkAction->setEnabled(hasLink);
+}
+
+void KTextEditor::ViewPrivate::openHyperlink(const QString &hyperlink)
+{
+    const QUrl url = m_doc->url().resolved(QUrl(hyperlink));
+    if (!url.isValid()) {
+        return;
+    }
+    auto *job = new KIO::OpenUrlJob(url);
+    job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, this));
+    job->start();
+}
+
+void KTextEditor::ViewPrivate::openLink()
+{
+    updateHyperlinkActions();
+    openHyperlink(m_currentHyperlink);
+}
+
+void KTextEditor::ViewPrivate::copyLink()
+{
+    updateHyperlinkActions();
+    if (m_currentHyperlink.isEmpty()) {
+        return;
+    }
+    QApplication::clipboard()->setText(m_currentHyperlink);
 }
 
 void KTextEditor::ViewPrivate::exportHtmlToFile(const QString &file)
