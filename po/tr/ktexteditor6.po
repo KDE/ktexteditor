@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-20 01:05+0000\n"
-"PO-Revision-Date: 2026-11-23 18:16+0300\n"
+"PO-Revision-Date: 2026-11-26 19:02+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -5532,7 +5532,7 @@ msgid ""
 "replaced by either \"am\" or \"pm\".</td></tr></table></p>"
 msgstr ""
 "<p>date or date <b>format</b></p><p>Belirtilen biçime bakarak gün/zaman "
-"dizisini ekler veya hiçbir biçim belirlenmediyse yyyy-MM-dd hh:mm:ss "
+"dizgesini ekler veya hiçbir biçim belirlenmediyse yyyy-MM-dd hh:mm:ss "
 "biçimini kullanır.</p><p>Olası biçim belirteçleri:<table><tr><td>d</"
 "td><td>Sıfır kullanılmadan bir sayı olarak gün (1–31).</td></tr><tr><td>dd</"
 "td><td>Başında sıfır kullanılarak belirtilmiş bir gün (01–31).</td></"
@@ -6180,7 +6180,7 @@ msgstr "Şu anki tarih (ISO)."
 #: utils/katevariableexpansionmanager.cpp:241
 #, kde-format
 msgid "The current date (QDate formatstring)."
-msgstr "Geçerli tarih (QDate biçimli dizi)."
+msgstr "Geçerli tarih (QDate biçimli dizge)."
 
 #: utils/katevariableexpansionmanager.cpp:249
 #, kde-format
